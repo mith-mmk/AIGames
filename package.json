@@ -5,8 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "MITH@mmk",
+  "license": "MIT",
   "description": "",
   "devDependencies": {
     "@eslint/css": "^0.9.0",
