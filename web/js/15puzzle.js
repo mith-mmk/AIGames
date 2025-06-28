@@ -1,12 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const startMessage = 'Click a tile to move it into the empty space if it is adjacent.';
+    const messageContainer = document.getElementById('message');
+    const infoContainer = document.getElementById('info');
     const puzzleContainer = document.getElementById('puzzle-container');
     const shuffleButton = document.getElementById('shuffle-button');
     const boardSize = 4; // 4x4 grid for 15 puzzle
     let tiles = [];
 
+    let startTime = null;
+    let count =0;
+    let infomationInterval = null;  
+
+    function init() {
+        messageContainer.textContent = startMessage;
+        messageContainer.classList.remove('win-message');
+        shuffleButton.disabled = false;
+        shuffleButton.textContent = 'Shuffle';
+        tiles.forEach(tile => tile.removeEventListener('click', moveTile));
+       
+    }
+
+    function updateInfo() {
+        if (infomationInterval) {
+            const currentTime = new Date().getTime();
+            const elapsedTime = Math.floor((currentTime - startTime) / 1000)            
+            infoContainer.textContent = `Time: ${elapsedTime} seconds | Moves: ${count}`;
+        }
+    }
+
     function createBoard() {
+        if (infomationInterval) {
+            clearInterval(infomationInterval);
+        }
+        messageContainer.textContent = startMessage;
         puzzleContainer.innerHTML = '';
         tiles = [];
+        startTime = new Date().getTime();
+        count = 0;
+        infomationInterval = setInterval(() => {
+            updateInfo();
+        }, 100);
+
         let numbers = Array.from({ length: boardSize * boardSize - 1 }, (_, i) => i + 1);
         numbers.push(0); // 0 represents the empty space
 
@@ -33,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateGridPosition() {
         tiles.forEach(tile => {
             const value = parseInt(tile.dataset.value);
+            console.log(`Tile value: ${value}`);
             const targetIndex = tiles.indexOf(tile);
             const row = Math.floor(targetIndex / boardSize);
             const col = targetIndex % boardSize;
@@ -113,6 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
         if (isAdjacent) {
+            count++;
+            // Update the information display
+            updateInfo();
             // Swap values and classes
             const clickedValue = clickedTile.dataset.value;
             const emptyValue = emptyTile.dataset.value;
@@ -126,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
             emptyTile.classList.remove('empty');
 
             // Swap elements in the tiles array to reflect new positions
-            [tiles[clickedIndex], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[clickedIndex]];
+            //[tiles[clickedIndex], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[clickedIndex]];
 
             updateGridPosition();
             checkWin();
@@ -139,13 +177,63 @@ document.addEventListener('DOMContentLoaded', () => {
         solvedOrder.push(0);
 
         if (JSON.stringify(currentOrder) === JSON.stringify(solvedOrder)) {
-            setTimeout(() => alert('Congratulations! You solved the puzzle!'), 100);
+            setTimeout(() => drawWin(), 100);
         }
     }
 
     shuffleButton.addEventListener('click', shuffleTiles);
 
+    function drawWin() {
+        if (infomationInterval) {
+            clearInterval(infomationInterval);
+        }
+        messageContainer.textContent = 'Congratulations! You solved the puzzle!';
+        messageContainer.classList.add('win-message');
+        
+        // shuffleButton is change to reset the game
+        shuffleButton.textContent = 'Play Again';
+        // reset old event listeners
+        shuffleButton.removeEventListener('click', shuffleTiles);
+        shuffleButton.addEventListener('click', resetGame, { once: true });
+        animateWin();
+    }
+
+    let animationInterval = null;
+    function animateWin() {
+        const colors = ['#ff0', '#f00', '#0f0', '#00f', '#ff00ff', '#00ffff'];
+        let index = 0;
+        animationInterval = setInterval(() => {
+            messageContainer.style.color = colors[index % colors.length];
+            index++;
+            if (index >= colors.length * 2) {
+                index = 0; // Reset index after two full cycles
+            }
+        }, 100);
+      
+    }
+
+    function resetGame() {
+        if (animationInterval) {
+            clearInterval(animationInterval);
+        }
+        messageContainer.classList.remove('win-message');
+        messageContainer.textContent = startMessage;
+        messageContainer.style.color = 'white';
+        infoContainer.textContent = '';
+        
+        shuffleButton.disabled = false;
+        tiles.forEach(tile => tile.addEventListener('click', moveTile));
+        
+        createBoard();
+        shuffleTiles();
+        // Reset button change back to shuffle
+        shuffleButton.textContent = 'Shuffle';
+        shuffleButton.removeEventListener('click', resetGame);
+        shuffleButton.addEventListener('click', shuffleTiles);
+    }
+
     // Initial setup
+    init();
     createBoard();
     shuffleTiles();
 });
