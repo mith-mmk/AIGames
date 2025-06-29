@@ -7,6 +7,12 @@ let lives = 3;
 let highScore = 0;
 let paused = false;
 let gameOver = false;
+let gameStarted = false;
+
+// Audio files
+// const hitSound = new Audio('sounds/hit.wav');
+// const wallSound = new Audio('sounds/wall.wav');
+// const paddleSound = new Audio('sounds/paddle.wav');
 
 // Paddle
 const paddle = {
@@ -24,8 +30,8 @@ const ball = {
     y: canvas.height / 2,
     radius: 10,
     speed: 4,
-    dx: 4,
-    dy: -4,
+    dx: 0,
+    dy: 0,
     color: '#fff'
 };
 
@@ -36,14 +42,15 @@ const brickInfo = {
     padding: 10,
     offsetX: 45,
     offsetY: 60,
-    color: ['#f00', '#00f', '#0f0', '#ff0', '#f0f']
+    colors: ['#f00', '#00f', '#0f0', '#ff0', '#f0f'],
+    points: [10, 20, 30, 40, 50]
 };
 
 const bricks = [];
 for (let r = 0; r < 5; r++) {
     bricks[r] = [];
     for (let c = 0; c < 10; c++) {
-        bricks[r][c] = { x: 0, y: 0, status: 1, color: brickInfo.color[r] };
+        bricks[r][c] = { x: 0, y: 0, status: 1, color: brickInfo.colors[r], points: brickInfo.points[r] };
     }
 }
 
@@ -106,7 +113,7 @@ function drawLives() {
 
 // Update game objects
 function update() {
-    if (paused || gameOver) return;
+    if (paused || gameOver || !gameStarted) return;
 
     movePaddle();
     moveBall();
@@ -114,17 +121,25 @@ function update() {
     // Wall collision (left/right)
     if (ball.x + ball.dx > canvas.width - ball.radius || ball.x + ball.dx < ball.radius) {
         ball.dx = -ball.dx;
+        // wallSound.play();
     }
 
     // Wall collision (top)
     if (ball.y + ball.dy < ball.radius) {
         ball.dy = -ball.dy;
+        // wallSound.play();
     }
 
     // Paddle collision
     if (ball.y + ball.dy > canvas.height - ball.radius - paddle.height) {
         if (ball.x > paddle.x && ball.x < paddle.x + paddle.width) {
-            ball.dy = -ball.dy;
+            // Calculate the angle of reflection based on where the ball hits the paddle
+            const collidePoint = ball.x - (paddle.x + paddle.width / 2);
+            const normalizedCollidePoint = collidePoint / (paddle.width / 2);
+            const angle = normalizedCollidePoint * (Math.PI / 3); // Max angle of 60 degrees
+            ball.dx = ball.speed * Math.sin(angle);
+            ball.dy = -ball.speed * Math.cos(angle);
+            // paddleSound.play();
         }
     }
 
@@ -136,7 +151,8 @@ function update() {
                 if (ball.x > b.x && ball.x < b.x + brickInfo.width && ball.y > b.y && ball.y < b.y + brickInfo.height) {
                     ball.dy = -ball.dy;
                     b.status = 0;
-                    score += 10 * (r + 1);
+                    score += b.points;
+                    // hitSound.play();
                 }
             }
         }
@@ -154,10 +170,19 @@ function update() {
     }
 
     // Win condition
-    if (score === 10 * (1 + 2 + 3 + 4 + 5) * 10) {
+    let bricksLeft = 0;
+    for (let r = 0; r < 5; r++) {
+        for (let c = 0; c < 10; c++) {
+            if (bricks[r][c].status === 1) {
+                bricksLeft++;
+            }
+        }
+    }
+    if (bricksLeft === 0) {
         gameOver = true;
         showGameOver();
     }
+
 
     draw();
     requestAnimationFrame(update);
@@ -187,9 +212,10 @@ function moveBall() {
 function resetBall() {
     ball.x = canvas.width / 2;
     ball.y = canvas.height / 2;
-    ball.dx = 4;
-    ball.dy = -4;
+    ball.dx = 0;
+    ball.dy = 0;
     paddle.x = canvas.width / 2 - 50;
+    gameStarted = false;
 }
 
 // Show game over screen
@@ -199,6 +225,7 @@ function showGameOver() {
     if (score > highScore) {
         highScore = score;
         document.getElementById('highScore').innerText = highScore;
+        localStorage.setItem('blockHighScore', highScore);
     }
 }
 
@@ -217,7 +244,29 @@ document.addEventListener('keyup', (e) => {
     }
 });
 
+// Mouse and touch controls
+canvas.addEventListener('mousemove', (e) => {
+    const relativeX = e.clientX - canvas.offsetLeft;
+    if (relativeX > 0 && relativeX < canvas.width) {
+        paddle.x = relativeX - paddle.width / 2;
+    }
+});
+
+canvas.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0];
+    const relativeX = touch.clientX - canvas.offsetLeft;
+    if (relativeX > 0 && relativeX < canvas.width) {
+        paddle.x = relativeX - paddle.width / 2;
+    }
+});
+
+
 document.getElementById('startButton').addEventListener('click', () => {
+    if (!gameStarted) {
+        gameStarted = true;
+        ball.dx = ball.speed;
+        ball.dy = -ball.speed;
+    }
     if (gameOver) {
         resetGame();
     }
@@ -238,6 +287,9 @@ document.getElementById('restartButton').addEventListener('click', () => {
     resetGame();
     gameOver = false;
     paused = false;
+    gameStarted = true;
+    ball.dx = ball.speed;
+    ball.dy = -ball.speed;
     document.getElementById('gameOver').classList.add('hidden');
     update();
 });
@@ -252,6 +304,13 @@ function resetGame() {
     }
     resetBall();
 }
+
+// Load high score from local storage
+window.addEventListener('load', () => {
+    highScore = localStorage.getItem('blockHighScore') || 0;
+    document.getElementById('highScore').innerText = highScore;
+});
+
 
 // Initial draw
 draw();
