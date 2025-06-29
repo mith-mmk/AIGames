@@ -9,6 +9,8 @@ let paused = false;
 let gameOver = false;
 let gameStarted = false;
 
+let chainCount = 0; // For tracking consecutive hits
+
 // Audio files
 // const hitSound = new Audio('sounds/hit.wav');
 // const wallSound = new Audio('sounds/wall.wav');
@@ -37,13 +39,13 @@ const ball = {
 
 // Bricks
 const brickInfo = {
-    width: 75,
+    width: 60,
     height: 20,
     padding: 10,
-    offsetX: 45,
+    offsetX: 60,
     offsetY: 60,
     colors: ['#f00', '#00f', '#0f0', '#ff0', '#f0f'],
-    points: [10, 20, 30, 40, 50]
+    points: [50, 40, 30, 20, 10]
 };
 
 const bricks = [];
@@ -56,6 +58,13 @@ for (let r = 0; r < 5; r++) {
 
 // Draw everything
 function draw() {
+    if(checkClear()) {
+        gameOver = true;
+        drawBricks();
+        window.alert("You cleared all the bricks! Congratulations!");
+        showGameOver();
+        return;
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawPaddle();
     drawBall();
@@ -80,6 +89,21 @@ function drawBall() {
     ctx.fillStyle = ball.color;
     ctx.fill();
     ctx.closePath();
+}
+
+//
+function checkClear() {
+    let clear = true;
+    for (let r = 0; r < 5; r++) {
+        for (let c = 0; c < 10; c++) {
+            if (bricks[r][c].status === 1) {
+                clear = false;
+                break;
+            }
+        }
+        if (!clear) break;
+    }
+    return clear;
 }
 
 // Draw bricks
@@ -133,6 +157,8 @@ function update() {
     // Paddle collision
     if (ball.y + ball.dy > canvas.height - ball.radius - paddle.height) {
         if (ball.x > paddle.x && ball.x < paddle.x + paddle.width) {
+            //
+            chainCount = 0; // Reset chain count on paddle hit
             // Calculate the angle of reflection based on where the ball hits the paddle
             const collidePoint = ball.x - (paddle.x + paddle.width / 2);
             const normalizedCollidePoint = collidePoint / (paddle.width / 2);
@@ -151,8 +177,9 @@ function update() {
                 if (ball.x > b.x && ball.x < b.x + brickInfo.width && ball.y > b.y && ball.y < b.y + brickInfo.height) {
                     ball.dy = -ball.dy;
                     b.status = 0;
-                    score += b.points;
+                    score += b.points + (chainCount * 5); // Add bonus for chain hits
                     // hitSound.play();
+                    chainCount++;
                 }
             }
         }
@@ -160,6 +187,7 @@ function update() {
 
     // Bottom wall collision
     if (ball.y + ball.dy > canvas.height - ball.radius) {
+        chainCount = 0; // Reset chain count on bottom wall hit
         lives--;
         if (lives === 0) {
             gameOver = true;
@@ -263,6 +291,7 @@ canvas.addEventListener('touchmove', (e) => {
 
 document.getElementById('startButton').addEventListener('click', () => {
     if (!gameStarted) {
+        chainCount = 0; // Reset chain count on game start
         gameStarted = true;
         ball.dx = ball.speed;
         ball.dy = -ball.speed;
