@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>+3 Game - AI Games</title>
+    <link rel="stylesheet" href="css/plus3game.css">
+</head>
+<body>
+    <h1>+3 Game</h1>
+    <div id="game-container">
+        <div id="question-area">
+            <p>したのすうじにそれぞれ3をたしたすうじの1のくらいをいれてください</p>
+            <div id="question"></div>
+        </div>
+        <div id="answers">
+            <input type="number" class="answer-input" id="answer1" min="0" max="9" disabled>
+            <input type="number" class="answer-input" id="answer2" min="0" max="9" disabled>
+            <input type="number" class="answer-input" id="answer3" min="0" max="9" disabled>
+            <input type="number" class="answer-input" id="answer4" min="0" max="9" disabled>
+        </div>
+        <button id="start-button">スタート</button>
+        <button id="check-button">こたえあわせ</button>
+        <div id="message"></div>
+        <div id="timer">Time: 0s</div>
+        <div id="score"></div>
+    </div>
+    <p><a href="index.html">トップにもどる</a></p>
+    <script src="js/plus3game.js"></script>
+</body>
+</html>
