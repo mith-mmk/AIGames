@@ -1,0 +1,118 @@
+.panel {
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.controls label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.controls button {
+    font-size: 14px;
+    padding: 8px 14px;
+}
+
+#simulationCanvas {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border: 1px solid #b7b7b7;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #f9fff7, #eef7ff);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.stats {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 14px;
+    font-size: 14px;
+}
+
+.stats span {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    padding: 4px 10px;
+}
+
+.description {
+    margin: 14px auto;
+    max-width: 880px;
+}
+
+.graphPanel {
+    margin-top: 14px;
+}
+
+.graphPanel h2 {
+    margin: 10px 0 8px;
+    font-size: 18px;
+}
+
+#historyCanvas {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border: 1px solid #b7b7b7;
+    border-radius: 8px;
+    background: #fbfcff;
+}
+
+.legend {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 10px;
+    font-size: 13px;
+}
+
+.lg {
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    background: #fff;
+    padding: 3px 10px;
+}
+
+.lg.herb {
+    border-color: #23a647;
+    color: #1b7a35;
+}
+
+.lg.carn {
+    border-color: #d44949;
+    color: #a23434;
+}
+
+.lg.plant {
+    border-color: #1f7f7f;
+    color: #145959;
+}
+
+.lg.hs {
+    border-color: #6a58cc;
+    color: #4a3ba5;
+}
+
+.lg.cs {
+    border-color: #d99625;
+    color: #9a6813;
+}

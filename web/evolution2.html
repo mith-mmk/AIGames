@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生物進化シミュレーション Part2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/evolution2.css">
+</head>
+<body>
+    <header>
+        <h1>生物進化シミュレーション Part2</h1>
+    </header>
+    <main>
+        <section class="panel">
+            <div class="controls">
+                <button id="startPauseButton">一時停止</button>
+                <button id="resetButton">リセット</button>
+                <label>
+                    突然変異率
+                    <input id="mutationRate" type="range" min="0" max="0.5" step="0.01" value="0.08">
+                    <span id="mutationRateValue">0.08</span>
+                </label>
+                <label>
+                    植物再生速度
+                    <input id="plantGrowth" type="range" min="0.2" max="2.5" step="0.1" value="1.0">
+                    <span id="plantGrowthValue">1.0</span>
+                </label>
+                <label>
+                    捕食回復量
+                    <input id="predatorFeedGain" type="range" min="20" max="90" step="1" value="52">
+                    <span id="predatorFeedGainValue">52</span>
+                </label>
+                <label>
+                    肉食繁殖閾値
+                    <input id="predatorReproduceEnergy" type="range" min="170" max="320" step="5" value="225">
+                    <span id="predatorReproduceEnergyValue">225</span>
+                </label>
+                <label>
+                    肉食飢餓限界
+                    <input id="predatorStarveLimit" type="range" min="260" max="900" step="10" value="520">
+                    <span id="predatorStarveLimitValue">520</span>
+                </label>
+            </div>
+            <canvas id="simulationCanvas" width="900" height="560"></canvas>
+            <div class="stats">
+                <span>世代: <strong id="generationValue">0</strong></span>
+                <span>草食: <strong id="herbivoreValue">0</strong></span>
+                <span>肉食: <strong id="carnivoreValue">0</strong></span>
+                <span>植物: <strong id="plantValue">0</strong></span>
+                <span>平均速度(草食): <strong id="avgSpeedHerbivore">0</strong></span>
+                <span>平均視野(草食): <strong id="avgSenseHerbivore">0</strong></span>
+                <span>平均速度(肉食): <strong id="avgSpeedCarnivore">0</strong></span>
+            </div>
+            <section class="graphPanel">
+                <h2>世代グラフ</h2>
+                <canvas id="historyCanvas" width="900" height="260"></canvas>
+                <div class="legend">
+                    <span class="lg herb">草食数</span>
+                    <span class="lg carn">肉食数</span>
+                    <span class="lg plant">植物数</span>
+                    <span class="lg hs">草食速度</span>
+                    <span class="lg cs">肉食速度</span>
+                </div>
+            </section>
+            <p class="description">
+                草食は植物を食べて増殖、肉食は草食を捕食して増殖します。高エネルギー個体が子孫を残し、速度・視野・代謝が突然変異します。
+            </p>
+            <a href="./" class="back">戻る</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 MITH@mmk</p>
+    </footer>
+    <script src="js/evolution2.js"></script>
+</body>
+</html>

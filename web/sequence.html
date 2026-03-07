@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON SEQUENCE - AI Games</title>
+    <style>
+        :root {
+            --bg-a: #0b1022;
+            --bg-b: #1d3059;
+            --panel: rgba(255, 255, 255, 0.1);
+            --line: rgba(255, 255, 255, 0.24);
+            --text: #f7f8ff;
+            --accent: #38f9d7;
+            --hot: #ff6f61;
+            --ok: #5af78e;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Trebuchet MS", Verdana, "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(90rem 60rem at -10% -20%, #2452b6 0%, transparent 45%),
+                radial-gradient(80rem 55rem at 120% 120%, #1f9f90 0%, transparent 50%),
+                linear-gradient(160deg, var(--bg-a), var(--bg-b));
+            display: grid;
+            place-items: center;
+            padding: 20px;
+        }
+
+        .game {
+            width: min(640px, 100%);
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 18px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+            animation: enter 420ms ease-out;
+        }
+
+        @keyframes enter {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            letter-spacing: 1px;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .status {
+            margin: 6px 0 14px;
+            color: #dce7ff;
+            min-height: 24px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 6px 12px;
+            background: rgba(0, 0, 0, 0.22);
+            font-size: 0.95rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-weight: 700;
+            cursor: pointer;
+            color: #052126;
+            background: linear-gradient(120deg, var(--accent), #91fff0);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .ghost {
+            color: var(--text);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .grid {
+            margin-top: 14px;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 8px;
+        }
+
+        .cell {
+            aspect-ratio: 1 / 1;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.07);
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: clamp(1rem, 2.3vw, 1.3rem);
+            user-select: none;
+            transition: transform 120ms ease, background-color 140ms ease, border-color 140ms ease;
+        }
+
+        .cell:hover {
+            transform: translateY(-1px);
+        }
+
+        .cell.done {
+            color: #072017;
+            background: var(--ok);
+            border-color: #95ffc0;
+        }
+
+        .cell.wrong {
+            color: #31040a;
+            background: var(--hot);
+            border-color: #ffb1a9;
+        }
+
+        footer {
+            margin-top: 14px;
+            font-size: 0.9rem;
+            color: #d2dcf6;
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        a {
+            color: #bbffef;
+        }
+    </style>
+</head>
+<body>
+    <main class="game">
+        <h1>NEON SEQUENCE</h1>
+        <div class="row">
+            <div class="pill">NEXT: <strong id="next">1</strong></div>
+            <div class="pill">TIME: <strong id="time">0.00</strong>s</div>
+            <div class="pill">BEST: <strong id="best">--</strong></div>
+        </div>
+        <p id="status" class="status">1から25まで順番にタップ。ミス0で最速を狙う。</p>
+        <div class="controls">
+            <button id="start">Start / Restart</button>
+            <button id="shuffle" class="ghost">Shuffle Only</button>
+        </div>
+        <section id="grid" class="grid" aria-label="Number Grid"></section>
+        <footer>
+            <span>クリック or タップ対応</span>
+            <a href="index.html">Back to AI Games</a>
+        </footer>
+    </main>
+    <script>
+        const grid = document.getElementById('grid');
+        const nextNumView = document.getElementById('next');
+        const timeView = document.getElementById('time');
+        const bestView = document.getElementById('best');
+        const statusView = document.getElementById('status');
+        const startBtn = document.getElementById('start');
+        const shuffleBtn = document.getElementById('shuffle');
+
+        const BEST_KEY = 'neon-sequence-best';
+        const size = 25;
+        let expected = 1;
+        let started = false;
+        let startTime = 0;
+        let timerHandle = null;
+        let board = [];
+
+        function shuffledNumbers() {
+            const arr = Array.from({ length: size }, (_, i) => i + 1);
+            for (let i = arr.length - 1; i > 0; i -= 1) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function loadBest() {
+            const best = Number(localStorage.getItem(BEST_KEY));
+            if (!Number.isFinite(best) || best <= 0) {
+                bestView.textContent = '--';
+                return;
+            }
+            bestView.textContent = best.toFixed(2) + 's';
+        }
+
+        function drawBoard() {
+            grid.innerHTML = '';
+            board.forEach((value) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'cell';
+                btn.dataset.value = String(value);
+                btn.textContent = String(value);
+                btn.addEventListener('click', onCellClick);
+                grid.appendChild(btn);
+            });
+        }
+
+        function resetRound(shuffle = true) {
+            expected = 1;
+            nextNumView.textContent = '1';
+            timeView.textContent = '0.00';
+            statusView.textContent = '1から25まで順番にタップ。ミス0で最速を狙う。';
+            started = false;
+            clearInterval(timerHandle);
+            timerHandle = null;
+            board = shuffle ? shuffledNumbers() : board;
+            drawBoard();
+        }
+
+        function updateTimer() {
+            if (!started) {
+                return;
+            }
+            const elapsed = (performance.now() - startTime) / 1000;
+            timeView.textContent = elapsed.toFixed(2);
+        }
+
+        function onCellClick(event) {
+            const cell = event.currentTarget;
+            const value = Number(cell.dataset.value);
+
+            if (!started) {
+                started = true;
+                startTime = performance.now();
+                timerHandle = setInterval(updateTimer, 30);
+            }
+
+            if (value !== expected) {
+                cell.classList.remove('wrong');
+                void cell.offsetWidth;
+                cell.classList.add('wrong');
+                statusView.textContent = `ミス: ${value} を押しました。次は ${expected}。`;
+                return;
+            }
+
+            cell.classList.remove('wrong');
+            cell.classList.add('done');
+            cell.disabled = true;
+            expected += 1;
+            nextNumView.textContent = String(expected <= size ? expected : size);
+            statusView.textContent = `OK: ${value}`;
+
+            if (expected > size) {
+                clearInterval(timerHandle);
+                timerHandle = null;
+                const final = (performance.now() - startTime) / 1000;
+                timeView.textContent = final.toFixed(2);
+                statusView.textContent = `CLEAR! ${final.toFixed(2)}秒`;
+
+                const prevBest = Number(localStorage.getItem(BEST_KEY));
+                if (!Number.isFinite(prevBest) || prevBest <= 0 || final < prevBest) {
+                    localStorage.setItem(BEST_KEY, String(final));
+                    statusView.textContent += '  新記録!';
+                }
+                loadBest();
+            }
+        }
+
+        startBtn.addEventListener('click', () => resetRound(true));
+        shuffleBtn.addEventListener('click', () => {
+            board = shuffledNumbers();
+            drawBoard();
+            statusView.textContent = '盤面をシャッフルしました。Startで計測開始。';
+        });
+
+        loadBest();
+        board = shuffledNumbers();
+        drawBoard();
+    </script>
+</body>
+</html>
