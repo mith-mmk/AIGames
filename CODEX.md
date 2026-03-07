@@ -13,7 +13,7 @@
 * index.htmlには、以下のリンクを含める
 
   * 「Life Game」へのリンク lifegame.html
-  * その他のゲームへのリンク（後で追加）
+  * その他のゲームへのリンク（後で追加） 最後にby Codex-cliを追加すること
 
 ## JavaScriptコード設計
 

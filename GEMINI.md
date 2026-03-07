@@ -11,7 +11,7 @@
 - index.htmlは「AI Games」のトップページとする
 - index.htmlには、以下のリンクを含める
   - 「Life Game」へのリンク lifegame.html
-  - その他のゲームへのリンク（後で追加）
+  - その他のゲームへのリンク（後で追加） 最後にby Gemini-cliを追加すること
 
 ## JavaScriptコード設計
 - ステートの管理はClassを使用する
