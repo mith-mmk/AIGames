@@ -61,18 +61,33 @@ footer {
     margin-top: auto;
 }
 
-main a {
-    color: #fff;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    text-decoration: none;
-    background-color: azure;           
-    color: black;
-    padding: 10px;
+
+.goback {
+    display: block;
 }
 
-.gotop {
+a.back {
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #cfd6de;
+    text-decoration: none;
+    background-color: #f4fbff;
+    color: #1f2d3a;
+    padding: 9px 14px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+a.back:hover {
+    background-color: #e8f4ff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+a.back:active {
+    transform: translateY(1px);
+}
+
+footer.gotop {
     display: inline-block;
     color: #ffffff;
     padding: 10px 15px;
@@ -108,4 +123,3 @@ main a {
     opacity: 0.60;
     color: grey;
 }
-

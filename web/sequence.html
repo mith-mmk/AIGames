@@ -162,6 +162,25 @@
         a {
             color: #bbffef;
         }
+
+        a.back {
+            color: #1f2d3a;
+            border: 1px solid #cfd6de;
+            border-radius: 6px;
+            background: #f4fbff;
+            text-decoration: none;
+            padding: 8px 12px;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        a.back:hover {
+            background-color: #e8f4ff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+        }
+
+        a.back:active {
+            transform: translateY(1px);
+        }
     </style>
 </head>
 <body>
@@ -180,7 +199,7 @@
         <section id="grid" class="grid" aria-label="Number Grid"></section>
         <footer>
             <span>クリック or タップ対応</span>
-            <a href="index.html">Back to AI Games</a>
+            <a href="index.html" class="back">Back to AI Games</a>
         </footer>
     </main>
     <script>
