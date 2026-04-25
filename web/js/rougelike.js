@@ -636,34 +636,59 @@ class GameState {
     }
     this.px = nx; this.py = ny;
     this._onStep();
+    // プレイヤー移動後に敵もターン行動
+    if (this.phase === 'explore') this._tickEnemies();
   }
 
-  _onStep() {
-    const tile = this.floor.tiles[this.py][this.px];
-    const msgs = this.player.tickAilments();
-    msgs.forEach(m => game.log(m.text, m.cls));
-    if (this.player.hp <= 0) { this.gameOver(); return; }
+  // ─── 敵ターン行動 ───
+  _tickEnemies() {
+    let moved = false;
+    for (const ent of this.floor.enemies) {
+      if (!chance(0.6)) continue;
+      const ddx = this.px - ent.x;
+      const ddy = this.py - ent.y;
+      const dist = Math.abs(ddx) + Math.abs(ddy);
 
-    // アイテム取得
-    const items = this.floor.getItemAt(this.px, this.py);
-    items.forEach(it => {
-      if (it.itemId === 'medal') {
-        this.hasMedal = true;
-        game.log('✨ 勝利のメダルを手に入れた！地上へ戻ろう！', 'rl-log-item');
-        this.floor.removeItem(this.px, this.py, 'medal');
-      } else if (this.player.inventory.length < MAX_INVENTORY) {
-        if (this.player.addItem(it.itemId, it.qty)) {
-          game.log(`${ITEM_DEFS[it.itemId]?.name || it.itemId} を拾った。`, 'rl-log-item');
-          this.floor.removeItem(this.px, this.py, it.itemId);
-        }
+      let dirs;
+      if (dist <= 8 && dist > 0) {
+        // 追跡: プレイヤー方向を優先
+        const primary = Math.abs(ddx) >= Math.abs(ddy) ? [ddx > 0 ? 1 : -1, 0] : [0, ddy > 0 ? 1 : -1];
+        const secondary = Math.abs(ddx) >= Math.abs(ddy)
+          ? (Math.abs(ddy) > 0 ? [[0, ddy > 0 ? 1 : -1]] : [])
+          : (Math.abs(ddx) > 0 ? [[ddx > 0 ? 1 : -1, 0]] : []);
+        dirs = [primary, ...secondary, [0, -1], [0, 1], [-1, 0], [1, 0]];
       } else {
-        game.log('所持品がいっぱいで拾えない！', 'rl-log-warn');
+        // ランダム徘徊
+        dirs = [[0, -1], [0, 1], [-1, 0], [1, 0]].sort(() => Math.random() - 0.5);
       }
-    });
 
-    // 罠
-    const trap = this.floor.getTrapAt(this.px, this.py);
-    if (trap) { this._triggerTrap(trap); }
+      for (const [ex, ey] of dirs) {
+        const nx = ent.x + ex, ny = ent.y + ey;
+        if (!this.floor.isWalkable(nx, ny)) continue;
+        if (this.floor.getEnemyAt(nx, ny)) continue;
+        // プレイヤー位置への移動 → 奇襲戦闘
+        if (nx === this.px && ny === this.py) {
+          if (dist <= 8) {
+            const savedX = ent.x, savedY = ent.y;
+            ent.x = nx; ent.y = ny;
+            game.log(`${ent.enemy.name} が奇襲してきた！`, 'rl-log-warn');
+            this.startCombat(ent.enemy, nx, ny);
+            return;
+          }
+          continue;
+        }
+        ent.x = nx; ent.y = ny;
+        moved = true;
+        break;
+      }
+    }
+    if (moved) { game.rebuildDungeon3D(); game.renderMinimap(); }
+  }
+
+  // ─── SPACE インタラクト ───
+  interact() {
+    if (this.phase !== 'explore') return;
+    const tile = this.floor.tiles[this.py][this.px];
 
     // 階段
     if (tile === TILE.STAIR_DOWN) {
@@ -678,6 +703,51 @@ class GameState {
         this.py = this.floor.playerStart.y;
         game.rebuildDungeon3D();
       }
+      game.renderMinimap();
+      game.updateHUD();
+      return;
+    }
+
+    // アイテム取得
+    const items = this.floor.getItemAt(this.px, this.py);
+    if (items.length === 0) { game.log('ここには何もない。', 'rl-log-info'); return; }
+    let changed = false;
+    for (const it of [...items]) {
+      if (it.itemId === 'medal') {
+        this.hasMedal = true;
+        game.log('✨ 勝利のメダルを手に入れた！地上へ戻ろう！', 'rl-log-item');
+        this.floor.removeItem(this.px, this.py, 'medal');
+        changed = true;
+      } else if (this.player.addItem(it.itemId, it.qty)) {
+        game.log(`${ITEM_DEFS[it.itemId]?.name || it.itemId} を拾った。`, 'rl-log-item');
+        this.floor.removeItem(this.px, this.py, it.itemId);
+        changed = true;
+      } else {
+        game.log('所持品がいっぱいで拾えない！', 'rl-log-warn');
+      }
+    }
+    if (changed) { game.rebuildDungeon3D(); game.renderMinimap(); }
+    game.updateHUD();
+  }
+
+  _onStep() {
+    const tile = this.floor.tiles[this.py][this.px];
+    const msgs = this.player.tickAilments();
+    msgs.forEach(m => game.log(m.text, m.cls));
+    if (this.player.hp <= 0) { this.gameOver(); return; }
+
+    // 罠（自動発動）
+    const trap = this.floor.getTrapAt(this.px, this.py);
+    if (trap) { this._triggerTrap(trap); }
+
+    // 足元ヒント（アイテム・階段）
+    const items = this.floor.getItemAt(this.px, this.py);
+    if (items.length > 0) {
+      const names = items.map(i => ITEM_DEFS[i.itemId]?.name || i.itemId).join(', ');
+      game.log(`足元: ${names}　[SPACE]で拾う`, 'rl-log-item');
+    }
+    if (tile === TILE.STAIR_DOWN) {
+      game.log('階段がある。[SPACE] で次の階へ降りる', 'rl-log-info');
     }
 
     game.renderMinimap();
@@ -956,11 +1026,19 @@ class Dungeon3D {
   }
 
   _setupLights() {
-    const ambient = new THREE.AmbientLight(0x222244, 0.8);
+    // 環境光（ほんのり薄明かり）
+    const ambient = new THREE.AmbientLight(0x443333, 1.2);
     this.scene.add(ambient);
-    this.playerLight = new THREE.PointLight(0xffcc88, 1.8, 10);
+
+    // プレイヤーが持つ松明ライト
+    this.playerLight = new THREE.PointLight(0xff9944, 2.5, 12);
     this.playerLight.castShadow = true;
     this.scene.add(this.playerLight);
+
+    // 松明ゆらぎ用タイマー
+    this._torchTime = 0;
+    // 壁に取り付けた松明ライト群（buildFloor で設定）
+    this._wallTorchLights = [];
   }
 
   _buildMaterials() {
@@ -973,12 +1051,18 @@ class Dungeon3D {
       enemy: new THREE.MeshLambertMaterial({ color: 0xdd3333 }),
       trap: new THREE.MeshLambertMaterial({ color: 0xff6600 }),
       item: new THREE.MeshLambertMaterial({ color: 0x33ddaa }),
+      // 松明素材
+      torchPole: new THREE.MeshLambertMaterial({ color: 0x8b5e3c }),
+      torchFlame: new THREE.MeshLambertMaterial({ color: 0xff8800, emissive: new THREE.Color(0xff4400), emissiveIntensity: 1.0 }),
     };
   }
 
   buildFloor(dungeonFloor, px, py) {
     // 既存メッシュをクリア
     while (this._meshGroup.children.length > 0) this._meshGroup.remove(this._meshGroup.children[0]);
+    // 壁松明ライトを削除
+    for (const l of this._wallTorchLights) this.scene.remove(l);
+    this._wallTorchLights = [];
 
     const floor = dungeonFloor;
     const RENDER_RADIUS = 10; // 視野範囲
@@ -987,6 +1071,24 @@ class Dungeon3D {
     const wallGeo = new THREE.BoxGeometry(1, 2, 1);
     const tinyGeo = new THREE.BoxGeometry(0.4, 0.4, 0.4);
     const stairGeo = new THREE.BoxGeometry(0.8, 0.12, 0.8);
+    // 松明ジオメトリ
+    const poleGeo = new THREE.CylinderGeometry(0.04, 0.04, 0.45, 6);
+    const flameGeo = new THREE.ConeGeometry(0.1, 0.28, 7);
+
+    // 松明配置チェック用: FLOORマスの中で壁に隣接する座標を収集
+    const torchCandidates = [];
+    for (let y = 1; y < floor.H - 1; y++) {
+      for (let x = 1; x < floor.W - 1; x++) {
+        if (floor.tiles[y][x] !== TILE.FLOOR) continue;
+        if (Math.abs(x - px) > RENDER_RADIUS || Math.abs(y - py) > RENDER_RADIUS) continue;
+        // いずれかの隣が壁 → 松明候補
+        const adj = [[0, -1], [0, 1], [-1, 0], [1, 0]];
+        const wallDir = adj.find(([dx, dy]) => floor.tiles[y + dy]?.[x + dx] === TILE.WALL);
+        if (wallDir) torchCandidates.push({ x, y, wallDir });
+      }
+    }
+    // 約15タイルに1本の割合でランダム配置（シード: x*31+y）
+    const torchPositions = torchCandidates.filter(c => ((c.x * 31 + c.y * 17) % 15) === 0);
 
     for (let y = 0; y < floor.H; y++) {
       for (let x = 0; x < floor.W; x++) {
@@ -1019,6 +1121,26 @@ class Dungeon3D {
           this._meshGroup.add(dm);
         }
       }
+    }
+
+    // ── 壁松明を配置 ──
+    for (const { x, y, wallDir } of torchPositions) {
+      const wx = x - px, wz = y - py;
+      // 柄
+      const pole = new THREE.Mesh(poleGeo, this._materials.torchPole);
+      pole.position.set(wx + wallDir[0] * 0.3, 1.1, wz + wallDir[1] * 0.3);
+      this._meshGroup.add(pole);
+      // 炎
+      const flame = new THREE.Mesh(flameGeo, this._materials.torchFlame);
+      flame.position.set(wx + wallDir[0] * 0.3, 1.38, wz + wallDir[1] * 0.3);
+      this._meshGroup.add(flame);
+      // 松明ライト（シーンに直接追加してワールド座標で使う）
+      const tl = new THREE.PointLight(0xff7700, 1.6, 7);
+      tl.position.set(x - px + wallDir[0] * 0.3, 1.4, y - py + wallDir[1] * 0.3);
+      // ゆらぎ用の位相を保存
+      tl.userData.phase = (x * 7 + y * 13) % 100 / 10;
+      this.scene.add(tl);
+      this._wallTorchLights.push(tl);
     }
 
     // アイテム
@@ -1063,9 +1185,20 @@ class Dungeon3D {
   }
 
   _startLoop() {
-    const loop = () => {
+    const loop = (time = 0) => {
       this._animId = requestAnimationFrame(loop);
       this.resize();
+      // 松明ゆらぎアニメーション
+      this._torchTime = time * 0.001;
+      // プレイヤー手持ち松明のゆらぎ
+      const pFlicker = 1.8 + Math.sin(this._torchTime * 7.3) * 0.4 + Math.sin(this._torchTime * 13.1) * 0.2;
+      this.playerLight.intensity = pFlicker;
+      this.playerLight.distance = 10 + Math.sin(this._torchTime * 5.7) * 1.5;
+      // 壁松明のゆらぎ
+      for (const tl of this._wallTorchLights) {
+        const ph = tl.userData.phase;
+        tl.intensity = 1.4 + Math.sin(this._torchTime * 6.1 + ph) * 0.4 + Math.sin(this._torchTime * 11.3 + ph) * 0.15;
+      }
       this.renderer.render(this.scene, this.camera);
     };
     loop();
@@ -1183,8 +1316,10 @@ class GameUI {
     set('rl-dex', p.dex); set('rl-vit', p.vit);
     set('rl-floor', this.gs.floorNum);
     set('rl-gold', p.gold);
+    set('rl-classname', p.className ?? '');
     bar('rl-hpbar', p.hp, p.maxHp);
     bar('rl-mpbar', p.mp, p.maxMp);
+    bar('rl-expbar', p.exp, p.requiredExp());
     const ailEl = document.getElementById('rl-status-ailment');
     if (ailEl) ailEl.textContent = p.ailments.map(a => `[${a}]`).join(' ');
   }
@@ -1233,6 +1368,12 @@ class GameUI {
         // 後ろ回転 (180°)
         this._facing = (this._facing + 2) % 4;
         acted = true;
+      } else if (key === ' ') {
+        e.preventDefault();
+        this.gs.interact();
+        this.renderMinimap();
+        this.updateHUD();
+        return;
       } else if (key === 'i') { this.openInventory(); return; }
       else if (key === 'e') { this.openInventory('equip'); return; }
       else if (key === 'q') { this.openInventory('use'); return; }

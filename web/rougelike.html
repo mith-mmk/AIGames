@@ -55,37 +55,48 @@
 
             <!-- status bar (center-bottom) -->
             <div id="rl-statusbar">
-                <div class="rl-statblock">
-                    <span class="rl-statlabel">HP</span>
-                    <span id="rl-hp">0</span>/<span id="rl-maxhp">0</span>
-                    <div class="rl-bar"><div id="rl-hpbar" class="rl-bar-fill rl-bar-hp"></div></div>
+                <!-- キャラクター情報 -->
+                <div class="rl-stat-panel rl-panel-char">
+                    <div class="rl-char-name" id="rl-classname">冒険者</div>
+                    <div class="rl-char-lv">Lv&nbsp;<span id="rl-lv">1</span></div>
+                    <div class="rl-char-loc">B<span id="rl-floor">1</span>F</div>
+                    <div class="rl-char-gold">💰&thinsp;<span id="rl-gold">0</span>G</div>
                 </div>
-                <div class="rl-statblock">
-                    <span class="rl-statlabel">MP</span>
-                    <span id="rl-mp">0</span>/<span id="rl-maxmp">0</span>
-                    <div class="rl-bar"><div id="rl-mpbar" class="rl-bar-fill rl-bar-mp"></div></div>
+                <!-- HP / MP / EXP バー -->
+                <div class="rl-stat-panel rl-panel-bars">
+                    <div class="rl-bar-row">
+                        <span class="rl-statlabel rl-label-hp">HP</span>
+                        <div class="rl-bar"><div id="rl-hpbar" class="rl-bar-fill rl-bar-hp"></div></div>
+                        <span class="rl-barnum"><span id="rl-hp">0</span>/<span id="rl-maxhp">0</span></span>
+                    </div>
+                    <div class="rl-bar-row">
+                        <span class="rl-statlabel rl-label-mp">MP</span>
+                        <div class="rl-bar"><div id="rl-mpbar" class="rl-bar-fill rl-bar-mp"></div></div>
+                        <span class="rl-barnum"><span id="rl-mp">0</span>/<span id="rl-maxmp">0</span></span>
+                    </div>
+                    <div class="rl-bar-row">
+                        <span class="rl-statlabel rl-label-exp">EXP</span>
+                        <div class="rl-bar"><div id="rl-expbar" class="rl-bar-fill rl-bar-exp"></div></div>
+                        <span class="rl-barnum"><span id="rl-exp">0</span>/<span id="rl-nextexp">10</span></span>
+                    </div>
                 </div>
-                <div class="rl-statblock rl-statblock-small">
-                    <span class="rl-statlabel">LV</span><span id="rl-lv">1</span>
-                    <span class="rl-statlabel">EXP</span><span id="rl-exp">0</span>/<span id="rl-nextexp">10</span>
+                <!-- ステータス値 -->
+                <div class="rl-stat-panel rl-panel-stats">
+                    <div class="rl-stat-row">
+                        <span class="rl-statlabel">STR</span><span id="rl-str" class="rl-statval">0</span>
+                        <span class="rl-statlabel">INT</span><span id="rl-int" class="rl-statval">0</span>
+                    </div>
+                    <div class="rl-stat-row">
+                        <span class="rl-statlabel">DEX</span><span id="rl-dex" class="rl-statval">0</span>
+                        <span class="rl-statlabel">VIT</span><span id="rl-vit" class="rl-statval">0</span>
+                    </div>
                 </div>
-                <div class="rl-statblock rl-statblock-small">
-                    <span class="rl-statlabel">STR</span><span id="rl-str">0</span>
-                    <span class="rl-statlabel">INT</span><span id="rl-int">0</span>
-                </div>
-                <div class="rl-statblock rl-statblock-small">
-                    <span class="rl-statlabel">DEX</span><span id="rl-dex">0</span>
-                    <span class="rl-statlabel">VIT</span><span id="rl-vit">0</span>
-                </div>
-                <div class="rl-statblock rl-statblock-small">
-                    <span class="rl-statlabel">B</span><span id="rl-floor">1</span>F
-                    <span class="rl-statlabel">G</span><span id="rl-gold">0</span>
-                </div>
+                <!-- 状態異常 -->
                 <div id="rl-status-ailment"></div>
             </div>
 
             <!-- keybind hint -->
-            <div id="rl-keyhint">W:前進 &nbsp; A:左回転 &nbsp; D:右回転 &nbsp; S:後ろ回転 &nbsp; E:装備 &nbsp; Q:使用 &nbsp; X:捨てる &nbsp; I:所持品</div>
+            <div id="rl-keyhint">W:前進 &nbsp; A:左回転 &nbsp; D:右回転 &nbsp; S:後ろ回転 &nbsp; <b>SPACE:調べる/拾う</b> &nbsp; E:装備 &nbsp; Q:使用 &nbsp; X:捨てる &nbsp; I:所持品</div>
         </div>
 
         <!-- ===== MODALS ===== -->
