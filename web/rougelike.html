@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rogue Dungeon</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/rougelike.css">
+</head>
+<body>
+    <header>
+        <h1>Rogue Dungeon</h1>
+    </header>
+    <main id="rl-main">
+        <!-- class selection screen -->
+        <div id="rl-classselect">
+            <h2>クラスを選択してください</h2>
+            <div id="rl-classlist">
+                <button class="rl-classbtn" data-class="warrior">
+                    <span class="rl-classname">戦士</span>
+                    <span class="rl-classdesc">HP・STR高め。頑丈な近接戦闘の専門家。</span>
+                </button>
+                <button class="rl-classbtn" data-class="mage">
+                    <span class="rl-classname">魔法使い</span>
+                    <span class="rl-classdesc">INT・MP高め。強力な魔法を操る。</span>
+                </button>
+                <button class="rl-classbtn" data-class="thief">
+                    <span class="rl-classname">盗賊</span>
+                    <span class="rl-classdesc">DEX高め。素早く動き罠を回避する。</span>
+                </button>
+                <button class="rl-classbtn" data-class="priest">
+                    <span class="rl-classname">僧侶</span>
+                    <span class="rl-classdesc">MP・VIT高め。回復魔法に長ける。</span>
+                </button>
+                <button class="rl-classbtn" data-class="adventurer">
+                    <span class="rl-classname">冒険者</span>
+                    <span class="rl-classdesc">全ステータスバランス型。</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- game screen -->
+        <div id="rl-game" class="hidden">
+            <!-- 3D dungeon viewport -->
+            <div id="rl-viewport">
+                <canvas id="rl-canvas"></canvas>
+                <!-- minimap overlay (bottom-right) -->
+                <canvas id="rl-minimap"></canvas>
+            </div>
+
+            <!-- message window -->
+            <div id="rl-msgwin">
+                <div id="rl-log"></div>
+            </div>
+
+            <!-- status bar (center-bottom) -->
+            <div id="rl-statusbar">
+                <div class="rl-statblock">
+                    <span class="rl-statlabel">HP</span>
+                    <span id="rl-hp">0</span>/<span id="rl-maxhp">0</span>
+                    <div class="rl-bar"><div id="rl-hpbar" class="rl-bar-fill rl-bar-hp"></div></div>
+                </div>
+                <div class="rl-statblock">
+                    <span class="rl-statlabel">MP</span>
+                    <span id="rl-mp">0</span>/<span id="rl-maxmp">0</span>
+                    <div class="rl-bar"><div id="rl-mpbar" class="rl-bar-fill rl-bar-mp"></div></div>
+                </div>
+                <div class="rl-statblock rl-statblock-small">
+                    <span class="rl-statlabel">LV</span><span id="rl-lv">1</span>
+                    <span class="rl-statlabel">EXP</span><span id="rl-exp">0</span>/<span id="rl-nextexp">10</span>
+                </div>
+                <div class="rl-statblock rl-statblock-small">
+                    <span class="rl-statlabel">STR</span><span id="rl-str">0</span>
+                    <span class="rl-statlabel">INT</span><span id="rl-int">0</span>
+                </div>
+                <div class="rl-statblock rl-statblock-small">
+                    <span class="rl-statlabel">DEX</span><span id="rl-dex">0</span>
+                    <span class="rl-statlabel">VIT</span><span id="rl-vit">0</span>
+                </div>
+                <div class="rl-statblock rl-statblock-small">
+                    <span class="rl-statlabel">B</span><span id="rl-floor">1</span>F
+                    <span class="rl-statlabel">G</span><span id="rl-gold">0</span>
+                </div>
+                <div id="rl-status-ailment"></div>
+            </div>
+
+            <!-- keybind hint -->
+            <div id="rl-keyhint">W:前進 &nbsp; A:左回転 &nbsp; D:右回転 &nbsp; S:後ろ回転 &nbsp; E:装備 &nbsp; Q:使用 &nbsp; X:捨てる &nbsp; I:所持品</div>
+        </div>
+
+        <!-- ===== MODALS ===== -->
+
+        <!-- combat modal -->
+        <div id="rl-modal-combat" class="rl-modal hidden">
+            <div class="rl-modal-inner">
+                <h3 id="rl-combat-title">戦闘</h3>
+                <div id="rl-combat-info">
+                    <div id="rl-enemy-info">
+                        <span id="rl-enemy-name">敵</span>
+                        <span>HP: <span id="rl-enemy-hp">0</span>/<span id="rl-enemy-maxhp">0</span></span>
+                        <div class="rl-bar"><div id="rl-enemy-hpbar" class="rl-bar-fill rl-bar-hp"></div></div>
+                        <span id="rl-enemy-ailment"></span>
+                    </div>
+                    <div id="rl-combat-log"></div>
+                </div>
+                <div id="rl-combat-cmds">
+                    <button class="rl-cmdbtn" data-cmd="attack">⚔ 攻撃</button>
+                    <button class="rl-cmdbtn" data-cmd="magic">✨ 魔法</button>
+                    <button class="rl-cmdbtn" data-cmd="item">🎒 アイテム</button>
+                    <button class="rl-cmdbtn" data-cmd="scroll">📜 スクロール</button>
+                    <button class="rl-cmdbtn" data-cmd="equip">🛡 装備</button>
+                    <button class="rl-cmdbtn" data-cmd="defend">🔰 防御</button>
+                    <button class="rl-cmdbtn" data-cmd="special">💥 特殊攻撃</button>
+                    <button class="rl-cmdbtn" data-cmd="run">🏃 逃げる</button>
+                </div>
+                <!-- sub-selectors -->
+                <div id="rl-combat-sub" class="hidden">
+                    <button id="rl-combat-sub-back" class="rl-cmdbtn rl-cmdbtn-back">← 戻る</button>
+                    <div id="rl-combat-sub-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- inventory modal -->
+        <div id="rl-modal-inv" class="rl-modal hidden">
+            <div class="rl-modal-inner">
+                <h3>所持品 <span id="rl-inv-count">0</span>/10</h3>
+                <div id="rl-inv-list"></div>
+                <div id="rl-inv-actions" class="hidden">
+                    <button id="rl-inv-use">使う</button>
+                    <button id="rl-inv-equip">装備</button>
+                    <button id="rl-inv-drop">捨てる</button>
+                    <button id="rl-inv-cancel">キャンセル</button>
+                </div>
+                <button id="rl-inv-close" class="rl-cmdbtn">閉じる</button>
+            </div>
+        </div>
+
+        <!-- shop modal -->
+        <div id="rl-modal-shop" class="rl-modal hidden">
+            <div class="rl-modal-inner">
+                <h3>商店 <span class="rl-gold-display">所持金: <span id="rl-shop-gold">0</span>G</span></h3>
+                <div id="rl-shop-tabs">
+                    <button class="rl-tab active" data-tab="buy">購入</button>
+                    <button class="rl-tab" data-tab="sell">売却</button>
+                </div>
+                <div id="rl-shop-list"></div>
+                <button id="rl-shop-close" class="rl-cmdbtn">閉じる</button>
+            </div>
+        </div>
+
+        <!-- inn modal -->
+        <div id="rl-modal-inn" class="rl-modal hidden">
+            <div class="rl-modal-inner">
+                <h3>宿屋</h3>
+                <p>宿泊費: <span id="rl-inn-cost">10</span>G<br>HP・MP・状態異常が全回復します。</p>
+                <button id="rl-inn-stay" class="rl-cmdbtn">泊まる</button>
+                <button id="rl-inn-leave" class="rl-cmdbtn">断る</button>
+            </div>
+        </div>
+
+        <!-- result modal -->
+        <div id="rl-modal-result" class="rl-modal hidden">
+            <div class="rl-modal-inner">
+                <h3 id="rl-result-title">ゲームオーバー</h3>
+                <p id="rl-result-msg"></p>
+                <button id="rl-result-retry" class="rl-cmdbtn">もう一度プレイ</button>
+                <div class="goback"><a href="./" class="back">トップへ戻る</a></div>
+            </div>
+        </div>
+
+        <!-- level up modal -->
+        <div id="rl-modal-levelup" class="rl-modal hidden">
+            <div class="rl-modal-inner">
+                <h3>⬆ レベルアップ!</h3>
+                <div id="rl-levelup-info"></div>
+                <button id="rl-levelup-ok" class="rl-cmdbtn">OK</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025-2026 MITH@mmk</p>
+        <li><div class="goback"><a href="./" class="back">戻る</a></div></li>
+    </footer>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.180.0/three.module.min.js"
+      }
+    }
+    </script>
+    <script type="module" src="./js/rougelike.js"></script>
+</body>
+</html>

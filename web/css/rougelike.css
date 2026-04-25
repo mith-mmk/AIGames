@@ -1,0 +1,409 @@
+/* =========================================================
+   rougelike.css  – ダンジョン探索ゲーム専用スタイル
+   style.css の body/header/footer 規約を踏襲しつつ
+   ゲーム画面はダークテーマで上書き
+   ========================================================= */
+
+/* ----- body override for game page ----- */
+#rl-main {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ----- class select screen ----- */
+#rl-classselect {
+    padding: 2rem 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+#rl-classselect h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+#rl-classlist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.rl-classbtn {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    width: 180px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.rl-classbtn:hover {
+    border-color: #555;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.rl-classname {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.rl-classdesc {
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* ----- game container ----- */
+#rl-game {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #111;
+    color: #eee;
+}
+
+/* ----- 3D viewport ----- */
+#rl-viewport {
+    position: relative;
+    width: 100%;
+    height: 540px;
+    background: #000;
+    overflow: hidden;
+}
+
+#rl-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* minimap – bottom-right overlay */
+#rl-minimap {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 160px;
+    height: 160px;
+    background: rgba(0,0,0,0.75);
+    border: 1px solid #444;
+    border-radius: 4px;
+}
+
+/* ----- message window ----- */
+#rl-msgwin {
+    background: #1a1a1a;
+    border-top: 1px solid #333;
+    height: 100px;
+    overflow-y: auto;
+    padding: 6px 10px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+#rl-log p {
+    margin: 0;
+    padding: 1px 0;
+}
+#rl-log p.rl-log-dmg   { color: #f87171; }
+#rl-log p.rl-log-heal  { color: #4ade80; }
+#rl-log p.rl-log-info  { color: #93c5fd; }
+#rl-log p.rl-log-warn  { color: #fbbf24; }
+#rl-log p.rl-log-exp   { color: #c084fc; }
+#rl-log p.rl-log-item  { color: #67e8f9; }
+#rl-log p.rl-log-trap  { color: #fb923c; }
+
+/* ----- status bar ----- */
+#rl-statusbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 6px 10px;
+    background: #1e1e1e;
+    border-top: 1px solid #333;
+    font-size: 0.82rem;
+}
+
+.rl-statblock {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 80px;
+}
+
+.rl-statblock-small {
+    min-width: 70px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+}
+
+.rl-statlabel {
+    color: #888;
+    font-size: 0.72rem;
+    margin-right: 2px;
+}
+
+.rl-bar {
+    width: 100%;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.rl-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s;
+}
+
+.rl-bar-hp  { background: #f87171; }
+.rl-bar-mp  { background: #60a5fa; }
+.rl-bar-exp { background: #a78bfa; }
+
+#rl-status-ailment {
+    color: #fbbf24;
+    font-size: 0.78rem;
+    min-width: 80px;
+}
+
+/* ----- keybind hint ----- */
+#rl-keyhint {
+    padding: 4px 10px;
+    background: #151515;
+    font-size: 0.72rem;
+    color: #555;
+    border-top: 1px solid #2a2a2a;
+}
+
+/* ----- modals ----- */
+.rl-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.rl-modal.hidden { display: none; }
+
+.rl-modal-inner {
+    background: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    min-width: 340px;
+    max-width: 560px;
+    width: 92%;
+    color: #eee;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.rl-modal-inner h3 {
+    margin: 0 0 1rem;
+    color: #fbbf24;
+    font-size: 1.1rem;
+}
+
+/* ----- combat ----- */
+#rl-enemy-info {
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    background: #2a2a2a;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#rl-enemy-info .rl-bar {
+    width: 100%;
+    height: 8px;
+}
+
+#rl-combat-log {
+    height: 120px;
+    overflow-y: auto;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+#rl-combat-cmds, #rl-combat-sub-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.rl-cmdbtn {
+    background: #2d2d2d;
+    color: #eee;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 8px 6px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    transition: background 0.15s;
+    text-align: center;
+}
+
+.rl-cmdbtn:hover { background: #3a3a3a; }
+.rl-cmdbtn:disabled { opacity: 0.4; cursor: default; }
+
+.rl-cmdbtn-back {
+    grid-column: 1 / -1;
+    background: #333;
+    font-size: 0.78rem;
+    padding: 5px;
+}
+
+/* ----- inventory ----- */
+#rl-inv-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 0.8rem;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.rl-inv-item {
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    transition: background 0.15s;
+}
+.rl-inv-item:hover, .rl-inv-item.selected { background: #3a3a3a; border-color: #888; }
+.rl-inv-item.equipped { border-color: #fbbf24; }
+.rl-inv-qty { color: #888; font-size: 0.78rem; }
+
+#rl-inv-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+}
+#rl-inv-actions button {
+    flex: 1;
+    min-width: 60px;
+    background: #2d2d2d;
+    color: #eee;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 6px;
+    cursor: pointer;
+    font-size: 0.82rem;
+}
+#rl-inv-actions button:hover { background: #3a3a3a; }
+
+/* ----- shop ----- */
+#rl-shop-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 0.6rem;
+}
+
+.rl-tab {
+    flex: 1;
+    padding: 6px;
+    background: #2d2d2d;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #eee;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+.rl-tab.active {
+    background: #444;
+    border-color: #fbbf24;
+    color: #fbbf24;
+}
+
+#rl-shop-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 260px;
+    overflow-y: auto;
+    margin-bottom: 0.8rem;
+}
+
+.rl-shop-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+}
+
+.rl-shop-item button {
+    background: #3a3a3a;
+    color: #fbbf24;
+    border: 1px solid #666;
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 0.78rem;
+}
+.rl-shop-item button:hover { background: #4a4a4a; }
+.rl-shop-item button:disabled { opacity: 0.4; cursor: default; }
+
+.rl-gold-display { font-size: 0.85rem; color: #fbbf24; margin-left: 0.5rem; }
+
+/* ----- inn ----- */
+#rl-modal-inn .rl-modal-inner p { margin: 0.5rem 0 1rem; color: #ccc; }
+
+/* ----- result ----- */
+#rl-result-title { font-size: 1.4rem; }
+#rl-result-msg { margin: 0.5rem 0 1rem; color: #ccc; }
+#rl-modal-result .rl-cmdbtn { margin-bottom: 0.5rem; width: 100%; }
+
+/* ----- level up ----- */
+#rl-levelup-info {
+    background: #111;
+    border-radius: 4px;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #c084fc;
+}
+
+/* ----- utility ----- */
+.hidden { display: none !important; }
+
+/* ----- responsive ----- */
+@media (max-width: 600px) {
+    #rl-viewport { height: 320px; }
+    #rl-minimap { width: 100px; height: 100px; }
+    #rl-combat-cmds, #rl-combat-sub-list { grid-template-columns: repeat(2, 1fr); }
+    .rl-modal-inner { padding: 1rem; }
+}
