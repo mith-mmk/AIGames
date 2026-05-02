@@ -1,4 +1,10 @@
 # ローグライクRPGを作ろう1
+- ./web/index.htmlにリンクを作成（フォーマットをそろえる）
+- ./web/css/rougelike-codex.css にcssを置く
+- ./web/rougelike-codex.html を作成
+- ゲーム本体は ./web/js/rougelike-codex.js　に置く
+- assetsは./web/assets/rougelike/ の下にある
+- 既存の他のjsコードは参考しないこと
 
 ## 基本仕様
 - 迷宮探索型ローグライク
