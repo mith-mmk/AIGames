@@ -20,11 +20,16 @@
     padding: 2rem 1rem;
     text-align: center;
     width: 100%;
+    background: radial-gradient(circle at 50% 0%, #312319 0%, #15110d 48%, #090807 100%);
+    color: #e8dfcf;
+    border: 1px solid #3b2b1e;
 }
 
 #rl-classselect h2 {
     margin-bottom: 1.5rem;
-    color: #333;
+    color: #f1d79b;
+    font-size: 1.35rem;
+    letter-spacing: 0;
 }
 
 #rl-classlist {
@@ -35,8 +40,8 @@
 }
 
 .rl-classbtn {
-    background: #fff;
-    border: 2px solid #ccc;
+    background: linear-gradient(180deg, #211a15 0%, #14110e 100%);
+    border: 1px solid #59412c;
     border-radius: 8px;
     padding: 1rem 1.5rem;
     width: 180px;
@@ -48,19 +53,19 @@
 }
 
 .rl-classbtn:hover {
-    border-color: #555;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-color: #d8a34b;
+    box-shadow: 0 0 18px rgba(216,163,75,0.22);
 }
 
 .rl-classname {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #333;
+    color: #f6e3b0;
 }
 
 .rl-classdesc {
     font-size: 0.8rem;
-    color: #666;
+    color: #b8aa96;
     line-height: 1.4;
 }
 
@@ -69,8 +74,10 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    background: #111;
+    background: #0a0908;
     color: #eee;
+    border: 1px solid #2c2118;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.36);
 }
 
 /* ----- 3D viewport ----- */
@@ -78,8 +85,18 @@
     position: relative;
     width: 100%;
     height: 540px;
-    background: #000;
+    background: #020202;
     overflow: hidden;
+}
+
+#rl-viewport::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 42%, rgba(255,177,76,0.08), transparent 42%),
+        linear-gradient(180deg, rgba(0,0,0,0) 62%, rgba(0,0,0,0.42) 100%);
 }
 
 #rl-canvas {
@@ -95,15 +112,16 @@
     right: 8px;
     width: 160px;
     height: 160px;
-    background: rgba(0,0,0,0.75);
-    border: 1px solid #444;
+    background: rgba(7,6,5,0.82);
+    border: 1px solid #6d5133;
     border-radius: 4px;
+    box-shadow: 0 0 16px rgba(255,132,36,0.14);
 }
 
 /* ----- message window ----- */
 #rl-msgwin {
-    background: #1a1a1a;
-    border-top: 1px solid #333;
+    background: #14100d;
+    border-top: 1px solid #49341f;
     height: 100px;
     overflow-y: auto;
     padding: 6px 10px;
@@ -129,8 +147,8 @@
     flex-wrap: wrap;
     align-items: stretch;
     gap: 0;
-    background: #0d0d0d;
-    border-top: 2px solid #3a2e1e;
+    background: #0d0b09;
+    border-top: 2px solid #5a3f24;
     font-size: 0.82rem;
 }
 
@@ -144,13 +162,13 @@
 
 .rl-panel-char {
     min-width: 88px;
-    background: linear-gradient(160deg, #1a1828 0%, #0d0d0d 100%);
+    background: linear-gradient(160deg, #271b14 0%, #0d0b09 100%);
     gap: 3px;
 }
 
 .rl-char-name {
     font-size: 0.78rem;
-    color: #c4b5fd;
+    color: #f5d68d;
     font-weight: bold;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -177,7 +195,7 @@
     flex: 1;
     min-width: 200px;
     gap: 5px;
-    background: #111;
+    background: #100d0b;
     padding: 7px 14px;
 }
 
@@ -232,7 +250,7 @@
 .rl-panel-stats {
     min-width: 110px;
     gap: 5px;
-    background: #0f0f0f;
+    background: #100d0b;
     padding: 7px 12px;
 }
 
@@ -272,7 +290,7 @@
 /* ----- keybind hint ----- */
 #rl-keyhint {
     padding: 4px 10px;
-    background: #0a0a0a;
+    background: #070605;
     font-size: 0.70rem;
     color: #444;
     border-top: 1px solid #1a1a1a;
@@ -297,8 +315,8 @@
 .rl-modal.hidden { display: none; }
 
 .rl-modal-inner {
-    background: #1e1e1e;
-    border: 1px solid #444;
+    background: linear-gradient(180deg, #211812 0%, #14100d 100%);
+    border: 1px solid #6d5133;
     border-radius: 8px;
     padding: 1.5rem 2rem;
     min-width: 340px;
@@ -311,7 +329,7 @@
 
 .rl-modal-inner h3 {
     margin: 0 0 1rem;
-    color: #fbbf24;
+    color: #f1c96a;
     font-size: 1.1rem;
 }
 
@@ -319,7 +337,8 @@
 #rl-enemy-info {
     margin-bottom: 0.8rem;
     padding: 0.5rem;
-    background: #2a2a2a;
+    background: #17120e;
+    border: 1px solid #3c2d1f;
     border-radius: 5px;
     font-size: 0.9rem;
     display: flex;
@@ -335,8 +354,8 @@
 #rl-combat-log {
     height: 120px;
     overflow-y: auto;
-    background: #111;
-    border: 1px solid #333;
+    background: #0c0a08;
+    border: 1px solid #3c2d1f;
     border-radius: 4px;
     padding: 6px 8px;
     font-size: 0.8rem;
@@ -350,9 +369,9 @@
 }
 
 .rl-cmdbtn {
-    background: #2d2d2d;
+    background: #241b15;
     color: #eee;
-    border: 1px solid #555;
+    border: 1px solid #60462d;
     border-radius: 5px;
     padding: 8px 6px;
     cursor: pointer;
@@ -361,7 +380,7 @@
     text-align: center;
 }
 
-.rl-cmdbtn:hover { background: #3a3a3a; }
+.rl-cmdbtn:hover { background: #352517; border-color: #d8a34b; }
 .rl-cmdbtn:disabled { opacity: 0.4; cursor: default; }
 
 .rl-cmdbtn-back {
@@ -492,7 +511,7 @@
 }
 
 /* ----- utility ----- */
-.hidden { display: none !important; }
+.hidden { display: none; }
 
 /* ----- responsive ----- */
 @media (max-width: 600px) {
