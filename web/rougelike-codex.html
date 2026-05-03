@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rogue Dungeon Codex</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/rougelike-codex.css">
+</head>
+<body class="codex-rpg">
+    <header class="rc-header">
+        <h1>Rogue Dungeon Codex</h1>
+        <a href="./" class="back">戻る</a>
+    </header>
+
+    <main id="rc-app">
+        <section id="rc-class-screen" class="rc-screen">
+            <div class="rc-title-block">
+                <h2>迷宮へ挑む者を選べ</h2>
+                <p>最下層の勝利のメダルを持ち帰れ。倒れれば探索は終わる。</p>
+            </div>
+            <div id="rc-class-list" class="rc-class-list"></div>
+        </section>
+
+        <section id="rc-game-screen" class="rc-game hidden" aria-label="3D dungeon game">
+            <div id="rc-world">
+                <canvas id="rc-canvas"></canvas>
+                <canvas id="rc-minimap" width="180" height="180" aria-label="ミニマップ"></canvas>
+                <div id="rc-objective">B1F: 下り階段を探せ</div>
+                <div id="rc-ground-actions"></div>
+            </div>
+
+            <aside id="rc-hud">
+                <div class="rc-hud-head">
+                    <strong id="rc-class-name">冒険者</strong>
+                    <span>B<span id="rc-floor">1</span>F</span>
+                    <span><span id="rc-gold">0</span>G</span>
+                </div>
+                <div class="rc-bars">
+                    <label>HP <span id="rc-hp-text">0/0</span></label>
+                    <div class="rc-bar"><span id="rc-hp-bar"></span></div>
+                    <label>MP <span id="rc-mp-text">0/0</span></label>
+                    <div class="rc-bar"><span id="rc-mp-bar"></span></div>
+                    <label>EXP <span id="rc-exp-text">0/100</span></label>
+                    <div class="rc-bar"><span id="rc-exp-bar"></span></div>
+                </div>
+                <div class="rc-stat-grid">
+                    <span>Lv <b id="rc-level">1</b></span>
+                    <span>STR <b id="rc-str">0</b></span>
+                    <span>INT <b id="rc-int">0</b></span>
+                    <span>DEX <b id="rc-dex">0</b></span>
+                    <span>VIT <b id="rc-vit">0</b></span>
+                    <span id="rc-status">正常</span>
+                </div>
+                <div class="rc-equip">
+                    <span>武器: <b id="rc-weapon">素手</b></span>
+                    <span>防具: <b id="rc-armor">なし</b></span>
+                </div>
+            </aside>
+
+            <section id="rc-log" aria-label="メッセージログ"></section>
+            <div id="rc-keyhelp">W/↑ 前進 A/← 左回転 D/→ 右回転 S/↓ 後退 SPACE 調べる E 装備 Q 使用 X 捨てる I 所持品</div>
+        </section>
+    </main>
+
+    <div id="rc-modal-layer" class="hidden">
+        <section id="rc-modal" role="dialog" aria-modal="true">
+            <h2 id="rc-modal-title"></h2>
+            <div id="rc-modal-body"></div>
+            <div id="rc-modal-actions"></div>
+        </section>
+    </div>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.180.0/three.module.min.js"
+      }
+    }
+    </script>
+    <script type="module" src="./js/rougelike-codex.js"></script>
+</body>
+</html>

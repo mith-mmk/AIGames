@@ -1,0 +1,341 @@
+body.codex-rpg {
+    background: #111318;
+    color: #eef2f8;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.rc-header {
+    align-items: center;
+    background: #171a20;
+    border-bottom: 1px solid #2f3744;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 18px;
+}
+
+.rc-header h1 {
+    font-size: 20px;
+    letter-spacing: 0;
+}
+
+#rc-app {
+    height: calc(100vh - 65px);
+    margin: 0;
+    max-width: none;
+    padding: 0;
+    width: 100%;
+}
+
+.rc-screen {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100%;
+    justify-content: center;
+    padding: 24px;
+}
+
+.hidden,
+.rc-screen.hidden,
+.rc-game.hidden,
+#rc-modal-layer.hidden {
+    display: none;
+}
+
+.rc-title-block {
+    max-width: 760px;
+    text-align: center;
+}
+
+.rc-title-block h2 {
+    font-size: 32px;
+    margin: 0 0 10px;
+}
+
+.rc-title-block p {
+    color: #b7c1cf;
+    margin: 0;
+}
+
+.rc-class-list {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(5, minmax(140px, 1fr));
+    max-width: 980px;
+    width: min(96vw, 980px);
+}
+
+.rc-class-card,
+#rc-modal button {
+    background: #232832;
+    border: 1px solid #4a5568;
+    border-radius: 8px;
+    color: #eef2f8;
+    cursor: pointer;
+    font: inherit;
+}
+
+.rc-class-card {
+    min-height: 150px;
+    padding: 16px;
+    text-align: left;
+}
+
+.rc-class-card:hover,
+#rc-modal button:hover {
+    background: #2f3744;
+    border-color: #84a9ff;
+}
+
+.rc-class-card strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.rc-class-card span {
+    color: #b7c1cf;
+    display: block;
+    font-size: 13px;
+}
+
+.rc-game {
+    height: 100%;
+    position: relative;
+}
+
+#rc-world,
+#rc-canvas {
+    height: 100%;
+    width: 100%;
+}
+
+#rc-canvas {
+    display: block;
+}
+
+#rc-minimap {
+    background: rgba(8, 10, 14, 0.84);
+    border: 1px solid #596273;
+    border-radius: 8px;
+    bottom: 18px;
+    height: 180px;
+    position: absolute;
+    right: 18px;
+    width: 180px;
+}
+
+#rc-objective,
+#rc-ground-actions,
+#rc-keyhelp,
+#rc-log,
+#rc-hud {
+    background: rgba(17, 19, 24, 0.82);
+    border: 1px solid rgba(132, 169, 255, 0.28);
+    border-radius: 8px;
+}
+
+#rc-objective {
+    left: 18px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 18px;
+}
+
+#rc-ground-actions {
+    left: 50%;
+    min-width: 260px;
+    padding: 8px 12px;
+    position: absolute;
+    text-align: center;
+    top: 18px;
+    transform: translateX(-50%);
+}
+
+#rc-hud {
+    bottom: 18px;
+    left: 50%;
+    padding: 10px;
+    position: absolute;
+    transform: translateX(-50%);
+    width: min(620px, calc(100vw - 430px));
+}
+
+.rc-hud-head,
+.rc-equip {
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+}
+
+.rc-bars label {
+    color: #d5dce8;
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
+    margin-top: 6px;
+}
+
+.rc-bar {
+    background: #11151d;
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.rc-bar span {
+    background: #55d680;
+    display: block;
+    height: 100%;
+    width: 40%;
+}
+
+#rc-mp-bar {
+    background: #5aa8ff;
+}
+
+#rc-exp-bar {
+    background: #f1c75b;
+}
+
+.rc-stat-grid {
+    display: grid;
+    gap: 6px;
+    grid-template-columns: repeat(6, 1fr);
+    margin-top: 8px;
+}
+
+.rc-stat-grid span,
+.rc-equip span {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 5px 7px;
+}
+
+.rc-equip {
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+#rc-log {
+    left: 18px;
+    max-height: 32vh;
+    overflow: hidden;
+    padding: 10px;
+    position: absolute;
+    top: 62px;
+    width: 330px;
+}
+
+.rc-log-line {
+    color: #d8deea;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.rc-log-warn {
+    color: #ffca71;
+}
+
+.rc-log-good {
+    color: #7fe7a6;
+}
+
+.rc-log-bad {
+    color: #ff8d8d;
+}
+
+#rc-keyhelp {
+    bottom: 18px;
+    font-size: 12px;
+    left: 18px;
+    padding: 8px 10px;
+    position: absolute;
+    width: 330px;
+}
+
+#rc-modal-layer {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.62);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    position: fixed;
+    z-index: 20;
+}
+
+#rc-modal {
+    background: #1d222b;
+    border: 1px solid #596273;
+    border-radius: 8px;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+    max-height: 88vh;
+    max-width: 760px;
+    overflow: auto;
+    padding: 18px;
+    width: min(92vw, 760px);
+}
+
+#rc-modal h2 {
+    margin: 0 0 12px;
+}
+
+#rc-modal-body {
+    display: grid;
+    gap: 8px;
+}
+
+#rc-modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+#rc-modal button {
+    padding: 9px 12px;
+}
+
+.rc-list-button {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    body.codex-rpg {
+        overflow: auto;
+    }
+
+    .rc-class-list {
+        grid-template-columns: 1fr;
+    }
+
+    #rc-app {
+        height: calc(100vh - 58px);
+    }
+
+    #rc-hud {
+        bottom: 112px;
+        left: 12px;
+        transform: none;
+        width: calc(100vw - 24px);
+    }
+
+    #rc-minimap {
+        height: 120px;
+        width: 120px;
+    }
+
+    #rc-log,
+    #rc-keyhelp {
+        display: none;
+    }
+
+    .rc-stat-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
