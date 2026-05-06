@@ -8,6 +8,7 @@ vm.createContext(context);
 vm.runInContext(code, context);
 
 const SolitaireCore = context.globalThis.SolitaireCore;
+const SolitaireUi = context.globalThis.SolitaireUi;
 
 function card(rank, suit, value, faceUp = true) {
     return {
@@ -28,6 +29,56 @@ function fillFoundations(game, maxValue = 13) {
             game.state.foundations[suit].push(card(String(value), suit, value));
         }
     });
+}
+
+function fakeClassList() {
+    const values = new Set();
+    return {
+        add: (...names) => names.forEach((name) => values.add(name)),
+        remove: (...names) => names.forEach((name) => values.delete(name)),
+        contains: (name) => values.has(name),
+    };
+}
+
+function fakeElement(dataset = {}) {
+    return {
+        dataset,
+        style: {},
+        className: "",
+        textContent: "",
+        disabled: false,
+        tabIndex: 0,
+        children: [],
+        classList: fakeClassList(),
+        appendChild(child) {
+            this.children.push(child);
+            return child;
+        },
+        addEventListener() {},
+        setAttribute() {},
+    };
+}
+
+function fakeUi(game) {
+    const statusText = fakeElement();
+    const ui = Object.create(SolitaireUi.prototype);
+    ui.core = game;
+    ui.backImage = "back00.png";
+    ui.selected = null;
+    ui.completionShown = false;
+    ui.effectCalls = 0;
+    ui.playCompleteEffect = () => {
+        ui.effectCalls += 1;
+    };
+    ui.elements = {
+        stock: fakeElement(),
+        waste: fakeElement(),
+        foundations: ["spades", "hearts", "diamonds", "clubs"].map((suit) => fakeElement({ foundation: suit })),
+        tableau: fakeElement(),
+        undoButton: fakeElement(),
+        statusText,
+    };
+    return ui;
 }
 
 {
@@ -107,4 +158,32 @@ function fillFoundations(game, maxValue = 13) {
     assert.equal(game.completed, true);
     assert.equal(game.undo(), true);
     assert.equal(game.completed, false);
+}
+
+{
+    context.document = {
+        body: fakeElement(),
+        createElement: () => fakeElement(),
+    };
+    context.window = {
+        innerWidth: 980,
+        setTimeout: (callback) => {
+            callback();
+            return 0;
+        },
+    };
+    const game = new SolitaireCore({ seed: 12 });
+    fillFoundations(game, 13);
+    game.state.stock = [];
+    game.state.waste = [];
+    game.state.tableau = [[], [], [], [], [], [], []];
+    const ui = fakeUi(game);
+    ui.render();
+    assert.equal(ui.completionShown, true);
+    assert.equal(ui.effectCalls, 1);
+    ui.render();
+    assert.equal(ui.effectCalls, 1);
+    game.state.tableau = [[card("K", "spades", 13)], [], [], [], [], [], []];
+    ui.render();
+    assert.equal(ui.completionShown, false);
 }

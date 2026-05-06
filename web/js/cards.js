@@ -359,6 +359,7 @@
             this.effects = null;
             this.drag = null;
             this.completionShown = false;
+            this.completionBanner = this.createCompletionBanner();
             this.elements = {
                 menuButton: document.getElementById("menu-button"),
                 menuPanel: document.getElementById("menu-panel"),
@@ -380,6 +381,15 @@
             this.render();
             this.startClock();
             this.initEffects();
+        }
+
+        createCompletionBanner() {
+            const banner = document.createElement("div");
+            banner.className = "completion-banner";
+            banner.setAttribute("aria-hidden", "true");
+            banner.textContent = "CLEAR";
+            document.body.appendChild(banner);
+            return banner;
         }
 
         bind() {
@@ -433,7 +443,7 @@
             this.stopAuto();
             this.selected = null;
             this.startedAt = Date.now();
-            this.completionShown = false;
+            this.resetCompletionEffect();
             if (kind === "retry") {
                 this.core.retry();
                 this.setStatus("同じ並びで再開しました。");
@@ -511,16 +521,14 @@
             });
             this.elements.undoButton.disabled = this.core.history.length === 0;
             if (this.core.completed) {
-                this.setStatus("クリアです。");
                 if (!this.completionShown) {
-                    this.completionShown = true;
-                    this.playCompleteEffect();
+                    this.showCompletion();
                 }
             } else if (this.core.isStuckCandidate()) {
-                this.completionShown = false;
+                this.resetCompletionEffect();
                 this.setStatus("詰み候補です。手動で動かせるカードを探してください。");
             } else {
-                this.completionShown = false;
+                this.resetCompletionEffect();
             }
         }
 
@@ -771,13 +779,20 @@
                 return;
             }
             const canvas = document.getElementById("cards-effects");
-            const renderer = new window.THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            let renderer;
+            try {
+                renderer = new window.THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            } catch (error) {
+                console.warn("Three.js completion effect is unavailable.", error);
+                return;
+            }
             const scene = new window.THREE.Scene();
             const camera = new window.THREE.PerspectiveCamera(45, 1, 0.1, 100);
             camera.position.z = 18;
             const group = new window.THREE.Group();
             scene.add(group);
-            this.effects = { renderer, scene, camera, group, active: false, start: 0 };
+            const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            this.effects = { renderer, scene, camera, group, active: false, start: 0, canvas, reducedMotion };
             const resize = () => {
                 const width = window.innerWidth;
                 const height = window.innerHeight;
@@ -789,23 +804,50 @@
             resize();
             const animate = () => {
                 window.requestAnimationFrame(animate);
-                if (!this.effects.active) {
+                if (!this.effects || !this.effects.active) {
                     return;
                 }
                 const elapsed = (Date.now() - this.effects.start) / 1000;
                 group.children.forEach((mesh, index) => {
-                    mesh.position.y = Math.sin(elapsed * 5 + index) * 1.8 + elapsed * 0.7;
-                    mesh.rotation.z += 0.035 + index * 0.002;
-                    mesh.rotation.x += 0.018;
+                    const speed = this.effects.reducedMotion ? 0.35 : 1;
+                    mesh.position.y = mesh.userData.baseY + Math.sin(elapsed * 5 + index) * 0.7 * speed + elapsed * mesh.userData.rise * speed;
+                    mesh.position.x = mesh.userData.baseX + Math.sin(elapsed * 2.8 + index) * 0.28 * speed;
+                    mesh.rotation.z += (0.045 + index * 0.002) * speed;
+                    mesh.rotation.x += 0.022 * speed;
+                    mesh.material.opacity = Math.max(0, 1 - elapsed / 4.8);
                 });
                 renderer.render(scene, camera);
-                if (elapsed > 5) {
+                if (elapsed > (this.effects.reducedMotion ? 2.2 : 5)) {
                     this.effects.active = false;
                     group.clear();
                     renderer.clear();
+                    document.body.classList.remove("effects-active");
                 }
             };
             animate();
+        }
+
+        showCompletion() {
+            this.completionShown = true;
+            this.setStatus("クリアです。");
+            document.body.classList.add("completion-active");
+            window.setTimeout(() => {
+                document.body.classList.remove("completion-active");
+            }, 2600);
+            this.playCompleteEffect();
+        }
+
+        resetCompletionEffect() {
+            if (!this.completionShown && !document.body.classList.contains("completion-active")) {
+                return;
+            }
+            this.completionShown = false;
+            document.body.classList.remove("completion-active", "effects-active");
+            if (this.effects) {
+                this.effects.active = false;
+                this.effects.group.clear();
+                this.effects.renderer.clear();
+            }
         }
 
         playCompleteEffect() {
@@ -814,18 +856,24 @@
             }
             const { group } = this.effects;
             group.clear();
+            document.body.classList.add("effects-active");
             const textureLoader = new window.THREE.TextureLoader();
-            for (let i = 0; i < 18; i += 1) {
+            const count = this.effects.reducedMotion ? 8 : 24;
+            for (let i = 0; i < count; i += 1) {
                 const suit = SUITS[i % SUITS.length];
                 const rank = RANKS[(i * 3) % RANKS.length].toLowerCase();
                 const texture = textureLoader.load(`${ASSET_PATH}${rank}_${suit}.png`);
-                const material = new window.THREE.MeshBasicMaterial({ map: texture, transparent: true });
-                const geometry = new window.THREE.PlaneGeometry(1.25, 1.75);
+                const material = new window.THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 1 });
+                const geometry = new window.THREE.PlaneGeometry(1.45, 2.04);
                 const mesh = new window.THREE.Mesh(geometry, material);
-                mesh.position.x = -7 + i * 0.82;
-                mesh.position.y = -3 + (i % 3) * 0.4;
-                mesh.position.z = -i * 0.04;
-                mesh.rotation.z = i * 0.2;
+                const spread = count > 12 ? 8.8 : 6.2;
+                mesh.userData.baseX = -spread / 2 + (spread / Math.max(1, count - 1)) * i;
+                mesh.userData.baseY = -4.1 + (i % 4) * 0.34;
+                mesh.userData.rise = 1.15 + (i % 5) * 0.18;
+                mesh.position.x = mesh.userData.baseX;
+                mesh.position.y = mesh.userData.baseY;
+                mesh.position.z = -i * 0.025;
+                mesh.rotation.z = -0.65 + (i % 7) * 0.22;
                 group.add(mesh);
             }
             this.effects.start = Date.now();
@@ -834,6 +882,7 @@
     }
 
     globalThis.SolitaireCore = SolitaireCore;
+    globalThis.SolitaireUi = SolitaireUi;
     if (typeof document !== "undefined") {
         window.addEventListener("DOMContentLoaded", () => {
             new SolitaireUi();

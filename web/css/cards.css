@@ -10,8 +10,14 @@
 #cards-effects {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: 4;
+    opacity: 0;
     pointer-events: none;
+    transition: opacity 180ms ease;
+}
+
+.effects-active #cards-effects {
+    opacity: 1;
 }
 
 .solitaire-shell {
@@ -22,6 +28,34 @@
     margin: 0 auto;
     padding: 12px 0 20px;
     box-sizing: border-box;
+}
+
+.completion-banner {
+    position: fixed;
+    left: 50%;
+    top: 44%;
+    z-index: 5;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.88);
+    opacity: 0;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 239, 178, 0.76);
+    border-radius: 8px;
+    color: #fff8d8;
+    background: rgba(4, 24, 20, 0.72);
+    box-shadow: 0 0 34px rgba(255, 226, 128, 0.42), inset 0 0 16px rgba(255, 255, 255, 0.12);
+    font-size: clamp(2rem, 8vw, 5.4rem);
+    font-weight: 900;
+    letter-spacing: 0;
+    text-shadow: 0 3px 14px rgba(0, 0, 0, 0.6);
+}
+
+.completion-active .completion-banner {
+    animation: completion-pop 2600ms ease both;
+}
+
+.completion-active .board {
+    animation: board-clear-glow 2600ms ease both;
 }
 
 .top-bar,
@@ -245,5 +279,47 @@ a.tool-button {
 
     .tableau-column {
         min-height: calc(var(--card-height) + 180px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #cards-effects,
+    .completion-banner,
+    .completion-active .board {
+        transition: none;
+        animation-duration: 1200ms;
+    }
+}
+
+@keyframes completion-pop {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.88);
+    }
+
+    14%,
+    64% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -58%) scale(1.06);
+    }
+}
+
+@keyframes board-clear-glow {
+    0% {
+        filter: none;
+    }
+
+    18%,
+    62% {
+        filter: drop-shadow(0 0 20px rgba(255, 226, 128, 0.42));
+    }
+
+    100% {
+        filter: none;
     }
 }
