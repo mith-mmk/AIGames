@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitaire Cards - AI Games</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/cards.css">
+</head>
+<body class="cards-page">
+<canvas id="cards-effects" aria-hidden="true"></canvas>
+<main class="solitaire-shell">
+    <section class="top-bar" aria-label="ゲーム操作">
+        <div class="left-tools">
+            <button id="menu-button" class="tool-button" type="button" aria-expanded="false" aria-controls="menu-panel">menu</button>
+            <output id="time-display" class="time-display">00:00</output>
+            <a href="./" class="tool-button nav-back">戻る</a>
+        </div>
+        <div class="right-tools">
+            <button id="retry-button" class="tool-button" type="button">retry</button>
+            <button id="restart-button" class="tool-button" type="button">restart</button>
+            <button id="auto-button" class="tool-button" type="button">auto</button>
+            <button id="undo-button" class="tool-button" type="button">undo</button>
+        </div>
+    </section>
+
+    <section id="menu-panel" class="menu-panel" hidden>
+        <label>
+            山札
+            <select id="draw-count-select">
+                <option value="1">1枚めくり</option>
+                <option value="3">3枚めくり</option>
+            </select>
+        </label>
+        <label>
+            詰み候補
+            <select id="stuck-rounds-select">
+                <option value="1">1周</option>
+                <option value="2">2周</option>
+                <option value="3">3周</option>
+            </select>
+        </label>
+        <label>
+            裏面
+            <select id="back-select">
+                <option value="back00.png">back00</option>
+                <option value="back01.png">back01</option>
+            </select>
+        </label>
+    </section>
+
+    <section class="status-row" aria-live="polite">
+        <p id="status-text">カードを移動してください。</p>
+    </section>
+
+    <section class="board" aria-label="ソリティア盤面">
+        <div class="upper-board">
+            <div id="stock-pile" class="pile stock-pile" role="button" tabindex="0" aria-label="山札"></div>
+            <div id="waste-pile" class="pile waste-pile" role="button" tabindex="0" aria-label="めくったカード"></div>
+            <div class="spacer"></div>
+            <div class="pile foundation-pile" role="button" tabindex="0" data-foundation="spades" aria-label="スペードの組札"></div>
+            <div class="pile foundation-pile" role="button" tabindex="0" data-foundation="hearts" aria-label="ハートの組札"></div>
+            <div class="pile foundation-pile" role="button" tabindex="0" data-foundation="diamonds" aria-label="ダイヤの組札"></div>
+            <div class="pile foundation-pile" role="button" tabindex="0" data-foundation="clubs" aria-label="クラブの組札"></div>
+        </div>
+        <div id="tableau" class="tableau" aria-label="場札"></div>
+    </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.min.js"></script>
+<script src="./js/cards.js"></script>
+</body>
+</html>
