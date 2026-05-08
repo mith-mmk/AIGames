@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>くろねこ さんぽ - AI Games</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/cat/style.css">
+</head>
+<body class="cat-page">
+<main class="cat-shell">
+    <section class="cat-game" aria-label="くろねこ さんぽ">
+        <canvas id="cat-canvas" width="1280" height="720" aria-label="くろねこ さんぽのゲーム画面"></canvas>
+
+        <section class="cat-hud" aria-live="polite">
+            <div class="hud-metric"><span>スコア</span><strong id="cat-score">0</strong></div>
+            <div class="hud-metric"><span>きょり</span><strong id="cat-distance">0m</strong></div>
+            <div class="hud-gauge">
+                <span>びっくり</span>
+                <meter id="cat-surprise" min="0" max="100" value="0">0/100</meter>
+            </div>
+            <div class="hud-metric"><span>ステージ</span><strong id="cat-stage">へや</strong></div>
+        </section>
+
+        <section id="cat-title-panel" class="cat-overlay title-panel">
+            <h1>くろねこ さんぽ</h1>
+            <p>きょうも ちょっとだけ あるく</p>
+            <div class="title-actions">
+                <button id="cat-start-button" class="cat-button primary" type="button">さんぽする</button>
+                <button id="cat-record-button" class="cat-button" type="button">記録</button>
+            </div>
+        </section>
+
+        <section id="cat-message-panel" class="cat-overlay message-panel" hidden>
+            <p id="cat-message">にゃっ</p>
+            <button id="cat-resume-button" class="cat-button primary" type="button">もう一度さんぽ</button>
+        </section>
+    </section>
+
+    <section class="cat-controls" aria-label="ゲーム操作">
+        <button id="cat-jump-button" class="cat-button primary" type="button">ジャンプ</button>
+        <button id="cat-crouch-button" class="cat-button" type="button">まるくなる</button>
+        <button id="cat-pause-button" class="cat-button" type="button">一時停止</button>
+        <button id="cat-reset-button" class="cat-button danger" type="button">リスタート</button>
+        <a class="cat-button link-button" href="./">戻る</a>
+    </section>
+
+    <section class="cat-panels">
+        <article class="cat-panel">
+            <h2>今日のさんぽミッション</h2>
+            <ul id="cat-missions"></ul>
+        </article>
+        <article class="cat-panel">
+            <h2>ステージ</h2>
+            <label>
+                場所
+                <select id="cat-stage-select"></select>
+            </label>
+        </article>
+        <article class="cat-panel">
+            <h2>カスタマイズ</h2>
+            <label>
+                首輪
+                <select id="cat-collar-select">
+                    <option value="red">赤</option>
+                    <option value="blue">青</option>
+                    <option value="green">緑</option>
+                    <option value="yellow">黄色</option>
+                </select>
+            </label>
+            <label>
+                鈴
+                <select id="cat-bell-select">
+                    <option value="gold">金</option>
+                    <option value="silver">銀</option>
+                    <option value="none">なし</option>
+                </select>
+            </label>
+            <label>
+                しっぽ
+                <select id="cat-tail-select">
+                    <option value="big">大きめ</option>
+                    <option value="curled">くるん</option>
+                    <option value="straight">まっすぐ</option>
+                </select>
+            </label>
+            <label>
+                表情
+                <select id="cat-face-select">
+                    <option value="bright">ぱっちり</option>
+                    <option value="sleepy">ねむそう</option>
+                    <option value="calm">おだやか</option>
+                </select>
+            </label>
+        </article>
+        <article class="cat-panel">
+            <h2>コレクション</h2>
+            <dl id="cat-collection"></dl>
+        </article>
+        <article class="cat-panel">
+            <h2>今日のさんぽ記録</h2>
+            <dl id="cat-records"></dl>
+            <div class="record-actions">
+                <button id="cat-export-button" class="cat-button" type="button">export</button>
+                <label class="cat-button file-button">
+                    import
+                    <input id="cat-import-input" type="file" accept="application/json">
+                </label>
+            </div>
+            <p id="cat-save-status" class="save-status"></p>
+        </article>
+    </section>
+</main>
+
+<script src="./js/cat/data.js"></script>
+<script src="./js/cat/save.js"></script>
+<script src="./js/cat/assets.js"></script>
+<script src="./js/cat/audio.js"></script>
+<script src="./js/cat/core.js"></script>
+<script src="./js/cat/input.js"></script>
+<script src="./js/cat/render.js"></script>
+<script src="./js/cat/ui.js"></script>
+<script src="./js/cat/main.js"></script>
+</body>
+</html>

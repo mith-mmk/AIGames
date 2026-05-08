@@ -1,0 +1,26 @@
+{
+  "id": "shopping",
+  "name": "商店街",
+  "theme": {
+    "sky": "#ffd9a8",
+    "far": "#d5b588",
+    "mid": "#c68f63",
+    "ground": "#766152",
+    "accent": "#ad4f43",
+    "music": "town"
+  },
+  "layers": {
+    "far": "shopping-far.png",
+    "mid": "shopping-mid.png",
+    "ground": "shopping-ground.png",
+    "props": "shopping-props.png"
+  },
+  "spawnTables": {
+    "items": ["fish", "yarn", "bell", "mysteryButton", "glove"],
+    "obstacles": ["puddle", "dog", "bicycle", "door", "cardboard"]
+  },
+  "unlocks": {
+    "distance": 860,
+    "collection": "鈴"
+  }
+}

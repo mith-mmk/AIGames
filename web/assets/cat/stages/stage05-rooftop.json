@@ -1,0 +1,26 @@
+{
+  "id": "rooftop",
+  "name": "屋根の上",
+  "theme": {
+    "sky": "#f0b27a",
+    "far": "#c47861",
+    "mid": "#915e5f",
+    "ground": "#5b5260",
+    "accent": "#e9c46a",
+    "music": "sunset"
+  },
+  "layers": {
+    "far": "rooftop-far.png",
+    "mid": "rooftop-mid.png",
+    "ground": "rooftop-ground.png",
+    "props": "rooftop-props.png"
+  },
+  "spawnTables": {
+    "items": ["fish", "bell", "sunsetShard", "acorn", "catGrass"],
+    "obstacles": ["flowerpot", "bicycle", "dog", "puddle"]
+  },
+  "unlocks": {
+    "distance": 1240,
+    "collection": "夕焼けのかけら"
+  }
+}

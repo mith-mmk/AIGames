@@ -1,0 +1,26 @@
+{
+  "id": "garden",
+  "name": "にわ",
+  "theme": {
+    "sky": "#96d7ed",
+    "far": "#cfe9ad",
+    "mid": "#9ac878",
+    "ground": "#7d9a52",
+    "accent": "#57763e",
+    "music": "garden"
+  },
+  "layers": {
+    "far": "garden-far.png",
+    "mid": "garden-mid.png",
+    "ground": "garden-ground.png",
+    "props": "garden-props.png"
+  },
+  "spawnTables": {
+    "items": ["fish", "yarn", "catGrass", "acorn", "mysteryButton"],
+    "obstacles": ["puddle", "dog", "flowerpot", "bicycle"]
+  },
+  "unlocks": {
+    "distance": 240,
+    "collection": null
+  }
+}

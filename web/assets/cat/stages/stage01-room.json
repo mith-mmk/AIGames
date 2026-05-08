@@ -1,0 +1,26 @@
+{
+  "id": "room",
+  "name": "へや",
+  "theme": {
+    "sky": "#b9e4f5",
+    "far": "#f4ddbd",
+    "mid": "#e8cfa8",
+    "ground": "#b9895d",
+    "accent": "#8f6042",
+    "music": "room"
+  },
+  "layers": {
+    "far": "room-far.png",
+    "mid": "room-mid.png",
+    "ground": "room-ground.png",
+    "props": "room-props.png"
+  },
+  "spawnTables": {
+    "items": ["fish", "yarn", "bell", "catGrass", "glove"],
+    "obstacles": ["puddle", "cardboard", "vacuum", "door"]
+  },
+  "unlocks": {
+    "distance": 0,
+    "collection": null
+  }
+}

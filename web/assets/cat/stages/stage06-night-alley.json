@@ -1,0 +1,26 @@
+{
+  "id": "night",
+  "name": "夜の路地",
+  "theme": {
+    "sky": "#25283d",
+    "far": "#3b3355",
+    "mid": "#4a3f63",
+    "ground": "#242733",
+    "accent": "#f6d365",
+    "music": "night"
+  },
+  "layers": {
+    "far": "night-far.png",
+    "mid": "night-mid.png",
+    "ground": "night-ground.png",
+    "props": "night-props.png"
+  },
+  "spawnTables": {
+    "items": ["fish", "yarn", "bell", "sunsetShard", "mysteryButton", "glove"],
+    "obstacles": ["puddle", "vacuum", "dog", "door", "bicycle"]
+  },
+  "unlocks": {
+    "distance": 1700,
+    "collection": "謎のボタン"
+  }
+}

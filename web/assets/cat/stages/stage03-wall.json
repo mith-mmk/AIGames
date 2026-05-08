@@ -1,0 +1,26 @@
+{
+  "id": "wall",
+  "name": "へいの上",
+  "theme": {
+    "sky": "#c9ecff",
+    "far": "#ddd3c4",
+    "mid": "#b8b0a2",
+    "ground": "#8c8173",
+    "accent": "#5d5852",
+    "music": "wall"
+  },
+  "layers": {
+    "far": "wall-far.png",
+    "mid": "wall-mid.png",
+    "ground": "wall-ground.png",
+    "props": "wall-props.png"
+  },
+  "spawnTables": {
+    "items": ["fish", "bell", "acorn", "sunsetShard", "glove"],
+    "obstacles": ["flowerpot", "bicycle", "dog", "door"]
+  },
+  "unlocks": {
+    "distance": 520,
+    "collection": null
+  }
+}
