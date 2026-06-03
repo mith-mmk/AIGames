@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列車防衛 - AI Games</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/train-defense.css">
+</head>
+<body class="train-defense-page">
+<main class="train-defense-shell">
+    <section class="train-defense-game" aria-label="列車防衛">
+        <canvas id="train-defense-canvas" width="1280" height="720" aria-label="列車防衛のゲーム画面"></canvas>
+
+        <section class="train-defense-hud" aria-live="polite">
+            <div class="hud-item"><span>耐久</span><strong id="train-defense-hp">100 / 100</strong></div>
+            <div class="hud-item"><span>資材</span><strong id="train-defense-scrap">90</strong></div>
+            <div class="hud-item"><span>距離</span><strong id="train-defense-distance">0m</strong></div>
+            <div class="hud-item"><span>目的地まで</span><strong id="train-defense-destination">2200m</strong></div>
+            <div class="hud-item"><span>波</span><strong id="train-defense-wave">先遣隊</strong></div>
+            <div class="hud-item"><span>選択</span><strong id="train-defense-selected">砲台</strong></div>
+        </section>
+
+        <section id="train-defense-overlay" class="train-defense-overlay">
+            <h1 id="train-defense-overlay-title">列車防衛</h1>
+            <p id="train-defense-overlay-text">設備を選び、流れてくる建設枠に配置して目的地まで列車を守る。</p>
+            <button id="train-defense-start" class="train-button primary" type="button">護衛開始</button>
+        </section>
+    </section>
+
+    <section class="train-defense-controls" aria-label="ゲーム操作">
+        <div class="building-tools" aria-label="設備選択">
+            <button class="build-button selected" type="button" data-building="cannon" aria-pressed="true">
+                <strong>砲台</strong>
+                <span>30 / 攻撃</span>
+            </button>
+            <button class="build-button" type="button" data-building="signal" aria-pressed="false">
+                <strong>減速信号</strong>
+                <span>45 / 鈍足</span>
+            </button>
+            <button class="build-button" type="button" data-building="repair" aria-pressed="false">
+                <strong>修理小屋</strong>
+                <span>55 / 回復</span>
+            </button>
+        </div>
+        <div class="round-tools">
+            <button id="train-defense-pause" class="train-button" type="button">一時停止</button>
+            <button id="train-defense-restart" class="train-button danger" type="button">リスタート</button>
+            <a class="train-button link-button" href="./">戻る</a>
+        </div>
+    </section>
+
+    <p id="train-defense-message" class="train-defense-message">設備を選んで、線路脇の建設枠をクリックしてください。</p>
+</main>
+
+<script src="./js/train-defense.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+.train-defense-page {
+    min-height: 100vh;
+    margin: 0;
+    color: #2a241d;
+    background: #d8b77b;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.train-defense-shell {
+    width: min(100vw - 24px, 1180px);
+    max-width: none;
+    margin: 0 auto;
+    padding: 18px 0 28px;
+}
+
+.train-defense-game {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #5f4b35;
+    border-radius: 8px;
+    background: #b98952;
+    box-shadow: 0 16px 36px rgba(52, 36, 21, 0.26);
+}
+
+#train-defense-canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    touch-action: manipulation;
+}
+
+.train-defense-hud {
+    position: absolute;
+    inset: 10px 12px auto;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+    pointer-events: none;
+}
+
+.hud-item {
+    min-width: 0;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 242, 202, 0.66);
+    border-radius: 8px;
+    background: rgba(48, 38, 28, 0.76);
+    color: #fff6dc;
+    box-shadow: 0 7px 18px rgba(39, 26, 15, 0.18);
+}
+
+.hud-item span {
+    display: block;
+    color: #dfc493;
+    font-size: 0.76rem;
+    line-height: 1.1;
+}
+
+.hud-item strong {
+    display: block;
+    overflow: hidden;
+    font-size: clamp(0.92rem, 1.8vw, 1.4rem);
+    line-height: 1.35;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.train-defense-overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(88%, 500px);
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255, 239, 194, 0.45);
+    border-radius: 8px;
+    padding: 26px 22px 24px;
+    background: rgba(42, 33, 24, 0.88);
+    color: #fff6df;
+    text-align: center;
+    box-shadow: 0 16px 44px rgba(28, 19, 12, 0.36);
+}
+
+.train-defense-overlay[hidden] {
+    display: none;
+}
+
+.train-defense-overlay h1 {
+    margin: 0;
+    font-size: clamp(2.3rem, 7vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: 0;
+}
+
+.train-defense-overlay p {
+    margin: 12px 0 20px;
+    color: #ead7b0;
+}
+
+.train-defense-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: stretch;
+    margin-top: 14px;
+}
+
+.building-tools,
+.round-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.round-tools {
+    justify-content: flex-end;
+}
+
+.build-button,
+.train-button {
+    min-height: 42px;
+    border: 1px solid #6b5439;
+    border-radius: 7px;
+    color: #2a241d;
+    background: #fff1c8;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.build-button {
+    display: grid;
+    min-width: 128px;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.build-button span {
+    color: #6d5737;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.build-button:hover,
+.train-button:hover {
+    background: #ffe3a1;
+}
+
+.build-button.selected {
+    color: #fff7df;
+    background: #45564c;
+    border-color: #45564c;
+}
+
+.build-button.selected span {
+    color: #e7d5a9;
+}
+
+.train-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    text-decoration: none;
+}
+
+.train-button.primary {
+    color: #fff7df;
+    background: #9d3f2c;
+    border-color: #9d3f2c;
+}
+
+.train-button.danger {
+    color: #fff7df;
+    background: #583629;
+    border-color: #583629;
+}
+
+.link-button {
+    min-width: 64px;
+}
+
+.train-defense-message {
+    min-height: 1.5em;
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    border: 1px solid rgba(95, 75, 53, 0.28);
+    border-radius: 8px;
+    background: rgba(255, 246, 221, 0.7);
+    font-weight: 700;
+}
+
+@media (max-width: 860px) {
+    .train-defense-hud {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .train-defense-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .round-tools {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 560px) {
+    .train-defense-shell {
+        width: min(100vw - 12px, 1180px);
+        padding-top: 8px;
+    }
+
+    .train-defense-hud {
+        inset: 6px 6px auto;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 5px;
+    }
+
+    .hud-item {
+        padding: 5px 7px;
+    }
+
+    .hud-item strong {
+        font-size: 0.9rem;
+    }
+
+    .build-button,
+    .train-button {
+        flex: 1 1 120px;
+    }
+}

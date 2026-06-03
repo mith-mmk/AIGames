@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "node web/js/cards.logic.test.cjs && node web/js/cat.logic.test.cjs && npx eslint web/js/cards.js web/js/cat/*.js"
+    "test": "node web/js/cards.logic.test.cjs && node web/js/cat.logic.test.cjs && node web/js/train-defense.logic.test.cjs && npx eslint web/js/cards.js web/js/cat/*.js web/js/train-defense.js"
   },
   "author": "MITH@mmk",
   "license": "MIT",
