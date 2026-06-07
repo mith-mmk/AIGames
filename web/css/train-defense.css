@@ -67,16 +67,15 @@
 
 .train-defense-overlay {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    width: min(88%, 500px);
-    transform: translate(-50%, -50%);
+    right: 16px;
+    bottom: 16px;
+    width: min(28%, 300px);
     border: 1px solid rgba(255, 239, 194, 0.45);
     border-radius: 8px;
-    padding: 26px 22px 24px;
-    background: rgba(42, 33, 24, 0.88);
+    padding: 12px;
+    background: rgba(42, 33, 24, 0.84);
     color: #fff6df;
-    text-align: center;
+    text-align: left;
     box-shadow: 0 16px 44px rgba(28, 19, 12, 0.36);
 }
 
@@ -86,14 +85,16 @@
 
 .train-defense-overlay h1 {
     margin: 0;
-    font-size: clamp(2.3rem, 7vw, 4.6rem);
-    line-height: 1.05;
+    font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+    line-height: 1.12;
     letter-spacing: 0;
 }
 
 .train-defense-overlay p {
-    margin: 12px 0 20px;
+    margin: 8px 0 12px;
     color: #ead7b0;
+    font-size: 0.86rem;
+    line-height: 1.45;
 }
 
 .train-defense-controls {
@@ -193,6 +194,10 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
+    .train-defense-overlay {
+        width: min(38%, 300px);
+    }
+
     .train-defense-controls {
         grid-template-columns: 1fr;
     }
@@ -203,27 +208,114 @@
 }
 
 @media (max-width: 560px) {
+    .train-defense-page {
+        min-height: 100svh;
+    }
+
     .train-defense-shell {
-        width: min(100vw - 12px, 1180px);
-        padding-top: 8px;
+        width: 100vw;
+        padding: 0 6px 10px;
+        box-sizing: border-box;
+    }
+
+    .train-defense-game {
+        display: flex;
+        flex-direction: column;
+        border-radius: 0;
+    }
+
+    #train-defense-canvas {
+        aspect-ratio: auto;
+        height: 56svh;
+        min-height: 330px;
+        max-height: 520px;
     }
 
     .train-defense-hud {
-        inset: 6px 6px auto;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 5px;
+        position: static;
+        order: -1;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+        padding: 5px;
+        background: rgba(48, 38, 28, 0.82);
     }
 
     .hud-item {
-        padding: 5px 7px;
+        padding: 4px 5px;
+        border-radius: 6px;
+        background: rgba(255, 246, 221, 0.08);
+        box-shadow: none;
+    }
+
+    .hud-item span {
+        font-size: 0.66rem;
     }
 
     .hud-item strong {
-        font-size: 0.9rem;
+        font-size: 0.78rem;
+        line-height: 1.18;
+    }
+
+    .train-defense-overlay {
+        left: auto;
+        right: 8px;
+        bottom: 8px;
+        width: min(48%, 190px);
+        padding: 8px;
+    }
+
+    .train-defense-overlay h1 {
+        font-size: 1rem;
+    }
+
+    .train-defense-overlay p {
+        margin: 4px 0 7px;
+        font-size: 0.72rem;
+        line-height: 1.28;
+    }
+
+    .train-defense-controls {
+        gap: 7px;
+        margin-top: 7px;
+    }
+
+    .building-tools {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 5px;
+    }
+
+    .round-tools {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 5px;
     }
 
     .build-button,
     .train-button {
-        flex: 1 1 120px;
+        min-height: 38px;
+        min-width: 0;
+        padding: 6px 5px;
+        font-size: 0.8rem;
+        line-height: 1.12;
+    }
+
+    .build-button {
+        display: block;
+        text-align: center;
+    }
+
+    .build-button span {
+        display: block;
+        margin-top: 2px;
+        font-size: 0.66rem;
+    }
+
+    .train-defense-message {
+        min-height: 2.4em;
+        margin-top: 7px;
+        padding: 7px 8px;
+        font-size: 0.82rem;
+        line-height: 1.32;
     }
 }

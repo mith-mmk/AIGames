@@ -54,12 +54,265 @@
             damage: 24,
             radius: 16,
         },
+        sprinter: {
+            label: "スプリンター",
+            hp: 34,
+            speed: 104,
+            reward: 15,
+            damage: 10,
+            radius: 13,
+        },
+        breacher: {
+            label: "ブリーチャー",
+            hp: 82,
+            speed: 47,
+            reward: 22,
+            damage: 32,
+            radius: 17,
+        },
+        shield: {
+            label: "シールド",
+            hp: 138,
+            speed: 33,
+            reward: 30,
+            damage: 18,
+            radius: 19,
+        },
     };
 
-    const WAVES = [
-        { label: "先遣隊", duration: 16, spawnEvery: 2.1, pattern: ["runner", "runner", "raider"] },
-        { label: "装甲襲撃", duration: 18, spawnEvery: 1.75, pattern: ["runner", "armor", "runner", "raider"] },
-        { label: "総攻撃", duration: 24, spawnEvery: 1.35, pattern: ["raider", "runner", "armor", "runner", "raider"] },
+    const LANES = {
+        top: { label: "上レーン", offset: -96 },
+        center: { label: "中央突破", offset: 0 },
+        bottom: { label: "下レーン", offset: 96 },
+    };
+
+    const LEVELS = [
+        {
+            label: "1面 練習線",
+            startMessage: "1面は練習線です。砲台を置いて、設備の流れを確認してください。",
+            clearMessage: "練習線を突破しました。2面からは上下レーンの圧力が上がります。",
+            destinationDistance: 900,
+            trainSpeed: 30,
+            initialScrap: 110,
+            slotSpacing: 150,
+            firstSlotDistance: 110,
+            slotCount: 14,
+            waveBonus: 32,
+            waves: [
+                { label: "先遣隊", duration: 10, spawnEvery: 2.7, pattern: ["runner", "runner"], lanePattern: ["center"] },
+                { label: "軽襲撃", duration: 12, spawnEvery: 2.35, pattern: ["runner", "runner", "raider"], lanePattern: ["top", "bottom", "center"] },
+            ],
+        },
+        {
+            label: "2面 峡谷線",
+            startMessage: "2面は本番です。上下レーンの偏りとスロット特性を見て配置してください。",
+            clearMessage: "峡谷線を突破しました。3面は高速の群れが来ます。",
+            destinationDistance: 1900,
+            trainSpeed: 26,
+            initialScrap: 78,
+            slotSpacing: 170,
+            firstSlotDistance: 110,
+            slotCount: 24,
+            waveBonus: 18,
+            waves: [
+                {
+                    label: "上方襲撃",
+                    duration: 15,
+                    spawnEvery: 1.65,
+                    pattern: ["runner", "raider", "runner", "armor"],
+                    lanePattern: ["top", "top", "center", "top"],
+                    laneWarning: "上レーン集中。上段スロットの火力と減速が重要です。",
+                },
+                {
+                    label: "下方襲撃",
+                    duration: 15,
+                    spawnEvery: 1.6,
+                    pattern: ["runner", "runner", "armor", "raider"],
+                    lanePattern: ["bottom", "bottom", "center", "bottom"],
+                    laneWarning: "下レーン集中。下段の漏れは修理小屋で受ける判断も必要です。",
+                },
+                {
+                    label: "中央突破",
+                    duration: 16,
+                    spawnEvery: 1.45,
+                    pattern: ["armor", "runner", "raider", "armor"],
+                    lanePattern: ["center", "top", "center", "bottom"],
+                    laneWarning: "中央突破。中央寄りの不安定スロットは強いが資材を食います。",
+                },
+                {
+                    label: "上下同時",
+                    duration: 20,
+                    spawnEvery: 1.25,
+                    pattern: ["raider", "runner", "armor", "runner", "raider"],
+                    lanePattern: ["top", "bottom", "top", "bottom", "center"],
+                    laneWarning: "上下同時攻撃。減速信号で密集を止め、修理で最後を支えてください。",
+                },
+            ],
+            slotTraits: {
+                3: "choke",
+                6: "unstable",
+                9: "choke",
+                12: "unstable",
+                15: "choke",
+                18: "unstable",
+            },
+        },
+        {
+            label: "3面 渓谷急行",
+            startMessage: "3面は高速群です。減速信号でスプリンターを足止めすると安定します。",
+            clearMessage: "渓谷急行を抜けました。4面は高火力の襲撃に備えてください。",
+            destinationDistance: 2100,
+            trainSpeed: 27,
+            initialScrap: 72,
+            slotSpacing: 165,
+            firstSlotDistance: 100,
+            slotCount: 26,
+            waveBonus: 16,
+            signalBoost: 0.08,
+            waves: [
+                {
+                    label: "高速群",
+                    duration: 16,
+                    spawnEvery: 1.18,
+                    pattern: ["sprinter", "runner", "sprinter", "raider"],
+                    lanePattern: ["top", "bottom", "top", "center"],
+                    laneWarning: "高速群。減速信号をチョークに置くと処理時間を稼げます。",
+                },
+                {
+                    label: "谷間の密集",
+                    duration: 18,
+                    spawnEvery: 1.1,
+                    pattern: ["sprinter", "sprinter", "armor", "runner", "sprinter"],
+                    lanePattern: ["bottom", "bottom", "center", "top", "bottom"],
+                    laneWarning: "下レーン密集。火力だけで追うより減速で固める局面です。",
+                },
+                {
+                    label: "高速包囲",
+                    duration: 20,
+                    spawnEvery: 1.0,
+                    pattern: ["sprinter", "raider", "sprinter", "shield", "runner"],
+                    lanePattern: ["top", "bottom", "center", "top", "bottom"],
+                    laneWarning: "上下の高速包囲。減速と砲台の射程を重ねてください。",
+                },
+            ],
+            slotTraits: {
+                2: "choke",
+                4: "choke",
+                7: "unstable",
+                10: "choke",
+                13: "choke",
+                16: "unstable",
+                20: "choke",
+            },
+        },
+        {
+            label: "4面 破砕橋",
+            startMessage: "4面は高火力襲撃です。修理小屋で受け切る配置が有効です。",
+            clearMessage: "破砕橋を渡り切りました。最終面では全戦術を使います。",
+            destinationDistance: 2250,
+            trainSpeed: 24,
+            initialScrap: 68,
+            slotSpacing: 175,
+            firstSlotDistance: 115,
+            slotCount: 26,
+            waveBonus: 14,
+            repairBoost: 5,
+            waves: [
+                {
+                    label: "破壊工作",
+                    duration: 17,
+                    spawnEvery: 1.55,
+                    pattern: ["breacher", "runner", "raider", "breacher"],
+                    lanePattern: ["center", "top", "bottom", "center"],
+                    laneWarning: "ブリーチャー接近。被弾後に修理小屋で立て直せます。",
+                },
+                {
+                    label: "橋上圧力",
+                    duration: 18,
+                    spawnEvery: 1.45,
+                    pattern: ["shield", "breacher", "runner", "raider"],
+                    lanePattern: ["top", "center", "bottom", "center"],
+                    laneWarning: "橋上圧力。装甲敵を止めつつHP管理が必要です。",
+                },
+                {
+                    label: "爆破隊",
+                    duration: 20,
+                    spawnEvery: 1.35,
+                    pattern: ["breacher", "breacher", "sprinter", "shield", "raider"],
+                    lanePattern: ["bottom", "center", "top", "center", "bottom"],
+                    laneWarning: "爆破隊。修理小屋があると高火力を受け切りやすくなります。",
+                },
+            ],
+            slotTraits: {
+                1: "unstable",
+                5: "choke",
+                8: "unstable",
+                11: "choke",
+                14: "unstable",
+                17: "choke",
+                21: "unstable",
+            },
+        },
+        {
+            label: "5面 終着前総攻撃",
+            startMessage: "最終面です。砲台、減速信号、修理小屋を混ぜて総攻撃をしのいでください。",
+            clearMessage: "終着駅に到着しました。護衛成功です。",
+            destinationDistance: 2500,
+            trainSpeed: 25,
+            initialScrap: 64,
+            slotSpacing: 170,
+            firstSlotDistance: 100,
+            slotCount: 30,
+            waveBonus: 10,
+            signalBoost: 0.06,
+            repairBoost: 4,
+            waves: [
+                {
+                    label: "高速先鋒",
+                    duration: 18,
+                    spawnEvery: 1.05,
+                    pattern: ["sprinter", "runner", "sprinter", "breacher", "raider"],
+                    lanePattern: ["top", "bottom", "center", "top", "bottom"],
+                    laneWarning: "高速先鋒。減速信号で左右の崩れを抑えてください。",
+                },
+                {
+                    label: "装甲壁",
+                    duration: 19,
+                    spawnEvery: 1.25,
+                    pattern: ["shield", "armor", "shield", "breacher", "runner"],
+                    lanePattern: ["center", "top", "center", "bottom", "top"],
+                    laneWarning: "装甲壁。滞留させて砲台の集中火力を作る局面です。",
+                },
+                {
+                    label: "破砕突撃",
+                    duration: 20,
+                    spawnEvery: 1.15,
+                    pattern: ["breacher", "sprinter", "raider", "breacher", "shield"],
+                    lanePattern: ["bottom", "top", "center", "bottom", "center"],
+                    laneWarning: "破砕突撃。修理小屋で被弾後の立て直しを狙えます。",
+                },
+                {
+                    label: "終着前総攻撃",
+                    duration: 24,
+                    spawnEvery: 0.95,
+                    pattern: ["sprinter", "breacher", "shield", "raider", "armor", "sprinter"],
+                    lanePattern: ["top", "bottom", "center", "top", "bottom", "center"],
+                    laneWarning: "最終総攻撃。減速で固め、修理で受け、砲台で削り切ってください。",
+                },
+            ],
+            slotTraits: {
+                2: "choke",
+                4: "unstable",
+                6: "choke",
+                9: "unstable",
+                12: "choke",
+                15: "unstable",
+                18: "choke",
+                21: "unstable",
+                24: "choke",
+                27: "unstable",
+            },
+        },
     ];
 
     const DEFAULT_CONFIG = {
@@ -67,10 +320,10 @@
         height: 720,
         trainX: 260,
         trackY: 385,
-        destinationDistance: 2200,
+        destinationDistance: 900,
         trainSpeed: 28,
         maxHp: 100,
-        initialScrap: 90,
+        initialScrap: 110,
         slotSpacing: 190,
         firstSlotDistance: 120,
         slotRows: [-112, 112],
@@ -89,26 +342,43 @@
 
     class TrainDefenseCore {
         constructor(options = {}) {
+            this.optionOverrides = options;
             this.config = { ...DEFAULT_CONFIG, ...options };
             this.buildingTypes = BUILDING_TYPES;
             this.enemyTypes = ENEMY_TYPES;
-            this.waves = WAVES;
+            this.levels = LEVELS;
+            this.currentLevelIndex = clamp(options.levelIndex || 0, 0, this.levels.length - 1);
+            this.waves = this.getCurrentLevelDefinition().waves;
             this.init();
         }
 
         init() {
-            this.state = {
+            this.currentLevelIndex = 0;
+            this.initLevel({
+                hp: this.config.maxHp,
+                scrap: this.getLevelValue("initialScrap"),
+                selectedBuilding: "cannon",
                 status: "ready",
+                message: this.getCurrentLevelDefinition().startMessage,
+            });
+        }
+
+        initLevel(carry = {}) {
+            const level = this.getCurrentLevelDefinition();
+            this.waves = level.waves;
+            this.state = {
+                status: carry.status || "ready",
                 time: 0,
                 distance: 0,
-                hp: this.config.maxHp,
-                scrap: this.config.initialScrap,
+                hp: carry.hp ?? this.config.maxHp,
+                scrap: carry.scrap ?? this.getLevelValue("initialScrap"),
                 waveIndex: 0,
                 waveTime: 0,
                 spawnTimer: 0.35,
                 spawnCursor: 0,
-                selectedBuilding: "cannon",
-                message: "設備を選んで、線路脇の建設枠をクリックしてください。",
+                selectedBuilding: carry.selectedBuilding || "cannon",
+                laneWarning: "",
+                message: carry.message || level.startMessage,
             };
             this.slots = this.createSlots();
             this.enemies = [];
@@ -116,27 +386,84 @@
             this.projectiles = [];
         }
 
+        getCurrentLevelDefinition() {
+            return this.levels[this.currentLevelIndex] || this.levels[0];
+        }
+
+        getLevelValue(key) {
+            const level = this.getCurrentLevelDefinition();
+            if (Object.prototype.hasOwnProperty.call(this.optionOverrides, key)) {
+                return this.optionOverrides[key];
+            }
+            return level[key] ?? this.config[key];
+        }
+
         createSlots() {
+            const level = this.getCurrentLevelDefinition();
             const slots = [];
-            for (let index = 0; index < this.config.slotCount; index += 1) {
+            for (let index = 0; index < this.getLevelValue("slotCount"); index += 1) {
                 const row = index % 2;
+                const trait = level.slotTraits ? level.slotTraits[index] || "normal" : "normal";
+                const laneRole = this.getSlotLaneRole(row, trait);
                 slots.push({
                     id: index,
-                    distance: this.config.firstSlotDistance + Math.floor(index / 2) * this.config.slotSpacing,
-                    y: this.config.trackY + this.config.slotRows[row],
+                    distance: this.getLevelValue("firstSlotDistance") + Math.floor(index / 2) * this.getLevelValue("slotSpacing"),
+                    y: this.config.trackY + this.getSlotRowOffset(row, trait),
                     row,
+                    laneRole,
+                    trait,
                     buildingId: null,
                 });
             }
             return slots;
         }
 
+        getSlotRowOffset(row, trait) {
+            const baseOffset = this.config.slotRows[row];
+            if (trait === "unstable") {
+                return baseOffset * 0.68;
+            }
+            if (trait === "choke") {
+                return baseOffset * 0.86;
+            }
+            return baseOffset;
+        }
+
+        getSlotLaneRole(row, trait) {
+            if (trait === "unstable") {
+                return "center";
+            }
+            return row === 0 ? "top" : "bottom";
+        }
+
         start() {
             if (this.state.status === "ready" || this.state.status === "ended") {
                 this.init();
             }
+            if (this.state.status === "level-cleared") {
+                this.advanceLevel();
+                return;
+            }
             this.state.status = "running";
-            this.state.message = "護衛開始。目的地まで列車を守ってください。";
+            this.state.message = this.getCurrentLevelDefinition().startMessage;
+        }
+
+        advanceLevel() {
+            if (this.state.status !== "level-cleared" || this.currentLevelIndex >= this.levels.length - 1) {
+                return false;
+            }
+            const selectedBuilding = this.state.selectedBuilding;
+            const hp = Math.min(this.config.maxHp, this.state.hp + 14);
+            const scrap = Math.max(55, Math.floor(this.state.scrap + 34));
+            this.currentLevelIndex += 1;
+            this.initLevel({
+                hp,
+                scrap,
+                selectedBuilding,
+                status: "running",
+                message: this.getCurrentLevelDefinition().startMessage,
+            });
+            return true;
         }
 
         pause() {
@@ -183,7 +510,8 @@
                 this.state.message = "この場所にはすでに設備があります。";
                 return { ok: false, reason: "occupied" };
             }
-            if (this.state.scrap < buildingDefinition.cost) {
+            const cost = this.getBuildingCost(buildingType, slot);
+            if (this.state.scrap < cost) {
                 this.state.message = "資材が足りません。";
                 return { ok: false, reason: "scrap" };
             }
@@ -193,26 +521,39 @@
                 slotId: slot.id,
                 distance: slot.distance,
                 y: slot.y,
+                laneRole: slot.laneRole,
+                trait: slot.trait,
                 cooldown: 0,
             };
             slot.buildingId = building.id;
             this.buildings.push(building);
-            this.state.scrap -= buildingDefinition.cost;
+            this.state.scrap -= cost;
             this.state.message = `${buildingDefinition.label}を建設しました。`;
             return { ok: true, building };
         }
 
-        spawnEnemy(type) {
+        getBuildingCost(buildingType, slot) {
+            const baseCost = this.buildingTypes[buildingType].cost;
+            if (slot && slot.trait === "unstable") {
+                return Math.ceil(baseCost * 1.28);
+            }
+            return baseCost;
+        }
+
+        spawnEnemy(type, lane = null) {
             const definition = this.enemyTypes[type];
             if (!definition) {
                 return null;
             }
-            const laneOffset = this.enemies.length % 3 === 0 ? -74 : this.enemies.length % 3 === 1 ? 76 : 0;
+            const resolvedLane = lane || this.getFallbackLane();
+            const laneOffset = LANES[resolvedLane] ? LANES[resolvedLane].offset : LANES.center.offset;
             const enemy = {
                 id: `enemy-${this.state.time.toFixed(2)}-${this.enemies.length}`,
                 type,
+                lane: resolvedLane,
                 x: this.config.enemySpawnX,
                 y: this.config.trackY + laneOffset,
+                targetY: this.config.trackY + laneOffset,
                 hp: definition.hp,
                 maxHp: definition.hp,
                 speed: definition.speed,
@@ -224,6 +565,11 @@
             return enemy;
         }
 
+        getFallbackLane() {
+            const fallback = ["top", "bottom", "center"];
+            return fallback[this.enemies.length % fallback.length];
+        }
+
         update(deltaSeconds) {
             if (this.state.status !== "running") {
                 return;
@@ -231,8 +577,8 @@
             const dt = clamp(deltaSeconds, 0, 0.05);
             this.state.time += dt;
             this.state.distance = Math.min(
-                this.config.destinationDistance,
-                this.state.distance + this.config.trainSpeed * dt,
+                this.getLevelValue("destinationDistance"),
+                this.state.distance + this.getLevelValue("trainSpeed") * dt,
             );
             this.updateWaves(dt);
             this.updateBuildings(dt);
@@ -250,18 +596,21 @@
             this.state.spawnTimer -= dt;
             if (this.state.spawnTimer <= 0 && this.state.waveTime <= wave.duration) {
                 const type = wave.pattern[this.state.spawnCursor % wave.pattern.length];
-                this.spawnEnemy(type);
+                const lane = wave.lanePattern ? wave.lanePattern[this.state.spawnCursor % wave.lanePattern.length] : null;
+                this.spawnEnemy(type, lane);
                 this.state.spawnCursor += 1;
                 this.state.spawnTimer += wave.spawnEvery;
-                this.state.message = `${wave.label} 接近中`;
+                this.state.laneWarning = wave.laneWarning || "";
+                this.state.message = wave.laneWarning || `${wave.label} 接近中`;
             }
             if (this.state.waveTime >= wave.duration && this.enemies.length === 0) {
                 this.state.waveIndex += 1;
                 this.state.waveTime = 0;
                 this.state.spawnTimer = 2.4;
                 this.state.spawnCursor = 0;
+                this.state.laneWarning = "";
                 if (this.state.waveIndex < this.waves.length) {
-                    this.state.scrap += 28;
+                    this.state.scrap += this.getWaveBonus();
                     this.state.message = "波をしのぎました。資材を補給。";
                 }
             }
@@ -273,7 +622,7 @@
                 building.cooldown = Math.max(0, building.cooldown - dt);
                 if (building.type === "repair") {
                     if (building.cooldown === 0 && this.state.hp < this.config.maxHp) {
-                        this.state.hp = Math.min(this.config.maxHp, this.state.hp + definition.repairAmount);
+                        this.state.hp = Math.min(this.config.maxHp, this.state.hp + this.getRepairAmount(building, definition));
                         building.cooldown = definition.fireRate;
                     }
                     return;
@@ -282,7 +631,7 @@
                     return;
                 }
                 const origin = this.getBuildingPosition(building);
-                const target = this.findTarget(origin, definition.range);
+                const target = this.findTarget(origin, this.getBuildingRange(building, definition));
                 if (!target) {
                     return;
                 }
@@ -293,17 +642,53 @@
                     type: building.type,
                     damage: definition.damage,
                     speed: definition.projectileSpeed,
-                    slowAmount: definition.slowAmount || 0,
-                    slowDuration: definition.slowDuration || 0,
+                    slowAmount: this.getSlowAmount(building, definition),
+                    slowDuration: this.getSlowDuration(building, definition),
                 });
                 building.cooldown = definition.fireRate;
             });
+        }
+
+        getBuildingRange(building, definition) {
+            if (building.laneRole === "center") {
+                return definition.range + 36;
+            }
+            return definition.range;
+        }
+
+        getSlowAmount(building, definition) {
+            if (building.type !== "signal") {
+                return 0;
+            }
+            const level = this.getCurrentLevelDefinition();
+            if (building.type === "signal" && building.trait === "choke") {
+                return Math.max(0.24, (definition.slowAmount || 0) - 0.14 - (level.signalBoost || 0));
+            }
+            return Math.max(0.3, (definition.slowAmount || 0) - (level.signalBoost || 0));
+        }
+
+        getSlowDuration(building, definition) {
+            if (building.type !== "signal") {
+                return 0;
+            }
+            const level = this.getCurrentLevelDefinition();
+            if (building.type === "signal" && building.trait === "choke") {
+                return (definition.slowDuration || 0) + 1.1 + (level.signalBoost ? 0.45 : 0);
+            }
+            return definition.slowDuration || 0;
+        }
+
+        getRepairAmount(building, definition) {
+            const level = this.getCurrentLevelDefinition();
+            const traitBonus = building.trait === "unstable" ? 2 : 0;
+            return definition.repairAmount + (level.repairBoost || 0) + traitBonus;
         }
 
         getBuildingPosition(building) {
             return {
                 x: this.worldDistanceToScreenX(building.distance),
                 y: building.y,
+                laneRole: building.laneRole,
             };
         }
 
@@ -312,12 +697,24 @@
             let bestDistance = Infinity;
             this.enemies.forEach((enemy) => {
                 const currentDistance = distanceBetween(origin, enemy);
-                if (currentDistance <= range && currentDistance < bestDistance) {
+                const lanePenalty = this.getLanePenalty(origin.laneRole, enemy.lane);
+                const adjustedDistance = currentDistance + lanePenalty;
+                if (currentDistance <= range && adjustedDistance < bestDistance) {
                     best = enemy;
-                    bestDistance = currentDistance;
+                    bestDistance = adjustedDistance;
                 }
             });
             return best;
+        }
+
+        getLanePenalty(slotLane, enemyLane) {
+            if (!slotLane || slotLane === "center" || slotLane === enemyLane) {
+                return 0;
+            }
+            if (enemyLane === "center") {
+                return 28;
+            }
+            return 70;
         }
 
         updateProjectiles(dt) {
@@ -365,10 +762,10 @@
                     }
                 }
                 enemy.x -= enemy.speed * enemy.slowMultiplier * dt;
-                enemy.y += (this.config.trackY - enemy.y) * dt * 0.55;
+                enemy.y += ((enemy.targetY || this.config.trackY) - enemy.y) * dt * 0.55;
                 if (enemy.x <= this.config.enemyHitX) {
                     const definition = this.enemyTypes[enemy.type];
-                    this.state.hp = Math.max(0, this.state.hp - definition.damage);
+                    this.state.hp = Math.max(0, this.state.hp - this.getEnemyDamage(enemy.type));
                     this.state.message = `${definition.label}が列車を攻撃しました。`;
                     return;
                 }
@@ -377,25 +774,43 @@
             this.enemies = activeEnemies;
         }
 
+        getWaveBonus() {
+            return this.getCurrentLevelDefinition().waveBonus;
+        }
+
+        getEnemyDamage(enemyType) {
+            const definition = this.enemyTypes[enemyType];
+            return definition ? definition.damage : 0;
+        }
+
         checkEndState() {
             if (this.state.hp <= 0) {
                 this.state.status = "ended";
                 this.state.message = "列車が破壊されました。";
                 return;
             }
-            if (this.state.distance >= this.config.destinationDistance) {
+            if (this.state.distance >= this.getLevelValue("destinationDistance")) {
+                if (this.currentLevelIndex < this.levels.length - 1) {
+                    this.state.status = "level-cleared";
+                    this.state.message = this.getCurrentLevelDefinition().clearMessage;
+                    return;
+                }
                 this.state.status = "ended";
-                this.state.message = "目的地に到着しました。護衛成功です。";
+                this.state.message = this.getCurrentLevelDefinition().clearMessage;
             }
         }
 
         getSnapshot() {
             const currentWave = this.waves[this.state.waveIndex] || null;
+            const level = this.getCurrentLevelDefinition();
             return {
                 ...this.state,
                 maxHp: this.config.maxHp,
-                destinationDistance: this.config.destinationDistance,
-                currentWaveLabel: currentWave ? currentWave.label : "最終区間",
+                levelIndex: this.currentLevelIndex,
+                levelLabel: level.label,
+                isFinalLevel: this.currentLevelIndex === this.levels.length - 1,
+                destinationDistance: this.getLevelValue("destinationDistance"),
+                currentWaveLabel: `${level.label}: ${currentWave ? currentWave.label : "最終区間"}`,
                 buildings: this.buildings.length,
                 enemies: this.enemies.length,
             };
@@ -416,6 +831,7 @@
             ctx.clearRect(0, 0, width, height);
             this.drawSky(ctx, width, height);
             this.drawTerrain(ctx, width, height);
+            this.drawLaneGuides(ctx, width);
             this.drawSlots(ctx);
             this.drawTrack(ctx, width);
             this.drawBuildings(ctx);
@@ -476,10 +892,38 @@
             }
         }
 
+        drawLaneGuides(ctx, width) {
+            if (this.core.currentLevelIndex === 0) {
+                return;
+            }
+            Object.keys(LANES).forEach((laneKey) => {
+                if (laneKey === "center") {
+                    return;
+                }
+                const lane = LANES[laneKey];
+                const y = this.core.config.trackY + lane.offset;
+                ctx.strokeStyle = laneKey === "top" ? "rgba(80, 91, 99, 0.22)" : "rgba(96, 63, 43, 0.24)";
+                ctx.lineWidth = 4;
+                ctx.setLineDash([18, 18]);
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            });
+        }
+
         drawSlots(ctx) {
             this.core.getVisibleSlots().forEach((slot) => {
+                const isChoke = slot.trait === "choke";
+                const isUnstable = slot.trait === "unstable";
                 ctx.fillStyle = slot.buildingId ? "rgba(45, 62, 58, 0.38)" : "rgba(255, 247, 213, 0.72)";
                 ctx.strokeStyle = slot.buildingId ? "#2d3e3a" : "#6d5737";
+                if (isChoke) {
+                    ctx.strokeStyle = "#2f7d87";
+                } else if (isUnstable) {
+                    ctx.strokeStyle = "#9d3f2c";
+                }
                 ctx.lineWidth = 3;
                 ctx.beginPath();
                 ctx.roundRect(slot.x - 24, slot.y - 24, 48, 48, 8);
@@ -489,6 +933,12 @@
                     ctx.fillStyle = "#6d5737";
                     ctx.fillRect(slot.x - 13, slot.y - 2, 26, 4);
                     ctx.fillRect(slot.x - 2, slot.y - 13, 4, 26);
+                }
+                if (isChoke || isUnstable) {
+                    ctx.fillStyle = isChoke ? "#2f7d87" : "#9d3f2c";
+                    ctx.font = "700 17px Segoe UI, sans-serif";
+                    ctx.textAlign = "center";
+                    ctx.fillText(isChoke ? "S" : "!", slot.x, slot.y + 6);
                 }
             });
         }
@@ -554,7 +1004,7 @@
         drawEnemies(ctx) {
             this.core.enemies.forEach((enemy) => {
                 const definition = this.core.enemyTypes[enemy.type];
-                ctx.fillStyle = enemy.type === "runner" ? "#6f2d2d" : enemy.type === "armor" ? "#4d4f58" : "#733f20";
+                ctx.fillStyle = this.getEnemyColor(enemy.type);
                 ctx.beginPath();
                 ctx.arc(enemy.x, enemy.y, definition.radius, 0, Math.PI * 2);
                 ctx.fill();
@@ -577,6 +1027,18 @@
             });
         }
 
+        getEnemyColor(type) {
+            const colors = {
+                runner: "#6f2d2d",
+                armor: "#4d4f58",
+                raider: "#733f20",
+                sprinter: "#8c2f59",
+                breacher: "#8b3d2e",
+                shield: "#34495c",
+            };
+            return colors[type] || "#733f20";
+        }
+
         drawProjectiles(ctx) {
             this.core.projectiles.forEach((projectile) => {
                 ctx.fillStyle = projectile.type === "signal" ? "#7ed0da" : "#1f1f1f";
@@ -587,7 +1049,7 @@
         }
 
         drawProgress(ctx, width) {
-            const progress = this.core.state.distance / this.core.config.destinationDistance;
+            const progress = this.core.state.distance / this.core.getLevelValue("destinationDistance");
             ctx.fillStyle = "rgba(39, 30, 20, 0.5)";
             ctx.fillRect(26, 26, width - 52, 10);
             ctx.fillStyle = "#d6b24d";
@@ -643,6 +1105,7 @@
         start() {
             this.core.start();
             this.elements.overlay.hidden = true;
+            this.elements.startButton.textContent = "護衛開始";
             this.lastFrame = performance.now();
             this.loop(this.lastFrame);
             this.syncUi();
@@ -653,7 +1116,8 @@
             this.core.init();
             this.elements.overlay.hidden = false;
             this.elements.overlayTitle.textContent = "列車防衛";
-            this.elements.overlayText.textContent = "設備を選び、流れてくる建設枠に配置して目的地まで列車を守る。";
+            this.elements.overlayText.textContent = "1面は練習線です。砲台を置いて設備の流れを確認してください。";
+            this.elements.startButton.textContent = "護衛開始";
             this.syncUi();
             this.renderer.render();
         }
@@ -694,15 +1158,26 @@
             this.syncUi();
             if (this.core.state.status === "running") {
                 this.animationId = requestAnimationFrame((nextTimestamp) => this.loop(nextTimestamp));
+            } else if (this.core.state.status === "level-cleared") {
+                this.showLevelClearOverlay();
             } else if (this.core.state.status === "ended") {
                 this.showEndOverlay();
             }
+        }
+
+        showLevelClearOverlay() {
+            const snapshot = this.core.getSnapshot();
+            this.elements.overlay.hidden = false;
+            this.elements.overlayTitle.textContent = `${snapshot.levelIndex + 1}面突破`;
+            this.elements.overlayText.textContent = this.core.state.message;
+            this.elements.startButton.textContent = `${snapshot.levelIndex + 2}面へ進む`;
         }
 
         showEndOverlay() {
             this.elements.overlay.hidden = false;
             this.elements.overlayTitle.textContent = this.core.state.hp > 0 ? "護衛成功" : "護衛失敗";
             this.elements.overlayText.textContent = this.core.state.message;
+            this.elements.startButton.textContent = "もう一度";
         }
 
         syncUi() {
@@ -713,7 +1188,7 @@
             this.elements.destination.textContent = `${Math.max(0, Math.ceil(snapshot.destinationDistance - snapshot.distance))}m`;
             this.elements.wave.textContent = snapshot.currentWaveLabel;
             this.elements.selected.textContent = this.core.buildingTypes[snapshot.selectedBuilding].label;
-            this.elements.message.textContent = snapshot.message;
+            this.elements.message.textContent = snapshot.laneWarning || snapshot.message;
             this.elements.pauseButton.textContent = snapshot.status === "paused" ? "再開" : "一時停止";
             this.elements.buildingButtons.forEach((button) => {
                 const selected = button.dataset.building === snapshot.selectedBuilding;
