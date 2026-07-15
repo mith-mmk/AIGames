@@ -9,6 +9,13 @@ vm.runInContext(code, context);
 
 const SolitaireCore = context.globalThis.SolitaireCore;
 const SolitaireUi = context.globalThis.SolitaireUi;
+const assetDirectory = "web/assets/cards";
+
+function pngSize(path) {
+    const data = fs.readFileSync(path);
+    assert.equal(data.subarray(1, 4).toString("ascii"), "PNG");
+    return [data.readUInt32BE(16), data.readUInt32BE(20)];
+}
 
 function card(rank, suit, value, faceUp = true) {
     return {
@@ -88,6 +95,21 @@ function fakeUi(game) {
 }
 
 {
+    const deckImages = SolitaireCore.buildDeck().map((item) => item.image);
+    const extraImages = ["joker_red.png", "joker_black.png"];
+    const backImages = Array.from({ length: 6 }, (_, index) => `back${String(index).padStart(2, "0")}.png`);
+    [...deckImages, ...extraImages, ...backImages].forEach((name) => {
+        const path = `${assetDirectory}/${name}`;
+        assert.equal(fs.existsSync(path), true, `${name} is missing`);
+        assert.equal(JSON.stringify(pngSize(path)), "[74,104]", `${name} has an invalid size`);
+    });
+    const html = fs.readFileSync("web/cards.html", "utf8");
+    const backOptions = html.match(/value="back\d{2}\.png"/g) || [];
+    assert.equal(backOptions.length, 6);
+    assert.equal(new Set(backOptions).size, 6);
+}
+
+{
     const game = new SolitaireCore({ seed: 1234, drawCount: 1 });
     assert.equal(JSON.stringify(game.state.tableau.map((column) => column.length)), "[1,2,3,4,5,6,7]");
     assert.equal(game.state.stock.length, 24);
@@ -119,6 +141,20 @@ function fakeUi(game) {
     ];
     assert.equal(game.moveTableauToTableau(1, 0, 0), true);
     assert.equal(game.state.tableau[0].length, 2);
+}
+
+{
+    const game = new SolitaireCore({ seed: 13 });
+    game.state.tableau = [
+        [card("K", "spades", 13), card("Q", "hearts", 12), card("J", "clubs", 11), card("10", "diamonds", 10)],
+        [card("K", "clubs", 13)],
+        [], [], [], [], [],
+    ];
+    assert.equal(game.moveTableauToTableau(0, 1, 1), true);
+    assert.equal(game.state.tableau[0].length, 1);
+    assert.equal(game.state.tableau[1].map((item) => item.rank).join(","), "K,Q,J,10");
+    assert.equal(game.moveTableauToTableau(1, 0, 2), true);
+    assert.equal(game.state.tableau[2].map((item) => item.rank).join(","), "K,Q,J,10");
 }
 
 {
@@ -164,6 +200,8 @@ function fakeUi(game) {
     context.document = {
         body: fakeElement(),
         createElement: () => fakeElement(),
+        elementsFromPoint: () => [],
+        querySelectorAll: () => [],
     };
     context.window = {
         innerWidth: 980,
@@ -186,4 +224,15 @@ function fakeUi(game) {
     game.state.tableau = [[card("K", "spades", 13)], [], [], [], [], [], []];
     ui.render();
     assert.equal(ui.completionShown, false);
+}
+
+{
+    const targetColumn = fakeElement({ column: "3" });
+    targetColumn.closest = (selector) => selector === ".tableau-column" ? targetColumn : null;
+    context.document.elementsFromPoint = () => [targetColumn];
+    const ui = Object.create(SolitaireUi.prototype);
+    const draggedCard = fakeElement();
+    const target = ui.dropTargetAt(100, 200, [draggedCard]);
+    assert.equal(target.column, targetColumn);
+    assert.equal(draggedCard.style.visibility, "");
 }

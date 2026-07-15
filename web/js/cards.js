@@ -747,16 +747,27 @@
                 card.style.visibility = "hidden";
             });
             try {
-                const target = document.elementFromPoint(clientX, clientY);
-                return {
-                    column: target ? target.closest(".tableau-column") : null,
-                    foundation: target ? target.closest(".foundation-pile") : null,
-                };
+                const elements = typeof document.elementsFromPoint === "function"
+                    ? document.elementsFromPoint(clientX, clientY)
+                    : [document.elementFromPoint(clientX, clientY)];
+                const closest = (selector) => elements
+                    .map((element) => (element && typeof element.closest === "function" ? element.closest(selector) : null))
+                    .find(Boolean) || null;
+                const column = closest(".tableau-column") || this.dropZoneAt(".tableau-column", clientX, clientY);
+                const foundation = closest(".foundation-pile") || this.dropZoneAt(".foundation-pile", clientX, clientY);
+                return { column, foundation };
             } finally {
                 draggedCards.forEach((card) => {
                     card.style.visibility = "";
                 });
             }
+        }
+
+        dropZoneAt(selector, clientX, clientY) {
+            return Array.from(document.querySelectorAll(selector)).find((zone) => {
+                const rect = zone.getBoundingClientRect();
+                return clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
+            }) || null;
         }
 
         cancelDrag() {

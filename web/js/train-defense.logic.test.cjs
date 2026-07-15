@@ -26,6 +26,8 @@ const TrainDefenseCore = context.globalThis.TrainDefenseCore;
 
 {
     const game = new TrainDefenseCore();
+    assert.equal(game.buildAtSlot(0, "cannon").reason, "not-running");
+    game.start();
     game.state.scrap = 10;
     assert.equal(game.buildAtSlot(0, "cannon").reason, "scrap");
     game.state.scrap = 90;
@@ -51,7 +53,7 @@ const TrainDefenseCore = context.globalThis.TrainDefenseCore;
     assert.equal(snapshot.levelIndex, 1);
     assert.equal(snapshot.levelLabel, "2面 峡谷線");
     assert.equal(snapshot.hp, 85);
-    assert.equal(snapshot.scrap, 60);
+    assert.equal(snapshot.scrap, 55);
     assert.equal(snapshot.selectedBuilding, "signal");
     assert.equal(game.slots.length, 24);
 }
@@ -87,7 +89,7 @@ const TrainDefenseCore = context.globalThis.TrainDefenseCore;
 {
     const game = new TrainDefenseCore();
     game.currentLevelIndex = 1;
-    game.initLevel({ scrap: 100 });
+    game.initLevel({ scrap: 100, status: "running" });
     const unstableSlot = game.slots.find((slot) => slot.trait === "unstable");
     assert.equal(game.getBuildingCost("cannon", unstableSlot), 39);
     assert.equal(game.buildAtSlot(unstableSlot.id, "cannon").ok, true);
@@ -97,7 +99,7 @@ const TrainDefenseCore = context.globalThis.TrainDefenseCore;
 {
     const game = new TrainDefenseCore();
     game.currentLevelIndex = 1;
-    game.initLevel({ scrap: 100 });
+    game.initLevel({ scrap: 100, status: "running" });
     const chokeSlot = game.slots.find((slot) => slot.trait === "choke");
     const result = game.buildAtSlot(chokeSlot.id, "signal");
     assert.equal(result.ok, true);

@@ -9,48 +9,80 @@
 </head>
 <body class="train-defense-page">
 <main class="train-defense-shell">
-    <section class="train-defense-game" aria-label="列車防衛">
-        <canvas id="train-defense-canvas" width="1280" height="720" aria-label="列車防衛のゲーム画面"></canvas>
-
-        <section class="train-defense-hud" aria-live="polite">
-            <div class="hud-item"><span>耐久</span><strong id="train-defense-hp">100 / 100</strong></div>
-            <div class="hud-item"><span>資材</span><strong id="train-defense-scrap">110</strong></div>
-            <div class="hud-item"><span>距離</span><strong id="train-defense-distance">0m</strong></div>
-            <div class="hud-item"><span>目的地まで</span><strong id="train-defense-destination">900m</strong></div>
-            <div class="hud-item"><span>波</span><strong id="train-defense-wave">1面 練習線: 先遣隊</strong></div>
-            <div class="hud-item"><span>選択</span><strong id="train-defense-selected">砲台</strong></div>
+    <section class="command-layout" aria-label="列車防衛 戦術司令室">
+        <section class="train-defense-game" aria-label="列車防衛のゲーム画面">
+            <canvas id="train-defense-canvas" width="1280" height="720" aria-label="列車防衛のゲーム画面"></canvas>
+            <section id="train-defense-overlay" class="train-defense-overlay">
+                <span class="overlay-kicker">ESCORT COMMAND</span>
+                <h1 id="train-defense-overlay-title">列車防衛</h1>
+                <p id="train-defense-overlay-text">1面は練習線。砲台を置いて設備の流れを確認し、2面の峡谷線に備える。</p>
+                <button id="train-defense-start" class="train-button primary" type="button">護衛開始</button>
+            </section>
         </section>
 
-        <section id="train-defense-overlay" class="train-defense-overlay">
-            <h1 id="train-defense-overlay-title">列車防衛</h1>
-            <p id="train-defense-overlay-text">1面は練習線。砲台を置いて設備の流れを確認し、2面の峡谷線に備える。</p>
-            <button id="train-defense-start" class="train-button primary" type="button">護衛開始</button>
-        </section>
-    </section>
+        <aside class="command-panel" aria-label="戦術司令パネル">
+            <header class="command-header">
+                <div>
+                    <span class="eyebrow">ROUTE CONTROL</span>
+                    <h1>列車防衛</h1>
+                </div>
+                <span id="train-defense-status" class="status-chip">待機中</span>
+            </header>
 
-    <section class="train-defense-controls" aria-label="ゲーム操作">
-        <div class="building-tools" aria-label="設備選択">
-            <button class="build-button selected" type="button" data-building="cannon" aria-pressed="true">
-                <strong>砲台</strong>
-                <span>30 / 攻撃</span>
-            </button>
-            <button class="build-button" type="button" data-building="signal" aria-pressed="false">
-                <strong>減速信号</strong>
-                <span>45 / 鈍足</span>
-            </button>
-            <button class="build-button" type="button" data-building="repair" aria-pressed="false">
-                <strong>修理小屋</strong>
-                <span>55 / 回復</span>
-            </button>
-        </div>
-        <div class="round-tools">
-            <button id="train-defense-pause" class="train-button" type="button">一時停止</button>
-            <button id="train-defense-restart" class="train-button danger" type="button">リスタート</button>
-            <a class="train-button link-button" href="./">戻る</a>
-        </div>
-    </section>
+            <section class="route-summary" aria-label="進行状況">
+                <div class="route-title-row">
+                    <strong id="train-defense-level">1面 練習線</strong>
+                    <span id="train-defense-wave">第1波</span>
+                </div>
+                <div class="route-progress" aria-hidden="true"><span id="train-defense-progress-bar"></span></div>
+                <div class="route-meta"><span id="train-defense-distance">0m</span><span>残り <b id="train-defense-destination">900m</b></span></div>
+            </section>
 
-    <p id="train-defense-message" class="train-defense-message">設備を選んで、線路脇の建設枠をクリックしてください。</p>
+            <section class="resource-grid" aria-label="列車状態">
+                <div class="resource-card hp-card"><span>列車耐久</span><strong id="train-defense-hp">100 / 100</strong><i id="train-defense-hp-bar"></i></div>
+                <div class="resource-card scrap-card"><span>資材</span><strong id="train-defense-scrap">110</strong><small>建設に使用</small></div>
+            </section>
+
+            <section class="intel-panel" aria-label="次波予告">
+                <div class="panel-heading"><span>次波予告</span><strong id="train-defense-next-wave">軽襲撃</strong></div>
+                <p id="train-defense-lane-warning">現在の侵攻レーンを確認してください。</p>
+            </section>
+
+            <section class="build-section" aria-label="設備選択">
+                <div class="panel-heading"><span>設備管制</span><span class="selection-readout">選択中: <b id="train-defense-selected">砲台</b></span></div>
+                <div class="building-tools">
+                    <button class="build-button selected" type="button" data-building="cannon" aria-pressed="true">
+                        <span class="building-icon cannon-icon" aria-hidden="true">+</span>
+                        <span class="building-copy"><strong>砲台</strong><small>30 資材 / 単体火力</small></span>
+                    </button>
+                    <button class="build-button" type="button" data-building="signal" aria-pressed="false">
+                        <span class="building-icon signal-icon" aria-hidden="true">S</span>
+                        <span class="building-copy"><strong>減速信号</strong><small>45 資材 / 足止め</small></span>
+                    </button>
+                    <button class="build-button" type="button" data-building="repair" aria-pressed="false">
+                        <span class="building-icon repair-icon" aria-hidden="true">+</span>
+                        <span class="building-copy"><strong>修理小屋</strong><small>55 資材 / 回復</small></span>
+                    </button>
+                </div>
+                <div class="selected-detail">
+                    <div><span>射程</span><strong id="train-defense-range">190</strong></div>
+                    <div><span>効果</span><strong id="train-defense-effect">単体ダメージ 22</strong></div>
+                    <div><span>費用</span><strong id="train-defense-cost">30</strong></div>
+                </div>
+            </section>
+
+            <section class="command-log" aria-live="polite">
+                <span class="log-label">戦況ログ</span>
+                <p id="train-defense-message">設備を選んで、線路脇の建設枠をクリックしてください。</p>
+            </section>
+
+            <section class="round-tools" aria-label="ゲーム操作">
+                <button id="train-defense-pause" class="train-button" type="button">一時停止</button>
+                <button id="train-defense-restart" class="train-button danger" type="button">リスタート</button>
+                <a class="train-button link-button" href="./">戻る</a>
+            </section>
+        </aside>
+    </section>
 </main>
 
 <script src="./js/train-defense.js"></script>

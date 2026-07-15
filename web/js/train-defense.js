@@ -454,8 +454,8 @@
             }
             const selectedBuilding = this.state.selectedBuilding;
             const hp = Math.min(this.config.maxHp, this.state.hp + 14);
-            const scrap = Math.max(55, Math.floor(this.state.scrap + 34));
             this.currentLevelIndex += 1;
+            const scrap = this.getCarryScrap();
             this.initLevel({
                 hp,
                 scrap,
@@ -464,6 +464,13 @@
                 message: this.getCurrentLevelDefinition().startMessage,
             });
             return true;
+        }
+
+        getCarryScrap() {
+            const nextLevel = this.getCurrentLevelDefinition();
+            const minimum = 55;
+            const carryLimit = nextLevel.initialScrap + 48;
+            return Math.min(carryLimit, Math.max(minimum, Math.floor(this.state.scrap + 18)));
         }
 
         pause() {
@@ -505,6 +512,10 @@
             const buildingDefinition = this.buildingTypes[buildingType];
             if (!slot || !buildingDefinition) {
                 return { ok: false, reason: "invalid" };
+            }
+            if (this.state.status !== "running" && this.state.status !== "paused") {
+                this.state.message = "護衛開始後に設備を配置できます。";
+                return { ok: false, reason: "not-running" };
             }
             if (slot.buildingId !== null) {
                 this.state.message = "この場所にはすでに設備があります。";
@@ -802,6 +813,7 @@
 
         getSnapshot() {
             const currentWave = this.waves[this.state.waveIndex] || null;
+            const nextWave = this.waves[this.state.waveIndex + 1] || null;
             const level = this.getCurrentLevelDefinition();
             return {
                 ...this.state,
@@ -811,6 +823,11 @@
                 isFinalLevel: this.currentLevelIndex === this.levels.length - 1,
                 destinationDistance: this.getLevelValue("destinationDistance"),
                 currentWaveLabel: `${level.label}: ${currentWave ? currentWave.label : "最終区間"}`,
+                currentWaveNumber: Math.min(this.state.waveIndex + 1, this.waves.length),
+                waveCount: this.waves.length,
+                waveProgress: currentWave ? clamp(this.state.waveTime / currentWave.duration, 0, 1) : 1,
+                nextWaveLabel: nextWave ? nextWave.label : "最終波",
+                nextWaveLaneWarning: nextWave ? nextWave.laneWarning || "複数レーンから侵攻" : "目的地まで護衛",
                 buildings: this.buildings.length,
                 enemies: this.enemies.length,
             };
@@ -1075,12 +1092,21 @@
                 overlay: document.getElementById("train-defense-overlay"),
                 overlayTitle: document.getElementById("train-defense-overlay-title"),
                 overlayText: document.getElementById("train-defense-overlay-text"),
+                status: document.getElementById("train-defense-status"),
+                level: document.getElementById("train-defense-level"),
                 hp: document.getElementById("train-defense-hp"),
+                hpBar: document.getElementById("train-defense-hp-bar"),
                 scrap: document.getElementById("train-defense-scrap"),
                 distance: document.getElementById("train-defense-distance"),
                 destination: document.getElementById("train-defense-destination"),
                 wave: document.getElementById("train-defense-wave"),
+                progressBar: document.getElementById("train-defense-progress-bar"),
+                nextWave: document.getElementById("train-defense-next-wave"),
+                laneWarning: document.getElementById("train-defense-lane-warning"),
                 selected: document.getElementById("train-defense-selected"),
+                selectedRange: document.getElementById("train-defense-range"),
+                selectedEffect: document.getElementById("train-defense-effect"),
+                selectedCost: document.getElementById("train-defense-cost"),
                 message: document.getElementById("train-defense-message"),
                 startButton: document.getElementById("train-defense-start"),
                 pauseButton: document.getElementById("train-defense-pause"),
@@ -1182,19 +1208,60 @@
 
         syncUi() {
             const snapshot = this.core.getSnapshot();
+            const levelProgress = snapshot.destinationDistance > 0
+                ? Math.min(1, snapshot.distance / snapshot.destinationDistance)
+                : 1;
+            const selectedDefinition = this.core.buildingTypes[snapshot.selectedBuilding];
             this.elements.hp.textContent = `${Math.ceil(snapshot.hp)} / ${snapshot.maxHp}`;
+            this.elements.hpBar.style.transform = `scaleX(${Math.max(0, snapshot.hp / snapshot.maxHp)})`;
             this.elements.scrap.textContent = String(Math.floor(snapshot.scrap));
             this.elements.distance.textContent = `${Math.floor(snapshot.distance)}m`;
             this.elements.destination.textContent = `${Math.max(0, Math.ceil(snapshot.destinationDistance - snapshot.distance))}m`;
-            this.elements.wave.textContent = snapshot.currentWaveLabel;
+            this.elements.level.textContent = snapshot.levelLabel;
+            this.elements.wave.textContent = `第${snapshot.currentWaveNumber}波 / ${snapshot.waveCount}`;
+            this.elements.progressBar.style.width = `${levelProgress * 100}%`;
+            this.elements.nextWave.textContent = snapshot.nextWaveLabel;
+            this.elements.laneWarning.textContent = snapshot.nextWaveLaneWarning;
             this.elements.selected.textContent = this.core.buildingTypes[snapshot.selectedBuilding].label;
             this.elements.message.textContent = snapshot.laneWarning || snapshot.message;
+            this.elements.selectedRange.textContent = selectedDefinition.range > 0 ? `${selectedDefinition.range}m` : "列車全体";
+            this.elements.selectedCost.textContent = String(selectedDefinition.cost);
+            this.elements.selectedEffect.textContent = this.getSelectedBuildingEffect(snapshot.selectedBuilding, selectedDefinition);
+            this.elements.status.textContent = this.getStatusLabel(snapshot);
             this.elements.pauseButton.textContent = snapshot.status === "paused" ? "再開" : "一時停止";
             this.elements.buildingButtons.forEach((button) => {
                 const selected = button.dataset.building === snapshot.selectedBuilding;
                 button.classList.toggle("selected", selected);
                 button.setAttribute("aria-pressed", selected ? "true" : "false");
             });
+        }
+
+        getSelectedBuildingEffect(type, definition) {
+            if (type === "cannon") {
+                return `単体 ${definition.damage}ダメージ`;
+            }
+            if (type === "signal") {
+                const slowMultiplier = this.core.getSlowAmount({ type, trait: "normal" }, definition);
+                return `速度 ${Math.round(slowMultiplier * 100)}%`;
+            }
+            const repairAmount = this.core.getRepairAmount({ type, trait: "normal" }, definition);
+            return `+${repairAmount} HP / ${definition.fireRate}s`;
+        }
+
+        getStatusLabel(snapshot) {
+            if (snapshot.status === "running") {
+                return "走行中";
+            }
+            if (snapshot.status === "paused") {
+                return "一時停止";
+            }
+            if (snapshot.status === "level-cleared") {
+                return "面クリア";
+            }
+            if (snapshot.status === "ended") {
+                return snapshot.hp > 0 ? "到着" : "破損";
+            }
+            return "待機中";
         }
     }
 
