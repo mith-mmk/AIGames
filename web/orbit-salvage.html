@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Games</title>
+    <link rel="stylesheet" href="./css/orbit-salvage.css">
+</head>
+<body class="orbit-page">
+<main class="orbit-shell">
+    <header class="orbit-header">
+        <div>
+            <p class="eyebrow">DEEP SPACE RECOVERY CONTROL</p>
+            <h1>オービット回収船</h1>
+        </div>
+        <div class="header-readout" aria-live="polite">
+            <span>MISSION</span>
+            <strong id="orbit-stage-name">STAGE 01</strong>
+        </div>
+    </header>
+
+    <section class="orbit-console" aria-label="オービット回収船 ゲーム画面">
+        <section class="viewport-panel">
+            <div class="viewport" id="orbit-viewport">
+                <canvas id="orbit-canvas" width="960" height="640" aria-label="宇宙基地を守りながら資源を回収するゲーム画面"></canvas>
+
+                <div class="canvas-legend" aria-hidden="true">
+                    <span class="legend-resource">● R 資源</span>
+                    <span class="legend-danger">▲ D 隕石</span>
+                </div>
+
+                <section id="orbit-start-overlay" class="orbit-overlay start-overlay">
+                    <div class="overlay-card">
+                        <p class="eyebrow">ORBITAL SALVAGE UNIT</p>
+                        <h2>回収と防御を<br>瞬時に切り替えろ</h2>
+                        <p>基地の周囲を旋回し、<b>青い資源は回収</b>、<b>橙の隕石は防御</b>。全10ステージの航路を生き残ろう。</p>
+                        <label class="stage-picker">
+                            開始ステージ
+                            <select id="orbit-stage-select" aria-label="開始ステージ"></select>
+                        </label>
+                        <div class="record-line">
+                            <span>最高到達 <b id="orbit-record-stage">STAGE 01</b></span>
+                            <span>最高得点 <b id="orbit-record-score">0</b></span>
+                        </div>
+                        <button id="orbit-start-button" class="orbit-button primary" type="button">ミッション開始</button>
+                    </div>
+                </section>
+
+                <section id="orbit-upgrade-overlay" class="orbit-overlay" hidden>
+                    <div class="overlay-card upgrade-card">
+                        <p class="eyebrow">MISSION COMPLETE</p>
+                        <h2>船団を強化</h2>
+                        <p>次のステージへ持ち込む強化を1つ選択してください。</p>
+                        <div class="upgrade-grid">
+                            <button class="upgrade-option" type="button" data-upgrade="shield">
+                                <span class="upgrade-icon">◒</span>
+                                <strong>シールド拡張</strong>
+                                <small>捕捉範囲 +6°</small>
+                            </button>
+                            <button class="upgrade-option" type="button" data-upgrade="thruster">
+                                <span class="upgrade-icon">»</span>
+                                <strong>旋回ブースター</strong>
+                                <small>旋回速度 +12%</small>
+                            </button>
+                            <button class="upgrade-option" type="button" data-upgrade="hull">
+                                <span class="upgrade-icon">＋</span>
+                                <strong>基地補強</strong>
+                                <small>最大耐久 +10 / 20回復</small>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="orbit-result-overlay" class="orbit-overlay" hidden>
+                    <div class="overlay-card result-card">
+                        <p id="orbit-result-kicker" class="eyebrow">MISSION FAILED</p>
+                        <h2 id="orbit-result-title">基地損傷</h2>
+                        <p id="orbit-result-text">航路を再計算してください。</p>
+                        <strong id="orbit-result-score" class="result-score">0 PTS</strong>
+                        <div class="result-actions">
+                            <button id="orbit-retry-button" class="orbit-button primary" type="button">このステージを再挑戦</button>
+                            <button id="orbit-menu-button" class="orbit-button" type="button">ステージ選択</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="flight-controls" aria-label="旋回操作">
+                <button id="orbit-left-button" class="control-button" type="button" aria-label="左へ旋回">←<span>LEFT</span></button>
+                <button id="orbit-mode-button" class="mode-button salvage" type="button">
+                    <span id="orbit-mode-label">回収モード</span>
+                    <small>SPACEで切替</small>
+                </button>
+                <button id="orbit-right-button" class="control-button" type="button" aria-label="右へ旋回">→<span>RIGHT</span></button>
+            </div>
+        </section>
+
+        <aside class="telemetry-panel" aria-label="ミッション情報">
+            <section class="mission-card">
+                <div class="panel-title"><span>MISSION STATUS</span><b id="orbit-status">待機中</b></div>
+                <h2 id="orbit-stage-title">回収訓練</h2>
+                <p id="orbit-stage-brief">資源カプセルを回収してください。</p>
+            </section>
+
+            <section class="timer-card">
+                <span>TIME REMAINING</span>
+                <strong id="orbit-time">30.0</strong>
+                <div class="meter-track"><i id="orbit-time-bar"></i></div>
+            </section>
+
+            <section class="metric-grid">
+                <article class="metric-card hp">
+                    <span>BASE HP</span>
+                    <strong id="orbit-hp">100 / 100</strong>
+                    <div class="meter-track"><i id="orbit-hp-bar"></i></div>
+                </article>
+                <article class="metric-card quota">
+                    <span>SALVAGE</span>
+                    <strong id="orbit-quota">0 / 6</strong>
+                    <div class="meter-track"><i id="orbit-quota-bar"></i></div>
+                </article>
+                <article class="metric-card">
+                    <span>SCORE</span>
+                    <strong id="orbit-score">0</strong>
+                </article>
+                <article class="metric-card combo">
+                    <span>COMBO</span>
+                    <strong id="orbit-combo">x0</strong>
+                </article>
+            </section>
+
+            <section class="mode-readout salvage" id="orbit-mode-readout">
+                <span>CURRENT ARRAY</span>
+                <strong id="orbit-mode-readout-label">SALVAGE / 回収</strong>
+                <p id="orbit-mode-help">円形の R 資源を捕捉</p>
+            </section>
+
+            <section class="upgrade-status">
+                <div class="panel-title"><span>SHIP UPGRADES</span></div>
+                <dl>
+                    <div><dt>シールド</dt><dd id="orbit-shield-level">32°</dd></div>
+                    <div><dt>旋回速度</dt><dd id="orbit-thruster-level">2.60</dd></div>
+                    <div><dt>基地補強</dt><dd id="orbit-hull-level">Lv.0</dd></div>
+                </dl>
+            </section>
+
+            <section class="keyboard-help">
+                <p><kbd>←</kbd><kbd>→</kbd> または <kbd>A</kbd><kbd>D</kbd> 旋回</p>
+                <p><kbd>SPACE</kbd> モード切替 / Canvasをドラッグして追従</p>
+            </section>
+
+            <div class="panel-actions">
+                <button id="orbit-pause-button" class="orbit-button" type="button">一時停止</button>
+                <a class="orbit-button link-button" href="./">ゲーム一覧へ</a>
+            </div>
+        </aside>
+    </section>
+</main>
+
+<script src="./js/orbit-salvage.js"></script>
+</body>
+</html>
