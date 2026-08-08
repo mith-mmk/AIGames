@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="576" height="64" viewBox="0 0 576 64" shape-rendering="crispEdges">
+  <title>Chronicle Kingdoms original pixel sprites</title>
+  <rect width="576" height="64" fill="#101922"/>
+  <g stroke="#0b1117" stroke-width="2">
+    <rect x="0" y="0" width="32" height="32" fill="#b8c982"/><path d="M4 27h6M22 18h5M14 9h4" stroke="#8ea45e"/>
+    <rect x="32" y="0" width="32" height="32" fill="#4d8054"/><path d="M8 23V8m0 5 8-5m-8 9 8-4M23 25V10m0 5 7-5" stroke="#a7c979"/>
+    <rect x="64" y="0" width="32" height="32" fill="#9b8b62"/><path d="m5 25 10-14 4 6 7-9 3 17Z" fill="#c0ae7e"/>
+    <rect x="96" y="0" width="32" height="32" fill="#67717a"/><path d="m5 26 8-17 5 6 7-12 6 23Z" fill="#b4bec3"/>
+    <rect x="128" y="0" width="32" height="32" fill="#d3a75b"/><path d="M4 25h5m7-11h5m5 9h5M13 7h4" stroke="#f3d38b"/>
+    <rect x="160" y="0" width="32" height="32" fill="#376b91"/><path d="M2 9h28M2 17h28M2 25h28" stroke="#6ea3be"/>
+    <rect x="192" y="0" width="32" height="32" fill="#54b7d6"/><path d="M8 22 16 8l8 14-8-4Z" fill="#f4ecd5"/>
+    <rect x="224" y="0" width="32" height="32" fill="#d95d7a"/><path d="M9 23V9h14v14ZM5 14h22M16 9v14" fill="none" stroke="#f6e6b0"/>
+    <rect x="256" y="0" width="32" height="32" fill="#58a66c"/><path d="M16 5v22M5 16h22M8 8l16 16M24 8 8 24" stroke="#d6f2b4"/>
+    <rect x="288" y="0" width="32" height="32" fill="#bd8b47"/><path d="m16 5 10 10-10 12L6 15Z" fill="#f3d38b"/>
+    <rect x="320" y="0" width="32" height="32" fill="#314656"/><path d="M9 8h14v16H9Z" fill="#54b7d6"/><path d="M12 12h8m-8 4h8m-8 4h5" stroke="#101922"/>
+    <rect x="352" y="0" width="32" height="32" fill="#314656"/><circle cx="16" cy="16" r="10" fill="#e7bc68"/><path d="M16 9v14M9 16h14" stroke="#101922"/>
+    <rect x="384" y="0" width="32" height="32" fill="#314656"/><path d="m8 22 8-14 8 14Z" fill="#d95d7a"/><path d="M16 12v7" stroke="#f6e6b0"/>
+    <rect x="416" y="0" width="32" height="32" fill="#314656"/><path d="M7 23h18M10 18h12M13 13h6" stroke="#e7bc68" stroke-width="4"/>
+    <rect x="448" y="0" width="32" height="32" fill="#314656"/><path d="M8 23 24 9M8 9l16 14" stroke="#58a66c" stroke-width="4"/>
+    <rect x="480" y="0" width="32" height="32" fill="#314656"/><circle cx="16" cy="16" r="9" fill="#8b6b39"/><path d="M16 7v18M7 16h18" stroke="#f4ecd5"/>
+    <rect x="512" y="0" width="32" height="32" fill="#314656"/><path d="M8 23h16L16 8Z" fill="#9b8b62"/><path d="M16 8v15" stroke="#f4ecd5"/>
+    <rect x="544" y="0" width="32" height="32" fill="#314656"/><path d="M7 23h18M10 18h12M13 13h6" stroke="#d3a75b" stroke-width="4"/>
+  </g>
+  <text x="4" y="54" fill="#f4ecd5" font-family="monospace" font-size="8">ORIGINAL CHRONICLE KINGDOMS SPRITES</text>
+</svg>

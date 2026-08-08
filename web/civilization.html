@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Games</title>
+    <link rel="stylesheet" href="./css/civilization.css">
+</head>
+<body class="chronicle-page">
+<main class="chronicle-shell">
+    <header class="chronicle-header">
+        <div>
+            <p class="eyebrow">A SHORT 4X CHRONICLE</p>
+            <h1>Chronicle Kingdoms</h1>
+            <p class="subtitle">文明を築き、歴史を選び、120ターンを刻め。</p>
+        </div>
+        <div class="header-stats" aria-live="polite">
+            <span id="ck-status">待機中</span>
+            <strong>TURN <b id="ck-turn">1 / 120</b></strong>
+        </div>
+    </header>
+
+    <section class="chronicle-console" aria-label="Chronicle Kingdoms ゲーム画面">
+        <section class="map-panel">
+            <div class="map-frame">
+                <canvas id="ck-canvas" width="960" height="640" aria-label="文明の世界地図"></canvas>
+                <section id="ck-start-overlay" class="overlay" aria-label="ゲーム開始">
+                    <div class="overlay-card">
+                        <p class="eyebrow">THE FIRST CHRONICLE</p>
+                        <h2>あなたの文明を<br>歴史へ刻む</h2>
+                        <p>未知の土地を探索し、都市を建設し、4つの勝利条件から文明の未来を選択します。</p>
+                        <label for="ck-seed-input">世界シード</label>
+                        <div class="seed-row">
+                            <input id="ck-seed-input" type="number" min="1" value="482731">
+                            <button id="ck-new-seed-button" class="button quiet" type="button">新しい世界</button>
+                        </div>
+                        <button id="ck-start-button" class="button primary" type="button">年代記を始める</button>
+                    </div>
+                </section>
+                <section id="ck-event-overlay" class="overlay" hidden aria-label="国是の選択">
+                    <div class="overlay-card event-card">
+                        <p class="eyebrow">A CHOICE FOR THE AGE</p>
+                        <h2>国是を選択</h2>
+                        <p>この決定は収益、戦争、研究、文化、外交に影響します。</p>
+                        <div id="ck-event-options" class="event-options"></div>
+                    </div>
+                </section>
+                <section id="ck-result-overlay" class="overlay" hidden aria-label="ゲーム結果">
+                    <div class="overlay-card">
+                        <p class="eyebrow">THE CHRONICLE ENDS</p>
+                        <h2 id="ck-result-title">文明の勝利</h2>
+                        <p id="ck-result-text">歴史が記録されました。</p>
+                        <div class="result-actions">
+                            <button id="ck-new-game-button" class="button primary" type="button">新しい年代記</button>
+                            <a class="button quiet" href="./">ゲーム一覧へ</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="map-help"><span>クリック：選択 / 選択中ユニットをもう一度クリック：移動 <span class="move-legend"><i class="move-legend-ok"></i>移動可能 <i class="move-legend-blocked"></i>進入不可</span></span><span><kbd>E</kbd> ターン終了　<kbd>F</kbd> 都市建設</span></div>
+        </section>
+
+        <aside class="control-panel" aria-label="文明情報">
+            <section class="panel-card identity-card">
+                <div class="panel-label">CIVILIZATION</div>
+                <h2 id="ck-civ-name">アステリア</h2>
+                <div class="identity-row"><span>時代</span><strong id="ck-era">古代</strong></div>
+                <div class="identity-row"><span>シード</span><strong id="ck-seed">482731</strong></div>
+            </section>
+
+            <section class="metric-grid">
+                <article class="panel-card metric"><span>国庫</span><strong id="ck-gold">100</strong></article>
+                <article class="panel-card metric"><span>スコア</span><strong id="ck-score">0</strong></article>
+                <article class="panel-card metric research-metric"><span>研究</span><strong id="ck-research">陶器 0/20</strong></article>
+            </section>
+
+            <section class="panel-card selection-card">
+                <div class="panel-label">SELECTED</div>
+                <h2 id="ck-selected-title">未選択</h2>
+                <p id="ck-selected-detail">マップ上の都市かユニットを選択してください</p>
+                <div id="ck-unit-stack" class="unit-stack" aria-label="同一タイルのユニット"></div>
+                <div class="selection-actions">
+                    <button id="ck-found-button" class="button" type="button">都市を建設</button>
+                    <button id="ck-clear-button" class="button quiet" type="button">選択解除</button>
+                </div>
+                <div class="improvement-actions" aria-label="労働者の改良">
+                    <span>労働者の改良</span>
+                    <div>
+                        <button id="ck-improvement-road" class="button quiet" type="button" data-improvement="road">道路</button>
+                        <button id="ck-improvement-farm" class="button quiet" type="button" data-improvement="farm">農場</button>
+                        <button id="ck-improvement-mine" class="button quiet" type="button" data-improvement="mine">鉱山</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel-card city-card">
+                <div class="panel-label">CITY PRODUCTION</div>
+                <label for="ck-production">生産キュー</label>
+                <select id="ck-production" disabled></select>
+                <div id="ck-production-status" class="production-status" aria-live="polite" hidden>
+                    <div class="production-summary"><span id="ck-production-name">未選択</span><strong id="ck-production-progress">0 / 0</strong></div>
+                    <div class="production-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="ck-production-bar"></span></div>
+                    <small id="ck-production-turns">都市を選択してください</small>
+                </div>
+                <div id="ck-city-details" class="city-details" hidden>
+                    <div class="city-detail-block"><span class="city-detail-label">設備</span><div id="ck-city-buildings" class="tag-list">未建設</div></div>
+                    <div class="city-detail-block"><span class="city-detail-label">都市内ユニット</span><div id="ck-city-units" class="compact-list">なし</div></div>
+                    <div class="city-detail-block"><span class="city-detail-label">人口増加</span><div id="ck-city-growth" class="growth-table">都市を選択してください</div></div>
+                </div>
+            </section>
+
+            <section class="panel-card technology-card">
+                <div class="panel-label">AVAILABLE RESEARCH</div>
+                <div id="ck-research-status" class="research-status" aria-live="polite">
+                    <div class="research-summary"><span id="ck-research-name">陶器</span><strong id="ck-research-progress">0 / 20</strong></div>
+                    <div class="research-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="ck-research-bar"></span></div>
+                    <small id="ck-research-turns">完成まで約 20ターン</small>
+                </div>
+                <div id="ck-tech-list" class="tech-list"></div>
+            </section>
+
+            <section class="panel-card terrain-card">
+                <div class="panel-label">TERRAIN</div>
+                <div id="ck-terrain-details" class="terrain-details">マップ上のタイルを選択してください</div>
+                <div class="terrain-legend" aria-label="土地の見分け方">
+                    <span>· 平地：食料と交易の基本</span>
+                    <span>♣ 森林：生産が多い</span>
+                    <span>⌃ 丘陵：生産が非常に多い</span>
+                    <span>▲ 山岳：進入不可・防御向き</span>
+                    <span>░ 砂漠：食料が少ない</span>
+                    <span>≈ 水域：交易が多い・陸上進入不可</span>
+                </div>
+            </section>
+
+            <section class="panel-card diplomacy-card">
+                <div class="panel-label">DIPLOMACY</div>
+                <div id="ck-diplomacy-list" class="diplomacy-list"></div>
+            </section>
+
+            <section class="panel-card log-card">
+                <div class="panel-label">CHRONICLE LOG</div>
+                <pre id="ck-log" aria-live="polite">年代記を準備しています。</pre>
+            </section>
+
+            <div class="panel-actions">
+                <button id="ck-end-turn-button" class="button primary wide" type="button">ターン終了 <span> E</span></button>
+                <button id="ck-load-button" class="button quiet wide" type="button">自動セーブをロード</button>
+                <button id="ck-copy-seed-button" class="button quiet wide" type="button">シードURLをコピー</button>
+                <a class="button quiet wide" href="./">ゲーム一覧へ</a>
+            </div>
+        </aside>
+    </section>
+</main>
+<script src="./js/civilization.js?v=3"></script>
+</body>
+</html>
