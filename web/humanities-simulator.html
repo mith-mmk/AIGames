@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人文系論説シミュレーター | AI Games</title>
+    <link rel="stylesheet" href="./css/humanities-simulator.css">
+</head>
+<body>
+<header class="site-header">
+    <div>
+        <p class="eyebrow">AI GAMES / HUMANITIES LAB</p>
+        <h1>人文系論説シミュレーター</h1>
+        <p class="subtitle">伝言ゲームによって、ひとつの出来事がどこまで論説化されるかを観察する。</p>
+    </div>
+    <div class="header-stamp" aria-label="ブラウザ内で完結する研究支援風シミュレーター">
+        <span>LOCAL ONLY</span>
+        <small>NO EXTERNAL API</small>
+    </div>
+</header>
+
+<main class="app-shell">
+    <aside class="control-panel" aria-label="シミュレーター設定">
+        <section class="panel-section">
+            <div class="section-heading">
+                <span class="section-number">01</span>
+                <h2>論説対象</h2>
+            </div>
+            <label for="subjectInput">観察した出来事</label>
+            <textarea id="subjectInput" rows="3">猫が机からコップを落とした</textarea>
+            <p class="field-note">単純な出来事ほど、理論による膨張が見えやすくなります。</p>
+        </section>
+
+        <section class="panel-section">
+            <div class="section-heading">
+                <span class="section-number">02</span>
+                <h2>学派プリセット</h2>
+            </div>
+            <label for="schoolSelect">主たる学派</label>
+            <select id="schoolSelect"></select>
+            <p id="schoolDescription" class="school-description"></p>
+        </section>
+
+        <section class="panel-section parameter-section">
+            <div class="section-heading">
+                <span class="section-number">03</span>
+                <h2>論説パラメータ</h2>
+            </div>
+            <div id="parameterControls" class="parameter-controls"></div>
+        </section>
+
+        <section class="panel-section mix-section">
+            <div class="section-heading">
+                <span class="section-number">04</span>
+                <h2>学派混合</h2>
+            </div>
+            <label class="switch-row" for="mixToggle">
+                <span>第二学派を混ぜる</span>
+                <input id="mixToggle" type="checkbox">
+                <span class="switch" aria-hidden="true"></span>
+            </label>
+            <div id="mixControls" class="mix-controls" hidden>
+                <label for="secondarySchoolSelect">第二学派</label>
+                <select id="secondarySchoolSelect"></select>
+                <label for="mixRatio">第一学派の比率 <output id="mixRatioValue" for="mixRatio">70%</output></label>
+                <input id="mixRatio" type="range" min="0" max="100" value="70">
+                <p class="field-note">比率が低いほど第二学派の語彙と論証が強くなります。</p>
+            </div>
+        </section>
+
+        <section class="action-section" aria-label="生成操作">
+            <button id="generateButton" class="primary-button" type="button">論説を生成</button>
+            <button id="extremeButton" class="secondary-button" type="button">極端化する</button>
+            <button id="resetButton" class="text-button" type="button">設定を初期化</button>
+            <p id="extremeStatus" class="extreme-status">極端化レベル: 通常</p>
+        </section>
+    </aside>
+
+    <section class="result-panel" aria-live="polite">
+        <div class="result-heading">
+            <div>
+                <p class="eyebrow">RELAY REPORT <span id="reportId">#0001</span></p>
+                <h2 id="resultTitle">論説の伝言記録</h2>
+            </div>
+            <p id="resultMeta" class="result-meta"></p>
+        </div>
+
+        <div id="relayStages" class="relay-stages"></div>
+
+        <article class="essay-card">
+            <div class="card-label"><span>FINAL TEXT</span><span id="essayMode"></span></div>
+            <div id="essayOutput" class="essay-output"></div>
+        </article>
+
+        <section class="metrics-card">
+            <div class="card-label"><span>IRONIC METRICS</span><span>非客観的指標</span></div>
+            <div id="metricsOutput" class="metrics-grid"></div>
+        </section>
+
+        <section class="analysis-card">
+            <div class="card-label"><span>TRACE / ANALYSIS</span><span>生成要因</span></div>
+            <ul id="analysisOutput" class="analysis-list"></ul>
+        </section>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <a href="./" class="back-link">AI Games に戻る</a>
+    <span>文章はすべてブラウザ内で生成されます。</span>
+</footer>
+
+<script src="./js/humanities-simulator.js"></script>
+</body>
+</html>

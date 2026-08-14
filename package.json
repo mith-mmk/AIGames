@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "node web/js/cards.logic.test.cjs && node web/js/cat.logic.test.cjs && node web/js/train-defense.logic.test.cjs && node web/js/orbit-salvage.logic.test.cjs && node web/js/civilization.logic.test.cjs && eslint web/js/cards.js web/js/cat/*.js web/js/train-defense.js web/js/orbit-salvage.js web/js/civilization.js web/css/orbit-salvage.css web/css/civilization.css"
+    "test": "node web/js/cards.logic.test.cjs && node web/js/cat.logic.test.cjs && node web/js/train-defense.logic.test.cjs && node web/js/orbit-salvage.logic.test.cjs && node web/js/civilization.logic.test.cjs && node web/js/humanities-simulator.logic.test.cjs && node web/js/natural-philosophy-network.logic.test.cjs && eslint web/js/cards.js web/js/cat/*.js web/js/train-defense.js web/js/orbit-salvage.js web/js/civilization.js web/js/humanities-simulator.js web/js/natural-philosophy-network.js web/js/natural-philosophy-network-renderer.js web/js/natural-philosophy-network-app.js web/js/natural-philosophy-network-data.js web/js/natural-philosophy-network-evidence.js web/js/natural-philosophy-network-data-build.mjs web/css/orbit-salvage.css web/css/civilization.css web/css/humanities-simulator.css web/css/natural-philosophy-network.css"
   },
   "author": "MITH@mmk",
   "license": "MIT",

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>近世自然哲学ネットワーク | AI Games</title>
+    <link rel="stylesheet" href="./css/natural-philosophy-network.css">
+</head>
+<body>
+<header class="site-header">
+    <div>
+        <p class="eyebrow">AI GAMES / REPUBLIC OF LETTERS LAB</p>
+        <h1>近世自然哲学ネットワーク</h1>
+        <p class="subtitle">1600–1660年の書簡と議論から、デカルト／メルセンヌ周辺の知識流通をたどる。</p>
+    </div>
+    <div class="header-stamp" aria-label="ブラウザ内で完結する史料ネットワーク">
+        <span>LOCAL DATA</span>
+        <small>NO EXTERNAL API</small>
+    </div>
+</header>
+
+<main class="app-shell">
+    <aside class="control-panel" aria-label="ネットワーク設定">
+        <section class="panel-section">
+            <div class="section-heading"><span>01</span><h2>期間</h2></div>
+            <div class="year-fields">
+                <label for="yearStart">開始年 <output id="yearStartValue" for="yearStart">1600</output></label>
+                <input id="yearStart" type="range" min="1600" max="1660" value="1600">
+                <label for="yearEnd">終了年 <output id="yearEndValue" for="yearEnd">1660</output></label>
+                <input id="yearEnd" type="range" min="1600" max="1660" value="1660">
+            </div>
+            <div id="decadePresets" class="preset-row" aria-label="年代プリセット"></div>
+        </section>
+
+        <section class="panel-section">
+            <div class="section-heading"><span>02</span><h2>関係レイヤー</h2></div>
+            <div id="layerControls" class="layer-controls"></div>
+            <p class="field-note">係数は史料上の重要度ではなく、現在の可視化に使う仮定です。</p>
+        </section>
+
+        <section class="panel-section">
+            <div class="section-heading"><span>03</span><h2>表示</h2></div>
+            <label class="check-row" for="showWeakEdges">
+                <input id="showWeakEdges" type="checkbox">
+                <span>弱い辺もすべて表示</span>
+            </label>
+            <label for="rankingMetric">人物の大きさ・順位</label>
+            <select id="rankingMetric">
+                <option value="betweenness">媒介中心性</option>
+                <option value="strength">重み付き次数</option>
+                <option value="degree">接続人数</option>
+                <option value="letters">書簡数</option>
+            </select>
+            <div class="button-stack">
+                <button id="resetViewButton" type="button">表示位置をリセット</button>
+                <button id="resetSettingsButton" type="button" class="secondary-button">設定を初期化</button>
+            </div>
+        </section>
+
+        <section class="panel-section removal-controls">
+            <div class="section-heading"><span>04</span><h2>人物除去実験</h2></div>
+            <button id="removeMersenneButton" type="button" class="primary-button">メルセンヌを除いて比較</button>
+            <button id="removeSelectedButton" type="button" class="secondary-button">選択人物を除いて比較</button>
+            <button id="clearRemovalButton" type="button" class="text-button" hidden>除去を解除</button>
+        </section>
+    </aside>
+
+    <section class="workspace">
+        <section class="overview-strip" aria-label="現在のネットワーク統計">
+            <div><span>人物</span><strong id="nodeCount">0</strong></div>
+            <div><span>有効な辺</span><strong id="edgeCount">0</strong></div>
+            <div><span>書簡</span><strong id="letterCount">0</strong></div>
+            <div><span>連結成分</span><strong id="componentCount">0</strong></div>
+            <div><span>描画中</span><strong id="drawnEdgeCount">0</strong></div>
+        </section>
+
+        <section class="graph-card">
+            <div class="graph-heading">
+                <div>
+                    <p class="eyebrow">COMPOSITE NETWORK</p>
+                    <h2 id="graphTitle">1600–1660年</h2>
+                </div>
+                <p id="graphStatus" class="graph-status" aria-live="polite"></p>
+            </div>
+            <div class="canvas-wrap">
+                <canvas id="networkCanvas" width="1200" height="720" tabindex="0" role="img" aria-label="近世自然哲学者の関係ネットワーク。人物一覧から同じ内容を選択できます。"></canvas>
+                <div class="canvas-help">ドラッグ: 人物移動 / 余白移動　ホイール・±: 拡大縮小　Home: リセット</div>
+            </div>
+            <div id="graphLegend" class="legend"></div>
+        </section>
+
+        <section class="timeline-card">
+            <div class="card-heading"><h2>書簡の時系列</h2><span>推定期間は各年へ按分</span></div>
+            <div id="yearHistogram" class="year-histogram" aria-label="年ごとの書簡数"></div>
+        </section>
+
+        <section id="removalComparison" class="removal-card" hidden aria-live="polite"></section>
+
+        <div class="information-grid">
+            <section class="list-card">
+                <div class="card-heading"><h2>人物を探す</h2><span id="personListCount"></span></div>
+                <label class="search-label" for="personSearch">人物名・異名</label>
+                <input id="personSearch" type="search" placeholder="Descartes / デカルト…" autocomplete="off">
+                <div id="personList" class="person-list" role="listbox" aria-label="人物一覧"></div>
+            </section>
+
+            <section class="ranking-card">
+                <div class="card-heading"><h2>中心人物</h2><span id="rankingLabel">媒介中心性</span></div>
+                <ol id="rankingList" class="ranking-list"></ol>
+            </section>
+
+            <section class="detail-card" aria-live="polite">
+                <div class="card-heading"><h2>証拠と内訳</h2><span id="detailKind">PERSON</span></div>
+                <div id="detailPanel" class="detail-panel"></div>
+            </section>
+        </div>
+
+        <details class="method-card">
+            <summary>データと方法について</summary>
+            <div class="method-content">
+                <p id="datasetSummary"></p>
+                <p>辺の太さは、期間内の各レイヤー件数を対数正規化して係数を掛けた相対値です。中心性は描画を省略した弱い辺も含めて計算します。</p>
+                <p>推定日・期間日は選択期間と交差するとき含めます。完全無日付、未解決の送受信者、曖昧な重複は監査対象として数え、グラフ計算から除外します。</p>
+                <div id="auditSummary" class="audit-grid"></div>
+                <p class="license-note">アプリコード: MIT。EMLO由来データと派生メタデータ: CC BY-NC-SA。詳細はデータREADMEを参照してください。</p>
+                <a href="./assets/natural-philosophy-network/DATA_README.md">データREADMEを開く</a>
+            </div>
+        </details>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <a href="./" class="back-link">AI Games に戻る</a>
+    <span>重みは可視化モデルであり、人物の歴史的重要度そのものではありません。</span>
+</footer>
+
+<script src="./js/natural-philosophy-network-data.js"></script>
+<script src="./js/natural-philosophy-network-evidence.js"></script>
+<script src="./js/natural-philosophy-network.js"></script>
+<script src="./js/natural-philosophy-network-renderer.js"></script>
+<script src="./js/natural-philosophy-network-app.js"></script>
+</body>
+</html>
