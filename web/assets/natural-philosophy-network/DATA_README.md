@@ -49,21 +49,27 @@ it exhausts the historical network.
    incident to either seed.
 4. Keep the two seeds and the 158 highest-ranked other people; ties sort by
    preferred name and then EMLO ID.
-5. Keep observed records only when both endpoints are in that selected set.
+5. From the full normalized record set (not only seed-incident records), keep
+   every observed record whose both endpoints are in that selected set.
 
 EMLO's semicolon-separated author/recipient fields are expanded into all
 author-recipient pairs. Every expansion retains the original `sourceRecords`
 entry. A `letterFamilyId` is the lowest EMLO record ID in the source row's
 alternative-match list, or the record's own ID when EMLO provides no match
-list. Use that field, rather than raw record count, when an analysis needs to
-avoid counting catalogue alternatives twice.
+list. After endpoint selection, records with the same family, sender,
+recipient, original/normalized date fields, precision, and date basis are
+merged into one deterministic observation. `sourceRecords` are de-duplicated
+by record ID plus source URL, while distinct alternative-catalogue source
+records remain attached to that merged observation. Use `letterFamilyId`,
+rather than raw record count, when an analysis needs to avoid counting
+catalogue alternatives twice.
 
 ## Schema
 
 ```text
 NaturalPhilosophyNetworkData = {
   manifest,
-  people: [{ id, preferredName, names, birthYear, deathYear, roles,
+  people: [{ id, preferredName, displayNameJa, names, birthYear, deathYear, roles,
              authorityUrls, selectionReason }],
   letters: [{ id, letterFamilyId, senderId, recipientId, dateOriginal,
               dateStart, dateEnd, datePrecision, dateBasis, sourceRecords }],
@@ -78,6 +84,10 @@ NaturalPhilosophyNetworkData = {
 UUID, EMLO URL, and alternative record IDs. Date fields deliberately keep a
 date interval and precision flag; do not silently replace an approximate or
 range date with a single asserted day.
+
+`displayNameJa` is a stable-ID keyed Japanese display aid for the selected
+people. It is not an authority record and does not replace `preferredName`,
+which remains the EMLO-derived authoritative display name and identity label.
 
 ## Evidence boundary
 

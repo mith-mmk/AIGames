@@ -365,7 +365,7 @@
 
         renderMethodology() {
             const manifest = this.dataset.manifest || {};
-            const audit = { ...(this.dataset.audit || {}), ...this.core.validation.stats };
+            const audit = { ...(this.dataset.audit?.exclusions || {}), ...this.core.validation.stats };
             const sourceDescription = manifest.sourceVersion || manifest.source || "";
             this.elements.datasetSummary.textContent = `${manifest.title || "同梱ネットワークデータ"}。人物 ${formatNumber(this.dataset.people?.length)}人、書簡 ${formatNumber(this.dataset.letters?.length)}件、追加証拠 ${formatNumber(this.dataset.evidenceEvents?.length)}件。${sourceDescription ? `基礎データ: ${sourceDescription}。` : ""}`;
             const auditLabels = {
@@ -373,8 +373,8 @@
                 invalidDates: "無効・無日付",
                 duplicateFamilies: "重複family",
                 missingSources: "出典欠損",
-                possibleDuplicates: "重複候補",
-                excludedRecords: "計算除外",
+                unresolvedParticipants: "抽出時の送受信者不明",
+                duplicateNormalizedObservations: "完全重複の除外",
             };
             this.elements.auditSummary.innerHTML = Object.entries(auditLabels).map(([key, label]) => `<div><span>${label}</span><strong>${formatNumber(audit[key] || 0)}</strong></div>`).join("");
         }
@@ -382,6 +382,7 @@
 
     function bindNetworkEvents(app) {
         const elements = app.elements;
+        elements.helpButton.addEventListener("click", () => elements.helpDialog.showModal());
         elements.yearStart.addEventListener("input", () => app.updatePeriodFromControl("start"));
         elements.yearEnd.addEventListener("input", () => app.updatePeriodFromControl("end"));
         elements.decadePresets.addEventListener("click", (event) => {
@@ -470,6 +471,7 @@
             "drawnEdgeCount", "graphTitle", "graphStatus", "graphLegend", "yearHistogram", "removalComparison",
             "personSearch", "personList", "personListCount", "rankingList", "rankingLabel", "detailPanel", "detailKind",
             "datasetSummary", "auditSummary",
+            "helpButton", "helpDialog",
         ];
         return Object.fromEntries(ids.map((id) => [id, documentScope.getElementById(id)]));
     }

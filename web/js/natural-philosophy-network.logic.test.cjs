@@ -142,20 +142,42 @@ assert.equal(tools.overlapsPeriod({ dateStart: null, dateEnd: null }, 1630, 1640
     vm.runInContext(fs.readFileSync("web/js/natural-philosophy-network-evidence.js", "utf8"), dataContext);
     const data = dataContext.globalThis.NaturalPhilosophyNetworkData;
     assert.equal(data.people.length, 160);
-    assert.equal(data.letters.length, 1879);
+    assert.equal(data.letters.length, 2854);
     assert.ok(data.evidenceEvents.length >= 15 && data.evidenceEvents.length <= 30);
     assert.equal(data.audit.counts.evidenceEvents, data.evidenceEvents.length);
     assert.deepEqual([...new Set(data.evidenceEvents.map((event) => event.type))].sort(), ["mention", "theme", "transmission"]);
     assert.equal(new Set(data.people.map((person) => person.id)).size, 160);
     assert.ok(data.people.some((person) => person.id === "300075"));
     assert.ok(data.people.some((person) => person.id === "300610"));
-    assert.equal(new Set(data.letters.map((item) => item.letterFamilyId)).size, 1873);
+    assert.ok(data.people.every((person) => typeof person.displayNameJa === "string" && person.displayNameJa.trim()));
+    assert.equal(data.people.find((person) => person.id === "300075").displayNameJa, "ルネ・デカルト");
+    assert.equal(data.people.find((person) => person.id === "300610").displayNameJa, "マラン・メルセンヌ");
+    assert.equal(data.people.find((person) => person.id === "11763").displayNameJa, "クリスティアーン・ホイヘンス");
+    assert.equal(data.people.find((person) => person.id === "11527").displayNameJa, "コンスタンティン・ホイヘンス");
+    assert.equal(data.people.find((person) => person.id === "300446").displayNameJa, "サミュエル・ハートリブ");
+    assert.equal(data.people.find((person) => person.id === "200001").displayNameJa, "ヤン・アモス・コメニウス");
+    assert.equal(new Set(data.letters.map((item) => item.letterFamilyId)).size, 2849);
+    assert.equal(data.audit.exclusions.duplicateNormalizedObservations, 6);
+    const seedIds = new Set(["300075", "300610"]);
+    const nonSeedLetters = data.letters.filter((item) => !seedIds.has(item.senderId) && !seedIds.has(item.recipientId));
+    assert.ok(nonSeedLetters.length > 900, "selected peripheral people must retain their direct correspondence");
+    const huygensLetters = data.letters.filter((item) => (
+        item.senderId === "11763" && item.recipientId === "11527"
+    ) || (
+        item.senderId === "11527" && item.recipientId === "11763"
+    ));
+    assert.equal(huygensLetters.length, 1);
+    assert.equal(huygensLetters[0].dateStart, "1646-09-03");
     const validation = tools.validateDataset(data);
     assert.equal(validation.valid, true, validation.errors.join("\n"));
     assert.equal(validation.stats.unresolvedLetters, 0);
     assert.equal(validation.stats.invalidDates, 0);
     assert.equal(validation.stats.missingSources, 0);
     assert.ok(data.letters.every((item) => item.sourceRecords.every((record) => /^https?:\/\//.test(record.sourceUrl))));
+    assert.ok(data.letters.every((item) => {
+        const sourceKeys = item.sourceRecords.map((record) => `${record.recordId}::${record.sourceUrl}`);
+        return new Set(sourceKeys).size === sourceKeys.length;
+    }), "merged observations must not repeat an identical source record");
     assert.ok(data.evidenceEvents.every((event) => event.participants.every((id) => data.people.some((person) => person.id === id))));
     assert.ok(data.evidenceEvents.filter((event) => event.type === "transmission" && event.participants.length === 3)
         .every((event) => event.route.length === 3 && new Set(event.route).size === 3));
@@ -163,8 +185,9 @@ assert.equal(tools.overlapsPeriod({ dateStart: null, dateEnd: null }, 1630, 1640
     const core = new Core(data);
     const graph = core.buildGraph();
     assert.equal(graph.nodes.length, 160);
-    assert.equal(graph.letterCount, 1873);
+    assert.equal(graph.letterCount, 2849);
     assert.ok(graph.edges.length > 100);
+    assert.ok(graph.edges.some((edge) => edge.key === "11527::11763"));
     assert.ok(graph.edges.some((edge) => edge.counts.transmissions > 0));
     assert.ok(graph.edges.some((edge) => edge.counts.mentions > 0));
     assert.ok(graph.edges.some((edge) => edge.counts.themes > 0));
@@ -181,6 +204,13 @@ assert.equal(tools.overlapsPeriod({ dateStart: null, dateEnd: null }, 1630, 1640
     const missingInput = childProcess.spawnSync(process.execPath, [builder, ".test-missing-emlo.csv"], { encoding: "utf8" });
     assert.notEqual(missingInput.status, 0);
     assert.match(missingInput.stderr, /not a readable file/);
+}
+
+{
+    const html = fs.readFileSync("web/natural-philosophy-network.html", "utf8");
+    assert.match(html, /id="helpButton"/);
+    assert.match(html, /id="helpDialog"/);
+    assert.match(html, /このネットワークの見方/);
 }
 
 console.log("Natural philosophy network logic and data QA tests passed.");

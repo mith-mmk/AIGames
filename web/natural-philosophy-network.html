@@ -13,9 +13,12 @@
         <h1>近世自然哲学ネットワーク</h1>
         <p class="subtitle">1600–1660年の書簡と議論から、デカルト／メルセンヌ周辺の知識流通をたどる。</p>
     </div>
-    <div class="header-stamp" aria-label="ブラウザ内で完結する史料ネットワーク">
-        <span>LOCAL DATA</span>
-        <small>NO EXTERNAL API</small>
+    <div class="header-actions">
+        <div class="header-stamp" aria-label="ブラウザ内で完結する史料ネットワーク">
+            <span>LOCAL DATA</span>
+            <small>NO EXTERNAL API</small>
+        </div>
+        <button id="helpButton" class="help-button" type="button">使い方</button>
     </div>
 </header>
 
@@ -128,6 +131,32 @@
         </details>
     </section>
 </main>
+
+<dialog id="helpDialog" class="help-dialog" aria-labelledby="helpTitle">
+    <form method="dialog">
+        <div class="help-heading">
+            <div>
+                <p class="eyebrow">QUICK GUIDE</p>
+                <h2 id="helpTitle">このネットワークの見方</h2>
+            </div>
+            <button type="submit" value="close" aria-label="ヘルプを閉じる">閉じる</button>
+        </div>
+        <ol class="help-steps">
+            <li><strong>丸が人物、線が関係です。</strong>丸の大きさは左の「人物の大きさ・順位」で選んだ中心性指標を表します。</li>
+            <li><strong>人物名を選ぶと証拠が見えます。</strong>Canvasの丸、人物一覧、ランキングのどこからでも選択できます。日本語名の下に典拠の原綴りを併記します。</li>
+            <li><strong>線を選ぶと重みの内訳が見えます。</strong>書簡・言及・伝達・論争・面会の件数、正規化値、出典を確認できます。破線は推定日を含む関係です。</li>
+            <li><strong>期間と係数を変えて比較します。</strong>係数は「歴史的重要度」ではなく、画面上の近さを試すための可視化パラメータです。</li>
+            <li><strong>「メルセンヌを除いて比較」</strong>では、連結成分や孤立人物がどれだけ増えるかを確認できます。選択した任意人物でも実行できます。</li>
+        </ol>
+        <div class="help-controls">
+            <span><kbd>ドラッグ</kbd> 人物移動／余白移動</span>
+            <span><kbd>ホイール</kbd> 拡大縮小</span>
+            <span><kbd>矢印</kbd> キーボード移動</span>
+            <span><kbd>Home</kbd> 表示位置をリセット</span>
+        </div>
+        <p class="help-caveat">このデータはデカルト／メルセンヌとの書簡頻度から160人を選んだ部分ネットワークです。線がないことは、交流が存在しなかったことの証明ではありません。</p>
+    </form>
+</dialog>
 
 <footer class="site-footer">
     <a href="./" class="back-link">AI Games に戻る</a>
