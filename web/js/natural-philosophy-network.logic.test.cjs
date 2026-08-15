@@ -212,6 +212,11 @@ assert.equal(tools.overlapsPeriod({ dateStart: null, dateEnd: null }, 1630, 1640
     assert.match(html, /id="helpButton"/);
     assert.match(html, /id="helpDialog"/);
     assert.match(html, /このネットワークの見方/);
+    assert.match(html, /class="method-card research-paper"/);
+    assert.match(html, /論文形式：データの根拠と分析方法/);
+    assert.match(html, /id="npn-paper-analysis"/);
+    assert.match(html, /10b5fceaf63f2d3f50ba8ff7887a2628d10ab18a3540bc29ad310e15e332858c/);
+    assert.match(html, /Corpus Descartes/);
 }
 
 console.log("Natural philosophy network logic and data QA tests passed.");

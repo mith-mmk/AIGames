@@ -129,6 +129,80 @@
                 <a href="./assets/natural-philosophy-network/DATA_README.md">データREADMEを開く</a>
             </div>
         </details>
+
+        <details class="method-card research-paper">
+            <summary>論文形式：データの根拠と分析方法</summary>
+            <article class="method-content paper-content" aria-labelledby="npn-paper-title">
+                <header>
+                    <p class="eyebrow">METHODOLOGICAL NOTE</p>
+                    <h2 id="npn-paper-title">デカルト／メルセンヌを種とする近世自然哲学書簡ネットワークの構築と探索的分析</h2>
+                    <p><strong>要旨</strong></p>
+                    <p>本アプリは、1600–1660年の書簡メタデータを用いて、ルネ・デカルトとマラン・メルセンヌを起点とする知識交流網を探索的に可視化する。基礎資料はEarly Modern Letters Online（EMLO）の2019年1月31日版スナップショットである。人物160人、正規化後の書簡観測2,854件、固有書簡ファミリー2,849件を収録し、書簡に加えて、史料上確認できた直接言及、明示的伝達、共通論争・テーマを別レイヤーとして扱う。重みと中心性は史料そのものではなく、利用者が関係の見え方を比較するための計算モデルである。本稿では、観測事実、データ処理、可視化上の仮定を区別して記述する。</p>
+                    <p><strong>キーワード：</strong>近世自然哲学、書簡共和国、デカルト、メルセンヌ、EMLO、歴史ネットワーク分析</p>
+                </header>
+
+                <section aria-labelledby="npn-paper-purpose">
+                    <h3 id="npn-paper-purpose">1. 研究目的</h3>
+                    <p>本アプリの目的は、人物の「歴史的重要度」を自動判定することではない。デカルトとメルセンヌの周辺で、誰が誰と書簡を交わし、どの人物が複数の集団を媒介しているように見えるかを、期間、証拠レイヤー、係数を変更しながら検討できる閲覧環境を提供することである。とくに、メルセンヌまたは任意の人物をネットワークから除いた場合の構造変化を比較し、知識伝達における媒介的位置を探索する。</p>
+                </section>
+
+                <section aria-labelledby="npn-paper-data">
+                    <h3 id="npn-paper-data">2. 資料とデータの根拠</h3>
+                    <p>書簡層の基礎資料には、オックスフォード大学が公開する <a href="https://ora.ox.ac.uk/objects/uuid:98641e69-0e46-4abf-8083-c60be61959e5">EMLO 2019年1月31日版データセット</a>を使用した。入力CSVは32,983行であり、マニフェストに入力ファイル名とSHA-256を記録している。EMLOは複数の書簡目録を横断するメタデータ集成であり、すべての書簡本文を収録した完全な校訂版ではない。</p>
+                    <p>対象期間は1600年1月1日から1660年12月31日までとし、デカルト（EMLO ID 300075）とメルセンヌ（EMLO ID 300610）を選定の種とした。現行データは人物160人、書簡観測2,854件、固有の<code>letterFamilyId</code> 2,849件を含む。書簡層に存在する人物対は288組である。</p>
+                    <p>書簡以外の追加証拠は、出典、頁または安定した位置情報、日付範囲、確度を明記した16件である。内訳は明示的伝達9件、直接言及3件、共通論争・テーマ4件、面会0件である。追加証拠が結ぶ人物対は25組で、そのうち10組は書簡層にない関係である。面会は、三角関係や同一都市への滞在から推定せず、十分な年代付き同席資料を確認できなかったため現行版には収録していない。</p>
+                    <p>追加証拠には、Adam–Tannery版デカルト書簡、フェルマー作品、エリザベト書簡、同時代または後代の叙述、関連研究を使用した。各証拠の具体的な書誌、頁、URLは人物・辺の詳細欄から確認できる。</p>
+                </section>
+
+                <section aria-labelledby="npn-paper-selection">
+                    <h3 id="npn-paper-selection">3. 人物選定、日付正規化および重複処理</h3>
+                    <p>まず、正規化した日付区間が対象期間と交差し、送信者と受信者のEMLO IDが解決している観測を抽出した。次に、各人物について、デカルトまたはメルセンヌと直接接続する固有書簡ファミリー数を数えた。種となる2人を必ず残し、残る人物を接続数の降順、EMLO優先名、EMLO IDの順に安定ソートして上位158人を選んだ。その後、選定された160人を両端とするすべての観測を戻した。このため、ホイヘンス父子のような、周辺人物同士の書簡も最終ネットワークに含まれる。</p>
+                    <p>推定日と期間日は単一の日付へ置き換えず、開始日、終了日、精度、編集上の推定か否かを保持する。期間フィルターでは、観測の日付区間が選択期間と一部でも交差すれば1件として含める。送受信者が複数記載されたEMLO行は送信者–受信者の組へ展開する。</p>
+                    <p><code>letterFamilyId</code> は、EMLOが同一書簡の別目録レコードとして関連付けたIDのうち最小の数値IDを基準にする。分析時には同じファミリーを一度だけ数え、目録上の重複による過大計数を抑える。同一ファミリー、送受信者、原日付、正規化日付、精度、日付根拠が一致する観測は決定的に統合し、元の目録レコードは出典配列に保存する。</p>
+                    <p>監査値は、期間外13,394件、送受信者未解決115件、自己対83件、人物上限による除外17,780件、同一正規化観測の統合6件である。これらは処理段階ごとの監査カウンターであり、相互排他的な母集団の内訳ではないため、単純に合計してはならない。</p>
+                </section>
+
+                <section aria-labelledby="npn-paper-analysis">
+                    <h3 id="npn-paper-analysis">4. 重み付けとネットワーク分析</h3>
+                    <p>人物 <var>i</var> と <var>j</var> のレイヤー <var>l</var> における期間内件数を <var>c</var><sub>ijl</sub>、そのレイヤー内の最大件数を <var>M</var><sub>l</sub> とする。件数の極端な偏りを抑えるため、次式で0から1へ対数正規化する。</p>
+                    <p class="formula"><var>n</var><sub>ijl</sub> = log(1 + <var>c</var><sub>ijl</sub>) / log(1 + <var>M</var><sub>l</sub>)</p>
+                    <p>総合重みは <var>W</var><sub>ij</sub> = Σ<sub>l</sub> <var>α</var><sub>l</sub><var>n</var><sub>ijl</sub> とする。既定係数は、書簡1.0、直接言及0.7、明示的伝達0.4、共通論争・テーマ0.5、面会0.3である。係数は利用者が変更できる。これは史料から発見された普遍的尺度ではなく、異なる関係の見せ方を比較するための可視化仮定である。また、追加証拠の確度は表示されるが、現行計算では確度に応じて件数を増減していない。</p>
+                    <p>書簡の送受信方向は詳細データに保持する一方、中心性計算では辺を無向化する。接続人数（次数）は直接つながる人物数、重み付き次数（strength）は人物に接続する辺の重みの総和である。媒介中心性は、ある人物が他の人物対の最短経路上に現れる割合を表す。本アプリでは強い関係ほど近いものとして、辺の距離を1 / <var>W</var><sub>ij</sub> とする。媒介中心性そのものは辺の重みへ加算しない。</p>
+                    <p>複数人物を含む明示的伝達は、史料に記録された伝達経路の隣接人物間だけを結ぶ。直接言及は記録された人物対を結ぶ。一方、複数参加者を持つ論争・テーマは、参加者の全組合せを結ぶ。この変換は史料上の直接通信を意味せず、同じ論争への参加を表示するためのモデル化である。</p>
+                    <p>人物除去分析では、現在の期間、レイヤー、係数を用いてネットワークを再計算し、連結成分数、最大成分の人数、新たに孤立する人物、残存人物間で相互到達可能な人物対の減少を比較する。初期状態の1600–1660年・全レイヤー表示では、298辺、1連結成分となる。ただしこれは現在の抽出範囲とモデルに対する計算結果であり、17世紀の社会全体が単一ネットワークだったことを証明するものではない。</p>
+                </section>
+
+                <section aria-labelledby="npn-paper-uncertainty">
+                    <h3 id="npn-paper-uncertainty">5. 表示と不確実性</h3>
+                    <p>推定日または期間日を含む関係は破線で示し、詳細欄に日付精度と出典を表示する。Canvas上で弱い辺を省略する場合でも、中心性と除去分析には期間内の全有効辺を使用する。日本語名と人物説明は閲覧補助であり、人物同定の典拠はEMLO IDと原綴りである。</p>
+                    <p>辺が存在しないことは交流がなかったことの証明ではない。目録化の状況、書簡の散逸、史料公開の偏り、人物名の解決状況によって、実際に存在した交流がデータへ現れない場合がある。</p>
+                </section>
+
+                <section aria-labelledby="npn-paper-limits">
+                    <h3 id="npn-paper-limits">6. 限界、倫理、ライセンスおよび再現性</h3>
+                    <p>人物集合はデカルト／メルセンヌとの接続頻度から選ばれているため、両者から遠いネットワーク、口頭交流、サロン、大学、宮廷、出版流通を過小評価する。また、書簡数の多さは思想的影響力、内容の独創性、社会的権威と同義ではない。人物上限160人も描画密度を制御するための技術的条件であり、歴史的重要度の順位ではない。</p>
+                    <p>EMLO由来データと派生メタデータは <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> としてアプリコードのMITライセンスから分離する。再生成には入力CSVのパスを明示的に指定する。現在の入力SHA-256は <code>10b5fceaf63f2d3f50ba8ff7887a2628d10ab18a3540bc29ad310e15e332858c</code> であり、抽出条件、件数、除外監査値はデータマニフェストに保存される。</p>
+                    <p>「デカルトに言及する333書簡」データセットとCorpus Descartesは、現行ビルドのマニフェスト上では機械的に統合されていない。そのため本版の収録根拠とはせず、今後の照合・検証資料として位置付ける。</p>
+                </section>
+
+                <section aria-labelledby="npn-paper-conclusion">
+                    <h3 id="npn-paper-conclusion">結論</h3>
+                    <p>本アプリは、EMLOに記録された書簡メタデータと、個別史料で確認した少数の追加証拠を分離して保持し、その上に変更可能な重み付けとネットワーク指標を適用する。得られる中心性や除去効果は、史料の欠落と選定バイアスを含む探索的結果である。したがって、グラフは歴史的関係の結論としてではなく、再検証すべき人物、書簡、伝達経路を発見するための索引として利用するのが適切である。</p>
+                </section>
+
+                <section aria-labelledby="npn-paper-references">
+                    <h3 id="npn-paper-references">参考資料</h3>
+                    <ol class="paper-references">
+                        <li>Cultures of Knowledge, <a href="https://ora.ox.ac.uk/objects/uuid:98641e69-0e46-4abf-8083-c60be61959e5">Early Modern Letters Online, 31 January 2019 snapshot</a>, <a href="https://doi.org/10.5287/ora-rj092721d">DOI: 10.5287/ora-rj092721d</a>.</li>
+                        <li>René Descartes, <em>Œuvres de Descartes</em>, Adam et Tannery版所収書簡。<a href="https://fr.wikisource.org/wiki/Œuvres_de_Descartes/Édition_Adam_et_Tannery/Correspondance/Lettre_XLIII">1632年5月10日書簡</a>；<a href="https://fr.wikisource.org/wiki/Œuvres_de_Descartes/Édition_Adam_et_Tannery/Correspondance/Lettre_CV">1638年2月12日書簡</a>。</li>
+                        <li>Michèle Grégoire, <a href="https://www.persee.fr/doc/rhs_0151-4105_1998_num_51_2_1329">“La correspondance entre Descartes et Fermat”</a>, <em>Revue d'histoire des sciences</em> 51, 1998.</li>
+                        <li><a href="https://fr.wikisource.org/wiki/Correspondance_avec_Élisabeth/Élisabeth_à_Descartes_-_La_Haye,_20_juin_1643">Elisabeth of the Palatinate to René Descartes, 20 June 1643</a>.</li>
+                        <li>Adrien Baillet, <a href="https://fr.wikisource.org/wiki/La_Vie_de_M._Descartes/Livre_4/Chapitre_9"><em>La Vie de M. Descartes</em>, livre IV, chapitres 9–10</a>.</li>
+                        <li>補助的照合資料：<a href="https://pure.eur.nl/en/datasets/metadata-of-333-letters-mentioning-ren%C3%A9-descartes-1629-1650/">Metadata of 333 letters mentioning René Descartes, 1629–1650</a>；<a href="https://www.unicaen.fr/puc/sources/prodescartes/presentation.html">Corpus Descartes</a>。</li>
+                    </ol>
+                </section>
+            </article>
+        </details>
     </section>
 </main>
 

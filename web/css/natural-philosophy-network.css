@@ -175,6 +175,15 @@ button:focus-visible, input:focus-visible, select:focus-visible, canvas:focus-vi
 .method-card { padding: 0; }
 .method-card summary { cursor: pointer; padding: 13px 15px; color: var(--blue-deep); font-weight: 700; }
 .method-content { padding: 0 17px 17px; color: #4d5d61; font-size: 0.76rem; }
+.research-paper summary { border-top: 2px solid var(--rust); }
+.paper-content { max-width: 1040px; font-size: 0.79rem; line-height: 1.75; }
+.paper-content header { padding-bottom: 9px; border-bottom: 1px solid var(--line); }
+.paper-content h2 { margin: 3px 0 12px; color: var(--blue-deep); font-size: 1.15rem; line-height: 1.45; }
+.paper-content h3 { margin: 22px 0 7px; padding-bottom: 4px; color: var(--blue-deep); border-bottom: 1px solid var(--line); font-size: 0.92rem; }
+.paper-content p { margin: 8px 0; }
+.paper-content .formula { margin: 12px 0; padding: 9px 12px; color: var(--ink); background: #f0ebe1; border-left: 3px solid var(--rust); font-family: Georgia, serif; font-size: 0.92rem; text-align: center; }
+.paper-references { margin: 7px 0 0; padding-left: 24px; }
+.paper-references li { margin: 6px 0; }
 .audit-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); margin: 13px 0; border: 1px solid var(--line); }
 .audit-grid div { padding: 7px; border-right: 1px solid var(--line); text-align: center; }
 .audit-grid div:last-child { border-right: 0; }
