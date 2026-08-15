@@ -20,6 +20,7 @@
             "id": "399",
             "preferredName": "Amama, Sixtinus",
             "displayNameJa": "シクスティヌス・アママ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Amama, Sixtinus"
             ],
@@ -37,6 +38,7 @@
             "id": "200139",
             "preferredName": "Andreae, Tobias",
             "displayNameJa": "トビアス・アンドレアエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Andreae, Tobias"
             ],
@@ -54,6 +56,7 @@
             "id": "905394",
             "preferredName": "Arcy, Anne d'",
             "displayNameJa": "アンヌ・ダルシー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Arcy, Anne d'"
             ],
@@ -71,6 +74,7 @@
             "id": "902763",
             "preferredName": "Arnauld, Antoine",
             "displayNameJa": "アントワーヌ・アルノー",
+            "descriptionJa": "フランスの神学者・哲学者。デカルト『省察』への異論提出者の一人。",
             "names": [
                 "Arnauld, Antoine"
             ],
@@ -88,6 +92,7 @@
             "id": "903276",
             "preferredName": "Auzout, Adrien",
             "displayNameJa": "アドリアン・オズー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Auzout, Adrien"
             ],
@@ -105,6 +110,7 @@
             "id": "906102",
             "preferredName": "Baliani, Giovanni Battista",
             "displayNameJa": "ジョヴァンニ・バッティスタ・バリアーニ",
+            "descriptionJa": "イタリアの数学者・物理学者。ガリレオ派の運動論に関わった。",
             "names": [
                 "Baliani, Giovanni Battista"
             ],
@@ -122,6 +128,7 @@
             "id": "903678",
             "preferredName": "Balzac, Jean Louis Guez",
             "displayNameJa": "ジャン＝ルイ・ゲーズ・ド・バルザック",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Balzac, Jean Louis Guez"
             ],
@@ -139,6 +146,7 @@
             "id": "903680",
             "preferredName": "Ban, Jan Albert",
             "displayNameJa": "ヤン・アルベルト・バン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Ban, Jan Albert"
             ],
@@ -156,6 +164,7 @@
             "id": "1280",
             "preferredName": "Barberini, Antonio (Cardinal)",
             "displayNameJa": "アントニオ・バルベリーニ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Barberini, Antonio (Cardinal)"
             ],
@@ -173,6 +182,7 @@
             "id": "905371",
             "preferredName": "Beaugrand, Jean",
             "displayNameJa": "ジャン・ボーグラン",
+            "descriptionJa": "フランスの数学者。17世紀フランスの数学論争に参加した。",
             "names": [
                 "Beaugrand, Jean"
             ],
@@ -190,6 +200,7 @@
             "id": "903681",
             "preferredName": "Beaune, Florimond de",
             "displayNameJa": "フロリモン・ド・ボーヌ",
+            "descriptionJa": "フランスの数学者。デカルトの幾何学をめぐる書簡交流で知られる。",
             "names": [
                 "Beaune, Florimond de"
             ],
@@ -207,6 +218,7 @@
             "id": "903506",
             "preferredName": "Beeckman, Isaac",
             "displayNameJa": "イサーク・ベークマン",
+            "descriptionJa": "オランダの自然哲学者。運動・音・機械論に関する観察記録を残した。",
             "names": [
                 "Beeckman, Isaac"
             ],
@@ -224,6 +236,7 @@
             "id": "2265",
             "preferredName": "Beverwijck, Johan van",
             "displayNameJa": "ヨハン・ファン・ベーフェルウェイク",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Beverwijck, Johan van"
             ],
@@ -241,6 +254,7 @@
             "id": "906215",
             "preferredName": "Bonneau du Verdus, François",
             "displayNameJa": "フランソワ・ボノー・デュ・ヴェルデュ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Bonneau du Verdus, François"
             ],
@@ -258,6 +272,7 @@
             "id": "906104",
             "preferredName": "Bonnel",
             "displayNameJa": "ボネル",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Bonnel"
             ],
@@ -275,6 +290,7 @@
             "id": "905278",
             "preferredName": "Bouchard, Jean-Jacques",
             "displayNameJa": "ジャン＝ジャック・ブシャール",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Bouchard, Jean-Jacques"
             ],
@@ -292,6 +308,7 @@
             "id": "900430",
             "preferredName": "Boulliau, Ismaël",
             "displayNameJa": "イスマエル・ブリオー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Boulliau, Ismaël"
             ],
@@ -309,6 +326,7 @@
             "id": "902731",
             "preferredName": "Bourdin, Pierre",
             "displayNameJa": "ピエール・ブルダン",
+            "descriptionJa": "フランスのイエズス会士・哲学者。デカルトとの論争で知られる。",
             "names": [
                 "Bourdin, Pierre"
             ],
@@ -326,6 +344,7 @@
             "id": "903683",
             "preferredName": "Brasset, Jean",
             "displayNameJa": "ジャン・ブラセ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Brasset, Jean"
             ],
@@ -343,6 +362,7 @@
             "id": "905357",
             "preferredName": "Bredeau, Claude",
             "displayNameJa": "クロード・ブルドー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Bredeau, Claude"
             ],
@@ -360,6 +380,7 @@
             "id": "906017",
             "preferredName": "Brûlart, Pierre",
             "displayNameJa": "ピエール・ブリュラール",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Brûlart, Pierre"
             ],
@@ -377,6 +398,7 @@
             "id": "906016",
             "preferredName": "Brun, Jean",
             "displayNameJa": "ジャン・ブラン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Brun, Jean"
             ],
@@ -394,6 +416,7 @@
             "id": "903299",
             "preferredName": "Bruno, Henrick",
             "displayNameJa": "ヘンリク・ブルーノ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Bruno, Henrick"
             ],
@@ -411,6 +434,7 @@
             "id": "900189",
             "preferredName": "Buxtorf, Johannes",
             "displayNameJa": "ヨハネス・ブクストルフ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Buxtorf, Johannes"
             ],
@@ -428,6 +452,7 @@
             "id": "900093",
             "preferredName": "Carcavi, Pierre de",
             "displayNameJa": "ピエール・ド・カルカヴィ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Carcavi, Pierre de"
             ],
@@ -445,6 +470,7 @@
             "id": "905975",
             "preferredName": "Cavalieri, Bonaventura",
             "displayNameJa": "ボナヴェントゥラ・カヴァリエーリ",
+            "descriptionJa": "イタリアの数学者。不可分量の方法を用いた研究で知られる。",
             "names": [
                 "Cavalieri, Bonaventura"
             ],
@@ -462,6 +488,7 @@
             "id": "300302",
             "preferredName": "Cavendish, Charles",
             "displayNameJa": "チャールズ・キャヴェンディッシュ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Cavendish, Charles"
             ],
@@ -479,6 +506,7 @@
             "id": "4454",
             "preferredName": "Cavendish, William",
             "displayNameJa": "ウィリアム・キャヴェンディッシュ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Cavendish, William"
             ],
@@ -496,6 +524,7 @@
             "id": "903316",
             "preferredName": "Chanut, Pierre-Hector",
             "displayNameJa": "ピエール＝エクトル・シャニュ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Chanut, Pierre-Hector"
             ],
@@ -513,6 +542,7 @@
             "id": "903684",
             "preferredName": "Charlet, Étienne",
             "displayNameJa": "エティエンヌ・シャルレ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Charlet, Étienne"
             ],
@@ -530,6 +560,7 @@
             "id": "905379",
             "preferredName": "Chastelier, Jean",
             "displayNameJa": "ジャン・シャトリエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Chastelier, Jean"
             ],
@@ -547,6 +578,7 @@
             "id": "4876",
             "preferredName": "Christina, Queen of Sweden",
             "displayNameJa": "クリスティナ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Christina, Queen of Sweden"
             ],
@@ -564,6 +596,7 @@
             "id": "902393",
             "preferredName": "Ciermans, Johannes",
             "displayNameJa": "ヨハネス・シールマンス",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Ciermans, Johannes"
             ],
@@ -581,6 +614,7 @@
             "id": "903685",
             "preferredName": "Clerselier, Claude",
             "displayNameJa": "クロード・クレルスリエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Clerselier, Claude"
             ],
@@ -598,6 +632,7 @@
             "id": "906188",
             "preferredName": "Columbi, Jean",
             "displayNameJa": "ジャン・コロンビ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Columbi, Jean"
             ],
@@ -615,6 +650,7 @@
             "id": "903686",
             "preferredName": "Condren, Charles de",
             "displayNameJa": "シャルル・ド・コンドラン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Condren, Charles de"
             ],
@@ -632,6 +668,7 @@
             "id": "905389",
             "preferredName": "Cornier, Robert",
             "displayNameJa": "ロベール・コルニエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Cornier, Robert"
             ],
@@ -649,6 +686,7 @@
             "id": "905980",
             "preferredName": "Cornu",
             "displayNameJa": "コルニュ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Cornu"
             ],
@@ -666,6 +704,7 @@
             "id": "906189",
             "preferredName": "Cossart, Gilles",
             "displayNameJa": "ジル・コサール",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Cossart, Gilles"
             ],
@@ -683,6 +722,7 @@
             "id": "902216",
             "preferredName": "dal Pozzo, Cassiano",
             "displayNameJa": "カッシアーノ・ダル・ポッツォ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "dal Pozzo, Cassiano"
             ],
@@ -700,6 +740,7 @@
             "id": "903688",
             "preferredName": "Dériennes, Jean",
             "displayNameJa": "ジャン・デリエンヌ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Dériennes, Jean"
             ],
@@ -717,6 +758,7 @@
             "id": "903689",
             "preferredName": "Desargues, Girard",
             "displayNameJa": "ジラール・デザルグ",
+            "descriptionJa": "フランスの数学者。射影幾何学の先駆的研究で知られる。",
             "names": [
                 "Desargues, Girard"
             ],
@@ -734,6 +776,7 @@
             "id": "903690",
             "preferredName": "Descartes, Joachim",
             "displayNameJa": "ジョアシャン・デカルト",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Descartes, Joachim"
             ],
@@ -751,6 +794,7 @@
             "id": "903691",
             "preferredName": "Descartes, Joachim",
             "displayNameJa": "ジョアシャン・デカルト",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Descartes, Joachim"
             ],
@@ -768,6 +812,7 @@
             "id": "903692",
             "preferredName": "Descartes, Pierre",
             "displayNameJa": "ピエール・デカルト",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Descartes, Pierre"
             ],
@@ -785,6 +830,7 @@
             "id": "300075",
             "preferredName": "Descartes, René",
             "displayNameJa": "ルネ・デカルト",
+            "descriptionJa": "フランスの哲学者・数学者。機械論的自然哲学と近代哲学に大きな影響を与えた。",
             "names": [
                 "Descartes, René"
             ],
@@ -804,6 +850,7 @@
             "id": "905986",
             "preferredName": "Deschamps, Théodore",
             "displayNameJa": "テオドール・デシャン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Deschamps, Théodore"
             ],
@@ -821,6 +868,7 @@
             "id": "906261",
             "preferredName": "Desnoyers, Pierre",
             "displayNameJa": "ピエール・デヌワイエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Desnoyers, Pierre"
             ],
@@ -838,6 +886,7 @@
             "id": "6711",
             "preferredName": "Digby, Kenelm (Sir)",
             "displayNameJa": "ケネルム・ディグビー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Digby, Kenelm (Sir)"
             ],
@@ -855,6 +904,7 @@
             "id": "300339",
             "preferredName": "Dilger, Reinhold",
             "displayNameJa": "ラインホルト・ディルガー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Dilger, Reinhold"
             ],
@@ -872,6 +922,7 @@
             "id": "903693",
             "preferredName": "Dinet, Jacques",
             "displayNameJa": "ジャック・ディネ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Dinet, Jacques"
             ],
@@ -889,6 +940,7 @@
             "id": "7015",
             "preferredName": "Doni, Giovanni Battista",
             "displayNameJa": "ジョヴァンニ・バッティスタ・ドーニ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Doni, Giovanni Battista"
             ],
@@ -906,6 +958,7 @@
             "id": "906218",
             "preferredName": "Durelle, Jean",
             "displayNameJa": "ジャン・デュレル",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Durelle, Jean"
             ],
@@ -923,6 +976,7 @@
             "id": "300355",
             "preferredName": "Eichstadt, Lorenz",
             "displayNameJa": "ローレンツ・アイヒシュテット",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Eichstadt, Lorenz"
             ],
@@ -940,6 +994,7 @@
             "id": "903445",
             "preferredName": "Elisabeth of the Palatinate (Princess)",
             "displayNameJa": "エリーザベト・フォン・デア・プファルツ",
+            "descriptionJa": "プファルツ選帝侯家の王女。デカルトとの書簡で心身関係を批判的に論じた。",
             "names": [
                 "Elisabeth of the Palatinate (Princess)"
             ],
@@ -957,6 +1012,7 @@
             "id": "600355",
             "preferredName": "Fabri, Honoré de",
             "displayNameJa": "オノレ・ファブリ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Fabri, Honoré de"
             ],
@@ -974,6 +1030,7 @@
             "id": "905388",
             "preferredName": "Faure",
             "displayNameJa": "フォール",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Faure"
             ],
@@ -991,6 +1048,7 @@
             "id": "600027",
             "preferredName": "Fermat, Pierre",
             "displayNameJa": "ピエール・ド・フェルマー",
+            "descriptionJa": "フランスの法律家・数学者。解析幾何学、数論、極値法への貢献で知られる。",
             "names": [
                 "Fermat, Pierre"
             ],
@@ -1008,6 +1066,7 @@
             "id": "903695",
             "preferredName": "Ferrier, Jean",
             "displayNameJa": "ジャン・フェリエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Ferrier, Jean"
             ],
@@ -1025,6 +1084,7 @@
             "id": "903696",
             "preferredName": "Flécelles, Nicolas",
             "displayNameJa": "ニコラ・ド・フレセル",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Flécelles, Nicolas"
             ],
@@ -1042,6 +1102,7 @@
             "id": "905377",
             "preferredName": "Fleury",
             "displayNameJa": "フルーリー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Fleury"
             ],
@@ -1059,6 +1120,7 @@
             "id": "903698",
             "preferredName": "Fournet, François",
             "displayNameJa": "フランソワ・フルネ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Fournet, François"
             ],
@@ -1076,6 +1138,7 @@
             "id": "906111",
             "preferredName": "François, Jean",
             "displayNameJa": "ジャン・フランソワ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "François, Jean"
             ],
@@ -1093,6 +1156,7 @@
             "id": "905359",
             "preferredName": "François, Jean René",
             "displayNameJa": "ジャン・ルネ・フランソワ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "François, Jean René"
             ],
@@ -1110,6 +1174,7 @@
             "id": "600033",
             "preferredName": "Frénicle de Bessy, Bernard",
             "displayNameJa": "ベルナール・フレニクル・ド・ベシー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Frénicle de Bessy, Bernard"
             ],
@@ -1127,6 +1192,7 @@
             "id": "5264",
             "preferredName": "Fris, Jacobus",
             "displayNameJa": "ヤコブス・フリス",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Fris, Jacobus"
             ],
@@ -1144,6 +1210,7 @@
             "id": "900171",
             "preferredName": "Froidmont, Libert",
             "displayNameJa": "リベール・フロワモン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Froidmont, Libert"
             ],
@@ -1161,6 +1228,7 @@
             "id": "902035",
             "preferredName": "Gaffarel, Jacques",
             "displayNameJa": "ジャック・ガファレル",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Gaffarel, Jacques"
             ],
@@ -1178,6 +1246,7 @@
             "id": "906065",
             "preferredName": "Gaignières, Aimé de",
             "displayNameJa": "エメ・ド・ゲニエール",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Gaignières, Aimé de"
             ],
@@ -1195,6 +1264,7 @@
             "id": "600482",
             "preferredName": "Galilei, Galileo",
             "displayNameJa": "ガリレオ・ガリレイ",
+            "descriptionJa": "イタリアの天文学者・自然哲学者。天体観測と運動論で近代科学に大きな影響を与えた。",
             "names": [
                 "Galilei, Galileo"
             ],
@@ -1212,6 +1282,7 @@
             "id": "900042",
             "preferredName": "Gassendi, Pierre",
             "displayNameJa": "ピエール・ガッサンディ",
+            "descriptionJa": "フランスの哲学者・天文学者。エピクロス的原子論の再評価で知られる。",
             "names": [
                 "Gassendi, Pierre"
             ],
@@ -1229,6 +1300,7 @@
             "id": "906248",
             "preferredName": "Gaudais",
             "displayNameJa": "ゴデ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Gaudais"
             ],
@@ -1246,6 +1318,7 @@
             "id": "906018",
             "preferredName": "Geoffroy, Jean-Baptiste",
             "displayNameJa": "ジャン＝バティスト・ジョフロワ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Geoffroy, Jean-Baptiste"
             ],
@@ -1263,6 +1336,7 @@
             "id": "903699",
             "preferredName": "Gibieuf, Guillaume",
             "displayNameJa": "ギヨーム・ジビウフ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Gibieuf, Guillaume"
             ],
@@ -1280,6 +1354,7 @@
             "id": "8954",
             "preferredName": "Gool, Jacob van",
             "displayNameJa": "ヤコブ・ファン・ホール",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Gool, Jacob van"
             ],
@@ -1297,6 +1372,7 @@
             "id": "900019",
             "preferredName": "Groot, Hugo de",
             "displayNameJa": "フーゴー・グロティウス",
+            "descriptionJa": "オランダの法学者・思想家。国際法思想と人文主義で知られる。",
             "names": [
                 "Groot, Hugo de"
             ],
@@ -1314,6 +1390,7 @@
             "id": "300095",
             "preferredName": "Haak, Theodor",
             "displayNameJa": "テオドール・ハーク",
+            "descriptionJa": "ドイツ出身の学者・翻訳者。イングランドの知識人ネットワークに参加した。",
             "names": [
                 "Haak, Theodor"
             ],
@@ -1331,6 +1408,7 @@
             "id": "903701",
             "preferredName": "Habert de Cérisy, Germain",
             "displayNameJa": "ジェルマン・アベール・ド・セリジー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Habert de Cérisy, Germain"
             ],
@@ -1348,6 +1426,7 @@
             "id": "903377",
             "preferredName": "Habert de Montmor, Henri Louis",
             "displayNameJa": "アンリ＝ルイ・アベール・ド・モンモール",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Habert de Montmor, Henri Louis"
             ],
@@ -1365,6 +1444,7 @@
             "id": "903627",
             "preferredName": "Haestrecht, Godefridus",
             "displayNameJa": "ゴドフリドゥス・ファン・ハーストレヒト",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Haestrecht, Godefridus"
             ],
@@ -1382,6 +1462,7 @@
             "id": "905370",
             "preferredName": "Hallé, Jacques",
             "displayNameJa": "ジャック・アレ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Hallé, Jacques"
             ],
@@ -1399,6 +1480,7 @@
             "id": "906251",
             "preferredName": "Hallé, Raoul de",
             "displayNameJa": "ラウル・ド・アレ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Hallé, Raoul de"
             ],
@@ -1416,6 +1498,7 @@
             "id": "300096",
             "preferredName": "Hardy, Claude",
             "displayNameJa": "クロード・アルディ",
+            "descriptionJa": "フランスの数学者。デカルトおよび同時代数学者との書簡で知られる。",
             "names": [
                 "Hardy, Claude"
             ],
@@ -1433,6 +1516,7 @@
             "id": "300446",
             "preferredName": "Hartlib, Samuel",
             "displayNameJa": "サミュエル・ハートリブ",
+            "descriptionJa": "書簡網と知識流通を支援した17世紀イングランドの知識人。",
             "names": [
                 "Hartlib, Samuel"
             ],
@@ -1450,6 +1534,7 @@
             "id": "900096",
             "preferredName": "Helmont, Jan Baptist van",
             "displayNameJa": "ヤン・バプティスト・ファン・ヘルモント",
+            "descriptionJa": "ブラバントの医師・自然哲学者。化学的医学と生命論に関する著作で知られる。",
             "names": [
                 "Helmont, Jan Baptist van"
             ],
@@ -1467,6 +1552,7 @@
             "id": "200168",
             "preferredName": "Herbert, Edward",
             "displayNameJa": "エドワード・ハーバート",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Herbert, Edward"
             ],
@@ -1484,6 +1570,7 @@
             "id": "300472",
             "preferredName": "Hevelius, Johannes",
             "displayNameJa": "ヨハネス・ヘヴェリウス",
+            "descriptionJa": "ポーランドで活動した天文学者。月面観測と精密天文観測で知られる。",
             "names": [
                 "Hevelius, Johannes"
             ],
@@ -1501,6 +1588,7 @@
             "id": "11119",
             "preferredName": "Hobbes, Thomas",
             "displayNameJa": "トマス・ホッブズ",
+            "descriptionJa": "イングランドの哲学者。物体論と政治哲学で知られる。",
             "names": [
                 "Hobbes, Thomas"
             ],
@@ -1518,6 +1606,7 @@
             "id": "903704",
             "preferredName": "Hogelande, Cornelis",
             "displayNameJa": "コルネリス・ファン・ホーヘランデ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Hogelande, Cornelis"
             ],
@@ -1535,6 +1624,7 @@
             "id": "23036",
             "preferredName": "Holstenius, Lucas",
             "displayNameJa": "ルカス・ホルステニウス",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Holstenius, Lucas"
             ],
@@ -1552,6 +1642,7 @@
             "id": "11763",
             "preferredName": "Huygens, Christiaan",
             "displayNameJa": "クリスティアーン・ホイヘンス",
+            "descriptionJa": "オランダの数学者・自然哲学者・天文学者。",
             "names": [
                 "Huygens, Christiaan"
             ],
@@ -1569,6 +1660,7 @@
             "id": "11527",
             "preferredName": "Huygens, Constantijn",
             "displayNameJa": "コンスタンティン・ホイヘンス",
+            "descriptionJa": "オランダの外交官・詩人。国際的な学術書簡交流にも関わった。",
             "names": [
                 "Huygens, Constantijn"
             ],
@@ -1586,6 +1678,7 @@
             "id": "903705",
             "preferredName": "Jumeau, André",
             "displayNameJa": "アンドレ・ジュモー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Jumeau, André"
             ],
@@ -1603,6 +1696,7 @@
             "id": "300115",
             "preferredName": "Kircher, Athanasius",
             "displayNameJa": "アタナシウス・キルヒャー",
+            "descriptionJa": "ドイツのイエズス会士・博学者。自然研究、言語、古代学にわたる著作で知られる。",
             "names": [
                 "Kircher, Athanasius"
             ],
@@ -1620,6 +1714,7 @@
             "id": "200001",
             "preferredName": "Komenský, Jan Amos",
             "displayNameJa": "ヤン・アモス・コメニウス",
+            "descriptionJa": "ボヘミア出身の教育思想家・神学者。コメニウスの名で知られる。",
             "names": [
                 "Komenský, Jan Amos"
             ],
@@ -1637,6 +1732,7 @@
             "id": "905361",
             "preferredName": "La Charlonye, Gabriel de",
             "displayNameJa": "ガブリエル・ド・ラ・シャルロニー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "La Charlonye, Gabriel de"
             ],
@@ -1654,6 +1750,7 @@
             "id": "906211",
             "preferredName": "Lacombe",
             "displayNameJa": "ラコンブ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Lacombe"
             ],
@@ -1671,6 +1768,7 @@
             "id": "903706",
             "preferredName": "Launoy, Jean de",
             "displayNameJa": "ジャン・ド・ローノワ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Launoy, Jean de"
             ],
@@ -1688,6 +1786,7 @@
             "id": "905353",
             "preferredName": "Le Loyer, Pierre",
             "displayNameJa": "ピエール・ル・ロワイエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Le Loyer, Pierre"
             ],
@@ -1705,6 +1804,7 @@
             "id": "907166",
             "preferredName": "Leiden University",
             "displayNameJa": "ライデン大学",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Leiden University"
             ],
@@ -1722,6 +1822,7 @@
             "id": "903403",
             "preferredName": "Leu de Wilhem, David le",
             "displayNameJa": "ダヴィド・ル・ド・ヴィレム",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Leu de Wilhem, David le"
             ],
@@ -1739,6 +1840,7 @@
             "id": "903412",
             "preferredName": "Maignan,  Emmanuel",
             "displayNameJa": "エマニュエル・メニャン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Maignan,  Emmanuel"
             ],
@@ -1756,6 +1858,7 @@
             "id": "906223",
             "preferredName": "Martel, Thomas de",
             "displayNameJa": "トマ・ド・マルテル",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Martel, Thomas de"
             ],
@@ -1773,6 +1876,7 @@
             "id": "906015",
             "preferredName": "Martin, James",
             "displayNameJa": "ジェームズ・マーティン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Martin, James"
             ],
@@ -1790,6 +1894,7 @@
             "id": "906216",
             "preferredName": "Masoyer, Jean-Baptiste",
             "displayNameJa": "ジャン＝バティスト・マゾワイエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Masoyer, Jean-Baptiste"
             ],
@@ -1807,6 +1912,7 @@
             "id": "906239",
             "preferredName": "Méliand, Nicolas",
             "displayNameJa": "ニコラ・メリャン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Méliand, Nicolas"
             ],
@@ -1824,6 +1930,7 @@
             "id": "300610",
             "preferredName": "Mersenne, Marin",
             "displayNameJa": "マラン・メルセンヌ",
+            "descriptionJa": "フランスのミニム会士。書簡を通じて17世紀の数学者・自然哲学者を結んだ。",
             "names": [
                 "Mersenne, Marin"
             ],
@@ -1843,6 +1950,7 @@
             "id": "906173",
             "preferredName": "Méru, de",
             "displayNameJa": "ド・メル",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Méru, de"
             ],
@@ -1860,6 +1968,7 @@
             "id": "903708",
             "preferredName": "Mesland, Denis",
             "displayNameJa": "ドニ・メラン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Mesland, Denis"
             ],
@@ -1877,6 +1986,7 @@
             "id": "903428",
             "preferredName": "Mesme, Laurent",
             "displayNameJa": "ローラン・メーム",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Mesme, Laurent"
             ],
@@ -1894,6 +2004,7 @@
             "id": "903709",
             "preferredName": "Meyssonnier, Lazare",
             "displayNameJa": "ラザール・メソニエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Meyssonnier, Lazare"
             ],
@@ -1911,6 +2022,7 @@
             "id": "300645",
             "preferredName": "Mochinger, Johann",
             "displayNameJa": "ヨハン・モヒンガー",
+            "descriptionJa": "ドイツのルター派神学者・教育者。学術書簡の発信者として記録される。",
             "names": [
                 "Mochinger, Johann"
             ],
@@ -1928,6 +2040,7 @@
             "id": "907652",
             "preferredName": "More, Alexander",
             "displayNameJa": "アレクサンダー・モア",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "More, Alexander"
             ],
@@ -1945,6 +2058,7 @@
             "id": "14890",
             "preferredName": "More, Henry (Dr)",
             "displayNameJa": "ヘンリー・モア",
+            "descriptionJa": "イングランドの哲学者・神学者。ケンブリッジ・プラトン学派の一員。",
             "names": [
                 "More, Henry (Dr)"
             ],
@@ -1962,6 +2076,7 @@
             "id": "902522",
             "preferredName": "Morin, Jean",
             "displayNameJa": "ジャン・モラン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Morin, Jean"
             ],
@@ -1979,6 +2094,7 @@
             "id": "903710",
             "preferredName": "Morin, Jean-Baptiste",
             "displayNameJa": "ジャン＝バティスト・モラン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Morin, Jean-Baptiste"
             ],
@@ -1996,6 +2112,7 @@
             "id": "906178",
             "preferredName": "Mousnier, Pierre",
             "displayNameJa": "ピエール・ムニエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Mousnier, Pierre"
             ],
@@ -2013,6 +2130,7 @@
             "id": "906272",
             "preferredName": "Muñoz de Espinosa, Tomás",
             "displayNameJa": "トマス・ムニョス・デ・エスピノサ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Muñoz de Espinosa, Tomás"
             ],
@@ -2030,6 +2148,7 @@
             "id": "900356",
             "preferredName": "Mydorge, Claude",
             "displayNameJa": "クロード・ミドルジュ",
+            "descriptionJa": "フランスの数学者。光学と幾何学の研究で知られる。",
             "names": [
                 "Mydorge, Claude"
             ],
@@ -2047,6 +2166,7 @@
             "id": "902531",
             "preferredName": "Nicéron, Jean François",
             "displayNameJa": "ジャン＝フランソワ・ニセロン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Nicéron, Jean François"
             ],
@@ -2064,6 +2184,7 @@
             "id": "905384",
             "preferredName": "Nouë, François de la",
             "displayNameJa": "フランソワ・ド・ラ・ヌエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Nouë, François de la"
             ],
@@ -2081,6 +2202,7 @@
             "id": "906213",
             "preferredName": "Parran, Antoine",
             "displayNameJa": "アントワーヌ・パラン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Parran, Antoine"
             ],
@@ -2098,6 +2220,7 @@
             "id": "901892",
             "preferredName": "Pecquet, Jean",
             "displayNameJa": "ジャン・ペケ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Pecquet, Jean"
             ],
@@ -2115,6 +2238,7 @@
             "id": "16232",
             "preferredName": "Peiresc, Nicolas-Claude Fabri de",
             "displayNameJa": "ニコラ＝クロード・ファブリ・ド・ペイレスク",
+            "descriptionJa": "フランスの学者・収集家。広範な書簡網を通じて学術情報を集めた。",
             "names": [
                 "Peiresc, Nicolas-Claude Fabri de"
             ],
@@ -2132,6 +2256,7 @@
             "id": "300521",
             "preferredName": "Pell, John",
             "displayNameJa": "ジョン・ペル",
+            "descriptionJa": "イングランドの数学者。代数学と教育活動で知られる。",
             "names": [
                 "Pell, John"
             ],
@@ -2149,6 +2274,7 @@
             "id": "906271",
             "preferredName": "Périer, Pierre",
             "displayNameJa": "ピエール・ペリエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Périer, Pierre"
             ],
@@ -2166,6 +2292,7 @@
             "id": "906256",
             "preferredName": "Philippeau, Jean",
             "displayNameJa": "ジャン・フィリポー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Philippeau, Jean"
             ],
@@ -2183,6 +2310,7 @@
             "id": "903713",
             "preferredName": "Picot, Claude (Abbé)",
             "displayNameJa": "クロード・ピコ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Picot, Claude (Abbé)"
             ],
@@ -2200,6 +2328,7 @@
             "id": "16609",
             "preferredName": "Plempius, Vopiscus Fortunatus",
             "displayNameJa": "フォピスクス・フォルトゥナトゥス・プレムピウス",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Plempius, Vopiscus Fortunatus"
             ],
@@ -2217,6 +2346,7 @@
             "id": "903714",
             "preferredName": "Pollot, Alphonse de",
             "displayNameJa": "アルフォンス・ド・ポロ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Pollot, Alphonse de"
             ],
@@ -2234,6 +2364,7 @@
             "id": "906214",
             "preferredName": "Pujos, Jacques",
             "displayNameJa": "ジャック・ピュジョ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Pujos, Jacques"
             ],
@@ -2251,6 +2382,7 @@
             "id": "905364",
             "preferredName": "Refuge, Henri de",
             "displayNameJa": "アンリ・ド・レフュージュ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Refuge, Henri de"
             ],
@@ -2268,6 +2400,7 @@
             "id": "903715",
             "preferredName": "Regius, Henricus",
             "displayNameJa": "ヘンリクス・レギウス",
+            "descriptionJa": "オランダの医師・哲学者。ユトレヒトでデカルト哲学を教授した。",
             "names": [
                 "Regius, Henricus"
             ],
@@ -2285,6 +2418,7 @@
             "id": "903716",
             "preferredName": "Reneri, Henricus",
             "displayNameJa": "ヘンリクス・レネリ",
+            "descriptionJa": "オランダで活動した哲学者・数学者。デカルトの知人・協力者として知られる。",
             "names": [
                 "Reneri, Henricus"
             ],
@@ -2302,6 +2436,7 @@
             "id": "905372",
             "preferredName": "Rey, Jean",
             "displayNameJa": "ジャン・レイ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Rey, Jean"
             ],
@@ -2319,6 +2454,7 @@
             "id": "903461",
             "preferredName": "Ricci, Michael Angelo",
             "displayNameJa": "ミケランジェロ・リッチ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Ricci, Michael Angelo"
             ],
@@ -2336,6 +2472,7 @@
             "id": "906182",
             "preferredName": "Richard, Claude",
             "displayNameJa": "クロード・リシャール",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Richard, Claude"
             ],
@@ -2353,6 +2490,7 @@
             "id": "17572",
             "preferredName": "Rivet, André",
             "displayNameJa": "アンドレ・リヴェ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Rivet, André"
             ],
@@ -2370,6 +2508,7 @@
             "id": "903462",
             "preferredName": "Roberval, Gilles Personne de",
             "displayNameJa": "ジル・ペルソヌ・ド・ロベルヴァル",
+            "descriptionJa": "フランスの数学者。幾何学と力学の研究で知られる。",
             "names": [
                 "Roberval, Gilles Personne de"
             ],
@@ -2387,6 +2526,7 @@
             "id": "906229",
             "preferredName": "Romoles, J.",
             "displayNameJa": "ロモレス",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Romoles, J."
             ],
@@ -2404,6 +2544,7 @@
             "id": "300718",
             "preferredName": "Ruar, Martin",
             "displayNameJa": "マルティン・ルアール",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Ruar, Martin"
             ],
@@ -2421,6 +2562,7 @@
             "id": "902568",
             "preferredName": "Saint-Vincent, Grégoire de",
             "displayNameJa": "グレゴワール・ド・サン＝ヴァンサン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Saint-Vincent, Grégoire de"
             ],
@@ -2438,6 +2580,7 @@
             "id": "18043",
             "preferredName": "Saumaise, Claude de",
             "displayNameJa": "クロード・ド・ソメーズ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Saumaise, Claude de"
             ],
@@ -2455,6 +2598,7 @@
             "id": "600017",
             "preferredName": "Schooten, Frans van",
             "displayNameJa": "フランス・ファン・スホーテン",
+            "descriptionJa": "オランダの数学者。デカルト『幾何学』の編集・普及に関わった。",
             "names": [
                 "Schooten, Frans van"
             ],
@@ -2472,6 +2616,7 @@
             "id": "913654",
             "preferredName": "Sophia, Electress of Hanover",
             "displayNameJa": "ゾフィー・フォン・ハノーファー",
+            "descriptionJa": "ハノーファー選帝侯妃。近世ヨーロッパの王侯・知識人書簡網に属した。",
             "names": [
                 "Sophia, Electress of Hanover"
             ],
@@ -2489,6 +2634,7 @@
             "id": "13180",
             "preferredName": "Sorbière, Samuel",
             "displayNameJa": "サミュエル・ソルビエール",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Sorbière, Samuel"
             ],
@@ -2506,6 +2652,7 @@
             "id": "906185",
             "preferredName": "Tenneur, Jacques-Alexandre le",
             "displayNameJa": "ジャック＝アレクサンドル・ル・トヌール",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Tenneur, Jacques-Alexandre le"
             ],
@@ -2523,6 +2670,7 @@
             "id": "906186",
             "preferredName": "Thibaut, Gabriel",
             "displayNameJa": "ガブリエル・ティボー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Thibaut, Gabriel"
             ],
@@ -2540,6 +2688,7 @@
             "id": "905373",
             "preferredName": "Titelouze, Jean",
             "displayNameJa": "ジャン・ティトルーズ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Titelouze, Jean"
             ],
@@ -2557,6 +2706,7 @@
             "id": "901899",
             "preferredName": "Torricelli, Evangelista",
             "displayNameJa": "エヴァンジェリスタ・トリチェリ",
+            "descriptionJa": "イタリアの数学者・物理学者。気圧と流体に関する研究で知られる。",
             "names": [
                 "Torricelli, Evangelista"
             ],
@@ -2574,6 +2724,7 @@
             "id": "903934",
             "preferredName": "Unknown",
             "displayNameJa": "不明",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Unknown"
             ],
@@ -2591,6 +2742,7 @@
             "id": "6854",
             "preferredName": "Unknown male",
             "displayNameJa": "氏名不詳の男性",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Unknown male"
             ],
@@ -2608,6 +2760,7 @@
             "id": "905369",
             "preferredName": "Valois, Jacques de",
             "displayNameJa": "ジャック・ド・ヴァロワ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Valois, Jacques de"
             ],
@@ -2625,6 +2778,7 @@
             "id": "905996",
             "preferredName": "Valois, Louis-Emmanuel de",
             "displayNameJa": "ルイ＝エマニュエル・ド・ヴァロワ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Valois, Louis-Emmanuel de"
             ],
@@ -2642,6 +2796,7 @@
             "id": "300655",
             "preferredName": "Vatier, Antoine",
             "displayNameJa": "アントワーヌ・ヴァティエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Vatier, Antoine"
             ],
@@ -2659,6 +2814,7 @@
             "id": "300792",
             "preferredName": "Vegelin van Claerbergen, Philip Ernst",
             "displayNameJa": "フィリップ・エルンスト・フェーへリン・ファン・クラールベルヘン",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Vegelin van Claerbergen, Philip Ernst"
             ],
@@ -2676,6 +2832,7 @@
             "id": "903723",
             "preferredName": "Villebressieu, Étienne de",
             "displayNameJa": "エティエンヌ・ド・ヴィルブルシュー",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Villebressieu, Étienne de"
             ],
@@ -2693,6 +2850,7 @@
             "id": "905391",
             "preferredName": "Villiers, Christophe de",
             "displayNameJa": "クリストフ・ド・ヴィリエ",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Villiers, Christophe de"
             ],
@@ -2710,6 +2868,7 @@
             "id": "21225",
             "preferredName": "Voet, Gijsbert",
             "displayNameJa": "ギスベルト・フート",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Voet, Gijsbert"
             ],
@@ -2727,6 +2886,7 @@
             "id": "903719",
             "preferredName": "Zurck, Anthonis Studler van",
             "displayNameJa": "アントニス・ストゥドレル・ファン・ズュルク",
+            "descriptionJa": "EMLO収録の17世紀書簡関係者。詳細な役割はこのスナップショットでは未確認。",
             "names": [
                 "Zurck, Anthonis Studler van"
             ],
@@ -62798,7 +62958,7 @@
     "evidenceEvents": [],
     "topics": [],
     "audit": {
-        "generatedAt": "2026-08-14T13:37:38.992Z",
+        "generatedAt": "2026-08-14T22:47:34.138Z",
         "extraction": {
             "sourceRows": 32983,
             "dateWindow": {

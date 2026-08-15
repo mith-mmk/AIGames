@@ -69,8 +69,8 @@ catalogue alternatives twice.
 ```text
 NaturalPhilosophyNetworkData = {
   manifest,
-  people: [{ id, preferredName, displayNameJa, names, birthYear, deathYear, roles,
-             authorityUrls, selectionReason }],
+  people: [{ id, preferredName, displayNameJa, descriptionJa, names, birthYear,
+             deathYear, roles, authorityUrls, selectionReason }],
   letters: [{ id, letterFamilyId, senderId, recipientId, dateOriginal,
               dateStart, dateEnd, datePrecision, dateBasis, sourceRecords }],
   evidenceEvents: [{ id, type, participants, dateStart, dateEnd, confidence,
@@ -88,6 +88,9 @@ range date with a single asserted day.
 `displayNameJa` is a stable-ID keyed Japanese display aid for the selected
 people. It is not an authority record and does not replace `preferredName`,
 which remains the EMLO-derived authoritative display name and identity label.
+`descriptionJa` is a concise orientation aid. It is not a substitute for a
+biographical source; when the snapshot does not establish a person's role,
+the description says so explicitly rather than inferring one from graph shape.
 
 ## Evidence boundary
 

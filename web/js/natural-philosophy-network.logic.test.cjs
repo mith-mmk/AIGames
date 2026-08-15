@@ -150,6 +150,7 @@ assert.equal(tools.overlapsPeriod({ dateStart: null, dateEnd: null }, 1630, 1640
     assert.ok(data.people.some((person) => person.id === "300075"));
     assert.ok(data.people.some((person) => person.id === "300610"));
     assert.ok(data.people.every((person) => typeof person.displayNameJa === "string" && person.displayNameJa.trim()));
+    assert.ok(data.people.every((person) => typeof person.descriptionJa === "string" && person.descriptionJa.trim()));
     assert.equal(data.people.find((person) => person.id === "300075").displayNameJa, "ルネ・デカルト");
     assert.equal(data.people.find((person) => person.id === "300610").displayNameJa, "マラン・メルセンヌ");
     assert.equal(data.people.find((person) => person.id === "11763").displayNameJa, "クリスティアーン・ホイヘンス");

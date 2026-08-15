@@ -297,6 +297,7 @@
             this.elements.detailPanel.innerHTML = `
                 <div class="person-title"><h3>${escapeHtml(person.displayNameJa || person.preferredName)}</h3><span>${escapeHtml(years)}</span></div>
                 <p class="latin-name">${escapeHtml(person.preferredName)}</p>
+                ${person.descriptionJa ? `<p class="person-description">${escapeHtml(person.descriptionJa)}</p>` : ""}
                 <p>${escapeHtml((person.roles || []).join(" / ") || "役割情報なし")}</p>
                 <dl class="metric-table">
                     <div><dt>媒介中心性</dt><dd>${formatNumber(metric.betweenness * 100, 2)}</dd></div>

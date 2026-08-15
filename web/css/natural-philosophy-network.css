@@ -142,6 +142,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, canvas:focus-vi
 .person-title h3 { margin-bottom: 2px; font-size: 1.15rem; }
 .person-title span, .latin-name, .selection-note { color: var(--muted); font-size: 0.72rem; }
 .latin-name { margin-bottom: 12px; font-family: Georgia, serif; font-style: italic; }
+.person-description { margin: 11px 0 8px; padding: 10px 12px; color: var(--ink); background: #f0ebe1; border-left: 3px solid var(--blue); font-size: 0.82rem; }
 .source-links { font-size: 0.74rem; }
 .metric-table { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 12px 0; border: 1px solid var(--line); }
 .metric-table div { padding: 8px 10px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
