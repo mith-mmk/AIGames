@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漢文エディタ＋漢文チューリングマシン | AI Games</title>
+    <link rel="stylesheet" href="./css/kanbun-turing.css">
+</head>
+<body>
+<main class="app-shell">
+    <header class="site-header"><p class="eyebrow">AI GAMES / CLASSICAL CHINESE LAB</p><h1>漢文エディタ＋漢文チューリングマシン</h1></header>
+    <section class="panel"><h2>01 漢文エディタ</h2><textarea id="kanbun-input" aria-label="訓点付き漢文を入力" spellcheck="false" placeholder="例: 見［レ］る人を。"></textarea><label>教材 <select id="kanbun-sample"><option>読み込み中…</option></select></label><p id="kanbun-sample-status" class="hint">返点は対象字の直後に［レ］・［上］・［中］・［下］、数点は１・２・３、置き字は［置］で入力します。</p><p id="kanbun-school-notation" class="school-notation" hidden></p><p id="kanbun-repeated" class="repeated-check">再読文字: なし</p><div id="kanbun-preview" class="kunten-preview" aria-label="訓点表示プレビュー"></div></section>
+    <section class="panel machine"><h2>02 チューリングマシン</h2><div id="kanbun-tape" class="tape" aria-label="変換テープ"></div><dl><div><dt>状態</dt><dd id="kanbun-state">empty</dd></div><div><dt>規則</dt><dd id="kanbun-rule">待機</dd></div></dl><progress id="kanbun-progress" max="100" value="0" aria-label="変換進捗"></progress><div class="controls"><button id="kanbun-start" type="button">開始</button><button id="kanbun-pause" type="button">一時停止／再開</button><button id="kanbun-step" type="button">1ステップ</button><button id="kanbun-reset" type="button">最初から</button><label>速度 <input id="kanbun-speed" type="range" min="80" max="800" value="220" step="20"><output id="kanbun-speed-value">220ms</output></label></div><p id="kanbun-message" aria-live="polite">入力してください。</p></section>
+    <section class="panel"><h2>03 書き下し文</h2><output id="kanbun-output" class="kundoku-output">（書き下し文はここに表示されます）</output><p id="kanbun-match"></p></section>
+    <p><a href="./">AI Games に戻る</a></p>
+</main>
+<script src="./js/kanbun-turing.js"></script>
+</body>
+</html>
