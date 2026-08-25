@@ -7,11 +7,14 @@ vm.runInContext(fs.readFileSync("web/js/kanbun-turing.js", "utf8"), context);
 const Core = context.globalThis.KanbunMachineCore;
 const catalog = JSON.parse(fs.readFileSync("web/assets/kanbun-turing/samples.json", "utf8"));
 const schema = JSON.parse(fs.readFileSync("web/assets/kanbun-turing/samples.schema.json", "utf8"));
+const styles = fs.readFileSync("web/css/kanbun-turing.css", "utf8");
 const allowedRules = new Set(schema.properties.samples.items.properties.rules.items.enum);
 
 assert.equal(catalog.schemaVersion, "1.0.0");
 assert.equal(catalog.samples.length >= 15, true);
 assert.equal(new Set(catalog.samples.map((sample) => sample.id)).size, catalog.samples.length);
+assert.match(styles, /\.kunten-column\s*\{[^}]*flex-flow:\s*column wrap;[^}]*direction:\s*rtl;/u);
+assert.match(styles, /\.kunten-token\s*\{[^}]*direction:\s*ltr;/u);
 for (const sample of catalog.samples) {
     for (const key of schema.properties.samples.items.required) assert.equal(key === "rules" ? Array.isArray(sample[key]) : typeof sample[key] === "string", true, `${sample.id}: ${key}`);
     assert.equal(sample.rules.every((rule) => allowedRules.has(rule)), true);
@@ -55,6 +58,19 @@ assert.equal(Core.convert(xiangyu.editorNotation).split("\n").length, 3);
 const onkoChishin = catalog.samples.find((sample) => sample.id === "onko-chishin");
 assert.equal((onkoChishin.editorNotation.match(/［置］/gu) || []).length, 3);
 assert.equal(Core.convert(onkoChishin.editorNotation), onkoChishin.expectedKundoku);
+const automaton = new Core();
+assert.equal(automaton.start("見［レ］る人を。"), true);
+assert.deepEqual(Array.from(automaton.getSnapshot().tape), ["見る", "人を", "。"]);
+assert.equal(automaton.getSnapshot().state, "scan");
+assert.equal(automaton.getSnapshot().output, "");
+automaton.step();
+assert.deepEqual(Array.from(automaton.getSnapshot().tape), ["人を", "見る", "。"]);
+assert.equal(automaton.getSnapshot().output, "");
+while (automaton.getSnapshot().phase === "scan") automaton.step();
+assert.equal(automaton.getSnapshot().state, "emit");
+assert.equal(automaton.getSnapshot().progress, 50);
+while (automaton.step()) { /* finish */ }
+assert.equal(automaton.getSnapshot().output, "人を見る。");
 const machine = new Core();
 assert.equal(machine.start("甲乙。"), false);
 assert.equal(machine.getSnapshot().status, "white");
