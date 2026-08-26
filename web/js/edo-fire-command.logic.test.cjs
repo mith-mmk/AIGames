@@ -6,9 +6,12 @@ const context = { console, globalThis: {} };
 vm.createContext(context);
 vm.runInContext(fs.readFileSync("web/js/edo-fire-command-data.js", "utf8"), context);
 vm.runInContext(fs.readFileSync("web/js/edo-fire-command-core.js", "utf8"), context);
+vm.runInContext(fs.readFileSync("web/js/edo-fire-command-renderer.js", "utf8"), context);
+vm.runInContext(fs.readFileSync("web/js/edo-fire-command-app.js", "utf8"), context);
 
 const api = context.globalThis.EdoFireCommand;
 const { EdoFireCore, FireBoard, ProgressStore, SeededRandom } = api;
+const { EdoFireGame } = context.globalThis;
 
 function plain(value) {
     return JSON.parse(JSON.stringify(value));
@@ -66,9 +69,108 @@ assert.equal(api.WIDTH, 12);
 assert.equal(api.HEIGHT, 9);
 assert.equal(api.SCENARIOS.length, 5);
 assert.deepEqual(plain(api.SCENARIOS[0].squads.map((squad) => squad.type)), ["water", "ladder", "tobi"]);
+assert.equal(new EdoFireCore().getSnapshot().pendingIgnitions, 0);
+assert.equal(new EdoFireCore().getSnapshot().nextIgnitionTurn, null);
 for (const scenario of api.SCENARIOS) {
     assert.equal(scenario.map.length, 9);
     assert.equal(scenario.map.every((row) => row.length === 12), true);
+}
+
+{
+    let selectedSquadId = null;
+    let queuedAction = null;
+    const fakeGame = {
+        core: {
+            status: "running",
+            squads: [
+                { id: "water-1", type: "water", x: 2, y: 3 },
+                { id: "ladder-1", type: "ladder", x: 7, y: 5 },
+            ],
+            queueAction(id, action, x, y) {
+                queuedAction = { id, action, x, y };
+                return { ok: true };
+            },
+        },
+        selectedSquadId: "water-1",
+        commandMode: "extinguish",
+        cursor: { x: 0, y: 0 },
+        selectSquad(id) {
+            selectedSquadId = id;
+            this.selectedSquadId = id;
+            this.commandMode = "move";
+        },
+        sync() {},
+    };
+    EdoFireGame.prototype.handleTile.call(fakeGame, 7, 5);
+    assert.equal(selectedSquadId, "ladder-1", "another squad remains selectable while an action command is active");
+    assert.equal(queuedAction, null, "selecting another squad never targets it with the active command");
+
+    selectedSquadId = null;
+    fakeGame.selectedSquadId = "water-1";
+    fakeGame.commandMode = "refill";
+    EdoFireGame.prototype.handleTile.call(fakeGame, 2, 3);
+    assert.equal(selectedSquadId, null, "the selected squad tile remains available as an action target");
+    assert.deepEqual(queuedAction, { id: "water-1", action: "refill", x: 2, y: 3 });
+}
+
+{
+    let synced = 0;
+    const fakeGame = {
+        commandMode: "move",
+        floatingOrdersOpen: true,
+        sync() { synced += 1; },
+    };
+    EdoFireGame.prototype.setCommandMode.call(fakeGame, "extinguish");
+    assert.equal(fakeGame.commandMode, "extinguish");
+    assert.equal(fakeGame.floatingOrdersOpen, false, "choosing a command immediately uncovers its target tiles");
+    assert.equal(synced, 1);
+
+    fakeGame.core = {
+        status: "running",
+        squads: [],
+        queueMove() { return { ok: true }; },
+    };
+    fakeGame.selectedSquadId = "water-1";
+    fakeGame.commandMode = "move";
+    fakeGame.cursor = { x: 0, y: 0 };
+    EdoFireGame.prototype.handleTile.call(fakeGame, 4, 5);
+    assert.equal(fakeGame.floatingOrdersOpen, true, "the toolbar returns beside the planned destination for the unit action");
+}
+
+{
+    const floating = {
+        hidden: true,
+        style: {},
+        dataset: {},
+        setAttribute(name, value) { this[name] = value; },
+    };
+    const fakeGame = {
+        floatingOrdersOpen: true,
+        elements: {
+            floatingOrders: floating,
+            startOverlay: { hidden: true },
+            resultOverlay: { hidden: true },
+        },
+    };
+    const squad = { id: "water-1", type: "water", x: 3, y: 4 };
+    EdoFireGame.prototype.renderFloatingOrders.call(fakeGame, { status: "running", orders: {} }, squad, api.SQUAD_TYPES.water);
+    assert.equal(floating.hidden, false);
+    assert.equal(floating.dataset.role, "water");
+    assert.equal(floating.dataset.side, "right");
+    assert.equal(floating.dataset.edge, "center");
+    assert.equal(floating["aria-label"], "水組への指図");
+
+    fakeGame.floatingOrdersOpen = false;
+    EdoFireGame.prototype.renderFloatingOrders.call(fakeGame, { status: "running", orders: {} }, squad, api.SQUAD_TYPES.water);
+    assert.equal(floating.hidden, true, "the toolbar yields the board while choosing a command target");
+    fakeGame.floatingOrdersOpen = true;
+
+    EdoFireGame.prototype.renderFloatingOrders.call(fakeGame, {
+        status: "running",
+        orders: { "water-1": { move: { x: 10, y: 8 } } },
+    }, squad, api.SQUAD_TYPES.water);
+    assert.equal(floating.dataset.side, "left", "the toolbar flips before reaching the right edge");
+    assert.equal(floating.dataset.edge, "bottom", "the toolbar stays inside the lower edge");
 }
 
 {
@@ -150,6 +252,7 @@ for (const scenario of api.SCENARIOS) {
     assert.equal(game.random.state, randomState, "forecast does not consume live random state");
     game.endTurn();
     assert.equal(game.wind, "S");
+    assert.deepEqual(forecast[0].events, [{ type: "wind", wind: "S" }]);
     const predicted = forecast[0].danger.sort((a, b) => a.y - b.y || a.x - b.x);
     const actual = plain(game.board.tiles
         .filter((tile) => tile.heat > 0 || tile.destroyed)
@@ -161,10 +264,25 @@ for (const scenario of api.SCENARIOS) {
 {
     const game = new EdoFireCore({ scenarios: [createTestScenario({ fires: [], civilians: [], events: [{ turn: 2, type: "ignite", x: 3, y: 4 }] })] });
     game.startScenario("test");
+    assert.equal(game.getSnapshot().pendingIgnitions, 1);
+    assert.equal(game.getSnapshot().nextIgnitionTurn, 2);
     game.endTurn();
     assert.equal(game.status, "running", "pending ignition prevents an early win");
+    assert.match(game.lastMessage, /第2刻に飛び火予報/);
     game.endTurn();
     assert.equal(game.board.get(3, 4).heat, 3);
+    assert.equal(game.getSnapshot().pendingIgnitions, 0);
+    assert.equal(game.getSnapshot().nextIgnitionTurn, null);
+}
+
+{
+    const game = new EdoFireCore();
+    game.startScenario("warehouse-embers");
+    const forecast = plain(game.getForecast(2));
+    assert.equal(game.getSnapshot().pendingIgnitions, 2);
+    assert.equal(forecast[0].turn, 1);
+    assert.deepEqual(forecast[0].events, [{ type: "ignite", wind: null }]);
+    assert.deepEqual(forecast[1].events, [{ type: "ignite", wind: null }], "stage four announces both flying embers inside the initial forecast");
 }
 
 {
@@ -287,6 +405,14 @@ function issueGreedyOrders(game) {
     }
 }
 
+const balanceExpectations = {
+    1: { minTurn: 3, maxTurn: 4, minScore: 85, maxScore: 100, rank: "gold" },
+    2: { minTurn: 5, maxTurn: 7, minScore: 85, maxScore: 94, rank: "gold" },
+    3: { minTurn: 4, maxTurn: 6, minScore: 65, maxScore: 84, rank: "silver" },
+    4: { minTurn: 5, maxTurn: 7, minScore: 85, maxScore: 94, rank: "gold" },
+    5: { minTurn: 8, maxTurn: 11, minScore: 65, maxScore: 84, rank: "silver" },
+};
+
 for (const scenario of api.SCENARIOS) {
     const game = new EdoFireCore();
     game.startScenario(scenario.id);
@@ -295,8 +421,10 @@ for (const scenario of api.SCENARIOS) {
         game.endTurn();
     }
     assert.equal(game.status, "won", `${scenario.title} should be clearable by the deterministic command policy: ${game.result.reason}`);
-    assert.ok(["gold", "silver", "bronze"].includes(game.result.rank));
-    if (scenario.number === 1) assert.equal(game.result.rank, "gold");
+    const expected = balanceExpectations[scenario.number];
+    assert.ok(game.turn >= expected.minTurn && game.turn <= expected.maxTurn, `${scenario.title} clear turn stays in its balance window`);
+    assert.ok(game.result.score >= expected.minScore && game.result.score <= expected.maxScore, `${scenario.title} score stays in its balance window`);
+    assert.equal(game.result.rank, expected.rank, `${scenario.title} fixed-policy rank remains intentional`);
 }
 
 console.log("江戸火消し指図 logic tests passed");

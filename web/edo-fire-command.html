@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>江戸火消し指図 | AI Games</title>
-    <link rel="stylesheet" href="./css/edo-fire-command.css">
+    <link rel="stylesheet" href="./css/edo-fire-command.css?v=20260827-2">
 </head>
 <body class="edo-page">
+<div class="edo-ambience" aria-hidden="true"><i></i><i></i><i></i></div>
 <main class="edo-shell">
     <header class="edo-header">
-        <div>
+        <div class="title-lockup">
             <p class="eyebrow">AI GAMES / 火の見櫓</p>
             <h1>江戸火消し指図</h1>
-            <p>風を読み、人を救い、町を断って火を鎮める。</p>
+            <p><span>夜廻り指図所</span>風を読み、人を救い、町を断って火を鎮める。</p>
         </div>
         <div class="seal" aria-hidden="true">火<br>消</div>
     </header>
@@ -21,12 +22,29 @@
         <section class="map-panel">
             <div class="map-frame">
                 <canvas id="edo-fire-canvas" width="960" height="720" aria-label="火災現場の12列9行の地図"></canvas>
+                <div id="edo-floating-orders" class="floating-orders" data-role="water" data-side="right" data-edge="center" aria-label="選択中の組への指図" hidden>
+                    <button type="button" data-edo-action="move" aria-label="移動を指図"><b>移</b><span>移動</span></button>
+                    <button type="button" data-edo-action="extinguish" aria-label="消火を指図"><b>消</b><span>消火</span></button>
+                    <button type="button" data-edo-action="refill" aria-label="補給を指図"><b>汲</b><span>補給</span></button>
+                    <button type="button" data-edo-action="rescue" aria-label="救助を指図"><b>救</b><span>救助</span></button>
+                    <button type="button" data-edo-action="demolish" aria-label="破壊消防を指図"><b>壊</b><span>破壊</span></button>
+                </div>
+                <div class="map-legend" aria-hidden="true">
+                    <span class="legend-burning"><i></i>炎上</span>
+                    <span class="legend-forecast"><i></i>二手予報</span>
+                    <span class="legend-reachable"><i></i>移動可能</span>
+                </div>
 
                 <section id="edo-start-overlay" class="edo-overlay start-overlay">
                     <div class="overlay-card">
-                        <p class="eyebrow">今宵の持ち場</p>
+                        <p class="eyebrow">火の見櫓より報せ</p>
                         <h2>桶町の小火</h2>
                         <p data-scenario-description>水組を火元へ走らせ、町家を守れ。</p>
+                        <div class="role-strip" aria-label="出場する三組">
+                            <span class="role-water"><b>水</b>消火</span>
+                            <span class="role-ladder"><b>梯</b>救助</span>
+                            <span class="role-tobi"><b>鳶</b>破壊</span>
+                        </div>
                         <label class="scenario-picker">
                             シナリオ
                             <select id="edo-scenario-select" aria-label="開始する夜"></select>
@@ -39,6 +57,7 @@
                 <section id="edo-result-overlay" class="edo-overlay" hidden>
                     <div class="overlay-card result-card">
                         <p id="edo-result-kicker" class="eyebrow">鎮火完了</p>
+                        <div id="edo-result-medallion" class="result-medallion" aria-hidden="true">金</div>
                         <h2 id="edo-result-title">金評価</h2>
                         <p id="edo-result-text">夜明け前に町を守り切った。</p>
                         <strong id="edo-result-score" class="result-score">100 点</strong>
@@ -64,12 +83,12 @@
             </section>
 
             <section class="metric-grid" aria-label="現場状況">
-                <article><span>刻限</span><strong id="edo-turn">0 / 8</strong></article>
-                <article><span>風</span><strong id="edo-wind">西風 →</strong></article>
-                <article><span>火勢</span><strong id="edo-fire-count">0</strong></article>
-                <article><span>残る住民</span><strong id="edo-civilians">0</strong></article>
-                <article><span>犠牲</span><strong id="edo-casualties">0 / 0</strong></article>
-                <article><span>破壊札</span><strong id="edo-demolitions">0 枚</strong></article>
+                <article class="metric-turn"><span>刻限</span><strong id="edo-turn">0 / 8</strong></article>
+                <article class="metric-wind"><span>風</span><strong id="edo-wind">西風 →</strong></article>
+                <article class="metric-fire"><span>火勢</span><strong id="edo-fire-count">0</strong></article>
+                <article class="metric-people"><span>残る住民</span><strong id="edo-civilians">0</strong></article>
+                <article class="metric-loss"><span>犠牲</span><strong id="edo-casualties">0 / 0</strong></article>
+                <article class="metric-permit"><span>破壊札</span><strong id="edo-demolitions">0 枚</strong></article>
                 <article class="score"><span>評価点</span><strong id="edo-score">100</strong></article>
             </section>
 
@@ -86,7 +105,7 @@
                 <div id="edo-squad-list" class="squad-list"></div>
             </section>
 
-            <section class="order-card">
+            <section id="edo-order-card" class="order-card" data-role="water">
                 <div class="selected-copy">
                     <span>選択中</span>
                     <strong id="edo-selected-name">組を選択</strong>
@@ -103,7 +122,7 @@
             </section>
 
             <section class="hint-card">
-                <span>火消し心得</span>
+                <span><b aria-hidden="true">心得</b> 火消し心得</span>
                 <p id="edo-hint">水組を選び、移動先を指定してから消火対象を選びます。</p>
             </section>
 
@@ -135,9 +154,9 @@
     </form>
 </dialog>
 
-<script src="./js/edo-fire-command-data.js"></script>
-<script src="./js/edo-fire-command-core.js"></script>
-<script src="./js/edo-fire-command-renderer.js"></script>
-<script src="./js/edo-fire-command-app.js"></script>
+<script src="./js/edo-fire-command-data.js?v=20260827-1"></script>
+<script src="./js/edo-fire-command-core.js?v=20260827-1"></script>
+<script src="./js/edo-fire-command-renderer.js?v=20260825-2"></script>
+<script src="./js/edo-fire-command-app.js?v=20260827-3"></script>
 </body>
 </html>

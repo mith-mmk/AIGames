@@ -404,7 +404,20 @@
         }
 
         hasPendingIgnition() {
-            return this.scenario.events.some((event) => event.type === "ignite" && event.turn > this.turn);
+            return this.pendingIgnitionCount() > 0;
+        }
+
+        pendingIgnitionCount() {
+            if (!this.scenario) return 0;
+            return this.scenario.events.filter((event) => event.type === "ignite" && event.turn > this.turn).length;
+        }
+
+        nextIgnitionTurn() {
+            if (!this.scenario) return null;
+            const turns = this.scenario.events
+                .filter((event) => event.type === "ignite" && event.turn > this.turn)
+                .map((event) => event.turn);
+            return turns.length > 0 ? Math.min(...turns) : null;
         }
 
         activeFireCount() {
@@ -462,7 +475,12 @@
             this.turn += 1;
             this.evaluate();
             if (this.status === "running") {
-                this.lastMessage = eventMessages.join(" ") || `第${this.turn}刻の指図を終えた。`;
+                const nextIgnition = this.nextIgnitionTurn();
+                const awaitingIgnition = this.activeFireCount() === 0 && nextIgnition !== null;
+                this.lastMessage = eventMessages.join(" ")
+                    || (awaitingIgnition
+                        ? `見える火は消えたが、第${nextIgnition}刻に飛び火予報が残っている。警戒を続けよ。`
+                        : `第${this.turn}刻の指図を終えた。`);
             }
             return { ok: true, snapshot: this.getSnapshot() };
         }
@@ -496,6 +514,9 @@
                 forecast.push({
                     turn: simulation.turn,
                     wind: simulation.wind,
+                    events: simulation.scenario.events
+                        .filter((event) => event.turn === simulation.turn)
+                        .map((event) => ({ type: event.type, wind: event.wind || null })),
                     danger: simulation.board.tiles
                         .filter((tile) => tile.heat > 0 || tile.destroyed)
                         .map((tile) => ({ x: tile.x, y: tile.y, heat: tile.heat, destroyed: tile.destroyed })),
@@ -518,6 +539,8 @@
                 destroyedBuildings: this.destroyedBuildings,
                 destroyedLandmarks: this.destroyedLandmarks,
                 demolitionsUsed: this.demolitionsUsed,
+                pendingIgnitions: this.pendingIgnitionCount(),
+                nextIgnitionTurn: this.nextIgnitionTurn(),
                 activeFires: this.board ? this.activeFireCount() : 0,
                 civilians: this.board ? this.remainingCivilians() : 0,
                 score: this.board ? this.calculateScore() : 100,

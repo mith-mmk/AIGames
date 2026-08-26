@@ -31,6 +31,7 @@
             this.progress = this.store.load();
             this.selectedSquadId = null;
             this.commandMode = "move";
+            this.floatingOrdersOpen = false;
             this.cursor = { x: 0, y: 0 };
             this.populateScenarioSelect();
             this.applySettings();
@@ -78,6 +79,9 @@
                 resultTitle: byId("edo-result-title"),
                 resultText: byId("edo-result-text"),
                 resultScore: byId("edo-result-score"),
+                resultMedallion: byId("edo-result-medallion"),
+                orderCard: byId("edo-order-card"),
+                floatingOrders: byId("edo-floating-orders"),
             };
         }
 
@@ -126,6 +130,7 @@
             this.selectedSquadId = this.core.squads[0].id;
             this.cursor = { x: this.core.squads[0].x, y: this.core.squads[0].y };
             this.commandMode = "move";
+            this.floatingOrdersOpen = true;
             this.elements.startOverlay.hidden = true;
             this.elements.resultOverlay.hidden = true;
             this.sync();
@@ -135,6 +140,8 @@
             if (!this.core.scenario) return;
             this.core.startScenario(this.core.scenario.number);
             this.selectedSquadId = this.core.squads[0].id;
+            this.commandMode = "move";
+            this.floatingOrdersOpen = true;
             this.elements.resultOverlay.hidden = true;
             this.sync();
         }
@@ -145,11 +152,13 @@
             const squad = this.core.getSquad(id);
             this.cursor = { x: squad.x, y: squad.y };
             this.commandMode = "move";
+            this.floatingOrdersOpen = true;
             this.sync();
         }
 
         setCommandMode(mode) {
             this.commandMode = mode;
+            this.floatingOrdersOpen = false;
             this.sync();
         }
 
@@ -157,7 +166,9 @@
             if (this.core.status !== "running") return;
             this.cursor = { x, y };
             const squadAtTile = this.core.squads.find((squad) => squad.x === x && squad.y === y);
-            if (squadAtTile && this.commandMode === "move") {
+            const selectingSquad = squadAtTile
+                && (this.commandMode === "move" || squadAtTile.id !== this.selectedSquadId);
+            if (selectingSquad) {
                 this.selectSquad(squadAtTile.id);
                 return;
             }
@@ -166,12 +177,14 @@
                 ? this.core.queueMove(this.selectedSquadId, x, y)
                 : this.core.queueAction(this.selectedSquadId, this.commandMode, x, y);
             if (!result.ok) this.core.lastMessage = ERROR_MESSAGES[result.reason] || "その指図は実行できません。";
+            if (result.ok && this.commandMode === "move") this.floatingOrdersOpen = true;
             this.sync();
         }
 
         clearSelectedOrder() {
             if (this.selectedSquadId) this.core.clearOrder(this.selectedSquadId);
             this.commandMode = "move";
+            this.floatingOrdersOpen = true;
             this.sync();
         }
 
@@ -181,6 +194,7 @@
             if (this.core.status === "won") {
                 this.progress = this.store.record(this.progress, this.core.scenario, this.core.result.rank);
             }
+            this.floatingOrdersOpen = this.core.status === "running";
             this.sync();
             if (this.core.status !== "running") this.showResult();
         }
@@ -192,6 +206,8 @@
             this.elements.resultTitle.textContent = won ? `${RANK_LABELS[result.rank]}評価` : "夜明けの火煙";
             this.elements.resultText.textContent = result.reason;
             this.elements.resultScore.textContent = `${result.score} 点`;
+            this.elements.resultMedallion.textContent = won ? RANK_LABELS[result.rank] : "失";
+            this.elements.resultMedallion.dataset.rank = won ? result.rank : "lost";
             this.elements.resultOverlay.hidden = false;
         }
 
@@ -227,7 +243,12 @@
             this.elements.stageBrief.textContent = scenario.subtitle;
             this.elements.turn.textContent = `${snapshot.turn} / ${scenario.maxTurns}`;
             this.elements.wind.textContent = `${wind.label} ${wind.arrow}`;
-            this.elements.fireCount.textContent = snapshot.activeFires;
+            this.elements.fireCount.textContent = snapshot.pendingIgnitions > 0
+                ? `${snapshot.activeFires}＋予${snapshot.pendingIgnitions}`
+                : snapshot.activeFires;
+            this.elements.fireCount.title = snapshot.pendingIgnitions > 0
+                ? `盤上の火勢 ${snapshot.activeFires}、今後の飛び火予報 ${snapshot.pendingIgnitions}`
+                : `盤上の火勢 ${snapshot.activeFires}`;
             this.elements.civilians.textContent = snapshot.civilians;
             this.elements.casualties.textContent = `${snapshot.casualties} / ${scenario.casualtyLimit}`;
             this.elements.demolitions.textContent = `${scenario.demolitionLimit - snapshot.demolitionsUsed} 枚`;
@@ -247,7 +268,7 @@
                 const definition = api.SQUAD_TYPES[squad.type];
                 const button = this.document.createElement("button");
                 button.type = "button";
-                button.className = "squad-button";
+                button.className = `squad-button role-${squad.type}`;
                 button.classList.toggle("selected", squad.id === this.selectedSquadId);
                 button.dataset.squadId = squad.id;
                 const water = squad.type === "water" ? ` 水${squad.water}/${definition.waterMax}` : "";
@@ -262,6 +283,8 @@
             const definition = squad ? api.SQUAD_TYPES[squad.type] : null;
             this.elements.selectedName.textContent = definition ? definition.label : "組を選択";
             this.elements.selectedDetail.textContent = definition ? definition.description : "盤上の組を選んでください。";
+            this.elements.orderCard.dataset.role = squad ? squad.type : "none";
+            this.renderFloatingOrders(snapshot, squad, definition);
             for (const button of this.elements.actionButtons) {
                 const action = button.dataset.edoAction;
                 const allowed = action === "move" || (definition && (definition.action === action || (definition.action === "extinguish" && action === "refill")));
@@ -269,6 +292,21 @@
                 button.classList.toggle("active", action === this.commandMode);
                 button.disabled = !definition || snapshot.status !== "running";
             }
+        }
+
+        renderFloatingOrders(snapshot, squad, definition) {
+            const floating = this.elements.floatingOrders;
+            const overlayVisible = !this.elements.startOverlay.hidden || !this.elements.resultOverlay.hidden;
+            floating.hidden = !this.floatingOrdersOpen || !squad || !definition || snapshot.status !== "running" || overlayVisible;
+            if (floating.hidden) return;
+            const order = snapshot.orders[squad.id];
+            const anchor = order && order.move ? order.move : squad;
+            floating.style.left = `${(anchor.x + 0.5) / api.WIDTH * 100}%`;
+            floating.style.top = `${(anchor.y + 0.5) / api.HEIGHT * 100}%`;
+            floating.dataset.role = squad.type;
+            floating.dataset.side = anchor.x >= api.WIDTH - 4 ? "left" : "right";
+            floating.dataset.edge = anchor.y <= 1 ? "top" : (anchor.y >= api.HEIGHT - 2 ? "bottom" : "center");
+            floating.setAttribute("aria-label", `${definition.label}への指図`);
         }
 
         renderForecast() {
@@ -281,7 +319,14 @@
                 }
                 const burning = step.danger.filter((tile) => tile.heat >= 2).length;
                 const wind = api.WINDS[step.wind];
-                element.innerHTML = `<b>第${step.turn}刻</b><span>${wind.label} ${wind.arrow}</span><small>危険 ${burning}区画</small>`;
+                const ignitions = step.events.filter((event) => event.type === "ignite").length;
+                const windChange = step.events.some((event) => event.type === "wind");
+                const alerts = [
+                    `危険 ${burning}区画`,
+                    ignitions > 0 ? `飛び火警戒${ignitions > 1 ? `×${ignitions}` : ""}` : "",
+                    windChange ? "風向変化" : "",
+                ].filter(Boolean).join("・");
+                element.innerHTML = `<b>第${step.turn}刻</b><span>${wind.label} ${wind.arrow}</span><small>${alerts}</small>`;
             });
         }
     }

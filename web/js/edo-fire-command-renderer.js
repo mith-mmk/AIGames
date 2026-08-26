@@ -53,6 +53,7 @@
             for (const squad of snapshot.squads) this.drawSquad(squad, squad.id === view.selectedSquadId);
             if (view.cursor) this.drawCursor(view.cursor);
             this.drawWind(snapshot.wind);
+            this.drawVignette();
         }
 
         drawTile(tile, reachable, forecast) {
@@ -62,6 +63,11 @@
             const definition = api.TILE_TYPES[tile.type];
             context.fillStyle = definition.color || PALETTE.road;
             context.fillRect(x, y, TILE_SIZE, TILE_SIZE);
+            if ((tile.x + tile.y) % 2 === 0) {
+                context.fillStyle = "rgba(255, 241, 196, 0.035)";
+                context.fillRect(x, y, TILE_SIZE, TILE_SIZE);
+            }
+            if (tile.heat > 0) this.drawHeatGlow(x, y, tile.heat);
             if (tile.type === "road" || tile.type === "assembly") this.drawRoadTexture(x, y, tile);
             if (tile.type === "house" || tile.type === "landmark") this.drawBuilding(x, y, tile);
             if (tile.type === "well") this.drawWell(x, y);
@@ -90,23 +96,50 @@
             context.moveTo(x + 8, y + 20 + offset);
             context.lineTo(x + 72, y + 12 + offset);
             context.stroke();
+            context.fillStyle = "rgba(71, 50, 35, 0.1)";
+            context.beginPath();
+            context.arc(x + 18 + (tile.y * 9) % 42, y + 55, 2, 0, Math.PI * 2);
+            context.fill();
+        }
+
+        drawHeatGlow(x, y, heat) {
+            const context = this.context;
+            const gradient = context.createRadialGradient(x + 42, y + 48, 5, x + 42, y + 48, 46);
+            gradient.addColorStop(0, heat >= 2 ? "rgba(255, 170, 55, 0.58)" : "rgba(221, 112, 47, 0.28)");
+            gradient.addColorStop(0.5, "rgba(218, 72, 37, 0.22)");
+            gradient.addColorStop(1, "rgba(126, 34, 27, 0)");
+            context.fillStyle = gradient;
+            context.fillRect(x, y, TILE_SIZE, TILE_SIZE);
         }
 
         drawBuilding(x, y, tile) {
             const context = this.context;
             const landmark = tile.type === "landmark";
+            context.fillStyle = "rgba(31, 21, 18, 0.25)";
+            context.fillRect(x + 17, y + 31, 52, 40);
             context.fillStyle = landmark ? "#3f2925" : "#704631";
-            context.fillRect(x + 14, y + 27, 52, 40);
+            context.fillRect(x + 12, y + 27, 56, 40);
+            context.fillStyle = landmark ? "#d3b674" : "#aa7950";
+            context.fillRect(x + 16, y + 31, 48, 4);
             context.fillStyle = landmark ? "#cfb06a" : "#3d2923";
             context.beginPath();
-            context.moveTo(x + 8, y + 30);
+            context.moveTo(x + 6, y + 29);
             context.lineTo(x + 40, y + 9);
-            context.lineTo(x + 72, y + 30);
+            context.lineTo(x + 74, y + 29);
             context.closePath();
             context.fill();
-            context.strokeStyle = "rgba(239, 220, 165, 0.42)";
-            context.strokeRect(x + 22, y + 38, 14, 20);
-            context.strokeRect(x + 44, y + 38, 14, 20);
+            context.fillStyle = "rgba(28, 18, 16, 0.8)";
+            context.fillRect(x + 5, y + 27, 70, 5);
+            context.strokeStyle = tile.heat > 0 ? "rgba(255, 193, 83, 0.72)" : "rgba(239, 220, 165, 0.42)";
+            context.lineWidth = 2;
+            context.strokeRect(x + 20, y + 39, 15, 20);
+            context.strokeRect(x + 45, y + 39, 15, 20);
+            context.beginPath();
+            context.moveTo(x + 27.5, y + 39);
+            context.lineTo(x + 27.5, y + 59);
+            context.moveTo(x + 52.5, y + 39);
+            context.lineTo(x + 52.5, y + 59);
+            context.stroke();
             if (landmark) {
                 context.fillStyle = "#f0d36b";
                 context.font = "700 14px 'Yu Gothic UI', sans-serif";
@@ -174,6 +207,13 @@
             context.strokeStyle = forecast.heat >= 2 ? "#8e211c" : "#a8642a";
             context.lineWidth = 4;
             context.strokeRect(x + 7, y + 7, TILE_SIZE - 14, TILE_SIZE - 14);
+            context.setLineDash([]);
+            context.fillStyle = forecast.step === 1 ? "#84261f" : "#704f35";
+            context.fillRect(x + 6, y + 6, 27, 17);
+            context.fillStyle = "#fff0c6";
+            context.font = "800 10px 'Yu Gothic UI', sans-serif";
+            context.textAlign = "center";
+            context.fillText(`予${forecast.step}`, x + 19.5, y + 18);
             context.restore();
         }
 
@@ -203,6 +243,17 @@
         drawFire(x, y, heat) {
             const context = this.context;
             const size = 16 + heat * 8;
+            context.save();
+            context.strokeStyle = "rgba(58, 46, 40, 0.48)";
+            context.lineWidth = 5;
+            context.lineCap = "round";
+            context.beginPath();
+            context.moveTo(x + 38, y + 35);
+            context.bezierCurveTo(x + 22, y + 22, x + 49, y + 14, x + 32, y + 5);
+            context.moveTo(x + 51, y + 39);
+            context.bezierCurveTo(x + 68, y + 24, x + 42, y + 18, x + 58, y + 9);
+            context.stroke();
+            context.restore();
             context.fillStyle = heat >= 2 ? PALETTE.fire : "#dc8039";
             context.beginPath();
             context.moveTo(x + 40, y + 70);
@@ -257,6 +308,12 @@
             const x = squad.x * TILE_SIZE + 40;
             const y = squad.y * TILE_SIZE + 40;
             context.fillStyle = squad.type === "water" ? "#285d6d" : squad.type === "ladder" ? "#8a5d2d" : "#75372e";
+            context.beginPath();
+            context.moveTo(x + 15, y + 7);
+            context.lineTo(x + 31, y + 20);
+            context.lineTo(x + 15, y + 26);
+            context.closePath();
+            context.fill();
             context.strokeStyle = selected ? PALETTE.selected : "#f0dfb0";
             context.lineWidth = selected ? 6 : 3;
             context.beginPath();
@@ -267,6 +324,11 @@
             context.font = "800 18px 'Yu Gothic UI', sans-serif";
             context.textAlign = "center";
             context.fillText(definition.mark, x, y + 6);
+            if (squad.type === "water") {
+                context.fillStyle = "#d8eef1";
+                context.font = "800 10px sans-serif";
+                context.fillText(`${squad.water}`, x + 22, y + 23);
+            }
         }
 
         drawCursor(cursor) {
@@ -282,12 +344,24 @@
         drawWind(windId) {
             const context = this.context;
             const wind = api.WINDS[windId];
-            context.fillStyle = "rgba(35, 27, 23, 0.82)";
-            context.fillRect(12, 12, 128, 43);
+            context.fillStyle = "rgba(35, 27, 23, 0.88)";
+            context.fillRect(12, 12, 140, 45);
+            context.fillStyle = "rgba(210, 171, 79, 0.82)";
+            context.fillRect(12, 12, 5, 45);
             context.fillStyle = "#f5df9a";
             context.font = "800 20px 'Yu Gothic UI', sans-serif";
             context.textAlign = "left";
-            context.fillText(`${wind.label} ${wind.arrow}`, 24, 41);
+            context.fillText(`${wind.label} ${wind.arrow}`, 27, 42);
+        }
+
+        drawVignette() {
+            const context = this.context;
+            const gradient = context.createRadialGradient(480, 360, 230, 480, 360, 590);
+            gradient.addColorStop(0, "rgba(28, 20, 17, 0)");
+            gradient.addColorStop(0.72, "rgba(28, 20, 17, 0.025)");
+            gradient.addColorStop(1, "rgba(28, 20, 17, 0.18)");
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, this.canvas.width, this.canvas.height);
         }
     }
 
