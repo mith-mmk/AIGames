@@ -1,0 +1,16 @@
+{
+  "prompt": "Generate an image with a transparent background. One small ancient-to-medieval civilization city miniature for an isometric strategy game: a coherent compact cluster of warm ivory stone houses with terracotta and muted teal pitched roofs, a central small fortified town hall with one square tower, short low walls and a gate, narrow courtyards. Rich hand-painted 3D tabletop miniature appearance matching painted historical infantry miniatures. Three-quarter view looking down at 30 degrees, lit from upper left, front gate facing screen lower-right. Full cluster entirely in frame with generous 15 percent transparent margins. Broad low diamond-shaped footprint, clear architectural silhouette readable at 72px wide. No people, no text, no banners with lettering, no scenery, no ground slab or platform, no opaque backdrop, no painted checkerboard. Only the isolated buildings. True transparent RGBA PNG, square source.",
+  "file": "city.png",
+  "generator": "ImageGen",
+  "date": "2026-09-10",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "renderBounds": [
+    94,
+    196,
+    1068,
+    802
+  ]
+}
