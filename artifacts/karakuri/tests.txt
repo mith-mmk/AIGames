@@ -7,3 +7,8 @@ Browser checks: see browser-results.json. Chrome 154.0.8037.97, external network
 Contact fix: npm test passed, including independent BoxGeometry contact regression over 12002 poses (minimum gap 0.000718).
 Rendered contact audit: 1408 frames, minimum gap 0.000773, no collisions; see contact/render-contact-results.json.
 Contact browser: slow lift/release/rail, mid-lift reset and restart, success, reversed-rail failure and reset passed.
+10-stage extension: npm test passed, including every solution/reset/next/back and 66 discrete mechanism configurations.
+Campaign contact: 39448 finite 5ms samples across all 10 stages, success/rail/power failure and 6 closed gates; minimum gap 0.000718.
+Campaign Chrome: all 10 success/failure/retry/next; back, progress reload, gate failure and correction. 8518 campaign frames plus 494 timing frames, no tested contacts penetrated. See campaign/browser-results.json.
+Final responsive check: widths 1440/900/800/390/320, no overflow, mechanism endpoints framed, zoom buttons passed.
+Final ESLint: 0 errors, 3 css/use-baseline warnings (outline and accent-color).

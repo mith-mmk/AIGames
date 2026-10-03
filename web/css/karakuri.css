@@ -39,3 +39,10 @@ h1{font-size:24px}
 canvas{max-width:100%}
 
 #view canvas{position:absolute;inset:0;width:100%;height:100%}
+main{align-items:start}#view{position:sticky;top:0;height:calc(100vh - 140px)}
+label{display:block;font-size:12px;margin-bottom:6px}select{width:100%;padding:10px;border:1px solid #c8b798;background:#fffaf0;color:#4d3b25;border-radius:6px;font:inherit;font-size:14px}
+.progress-row{display:flex;gap:10px;align-items:center;margin:12px 0 24px;font-size:11px;color:#54796b}progress{width:100px;height:7px;accent-color:#346b62}
+#mechanics{font-size:12px;color:#876038;line-height:1.7;margin:12px 0}#clock{font-size:11px;font-variant-numeric:tabular-nums;color:#486d65;margin:12px 0}
+#settings{display:flex;gap:8px;flex-wrap:wrap}#settings button{font-size:12px}#next{background:#bf9341;color:#292c24}button[hidden]{display:none}
+.camera-tools{position:absolute;right:14px;bottom:14px;display:flex;gap:7px;z-index:2}.camera-tools button{width:36px;height:36px;padding:0;font-size:18px;background:#fffaf0dd}
+@media(max-width:800px){#view{position:relative;height:55vh;min-height:360px}}

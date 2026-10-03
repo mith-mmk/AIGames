@@ -5,7 +5,7 @@ const solve = g => { for (const p of g.parts) { const t = g.targets()[p.id]; g.m
 const g = new Workshop();
 finish(g); assert.equal(g.state, 'failed'); assert.match(g.message, /ハンドル/);
 g.reset(); solve(g); const c = g.connections();
-assert.deepEqual(c.speeds, { handle: 2, small: -2, large: 1.2, lift: 1.2 });
+assert.deepEqual(c.speeds, { handle: 2, small: -2, large: 1.2, idler: 0, lift: 1.2 });
 g.start(); const before = JSON.stringify(g.parts); g.move('small', 5, 3); g.rotate('rail'); assert.equal(JSON.stringify(g.parts), before);
 for (let i = 0; i < 160; i++) g.step(.05); assert.equal(g.state, 'success');
 g.reset(); assert.equal(g.lift, 0); assert.equal(g.travel, 0); assert.equal(JSON.stringify(g.parts), before);

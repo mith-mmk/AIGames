@@ -1,5 +1,26 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Games</title><link rel="stylesheet" href="css/karakuri.css"></head>
-<body><header><a href="index.html">← AI Games</a><span>DESKTOP MECHANICAL WORKSHOP / 01</span><h1>机上のからくり工房</h1><p>小さな歯車から、大きなひらめき。</p></header>
-<main><section id="view" aria-label="からくりの3D作業机"></section><aside><small>第一工房 · ベルへの道</small><h2>組む。回す。見つける。</h2><p>ハンドルの力でリフトを上げ、ビー玉をベルまで届けよう。</p><div id="status" role="status" aria-live="polite"></div><div class="actions"><button id="run">▶ 試運転</button><button id="reset">↶ 戻して編集</button><button id="slow" aria-pressed="false">スロー ×0.25</button></div><h3>部品を選ぶ</h3><div id="parts"></div><p id="selection">部品をクリックして選択</p><button id="rotate">↻ 90°回転 / R</button><div class="nudge"><button data-move="0,-1">↑</button><button data-move="-1,0">←</button><button data-move="1,0">→</button><button data-move="0,1">↓</button></div><h3>操作の手引き</h3><p>部品を左ドラッグで配置。接続点の近くで吸着します。空いた机をドラッグで視点回転、ホイールでズーム。</p><p>選択した部品は矢印ボタン / 矢印キーでも動かせます。試運転中は観察に集中。戻すと配置を残して編集できます。</p><details><summary>小さなヒント</summary><p>薄い丸印は軸の候補。大小の歯車は外周を接し、ベルトは横向き。レールの金色の入口をリフト側へ。</p></details><button id="fresh">最初から組み直す</button></aside></main>
-<script type="importmap">{"imports":{"three":"./js/vendor/three-0.180.0/three.module.min.js"}}</script><script type="module" src="js/karakuri-app.js"></script></body></html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Games</title><link rel="stylesheet" href="css/karakuri.css"></head>
+<body>
+<header><a href="index.html">← AI Games</a><span>DESKTOP MECHANICAL WORKSHOP / 10 WORKSHOPS</span><h1>机上のからくり工房</h1><p>小さな歯車から、大きなひらめき。</p></header>
+<main>
+  <section id="view" aria-label="からくりの3D作業机"><div class="camera-tools"><button id="zoom-in" aria-label="作業机を拡大">＋</button><button id="zoom-out" aria-label="作業机を縮小">−</button></div></section>
+  <aside>
+    <label for="stage">工房を選ぶ</label><select id="stage"></select>
+    <div class="progress-row"><progress id="progress" max="10" value="0"></progress><span id="progress-label">0 / 10 面クリア</span></div>
+    <small id="stage-title"></small><h2>組む。回す。見つける。</h2><p id="goal"></p>
+    <div id="mechanics"></div><div id="clock" aria-live="off"></div>
+    <div id="status" role="status" aria-live="polite"></div>
+    <div class="actions"><button id="run">▶ 試運転</button><button id="reset">↶ 戻して編集</button><button id="slow" aria-pressed="false">スロー ×0.25</button><button id="next" hidden>次の工房へ →</button></div>
+    <div id="settings"><button id="ratio"></button><button id="belt-mode"></button><button id="idler-toggle"></button><button id="delay"></button></div>
+    <h3>部品を選ぶ</h3><div id="parts"></div><p id="selection">部品をクリックして選択</p>
+    <button id="rotate">↻ 90°回転 / R</button><div class="nudge"><button data-move="0,-1">↑</button><button data-move="-1,0">←</button><button data-move="1,0">→</button><button data-move="0,1">↓</button></div>
+    <details><summary>小さなヒント</summary><p id="hint"></p></details>
+    <h3>操作の手引き</h3><p>部品を左ドラッグで配置。薄い丸印の近くで吸着します。空いた机をドラッグで視点回転、ホイールでズーム。</p>
+    <p>部品ボタンで選び、矢印ボタン / 矢印キーで微調整、Rで回転。歯車を交換したら軸とベルトを合わせ直そう。試運転中は観察に集中。</p>
+    <p>「戻して編集」は配置を保ちます。面を選び直すとその面の初期配置に戻ります。進捗はこのブラウザに保存。</p>
+    <button id="fresh">この面を組み直す</button>
+  </aside>
+</main>
+<script type="importmap">{"imports":{"three":"./js/vendor/three-0.180.0/three.module.min.js"}}</script><script type="module" src="js/karakuri-app.js"></script>
+</body></html>

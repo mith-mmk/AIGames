@@ -4,7 +4,8 @@ export const MECHANISM = Object.freeze({
   liftX: .9, liftZ: 0, plateWidth: .8, plateDepth: .9, plateThickness: .13,
   liftBottom: .35, railY: 1.8, railLength: 3, railWidth: .65, railThickness: .12, railTilt: .22,
   beltY: .15, guideX: .65, guideZ: .6, screwRadius: .11,
-  bellX: 4.65, bellZ: 0, bellTop: 1.195, bellKnobRadius: .1, deskTop: .012
+  bellX: 4.65, bellZ: 0, bellTop: 1.195, bellKnobRadius: .1, deskTop: .012,
+  gateX: 4.4, gateThickness: .1, gateClosedY: 1.9, gateOpenY: 2.95, gateHeight: .8
 });
 
 export function railEnds(rail) {
