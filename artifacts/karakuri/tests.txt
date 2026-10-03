@@ -1,0 +1,6 @@
+Command: npm test
+Result: exit code 0 (2026-10-03, NERO / Windows / Node 24.15.0)
+Existing game logic suites: all passed (cards, cat, train-defense, orbit-salvage, civilization, humanities-simulator, natural-philosophy-network, kanbun-turing, edo-fire-command).
+Karakuri logic: success, three power-chain failure causes, reversed rail, edit lock, snap, reset and replay passed.
+ESLint: 0 errors, 2 css/use-baseline warnings for outline in web/css/karakuri.css.
+Browser checks: see browser-results.json. Chrome 154.0.8037.97, external network blocked, no JavaScript errors.
