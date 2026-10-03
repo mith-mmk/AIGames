@@ -4,3 +4,6 @@ Existing game logic suites: all passed (cards, cat, train-defense, orbit-salvage
 Karakuri logic: success, three power-chain failure causes, reversed rail, edit lock, snap, reset and replay passed.
 ESLint: 0 errors, 2 css/use-baseline warnings for outline in web/css/karakuri.css.
 Browser checks: see browser-results.json. Chrome 154.0.8037.97, external network blocked, no JavaScript errors.
+Contact fix: npm test passed, including independent BoxGeometry contact regression over 12002 poses (minimum gap 0.000718).
+Rendered contact audit: 1408 frames, minimum gap 0.000773, no collisions; see contact/render-contact-results.json.
+Contact browser: slow lift/release/rail, mid-lift reset and restart, success, reversed-rail failure and reset passed.

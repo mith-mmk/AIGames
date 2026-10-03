@@ -1,3 +1,5 @@
+import { contactPose, clearsLift } from './karakuri-contact.mjs';
+
 export class Workshop {
   constructor() { this.init(); }
   init() {
@@ -13,12 +15,18 @@ export class Workshop {
   move(id, x, z, snap = true) {
     if (this.state !== 'edit') return;
     const p = this.parts.find(p => p.id === id);
-    p.x = Math.max(-6, Math.min(6, Math.round(x * 5) / 5));
-    p.z = Math.max(-3.5, Math.min(3.5, Math.round(z * 5) / 5));
+    const candidate = { ...p, x: Math.max(-6, Math.min(6, Math.round(x * 5) / 5)), z: Math.max(-3.5, Math.min(3.5, Math.round(z * 5) / 5)) };
     const target = this.targets()[id];
-    if (snap && Math.hypot(p.x - target.x, p.z - target.z) < .55) { p.x = target.x; p.z = target.z; }
+    if (snap && Math.hypot(candidate.x - target.x, candidate.z - target.z) < .55) { candidate.x = target.x; candidate.z = target.z; }
+    if (!clearsLift(candidate)) { this.message = 'リフト台の通り道がふさがります。部品を少し離して置こう。'; return; }
+    Object.assign(p, candidate);
   }
-  rotate(id) { if (this.state === 'edit') this.parts.find(p => p.id === id).angle += Math.PI / 2; }
+  rotate(id) {
+    if (this.state !== 'edit') return;
+    const p = this.parts.find(p => p.id === id), candidate = { ...p, angle: p.angle + Math.PI / 2 };
+    if (clearsLift(candidate)) p.angle = candidate.angle;
+    else this.message = 'リフト台の通り道がふさがります。部品を少し離して回そう。';
+  }
   targets() { return { small: { x: -3.4, z: 0 }, large: { x: -1.8, z: 0 }, belt: { x: -.1, z: 0 }, rail: { x: 2.8, z: 0 } }; }
   connections() {
     const [s, l, b, r] = this.parts;
@@ -31,6 +39,7 @@ export class Workshop {
       speeds: { handle: 2, small: input ? -2 : 0, large: input && mesh ? 1.2 : 0, lift: input && mesh && belt ? 1.2 : 0 } };
   }
   start() { if (this.state !== 'edit') return; this.reset(); this.state = 'running'; this.message = '試運転中… 接続とビー玉の行方を観察しよう。'; }
+  pose() { return contactPose(this.lift, this.travel, this.parts.find(p => p.id === 'rail'), this.connections().rail); }
   step(dt) {
     if (this.state !== 'running') return;
     this.time += Math.min(dt, .05);

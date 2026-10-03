@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { Workshop } from './karakuri-core.mjs';
+import { MECHANISM as G } from './karakuri-contact.mjs';
 
 class WorkshopView {
   constructor() {
@@ -41,24 +42,25 @@ class WorkshopView {
       selection.rotation.x = -Math.PI / 2; group.userData.selection = selection;
       if (p.radius) group.userData.rotor = this.gear(p.radius, group);
       if (p.id === 'belt') {
-        for (const x of [-1.7, 1.7]) this.cylinder(group, x, .65, 0, .23, .12, 'dark');
-        for (const z of [-.22, .22]) this.box(group, 0, .65, z, 3.4, .08, .07, 'rubber');
-        group.userData.marker = this.box(group, 0, .71, -.22, .2, .06, .12, 'brass');
+        for (const x of [-1.7, 1.7]) this.cylinder(group, x, G.beltY, 0, .23, .12, 'dark');
+        for (const z of [-.22, .22]) this.box(group, 0, G.beltY, z, 3.4, .08, .07, 'rubber');
+        group.userData.marker = this.box(group, 0, G.beltY + .06, -.22, .2, .06, .12, 'brass');
       }
       if (p.id === 'rail') {
-        const slope = new THREE.Group(); slope.position.y = 1.8; slope.rotation.z = -.22; group.add(slope);
-        this.box(slope, 0, 0, 0, 2.5, .12, .65, 'ivory');
-        for (const z of [-.33, .33]) this.box(slope, 0, .13, z, 2.5, .22, .07, 'brass');
-        this.box(slope, -1.16, .09, 0, .16, .03, .6, 'teal');
+        const slope = new THREE.Group(); slope.position.y = G.railY; slope.rotation.z = -G.railTilt; group.add(slope);
+        this.box(slope, 0, 0, 0, G.railLength, G.railThickness, G.railWidth, 'ivory').name = 'rail-floor';
+        for (const z of [-.33, .33]) this.box(slope, 0, .13, z, G.railLength - .24, .22, .07, 'brass').name = 'rail-guard';
+        this.box(slope, -G.railLength / 2 + .09, G.railThickness / 2 + .0005, 0, .16, .001, .6, 'teal').name = 'rail-marker';
         for (const x of [-.8, .8]) this.box(group, x, .75, 0, .12, 1.5, .12, 'dark');
       }
     }
-    this.cylinder(this.scene, 1.6, .62, 0, .23, .15, 'brass');
-    this.cylinder(this.scene, 1.6, 1.3, -.45, .065, 2.6, 'brass');
-    for (let y = .2; y < 2.6; y += .13) this.cylinder(this.scene, 1.6, y, -.45, .11, .045, 'brass');
-    for (const z of [-.55, .55]) this.box(this.scene, 1.6, 1.3, z, .1, 2.6, .1, 'dark');
-    this.platform = new THREE.Group(); this.scene.add(this.platform); this.box(this.platform, 0, 0, 0, .8, .13, .9, 'teal');
-    this.marble = this.mesh(new THREE.SphereGeometry(.18, 24, 16), 'teal', this.scene);
+    this.cylinder(this.scene, 1.6, G.beltY, 0, .23, .15, 'brass').name = 'lift-drive';
+    this.cylinder(this.scene, G.guideX, 1.3, -G.guideZ, .065, 2.6, 'brass').name = 'lift-screw';
+    for (let y = .2; y < 2.6; y += .13) this.cylinder(this.scene, G.guideX, y, -G.guideZ, G.screwRadius, .045, 'brass');
+    for (const z of [-G.guideZ, G.guideZ]) this.box(this.scene, G.guideX, 1.3, z, .1, 2.6, .1, 'dark').name = 'lift-guide';
+    this.box(this.scene, 1.12, G.beltY, -.6, .95, .06, .06, 'brass');
+    this.platform = new THREE.Group(); this.scene.add(this.platform); this.box(this.platform, 0, 0, 0, G.plateWidth, G.plateThickness, G.plateDepth, 'teal').name = 'lift-platform';
+    this.marble = this.mesh(new THREE.SphereGeometry(G.radius, 24, 16), 'teal', this.scene); this.marble.name = 'marble';
     this.box(this.scene, 4.65, .15, 0, 1, .3, 1.2, 'dark');
     this.bell = this.mesh(new THREE.CylinderGeometry(.16, .45, .65, 32), 'brass', this.scene, 4.65, .72, 0);
     this.cylinder(this.scene, 4.65, 1.12, 0, .1, .15, 'brass');
@@ -99,11 +101,9 @@ class WorkshopView {
     const c = this.model.connections(); this.handleRotor.rotation.y = this.model.time * 2;
     for (const p of this.model.parts) if (p.radius) this.meshes[p.id].userData.rotor.rotation.y = this.model.time * c.speeds[p.id];
     this.meshes.belt.userData.marker.position.x = c.speeds.lift ? Math.sin(this.model.time * 3) * 1.6 : 0;
-    this.platform.position.set(1.6, .35 + this.model.lift * 1.65, 0);
-    const t = this.model.travel;
-    if (c.rail || t === 0) this.marble.position.set(1.6 + t * 3, this.platform.position.y + .25 - Math.min(t, .8) * .65 - Math.pow(Math.max(0, (t - .8) / .2), 2) * .55, 0);
-    else this.marble.position.set(1.6 + Math.min(t, .3), Math.max(.18, 2.45 - t * t * 8), 0);
-    this.marble.rotation.z = -t * 16;
+    const pose = this.model.pose();
+    this.platform.position.copy(pose.platform); this.marble.position.copy(pose.marble);
+    this.marble.rotation.z = -this.model.travel * 16;
     this.bell.rotation.z = this.model.state === 'success' ? Math.sin(now / 80) * .07 : 0;
     if (this.previousState !== this.model.state) { if (this.model.state === 'success') this.chime(); this.previousState = this.model.state; this.ui(); }
     this.renderer.render(this.scene, this.camera); requestAnimationFrame(n => this.frame(n));
