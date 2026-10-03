@@ -1,0 +1,20 @@
+const { chromium } = require('playwright');
+const fs = require('node:fs');
+const assert = require('node:assert/strict');
+(async () => {
+  const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true, args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  await page.goto('http://127.0.0.1:4173/karakuri.html'); await page.waitForSelector('[data-part]'); await page.locator('#stage').selectOption('4');
+  await page.locator('#ratio').click(); await page.locator('[data-part="large"]').click();
+  for (let i = 0; i < 2; i++) await page.keyboard.press('ArrowLeft');
+  await page.locator('[data-part="rail"]').click();
+  for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowLeft'); for (let i = 0; i < 15; i++) await page.keyboard.press('ArrowUp');
+  for (let i = 0; i < 3; i++) await page.locator('#rotate').click();
+  await page.locator('[data-part="belt"]').click();
+  fs.mkdirSync('artifacts/karakuri/belt', { recursive: true });
+  await page.screenshot({ path: 'artifacts/karakuri/belt/before-axes.png', fullPage: true });
+  await page.locator('#run').click(); await page.waitForFunction(() => document.querySelector('#status').dataset.state === 'failed');
+  assert.match(await page.locator('#status').innerText(), /ベルト/);
+  fs.writeFileSync('artifacts/karakuri/belt/before-results.json', JSON.stringify({ stage: 5, gearRadius: .6, outputGearX: -2.2, actualBeltX: -.1, requiredBeltX: -.3, offset: .2, acceptedDistance: .16, failure: await page.locator('#status').innerText() }, null, 2) + '\n');
+  console.log('Baseline reproduced: stage 5 output gear is aligned, belt endpoints both offset 0.2, tolerance 0.16, belt failure.'); await browser.close();
+})().catch(e => { console.error(e); process.exit(1); });

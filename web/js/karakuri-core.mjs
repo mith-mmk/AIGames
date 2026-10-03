@@ -1,5 +1,6 @@
 import { contactPose, clearsLift, MECHANISM as G } from './karakuri-contact.mjs';
 import { STAGES } from './karakuri-levels.mjs';
+import { beltPorts, beltPair, beltObstacles } from './karakuri-belt.mjs';
 
 export class Workshop {
   constructor(index = 0) { this.completed = new Set(); this.init(index); }
@@ -20,6 +21,30 @@ export class Workshop {
     this.reset();
   }
   part(id) { return this.parts.find(p => p.id === id); }
+  get beltLength() { return this.part('belt').length ?? 1.6 - this.targets().large.x; }
+  ports() { return beltPorts(this.parts); }
+  beltPair(a, b) { return beltPair(this.ports(), a, b, beltObstacles(this.parts, !!this.stage.window)); }
+  beltPairs() { const ports = this.ports(), pairs = []; for (let i = 0; i < ports.length; i++) for (let j = i + 1; j < ports.length; j++) pairs.push(this.beltPair(ports[i].id, ports[j].id)); return pairs; }
+  attachBelt(a, b) {
+    if (this.state !== 'edit') return false;
+    const candidate = this.beltPair(a, b);
+    if (!candidate.valid) { this.message = candidate.reason; return false; }
+    Object.assign(this.part('belt'), candidate.pose, { anchors: candidate.ids });
+    delete this.part('belt').unconnected;
+    this.message = `${candidate.reason} に取り付けた。平行／交差と歯車の接続を試運転で確かめよう。`; return true;
+  }
+  refreshBelt() {
+    const belt = this.part('belt'); if (!belt.anchors) return;
+    const candidate = this.beltPair(...belt.anchors);
+    if (candidate.valid) Object.assign(belt, candidate.pose);
+    else { delete belt.anchors; belt.unconnected = true; this.message = `ベルトが外れた。${candidate.reason}`; }
+  }
+  dropFreeBelt(pose) {
+    if (this.state !== 'edit' || !['x', 'z', 'angle', 'length'].every(k => Number.isFinite(pose[k]))) return false;
+    this.move('belt', pose.x, pose.z, false);
+    Object.assign(this.part('belt'), { angle: pose.angle, length: pose.length, unconnected: true });
+    this.message = 'ベルトは未接続。印のある軸を2つ選ぶか、緑の候補へ近づけて置こう。'; return true;
+  }
   get handleX() { return this.stage.idler ? -5.4 : -4.6; }
   reset() {
     this.time = 0; this.lift = 0; this.travel = 0; this.gatePassed = false; this.gateBlocked = false; this.arrival = null;
@@ -33,12 +58,13 @@ export class Workshop {
     if (snap && Math.hypot(candidate.x - target.x, candidate.z - target.z) < .55) Object.assign(candidate, target);
     if (!clearsLift(candidate)) { this.message = 'リフト台の通り道がふさがります。部品を少し離して置こう。'; return; }
     Object.assign(p, candidate); this.message = this.stage.goal;
+    if (id === 'belt') { delete p.anchors; delete p.unconnected; } else this.refreshBelt();
   }
   rotate(id) {
     if (this.state !== 'edit') return;
     const p = this.part(id); if (!p || p.enabled === false) return;
     const candidate = { ...p, angle: p.angle + Math.PI / 2 };
-    if (clearsLift(candidate)) { p.angle = candidate.angle; this.message = this.stage.goal; }
+    if (clearsLift(candidate)) { p.angle = candidate.angle; this.message = this.stage.goal; if (id === 'belt') { delete p.anchors; delete p.unconnected; } else this.refreshBelt(); }
     else this.message = 'リフト台の通り道がふさがります。部品を少し離して回そう。';
   }
   configure(key, value) {
@@ -48,7 +74,7 @@ export class Workshop {
     else if (key === 'delay' && this.stage.delays.includes(value)) this.delay = value;
     else if (key === 'idler' && this.stage.idler && typeof value === 'boolean') this.part('idler').enabled = value;
     else return false;
-    this.message = this.stage.goal; return true;
+    this.message = this.stage.goal; this.refreshBelt(); return true;
   }
   targets() {
     const round = x => Math.round(x * 1000) / 1000;
@@ -73,7 +99,12 @@ export class Workshop {
     if (jam) for (const id of seen) speeds[id] = 0;
     const near = (p, q) => Math.hypot(p.x - q.x, p.z - q.z) < .16;
     const b = this.part('belt'), r = this.part('rail'), targets = this.targets();
-    const belt = near(b, targets.belt) && near(this.part('large'), targets.large) && Math.abs(Math.sin(b.angle)) < .01;
+    const pair = this.beltPair('large', 'lift');
+    const half = this.beltLength / 2;
+    const ends = [-1, 1].map(sign => ({ x: b.x + sign * half * Math.cos(b.angle), z: b.z + sign * half * Math.sin(b.angle) }));
+    const matches = pair.valid && ((near(ends[0], pair.a) && near(ends[1], pair.b)) || (near(ends[1], pair.a) && near(ends[0], pair.b)));
+    const correctAnchors = !b.anchors || b.anchors.includes('large') && b.anchors.includes('lift');
+    const belt = !!(matches && correctAnchors && !b.unconnected && near(this.part('large'), targets.large));
     speeds.lift = belt ? speeds.large * (this.beltMode === 'cross' ? -1 : 1) : 0;
     return { input: !!speeds.small, mesh: !!speeds.large, belt, rail: near(r, targets.rail) && Math.cos(r.angle) > .99, jam, speeds };
   }

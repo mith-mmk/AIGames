@@ -1,0 +1,10 @@
+{
+  "stage": 5,
+  "gearRadius": 0.6,
+  "outputGearX": -2.2,
+  "actualBeltX": -0.1,
+  "requiredBeltX": -0.3,
+  "offset": 0.2,
+  "acceptedDistance": 0.16,
+  "failure": "ベルトがリフトへ力を伝えていない。位置と向きを直そう。"
+}

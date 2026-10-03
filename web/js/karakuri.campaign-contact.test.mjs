@@ -8,6 +8,7 @@ const solve = g => {
   const s = g.stage.solution;
   for (const key of ['radius', 'beltMode', 'delay', 'idler']) g.configure(key, s[key]);
   for (const p of g.parts.filter(p => p.enabled !== false)) { g.move(p.id, g.targets()[p.id].x, 0); for (let i = 0; i < 4 && Math.cos(p.angle) < .99; i++) g.rotate(p.id); }
+  assert(g.attachBelt('large', 'lift'));
 };
 const box = (w, h, d) => new THREE.Mesh(new THREE.BoxGeometry(w, h, d));
 function distance(mesh, ball) {
