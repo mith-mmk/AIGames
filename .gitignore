@@ -2,3 +2,5 @@ node_modules
 .test*
 test_data
 .codex
+homepage/
+.pages-dist/

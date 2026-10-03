@@ -1,0 +1,128 @@
+{
+  "browser": "154.0.8037.97",
+  "date": "2026-10-03T04:45:29.482Z",
+  "networkBlocked": true,
+  "javascriptErrors": [],
+  "campaign": {
+    "byStage": {
+      "1": {
+        "frames": 822,
+        "minimumGap": 0.0007723671647632269,
+        "states": [
+          "edit",
+          "running",
+          "success",
+          "failed"
+        ]
+      },
+      "2": {
+        "frames": 822,
+        "minimumGap": 0.0008827878676475331,
+        "states": [
+          "edit",
+          "running",
+          "success",
+          "failed"
+        ]
+      },
+      "3": {
+        "frames": 814,
+        "minimumGap": 0.0007718204562012498,
+        "states": [
+          "edit",
+          "running",
+          "success",
+          "failed"
+        ]
+      },
+      "4": {
+        "frames": 802,
+        "minimumGap": 0.0008827878676473389,
+        "states": [
+          "edit",
+          "running",
+          "success",
+          "failed"
+        ]
+      },
+      "5": {
+        "frames": 677,
+        "minimumGap": 0.0007718204562011388,
+        "states": [
+          "edit",
+          "running",
+          "success",
+          "failed"
+        ]
+      },
+      "6": {
+        "frames": 960,
+        "minimumGap": 0.0008838114590663804,
+        "states": [
+          "edit",
+          "running",
+          "success",
+          "failed"
+        ]
+      },
+      "7": {
+        "frames": 949,
+        "minimumGap": 0.0007742309549467474,
+        "states": [
+          "edit",
+          "running",
+          "success",
+          "failed"
+        ]
+      },
+      "8": {
+        "frames": 678,
+        "minimumGap": 0.0007706118291822273,
+        "states": [
+          "edit",
+          "running",
+          "success",
+          "failed"
+        ]
+      },
+      "9": {
+        "frames": 933,
+        "minimumGap": 0.0008827878676472833,
+        "states": [
+          "edit",
+          "running",
+          "success",
+          "failed"
+        ]
+      },
+      "10": {
+        "frames": 1061,
+        "minimumGap": 0.0008827878676475331,
+        "states": [
+          "edit",
+          "running",
+          "success",
+          "failed"
+        ]
+      }
+    },
+    "collisions": [],
+    "maxRoots": 1
+  },
+  "extraTimingTrial": {
+    "byStage": {
+      "5": {
+        "frames": 494,
+        "minimumGap": 0.0009517948986602631,
+        "states": [
+          "edit",
+          "running",
+          "failed",
+          "success"
+        ]
+      }
+    },
+    "collisions": [],
+    "maxRoots": 1
+  }
+}

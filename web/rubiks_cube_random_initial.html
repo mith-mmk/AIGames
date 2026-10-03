@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Games - 3D ルービックキューブ</title>
+<style>
+  :root {
+    --size: min(64vw, 440px);
+    --cubie: calc(var(--size) / 3.45);
+    --gap: calc(var(--cubie) * 1.05);
+    --face: calc(var(--cubie) * .96);
+    --half: calc(var(--cubie) / 2);
+    --speed: 520ms;
+    --bg1: #121526;
+    --bg2: #222947;
+    --panel: rgba(255,255,255,.10);
+    --text: #f7f8ff;
+    --muted: #bcc3d8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:
+      radial-gradient(circle at 25% 20%, rgba(255,255,255,.18), transparent 26rem),
+      radial-gradient(circle at 80% 75%, rgba(107,160,255,.18), transparent 28rem),
+      linear-gradient(135deg, var(--bg1), var(--bg2));
+    display: grid;
+    place-items: center;
+    overflow: auto;
+  }
+
+  .app {
+    width: min(980px, 94vw);
+    min-height: min(760px, 94vh);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 28px;
+    background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.05));
+    box-shadow: 0 28px 80px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.16);
+    backdrop-filter: blur(12px);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.25rem, 3vw, 2.05rem);
+    letter-spacing: .02em;
+  }
+
+  .status {
+    min-width: 12rem;
+    padding: 10px 14px;
+    border-radius: 999px;
+    text-align: center;
+    color: var(--muted);
+    background: rgba(0,0,0,.22);
+    border: 1px solid rgba(255,255,255,.12);
+    font-size: .95rem;
+    white-space: nowrap;
+  }
+
+  .stage-wrap {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 0;
+    perspective: 1100px;
+    perspective-origin: 50% 44%;
+  }
+
+  .shadow {
+    position: absolute;
+    width: calc(var(--size) * .78);
+    height: calc(var(--size) * .16);
+    bottom: 11%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(0,0,0,.5), rgba(0,0,0,0) 70%);
+    filter: blur(4px);
+    transform: translateY(34px);
+  }
+
+  .scene {
+    width: var(--size);
+    height: var(--size);
+    display: grid;
+    place-items: center;
+    transform-style: preserve-3d;
+    user-select: none;
+    touch-action: none;
+    cursor: grab;
+  }
+
+  .scene.dragging { cursor: grabbing; }
+
+  .cube {
+    position: relative;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx, -28deg)) rotateY(var(--ry, -36deg));
+    transition: transform 160ms ease-out;
+  }
+
+  .cubie {
+    position: absolute;
+    width: var(--cubie);
+    height: var(--cubie);
+    left: calc(var(--cubie) / -2);
+    top: calc(var(--cubie) / -2);
+    transform-style: preserve-3d;
+    transition: transform var(--speed) cubic-bezier(.22,.9,.2,1);
+  }
+
+  .cubie::before {
+    content: none;
+  }
+
+  .sticker {
+    position: absolute;
+    width: var(--face);
+    height: var(--face);
+    left: calc((var(--cubie) - var(--face)) / 2);
+    top: calc((var(--cubie) - var(--face)) / 2);
+    border-radius: 13px;
+    border: max(3px, calc(var(--cubie) * .035)) solid #14151c;
+    box-shadow:
+      inset 0 10px 16px rgba(255,255,255,.28),
+      inset 0 -12px 18px rgba(0,0,0,.18),
+      0 2px 5px rgba(0,0,0,.28);
+    backface-visibility: hidden;
+  }
+
+  .sticker.blank {
+    background: #171923;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
+  }
+
+  .n-y1 { transform: rotateX(90deg) translateZ(var(--half)); }
+  .n-y-1 { transform: rotateX(-90deg) translateZ(var(--half)); }
+  .n-x1 { transform: rotateY(90deg) translateZ(var(--half)); }
+  .n-x-1 { transform: rotateY(-90deg) translateZ(var(--half)); }
+  .n-z1 { transform: translateZ(var(--half)); }
+  .n-z-1 { transform: rotateY(180deg) translateZ(var(--half)); }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  button {
+    appearance: none;
+    border: 0;
+    padding: 13px 22px;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #10131d;
+    background: linear-gradient(#ffffff, #cbd4ff);
+    box-shadow: 0 10px 24px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.8);
+    cursor: pointer;
+    transition: transform 140ms ease, filter 140ms ease, opacity 140ms ease;
+  }
+
+  button:hover { transform: translateY(-2px); filter: brightness(1.06); }
+  button:active { transform: translateY(1px); }
+  button:disabled { opacity: .48; cursor: not-allowed; transform: none; }
+
+  .solve {
+    background: linear-gradient(#cbfff0, #68e3bf);
+  }
+
+  .hint {
+    width: 100%;
+    text-align: center;
+    color: var(--muted);
+    font-size: .92rem;
+  }
+
+  @media (max-width: 620px) {
+    .app { padding: 16px; border-radius: 20px; }
+    header { align-items: flex-start; flex-direction: column; }
+    .status { min-width: 0; width: 100%; }
+    button { flex: 1 1 9rem; }
+  }
+</style>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div><a href="index.html" style="color:var(--muted)">← AI Games</a><h1>3D ルービックキューブ</h1></div>
+      <div class="status" id="status">Ready</div>
+    </header>
+
+    <section class="stage-wrap" aria-label="Rubik's Cube stage">
+      <div class="shadow"></div>
+      <div class="scene" id="scene">
+        <div class="cube" id="cube"></div>
+      </div>
+    </section>
+
+    <footer>
+      <button id="scrambleBtn">シャッフル</button>
+      <button class="solve" id="solveBtn">元に戻す</button>
+      <button id="resetBtn">新しく混ぜる</button>
+      <div class="hint">最初から混ざったキューブをドラッグで観察できます。シャッフルは回転を追加し、元に戻すはこれまでの回転を逆順に戻します。</div>
+    </footer>
+  </main>
+
+<script>
+(() => {
+  "use strict";
+
+  const cubeEl = document.getElementById("cube");
+  const sceneEl = document.getElementById("scene");
+  const statusEl = document.getElementById("status");
+  const scrambleBtn = document.getElementById("scrambleBtn");
+  const solveBtn = document.getElementById("solveBtn");
+  const resetBtn = document.getElementById("resetBtn");
+
+  const COLORS = {
+    "y:1":  "#ffffff",
+    "y:-1": "#ffd429",
+    "x:1":  "#e3372f",
+    "x:-1": "#ff8b1a",
+    "z:1":  "#22b55e",
+    "z:-1": "#2779ff"
+  };
+
+  const NORMALS = [
+    { key: "y:1",  cls: "n-y1" },
+    { key: "y:-1", cls: "n-y-1" },
+    { key: "x:1",  cls: "n-x1" },
+    { key: "x:-1", cls: "n-x-1" },
+    { key: "z:1",  cls: "n-z1" },
+    { key: "z:-1", cls: "n-z-1" }
+  ];
+
+  const MOVES = [
+    { name: "U", axis: "y", layer:  1, dir:  1 },
+    { name: "D", axis: "y", layer: -1, dir: -1 },
+    { name: "R", axis: "x", layer:  1, dir:  1 },
+    { name: "L", axis: "x", layer: -1, dir: -1 },
+    { name: "F", axis: "z", layer:  1, dir:  1 },
+    { name: "B", axis: "z", layer: -1, dir: -1 }
+  ];
+
+  const INV = { U: "U'", D: "D'", R: "R'", L: "L'", F: "F'", B: "B'", "U'": "U", "D'": "D", "R'": "R", "L'": "L", "F'": "F", "B'": "B" };
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+  let cubies = [];
+  let history = [];
+  let busy = false;
+  let viewX = -28;
+  let viewY = -36;
+
+  function stickerKey(axis, sign) { return axis + ":" + sign; }
+
+  function makeSolvedCubies() {
+    const list = [];
+    let id = 0;
+    for (let x = -1; x <= 1; x++) {
+      for (let y = -1; y <= 1; y++) {
+        for (let z = -1; z <= 1; z++) {
+          const stickers = {};
+          for (const n of NORMALS) stickers[n.key] = COLORS[n.key];
+          list.push({ id: id++, x, y, z, stickers, el: null });
+        }
+      }
+    }
+    return list;
+  }
+
+  function baseTransform(c) {
+    return `translate3d(calc(${c.x} * var(--gap)), calc(${-c.y} * var(--gap)), calc(${c.z} * var(--gap)))`;
+  }
+
+  function rotationPrefix(axis, degrees) {
+    if (axis === "x") return `rotateX(${degrees}deg)`;
+    if (axis === "y") return `rotateY(${-degrees}deg)`;
+    return `rotateZ(${degrees}deg)`;
+  }
+
+  function render() {
+    cubeEl.textContent = "";
+    const ordered = [...cubies].sort((a, b) => (a.z - b.z) || (a.y - b.y) || (a.x - b.x));
+    for (const cubie of ordered) {
+      const el = document.createElement("div");
+      el.className = "cubie";
+      el.dataset.id = cubie.id;
+      el.style.transform = baseTransform(cubie);
+
+      for (const n of NORMALS) {
+        const face = document.createElement("div");
+        face.className = "sticker " + n.cls;
+        face.style.background = cubie.stickers[n.key] || COLORS[n.key];
+        el.appendChild(face);
+      }
+
+      cubie.el = el;
+      cubeEl.appendChild(el);
+    }
+  }
+
+  function rotatePoint(p, axis, dir) {
+    const { x, y, z } = p;
+    if (axis === "x") return dir === 1 ? { x, y: -z, z: y } : { x, y: z, z: -y };
+    if (axis === "y") return dir === 1 ? { x: z, y, z: -x } : { x: -z, y, z: x };
+    return dir === 1 ? { x: -y, y: x, z } : { x: y, y: -x, z };
+  }
+
+  function parseNormal(key) {
+    const [axis, sign] = key.split(":");
+    return { x: axis === "x" ? Number(sign) : 0, y: axis === "y" ? Number(sign) : 0, z: axis === "z" ? Number(sign) : 0 };
+  }
+
+  function normalKeyFromPoint(p) {
+    if (p.x) return stickerKey("x", p.x);
+    if (p.y) return stickerKey("y", p.y);
+    return stickerKey("z", p.z);
+  }
+
+  function rotateStickers(stickers, axis, dir) {
+    const next = {};
+    for (const [key, color] of Object.entries(stickers)) {
+      next[normalKeyFromPoint(rotatePoint(parseNormal(key), axis, dir))] = color;
+    }
+    return next;
+  }
+
+  function moveSpec(name) {
+    const bare = name.replace("'", "");
+    const base = MOVES.find(m => m.name === bare);
+    if (!base) throw new Error("Unknown move: " + name);
+    return { ...base, dir: name.endsWith("'") ? -base.dir : base.dir };
+  }
+
+  async function turn(name, record = true, delay = 540) {
+    const spec = moveSpec(name);
+    const layer = cubies.filter(c => c[spec.axis] === spec.layer);
+    const degrees = 90 * spec.dir;
+
+    layer.forEach(c => {
+      c.el.style.transition = `transform ${delay}ms cubic-bezier(.22,.9,.2,1)`;
+      c.el.style.transform = `${rotationPrefix(spec.axis, degrees)} ${baseTransform(c)}`;
+    });
+
+    statusEl.textContent = `Turning ${name}`;
+    await sleep(delay + 30);
+
+    layer.forEach(c => {
+      const p = rotatePoint(c, spec.axis, spec.dir);
+      c.x = p.x; c.y = p.y; c.z = p.z;
+      c.stickers = rotateStickers(c.stickers, spec.axis, spec.dir);
+    });
+
+    if (record) history.push(name);
+    render();
+  }
+
+  function setBusy(value) {
+    busy = value;
+    scrambleBtn.disabled = value;
+    solveBtn.disabled = value;
+    resetBtn.disabled = value;
+  }
+
+  function randomIndex(length) {
+    if (globalThis.crypto?.getRandomValues) {
+      const values = new Uint32Array(1);
+      const limit = Math.floor(0x100000000 / length) * length;
+      do globalThis.crypto.getRandomValues(values); while (values[0] >= limit);
+      return values[0] % length;
+    }
+    return Math.floor(Math.random() * length);
+  }
+
+  function randomMove(previous) {
+    const names = MOVES.flatMap(m => [m.name, m.name + "'"]);
+    let pick;
+    do {
+      pick = names[randomIndex(names.length)];
+    } while (previous && pick[0] === previous[0]);
+    return pick;
+  }
+
+  function randomSequence(steps) {
+    const sequence = [];
+    let previous = "";
+    for (let i = 0; i < steps; i++) {
+      const move = randomMove(previous);
+      sequence.push(move);
+      previous = move;
+    }
+    return sequence;
+  }
+
+  function applyMoveInstant(name, record = true) {
+    const spec = moveSpec(name);
+    const layer = cubies.filter(c => c[spec.axis] === spec.layer);
+    layer.forEach(c => {
+      const p = rotatePoint(c, spec.axis, spec.dir);
+      c.x = p.x;
+      c.y = p.y;
+      c.z = p.z;
+      c.stickers = rotateStickers(c.stickers, spec.axis, spec.dir);
+    });
+    if (record) history.push(name);
+  }
+
+  function randomizeInitialState(steps = 24) {
+    cubies = makeSolvedCubies();
+    history = [];
+    randomSequence(steps).forEach(move => applyMoveInstant(move, true));
+    render();
+  }
+
+  async function scramble() {
+    if (busy) return;
+    setBusy(true);
+    let previous = history.at(-1) || "";
+    const steps = 24;
+    statusEl.textContent = "Scrambling...";
+    for (let i = 0; i < steps; i++) {
+      const move = randomMove(previous);
+      previous = move;
+      await turn(move, true, 210);
+      statusEl.textContent = `Scramble ${i + 1}/${steps}`;
+    }
+    statusEl.textContent = "Scrambled";
+    setBusy(false);
+  }
+
+  async function solve() {
+    if (busy) return;
+    if (!history.length) {
+      statusEl.textContent = "Already solved";
+      return;
+    }
+    setBusy(true);
+    statusEl.textContent = "Solving...";
+    const solution = history.slice().reverse().map(m => INV[m]);
+    for (let i = 0; i < solution.length; i++) {
+      await turn(solution[i], false, 260);
+      statusEl.textContent = `Solve ${i + 1}/${solution.length}`;
+    }
+    history = [];
+    statusEl.textContent = "Solved";
+    setBusy(false);
+  }
+
+  function reset() {
+    if (busy) return;
+    randomizeInitialState(24);
+    statusEl.textContent = "Randomized";
+  }
+
+  let dragging = false;
+  let lastX = 0;
+  let lastY = 0;
+
+  function applyView() {
+    cubeEl.style.setProperty("--rx", viewX + "deg");
+    cubeEl.style.setProperty("--ry", viewY + "deg");
+  }
+
+  sceneEl.addEventListener("pointerdown", e => {
+    dragging = true;
+    sceneEl.classList.add("dragging");
+    lastX = e.clientX;
+    lastY = e.clientY;
+    sceneEl.setPointerCapture(e.pointerId);
+  });
+
+  sceneEl.addEventListener("pointermove", e => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    viewY += dx * .35;
+    viewX -= dy * .35;
+    viewX = Math.max(-75, Math.min(75, viewX));
+    applyView();
+  });
+
+  sceneEl.addEventListener("pointerup", () => {
+    dragging = false;
+    sceneEl.classList.remove("dragging");
+  });
+
+  sceneEl.addEventListener("pointercancel", () => {
+    dragging = false;
+    sceneEl.classList.remove("dragging");
+  });
+
+  scrambleBtn.addEventListener("click", scramble);
+  solveBtn.addEventListener("click", solve);
+  resetBtn.addEventListener("click", reset);
+
+  reset();
+  applyView();
+})();
+</script>
+</body>
+</html>
