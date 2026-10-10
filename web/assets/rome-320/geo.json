@@ -1,0 +1,6480 @@
+{
+  "river": [
+    [
+      12.4613217,
+      41.9243385
+    ],
+    [
+      12.4622972,
+      41.9236127
+    ],
+    [
+      12.4632171,
+      41.9230614
+    ],
+    [
+      12.4644773,
+      41.9226373
+    ],
+    [
+      12.4683651,
+      41.9217999
+    ],
+    [
+      12.4688596,
+      41.921569
+    ],
+    [
+      12.4693357,
+      41.9212602
+    ],
+    [
+      12.4697961,
+      41.9208058
+    ],
+    [
+      12.470176,
+      41.9202715
+    ],
+    [
+      12.4704591,
+      41.9197684
+    ],
+    [
+      12.4706618,
+      41.9192094
+    ],
+    [
+      12.4708049,
+      41.9187294
+    ],
+    [
+      12.4708494,
+      41.9181714
+    ],
+    [
+      12.4708037,
+      41.9177046
+    ],
+    [
+      12.4707363,
+      41.9172675
+    ],
+    [
+      12.4705892,
+      41.9164173
+    ],
+    [
+      12.4705926,
+      41.9159739
+    ],
+    [
+      12.4706454,
+      41.9155304
+    ],
+    [
+      12.4707859,
+      41.9145134
+    ],
+    [
+      12.4708717,
+      41.9138921
+    ],
+    [
+      12.4719576,
+      41.9107275
+    ],
+    [
+      12.4721824,
+      41.9101541
+    ],
+    [
+      12.472775,
+      41.9090229
+    ],
+    [
+      12.4737106,
+      41.9079434
+    ],
+    [
+      12.4743278,
+      41.9068225
+    ],
+    [
+      12.4743715,
+      41.9053751
+    ],
+    [
+      12.4739588,
+      41.9044851
+    ],
+    [
+      12.4732854,
+      41.9037245
+    ],
+    [
+      12.4729554,
+      41.9033963
+    ],
+    [
+      12.4720563,
+      41.902892
+    ],
+    [
+      12.4701615,
+      41.9023197
+    ],
+    [
+      12.468222,
+      41.9020451
+    ],
+    [
+      12.4654438,
+      41.9017931
+    ],
+    [
+      12.4641584,
+      41.9010797
+    ],
+    [
+      12.4635906,
+      41.9002747
+    ],
+    [
+      12.4635073,
+      41.899854
+    ],
+    [
+      12.46356,
+      41.8996231
+    ],
+    [
+      12.4636692,
+      41.899145
+    ],
+    [
+      12.4641391,
+      41.8982124
+    ],
+    [
+      12.4654666,
+      41.8966489
+    ],
+    [
+      12.4657389,
+      41.8963282
+    ],
+    [
+      12.4690282,
+      41.8937042
+    ],
+    [
+      12.4718315,
+      41.8915922
+    ],
+    [
+      12.4730065,
+      41.8911548
+    ],
+    [
+      12.4749561,
+      41.8907447
+    ],
+    [
+      12.4770494,
+      41.8901257
+    ],
+    [
+      12.4779777,
+      41.8897749
+    ],
+    [
+      12.4786479,
+      41.8894415
+    ],
+    [
+      12.4792534,
+      41.8891594
+    ],
+    [
+      12.4795794,
+      41.8886747
+    ],
+    [
+      12.4796131,
+      41.887846
+    ],
+    [
+      12.4793513,
+      41.8870587
+    ],
+    [
+      12.4783356,
+      41.8859127
+    ],
+    [
+      12.4765286,
+      41.884394
+    ],
+    [
+      12.4752073,
+      41.883447
+    ],
+    [
+      12.4749013,
+      41.8832277
+    ],
+    [
+      12.4729485,
+      41.8817843
+    ],
+    [
+      12.4715171,
+      41.8807561
+    ],
+    [
+      12.4707712,
+      41.8799756
+    ],
+    [
+      12.4700249,
+      41.8786899
+    ],
+    [
+      12.4698603,
+      41.8774051
+    ],
+    [
+      12.4702629,
+      41.8759471
+    ],
+    [
+      12.47167,
+      41.8726714
+    ],
+    [
+      12.4721035,
+      41.87158
+    ],
+    [
+      12.4729763,
+      41.8698664
+    ],
+    [
+      12.4735762,
+      41.8686887
+    ],
+    [
+      12.4746464,
+      41.8672421
+    ],
+    [
+      12.4753737,
+      41.8666799
+    ],
+    [
+      12.4762939,
+      41.8658123
+    ],
+    [
+      12.4767723,
+      41.8653693
+    ],
+    [
+      12.4772176,
+      41.86423
+    ],
+    [
+      12.4772934,
+      41.8637815
+    ],
+    [
+      12.4772267,
+      41.8633702
+    ],
+    [
+      12.477033,
+      41.8629561
+    ],
+    [
+      12.4767286,
+      41.8626058
+    ],
+    [
+      12.4764002,
+      41.8623159
+    ],
+    [
+      12.4760024,
+      41.8620142
+    ],
+    [
+      12.4747736,
+      41.8613632
+    ],
+    [
+      12.4731152,
+      41.8607407
+    ],
+    [
+      12.4715757,
+      41.8603643
+    ],
+    [
+      12.4695755,
+      41.8599978
+    ],
+    [
+      12.4680477,
+      41.8598724
+    ],
+    [
+      12.4649679,
+      41.8599393
+    ],
+    [
+      12.4635205,
+      41.859751
+    ],
+    [
+      12.4623753,
+      41.8593379
+    ],
+    [
+      12.4615854,
+      41.8586126
+    ],
+    [
+      12.4612391,
+      41.8577663
+    ],
+    [
+      12.4609513,
+      41.856799
+    ],
+    [
+      12.46056,
+      41.8554326
+    ]
+  ],
+  "wallPaths": [
+    [
+      [
+        12.4685503719606,
+        41.9013339238462
+      ],
+      [
+        12.4703955733682,
+        41.9016535136933
+      ],
+      [
+        12.4726237411056,
+        41.9023877005271
+      ],
+      [
+        12.4733432536042,
+        41.9027504720818
+      ],
+      [
+        12.4741672114654,
+        41.9033637240704
+      ],
+      [
+        12.4749998379154,
+        41.9044024254304
+      ],
+      [
+        12.4752385252998,
+        41.9051058978441
+      ],
+      [
+        12.475295810272,
+        41.9063351795156
+      ],
+      [
+        12.4748470779894,
+        41.9076425976312
+      ],
+      [
+        12.4729726823969,
+        41.9107820172876
+      ],
+      [
+        12.4758225387943,
+        41.9115011676863
+      ],
+      [
+        12.477035388555,
+        41.9117009332946
+      ],
+      [
+        12.4774262899465,
+        41.9118898399617
+      ],
+      [
+        12.4780002705026,
+        41.9118247937107
+      ],
+      [
+        12.4792684775704,
+        41.9123809951603
+      ],
+      [
+        12.4805500744375,
+        41.9127623170295
+      ],
+      [
+        12.4807243970068,
+        41.9126486659039
+      ],
+      [
+        12.4809804448638,
+        41.9126306487753
+      ],
+      [
+        12.4813542517713,
+        41.9112194744691
+      ],
+      [
+        12.4815517815337,
+        41.9112609653412
+      ],
+      [
+        12.4816114595048,
+        41.9111246503366
+      ],
+      [
+        12.4813790404798,
+        41.9110716124757
+      ],
+      [
+        12.4814242227817,
+        41.9109258193453
+      ],
+      [
+        12.4818075239872,
+        41.9102990508795
+      ],
+      [
+        12.4825306836382,
+        41.9097054871141
+      ],
+      [
+        12.4844608438953,
+        41.9085167389989
+      ],
+      [
+        12.4852204836195,
+        41.9077744826691
+      ],
+      [
+        12.4865856175352,
+        41.908750382874
+      ],
+      [
+        12.4873091803536,
+        41.909012979304
+      ],
+      [
+        12.4878993132817,
+        41.9093894695143
+      ],
+      [
+        12.4885543901977,
+        41.9095164169121
+      ],
+      [
+        12.4904445529392,
+        41.9095841757016
+      ],
+      [
+        12.4910814565088,
+        41.9100698192919
+      ],
+      [
+        12.4920730353246,
+        41.9105587167954
+      ],
+      [
+        12.4932851717531,
+        41.9108166412001
+      ],
+      [
+        12.4942802802385,
+        41.9108243833093
+      ],
+      [
+        12.4946327988771,
+        41.9107568103227
+      ],
+      [
+        12.4946296273993,
+        41.9108417185345
+      ],
+      [
+        12.4947290846454,
+        41.9108439278125
+      ],
+      [
+        12.496046549541,
+        41.9107319609729
+      ],
+      [
+        12.4982406727079,
+        41.9107573172794
+      ],
+      [
+        12.4987245076498,
+        41.910688515459
+      ],
+      [
+        12.5017691163223,
+        41.9090385958032
+      ],
+      [
+        12.5024529604294,
+        41.9082243190203
+      ],
+      [
+        12.5025454611303,
+        41.9082838265063
+      ],
+      [
+        12.5037049179882,
+        41.9079992820979
+      ],
+      [
+        12.5038493687824,
+        41.9078040948865
+      ],
+      [
+        12.5070462255099,
+        41.9087404909633
+      ],
+      [
+        12.5080698763779,
+        41.9089726912001
+      ],
+      [
+        12.5085031001743,
+        41.9083347796571
+      ],
+      [
+        12.5093698221246,
+        41.9064927824158
+      ],
+      [
+        12.5099915221305,
+        41.9054939546341
+      ],
+      [
+        12.5098269823157,
+        41.9051885892775
+      ],
+      [
+        12.5092408928317,
+        41.9048742470997
+      ],
+      [
+        12.5071467898718,
+        41.9044145114634
+      ],
+      [
+        12.5072345633044,
+        41.9029338255289
+      ],
+      [
+        12.508295287334,
+        41.9009292313864
+      ],
+      [
+        12.5098949385489,
+        41.8984108654733
+      ],
+      [
+        12.5104259608317,
+        41.8973863559903
+      ],
+      [
+        12.5144492962248,
+        41.8936317315953
+      ],
+      [
+        12.5150466251118,
+        41.8932131097532
+      ],
+      [
+        12.5158108879105,
+        41.8928681414679
+      ],
+      [
+        12.5154184881186,
+        41.892375968455
+      ],
+      [
+        12.5153447431199,
+        41.8920836618119
+      ],
+      [
+        12.5154482249675,
+        41.8917885633811
+      ],
+      [
+        12.5149152306595,
+        41.8909709732245
+      ],
+      [
+        12.5189517105471,
+        41.8891570048177
+      ],
+      [
+        12.5177412356273,
+        41.8877795509808
+      ],
+      [
+        12.5166178206415,
+        41.8875742094135
+      ],
+      [
+        12.5155334507647,
+        41.8875712478686
+      ],
+      [
+        12.5153926306642,
+        41.8874325933588
+      ],
+      [
+        12.5151504846034,
+        41.8873667004248
+      ],
+      [
+        12.5149044301105,
+        41.8874065926019
+      ],
+      [
+        12.5147407777508,
+        41.8875596201212
+      ],
+      [
+        12.5099397902873,
+        41.8860613377236
+      ],
+      [
+        12.5076051584133,
+        41.8852506796932
+      ],
+      [
+        12.5063269992086,
+        41.884645980464
+      ],
+      [
+        12.5061379888833,
+        41.8844804480276
+      ],
+      [
+        12.5061747213351,
+        41.8843136314705
+      ],
+      [
+        12.5046889979528,
+        41.8839441502967
+      ],
+      [
+        12.5032592356881,
+        41.8831508347226
+      ],
+      [
+        12.5022056027695,
+        41.8833345699394
+      ],
+      [
+        12.5014836002969,
+        41.883274367432
+      ],
+      [
+        12.5008215026671,
+        41.8831041473553
+      ],
+      [
+        12.4994237673871,
+        41.8825599535055
+      ],
+      [
+        12.4987254252354,
+        41.882504061903
+      ],
+      [
+        12.4986501313362,
+        41.8823706730685
+      ],
+      [
+        12.498767842385,
+        41.8820559731228
+      ],
+      [
+        12.498791514659,
+        41.8812103070811
+      ],
+      [
+        12.499710300901,
+        41.8799484437584
+      ],
+      [
+        12.5004953668165,
+        41.8792075156519
+      ],
+      [
+        12.5022517952078,
+        41.8782250643209
+      ],
+      [
+        12.5027138151935,
+        41.8776217942352
+      ],
+      [
+        12.5025970952267,
+        41.8765895928458
+      ],
+      [
+        12.5022644949053,
+        41.8761666585683
+      ],
+      [
+        12.5027128263269,
+        41.8753625558198
+      ],
+      [
+        12.5035496332693,
+        41.8748132553812
+      ],
+      [
+        12.503544197131,
+        41.8747351974282
+      ],
+      [
+        12.50343421162,
+        41.8743905989984
+      ],
+      [
+        12.5032056805279,
+        41.8741137203313
+      ],
+      [
+        12.5023323535323,
+        41.8736566965678
+      ],
+      [
+        12.5016368944558,
+        41.8734534158526
+      ],
+      [
+        12.5016002591897,
+        41.8735316419839
+      ],
+      [
+        12.5014410056628,
+        41.8734969652462
+      ],
+      [
+        12.5014648970733,
+        41.8734160606564
+      ],
+      [
+        12.5013551488261,
+        41.8733884720982
+      ],
+      [
+        12.5013313467531,
+        41.873466983544
+      ],
+      [
+        12.5010463638532,
+        41.8732307131804
+      ],
+      [
+        12.4971566924578,
+        41.8732628207552
+      ],
+      [
+        12.4970327788047,
+        41.873184618626
+      ],
+      [
+        12.4960671350482,
+        41.8735487779603
+      ],
+      [
+        12.4954144103608,
+        41.8736758627108
+      ],
+      [
+        12.4950755987467,
+        41.8738134415548
+      ],
+      [
+        12.4950430232994,
+        41.8739739095142
+      ],
+      [
+        12.4941631745114,
+        41.8741471628293
+      ],
+      [
+        12.4940892614176,
+        41.8740197751003
+      ],
+      [
+        12.493343644753,
+        41.8739948199014
+      ],
+      [
+        12.4933128242666,
+        41.8738312648255
+      ],
+      [
+        12.4926471548945,
+        41.8737290464219
+      ],
+      [
+        12.4922627005547,
+        41.8741360594942
+      ],
+      [
+        12.4923796576625,
+        41.8742715890945
+      ],
+      [
+        12.4919079131633,
+        41.8746515098503
+      ],
+      [
+        12.4919579058745,
+        41.8746885477771
+      ],
+      [
+        12.490791997295,
+        41.8756865398756
+      ],
+      [
+        12.4902069349765,
+        41.8760914769493
+      ],
+      [
+        12.4901502576567,
+        41.8760614764698
+      ],
+      [
+        12.4901306873378,
+        41.8761556466013
+      ],
+      [
+        12.4898661210408,
+        41.8763186182975
+      ],
+      [
+        12.4897455828622,
+        41.8765236940375
+      ],
+      [
+        12.4892395584918,
+        41.8768890842564
+      ],
+      [
+        12.4889563967391,
+        41.8772061200597
+      ],
+      [
+        12.4881802055578,
+        41.8777421175739
+      ],
+      [
+        12.4870361801341,
+        41.8767347320442
+      ],
+      [
+        12.4857628258746,
+        41.8763962726297
+      ],
+      [
+        12.4846347924308,
+        41.8764226953899
+      ],
+      [
+        12.483839078021,
+        41.8765355407166
+      ],
+      [
+        12.4825611886776,
+        41.876576595694
+      ],
+      [
+        12.4825358388966,
+        41.8765245387345
+      ],
+      [
+        12.4816441882198,
+        41.8766268690136
+      ],
+      [
+        12.4815661960415,
+        41.8765812661242
+      ],
+      [
+        12.4812384646476,
+        41.8767004807567
+      ],
+      [
+        12.4805488446604,
+        41.8762336227424
+      ],
+      [
+        12.4783972341693,
+        41.875227979255
+      ],
+      [
+        12.4751970988295,
+        41.8732802844287
+      ],
+      [
+        12.4741030491029,
+        41.8730174319289
+      ],
+      [
+        12.472296020225,
+        41.8728707324255
+      ],
+      [
+        12.471293806975,
+        41.8748430353553
+      ],
+      [
+        12.4708155994404,
+        41.8764675646119
+      ],
+      [
+        12.4706236810865,
+        41.8779060718298
+      ],
+      [
+        12.4708539831112,
+        41.878801550037
+      ],
+      [
+        12.4713529708315,
+        41.8794683873592
+      ],
+      [
+        12.4724788918413,
+        41.8804495781952
+      ],
+      [
+        12.4670284105892,
+        41.8813926503332
+      ],
+      [
+        12.4683590445099,
+        41.8848790386055
+      ],
+      [
+        12.4582257554214,
+        41.8866316865347
+      ],
+      [
+        12.4580722207382,
+        41.8880413901966
+      ],
+      [
+        12.4656977766685,
+        41.8896034579217
+      ],
+      [
+        12.4684614009653,
+        41.8931465431295
+      ]
+    ]
+  ],
+  "outerPerimeter": [
+    [
+      12.4685503719606,
+      41.9013339238462
+    ],
+    [
+      12.4703955733682,
+      41.9016535136933
+    ],
+    [
+      12.4726237411056,
+      41.9023877005271
+    ],
+    [
+      12.4741672114654,
+      41.9033637240704
+    ],
+    [
+      12.4749998379154,
+      41.9044024254304
+    ],
+    [
+      12.4752385252998,
+      41.9051058978441
+    ],
+    [
+      12.475295810272,
+      41.9063351795156
+    ],
+    [
+      12.4748470779894,
+      41.9076425976312
+    ],
+    [
+      12.4729726823969,
+      41.9107820172876
+    ],
+    [
+      12.477035388555,
+      41.9117009332946
+    ],
+    [
+      12.4774262899465,
+      41.9118898399617
+    ],
+    [
+      12.4780002705026,
+      41.9118247937107
+    ],
+    [
+      12.4792684775704,
+      41.9123809951603
+    ],
+    [
+      12.4805500744375,
+      41.9127623170295
+    ],
+    [
+      12.4809804448638,
+      41.9126306487753
+    ],
+    [
+      12.4813542517713,
+      41.9112194744691
+    ],
+    [
+      12.4815517815337,
+      41.9112609653412
+    ],
+    [
+      12.4816114595048,
+      41.9111246503366
+    ],
+    [
+      12.4813790404798,
+      41.9110716124757
+    ],
+    [
+      12.4814242227817,
+      41.9109258193453
+    ],
+    [
+      12.4818075239872,
+      41.9102990508795
+    ],
+    [
+      12.4825306836382,
+      41.9097054871141
+    ],
+    [
+      12.4844608438953,
+      41.9085167389989
+    ],
+    [
+      12.4852204836195,
+      41.9077744826691
+    ],
+    [
+      12.4865856175352,
+      41.908750382874
+    ],
+    [
+      12.4873091803536,
+      41.909012979304
+    ],
+    [
+      12.4878993132817,
+      41.9093894695143
+    ],
+    [
+      12.4885543901977,
+      41.9095164169121
+    ],
+    [
+      12.4904445529392,
+      41.9095841757016
+    ],
+    [
+      12.4910814565088,
+      41.9100698192919
+    ],
+    [
+      12.4920730353246,
+      41.9105587167954
+    ],
+    [
+      12.4932851717531,
+      41.9108166412001
+    ],
+    [
+      12.4987245076498,
+      41.910688515459
+    ],
+    [
+      12.5017691163223,
+      41.9090385958032
+    ],
+    [
+      12.5024529604294,
+      41.9082243190203
+    ],
+    [
+      12.5025454611303,
+      41.9082838265063
+    ],
+    [
+      12.5037049179882,
+      41.9079992820979
+    ],
+    [
+      12.5038493687824,
+      41.9078040948865
+    ],
+    [
+      12.5080698763779,
+      41.9089726912001
+    ],
+    [
+      12.5099915221305,
+      41.9054939546341
+    ],
+    [
+      12.5098269823157,
+      41.9051885892775
+    ],
+    [
+      12.5092408928317,
+      41.9048742470997
+    ],
+    [
+      12.5071467898718,
+      41.9044145114634
+    ],
+    [
+      12.5072345633044,
+      41.9029338255289
+    ],
+    [
+      12.508295287334,
+      41.9009292313864
+    ],
+    [
+      12.5104259608317,
+      41.8973863559903
+    ],
+    [
+      12.5144492962248,
+      41.8936317315953
+    ],
+    [
+      12.5158108879105,
+      41.8928681414679
+    ],
+    [
+      12.5154184881186,
+      41.892375968455
+    ],
+    [
+      12.5154482249675,
+      41.8917885633811
+    ],
+    [
+      12.5149152306595,
+      41.8909709732245
+    ],
+    [
+      12.5189517105471,
+      41.8891570048177
+    ],
+    [
+      12.5177412356273,
+      41.8877795509808
+    ],
+    [
+      12.5166178206415,
+      41.8875742094135
+    ],
+    [
+      12.5155334507647,
+      41.8875712478686
+    ],
+    [
+      12.5151504846034,
+      41.8873667004248
+    ],
+    [
+      12.5147407777508,
+      41.8875596201212
+    ],
+    [
+      12.5076051584133,
+      41.8852506796932
+    ],
+    [
+      12.5063269992086,
+      41.884645980464
+    ],
+    [
+      12.5061379888833,
+      41.8844804480276
+    ],
+    [
+      12.5061747213351,
+      41.8843136314705
+    ],
+    [
+      12.5046889979528,
+      41.8839441502967
+    ],
+    [
+      12.5032592356881,
+      41.8831508347226
+    ],
+    [
+      12.5022056027695,
+      41.8833345699394
+    ],
+    [
+      12.5014836002969,
+      41.883274367432
+    ],
+    [
+      12.4994237673871,
+      41.8825599535055
+    ],
+    [
+      12.4987254252354,
+      41.882504061903
+    ],
+    [
+      12.498791514659,
+      41.8812103070811
+    ],
+    [
+      12.499710300901,
+      41.8799484437584
+    ],
+    [
+      12.5004953668165,
+      41.8792075156519
+    ],
+    [
+      12.5022517952078,
+      41.8782250643209
+    ],
+    [
+      12.5027138151935,
+      41.8776217942352
+    ],
+    [
+      12.5025970952267,
+      41.8765895928458
+    ],
+    [
+      12.5022644949053,
+      41.8761666585683
+    ],
+    [
+      12.5027128263269,
+      41.8753625558198
+    ],
+    [
+      12.503544197131,
+      41.8747351974282
+    ],
+    [
+      12.5032056805279,
+      41.8741137203313
+    ],
+    [
+      12.5023323535323,
+      41.8736566965678
+    ],
+    [
+      12.5016368944558,
+      41.8734534158526
+    ],
+    [
+      12.5014410056628,
+      41.8734969652462
+    ],
+    [
+      12.5013551488261,
+      41.8733884720982
+    ],
+    [
+      12.5013313467531,
+      41.873466983544
+    ],
+    [
+      12.5010463638532,
+      41.8732307131804
+    ],
+    [
+      12.4971566924578,
+      41.8732628207552
+    ],
+    [
+      12.4970327788047,
+      41.873184618626
+    ],
+    [
+      12.4954144103608,
+      41.8736758627108
+    ],
+    [
+      12.4950755987467,
+      41.8738134415548
+    ],
+    [
+      12.4950430232994,
+      41.8739739095142
+    ],
+    [
+      12.4941631745114,
+      41.8741471628293
+    ],
+    [
+      12.4940892614176,
+      41.8740197751003
+    ],
+    [
+      12.493343644753,
+      41.8739948199014
+    ],
+    [
+      12.4933128242666,
+      41.8738312648255
+    ],
+    [
+      12.4926471548945,
+      41.8737290464219
+    ],
+    [
+      12.4922627005547,
+      41.8741360594942
+    ],
+    [
+      12.4923796576625,
+      41.8742715890945
+    ],
+    [
+      12.4919579058745,
+      41.8746885477771
+    ],
+    [
+      12.4881802055578,
+      41.8777421175739
+    ],
+    [
+      12.4870361801341,
+      41.8767347320442
+    ],
+    [
+      12.4857628258746,
+      41.8763962726297
+    ],
+    [
+      12.4815661960415,
+      41.8765812661242
+    ],
+    [
+      12.4812384646476,
+      41.8767004807567
+    ],
+    [
+      12.4805488446604,
+      41.8762336227424
+    ],
+    [
+      12.4783972341693,
+      41.875227979255
+    ],
+    [
+      12.4751970988295,
+      41.8732802844287
+    ],
+    [
+      12.4741030491029,
+      41.8730174319289
+    ],
+    [
+      12.472296020225,
+      41.8728707324255
+    ],
+    [
+      12.471293806975,
+      41.8748430353553
+    ],
+    [
+      12.4708155994404,
+      41.8764675646119
+    ],
+    [
+      12.4706236810865,
+      41.8779060718298
+    ],
+    [
+      12.4708539831112,
+      41.878801550037
+    ],
+    [
+      12.4713529708315,
+      41.8794683873592
+    ],
+    [
+      12.4724788918413,
+      41.8804495781952
+    ],
+    [
+      12.4670284105892,
+      41.8813926503332
+    ],
+    [
+      12.4683590445099,
+      41.8848790386055
+    ],
+    [
+      12.4582257554214,
+      41.8866316865347
+    ],
+    [
+      12.4580722207382,
+      41.8880413901966
+    ],
+    [
+      12.4656977766685,
+      41.8896034579217
+    ],
+    [
+      12.4684614009653,
+      41.8931465431295
+    ],
+    [
+      12.469595386151164,
+      41.89410849736138
+    ],
+    [
+      12.466322516873774,
+      41.896719325600095
+    ],
+    [
+      12.46613043072458,
+      41.896961206022034
+    ],
+    [
+      12.464831240830321,
+      41.89848856048894
+    ],
+    [
+      12.464420220397667,
+      41.899315826383784
+    ],
+    [
+      12.464334196016985,
+      41.899721057087156
+    ],
+    [
+      12.464292121245649,
+      41.89983357813418
+    ],
+    [
+      12.464320881632498,
+      41.90005974962692
+    ],
+    [
+      12.464739644310507,
+      41.90068662164712
+    ],
+    [
+      12.46568256831696,
+      41.901236216088
+    ],
+    [
+      12.468338456995196,
+      41.90146700480142
+    ],
+    [
+      12.4685503719606,
+      41.9013339238462
+    ]
+  ],
+  "gates": [
+    {
+      "name": "アシナリア門",
+      "id": "porta-asinaria",
+      "latin": "Porta Asinaria",
+      "lat": 41.885654,
+      "lon": 12.508691,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-asinaria/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center.",
+      "phase320": "Small simple opening; omit the monumental semicircular towers added under Honorius (401–403)."
+    },
+    {
+      "name": "ピンチアーナ通用門",
+      "id": "porta-pinciana",
+      "latin": "Porta Pinciana",
+      "lat": 41.909463,
+      "lon": 12.488354,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-pinciana/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center.",
+      "phase320": "Small simple opening; omit the monumental semicircular towers added under Honorius (401–403)."
+    },
+    {
+      "name": "フラミニア門",
+      "id": "porta-flaminia",
+      "latin": "Porta Flaminia",
+      "lat": 41.911526,
+      "lon": 12.476032,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-flaminia/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center."
+    },
+    {
+      "name": "サラリア門",
+      "id": "porta-salaria",
+      "latin": "Porta Salaria",
+      "lat": 41.910771,
+      "lon": 12.498155,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-salaria/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center."
+    },
+    {
+      "name": "ノメンタナ門",
+      "id": "porta-nomentana",
+      "latin": "Porta Nomentana",
+      "lat": 41.908575,
+      "lon": 12.502093,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-nomentana/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center."
+    },
+    {
+      "name": "クラウサ門",
+      "id": "porta-clausa",
+      "latin": "Porta Clausa",
+      "lat": 41.908286,
+      "lon": 12.505842,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-clausa/",
+      "uncertainty": "Museum marker is on north Castra Praetoria wall; identification versus Porta Praetoriana / Clausa should be treated cautiously, omit named monument if unresolved."
+    },
+    {
+      "name": "ティブルティナ門",
+      "id": "porta-tiburtina",
+      "latin": "Porta Tiburtina",
+      "lat": 41.897459,
+      "lon": 12.510338,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-tiburtina/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center."
+    },
+    {
+      "name": "プラエネスティナ・ラビカナ門",
+      "id": "porta-prenestina-e-labicana",
+      "latin": "Porta Prenestina e Labicana",
+      "lat": 41.891777,
+      "lon": 12.515396,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-prenestina-e-labicana/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center."
+    },
+    {
+      "name": "メトロニア門",
+      "id": "porta-metronia",
+      "latin": "Porta Metronia",
+      "lat": 41.882297,
+      "lon": 12.498633,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-metronia/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center."
+    },
+    {
+      "name": "ラティーナ門",
+      "id": "porta-latina",
+      "latin": "Porta Latina",
+      "lat": 41.87651,
+      "lon": 12.502506,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-latina/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center."
+    },
+    {
+      "name": "アッピア門",
+      "id": "porta-appia",
+      "latin": "Porta Appia",
+      "lat": 41.873446,
+      "lon": 12.501556,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-appia/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center.",
+      "phase320": "Original twin arched openings with low semicircular flanking towers; current single-opening and tall square tower bases belong to later phases."
+    },
+    {
+      "name": "アルデアティナ通用門",
+      "id": "posterula-ardeatina",
+      "latin": "La Posterula Ardeatina",
+      "lat": 41.87325,
+      "lon": 12.496991,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/posterula-ardeatina/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center."
+    },
+    {
+      "name": "オスティエンシス門",
+      "id": "porta-ostiense",
+      "latin": "Porta Ostiense",
+      "lat": 41.876689,
+      "lon": 12.481445,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-ostiense/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center."
+    },
+    {
+      "name": "セッティミアーナ門",
+      "id": "porta-settimiana",
+      "latin": "Porta Settimiana",
+      "lat": 41.892165,
+      "lon": 12.467648,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-settimiana/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center."
+    },
+    {
+      "name": "ポルトゥエンシス門",
+      "id": "porta-portuensis",
+      "latin": "Porta Portuensis",
+      "lat": 41.880767,
+      "lon": 12.471001,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-portuensis/",
+      "uncertainty": "Official archaeological-museum map point; approximate reconstruction, not a surveyed original doorway center.",
+      "phase320": "Ancient gate, NOT modern Porta Portese 500 m farther upstream; use this museum old-gate marker."
+    },
+    {
+      "name": "アウレリア門",
+      "id": "porta-aurelia",
+      "latin": "Porta Aurelia",
+      "lat": 41.887443,
+      "lon": 12.458282,
+      "source": "walls_museum_map",
+      "url": "https://museovirtualedellemura.romasitounesco.it/pin/porta-aurelia/",
+      "uncertainty": "Low: official schematic map point differs by about 290 m from modern Porta San Pancrazio proxy (41.888438,12.461506). Old gate did not occupy exactly modern gate location; historical exact position unresolved here."
+    }
+  ],
+  "hills": [
+    {
+      "name": "アヴェンティーノの丘",
+      "id": "aventine",
+      "lat": 41.883,
+      "lon": 12.48,
+      "heightM": 47,
+      "radiusEastM": 380,
+      "radiusNorthM": 420,
+      "pleiadesRepresentativePoint": [
+        12.483333,
+        41.883333
+      ],
+      "pleiadesId": "865014139",
+      "url": "https://pleiades.stoa.org/places/865014139",
+      "coordinateStatus": "Broad modeled hill-mass anchor rounded to 0.001 degree after checking Rome topography; Pleiades GeoNames/GeoHack representative point is retained separately because it lies away from the main visible ridge.",
+      "heightStatus": "Approximate visual-model absolute elevation in meters; NOT a measured AD 320 elevation. Common valley model surface may be set around 12–16 m. Shape/radii likewise interpretive.",
+      "radiusX": 380,
+      "radiusZ": 420,
+      "plateauRatio": 0.5,
+      "profileStatus": "Interpretive plateau and slope, constrained by published landform descriptions; no surveyed AD 320 contour is claimed."
+    },
+    {
+      "name": "パラティーノの丘",
+      "id": "palatine",
+      "lat": 41.8893064,
+      "lon": 12.4871093,
+      "heightM": 51,
+      "radiusEastM": 370,
+      "radiusNorthM": 330,
+      "pleiadesRepresentativePoint": [
+        12.4871093,
+        41.8893064
+      ],
+      "pleiadesId": "971691208",
+      "url": "https://pleiades.stoa.org/places/971691208",
+      "coordinateStatus": "Pleiades representative point, not hill footprint or surveyed summit",
+      "heightStatus": "Approximate absolute elevation above sea level in meters, constrained by published Palatine levels near 50 m. This is NOT a 37 m local relief value and NOT a surveyed AD 320 surface.",
+      "radiusX": 370,
+      "radiusZ": 330,
+      "plateauRatio": 0.43,
+      "profileStatus": "Interpretive broad plateau with steep south-west/north-west flanks and a gentler north-east connection toward the Velia. No surveyed AD 320 contour is claimed.",
+      "plateauRingLonLat": [
+        [
+          12.4841,
+          41.8907
+        ],
+        [
+          12.48465,
+          41.89112
+        ],
+        [
+          12.4863,
+          41.891
+        ],
+        [
+          12.4875,
+          41.89064
+        ],
+        [
+          12.48865,
+          41.88998
+        ],
+        [
+          12.48926,
+          41.88927
+        ],
+        [
+          12.48888,
+          41.88808
+        ],
+        [
+          12.4882,
+          41.8875
+        ],
+        [
+          12.48666,
+          41.88745
+        ],
+        [
+          12.4852,
+          41.88795
+        ],
+        [
+          12.48415,
+          41.8889
+        ],
+        [
+          12.48398,
+          41.88978
+        ]
+      ],
+      "slopeWidthM": 56,
+      "saddleDirectionXZ": [
+        0.73,
+        -0.68
+      ],
+      "saddleSlopeWidthM": 185,
+      "slopeStatus": "Hand-authored crest approximation around imperial precincts, not a digitized surveyed contour. The north-east feather represents the documented low saddle and gradual Clivus Palatinus approach toward the Velia; other flanks remain steeper."
+    },
+    {
+      "name": "カピトリーノの丘",
+      "id": "capitoline",
+      "lat": 41.8925778,
+      "lon": 12.4822154,
+      "heightM": 48,
+      "radiusEastM": 220,
+      "radiusNorthM": 270,
+      "pleiadesRepresentativePoint": [
+        12.4822154,
+        41.8925778
+      ],
+      "pleiadesId": "347036492",
+      "url": "https://pleiades.stoa.org/places/347036492",
+      "coordinateStatus": "Pleiades representative point, not hill footprint or surveyed summit",
+      "heightStatus": "Approximate visual-model absolute elevation in meters; NOT a measured AD 320 elevation. Common valley model surface may be set around 12–16 m. Shape/radii likewise interpretive.",
+      "radiusX": 220,
+      "radiusZ": 270,
+      "plateauRatio": 0.43,
+      "profileStatus": "Interpretive plateau and slope, constrained by published landform descriptions; no surveyed AD 320 contour is claimed.",
+      "plateauRingLonLat": [
+        [
+          12.48115,
+          41.89245
+        ],
+        [
+          12.48173,
+          41.89199
+        ],
+        [
+          12.48254,
+          41.89216
+        ],
+        [
+          12.48285,
+          41.89278
+        ],
+        [
+          12.48313,
+          41.89331
+        ],
+        [
+          12.48263,
+          41.89365
+        ],
+        [
+          12.48192,
+          41.89327
+        ],
+        [
+          12.48137,
+          41.89293
+        ]
+      ],
+      "slopeWidthM": 62,
+      "slopeStatus": "Interpretive summit outline; hill saddle represented separately, not an AD 320 survey."
+    },
+    {
+      "name": "チェリオの丘",
+      "id": "caelian",
+      "lat": 41.88519114114609,
+      "lon": 12.502693359906965,
+      "heightM": 50,
+      "radiusEastM": 780,
+      "radiusNorthM": 290,
+      "pleiadesRepresentativePoint": [
+        12.502693359906965,
+        41.88519114114609
+      ],
+      "pleiadesId": "695491849",
+      "url": "https://pleiades.stoa.org/places/695491849",
+      "coordinateStatus": "Pleiades representative point, not hill footprint or surveyed summit",
+      "heightStatus": "Approximate visual-model absolute elevation in meters; NOT a measured AD 320 elevation. Common valley model surface may be set around 12–16 m. Shape/radii likewise interpretive.",
+      "radiusX": 780,
+      "radiusZ": 290,
+      "plateauRatio": 0.5,
+      "profileStatus": "Interpretive plateau and slope, constrained by published landform descriptions; no surveyed AD 320 contour is claimed."
+    },
+    {
+      "name": "エスクイリーノの丘",
+      "id": "esquiline",
+      "lat": 41.8944851283069,
+      "lon": 12.499613864819047,
+      "heightM": 60,
+      "radiusEastM": 690,
+      "radiusNorthM": 560,
+      "pleiadesRepresentativePoint": [
+        12.499613864819047,
+        41.8944851283069
+      ],
+      "pleiadesId": "679976755",
+      "url": "https://pleiades.stoa.org/places/679976755",
+      "coordinateStatus": "Pleiades representative point, not hill footprint or surveyed summit",
+      "heightStatus": "Approximate visual-model absolute elevation in meters; NOT a measured AD 320 elevation. Common valley model surface may be set around 12–16 m. Shape/radii likewise interpretive.",
+      "radiusX": 690,
+      "radiusZ": 560,
+      "plateauRatio": 0.5,
+      "profileStatus": "Interpretive plateau and slope, constrained by published landform descriptions; no surveyed AD 320 contour is claimed."
+    },
+    {
+      "name": "クイリナーレの丘",
+      "id": "quirinal",
+      "lat": 41.9,
+      "lon": 12.48333,
+      "heightM": 55,
+      "radiusEastM": 510,
+      "radiusNorthM": 780,
+      "pleiadesRepresentativePoint": [
+        12.48333,
+        41.9
+      ],
+      "pleiadesId": "125119394",
+      "url": "https://pleiades.stoa.org/places/125119394",
+      "coordinateStatus": "Pleiades representative point, not hill footprint or surveyed summit",
+      "heightStatus": "Approximate visual-model absolute elevation in meters; NOT a measured AD 320 elevation. Common valley model surface may be set around 12–16 m. Shape/radii likewise interpretive.",
+      "radiusX": 510,
+      "radiusZ": 780,
+      "plateauRatio": 0.43,
+      "profileStatus": "Interpretive plateau and slope, constrained by published landform descriptions; no surveyed AD 320 contour is claimed."
+    },
+    {
+      "name": "ヴィミナーレの丘",
+      "id": "viminal",
+      "lat": 41.8995278,
+      "lon": 12.4939438,
+      "heightM": 55,
+      "radiusEastM": 330,
+      "radiusNorthM": 560,
+      "pleiadesRepresentativePoint": [
+        12.4939438,
+        41.8995278
+      ],
+      "pleiadesId": "755385623",
+      "url": "https://pleiades.stoa.org/places/755385623",
+      "coordinateStatus": "Pleiades representative point, not hill footprint or surveyed summit",
+      "heightStatus": "Approximate visual-model absolute elevation in meters; NOT a measured AD 320 elevation. Common valley model surface may be set around 12–16 m. Shape/radii likewise interpretive.",
+      "radiusX": 330,
+      "radiusZ": 560,
+      "plateauRatio": 0.43,
+      "profileStatus": "Interpretive plateau and slope, constrained by published landform descriptions; no surveyed AD 320 contour is claimed."
+    },
+    {
+      "name": "ピンチョの丘",
+      "id": "pincian",
+      "lat": 41.91130956793664,
+      "lon": 12.479593242416662,
+      "heightM": 54,
+      "radiusEastM": 310,
+      "radiusNorthM": 400,
+      "pleiadesRepresentativePoint": [
+        12.479593242416662,
+        41.91130956793664
+      ],
+      "pleiadesId": "88092816",
+      "url": "https://pleiades.stoa.org/places/88092816",
+      "coordinateStatus": "Pleiades representative point, not hill footprint or surveyed summit",
+      "heightStatus": "Approximate visual-model absolute elevation in meters; NOT a measured AD 320 elevation. Common valley model surface may be set around 12–16 m. Shape/radii likewise interpretive.",
+      "radiusX": 310,
+      "radiusZ": 400,
+      "plateauRatio": 0.43,
+      "profileStatus": "Interpretive plateau and slope, constrained by published landform descriptions; no surveyed AD 320 contour is claimed."
+    },
+    {
+      "name": "ジャニコロの丘",
+      "id": "janiculum",
+      "lat": 41.89,
+      "lon": 12.461,
+      "heightM": 80,
+      "radiusEastM": 380,
+      "radiusNorthM": 1050,
+      "pleiadesRepresentativePoint": [
+        12.46667,
+        41.88333
+      ],
+      "pleiadesId": "430827518",
+      "url": "https://pleiades.stoa.org/places/430827518",
+      "coordinateStatus": "Broad modeled hill-mass anchor rounded to 0.001 degree after checking Rome topography; Pleiades GeoNames/GeoHack representative point is retained separately because it lies away from the main visible ridge.",
+      "heightStatus": "Approximate visual-model absolute elevation in meters; NOT a measured AD 320 elevation. Common valley model surface may be set around 12–16 m. Shape/radii likewise interpretive.",
+      "radiusX": 380,
+      "radiusZ": 1050,
+      "plateauRatio": 0.43,
+      "profileStatus": "Interpretive plateau and slope, constrained by published landform descriptions; no surveyed AD 320 contour is claimed."
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "285857974",
+      "nameJa": "コロッセオ",
+      "name": "Amphitheatrum Flavium",
+      "lon": 12.4923483,
+      "lat": 41.8902509,
+      "siteGeometryBounds": {
+        "lengthM": 170.0,
+        "widthM": 148.5,
+        "bearingDeg": 82.8
+      },
+      "footprintRingLonLat": [
+        [
+          12.4913001,
+          41.8905833
+        ],
+        [
+          12.4913656,
+          41.8901975
+        ],
+        [
+          12.4913782,
+          41.8901534
+        ],
+        [
+          12.4913984,
+          41.8901046
+        ],
+        [
+          12.4914318,
+          41.8900454
+        ],
+        [
+          12.4914709,
+          41.8899947
+        ],
+        [
+          12.491517,
+          41.8899449
+        ],
+        [
+          12.4915586,
+          41.8899064
+        ],
+        [
+          12.4916072,
+          41.8898632
+        ],
+        [
+          12.4916463,
+          41.8898379
+        ],
+        [
+          12.491693,
+          41.8898092
+        ],
+        [
+          12.4917579,
+          41.8897735
+        ],
+        [
+          12.4918475,
+          41.8897317
+        ],
+        [
+          12.4919358,
+          41.8896984
+        ],
+        [
+          12.4920146,
+          41.8896716
+        ],
+        [
+          12.4920498,
+          41.8896614
+        ],
+        [
+          12.4920657,
+          41.8896575
+        ],
+        [
+          12.4921887,
+          41.8896308
+        ],
+        [
+          12.4922449,
+          41.8896223
+        ],
+        [
+          12.4923079,
+          41.8896167
+        ],
+        [
+          12.4923969,
+          41.8896111
+        ],
+        [
+          12.4924562,
+          41.8896078
+        ],
+        [
+          12.492523,
+          41.8896097
+        ],
+        [
+          12.4925943,
+          41.8896129
+        ],
+        [
+          12.4926479,
+          41.889619
+        ],
+        [
+          12.4927091,
+          41.8896266
+        ],
+        [
+          12.4927539,
+          41.889635
+        ],
+        [
+          12.4927955,
+          41.8896449
+        ],
+        [
+          12.4928346,
+          41.8896557
+        ],
+        [
+          12.4928655,
+          41.8896655
+        ],
+        [
+          12.4929078,
+          41.8896796
+        ],
+        [
+          12.492969,
+          41.8897031
+        ],
+        [
+          12.493032,
+          41.8897355
+        ],
+        [
+          12.4934278,
+          41.8899595
+        ],
+        [
+          12.4934372,
+          41.889994
+        ],
+        [
+          12.4934419,
+          41.8900294
+        ],
+        [
+          12.493446,
+          41.8900726
+        ],
+        [
+          12.4934472,
+          41.890109
+        ],
+        [
+          12.4934432,
+          41.8901421
+        ],
+        [
+          12.4934358,
+          41.8901794
+        ],
+        [
+          12.493421,
+          41.8902277
+        ],
+        [
+          12.4934085,
+          41.8902629
+        ],
+        [
+          12.4933897,
+          41.8903044
+        ],
+        [
+          12.4933703,
+          41.8903472
+        ],
+        [
+          12.4933504,
+          41.8903803
+        ],
+        [
+          12.4933253,
+          41.8904218
+        ],
+        [
+          12.4933043,
+          41.8904524
+        ],
+        [
+          12.4932917,
+          41.8904689
+        ],
+        [
+          12.4932673,
+          41.8904994
+        ],
+        [
+          12.4932405,
+          41.8905261
+        ],
+        [
+          12.4932103,
+          41.8905549
+        ],
+        [
+          12.4931864,
+          41.8905749
+        ],
+        [
+          12.4931585,
+          41.8905956
+        ],
+        [
+          12.4931261,
+          41.8906189
+        ],
+        [
+          12.4930617,
+          41.8906651
+        ],
+        [
+          12.4930276,
+          41.8906876
+        ],
+        [
+          12.4929923,
+          41.8907088
+        ],
+        [
+          12.4929592,
+          41.8907274
+        ],
+        [
+          12.4928972,
+          41.8907609
+        ],
+        [
+          12.4928106,
+          41.8907991
+        ],
+        [
+          12.4927662,
+          41.8908169
+        ],
+        [
+          12.4927201,
+          41.8908325
+        ],
+        [
+          12.492674,
+          41.8908478
+        ],
+        [
+          12.492621,
+          41.8908614
+        ],
+        [
+          12.4925846,
+          41.8908703
+        ],
+        [
+          12.4925453,
+          41.8908787
+        ],
+        [
+          12.4924963,
+          41.8908876
+        ],
+        [
+          12.4924593,
+          41.890894
+        ],
+        [
+          12.4924109,
+          41.8908995
+        ],
+        [
+          12.4923671,
+          41.8909038
+        ],
+        [
+          12.4923346,
+          41.8909063
+        ],
+        [
+          12.4923005,
+          41.8909088
+        ],
+        [
+          12.4922692,
+          41.890911
+        ],
+        [
+          12.4922231,
+          41.8909127
+        ],
+        [
+          12.4921815,
+          41.8909127
+        ],
+        [
+          12.4921371,
+          41.8909118
+        ],
+        [
+          12.4920967,
+          41.8909101
+        ],
+        [
+          12.4920226,
+          41.8909038
+        ],
+        [
+          12.4919828,
+          41.8908999
+        ],
+        [
+          12.4919429,
+          41.890894
+        ],
+        [
+          12.4919116,
+          41.8908885
+        ],
+        [
+          12.4918695,
+          41.8908804
+        ],
+        [
+          12.4918365,
+          41.8908732
+        ],
+        [
+          12.4918012,
+          41.8908652
+        ],
+        [
+          12.4917653,
+          41.890855
+        ],
+        [
+          12.4917323,
+          41.8908453
+        ],
+        [
+          12.491697,
+          41.8908334
+        ],
+        [
+          12.4916617,
+          41.8908203
+        ],
+        [
+          12.4916355,
+          41.8908101
+        ],
+        [
+          12.491582,
+          41.8907855
+        ],
+        [
+          12.4915535,
+          41.8907711
+        ],
+        [
+          12.4915273,
+          41.8907571
+        ],
+        [
+          12.4914937,
+          41.8907385
+        ],
+        [
+          12.4914687,
+          41.8907228
+        ],
+        [
+          12.4914385,
+          41.8907012
+        ],
+        [
+          12.49141,
+          41.8906804
+        ],
+        [
+          12.4913924,
+          41.8906668
+        ],
+        [
+          12.4913542,
+          41.8906367
+        ],
+        [
+          12.4913137,
+          41.8905975
+        ],
+        [
+          12.4913001,
+          41.8905833
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/285857974",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/2/8/5/8/5/7/9/285857974.json",
+      "sourceGeometryTitles": [
+        "OSM location of Colosseum"
+      ],
+      "chronologyDescription": "The Flavian amphitheater at Rome (the so-called \"Colosseum\").",
+      "presentBy320": true,
+      "notes": "True plan elliptical. Entire AD 320 exterior should be complete, not modern broken ruin.",
+      "verifiedAncientDimensionsM": {
+        "length": 189,
+        "width": 156,
+        "height": 48,
+        "source": "https://www.turismoroma.it/en/node/1155"
+      },
+      "modelOrientation": {
+        "bearingDeg": 111.5,
+        "meaning": "long ellipse axis WNW / ESE",
+        "basis": "fit to complete northern outer arc in Pleiades feature line 21; full modern ruin hull produces wrong bearing",
+        "estimated": true
+      }
+    },
+    {
+      "id": "128044615",
+      "nameJa": "パンテオン",
+      "name": "Pantheon",
+      "lon": 12.4768288,
+      "lat": 41.898609,
+      "siteGeometryBounds": {
+        "lengthM": 82.9,
+        "widthM": 58.1,
+        "bearingDeg": 176.1
+      },
+      "footprintRingLonLat": [
+        [
+          12.4764822,
+          41.8985591
+        ],
+        [
+          12.476487,
+          41.8985111
+        ],
+        [
+          12.4765634,
+          41.8982422
+        ],
+        [
+          12.4771514,
+          41.8982722
+        ],
+        [
+          12.4771849,
+          41.8985474
+        ],
+        [
+          12.4771831,
+          41.8985823
+        ],
+        [
+          12.4771705,
+          41.8986294
+        ],
+        [
+          12.477017,
+          41.8990099
+        ],
+        [
+          12.4765759,
+          41.8989896
+        ],
+        [
+          12.4764879,
+          41.8986025
+        ],
+        [
+          12.4764822,
+          41.8985591
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/128044615",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/1/2/8/0/4/4/6/128044615.json",
+      "sourceGeometryTitles": [
+        "OSM location: Pantheon"
+      ],
+      "chronologyDescription": "A temple in the Campus Martius of Rome that was first built by Marcus Agrippa (ca. 27-25 B.C.) and then rebuilt by the emperor Hadrian (after A.D. 126). In A.D. 609, the structure was consecrated as a Christian church, S. Maria ad Martyres.",
+      "presentBy320": true,
+      "notes": "Latitude/longitude representative point includes rotunda plus portico. Rotunda center estimated from circular footprint: 41.89856,12.476835. Portico faces almost north, approximately 356 degrees.",
+      "verifiedAncientDimensionsM": {
+        "interiorDomeDiameter": 43,
+        "interiorDomeHeight": 43,
+        "oculusDiameter": 9,
+        "source": "https://cultura.gov.it/comunicato/pantheon-ecco-il-numero-dei-visitatori-dal-2010-a-oggi",
+        "precisionNote": "Official text gives over 43 m and nearly 9 m; rounded values only, no false claim of exact measurement."
+      },
+      "modelOrientation": {
+        "bearingDeg": 356.1,
+        "meaning": "front portico faces geographic north, slightly west",
+        "basis": "derived from Pleiades portico straight facade",
+        "estimated": true
+      }
+    },
+    {
+      "id": "458808506",
+      "nameJa": "キルクス・マクシムス",
+      "name": "Circus Maximus",
+      "lon": 12.485711,
+      "lat": 41.8859299,
+      "siteGeometryBounds": {
+        "lengthM": 596.6,
+        "widthM": 149.5,
+        "bearingDeg": 126.3
+      },
+      "footprintRingLonLat": [
+        [
+          12.4825249,
+          41.887187
+        ],
+        [
+          12.4829832,
+          41.8868147
+        ],
+        [
+          12.4836219,
+          41.8863238
+        ],
+        [
+          12.485291,
+          41.8853183
+        ],
+        [
+          12.4864323,
+          41.8846466
+        ],
+        [
+          12.4873825,
+          41.8841461
+        ],
+        [
+          12.4874864,
+          41.8841036
+        ],
+        [
+          12.4876116,
+          41.884068
+        ],
+        [
+          12.4877307,
+          41.8840468
+        ],
+        [
+          12.4878809,
+          41.8840383
+        ],
+        [
+          12.4880558,
+          41.8840536
+        ],
+        [
+          12.4881867,
+          41.8840796
+        ],
+        [
+          12.4883238,
+          41.8841168
+        ],
+        [
+          12.488429,
+          41.884174
+        ],
+        [
+          12.4885267,
+          41.884238
+        ],
+        [
+          12.4885427,
+          41.8842512
+        ],
+        [
+          12.4886277,
+          41.8843216
+        ],
+        [
+          12.4886368,
+          41.8843305
+        ],
+        [
+          12.4887077,
+          41.8843999
+        ],
+        [
+          12.4887832,
+          41.8844966
+        ],
+        [
+          12.4888341,
+          41.8845839
+        ],
+        [
+          12.488867,
+          41.8846663
+        ],
+        [
+          12.4888821,
+          41.8847527
+        ],
+        [
+          12.4888834,
+          41.884833
+        ],
+        [
+          12.4888704,
+          41.8849157
+        ],
+        [
+          12.4888307,
+          41.8850002
+        ],
+        [
+          12.4834158,
+          41.8879661
+        ],
+        [
+          12.4825249,
+          41.887187
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/458808506",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/4/5/8/8/0/8/5/458808506.json",
+      "sourceGeometryTitles": [
+        "OSM location: Circus Maximus"
+      ],
+      "chronologyDescription": "An ancient chariot-racing venue at Rome and a major location for public entertainments (ludi), the Circus Maximus is located between the Aventine and Palatine hills.",
+      "presentBy320": true,
+      "notes": "AD 320: one Egyptian obelisk (Augustus, 10 BCE). Second (Lateran) obelisk erected AD 357 must be omitted.",
+      "verifiedAncientDimensionsM": {
+        "length": 600,
+        "width": 140,
+        "source": "https://www.turismoroma.it/en/places/circus-maximus"
+      },
+      "modelOrientation": {
+        "bearingDeg": 126.3,
+        "meaning": "long track axis NW / SE; curved end SE, starting gates NW",
+        "basis": "derived from modern footprint",
+        "estimated": true
+      }
+    },
+    {
+      "id": "502866838",
+      "nameJa": "フォロ・ロマーノ",
+      "name": "Forum Romanum",
+      "lon": 12.4871945,
+      "lat": 41.8916162,
+      "siteGeometryBounds": {
+        "lengthM": 627.5,
+        "widthM": 244.9,
+        "bearingDeg": 111.8
+      },
+      "footprintRingLonLat": [
+        [
+          12.4832952,
+          41.8920851
+        ],
+        [
+          12.4834518,
+          41.8919434
+        ],
+        [
+          12.4855521,
+          41.8907338
+        ],
+        [
+          12.4903077,
+          41.8902258
+        ],
+        [
+          12.490446,
+          41.8902165
+        ],
+        [
+          12.49053,
+          41.8903786
+        ],
+        [
+          12.4908629,
+          41.8910346
+        ],
+        [
+          12.4891266,
+          41.8919368
+        ],
+        [
+          12.4885422,
+          41.8922108
+        ],
+        [
+          12.4885134,
+          41.8922225
+        ],
+        [
+          12.4884756,
+          41.892234
+        ],
+        [
+          12.4854319,
+          41.8931386
+        ],
+        [
+          12.4840688,
+          41.8931509
+        ],
+        [
+          12.4840304,
+          41.8931054
+        ],
+        [
+          12.4836134,
+          41.8926065
+        ],
+        [
+          12.4832952,
+          41.8920851
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/502866838",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/5/0/2/8/6/6/8/502866838.json",
+      "sourceGeometryTitles": [
+        "OSM location of Roman Forum"
+      ],
+      "chronologyDescription": "The ancient Roman forum.",
+      "presentBy320": true,
+      "notes": "Modern archaeological site footprint includes many monuments; do not render as one building."
+    },
+    {
+      "id": "445545537",
+      "nameJa": "カエサルのフォルム",
+      "name": "Forum Iulium",
+      "lon": 12.485145,
+      "lat": 41.8936933,
+      "siteGeometryBounds": {
+        "lengthM": 164.6,
+        "widthM": 83.7,
+        "bearingDeg": 135.3
+      },
+      "footprintRingLonLat": [
+        [
+          12.4842792,
+          41.8940948
+        ],
+        [
+          12.4846709,
+          41.8933876
+        ],
+        [
+          12.4856527,
+          41.893163
+        ],
+        [
+          12.4860087,
+          41.8933769
+        ],
+        [
+          12.4860533,
+          41.8934041
+        ],
+        [
+          12.4859819,
+          41.8934707
+        ],
+        [
+          12.4848426,
+          41.8943272
+        ],
+        [
+          12.4846306,
+          41.8943962
+        ],
+        [
+          12.4843679,
+          41.8942406
+        ],
+        [
+          12.4843372,
+          41.8942197
+        ],
+        [
+          12.4843167,
+          41.8941995
+        ],
+        [
+          12.4843001,
+          41.8941724
+        ],
+        [
+          12.4842905,
+          41.8941506
+        ],
+        [
+          12.4842825,
+          41.894127
+        ],
+        [
+          12.4842792,
+          41.8940948
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/445545537",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/4/4/5/5/4/5/5/445545537.json",
+      "sourceGeometryTitles": [
+        "OSM location of Forum of Caesar"
+      ],
+      "chronologyDescription": "The Forum Iulium (or Forum of Caesar, Forum Caesaris) is a forum built by Iulius Caesar and dedicated ca. 46 B.C. The main cult of the forum is that of Venus Genetrix.",
+      "presentBy320": true,
+      "verifiedAncientDimensionsM": {
+        "length": 160,
+        "width": 75,
+        "source": "https://tess.beniculturali.unipd.it/web/scheda/?recid=11100"
+      }
+    },
+    {
+      "id": "47606496",
+      "nameJa": "アウグストゥスのフォルム",
+      "name": "Forum Augusti",
+      "lon": 12.4866365,
+      "lat": 41.8942019,
+      "siteGeometryBounds": {
+        "lengthM": 117.8,
+        "widthM": 95.8,
+        "bearingDeg": 133.4
+      },
+      "footprintRingLonLat": [
+        [
+          12.4859448,
+          41.8941961
+        ],
+        [
+          12.4859799,
+          41.8941578
+        ],
+        [
+          12.4862268,
+          41.8939837
+        ],
+        [
+          12.4863673,
+          41.8938874
+        ],
+        [
+          12.4864512,
+          41.8938628
+        ],
+        [
+          12.4868452,
+          41.8937661
+        ],
+        [
+          12.4870261,
+          41.8937482
+        ],
+        [
+          12.4871112,
+          41.8937591
+        ],
+        [
+          12.4871759,
+          41.8937791
+        ],
+        [
+          12.487193,
+          41.8937884
+        ],
+        [
+          12.4872375,
+          41.8938127
+        ],
+        [
+          12.4873601,
+          41.893931
+        ],
+        [
+          12.4873704,
+          41.8940543
+        ],
+        [
+          12.4871812,
+          41.8944581
+        ],
+        [
+          12.486976,
+          41.8946332
+        ],
+        [
+          12.4869246,
+          41.894677
+        ],
+        [
+          12.4867704,
+          41.8947636
+        ],
+        [
+          12.4863666,
+          41.8946415
+        ],
+        [
+          12.4863237,
+          41.8946261
+        ],
+        [
+          12.4862862,
+          41.8946043
+        ],
+        [
+          12.4862555,
+          41.8945772
+        ],
+        [
+          12.4859448,
+          41.8941961
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/47606496",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/4/7/6/0/6/4/47606496.json",
+      "sourceGeometryTitles": [
+        "OSM location of Forum of Augustus"
+      ],
+      "chronologyDescription": "The Forum of Augustus at Rome was dedicated in 2 BCE, to the northeast of Julius Caesar's Forum. It contained the Temple of Mars Ultor.",
+      "presentBy320": true
+    },
+    {
+      "id": "984830239",
+      "nameJa": "ネルウァのフォルム",
+      "name": "Forum of Nerva",
+      "lon": 12.4866531,
+      "lat": 41.8933521,
+      "siteGeometryBounds": {
+        "lengthM": 172.4,
+        "widthM": 45.3,
+        "bearingDeg": 49.8
+      },
+      "footprintRingLonLat": [
+        [
+          12.4856318,
+          41.8929622
+        ],
+        [
+          12.4856906,
+          41.8929078
+        ],
+        [
+          12.4860973,
+          41.8927623
+        ],
+        [
+          12.4875445,
+          41.8936741
+        ],
+        [
+          12.4872996,
+          41.8938225
+        ],
+        [
+          12.4872629,
+          41.8938392
+        ],
+        [
+          12.4868804,
+          41.8937882
+        ],
+        [
+          12.4868452,
+          41.8937661
+        ],
+        [
+          12.4856318,
+          41.8929622
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/984830239",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/9/8/4/8/3/0/2/984830239.json",
+      "sourceGeometryTitles": [
+        "OSM location of Forum of Nerva"
+      ],
+      "chronologyDescription": "A forum complex at Rome begun under Domitian but completed under Nerva and dedicated in A.D. 97. Sometimes referred to as the Forum Transitorium, the complex was the next to last of the imperial fora at Rome.",
+      "presentBy320": true
+    },
+    {
+      "id": "250091860",
+      "nameJa": "トラヤヌスのフォルム",
+      "name": "Forum Traiani",
+      "lon": 12.4852948,
+      "lat": 41.8951682,
+      "siteGeometryBounds": {
+        "lengthM": 219.5,
+        "widthM": 121.6,
+        "bearingDeg": 143.3
+      },
+      "footprintRingLonLat": [
+        [
+          12.4840352,
+          41.8957706
+        ],
+        [
+          12.4841275,
+          41.8955975
+        ],
+        [
+          12.4843857,
+          41.8952838
+        ],
+        [
+          12.4850732,
+          41.8945968
+        ],
+        [
+          12.4855881,
+          41.89433
+        ],
+        [
+          12.4857589,
+          41.8943952
+        ],
+        [
+          12.4858678,
+          41.8944612
+        ],
+        [
+          12.4862596,
+          41.8947139
+        ],
+        [
+          12.4863003,
+          41.8947799
+        ],
+        [
+          12.486305,
+          41.8948203
+        ],
+        [
+          12.486311,
+          41.8948826
+        ],
+        [
+          12.4860578,
+          41.8954408
+        ],
+        [
+          12.4859939,
+          41.8954951
+        ],
+        [
+          12.4843338,
+          41.8959828
+        ],
+        [
+          12.4842843,
+          41.8959863
+        ],
+        [
+          12.4842252,
+          41.8959834
+        ],
+        [
+          12.4841759,
+          41.8959704
+        ],
+        [
+          12.4841214,
+          41.8959458
+        ],
+        [
+          12.4840762,
+          41.8959057
+        ],
+        [
+          12.4840492,
+          41.8958716
+        ],
+        [
+          12.4840356,
+          41.8958286
+        ],
+        [
+          12.4840352,
+          41.8957706
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/250091860",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/2/5/0/0/9/1/8/250091860.json",
+      "sourceGeometryTitles": [
+        "OSM location of Foro di Traiano"
+      ],
+      "chronologyDescription": "Imperial forum constructed at Rome under Trajan between 105-112 CE.",
+      "presentBy320": true,
+      "notes": "Original complete forum larger than surviving archaeological footprint; Basilica Ulpia occupies NW side; column north of basilica. Column top must depict Trajan in AD 320, not Saint Peter (1587)."
+    },
+    {
+      "id": "152567558",
+      "nameJa": "平和のフォルム",
+      "name": "Templum Pacis",
+      "lon": 12.4873335,
+      "lat": 41.8926457,
+      "siteGeometryBounds": {
+        "lengthM": 166.5,
+        "widthM": 56.1,
+        "bearingDeg": 121.7
+      },
+      "footprintRingLonLat": [
+        [
+          12.486328,
+          41.8928755
+        ],
+        [
+          12.4865797,
+          41.8926596
+        ],
+        [
+          12.4877934,
+          41.8921018
+        ],
+        [
+          12.4881628,
+          41.8923153
+        ],
+        [
+          12.4882961,
+          41.8924019
+        ],
+        [
+          12.4879205,
+          41.8926133
+        ],
+        [
+          12.4874541,
+          41.8928498
+        ],
+        [
+          12.4867523,
+          41.8931493
+        ],
+        [
+          12.486328,
+          41.8928755
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/152567558",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/1/5/2/5/6/7/5/152567558.json",
+      "sourceGeometryTitles": [
+        "OSM location: Tempio della Pace"
+      ],
+      "chronologyDescription": "The Temple of Peace in Rome was vowed by Vespasian following the Jewish War.",
+      "presentBy320": true
+    },
+    {
+      "id": "322942899",
+      "nameJa": "カラカラ浴場",
+      "name": "Thermae Antoninianae",
+      "lon": 12.492405,
+      "lat": 41.878918,
+      "siteGeometryBounds": {
+        "lengthM": 425.7,
+        "widthM": 280.8,
+        "bearingDeg": 134.5
+      },
+      "footprintRingLonLat": [
+        [
+          12.4899015,
+          41.8790635
+        ],
+        [
+          12.4899362,
+          41.879005
+        ],
+        [
+          12.4927328,
+          41.8769576
+        ],
+        [
+          12.4927703,
+          41.8769443
+        ],
+        [
+          12.4928123,
+          41.8769568
+        ],
+        [
+          12.4939095,
+          41.8773586
+        ],
+        [
+          12.494131,
+          41.8774803
+        ],
+        [
+          12.4948861,
+          41.87866
+        ],
+        [
+          12.4947596,
+          41.8789157
+        ],
+        [
+          12.4923295,
+          41.8807904
+        ],
+        [
+          12.4921726,
+          41.8808698
+        ],
+        [
+          12.4907693,
+          41.8803422
+        ],
+        [
+          12.4906151,
+          41.880272
+        ],
+        [
+          12.4903199,
+          41.8799537
+        ],
+        [
+          12.4899042,
+          41.8791442
+        ],
+        [
+          12.4899015,
+          41.8790635
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/322942899",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/3/2/2/9/4/2/8/322942899.json",
+      "sourceGeometryTitles": [
+        "OSM location of Baths of Caracalla"
+      ],
+      "chronologyDescription": "The Thermae Antoninianae, commonly known as the Baths of Caracalla, were built in Rome between AD 212 and 216.",
+      "presentBy320": true,
+      "verifiedAncientDimensionsM": {
+        "length": 337,
+        "width": 328,
+        "source": "https://soprintendenzaspecialeroma.it/istituzionale/primo-maggio-alle-terme-di-caracalla/"
+      },
+      "modelOrientation": {
+        "bearingDeg": 45,
+        "meaning": "central thermal sequence SW to NE; facade/caldarium faces SW",
+        "basis": "inference from existing precinct orientation",
+        "estimated": true
+      }
+    },
+    {
+      "id": "420615524",
+      "nameJa": "ディオクレティアヌス浴場",
+      "name": "Thermae Diocletiani",
+      "lon": 12.4981227,
+      "lat": 41.9038306,
+      "siteGeometryBounds": {
+        "lengthM": 260.8,
+        "widthM": 162.1,
+        "bearingDeg": 5.3
+      },
+      "footprintRingLonLat": [
+        [
+          12.4971992,
+          41.9031563
+        ],
+        [
+          12.4972828,
+          41.9030354
+        ],
+        [
+          12.4976144,
+          41.9027416
+        ],
+        [
+          12.4984744,
+          41.9026599
+        ],
+        [
+          12.499037,
+          41.9030117
+        ],
+        [
+          12.499184,
+          41.9041885
+        ],
+        [
+          12.4984133,
+          41.9048714
+        ],
+        [
+          12.4982348,
+          41.9050295
+        ],
+        [
+          12.4981956,
+          41.905005
+        ],
+        [
+          12.4972385,
+          41.904341
+        ],
+        [
+          12.4971992,
+          41.9031563
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/420615524",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/4/2/0/6/1/5/5/420615524.json",
+      "sourceGeometryTitles": [
+        "OSM location of Terme di Diocleziano"
+      ],
+      "chronologyDescription": "Public baths near the Viminal Hill in Rome constructed under Diocletian from 298-306 CE.",
+      "presentBy320": true,
+      "notes": "Footprint is surviving/museum area, not complete original 13 ha precinct. Original complex extends SW toward Piazza della Repubblica. Full precinct centered farther SW than museum-only source location; approximately 41.90335 N, 12.49725 E (model estimate).",
+      "verifiedAncientDimensionsM": {
+        "precinctLength": 380,
+        "precinctWidth": 365,
+        "mainBlockLength": 250,
+        "mainBlockWidth": 180,
+        "frigidariumLength": 61,
+        "frigidariumWidth": 42,
+        "caldariumLength": 47,
+        "caldariumWidth": 21,
+        "precinctAreaM2": 130000,
+        "source": "https://tess.beniculturali.unipd.it/web/scheda-stampa/?recid=13256"
+      },
+      "modelOrientation": {
+        "bearingDeg": 46,
+        "meaning": "thermal sequence SW to NE; exterior caldarium faces Piazza della Repubblica SW",
+        "basis": "estimated using surviving building orientation, not MRR of partial museum parcel",
+        "estimated": true
+      },
+      "modelCenterEstimate": {
+        "lat": 41.90335,
+        "lon": 12.49725,
+        "uncertaintyM": 80,
+        "basis": "full 380 x 365 m precinct spans Via Torino/Viminale/Volturno/XX Settembre/Piazza dei Cinquecento and SW exedra at Piazza della Repubblica; approximate"
+      }
+    },
+    {
+      "id": "188289894",
+      "nameJa": "トラヤヌス浴場",
+      "name": "Thermae Traiani",
+      "lon": 12.497347,
+      "lat": 41.8924124,
+      "siteGeometryBounds": {
+        "lengthM": 172.7,
+        "widthM": 35.6,
+        "bearingDeg": 54.1
+      },
+      "footprintRingLonLat": [
+        [
+          12.4964448,
+          41.8918972
+        ],
+        [
+          12.4964963,
+          41.8918759
+        ],
+        [
+          12.4969991,
+          41.8920622
+        ],
+        [
+          12.4981046,
+          41.8926585
+        ],
+        [
+          12.4981499,
+          41.8927041
+        ],
+        [
+          12.4981094,
+          41.8928312
+        ],
+        [
+          12.4980626,
+          41.8928796
+        ],
+        [
+          12.4980013,
+          41.8929091
+        ],
+        [
+          12.4979119,
+          41.8929209
+        ],
+        [
+          12.4978336,
+          41.8929067
+        ],
+        [
+          12.4977676,
+          41.8928709
+        ],
+        [
+          12.4965764,
+          41.8920567
+        ],
+        [
+          12.496451,
+          41.8919058
+        ],
+        [
+          12.4964448,
+          41.8918972
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/188289894",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/1/8/8/2/8/9/8/188289894.json",
+      "sourceGeometryTitles": [
+        "OSM location of Baths of Trajan"
+      ],
+      "chronologyDescription": "A monumental public bath of ancient Rome that was built between 104 and 109. The architect Apollodorus of Damascus built the baths for Trajan.",
+      "presentBy320": true,
+      "notes": "Footprint covers surviving ruins only, not the full bath complex. Do not use geometry dimensions as ancient overall dimensions. Coordinate marks southeast ruined wing; full modeled precinct center should be shifted northwest from this point, approximately 41.8926 N, 12.4954 E (model estimate, no direct ancient surveyed centroid).",
+      "verifiedAncientDimensionsM": {
+        "precinctLength": 330,
+        "precinctWidth": 315,
+        "source": "https://tess.beniculturali.unipd.it/web/scheda-stampa/?recid=7677"
+      },
+      "modelOrientation": {
+        "bearingDeg": 36,
+        "meaning": "thermal sequence SW to NE; caldarium faces SW",
+        "basis": "NE/SW axis documented by municipal archaeologist Rita Volpe; exact numerical azimuth 36 degrees is schematic. See https://sovraintendenzaroma.it/sites/default/files/storage/original/application/dd9c83fb2858fe8a3cdf4fb07ba38a6a.pdf",
+        "estimated": true
+      },
+      "modelCenterEstimate": {
+        "lat": 41.8926,
+        "lon": 12.4954,
+        "uncertaintyM": 120,
+        "basis": "reconstruct 330 x 315 m precinct from SE ruined wing and Oppian park footprint; approximate"
+      }
+    },
+    {
+      "id": "874299107",
+      "nameJa": "コンスタンティヌスの凱旋門",
+      "name": "Arch of Constantine",
+      "lon": 12.4906668,
+      "lat": 41.8897622,
+      "siteGeometryBounds": {
+        "lengthM": 25.4,
+        "widthM": 7.0,
+        "bearingDeg": 103.0
+      },
+      "footprintRingLonLat": [
+        [
+          12.4905081,
+          41.8897574
+        ],
+        [
+          12.4908066,
+          41.8897062
+        ],
+        [
+          12.4908255,
+          41.889767
+        ],
+        [
+          12.4905269,
+          41.8898183
+        ],
+        [
+          12.4905081,
+          41.8897574
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/874299107",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/8/7/4/2/9/9/1/874299107.json",
+      "sourceGeometryTitles": [
+        "OSM location of Arch of Constantine"
+      ],
+      "chronologyDescription": "The Arch of Constantine at Rome, a triumphal arch dedicated in A.D. 315.",
+      "presentBy320": true
+    },
+    {
+      "id": "678676209",
+      "nameJa": "マクセンティウスのバシリカ",
+      "name": "Basilica Constantini",
+      "lon": 12.4882992,
+      "lat": 41.8918254,
+      "siteGeometryBounds": {
+        "lengthM": 112.7,
+        "widthM": 91.1,
+        "bearingDeg": 122.2
+      },
+      "footprintRingLonLat": [
+        [
+          12.4874798,
+          41.8917419
+        ],
+        [
+          12.4879101,
+          41.8915461
+        ],
+        [
+          12.4881315,
+          41.8914736
+        ],
+        [
+          12.4885206,
+          41.8913824
+        ],
+        [
+          12.4886565,
+          41.8913844
+        ],
+        [
+          12.4890669,
+          41.891718
+        ],
+        [
+          12.4891444,
+          41.8918273
+        ],
+        [
+          12.4891485,
+          41.8918995
+        ],
+        [
+          12.4891392,
+          41.8919187
+        ],
+        [
+          12.4891266,
+          41.8919368
+        ],
+        [
+          12.4885422,
+          41.8922108
+        ],
+        [
+          12.4885134,
+          41.8922225
+        ],
+        [
+          12.4884756,
+          41.892234
+        ],
+        [
+          12.4884436,
+          41.8922384
+        ],
+        [
+          12.4884105,
+          41.8922412
+        ],
+        [
+          12.4879754,
+          41.8922628
+        ],
+        [
+          12.487957,
+          41.8922628
+        ],
+        [
+          12.4876965,
+          41.8919952
+        ],
+        [
+          12.4874798,
+          41.8917419
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/678676209",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/6/7/8/6/7/6/2/678676209.json",
+      "sourceGeometryTitles": [
+        "OSM location of Basilica of Maxentius"
+      ],
+      "chronologyDescription": "The Basilica Constantini, also called Basilica Nova (\"New Basilica\"), Basilica of Maxentius, or Basilica of Maxentius and Constantine, is a colossal fourth-century basilica along the Sacra Via in Rome. It is considered the largest ancient structure in the valley of the Forum Romanum and is often regarded as the final Roman civic basilica built in the ancient city.",
+      "presentBy320": true
+    },
+    {
+      "id": "334776904",
+      "nameJa": "ハドリアヌス帝廟",
+      "name": "Mausoleum Hadriani",
+      "lon": 12.4663606,
+      "lat": 41.9030391,
+      "siteGeometryBounds": {
+        "lengthM": 70.3,
+        "widthM": 69.4,
+        "bearingDeg": 84.0
+      },
+      "footprintRingLonLat": [
+        [
+          12.4659343,
+          41.9030214
+        ],
+        [
+          12.4659451,
+          41.902967
+        ],
+        [
+          12.4659684,
+          41.9029148
+        ],
+        [
+          12.4660036,
+          41.9028664
+        ],
+        [
+          12.4660495,
+          41.9028233
+        ],
+        [
+          12.4661047,
+          41.9027867
+        ],
+        [
+          12.4661677,
+          41.9027579
+        ],
+        [
+          12.4662363,
+          41.9027375
+        ],
+        [
+          12.4663088,
+          41.9027264
+        ],
+        [
+          12.4665513,
+          41.9027454
+        ],
+        [
+          12.4666077,
+          41.9027706
+        ],
+        [
+          12.4666524,
+          41.9027985
+        ],
+        [
+          12.4666852,
+          41.9028245
+        ],
+        [
+          12.4667099,
+          41.9028492
+        ],
+        [
+          12.466748,
+          41.9028943
+        ],
+        [
+          12.4667709,
+          41.9029471
+        ],
+        [
+          12.4667791,
+          41.9030035
+        ],
+        [
+          12.4667812,
+          41.9030586
+        ],
+        [
+          12.4667749,
+          41.903113
+        ],
+        [
+          12.4667538,
+          41.9031681
+        ],
+        [
+          12.4667176,
+          41.9032149
+        ],
+        [
+          12.4666661,
+          41.9032567
+        ],
+        [
+          12.4666108,
+          41.9032933
+        ],
+        [
+          12.4665479,
+          41.9033221
+        ],
+        [
+          12.4664068,
+          41.9033536
+        ],
+        [
+          12.4663329,
+          41.9033551
+        ],
+        [
+          12.4662597,
+          41.9033472
+        ],
+        [
+          12.4661828,
+          41.9033302
+        ],
+        [
+          12.4661284,
+          41.903307
+        ],
+        [
+          12.4660666,
+          41.9032695
+        ],
+        [
+          12.4660174,
+          41.9032283
+        ],
+        [
+          12.4659786,
+          41.9031815
+        ],
+        [
+          12.4659514,
+          41.9031304
+        ],
+        [
+          12.4659365,
+          41.9030765
+        ],
+        [
+          12.4659343,
+          41.9030214
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/334776904",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/3/3/4/7/7/6/9/334776904.json",
+      "sourceGeometryTitles": [
+        "OSM Location: Mauseoleum of Hadrian"
+      ],
+      "chronologyDescription": "Mausoleum Hadriani (now Castel Sant'Angelo) located on the right bank of the Tiber River was an imperial mausoleum built by Hadrian between 134 and 139 CE. It continued as a tomb for subsequent emperors through to Caracalla, who died in 217 CE. By 401 the tomb had become a fortress with Honorius incorporating it into the line of the Aurelianic walls. During Alaric's sacking of Rome in 410 the mausoleum was looted and the ash urns dispersed. Procopius describes the destruction of the tomb's bronze statuary in 537. By the fourteenth century, the mausoleum had become a papal fortress. At one point, a fortified corridor known as Passetto di Borgo connected the fortress to St. Peter's Basilica.",
+      "presentBy320": true,
+      "notes": "Footprint is central drum. AD 320 tomb had square plinth and no medieval castle bastions, papal apartments or angel statue."
+    },
+    {
+      "id": "281368358",
+      "nameJa": "アウグストゥス帝廟",
+      "name": "Mausoleum Augusti",
+      "lon": 12.4764123,
+      "lat": 41.9059992,
+      "siteGeometryBounds": {
+        "lengthM": 89.3,
+        "widthM": 89.2,
+        "bearingDeg": 174.2
+      },
+      "footprintRingLonLat": [
+        [
+          12.4758843,
+          41.9060137
+        ],
+        [
+          12.4758954,
+          41.9059324
+        ],
+        [
+          12.475927,
+          41.9058568
+        ],
+        [
+          12.475977,
+          41.9057883
+        ],
+        [
+          12.4760431,
+          41.9057287
+        ],
+        [
+          12.4761233,
+          41.9056795
+        ],
+        [
+          12.4762154,
+          41.9056425
+        ],
+        [
+          12.476317,
+          41.9056191
+        ],
+        [
+          12.4763665,
+          41.9056133
+        ],
+        [
+          12.476431,
+          41.9056109
+        ],
+        [
+          12.476535,
+          41.9056192
+        ],
+        [
+          12.4766365,
+          41.9056428
+        ],
+        [
+          12.4767284,
+          41.9056799
+        ],
+        [
+          12.4768085,
+          41.905729
+        ],
+        [
+          12.4768744,
+          41.9057886
+        ],
+        [
+          12.4769242,
+          41.9058571
+        ],
+        [
+          12.4769557,
+          41.9059326
+        ],
+        [
+          12.4769668,
+          41.9060137
+        ],
+        [
+          12.4769557,
+          41.9060948
+        ],
+        [
+          12.4769242,
+          41.9061703
+        ],
+        [
+          12.4768745,
+          41.9062387
+        ],
+        [
+          12.4768086,
+          41.9062983
+        ],
+        [
+          12.4767285,
+          41.9063475
+        ],
+        [
+          12.4766366,
+          41.9063847
+        ],
+        [
+          12.4765351,
+          41.9064082
+        ],
+        [
+          12.4764261,
+          41.9064166
+        ],
+        [
+          12.476317,
+          41.9064084
+        ],
+        [
+          12.4762154,
+          41.906385
+        ],
+        [
+          12.4761232,
+          41.9063479
+        ],
+        [
+          12.476043,
+          41.9062987
+        ],
+        [
+          12.4759769,
+          41.9062391
+        ],
+        [
+          12.475927,
+          41.9061706
+        ],
+        [
+          12.4758954,
+          41.906095
+        ],
+        [
+          12.4758843,
+          41.9060137
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/281368358",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/2/8/1/3/6/8/3/281368358.json",
+      "sourceGeometryTitles": [
+        "Imagery location of Mausoleum Augusti",
+        "OSM location of Mausoleum of Augustus"
+      ],
+      "chronologyDescription": "A monumental tomb built in the Campus Martius at Rome by Augustus and dedicated in 28 B.C. The mausoleum served as a family tomb for the Iulio-Claudians.",
+      "presentBy320": true,
+      "verifiedAncientDimensionsM": {
+        "diameter": 87,
+        "source": "https://www.sovraintendenzaroma.it/i_luoghi/roma_antica/monumenti/mausoleo_di_augusto"
+      }
+    },
+    {
+      "id": "92342486",
+      "nameJa": "ドミティアヌス競技場",
+      "name": "Stadium Domitiani",
+      "lon": 12.4730952,
+      "lat": 41.8988931,
+      "siteGeometryBounds": {
+        "lengthM": 259.0,
+        "widthM": 54.2,
+        "bearingDeg": 176.6
+      },
+      "footprintRingLonLat": [
+        [
+          12.4726964,
+          41.8998054
+        ],
+        [
+          12.4728613,
+          41.8977518
+        ],
+        [
+          12.4729282,
+          41.897755
+        ],
+        [
+          12.4729882,
+          41.8977581
+        ],
+        [
+          12.4731467,
+          41.8977663
+        ],
+        [
+          12.4735017,
+          41.8978177
+        ],
+        [
+          12.4735017,
+          41.8978295
+        ],
+        [
+          12.4734563,
+          41.8985017
+        ],
+        [
+          12.473347,
+          41.8997756
+        ],
+        [
+          12.4732952,
+          41.8999756
+        ],
+        [
+          12.4732806,
+          41.900011
+        ],
+        [
+          12.4732441,
+          41.9000993
+        ],
+        [
+          12.4731749,
+          41.9000924
+        ],
+        [
+          12.4731335,
+          41.9000882
+        ],
+        [
+          12.4729478,
+          41.9000585
+        ],
+        [
+          12.472919,
+          41.9000537
+        ],
+        [
+          12.4729049,
+          41.9000513
+        ],
+        [
+          12.472867,
+          41.9000386
+        ],
+        [
+          12.4728438,
+          41.9000308
+        ],
+        [
+          12.4727489,
+          41.89998
+        ],
+        [
+          12.4727231,
+          41.8999517
+        ],
+        [
+          12.4727079,
+          41.8998942
+        ],
+        [
+          12.4727046,
+          41.8998817
+        ],
+        [
+          12.4726969,
+          41.8998192
+        ],
+        [
+          12.4726964,
+          41.8998054
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/92342486",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/9/2/3/4/2/4/92342486.json",
+      "sourceGeometryTitles": [
+        "OSM location of Piazza Navona"
+      ],
+      "chronologyDescription": "Domitian built the Stadium Domitiani in the Campus Martius at Rome.",
+      "presentBy320": true,
+      "notes": "Footprint represents modern Piazza Navona (arena space), not ancient exterior seating wall. Ancient full outer plan 275 x 106 m.",
+      "verifiedAncientDimensionsM": {
+        "length": 275,
+        "width": 106,
+        "source": "https://turismoroma.it/en/places/stadium-domitian-archaeological-area"
+      },
+      "modelOrientation": {
+        "bearingDeg": 176.6,
+        "meaning": "long stadium axis near N/S; curved end north",
+        "basis": "derived from piazza long axis",
+        "estimated": true
+      }
+    },
+    {
+      "id": "300583267",
+      "nameJa": "マルケッルス劇場",
+      "name": "Theatrum Marcelli",
+      "lon": 12.4795734,
+      "lat": 41.8920446,
+      "siteGeometryBounds": {
+        "lengthM": 204.5,
+        "widthM": 129.6,
+        "bearingDeg": 140.8
+      },
+      "footprintRingLonLat": [
+        [
+          12.4783033,
+          41.892599
+        ],
+        [
+          12.4784047,
+          41.8924351
+        ],
+        [
+          12.4787372,
+          41.8920966
+        ],
+        [
+          12.4796436,
+          41.8912695
+        ],
+        [
+          12.4796593,
+          41.8912591
+        ],
+        [
+          12.4801132,
+          41.89134
+        ],
+        [
+          12.4801283,
+          41.8913902
+        ],
+        [
+          12.4803659,
+          41.8924516
+        ],
+        [
+          12.4801511,
+          41.8926246
+        ],
+        [
+          12.4795852,
+          41.8927174
+        ],
+        [
+          12.4783114,
+          41.8926165
+        ],
+        [
+          12.4783033,
+          41.892599
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/300583267",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/3/0/0/5/8/3/2/300583267.json",
+      "sourceGeometryTitles": [
+        "OSM Location of Visible Remains of Theater",
+        "OSM location of Area archeologica del Teatro di Marcello"
+      ],
+      "chronologyDescription": "Theatrum Marcelli (Theater of Marcellus) is an ancient Roman theater in the Circus Flaminius. Augustus completed its construction and dedicated it in 12 BC.",
+      "presentBy320": true,
+      "notes": "Multiple locations combine surviving theatre and modern archaeological site; full original theatre dimensions must be modeled separately.",
+      "verifiedAncientDimensionsM": {
+        "caveaDiameter": 130,
+        "source": "https://sovraintendenzaroma.it/i_luoghi/roma_antica/monumenti/teatro_di_marcello"
+      }
+    },
+    {
+      "id": "541950317",
+      "nameJa": "ポンペイウス劇場",
+      "name": "Theatrum Pompei",
+      "lon": 12.473752,
+      "lat": 41.8951692,
+      "siteGeometryBounds": {
+        "lengthM": 45.1,
+        "widthM": 16.5,
+        "bearingDeg": 146.6
+      },
+      "footprintRingLonLat": [
+        [
+          12.4736477,
+          41.8952414
+        ],
+        [
+          12.473648,
+          41.8952144
+        ],
+        [
+          12.4736519,
+          41.8951922
+        ],
+        [
+          12.4736601,
+          41.8951713
+        ],
+        [
+          12.4736712,
+          41.8951571
+        ],
+        [
+          12.473685,
+          41.8951399
+        ],
+        [
+          12.4737191,
+          41.8951103
+        ],
+        [
+          12.4737586,
+          41.8950877
+        ],
+        [
+          12.4738069,
+          41.8950737
+        ],
+        [
+          12.4739921,
+          41.8950619
+        ],
+        [
+          12.4736928,
+          41.8954003
+        ],
+        [
+          12.4736746,
+          41.8953779
+        ],
+        [
+          12.4736598,
+          41.895347
+        ],
+        [
+          12.4736524,
+          41.8953182
+        ],
+        [
+          12.4736498,
+          41.89529
+        ],
+        [
+          12.4736477,
+          41.8952414
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/541950317",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/5/4/1/9/5/0/3/541950317.json",
+      "sourceGeometryTitles": [
+        "OSM location of  Via di Grotta Pinta"
+      ],
+      "chronologyDescription": "Rome's first permanent theater, located in the Campus Martius. The complex was completed under the second consulship of Pompeius Magnus in 55 B.C.",
+      "presentBy320": true,
+      "notes": "Footprint is modern Via di Grotta Pinta, marking only a section of inner cavea. Not theater perimeter; centroid not full theater center."
+    },
+    {
+      "id": "261794683",
+      "nameJa": "ウェヌスとローマ神殿",
+      "name": "Templum Veneris et Romae",
+      "lon": 12.4896653,
+      "lat": 41.8908576,
+      "siteGeometryBounds": {
+        "lengthM": 155.1,
+        "widthM": 101.5,
+        "bearingDeg": 110.6
+      },
+      "footprintRingLonLat": [
+        [
+          12.4886295,
+          41.8908317
+        ],
+        [
+          12.488674,
+          41.8907413
+        ],
+        [
+          12.4890369,
+          41.890581
+        ],
+        [
+          12.4902737,
+          41.8902353
+        ],
+        [
+          12.4903077,
+          41.8902258
+        ],
+        [
+          12.4903222,
+          41.8902529
+        ],
+        [
+          12.490634,
+          41.8908513
+        ],
+        [
+          12.4906559,
+          41.8908982
+        ],
+        [
+          12.4906401,
+          41.8909938
+        ],
+        [
+          12.4906036,
+          41.8910445
+        ],
+        [
+          12.4904092,
+          41.8911717
+        ],
+        [
+          12.4894556,
+          41.891433
+        ],
+        [
+          12.4887459,
+          41.8910721
+        ],
+        [
+          12.4886408,
+          41.8908562
+        ],
+        [
+          12.4886295,
+          41.8908317
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/261794683",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/2/6/1/7/9/4/6/261794683.json",
+      "sourceGeometryTitles": [
+        "OSM location of Tempio di Venere e Roma"
+      ],
+      "chronologyDescription": "A double temple sacred to Venus Felix and Roma Aeterna built by Hadrian on the slope of the Velian hill to the north of the Sacra Via beginning in 121 CE.",
+      "presentBy320": true,
+      "verifiedAncientDimensionsM": {
+        "precinctLength": 145,
+        "precinctWidth": 100,
+        "source": "https://rome.unicaen.fr/monument/templevenusrome/",
+        "sourceNote": "University of Caen research page search-index text; direct open blocked"
+      },
+      "modelOrientation": {
+        "bearingDeg": 110.6,
+        "meaning": "two opposite temple fronts face WNW / ESE",
+        "basis": "derived from podium footprint",
+        "estimated": true
+      }
+    },
+    {
+      "id": "564783056",
+      "nameJa": "ドムス・フラウィア",
+      "name": "Domus Flavia",
+      "lon": 12.4865885,
+      "lat": 41.8887767,
+      "siteGeometryBounds": {
+        "lengthM": 152.6,
+        "widthM": 100.1,
+        "bearingDeg": 44.5
+      },
+      "modelStructureWidthM": 76,
+      "modelStructureStatus": "A narrower internal building envelope is used inside the sourced precinct footprint so the schematic Domus Flavia and Domus Augustana blocks meet without occupying the same volume.",
+      "footprintRingLonLat": [
+        [
+          12.4856648,
+          41.8885592
+        ],
+        [
+          12.4858916,
+          41.8883539
+        ],
+        [
+          12.4860385,
+          41.8882534
+        ],
+        [
+          12.4861297,
+          41.8881923
+        ],
+        [
+          12.4861802,
+          41.8881594
+        ],
+        [
+          12.4863284,
+          41.8881013
+        ],
+        [
+          12.4867492,
+          41.8882647
+        ],
+        [
+          12.4869891,
+          41.8884465
+        ],
+        [
+          12.4873258,
+          41.8887538
+        ],
+        [
+          12.4875185,
+          41.8889809
+        ],
+        [
+          12.4875226,
+          41.8890544
+        ],
+        [
+          12.4874944,
+          41.8891039
+        ],
+        [
+          12.4873096,
+          41.8892322
+        ],
+        [
+          12.4872481,
+          41.8892744
+        ],
+        [
+          12.4869614,
+          41.8894649
+        ],
+        [
+          12.4868001,
+          41.889537
+        ],
+        [
+          12.4864004,
+          41.8892581
+        ],
+        [
+          12.4858986,
+          41.8889038
+        ],
+        [
+          12.4856648,
+          41.8885592
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/564783056",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/5/6/4/7/8/3/0/564783056.json",
+      "sourceGeometryTitles": [
+        "OSM location of Domus Flavia"
+      ],
+      "chronologyDescription": "The Domus Flavia is a modern appellation that refers to the palace complex built by the emperor Domitian on the Palatine Hill in Rome. The complex was completed ca. 92 CE. The Flavian complex is considered a part of the larger entity known as Domus Palatina.",
+      "presentBy320": true
+    },
+    {
+      "id": "792237246",
+      "nameJa": "ドムス・アウグスタナ",
+      "name": "Domus Augustana",
+      "lon": 12.4868711,
+      "lat": 41.8879876,
+      "siteGeometryBounds": {
+        "lengthM": 225.0,
+        "widthM": 86.5,
+        "bearingDeg": 44.3
+      },
+      "modelStructureWidthM": 68,
+      "modelStructureStatus": "A narrower internal building envelope is used inside the sourced precinct footprint so the schematic Domus Flavia and Domus Augustana blocks meet without occupying the same volume.",
+      "footprintRingLonLat": [
+        [
+          12.4857901,
+          41.8876653
+        ],
+        [
+          12.4857926,
+          41.8876597
+        ],
+        [
+          12.4863979,
+          41.8871185
+        ],
+        [
+          12.4864475,
+          41.8870799
+        ],
+        [
+          12.4864729,
+          41.8870871
+        ],
+        [
+          12.4864834,
+          41.8870934
+        ],
+        [
+          12.4866378,
+          41.8871992
+        ],
+        [
+          12.4881647,
+          41.8884769
+        ],
+        [
+          12.4879941,
+          41.8887548
+        ],
+        [
+          12.4879203,
+          41.8888332
+        ],
+        [
+          12.4878966,
+          41.8888501
+        ],
+        [
+          12.487867,
+          41.8888649
+        ],
+        [
+          12.4877825,
+          41.8888997
+        ],
+        [
+          12.487587,
+          41.8889711
+        ],
+        [
+          12.48756,
+          41.8889751
+        ],
+        [
+          12.4875185,
+          41.8889809
+        ],
+        [
+          12.4873983,
+          41.8888932
+        ],
+        [
+          12.4857901,
+          41.8876653
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/792237246",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/7/9/2/2/3/7/2/792237246.json",
+      "sourceGeometryTitles": [
+        "OSM location of Domus Augustana"
+      ],
+      "chronologyDescription": "Domus Augustana, a topographic appellation for the central block of the Flavian palace complex on the Palatine Hill attributed to the emperor Domitian.",
+      "presentBy320": true
+    },
+    {
+      "id": "666765291",
+      "nameJa": "ハドリアヌス神殿",
+      "name": "Temple of Hadrian",
+      "lon": 12.4794156,
+      "lat": 41.8997585,
+      "siteGeometryBounds": {
+        "lengthM": 62.3,
+        "widthM": 38.8,
+        "bearingDeg": 86.0
+      },
+      "footprintRingLonLat": [
+        [
+          12.4790495,
+          41.8997315
+        ],
+        [
+          12.4790603,
+          41.8996277
+        ],
+        [
+          12.4792742,
+          41.8995816
+        ],
+        [
+          12.4795666,
+          41.8995612
+        ],
+        [
+          12.4798036,
+          41.8996854
+        ],
+        [
+          12.4798067,
+          41.8997003
+        ],
+        [
+          12.4797866,
+          41.8999132
+        ],
+        [
+          12.4796315,
+          41.8999143
+        ],
+        [
+          12.479138,
+          41.8998814
+        ],
+        [
+          12.4790517,
+          41.8998643
+        ],
+        [
+          12.4790495,
+          41.8997315
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/666765291",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/6/6/6/7/6/5/2/666765291.json",
+      "sourceGeometryTitles": [
+        "OSM location of Temple of Hadrian"
+      ],
+      "chronologyDescription": "The Temple of Hadrian at Rome, also referred to as the Hadrianeum, was a temple located in the Campus Martius dedicated to the deified Hadrian by Antoninus Pius in 145 CE. Some of the temple's substantial remains were incorporated into a 17th-century building designed by architect Carlo Fontana in Rome's Piazza di Pietra.",
+      "presentBy320": true
+    },
+    {
+      "id": "494660670",
+      "nameJa": "ポルトゥヌス神殿",
+      "name": "Temple of Portunus",
+      "lon": 12.4809027,
+      "lat": 41.8892489,
+      "siteGeometryBounds": {
+        "lengthM": 23.3,
+        "widthM": 11.6,
+        "bearingDeg": 162.7
+      },
+      "footprintRingLonLat": [
+        [
+          12.480805,
+          41.8893068
+        ],
+        [
+          12.4808772,
+          41.8891353
+        ],
+        [
+          12.4810106,
+          41.8891662
+        ],
+        [
+          12.4809387,
+          41.889338
+        ],
+        [
+          12.4809032,
+          41.8893609
+        ],
+        [
+          12.4808175,
+          41.889341
+        ],
+        [
+          12.480805,
+          41.8893068
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/494660670",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/4/9/4/6/6/0/6/494660670.json",
+      "sourceGeometryTitles": [
+        "OSM location of Temple of Portunus"
+      ],
+      "chronologyDescription": "A tetrastyle temple dedicated to the god Portunus and dating to the late second century or early first century BC.",
+      "presentBy320": true
+    },
+    {
+      "id": "825969667",
+      "nameJa": "ヘラクレス・ウィクトル神殿",
+      "name": "Temple of Hercules Victor",
+      "lon": 12.4807692,
+      "lat": 41.8887402,
+      "siteGeometryBounds": {
+        "lengthM": 19.2,
+        "widthM": 18.4,
+        "bearingDeg": 56.3
+      },
+      "footprintRingLonLat": [
+        [
+          12.4806512,
+          41.8887447
+        ],
+        [
+          12.4806548,
+          41.8887193
+        ],
+        [
+          12.4806614,
+          41.8887058
+        ],
+        [
+          12.4806711,
+          41.8886935
+        ],
+        [
+          12.4806844,
+          41.8886816
+        ],
+        [
+          12.4807002,
+          41.888672
+        ],
+        [
+          12.4807181,
+          41.8886648
+        ],
+        [
+          12.480738,
+          41.88866
+        ],
+        [
+          12.4807553,
+          41.8886582
+        ],
+        [
+          12.4807723,
+          41.8886585
+        ],
+        [
+          12.4807844,
+          41.8886597
+        ],
+        [
+          12.480804,
+          41.8886642
+        ],
+        [
+          12.4808226,
+          41.8886713
+        ],
+        [
+          12.4808683,
+          41.888694
+        ],
+        [
+          12.4808752,
+          41.8887027
+        ],
+        [
+          12.4808824,
+          41.8887197
+        ],
+        [
+          12.4808851,
+          41.8887344
+        ],
+        [
+          12.4808846,
+          41.8887502
+        ],
+        [
+          12.4808796,
+          41.8887684
+        ],
+        [
+          12.4808749,
+          41.8887768
+        ],
+        [
+          12.4808395,
+          41.8887998
+        ],
+        [
+          12.4808242,
+          41.8888091
+        ],
+        [
+          12.480806,
+          41.8888164
+        ],
+        [
+          12.4807874,
+          41.8888211
+        ],
+        [
+          12.4807666,
+          41.8888232
+        ],
+        [
+          12.4807475,
+          41.8888225
+        ],
+        [
+          12.4807284,
+          41.8888193
+        ],
+        [
+          12.4807098,
+          41.8888135
+        ],
+        [
+          12.4806931,
+          41.8888054
+        ],
+        [
+          12.4806743,
+          41.8887911
+        ],
+        [
+          12.4806609,
+          41.8887753
+        ],
+        [
+          12.4806539,
+          41.8887585
+        ],
+        [
+          12.4806512,
+          41.8887447
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/825969667",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/8/2/5/9/6/9/6/825969667.json",
+      "sourceGeometryTitles": [
+        "OSM location: Temple of Hercules Victor"
+      ],
+      "chronologyDescription": "A monopteros in the Forum Boarium at Rome built in the late second century BC, perhaps by L. Mummius Achaicus.",
+      "presentBy320": true
+    },
+    {
+      "id": "527986452",
+      "nameJa": "太陽神の巨像",
+      "name": "Colossus Neronis",
+      "lon": 12.4909922,
+      "lat": 41.8908689,
+      "siteGeometryBounds": {
+        "lengthM": 16.5,
+        "widthM": 13.7,
+        "bearingDeg": 110.5
+      },
+      "footprintRingLonLat": [
+        [
+          12.4908701,
+          41.8908369
+        ],
+        [
+          12.4910562,
+          41.8907852
+        ],
+        [
+          12.4911142,
+          41.8909009
+        ],
+        [
+          12.4909281,
+          41.8909526
+        ],
+        [
+          12.4908701,
+          41.8908369
+        ]
+      ],
+      "coordinateAccuracyM": 20,
+      "source": "https://pleiades.stoa.org/places/527986452",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/5/2/7/9/8/6/4/527986452.json",
+      "sourceGeometryTitles": [
+        "OSM location of pedestal of colossus of Nero"
+      ],
+      "chronologyDescription": "The \"Colossus Neronis\" or \"Colossal Statue of Nero\" was a monumental bronze statue of the first-century CE emperor reportedly created by Zenodorus. The statue was originally an element of the sprawling Domus Aurea of Nero but the monument endured long after Nero's reign. The statue's original position likely marked the summit of the Velian Hill. The Flavians refashioned the statue to resemble Sol and Hadrian relocated the statue nearer the Flavian amphitheater as part of the work to create the Temple of Venus and Roma.",
+      "presentBy320": true
+    },
+    {
+      "id": "417632343",
+      "nameJa": "バシリカ・アエミリア",
+      "name": "Basilica Aemilia",
+      "lon": 12.4860935,
+      "lat": 41.8926225,
+      "siteGeometryBounds": {
+        "lengthM": 99.4,
+        "widthM": 27.1,
+        "bearingDeg": 122.7
+      },
+      "footprintRingLonLat": [
+        [
+          12.485508,
+          41.8927844
+        ],
+        [
+          12.4855498,
+          41.8927351
+        ],
+        [
+          12.4856369,
+          41.8926934
+        ],
+        [
+          12.4865123,
+          41.892296
+        ],
+        [
+          12.4866658,
+          41.8924824
+        ],
+        [
+          12.4860973,
+          41.8927623
+        ],
+        [
+          12.4857329,
+          41.8929363
+        ],
+        [
+          12.4857216,
+          41.8929288
+        ],
+        [
+          12.485508,
+          41.8927844
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/417632343",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/4/1/7/6/3/2/3/417632343.json",
+      "sourceGeometryTitles": [
+        "OSM location of Basilica Aemilia"
+      ],
+      "chronologyDescription": "A basilica located at the juncture of the Sacra Via and the Argiletum flanking the Forum Romanum that was initially built in 179 B.C.E.",
+      "presentBy320": true
+    },
+    {
+      "id": "173078007",
+      "nameJa": "バシリカ・ユリア",
+      "name": "Basilica Julia",
+      "lon": 12.4847838,
+      "lat": 41.8919604,
+      "siteGeometryBounds": {
+        "lengthM": 108.3,
+        "widthM": 56.7,
+        "bearingDeg": 114.5
+      },
+      "footprintRingLonLat": [
+        [
+          12.484054,
+          41.8919508
+        ],
+        [
+          12.4851984,
+          41.891533
+        ],
+        [
+          12.4852275,
+          41.8915232
+        ],
+        [
+          12.4855085,
+          41.8919874
+        ],
+        [
+          12.4843358,
+          41.8923855
+        ],
+        [
+          12.4843163,
+          41.8923768
+        ],
+        [
+          12.484264,
+          41.8922951
+        ],
+        [
+          12.484054,
+          41.8919508
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/173078007",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/1/7/3/0/7/8/0/173078007.json",
+      "sourceGeometryTitles": [
+        "OSM location of Basilica Iulia"
+      ],
+      "chronologyDescription": "The Basilica Julia was built on the south side of the Forum Romanum in 46 B.C. on the site of the former Basilica Sempronia.",
+      "presentBy320": true
+    },
+    {
+      "id": "370240026",
+      "nameJa": "セプティミウス・セウェルスの凱旋門",
+      "name": "Arch of Septimius Severus",
+      "lon": 12.4847389,
+      "lat": 41.8928337,
+      "siteGeometryBounds": {
+        "lengthM": 23.4,
+        "widthM": 7.6,
+        "bearingDeg": 36.2
+      },
+      "footprintRingLonLat": [
+        [
+          12.4846187,
+          41.8927692
+        ],
+        [
+          12.4846926,
+          41.8927289
+        ],
+        [
+          12.4848592,
+          41.8928981
+        ],
+        [
+          12.4847853,
+          41.8929384
+        ],
+        [
+          12.4846974,
+          41.8928493
+        ],
+        [
+          12.4846187,
+          41.8927692
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/370240026",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/3/7/0/2/4/0/0/370240026.json",
+      "sourceGeometryTitles": [
+        "OSM location of Arch of Septimius Severus"
+      ],
+      "chronologyDescription": "The Arch of Septimius Severus is situated at the northwest corner of the Forum Romanum. It was dedicated in A.D. 203 and serves to commemorate the Parthian victories of Emperor Septimius Severus and his two sons against the Parthians (194/195 and 197–199).",
+      "presentBy320": true
+    },
+    {
+      "id": "55302071",
+      "nameJa": "ウェスタ神殿",
+      "name": "Temple of Vesta at Rome",
+      "lon": 12.486199,
+      "lat": 41.8916971,
+      "siteGeometryBounds": {
+        "lengthM": 13.4,
+        "widthM": 12.9,
+        "bearingDeg": 38.6
+      },
+      "footprintRingLonLat": [
+        [
+          12.4861156,
+          41.891689
+        ],
+        [
+          12.4861201,
+          41.8916741
+        ],
+        [
+          12.4861295,
+          41.8916606
+        ],
+        [
+          12.4861433,
+          41.8916493
+        ],
+        [
+          12.4861605,
+          41.8916411
+        ],
+        [
+          12.48618,
+          41.8916363
+        ],
+        [
+          12.4862004,
+          41.8916355
+        ],
+        [
+          12.4862205,
+          41.8916386
+        ],
+        [
+          12.4862388,
+          41.8916454
+        ],
+        [
+          12.4862542,
+          41.8916554
+        ],
+        [
+          12.4862669,
+          41.8916669
+        ],
+        [
+          12.4862757,
+          41.8916757
+        ],
+        [
+          12.4862797,
+          41.8916858
+        ],
+        [
+          12.4862813,
+          41.891698
+        ],
+        [
+          12.4862789,
+          41.8917108
+        ],
+        [
+          12.4862746,
+          41.8917193
+        ],
+        [
+          12.4862698,
+          41.8917254
+        ],
+        [
+          12.4862609,
+          41.8917334
+        ],
+        [
+          12.4862486,
+          41.8917407
+        ],
+        [
+          12.4862366,
+          41.8917447
+        ],
+        [
+          12.4862281,
+          41.8917473
+        ],
+        [
+          12.4862176,
+          41.8917497
+        ],
+        [
+          12.4862056,
+          41.8917513
+        ],
+        [
+          12.4861935,
+          41.8917516
+        ],
+        [
+          12.486183,
+          41.8917509
+        ],
+        [
+          12.4861725,
+          41.8917483
+        ],
+        [
+          12.4861577,
+          41.8917437
+        ],
+        [
+          12.4861435,
+          41.8917365
+        ],
+        [
+          12.4861338,
+          41.8917285
+        ],
+        [
+          12.4861234,
+          41.8917175
+        ],
+        [
+          12.4861164,
+          41.8917042
+        ],
+        [
+          12.4861156,
+          41.891689
+        ]
+      ],
+      "coordinateAccuracyM": 5.0,
+      "source": "https://pleiades.stoa.org/places/55302071",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/5/5/3/0/2/0/55302071.json",
+      "sourceGeometryTitles": [
+        "Imagery Location of the Temple of Vesta",
+        "OSM location of Temple of Vesta"
+      ],
+      "chronologyDescription": "The Temple of Vesta, located at the east end of the Forum Romanum.",
+      "presentBy320": true
+    },
+    {
+      "id": "837078212",
+      "nameJa": "クリア・ユリア",
+      "name": "Curia Iulia",
+      "lon": 12.4853956,
+      "lat": 41.8929629,
+      "siteGeometryBounds": {
+        "lengthM": 30.0,
+        "widthM": 26.5,
+        "bearingDeg": 49.9
+      },
+      "footprintRingLonLat": [
+        [
+          12.4851543,
+          41.8929659
+        ],
+        [
+          12.4853606,
+          41.8927839
+        ],
+        [
+          12.4856371,
+          41.8929575
+        ],
+        [
+          12.4856318,
+          41.8929622
+        ],
+        [
+          12.4854319,
+          41.8931386
+        ],
+        [
+          12.4852539,
+          41.8930285
+        ],
+        [
+          12.4851543,
+          41.8929659
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/837078212",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/8/3/7/0/7/8/2/837078212.json",
+      "sourceGeometryTitles": [
+        "OSM location of Curia Julia"
+      ],
+      "chronologyDescription": "Construction of the Curia Julia was begun by Julius Caesar and completed by Augustus in 29 BCE. It replaced the former senate house, the Curia Hostilia.",
+      "presentBy320": true
+    },
+    {
+      "id": "871801169",
+      "nameJa": "ユピテル・カピトリーノ神殿",
+      "name": "Temple of Jupiter Optimus Maximus",
+      "lon": 12.481667,
+      "lat": 41.892222,
+      "siteGeometryBounds": null,
+      "footprintRingLonLat": [
+        [
+          12.481667,
+          41.892222
+        ],
+        [
+          12.481667,
+          41.892222
+        ]
+      ],
+      "coordinateAccuracyM": 2000.0,
+      "source": "https://pleiades.stoa.org/places/871801169",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/8/7/1/8/0/1/1/871801169.json",
+      "sourceGeometryTitles": [
+        "GeoHack location of Temple of Jupiter Optimus Maximus"
+      ],
+      "chronologyDescription": "The chief temple of the city of Rome was located on the Capitoline Hill.",
+      "presentBy320": true,
+      "notes": "Only point location; original temple plan requires separate dimensional reconstruction. No georeferenced complete footprint supplied."
+    },
+    {
+      "id": "823121346",
+      "nameJa": "マルス・ウルトル神殿",
+      "name": "Temple of Mars Ultor",
+      "lon": 12.4868818,
+      "lat": 41.8943206,
+      "siteGeometryBounds": {
+        "lengthM": 50.4,
+        "widthM": 33.3,
+        "bearingDeg": 49.6
+      },
+      "footprintRingLonLat": [
+        [
+          12.4865373,
+          41.8942936
+        ],
+        [
+          12.4865674,
+          41.8942671
+        ],
+        [
+          12.4867976,
+          41.8940656
+        ],
+        [
+          12.4868792,
+          41.8941171
+        ],
+        [
+          12.4871832,
+          41.8943095
+        ],
+        [
+          12.4871858,
+          41.8943183
+        ],
+        [
+          12.4871565,
+          41.8944504
+        ],
+        [
+          12.4870305,
+          41.8945579
+        ],
+        [
+          12.4869466,
+          41.89454
+        ],
+        [
+          12.4868944,
+          41.8945195
+        ],
+        [
+          12.4865373,
+          41.8942936
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/823121346",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/8/2/3/1/2/1/3/823121346.json",
+      "sourceGeometryTitles": [
+        "OSM location: Temple of Mars Ultor"
+      ],
+      "chronologyDescription": "The Temple of Mars Ultor was dedicated in the Forum of Augustus in 2 B.C., fulfilling a vow that Octavian had made to the god in 42 B.C.",
+      "presentBy320": true
+    },
+    {
+      "id": "594335209",
+      "nameJa": "ルドゥス・マグヌス",
+      "name": "Ludus Magnus",
+      "lon": 12.4950938,
+      "lat": 41.8900516,
+      "siteGeometryBounds": {
+        "lengthM": 86.8,
+        "widthM": 43.7,
+        "bearingDeg": 106.6
+      },
+      "footprintRingLonLat": [
+        [
+          12.4944144,
+          41.8901281
+        ],
+        [
+          12.495385,
+          41.889823
+        ],
+        [
+          12.4954875,
+          41.8900851
+        ],
+        [
+          12.495489,
+          41.8902094
+        ],
+        [
+          12.4951118,
+          41.890293
+        ],
+        [
+          12.4949264,
+          41.8903265
+        ],
+        [
+          12.4945214,
+          41.8903866
+        ],
+        [
+          12.4944144,
+          41.8901281
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/594335209",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/5/9/4/3/3/5/2/594335209.json",
+      "sourceGeometryTitles": [
+        "OSM location of Ludus Magnus",
+        "OSM location: Ludus Magnus"
+      ],
+      "chronologyDescription": "A gladiatorial training school adjacent to the Flavian Amphitheater in Rome. The structure is attested on the Severan marble plan of Rome.",
+      "presentBy320": true,
+      "notes": "Modern exposed footprint is only surviving excavated portion. Training amphitheatre and barracks continue under modern Via Labicana; complete layout requires reconstructing buried half."
+    },
+    {
+      "id": "783489695",
+      "nameJa": "トラヤヌスの記念柱",
+      "name": "Column of Trajan",
+      "lon": 12.4842733,
+      "lat": 41.8958088,
+      "siteGeometryBounds": {
+        "lengthM": 5.6,
+        "widthM": 5.6,
+        "bearingDeg": 139.8
+      },
+      "footprintRingLonLat": [
+        [
+          12.4842256,
+          41.8958119
+        ],
+        [
+          12.4842694,
+          41.8957733
+        ],
+        [
+          12.4843209,
+          41.8958057
+        ],
+        [
+          12.4842771,
+          41.8958443
+        ],
+        [
+          12.4842256,
+          41.8958119
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/783489695",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/7/8/3/4/8/9/6/783489695.json",
+      "sourceGeometryTitles": [
+        "OSM location of Trajan's Column"
+      ],
+      "chronologyDescription": "The Column of Trajan (or Trajan's Column) is a victory column that was erected in the Forum of Trajan at Rome ca. 113 in order to commemorate Trajan's victories in the Dacian Wars. The column is particularly noted for its helical historiated bas relief frieze decoration.",
+      "presentBy320": true,
+      "notes": "AD 320 top statue is Trajan; present statue Saint Peter was installed AD 1587."
+    },
+    {
+      "id": "193196776",
+      "nameJa": "ウェスパシアヌスとティトゥス神殿",
+      "name": "Temple of Vespasian and Titus",
+      "lon": 12.4839216,
+      "lat": 41.8927306,
+      "siteGeometryBounds": {
+        "lengthM": 28.4,
+        "widthM": 24.7,
+        "bearingDeg": 123.2
+      },
+      "footprintRingLonLat": [
+        [
+          12.4836986,
+          41.8927066
+        ],
+        [
+          12.4837584,
+          41.8926763
+        ],
+        [
+          12.4839759,
+          41.8925728
+        ],
+        [
+          12.4839944,
+          41.8925819
+        ],
+        [
+          12.4841454,
+          41.8927531
+        ],
+        [
+          12.4838592,
+          41.8928927
+        ],
+        [
+          12.4838554,
+          41.8928885
+        ],
+        [
+          12.4837654,
+          41.8927845
+        ],
+        [
+          12.4836986,
+          41.8927066
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/193196776",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/1/9/3/1/9/6/7/193196776.json",
+      "sourceGeometryTitles": [
+        "OSM location of Temple of Vespasian and Titus"
+      ],
+      "chronologyDescription": "A temple in the Roman Forum dedicated to the deified Vespasian that was begun by Titus and completed under Domitian.",
+      "presentBy320": true
+    },
+    {
+      "id": "236855821",
+      "nameJa": "ティトゥスの凱旋門",
+      "name": "Arch of Titus",
+      "lon": 12.4885842,
+      "lat": 41.8906722,
+      "siteGeometryBounds": {
+        "lengthM": 14.4,
+        "widthM": 6.7,
+        "bearingDeg": 22.5
+      },
+      "footprintRingLonLat": [
+        [
+          12.4885135,
+          41.8906242
+        ],
+        [
+          12.4885887,
+          41.8906011
+        ],
+        [
+          12.4886549,
+          41.8907202
+        ],
+        [
+          12.4885797,
+          41.8907433
+        ],
+        [
+          12.4885135,
+          41.8906242
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/236855821",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/2/3/6/8/5/5/8/236855821.json",
+      "sourceGeometryTitles": [
+        "OSM location of Arch of Titus"
+      ],
+      "chronologyDescription": "A triumphal arch erected in summa Sacra Via and dedicated to the deified emperor Titus by his brother Domitian, ca. 81 CE.",
+      "presentBy320": true
+    },
+    {
+      "id": "629324739",
+      "nameJa": "バシリカ・ウルピア",
+      "name": "Basilica Ulpia",
+      "lon": 12.4845662,
+      "lat": 41.8955352,
+      "siteGeometryBounds": {
+        "lengthM": 57.3,
+        "widthM": 56.0,
+        "bearingDeg": 48.8
+      },
+      "footprintRingLonLat": [
+        [
+          12.4841275,
+          41.8955975
+        ],
+        [
+          12.4843857,
+          41.8952838
+        ],
+        [
+          12.4845107,
+          41.8951797
+        ],
+        [
+          12.4850239,
+          41.8955136
+        ],
+        [
+          12.4848573,
+          41.8956591
+        ],
+        [
+          12.4845948,
+          41.8958882
+        ],
+        [
+          12.4845742,
+          41.8958895
+        ],
+        [
+          12.4841275,
+          41.8955975
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/629324739",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/6/2/9/3/2/4/7/629324739.json",
+      "sourceGeometryTitles": [
+        "OSM location of Basilica Ulpia"
+      ],
+      "chronologyDescription": "The Basilica Ulpia is located in the Forum of Trajan at Rome and derives its name from the emperor Trajan's gentilician nomenclature. The basilica was considered a marvel of ancient Roman architecture by observers, including the historian Ammianus Marcellinus.",
+      "presentBy320": true,
+      "notes": "Modern polygon is only an exposed central portion (~57 m square). Original basilica was 170 x 60 m including apses, central body 120 m long; do not render footprint bounds as complete building.",
+      "verifiedAncientDimensionsM": {
+        "lengthWithApses": 170,
+        "lengthWithoutApses": 120,
+        "width": 60,
+        "heightReconstruction": 40,
+        "source": "https://rometheimperialfora19952010.wordpress.com/wp-content/uploads/2011/07/c-s-basilica-ulpia-rivisto.pdf",
+        "sourceNote": "Soprintendenza excavation/press report mirrored as PDF, pp.2-3; height is archaeological reconstruction."
+      },
+      "modelOrientation": {
+        "bearingDeg": 49,
+        "meaning": "long transverse basilica axis perpendicular to Trajan forum axis; facade faces southeast",
+        "basis": "aligned to excavated colonnades",
+        "estimated": true
+      }
+    },
+    {
+      "id": "898745908",
+      "nameJa": "ウェヌス・ゲネトリクス神殿",
+      "name": "Temple of Venus Genetrix",
+      "lon": 12.4848438,
+      "lat": 41.8941433,
+      "siteGeometryBounds": {
+        "lengthM": 36.0,
+        "widthM": 26.9,
+        "bearingDeg": 139.9
+      },
+      "footprintRingLonLat": [
+        [
+          12.4846299,
+          41.8941677
+        ],
+        [
+          12.4847767,
+          41.894014
+        ],
+        [
+          12.4848146,
+          41.8939773
+        ],
+        [
+          12.4848602,
+          41.8939513
+        ],
+        [
+          12.4850104,
+          41.8940495
+        ],
+        [
+          12.4850939,
+          41.8941053
+        ],
+        [
+          12.4848426,
+          41.8943272
+        ],
+        [
+          12.4847444,
+          41.8942996
+        ],
+        [
+          12.4846443,
+          41.8942383
+        ],
+        [
+          12.4846299,
+          41.8941677
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/898745908",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/8/9/8/7/4/5/9/898745908.json",
+      "sourceGeometryTitles": [
+        "OSM location: Temple of Venus Genetrix"
+      ],
+      "chronologyDescription": "The Temple of Venus Genetrix located in the Forum Iulium was dedicated ca. 46 BCE.",
+      "presentBy320": true
+    },
+    {
+      "id": "236573248",
+      "nameJa": "オクタウィア回廊",
+      "name": "Porticus Octaviae",
+      "lon": 12.4785716,
+      "lat": 41.892522,
+      "siteGeometryBounds": {
+        "lengthM": 19.9,
+        "widthM": 12.9,
+        "bearingDeg": 117.7
+      },
+      "footprintRingLonLat": [
+        [
+          12.4784303,
+          41.8925136
+        ],
+        [
+          12.4786448,
+          41.8924333
+        ],
+        [
+          12.4787109,
+          41.8925271
+        ],
+        [
+          12.4785411,
+          41.8926014
+        ],
+        [
+          12.4785118,
+          41.892613
+        ],
+        [
+          12.4785009,
+          41.8925998
+        ],
+        [
+          12.4784303,
+          41.8925136
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/236573248",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/2/3/6/5/7/3/2/236573248.json",
+      "sourceGeometryTitles": [
+        "OSM location of Porticus Octaviae"
+      ],
+      "chronologyDescription": "A porticus in the area of the Circus Flaminius, the Porticus Octaviae was dedicated by Augustus sometime after 27 B.C. in honor of his sister, Octavia Minor. The porticus replaced the Porticus Metelli. It was restored twice after major urban fires in A.D. 80 and 203.",
+      "presentBy320": true,
+      "notes": "Source point and 20 x 13 m polygon mark only standing entrance propylon. Full ancient quadriporticus extends northwards behind entry, 119 x 132 m; do not use propylon as complex center or footprint.",
+      "verifiedAncientDimensionsM": {
+        "frontWidth": 119,
+        "depth": 132,
+        "source": "https://www.sovraintendenzaroma.it/node/179"
+      }
+    },
+    {
+      "id": "766385425",
+      "nameJa": "ロムルス神殿",
+      "name": "Temple of Romulus (Rome)",
+      "lon": 12.4871959,
+      "lat": 41.8918482,
+      "siteGeometryBounds": {
+        "lengthM": 23.2,
+        "widthM": 17.6,
+        "bearingDeg": 24.0
+      },
+      "footprintRingLonLat": [
+        [
+          12.487057,
+          41.8918063
+        ],
+        [
+          12.4870675,
+          41.8918026
+        ],
+        [
+          12.4870731,
+          41.8918007
+        ],
+        [
+          12.4872346,
+          41.8917471
+        ],
+        [
+          12.4872511,
+          41.8917419
+        ],
+        [
+          12.4873077,
+          41.8918407
+        ],
+        [
+          12.4873316,
+          41.8918907
+        ],
+        [
+          12.4872311,
+          41.8919762
+        ],
+        [
+          12.4871721,
+          41.891954
+        ],
+        [
+          12.4871569,
+          41.8919471
+        ],
+        [
+          12.4871436,
+          41.8919383
+        ],
+        [
+          12.4871326,
+          41.8919278
+        ],
+        [
+          12.4871243,
+          41.8919161
+        ],
+        [
+          12.487057,
+          41.8918063
+        ]
+      ],
+      "coordinateAccuracyM": 20.0,
+      "source": "https://pleiades.stoa.org/places/766385425",
+      "mirror": "https://github.com/isawnyu/pleiades.datasets/blob/main/data/json/7/6/6/3/8/5/4/766385425.json",
+      "sourceGeometryTitles": [
+        "OSM location of Temple of Romulus"
+      ],
+      "chronologyDescription": "A temple along the Sacra Via dedicated to Valerius Romulus, son of Maxentius.",
+      "presentBy320": true
+    }
+  ],
+  "geographicSources": {
+    "walls_museum_map": {
+      "title": "Museo Virtuale delle Mura di Roma — CNR / Sovrintendenza Capitolina",
+      "url": "https://museovirtualedellemura.romasitounesco.it/il-progetto/",
+      "ref": "turn31view0",
+      "dataUrl": "https://museovirtualedellemura.romasitounesco.it/wp-content/plugins/mvmr/public/files/output_2_aureliane.kml",
+      "gatesUrl": "https://museovirtualedellemura.romasitounesco.it/wp-json/mvmr/v1/get_pins_for_map?lang=it",
+      "method": "Public website main.bundle.js maps epoca 2 to output_2_aureliane.kml. Downloaded KML contains 123 nonempty LineStrings; connected by matching endpoints within 0.2 m into one 18.36 km open line."
+    },
+    "wall_architecture": {
+      "title": "Le mura di Aureliano e di Onorio — Sovrintendenza Capitolina",
+      "url": "https://www.sovraintendenzaroma.it/content/le-mura-di-aureliano-e-di-onorio",
+      "ref": "turn4view1"
+    },
+    "west_wall_history": {
+      "title": "Itinerario 7. Le Mura Aureliane di Trastevere — Museo Virtuale delle Mura",
+      "url": "https://museovirtualedellemura.romasitounesco.it/itinerario-7-le-mura-aureliane-di-trastevere/",
+      "ref": "turn24view0"
+    },
+    "pleiades": {
+      "title": "Pleiades gazetteer datasets — ISAW, New York University / Ancient World Mapping Center",
+      "url": "https://github.com/isawnyu/pleiades.datasets",
+      "ref": "turn30view2",
+      "license": "CC BY 3.0; embedded river course derived from OpenStreetMap, credit OpenStreetMap contributors / ODbL as well"
+    },
+    "river": {
+      "title": "Tiberis (river) — Pleiades 423080",
+      "url": "https://pleiades.stoa.org/places/423080",
+      "dataUrl": "https://raw.githubusercontent.com/isawnyu/pleiades.datasets/main/data/json/4/2/3/0/423080.json",
+      "provenance": "OpenStreetMap Relation 1827384, version 50, changeset 54701020, 2017-12-17; Pleiades location time span 1700–2100"
+    },
+    "river_modifications": {
+      "title": "Le alluvioni storiche del Tevere — Roma Capitale",
+      "url": "https://www.comune.roma.it/web/it/notizia.page?contentId=NWS1458330",
+      "ref": "turn41search10",
+      "relevance": "Modern channel widening to 100 m and high embankments date to late 19th / early 20th century; omit modern vertical embankments from AD 320."
+    },
+    "geology": {
+      "title": "Geodiversità urbana Roma — ISPRA 2023",
+      "url": "https://www.isprambiente.gov.it/files2023/eventi/geodiversita/brochure_geodiversita_sing.pdf",
+      "ref": "turn29view0",
+      "relevance": "Seven hills are erosional remnants of a volcanic plateau; current ground surface includes complex anthropogenic fill. No exact AD 320 DEM supplied."
+    },
+    "palatine_geology": {
+      "title": "Cavinato et al., Assetto geologico e idrogeologico del Colle Palatino (2010)",
+      "url": "https://www.researchgate.net/publication/236972507_Assetto_geologico_e_idrogeologico_del_Colle_Palatino_--_Valutazione_delle_pericolosita_geologiche",
+      "ref": "turn29view1",
+      "relevance": "Original research with 1:1000 geological surveys; hill excavations described at about 49–46 m altitude. Geological substrate and built surface differ."
+    }
+  },
+  "geographicNotes": [
+    "The closed city footprint includes parts of the Tiber. Exclude river water and bank buffer from residential infill.",
+    "The source wall contour has a schematic south river crossing; do not build a solid ground wall through the water. Mask wall pieces whose midpoint falls inside river water, or interpret crossing separately.",
+    "Use official museum coordinates instead of Turismo Roma tourist map pins: several tourism pins are displaced by tens to hundreds of meters.",
+    "Whole-city reconstruction is source-located but terrain profiles, ordinary residences, and missing western wall stretches are approximate; a scientifically exact AD 320 reconstruction is not claimed.",
+    "Pleiades Porta Portuensis contains a modern Porta Portese location dated 1600–2100. This dataset deliberately uses the historical museum marker instead.",
+    "Pleiades wall geometry describes extant fabric; official KML provides the complete historical contour including demolished sectors. Western contour remains low confidence / schematic.",
+    "For seven-hill labeling, the first seven hills are traditional; Pincian and Janiculum are additional terrain masses required by the Aurelian-wall extent."
+  ],
+  "water": {
+    "bridges": [
+      {
+        "nameJa": "ファブリキウス橋",
+        "endpoints": [
+          [
+            12.4779702,
+            41.8908594
+          ],
+          [
+            12.478502,
+            41.8913017
+          ]
+        ],
+        "width": 7.5,
+        "arches": 2,
+        "source": "https://pleiades.stoa.org/places/68481414",
+        "notes": "Built 62 BCE. The mapped footprint closely preserves the two main ancient spans, but parapets and approaches were altered. Build two large main arches with a small flood relief opening in the middle pier; minor ancient ramp arches are not all mapped. The source outer footprint width includes parapets; clear walkway would be narrower.",
+        "reconstruction": "Ancient elevation schematic; endpoints from modern bridge axis except Aemilius extrapolated from fragment."
+      },
+      {
+        "nameJa": "アエリウス橋",
+        "endpoints": [
+          [
+            12.4663814,
+            41.9024567
+          ],
+          [
+            12.4665037,
+            41.9013269
+          ]
+        ],
+        "width": 10,
+        "arches": 5,
+        "source": "https://pleiades.stoa.org/places/334776903",
+        "notes": "Completed AD 134 opposite Hadrian mausoleum. Mapped footprint is modern bridge with extended end spans; its three central arches preserve the ancient alignment. Omit Baroque angels and modern balustrades. The 27.6 m footprint width includes projecting piers/cutwaters and does NOT represent roadway deck width; deck width inferred from parallel source edges is about 10 m. Pleiades dates completion to 134; Turismo Roma page instead says 136, so general Hadrianic-era labeling avoids inconsequential conflicting date.",
+        "reconstruction": "Ancient elevation schematic; endpoints from modern bridge axis except Aemilius extrapolated from fragment."
+      },
+      {
+        "nameJa": "アエミリウス橋",
+        "endpoints": [
+          [
+            12.47817548,
+            41.88913486
+          ],
+          [
+            12.479922919999998,
+            41.88943024
+          ]
+        ],
+        "width": 9,
+        "arches": 6,
+        "source": "https://pleiades.stoa.org/places/425068",
+        "notes": "IMPORTANT: mapped geometry is only ONE surviving arch, not the full AD 320 bridge. Axis can be reused, observed length cannot. Original bridge had six arches. Do not present any extrapolated six-arch reconstruction endpoints as surveyed.",
+        "reconstruction": "Ancient elevation schematic; endpoints from modern bridge axis except Aemilius extrapolated from fragment."
+      },
+      {
+        "nameJa": "ケスティウス橋",
+        "endpoints": [
+          [
+            12.4771259,
+            41.8896925
+          ],
+          [
+            12.4774447,
+            41.8903903
+          ]
+        ],
+        "width": 9,
+        "arches": 3,
+        "source": "https://pleiades.stoa.org/places/211668069",
+        "notes": "IMPORTANT: mapped geometry describes the enlarged 19th century bridge. Republican bridge existed AD 320, restored AD 152. The one-large-plus-two-small-arches form documented by Rome authority belongs specifically to the AD 365 rebuilding, later than this scene. Use only axis/location for a schematic pre-365 bridge. Current wider Tiber channel differs from antiquity.",
+        "reconstruction": "Ancient elevation schematic; endpoints from modern bridge axis except Aemilius extrapolated from fragment."
+      }
+    ],
+    "island": {
+      "polygon": [
+        [
+          12.47665,
+          41.89050568336905
+        ],
+        [
+          12.4768626,
+          41.8904367
+        ],
+        [
+          12.4769641,
+          41.8904072
+        ],
+        [
+          12.4770405,
+          41.890385
+        ],
+        [
+          12.4772305,
+          41.8903376
+        ],
+        [
+          12.477247,
+          41.890313
+        ],
+        [
+          12.477256,
+          41.8902894
+        ],
+        [
+          12.4772581,
+          41.8902664
+        ],
+        [
+          12.4772453,
+          41.8902206
+        ],
+        [
+          12.4772418,
+          41.8902012
+        ],
+        [
+          12.4772465,
+          41.8901845
+        ],
+        [
+          12.4772533,
+          41.8901745
+        ],
+        [
+          12.4772666,
+          41.8901672
+        ],
+        [
+          12.4773087,
+          41.8901542
+        ],
+        [
+          12.4773553,
+          41.8901409
+        ],
+        [
+          12.4773979,
+          41.8901291
+        ],
+        [
+          12.4774097,
+          41.8901259
+        ],
+        [
+          12.4774379,
+          41.8901273
+        ],
+        [
+          12.4774372,
+          41.8901401
+        ],
+        [
+          12.4774492,
+          41.8901504
+        ],
+        [
+          12.4774669,
+          41.890142
+        ],
+        [
+          12.4775011,
+          41.8902022
+        ],
+        [
+          12.4775651,
+          41.8902288
+        ],
+        [
+          12.4776549,
+          41.8901934
+        ],
+        [
+          12.4777389,
+          41.8901509
+        ],
+        [
+          12.4778486,
+          41.8900951
+        ],
+        [
+          12.4780455,
+          41.890019
+        ],
+        [
+          12.4780515,
+          41.8900104
+        ],
+        [
+          12.4780628,
+          41.8900017
+        ],
+        [
+          12.4781093,
+          41.8899819
+        ],
+        [
+          12.4782661,
+          41.88992
+        ],
+        [
+          12.478285,
+          41.8899247
+        ],
+        [
+          12.4783052,
+          41.8899561
+        ],
+        [
+          12.4785362,
+          41.8898664
+        ],
+        [
+          12.4785188,
+          41.8898404
+        ],
+        [
+          12.4785242,
+          41.8898286
+        ],
+        [
+          12.4785594,
+          41.8898139
+        ],
+        [
+          12.4789804,
+          41.8896271
+        ],
+        [
+          12.4790375,
+          41.8896062
+        ],
+        [
+          12.4790922,
+          41.8895913
+        ],
+        [
+          12.479137,
+          41.8895907
+        ],
+        [
+          12.4791807,
+          41.889598
+        ],
+        [
+          12.4792318,
+          41.8896185
+        ],
+        [
+          12.47927,
+          41.8896431
+        ],
+        [
+          12.4792965,
+          41.8896695
+        ],
+        [
+          12.4793145,
+          41.8896978
+        ],
+        [
+          12.4793217,
+          41.8897284
+        ],
+        [
+          12.4793242,
+          41.889753
+        ],
+        [
+          12.4793184,
+          41.8897818
+        ],
+        [
+          12.4793062,
+          41.8898085
+        ],
+        [
+          12.4792043,
+          41.8899687
+        ],
+        [
+          12.4791608,
+          41.8900279
+        ],
+        [
+          12.4790741,
+          41.8901648
+        ],
+        [
+          12.478981,
+          41.8902817
+        ],
+        [
+          12.478873,
+          41.8903891
+        ],
+        [
+          12.4787272,
+          41.8905035
+        ],
+        [
+          12.4786258,
+          41.8905858
+        ],
+        [
+          12.4785331,
+          41.8906479
+        ],
+        [
+          12.4784348,
+          41.8906994
+        ],
+        [
+          12.4783209,
+          41.890749
+        ],
+        [
+          12.4781957,
+          41.8907962
+        ],
+        [
+          12.4781352,
+          41.8908178
+        ],
+        [
+          12.4780788,
+          41.8908433
+        ],
+        [
+          12.4780535,
+          41.890861
+        ],
+        [
+          12.4779932,
+          41.8908923
+        ],
+        [
+          12.4779333,
+          41.8909246
+        ],
+        [
+          12.4778645,
+          41.8909674
+        ],
+        [
+          12.4777795,
+          41.8910268
+        ],
+        [
+          12.4777089,
+          41.8910755
+        ],
+        [
+          12.4776264,
+          41.8911205
+        ],
+        [
+          12.4775581,
+          41.8911497
+        ],
+        [
+          12.4774455,
+          41.8911892
+        ],
+        [
+          12.4773412,
+          41.8912195
+        ],
+        [
+          12.4772484,
+          41.8912444
+        ],
+        [
+          12.4771668,
+          41.8912639
+        ],
+        [
+          12.4770762,
+          41.8912813
+        ],
+        [
+          12.4769948,
+          41.8912964
+        ],
+        [
+          12.476871,
+          41.8913136
+        ],
+        [
+          12.4767709,
+          41.8913247
+        ],
+        [
+          12.4766972,
+          41.8913292
+        ],
+        [
+          12.47665,
+          41.89132781957255
+        ],
+        [
+          12.47665,
+          41.89050568336905
+        ]
+      ],
+      "center": {
+        "lat": 41.89049477180216,
+        "lon": 12.477858778062142
+      },
+      "source": "https://pleiades.stoa.org/places/771725842",
+      "notes": "Modern footprint clipped to omit the upstream alluvial spit. Ancient shoreline is explicitly schematic."
+    },
+    "aqueduct": [
+      [
+        12.514801,
+        41.890953
+      ],
+      [
+        12.51434,
+        41.891012
+      ],
+      [
+        12.51401,
+        41.891057
+      ],
+      [
+        12.51362,
+        41.890885
+      ],
+      [
+        12.51325,
+        41.890711
+      ],
+      [
+        12.51313,
+        41.890688
+      ],
+      [
+        12.51307,
+        41.890689
+      ],
+      [
+        12.512945,
+        41.890713
+      ],
+      [
+        12.51276,
+        41.890605
+      ],
+      [
+        12.512326,
+        41.890369
+      ],
+      [
+        12.5106,
+        41.88972
+      ],
+      [
+        12.5078,
+        41.88855
+      ],
+      [
+        12.5044,
+        41.88735
+      ],
+      [
+        12.501,
+        41.88595
+      ],
+      [
+        12.4974,
+        41.8863
+      ],
+      [
+        12.4942,
+        41.8862
+      ],
+      [
+        12.489218,
+        41.887147
+      ]
+    ],
+    "aqueductModel": {
+      "id": "arcus-neroniani",
+      "nameJa": "ネロ水道橋",
+      "latin": "Arcus Neroniani / Arcus Caelimontani",
+      "heightM": 18,
+      "bayM": 11,
+      "source": "https://research.ncl.ac.uk/rometrans/archaeology/area8/",
+      "contextSource": "https://www.parcoarcheologicoappiaantica.it/luoghi/acquedotti-claudio-marcio-e-novus/",
+      "alignmentStatus": "The first mapped fragment is retained from the existing dataset. The continuation follows the documented Porta Maggiore–Caelian–Palatine relationship as a schematic visual route, not a surveyed centerline.",
+      "phase320": "The Neronian branch and its Domitianic Palatine extension pre-date AD 320; the arcade was restored under Septimius Severus."
+    },
+    "branch": [
+      [
+        12.47425,
+        41.89118
+      ],
+      [
+        12.47557,
+        41.89151
+      ],
+      [
+        12.47687,
+        41.89158
+      ],
+      [
+        12.47812,
+        41.89139
+      ],
+      [
+        12.47885,
+        41.89076
+      ],
+      [
+        12.47935,
+        41.89
+      ],
+      [
+        12.47952,
+        41.88921
+      ]
+    ],
+    "branchNotes": "Approximate north channel traced around the source island shoreline and mapped bridge axes; not an ancient measured riverbank."
+  },
+  "terrainModel": {
+    "revision": "2026-10-10-palatine-saddle-horizon-3",
+    "verticalScale": 1,
+    "valleyBaseM": 15,
+    "notice": "No vertical exaggeration. All heights are approximate model levels, not a complete surveyed reconstruction of AD 320.",
+    "additionalRidges": [
+      {
+        "id": "caelian-west",
+        "lat": 41.8872,
+        "lon": 12.4947,
+        "heightM": 48,
+        "radiusEastM": 450,
+        "radiusNorthM": 230,
+        "plateauRatio": 0.48
+      },
+      {
+        "id": "velia",
+        "lat": 41.8917,
+        "lon": 12.49,
+        "heightM": 37,
+        "radiusEastM": 170,
+        "radiusNorthM": 240,
+        "plateauRatio": 0.34
+      }
+    ],
+    "valleys": [
+      {
+        "id": "forum-floor",
+        "points": [
+          [
+            12.4844,
+            41.8927
+          ],
+          [
+            12.4853,
+            41.8923
+          ],
+          [
+            12.4864,
+            41.89195
+          ],
+          [
+            12.4871,
+            41.89165
+          ]
+        ],
+        "heightM": 14,
+        "halfWidthM": 45,
+        "featherM": 45
+      },
+      {
+        "id": "velabrum",
+        "points": [
+          [
+            12.4833,
+            41.89232
+          ],
+          [
+            12.48275,
+            41.89118
+          ],
+          [
+            12.48238,
+            41.89012
+          ],
+          [
+            12.4816,
+            41.88916
+          ]
+        ],
+        "heightM": 14,
+        "halfWidthM": 33,
+        "featherM": 40
+      },
+      {
+        "id": "circus-valley",
+        "points": [
+          [
+            12.48273,
+            41.88755
+          ],
+          [
+            12.48571,
+            41.88593
+          ],
+          [
+            12.48869,
+            41.88431
+          ]
+        ],
+        "heightM": 14,
+        "halfWidthM": 72,
+        "featherM": 45
+      },
+      {
+        "id": "colosseum-valley",
+        "points": [
+          [
+            12.49098,
+            41.8897
+          ],
+          [
+            12.49235,
+            41.89025
+          ],
+          [
+            12.4966,
+            41.89005
+          ],
+          [
+            12.4993,
+            41.88993
+          ]
+        ],
+        "heightM": 20,
+        "halfWidthM": 82,
+        "featherM": 55
+      }
+    ],
+    "siteLevelsM": {
+      "palatine": 51,
+      "flavia": 51,
+      "augustana": 51,
+      "capitol": 48,
+      "forum": 14,
+      "circus": 14,
+      "colosseum": 20,
+      "venus": 31,
+      "trajan": 14,
+      "caesar": 14,
+      "augustusForum": 14,
+      "nerva": 14,
+      "peace": 14,
+      "maxentius": 31
+    },
+    "sources": [
+      {
+        "title": "ISPRA・SIGEA, Geodiversità urbana Roma (2023), pp. 5–12",
+        "url": "https://www.isprambiente.gov.it/files2023/eventi/geodiversita/brochure_geodiversita_sing.pdf",
+        "use": "Volcanic plateau remnants, incised valleys, Velia and the Capitoline–Quirinal connection. Model polygons are our approximation."
+      },
+      {
+        "title": "Moscatelli et al., Integrated geological and geophysical investigations to characterize the anthropic layer of the Palatine hill and Roman Forum (2013)",
+        "url": "https://www.researchgate.net/publication/236900116_Integrated_geological_and_geophysical_investigations_to_characterize_the_anthropic_layer_of_the_Palatine_hill_and_Roman_Forum_Rome_Italy",
+        "use": "Hill-top elevations around 49 m in the surveyed excavation area; terraces, foundation structures and steep flanks. Not a city-wide ancient DEM."
+      },
+      {
+        "title": "コロッセオ考古学公園：パラティーノ",
+        "url": "https://colosseo.it/en/area/the-palatine/",
+        "use": "Imperial palace precinct on the Palatine."
+      },
+      {
+        "title": "Digital Augustan Rome：Palatium",
+        "url": "https://www.digitalaugustanrome.org/records/palatium/",
+        "use": "Broad summit plateau; especially steep south-west and north-west flanks; low saddle and only gradual ascent toward the Velia on the north-east. Augustan topography is used for landform constraints only, not to back-date buildings to AD 320."
+      },
+      {
+        "title": "コロッセオ考古学公園：スタディウム・パラティーノ",
+        "url": "https://colosseo.it/mirabilia/stadio-palatino/",
+        "use": "The palace stadium measures about 161 × 48 m and lies about 10 m below the main palace level. Its late inner oval is not projected back to AD 320."
+      },
+      {
+        "title": "コロッセオ考古学公園：Kronos e Kairos（セウェルス朝区画）",
+        "url": "https://colosseo.it/sito/wp-content/uploads/2019/07/cartella-stampa_Kronos-e-Kairos_low.pdf",
+        "use": "Severan arcades form an artificial south-eastern terrace about 23 m high, with 17 arches and an approximately 3,500 m² upper surface; the Maxentian works of 306–312 connected the upper Circus area."
+      },
+      {
+        "title": "コロッセオ考古学公園：ドムス・ティベリアーナ",
+        "url": "https://colosseo.it/mosaico/domus-tiberiana/",
+        "use": "The approximately four-hectare palace occupies the north-western slope; imperial architecture and substructures are distinct from the natural hill profile."
+      },
+      {
+        "title": "Mancini et al., Stratigraphy of the Palatine Hill (2018)",
+        "url": "https://air.unimi.it/handle/2434/628120",
+        "use": "The hill is a roughly 25 ha flat-topped landform near 50 m a.s.l., separated by the Velabrum, Murcia and Labicana valleys. The 25 ha whole hill is not treated as the summit plateau area."
+      },
+      {
+        "title": "Rome Transformed：Arcus Neroniani",
+        "url": "https://research.ncl.ac.uk/rometrans/archaeology/area8/",
+        "use": "The Aqua Claudia branch ran from Porta Maggiore to the Temple of Divus Claudius on a double brick arcade and received a major Severan restoration. Used for identity, phase and the Porta Maggiore–Caelian relationship; the model continuation is explicitly schematic."
+      },
+      {
+        "title": "アッピア街道考古学公園：Aqua Claudia / Anio Novus",
+        "url": "https://www.parcoarcheologicoappiaantica.it/luoghi/acquedotti-claudio-marcio-e-novus/",
+        "use": "Aqua Claudia and Anio Novus reached Porta Maggiore on arches, with secondary branches serving the Caelian and Palatine. Used as the network context for the modeled Arcus Neroniani."
+      }
+    ]
+  }
+}
