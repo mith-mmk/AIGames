@@ -1028,6 +1028,9 @@
  #notice{font-size:12px;max-width:180px;line-height:1.5}
  #navigation .nav-row button{padding:10px 6px}
 }
+@media(max-width:480px){
+ #navigation .nav-row button{flex:1 1 0;min-width:0;padding:10px 2px;font-size:10.5px}
+}
 
       /* Display controls remain reachable even when all other overlays are hidden. */
       #display-panel {

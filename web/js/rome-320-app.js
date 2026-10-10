@@ -303,7 +303,12 @@ async function buildRome(experience) {
           m.instanceMatrix.needsUpdate = true;
           if (m.instanceColor) m.instanceColor.needsUpdate = true;
           m.computeBoundingSphere();
-          m.castShadow = b.mat !== "dark";
+          // Distant low-poly tree crowns collapse into black circular shadow
+          // pixels. Keep architectural shadows, but do not let detail foliage
+          // stamp high-contrast discs across the horizon.
+          m.castShadow =
+            b.mat !== "dark" &&
+            !(b.detail && (b.mat === "leaf" || b.mat === "green"));
           m.receiveShadow = true;
           (b.detail ? detailRoot : staticRoot).add(m);
           instanceTotal += b.items.length;
@@ -412,6 +417,7 @@ async function buildRome(experience) {
         .map((v) => new THREE.Vector2(v.x, v.z));
       for (let i = 0; i < riverBranch.length - 1; i++)
         riverSegs.push([riverBranch[i], riverBranch[i + 1]]);
+      const aqueductPath = GEO.water.aqueduct.map((v) => xy(v[1], v[0]));
       const wallPaths = GEO.wallPaths.map((p) => p.map((v) => xy(v[1], v[0])));
       const perimeter = GEO.outerPerimeter.map((v) => xy(v[1], v[0]));
       const terrainModel = RomaTerrain.create(GEO, xy);
@@ -573,7 +579,10 @@ async function buildRome(experience) {
           d,
           description,
           kind,
-          extras,
+          {
+            ...extras,
+            structureW: extras.structureW ?? r.modelStructureWidthM,
+          },
         );
       }
       const colosseum = fromRecord(
@@ -803,6 +812,19 @@ async function buildRome(experience) {
           d: augustana.d,
         });
       }
+      const aqueductMeta = GEO.water.aqueductModel;
+      const aqueduct = landmark(
+        aqueductMeta.id,
+        aqueductMeta.nameJa,
+        41.8863,
+        12.4974,
+        0,
+        2,
+        2,
+        "ポルタ・マッジョーレからカエリウス丘を経て、宮殿へ水を運んだクラウディア水道の支線。",
+        "aqueduct",
+        { flatten: false, pad: 0, labelHeight: 24, major: true },
+      );
       const hadrianTemple = fromRecord(
         "hadrianTemple",
         "666765291",
@@ -1793,8 +1815,9 @@ async function buildRome(experience) {
         }
       }
       function supportTerrace(l) {
-        const f = l.f;
-        local(f, "box", "stone", 0, -0.25, 0, l.w + 2, 0.7, l.d + 2);
+        const f = l.f,
+          structureW = l.structureW ?? l.w;
+        local(f, "box", "stone", 0, -0.25, 0, structureW + 2, 0.7, l.d + 2);
         if (l.key !== "augustana") return;
         // The south-eastern palace extension is carried by the Severan arcades,
         // not by a retaining wall wrapped around every side of the plateau.
@@ -1836,17 +1859,18 @@ async function buildRome(experience) {
         local(f, "box", "stone", edge, -0.7, 0, 3.4, 1.4, l.d + 2);
       }
       function buildPalace(l) {
-        const f = l.f;
+        const f = l.f,
+          w = l.structureW ?? l.w;
         supportTerrace(l);
-        peristyle(f, l.w, l.d, 13);
-        local(f, "box", "green", 0, 0.45, 0, l.w * 0.45, 0.6, l.d * 0.42);
+        peristyle(f, w, l.d, 13);
+        local(f, "box", "green", 0, 0.45, 0, w * 0.45, 0.6, l.d * 0.42);
         for (const z of [-l.d * 0.3, l.d * 0.3]) {
-          local(f, "box", "brick", 0, 12, z, l.w * 0.76, 24, 32);
-          local(f, "roof", "roof", 0, 24, z, 36, 6, l.w * 0.8, Math.PI / 2);
+          local(f, "box", "brick", 0, 12, z, w * 0.76, 24, 32);
+          local(f, "roof", "roof", 0, 24, z, 36, 6, w * 0.8, Math.PI / 2);
         }
         local(f, "cyl", "stone", 0, 0.8, 0, 11, 1, 11);
         local(f, "cyl", "water", 0, 1.4, 0, 9, 0.15, 9);
-        for (const x of [-l.w * 0.27, l.w * 0.27])
+        for (const x of [-w * 0.27, w * 0.27])
           for (const z of [-l.d * 0.16, l.d * 0.16]) pine(f, x, z, 13, 1);
       }
       function buildMausoleum(l, isHadrian) {
@@ -2133,7 +2157,8 @@ async function buildRome(experience) {
       }
       let wallLength = 0,
         wallTowers = 0,
-        houseCount = 0;
+        houseCount = 0,
+        ruralPineCount = 0;
       const projectedGates = GEO.gates
         .filter((g) => g.id !== "porta-clausa")
         .map((g) => {
@@ -2542,7 +2567,13 @@ async function buildRome(experience) {
           const inside = insidePolygon(x, z, perimeter);
           if (inside && rnd() > 0.22) continue;
           const f = { x, z, y: heightAt(x, z), yaw: rnd() * TAU };
-          pine(f, 0, 0, 9 + rnd() * 10, 1);
+          // Individual spherical crowns farther away alias into black dots in
+          // the full-quality horizon. Nearby vegetation retains the 3D trees;
+          // distant countryside is represented by terrain and farm plots.
+          if (Math.hypot(x, z) < 2300) {
+            pine(f, 0, 0, 9 + rnd() * 10, 1);
+            ruralPineCount++;
+          }
           if (!inside && rnd() < 0.045) {
             house(x + 25, z, 15, 24, 6, rnd() * TAU, 0.8);
             local(f, "box", "green", -25, 0.3, 0, 34, 0.3, 90);
@@ -2618,23 +2649,46 @@ async function buildRome(experience) {
           for (const z of [-88, 85]) pine(f, 0, z, 12, 1);
         }
       }
-      // Minimal aqueduct branch, included only when its mapped ancient alignment is available.
+      let aqueductBays = 0;
+      // The first short mapped fragment is retained and the documented
+      // Porta Maggiore–Caelian–Palatine relationship is continued as a
+      // deliberately schematic line in geo.json.
       function makeAqueduct() {
         if (!GEO.water?.aqueduct) return;
-        const p = GEO.water.aqueduct.map((v) => xy(v[1], v[0]));
+        const model = GEO.water.aqueductModel,
+          p = aqueductPath;
         for (let k = 0; k < p.length - 1; k++) {
           const a = p[k],
             b = p[k + 1],
             d = b.clone().sub(a),
             len = d.length(),
             yaw = Math.atan2(d.x, d.y),
-            n = Math.ceil(len / 12);
+            n = Math.ceil(len / model.bayM),
+            bay = len / n;
+          exclusions.push({
+            x: (a.x + b.x) / 2,
+            z: (a.y + b.y) / 2,
+            yaw: yaw + Math.PI / 2,
+            w: len + 8,
+            d: 40,
+          });
           for (let i = 0; i < n; i++) {
             const x = lerp(a.x, b.x, (i + 0.5) / n),
               z = lerp(a.y, b.y, (i + 0.5) / n),
               f = { x, z, y: heightAt(x, z), yaw: yaw + Math.PI / 2 };
-            archBay(f, 0, 0, 0, len / n, 13, 2.5);
-            local(f, "box", "brick", 0, 14.5, 0, len / n + 1, 2.3, 2.7);
+            archBay(f, 0, 0, 0, bay * 0.92, model.heightM, 3.2, 0, 0, "brick");
+            local(
+              f,
+              "box",
+              "stone",
+              0,
+              model.heightM + 1.35,
+              0,
+              bay + 0.7,
+              2.7,
+              3.6,
+            );
+            aqueductBays++;
           }
         }
       }
@@ -2667,6 +2721,10 @@ async function buildRome(experience) {
         palatine: {
           target: [xy(41.8893064,12.4871093).x, 57, xy(41.8893064,12.4871093).y],
           offset: [-360, 250, 430],
+        },
+        aqueduct: {
+          target: [aqueduct.f.x, aqueduct.f.y + 10, aqueduct.f.z],
+          offset: [420, 260, 520],
         },
         capitoline: {
           target: [capitol.f.x, capitol.f.y+12, capitol.f.z],
@@ -2921,6 +2979,13 @@ async function buildRome(experience) {
           c.lineCap = "round";
           c.stroke();
         }
+        mapPath(aqueductPath);
+        c.strokeStyle = "#a46f50";
+        c.lineWidth = 2.5;
+        c.lineJoin = "round";
+        c.setLineDash([6, 4]);
+        c.stroke();
+        c.setLineDash([]);
         for (const p of wallPaths) {
           mapPath(p);
           c.strokeStyle = "#9d7b4d";
@@ -3382,6 +3447,13 @@ async function buildRome(experience) {
         wallTowers,
         wallLengthM: Math.round(wallLength),
         landmarkCount: landmarkData.length,
+        renderedLandmarkCount: landmarks.length,
+        aqueductBays,
+        ruralPineCount,
+        palaceStructureWidths: {
+          flavia: flavia.structureW,
+          augustana: augustana.structureW,
+        },
         instances: instanceTotal,
         drawCalls: renderer.info.render.calls,
         triangles: renderer.info.render.triangles,

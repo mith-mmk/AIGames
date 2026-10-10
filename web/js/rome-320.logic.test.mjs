@@ -50,4 +50,29 @@ assert.ok(
 );
 assert.equal(geo.terrainModel.revision, "2026-10-10-palatine-saddle-horizon-3");
 
+const flaviaRecord = geo.landmarks.find((item) => item.id === "564783056");
+const augustanaRecord = geo.landmarks.find((item) => item.id === "792237246");
+const flaviaPoint = project(flaviaRecord.lat, flaviaRecord.lon);
+const augustanaPoint = project(augustanaRecord.lat, augustanaRecord.lon);
+const palaceYaw = -44.4 * DEG;
+const palaceDx = augustanaPoint.x - flaviaPoint.x;
+const palaceDz = augustanaPoint.y - flaviaPoint.y;
+const palaceCrossAxisSeparation = Math.abs(
+  Math.cos(palaceYaw) * palaceDx - Math.sin(palaceYaw) * palaceDz,
+);
+assert.ok(
+  palaceCrossAxisSeparation >
+    (flaviaRecord.modelStructureWidthM +
+      augustanaRecord.modelStructureWidthM) /
+      2,
+  "the schematic Domus Flavia and Domus Augustana structures must not overlap",
+);
+
+assert.ok(
+  geo.water.aqueduct.length >= 16,
+  "the aqueduct should read as a route, not an isolated fragment",
+);
+assert.equal(geo.water.aqueductModel.id, "arcus-neroniani");
+assert.match(geo.water.aqueductModel.phase320, /pre-date AD 320/);
+
 console.log("rome-320 terrain tests passed");

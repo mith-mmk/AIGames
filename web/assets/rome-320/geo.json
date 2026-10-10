@@ -4290,6 +4290,8 @@
         "widthM": 100.1,
         "bearingDeg": 44.5
       },
+      "modelStructureWidthM": 76,
+      "modelStructureStatus": "A narrower internal building envelope is used inside the sourced precinct footprint so the schematic Domus Flavia and Domus Augustana blocks meet without occupying the same volume.",
       "footprintRingLonLat": [
         [
           12.4856648,
@@ -4388,6 +4390,8 @@
         "widthM": 86.5,
         "bearingDeg": 44.3
       },
+      "modelStructureWidthM": 68,
+      "modelStructureStatus": "A narrower internal building envelope is used inside the sourced precinct footprint so the schematic Domus Flavia and Domus Augustana blocks meet without occupying the same volume.",
       "footprintRingLonLat": [
         [
           12.4857901,
@@ -6174,6 +6178,10 @@
     },
     "aqueduct": [
       [
+        12.514801,
+        41.890953
+      ],
+      [
         12.51434,
         41.891012
       ],
@@ -6208,8 +6216,47 @@
       [
         12.512326,
         41.890369
+      ],
+      [
+        12.5106,
+        41.88972
+      ],
+      [
+        12.5078,
+        41.88855
+      ],
+      [
+        12.5044,
+        41.88735
+      ],
+      [
+        12.501,
+        41.88595
+      ],
+      [
+        12.4974,
+        41.8863
+      ],
+      [
+        12.4942,
+        41.8862
+      ],
+      [
+        12.489218,
+        41.887147
       ]
     ],
+    "aqueductModel": {
+      "id": "arcus-neroniani",
+      "nameJa": "ネロ水道橋",
+      "latin": "Arcus Neroniani / Arcus Caelimontani",
+      "heightM": 18,
+      "bayM": 11,
+      "source": "https://research.ncl.ac.uk/rometrans/archaeology/area8/",
+      "contextSource": "https://www.parcoarcheologicoappiaantica.it/luoghi/acquedotti-claudio-marcio-e-novus/",
+      "alignmentStatus": "The first mapped fragment is retained from the existing dataset. The continuation follows the documented Porta Maggiore–Caelian–Palatine relationship as a schematic visual route, not a surveyed centerline.",
+      "phase320": "The Neronian branch and its Domitianic Palatine extension pre-date AD 320; the arcade was restored under Septimius Severus."
+    },
     "branch": [
       [
         12.47425,
@@ -6417,6 +6464,16 @@
         "title": "Mancini et al., Stratigraphy of the Palatine Hill (2018)",
         "url": "https://air.unimi.it/handle/2434/628120",
         "use": "The hill is a roughly 25 ha flat-topped landform near 50 m a.s.l., separated by the Velabrum, Murcia and Labicana valleys. The 25 ha whole hill is not treated as the summit plateau area."
+      },
+      {
+        "title": "Rome Transformed：Arcus Neroniani",
+        "url": "https://research.ncl.ac.uk/rometrans/archaeology/area8/",
+        "use": "The Aqua Claudia branch ran from Porta Maggiore to the Temple of Divus Claudius on a double brick arcade and received a major Severan restoration. Used for identity, phase and the Porta Maggiore–Caelian relationship; the model continuation is explicitly schematic."
+      },
+      {
+        "title": "アッピア街道考古学公園：Aqua Claudia / Anio Novus",
+        "url": "https://www.parcoarcheologicoappiaantica.it/luoghi/acquedotti-claudio-marcio-e-novus/",
+        "use": "Aqua Claudia and Anio Novus reached Porta Maggiore on arches, with secondary branches serving the Caelian and Palatine. Used as the network context for the modeled Arcus Neroniani."
       }
     ]
   }
