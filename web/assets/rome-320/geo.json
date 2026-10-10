@@ -1718,11 +1718,11 @@
       "pleiadesId": "971691208",
       "url": "https://pleiades.stoa.org/places/971691208",
       "coordinateStatus": "Pleiades representative point, not hill footprint or surveyed summit",
-      "heightStatus": "Approximate visual-model absolute elevation in meters; NOT a measured AD 320 elevation. Common valley model surface may be set around 12–16 m. Shape/radii likewise interpretive.",
+      "heightStatus": "Approximate absolute elevation above sea level in meters, constrained by published Palatine levels near 50 m. This is NOT a 37 m local relief value and NOT a surveyed AD 320 surface.",
       "radiusX": 370,
       "radiusZ": 330,
       "plateauRatio": 0.43,
-      "profileStatus": "Interpretive plateau and slope, constrained by published landform descriptions; no surveyed AD 320 contour is claimed.",
+      "profileStatus": "Interpretive broad plateau with steep south-west/north-west flanks and a gentler north-east connection toward the Velia. No surveyed AD 320 contour is claimed.",
       "plateauRingLonLat": [
         [
           12.4841,
@@ -1773,8 +1773,13 @@
           41.88978
         ]
       ],
-      "slopeWidthM": 80,
-      "slopeStatus": "Hand-authored crest approximation around imperial precincts, not a digitized surveyed contour."
+      "slopeWidthM": 56,
+      "saddleDirectionXZ": [
+        0.73,
+        -0.68
+      ],
+      "saddleSlopeWidthM": 185,
+      "slopeStatus": "Hand-authored crest approximation around imperial precincts, not a digitized surveyed contour. The north-east feather represents the documented low saddle and gradual Clivus Palatinus approach toward the Velia; other flanks remain steeper."
     },
     {
       "name": "カピトリーノの丘",
@@ -6238,7 +6243,7 @@
     "branchNotes": "Approximate north channel traced around the source island shoreline and mapped bridge axes; not an ancient measured riverbank."
   },
   "terrainModel": {
-    "revision": "2026-10-09-terrain-visibility-2",
+    "revision": "2026-10-10-palatine-saddle-horizon-3",
     "verticalScale": 1,
     "valleyBaseM": 15,
     "notice": "No vertical exaggeration. All heights are approximate model levels, not a complete surveyed reconstruction of AD 320.",
@@ -6387,6 +6392,31 @@
         "title": "コロッセオ考古学公園：パラティーノ",
         "url": "https://colosseo.it/en/area/the-palatine/",
         "use": "Imperial palace precinct on the Palatine."
+      },
+      {
+        "title": "Digital Augustan Rome：Palatium",
+        "url": "https://www.digitalaugustanrome.org/records/palatium/",
+        "use": "Broad summit plateau; especially steep south-west and north-west flanks; low saddle and only gradual ascent toward the Velia on the north-east. Augustan topography is used for landform constraints only, not to back-date buildings to AD 320."
+      },
+      {
+        "title": "コロッセオ考古学公園：スタディウム・パラティーノ",
+        "url": "https://colosseo.it/mirabilia/stadio-palatino/",
+        "use": "The palace stadium measures about 161 × 48 m and lies about 10 m below the main palace level. Its late inner oval is not projected back to AD 320."
+      },
+      {
+        "title": "コロッセオ考古学公園：Kronos e Kairos（セウェルス朝区画）",
+        "url": "https://colosseo.it/sito/wp-content/uploads/2019/07/cartella-stampa_Kronos-e-Kairos_low.pdf",
+        "use": "Severan arcades form an artificial south-eastern terrace about 23 m high, with 17 arches and an approximately 3,500 m² upper surface; the Maxentian works of 306–312 connected the upper Circus area."
+      },
+      {
+        "title": "コロッセオ考古学公園：ドムス・ティベリアーナ",
+        "url": "https://colosseo.it/mosaico/domus-tiberiana/",
+        "use": "The approximately four-hectare palace occupies the north-western slope; imperial architecture and substructures are distinct from the natural hill profile."
+      },
+      {
+        "title": "Mancini et al., Stratigraphy of the Palatine Hill (2018)",
+        "url": "https://air.unimi.it/handle/2434/628120",
+        "use": "The hill is a roughly 25 ha flat-topped landform near 50 m a.s.l., separated by the Velabrum, Murcia and Labicana valleys. The 25 ha whole hill is not treated as the summit plateau area."
       }
     ]
   }

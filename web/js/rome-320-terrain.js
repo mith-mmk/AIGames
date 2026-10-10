@@ -27,7 +27,16 @@
           const valleys=cfg.valleys.map(v=>({...v,points:v.points.map(p=>project(p[1],p[0]))}));
           const base=cfg.valleyBaseM;
           function hillWeight(h,x,z) {
-            if(h.polygon) return 1-smooth(0,h.slopeWidthM,polygonDistance(x,z,h.polygon));
+            if(h.polygon) {
+              let slopeWidth=h.slopeWidthM;
+              if(h.saddleDirectionXZ && h.saddleSlopeWidthM) {
+                const dx=x-h.p.x,dz=z-h.p.y,length=Math.hypot(dx,dz) || 1;
+                const facing=Math.max(0,(dx*h.saddleDirectionXZ[0]+dz*h.saddleDirectionXZ[1])/length);
+                const saddleBlend=facing**6;
+                slopeWidth+=(h.saddleSlopeWidthM-slopeWidth)*saddleBlend;
+              }
+              return 1-smooth(0,slopeWidth,polygonDistance(x,z,h.polygon));
+            }
             const dx=(x-h.p.x)/h.radiusEastM, dz=(z-h.p.y)/h.radiusNorthM;
             return 1-smooth(h.plateauRatio || .45,1,Math.hypot(dx,dz));
           }

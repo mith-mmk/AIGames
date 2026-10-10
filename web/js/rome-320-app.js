@@ -63,7 +63,7 @@ async function buildRome(experience) {
         $("load-detail").textContent = s;
       };
       const scene = new THREE.Scene();
-      scene.fog = new THREE.FogExp2(0xd7cab1, 0.000105);
+      scene.fog = new THREE.FogExp2(0xd7cab1, 0.000115);
       const camera = new THREE.PerspectiveCamera(
         44,
         innerWidth / innerHeight,
@@ -785,8 +785,24 @@ async function buildRome(experience) {
         "palace",
         "皇帝宮殿の居住区。丘の斜面を利用した複層の宮殿群。",
         44.3,
-        { labelHeight: 25 },
+        {
+          labelHeight: 25,
+          severanTerraceReach: 75,
+          severanTerraceDepth: 18,
+        },
       );
+      {
+        const offset = augustana.w / 2 + augustana.severanTerraceReach / 2;
+        const c = Math.cos(augustana.f.yaw),
+          s = Math.sin(augustana.f.yaw);
+        exclusions.push({
+          x: augustana.f.x + c * offset,
+          z: augustana.f.z - s * offset,
+          yaw: augustana.f.yaw,
+          w: augustana.severanTerraceReach,
+          d: augustana.d,
+        });
+      }
       const hadrianTemple = fromRecord(
         "hadrianTemple",
         "666765291",
@@ -868,8 +884,8 @@ async function buildRome(experience) {
           }
           return a;
         }
-        const xs=axis([[-5300,-1800,80],[-1800,-800,20],[-800,500,8],[500,2200,20],[2200,5300,80]]);
-        const zs=axis([[-5600,-2500,80],[-2500,-100,20],[-100,1050,8],[1050,2200,20],[2200,5600,80]]);
+        const xs=axis([[-12000,-5300,260],[-5300,-1800,80],[-1800,-800,20],[-800,500,8],[500,2200,20],[2200,5300,80],[5300,12000,260]]);
+        const zs=axis([[-12000,-5600,260],[-5600,-2500,80],[-2500,-100,20],[-100,1050,8],[1050,2200,20],[2200,5600,80],[5600,12000,260]]);
         const nx=xs.length,nz=zs.length,n=nx*nz;
         const positions=new Float32Array(n*3), colors=new Float32Array(n*3), heights=new Float32Array(n);
         const indices=new Uint32Array((nx-1)*(nz-1)*6);
@@ -1353,7 +1369,18 @@ async function buildRome(experience) {
           }
         local(f, "box", "stone", 0, h * 0.79, 0, w + 1, 1, d + 2);
       }
-      function archBay(f, x, y, z, width, h, depth = 3, yaw = 0, detail = 0) {
+      function archBay(
+        f,
+        x,
+        y,
+        z,
+        width,
+        h,
+        depth = 3,
+        yaw = 0,
+        detail = 0,
+        material = "stone",
+      ) {
         const ff = { ...f };
         const c = Math.cos(f.yaw),
           s = Math.sin(f.yaw);
@@ -1366,7 +1393,7 @@ async function buildRome(experience) {
         local(
           ff,
           "arch",
-          "stone",
+          material,
           0,
           legH,
           0,
@@ -1380,7 +1407,7 @@ async function buildRome(experience) {
           local(
             ff,
             "box",
-            "stone",
+            material,
             side * radius * 0.86,
             legH / 2,
             0,
@@ -1766,20 +1793,47 @@ async function buildRome(experience) {
         }
       }
       function supportTerrace(l) {
-        const f=l.f,c=Math.cos(f.yaw),s=Math.sin(f.yaw);
-        local(f,"box","stone",0,-.25,0,l.w+2,.7,l.d+2);
-        for(const side of [-1,1]) {
-          for(let u=-l.w/2+5;u<l.w/2;u+=10) {
-            const v=side*(l.d/2+1),x=f.x+c*u+s*v,z=f.z-s*u+c*v;
-            const low=Math.min(f.y-.6,rawHeight(x+s*side*6,z+c*side*6)-.8);
-            local(f,"box","brick",u,(low-f.y)/2,v,10,f.y-low,2.4);
-          }
-          for(let v=-l.d/2+5;v<l.d/2;v+=10) {
-            const u=side*(l.w/2+1),x=f.x+c*u+s*v,z=f.z-s*u+c*v;
-            const low=Math.min(f.y-.6,rawHeight(x+c*side*6,z-s*side*6)-.8);
-            local(f,"box","brick",u,(low-f.y)/2,v,2.4,f.y-low,10);
-          }
+        const f = l.f;
+        local(f, "box", "stone", 0, -0.25, 0, l.w + 2, 0.7, l.d + 2);
+        if (l.key !== "augustana") return;
+        // The south-eastern palace extension is carried by the Severan arcades,
+        // not by a retaining wall wrapped around every side of the plateau.
+        // At this model scale, 18 m × 200 m keeps the upper strip close to the
+        // archaeological park's approximate 3,500 m² figure.
+        const bays = 17,
+          bayWidth = l.d / bays,
+          palaceEdge = l.w / 2,
+          terraceReach = l.severanTerraceReach,
+          edge = palaceEdge + terraceReach,
+          terraceDepth = l.severanTerraceDepth,
+          arcadeHeight = 23;
+        local(
+          f,
+          "box",
+          "stone",
+          edge - terraceDepth / 2,
+          -0.25,
+          0,
+          terraceDepth,
+          0.7,
+          l.d + 2,
+        );
+        for (let i = 0; i < bays; i++) {
+          const v = -l.d / 2 + bayWidth * (i + 0.5);
+          archBay(
+            f,
+            edge,
+            -arcadeHeight,
+            v,
+            bayWidth * 0.88,
+            arcadeHeight,
+            2.8,
+            Math.PI / 2,
+            0,
+            "brick",
+          );
         }
+        local(f, "box", "stone", edge, -0.7, 0, 3.4, 1.4, l.d + 2);
       }
       function buildPalace(l) {
         const f = l.f;

@@ -35,5 +35,19 @@ assert.ok(
   sampleHeight(41.8893064, 12.4871093) > sampleHeight(41.89238, 12.48535),
   "the Palatine must stay above the Forum",
 );
+const palatineCenter = project(41.8893064, 12.4871093);
+const northEastSaddle = terrain.landHeight(
+  palatineCenter.x + 0.73 * 260,
+  palatineCenter.y - 0.68 * 260,
+);
+const southWestSlope = terrain.landHeight(
+  palatineCenter.x - 0.73 * 260,
+  palatineCenter.y + 0.68 * 260,
+);
+assert.ok(
+  northEastSaddle > southWestSlope + 10,
+  "the Velia saddle must descend more gradually than the steep south-west flank",
+);
+assert.equal(geo.terrainModel.revision, "2026-10-10-palatine-saddle-horizon-3");
 
 console.log("rome-320 terrain tests passed");
