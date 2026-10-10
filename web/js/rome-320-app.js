@@ -949,6 +949,7 @@ async function buildRome(experience) {
       function makeSky() {
         const skyMat = new THREE.ShaderMaterial({
           side: THREE.BackSide,
+          depthTest: false,
           depthWrite: false,
           fog: false,
           toneMapped: false,
@@ -958,7 +959,9 @@ async function buildRome(experience) {
             nadir: { value: new THREE.Color(0xd6c5a6) },
           },
           vertexShader:
-            "varying vec3 vDirection; void main(){vDirection=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+            // Ignore camera translation and project the sky at the far plane.
+            // A world-space dome was clipped when zooming away from the city.
+            "varying vec3 vDirection; void main(){vDirection=position;vec4 clip=projectionMatrix*vec4(mat3(viewMatrix)*position,1.0);gl_Position=clip.xyww;}",
           fragmentShader:
             "varying vec3 vDirection; uniform vec3 zenith;uniform vec3 horizon;uniform vec3 nadir;void main(){vec3 d=normalize(vDirection);float h=max(d.y,0.0);vec3 c=mix(horizon,zenith,pow(h,.48));c=mix(c,nadir,smoothstep(0.0,.6,-d.y));float sun=pow(max(dot(d,normalize(vec3(-.75,.19,.43))),0.0),13.0);c+=vec3(.15,.075,.012)*sun;gl_FragColor=vec4(c,1.0);#include <colorspace_fragment>\n}",
         });
@@ -967,10 +970,12 @@ async function buildRome(experience) {
           ";\n#include",
         );
         const sky = new THREE.Mesh(
-          new THREE.SphereGeometry(16000, 32, 24),
+          new THREE.SphereGeometry(1, 32, 24),
           skyMat,
         );
         sky.frustumCulled = false;
+        // Draw behind the terrain without occupying its depth buffer.
+        sky.renderOrder = -1;
         scene.add(sky);
         return sky;
       }
