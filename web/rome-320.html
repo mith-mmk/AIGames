@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#253c39" />
+    <meta
+      name="description"
+      content="西暦320年のローマを空から歩く。実際の遺跡座標と城壁線に基づく、単一HTMLの3D都市復元。"
+    />
+    <title>AI Games | ローマ 320 — 永遠の都を空から</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23253c39'/%3E%3Cpath d='M5 11 16 5 27 11v3H5zm3 5h4v9H8zm6 0h4v9h-4zm6 0h4v9h-4zM5 27h22v2H5z' fill='%23ebd5a7'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./css/rome-320.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./js/vendor/three-0.180.0/three.module.min.js",
+          "three/addons/": "./js/vendor/three-0.180.0/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main
+      id="viewport"
+      aria-label="西暦320年のローマの3D地図。ドラッグで回転、右ドラッグで移動、ホイールで拡大縮小。矢印キーでも移動できます。"
+      tabindex="0"
+    ></main>
+    <div class="vignette"></div>
+    <div id="labels" aria-hidden="true"></div>
+    <header id="brand" class="hud">
+      <div class="wordmark">ROMA</div>
+      <div class="era"><b>西暦 320 年</b><span>永遠の都を空から</span></div>
+    </header>
+    <section id="place-panel" class="hud glass" aria-label="地図の中心の場所">
+      <div class="eyebrow"><span class="pin-dot"></span>地図の中心</div>
+      <h1 id="place-name">フォルム・ロマヌム周辺</h1>
+      <p id="place-description">
+        政治と祈りの中心。神殿とバシリカが並ぶ、古代都市の広場。
+      </p>
+      <div id="coordinates">
+        <span id="lat-lon">41.8925° N　12.4853° E</span
+        ><span id="height-label">鳥瞰</span>
+      </div>
+    </section>
+    <div id="render-panel" class="hud">
+      <div class="mode-switch glass" role="group" aria-label="描画品質">
+        <button id="full-mode" aria-pressed="true">フル</button
+        ><button id="light-mode" aria-pressed="false">軽量</button>
+      </div>
+      <button
+        id="source-button"
+        class="square-button glass"
+        title="復元について・出典"
+        aria-label="復元について・出典"
+      >
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 11v6M12 7h.01" />
+        </svg>
+      </button>
+      <button
+        id="discover-button"
+        class="square-button glass"
+        title="名所を選ぶ"
+        aria-label="名所を選ぶ"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 20h16M6 20v-8h12v8M5 12l7-7 7 7M10 20v-5h4v5" />
+        </svg>
+      </button>
+    </div>
+    <div id="mode-status" class="hud">都市を生成中</div>
+    <div id="display-panel" class="hud" role="group" aria-label="画面の表示切替">
+      <button id="toggle-labels" class="glass" type="button" aria-pressed="true"
+        aria-controls="labels" aria-keyshortcuts="L" title="地名ラベルを表示・非表示（Lキー）">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path class="eye-slash" d="m3 3 18 18"/></svg>
+        <span id="labels-toggle-text">地名を隠す</span>
+      </button>
+      <button id="toggle-ui" class="glass" type="button" aria-pressed="false"
+        aria-keyshortcuts="H" title="パネルと地名をまとめて隠す・戻す（Hキー）">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg>
+        <span id="ui-toggle-text">UIを隠す</span>
+      </button>
+    </div>
+
+    <div id="map-panel" class="hud glass">
+      <canvas
+        id="mini-map"
+        width="414"
+        height="386"
+        aria-label="城壁・川・現在の表示位置の概観図"
+      ></canvas
+      ><span class="map-north">N</span
+      ><span class="map-caption">城壁と現在地</span>
+    </div>
+    <div id="notice">遺跡座標に基づく概略復元</div>
+    <nav id="navigation" class="hud" aria-label="場所を選ぶ">
+      <div class="tour-shell">
+        <button id="tour-button" aria-pressed="false">
+          <svg id="play-icon" viewBox="0 0 24 24">
+            <path d="m8 4 12 8-12 8Z" fill="currentColor" stroke="none" /></svg
+          ><span id="tour-title">空から巡る</span
+          ><span class="duration" id="tour-time">15 秒</span>
+        </button>
+        <div id="tour-progress"></div>
+      </div>
+      <div class="nav-row glass">
+        <button data-place="forum" aria-current="true">フォルム</button
+        ><button data-place="colosseum" aria-current="false">コロッセオ</button
+        ><button data-place="pantheon" aria-current="false">パンテオン</button
+        ><button data-place="palatine" aria-current="false">パラティーノ</button
+        ><button data-place="overview" aria-current="false">全市域</button>
+      </div>
+    </nav>
+    <div id="compass" class="hud" aria-label="方位">
+      <span>N</span>
+      <div id="compass-needle"></div>
+    </div>
+    <aside id="help" class="hud glass">
+      <div id="mouse-help">
+        <div class="help-line"><b>左ドラッグ</b><span>回転</span></div>
+        <div class="help-line"><b>右ドラッグ</b><span>移動</span></div>
+        <div class="help-line"><b>ホイール</b><span>ズーム</span></div>
+      </div>
+      <div id="touch-help">
+        <div class="help-line">1 本指で回転</div>
+        <div class="help-line">2 本指で移動・ズーム</div>
+      </div>
+    </aside>
+    <div id="toast" role="status"></div>
+    <div id="loading">
+      <div class="loading-card">
+        <div class="loading-title">ROMA</div>
+        <div class="loading-sub">西暦320年のローマを組み立てています</div>
+        <div class="loading-line"><span></span></div>
+        <div id="load-detail" class="load-detail">
+          描画ライブラリを読み込み中
+        </div>
+        <div id="load-error" role="alert" hidden></div>
+        <button id="retry" hidden onclick="location.reload()">
+          再読み込み
+        </button>
+      </div>
+    </div>
+    <dialog id="source-dialog" aria-labelledby="source-title">
+      <div class="dialog-head">
+        <h2 id="source-title">復元について・出典</h2>
+        <button id="close-sources" aria-label="閉じる">
+          <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg>
+        </button>
+      </div>
+      <div class="dialog-body">
+        <h3>西暦320年のローマ</h3>
+        <p>
+          コンスタンティヌス帝の時代。現存遺構の緯度・経度と公開された考古学データを共通のメートル座標へ投影し、主要建築・城壁・川の位置関係を合わせています。建物は外部3Dモデルを使わず、基本形状から生成しています。
+        </p>
+        <p class="accuracy">
+          これは都市の位置関係を探索するための概略復元です。主要遺構の位置と現存する城壁線は資料に基づきますが、建物の復元形状・失われた城壁区間・古代の地表高・河岸線・橋の上部構造には推定を含みます。道路の細部と一般住居は街区を表現するための生成モデルで、個々の実在建築や正確な戸数を示しません。
+        </p>
+        <dl class="data-key">
+          <dt>配置</dt>
+          <dd>
+            Pleiades
+            の遺構位置・輪郭と、ローマ市・考古学公園の資料。原点は北緯41.8945°、東経12.4900°。北を
+            −Z、東を +X とする局所平面座標。
+          </dd>
+          <dt>地形・川</dt>
+          <dd>
+            七丘の位置と概略標高に、台地の上面・斜面・谷筋を加えて近似。パラティーノ・カピトリーノの輪郭は資料を参考に手作業で設定したモデルです。中心部は約8m間隔で分割し、地形自体も影を落とします。標高差の誇張はしていません。宮殿の設置面は約51m、フォルム・競技場の谷底は約14mというモデル値で、320年の測量値ではありません。古代の河岸・盛土・個別の擁壁形状にも推定を含みます。
+          </dd>
+          <dt>城壁</dt>
+          <dd>
+            アウレリアヌス期の壁体約6.5m・厚さ約3.5mを基本とし、角塔を配置。ホノリウス期（401〜403年）の増築は含みません。失われた西岸区間の線形は概略です。
+          </dd>
+          <dt>年代</dt>
+          <dd>
+            315年のコンスタンティヌス凱旋門を含みます。キルクス・マクシムスのオベリスクは当時の1本。357年に運ばれたオベリスク、後世の教会・城塞・近代堤防は再現していません。
+          </dd>
+          <dt>描画</dt>
+          <dd>
+            フル：高解像度の影、装飾、植栽、水面の動き。軽量：画素数・影解像度・装飾量を削減し、水面の動きを停止。主要建築・地形・城壁・住居配置は共通です。
+          </dd>
+        </dl>
+        <h3>地理・史料</h3>
+        <div id="source-links" class="source-grid"></div>
+        <h3>操作</h3>
+        <p>
+          左ドラッグで回転、右ドラッグで移動、ホイールでズーム。タッチでは1本指で回転、2本指で移動・ズームできます。地図にフォーカスがあるときは矢印キーで移動します。「地名を隠す」（Lキー）で地名を表示・非表示に切り替えます。「UIを隠す」（Hキー）でパネルと地名をまとめて隠し、残る「UIを戻す」またはEscキーで戻せます。地名の表示設定だけをこのブラウザーに保存し、外部には送信しません。「パラティーノ」で丘に近づきます。「空から巡る」は約15秒のカメラデモです。操作・同じボタン・Escキーで中断できます。
+        </p>
+        <p class="version">
+          Three.js 0.180.0 / OrbitControls — MIT License。Pleiades 地理データ —
+          © Pleiades contributors, CC BY 3.0。OSM由来の遺構輪郭を含む箇所 — ©
+          OpenStreetMap contributors,
+          ODbL。資料確認：2026年10月9日。描画ライブラリと地理データは同じサイトから読み込むため、外部CDNへの接続は不要です。
+        </p>
+      </div>
+    </dialog>
+    <dialog id="discover-dialog" aria-labelledby="discover-title">
+      <div class="dialog-head">
+        <div>
+          <div class="eyebrow">空からたどる古代都市</div>
+          <h2 id="discover-title">ローマ名所帖</h2>
+        </div>
+        <button id="close-discover" aria-label="閉じる">
+          <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg>
+        </button>
+      </div>
+      <div class="dialog-body">
+        <div class="discover-progress" role="status">
+          <span>訪れた場所</span><strong id="visited-count">1 / 9</strong>
+        </div>
+        <div class="site-grid">
+          <button class="site-card" data-place="forum">
+            <span class="site-era">共和政〜帝政</span><strong>フォルム・ロマヌム</strong>
+            <span>政治・裁判・祭祀が重なる都市の中心</span>
+          </button>
+          <button class="site-card" data-place="colosseum">
+            <span class="site-era">80年</span><strong>コロッセオ</strong>
+            <span>三層のアーケードが囲む巨大円形闘技場</span>
+          </button>
+          <button class="site-card" data-place="pantheon">
+            <span class="site-era">125年頃</span><strong>パンテオン</strong>
+            <span>オクルスから光が落ちる大ドームの神殿</span>
+          </button>
+          <button class="site-card" data-place="palatine">
+            <span class="site-era">帝政期</span><strong>パラティーノ丘</strong>
+            <span>宮殿群からフォルムと競技場を見下ろす</span>
+          </button>
+          <button class="site-card" data-place="capitoline">
+            <span class="site-era">都市創建期〜</span><strong>カピトリーノ丘</strong>
+            <span>主神殿を頂くローマ宗教の象徴</span>
+          </button>
+          <button class="site-card" data-place="circus">
+            <span class="site-era">4世紀も現役</span><strong>キルクス・マクシムス</strong>
+            <span>二つの丘の谷を使った戦車競走場</span>
+          </button>
+          <button class="site-card" data-place="caracalla">
+            <span class="site-era">216年</span><strong>カラカラ浴場</strong>
+            <span>浴室・運動場・庭園を備える市民の複合施設</span>
+          </button>
+          <button class="site-card" data-place="diocletian">
+            <span class="site-era">306年</span><strong>ディオクレティアヌス浴場</strong>
+            <span>市北東部に完成した最大級の公共浴場</span>
+          </button>
+          <button class="site-card" data-place="hadrian">
+            <span class="site-era">139年</span><strong>ハドリアヌス霊廟</strong>
+            <span>城塞化する前の皇帝廟をテヴェレ川右岸へ訪ねる</span>
+          </button>
+        </div>
+      </div>
+    </dialog>
+    <script src="./js/rome-320-ui.js" defer></script>
+    <script type="module" src="./js/rome-320-app.js"></script>
+  </body>
+</html>
