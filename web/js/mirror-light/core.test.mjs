@@ -36,14 +36,14 @@ test('a closed optical cycle stops by cell AND direction; crossing a cell is leg
 });
 
 test('10 authored boards: every configuration terminates; minima also match independent BFS', () => {
-  const expectedCounts = [1, 1, 1, 2, 2, 2, 4, 4, 2, 8];
+  const expectedCounts = [1, 1, 1, 2, 2, 2, 6, 4, 2, 8];
   for (const [levelIndex, level] of LEVELS.entries()) {
     validateLevel(level);
     const solution = solveLevel(level);
     assert.equal(traceLight(level).won, false);
     assert.equal(solution.minimum, level.expectedMinimum, `Stage ${level.id}`);
     assert.equal(solution.solutions.length, expectedCounts[levelIndex]);
-    assert.equal(solution.distinctRoutes, 1); assert.equal(solution.optimalConfigurations, 1);
+    assert.equal(solution.distinctRoutes, level.id === 7 ? 2 : 1); assert.equal(solution.optimalConfigurations, level.id === 7 ? 2 : 1);
     const rotatable = level.mirrors.map((m, i) => m.fixed ? -1 : i).filter(i => i >= 0);
     for (let mask = 0; mask < solution.configurations; mask++) {
       const orientations = initialOrientations(level); rotatable.forEach((i, bit) => { orientations[i] = (mask >> bit) & 1; });
@@ -80,6 +80,13 @@ test('undo restores a sequence exactly; fixed mirrors and invalid inputs are ine
   assert.deepEqual(initialOrientations(level), original);
   const alteredFixed = [...original]; alteredFixed[fixed] ^= 1;
   assert.throws(() => traceLight(level, alteredFixed));
+});
+
+test('the introduced checkpoint blocks a deceptive shortcut; later boards permit alternative routes', () => {
+  const level = LEVELS[5], shortcut = initialOrientations(level); shortcut[0] ^= 1;
+  assert.equal(traceLight(level, shortcut).status, 'incomplete');
+  const alternatives = solveLevel(LEVELS[6]);
+  assert.equal(alternatives.distinctRoutes, 2); assert.equal(alternatives.optimalConfigurations, 2);
 });
 
 test('progressive hints use the current state, reveal only one rotation, and reset after input', () => {

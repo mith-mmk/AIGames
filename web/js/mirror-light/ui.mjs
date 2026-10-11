@@ -46,7 +46,8 @@ export class GardenUI {
     this.targets.forEach((button, i) => {
       const m = level.mirrors[i], orientation = session.orientations[i] === 0 ? '/' : '\\';
       button.disabled = m.fixed || trace.won;
-      button.setAttribute('aria-label', `鏡 ${m.id}、${orientation}、${m.fixed ? '固定' : '押して回転'}`);
+      button.setAttribute('aria-label', `鏡 ${m.id}、${orientation}、${m.fixed ? '固定' : trace.won ? 'クリア済み、回転停止' : '押して回転'}`);
+      button.dataset.fixed = String(Boolean(m.fixed));
       button.dataset.orientation = session.orientations[i];
       button.title = `鏡 ${m.id} ${orientation}${m.fixed ? '（固定）' : ''}`;
     });
