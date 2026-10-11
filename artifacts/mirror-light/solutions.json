@@ -1,0 +1,322 @@
+[
+  {
+    "stage": 1,
+    "title": "ひとすじの光",
+    "minimum": 1,
+    "configurations": 2,
+    "solutions": 1,
+    "optimalConfigurations": 1,
+    "distinctRoutes": 1,
+    "bends": 1,
+    "rotatingMirrors": 1,
+    "fixedMirrors": 0,
+    "checkpoints": 0,
+    "actions": [
+      "A"
+    ],
+    "orientation": {
+      "A": "/"
+    },
+    "path": [
+      "A"
+    ]
+  },
+  {
+    "stage": 2,
+    "title": "ふたつの曲がり角",
+    "minimum": 2,
+    "configurations": 4,
+    "solutions": 1,
+    "optimalConfigurations": 1,
+    "distinctRoutes": 1,
+    "bends": 2,
+    "rotatingMirrors": 2,
+    "fixedMirrors": 0,
+    "checkpoints": 0,
+    "actions": [
+      "A",
+      "B"
+    ],
+    "orientation": {
+      "A": "/",
+      "B": "/"
+    },
+    "path": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "stage": 3,
+    "title": "石をよけて",
+    "minimum": 2,
+    "configurations": 16,
+    "solutions": 1,
+    "optimalConfigurations": 1,
+    "distinctRoutes": 1,
+    "bends": 4,
+    "rotatingMirrors": 4,
+    "fixedMirrors": 0,
+    "checkpoints": 0,
+    "actions": [
+      "A",
+      "B"
+    ],
+    "orientation": {
+      "A": "/",
+      "B": "/",
+      "C": "/",
+      "D": "/"
+    },
+    "path": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "stage": 4,
+    "title": "遠回りの庭",
+    "minimum": 3,
+    "configurations": 32,
+    "solutions": 2,
+    "optimalConfigurations": 1,
+    "distinctRoutes": 1,
+    "bends": 4,
+    "rotatingMirrors": 5,
+    "fixedMirrors": 0,
+    "checkpoints": 0,
+    "actions": [
+      "A",
+      "B",
+      "C"
+    ],
+    "orientation": {
+      "A": "/",
+      "B": "/",
+      "C": "\\",
+      "D": "\\",
+      "E": "/"
+    },
+    "path": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "stage": 5,
+    "title": "動かない道しるべ",
+    "minimum": 3,
+    "configurations": 16,
+    "solutions": 2,
+    "optimalConfigurations": 1,
+    "distinctRoutes": 1,
+    "bends": 4,
+    "rotatingMirrors": 4,
+    "fixedMirrors": 1,
+    "checkpoints": 0,
+    "actions": [
+      "A",
+      "B",
+      "C"
+    ],
+    "orientation": {
+      "A": "/",
+      "F": "/",
+      "B": "\\",
+      "C": "\\",
+      "D": "\\"
+    },
+    "path": [
+      "A",
+      "F",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "stage": 6,
+    "title": "灯りをともして",
+    "minimum": 3,
+    "configurations": 32,
+    "solutions": 2,
+    "optimalConfigurations": 1,
+    "distinctRoutes": 1,
+    "bends": 4,
+    "rotatingMirrors": 5,
+    "fixedMirrors": 0,
+    "checkpoints": 1,
+    "actions": [
+      "B",
+      "C",
+      "D"
+    ],
+    "orientation": {
+      "A": "/",
+      "B": "/",
+      "C": "\\",
+      "D": "\\",
+      "E": "\\"
+    },
+    "path": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "stage": 7,
+    "title": "ふたつの灯り",
+    "minimum": 4,
+    "configurations": 64,
+    "solutions": 4,
+    "optimalConfigurations": 1,
+    "distinctRoutes": 1,
+    "bends": 4,
+    "rotatingMirrors": 6,
+    "fixedMirrors": 0,
+    "checkpoints": 2,
+    "actions": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "orientation": {
+      "A": "/",
+      "B": "/",
+      "C": "\\",
+      "D": "\\",
+      "E": "\\",
+      "F": "/"
+    },
+    "path": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "stage": 8,
+    "title": "外周の回廊",
+    "minimum": 4,
+    "configurations": 256,
+    "solutions": 4,
+    "optimalConfigurations": 1,
+    "distinctRoutes": 1,
+    "bends": 6,
+    "rotatingMirrors": 8,
+    "fixedMirrors": 0,
+    "checkpoints": 2,
+    "actions": [
+      "A",
+      "B",
+      "D",
+      "F"
+    ],
+    "orientation": {
+      "A": "/",
+      "B": "\\",
+      "C": "\\",
+      "D": "/",
+      "E": "\\",
+      "F": "/",
+      "G": "/",
+      "H": "\\"
+    },
+    "path": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ]
+  },
+  {
+    "stage": 9,
+    "title": "交差する道",
+    "minimum": 5,
+    "configurations": 256,
+    "solutions": 2,
+    "optimalConfigurations": 1,
+    "distinctRoutes": 1,
+    "bends": 7,
+    "rotatingMirrors": 8,
+    "fixedMirrors": 0,
+    "checkpoints": 2,
+    "actions": [
+      "A",
+      "B",
+      "D",
+      "E",
+      "G"
+    ],
+    "orientation": {
+      "A": "/",
+      "B": "/",
+      "C": "/",
+      "D": "\\",
+      "E": "/",
+      "F": "\\",
+      "G": "/",
+      "H": "/"
+    },
+    "path": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ]
+  },
+  {
+    "stage": 10,
+    "title": "光の庭の完成",
+    "minimum": 6,
+    "configurations": 512,
+    "solutions": 8,
+    "optimalConfigurations": 1,
+    "distinctRoutes": 1,
+    "bends": 7,
+    "rotatingMirrors": 9,
+    "fixedMirrors": 1,
+    "checkpoints": 3,
+    "actions": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "G"
+    ],
+    "orientation": {
+      "A": "/",
+      "B": "/",
+      "C": "\\",
+      "D": "/",
+      "E": "\\",
+      "F": "/",
+      "G": "/",
+      "H": "/",
+      "I": "\\",
+      "J": "/"
+    },
+    "path": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ]
+  }
+]
