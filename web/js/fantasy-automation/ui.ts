@@ -1,4 +1,4 @@
-import { BELT_SECONDS, DEFINITIONS, RECIPES } from './data.js';
+import { BELT_SECONDS, DEFINITIONS, RECIPES, RESOURCE_NAMES } from './data.js';
 import { techNodeStates, currentSwordRate, isKindUnlocked, isRecipeUnlocked } from './technology.js';
 import type { GuideStep } from './onboarding.js';
 import type { Direction, GameState, Kind, Resource, TechId, RecipeId, Building } from './types.js';
@@ -16,7 +16,7 @@ export interface UIState {
   kind: Kind | null; direction: Direction; selectedId: number | null; speed: 0 | 1 | 2;
   power: { stored: number; capacity: number }; message: string; hover?: { x: number; z: number } | null; guide?: GuideStep | null; technologyOpen?: boolean;
 }
-const RESOURCE_LABELS: Record<Resource, string> = { wood: '木材', ore: '鉄鉱石', ingot: '鉄の延べ棒', rawCrystal: '結晶原石', crystal: '魔晶', sword: '魔導剣' };
+const RESOURCE_LABELS = RESOURCE_NAMES;
 const RESOURCES = Object.keys(RESOURCE_LABELS) as Resource[];
 const TECH_IDS: TechId[] = ['basic', 'logistics', 'crystals', 'assembly', 'mastery'];
 const TECH_LABELS: Record<TechId, string> = { basic: '基礎工房', logistics: '物流', crystals: '魔晶', assembly: '組立', mastery: '工房の達人' };
@@ -33,9 +33,9 @@ const DESCRIPTIONS: Record<Kind, string> = {
   delivery: '鉄の延べ棒・魔導剣を受け取る納品専用の箱。自動生産し自動搬送された品だけ目標に加算。収納・取り出しはできません。',
   splitter: '前方と右側（時計回り90°）の2つの出力口へ交互に分岐。片方が詰まると空いた口へ送ります。',
   storage: '32品まで保管する収納箱。納品はしません。受け取った品を前方へ順に排出。取り出した品は手動扱いとなり自動納品に数えません。',
-  crystalMiner: '結晶鉱脈の上に設置。魔力2で結晶原石1を2秒で採掘。',
-  crystalRefiner: '結晶原石を魔晶へ精製。魔力導線で供給し、レシピの素材を隣接設備から入力します。',
-  assembler: '鉄の延べ棒と魔晶を魔導剣へ組み立てる設備。入力は隣接、完成品は矢印へ出力。',
+  crystalMiner: '結晶鉱脈の上に設置。魔力2で魔晶原石1を2秒で採掘。',
+  crystalRefiner: '魔晶原石を精製魔晶へ精製。魔力導線で供給し、レシピの素材を隣接設備から入力します。',
+  assembler: '鉄の延べ棒と精製魔晶を魔導剣へ組み立てる設備。入力は隣接、完成品は矢印へ出力。',
 };
 
 export class GameUI {
@@ -57,9 +57,9 @@ export class GameUI {
       <header class="workshop-top">
         <a class="home-link" href="index.html" aria-label="AI Gamesへ戻る">‹ AI Games</a>
         <div class="workshop-title">魔導からくり工房<span><i class="ingot-icon" aria-hidden="true"></i> 鉄の延べ棒 自動納品 <b id="delivered-count">0</b> / 100 <small class="goal-condition">自動生産→自動搬送品のみ</small></span></div>
-        <div class="resource-strip" aria-label="所持資源"><span title="所持 木材">木材 <b data-resource="wood">0</b></span><span title="所持 鉄鉱石">鉱石 <b data-resource="ore">0</b></span><span title="所持 鉄の延べ棒">延べ棒 <b data-resource="ingot">0</b></span><span title="所持 結晶原石">原石 <b data-resource="rawCrystal">0</b></span><span title="所持 魔晶">魔晶 <b data-resource="crystal">0</b></span><span title="所持 魔導剣">魔導剣 <b data-resource="sword">0</b></span><span>魔力 <b id="power-count">0 / 0</b></span></div><button data-action="technology-open" class="technology-open">技術ツリー</button>
+        <div class="resource-strip" aria-label="所持資源"><span title="所持 木材">木材 <b data-resource="wood">0</b></span><span title="所持 鉄鉱石">鉱石 <b data-resource="ore">0</b></span><span title="所持 鉄の延べ棒">延べ棒 <b data-resource="ingot">0</b></span><span title="所持 精製魔晶原石">原石 <b data-resource="rawCrystal">0</b></span><span title="所持 精製魔晶">魔晶 <b data-resource="crystal">0</b></span><span title="所持 魔導剣">魔導剣 <b data-resource="sword">0</b></span><span>魔力 <b id="power-count">0 / 0</b></span></div><button data-action="technology-open" class="technology-open">技術ツリー</button>
         <div class="time-controls" aria-label="時間速度"><button data-speed="0" aria-label="一時停止" title="一時停止（Space）">Ⅱ</button><button data-speed="1" aria-label="1倍速">1×</button><button data-speed="2" aria-label="2倍速">2×</button></div>
-        <details class="game-menu"><summary aria-label="操作と保存メニュー">☰ <span>メニュー</span></summary><div class="menu-body"><button data-action="menu-close" class="menu-close">メニューを閉じる ×</button><div class="menu-actions"><button data-action="save">保存</button><button data-action="load">読込</button><button data-action="camera">視点を戻す</button><button data-action="new">新しい工房</button><button data-action="gather-wood" title="森林から木材1個を手採取。生産実績には算入しません。">木材を手採取</button><button data-action="guide-open">はじめての案内</button><button data-action="build-open">建設一覧を表示</button><button data-action="selection-open">設備詳細を表示</button><button data-action="help-close">操作説明を閉じる</button></div><details id="main-help"><summary>操作方法・つくり方</summary><div class="help-text"><p>鉱脈に採掘機 → ベルト → 魔導炉 → ベルト → 納品箱をつなごう。魔力炉と機械は魔力導線で接続。魔力炉を選び木材を補給すると起動できます。</p><p>最初の配置例（座標 X, Z。地形を指すと座標が表示されます）:<br>採掘機 (12,16) → ベルト (13,16) → 魔導炉 (14,16) → ベルト (15,16) → 納品箱 (16,16)。全て東向き。<br>魔力炉 (12,18) と、導線 (12,17)・(13,17)・(14,17) を設置。魔力炉を選び木材1を補給。<br>木材採取場 (9,18) → ベルト (10,18)・(11,18) → 魔力炉 (12,18) と東向きにつなぐと燃料も自動化。</p><p>左クリック: 配置 / 選択<br>ベルト選択中に左ドラッグ: 連続敷設<br>右ドラッグ / WASD: 移動<br>中ドラッグ / Q・E: 視点回転<br>ホイール: ズーム<br>R: 設備回転、Shift＋クリック: 複製<br>X＋クリック: 撤去、Esc: 建設取消<br>Space: 一時停止 / 再開</p><p>配置プレビュー: 緑は建設可能、赤は建設不可。金の矢印が出力方向。結晶の青は魔力あり、紫は魔力網につながっているが蓄積なし、橙は魔力網に未接続。</p><p>納品に数えるのは自動生産した鉄だけです。採掘機が生産した鉱石を使いましょう。魔力切れは木材の手動補給で復旧できます。木材が0なら、メニューの「木材を手採取」で1個ずつ採れます。保存はこのブラウザの1スロットです。</p><button data-action="help-close">操作説明を閉じる ×</button></div></details></div></details>
+        <details class="game-menu"><summary aria-label="操作と保存メニュー">☰ <span>メニュー</span></summary><div class="menu-body"><button data-action="menu-close" class="menu-close">メニューを閉じる ×</button><div class="menu-actions"><button data-action="save">保存</button><button data-action="load">読込</button><button data-action="camera">視点を戻す</button><button data-action="new">新しい工房</button><button data-action="gather-wood" title="森林から木材1個を手採取。生産実績には算入しません。">木材を手採取</button><button data-action="guide-open">はじめての案内</button><button data-action="build-open">建設一覧を表示</button><button data-action="selection-open">設備詳細を表示</button><button data-action="help-close">操作説明を閉じる</button></div><details id="main-help"><summary>操作方法・つくり方</summary><div class="help-text"><p>鉱脈に採掘機 → ベルト → 魔導炉 → ベルト → 納品箱をつなごう。魔力炉と機械は魔力導線で接続。魔力炉を選び木材を補給すると起動できます。</p><p>最初の配置例（座標 X, Z。地形を指すと座標が表示されます）:<br>採掘機 (12,16) → ベルト (13,16) → 魔導炉 (14,16) → ベルト (15,16) → 納品箱 (16,16)。全て東向き。<br>魔力炉 (12,18) と、導線 (12,17)・(13,17)・(14,17) を設置。魔力炉を選び木材1を補給。<br>木材採取場 (9,18) → ベルト (10,18)・(11,18) → 魔力炉 (12,18) と東向きにつなぐと燃料も自動化。</p><p>左クリック: 配置 / 選択<br>ベルト選択中に左ドラッグ: 連続敷設<br>右ドラッグ / WASD: 移動<br>中ドラッグ / Q・E: 視点回転<br>ホイール: ズーム<br>R: 設備回転、Shift＋クリック: 複製<br>X＋クリック: 撤去、Esc: 建設取消<br>Space: 一時停止 / 再開</p><p>配置プレビュー: 緑は建設可能、赤は建設不可。金の矢印が出力方向。結晶の青は魔力あり、紫は魔力網につながっているが蓄積なし、橙は魔力網に未接続。</p><p>納品箱は鉄の延べ棒と魔導剣を受け入れます。採掘から加工・搬送まで自動でつないだ品だけを実績へ数えます。手で取り出し・再投入した品は算入しません。魔力切れは木材の手動補給で復旧できます。木材が0なら、メニューの「木材を手採取」で1個ずつ採れます。保存はこのブラウザの1スロットです。</p><button data-action="help-close">操作説明を閉じる ×</button></div></details></div></details>
       </header>
       <button id="tracked-goal" class="tracked-goal" data-action="technology-open" hidden></button>
       <section id="technology-panel" class="technology-panel" hidden aria-label="技術ツリー">
@@ -78,7 +78,7 @@ export class GameUI {
         <button class="panel-close" data-action="close-panel" aria-label="設備詳細を閉じる">×</button><h2 id="selection-title"></h2><p id="selection-description"></p>
         <div id="delivery-summary" hidden></div><div id="recipe-controls" hidden><label>生産レシピ<select id="recipe-select"></select></label><p id="recipe-lock-reason"></p></div><div id="storage-controls" hidden><p id="storage-capacity"></p><ul id="storage-items"></ul><label>取り出す品<select id="collect-resource"></select></label><label>個数<input id="collect-amount" type="number" min="1" max="32" value="1" step="1"></label><button data-action="collect-count">選んだ品を取り出す</button><small>取り出した品は手動扱い。収納したまま自動搬送すれば由来を保ちます。</small></div><dl><div><dt>稼働状態</dt><dd id="selection-status"></dd></div><div><dt>入出力・方向</dt><dd id="selection-direction"></dd></div><div><dt>内部の資源</dt><dd id="selection-buffer"></dd></div><div><dt>作業進捗</dt><dd id="selection-progress"></dd></div><div><dt>蓄積魔力</dt><dd id="selection-power"></dd></div></dl>
         <div class="selection-actions"><button data-action="rotate">回転 R</button><button data-action="collect">資源を回収</button><button data-action="remove" class="danger">撤去</button></div>
-        <form id="feed-form"><label>手動補給<select id="feed-resource"><option value="wood">木材</option><option value="ore">鉄鉱石</option><option value="ingot">鉄の延べ棒</option><option value="rawCrystal">結晶原石</option><option value="crystal">魔晶</option><option value="sword">魔導剣</option></select></label><label>個数<input id="feed-amount" type="number" min="1" max="1000" step="1" value="1" inputmode="numeric"></label><button type="submit" data-action="feed">補給する</button><small>手動の鉱石・延べ棒・魔晶等は目標に含めません。木材燃料は手動補給できます。</small></form>
+        <form id="feed-form"><label>手動補給<select id="feed-resource"><option value="wood">木材</option><option value="ore">鉄鉱石</option><option value="ingot">鉄の延べ棒</option><option value="rawCrystal">魔晶原石</option><option value="crystal">精製魔晶</option><option value="sword">魔導剣</option></select></label><label>個数<input id="feed-amount" type="number" min="1" max="1000" step="1" value="1" inputmode="numeric"></label><button type="submit" data-action="feed">補給する</button><small>手動の鉱石・延べ棒・精製魔晶等は目標に含めません。木材燃料は手動補給できます。</small></form>
       </aside>
       <button id="build-reopen" class="build-reopen" data-action="build-open" hidden>建設一覧を表示</button><footer class="build-dock"><div class="build-context"><span id="build-context">設備を選んで建設</span><button data-action="rotate" aria-label="建設方向を回転">↻ R</button><button data-action="cancel">取消 Esc</button><button data-action="build-close" aria-label="建設一覧を閉じる">×</button></div><nav class="build-palette" aria-label="建設する設備"></nav></footer>`;
     const palette = this.node('.build-palette');

@@ -35,6 +35,7 @@ const http = require('node:http');
     };
     monitor(page);
     const action = name => page.locator(`[data-action="${name}"]`);
+    const dismissGuide = async () => { const close = page.locator('[data-action="guide-close"]'); if (await close.count() && await close.isVisible()) await close.click(); };
     const menu = async () => {
       if (!await page.locator('.game-menu').evaluate(node => node.open)) await page.locator('.game-menu > summary').click();
     };
@@ -76,10 +77,11 @@ const http = require('node:http');
     await page.goto(url);
     await page.waitForSelector('#world canvas');
     await page.waitForSelector('[data-build="belt"]');
+    await dismissGuide();
     assert.equal(await page.title(), 'AI Games');
     await page.locator('[data-speed="0"]').click();
     const initial = await save();
-    assert(initial && initial.version === 1);
+    assert(initial && initial.version === 2);
     // Real canvas picking builds a belt; menus must not accidentally build cells.
     const canvas = page.locator('#world canvas');
     const box = await canvas.boundingBox();
@@ -133,6 +135,7 @@ const http = require('node:http');
     assert.deepEqual(await save(), progressed, 'Pause preserves tick and item state');
     await page.reload();
     await page.waitForSelector('#world canvas');
+    await dismissGuide();
     await page.locator('[data-speed="0"]').click();
     await load();
     assert.deepEqual(await save(), progressed, 'Reload and explicit resume restore the exact factory');
@@ -142,6 +145,7 @@ const http = require('node:http');
     await menu();
     page.once('dialog', dialog => dialog.accept());
     await action('new').click();
+    await dismissGuide();
     await page.locator('[data-speed="0"]').click();
     await page.locator('.game-menu > summary').click();
     const starter = [
@@ -183,7 +187,10 @@ const http = require('node:http');
     assert.deepEqual(await save(), progressed);
     for (const width of [1440, 390, 320]) {
       await page.setViewportSize({ width, height: width === 1440 ? 900 : 844 });
-      await page.waitForTimeout(150);
+      await page.waitForFunction(() => {
+        const bounds = document.querySelector('#world canvas').getBoundingClientRect();
+        return Math.abs(bounds.width - innerWidth) <= 1 && Math.abs(bounds.height - innerHeight) <= 1;
+      });
       const layout = await page.evaluate(() => {
         const canvas = document.querySelector('#world canvas');
         const bounds = canvas.getBoundingClientRect();
@@ -191,8 +198,9 @@ const http = require('node:http');
           paletteCount: document.querySelectorAll('[data-build]').length };
       });
       assert.equal(layout.overflow, false, `No horizontal overflow at ${width}px`);
-      assert(layout.canvasWidth > 0 && layout.canvasHeight > 200);
-      assert.equal(layout.paletteCount, 7);
+      assert(Math.abs(layout.canvasWidth - width) <= 1);
+      assert(Math.abs(layout.canvasHeight - (width === 1440 ? 900 : 844)) <= 1);
+      assert.equal(layout.paletteCount, 12);
       await page.screenshot({ path: path.join(output, `viewport-${width}.png`), fullPage: true });
       checks.push({ width, ...layout });
     }
@@ -216,10 +224,10 @@ const http = require('node:http');
     const belt = fixture.buildings.find(value => value.kind === 'belt');
     belt.item = { resource: 'ore', automated: true }; belt.beltProgress = 0.25;
     fixture.buildings.push({ id: fixture.nextId++, kind: 'smelter', x: 20, z: 20, direction: 1,
-      input: [{ resource: 'ore', automated: true }, { resource: 'ore', automated: false }], output: [],
+      input: [], reserved: [{ resource: 'ore', automated: true }, { resource: 'ore', automated: false }], output: [], recipe: 'ingot',
       progress: 0.4, working: true, energy: 0, status: '稼働中', item: null, beltProgress: 0 });
     fixture.buildings.push({ id: fixture.nextId++, kind: 'generator', x: 20, z: 21, direction: 1,
-      input: [{ resource: 'wood', automated: true }], output: [], progress: 10, working: true,
+      input: [], reserved: [{ resource: 'wood', automated: true }], output: [], progress: 10, working: true,
       energy: 20, pendingEnergy: 10, status: '完成魔力を保持中', item: null, beltProgress: 0 });
     await page.evaluate(state => new Promise((resolve, reject) => {
       const open = indexedDB.open('aigames-fantasy-automation', 1);

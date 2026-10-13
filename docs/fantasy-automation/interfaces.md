@@ -1,5 +1,7 @@
 # 実装担当・共有 API
 
+これは初期段階の共有境界の記録。第2段階で追加・更新した型と命令は [technology-interfaces.md](technology-interfaces.md) を参照。現行の自動実績判定は `automated && !handled`、予約素材は `reserved` に保持する。
+
 企画到着済み。仮称「魔導からくり工房」。MVPは鉱石採掘→ベルト→精錬→ベルト→納品箱で鉄延べ棒100本の自動納品。手動投入は目標に算入しない。
 
 共有型: `web/js/fantasy-automation/types.ts`。座標 x/z 0..31、1区画1 unit、方向0北/1東/2南/3西。状態は plain serializable。20Hz固定ステップ。インターフェース変更は統合担当へ通知。

@@ -45,7 +45,7 @@ const crypto = require('node:crypto');
     await page.goto(url);
     await page.waitForSelector('#world canvas');
     assert.equal(await page.title(), 'AI Games');
-    assert.equal(await page.locator('[data-build]').count(), 7);
+    assert.equal(await page.locator('[data-build]').count(), 12);
     await page.locator('[data-speed="0"]').click();
     await page.locator('[data-build="belt"]').click();
     const rect = await page.locator('#world canvas').boundingBox();
