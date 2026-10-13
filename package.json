@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "node web/js/cards.logic.test.cjs && node web/js/cat.logic.test.cjs && node web/js/train-defense.logic.test.cjs && node web/js/orbit-salvage.logic.test.cjs && node web/js/civilization.logic.test.cjs && node web/js/humanities-simulator.logic.test.cjs && node web/js/natural-philosophy-network.logic.test.cjs && node web/js/kanbun-turing.logic.test.cjs && node web/js/edo-fire-command.logic.test.cjs && node web/js/karakuri.logic.test.mjs && node web/js/karakuri.contact.test.mjs && node web/js/karakuri.levels.test.mjs && node web/js/karakuri.belt.test.mjs && node web/js/karakuri.campaign-contact.test.mjs && node web/js/rome-320.logic.test.mjs && node --test web/js/mirror-light/*.test.mjs && eslint web/js/karakuri-belt.mjs web/js/karakuri-levels.mjs web/js/karakuri-contact.mjs web/js/karakuri-core.mjs web/js/karakuri-app.js web/css/karakuri.css web/js/cards.js web/js/cat/*.js web/js/train-defense.js web/js/orbit-salvage.js web/js/civilization.js web/js/humanities-simulator.js web/js/natural-philosophy-network.js web/js/natural-philosophy-network-renderer.js web/js/natural-philosophy-network-app.js web/js/natural-philosophy-network-data.js web/js/natural-philosophy-network-evidence.js web/js/natural-philosophy-network-data-build.mjs web/js/kanbun-turing.js web/js/edo-fire-command-data.js web/js/edo-fire-command-core.js web/js/edo-fire-command-renderer.js web/js/edo-fire-command-app.js web/js/rome-320-app.js web/js/rome-320-terrain.js web/js/rome-320-ui.js web/css/orbit-salvage.css web/css/civilization.css web/css/humanities-simulator.css web/css/natural-philosophy-network.css web/css/kanbun-turing.css web/css/edo-fire-command.css web/js/mirror-light/app.mjs web/js/mirror-light/core.mjs web/js/mirror-light/levels.mjs web/js/mirror-light/renderer.mjs web/js/mirror-light/ui.mjs web/js/mirror-light/input.mjs web/js/mirror-light/storage.mjs web/css/mirror-light.css",
+    "test": "node web/js/cards.logic.test.cjs && node web/js/cat.logic.test.cjs && node web/js/train-defense.logic.test.cjs && node web/js/orbit-salvage.logic.test.cjs && node web/js/civilization.logic.test.cjs && node web/js/humanities-simulator.logic.test.cjs && node web/js/natural-philosophy-network.logic.test.cjs && node web/js/kanbun-turing.logic.test.cjs && node web/js/edo-fire-command.logic.test.cjs && node web/js/karakuri.logic.test.mjs && node web/js/karakuri.contact.test.mjs && node web/js/karakuri.levels.test.mjs && node web/js/karakuri.belt.test.mjs && node web/js/karakuri.campaign-contact.test.mjs && node web/js/rome-320.logic.test.mjs && node --test web/js/mirror-light/*.test.mjs && eslint web/js/karakuri-belt.mjs web/js/karakuri-levels.mjs web/js/karakuri-contact.mjs web/js/karakuri-core.mjs web/js/karakuri-app.js web/css/karakuri.css web/js/cards.js web/js/cat/*.js web/js/train-defense.js web/js/orbit-salvage.js web/js/civilization.js web/js/humanities-simulator.js web/js/natural-philosophy-network.js web/js/natural-philosophy-network-renderer.js web/js/natural-philosophy-network-app.js web/js/natural-philosophy-network-data.js web/js/natural-philosophy-network-evidence.js web/js/natural-philosophy-network-data-build.mjs web/js/kanbun-turing.js web/js/edo-fire-command-data.js web/js/edo-fire-command-core.js web/js/edo-fire-command-renderer.js web/js/edo-fire-command-app.js web/js/rome-320-app.js web/js/rome-320-terrain.js web/js/rome-320-ui.js web/css/orbit-salvage.css web/css/civilization.css web/css/humanities-simulator.css web/css/natural-philosophy-network.css web/css/kanbun-turing.css web/css/edo-fire-command.css web/js/mirror-light/app.mjs web/js/mirror-light/core.mjs web/js/mirror-light/levels.mjs web/js/mirror-light/renderer.mjs web/js/mirror-light/ui.mjs web/js/mirror-light/input.mjs web/js/mirror-light/storage.mjs web/css/mirror-light.css && npm run test:fantasy",
     "start": "node scripts/serve.cjs",
-    "build:pages": "node scripts/prepare-pages.cjs",
+    "build:pages": "npm run build:fantasy && node scripts/prepare-pages.cjs",
     "test:mirror-light": "node --test web/js/mirror-light/*.test.mjs",
     "solve:mirror-light": "node scripts/mirror-light-solve.mjs",
-    "playtest:mirror-light": "node scripts/mirror-light-browser.cjs"
+    "playtest:mirror-light": "node scripts/mirror-light-browser.cjs",
+    "build:fantasy": "tsc -p tsconfig.fantasy.json && vite build --config vite.fantasy.config.mjs",
+    "test:fantasy": "node --test web/js/fantasy-automation/loop.test.mjs && tsx --test web/js/fantasy-automation/*.test.ts && tsc -p tsconfig.fantasy.json && eslint web/js/fantasy-automation/loop.mjs web/css/fantasy-automation.css vite.fantasy.config.mjs",
+    "playtest:fantasy": "node scripts/fantasy-automation-browser.cjs",
+    "prestart": "npm run build:fantasy"
   },
   "author": "MITH@mmk",
   "license": "MIT",
@@ -17,6 +21,7 @@
     "@eslint/css": "^0.9.0",
     "@eslint/js": "^9.29.0",
     "@eslint/markdown": "^6.6.0",
+    "@types/node": "^26.6.5",
     "@types/three": "^0.186.0",
     "eslint": "^9.29.0",
     "globals": "^16.2.0",

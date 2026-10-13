@@ -6,7 +6,7 @@ export type Inventory = Record<Resource, number>;
 export interface Building {
   id: number; kind: Kind; x: number; z: number; direction: Direction;
   input: Item[]; output: Item[]; progress: number; working: boolean;
-  energy: number; status: string;
+  energy: number; pendingEnergy?: number; status: string;
   item: Item | null; beltProgress: number;
 }
 export interface GameState {
@@ -22,7 +22,7 @@ export type Command =
   | { type: 'feed'; id: number; resource: Resource; amount: number }
   | { type: 'collect'; id: number };
 export interface CommandResult { ok: boolean; reason: string; }
-export interface Definition { label: string; cost: Partial<Inventory>; seconds?: number; input?: Partial<Inventory>; energy?: number; }
+export interface Definition { label: string; cost: Partial<Inventory>; seconds?: number; input?: Partial<Inventory>; output?: Partial<Inventory>; energy?: number; generatedEnergy?: number; }
 export const SIZE = 32;
 export const STEP = 0.05;
 export const DIRECTIONS: readonly [number, number][] = [[0,-1],[1,0],[0,1],[-1,0]];
