@@ -1,0 +1,24 @@
+{
+  "basePath": "/",
+  "browser": "151.0.7922.173",
+  "checkedFiles": [
+    "fantasy-automation.html",
+    "css/fantasy-automation.css",
+    "js/fantasy-automation/runtime/app.js",
+    "js/vendor/three-0.180.0/three.module.min.js",
+    "js/vendor/three-0.180.0/three.core.min.js",
+    "js/vendor/three-0.180.0/LICENSE"
+  ],
+  "bundleSHA256": "0874cc4c1c5aa7820d225880598456c4641a14a449acadd6fa3294b41a5c6f76",
+  "requiresBuildToServe": false,
+  "canvasPlacement": "passed",
+  "pageErrors": [],
+  "failedRequests": [],
+  "loadedPaths": [
+    "/fantasy-automation.html",
+    "/css/fantasy-automation.css",
+    "/js/fantasy-automation/runtime/app.js",
+    "/js/vendor/three-0.180.0/three.module.min.js",
+    "/js/vendor/three-0.180.0/three.core.min.js"
+  ]
+}

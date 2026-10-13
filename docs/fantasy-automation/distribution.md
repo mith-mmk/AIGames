@@ -34,3 +34,9 @@
 検証再実行は `node scripts/fantasy-automation-distribution.cjs --directory web --label tracked-web`、梱包後は `--directory .pages-dist --label generated-pages`。default base pathは `/AIGames/`、サイトrootは `--base-path /`。
 
 mainへのマージ、Pages設定変更、デプロイは行っていない。CI待機は行わず、同じ生成手順をローカルcloneで検証した。
+
+## 技術ツリー追加後の再検証
+
+コード・検証スクリプト・説明書を保存した `1de5844` の新規cloneで、node_modulesと.pages-distがない状態から `web/` をサイトrootでHTTP配信して起動・建設成功。続けて `npm ci` → `npm test`（新作59件と既存検証）→ `npm run build:pages`（306ファイル）を実行し、clone作業ツリーはclean。生成した `.pages-dist/` だけを `/AIGames/` 配下で配信して起動・建設成功。開発checkoutのweb/pagesも同prefixで確認済み。
+
+全4経路の配布JS SHA-256は `0874cc4c1c5aa7820d225880598456c4641a14a449acadd6fa3294b41a5c6f76`。`clean-technology-web.json` / `clean-technology-pages.json` / `technology-web.json` / `technology-pages.json` とPNGに記録。技術ツリー追加後も、Git管理されたJSと再生成JSが一致し、ビルドなし配信・Pages梱包の双方で動く。mainマージ・公開は行っていない。

@@ -8,28 +8,28 @@
     {
       "realUiStarter": "12 facilities built with initial resources; automatic fuel/mining/smelting/delivery passed",
       "delivered": 1,
-      "tick": 483
+      "tick": 528
     },
     {
       "width": 1440,
       "overflow": false,
       "canvasWidth": 1440,
       "canvasHeight": 900,
-      "paletteCount": 7
+      "paletteCount": 12
     },
     {
       "width": 390,
       "overflow": false,
       "canvasWidth": 390,
       "canvasHeight": 844,
-      "paletteCount": 7
+      "paletteCount": 12
     },
     {
       "width": 320,
       "overflow": false,
       "canvasWidth": 320,
       "canvasHeight": 844,
-      "paletteCount": 7
+      "paletteCount": 12
     },
     "camera controls; WebGL context loss/recovery",
     "IndexedDB exact item/progress/provenance/pending energy roundtrip through UI",

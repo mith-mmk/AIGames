@@ -15,7 +15,8 @@
     "prestart": "npm run build:fantasy",
     "check:fantasy-runtime": "node scripts/check-fantasy-runtime.cjs",
     "playtest:fantasy-guide": "node scripts/fantasy-automation-onboarding.cjs",
-    "playtest:fantasy-technology": "node scripts/fantasy-automation-technology.cjs"
+    "playtest:fantasy-technology": "node scripts/fantasy-automation-technology.cjs",
+    "check:fantasy-progression": "node --import tsx scripts/fantasy-automation-reachability.ts"
   },
   "author": "MITH@mmk",
   "license": "MIT",

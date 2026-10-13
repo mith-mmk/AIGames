@@ -67,4 +67,6 @@ mainへのマージ、Pages設定変更・デプロイ、CI待機は行ってい
 
 1440・390・320幅の技術ツリーを撮影し横はみ出しなし。source/builtともページ例外・失敗リクエスト0。結果は `artifacts/fantasy-automation/technology/{source,built}/results.json`、画像は `tree-initial.png`、`automatic-sword-factory.png`、`tree-mastery.png`、`tree-320.png` など。設備・収納内容・出力方向を目視確認した。
 
-ブラウザの量産確認は進行済みの実シミュレーション由来fixtureから行う。新規開始から全研究までの長時間の通し操作や、実GPU・実機スマートフォンの性能測定とは区別する。既存の初回案内・操作ブラウザ検証も再実行する。
+ブラウザの量産確認は進行済みの実シミュレーション由来fixtureから行う。新規開始から全研究までの長時間の通し操作や、実GPU・実機スマートフォンの性能測定とは区別する。既存の初回案内・操作ブラウザ検証も再実行した。
+
+追加の `npm run check:fantasy-progression` は新規工房から全研究へ、通常命令だけで326.6ゲーム秒で到達。直接状態注入なし、回収品を建設費に使い、連続60秒の魔導剣15本・厳密な保存一致を確認。`technology/reachability.json` に配置と実績を記録。

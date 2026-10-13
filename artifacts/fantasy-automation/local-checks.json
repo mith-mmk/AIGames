@@ -5,8 +5,11 @@
     "clock": 7,
     "simulation": 17,
     "storage": 4,
-    "total": 38,
-    "onboarding": 10
+    "total": 59,
+    "onboarding": 10,
+    "technology": 5,
+    "migration": 5,
+    "systems": 11
   },
   "npmTest": "passed, includes existing games",
   "typecheck": "passed",
@@ -16,8 +19,57 @@
   },
   "pagesBuild": {
     "status": "passed",
-    "runtimeFiles": 304
+    "runtimeFiles": 306
   },
   "mirrorLightBrowserRegression": "passed: 30 solved stages, desktop/touch, 1440/390/320, undo/reset, storage, WebGL recovery",
-  "publication": "not performed"
+  "publication": "not performed",
+  "technologyBrowser": {
+    "source": "passed",
+    "built": "passed",
+    "exact60GameSecondSwordProduction": 15,
+    "pageErrors": 0,
+    "failedRequests": 0
+  },
+  "freshStartReachability": {
+    "status": "passed",
+    "directStateMutation": false,
+    "allResearchGameSeconds": 326.6,
+    "swordsPer60GameSeconds": 15,
+    "fuel": "initial automatic lumber plus permitted manual wood gathering/feed for extra generators"
+  },
+  "cleanCheckout": {
+    "sourceCodeCommit": "1de58440b506b1f7ebbfa6e5ff82371d052cfafa",
+    "staticWebRoot": "passed before npm ci/build",
+    "npmCi": "passed",
+    "npmTest": "passed",
+    "pagesBuild": "passed",
+    "pagesPrefix": "/AIGames/",
+    "staticPages": "passed",
+    "worktree": "clean after build",
+    "bundleSHA256": "0874cc4c1c5aa7820d225880598456c4641a14a449acadd6fa3294b41a5c6f76"
+  },
+  "browserRegression": {
+    "source": "passed",
+    "built": "passed",
+    "canvasDimensions": [
+      "1440x900",
+      "390x844",
+      "320x844"
+    ],
+    "pageErrors": 0,
+    "failedRequests": 0
+  },
+  "onboardingRegression": {
+    "source": "passed",
+    "built": "passed",
+    "steps": 14,
+    "touchWidths": [
+      390,
+      320
+    ],
+    "repair": "rotation and live wire cut",
+    "save": "exact repeated toggles and reload",
+    "pageErrors": 0,
+    "failedRequests": 0
+  }
 }
