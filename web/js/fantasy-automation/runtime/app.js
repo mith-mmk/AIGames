@@ -417,6 +417,12 @@ var t = {
 	ghostPort = this.arrow();
 	ghostPower = null;
 	selection = new e.Group();
+	guideMarker = new e.Group();
+	guideDirection = this.arrow(16772738);
+	guideLabel;
+	guideLabelKey = "";
+	guideProjection = new e.Vector3();
+	reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 	raycaster = new e.Raycaster();
 	groundPlane = new e.Plane(new e.Vector3(0, 1, 0), 0);
 	pointerPosition = new e.Vector2();
@@ -436,15 +442,37 @@ var t = {
 		} catch (e) {
 			throw n.onStatus("3D 表示を開始できません。WebGL 対応ブラウザで開き直してください。"), e;
 		}
-		this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2)), this.renderer.outputColorSpace = e.SRGBColorSpace, this.renderer.setClearColor(13491158), t.append(this.renderer.domElement), this.renderer.domElement.addEventListener("pointerleave", () => {
+		this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2)), this.renderer.outputColorSpace = e.SRGBColorSpace, this.renderer.setClearColor(13491158), t.append(this.renderer.domElement), this.guideLabel = document.createElement("div"), this.guideLabel.id = "guide-target", this.guideLabel.hidden = !0, Object.assign(this.guideLabel.style, {
+			position: "absolute",
+			pointerEvents: "none",
+			zIndex: "1",
+			padding: "5px 10px",
+			border: "2px solid #ebcb6d",
+			borderRadius: "8px",
+			background: "#fff5daed",
+			color: "#25483c",
+			font: "bold 12px/1.5 sans-serif",
+			textAlign: "center",
+			whiteSpace: "pre",
+			transform: "translate(-50%, -100%)",
+			boxShadow: "0 3px 10px #17372d35"
+		}), t.append(this.guideLabel), this.renderer.domElement.addEventListener("pointerleave", () => {
 			this.cursorOnMap = !1;
 		}, { signal: this.abort.signal }), this.scene.background = new e.Color(13491158), this.scene.add(new e.HemisphereLight(16775389, 5466213, 2.5));
 		let r = new e.DirectionalLight(16772560, 2.1);
-		r.position.set(-12, 28, 8), this.scene.add(r, this.terrain, this.ghost, this.selection), this.createOutline(this.ghost, 8318383), this.ghostPort.position.set(0, .12, -.37), this.ghost.add(this.ghostPort), this.ghostPower = this.cylinder(this.ghost, 9759487, .085, .14, [
+		r.position.set(-12, 28, 8), this.scene.add(r, this.terrain, this.ghost, this.selection, this.guideMarker), this.createOutline(this.ghost, 8318383), this.ghostPort.position.set(0, .12, -.37), this.ghost.add(this.ghostPort), this.ghostPower = this.cylinder(this.ghost, 9759487, .085, .14, [
 			.38,
 			.22,
 			.38
-		], !0), this.createOutline(this.selection, 16768110), this.ghost.visible = this.selection.visible = !1, this.renderer.domElement.addEventListener("webglcontextlost", (e) => {
+		], !0), this.createOutline(this.selection, 16768110), this.createOutline(this.guideMarker, 16772738), this.guideDirection.position.set(0, .25, 0), this.guideMarker.add(this.guideDirection);
+		let i = this.cylinder(this.guideMarker, 16772738, .14, .35, [
+			0,
+			1.36,
+			0
+		], !0);
+		i.rotation.z = Math.PI, this.guideMarker.traverse((t) => {
+			t instanceof e.Mesh && (t.material = this.material(16772738, 5126412), t.material.depthTest = !1, t.renderOrder = 20);
+		}), this.guideMarker.visible = !1, this.ghost.visible = this.selection.visible = !1, this.renderer.domElement.addEventListener("webglcontextlost", (e) => {
 			e.preventDefault(), this.contextLost = !0, n.onStatus("3D 表示が中断しました。復旧を待っています。進行は保存できます。");
 		}, { signal: this.abort.signal }), this.renderer.domElement.addEventListener("webglcontextrestored", () => {
 			this.contextLost = !1, this.lastTime = performance.now(), this.resize(), n.onStatus("3D 表示を復旧しました。");
@@ -844,7 +872,33 @@ var t = {
 			}
 		}
 		let f = n.selectedId == null ? null : this.facilities.get(n.selectedId);
-		this.selection.visible = !!f, f && this.selection.position.copy(f.group.position), this.contextLost || this.renderer.render(this.scene, this.camera);
+		this.selection.visible = !!f, f && this.selection.position.copy(f.group.position), this.updateGuide(n.guideTarget ?? null, r), this.contextLost || this.renderer.render(this.scene, this.camera);
+	}
+	updateGuide(e, n) {
+		let r = !!e && e.x >= 0 && e.x < 32 && e.z >= 0 && e.z < 32;
+		if (this.guideMarker.visible = r, this.guideLabel.hidden = !r, !r || !e) return;
+		this.guideMarker.position.set(e.x, .09, e.z);
+		let i = this.reducedMotion.matches ? 1.08 : 1.08 + Math.sin(n / 350) * .025;
+		this.guideMarker.scale.set(i, 1, i), this.guideDirection.visible = e.direction !== null, e.direction !== null && (this.guideDirection.rotation.y = -e.direction * Math.PI / 2);
+		let a = `${e.x},${e.z},${e.kind},${e.direction}`;
+		if (a !== this.guideLabelKey) {
+			this.guideLabelKey = a;
+			let n = e.kind ? t[e.kind].label : "この区画", r = e.direction === null ? "" : ` · ${[
+				"北",
+				"東",
+				"南",
+				"西"
+			][e.direction]}向き`;
+			this.guideLabel.textContent = `${n} (${e.x}, ${e.z})${r}\n↓ 光る区画をクリック`, this.guideLabel.dataset.x = String(e.x), this.guideLabel.dataset.z = String(e.z);
+		}
+		let o = this.renderer.domElement.getBoundingClientRect();
+		this.guideProjection.set(e.x, 0, e.z).project(this.camera);
+		let s = o.left + (this.guideProjection.x + 1) * o.width / 2, c = o.top + (1 - this.guideProjection.y) * o.height / 2, l = s.toFixed(2), u = c.toFixed(2);
+		this.guideLabel.dataset.screenX !== l && (this.guideLabel.dataset.screenX = l), this.guideLabel.dataset.screenY !== u && (this.guideLabel.dataset.screenY = u);
+		let d = this.host.getBoundingClientRect(), f = Math.max(110, Math.min(d.width - 110, s - d.left)), p = Math.max(135, Math.min(d.height - 170, c - d.top - 50)), m = `${f}px`, h = `${p}px`;
+		this.guideLabel.style.left !== m && (this.guideLabel.style.left = m), this.guideLabel.style.top !== h && (this.guideLabel.style.top = h);
+		let g = Math.abs(this.guideProjection.x) > 1 || Math.abs(this.guideProjection.y) > 1;
+		this.guideLabel.hidden = g;
 	}
 	pick(e) {
 		this.cursorOnMap = !1;
@@ -877,13 +931,19 @@ var t = {
 	resetCamera() {
 		this.target.set(13, 0, 16), this.bearing = Math.PI / 4, this.extent = 11, this.resize();
 	}
+	revealTile(e, t) {
+		if (this.disposed || e < 0 || e >= 32 || t < 0 || t >= 32) return;
+		this.guideProjection.set(e, 0, t).project(this.camera);
+		let n = Math.max(1, this.host.clientWidth), r = Math.max(1, this.host.clientHeight), i = (this.guideProjection.x + 1) * n / 2, a = (1 - this.guideProjection.y) * r / 2;
+		i >= 32 && i <= n - 32 && a >= 32 && a <= r - 32 || (this.target.set(e, 0, t), this.updateCamera());
+	}
 	dispose() {
 		if (!this.disposed) {
 			this.disposed = !0, this.input.dispose(), this.observer.disconnect(), this.abort.abort();
 			for (let t of this.terrain.children) t instanceof e.InstancedMesh && t.dispose();
 			for (let e of this.geometries.values()) e.dispose();
 			for (let e of this.materials.values()) e.dispose();
-			this.scene.clear(), this.facilities.clear(), this.renderer.dispose(), this.renderer.domElement.remove();
+			this.scene.clear(), this.facilities.clear(), this.renderer.dispose(), this.renderer.domElement.remove(), this.guideLabel.remove();
 		}
 	}
 }, p = {
@@ -927,9 +987,10 @@ var t = {
 	root;
 	callbacks;
 	lastSelected = null;
+	guideLists = "";
 	lastMessage = "";
 	constructor(e, n) {
-		this.root = e, this.callbacks = n, e.innerHTML = "\n      <header class=\"workshop-top\">\n        <a class=\"home-link\" href=\"index.html\" aria-label=\"AI Gamesへ戻る\">‹ AI Games</a>\n        <div class=\"workshop-title\">魔導からくり工房<span>自動納品 <b id=\"delivered-count\">0</b> / 100</span></div>\n        <div class=\"resource-strip\" aria-label=\"所持資源\"><span>木材 <b data-resource=\"wood\">40</b></span><span>鉄鉱石 <b data-resource=\"ore\">0</b></span><span>鉄 <b data-resource=\"ingot\">20</b></span><span>魔力 <b id=\"power-count\">0 / 0</b></span></div>\n        <div class=\"time-controls\" aria-label=\"時間速度\"><button data-speed=\"0\" aria-label=\"一時停止\" title=\"一時停止（Space）\">Ⅱ</button><button data-speed=\"1\" aria-label=\"1倍速\">1×</button><button data-speed=\"2\" aria-label=\"2倍速\">2×</button></div>\n        <details class=\"game-menu\"><summary aria-label=\"操作と保存メニュー\">☰ <span>メニュー</span></summary><div class=\"menu-body\"><div class=\"menu-actions\"><button data-action=\"save\">保存</button><button data-action=\"load\">読込</button><button data-action=\"camera\">視点を戻す</button><button data-action=\"new\">新しい工房</button></div><details><summary>操作方法・つくり方</summary><div class=\"help-text\"><p>鉱脈に採掘機 → ベルト → 魔導炉 → ベルト → 納品箱をつなごう。魔力炉と機械は魔力導線で接続。魔力炉を選び木材を補給すると起動できます。</p><p>最初の配置例（座標 X, Z。地形を指すと座標が表示されます）:<br>採掘機 (12,16) → ベルト (13,16) → 魔導炉 (14,16) → ベルト (15,16) → 納品箱 (16,16)。全て東向き。<br>魔力炉 (12,18) と、導線 (12,17)・(13,17)・(14,17) を設置。魔力炉を選び木材1を補給。<br>木材採取場 (9,18) → ベルト (10,18)・(11,18) → 魔力炉 (12,18) と東向きにつなぐと燃料も自動化。</p><p>左クリック: 配置 / 選択<br>ベルト選択中に左ドラッグ: 連続敷設<br>右ドラッグ / WASD: 移動<br>中ドラッグ / Q・E: 視点回転<br>ホイール: ズーム<br>R: 設備回転、Shift＋クリック: 複製<br>X＋クリック: 撤去、Esc: 建設取消<br>Space: 一時停止 / 再開</p><p>配置プレビュー: 緑は建設可能、赤は建設不可。金の矢印が出力方向。結晶の青は魔力あり、紫は魔力網につながっているが蓄積なし、橙は魔力網に未接続。</p><p>納品に数えるのは自動生産した鉄だけです。採掘機が生産した鉱石を使いましょう。魔力切れは木材の手動補給で復旧できます。保存はこのブラウザの1スロットです。</p></div></details></div></details>\n      </header>\n      <div class=\"workshop-notices\"><p id=\"game-message\" role=\"status\" aria-live=\"polite\">鉱脈に採掘機を建て、工房を動かそう。</p><p id=\"victory-message\" hidden>工房完成！ 鉄延べ棒100本の自動納品を達成しました。続けて工房を拡張できます。</p></div>\n      <aside id=\"selection-panel\" class=\"selection-panel\" hidden aria-label=\"設備の詳細\">\n        <button class=\"panel-close\" data-action=\"close-panel\" aria-label=\"設備詳細を閉じる\">×</button><h2 id=\"selection-title\"></h2><p id=\"selection-description\"></p>\n        <dl><div><dt>稼働状態</dt><dd id=\"selection-status\"></dd></div><div><dt>入出力・方向</dt><dd id=\"selection-direction\"></dd></div><div><dt>内部の資源</dt><dd id=\"selection-buffer\"></dd></div><div><dt>作業進捗</dt><dd id=\"selection-progress\"></dd></div><div><dt>蓄積魔力</dt><dd id=\"selection-power\"></dd></div></dl>\n        <div class=\"selection-actions\"><button data-action=\"rotate\">回転 R</button><button data-action=\"collect\">資源を回収</button><button data-action=\"remove\" class=\"danger\">撤去</button></div>\n        <form id=\"feed-form\"><label>手動補給<select id=\"feed-resource\"><option value=\"wood\">木材</option><option value=\"ore\">鉄鉱石</option><option value=\"ingot\">鉄延べ棒</option></select></label><label>個数<input id=\"feed-amount\" type=\"number\" min=\"1\" max=\"1000\" step=\"1\" value=\"1\" inputmode=\"numeric\"></label><button type=\"submit\" data-action=\"feed\">補給する</button><small>手動補給した素材は自動納品に数えません。</small></form>\n      </aside>\n      <footer class=\"build-dock\"><div class=\"build-context\"><span id=\"build-context\">設備を選んで建設</span><button data-action=\"rotate\" aria-label=\"建設方向を回転\">↻ R</button><button data-action=\"cancel\">取消 Esc</button></div><nav class=\"build-palette\" aria-label=\"建設する設備\"></nav></footer>";
+		this.root = e, this.callbacks = n, e.innerHTML = "\n      <header class=\"workshop-top\">\n        <a class=\"home-link\" href=\"index.html\" aria-label=\"AI Gamesへ戻る\">‹ AI Games</a>\n        <div class=\"workshop-title\">魔導からくり工房<span>自動納品 <b id=\"delivered-count\">0</b> / 100</span></div>\n        <div class=\"resource-strip\" aria-label=\"所持資源\"><span>木材 <b data-resource=\"wood\">40</b></span><span>鉄鉱石 <b data-resource=\"ore\">0</b></span><span>鉄 <b data-resource=\"ingot\">20</b></span><span>魔力 <b id=\"power-count\">0 / 0</b></span></div>\n        <div class=\"time-controls\" aria-label=\"時間速度\"><button data-speed=\"0\" aria-label=\"一時停止\" title=\"一時停止（Space）\">Ⅱ</button><button data-speed=\"1\" aria-label=\"1倍速\">1×</button><button data-speed=\"2\" aria-label=\"2倍速\">2×</button></div>\n        <details class=\"game-menu\"><summary aria-label=\"操作と保存メニュー\">☰ <span>メニュー</span></summary><div class=\"menu-body\"><div class=\"menu-actions\"><button data-action=\"save\">保存</button><button data-action=\"load\">読込</button><button data-action=\"camera\">視点を戻す</button><button data-action=\"new\">新しい工房</button><button data-action=\"guide-open\">はじめての案内</button></div><details><summary>操作方法・つくり方</summary><div class=\"help-text\"><p>鉱脈に採掘機 → ベルト → 魔導炉 → ベルト → 納品箱をつなごう。魔力炉と機械は魔力導線で接続。魔力炉を選び木材を補給すると起動できます。</p><p>最初の配置例（座標 X, Z。地形を指すと座標が表示されます）:<br>採掘機 (12,16) → ベルト (13,16) → 魔導炉 (14,16) → ベルト (15,16) → 納品箱 (16,16)。全て東向き。<br>魔力炉 (12,18) と、導線 (12,17)・(13,17)・(14,17) を設置。魔力炉を選び木材1を補給。<br>木材採取場 (9,18) → ベルト (10,18)・(11,18) → 魔力炉 (12,18) と東向きにつなぐと燃料も自動化。</p><p>左クリック: 配置 / 選択<br>ベルト選択中に左ドラッグ: 連続敷設<br>右ドラッグ / WASD: 移動<br>中ドラッグ / Q・E: 視点回転<br>ホイール: ズーム<br>R: 設備回転、Shift＋クリック: 複製<br>X＋クリック: 撤去、Esc: 建設取消<br>Space: 一時停止 / 再開</p><p>配置プレビュー: 緑は建設可能、赤は建設不可。金の矢印が出力方向。結晶の青は魔力あり、紫は魔力網につながっているが蓄積なし、橙は魔力網に未接続。</p><p>納品に数えるのは自動生産した鉄だけです。採掘機が生産した鉱石を使いましょう。魔力切れは木材の手動補給で復旧できます。保存はこのブラウザの1スロットです。</p></div></details></div></details>\n      </header>\n      <aside id=\"guide-card\" class=\"guide-card\" hidden aria-label=\"はじめての工房づくり\">\n        <div class=\"guide-heading\"><span>鉄100本を自動納品しよう</span><button data-action=\"guide-close\" aria-label=\"案内を閉じる\">案内を閉じる</button></div>\n        <div id=\"guide-progress\" class=\"guide-progress\"></div><h2 id=\"guide-title\"></h2><button data-action=\"guide-action\" class=\"guide-action\">この設備を選ぶ</button><p id=\"guide-text\"></p>\n        <p id=\"guide-step-target\" class=\"guide-target\"></p><p id=\"guide-instruction\"></p>\n        <ul id=\"guide-blockers\" class=\"guide-blockers\"></ul><details id=\"guide-check-details\"><summary id=\"guide-check-summary\">組立チェック</summary><ul id=\"guide-checks\" class=\"guide-checks\"></ul></details><p id=\"guide-feedback\" class=\"guide-feedback\" role=\"status\" aria-live=\"polite\" hidden></p><small class=\"guide-next\">条件を満たすと、次の案内へ進みます。</small>\n      </aside>\n      <div class=\"workshop-notices\"><p id=\"game-message\" role=\"status\" aria-live=\"polite\">鉱脈に採掘機を建て、工房を動かそう。</p><p id=\"victory-message\" hidden>工房完成！ 鉄延べ棒100本の自動納品を達成しました。続けて工房を拡張できます。</p></div>\n      <aside id=\"selection-panel\" class=\"selection-panel\" hidden aria-label=\"設備の詳細\">\n        <button class=\"panel-close\" data-action=\"close-panel\" aria-label=\"設備詳細を閉じる\">×</button><h2 id=\"selection-title\"></h2><p id=\"selection-description\"></p>\n        <dl><div><dt>稼働状態</dt><dd id=\"selection-status\"></dd></div><div><dt>入出力・方向</dt><dd id=\"selection-direction\"></dd></div><div><dt>内部の資源</dt><dd id=\"selection-buffer\"></dd></div><div><dt>作業進捗</dt><dd id=\"selection-progress\"></dd></div><div><dt>蓄積魔力</dt><dd id=\"selection-power\"></dd></div></dl>\n        <div class=\"selection-actions\"><button data-action=\"rotate\">回転 R</button><button data-action=\"collect\">資源を回収</button><button data-action=\"remove\" class=\"danger\">撤去</button></div>\n        <form id=\"feed-form\"><label>手動補給<select id=\"feed-resource\"><option value=\"wood\">木材</option><option value=\"ore\">鉄鉱石</option><option value=\"ingot\">鉄延べ棒</option></select></label><label>個数<input id=\"feed-amount\" type=\"number\" min=\"1\" max=\"1000\" step=\"1\" value=\"1\" inputmode=\"numeric\"></label><button type=\"submit\" data-action=\"feed\">補給する</button><small>手動の鉱石・延べ棒は目標に含めません。木材燃料は手動補給できます。</small></form>\n      </aside>\n      <footer class=\"build-dock\"><div class=\"build-context\"><span id=\"build-context\">設備を選んで建設</span><button data-action=\"rotate\" aria-label=\"建設方向を回転\">↻ R</button><button data-action=\"cancel\">取消 Esc</button></div><nav class=\"build-palette\" aria-label=\"建設する設備\"></nav></footer>";
 		let r = this.node(".build-palette");
 		for (let e of h) {
 			let n = t[e], i = document.createElement("button");
@@ -948,15 +1009,7 @@ var t = {
 			"ore",
 			"ingot"
 		]) this.resourceNodes.set(e, this.node(`[data-resource="${e}"]`));
-		e.querySelectorAll("[data-speed]").forEach((e) => this.speedButtons.set(Number(e.dataset.speed), e)), e.addEventListener("click", (e) => this.handleClick(e), { signal: this.controller.signal }), this.node("#feed-form").addEventListener("submit", (e) => this.handleFeed(e), { signal: this.controller.signal });
-		for (let t of [
-			"pointerdown",
-			"wheel",
-			"contextmenu"
-		]) e.addEventListener(t, (e) => e.stopPropagation(), { signal: this.controller.signal });
-		e.addEventListener("keydown", (e) => {
-			(e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) && e.stopPropagation();
-		}, { signal: this.controller.signal });
+		e.querySelectorAll("[data-speed]").forEach((e) => this.speedButtons.set(Number(e.dataset.speed), e)), y(this, e, this.controller.signal);
 	}
 	node(e) {
 		let t = this.root.querySelector(e);
@@ -991,6 +1044,15 @@ var t = {
 		else if (n === "remove") this.callbacks.onRemove();
 		else if (n === "collect") this.callbacks.onCollect();
 		else if (n === "cancel") this.callbacks.onCancel();
+		else if (n === "guide-action") {
+			let e = this.node("#guide-card").dataset.guideMode;
+			if (e === "rotate" || e === "feed") {
+				this.node("#selection-panel").classList.remove("is-collapsed");
+				let e = this.node("[data-action=\"close-panel\"]");
+				e.textContent = "×", e.setAttribute("aria-label", "設備詳細を閉じる");
+			}
+			this.callbacks.onGuideAction();
+		} else if (n === "guide-open" || n === "guide-close") this.callbacks.onGuideToggle(n === "guide-open"), n === "guide-open" && (this.node(".game-menu").open = !1);
 		else if (n === "close-panel") {
 			let e = this.node("#selection-panel").classList.toggle("is-collapsed");
 			t.textContent = e ? "+" : "×", t.setAttribute("aria-label", e ? "設備詳細を開く" : "設備詳細を閉じる");
@@ -1001,7 +1063,55 @@ var t = {
 		let t = this.node("#feed-resource").value, n = Number(this.node("#feed-amount").value);
 		Number.isSafeInteger(n) && n > 0 && n <= 1e3 && this.callbacks.onFeed(t, n);
 	}
+	updateGuide(e) {
+		let n = this.node("#guide-card");
+		if (n.hidden = !e, this.root.classList.toggle("guide-open", !!e), this.node("#game-message").hidden = !!e, !e) return;
+		n.dataset.guideId = e.id, n.dataset.guideMode = e.mode, this.text("#guide-progress", `${e.step} / ${e.total} · はじめての工房づくり`), this.text("#guide-title", e.title), this.text("#guide-text", e.text);
+		let r = [
+			e.kind ? t[e.kind].label : "",
+			e.direction === null ? "" : `出力 ${m[e.direction]}`,
+			e.target ? `目印 (${e.target.x}, ${e.target.z})` : ""
+		].filter(Boolean).join(" · ");
+		this.text("#guide-step-target", r), this.node("#guide-step-target").hidden = !r, this.text("[data-action=\"guide-action\"]", {
+			build: "この設備を選ぶ",
+			rotate: "設備の詳細を開く",
+			feed: "設備の詳細を開く",
+			run: "1×で動かす",
+			done: "自由建設へ"
+		}[e.mode]);
+		let i = {
+			build: e.target ? "「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。" : "「この設備を選ぶ」を押し、つなぎたい区画をクリックしてください。",
+			rotate: "「設備の詳細を開く」→「回転 R」で向きを変更してください。",
+			feed: "「設備の詳細を開く」→木材・個数1を選び「補給する」を押してください。",
+			run: "「1×で動かす」を押して、採掘・搬送・精錬が進むのを見てみましょう。",
+			done: "「自由建設へ」で案内を閉じられます。メニューからいつでも再表示できます。"
+		};
+		this.text("#guide-instruction", i[e.mode]), this.node("#guide-check-details").hidden = !e.checks.length, this.text("#guide-check-summary", `済 ${e.checks.length}段階 · 直近の組立チェック`), this.node(".guide-next").hidden = e.mode === "done";
+		let a = JSON.stringify([e.blockers, e.checks]);
+		if (a !== this.guideLists) {
+			for (let [t, n, r] of [[
+				"#guide-blockers",
+				e.blockers,
+				"確認: "
+			], [
+				"#guide-checks",
+				e.checks.slice(-2),
+				"✓ "
+			]]) {
+				let e = this.node(t);
+				e.replaceChildren(), e.hidden = !n.length;
+				for (let t of n) {
+					let n = document.createElement("li");
+					n.textContent = r + t, e.append(n);
+				}
+			}
+			this.guideLists = a;
+		}
+	}
 	update(e, r) {
+		this.updateGuide(r.guide ?? null);
+		let i = !!r.guide && /保存|読込|読み込|再開しました|WebGL|表示でき|できません|不正|素材を補給しました/.test(r.message);
+		this.node("#guide-feedback").hidden = !i, i && this.text("#guide-feedback", r.message);
 		for (let t of [
 			"wood",
 			"ore",
@@ -1020,42 +1130,56 @@ var t = {
 			i.classList.toggle("unaffordable", !c), i.setAttribute("aria-label", `${t[n].label}、${s}${c ? "" : "、資源不足"}`);
 		}
 		this.text("#build-context", `${r.kind ? `${t[r.kind].label} · 出力 ${m[r.direction]}` : "設備を選んで建設"}${r.hover ? ` · (${r.hover.x}, ${r.hover.z})` : ""}`);
-		let i = e.buildings.find((e) => e.id === r.selectedId), a = this.node("#selection-panel");
-		if (!i) a.hidden = !0;
+		let a = e.buildings.find((e) => e.id === r.selectedId), o = this.node("#selection-panel");
+		if (this.root.classList.toggle("has-selection", !!a), !a) o.hidden = !0;
 		else {
 			if (r.selectedId !== this.lastSelected) {
-				a.hidden = !1, a.classList.remove("is-collapsed");
+				o.hidden = !1, o.classList.remove("is-collapsed");
 				let e = this.node("[data-action=\"close-panel\"]");
 				e.textContent = "×", e.setAttribute("aria-label", "設備詳細を閉じる");
 				let t = this.node("#feed-resource");
-				t.value = i.kind === "generator" ? "wood" : i.kind === "smelter" ? "ore" : "ingot";
+				t.value = a.kind === "generator" ? "wood" : a.kind === "smelter" ? "ore" : "ingot";
 			}
-			this.text("#selection-title", `${t[i.kind].label} (${i.x}, ${i.z})`), this.text("#selection-description", _[i.kind]), this.text("#selection-status", i.status || (i.working ? "稼働中" : "待機中")), this.text("#selection-direction", `${m[i.direction]}${i.kind === "wire" || i.kind === "generator" ? " · 隣接へ魔力接続" : " · 入力は隣接から"}`);
+			this.text("#selection-title", `${t[a.kind].label} (${a.x}, ${a.z})`), this.text("#selection-description", _[a.kind]), this.text("#selection-status", a.status || (a.working ? "稼働中" : "待機中")), this.text("#selection-direction", `${m[a.direction]}${a.kind === "wire" || a.kind === "generator" ? " · 隣接へ魔力接続" : " · 入力は隣接から"}`);
 			let e = {
 				wood: 0,
 				ore: 0,
 				ingot: 0
 			};
 			[
-				...i.input,
-				...i.output,
-				...i.item ? [i.item] : []
-			].forEach((t) => e[t.resource]++), this.text("#selection-buffer", Object.entries(e).filter(([, e]) => e > 0).map(([e, t]) => `${p[e]} ${t}`).join("、") || "なし"), this.text("#selection-progress", i.kind === "belt" ? `${Math.round(i.beltProgress / n * 100)}%` : `${i.progress.toFixed(1)}秒${t[i.kind].seconds ? ` / ${t[i.kind].seconds}秒` : ""}`), this.text("#selection-power", `${Math.floor(i.energy)}${i.pendingEnergy ? ` · 内部完成 ${i.pendingEnergy}` : ""}`), this.node("#feed-form").hidden = ![
+				...a.input,
+				...a.output,
+				...a.item ? [a.item] : []
+			].forEach((t) => e[t.resource]++), this.text("#selection-buffer", Object.entries(e).filter(([, e]) => e > 0).map(([e, t]) => `${p[e]} ${t}`).join("、") || "なし"), this.text("#selection-progress", a.kind === "belt" ? `${Math.round(a.beltProgress / n * 100)}%` : `${a.progress.toFixed(1)}秒${t[a.kind].seconds ? ` / ${t[a.kind].seconds}秒` : ""}`), this.text("#selection-power", `${Math.floor(a.energy)}${a.pendingEnergy ? ` · 内部完成 ${a.pendingEnergy}` : ""}`), this.node("#feed-form").hidden = ![
 				"generator",
 				"smelter",
 				"delivery"
-			].includes(i.kind);
+			].includes(a.kind);
 		}
 		this.lastSelected = r.selectedId;
 	}
 	dispose() {
 		this.controller.abort(), this.root.replaceChildren();
 	}
-}, y = [
+};
+function y(e, t, n) {
+	t.addEventListener("click", (t) => e.handleClick(t), { signal: n }), t.querySelector("#feed-form").addEventListener("submit", (t) => e.handleFeed(t), { signal: n });
+	for (let e of [
+		"pointerdown",
+		"wheel",
+		"contextmenu"
+	]) t.addEventListener(e, (e) => e.stopPropagation(), { signal: n });
+	t.addEventListener("keydown", (e) => {
+		(e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) && e.stopPropagation();
+	}, { signal: n });
+}
+//#endregion
+//#region web/js/fantasy-automation/storage.ts
+var b = [
 	"wood",
 	"ore",
 	"ingot"
-], b = [
+], x = [
 	"miner",
 	"belt",
 	"smelter",
@@ -1063,39 +1187,39 @@ var t = {
 	"wire",
 	"lumber",
 	"delivery"
-], x = [
+], S = [
 	"grass",
 	"ore",
 	"forest"
-], S = "aigames-fantasy-automation", C = "saves", w = "workshop";
-function T(e, t, n) {
+], C = "aigames-fantasy-automation", w = "saves", T = "workshop";
+function E(e, t, n) {
 	if (!e || typeof e != "object" || Array.isArray(e)) throw Error(`${n}が正しくありません。`);
 	let r = e;
 	if (Object.keys(r).some((e) => !t.includes(e))) throw Error(`${n}に未対応の項目があります。`);
 	return r;
 }
-function E(e, t, n = 2 ** 53 - 1, r = !0) {
+function D(e, t, n = 2 ** 53 - 1, r = !0) {
 	if (typeof e != "number" || !Number.isFinite(e) || e < 0 || e > n || r && !Number.isSafeInteger(e)) throw Error(`${t}の数値が正しくありません。`);
 	return e;
 }
-function D(e, t) {
+function O(e, t) {
 	if (typeof e != "boolean") throw Error(`${t}が正しくありません。`);
 	return e;
 }
-function O(e) {
-	let t = T(e, ["resource", "automated"], "搬送品");
-	if (!y.includes(t.resource)) throw Error("保存された資源が未対応です。");
+function k(e) {
+	let t = E(e, ["resource", "automated"], "搬送品");
+	if (!b.includes(t.resource)) throw Error("保存された資源が未対応です。");
 	return {
 		resource: t.resource,
-		automated: D(t.automated, "自動生産フラグ")
+		automated: O(t.automated, "自動生産フラグ")
 	};
 }
-function k(e, t) {
+function A(e, t) {
 	if (!Array.isArray(e) || e.length > t) throw Error("設備バッファが正しくありません。");
-	return e.map(O);
+	return e.map(k);
 }
-function A(e) {
-	let r = T(e, [
+function j(e) {
+	let r = E(e, [
 		"id",
 		"kind",
 		"x",
@@ -1111,29 +1235,29 @@ function A(e) {
 		"beltProgress",
 		"pendingEnergy"
 	], "設備");
-	if (!b.includes(r.kind)) throw Error("保存された設備が未対応です。");
+	if (!x.includes(r.kind)) throw Error("保存された設備が未対応です。");
 	if (typeof r.status != "string" || r.status.length > 256) throw Error("設備の状態が正しくありません。");
-	let i = E(r.id, "設備ID");
+	let i = D(r.id, "設備ID");
 	if (i === 0) throw Error("設備IDが正しくありません。");
 	let a = {
 		id: i,
 		kind: r.kind,
-		x: E(r.x, "X座標", 31),
-		z: E(r.z, "Z座標", 31),
-		direction: E(r.direction, "方向", 3),
-		input: k(r.input, 8),
-		output: k(r.output, 4),
-		progress: E(r.progress, "作業進捗", t[r.kind].seconds ?? 0, !1),
-		working: D(r.working, "作業フラグ"),
-		energy: E(r.energy, "魔力", 30, !1),
+		x: D(r.x, "X座標", 31),
+		z: D(r.z, "Z座標", 31),
+		direction: D(r.direction, "方向", 3),
+		input: A(r.input, 8),
+		output: A(r.output, 4),
+		progress: D(r.progress, "作業進捗", t[r.kind].seconds ?? 0, !1),
+		working: O(r.working, "作業フラグ"),
+		energy: D(r.energy, "魔力", 30, !1),
 		status: r.status,
-		item: r.item === null ? null : O(r.item),
-		beltProgress: E(r.beltProgress, "搬送進捗", n, !1),
-		...Object.hasOwn(r, "pendingEnergy") ? { pendingEnergy: E(r.pendingEnergy, "内部完成魔力", 30, !1) } : {}
+		item: r.item === null ? null : k(r.item),
+		beltProgress: D(r.beltProgress, "搬送進捗", n, !1),
+		...Object.hasOwn(r, "pendingEnergy") ? { pendingEnergy: D(r.pendingEnergy, "内部完成魔力", 30, !1) } : {}
 	};
-	return j(a), a;
+	return M(a), a;
 }
-function j(e) {
+function M(e) {
 	let n = t[e.kind], r = n.input ?? {};
 	if (e.kind === "belt") {
 		if (e.input.length || e.output.length || e.progress || e.working || !e.item && e.beltProgress) throw Error("ベルトの搬送状態が正しくありません。");
@@ -1150,8 +1274,8 @@ function j(e) {
 	}
 	if ((e.pendingEnergy ?? 0) > 0 && (!e.working || e.progress !== n.seconds)) throw Error("完成魔力の待機状態が正しくありません。");
 }
-function M(e) {
-	let t = T(e, [
+function N(e) {
+	let t = E(e, [
 		"version",
 		"seed",
 		"tick",
@@ -1166,32 +1290,32 @@ function M(e) {
 	if (t.version !== 1) throw Error("この保存形式には対応していません（対応: version 1）。");
 	return t;
 }
-function N(e) {
-	let t = M(e);
-	if (!Array.isArray(t.terrain) || t.terrain.length !== 1024 || t.terrain.some((e) => !x.includes(e))) throw Error("保存された地形が正しくありません。");
-	let n = T(t.inventory, y, "所持資源"), r = T(t.kits, b, "所持設備"), i = {};
-	for (let e of b) Object.hasOwn(r, e) && (i[e] = E(r[e], "所持設備数"));
+function P(e) {
+	let t = N(e);
+	if (!Array.isArray(t.terrain) || t.terrain.length !== 1024 || t.terrain.some((e) => !S.includes(e))) throw Error("保存された地形が正しくありません。");
+	let n = E(t.inventory, b, "所持資源"), r = E(t.kits, x, "所持設備"), i = {};
+	for (let e of x) Object.hasOwn(r, e) && (i[e] = D(r[e], "所持設備数"));
 	if (!Array.isArray(t.buildings) || t.buildings.length > 1024) throw Error("設備一覧が正しくありません。");
-	let a = t.buildings.map(A), o = /* @__PURE__ */ new Set(), s = /* @__PURE__ */ new Set();
+	let a = t.buildings.map(j), o = /* @__PURE__ */ new Set(), s = /* @__PURE__ */ new Set();
 	for (let e of a) {
 		let n = `${e.x},${e.z}`;
 		if (o.has(e.id) || s.has(n)) throw Error("設備IDまたは配置が重複しています。");
 		if (o.add(e.id), s.add(n), e.kind === "miner" && t.terrain[e.z * 32 + e.x] !== "ore" || e.kind === "lumber" && t.terrain[e.z * 32 + e.x] !== "forest") throw Error("設備と地形が一致していません。");
 	}
-	let c = E(t.nextId, "次の設備ID");
+	let c = D(t.nextId, "次の設備ID");
 	if (c < 1 || a.some((e) => e.id >= c)) throw Error("次の設備IDが正しくありません。");
-	let l = E(t.delivered, "自動納品数"), u = D(t.won, "クリアフラグ");
+	let l = D(t.delivered, "自動納品数"), u = O(t.won, "クリアフラグ");
 	if (u !== l >= 100) throw Error("納品数とクリア状態が一致していません。");
 	return {
 		version: 1,
-		seed: E(t.seed, "地形シード"),
-		tick: E(t.tick, "経過時間"),
+		seed: D(t.seed, "地形シード"),
+		tick: D(t.tick, "経過時間"),
 		nextId: c,
 		terrain: [...t.terrain],
 		inventory: {
-			wood: E(n.wood, "木材"),
-			ore: E(n.ore, "鉄鉱石"),
-			ingot: E(n.ingot, "鉄延べ棒")
+			wood: D(n.wood, "木材"),
+			ore: D(n.ore, "鉄鉱石"),
+			ingot: D(n.ingot, "鉄延べ棒")
 		},
 		kits: i,
 		buildings: a,
@@ -1199,7 +1323,7 @@ function N(e) {
 		won: u
 	};
 }
-var P = class {
+var F = class {
 	database = null;
 	open() {
 		return this.database ||= new Promise((e, t) => {
@@ -1207,9 +1331,9 @@ var P = class {
 				t(/* @__PURE__ */ Error("この環境では保存機能を利用できません。"));
 				return;
 			}
-			let n = indexedDB.open(S, 1);
+			let n = indexedDB.open(C, 1);
 			n.onupgradeneeded = () => {
-				n.result.objectStoreNames.contains(C) || n.result.createObjectStore(C);
+				n.result.objectStoreNames.contains(w) || n.result.createObjectStore(w);
 			}, n.onerror = () => t(/* @__PURE__ */ Error("保存領域を開けませんでした。")), n.onblocked = () => t(/* @__PURE__ */ Error("別のタブを閉じてから保存してください。")), n.onsuccess = () => {
 				let t = n.result;
 				t.onversionchange = () => {
@@ -1223,24 +1347,24 @@ var P = class {
 	async transaction(e, t) {
 		let n = await this.open();
 		return new Promise((r, i) => {
-			let a = n.transaction(C, e), o = t(a.objectStore(C)), s;
+			let a = n.transaction(w, e), o = t(a.objectStore(w)), s;
 			o.onsuccess = () => {
 				s = o.result;
 			}, a.oncomplete = () => r(s), a.onerror = () => i(/* @__PURE__ */ Error("保存領域へのアクセスに失敗しました。")), a.onabort = () => i(/* @__PURE__ */ Error("保存処理が中断されました。"));
 		});
 	}
 	async load() {
-		let e = await this.transaction("readonly", (e) => e.get(w));
-		return e === void 0 ? null : N(e);
+		let e = await this.transaction("readonly", (e) => e.get(T));
+		return e === void 0 ? null : P(e);
 	}
 	async save(e) {
-		let t = N(e);
-		await this.transaction("readwrite", (e) => e.put(t, w));
+		let t = P(e);
+		await this.transaction("readwrite", (e) => e.put(t, T));
 	}
 	async clear() {
-		await this.transaction("readwrite", (e) => e.delete(w));
+		await this.transaction("readwrite", (e) => e.delete(T));
 	}
-}, F = class {
+}, I = class {
 	constructor({ step: e, render: t, stepSeconds: n = 1 / 20, maxSteps: r = 8 }) {
 		if (typeof e != "function" || typeof t != "function") throw TypeError("step and render must be functions");
 		if (!Number.isFinite(n) || n <= 0) throw RangeError("stepSeconds must be finite and positive");
@@ -1262,9 +1386,269 @@ var P = class {
 	reset() {
 		this.accumulator = 0;
 	}
-}, I = class {
+}, L = 14, R = {
+	wood: "木材",
+	ore: "鉄鉱石",
+	ingot: "鉄延べ棒"
+}, z = [
+	"generator",
+	"wire",
+	"miner",
+	"smelter"
+], B = [
+	{
+		id: "miner",
+		kind: "miner",
+		x: 12,
+		z: 16,
+		direction: 1,
+		text: "まずは見本の配置で工房を作ります。鉄鉱脈の光る区画に採掘機を置き、東→の向き（目印の矢印と同じ）へ出力します。"
+	},
+	{
+		id: "belt-ore",
+		kind: "belt",
+		x: 13,
+		z: 16,
+		direction: 1,
+		text: "採掘機の東隣にベルトを置き、鉄鉱石を次の区画へ運びます。矢印は東へ。"
+	},
+	{
+		id: "smelter",
+		kind: "smelter",
+		x: 14,
+		z: 16,
+		direction: 1,
+		text: "ベルトの東隣に魔導炉を置きます。鉱石2個から延べ棒1本を作ります。出力は東へ。"
+	},
+	{
+		id: "belt-ingot",
+		kind: "belt",
+		x: 15,
+		z: 16,
+		direction: 1,
+		text: "魔導炉の東隣にベルトを置きます。完成した延べ棒を東へ運びます。"
+	},
+	{
+		id: "delivery",
+		kind: "delivery",
+		x: 16,
+		z: 16,
+		direction: null,
+		text: "ベルトの東隣に納品箱を置きます。ここへ届いた自動生産の延べ棒が目標に加算されます。"
+	},
+	{
+		id: "generator",
+		kind: "generator",
+		x: 12,
+		z: 18,
+		direction: null,
+		text: "採掘機から南へ2区画の場所に魔力炉を置きます。木材を燃料に魔力を作ります。"
+	},
+	{
+		id: "wire-miner",
+		kind: "wire",
+		x: 12,
+		z: 17,
+		direction: null,
+		text: "魔力炉と採掘機の間に導線を置き、魔力をつなぎます。導線の向きは関係ありません。"
+	},
+	{
+		id: "wire-link",
+		kind: "wire",
+		x: 13,
+		z: 17,
+		direction: null,
+		text: "導線を東へ延ばします。隣り合う導線と設備が1つの魔力網になります。"
+	},
+	{
+		id: "wire-smelter",
+		kind: "wire",
+		x: 14,
+		z: 17,
+		direction: null,
+		text: "魔導炉の南隣にも導線を置きます。採掘機と魔導炉の両方に魔力が届く形です。"
+	}
+], V = [
+	{
+		id: "lumber",
+		kind: "lumber",
+		x: 9,
+		z: 18,
+		direction: 1,
+		text: "森林に木材採取場を置き、矢印を東へ。3秒ごとに木材を作り、燃料補給を自動化します。"
+	},
+	{
+		id: "belt-wood-1",
+		kind: "belt",
+		x: 10,
+		z: 18,
+		direction: 1,
+		text: "木材採取場の東隣にベルトを置きます。木材を魔力炉へ向けて東へ運びます。"
+	},
+	{
+		id: "belt-wood-2",
+		kind: "belt",
+		x: 11,
+		z: 18,
+		direction: 1,
+		text: "もう1区画、東向きのベルトを置きます。木材採取場から魔力炉まで連結すれば手動補給が不要になります。"
+	}
+], H = (e, t, n) => e.buildings.find((e) => e.x === t && e.z === n), U = (e, t) => `（${e}, ${t}）`;
+function W(e, t, n, r, i, a = {}) {
+	return {
+		id: t,
+		step: e,
+		total: L,
+		title: n,
+		text: r,
+		kind: null,
+		target: null,
+		direction: null,
+		focusId: null,
+		mode: "run",
+		blockers: [],
+		checks: [...i],
+		...a
+	};
+}
+function G(e, n, r, i) {
+	let a = H(e, n.x, n.z), o = t[n.kind].label;
+	if (a?.kind === n.kind && (n.direction === null || a.direction === n.direction)) return null;
+	let s = {
+		x: n.x,
+		z: n.z
+	};
+	if (a?.kind === n.kind) {
+		let e = (n.direction - a.direction + 4) % 4;
+		return W(r, n.id, `${o}の出力を東へ向ける`, `${U(n.x, n.z)}の${o}を選択し、Rを${e}回押してください。東→の向き（目印の矢印と同じ）へ合わせます。`, i, {
+			kind: n.kind,
+			target: s,
+			direction: n.direction,
+			focusId: a.id,
+			mode: "rotate",
+			blockers: ["出力方向が違うため、次の設備へ搬送できません。"]
+		});
+	}
+	let c = [];
+	if (a && c.push(`${U(n.x, n.z)}には${t[a.kind].label}があります。Xを押してこの区画をクリックし、撤去してから建ててください。`), !(e.kits[n.kind] ?? 0)) for (let r of Object.keys(t[n.kind].cost)) {
+		let i = t[n.kind].cost[r] - e.inventory[r];
+		i > 0 && c.push(`${R[r]}があと${i}個必要です。設備を選択して中身を回収するか、稼働中の工房から素材を集めてください。`);
+	}
+	return n.kind === "wire" && c.push("ここが途切れると採掘機・魔導炉が停止します。隣接する区画へ導線をつないでください。"), W(r, n.id, `${o}を${U(n.x, n.z)}に置く`, n.text, i, {
+		kind: n.kind,
+		target: s,
+		direction: n.direction,
+		focusId: a?.id ?? null,
+		mode: "build",
+		blockers: c
+	});
+}
+function K(e) {
+	return e.buildings.filter((e) => e.kind === "lumber").some((t) => {
+		let n = /* @__PURE__ */ new Set(), r = t;
+		for (; r && !n.has(r.id);) {
+			n.add(r.id);
+			let [t, a] = i[r.direction];
+			if (r = H(e, r.x + t, r.z + a), r?.kind === "generator") return !0;
+			if (r?.kind !== "belt") return !1;
+		}
+		return !1;
+	});
+}
+function q(e, t) {
+	let n = /* @__PURE__ */ new Set([t.id]), r = [t];
+	for (let t = 0; t < r.length; t++) {
+		let a = r[t];
+		if (a.kind === "generator") return !0;
+		for (let [t, o] of i) {
+			let i = H(e, a.x + t, a.z + o);
+			i && z.includes(i.kind) && !n.has(i.id) && (n.add(i.id), r.push(i));
+		}
+	}
+	return !1;
+}
+function J(e) {
+	let r = [];
+	for (let i of B) {
+		let a = H(e, i.x, i.z);
+		if (!a || a.kind !== i.kind) continue;
+		let o = `${t[a.kind].label}${U(a.x, a.z)}`;
+		(a.kind === "miner" || a.kind === "smelter") && !q(e, a) && r.push(`${o}に魔力が届きません。導線の切れ目をつなぎ直してください。`), a.kind === "belt" && a.item && a.beltProgress + 1e-9 >= n && r.push(`${o}の品が滞留しています。先の設備の向き・入力庫・詰まりを確認し、不要な品は「回収」で取り出してください。`);
+		let s = i.id === "belt-ore" ? "ore" : i.id === "belt-ingot" ? "ingot" : null;
+		s && a.item && a.item.resource !== s && r.push(`${o}には${R[a.item.resource]}があります。この経路で運ぶ${R[s]}と違うため、「回収」で取り出してください。`), a.output.length >= 4 && r.push(`${o}の出力庫が満杯です。東向きのベルトと搬送先の詰まりを確認してください。`), a.kind === "smelter" && a.input.length >= 8 && r.push(`${o}の入力庫が満杯です。魔力と出力先を確認してください。`);
+	}
+	return r;
+}
+function Y(e) {
+	let n = [], r = H(e, 12, 16)?.kind === "miner" && H(e, 14, 16)?.kind === "smelter" && H(e, 12, 18)?.kind === "generator";
+	if (e.delivered >= 1 && r) {
+		for (let t = 0; t < B.length; t++) {
+			let r = G(e, B[t], t + 1, n);
+			if (r) return {
+				...r,
+				title: `工房を復旧：${r.title}`,
+				text: `見本の工房の経路が変わっています。自動納品を続けるため、この区画を直しましょう。${r.text}`
+			};
+		}
+		n.push("見本の採掘・精錬・納品経路と導線を確認");
+	}
+	if (e.delivered < 1) {
+		for (let r = 0; r < B.length; r++) {
+			let i = B[r], a = G(e, i, r + 1, n);
+			if (a) return a;
+			n.push(`${t[i.kind].label}${U(i.x, i.z)}を配置済み`);
+		}
+		let r = H(e, 12, 18);
+		if (!(r.working || r.input.some((e) => e.resource === "wood") || r.energy > 0 || (r.pendingEnergy ?? 0) > 0)) return W(10, "feed", "魔力炉へ木材を1個補給する", "魔力炉を選択し「設備の詳細を開く」へ。「手動補給」で木材・個数1を選び、「補給する」を押してください。木材は10秒で魔力になります。このあと燃料も自動化します。", n, {
+			kind: "generator",
+			target: {
+				x: 12,
+				z: 18
+			},
+			focusId: r.id,
+			mode: "feed",
+			blockers: e.inventory.wood < 1 ? ["木材が1個必要です。木材採取場などの中身を回収してください。"] : []
+		});
+		if (n.push("魔力炉に燃料、稼働中の仕事、または蓄積魔力があります"), r.working && !(r.pendingEnergy ?? 0)) {
+			let e = Math.max(0, Math.ceil(t.generator.seconds - r.progress));
+			n.push(`魔力炉は稼働中：魔力生成まであと${e}秒（正常な待ち時間）`);
+		}
+		return W(11, "run", "最初の延べ棒が届くのを待つ", "1×または2×で動かしてください。初回は燃料の10秒、採掘、精錬、搬送の順で進みます。自動納品が1本になると次へ進みます。手動納品は数えません。", n, {
+			kind: "delivery",
+			target: {
+				x: 16,
+				z: 16
+			},
+			focusId: H(e, 16, 16).id,
+			mode: "run",
+			blockers: J(e)
+		});
+	}
+	if (n.push(`最初の自動納品を確認（${e.delivered}本）`), K(e)) return W(L, "done", "案内完了：工房が自動で動きます", "木材採取から魔力炉への補給がつながりました。ここからは自由に建設してください。導線と搬送経路を保ち、鉄延べ棒100本の自動納品を目指しましょう。", n, {
+		mode: "done",
+		checks: [...n, "木材採取場→ベルト→魔力炉が接続済み"]
+	});
+	if (H(e, 12, 18)?.kind !== "generator") {
+		let t = e.buildings.find((e) => e.kind === "lumber");
+		return W(t ? 13 : 12, t ? "belt-wood-1" : "lumber", "今の工房へ燃料を自動補給する", t ? "今の木材採取場から、使用中の魔力炉へベルトをつなげてください。配置場所は自由です。最初の工房を見本の位置へ作り直す必要はありません。" : "好きな森林へ木材採取場を置き、使用中の魔力炉へベルトをつなげましょう。配置場所は自由です。", n, {
+			kind: t ? "belt" : "lumber",
+			direction: null,
+			focusId: t?.id ?? null,
+			mode: "build"
+		});
+	}
+	for (let r = 0; r < V.length; r++) {
+		let i = V[r], a = G(e, i, 12 + r, n);
+		if (a) return a;
+		n.push(`${t[i.kind].label}${U(i.x, i.z)}を配置済み`);
+	}
+	return W(L, "done", "案内完了：ここからは自由に建設", "燃料補給の経路も完成しました。ここからは自由に建設し、鉄延べ棒100本の自動納品を目指しましょう。", n, { mode: "done" });
+}
+//#endregion
+//#region web/js/fantasy-automation/app.ts
+var X = class {
 	simulation = new u();
-	save = new P();
+	save = new F();
 	view = null;
 	ui;
 	loop;
@@ -1272,6 +1656,7 @@ var P = class {
 	direction = 1;
 	selectedId = null;
 	hover = null;
+	placedAt = null;
 	speed = 1;
 	previousSpeed = 1;
 	message = "採掘機・魔導炉・魔力炉を設置し、ベルトと導線でつなぎましょう。";
@@ -1281,12 +1666,14 @@ var P = class {
 	frame = 0;
 	saveBusy = !1;
 	uiTime = 0;
+	guideEnabled = !0;
+	guideStep = null;
 	constructor(e, t) {
 		try {
 			this.view = new f(e, {
 				onPick: (e, t, n) => this.pick(e, t, n),
 				onHover: (e, t) => {
-					this.hover = {
+					this.placedAt && (this.placedAt.x !== e || this.placedAt.z !== t) && (this.placedAt = null), this.hover = {
 						x: e,
 						z: t
 					};
@@ -1300,7 +1687,7 @@ var P = class {
 		}
 		this.ui = new v(t, {
 			onBuild: (e) => {
-				this.kind = e, this.selectedId = null, this.removeMode = !1, this.message = "区画をクリックして建設。Rで向き変更、Escで取消。", this.sync();
+				this.placedAt = null, this.kind = e, this.selectedId = null, this.removeMode = !1, this.message = "区画をクリックして建設。Rで向き変更、Escで取消。", this.sync();
 			},
 			onSpeed: (e) => this.setSpeed(e),
 			onSave: () => {
@@ -1315,18 +1702,27 @@ var P = class {
 			onCollect: () => this.collect(),
 			onCancel: () => this.cancel(),
 			onResetCamera: () => this.view?.resetCamera(),
+			onGuideAction: () => this.guideAction(),
+			onGuideToggle: (e) => this.toggleGuide(e),
 			onNew: () => {
 				confirm("工房を最初から始めますか？ 保存枠は「保存」するまで残ります。") && this.init();
 			}
-		}), this.loop = new F({
+		}), this.loop = new I({
 			step: () => this.simulation.step(),
 			render: () => this.render(),
 			stepSeconds: .05,
 			maxSteps: 40
-		}), L(this), this.last = performance.now(), this.frame = requestAnimationFrame((e) => this.animate(e)), this.sync();
+		}), Z(this), this.last = performance.now(), this.frame = requestAnimationFrame((e) => this.animate(e)), this.sync();
 	}
 	init() {
-		this.simulation.init(), this.selectedId = null, this.kind = null, this.hover = null, this.direction = 1, this.removeMode = !1, this.xHeld = !1, this.previousSpeed = 1, this.speed = 1, this.loop.reset(), this.view?.resetCamera(), this.message = "新しい工房を開きました。初期設備は建設時にキットを使用します。", this.sync();
+		this.simulation.init(), this.placedAt = null, this.selectedId = null, this.kind = null, this.hover = null, this.direction = 1, this.removeMode = !1, this.xHeld = !1, this.previousSpeed = 1, this.speed = 1, this.guideEnabled = !0, this.loop.reset(), this.view?.resetCamera(), this.message = "新しい工房を開きました。初期設備は建設時にキットを使用します。", this.sync();
+	}
+	toggleGuide(e = !this.guideEnabled) {
+		this.guideEnabled = e, this.sync();
+	}
+	guideAction() {
+		let e = Y(this.simulation.state);
+		this.placedAt = null, this.removeMode = !1, this.xHeld = !1, e.target && (this.hover = { ...e.target }, e.mode === "build" && this.view?.revealTile(e.target.x, e.target.z)), e.mode === "done" ? this.toggleGuide(!1) : e.mode === "run" ? (this.kind = null, this.selectedId = null, this.setSpeed(1)) : (e.mode === "rotate" || e.mode === "feed" ? (this.kind = null, this.selectedId = e.focusId, this.message = e.mode === "feed" ? "手動補給で木材・1個を選び「補給する」。木材から魔力を作ります。" : "設備の詳細にある「回転 R」で目印と同じ向きにします。") : (this.kind = e.kind, this.direction = e.direction ?? 1, this.selectedId = null, this.message = "設備を選びました。地図の光る目印を左クリックして建設してください。"), this.sync(), e.mode === "build" && document.querySelector("#world canvas")?.focus({ preventScroll: !0 }));
 	}
 	setSpeed(e) {
 		this.speed = e, e && (this.previousSpeed = e), this.loop.reset(), this.last = performance.now(), this.sync();
@@ -1366,16 +1762,27 @@ var P = class {
 	pick(e, t, n) {
 		if (n.type === "pointermove" && this.kind !== "belt" && !this.removeMode && !this.xHeld) return;
 		let r = this.simulation.state.buildings.find((n) => n.x === e && n.z === t);
-		(n.type !== "pointermove" || !r || this.removeMode || this.xHeld) && (n.shiftKey && r ? (this.kind = r.kind, this.direction = r.direction, this.selectedId = null, this.message = "同じ設備を選びました。空き区画へ建設できます。") : (this.removeMode || this.xHeld) && r ? (this.message = this.simulation.command({
-			type: "remove",
-			id: r.id
-		}).reason, this.selectedId === r.id && (this.selectedId = null)) : this.kind && !r ? this.message = this.simulation.command({
-			type: "build",
-			kind: this.kind,
-			x: e,
-			z: t,
-			direction: this.direction
-		}).reason : (this.selectedId = r?.id ?? null, r && (this.kind = null)), this.sync());
+		if (n.type !== "pointermove" || !r || this.removeMode || this.xHeld) {
+			if (n.shiftKey && r) this.kind = r.kind, this.direction = r.direction, this.selectedId = null, this.message = "同じ設備を選びました。空き区画へ建設できます。";
+			else if ((this.removeMode || this.xHeld) && r) this.message = this.simulation.command({
+				type: "remove",
+				id: r.id
+			}).reason, this.selectedId === r.id && (this.selectedId = null);
+			else if (this.kind && !r) {
+				let n = this.simulation.command({
+					type: "build",
+					kind: this.kind,
+					x: e,
+					z: t,
+					direction: this.direction
+				});
+				this.message = n.reason, this.placedAt = n.ok ? {
+					x: e,
+					z: t
+				} : null;
+			} else this.selectedId = r?.id ?? null, r && (this.kind = null);
+			this.sync();
+		}
 	}
 	xHeld = !1;
 	async persist() {
@@ -1395,7 +1802,7 @@ var P = class {
 			this.saveBusy = !0;
 			try {
 				let e = await this.save.load();
-				e ? (this.simulation.restore(e), this.loop.reset(), this.last = performance.now(), this.kind = null, this.selectedId = null, this.message = "保存した工房を再開しました。") : this.message = "保存データがありません。まず「保存」を押してください。";
+				e ? (this.simulation.restore(e), this.placedAt = null, this.loop.reset(), this.last = performance.now(), this.kind = null, this.selectedId = null, this.message = "保存した工房を再開しました。") : this.message = "保存データがありません。まず「保存」を押してください。";
 			} catch (e) {
 				this.message = `読込できません: ${e instanceof Error ? e.message : String(e)}`;
 			} finally {
@@ -1414,15 +1821,21 @@ var P = class {
 			direction: this.direction,
 			valid: e,
 			hover: this.hover,
-			selectedId: this.selectedId
+			selectedId: this.selectedId,
+			guideTarget: this.guideStep?.target ? {
+				...this.guideStep.target,
+				kind: this.guideStep.kind,
+				direction: this.guideStep.direction
+			} : null
 		});
 	}
 	sync() {
+		this.guideStep = this.guideEnabled ? Y(this.simulation.state) : null;
 		let e = [this.rendererMessage, this.message].filter(Boolean).join(" ");
 		if (this.kind && this.hover) {
 			let t = this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction);
-			if (!t.ok) e = t.reason;
-			else {
+			if (!t.ok && (this.placedAt?.x !== this.hover.x || this.placedAt?.z !== this.hover.z)) e = t.reason;
+			else if (t.ok) {
 				let [t, n] = i[this.direction], r = this.simulation.state.buildings.find((e) => e.x === this.hover.x + t && e.z === this.hover.z + n), a = this.hover.x + t >= 0 && this.hover.x + t < 32 && this.hover.z + n >= 0 && this.hover.z + n < 32;
 				e += ` 出力 → ${a ? r ? "隣の設備" : "未接続（次にベルトを設置）" : "マップ外"}。`;
 			}
@@ -1434,14 +1847,15 @@ var P = class {
 			speed: this.speed,
 			power: this.simulation.powerSummary(),
 			message: e,
-			hover: this.hover
+			hover: this.hover,
+			guide: this.guideStep
 		});
 	}
 	key(e) {
-		e.target instanceof Element && e.target.closest("input,select,textarea,button,[contenteditable=\"true\"]") || e.repeat && e.code !== "KeyX" || (e.code === "KeyX" && (this.xHeld = !0, this.message = "Xを押しながら施設をクリックして撤去。"), e.code === "KeyR" && this.rotate(), e.code === "Escape" && this.cancel(), e.code === "Space" && (e.preventDefault(), this.togglePause()));
+		e.target instanceof Element && (e.target.closest("input,select,textarea,[contenteditable=\"true\"]") || e.target.closest("button") && !["KeyR", "Escape"].includes(e.code)) || e.repeat && e.code !== "KeyX" || (e.code === "KeyX" && (this.xHeld = !0, this.message = "Xを押しながら施設をクリックして撤去。"), e.code === "KeyR" && this.rotate(), e.code === "Escape" && this.cancel(), e.code === "Space" && (e.preventDefault(), this.togglePause()));
 	}
 };
-function L(e) {
+function Z(e) {
 	document.addEventListener("keydown", (t) => e.key(t)), document.addEventListener("keyup", (t) => {
 		t.code === "KeyX" && (e.xHeld = !1);
 	}), window.addEventListener("blur", () => {
@@ -1452,6 +1866,6 @@ function L(e) {
 		cancelAnimationFrame(e.frame), e.ui.dispose(), e.view?.dispose();
 	}, { once: !0 });
 }
-var R = document.querySelector("#world"), z = document.querySelector("#game-ui");
-R && z && new I(R, z);
+var Q = document.querySelector("#world"), $ = document.querySelector("#game-ui");
+Q && $ && new X(Q, $);
 //#endregion

@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { WorldInput } from './input.js';
-import { BELT_SECONDS } from './data.js';
+import { BELT_SECONDS, DEFINITIONS } from './data.js';
 import { DIRECTIONS, SIZE, type Building, type Direction, type GameState, type Kind, type Resource } from './types.js';
 
 export interface ViewOptions {
@@ -9,6 +9,7 @@ export interface ViewOptions {
   valid: boolean;
   hover: { x: number; z: number } | null;
   selectedId: number | null;
+  guideTarget?: { x: number; z: number; direction: number | null; kind: Kind | null } | null;
 }
 export interface ViewCallbacks {
   onPick(x: number, z: number, event: PointerEvent): void;
@@ -40,6 +41,12 @@ export class WorldView {
   private ghostPort = this.arrow();
   private ghostPower: THREE.Mesh | null = null;
   private selection = new THREE.Group();
+  private guideMarker = new THREE.Group();
+  private guideDirection = this.arrow(0xffee82);
+  private guideLabel: HTMLDivElement;
+  private guideLabelKey = '';
+  private guideProjection = new THREE.Vector3();
+  private reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   private raycaster = new THREE.Raycaster();
   private groundPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
   private pointerPosition = new THREE.Vector2();
@@ -62,17 +69,41 @@ export class WorldView {
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.setClearColor(0xcddbd6);
     host.append(this.renderer.domElement);
+    this.guideLabel = document.createElement('div');
+    this.guideLabel.id = 'guide-target';
+    this.guideLabel.hidden = true;
+    Object.assign(this.guideLabel.style, {
+      position: 'absolute', pointerEvents: 'none', zIndex: '1',
+      padding: '5px 10px', border: '2px solid #ebcb6d', borderRadius: '8px',
+      background: '#fff5daed', color: '#25483c', font: 'bold 12px/1.5 sans-serif',
+      textAlign: 'center', whiteSpace: 'pre', transform: 'translate(-50%, -100%)',
+      boxShadow: '0 3px 10px #17372d35',
+    });
+    host.append(this.guideLabel);
     this.renderer.domElement.addEventListener('pointerleave', () => { this.cursorOnMap = false; }, { signal: this.abort.signal });
     this.scene.background = new THREE.Color(0xcddbd6);
     this.scene.add(new THREE.HemisphereLight(0xfff8dd, 0x536865, 2.5));
     const sun = new THREE.DirectionalLight(0xffedd0, 2.1);
     sun.position.set(-12, 28, 8);
-    this.scene.add(sun, this.terrain, this.ghost, this.selection);
+    this.scene.add(sun, this.terrain, this.ghost, this.selection, this.guideMarker);
     this.createOutline(this.ghost, 0x7eedaf);
     this.ghostPort.position.set(0, 0.12, -0.37);
     this.ghost.add(this.ghostPort);
     this.ghostPower = this.cylinder(this.ghost, 0x94eaff, 0.085, 0.14, [0.38, 0.22, 0.38], true);
     this.createOutline(this.selection, 0xffdc6e);
+    this.createOutline(this.guideMarker, 0xffee82);
+    this.guideDirection.position.set(0, 0.25, 0);
+    this.guideMarker.add(this.guideDirection);
+    const downArrow = this.cylinder(this.guideMarker, 0xffee82, 0.14, 0.35, [0, 1.36, 0], true);
+    downArrow.rotation.z = Math.PI;
+    this.guideMarker.traverse(child => {
+      if (child instanceof THREE.Mesh) {
+        child.material = this.material(0xffee82, 0x4e390c);
+        (child.material as THREE.MeshStandardMaterial).depthTest = false;
+        child.renderOrder = 20;
+      }
+    });
+    this.guideMarker.visible = false;
     this.ghost.visible = this.selection.visible = false;
     this.renderer.domElement.addEventListener('webglcontextlost', event => {
       event.preventDefault();
@@ -334,7 +365,45 @@ export class WorldView {
     const selected = options.selectedId == null ? null : this.facilities.get(options.selectedId);
     this.selection.visible = !!selected;
     if (selected) this.selection.position.copy(selected.group.position);
+    this.updateGuide(options.guideTarget ?? null, now);
     if (!this.contextLost) this.renderer.render(this.scene, this.camera);
+  }
+
+  private updateGuide(target: ViewOptions['guideTarget'], now: number): void {
+    const visible = !!target && target.x >= 0 && target.x < SIZE && target.z >= 0 && target.z < SIZE;
+    this.guideMarker.visible = visible;
+    this.guideLabel.hidden = !visible;
+    if (!visible || !target) return;
+    this.guideMarker.position.set(target.x, 0.09, target.z);
+    const pulse = this.reducedMotion.matches ? 1.08 : 1.08 + Math.sin(now / 350) * 0.025;
+    this.guideMarker.scale.set(pulse, 1, pulse);
+    this.guideDirection.visible = target.direction !== null;
+    if (target.direction !== null) this.guideDirection.rotation.y = -target.direction * Math.PI / 2;
+    const key = `${target.x},${target.z},${target.kind},${target.direction}`;
+    if (key !== this.guideLabelKey) {
+      this.guideLabelKey = key;
+      const kind = target.kind ? DEFINITIONS[target.kind].label : 'この区画';
+      const direction = target.direction === null ? '' : ` · ${['北', '東', '南', '西'][target.direction]}向き`;
+      this.guideLabel.textContent = `${kind} (${target.x}, ${target.z})${direction}\n↓ 光る区画をクリック`;
+      this.guideLabel.dataset.x = String(target.x);
+      this.guideLabel.dataset.z = String(target.z);
+    }
+    const rect = this.renderer.domElement.getBoundingClientRect();
+    this.guideProjection.set(target.x, 0, target.z).project(this.camera);
+    const screenX = rect.left + (this.guideProjection.x + 1) * rect.width / 2;
+    const screenY = rect.top + (1 - this.guideProjection.y) * rect.height / 2;
+    // Test/user pick coordinates identify the actual ground cell, not its floating label.
+    const projectedX = screenX.toFixed(2), projectedY = screenY.toFixed(2);
+    if (this.guideLabel.dataset.screenX !== projectedX) this.guideLabel.dataset.screenX = projectedX;
+    if (this.guideLabel.dataset.screenY !== projectedY) this.guideLabel.dataset.screenY = projectedY;
+    const hostRect = this.host.getBoundingClientRect();
+    const labelX = Math.max(110, Math.min(hostRect.width - 110, screenX - hostRect.left));
+    const labelY = Math.max(135, Math.min(hostRect.height - 170, screenY - hostRect.top - 50));
+    const labelLeft = `${labelX}px`, labelTop = `${labelY}px`;
+    if (this.guideLabel.style.left !== labelLeft) this.guideLabel.style.left = labelLeft;
+    if (this.guideLabel.style.top !== labelTop) this.guideLabel.style.top = labelTop;
+    const offscreen = Math.abs(this.guideProjection.x) > 1 || Math.abs(this.guideProjection.y) > 1;
+    this.guideLabel.hidden = offscreen;
   }
 
   private pick(event: PointerEvent): { x: number; z: number } | null {
@@ -378,6 +447,18 @@ export class WorldView {
 
   resetCamera(): void { this.target.set(13, 0, 16); this.bearing = Math.PI / 4; this.extent = 11; this.resize(); }
 
+  /** Bring an edge/offscreen guide cell into reach without disturbing a visible view. */
+  revealTile(x: number, z: number): void {
+    if (this.disposed || x < 0 || x >= SIZE || z < 0 || z >= SIZE) return;
+    this.guideProjection.set(x, 0, z).project(this.camera);
+    const width = Math.max(1, this.host.clientWidth), height = Math.max(1, this.host.clientHeight);
+    const pixelX = (this.guideProjection.x + 1) * width / 2;
+    const pixelY = (1 - this.guideProjection.y) * height / 2;
+    if (pixelX >= 32 && pixelX <= width - 32 && pixelY >= 32 && pixelY <= height - 32) return;
+    this.target.set(x, 0, z);
+    this.updateCamera();
+  }
+
   dispose(): void {
     if (this.disposed) return;
     this.disposed = true;
@@ -386,5 +467,6 @@ export class WorldView {
     for (const geometry of this.geometries.values()) geometry.dispose();
     for (const material of this.materials.values()) material.dispose();
     this.scene.clear(); this.facilities.clear(); this.renderer.dispose(); this.renderer.domElement.remove();
+    this.guideLabel.remove();
   }
 }

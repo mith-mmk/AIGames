@@ -89,3 +89,32 @@ noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 20px; back
   .menu-body { max-height: calc(100dvh - 215px); }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto; transition: none; animation: none; } }
+.guide-card { position: absolute; z-index: 1; top: 88px; left: 14px; width: 310px; max-height: calc(100dvh - 260px); overflow-y: auto; border: 1px solid #e7c98580; border-radius: 12px; padding: 12px; background: #173730f2; box-shadow: 0 8px 25px #081b2840; }
+.guide-heading { display: flex; align-items: center; gap: 8px; color: var(--gold); font-size: 11px; }
+.guide-heading > span { flex: 1; }
+.guide-heading button { background: transparent; padding: 4px 7px; min-height: 44px; font-size: 10px; white-space: nowrap; }
+.guide-progress { color: #bfd5b6; font-size: 10px; letter-spacing: .04em; margin: 2px 0 4px; }
+.guide-card h2 { font-size: 15px; margin: 4px 0 7px; line-height: 1.4; }
+.guide-card p { font-size: 12px; line-height: 1.7; margin: 6px 0; }
+.guide-card .guide-target { font-size: 11px; color: var(--gold); }
+.guide-card ul { list-style: none; margin: 6px 0; padding: 0; font-size: 11px; line-height: 1.6; }
+.guide-blockers { color: #ffd0a3; }
+.guide-checks { color: #c5e3b9; }
+.guide-action { width: 100%; border-color: var(--gold); font-size: 12px; }
+.guide-next { display: block; color: #bfd5b6; font-size: 10px; margin-top: 6px; }
+@media (max-width: 900px) { .guide-card { top: 118px; width: 290px; max-height: calc(100dvh - 280px); } }
+@media (max-width: 600px) {
+  .guide-card { top: 110px; left: 8px; width: min(290px, calc(100vw - 16px)); max-height: min(205px, calc(100dvh - 270px)); padding: 8px 10px; }
+  .guide-heading > span { font-size: 10px; }
+  .guide-card h2 { font-size: 13px; }
+  .guide-card p { font-size: 11px; line-height: 1.6; }
+  #game-ui.guide-open.has-selection .guide-card { max-height: 124px; }
+  #game-ui.guide-open.has-selection .selection-panel { top: 242px; max-height: max(80px, calc(100dvh - 395px)); }
+}
+@media (max-height: 500px) {
+  .guide-card { top: 84px; max-height: max(75px, calc(100dvh - 240px)); }
+  #game-ui.guide-open.has-selection .selection-panel { top: 84px; max-height: max(75px, calc(100dvh - 240px)); }
+}
+
+.guide-card .guide-feedback { font-size: 11px; border-top: 1px solid var(--border); padding-top: 7px; color: #ffe7a7; overflow-wrap: anywhere; }
+.guide-card #guide-check-summary { min-height: 44px; font-size: 11px; padding: 4px 0; color: #bfd5b6; }

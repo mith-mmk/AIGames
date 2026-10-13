@@ -3,6 +3,7 @@ import { WorldView } from './renderer';
 import { GameUI } from './ui';
 import { GameSave } from './storage';
 import { FixedStepLoop } from './loop.mjs';
+import { evaluateGuide, type GuideStep } from './onboarding';
 import type { Direction, Kind, Resource } from './types';
 import { DIRECTIONS, SIZE } from './types';
 
@@ -16,6 +17,7 @@ class WorkshopApp {
   direction: Direction = 1;
   selectedId: number | null = null;
   hover: { x: number; z: number } | null = null;
+  placedAt: { x: number; z: number } | null = null;
   speed: 0 | 1 | 2 = 1;
   previousSpeed: 1 | 2 = 1;
   message = '採掘機・魔導炉・魔力炉を設置し、ベルトと導線でつなぎましょう。';
@@ -25,14 +27,16 @@ class WorkshopApp {
   frame = 0;
   saveBusy = false;
   uiTime = 0;
+  guideEnabled = true;
+  guideStep: GuideStep | null = null;
   constructor(host: HTMLElement, root: HTMLElement) {
     try { this.view = new WorldView(host, {
       onPick: (x, z, event) => this.pick(x, z, event),
-      onHover: (x, z) => { this.hover = { x, z }; },
+      onHover: (x, z) => { if (this.placedAt && (this.placedAt.x !== x || this.placedAt.z !== z)) this.placedAt = null; this.hover = { x, z }; },
       onStatus: message => { this.rendererMessage = message.includes('復旧しました') ? '' : message; },
     }); } catch { this.rendererMessage = '3D表示を開始できません。WebGL対応ブラウザで開いてください。保存・読込は利用できます。'; }
     this.ui = new GameUI(root, {
-      onBuild: kind => { this.kind = kind; this.selectedId = null; this.removeMode = false; this.message = '区画をクリックして建設。Rで向き変更、Escで取消。'; this.sync(); },
+      onBuild: kind => { this.placedAt = null; this.kind = kind; this.selectedId = null; this.removeMode = false; this.message = '区画をクリックして建設。Rで向き変更、Escで取消。'; this.sync(); },
       onSpeed: speed => this.setSpeed(speed),
       onSave: () => { void this.persist(); },
       onLoad: () => { void this.resume(); },
@@ -42,6 +46,8 @@ class WorkshopApp {
       onCollect: () => this.collect(),
       onCancel: () => this.cancel(),
       onResetCamera: () => this.view?.resetCamera(),
+      onGuideAction: () => this.guideAction(),
+      onGuideToggle: show => this.toggleGuide(show),
       onNew: () => { if (confirm('工房を最初から始めますか？ 保存枠は「保存」するまで残ります。')) this.init(); },
     });
     this.loop = new FixedStepLoop({
@@ -56,10 +62,29 @@ class WorkshopApp {
     this.sync();
   }
   init() {
-    this.simulation.init(); this.selectedId = null; this.kind = null; this.hover = null;
+    this.simulation.init(); this.placedAt = null; this.selectedId = null; this.kind = null; this.hover = null;
     this.direction = 1; this.removeMode = false; this.xHeld = false; this.previousSpeed = 1;
-    this.speed = 1; this.loop.reset(); this.view?.resetCamera();
+    this.speed = 1; this.guideEnabled = true; this.loop.reset(); this.view?.resetCamera();
     this.message = '新しい工房を開きました。初期設備は建設時にキットを使用します。'; this.sync();
+  }
+  toggleGuide(show = !this.guideEnabled) {
+    this.guideEnabled = show; this.sync();
+  }
+  guideAction() {
+    const guide = evaluateGuide(this.simulation.state);
+    this.placedAt = null; this.removeMode = false; this.xHeld = false;
+    if (guide.target) { this.hover = { ...guide.target }; if (guide.mode === 'build') this.view?.revealTile(guide.target.x, guide.target.z); }
+    if (guide.mode === 'done') { this.toggleGuide(false); return; }
+    if (guide.mode === 'run') { this.kind = null; this.selectedId = null; this.setSpeed(1); return; }
+    if (guide.mode === 'rotate' || guide.mode === 'feed') {
+      this.kind = null; this.selectedId = guide.focusId;
+      this.message = guide.mode === 'feed' ? '手動補給で木材・1個を選び「補給する」。木材から魔力を作ります。' : '設備の詳細にある「回転 R」で目印と同じ向きにします。';
+    } else {
+      this.kind = guide.kind; this.direction = guide.direction ?? 1; this.selectedId = null;
+      this.message = '設備を選びました。地図の光る目印を左クリックして建設してください。';
+    }
+    this.sync();
+    if (guide.mode === 'build') document.querySelector<HTMLCanvasElement>('#world canvas')?.focus({ preventScroll: true });
   }
   setSpeed(speed: 0 | 1 | 2) {
     this.speed = speed; if (speed) this.previousSpeed = speed;
@@ -98,7 +123,8 @@ class WorkshopApp {
       this.message = this.simulation.command({ type: 'remove', id: building.id }).reason;
       if (this.selectedId === building.id) this.selectedId = null;
     } else if (this.kind && !building) {
-      this.message = this.simulation.command({ type: 'build', kind: this.kind, x, z, direction: this.direction }).reason;
+      const result = this.simulation.command({ type: 'build', kind: this.kind, x, z, direction: this.direction });
+      this.message = result.reason; this.placedAt = result.ok ? { x, z } : null;
     } else { this.selectedId = building?.id ?? null; if (building) this.kind = null; }
     this.sync();
   }
@@ -113,7 +139,7 @@ class WorkshopApp {
     if (this.saveBusy) return; this.saveBusy = true;
     try {
       const state = await this.save.load();
-      if (state) { this.simulation.restore(state); this.loop.reset(); this.last = performance.now(); this.kind = null; this.selectedId = null; this.message = '保存した工房を再開しました。'; }
+      if (state) { this.simulation.restore(state); this.placedAt = null; this.loop.reset(); this.last = performance.now(); this.kind = null; this.selectedId = null; this.message = '保存した工房を再開しました。'; }
       else this.message = '保存データがありません。まず「保存」を押してください。';
     } catch (error) { this.message = `読込できません: ${error instanceof Error ? error.message : String(error)}`; }
     finally { this.saveBusy = false; this.sync(); }
@@ -126,24 +152,28 @@ class WorkshopApp {
   }
   render() {
     const valid = !!this.kind && !!this.hover && this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction).ok;
-    this.view?.render(this.simulation.state, { kind: this.kind, direction: this.direction, valid, hover: this.hover, selectedId: this.selectedId });
+    this.view?.render(this.simulation.state, { kind: this.kind, direction: this.direction, valid, hover: this.hover, selectedId: this.selectedId, guideTarget: this.guideStep?.target ? { ...this.guideStep.target, kind: this.guideStep.kind, direction: this.guideStep.direction } : null });
   }
   sync() {
+    this.guideStep = this.guideEnabled ? evaluateGuide(this.simulation.state) : null;
     let message = [this.rendererMessage, this.message].filter(Boolean).join(' ');
     if (this.kind && this.hover) {
       const checked = this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction);
-      if (!checked.ok) message = checked.reason;
-      else {
+      if (!checked.ok && !(this.placedAt?.x === this.hover.x && this.placedAt?.z === this.hover.z)) message = checked.reason;
+      else if (checked.ok) {
         const [dx, dz] = DIRECTIONS[this.direction];
         const next = this.simulation.state.buildings.find(b => b.x === this.hover!.x + dx && b.z === this.hover!.z + dz);
         const inMap = this.hover.x + dx >= 0 && this.hover.x + dx < SIZE && this.hover.z + dz >= 0 && this.hover.z + dz < SIZE;
         message += ` 出力 → ${!inMap ? 'マップ外' : next ? '隣の設備' : '未接続（次にベルトを設置）'}。`;
       }
     }
-    this.ui.update(this.simulation.state, { kind: this.kind, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover });
+    this.ui.update(this.simulation.state, { kind: this.kind, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover, guide: this.guideStep });
   }
   key(event: KeyboardEvent) {
-    if (event.target instanceof Element && event.target.closest('input,select,textarea,button,[contenteditable="true"]')) return;
+    if (event.target instanceof Element) {
+      if (event.target.closest('input,select,textarea,[contenteditable="true"]')) return;
+      if (event.target.closest('button') && !['KeyR', 'Escape'].includes(event.code)) return;
+    }
     if (event.repeat && event.code !== 'KeyX') return;
     if (event.code === 'KeyX') { this.xHeld = true; this.message = 'Xを押しながら施設をクリックして撤去。'; }
     if (event.code === 'KeyR') this.rotate();
