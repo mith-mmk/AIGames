@@ -8,7 +8,7 @@
     {
       "realUiStarter": "12 facilities built with initial resources; automatic fuel/mining/smelting/delivery passed",
       "delivered": 1,
-      "tick": 480
+      "tick": 494
     },
     {
       "width": 1440,
@@ -20,8 +20,8 @@
     {
       "width": 390,
       "overflow": false,
-      "canvasWidth": 390,
-      "canvasHeight": 844,
+      "canvasWidth": 1440,
+      "canvasHeight": 900,
       "paletteCount": 7
     },
     {

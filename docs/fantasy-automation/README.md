@@ -83,3 +83,5 @@ IndexedDBの1スロットに、地形・設備・方向・内部在庫・搬送�
 [構成と範囲](architecture.md) / [共有API](interfaces.md)。検証結果は `playtest.md` に記録します。15〜30分は企画上の目標で、実ユーザーによる所要時間測定は未実施です。
 
 [静的配布・クリーンcheckout検証](distribution.md) では、ビルドなしHTTP配信とPages生成物のみの起動を確認しています。
+
+[初回案内の改善と検証](onboarding.md) に、案内だけで最初の自動納品へ進む確認を記録しています。

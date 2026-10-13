@@ -5,7 +5,8 @@
     "clock": 7,
     "simulation": 17,
     "storage": 4,
-    "total": 28
+    "total": 38,
+    "onboarding": 10
   },
   "npmTest": "passed, includes existing games",
   "typecheck": "passed",
