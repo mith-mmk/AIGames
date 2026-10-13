@@ -4,7 +4,8 @@ import { GameUI } from './ui';
 import { GameSave } from './storage';
 import { FixedStepLoop } from './loop.mjs';
 import { evaluateGuide, type GuideStep } from './onboarding';
-import type { Direction, Kind, Resource } from './types';
+import { isKindUnlocked } from './technology';
+import type { Direction, Kind, Resource, RecipeId, TechId } from './types';
 import { DIRECTIONS, SIZE } from './types';
 
 class WorkshopApp {
@@ -27,6 +28,7 @@ class WorkshopApp {
   frame = 0;
   saveBusy = false;
   uiTime = 0;
+  technologyOpen = false;
   guideEnabled = true;
   guideStep: GuideStep | null = null;
   constructor(host: HTMLElement, root: HTMLElement) {
@@ -36,14 +38,19 @@ class WorkshopApp {
       onStatus: message => { this.rendererMessage = message.includes('復旧しました') ? '' : message; },
     }); } catch { this.rendererMessage = '3D表示を開始できません。WebGL対応ブラウザで開いてください。保存・読込は利用できます。'; }
     this.ui = new GameUI(root, {
-      onBuild: kind => { this.placedAt = null; this.kind = kind; this.selectedId = null; this.removeMode = false; this.message = '区画をクリックして建設。Rで向き変更、Escで取消。'; this.sync(); },
+      onBuild: kind => this.chooseBuild(kind),
       onSpeed: speed => this.setSpeed(speed),
       onSave: () => { void this.persist(); },
       onLoad: () => { void this.resume(); },
       onRotate: () => this.rotate(),
       onRemove: () => this.remove(),
       onFeed: (resource, amount) => this.feed(resource, amount),
-      onCollect: () => this.collect(),
+      onCollect: (resource, amount) => this.collect(resource, amount),
+      onTechnologyToggle: show => this.toggleTechnology(show),
+      onResearch: id => this.research(id),
+      onTrack: id => this.track(id),
+      onRecipe: recipe => this.chooseRecipe(recipe),
+      onGatherWood: () => { this.message = this.simulation.command({ type: 'gatherWood' }).reason; this.sync(); },
       onCancel: () => this.cancel(),
       onResetCamera: () => this.view?.resetCamera(),
       onGuideAction: () => this.guideAction(),
@@ -66,6 +73,38 @@ class WorkshopApp {
     this.direction = 1; this.removeMode = false; this.xHeld = false; this.previousSpeed = 1;
     this.speed = 1; this.guideEnabled = true; this.loop.reset(); this.view?.resetCamera();
     this.message = '新しい工房を開きました。初期設備は建設時にキットを使用します。'; this.sync();
+  }
+  chooseBuild(kind: Kind) {
+    if (!isKindUnlocked(this.simulation.state, kind)) {
+      this.message = 'この設備は未解放です。技術ツリーで前提と実績条件を確認してください。';
+      this.toggleTechnology(true); return;
+    }
+    this.placedAt = null; this.kind = kind; this.selectedId = null; this.removeMode = false;
+    this.message = '区画をクリックして建設。Rで向き変更、Escで取消。';
+    if (kind === 'crystalMiner') {
+      const state = this.simulation.state;
+      let index = state.terrain.findIndex((tile, cell) => tile === 'crystal' && !state.buildings.some(b => b.z * SIZE + b.x === cell));
+      if (index < 0) index = state.pendingCrystalCells?.[0] ?? -1;
+      if (index >= 0) {
+        this.hover = { x: index % SIZE, z: Math.floor(index / SIZE) };
+        this.view?.revealTile(this.hover.x, this.hover.z);
+        this.message = state.terrain[index] === 'crystal' ? '紫の魔晶鉱脈に魔晶採掘機を配置します。導線で魔力を供給してください。' : 'この区画の設備を撤去すると、旧工房の下に隠れていた晶脈を利用できます。';
+      }
+    }
+    this.sync();
+  }
+  toggleTechnology(show = !this.technologyOpen) {
+    this.technologyOpen = show; this.sync();
+  }
+  research(id: TechId) {
+    this.message = this.simulation.command({ type: 'research', id }).reason; this.sync();
+  }
+  track(id: TechId | null) {
+    this.message = this.simulation.command({ type: 'track', id }).reason; this.sync();
+  }
+  chooseRecipe(recipe: RecipeId) {
+    if (this.selectedId !== null) this.message = this.simulation.command({ type: 'recipe', id: this.selectedId, recipe }).reason;
+    this.sync();
   }
   toggleGuide(show = !this.guideEnabled) {
     this.guideEnabled = show; this.sync();
@@ -108,8 +147,8 @@ class WorkshopApp {
     if (this.selectedId !== null) this.message = this.simulation.command({ type: 'feed', id: this.selectedId, resource, amount }).reason;
     this.sync();
   }
-  collect() {
-    if (this.selectedId !== null) this.message = this.simulation.command({ type: 'collect', id: this.selectedId }).reason;
+  collect(resource?: Resource, amount?: number) {
+    if (this.selectedId !== null) this.message = this.simulation.command({ type: 'collect', id: this.selectedId, ...(resource !== undefined ? { resource } : {}), ...(amount !== undefined ? { amount } : {}) }).reason;
     this.sync();
   }
   pick(x: number, z: number, event: PointerEvent) {
@@ -155,7 +194,7 @@ class WorkshopApp {
     this.view?.render(this.simulation.state, { kind: this.kind, direction: this.direction, valid, hover: this.hover, selectedId: this.selectedId, guideTarget: this.guideStep?.target ? { ...this.guideStep.target, kind: this.guideStep.kind, direction: this.guideStep.direction } : null });
   }
   sync() {
-    this.guideStep = this.guideEnabled ? evaluateGuide(this.simulation.state) : null;
+    this.guideStep = this.guideEnabled && !this.technologyOpen ? evaluateGuide(this.simulation.state) : null;
     let message = [this.rendererMessage, this.message].filter(Boolean).join(' ');
     if (this.kind && this.hover) {
       const checked = this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction);
@@ -167,9 +206,11 @@ class WorkshopApp {
         message += ` 出力 → ${!inMap ? 'マップ外' : next ? '隣の設備' : '未接続（次にベルトを設置）'}。`;
       }
     }
-    this.ui.update(this.simulation.state, { kind: this.kind, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover, guide: this.guideStep });
+    this.ui.update(this.simulation.state, { kind: this.kind, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover, guide: this.guideStep, technologyOpen: this.technologyOpen });
   }
   key(event: KeyboardEvent) {
+    if (this.technologyOpen && event.code === 'Escape') { this.toggleTechnology(false); return; }
+    if (event.target instanceof Element && event.target.closest('#technology-panel')) return;
     if (event.target instanceof Element) {
       if (event.target.closest('input,select,textarea,[contenteditable="true"]')) return;
       if (event.target.closest('button') && !['KeyR', 'Escape'].includes(event.code)) return;

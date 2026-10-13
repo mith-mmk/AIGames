@@ -118,3 +118,63 @@ noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 20px; back
 
 .guide-card .guide-feedback { font-size: 11px; border-top: 1px solid var(--border); padding-top: 7px; color: #ffe7a7; overflow-wrap: anywhere; }
 .guide-card #guide-check-summary { min-height: 44px; font-size: 11px; padding: 4px 0; color: #bfd5b6; }
+.ingot-icon { display: inline-block; width: 17px; height: 8px; margin-right: 3px; border: 1px solid #f8fbff; border-radius: 1px; background: linear-gradient(150deg, #f7fbff, #a6b8bd 55%, #758e98); transform: skewX(-18deg); }
+.workshop-top { z-index: 6; }
+.workshop-top > .technology-open { font-size: 11px; white-space: nowrap; }
+.menu-close { width: 100%; margin-bottom: 8px; }
+.build-palette { display: flex; overflow-x: auto; }
+.build-palette button { flex: 0 0 102px; }
+.build-palette button.tech-locked { border-style: dashed; color: #a4b6aa; }
+.build-palette button.tech-locked .build-cost { color: #ebca8b; }
+.build-reopen { position: absolute; bottom: 14px; left: 14px; background: var(--panel); }
+.technology-panel { position: absolute; z-index: 4; top: 84px; right: 14px; width: min(720px, calc(100vw - 28px)); max-height: calc(100dvh - 110px); overflow: auto; padding: 16px; border: 1px solid #e8d39380; border-radius: 12px; background: #173730fa; box-shadow: 0 12px 35px #041b2860; font-size: 12px; }
+.technology-heading { display: flex; align-items: flex-start; gap: 12px; }
+.technology-heading > div { flex: 1; }
+.technology-heading h2 { margin: 0 0 7px; font-size: 20px; color: var(--gold); }
+.technology-heading p { margin: 0; line-height: 1.6; }
+.technology-heading > button { white-space: nowrap; }
+.technology-path { padding: 10px; border-radius: 8px; background: #253f32; color: var(--gold); line-height: 1.7; }
+.technology-map { display: grid; grid-template-columns: 1fr 1fr; grid-template-areas: "basic basic" "logistics crystals" "assembly assembly" "mastery mastery"; gap: 12px; }
+.technology-node { padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: #29483bd9; }
+.technology-node[data-tech="basic"] { grid-area: basic; }
+.technology-node[data-tech="logistics"] { grid-area: logistics; }
+.technology-node[data-tech="crystals"] { grid-area: crystals; }
+.technology-node[data-tech="assembly"] { grid-area: assembly; }
+.technology-node[data-tech="mastery"] { grid-area: mastery; }
+.technology-node[data-tech-status="available"] { border-color: var(--gold); background: #45543acf; }
+.technology-node[data-tech-status="locked"] { border-style: dashed; }
+.tech-node-heading { display: flex; gap: 8px; justify-content: space-between; align-items: center; }
+.tech-node-heading h3 { margin: 0; font-size: 15px; }
+.tech-status { font-size: 10px; white-space: nowrap; color: var(--gold); }
+.technology-node p { line-height: 1.6; margin: 7px 0; font-size: 11px; }
+.tech-description { color: #dbe8d4; }
+.tech-requirements { padding: 0; margin: 8px 0; list-style: none; line-height: 1.8; font-variant-numeric: tabular-nums; }
+.tech-reason { color: #ffe0ad; }
+.tech-actions { display: flex; gap: 8px; }
+.tech-actions button { flex: 1; font-size: 11px; padding: 5px; }
+button:disabled { opacity: .6; cursor: default; }
+.future-tech { line-height: 1.7; color: #baceb2; font-size: 11px; }
+.tracked-goal { position: absolute; right: 14px; top: 78px; width: min(330px, calc(100vw - 28px)); min-height: 44px; max-height: 75px; overflow: auto; background: var(--panel); text-align: left; font-size: 11px; line-height: 1.5; z-index: 1; }
+#storage-controls, #recipe-controls, #delivery-summary { margin: 12px 0; padding: 10px 0; border-top: 1px solid var(--border); line-height: 1.6; }
+#storage-items { padding: 0; margin: 8px 0; list-style: none; font-size: 11px; }
+#storage-controls label, #recipe-controls label { display: block; margin: 6px 0; }
+#storage-controls input, #storage-controls select, #recipe-controls select { display: block; width: 100%; min-height: 44px; padding: 6px; margin-top: 4px; }
+#storage-controls small { display: block; font-size: 10px; margin-top: 7px; color: #d9e4cd; }
+#recipe-lock-reason { font-size: 11px; color: #ffe0ad; }
+@media (max-width: 900px) { .technology-panel { top: 130px; max-height: calc(100dvh - 145px); } .tracked-goal { top: 122px; } }
+@media (max-width: 600px) {
+  .workshop-title { font-size: 11px; flex-basis: calc(100% - 180px); }
+  .workshop-title > span { font-size: 9px; }
+  .workshop-top > .technology-open { order: 4; flex: 0 0 76px; padding: 4px 6px; }
+  .resource-strip { order: 5; flex: 1; font-size: 9px; gap: 3px 5px; justify-content: flex-start; }
+  .build-palette button { flex-basis: 80px; }
+  .technology-panel { top: 138px; right: 6px; width: calc(100vw - 12px); max-height: calc(100dvh - 150px); padding: 12px; }
+  .technology-map { grid-template-columns: 1fr; grid-template-areas: "basic" "logistics" "crystals" "assembly" "mastery"; gap: 8px; }
+  .technology-heading h2 { font-size: 17px; }
+  .tracked-goal { top: 134px; width: 200px; right: 6px; }
+  #game-ui.guide-open .tracked-goal { top: auto; bottom: 152px; }
+  .guide-card { top: 134px; }
+  #game-ui.guide-open.has-selection .selection-panel { top: 266px; max-height: max(80px, calc(100dvh - 419px)); }
+}
+
+.goal-condition { display: block; color: #cfdfc3; font-size: 9px; font-weight: 400; margin-top: 2px; }

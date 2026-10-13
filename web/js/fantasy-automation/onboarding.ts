@@ -14,7 +14,7 @@ interface Placement {
 }
 
 const TOTAL = 14;
-const RESOURCE_NAMES: Record<Resource, string> = { wood: '木材', ore: '鉄鉱石', ingot: '鉄延べ棒' };
+const RESOURCE_NAMES: Record<Resource, string> = { wood: '木材', ore: '鉄鉱石', ingot: '鉄延べ棒', rawCrystal: '粗結晶', crystal: '魔力結晶', sword: '魔導剣' };
 const POWER_KINDS: readonly Kind[] = ['generator', 'wire', 'miner', 'smelter'];
 const FIRST_LINE: readonly Placement[] = [
   { id: 'miner', kind: 'miner', x: 12, z: 16, direction: 1, text: 'まずは見本の配置で工房を作ります。鉄鉱脈の光る区画に採掘機を置き、東→の向き（目印の矢印と同じ）へ出力します。' },
@@ -56,7 +56,7 @@ function placement(state: GameState, wanted: Placement, step: number, checks: st
   if (existing) blockers.push(`${location(wanted.x, wanted.z)}には${DEFINITIONS[existing.kind].label}があります。Xを押してこの区画をクリックし、撤去してから建ててください。`);
   if (!(state.kits[wanted.kind] ?? 0)) {
     for (const resource of Object.keys(DEFINITIONS[wanted.kind].cost) as Resource[]) {
-      const needed = DEFINITIONS[wanted.kind].cost[resource]! - state.inventory[resource];
+      const needed = DEFINITIONS[wanted.kind].cost[resource]! - (state.inventory[resource] ?? 0);
       if (needed > 0) blockers.push(`${RESOURCE_NAMES[resource]}があと${needed}個必要です。設備を選択して中身を回収するか、稼働中の工房から素材を集めてください。`);
     }
   }
@@ -135,7 +135,7 @@ export function evaluateGuide(state: GameState): GuideStep {
     const fueled = generator.working || generator.input.some(item => item.resource === 'wood') || generator.energy > 0 || (generator.pendingEnergy ?? 0) > 0;
     if (!fueled) return result(10, 'feed', '魔力炉へ木材を1個補給する',
       '魔力炉を選択し「設備の詳細を開く」へ。「手動補給」で木材・個数1を選び、「補給する」を押してください。木材は10秒で魔力になります。このあと燃料も自動化します。', checks,
-      { kind: 'generator', target: { x: 12, z: 18 }, focusId: generator.id, mode: 'feed', blockers: state.inventory.wood < 1 ? ['木材が1個必要です。木材採取場などの中身を回収してください。'] : [] });
+      { kind: 'generator', target: { x: 12, z: 18 }, focusId: generator.id, mode: 'feed', blockers: state.inventory.wood < 1 ? ['木材が1個必要です。メニューの「木材を手採取」で補充してください。'] : [] });
     checks.push('魔力炉に燃料、稼働中の仕事、または蓄積魔力があります');
     if (generator.working && !(generator.pendingEnergy ?? 0)) {
       const remaining = Math.max(0, Math.ceil(DEFINITIONS.generator.seconds! - generator.progress));

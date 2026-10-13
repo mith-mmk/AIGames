@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { GameSave, validateSave } from './storage.ts';
+import { migrateGameState } from './migration.ts';
 import type { GameState } from './types.ts';
 import { SIZE } from './types.ts';
 
@@ -23,10 +24,10 @@ function savedFactory(): GameState {
 test('save validation preserves transport provenance, reserved inputs and exact progress', () => {
   const original = savedFactory();
   const loaded = validateSave(JSON.parse(JSON.stringify(original)));
-  assert.deepEqual(loaded, original);
+  assert.deepEqual(loaded, migrateGameState(original));
   loaded.inventory.wood = 0;
   loaded.buildings[0].item!.automated = false;
-  loaded.buildings[1].input[0].resource = 'wood';
+  loaded.buildings[1].reserved![0].resource = 'wood';
   loaded.terrain[0] = 'ore';
   assert.equal(original.inventory.wood, 11);
   assert.equal(original.buildings[0].item!.automated, true);
@@ -70,7 +71,7 @@ test('won save remains valid at the automatic delivery threshold', () => {
   const state = savedFactory();
   state.delivered = 100;
   state.won = true;
-  assert.deepEqual(validateSave(state), state);
+  assert.deepEqual(validateSave(state), migrateGameState(state));
 });
 
 test('unavailable storage fails clearly for save/load/clear', async () => {

@@ -1,0 +1,5 @@
+{
+  "ingot": { "label": "鉄の延べ棒", "seconds": 4, "input": { "ore": 2 }, "output": { "ingot": 1 }, "energy": 5, "technology": "basic" },
+  "crystal": { "label": "精製魔晶", "seconds": 3, "input": { "rawCrystal": 1 }, "output": { "crystal": 1 }, "energy": 3, "technology": "crystals" },
+  "sword": { "label": "魔導剣", "seconds": 4, "input": { "ingot": 2, "crystal": 1 }, "output": { "sword": 1 }, "energy": 8, "technology": "assembly" }
+}

@@ -1,15 +1,18 @@
-import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, INPUT_CAPACITY, OUTPUT_CAPACITY } from './data';
+import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, INPUT_CAPACITY, OUTPUT_CAPACITY, POWER_KINDS, RECIPES, RESOURCES, RESOURCE_NAMES, STORAGE_CAPACITY, getRecipe } from './data';
+import { migrateGameState } from './migration';
+import { canResearch, currentSwordRate, isKindUnlocked, isRecipeUnlocked } from './technology';
 import { DIRECTIONS, SIZE, STEP, type Building, type Command, type CommandResult, type Direction, type GameState, type Item, type Kind, type Resource } from './types';
 
 type Network = { generators: Building[] };
-type Transfer = { source: Building; target: Building; item: Item; fromBelt: boolean };
-const POWER_KINDS: readonly Kind[] = ['wire', 'generator', 'miner', 'smelter'];
-const RESOURCES: readonly Resource[] = ['wood', 'ore', 'ingot'];
+type Transfer = { source: Building; target: Building; item: Item; sourceSlot: 'item' | 'input' | 'output'; port: 0 | 1 };
+const TECHNOLOGIES = ['basic', 'logistics', 'crystals', 'assembly', 'mastery'] as const;
 const key = (x: number, z: number): number => z * SIZE + x;
 const success = (reason = ''): CommandResult => ({ ok: true, reason });
 const failure = (reason: string): CommandResult => ({ ok: false, reason });
+const automatic = (item: Item): boolean => item.automated && !item.handled;
+const conveyor = (building: Building): boolean => building.kind === 'belt' || building.kind === 'splitter';
 
-/** No renderer, clock, storage, or DOM dependency: one step is exactly 50 ms. */
+/** A serializable simulation: one step is exactly 50 ms, independent of the view. */
 export class Simulation {
   state!: GameState;
 
@@ -25,7 +28,6 @@ export class Simulation {
       value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
       return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
     };
-    // Small resource patches; reserve a clear central teaching area for every seed.
     for (let patch = 0; patch < 26; patch++) {
       const x = 2 + Math.floor(random() * (SIZE - 4));
       const z = 2 + Math.floor(random() * (SIZE - 4));
@@ -37,92 +39,131 @@ export class Simulation {
     for (let z = 13; z <= 21; z++) for (let x = 8; x <= 18; x++) terrain[key(x, z)] = 'grass';
     terrain[key(12, 16)] = terrain[key(12, 15)] = 'ore';
     terrain[key(9, 18)] = terrain[key(9, 19)] = 'forest';
+    terrain[key(20, 16)] = terrain[key(20, 15)] = 'crystal';
     this.state = {
-      version: 1, seed, tick: 0, nextId: 1, terrain,
-      inventory: { wood: 40, ore: 0, ingot: 20 },
-      kits: { miner: 1, smelter: 1, generator: 1 },
-      buildings: [], delivered: 0, won: false,
+      version: 2, seed, tick: 0, nextId: 1, terrain,
+      inventory: { wood: 40, ore: 0, ingot: 20, rawCrystal: 0, crystal: 0, sword: 0 },
+      kits: { miner: 1, smelter: 1, generator: 1 }, buildings: [], delivered: 0, won: false,
+      stats: { produced: {}, delivered: {}, recentSwordTicks: [], peakSwordRate: 0 },
+      research: { unlocked: ['basic'], tracked: null }, inventoryItems: [],
     };
   }
 
   snapshot(): GameState { return structuredClone(this.state); }
 
   restore(state: GameState): void {
-    if (state.version !== 1 || state.terrain.length !== SIZE * SIZE || !Array.isArray(state.buildings)) {
-      throw new Error('保存データの形式が正しくありません');
-    }
-    this.state = structuredClone(state);
+    if (!Array.isArray(state.terrain) || state.terrain.length !== SIZE * SIZE || !Array.isArray(state.buildings)) throw new Error('保存データの形式が正しくありません');
+    this.state = migrateGameState(structuredClone(state));
     this.state.buildings.sort((a, b) => a.id - b.id);
   }
 
   canBuild(kind: Kind, x: number, z: number, direction: Direction): CommandResult {
     if (!Object.hasOwn(DEFINITIONS, kind)) return failure('設備の種類が不正です');
+    if (!isKindUnlocked(this.state, kind)) return failure(`${DEFINITIONS[kind].label}は技術ツリーで研究すると解放されます`);
     if (!Number.isInteger(x) || !Number.isInteger(z) || x < 0 || z < 0 || x >= SIZE || z >= SIZE) return failure('地図の外には建設できません');
     if (!Number.isInteger(direction) || direction < 0 || direction > 3) return failure('方向が不正です');
     if (this.state.buildings.some(building => building.x === x && building.z === z)) return failure('この区画には設備があります');
     const terrain = this.state.terrain[key(x, z)];
     if (kind === 'miner' && terrain !== 'ore') return failure('採掘機は鉄鉱脈の上に配置してください');
+    if (kind === 'crystalMiner' && terrain !== 'crystal') return failure('魔晶採掘機は魔晶鉱脈の上に配置してください');
     if (kind === 'lumber' && terrain !== 'forest') return failure('木材採取場は森林の上に配置してください');
     if ((this.state.kits[kind] ?? 0) > 0) return success('所持設備を設置');
     for (const resource of RESOURCES) {
       const cost = DEFINITIONS[kind].cost[resource] ?? 0;
-      if (this.state.inventory[resource] < cost) return failure(`建設素材が不足しています（${resource === 'wood' ? '木材' : resource === 'ore' ? '鉄鉱石' : '鉄延べ棒'} ${cost}）`);
+      if ((this.state.inventory[resource] ?? 0) < cost) return failure(`建設素材が不足しています（${RESOURCE_NAMES[resource]} ${cost}）`);
     }
     return success();
   }
 
   command(command: Command): CommandResult {
+    if (command.type === 'gatherWood') {
+      if (!this.state.terrain.includes('forest')) return failure('この地図には手採取できる森林がありません');
+      this.putInventory([{ resource: 'wood', automated: false, handled: true }]);
+      return success('森林で木材を1個手採取しました（自動生産の実績には算入されません）');
+    }
+    if (command.type === 'research') {
+      const result = canResearch(this.state, command.id);
+      if (!result.ok) return result;
+      this.state.research!.unlocked.push(command.id);
+      return success('研究が完了しました。設備とレシピが解放されました');
+    }
+    if (command.type === 'track') {
+      if (command.id !== null && !TECHNOLOGIES.includes(command.id)) return failure('技術の種類が不正です');
+      this.state.research!.tracked = command.id;
+      return success(command.id === null ? '追跡を解除しました' : '次の研究目標を追跡します');
+    }
     if (command.type === 'build') {
       const result = this.canBuild(command.kind, command.x, command.z, command.direction);
       if (!result.ok) return result;
       if ((this.state.kits[command.kind] ?? 0) > 0) this.state.kits[command.kind]!--;
-      else for (const resource of RESOURCES) this.state.inventory[resource] -= DEFINITIONS[command.kind].cost[resource] ?? 0;
+      else for (const resource of RESOURCES) this.takeInventory(resource, DEFINITIONS[command.kind].cost[resource] ?? 0);
+      const recipe = DEFINITIONS[command.kind].recipes?.[0];
       this.state.buildings.push({
-        id: this.state.nextId++, kind: command.kind, x: command.x, z: command.z,
-        direction: command.direction, input: [], output: [], progress: 0,
-        working: false, energy: 0, status: '待機中', item: null, beltProgress: 0,
+        id: this.state.nextId++, kind: command.kind, x: command.x, z: command.z, direction: command.direction,
+        input: [], output: [], reserved: [], progress: 0, working: false, energy: 0, status: '待機中', item: null, beltProgress: 0,
+        ...(recipe ? { recipe } : {}), ...(command.kind === 'splitter' ? { splitCursor: 0 } : {}),
       });
       return success(`${DEFINITIONS[command.kind].label}を設置しました`);
     }
     const building = this.state.buildings.find(candidate => candidate.id === command.id);
     if (!building) return failure('設備が見つかりません');
     if (command.type === 'remove') {
-      // Reserved recipe inputs are still physically in input and are recovered once.
-      // A completed generator batch has already burned its reserved fuel, even if
-      // part of its generated energy is waiting for free storage capacity.
-      const burnedFuel = building.kind === 'generator' && (building.pendingEnergy ?? 0) > 0 ? 1 : 0;
-      for (const item of [...building.input.slice(burnedFuel), ...building.output, ...(building.item ? [building.item] : [])]) this.state.inventory[item.resource]++;
-      for (const resource of RESOURCES) this.state.inventory[resource] += Math.floor((DEFINITIONS[building.kind].cost[resource] ?? 0) / 2);
+      // Completed generator fuel is burned; its remaining magic is an output, not recoverable wood.
+      const reserved = building.kind === 'generator' && (building.pendingEnergy ?? 0) > 0 ? [] : (building.reserved ?? []);
+      this.putInventory([...building.input, ...building.output, ...reserved, ...(building.item ? [building.item] : [])]);
+      for (const resource of RESOURCES) this.state.inventory[resource] = (this.state.inventory[resource] ?? 0) + Math.floor((DEFINITIONS[building.kind].cost[resource] ?? 0) / 2);
       this.state.buildings = this.state.buildings.filter(candidate => candidate.id !== building.id);
+      const cell = key(building.x, building.z);
+      if (this.state.pendingCrystalCells?.includes(cell)) {
+        this.state.terrain[cell] = 'crystal';
+        this.state.pendingCrystalCells = this.state.pendingCrystalCells.filter(pending => pending !== cell);
+      }
       return success('設備を撤去しました。中身と建設素材の半分を回収');
     }
     if (command.type === 'rotate') {
       building.direction = ((building.direction + 1) % 4) as Direction;
       return success('出力方向を回転しました');
     }
+    if (command.type === 'recipe') {
+      if (!Object.hasOwn(RECIPES, command.recipe) || !isRecipeUnlocked(this.state, command.recipe)) return failure('このレシピは技術ツリーで研究すると解放されます');
+      if (!DEFINITIONS[building.kind].recipes?.includes(command.recipe)) return failure('この設備ではそのレシピを使用できません');
+      if (building.working || (building.reserved?.length ?? 0) > 0) return failure('稼働中はレシピを変更できません');
+      const recipe = RECIPES[command.recipe];
+      if (building.input.some(item => !(recipe.input[item.resource] ?? 0)) || building.output.some(item => !(recipe.output[item.resource] ?? 0))) return failure('庫内に互換性のない素材があります。先に回収してください');
+      building.recipe = command.recipe;
+      building.progress = 0;
+      return success('レシピを変更しました');
+    }
     if (command.type === 'feed') {
       if (!RESOURCES.includes(command.resource) || !Number.isSafeInteger(command.amount) || command.amount <= 0) return failure('投入数が不正です');
       if (!this.accepts(building, command.resource)) return failure('この設備ではその素材を使用できません');
-      if (this.state.inventory[command.resource] < command.amount) return failure('所持素材が不足しています');
-      if (building.kind === 'belt' && (building.item || command.amount !== 1)) return failure('ベルトには空き区画へ1個ずつ投入してください');
-      if (building.kind !== 'delivery' && building.kind !== 'belt' && building.input.length + command.amount > INPUT_CAPACITY) return failure('設備の入力庫が満杯です');
-      this.state.inventory[command.resource] -= command.amount;
-      if (building.kind === 'delivery') {
-        building.status = '手動納品（目標には算入されません）';
-      } else if (building.kind === 'belt') {
-        building.item = { resource: command.resource, automated: false };
-        building.beltProgress = 0;
-      } else {
-        for (let count = 0; count < command.amount; count++) building.input.push({ resource: command.resource, automated: false });
-      }
-      return success(building.kind === 'delivery' ? '手動納品は目標の本数に算入されません' : '素材を補給しました');
+      if ((this.state.inventory[command.resource] ?? 0) < command.amount) return failure('所持素材が不足しています');
+      if (conveyor(building) && (building.item || command.amount !== 1)) return failure('搬送設備には空き区画へ1個ずつ投入してください');
+      if (!conveyor(building) && building.kind !== 'delivery' && !this.canReceive(building, command.resource, command.amount)) return failure('入力庫が満杯、または他のレシピ素材用の空きが必要です');
+      const items = this.takeInventory(command.resource, command.amount).map(item => ({ ...item, handled: true }));
+      if (building.kind === 'delivery') building.status = '手動納品（目標には算入されません）';
+      else if (conveyor(building)) { building.item = items[0]; building.beltProgress = 0; }
+      else building.input.push(...items);
+      return success(building.kind === 'delivery' ? '手動納品は目標の本数・生産実績に算入されません' : '素材を補給しました');
     }
     if (command.type === 'collect') {
-      const reserved = building.working ? this.recipeAmount(building) : 0;
-      const recovered = [...building.input.splice(reserved), ...building.output.splice(0)];
-      if (building.item) { recovered.push(building.item); building.item = null; building.beltProgress = 0; }
-      for (const item of recovered) this.state.inventory[item.resource]++;
-      return success(`素材を${recovered.length}個回収しました${reserved ? '（稼働中の素材は予約済み）' : ''}`);
+      if (command.resource !== undefined && !RESOURCES.includes(command.resource)) return failure('素材の種類が不正です');
+      if (command.amount !== undefined && (!Number.isSafeInteger(command.amount) || command.amount <= 0)) return failure('回収数が不正です');
+      const available = [...building.input, ...building.output, ...(building.item ? [building.item] : [])].filter(item => command.resource === undefined || item.resource === command.resource).length;
+      if (command.amount !== undefined && command.amount > available) return failure(`回収できる品は${available}個です（稼働中の素材は予約済み）`);
+      let remaining = command.amount ?? available;
+      const recovered: Item[] = [];
+      const take = (items: Item[]): Item[] => items.filter(item => {
+        if (remaining > 0 && (command.resource === undefined || item.resource === command.resource)) { recovered.push(item); remaining--; return false; }
+        return true;
+      });
+      building.input = take(building.input);
+      building.output = take(building.output);
+      if (building.item && remaining > 0 && (command.resource === undefined || building.item.resource === command.resource)) {
+        recovered.push(building.item); building.item = null; building.beltProgress = 0;
+      }
+      this.putInventory(recovered);
+      return success(`素材を${recovered.length}個回収しました${building.working ? '（稼働中の素材は予約済み）' : ''}`);
     }
     return failure('操作が不正です');
   }
@@ -134,38 +175,66 @@ export class Simulation {
 
   hasPowerAt(x: number, z: number): boolean {
     const networks = this.networks();
-    return this.state.buildings.some(building => (
-      Math.abs(building.x - x) + Math.abs(building.z - z) <= 1 &&
-      (networks.get(building.id)?.generators.some(generator => generator.energy > 0) ?? false)
-    ));
+    return this.state.buildings.some(building => Math.abs(building.x - x) + Math.abs(building.z - z) <= 1 && (networks.get(building.id)?.generators.some(generator => generator.energy > 0) ?? false));
   }
 
   step(): void {
     this.state.tick++;
+    const stats = this.state.stats!;
+    stats.recentSwordTicks = stats.recentSwordTicks.filter(tick => tick > this.state.tick - 1200);
     const buildings = [...this.state.buildings].sort((a, b) => a.id - b.id);
     const occupants = new Map(buildings.map(building => [key(building.x, building.z), building]));
-    for (const building of buildings) if (building.kind === 'belt' && building.item) {
-      building.beltProgress = Math.min(BELT_SECONDS, building.beltProgress + STEP);
-    }
+    for (const building of buildings) if (conveyor(building) && building.item) building.beltProgress = Math.min(BELT_SECONDS, building.beltProgress + STEP);
     this.transport(buildings, occupants);
     const networks = this.networks();
     for (const building of buildings) {
-      if (building.kind === 'belt') { building.status = building.item ? (building.beltProgress + 1e-9 >= BELT_SECONDS ? '搬送先が詰まっています' : '搬送中') : '搬送品を待っています'; continue; }
+      if (conveyor(building)) { building.status = building.item ? (building.beltProgress + 1e-9 >= BELT_SECONDS ? '搬送先が詰まっています' : '搬送中') : '搬送品を待っています'; continue; }
+      if (building.kind === 'storage') { building.status = building.input.length >= STORAGE_CAPACITY ? '収納庫が満杯です（32個）' : `収納中 ${building.input.length}/32個`; continue; }
       if (building.kind === 'wire') { building.status = networks.get(building.id)?.generators.length ? '魔力網に接続中' : '魔力炉に接続してください'; continue; }
-      if (building.kind === 'delivery') { if (!building.status.startsWith('手動')) building.status = this.state.won ? '目標達成！' : '鉄延べ棒の自動納品を待っています'; continue; }
+      if (building.kind === 'delivery') { if (!building.status.startsWith('手動')) building.status = this.state.won ? '鉄の延べ棒の目標達成！' : '鉄の延べ棒・魔導剣の自動納品を待っています'; continue; }
       this.produce(building, networks.get(building.id));
     }
     this.state.won = this.state.delivered >= GOAL;
+    stats.peakSwordRate = Math.max(stats.peakSwordRate, currentSwordRate(this.state));
   }
 
-  private recipeAmount(building: Building): number {
-    return Object.values(DEFINITIONS[building.kind].input ?? {}).reduce((sum, amount) => sum + (amount ?? 0), 0);
+  /** Inventory items are sparse provenance records; initial stock remains untracked. */
+  private takeInventory(resource: Resource, amount: number): Item[] {
+    if (amount === 0) return [];
+    const taken: Item[] = [];
+    let remaining = amount;
+    this.state.inventoryItems = this.state.inventoryItems!.filter(item => {
+      if (remaining > 0 && item.resource === resource) { taken.push(item); remaining--; return false; }
+      return true;
+    });
+    for (let index = 0; index < remaining; index++) taken.push({ resource, automated: false, handled: true });
+    this.state.inventory[resource] = (this.state.inventory[resource] ?? 0) - amount;
+    return taken;
   }
+
+  private putInventory(items: Item[]): void {
+    for (const item of items) {
+      this.state.inventory[item.resource] = (this.state.inventory[item.resource] ?? 0) + 1;
+      this.state.inventoryItems!.push({ ...item, handled: true });
+    }
+  }
+
+  private recipeInput(building: Building): Partial<Record<Resource, number>> { return getRecipe(building)?.input ?? DEFINITIONS[building.kind].input ?? {}; }
 
   private accepts(building: Building, resource: Resource): boolean {
-    return building.kind === 'belt' ||
-      (DEFINITIONS[building.kind].input?.[resource] ?? 0) > 0 ||
-      (building.kind === 'delivery' && resource === 'ingot');
+    return conveyor(building) || building.kind === 'storage' || (this.recipeInput(building)[resource] ?? 0) > 0 || (building.kind === 'delivery' && (resource === 'ingot' || resource === 'sword'));
+  }
+
+  private canReceive(building: Building, resource: Resource, amount: number, incoming = 0, sameResourceIncoming = 0): boolean {
+    if (!this.accepts(building, resource)) return false;
+    if (building.kind === 'delivery') return true;
+    if (conveyor(building)) return amount === 1 && incoming === 0 && (!building.item || building.beltProgress + 1e-9 >= BELT_SECONDS);
+    const capacity = building.kind === 'storage' ? STORAGE_CAPACITY : INPUT_CAPACITY;
+    if (building.input.length + incoming + amount > capacity) return false;
+    // Preserve room for every ingredient, so an ingot flood cannot prevent crystal input.
+    const input = this.recipeInput(building);
+    const otherMinimum = RESOURCES.reduce((sum, other) => sum + (other === resource ? 0 : input[other] ?? 0), 0);
+    return building.input.filter(item => item.resource === resource).length + sameResourceIncoming + amount <= capacity - otherMinimum;
   }
 
   private networks(): Map<number, Network> {
@@ -175,8 +244,7 @@ export class Simulation {
     for (const building of powered) {
       if (result.has(building.id)) continue;
       const network: Network = { generators: [] };
-      const queue = [building];
-      result.set(building.id, network);
+      const queue = [building]; result.set(building.id, network);
       for (let index = 0; index < queue.length; index++) {
         const current = queue[index];
         if (current.kind === 'generator') network.generators.push(current);
@@ -197,8 +265,7 @@ export class Simulation {
     let needed = amount;
     for (const generator of network.generators) {
       const consumed = Math.min(needed, generator.energy);
-      generator.energy -= consumed;
-      needed -= consumed;
+      generator.energy -= consumed; needed -= consumed;
       if (needed === 0) break;
     }
     return true;
@@ -206,20 +273,31 @@ export class Simulation {
 
   private produce(building: Building, network: Network | undefined): void {
     const definition = DEFINITIONS[building.kind];
-    const duration = definition.seconds!;
-    const powered = building.kind === 'miner' || building.kind === 'smelter';
-    if (powered && !network?.generators.length) { building.status = '魔力導線がつながっていません'; return; }
+    if (!isKindUnlocked(this.state, building.kind)) { building.status = '設備を技術ツリーで研究してください'; return; }
+    const recipeId = building.recipe ?? definition.recipes?.[0];
+    if (recipeId && !isRecipeUnlocked(this.state, recipeId)) { building.status = 'レシピを技術ツリーで研究してください'; return; }
+    const recipe = getRecipe(building);
+    const duration = recipe?.seconds ?? definition.seconds!;
+    const energy = recipe?.energy ?? definition.energy ?? 0;
+    if (energy > 0 && !network?.generators.length) { building.status = '魔力導線がつながっていません'; return; }
     if (!building.working) {
-      const recipe = definition.input ?? {};
-      for (const resource of RESOURCES) if (building.input.filter(item => item.resource === resource).length < (recipe[resource] ?? 0)) {
-        building.status = building.kind === 'generator' ? '木材が不足しています（手動補給できます）' : '鉄鉱石が不足しています';
-        return;
+      const input = recipe?.input ?? definition.input ?? {};
+      for (const resource of RESOURCES) {
+        const required = input[resource] ?? 0;
+        const present = building.input.filter(item => item.resource === resource).length;
+        if (present < required) { building.status = `${RESOURCE_NAMES[resource]}が不足しています（あと${required - present}個）${building.kind === 'generator' ? '・手動補給できます' : ''}`; return; }
       }
       if (building.kind !== 'generator' && building.output.length >= OUTPUT_CAPACITY) { building.status = '出力庫が満杯です'; return; }
-      if (powered && !this.spend(network, definition.energy ?? 0)) { building.status = '魔力が不足しています'; return; }
-      // Accepted resources are recipe-specific, so the first N items form a stable reservation.
-      building.working = true;
-      building.progress = 0;
+      if (energy > 0 && !this.spend(network, energy)) { building.status = `魔力が不足しています（開始時に${energy}単位必要）`; return; }
+      // Reserve first matching indices in deterministic input order, including mixed ingredients.
+      const needed = { ...input };
+      const reserved: Item[] = [];
+      building.input = building.input.filter(item => {
+        if ((needed[item.resource] ?? 0) > 0) { reserved.push(item); needed[item.resource]!--; return false; }
+        return true;
+      });
+      building.reserved = reserved;
+      building.working = true; building.progress = 0;
     }
     building.progress = Math.min(duration, building.progress + STEP);
     building.status = '稼働中';
@@ -227,58 +305,75 @@ export class Simulation {
     if (building.kind === 'generator') {
       if (building.pendingEnergy === undefined || building.pendingEnergy === 0) building.pendingEnergy = definition.generatedEnergy!;
       const stored = Math.min(ENERGY_CAPACITY - building.energy, building.pendingEnergy);
-      building.energy += stored;
-      building.pendingEnergy -= stored;
+      building.energy += stored; building.pendingEnergy -= stored;
       if (building.pendingEnergy > 0) { building.status = '完成した魔力を保持中（蓄積庫が満杯）'; return; }
     } else {
       if (building.output.length >= OUTPUT_CAPACITY) { building.status = '完成品を保持中（出力庫が満杯）'; return; }
-      const resource = Object.keys(definition.output!)[0] as Resource;
-      const automated = building.kind !== 'smelter' || building.input.slice(0, this.recipeAmount(building)).every(item => item.automated);
-      building.output.push({ resource, automated });
+      const resource = Object.keys(recipe?.output ?? definition.output!)[0] as Resource;
+      const reserved = building.reserved ?? [];
+      const item: Item = { resource, automated: reserved.every(input => input.automated), ...(reserved.some(input => input.handled) ? { handled: true } : {}) };
+      building.output.push(item);
+      if (automatic(item)) {
+        this.state.stats!.produced[resource] = (this.state.stats!.produced[resource] ?? 0) + 1;
+        if (resource === 'sword') this.state.stats!.recentSwordTicks.push(this.state.tick);
+      }
     }
-    building.input.splice(0, this.recipeAmount(building));
-    building.progress = 0;
-    building.working = false;
-    building.status = '生産完了';
+    building.reserved = []; building.progress = 0; building.working = false; building.status = '生産完了';
   }
 
+  /** Plan from a single snapshot, clear all sources, then commit destinations. */
   private transport(buildings: Building[], occupants: Map<number, Building>): void {
-    const candidates: Transfer[] = [];
-    const incoming = new Map<number, number>();
+    const options = new Map<number, Transfer[]>();
     for (const source of buildings) {
-      const fromBelt = source.kind === 'belt';
-      const item = fromBelt ? source.item : source.output[0];
-      if (!item || (fromBelt && source.beltProgress + 1e-9 < BELT_SECONDS)) continue;
-      const [dx, dz] = DIRECTIONS[source.direction];
-      const x = source.x + dx, z = source.z + dz;
-      if (x < 0 || x >= SIZE || z < 0 || z >= SIZE) continue;
-      const target = occupants.get(key(x, z));
-      if (!target || !this.accepts(target, item.resource)) continue;
-      const accepted = incoming.get(target.id) ?? 0;
-      if (target.kind === 'belt') {
-        if (accepted > 0 || (target.item && target.beltProgress + 1e-9 < BELT_SECONDS)) continue;
-      } else if (target.kind !== 'delivery' && target.input.length + accepted >= INPUT_CAPACITY) continue;
-      candidates.push({ source, target, item, fromBelt });
-      incoming.set(target.id, accepted + 1);
+      const sourceSlot = conveyor(source) ? 'item' : source.kind === 'storage' ? 'input' : 'output';
+      const item = sourceSlot === 'item' ? source.item : source[sourceSlot][0];
+      if (!item || (sourceSlot === 'item' && source.beltProgress + 1e-9 < BELT_SECONDS)) continue;
+      const ports: (0 | 1)[] = source.kind === 'splitter' ? (source.splitCursor === 1 ? [1, 0] : [0, 1]) : [0];
+      const candidates: Transfer[] = [];
+      for (const port of ports) {
+        const [dx, dz] = DIRECTIONS[(source.direction + port) % 4];
+        const x = source.x + dx, z = source.z + dz;
+        if (x < 0 || x >= SIZE || z < 0 || z >= SIZE) continue;
+        const target = occupants.get(key(x, z));
+        if (target && this.canReceive(target, item.resource, 1)) candidates.push({ source, target, item, sourceSlot, port });
+      }
+      if (candidates.length > 0) options.set(source.id, candidates);
     }
-    // An occupied belt accepts an item only if its existing item also has a valid move.
-    // Iterate to a fixed point: stalls propagate upstream, but closed loops can rotate.
-    let plan = candidates;
+    const rejected = new Set<string>();
+    let plan: Transfer[] = [];
     for (;;) {
-      const departing = new Set(plan.filter(transfer => transfer.fromBelt).map(transfer => transfer.source.id));
-      const next = plan.filter(transfer => transfer.target.kind !== 'belt' || !transfer.target.item || departing.has(transfer.target.id));
-      if (next.length === plan.length) break;
-      plan = next;
+      const incoming = new Map<number, number>();
+      const incomingResource = new Map<string, number>();
+      plan = [];
+      for (const source of buildings) {
+        for (const candidate of options.get(source.id) ?? []) {
+          if (rejected.has(`${source.id}:${candidate.target.id}`)) continue;
+          const resourceKey = `${candidate.target.id}:${candidate.item.resource}`;
+          const count = incoming.get(candidate.target.id) ?? 0;
+          if (!this.canReceive(candidate.target, candidate.item.resource, 1, count, incomingResource.get(resourceKey) ?? 0)) continue;
+          plan.push(candidate); incoming.set(candidate.target.id, count + 1); incomingResource.set(resourceKey, (incomingResource.get(resourceKey) ?? 0) + 1); break;
+        }
+      }
+      // If an occupied conveyor cannot leave, reject that edge and try the splitter's other port.
+      const departing = new Set(plan.filter(transfer => transfer.sourceSlot === 'item').map(transfer => transfer.source.id));
+      const blocked = plan.filter(transfer => conveyor(transfer.target) && transfer.target.item && !departing.has(transfer.target.id));
+      if (blocked.length === 0) break;
+      for (const transfer of blocked) rejected.add(`${transfer.source.id}:${transfer.target.id}`);
     }
     for (const transfer of plan) {
-      if (transfer.fromBelt) { transfer.source.item = null; transfer.source.beltProgress = 0; }
-      else transfer.source.output.shift();
+      if (transfer.sourceSlot === 'item') { transfer.source.item = null; transfer.source.beltProgress = 0; }
+      else transfer.source[transfer.sourceSlot].shift();
+      if (transfer.source.kind === 'splitter') transfer.source.splitCursor = transfer.port === 0 ? 1 : 0;
     }
     for (const transfer of plan) {
-      if (transfer.target.kind === 'belt') { transfer.target.item = transfer.item; transfer.target.beltProgress = 0; }
+      if (conveyor(transfer.target)) { transfer.target.item = transfer.item; transfer.target.beltProgress = 0; }
       else if (transfer.target.kind === 'delivery') {
-        if (transfer.item.automated) this.state.delivered++;
-        transfer.target.status = transfer.item.automated ? '鉄延べ棒を自動納品しました' : '手動由来の品は目標に算入されません';
+        if (automatic(transfer.item)) {
+          const resource = transfer.item.resource;
+          this.state.stats!.delivered[resource] = (this.state.stats!.delivered[resource] ?? 0) + 1;
+          if (resource === 'ingot') this.state.delivered++;
+        }
+        transfer.target.status = automatic(transfer.item) ? `${RESOURCE_NAMES[transfer.item.resource]}を自動納品しました` : '手動で取り出し・投入した品は目標に算入されません';
       } else transfer.target.input.push(transfer.item);
     }
   }

@@ -20,6 +20,9 @@ function fixture(buildings: Building[] = []): Simulation {
   state.nextId = Math.max(0, ...buildings.map(value => value.id)) + 1;
   state.inventory = { wood: 1000, ore: 1000, ingot: 1000 };
   state.kits = {};
+  // These original tests intentionally also exercise loading the previous schema.
+  state.version = 1;
+  delete state.stats; delete state.research; delete state.inventoryItems;
   state.delivered = 0;
   state.won = false;
   for (const value of buildings) {
@@ -38,7 +41,7 @@ function ironUnits(state: GameState): number {
   const itemUnits = (item: Item) => item.resource === 'ore' ? 1 : item.resource === 'ingot' ? Number(DEFINITIONS.smelter.input?.ore || 1) : 0;
   return state.inventory.ore + state.inventory.ingot * Number(DEFINITIONS.smelter.input?.ore || 1)
     + state.delivered * Number(DEFINITIONS.smelter.input?.ore || 1)
-    + state.buildings.reduce((total, value) => total + [...value.input, ...value.output, ...(value.item ? [value.item] : [])].reduce((sum, item) => sum + itemUnits(item), 0), 0);
+    + state.buildings.reduce((total, value) => total + [...value.input, ...value.output, ...(value.reserved ?? []), ...(value.item ? [value.item] : [])].reduce((sum, item) => sum + itemUnits(item), 0), 0);
 }
 
 test('seeded worlds and their progression are reproducible', () => {
@@ -70,7 +73,7 @@ test('out of bounds, terrain mismatch and occupied building commands are atomic'
 
 test('snapshot and restore preserve a running factory without sharing mutable state', () => {
   const simulation = fixture([building(1, 'belt', 4, 4, { item: { resource: 'ore', automated: true }, beltProgress: 0.3 }),
-    building(2, 'smelter', 5, 4, { input: [{ resource: 'ore', automated: false }], progress: 0.4 }),
+    building(2, 'smelter', 5, 4, { input: [{ resource: 'ore', automated: false }, { resource: 'ore', automated: true }], progress: 0.4, working: true }),
     building(3, 'generator', 5, 5, { energy: 3, input: [{ resource: 'wood', automated: false }] })]);
   const snapshot = simulation.snapshot();
   const restored = new Simulation(9);
@@ -223,7 +226,7 @@ test('collect cannot reclaim ore that is already reserved for a smelting job', (
   simulation.step();
   const before = ironUnits(simulation.snapshot());
   assert(simulation.command({ type: 'collect', id: 2 }).ok);
-  assert.equal(simulation.state.buildings[1].input.length, 2);
+  assert.equal(simulation.state.buildings[1].reserved!.length, 2);
   advance(simulation, 4);
   assert.equal(ironUnits(simulation.snapshot()), before);
 });
@@ -244,7 +247,7 @@ test('completed pending magic never refunds the already burned wood or duplicate
   assert.equal(generator.energy, ENERGY_CAPACITY);
   assert.equal(generator.pendingEnergy, 1);
   assert.equal(generator.working, true);
-  assert.equal(generator.input.length, 1);
+  assert.equal(generator.reserved!.length, 1);
   const copy = new Simulation(); copy.restore(simulation.snapshot());
   advance(simulation, 3); advance(copy, 3);
   assert.deepEqual(copy.snapshot(), simulation.snapshot());

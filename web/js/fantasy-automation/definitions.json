@@ -1,9 +1,14 @@
 {
-  "miner": { "label": "採掘機", "cost": { "wood": 4, "ingot": 6 }, "seconds": 2, "output": { "ore": 1 }, "energy": 2 },
-  "belt": { "label": "搬送ベルト", "cost": { "wood": 1, "ingot": 1 }, "seconds": 0.5 },
-  "smelter": { "label": "魔導炉", "cost": { "wood": 4, "ingot": 8 }, "seconds": 4, "input": { "ore": 2 }, "output": { "ingot": 1 }, "energy": 5 },
-  "generator": { "label": "魔力炉", "cost": { "wood": 6, "ingot": 6 }, "seconds": 10, "input": { "wood": 1 }, "generatedEnergy": 30 },
-  "wire": { "label": "魔力導線", "cost": { "wood": 1 } },
-  "lumber": { "label": "木材採取場", "cost": { "wood": 4, "ingot": 4 }, "seconds": 3, "output": { "wood": 1 } },
-  "delivery": { "label": "納品箱", "cost": { "wood": 6 } }
+  "miner": { "label": "採掘機", "cost": { "wood": 4, "ingot": 6 }, "seconds": 2, "output": { "ore": 1 }, "energy": 2, "technology": "basic" },
+  "belt": { "label": "搬送ベルト", "cost": { "wood": 1, "ingot": 1 }, "seconds": 0.5, "technology": "basic" },
+  "smelter": { "label": "魔導炉", "cost": { "wood": 4, "ingot": 8 }, "seconds": 4, "input": { "ore": 2 }, "output": { "ingot": 1 }, "energy": 5, "technology": "basic", "recipes": ["ingot"] },
+  "generator": { "label": "魔力炉", "cost": { "wood": 6, "ingot": 6 }, "seconds": 10, "input": { "wood": 1 }, "generatedEnergy": 30, "technology": "basic" },
+  "wire": { "label": "魔力導線", "cost": { "wood": 1 }, "technology": "basic" },
+  "lumber": { "label": "木材採取場", "cost": { "wood": 4, "ingot": 4 }, "seconds": 3, "output": { "wood": 1 }, "technology": "basic" },
+  "delivery": { "label": "納品箱", "cost": { "wood": 6 }, "technology": "basic" },
+  "splitter": { "label": "分岐器", "cost": { "wood": 2, "ingot": 2 }, "seconds": 0.5, "technology": "logistics" },
+  "storage": { "label": "収納箱", "cost": { "wood": 6, "ingot": 2 }, "technology": "logistics" },
+  "crystalMiner": { "label": "魔晶採掘機", "cost": { "wood": 4, "ingot": 8 }, "seconds": 2, "output": { "rawCrystal": 1 }, "energy": 2, "technology": "crystals" },
+  "crystalRefiner": { "label": "魔晶精製炉", "cost": { "wood": 4, "ingot": 8 }, "seconds": 3, "input": { "rawCrystal": 1 }, "output": { "crystal": 1 }, "energy": 3, "technology": "crystals", "recipes": ["crystal"] },
+  "assembler": { "label": "魔導組立機", "cost": { "wood": 6, "ingot": 12 }, "seconds": 4, "input": { "ingot": 2, "crystal": 1 }, "output": { "sword": 1 }, "energy": 8, "technology": "assembly", "recipes": ["sword"] }
 }
