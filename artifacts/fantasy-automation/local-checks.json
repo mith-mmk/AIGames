@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-13",
+  "node": "24.19.0",
+  "newTests": {
+    "clock": 7,
+    "simulation": 17,
+    "storage": 4,
+    "total": 28
+  },
+  "npmTest": "passed, includes existing games",
+  "typecheck": "passed",
+  "newLint": {
+    "errors": 0,
+    "baselineWarnings": 2
+  },
+  "pagesBuild": {
+    "status": "passed",
+    "runtimeFiles": 304
+  },
+  "mirrorLightBrowserRegression": "passed: 30 solved stages, desktop/touch, 1440/390/320, undo/reset, storage, WebGL recovery",
+  "publication": "not performed"
+}

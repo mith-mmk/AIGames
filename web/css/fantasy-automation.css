@@ -15,7 +15,7 @@ a { color: inherit; }
 #game-ui { position: fixed; inset: 0; pointer-events: none; }
 #game-ui > * { pointer-events: auto; }
 /* eslint-disable-next-line css/no-invalid-properties -- Safe-area env() offsets inside max()/calc() are valid CSS; the parser cannot resolve them. */
-.workshop-top { position: absolute; top: max(10px, env(safe-area-inset-top)); left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right)); display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--panel); box-shadow: 0 4px 18px #071b2420; }
+.workshop-top { z-index: 3; position: absolute; top: max(10px, env(safe-area-inset-top)); left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right)); display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--panel); box-shadow: 0 4px 18px #071b2420; }
 .home-link { white-space: nowrap; font-size: 12px; text-decoration: none; }
 .workshop-title { font-weight: 700; white-space: nowrap; font-size: 15px; }
 .workshop-title > span { display: block; font-size: 11px; font-weight: 400; color: var(--gold); margin-top: 3px; }
@@ -35,7 +35,7 @@ summary { cursor: pointer; min-height: 44px; display: flex; align-items: center;
 .workshop-notices p { margin: 0 0 6px; padding: 8px 12px; border-radius: 8px; background: #18362ad4; font-size: 12px; line-height: 1.5; box-shadow: 0 2px 10px #12211920; }
 #victory-message { color: var(--gold); border: 1px solid var(--gold); }
 /* eslint-disable-next-line css/no-invalid-properties -- Safe-area env() offsets inside max()/calc() are valid CSS; the parser cannot resolve them. */
-.selection-panel { position: absolute; right: max(12px, env(safe-area-inset-right)); top: 88px; width: 290px; max-height: calc(100dvh - 242px); overflow: auto; border: 1px solid var(--border); border-radius: 12px; padding: 15px; background: var(--panel); font-size: 12px; }
+.selection-panel { z-index: 2; position: absolute; right: max(12px, env(safe-area-inset-right)); top: 88px; width: 290px; max-height: calc(100dvh - 242px); overflow: auto; border: 1px solid var(--border); border-radius: 12px; padding: 15px; background: var(--panel); font-size: 12px; }
 .selection-panel.is-collapsed > :not(h2):not(.panel-close) { display: none; }
 .selection-panel h2 { font-size: 16px; padding-right: 30px; margin: 2px 0 8px; }
 .selection-panel p { color: #d9e4cd; line-height: 1.65; margin: 8px 0; }

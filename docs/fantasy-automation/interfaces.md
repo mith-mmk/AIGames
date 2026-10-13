@@ -11,3 +11,5 @@
 - 統合担当: `app.ts`, types, package.json, configs, docs, top index。依存インストール/commit/pushは統合担当のみ。各担当commitしない。
 
 最小補足仮定は docs に記録して進行。原本の画像転用禁止。Worker/Rapier/外部GLBは今回不要。
+
+最終追加型: `Building.pendingEnergy?:number` は完成した魔力の未格納残量0..30。`Definition.output` と `generatedEnergy` は JSON レシピ出力。`UIState.hover` は建設区画表示用。

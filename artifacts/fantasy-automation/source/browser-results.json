@@ -1,0 +1,40 @@
+{
+  "mode": "source",
+  "browser": "151.0.7922.173",
+  "checks": [
+    "canvas placement; five repeated exact paused save/load operations",
+    "R rotation; Shift copy; X removal; fast continuous belt drag",
+    "2x progression; pause; reload and persisted resume",
+    {
+      "realUiStarter": "12 facilities built with initial resources; automatic fuel/mining/smelting/delivery passed",
+      "delivered": 1,
+      "tick": 473
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "canvasWidth": 1440,
+      "canvasHeight": 900,
+      "paletteCount": 7
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "canvasWidth": 390,
+      "canvasHeight": 844,
+      "paletteCount": 7
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "canvasWidth": 320,
+      "canvasHeight": 844,
+      "paletteCount": 7
+    },
+    "camera controls; WebGL context loss/recovery",
+    "IndexedDB exact item/progress/provenance/pending energy roundtrip through UI",
+    "denied storage and unavailable WebGL keep Japanese controls readable"
+  ],
+  "pageErrors": [],
+  "failedRequests": []
+}

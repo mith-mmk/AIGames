@@ -8,3 +8,5 @@
 現在の作品一覧は `web/index.html` が正本です。机上のからくり工房（全10面）とホームページから移植した3Dルービックキューブを含みます。
 
 ローカル起動は `npm start`（`http://127.0.0.1:4173/`）、テストは `npm test`。公開用フォルダは `npm run build:pages` で生成します。公開の移行手順・未実施の操作は [MIGRATION.md](MIGRATION.md) を参照してください。
+
+魔導からくり工房（3Dファンタジー自動化）は `fantasy-automation.html`。初期設備から鉄延べ棒100本を自動納品します。操作・配置例・保存については [ゲームガイド](docs/fantasy-automation/README.md)、検証は [プレイテスト記録](docs/fantasy-automation/playtest.md) を参照。新作のみTypeScript/Viteでビルドし、既存ゲームは静的配信を維持します。

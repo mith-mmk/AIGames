@@ -156,6 +156,33 @@ test('an obstructed belt stalls without losing items and resumes after downstrea
   assert.equal(ironUnits(simulation.snapshot()), total);
 });
 
+test('100 automatic ingots are conserved through a stalled three-belt line and recovery', () => {
+  const simulation = fixture([building(1, 'smelter', 4, 4), building(2, 'belt', 5, 4),
+    building(3, 'belt', 6, 4), building(4, 'belt', 7, 4)]);
+  simulation.state.inventory = { wood: 100, ore: 0, ingot: 0 };
+  let injected = 0;
+  for (let tick = 0; tick < 2000 && simulation.state.delivered < 100; tick += 1) {
+    const source = simulation.state.buildings[0];
+    while (source.output.length < 4 && injected < 100) {
+      source.output.push({ resource: 'ingot', automated: true }); injected += 1;
+    }
+    if (tick === 60) {
+      assert.equal(simulation.state.delivered, 0);
+      assert.equal(source.output.length, 4);
+      assert.equal(simulation.state.buildings.filter(value => value.item).length, 3);
+      assert(simulation.command({ type: 'build', kind: 'delivery', x: 8, z: 4, direction: 1 }).ok);
+    }
+    simulation.step();
+    const pending = simulation.state.buildings.reduce((total, value) => total + value.output.length + value.input.length + Number(!!value.item), 0);
+    assert.equal(simulation.state.delivered + pending, injected, `No lost or duplicated ingots at transport tick ${tick}`);
+    assert.equal(ironUnits(simulation.snapshot()), injected * Number(DEFINITIONS.smelter.input?.ore), `Material units conserved at tick ${tick}`);
+  }
+  assert.equal(injected, 100);
+  assert.equal(simulation.state.delivered, 100);
+  assert.equal(simulation.state.won, true);
+  assert(simulation.state.buildings.every(value => value.input.length === 0 && value.output.length === 0 && value.item === null));
+});
+
 test('smelting conserves 100 units of ore through reservation, completion and collection', () => {
   const simulation = fixture([building(1, 'generator', 4, 5, { energy: ENERGY_CAPACITY }), building(2, 'smelter', 4, 4)]);
   simulation.state.inventory = { wood: 0, ore: 100, ingot: 0 };
