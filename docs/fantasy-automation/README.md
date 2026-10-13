@@ -14,7 +14,17 @@ npm run playtest:fantasy
 node scripts/fantasy-automation-browser.cjs --built
 ```
 
-新作だけTypeScript/Viteでビルドし、既存作品は従来どおり静的HTML/JSで動きます。`npm start` とPages梱包の前に新作をビルドします。生成したruntimeはgit管理外です。Three.js0.180.0は同梱版を使います。
+新作だけTypeScript/Viteでビルドし、既存作品は従来どおり静的HTML/JSで動きます。`npm start` とPages梱包の前に新作をビルドします。配布用 `web/js/fantasy-automation/runtime/app.js` もGit管理し、ソース変更時に再生成して一緒にコミットします。`npm test` は配布JSと再ビルド結果の一致も検査します。Three.js0.180.0は同梱版を使います。
+
+## ビルドなしの静的配信
+
+checkoutに含まれる `web/` をそのままHTTP配信できます。Node.jsがあれば依存インストールなしで `node scripts/serve.cjs`、Pythonがあれば `python3 -m http.server 4173 --bind 127.0.0.1 --directory web` で起動し、`http://127.0.0.1:4173/fantasy-automation.html` を開きます。
+
+入口は `web/fantasy-automation.html`、配布JSは `web/js/fantasy-automation/runtime/app.js`、CSSは `web/css/fantasy-automation.css`。Three.jsは `web/js/vendor/three-0.180.0/three.module.min.js` と `three.core.min.js`。すべて相対パスなので `/AIGames/` 配下でも動きます。
+
+HTMLを `file://` でダブルクリックする方式は対応しません。ES modules・importmapの読み込みはHTTP配信で確認しています。ゲームを遊ぶだけなら再ビルド不要、TypeScriptの編集後やPages生成時には `npm ci` とビルドが必要です。
+
+PagesではActionsの `npm ci` → `npm test` → `npm run build:pages` が新作を再ビルドし、`.pages-dist/` だけを公開artifactへ渡します。今回この経路のローカル検証まで行い、実際の公開は行っていません。
 
 ## 最初のライン
 

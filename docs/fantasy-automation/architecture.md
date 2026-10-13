@@ -7,7 +7,7 @@ MVPは採掘→搬送→精錬→搬送→納品箱。鉄の延べ棒100本の�
 ## 既存構成との共存
 
 - `AGENTS.md` に従い各作品の入口は独立HTML、タイトルは `AI Games`、コードは `web/js/`、CSSは `web/css/`。
-- 新作だけTypeScriptをVite library buildで `web/js/fantasy-automation/runtime/app.js` に変換。既存HTML・JavaScriptの配信方式を変えない。
+- 新作だけTypeScriptをVite library buildで `web/js/fantasy-automation/runtime/app.js` に変換。配布JSもGit管理してビルドなしHTTP配信を可能にする。既存HTML・JavaScriptの配信方式を変えない。
 - 同梱済みThree.js 0.180.0をHTML importmapで参照。型と開発ビルド用npm packageも同版。外部CDN・他社参考画像の転用なし。
 - `npm start` の前と `npm run build:pages` の前に新作をビルドする。Pagesのコピー許可リストはTSやテストを公開しない。
 - 既存Three.js LICENSEを保持。GLBや物理応答は今回不要。将来GLB採用時は梱包拡張子とloader追加が必要。
