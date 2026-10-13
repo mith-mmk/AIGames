@@ -57,6 +57,7 @@ class WorkshopApp {
   }
   init() {
     this.simulation.init(); this.selectedId = null; this.kind = null; this.hover = null;
+    this.direction = 1; this.removeMode = false; this.xHeld = false; this.previousSpeed = 1;
     this.speed = 1; this.loop.reset(); this.view?.resetCamera();
     this.message = '新しい工房を開きました。初期設備は建設時にキットを使用します。'; this.sync();
   }

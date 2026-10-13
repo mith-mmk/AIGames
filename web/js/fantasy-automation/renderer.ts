@@ -143,6 +143,7 @@ export class WorldView {
     const matrix = new THREE.Matrix4();
     const tileColors = { grass: 0x769881, forest: 0x5e8268, ore: 0x8c9994 };
     const trees: number[] = [], rocks: number[] = [];
+    const occupied = new Set(state.buildings.map(building => building.z * SIZE + building.x));
     state.terrain.forEach((type, index) => {
       const x = index % SIZE, z = Math.floor(index / SIZE);
       matrix.compose(new THREE.Vector3(x, -0.105, z), new THREE.Quaternion(), new THREE.Vector3(0.98, 0.16, 0.98));
@@ -150,8 +151,9 @@ export class WorldView {
       const color = new THREE.Color(tileColors[type]);
       color.multiplyScalar(0.95 + (((x * 31 + z * 13) % 7) / 100));
       tiles.setColorAt(index, color);
-      if (type === 'forest') trees.push(index);
-      if (type === 'ore') rocks.push(index);
+      // Resource-colored ground remains, but scenery must not hide a placed facility.
+      if (type === 'forest' && !occupied.has(index)) trees.push(index);
+      if (type === 'ore' && !occupied.has(index)) rocks.push(index);
     });
     this.terrain.add(tiles);
     if (trees.length) {
@@ -177,6 +179,7 @@ export class WorldView {
   private facility(kind: Kind): FacilityView {
     const group = new THREE.Group();
     const arrow = this.arrow();
+    arrow.visible = !['wire', 'generator', 'delivery'].includes(kind);
     const wires: THREE.Mesh[] = [];
     arrow.position.y = kind === 'belt' ? 0.17 : 0.08;
     arrow.position.z = kind === 'belt' ? 0 : -0.22;
@@ -245,7 +248,9 @@ export class WorldView {
     if (this.disposed) return;
     const now = performance.now();
     this.input.update((now - this.lastTime) / 1000); this.lastTime = now;
-    const key = `${state.seed}:${state.terrain.join(',')}`;
+    const resourceOccupancy = state.buildings.map(building => building.z * SIZE + building.x)
+      .filter(index => state.terrain[index] !== 'grass').sort((a, b) => a - b).join(',');
+    const key = `${state.seed}:${state.terrain.join(',')}:${resourceOccupancy}`;
     if (key !== this.terrainKey) { this.rebuildTerrain(state); this.terrainKey = key; }
     const ids = new Set<number>();
     const cells = new Map(state.buildings.map(building => [`${building.x},${building.z}`, building]));
@@ -290,7 +295,31 @@ export class WorldView {
         if (child instanceof THREE.Mesh) child.material = this.material(options.valid ? 0x8fffb1 : 0xff786e, 0, child.parent !== this.ghost);
       });
       this.ghost.rotation.y = -options.direction * Math.PI / 2;
-      this.ghostPort.visible = options.kind !== 'wire';
+      this.ghostPort.visible = !!options.kind && !['wire', 'generator', 'delivery'].includes(options.kind);
+      if (this.ghostPort.visible && options.kind) {
+        const [dx, dz] = DIRECTIONS[options.direction];
+        const outX = options.hover.x + dx, outZ = options.hover.z + dz;
+        const outOfMap = outX < 0 || outX >= SIZE || outZ < 0 || outZ >= SIZE;
+        const receiver = cells.get(`${outX},${outZ}`);
+        let outputs: Resource[] = options.kind === 'miner' ? ['ore'] : options.kind === 'smelter' ? ['ingot'] : options.kind === 'lumber' ? ['wood'] : ['wood', 'ore', 'ingot'];
+        if (options.kind === 'belt') {
+          // A neighboring source can make a prospective belt's resource known.
+          const incoming = DIRECTIONS.map(([sx, sz]) => cells.get(`${options.hover!.x + sx},${options.hover!.z + sz}`))
+            .filter((building): building is Building => !!building)
+            .filter(building => {
+              const [sx, sz] = DIRECTIONS[building.direction];
+              return building.x + sx === options.hover!.x && building.z + sz === options.hover!.z;
+            });
+          const known = incoming.flatMap(building => building.item ? [building.item.resource] : building.output.length ? building.output.map(item => item.resource) : building.kind === 'miner' ? ['ore' as Resource] : building.kind === 'smelter' ? ['ingot' as Resource] : building.kind === 'lumber' ? ['wood' as Resource] : []);
+          if (known.length) outputs = known;
+        }
+        const accepted: Resource[] = receiver?.kind === 'belt' ? ['wood', 'ore', 'ingot'] : receiver?.kind === 'smelter' ? ['ore'] : receiver?.kind === 'generator' ? ['wood'] : receiver?.kind === 'delivery' ? ['ingot'] : [];
+        const compatible = outputs.some(resource => accepted.includes(resource));
+        const portColor = outOfMap || (receiver && !compatible) ? 0xff6259 : receiver ? 0x8fffad : 0xf3b354;
+        this.ghostPort.traverse(child => { if (child instanceof THREE.Mesh) child.material = this.material(portColor); });
+        // Preserve the preview's own arrow as well as the external port glyph.
+        this.ghostPreview?.arrow.traverse(child => { if (child instanceof THREE.Mesh) child.material = this.material(portColor); });
+      }
       if (this.ghostPower) {
         const powerKind = options.kind && ['miner', 'smelter', 'generator', 'wire'].includes(options.kind);
         this.ghostPower.visible = !!powerKind;
