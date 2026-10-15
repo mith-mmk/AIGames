@@ -6,8 +6,8 @@
     "Real legacy workshop retains ticks/items/progress/power; old slot unchanged until explicit save",
     {
       "automaticSwordProduction": 15,
-      "elapsedGameSeconds": 62.3,
-      "measuredSwordsPerGameMinute": 14.446227929373997,
+      "elapsedGameSeconds": 61,
+      "measuredSwordsPerGameMinute": 14.754098360655737,
       "rollingSwordsInExact60GameSeconds": 15,
       "mastery": "researched through real UI"
     },

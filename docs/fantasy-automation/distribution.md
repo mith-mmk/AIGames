@@ -40,3 +40,11 @@ mainへのマージ、Pages設定変更、デプロイは行っていない。CI
 コード・検証スクリプト・説明書を保存した `1de5844` の新規cloneで、node_modulesと.pages-distがない状態から `web/` をサイトrootでHTTP配信して起動・建設成功。続けて `npm ci` → `npm test`（新作59件と既存検証）→ `npm run build:pages`（306ファイル）を実行し、clone作業ツリーはclean。生成した `.pages-dist/` だけを `/AIGames/` 配下で配信して起動・建設成功。開発checkoutのweb/pagesも同prefixで確認済み。
 
 全4経路の配布JS SHA-256は `0874cc4c1c5aa7820d225880598456c4641a14a449acadd6fa3294b41a5c6f76`。`clean-technology-web.json` / `clean-technology-pages.json` / `technology-web.json` / `technology-pages.json` とPNGに記録。技術ツリー追加後も、Git管理されたJSと再生成JSが一致し、ビルドなし配信・Pages梱包の双方で動く。mainマージ・公開は行っていない。
+
+## 2026-10-15：視覚UI・ゴーレム追加後
+
+`843af6d` の独立cloneで `npm ci` →既存全チェックと新作96テスト→通常命令だけの第三段階再現→Pages生成を実施。結果は元の到達記録とJSON全体が一致し、clone作業ツリーはclean。306 runtime/licenseファイルを生成した。
+
+さらに依存・生成物のない別cloneのwebをサイトrootでHTTP配信し、生成済みPagesだけの経路は `/AIGames/` で配信。どちらも起動・16設備の読込・カテゴリからの実建設に成功、例外・404は0。新しいスロットUIに合わせ、ブラウザ検査のセレクタをHUD・クイックバーへ限定している。
+
+SHA-256は両方 `6a08d3bd848d4af812bcd713ecb4c2622e2ffb539582c1ba53396cf3f17d23d9`。証拠は `distribution/clean-visual-web.json` と `clean-visual-pages.json`、各PNG。mainマージ・公開は行っていない。

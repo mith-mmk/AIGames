@@ -1,0 +1,6 @@
+{
+  "reproduction": "Load paused nine-building factory via native load, click visible feed guide, click wood slot",
+  "width": 390,
+  "runCTAVisibleAfterFeed": false,
+  "runCTAVisibleAfterPanelClose": false
+}

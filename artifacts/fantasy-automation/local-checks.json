@@ -1,21 +1,25 @@
 {
-  "date": "2026-10-13",
+  "date": "2026-10-15",
   "node": "24.19.0",
   "newTests": {
     "clock": 7,
     "simulation": 17,
     "storage": 4,
-    "total": 59,
+    "total": 96,
     "onboarding": 10,
     "technology": 5,
     "migration": 5,
-    "systems": 11
+    "systems": 11,
+    "objectives": 14,
+    "logisticsVisuals": 5,
+    "golems": 12,
+    "stage3Migration": 6
   },
   "npmTest": "passed, includes existing games",
   "typecheck": "passed",
   "newLint": {
     "errors": 0,
-    "baselineWarnings": 2
+    "baselineWarnings": 1
   },
   "pagesBuild": {
     "status": "passed",
@@ -26,7 +30,10 @@
   "technologyBrowser": {
     "source": "passed",
     "built": "passed",
-    "exact60GameSecondSwordProduction": 15,
+    "measuredSwordsPerGameMinute": {
+      "source": 14.75,
+      "built": 14.48
+    },
     "pageErrors": 0,
     "failedRequests": 0
   },
@@ -38,15 +45,15 @@
     "fuel": "initial automatic lumber plus permitted manual wood gathering/feed for extra generators"
   },
   "cleanCheckout": {
-    "sourceCodeCommit": "1de58440b506b1f7ebbfa6e5ff82371d052cfafa",
-    "staticWebRoot": "passed before npm ci/build",
+    "sourceCodeCommit": "843af6dd4e4919c9494ce4c4dae2f179ef2bf579",
+    "staticWebRoot": "passed before npm ci/build in an independent second clone",
     "npmCi": "passed",
-    "npmTest": "passed",
-    "pagesBuild": "passed",
+    "npmTest": "passed: 96 fantasy tests and existing suite",
+    "pagesBuild": "passed: 306 runtime/license files",
     "pagesPrefix": "/AIGames/",
     "staticPages": "passed",
-    "worktree": "clean after build",
-    "bundleSHA256": "0874cc4c1c5aa7820d225880598456c4641a14a449acadd6fa3294b41a5c6f76"
+    "worktree": "clean after build and no-fixture stage3 verification",
+    "bundleSHA256": "6a08d3bd848d4af812bcd713ecb4c2622e2ffb539582c1ba53396cf3f17d23d9"
   },
   "browserRegression": {
     "source": "passed",
@@ -71,5 +78,29 @@
     "save": "exact repeated toggles and reload",
     "pageErrors": 0,
     "failedRequests": 0
+  },
+  "visualUiBrowser": {
+    "source": "passed: 14 strict groups",
+    "built": "passed: 14 strict groups",
+    "latestBuildFocusSource": "passed",
+    "latestBuildFocusBuilt": "passed",
+    "nativeKeyboardAndTouch": "passed",
+    "pageErrors": 0,
+    "failedRequests": 0,
+    "golemFuelTransfers": 20,
+    "newGolemsDuringBrowser": 2,
+    "newRuneCoresDuringBrowser": 5,
+    "newSwordsDuringBrowser": 13
+  },
+  "stage3Reachability": {
+    "status": "passed",
+    "allResearchGameSeconds": 649.2,
+    "successfulCommands": 484,
+    "directStateMutation": false,
+    "golemsProduced": 5,
+    "automaticFuelTransfers": 20,
+    "swordsDuringRelay": 13,
+    "cleanCloneResultDeepEqual": true,
+    "fuel": "main three generators receive automatic timber via relay; auxiliary manufacturing generator uses permitted manual wood feed"
   }
 }

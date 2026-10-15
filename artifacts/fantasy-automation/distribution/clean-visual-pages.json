@@ -1,0 +1,24 @@
+{
+  "basePath": "/AIGames/",
+  "browser": "151.0.7922.173",
+  "checkedFiles": [
+    "fantasy-automation.html",
+    "css/fantasy-automation.css",
+    "js/fantasy-automation/runtime/app.js",
+    "js/vendor/three-0.180.0/three.module.min.js",
+    "js/vendor/three-0.180.0/three.core.min.js",
+    "js/vendor/three-0.180.0/LICENSE"
+  ],
+  "bundleSHA256": "6a08d3bd848d4af812bcd713ecb4c2622e2ffb539582c1ba53396cf3f17d23d9",
+  "requiresBuildToServe": false,
+  "canvasPlacement": "passed",
+  "pageErrors": [],
+  "failedRequests": [],
+  "loadedPaths": [
+    "/AIGames/fantasy-automation.html",
+    "/AIGames/css/fantasy-automation.css",
+    "/AIGames/js/fantasy-automation/runtime/app.js",
+    "/AIGames/js/vendor/three-0.180.0/three.module.min.js",
+    "/AIGames/js/vendor/three-0.180.0/three.core.min.js"
+  ]
+}

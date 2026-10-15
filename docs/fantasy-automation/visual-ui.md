@@ -12,3 +12,9 @@
 既存の保存・読込、回収、手動補給、撤去、研究、初回案内と、各パネルの閉じる・再表示を維持する。旧保存形式の移行と第三段階は [stage3.md](stage3.md) を参照。
 
 改修前の実ブラウザ画像と元runtimeのSHA-256は `artifacts/fantasy-automation/visual-ui/before/` に保持する。完成後の実クリック検証、狭い画面、物流の状態別画像を同じディレクトリ内に記録する。
+
+## 実操作検証
+
+[前後画像と結果一覧](../../artifacts/fantasy-automation/visual-ui/README.md) にソース版・配布版の収納・登録・方向・目的・ゴーレム補給・保存・画面幅の14項目を記録した。保存通知とモバイル案内の隠れを修正し、390/320幅の全14案内も実操作で完了。設備を選んだ直後のRは最新buildの専用検証で確認した。
+
+`npm run playtest:fantasy-visual-ui`、`node scripts/fantasy-automation-visual-ui.cjs --built` で再実行できる。通常進行の第三段階確認は `npm run check:fantasy-stage3`。

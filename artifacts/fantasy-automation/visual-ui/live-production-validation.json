@@ -1,0 +1,23 @@
+{
+  "verified": "2026-10-15T01:14:50.889Z",
+  "evidence": [
+    {
+      "mode": "source",
+      "elapsedGameSeconds": 55.4,
+      "newGolems": 2,
+      "newRuneCores": 5,
+      "swordProducedDuringRelay": 13,
+      "automaticFuelTransfers": 20,
+      "strictCapturedStates": "passed"
+    },
+    {
+      "mode": "built",
+      "elapsedGameSeconds": 55.5,
+      "newGolems": 2,
+      "newRuneCores": 5,
+      "swordProducedDuringRelay": 13,
+      "automaticFuelTransfers": 20,
+      "strictCapturedStates": "passed"
+    }
+  ]
+}
