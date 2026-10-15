@@ -23,6 +23,8 @@ npm run check:fantasy-stage4
 npm run build:pages
 npm run playtest:fantasy-stage4
 node scripts/fantasy-automation-phase4.cjs --built
+npm run playtest:fantasy-touch
+node scripts/fantasy-automation-touch.cjs --built
 ```
 
 `--ui-only`は検索・解体・ゴーレム導線だけを確認する。通常実行は転送門と世界樹まで確認する。`--before`は保存済みのベースラインを上書きしない。

@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "seed": 662,
-  "tick": 12994,
+  "tick": 13053,
   "nextId": 71,
   "terrain": [
     "grass",
@@ -1038,7 +1038,10 @@
     "sword": 0,
     "runeCore": 0,
     "golemFrame": 0,
-    "golem": 0
+    "golem": 0,
+    "essence": 0,
+    "portalCore": 0,
+    "worldSeed": 0
   },
   "kits": {
     "miner": 0,
@@ -1054,7 +1057,7 @@
       "direction": 1,
       "input": [],
       "output": [],
-      "progress": 1.7000000000000008,
+      "progress": 0.65,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1091,7 +1094,7 @@
         }
       ],
       "output": [],
-      "progress": 3.1999999999999966,
+      "progress": 2.1500000000000004,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1166,9 +1169,9 @@
         }
       ],
       "output": [],
-      "progress": 9.650000000000002,
+      "progress": 2.5999999999999988,
       "working": true,
-      "energy": 0,
+      "energy": 1,
       "status": "稼働中",
       "item": null,
       "beltProgress": 0,
@@ -1236,7 +1239,7 @@
       "direction": 1,
       "input": [],
       "output": [],
-      "progress": 2.6499999999999986,
+      "progress": 2.5999999999999988,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1320,9 +1323,9 @@
         }
       ],
       "output": [],
-      "progress": 1.1500000000000004,
+      "progress": 4.099999999999993,
       "working": true,
-      "energy": 28,
+      "energy": 26,
       "status": "稼働中",
       "item": null,
       "beltProgress": 0,
@@ -1375,7 +1378,7 @@
         }
       ],
       "output": [],
-      "progress": 2.000000000000001,
+      "progress": 4.94999999999999,
       "working": true,
       "energy": 19,
       "status": "稼働中",
@@ -1536,16 +1539,12 @@
         {
           "resource": "rawCrystal",
           "automated": true
-        },
-        {
-          "resource": "rawCrystal",
-          "automated": true
         }
       ],
-      "progress": 0,
-      "working": false,
+      "progress": 0.9500000000000003,
+      "working": true,
       "energy": 0,
-      "status": "生産完了",
+      "status": "稼働中",
       "item": null,
       "beltProgress": 0,
       "reserved": []
@@ -1604,7 +1603,7 @@
           "automated": true
         }
       ],
-      "progress": 2.0500000000000007,
+      "progress": 1.0000000000000002,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1626,7 +1625,7 @@
       "direction": 1,
       "input": [],
       "output": [],
-      "progress": 1.1500000000000004,
+      "progress": 0.1,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1645,9 +1644,12 @@
       "progress": 0,
       "working": false,
       "energy": 0,
-      "status": "搬送品を待っています",
-      "item": null,
-      "beltProgress": 0,
+      "status": "搬送中",
+      "item": {
+        "resource": "ore",
+        "automated": true
+      },
+      "beltProgress": 0.05,
       "reserved": []
     },
     {
@@ -1668,14 +1670,10 @@
         {
           "resource": "ore",
           "automated": true
-        },
-        {
-          "resource": "ore",
-          "automated": true
         }
       ],
       "output": [],
-      "progress": 2.6499999999999986,
+      "progress": 1.6000000000000008,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1742,7 +1740,7 @@
         }
       ],
       "output": [],
-      "progress": 2.1000000000000005,
+      "progress": 1.0500000000000003,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -2523,7 +2521,7 @@
       "progress": 0,
       "working": false,
       "energy": 0,
-      "status": "木材を魔力炉へ運びました",
+      "status": "搬送先の入力庫が満杯です（他の素材用の空きを含む）",
       "item": null,
       "beltProgress": 0,
       "reserved": [],
@@ -2533,7 +2531,7 @@
         "handled": true
       },
       "golemPolicy": "fuel",
-      "golemCooldown": 9,
+      "golemCooldown": 10,
       "golemRoute": {
         "sourceId": 70,
         "targetId": 14,
@@ -2556,7 +2554,7 @@
       "item": null,
       "beltProgress": 0,
       "reserved": [],
-      "splitCursor": 1
+      "splitCursor": 0
     },
     {
       "id": 70,
@@ -2592,19 +2590,19 @@
   "won": false,
   "stats": {
     "produced": {
-      "wood": 122,
-      "ore": 555,
-      "ingot": 273,
+      "wood": 123,
+      "ore": 559,
+      "ingot": 275,
       "rawCrystal": 102,
-      "crystal": 89,
-      "sword": 39,
+      "crystal": 90,
+      "sword": 40,
       "runeCore": 13,
       "golemFrame": 5,
       "golem": 5
     },
     "delivered": {
       "ingot": 10,
-      "sword": 39
+      "sword": 40
     },
     "recentSwordTicks": [
       11992,
@@ -2619,11 +2617,14 @@
       12712,
       12792,
       12872,
-      12952
+      12952,
+      13032
     ],
     "peakSwordRate": 15,
     "golemFuelTransfers": 20,
-    "golemTransfers": 20
+    "golemTransfers": 20,
+    "portalTransfers": 0,
+    "treeGrowth": 0
   },
   "research": {
     "unlocked": [

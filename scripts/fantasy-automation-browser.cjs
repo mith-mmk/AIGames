@@ -93,7 +93,7 @@ const http = require('node:http');
     assert.equal(await page.title(), 'AI Games');
     await page.locator('[data-speed="0"]').click();
     const initial = await save();
-    assert(initial && initial.version === 3);
+    assert(initial && initial.version === 4);
     // Real canvas picking builds a belt; menus must not accidentally build cells.
     const canvas = page.locator('#world canvas');
     const box = await canvas.boundingBox();
@@ -126,6 +126,7 @@ const http = require('node:http');
     await page.keyboard.down('KeyX');
     await clickCell(8, 14);
     await page.keyboard.up('KeyX');
+    if(await page.locator('#demolition-dialog').isVisible())await action('remove-confirm').click();
     assert.equal((await save()).buildings.length, 1, 'X plus click removes only the selected facility');
     await chooseBuild('belt');
     const start = await cellPoint(10, 14), end = await cellPoint(12, 14);
@@ -212,7 +213,7 @@ const http = require('node:http');
       assert.equal(layout.overflow, false, `No horizontal overflow at ${width}px`);
       assert(Math.abs(layout.canvasWidth - width) <= 1);
       assert(Math.abs(layout.canvasHeight - (width === 1440 ? 900 : 844)) <= 1);
-      assert.equal(layout.paletteCount, 16);
+      assert.equal(layout.paletteCount, 21);
       await page.screenshot({ path: path.join(output, `viewport-${width}.png`), fullPage: true });
       checks.push({ width, ...layout });
     }

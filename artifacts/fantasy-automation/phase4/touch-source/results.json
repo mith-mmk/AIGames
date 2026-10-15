@@ -1,0 +1,104 @@
+{
+  "mode": "source",
+  "runtimeSHA256": "113df0de76262fb5ffec195b43b1b088ab998b86cba17a093cfe1937a8b0e668",
+  "checks": [
+    {
+      "width": 1440,
+      "input": "mouse and Delete",
+      "guide": {
+        "x": 12,
+        "right": 352,
+        "y": 108,
+        "bottom": 374.375,
+        "width": 1440,
+        "height": 900
+      },
+      "catalog": {
+        "x": 12,
+        "right": 662,
+        "y": 393,
+        "bottom": 818,
+        "width": 1440,
+        "height": 900
+      },
+      "dialog": {
+        "x": 505,
+        "right": 935,
+        "y": 313.125,
+        "bottom": 586.875,
+        "width": 1440,
+        "height": 900
+      },
+      "lockedPrice": "木材8・鉄の延べ棒12",
+      "cancelPreservesStock": true,
+      "escapePreservesStock": true,
+      "confirmRemovesSelected": true
+    },
+    {
+      "width": 390,
+      "input": "actual touchscreen taps",
+      "guide": {
+        "x": 6,
+        "right": 384,
+        "y": 128,
+        "bottom": 394.375,
+        "width": 390,
+        "height": 844
+      },
+      "catalog": {
+        "x": 6,
+        "right": 384,
+        "y": 306,
+        "bottom": 776,
+        "width": 390,
+        "height": 844
+      },
+      "dialog": {
+        "x": 15,
+        "right": 375,
+        "y": 285.125,
+        "bottom": 558.875,
+        "width": 390,
+        "height": 844
+      },
+      "lockedPrice": "木材8・鉄の延べ棒12",
+      "cancelPreservesStock": true,
+      "escapePreservesStock": true,
+      "confirmRemovesSelected": true
+    },
+    {
+      "width": 320,
+      "input": "actual touchscreen taps",
+      "guide": {
+        "x": 6,
+        "right": 314,
+        "y": 128,
+        "bottom": 394.375,
+        "width": 320,
+        "height": 844
+      },
+      "catalog": {
+        "x": 6,
+        "right": 314,
+        "y": 281.5,
+        "bottom": 776,
+        "width": 320,
+        "height": 844
+      },
+      "dialog": {
+        "x": 15,
+        "right": 305,
+        "y": 274.328125,
+        "bottom": 569.671875,
+        "width": 320,
+        "height": 844
+      },
+      "lockedPrice": "木材8・鉄の延べ棒12",
+      "cancelPreservesStock": true,
+      "escapePreservesStock": true,
+      "confirmRemovesSelected": true
+    }
+  ],
+  "pageErrors": [],
+  "failedRequests": []
+}

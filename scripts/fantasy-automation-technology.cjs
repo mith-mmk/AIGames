@@ -25,7 +25,7 @@ const { execFileSync } = require('node:child_process');
     fs.writeFileSync(output+'/available.json',JSON.stringify(validateSave(basic.snapshot())));
     for(const facility of basic.state.buildings){const excess=facility.input.length+(facility.reserved?.length||0)-8;if(excess>0)basic.command({type:'collect',id:facility.id,amount:excess});}
     const legacy=basic.snapshot();legacy.version=1;delete legacy.stats;delete legacy.research;delete legacy.inventoryItems;delete legacy.pendingCrystalCells;
-    for(const resource of ['rawCrystal','crystal','sword','runeCore','golemFrame','golem'])delete legacy.inventory[resource];
+    for(const resource of ['rawCrystal','crystal','sword','runeCore','golemFrame','golem','essence','portalCore','worldSeed'])delete legacy.inventory[resource];
     legacy.terrain=legacy.terrain.map(tile=>tile==='crystal'?'grass':tile);
     for(const facility of legacy.buildings){facility.input=[...(facility.reserved||[]),...facility.input];delete facility.reserved;delete facility.recipe;delete facility.splitCursor;for(const item of [...facility.input,...facility.output,...(facility.item?[facility.item]:[])])delete item.handled;}
     fs.writeFileSync(output+'/legacy.json',JSON.stringify(legacy));
@@ -112,7 +112,7 @@ const { execFileSync } = require('node:child_process');
     const legacy = fixture('legacy'); await load(legacy);
     assert.deepEqual(await readSlot(), legacy, 'Loading old save does not overwrite the IndexedDB slot');
     const migrated = await save(); assert.deepEqual(migrated, fixture('legacy-migrated'));
-    assert.equal(migrated.version, 3);
+    assert.equal(migrated.version, 4);
     checks.push('Real legacy workshop retains ticks/items/progress/power; old slot unchanged until explicit save');
 
     await load(fixture('available')); await tree();

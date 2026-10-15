@@ -18,7 +18,10 @@
     "playtest:fantasy-technology": "node scripts/fantasy-automation-technology.cjs",
     "check:fantasy-progression": "node --import tsx scripts/fantasy-automation-reachability.ts",
     "playtest:fantasy-visual-ui": "node scripts/fantasy-automation-visual-ui.cjs",
-    "check:fantasy-stage3": "node --import tsx scripts/fantasy-automation-stage3-reachability.ts --nofixtures"
+    "check:fantasy-stage3": "node --import tsx scripts/fantasy-automation-stage3-reachability.ts --nofixtures",
+    "check:fantasy-stage4": "node --import tsx scripts/fantasy-automation-stage4-reachability.ts --nofixtures",
+    "playtest:fantasy-stage4": "node scripts/fantasy-automation-phase4.cjs",
+    "playtest:fantasy-touch": "node scripts/fantasy-automation-touch.cjs"
   },
   "author": "MITH@mmk",
   "license": "MIT",

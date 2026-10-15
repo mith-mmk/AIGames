@@ -1,6 +1,6 @@
 {
-  "captured": "2026-10-15T01:10:29.135Z",
-  "runtimeSHA256": "b4faa7a025adc9e89568f2920473629db0e98e1eb11db293c0096ea7a16238f9",
+  "captured": "2026-10-15T06:15:13.406Z",
+  "runtimeSHA256": "113df0de76262fb5ffec195b43b1b088ab998b86cba17a093cfe1937a8b0e668",
   "source": "/workspace/AIGames/.pages-dist",
   "checks": [
     "Icon one/all/Shift/Enter transfers preserve stock and tick; retrieved items remain handled; keyboard focus survives updates",
@@ -11,7 +11,7 @@
     "Blocked output glyph and flow progress remain stable while paused; jam save/load preserves items and timing",
     "Actual command-created full chest, wrong-material wire, and connected belt expose distinct logistics glyphs",
     "Iron 100 replaces completed milestone with research next goals; unmet automatic crystal production cannot be skipped",
-    "Legacy v2 is read without rewriting the saved slot; explicit save migrates to v3 while retaining clock and buildings",
+    "Legacy v2 is read without rewriting the saved slot; explicit save migrates to v4 while retaining clock and buildings",
     "Actual iron-10 stage-three fixtures continue rune/golem objectives after research and never fall back to iron 100",
     "Actual automated relay reaches 20 untouched-wood fuel transfers while sword production continues; policies/worker/route/cooldown survive exact save and sanctuary is researched through UI",
     "Materials policy carries real player-deposited ingots, preserves fuel-credit count, and saves its actual worker route exactly",

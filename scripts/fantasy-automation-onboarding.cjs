@@ -88,6 +88,7 @@ const http = require('node:http');
           await page.keyboard.down('KeyX');
           await page.mouse.click(wirePoint.x, wirePoint.y);
           await page.keyboard.up('KeyX');
+          if(await page.locator('#demolition-dialog').isVisible())await page.locator('[data-action="remove-confirm"]').click();
           cutWire = true;
           await page.waitForFunction(() => document.querySelector('#guide-card')?.getAttribute('data-guide-mode') === 'build');
           repairStep = await card.getAttribute('data-guide-id');

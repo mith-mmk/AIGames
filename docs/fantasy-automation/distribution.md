@@ -48,3 +48,11 @@ mainへのマージ、Pages設定変更、デプロイは行っていない。CI
 さらに依存・生成物のない別cloneのwebをサイトrootでHTTP配信し、生成済みPagesだけの経路は `/AIGames/` で配信。どちらも起動・16設備の読込・カテゴリからの実建設に成功、例外・404は0。新しいスロットUIに合わせ、ブラウザ検査のセレクタをHUD・クイックバーへ限定している。
 
 SHA-256は両方 `6a08d3bd848d4af812bcd713ecb4c2622e2ffb539582c1ba53396cf3f17d23d9`。証拠は `distribution/clean-visual-web.json` と `clean-visual-pages.json`、各PNG。mainマージ・公開は行っていない。
+
+## 第四段階のクリーンcheckout確認（2026-10-15）
+
+`47679e9e33354dc0a15dbafb85dfd40903d5cc8d`を別ディレクトリへcloneし、依存インストール前に`web/`だけを`/AIGames/`配下で配信して起動とキャンバス建設を確認した。
+
+その後`npm ci --cache /tmp/fantasy-phase4-npm-cache`、`npm test`、通常命令による第四段階到達検証、`npm run build:pages`が成功。キャッシュは実行環境で書込み可能な`/tmp`に指定した。新作127テストと既存ゲームのテストが通り、1,014命令の全結果・途中実績は保存した記録と深い比較で一致。Pagesは306ファイルで、再ビルド後もGitの作業ツリーは空だった。
+
+ソース版とPages版のruntime SHA-256はいずれも`113df0de76262fb5ffec195b43b1b088ab998b86cba17a093cfe1937a8b0e668`。この確認後のコミットは検証スクリプト・画像・文書を追加するもので、ゲーム本体は同じ。

@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "seed": 662,
-  "tick": 12992,
+  "tick": 12985,
   "nextId": 71,
   "terrain": [
     "grass",
@@ -1038,7 +1038,10 @@
     "sword": 0,
     "runeCore": 0,
     "golemFrame": 0,
-    "golem": 0
+    "golem": 0,
+    "essence": 0,
+    "portalCore": 0,
+    "worldSeed": 0
   },
   "kits": {
     "miner": 0,
@@ -1054,7 +1057,7 @@
       "direction": 1,
       "input": [],
       "output": [],
-      "progress": 1.6000000000000008,
+      "progress": 1.2500000000000004,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1091,7 +1094,7 @@
         }
       ],
       "output": [],
-      "progress": 3.099999999999997,
+      "progress": 2.7499999999999982,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1166,7 +1169,7 @@
         }
       ],
       "output": [],
-      "progress": 9.55,
+      "progress": 9.199999999999996,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1236,7 +1239,7 @@
       "direction": 1,
       "input": [],
       "output": [],
-      "progress": 2.549999999999999,
+      "progress": 2.2,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1320,7 +1323,7 @@
         }
       ],
       "output": [],
-      "progress": 1.0500000000000003,
+      "progress": 0.7000000000000001,
       "working": true,
       "energy": 28,
       "status": "稼働中",
@@ -1375,7 +1378,7 @@
         }
       ],
       "output": [],
-      "progress": 1.900000000000001,
+      "progress": 1.5500000000000007,
       "working": true,
       "energy": 19,
       "status": "稼働中",
@@ -1538,7 +1541,7 @@
           "automated": true
         }
       ],
-      "progress": 1.900000000000001,
+      "progress": 1.5500000000000007,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1600,7 +1603,7 @@
           "automated": true
         }
       ],
-      "progress": 1.950000000000001,
+      "progress": 1.6000000000000008,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1622,7 +1625,7 @@
       "direction": 1,
       "input": [],
       "output": [],
-      "progress": 1.0500000000000003,
+      "progress": 0.7000000000000001,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1671,7 +1674,7 @@
         }
       ],
       "output": [],
-      "progress": 2.549999999999999,
+      "progress": 2.2,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -1738,7 +1741,7 @@
         }
       ],
       "output": [],
-      "progress": 2.000000000000001,
+      "progress": 1.6500000000000008,
       "working": true,
       "energy": 0,
       "status": "稼働中",
@@ -2529,7 +2532,7 @@
         "handled": true
       },
       "golemPolicy": "fuel",
-      "golemCooldown": 11,
+      "golemCooldown": 18,
       "golemRoute": {
         "sourceId": 70,
         "targetId": 14,
@@ -2619,7 +2622,9 @@
     ],
     "peakSwordRate": 15,
     "golemFuelTransfers": 20,
-    "golemTransfers": 20
+    "golemTransfers": 20,
+    "portalTransfers": 0,
+    "treeGrowth": 0
   },
   "research": {
     "unlocked": [
