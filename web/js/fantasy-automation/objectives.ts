@@ -39,7 +39,7 @@ function technologyObjective(state: GameState, node: TechNodeState, tracking?: T
   return {
     title: available ? `${node.label}を研究する` : `${node.label}：${requirement?.label ?? '前提技術を解放'}`,
     detail: `${prefix}${instruction}${requirements ? ` ${requirements}。` : ''}${unlocks ? ` 解放: ${unlocks}。` : ''}${rate ? ` ${rate}` : ''}`,
-    ...(requirement ? { resource: requirement.resource ?? (requirement.metric === 'peakSwordRate' ? 'sword' as Resource : requirement.metric === 'golemFuelTransfers' ? 'wood' as Resource : undefined) } : {}),
+    ...(requirement ? { resource: requirement.resource ?? (requirement.metric === 'peakSwordRate' ? 'sword' as Resource : requirement.metric === 'golemFuelTransfers' ? 'wood' as Resource : requirement.metric === 'treeGrowth' ? 'worldSeed' as Resource : undefined) } : {}),
     current: requirement?.current ?? 0,
     target: requirement?.target ?? 1,
     action: 'technology', completed: false,
@@ -60,8 +60,8 @@ export function getObjective(original: GameState): Objective {
   // Once the whole tree is researched, an old tracked id or iron quest must not reappear.
   if (nodes.every(node => node.status === 'unlocked')) return {
     title: `${nodes[nodes.length - 1].label}を達成：工房を自由に拡張`,
-    detail: `全技術を解放しました。ゴーレムの自動生産 ${state.stats?.produced.golem ?? 0}体、木材の自動補給 ${state.stats?.golemFuelTransfers ?? 0}個。収納や分岐、ゴーレムを使って工房を広げられます。`,
-    resource: 'wood', current: state.stats?.golemFuelTransfers ?? 0, target: 20, action: null, completed: true,
+    detail: `全技術を解放し、世界樹が覚醒しました。成長 ${state.stats?.treeGrowth ?? 0}/10、転送門の初回自動転送 ${state.stats?.portalTransfers ?? 0}個。工房を自由に拡張できます。`,
+    resource: 'worldSeed', current: state.stats?.treeGrowth ?? 0, target: 10, action: null, completed: true,
   };
   const remaining = nodes.find(node => node.status !== 'unlocked')!;
   // Research beyond basic logistics establishes a new production stage even before the optional iron quota is met.

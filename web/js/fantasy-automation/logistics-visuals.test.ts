@@ -24,6 +24,23 @@ test('relay has one worker socket and no fictitious belt output', () => {
   relay.input = []; relay.golemWorker = item('golem'); assert.equal(hasBufferRoom(relay, 'golem'), false);
 });
 
+test('portal roles expose actual inlet/output and sender finite capacity', () => {
+  const gate = building(1, 'portalGate', 1, 1); gate.portalRole = 'send';
+  assert.deepEqual(outputDirections(gate.kind, 1, gate.portalRole), []);
+  assert(acceptedResources(gate).includes('worldSeed'));
+  gate.input = Array.from({ length: 8 }, () => item('worldSeed')); assert.equal(hasBufferRoom(gate, 'worldSeed'), false);
+  gate.portalRole = 'receive'; assert.deepEqual(acceptedResources(gate), []);
+  assert.deepEqual(outputDirections(gate.kind, 1, gate.portalRole), [1]);
+  assert.equal(hasBufferRoom(gate, 'worldSeed'), false);
+});
+
+test('tree keeps up to eight seeds and has no ordinary output, including mature stage', () => {
+  const tree = building(1, 'worldTree', 1, 1); tree.treeGrowth = 10;
+  assert.deepEqual(outputDirections(tree.kind, 2), []); assert.deepEqual(acceptedResources(tree), ['worldSeed']);
+  assert.equal(hasBufferRoom(tree, 'wood'), false); assert.equal(hasBufferRoom(tree, 'worldSeed'), true);
+  tree.input = Array.from({ length: 8 }, () => item('worldSeed')); assert.equal(hasBufferRoom(tree, 'worldSeed'), false);
+});
+
 test('missing, map edge and wrong material are distinct from linked and full buffers', () => {
   const source = building(1, 'belt', 1, 1); source.item = item('ore'); source.beltProgress = 0.5;
   assert.equal(logisticsPorts(source, map(source))[0].state, 'missing');

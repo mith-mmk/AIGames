@@ -8,6 +8,7 @@ import { isKindUnlocked } from './technology';
 import type { Direction, Kind, Resource, RecipeId, TechId } from './types';
 import { SIZE } from './types';
 import { logisticsPorts } from './logistics-visuals';
+import type { GolemGuide } from './golem-guide';
 
 class WorkshopApp {
   simulation = new Simulation();
@@ -30,6 +31,9 @@ class WorkshopApp {
   saveBusy = false;
   uiTime = 0;
   technologyOpen = false;
+  golemGuideOpen = false;
+  pendingDemolitionId: number | null = null;
+  demolitionSpeed: 0 | 1 | 2 = 0;
   guideEnabled = true;
   guideStep: GuideStep | null = null;
   constructor(host: HTMLElement, root: HTMLElement) {
@@ -45,6 +49,15 @@ class WorkshopApp {
       onLoad: () => { void this.resume(); },
       onRotate: () => this.rotate(),
       onRemove: () => this.remove(),
+      onConfirmRemove: id => this.confirmRemove(id),
+      onCancelRemove: () => this.cancelRemove(),
+      onGolemGuideToggle: show => { this.golemGuideOpen = show ?? !this.golemGuideOpen; this.sync(); },
+      onGolemGuideAction: action => this.golemGuideAction(action),
+      onInspect: id => this.inspect(id),
+      onPortalConfig: (channel, role) => {
+        if (this.selectedId !== null) this.message = this.simulation.command({ type: 'portalConfig', id: this.selectedId, channel, role }).reason;
+        this.sync();
+      },
       onFeed: (resource, amount) => this.feed(resource, amount),
       onCollect: (resource, amount) => this.collect(resource, amount),
       onTechnologyToggle: show => this.toggleTechnology(show),
@@ -74,6 +87,7 @@ class WorkshopApp {
     this.sync();
   }
   init() {
+    this.pendingDemolitionId = null; this.golemGuideOpen = false; this.technologyOpen = false;
     this.simulation.init(); this.placedAt = null; this.selectedId = null; this.kind = null; this.hover = null;
     this.direction = 1; this.removeMode = false; this.xHeld = false; this.previousSpeed = 1;
     this.speed = 1; this.guideEnabled = true; this.loop.reset(); this.view?.resetCamera();
@@ -100,7 +114,20 @@ class WorkshopApp {
     document.querySelector<HTMLCanvasElement>('#world canvas')?.focus({ preventScroll: true });
   }
   toggleTechnology(show = !this.technologyOpen) {
-    this.technologyOpen = show; this.sync();
+    this.technologyOpen = show; if (show) this.golemGuideOpen = false; this.sync();
+  }
+  inspect(id: number) {
+    const building = this.simulation.state.buildings.find(candidate => candidate.id === id);
+    if (!building) return;
+    this.golemGuideOpen = false; this.technologyOpen = false; this.kind = null; this.removeMode = false; this.xHeld = false;
+    this.selectedId = id; this.hover = { x: building.x, z: building.z };
+    this.view?.revealTile(building.x, building.z); this.ui.openSelection(); this.sync();
+  }
+  golemGuideAction(action: NonNullable<GolemGuide['action']>) {
+    if (action.type === 'technology') { this.toggleTechnology(true); return; }
+    if (action.type === 'build' && action.kind) { this.golemGuideOpen = false; this.chooseBuild(action.kind); return; }
+    if (action.type === 'inspect' && action.id !== undefined) { this.inspect(action.id); return; }
+    if (action.type === 'run') { this.golemGuideOpen = false; this.setSpeed(1); }
   }
   research(id: TechId) {
     this.message = this.simulation.command({ type: 'research', id }).reason; this.sync();
@@ -143,11 +170,29 @@ class WorkshopApp {
     this.sync();
   }
   remove() {
+    if (this.pendingDemolitionId !== null) return;
     if (this.selectedId !== null) {
-      this.message = this.simulation.command({ type: 'remove', id: this.selectedId }).reason;
-      this.selectedId = null;
+      if (!this.simulation.state.buildings.some(building => building.id === this.selectedId)) return;
+      this.pendingDemolitionId = this.selectedId; this.demolitionSpeed = this.speed;
+      this.removeMode = false; this.xHeld = false; this.kind = null;
+      this.setSpeed(0);
     } else { this.kind = null; this.removeMode = !this.removeMode; this.message = this.removeMode ? '撤去する施設をクリック。Escで取消。' : '撤去モードを解除しました。'; }
     this.sync();
+  }
+  confirmRemove(id: number) {
+    if (this.pendingDemolitionId !== id) return;
+    this.pendingDemolitionId = null;
+    this.message = this.simulation.command({ type: 'remove', id }).reason;
+    if (this.selectedId === id) this.selectedId = null;
+    this.setSpeed(this.demolitionSpeed);
+    document.querySelector<HTMLCanvasElement>('#world canvas')?.focus({ preventScroll: true });
+  }
+  cancelRemove() {
+    if (this.pendingDemolitionId === null) return;
+    this.pendingDemolitionId = null;
+    this.message = '解体を取り消しました。設備と保管品はそのままです。';
+    this.setSpeed(this.demolitionSpeed);
+    document.querySelector<HTMLCanvasElement>('#world canvas')?.focus({ preventScroll: true });
   }
   feed(resource: Resource, amount: number) {
     if (this.selectedId !== null) this.message = this.simulation.command({ type: 'feed', id: this.selectedId, resource, amount }).reason;
@@ -202,7 +247,7 @@ class WorkshopApp {
     this.view?.render(this.simulation.state, { kind: this.kind, direction: this.direction, valid, hover: this.hover, selectedId: this.selectedId, guideTarget: this.guideStep?.target ? { ...this.guideStep.target, kind: this.guideStep.kind, direction: this.guideStep.direction } : null });
   }
   sync() {
-    this.guideStep = this.guideEnabled && !this.technologyOpen ? evaluateGuide(this.simulation.state) : null;
+    this.guideStep = this.guideEnabled && !this.technologyOpen && !this.golemGuideOpen && this.pendingDemolitionId === null ? evaluateGuide(this.simulation.state) : null;
     let message = [this.rendererMessage, this.message].filter(Boolean).join(' ');
     if (this.kind && this.hover) {
       const checked = this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction);
@@ -214,10 +259,14 @@ class WorkshopApp {
         if (ports.length) message += ` 出口 ${ports.map(port => `${['北 ↑', '東 →', '南 ↓', '西 ←'][port.direction]} ${labels[port.state]}`).join(' / ')}。`;
       }
     }
-    this.ui.update(this.simulation.state, { kind: this.kind, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover, guide: this.guideStep, technologyOpen: this.technologyOpen });
+    this.ui.update(this.simulation.state, { kind: this.kind, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover, guide: this.guideStep, technologyOpen: this.technologyOpen, golemGuideOpen: this.golemGuideOpen, demolition: this.simulation.state.buildings.find(building => building.id === this.pendingDemolitionId) ?? null });
     this.view?.setInputBlocked(this.ui.isWorldInputBlocked());
   }
   key(event: KeyboardEvent) {
+    if (this.pendingDemolitionId !== null) {
+      if (event.code === 'Escape') { event.preventDefault(); this.cancelRemove(); }
+      return;
+    }
     if (this.technologyOpen && event.code === 'Escape') { this.toggleTechnology(false); return; }
     if (event.code === 'Escape' && this.ui.closeOverlay()) return;
     if (this.ui.isWorldInputBlocked()) return;
@@ -228,6 +277,7 @@ class WorkshopApp {
       if (event.target.closest('button') && !['KeyR', 'Escape'].includes(event.code)) return;
     }
     if (event.repeat && event.code !== 'KeyX') return;
+    if (event.code === 'Delete' && this.selectedId !== null) { event.preventDefault(); this.remove(); return; }
     if (/^Digit[1-6]$/.test(event.code)) { event.preventDefault(); this.ui.chooseQuickSlot(Number(event.code.slice(-1)) - 1); return; }
     if (event.code === 'KeyX') { this.xHeld = true; this.message = 'Xを押しながら施設をクリックして撤去。'; }
     if (event.code === 'KeyR') this.rotate();

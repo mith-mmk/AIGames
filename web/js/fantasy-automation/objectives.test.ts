@@ -98,12 +98,12 @@ test('mastery uses measured game-time production rate separately from cumulative
 });
 
 test('all researched technologies display completion and free expansion rather than iron delivery forever', () => {
-  const value = state(100, ['basic', 'logistics', 'crystals', 'assembly', 'mastery', 'runecraft', 'golemcraft', 'sanctuary']);
+  const value = state(100, ['basic', 'logistics', 'crystals', 'assembly', 'mastery', 'runecraft', 'golemcraft', 'sanctuary', 'alchemy', 'portalcraft', 'worldGrafting', 'worldAwakened']);
   value.stats!.produced.sword = 12; value.stats!.delivered.sword = 12; value.stats!.peakSwordRate = 10;
-  value.research!.tracked = 'sanctuary'; value.stats!.golemFuelTransfers = 20; value.stats!.golemTransfers = 20; value.stats!.produced.golem = 3;
+  value.research!.tracked = 'sanctuary'; value.stats!.golemFuelTransfers = 20; value.stats!.golemTransfers = 20; value.stats!.produced.golem = 3; value.stats!.treeGrowth = 10;
   const goal = getObjective(value);
   assert.match(goal.title, /自由に拡張/); assert.equal(goal.completed, true); assert.equal(goal.action, null);
-  assert.equal(goal.resource, 'wood'); assert.equal(goal.current, 20); assert.doesNotMatch(goal.title, /100本/);
+  assert.equal(goal.resource, 'worldSeed'); assert.equal(goal.current, 10); assert.doesNotMatch(goal.title, /100本/);
 });
 
 test('version 1 completed saves and version 2 save reload preserve the next research objective', () => {
@@ -179,6 +179,8 @@ test('late production stages never revert to iron quota when only ten iron ingot
   const old = structuredClone(value); old.version = 2;
   delete old.inventory.runeCore; delete old.inventory.golemFrame; delete old.inventory.golem;
   delete old.stats!.golemTransfers; delete old.stats!.golemFuelTransfers;
+  delete old.inventory.essence; delete old.inventory.portalCore; delete old.inventory.worldSeed;
+  delete old.stats!.portalTransfers; delete old.stats!.treeGrowth;
   assert.deepEqual(getObjective(validateSave(old)), getObjective(value), 'Old second-stage save resumes at rune research');
   value.research!.unlocked.push('runecraft');
   assert.match(getObjective(value).title, /魔導核を自動生産/);
@@ -193,6 +195,7 @@ test('late production stages never revert to iron quota when only ten iron ingot
   value.stats!.golemTransfers = 20; value.stats!.golemFuelTransfers = 20;
   assert.match(getObjective(value).title, /自動運営を研究する/);
   value.research!.unlocked.push('sanctuary');
-  assert.match(getObjective(value).title, /自由に拡張/);
-  assert.deepEqual(getObjective(validateSave(value)), getObjective(value), 'Third-stage progress survives save reload');
+  assert.match(getObjective(value).title, /錬金術を研究する/);
+  assert.equal(getObjective(value).completed, false);
+  assert.deepEqual(getObjective(validateSave(value)), getObjective(value), 'Third-stage progress survives save reload and leads into alchemy');
 });

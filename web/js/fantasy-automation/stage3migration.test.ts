@@ -21,14 +21,14 @@ function historical(): GameState {
       building(4, 'generator', { input: [], reserved: [{ resource: 'wood', automated: false }], working: true, progress: 10, energy: 25, pendingEnergy: 20 })] };
 }
 
-test('version 2 migrates to version 3 without changing old items, provenance, work, power or research', () => {
+test('version 2 migrates to canonical version 4 without changing old items, provenance, work, power or research', () => {
   const old = historical(), before = structuredClone(old), converted = validateSave(old);
-  assert.deepEqual(old, before); assert.equal(converted.version, 3);
+  assert.deepEqual(old, before); assert.equal(converted.version, 4);
   assert.deepEqual(converted.buildings, old.buildings); assert.deepEqual(converted.terrain, old.terrain);
-  assert.deepEqual(converted.inventory, { ...old.inventory, runeCore: 0, golemFrame: 0, golem: 0 });
+  assert.deepEqual(converted.inventory, { ...old.inventory, runeCore: 0, golemFrame: 0, golem: 0, essence: 0, portalCore: 0, worldSeed: 0 });
   assert.deepEqual(converted.inventoryItems, old.inventoryItems); assert.deepEqual(converted.kits, old.kits);
   assert.deepEqual(converted.research, old.research); assert.equal(converted.tick, old.tick);
-  assert.deepEqual(converted.stats, { ...old.stats, golemFuelTransfers: 0, golemTransfers: 0 });
+  assert.deepEqual(converted.stats, { ...old.stats, golemFuelTransfers: 0, golemTransfers: 0, portalTransfers: 0, treeGrowth: 0 });
   assert.equal(canResearch(converted, 'runecraft').ok, true);
   assert.equal(canResearch(converted, 'golemcraft').ok, false);
   assert.deepEqual(migrateGameState(converted), converted); assert.deepEqual(validateSave(converted), converted);
@@ -57,7 +57,7 @@ function relaySave(): GameState {
   return state;
 }
 
-test('version 3 retains relay worker provenance, policy, cooldown and historical route exactly', () => {
+test('canonical save retains relay worker provenance, policy, cooldown and historical route exactly', () => {
   const state = relaySave();
   assert.deepEqual(validateSave(JSON.parse(JSON.stringify(state))), state);
   const loaded = validateSave(state); loaded.buildings[4].golemWorker!.handled = true;
@@ -66,7 +66,7 @@ test('version 3 retains relay worker provenance, policy, cooldown and historical
   assert.deepEqual(validateSave(state), state);
 });
 
-test('version 3 validates relay-only state, counters, routes, workers and cooldown strictly', () => {
+test('canonical save validates relay-only state, counters, routes, workers and cooldown strictly', () => {
   const changes: Array<(state: any) => void> = [
     state => { state.buildings[4].golemWorker.resource = 'wood'; },
     state => { state.buildings[4].golemWorker.automated = 1; },
@@ -99,7 +99,8 @@ test('third-stage research uses produced components and actual automatic fuel tr
   const node = techNodeStates(state).find(node => node.id === 'sanctuary')!;
   assert.equal(node.requirements[1].current, 20); assert.equal(node.requirements[1].target, 20);
   state.research!.unlocked.push('sanctuary');
-  assert.equal(techNodeStates(state).every(node => node.status === 'unlocked'), true);
+  assert.equal(techNodeStates(state).filter(node => ['basic', 'logistics', 'crystals', 'assembly', 'mastery', 'runecraft', 'golemcraft', 'sanctuary'].includes(node.id)).every(node => node.status === 'unlocked'), true);
+  assert.equal(canResearch(state, 'alchemy').ok, true);
 });
 
 
@@ -129,7 +130,7 @@ test('loading an old IndexedDB slot migrates in memory without opening a write t
   } });
   try {
     const loaded = await new GameSave().load();
-    assert.equal(loaded!.version, 3); assert.deepEqual(slot, before);
+    assert.equal(loaded!.version, 4); assert.deepEqual(slot, before);
     assert.deepEqual(modes, ['readonly']); assert.equal(writes, 0);
   } finally {
     if (descriptor) Object.defineProperty(globalThis, 'indexedDB', descriptor);

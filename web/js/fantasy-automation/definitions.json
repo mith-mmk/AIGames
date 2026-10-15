@@ -14,5 +14,10 @@
   "runeCarver": { "label": "刻印台", "cost": { "wood": 6, "ingot": 8 }, "seconds": 6, "input": { "crystal": 2, "ingot": 1 }, "output": { "runeCore": 1 }, "energy": 8, "technology": "runecraft", "recipes": ["runeCore"] },
   "frameForge": { "label": "躯体工房", "cost": { "wood": 8, "ingot": 10 }, "seconds": 6, "input": { "ingot": 3, "wood": 2 }, "output": { "golemFrame": 1 }, "energy": 6, "technology": "runecraft", "recipes": ["golemFrame"] },
   "golemForge": { "label": "覚醒炉", "cost": { "wood": 8, "ingot": 12 }, "seconds": 8, "input": { "runeCore": 1, "golemFrame": 1 }, "output": { "golem": 1 }, "energy": 12, "technology": "golemcraft", "recipes": ["golem"] },
-  "golemRelay": { "label": "ゴーレム補給所", "cost": { "wood": 8, "ingot": 6 }, "technology": "golemcraft" }
+  "golemRelay": { "label": "ゴーレム補給所", "cost": { "wood": 8, "ingot": 6 }, "technology": "golemcraft" },
+  "alchemyLab": { "label": "錬金工房", "cost": { "wood": 8, "ingot": 10 }, "seconds": 6, "input": { "rawCrystal": 1, "crystal": 1, "wood": 1 }, "output": { "essence": 1 }, "energy": 6, "technology": "alchemy", "recipes": ["essence"] },
+  "portalForge": { "label": "転送核工房", "cost": { "wood": 8, "ingot": 12 }, "seconds": 6, "input": { "essence": 2, "ingot": 2 }, "output": { "portalCore": 1 }, "energy": 8, "technology": "portalcraft", "recipes": ["portalCore"] },
+  "portalGate": { "label": "転送門", "cost": { "wood": 8, "ingot": 8, "portalCore": 1 }, "seconds": 1, "energy": 2, "technology": "portalcraft" },
+  "seedLoom": { "label": "育種工房", "cost": { "wood": 10, "ingot": 10 }, "seconds": 8, "input": { "wood": 3, "essence": 2, "runeCore": 1 }, "output": { "worldSeed": 1 }, "energy": 10, "technology": "worldGrafting", "recipes": ["worldSeed"] },
+  "worldTree": { "label": "世界樹", "cost": { "wood": 12, "ingot": 6, "portalCore": 1 }, "seconds": 1, "input": { "worldSeed": 1 }, "technology": "worldGrafting" }
 }

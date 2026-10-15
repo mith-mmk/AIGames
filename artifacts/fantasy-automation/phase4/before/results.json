@@ -1,0 +1,13 @@
+{
+  "captured": "2026-10-15T05:52:06.947Z",
+  "commit": "f1a42db",
+  "runtimeSHA256": "6a08d3bd848d4af812bcd713ecb4c2622e2ffb539582c1ba53396cf3f17d23d9",
+  "cssSHA256": "da486600290442d3e0223911d18a7694441dc2222418ab05c43df55b49efe8f9",
+  "checks": [
+    "Desktop initial/playfield/catalog",
+    "390px and 320px playfield/catalog",
+    "Actual legacy v3 golem workshop"
+  ],
+  "pageErrors": [],
+  "failedRequests": []
+}

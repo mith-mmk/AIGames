@@ -4,5 +4,8 @@
   "sword": { "label": "魔導剣", "seconds": 4, "input": { "ingot": 2, "crystal": 1 }, "output": { "sword": 1 }, "energy": 8, "technology": "assembly" },
   "runeCore": { "label": "魔導核", "seconds": 6, "input": { "crystal": 2, "ingot": 1 }, "output": { "runeCore": 1 }, "energy": 8, "technology": "runecraft" },
   "golemFrame": { "label": "鉄の躯体", "seconds": 6, "input": { "ingot": 3, "wood": 2 }, "output": { "golemFrame": 1 }, "energy": 6, "technology": "runecraft" },
-  "golem": { "label": "ゴーレム", "seconds": 8, "input": { "runeCore": 1, "golemFrame": 1 }, "output": { "golem": 1 }, "energy": 12, "technology": "golemcraft" }
+  "golem": { "label": "ゴーレム", "seconds": 8, "input": { "runeCore": 1, "golemFrame": 1 }, "output": { "golem": 1 }, "energy": 12, "technology": "golemcraft" },
+  "essence": { "label": "錬金精髄", "seconds": 6, "input": { "rawCrystal": 1, "crystal": 1, "wood": 1 }, "output": { "essence": 1 }, "energy": 6, "technology": "alchemy" },
+  "portalCore": { "label": "転送核", "seconds": 6, "input": { "essence": 2, "ingot": 2 }, "output": { "portalCore": 1 }, "energy": 8, "technology": "portalcraft" },
+  "worldSeed": { "label": "世界樹の種", "seconds": 8, "input": { "wood": 3, "essence": 2, "runeCore": 1 }, "output": { "worldSeed": 1 }, "energy": 10, "technology": "worldGrafting" }
 }

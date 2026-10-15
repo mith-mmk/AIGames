@@ -1,0 +1,86 @@
+{
+  "checks": [
+    {
+      "width": 1440,
+      "guide": {
+        "left": 12,
+        "right": 352,
+        "top": 108,
+        "bottom": 374.375,
+        "viewport": 1440,
+        "height": 900
+      },
+      "catalog": {
+        "left": 12,
+        "right": 662,
+        "top": 393,
+        "bottom": 818
+      },
+      "dialog": {
+        "left": 505,
+        "right": 935,
+        "top": 313.125,
+        "bottom": 586.875,
+        "height": 900
+      },
+      "defaultFocus": "cancel",
+      "escape": "preserves facility",
+      "lockedPrice": "木材8・鉄の延べ棒12"
+    },
+    {
+      "width": 390,
+      "guide": {
+        "left": 6,
+        "right": 384,
+        "top": 128,
+        "bottom": 394.375,
+        "viewport": 390,
+        "height": 844
+      },
+      "catalog": {
+        "left": 6,
+        "right": 384,
+        "top": 306,
+        "bottom": 776
+      },
+      "dialog": {
+        "left": 15,
+        "right": 375,
+        "top": 285.125,
+        "bottom": 558.875,
+        "height": 844
+      },
+      "defaultFocus": "cancel",
+      "escape": "preserves facility",
+      "lockedPrice": "木材8・鉄の延べ棒12"
+    },
+    {
+      "width": 320,
+      "guide": {
+        "left": 6,
+        "right": 314,
+        "top": 128,
+        "bottom": 394.375,
+        "viewport": 320,
+        "height": 844
+      },
+      "catalog": {
+        "left": 6,
+        "right": 314,
+        "top": 281.5,
+        "bottom": 776
+      },
+      "dialog": {
+        "left": 15,
+        "right": 305,
+        "top": 274.328125,
+        "bottom": 569.671875,
+        "height": 844
+      },
+      "defaultFocus": "cancel",
+      "escape": "preserves facility",
+      "lockedPrice": "木材8・鉄の延べ棒12"
+    }
+  ],
+  "pageErrors": []
+}

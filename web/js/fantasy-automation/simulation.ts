@@ -1,11 +1,11 @@
-import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, GOLEM_INTERVAL, GOLEM_RANGE, INPUT_CAPACITY, OUTPUT_CAPACITY, POWER_KINDS, RECIPES, RESOURCES, RESOURCE_NAMES, STORAGE_CAPACITY, getRecipe } from './data';
+import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, GOLEM_INTERVAL, GOLEM_RANGE, INPUT_CAPACITY, OUTPUT_CAPACITY, PORTAL_ENERGY, PORTAL_INTERVAL, POWER_KINDS, RECIPES, RESOURCES, RESOURCE_NAMES, STORAGE_CAPACITY, TREE_INTERVAL, getRecipe } from './data';
 import { migrateGameState } from './migration';
 import { canResearch, currentSwordRate, isKindUnlocked, isRecipeUnlocked } from './technology';
 import { DIRECTIONS, SIZE, STEP, type Building, type Command, type CommandResult, type Direction, type GameState, type Item, type Kind, type Resource } from './types';
 
 type Network = { generators: Building[] };
 type Transfer = { source: Building; target: Building; item: Item; sourceSlot: 'item' | 'input' | 'output'; port: 0 | 1 };
-const TECHNOLOGIES = ['basic', 'logistics', 'crystals', 'assembly', 'mastery', 'runecraft', 'golemcraft', 'sanctuary'] as const;
+const TECHNOLOGIES = ['basic', 'logistics', 'crystals', 'assembly', 'mastery', 'runecraft', 'golemcraft', 'sanctuary', 'alchemy', 'portalcraft', 'worldGrafting', 'worldAwakened'] as const;
 const key = (x: number, z: number): number => z * SIZE + x;
 const success = (reason = ''): CommandResult => ({ ok: true, reason });
 const failure = (reason: string): CommandResult => ({ ok: false, reason });
@@ -41,10 +41,10 @@ export class Simulation {
     terrain[key(9, 18)] = terrain[key(9, 19)] = 'forest';
     terrain[key(20, 16)] = terrain[key(20, 15)] = 'crystal';
     this.state = {
-      version: 3, seed, tick: 0, nextId: 1, terrain,
-      inventory: { wood: 40, ore: 0, ingot: 20, rawCrystal: 0, crystal: 0, sword: 0, runeCore: 0, golemFrame: 0, golem: 0 },
+      version: 4, seed, tick: 0, nextId: 1, terrain,
+      inventory: { wood: 40, ore: 0, ingot: 20, rawCrystal: 0, crystal: 0, sword: 0, runeCore: 0, golemFrame: 0, golem: 0, essence: 0, portalCore: 0, worldSeed: 0 },
       kits: { miner: 1, smelter: 1, generator: 1 }, buildings: [], delivered: 0, won: false,
-      stats: { produced: {}, delivered: {}, recentSwordTicks: [], peakSwordRate: 0, golemTransfers: 0, golemFuelTransfers: 0 },
+      stats: { produced: {}, delivered: {}, recentSwordTicks: [], peakSwordRate: 0, golemTransfers: 0, golemFuelTransfers: 0, portalTransfers: 0, treeGrowth: 0 },
       research: { unlocked: ['basic'], tracked: null }, inventoryItems: [],
     };
   }
@@ -103,6 +103,8 @@ export class Simulation {
         input: [], output: [], reserved: [], progress: 0, working: false, energy: 0, status: '待機中', item: null, beltProgress: 0,
         ...(recipe ? { recipe } : {}), ...(command.kind === 'splitter' ? { splitCursor: 0 } : {}),
         ...(command.kind === 'golemRelay' ? { golemPolicy: 'fuel', golemCooldown: 0 } : {}),
+        ...(command.kind === 'portalGate' ? { portalChannel: 1, portalRole: 'send', portalCooldown: 0 } : {}),
+        ...(command.kind === 'worldTree' ? { treeGrowth: 0 } : {}),
       });
       return success(`${DEFINITIONS[command.kind].label}を設置しました`);
     }
@@ -131,6 +133,14 @@ export class Simulation {
       building.golemPolicy = command.policy;
       building.status = command.policy === 'fuel' ? '燃料補給を優先します' : 'レシピ素材の運搬を優先します';
       return success(building.status);
+    }
+    if (command.type === 'portalConfig') {
+      if (building.kind !== 'portalGate') return failure('転送設定は転送門で変更してください');
+      if (![1,2,3].includes(command.channel) || (command.role !== 'send' && command.role !== 'receive')) return failure('チャネルまたは転送方向が不正です');
+      if (command.channel === building.portalChannel && command.role === building.portalRole) return success('同じ転送設定です');
+      if (building.input.length || building.output.length) return failure('品が入っている間は転送設定を変更できません。先に回収してください');
+      building.portalChannel = command.channel; building.portalRole = command.role;
+      return success(`チャネル${command.channel}の${command.role === 'send' ? '送信' : '受信'}に設定しました`);
     }
     if (command.type === 'recipe') {
       if (!Object.hasOwn(RECIPES, command.recipe) || !isRecipeUnlocked(this.state, command.recipe)) return failure('このレシピは技術ツリーで研究すると解放されます');
@@ -192,13 +202,17 @@ export class Simulation {
     stats.recentSwordTicks = stats.recentSwordTicks.filter(tick => tick > this.state.tick - 1200);
     const buildings = [...this.state.buildings].sort((a, b) => a.id - b.id);
     const occupants = new Map(buildings.map(building => [key(building.x, building.z), building]));
+    const networks = this.networks();
+    const portalOutputs = new Map(buildings.filter(building => building.kind === 'portalGate').map(building => [building.id, building.output[0]]));
+    this.transferPortals(buildings, networks);
     // Relays read the initial storage contents. Belt arrivals cannot be relayed in
     // the same tick, and a carried physical item is removed before belt planning.
     this.supplyGolems(buildings);
     for (const building of buildings) if (conveyor(building) && building.item) building.beltProgress = Math.min(BELT_SECONDS, building.beltProgress + STEP);
-    this.transport(buildings, occupants);
-    const networks = this.networks();
+    this.transport(buildings, occupants, portalOutputs);
     for (const building of buildings) {
+      if (building.kind === 'portalGate') continue;
+      if (building.kind === 'worldTree') { this.growTree(building); continue; }
       if (building.kind === 'golemRelay') continue;
       if (conveyor(building)) { building.status = building.item ? (building.beltProgress + 1e-9 >= BELT_SECONDS ? '搬送先が詰まっています' : '搬送中') : '搬送品を待っています'; continue; }
       if (building.kind === 'storage') { building.status = building.input.length >= STORAGE_CAPACITY ? '収納庫が満杯です（32個）' : `収納中 ${building.input.length}/32個`; continue; }
@@ -234,6 +248,7 @@ export class Simulation {
   private recipeInput(building: Building): Partial<Record<Resource, number>> { return getRecipe(building)?.input ?? DEFINITIONS[building.kind].input ?? {}; }
 
   private accepts(building: Building, resource: Resource): boolean {
+    if (building.kind === 'portalGate') return building.portalRole === 'send';
     return conveyor(building) || building.kind === 'storage' || (building.kind === 'golemRelay' && resource === 'golem') || (this.recipeInput(building)[resource] ?? 0) > 0 || (building.kind === 'delivery' && (resource === 'ingot' || resource === 'sword'));
   }
 
@@ -248,6 +263,50 @@ export class Simulation {
     const input = this.recipeInput(building);
     const otherMinimum = RESOURCES.reduce((sum, other) => sum + (other === resource ? 0 : input[other] ?? 0), 0);
     return building.input.filter(item => item.resource === resource).length + sameResourceIncoming + amount <= capacity - otherMinimum;
+  }
+
+  private transferPortals(buildings: Building[], networks: Map<number, Network>): void {
+    const gates = buildings.filter(building => building.kind === 'portalGate');
+    for (const channel of [1,2,3] as const) {
+      const pair = gates.filter(gate => gate.portalChannel === channel);
+      if (pair.length === 0) continue;
+      const sender = pair.find(gate => gate.portalRole === 'send');
+      const receiver = pair.find(gate => gate.portalRole === 'receive');
+      if (pair.some(gate => !isKindUnlocked(this.state, gate.kind))) {
+        for (const gate of pair) gate.status = '転送門を技術ツリーで研究してください';
+        continue;
+      }
+      if (pair.length !== 2 || !sender || !receiver) {
+        const reason = pair.length > 2 ? `チャネル${channel}に転送門が${pair.length}基あります。送信1基・受信1基の計2基にしてください` : `チャネル${channel}に送信1基・受信1基を配置してください`;
+        for (const gate of pair) gate.status = reason;
+        continue;
+      }
+      receiver.status = receiver.output.length >= OUTPUT_CAPACITY ? '受信した品の出力庫が満杯です' : `チャネル${channel}の品を待っています（受信に魔力は不要）`;
+      if ((sender.portalCooldown ?? 0) > 0) { sender.portalCooldown!--; sender.status = '転送の間隔を待っています'; continue; }
+      const item = sender.input[0];
+      if (!item) { sender.status = '転送する品を待っています'; continue; }
+      if (receiver.output.length >= OUTPUT_CAPACITY) { sender.status = '受信側の出力庫が満杯です'; continue; }
+      if (!this.spend(networks.get(sender.id), PORTAL_ENERGY)) { sender.status = '転送用の魔力が不足しています（2単位必要）'; continue; }
+      sender.input.shift(); receiver.output.push({ ...item, throughPortal: true });
+      sender.portalCooldown = PORTAL_INTERVAL - 1;
+      sender.portalRoute = { targetId: receiver.id, resource: item.resource, tick: this.state.tick };
+      sender.status = `${RESOURCE_NAMES[item.resource]}をチャネル${channel}へ転送しました`;
+      receiver.status = `${RESOURCE_NAMES[item.resource]}を受信しました`;
+      if (automatic(item) && !item.throughPortal) this.state.stats!.portalTransfers = (this.state.stats!.portalTransfers ?? 0) + 1;
+    }
+  }
+
+  private growTree(tree: Building): void {
+    if (!isKindUnlocked(this.state, tree.kind)) { tree.status = '世界樹を技術ツリーで研究してください'; return; }
+    if ((tree.treeGrowth ?? 0) >= 10) { tree.status = '世界樹の成長が完了しました（余剰の種は回収できます）'; return; }
+    const seed = tree.input[0];
+    if (!seed) { tree.status = '転送門を通った自動生産の世界樹の種を待っています'; return; }
+    if (!automatic(seed)) { tree.status = '手動で取り出し・投入した種は成長に使えません。回収してください'; return; }
+    if (!seed.throughPortal) { tree.status = 'この種は転送門を通っていません。回収し、転送経路を確認してください'; return; }
+    if (this.state.tick % TREE_INTERVAL !== 0) { tree.status = `世界樹が成長中です（${tree.treeGrowth ?? 0}/10）`; return; }
+    tree.input.shift(); tree.treeGrowth = (tree.treeGrowth ?? 0) + 1;
+    this.state.stats!.treeGrowth = (this.state.stats!.treeGrowth ?? 0) + 1;
+    tree.status = `世界樹が成長しました（${tree.treeGrowth}/10）`;
   }
 
   /** Golems carry existing items; they neither create fuel nor need magic to carry it. */
@@ -265,7 +324,7 @@ export class Simulation {
       if (sources.length === 0) { relay.status = '範囲6区画以内に収納箱がありません'; continue; }
       const fuel = relay.golemPolicy !== 'materials';
       const targets = buildings.filter(building => inRange(building) && isKindUnlocked(this.state, building.kind) &&
-        (fuel ? building.kind === 'generator' : building.kind !== 'generator' && building.kind !== 'miner' && building.kind !== 'crystalMiner' && building.kind !== 'golemRelay' && Object.keys(this.recipeInput(building)).length > 0));
+        (fuel ? building.kind === 'generator' : building.kind !== 'generator' && building.kind !== 'miner' && building.kind !== 'crystalMiner' && building.kind !== 'golemRelay' && building.kind !== 'portalGate' && building.kind !== 'worldTree' && Object.keys(this.recipeInput(building)).length > 0));
       if (targets.length === 0) { relay.status = fuel ? '範囲6区画以内に魔力炉がありません' : '範囲6区画以内に素材を使う製造設備がありません'; continue; }
       const needs: { target: Building; resource: Resource; fill: number; energy: number }[] = [];
       for (const target of targets) {
@@ -385,11 +444,12 @@ export class Simulation {
   }
 
   /** Plan from a single snapshot, clear all sources, then commit destinations. */
-  private transport(buildings: Building[], occupants: Map<number, Building>): void {
+  private transport(buildings: Building[], occupants: Map<number, Building>, portalOutputs: Map<number, Item | undefined>): void {
     const options = new Map<number, Transfer[]>();
     for (const source of buildings) {
+      if (source.kind === 'portalGate' && source.portalRole !== 'receive') continue;
       const sourceSlot = conveyor(source) ? 'item' : source.kind === 'storage' ? 'input' : 'output';
-      const item = sourceSlot === 'item' ? source.item : source[sourceSlot][0];
+      const item = source.kind === 'portalGate' ? portalOutputs.get(source.id) : sourceSlot === 'item' ? source.item : source[sourceSlot][0];
       if (!item || (sourceSlot === 'item' && source.beltProgress + 1e-9 < BELT_SECONDS)) continue;
       const ports: (0 | 1)[] = source.kind === 'splitter' ? (source.splitCursor === 1 ? [1, 0] : [0, 1]) : [0];
       const candidates: Transfer[] = [];

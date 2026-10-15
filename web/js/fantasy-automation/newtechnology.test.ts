@@ -25,14 +25,14 @@ test('technology graph has unique nodes, valid edges, no cycles and attainable p
     completed.add(id);
   };
   for (const id of ids) visit(id);
-  const producers: Record<Resource, TechId> = { wood: 'basic', ore: 'basic', ingot: 'basic', rawCrystal: 'crystals', crystal: 'crystals', sword: 'assembly', runeCore: 'runecraft', golemFrame: 'runecraft', golem: 'golemcraft' };
+  const producers: Record<Resource, TechId> = { wood: 'basic', ore: 'basic', ingot: 'basic', rawCrystal: 'crystals', crystal: 'crystals', sword: 'assembly', runeCore: 'runecraft', golemFrame: 'runecraft', golem: 'golemcraft', essence: 'alchemy', portalCore: 'portalcraft', worldSeed: 'worldGrafting' };
   const ancestors = (id: TechId): Set<TechId> => {
     const result = new Set<TechId>();
     for (const parent of TECHNOLOGIES.find(node => node.id === id)!.prerequisites) { result.add(parent); for (const ancestor of ancestors(parent)) result.add(ancestor); }
     return result;
   };
   for (const node of TECHNOLOGIES) for (const requirement of node.requirements) {
-    const producer = requirement.metric === 'peakSwordRate' ? 'assembly' : requirement.metric === 'golemFuelTransfers' ? 'golemcraft' : producers[requirement.resource!];
+    const producer = requirement.metric === 'peakSwordRate' ? 'assembly' : requirement.metric === 'golemFuelTransfers' ? 'golemcraft' : requirement.metric === 'portalTransfers' ? 'portalcraft' : requirement.metric === 'treeGrowth' ? 'worldGrafting' : producers[requirement.resource!];
     assert(ancestors(node.id).has(producer), `${node.id} can produce its prerequisite ${requirement.label} before unlocking itself`);
   }
 });

@@ -198,5 +198,96 @@
       "kinds": [],
       "recipes": []
     }
+  },
+  {
+    "id": "alchemy",
+    "label": "錬金術",
+    "description": "魔晶原石・精製魔晶・木材から錬金精髄を精製し、転送技術の準備を始める。",
+    "prerequisites": [
+      "sanctuary"
+    ],
+    "requirements": [],
+    "unlocks": {
+      "kinds": [
+        "alchemyLab"
+      ],
+      "recipes": [
+        "essence"
+      ]
+    }
+  },
+  {
+    "id": "portalcraft",
+    "label": "転送門の製作",
+    "description": "錬金精髄と鉄の延べ棒から転送核を作り、離れた工房を転送門で結ぶ。",
+    "prerequisites": [
+      "alchemy"
+    ],
+    "requirements": [
+      {
+        "metric": "produced",
+        "resource": "essence",
+        "target": 5,
+        "label": "錬金精髄を自動生産"
+      },
+      {
+        "metric": "produced",
+        "resource": "runeCore",
+        "target": 5,
+        "label": "魔導核を自動生産"
+      }
+    ],
+    "unlocks": {
+      "kinds": [
+        "portalForge",
+        "portalGate"
+      ],
+      "recipes": [
+        "portalCore"
+      ]
+    }
+  },
+  {
+    "id": "worldGrafting",
+    "label": "世界樹の接ぎ木",
+    "description": "自動生産品を転送門で10個初回転送し、世界樹の種と世界樹を解放する。",
+    "prerequisites": [
+      "portalcraft"
+    ],
+    "requirements": [
+      {
+        "metric": "portalTransfers",
+        "target": 10,
+        "label": "自動生産品を転送門で初回転送"
+      }
+    ],
+    "unlocks": {
+      "kinds": [
+        "seedLoom",
+        "worldTree"
+      ],
+      "recipes": [
+        "worldSeed"
+      ]
+    }
+  },
+  {
+    "id": "worldAwakened",
+    "label": "世界樹の覚醒",
+    "description": "自動生産し、転送門を通して自動搬送した世界樹の種を10個与えて世界樹を育てる。",
+    "prerequisites": [
+      "worldGrafting"
+    ],
+    "requirements": [
+      {
+        "metric": "treeGrowth",
+        "target": 10,
+        "label": "世界樹を成長させる"
+      }
+    ],
+    "unlocks": {
+      "kinds": [],
+      "recipes": []
+    }
   }
 ]
