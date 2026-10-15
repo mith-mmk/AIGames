@@ -97,6 +97,7 @@ class WorkshopApp {
       }
     }
     this.sync();
+    document.querySelector<HTMLCanvasElement>('#world canvas')?.focus({ preventScroll: true });
   }
   toggleTechnology(show = !this.technologyOpen) {
     this.technologyOpen = show; this.sync();
@@ -205,7 +206,7 @@ class WorkshopApp {
     let message = [this.rendererMessage, this.message].filter(Boolean).join(' ');
     if (this.kind && this.hover) {
       const checked = this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction);
-      if (!checked.ok && !(this.placedAt?.x === this.hover.x && this.placedAt?.z === this.hover.z)) message = checked.reason;
+      if (!checked.ok && !(this.placedAt?.x === this.hover.x && this.placedAt?.z === this.hover.z) && !message.includes(checked.reason)) message += ` 配置予定: ${checked.reason}`;
       else if (checked.ok) {
         const cells = new Map(this.simulation.state.buildings.map(building => [`${building.x},${building.z}`, building]));
         const ports = logisticsPorts({ kind: this.kind, ...this.hover, direction: this.direction }, cells);

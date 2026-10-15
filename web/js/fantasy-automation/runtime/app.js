@@ -3635,7 +3635,7 @@ var Ke = class {
 					z: Math.floor(t / 32)
 				}, this.view?.revealTile(this.hover.x, this.hover.z), this.message = e.terrain[t] === "crystal" ? "紫の魔晶鉱脈に魔晶採掘機を配置します。導線で魔力を供給してください。" : "この区画の設備を撤去すると、旧工房の下に隠れていた晶脈を利用できます。");
 			}
-			this.sync();
+			this.sync(), document.querySelector("#world canvas")?.focus({ preventScroll: !0 });
 		}
 	}
 	toggleTechnology(e = !this.technologyOpen) {
@@ -3780,7 +3780,7 @@ var Ke = class {
 		let e = [this.rendererMessage, this.message].filter(Boolean).join(" ");
 		if (this.kind && this.hover) {
 			let t = this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction);
-			if (!t.ok && (this.placedAt?.x !== this.hover.x || this.placedAt?.z !== this.hover.z)) e = t.reason;
+			if (!t.ok && (this.placedAt?.x !== this.hover.x || this.placedAt?.z !== this.hover.z) && !e.includes(t.reason)) e += ` 配置予定: ${t.reason}`;
 			else if (t.ok) {
 				let t = new Map(this.simulation.state.buildings.map((e) => [`${e.x},${e.z}`, e])), n = j({
 					kind: this.kind,
