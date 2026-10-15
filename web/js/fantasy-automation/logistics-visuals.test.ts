@@ -60,6 +60,19 @@ test('assembler reserves space for the other ingredient, storage has exactly 32 
   assert.equal(hasBufferRoom(target, 'sword'), false);
 });
 
+test('three-ingredient factories reserve all missing ingredient slots together', () => {
+  const lab = building(1, 'alchemyLab', 1, 1);
+  lab.input = [...Array.from({ length: 6 }, () => item('crystal')), item('wood')];
+  assert.equal(hasBufferRoom(lab, 'wood'), false, 'The last slot remains available for missing raw crystal');
+  assert.equal(hasBufferRoom(lab, 'crystal'), false);
+  assert.equal(hasBufferRoom(lab, 'rawCrystal'), true);
+  const loom = building(2, 'seedLoom', 2, 1);
+  loom.input = [...Array.from({ length: 5 }, () => item('wood')), item('essence')];
+  assert.equal(hasBufferRoom(loom, 'wood'), false, 'Two remaining slots are reserved for essence and rune core');
+  assert.equal(hasBufferRoom(loom, 'essence'), true);
+  assert.equal(hasBufferRoom(loom, 'runeCore'), true);
+});
+
 test('occupied conveyor chain marks a dead end full but a ready closed cycle linked', () => {
   const a = building(1, 'belt', 1, 1), b = building(2, 'belt', 2, 1);
   a.item = b.item = item('ore'); a.beltProgress = b.beltProgress = 0.5;

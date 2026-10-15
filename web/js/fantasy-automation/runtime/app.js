@@ -1000,15 +1000,15 @@ var te = [
 	accepts(e, t) {
 		return e.kind === "portalGate" ? e.portalRole === "send" : k(e) || e.kind === "storage" || e.kind === "golemRelay" && t === "golem" || (this.recipeInput(e)[t] ?? 0) > 0 || e.kind === "delivery" && (t === "ingot" || t === "sword");
 	}
-	canReceive(e, t, n, r = 0, i = 0) {
+	canReceive(e, t, n, r = 0) {
 		if (!this.accepts(e, t)) return !1;
 		if (e.kind === "delivery") return !0;
 		if (e.kind === "golemRelay") return n === 1 && !e.golemWorker && e.input.length + r === 0;
 		if (k(e)) return n === 1 && r === 0 && (!e.item || e.beltProgress + 1e-9 >= l);
-		let o = e.kind === "storage" ? 32 : 8;
-		if (e.input.length + r + n > o) return !1;
-		let s = this.recipeInput(e), c = a.reduce((e, n) => e + (n === t ? 0 : s[n] ?? 0), 0);
-		return e.input.filter((e) => e.resource === t).length + i + n <= o - c;
+		let i = e.kind === "storage" ? 32 : 8;
+		if (e.input.length + r + n > i) return !1;
+		let o = this.recipeInput(e), s = a.reduce((n, r) => n + (r === t ? 0 : Math.max(0, (o[r] ?? 0) - e.input.filter((e) => e.resource === r).length)), 0);
+		return i - e.input.length - r - n >= s;
 	}
 	transferPortals(e, t) {
 		let n = e.filter((e) => e.kind === "portalGate");
@@ -1232,19 +1232,19 @@ var te = [
 		}
 		let i = /* @__PURE__ */ new Set(), a = [];
 		for (;;) {
-			let t = /* @__PURE__ */ new Map(), n = /* @__PURE__ */ new Map();
+			let t = /* @__PURE__ */ new Map();
 			a = [];
-			for (let o of e) for (let e of r.get(o.id) ?? []) {
-				if (i.has(`${o.id}:${e.target.id}`)) continue;
-				let r = `${e.target.id}:${e.item.resource}`, s = t.get(e.target.id) ?? 0;
-				if (this.canReceive(e.target, e.item.resource, 1, s, n.get(r) ?? 0)) {
-					a.push(e), t.set(e.target.id, s + 1), n.set(r, (n.get(r) ?? 0) + 1);
+			for (let n of e) for (let e of r.get(n.id) ?? []) {
+				if (i.has(`${n.id}:${e.target.id}`)) continue;
+				let r = t.get(e.target.id) ?? 0;
+				if (this.canReceive(e.target, e.item.resource, 1, r)) {
+					a.push(e), t.set(e.target.id, r + 1);
 					break;
 				}
 			}
-			let o = new Set(a.filter((e) => e.sourceSlot === "item").map((e) => e.source.id)), s = a.filter((e) => k(e.target) && e.target.item && !o.has(e.target.id));
-			if (s.length === 0) break;
-			for (let e of s) i.add(`${e.source.id}:${e.target.id}`);
+			let n = new Set(a.filter((e) => e.sourceSlot === "item").map((e) => e.source.id)), o = a.filter((e) => k(e.target) && e.target.item && !n.has(e.target.id));
+			if (o.length === 0) break;
+			for (let e of o) i.add(`${e.source.id}:${e.target.id}`);
 		}
 		for (let e of a) e.sourceSlot === "item" ? (e.source.item = null, e.source.beltProgress = 0) : e.source[e.sourceSlot].shift(), e.source.kind === "splitter" && (e.source.splitCursor = +(e.port === 0));
 		for (let e of a) if (k(e.target)) e.target.item = e.item, e.target.beltProgress = 0;
@@ -1352,8 +1352,8 @@ function oe(e, t) {
 	if (A(e.kind)) return !e.item || e.beltProgress + 1e-9 >= l;
 	let n = e.kind === "storage" ? 32 : 8;
 	if (e.input.length >= n) return !1;
-	let i = c(e)?.input ?? r[e.kind].input ?? {}, o = a.reduce((e, n) => e + (n === t ? 0 : i[n] ?? 0), 0);
-	return e.input.filter((e) => e.resource === t).length + 1 <= n - o;
+	let i = c(e)?.input ?? r[e.kind].input ?? {}, o = a.reduce((n, r) => n + (r === t ? 0 : Math.max(0, (i[r] ?? 0) - e.input.filter((e) => e.resource === r).length)), 0);
+	return e.input.length + 1 <= n - o;
 }
 function se(e, t, n) {
 	if (!e.item || e.beltProgress + 1e-9 < l) return !1;
@@ -2986,7 +2986,7 @@ var L = o, R = Object.keys(L), ve = y.map((e) => e.id), z = Object.fromEntries(y
 	golemForge: "鉄の躯体と魔導核からゴーレムを覚醒させます。完成したゴーレムを補給所へ搬送してください。",
 	alchemyLab: "精製魔晶などを錬金精髄へ加工します。生産レシピに沿って素材と魔力を供給します。",
 	portalForge: "錬金精髄などから転送核を作る工房です。転送核を使って転送門と世界樹への道を開きます。",
-	portalGate: "同じ接続番号の送信門から受信門へ物品を転送します。送受信の設定と魔力を確認してください。",
+	portalGate: "同じ番号で送信門・受信門の2台を接続。送信は全隣接から入力し、1個につき魔力2を消費。受信門の魔力は不要です。",
 	seedLoom: "世界樹の種を育てる工房。自動生産した種を転送門経由で世界樹へ届けましょう。",
 	worldTree: "転送門を通った自動生産の世界樹の種だけが成長に使えます。10個を届けて世界樹を目覚めさせましょう。",
 	golemRelay: "ゴーレムを配置すると、半径6区画の収納箱から設備へ補給します。燃料補給か材料補給を選べます。"
@@ -3314,7 +3314,7 @@ var L = o, R = Object.keys(L), ve = y.map((e) => e.id), z = Object.fromEntries(y
 				let t = this.node("#feed-resource");
 				this.node("#advanced-feed").open = a.kind === "generator", t.value = a.kind === "generator" ? "wood" : a.kind === "smelter" ? "ore" : a.kind === "crystalRefiner" ? "rawCrystal" : a.kind === "golemRelay" ? "golem" : "ingot";
 			}
-			this.text("#selection-title", `${r[a.kind].label} (${a.x}, ${a.z})`), this.text("#selection-description", H[a.kind]), this.text("#selection-status", a.status || (a.working ? "稼働中" : "待機中")), this.text("#selection-direction", a.kind === "generator" ? "木材は隣接から · 魔力は導線網" : a.kind === "wire" ? "直交接続（方向なし）" : a.kind === "golemRelay" ? "半径6区画（方向なし）" : a.kind === "worldTree" ? "種を隣接から受け入れ（出力なし）" : a.kind === "portalGate" ? `${a.portalRole === "receive" ? "受信門 · 出力" : "送信門 · 入力"} ${B[a.direction]}` : a.kind === "delivery" ? "全隣接から受け入れ（出力なし）" : `${B[a.direction]}${a.kind === "splitter" ? ` / 右側 ${B[(a.direction + 1) % 4]}` : ""} · 入力は隣接から`);
+			this.text("#selection-title", `${r[a.kind].label} (${a.x}, ${a.z})`), this.text("#selection-description", H[a.kind]), this.text("#selection-status", a.status || (a.working ? "稼働中" : "待機中")), this.text("#selection-direction", a.kind === "generator" ? "木材は隣接から · 魔力は導線網" : a.kind === "wire" ? "直交接続（方向なし）" : a.kind === "golemRelay" ? "半径6区画（方向なし）" : a.kind === "worldTree" ? "種を隣接から受け入れ（出力なし）" : a.kind === "portalGate" ? a.portalRole === "receive" ? `受信門 · 出力 ${B[a.direction]}` : "送信門 · 全隣接から入力（通常出力なし）" : a.kind === "delivery" ? "全隣接から受け入れ（出力なし）" : `${B[a.direction]}${a.kind === "splitter" ? ` / 右側 ${B[(a.direction + 1) % 4]}` : ""} · 入力は隣接から`);
 			let n = Object.fromEntries(R.map((e) => [e, 0]));
 			[
 				...a.input,

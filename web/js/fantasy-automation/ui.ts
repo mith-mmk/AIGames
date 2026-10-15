@@ -48,7 +48,7 @@ const DESCRIPTIONS: Record<Kind, string> = {
   golemForge: '鉄の躯体と魔導核からゴーレムを覚醒させます。完成したゴーレムを補給所へ搬送してください。',
   alchemyLab: '精製魔晶などを錬金精髄へ加工します。生産レシピに沿って素材と魔力を供給します。',
   portalForge: '錬金精髄などから転送核を作る工房です。転送核を使って転送門と世界樹への道を開きます。',
-  portalGate: '同じ接続番号の送信門から受信門へ物品を転送します。送受信の設定と魔力を確認してください。',
+  portalGate: '同じ番号で送信門・受信門の2台を接続。送信は全隣接から入力し、1個につき魔力2を消費。受信門の魔力は不要です。',
   seedLoom: '世界樹の種を育てる工房。自動生産した種を転送門経由で世界樹へ届けましょう。',
   worldTree: '転送門を通った自動生産の世界樹の種だけが成長に使えます。10個を届けて世界樹を目覚めさせましょう。',
   golemRelay: 'ゴーレムを配置すると、半径6区画の収納箱から設備へ補給します。燃料補給か材料補給を選べます。',
@@ -321,7 +321,7 @@ export class GameUI {
       this.text('#selection-title', `${DEFINITIONS[selected.kind].label} (${selected.x}, ${selected.z})`);
       this.text('#selection-description', DESCRIPTIONS[selected.kind]);
       this.text('#selection-status', selected.status || (selected.working ? '稼働中' : '待機中'));
-      this.text('#selection-direction', selected.kind === 'generator' ? '木材は隣接から · 魔力は導線網' : selected.kind === 'wire' ? '直交接続（方向なし）' : selected.kind === 'golemRelay' ? '半径6区画（方向なし）' : selected.kind === 'worldTree' ? '種を隣接から受け入れ（出力なし）' : selected.kind === 'portalGate' ? `${selected.portalRole === 'receive' ? '受信門 · 出力' : '送信門 · 入力'} ${DIRECTIONS[selected.direction]}` : selected.kind === 'delivery' ? '全隣接から受け入れ（出力なし）' : `${DIRECTIONS[selected.direction]}${selected.kind === 'splitter' ? ` / 右側 ${DIRECTIONS[(selected.direction + 1) % 4]}` : ''} · 入力は隣接から`);
+      this.text('#selection-direction', selected.kind === 'generator' ? '木材は隣接から · 魔力は導線網' : selected.kind === 'wire' ? '直交接続（方向なし）' : selected.kind === 'golemRelay' ? '半径6区画（方向なし）' : selected.kind === 'worldTree' ? '種を隣接から受け入れ（出力なし）' : selected.kind === 'portalGate' ? (selected.portalRole === 'receive' ? `受信門 · 出力 ${DIRECTIONS[selected.direction]}` : '送信門 · 全隣接から入力（通常出力なし）') : selected.kind === 'delivery' ? '全隣接から受け入れ（出力なし）' : `${DIRECTIONS[selected.direction]}${selected.kind === 'splitter' ? ` / 右側 ${DIRECTIONS[(selected.direction + 1) % 4]}` : ''} · 入力は隣接から`);
       const counts = Object.fromEntries(RESOURCES.map(resource => [resource, 0])) as Record<Resource, number>;
       [...selected.input, ...selected.output, ...(selected.reserved ?? []), ...(selected.item ? [selected.item] : [])].forEach(item => counts[item.resource]++);
       this.text('#selection-buffer', Object.entries(counts).filter(([, amount]) => amount > 0).map(([resource, amount]) => `${RESOURCE_LABELS[resource as Resource]} ${amount}`).join('、') || 'なし');

@@ -37,8 +37,8 @@ export function hasBufferRoom(target: Building, resource: Resource): boolean {
   const capacity = target.kind === 'storage' ? STORAGE_CAPACITY : INPUT_CAPACITY;
   if (target.input.length >= capacity) return false;
   const recipe = getRecipe(target)?.input ?? DEFINITIONS[target.kind].input ?? {};
-  const otherMinimum = RESOURCES.reduce((sum, other) => sum + (other === resource ? 0 : recipe[other] ?? 0), 0);
-  return target.input.filter(item => item.resource === resource).length + 1 <= capacity - otherMinimum;
+  const missingOthers = RESOURCES.reduce((sum, other) => sum + (other === resource ? 0 : Math.max(0, (recipe[other] ?? 0) - target.input.filter(item => item.resource === other).length)), 0);
+  return target.input.length + 1 <= capacity - missingOthers;
 }
 
 /** Follow occupied, ready belts: a closed ready loop can move together, a dead end cannot. */

@@ -252,17 +252,18 @@ export class Simulation {
     return conveyor(building) || building.kind === 'storage' || (building.kind === 'golemRelay' && resource === 'golem') || (this.recipeInput(building)[resource] ?? 0) > 0 || (building.kind === 'delivery' && (resource === 'ingot' || resource === 'sword'));
   }
 
-  private canReceive(building: Building, resource: Resource, amount: number, incoming = 0, sameResourceIncoming = 0): boolean {
+  private canReceive(building: Building, resource: Resource, amount: number, incoming = 0): boolean {
     if (!this.accepts(building, resource)) return false;
     if (building.kind === 'delivery') return true;
     if (building.kind === 'golemRelay') return amount === 1 && !building.golemWorker && building.input.length + incoming === 0;
     if (conveyor(building)) return amount === 1 && incoming === 0 && (!building.item || building.beltProgress + 1e-9 >= BELT_SECONDS);
     const capacity = building.kind === 'storage' ? STORAGE_CAPACITY : INPUT_CAPACITY;
     if (building.input.length + incoming + amount > capacity) return false;
-    // Preserve room for every ingredient, so an ingot flood cannot prevent crystal input.
+    // Preserve all missing ingredients jointly. Independent per-resource limits
+    // allow two surplus ingredients to fill a three-ingredient recipe's buffer.
     const input = this.recipeInput(building);
-    const otherMinimum = RESOURCES.reduce((sum, other) => sum + (other === resource ? 0 : input[other] ?? 0), 0);
-    return building.input.filter(item => item.resource === resource).length + sameResourceIncoming + amount <= capacity - otherMinimum;
+    const missingOthers = RESOURCES.reduce((sum, other) => sum + (other === resource ? 0 : Math.max(0, (input[other] ?? 0) - building.input.filter(item => item.resource === other).length)), 0);
+    return capacity - building.input.length - incoming - amount >= missingOthers;
   }
 
   private transferPortals(buildings: Building[], networks: Map<number, Network>): void {
@@ -466,15 +467,13 @@ export class Simulation {
     let plan: Transfer[] = [];
     for (;;) {
       const incoming = new Map<number, number>();
-      const incomingResource = new Map<string, number>();
       plan = [];
       for (const source of buildings) {
         for (const candidate of options.get(source.id) ?? []) {
           if (rejected.has(`${source.id}:${candidate.target.id}`)) continue;
-          const resourceKey = `${candidate.target.id}:${candidate.item.resource}`;
           const count = incoming.get(candidate.target.id) ?? 0;
-          if (!this.canReceive(candidate.target, candidate.item.resource, 1, count, incomingResource.get(resourceKey) ?? 0)) continue;
-          plan.push(candidate); incoming.set(candidate.target.id, count + 1); incomingResource.set(resourceKey, (incomingResource.get(resourceKey) ?? 0) + 1); break;
+          if (!this.canReceive(candidate.target, candidate.item.resource, 1, count)) continue;
+          plan.push(candidate); incoming.set(candidate.target.id, count + 1); break;
         }
       }
       // If an occupied conveyor cannot leave, reject that edge and try the splitter's other port.
