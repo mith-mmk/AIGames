@@ -1,3 +1,4 @@
+/* global __dirname, process */
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -75,15 +76,13 @@ const http = require('node:http');
       } else if (mode === 'feed') {
         assert(text.includes('木材'), 'Guide explicitly explains the fuel to supply');
         await cta.click();
-        await page.locator('#feed-resource').selectOption('wood');
-        await page.locator('#feed-amount').fill('1');
-        await page.locator('[data-action="feed"]').click();
+        await page.locator('[data-feed-resource="wood"]').click();
       } else if (mode === 'run') {
         await cta.click();
         if (wirePoint && !cutWire) {
           await page.waitForFunction(() => Number(document.querySelector('#power-count')?.textContent.split('/')[0].trim()) > 0, undefined, { timeout: 30000 });
           await page.locator('[data-speed="0"]').click();
-          await page.locator('[data-action="cancel"]').click();
+          await page.locator('[data-action="cancel"]:visible').first().click();
           await page.mouse.click(wirePoint.x, wirePoint.y);
           assert((await page.locator('#selection-title').innerText()).includes('魔力導線'), 'Select the wire learned from the guide, without solution coordinates');
           await page.keyboard.down('KeyX');
@@ -109,11 +108,13 @@ const http = require('node:http');
 
     await page.locator('[data-action="guide-close"]').click();
     assert(await card.isHidden(), 'Guide can be dismissed for free construction');
-    await page.locator('[data-build="belt"]').click();
-    const beforeWood = Number(await page.locator('[data-resource="wood"]').innerText());
+    await page.locator('[data-action="build-open"]:visible').first().click();
+    await page.locator('[data-category="logistics"]').click();
+    await page.locator('[data-build="belt"]:visible').click();
+    const beforeWood = Number(await page.locator('.resource-strip [data-resource="wood"]').innerText());
     const bounds = await page.locator('#world canvas').boundingBox();
     await page.mouse.click(bounds.x + bounds.width * 0.55, bounds.y + bounds.height * 0.65);
-    assert(Number(await page.locator('[data-resource="wood"]').innerText()) < beforeWood, 'Ordinary free construction remains available after the guide');
+    assert(Number(await page.locator('.resource-strip [data-resource="wood"]').innerText()) < beforeWood, 'Ordinary free construction remains available after the guide');
     await page.keyboard.press('Escape');
     if (!await page.locator('.game-menu').evaluate(node => node.open)) await page.locator('.game-menu > summary').click();
     await page.locator('[data-action="guide-open"]').click();
@@ -190,9 +191,7 @@ const http = require('node:http');
           await mobile.touchscreen.tap(point.x, point.y);
         } else if (mode === 'feed') {
           await cta.tap();
-          await mobile.locator('#feed-resource').selectOption('wood');
-          await mobile.locator('#feed-amount').fill('1');
-          await mobile.locator('[data-action="feed"]').tap();
+          await mobile.locator('[data-feed-resource="wood"]').tap();
         } else if (mode === 'run') {
           await cta.tap();
           await mobile.waitForFunction(() => Number(document.querySelector('#delivered-count')?.textContent) >= 1, undefined, { timeout: 60000 });

@@ -1,0 +1,6502 @@
+{
+  "ok": true,
+  "seed": 662,
+  "gameSeconds": 649.2,
+  "stage2MeasuredSwordRate": 15,
+  "peakSwordRate": 15,
+  "produced": {
+    "wood": 122,
+    "ore": 555,
+    "ingot": 273,
+    "rawCrystal": 101,
+    "crystal": 89,
+    "sword": 39,
+    "runeCore": 13,
+    "golemFrame": 5,
+    "golem": 5
+  },
+  "delivered": {
+    "ingot": 10,
+    "sword": 39
+  },
+  "golemFuelTransfers": 20,
+  "golemTransfers": 20,
+  "swordProductionDuringAutomaticRelay": 13,
+  "relay": {
+    "id": 68,
+    "kind": "golemRelay",
+    "x": 11,
+    "z": 17,
+    "direction": 0,
+    "input": [],
+    "output": [],
+    "reserved": [],
+    "progress": 0,
+    "working": false,
+    "energy": 0,
+    "status": "木材を魔力炉へ運びました",
+    "item": null,
+    "beltProgress": 0,
+    "golemPolicy": "fuel",
+    "golemCooldown": 19,
+    "golemWorker": {
+      "resource": "golem",
+      "automated": true,
+      "handled": true
+    },
+    "golemRoute": {
+      "sourceId": 70,
+      "targetId": 14,
+      "resource": "wood",
+      "tick": 12984
+    }
+  },
+  "fuelWarehouseId": 70,
+  "commandCounts": {
+    "build": 70,
+    "gatherWood": 208,
+    "feed": 18,
+    "research": 7,
+    "remove": 3,
+    "collect": 161,
+    "recipe": 2,
+    "rotate": 14,
+    "relayPolicy": 1
+  },
+  "commandResults": [
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "miner",
+        "x": 12,
+        "z": 16,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "採掘機を設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 13,
+        "z": 16,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "smelter",
+        "x": 14,
+        "z": 16,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔導炉を設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 15,
+        "z": 16,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "delivery",
+        "x": 16,
+        "z": 16,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "納品箱を設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "generator",
+        "x": 12,
+        "z": 18,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力炉を設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 12,
+        "z": 17,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 13,
+        "z": 17,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 14,
+        "z": 17,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "lumber",
+        "x": 9,
+        "z": 18,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "木材採取場を設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 10,
+        "z": 18,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 11,
+        "z": 18,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "feed",
+        "id": 6,
+        "resource": "wood",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 0,
+      "command": {
+        "type": "feed",
+        "id": 6,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 690,
+      "command": {
+        "type": "research",
+        "id": "logistics"
+      },
+      "result": {
+        "ok": true,
+        "reason": "研究が完了しました。設備とレシピが解放されました"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "research",
+        "id": "crystals"
+      },
+      "result": {
+        "ok": true,
+        "reason": "研究が完了しました。設備とレシピが解放されました"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "remove",
+        "id": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "設備を撤去しました。中身と建設素材の半分を回収"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "build",
+        "kind": "storage",
+        "x": 15,
+        "z": 16,
+        "direction": 2
+      },
+      "result": {
+        "ok": true,
+        "reason": "収納箱を設置しました"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1101,
+      "command": {
+        "type": "build",
+        "kind": "generator",
+        "x": 13,
+        "z": 18,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力炉を設置しました"
+      }
+    },
+    {
+      "tick": 1120,
+      "command": {
+        "type": "feed",
+        "id": 14,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 1171,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "build",
+        "kind": "generator",
+        "x": 14,
+        "z": 18,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力炉を設置しました"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 14,
+        "z": 19,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 15,
+        "z": 19,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 16,
+        "z": 19,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 17,
+        "z": 19,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 18,
+        "z": 19,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 19,
+        "z": 19,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 20,
+        "z": 19,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1251,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 20,
+        "z": 18,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 1260,
+      "command": {
+        "type": "feed",
+        "id": 15,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 1331,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 1411,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 1491,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 1571,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 1651,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 1731,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 1811,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 1891,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 1891,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1891,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1891,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1891,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1891,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 1891,
+      "command": {
+        "type": "build",
+        "kind": "crystalMiner",
+        "x": 20,
+        "z": 16,
+        "direction": 2
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔晶採掘機を設置しました"
+      }
+    },
+    {
+      "tick": 1971,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2051,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2131,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2211,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2291,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2371,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2451,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2531,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 2531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 2531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 2531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 2531,
+      "command": {
+        "type": "build",
+        "kind": "crystalRefiner",
+        "x": 20,
+        "z": 17,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔晶精製炉を設置しました"
+      }
+    },
+    {
+      "tick": 2531,
+      "command": {
+        "type": "recipe",
+        "id": 25,
+        "recipe": "crystal"
+      },
+      "result": {
+        "ok": true,
+        "reason": "レシピを変更しました"
+      }
+    },
+    {
+      "tick": 2611,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2631,
+      "command": {
+        "type": "collect",
+        "id": 25,
+        "resource": "crystal",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2691,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2691,
+      "command": {
+        "type": "collect",
+        "id": 25,
+        "resource": "crystal",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2751,
+      "command": {
+        "type": "collect",
+        "id": 25,
+        "resource": "crystal",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2771,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2811,
+      "command": {
+        "type": "collect",
+        "id": 25,
+        "resource": "crystal",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2851,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2871,
+      "command": {
+        "type": "collect",
+        "id": 25,
+        "resource": "crystal",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2931,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2931,
+      "command": {
+        "type": "collect",
+        "id": 25,
+        "resource": "crystal",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 2991,
+      "command": {
+        "type": "collect",
+        "id": 25,
+        "resource": "crystal",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3011,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3051,
+      "command": {
+        "type": "collect",
+        "id": 25,
+        "resource": "crystal",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3091,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3111,
+      "command": {
+        "type": "collect",
+        "id": 25,
+        "resource": "crystal",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3140,
+      "command": {
+        "type": "feed",
+        "id": 14,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "collect",
+        "id": 25,
+        "resource": "crystal",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "research",
+        "id": "assembly"
+      },
+      "result": {
+        "ok": true,
+        "reason": "研究が完了しました。設備とレシピが解放されました"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "build",
+        "kind": "miner",
+        "x": 12,
+        "z": 15,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "採掘機を設置しました"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3171,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 13,
+        "z": 15,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 3251,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3331,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3411,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3491,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3571,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3651,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3731,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3731,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3731,
+      "command": {
+        "type": "build",
+        "kind": "smelter",
+        "x": 14,
+        "z": 15,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔導炉を設置しました"
+      }
+    },
+    {
+      "tick": 3811,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3811,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3811,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3811,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3811,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 3811,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 15,
+        "z": 15,
+        "direction": 2
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 3832,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3891,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3912,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3971,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 3992,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4051,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4072,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4131,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4152,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4211,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4232,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "build",
+        "kind": "assembler",
+        "x": 15,
+        "z": 17,
+        "direction": 2
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔導組立機を設置しました"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "recipe",
+        "id": 30,
+        "recipe": "sword"
+      },
+      "result": {
+        "ok": true,
+        "reason": "レシピを変更しました"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "build",
+        "kind": "delivery",
+        "x": 15,
+        "z": 18,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "納品箱を設置しました"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "rotate",
+        "id": 25
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 4291,
+      "command": {
+        "type": "rotate",
+        "id": 25
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 4312,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4312,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4312,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4312,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4312,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4312,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4312,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4312,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 19,
+        "z": 17,
+        "direction": 3
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 4371,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4371,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4371,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 18,
+        "z": 17,
+        "direction": 3
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 4392,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4392,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4392,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 17,
+        "z": 17,
+        "direction": 3
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 4451,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 4451,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 4451,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 16,
+        "z": 17,
+        "direction": 3
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 4600,
+      "command": {
+        "type": "feed",
+        "id": 14,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 4780,
+      "command": {
+        "type": "feed",
+        "id": 15,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 5400,
+      "command": {
+        "type": "feed",
+        "id": 14,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 5980,
+      "command": {
+        "type": "feed",
+        "id": 15,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 6200,
+      "command": {
+        "type": "feed",
+        "id": 14,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 6532,
+      "command": {
+        "type": "research",
+        "id": "mastery"
+      },
+      "result": {
+        "ok": true,
+        "reason": "研究が完了しました。設備とレシピが解放されました"
+      }
+    },
+    {
+      "tick": 6532,
+      "command": {
+        "type": "research",
+        "id": "runecraft"
+      },
+      "result": {
+        "ok": true,
+        "reason": "研究が完了しました。設備とレシピが解放されました"
+      }
+    },
+    {
+      "tick": 6552,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 6611,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 6632,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 6691,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 6712,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 6771,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 6792,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 6851,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 6872,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 6931,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 6952,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7011,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7032,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7091,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7112,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7171,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7192,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7251,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7272,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7331,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7352,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7380,
+      "command": {
+        "type": "feed",
+        "id": 14,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 7411,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7432,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7491,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7512,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7571,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7592,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7651,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7672,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7731,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7752,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7811,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7832,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7891,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7912,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7971,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 7992,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8051,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8072,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8131,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8152,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8211,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8232,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8291,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8312,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8371,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8392,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8451,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8472,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8531,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8552,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8611,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8632,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8691,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8712,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8771,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8792,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8851,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8872,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8931,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8952,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 8980,
+      "command": {
+        "type": "feed",
+        "id": 14,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 9011,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9032,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9091,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9112,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9171,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9192,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9251,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9272,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9331,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9352,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9411,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9432,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9491,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9512,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9571,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9592,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9651,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9672,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9731,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9752,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9811,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9832,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9891,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9912,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9971,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 9992,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10051,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10072,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10131,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10152,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10211,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10232,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10291,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10312,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10371,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10392,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10451,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10472,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "collect",
+        "id": 13,
+        "resource": "ingot",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "runeCarver",
+        "x": 17,
+        "z": 13,
+        "direction": 3
+      },
+      "result": {
+        "ok": true,
+        "reason": "刻印台を設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "frameForge",
+        "x": 15,
+        "z": 13,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "躯体工房を設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "generator",
+        "x": 15,
+        "z": 12,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力炉を設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 16,
+        "z": 12,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "wire",
+        "x": 17,
+        "z": 12,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "魔力導線を設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "lumber",
+        "x": 9,
+        "z": 19,
+        "direction": 3
+      },
+      "result": {
+        "ok": true,
+        "reason": "木材採取場を設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 8,
+        "z": 19,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 8,
+        "z": 18,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 8,
+        "z": 17,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 8,
+        "z": 16,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 8,
+        "z": 15,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 8,
+        "z": 14,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 8,
+        "z": 13,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 9,
+        "z": 13,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 10,
+        "z": 13,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 11,
+        "z": 13,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 12,
+        "z": 13,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 13,
+        "z": 13,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 14,
+        "z": 13,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "rotate",
+        "id": 13
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "rotate",
+        "id": 13
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "rotate",
+        "id": 29
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "rotate",
+        "id": 29
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "splitter",
+        "x": 15,
+        "z": 14,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "分岐器を設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 16,
+        "z": 14,
+        "direction": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 17,
+        "z": 14,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "rotate",
+        "id": 25
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "rotate",
+        "id": 25
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 21,
+        "z": 17,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 21,
+        "z": 16,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 21,
+        "z": 15,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 21,
+        "z": 14,
+        "direction": 3
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 20,
+        "z": 14,
+        "direction": 3
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 19,
+        "z": 14,
+        "direction": 3
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 18,
+        "z": 14,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 10531,
+      "command": {
+        "type": "build",
+        "kind": "belt",
+        "x": 18,
+        "z": 13,
+        "direction": 3
+      },
+      "result": {
+        "ok": true,
+        "reason": "搬送ベルトを設置しました"
+      }
+    },
+    {
+      "tick": 10540,
+      "command": {
+        "type": "feed",
+        "id": 38,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 10560,
+      "command": {
+        "type": "feed",
+        "id": 14,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 11000,
+      "command": {
+        "type": "feed",
+        "id": 38,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "research",
+        "id": "golemcraft"
+      },
+      "result": {
+        "ok": true,
+        "reason": "研究が完了しました。設備とレシピが解放されました"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "build",
+        "kind": "golemForge",
+        "x": 16,
+        "z": 13,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "覚醒炉を設置しました"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "remove",
+        "id": 39
+      },
+      "result": {
+        "ok": true,
+        "reason": "設備を撤去しました。中身と建設素材の半分を回収"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "build",
+        "kind": "storage",
+        "x": 16,
+        "z": 12,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "収納箱を設置しました"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "build",
+        "kind": "golemRelay",
+        "x": 11,
+        "z": 17,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "ゴーレム補給所を設置しました"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "remove",
+        "id": 11
+      },
+      "result": {
+        "ok": true,
+        "reason": "設備を撤去しました。中身と建設素材の半分を回収"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "build",
+        "kind": "splitter",
+        "x": 10,
+        "z": 18,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "分岐器を設置しました"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "gatherWood"
+      },
+      "result": {
+        "ok": true,
+        "reason": "森林で木材を1個手採取しました（自動生産の実績には算入されません）"
+      }
+    },
+    {
+      "tick": 11321,
+      "command": {
+        "type": "build",
+        "kind": "storage",
+        "x": 10,
+        "z": 17,
+        "direction": 0
+      },
+      "result": {
+        "ok": true,
+        "reason": "収納箱を設置しました"
+      }
+    },
+    {
+      "tick": 11380,
+      "command": {
+        "type": "feed",
+        "id": 14,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 11883,
+      "command": {
+        "type": "collect",
+        "id": 67,
+        "resource": "golem",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を1個回収しました"
+      }
+    },
+    {
+      "tick": 11883,
+      "command": {
+        "type": "feed",
+        "id": 68,
+        "resource": "golem",
+        "amount": 1
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 11883,
+      "command": {
+        "type": "relayPolicy",
+        "id": 68,
+        "policy": "fuel"
+      },
+      "result": {
+        "ok": true,
+        "reason": "燃料補給を優先します"
+      }
+    },
+    {
+      "tick": 11883,
+      "command": {
+        "type": "rotate",
+        "id": 13
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 11883,
+      "command": {
+        "type": "rotate",
+        "id": 13
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 11883,
+      "command": {
+        "type": "rotate",
+        "id": 29
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 11883,
+      "command": {
+        "type": "rotate",
+        "id": 29
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 11883,
+      "command": {
+        "type": "rotate",
+        "id": 25
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 11883,
+      "command": {
+        "type": "rotate",
+        "id": 25
+      },
+      "result": {
+        "ok": true,
+        "reason": "出力方向を回転しました"
+      }
+    },
+    {
+      "tick": 11940,
+      "command": {
+        "type": "feed",
+        "id": 38,
+        "resource": "wood",
+        "amount": 4
+      },
+      "result": {
+        "ok": true,
+        "reason": "素材を補給しました"
+      }
+    },
+    {
+      "tick": 12984,
+      "command": {
+        "type": "research",
+        "id": "sanctuary"
+      },
+      "result": {
+        "ok": true,
+        "reason": "研究が完了しました。設備とレシピが解放されました"
+      }
+    }
+  ],
+  "successfulCommands": 484,
+  "failedCommands": 0,
+  "manualFuelCommandsBeforeRelay": 17,
+  "milestones": [
+    {
+      "label": "research:logistics",
+      "seconds": 34.5,
+      "inventory": {
+        "wood": 34,
+        "ore": 0,
+        "ingot": 12,
+        "rawCrystal": 0,
+        "crystal": 0,
+        "sword": 0,
+        "runeCore": 0,
+        "golemFrame": 0,
+        "golem": 0
+      },
+      "produced": {
+        "wood": 11,
+        "ore": 12,
+        "ingot": 5
+      },
+      "delivered": {
+        "ingot": 4
+      },
+      "unlocked": [
+        "basic",
+        "logistics"
+      ]
+    },
+    {
+      "label": "research:crystals",
+      "seconds": 55.05,
+      "inventory": {
+        "wood": 34,
+        "ore": 0,
+        "ingot": 12,
+        "rawCrystal": 0,
+        "crystal": 0,
+        "sword": 0,
+        "runeCore": 0,
+        "golemFrame": 0,
+        "golem": 0
+      },
+      "produced": {
+        "wood": 14,
+        "ore": 22,
+        "ingot": 10
+      },
+      "delivered": {
+        "ingot": 10
+      },
+      "unlocked": [
+        "basic",
+        "logistics",
+        "crystals"
+      ]
+    },
+    {
+      "label": "research:assembly",
+      "seconds": 158.55,
+      "inventory": {
+        "wood": 32,
+        "ore": 0,
+        "ingot": 8,
+        "rawCrystal": 0,
+        "crystal": 10,
+        "sword": 0,
+        "runeCore": 0,
+        "golemFrame": 0,
+        "golem": 0
+      },
+      "produced": {
+        "wood": 22,
+        "ore": 74,
+        "ingot": 36,
+        "rawCrystal": 16,
+        "crystal": 10
+      },
+      "delivered": {
+        "ingot": 10
+      },
+      "unlocked": [
+        "basic",
+        "logistics",
+        "crystals",
+        "assembly"
+      ]
+    },
+    {
+      "label": "full automatic sword layout",
+      "seconds": 222.55,
+      "inventory": {
+        "wood": 39,
+        "ore": 0,
+        "ingot": 0,
+        "rawCrystal": 0,
+        "crystal": 10,
+        "sword": 0,
+        "runeCore": 0,
+        "golemFrame": 0,
+        "golem": 0
+      },
+      "produced": {
+        "wood": 28,
+        "ore": 129,
+        "ingot": 60,
+        "rawCrystal": 28,
+        "crystal": 16
+      },
+      "delivered": {
+        "ingot": 10
+      },
+      "unlocked": [
+        "basic",
+        "logistics",
+        "crystals",
+        "assembly"
+      ]
+    },
+    {
+      "label": "research:mastery",
+      "seconds": 326.6,
+      "inventory": {
+        "wood": 19,
+        "ore": 0,
+        "ingot": 0,
+        "rawCrystal": 0,
+        "crystal": 10,
+        "sword": 0,
+        "runeCore": 0,
+        "golemFrame": 0,
+        "golem": 0
+      },
+      "produced": {
+        "wood": 39,
+        "ore": 233,
+        "ingot": 112,
+        "rawCrystal": 61,
+        "crystal": 49,
+        "sword": 25
+      },
+      "delivered": {
+        "ingot": 10,
+        "sword": 25
+      },
+      "unlocked": [
+        "basic",
+        "logistics",
+        "crystals",
+        "assembly",
+        "mastery"
+      ]
+    },
+    {
+      "label": "research:runecraft",
+      "seconds": 326.6,
+      "inventory": {
+        "wood": 19,
+        "ore": 0,
+        "ingot": 0,
+        "rawCrystal": 0,
+        "crystal": 10,
+        "sword": 0,
+        "runeCore": 0,
+        "golemFrame": 0,
+        "golem": 0
+      },
+      "produced": {
+        "wood": 39,
+        "ore": 233,
+        "ingot": 112,
+        "rawCrystal": 61,
+        "crystal": 49,
+        "sword": 25
+      },
+      "delivered": {
+        "ingot": 10,
+        "sword": 25
+      },
+      "unlocked": [
+        "basic",
+        "logistics",
+        "crystals",
+        "assembly",
+        "mastery",
+        "runecraft"
+      ]
+    },
+    {
+      "label": "research:golemcraft",
+      "seconds": 566.05,
+      "inventory": {
+        "wood": 27,
+        "ore": 0,
+        "ingot": 47,
+        "rawCrystal": 0,
+        "crystal": 10,
+        "sword": 0,
+        "runeCore": 0,
+        "golemFrame": 0,
+        "golem": 0
+      },
+      "produced": {
+        "wood": 76,
+        "ore": 472,
+        "ingot": 231,
+        "rawCrystal": 75,
+        "crystal": 63,
+        "sword": 26,
+        "runeCore": 4,
+        "golemFrame": 3
+      },
+      "delivered": {
+        "ingot": 10,
+        "sword": 26
+      },
+      "unlocked": [
+        "basic",
+        "logistics",
+        "crystals",
+        "assembly",
+        "mastery",
+        "runecraft",
+        "golemcraft"
+      ]
+    },
+    {
+      "label": "research:sanctuary",
+      "seconds": 649.2,
+      "inventory": {
+        "wood": 26,
+        "ore": 0,
+        "ingot": 23,
+        "rawCrystal": 0,
+        "crystal": 10,
+        "sword": 0,
+        "runeCore": 0,
+        "golemFrame": 0,
+        "golem": 0
+      },
+      "produced": {
+        "wood": 122,
+        "ore": 555,
+        "ingot": 273,
+        "rawCrystal": 101,
+        "crystal": 89,
+        "sword": 39,
+        "runeCore": 13,
+        "golemFrame": 5,
+        "golem": 5
+      },
+      "delivered": {
+        "ingot": 10,
+        "sword": 39
+      },
+      "unlocked": [
+        "basic",
+        "logistics",
+        "crystals",
+        "assembly",
+        "mastery",
+        "runecraft",
+        "golemcraft",
+        "sanctuary"
+      ]
+    }
+  ],
+  "layout": [
+    {
+      "id": 1,
+      "kind": "miner",
+      "x": 12,
+      "z": 16,
+      "direction": 1
+    },
+    {
+      "id": 2,
+      "kind": "belt",
+      "x": 13,
+      "z": 16,
+      "direction": 1
+    },
+    {
+      "id": 3,
+      "kind": "smelter",
+      "x": 14,
+      "z": 16,
+      "direction": 1,
+      "recipe": "ingot"
+    },
+    {
+      "id": 5,
+      "kind": "delivery",
+      "x": 16,
+      "z": 16,
+      "direction": 1
+    },
+    {
+      "id": 6,
+      "kind": "generator",
+      "x": 12,
+      "z": 18,
+      "direction": 1
+    },
+    {
+      "id": 7,
+      "kind": "wire",
+      "x": 12,
+      "z": 17,
+      "direction": 1
+    },
+    {
+      "id": 8,
+      "kind": "wire",
+      "x": 13,
+      "z": 17,
+      "direction": 1
+    },
+    {
+      "id": 9,
+      "kind": "wire",
+      "x": 14,
+      "z": 17,
+      "direction": 1
+    },
+    {
+      "id": 10,
+      "kind": "lumber",
+      "x": 9,
+      "z": 18,
+      "direction": 1
+    },
+    {
+      "id": 12,
+      "kind": "belt",
+      "x": 11,
+      "z": 18,
+      "direction": 1
+    },
+    {
+      "id": 13,
+      "kind": "storage",
+      "x": 15,
+      "z": 16,
+      "direction": 2
+    },
+    {
+      "id": 14,
+      "kind": "generator",
+      "x": 13,
+      "z": 18,
+      "direction": 1
+    },
+    {
+      "id": 15,
+      "kind": "generator",
+      "x": 14,
+      "z": 18,
+      "direction": 1
+    },
+    {
+      "id": 16,
+      "kind": "wire",
+      "x": 14,
+      "z": 19,
+      "direction": 1
+    },
+    {
+      "id": 17,
+      "kind": "wire",
+      "x": 15,
+      "z": 19,
+      "direction": 1
+    },
+    {
+      "id": 18,
+      "kind": "wire",
+      "x": 16,
+      "z": 19,
+      "direction": 1
+    },
+    {
+      "id": 19,
+      "kind": "wire",
+      "x": 17,
+      "z": 19,
+      "direction": 1
+    },
+    {
+      "id": 20,
+      "kind": "wire",
+      "x": 18,
+      "z": 19,
+      "direction": 1
+    },
+    {
+      "id": 21,
+      "kind": "wire",
+      "x": 19,
+      "z": 19,
+      "direction": 1
+    },
+    {
+      "id": 22,
+      "kind": "wire",
+      "x": 20,
+      "z": 19,
+      "direction": 1
+    },
+    {
+      "id": 23,
+      "kind": "wire",
+      "x": 20,
+      "z": 18,
+      "direction": 1
+    },
+    {
+      "id": 24,
+      "kind": "crystalMiner",
+      "x": 20,
+      "z": 16,
+      "direction": 2
+    },
+    {
+      "id": 25,
+      "kind": "crystalRefiner",
+      "x": 20,
+      "z": 17,
+      "direction": 3,
+      "recipe": "crystal"
+    },
+    {
+      "id": 26,
+      "kind": "miner",
+      "x": 12,
+      "z": 15,
+      "direction": 1
+    },
+    {
+      "id": 27,
+      "kind": "belt",
+      "x": 13,
+      "z": 15,
+      "direction": 1
+    },
+    {
+      "id": 28,
+      "kind": "smelter",
+      "x": 14,
+      "z": 15,
+      "direction": 1,
+      "recipe": "ingot"
+    },
+    {
+      "id": 29,
+      "kind": "belt",
+      "x": 15,
+      "z": 15,
+      "direction": 2
+    },
+    {
+      "id": 30,
+      "kind": "assembler",
+      "x": 15,
+      "z": 17,
+      "direction": 2,
+      "recipe": "sword"
+    },
+    {
+      "id": 31,
+      "kind": "delivery",
+      "x": 15,
+      "z": 18,
+      "direction": 1
+    },
+    {
+      "id": 32,
+      "kind": "belt",
+      "x": 19,
+      "z": 17,
+      "direction": 3
+    },
+    {
+      "id": 33,
+      "kind": "belt",
+      "x": 18,
+      "z": 17,
+      "direction": 3
+    },
+    {
+      "id": 34,
+      "kind": "belt",
+      "x": 17,
+      "z": 17,
+      "direction": 3
+    },
+    {
+      "id": 35,
+      "kind": "belt",
+      "x": 16,
+      "z": 17,
+      "direction": 3
+    },
+    {
+      "id": 36,
+      "kind": "runeCarver",
+      "x": 17,
+      "z": 13,
+      "direction": 3,
+      "recipe": "runeCore"
+    },
+    {
+      "id": 37,
+      "kind": "frameForge",
+      "x": 15,
+      "z": 13,
+      "direction": 1,
+      "recipe": "golemFrame"
+    },
+    {
+      "id": 38,
+      "kind": "generator",
+      "x": 15,
+      "z": 12,
+      "direction": 1
+    },
+    {
+      "id": 40,
+      "kind": "wire",
+      "x": 17,
+      "z": 12,
+      "direction": 1
+    },
+    {
+      "id": 41,
+      "kind": "lumber",
+      "x": 9,
+      "z": 19,
+      "direction": 3
+    },
+    {
+      "id": 42,
+      "kind": "belt",
+      "x": 8,
+      "z": 19,
+      "direction": 0
+    },
+    {
+      "id": 43,
+      "kind": "belt",
+      "x": 8,
+      "z": 18,
+      "direction": 0
+    },
+    {
+      "id": 44,
+      "kind": "belt",
+      "x": 8,
+      "z": 17,
+      "direction": 0
+    },
+    {
+      "id": 45,
+      "kind": "belt",
+      "x": 8,
+      "z": 16,
+      "direction": 0
+    },
+    {
+      "id": 46,
+      "kind": "belt",
+      "x": 8,
+      "z": 15,
+      "direction": 0
+    },
+    {
+      "id": 47,
+      "kind": "belt",
+      "x": 8,
+      "z": 14,
+      "direction": 0
+    },
+    {
+      "id": 48,
+      "kind": "belt",
+      "x": 8,
+      "z": 13,
+      "direction": 1
+    },
+    {
+      "id": 49,
+      "kind": "belt",
+      "x": 9,
+      "z": 13,
+      "direction": 1
+    },
+    {
+      "id": 50,
+      "kind": "belt",
+      "x": 10,
+      "z": 13,
+      "direction": 1
+    },
+    {
+      "id": 51,
+      "kind": "belt",
+      "x": 11,
+      "z": 13,
+      "direction": 1
+    },
+    {
+      "id": 52,
+      "kind": "belt",
+      "x": 12,
+      "z": 13,
+      "direction": 1
+    },
+    {
+      "id": 53,
+      "kind": "belt",
+      "x": 13,
+      "z": 13,
+      "direction": 1
+    },
+    {
+      "id": 54,
+      "kind": "belt",
+      "x": 14,
+      "z": 13,
+      "direction": 1
+    },
+    {
+      "id": 55,
+      "kind": "splitter",
+      "x": 15,
+      "z": 14,
+      "direction": 0
+    },
+    {
+      "id": 56,
+      "kind": "belt",
+      "x": 16,
+      "z": 14,
+      "direction": 1
+    },
+    {
+      "id": 57,
+      "kind": "belt",
+      "x": 17,
+      "z": 14,
+      "direction": 0
+    },
+    {
+      "id": 58,
+      "kind": "belt",
+      "x": 21,
+      "z": 17,
+      "direction": 0
+    },
+    {
+      "id": 59,
+      "kind": "belt",
+      "x": 21,
+      "z": 16,
+      "direction": 0
+    },
+    {
+      "id": 60,
+      "kind": "belt",
+      "x": 21,
+      "z": 15,
+      "direction": 0
+    },
+    {
+      "id": 61,
+      "kind": "belt",
+      "x": 21,
+      "z": 14,
+      "direction": 3
+    },
+    {
+      "id": 62,
+      "kind": "belt",
+      "x": 20,
+      "z": 14,
+      "direction": 3
+    },
+    {
+      "id": 63,
+      "kind": "belt",
+      "x": 19,
+      "z": 14,
+      "direction": 3
+    },
+    {
+      "id": 64,
+      "kind": "belt",
+      "x": 18,
+      "z": 14,
+      "direction": 0
+    },
+    {
+      "id": 65,
+      "kind": "belt",
+      "x": 18,
+      "z": 13,
+      "direction": 3
+    },
+    {
+      "id": 66,
+      "kind": "golemForge",
+      "x": 16,
+      "z": 13,
+      "direction": 0,
+      "recipe": "golem"
+    },
+    {
+      "id": 67,
+      "kind": "storage",
+      "x": 16,
+      "z": 12,
+      "direction": 0
+    },
+    {
+      "id": 68,
+      "kind": "golemRelay",
+      "x": 11,
+      "z": 17,
+      "direction": 0
+    },
+    {
+      "id": 69,
+      "kind": "splitter",
+      "x": 10,
+      "z": 18,
+      "direction": 0
+    },
+    {
+      "id": 70,
+      "kind": "storage",
+      "x": 10,
+      "z": 17,
+      "direction": 0
+    }
+  ]
+}

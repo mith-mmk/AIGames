@@ -49,6 +49,9 @@ export class WorldView {
   private ghostPort = this.arrow();
   private ghostSidePort = this.arrow();
   private ghostPower: THREE.Mesh | null = null;
+  private ghostFeasibility = new THREE.Group();
+  private ghostCheck = new THREE.Group();
+  private ghostCross = new THREE.Group();
   private selection = new THREE.Group();
   private selectedDirection = this.arrow(0xffeb94);
   private selectedSideDirection = this.arrow(0xffeb94);
@@ -116,6 +119,12 @@ export class WorldView {
     this.ghostSidePort.visible = false;
     this.ghost.add(this.ghostSidePort);
     this.ghostPower = this.cylinder(this.ghost, 0x94eaff, 0.085, 0.14, [0.38, 0.22, 0.38], true);
+    this.ghostFeasibility.position.set(0.38, 1.05, 0.38);
+    this.box(this.ghostFeasibility, 0x344441, [0.34, 0.025, 0.34], [0, 0, 0]).userData.visualBackdrop = true;
+    this.box(this.ghostCheck, 0xc7ffdb, [0.13, 0.045, 0.05], [-0.065, 0.035, 0.02]).rotation.y = -Math.PI / 4;
+    this.box(this.ghostCheck, 0xc7ffdb, [0.23, 0.045, 0.05], [0.04, 0.035, -0.025]).rotation.y = Math.PI / 4;
+    for (const angle of [-Math.PI / 4, Math.PI / 4]) this.box(this.ghostCross, 0xffd2c6, [0.28, 0.045, 0.05], [0, 0.035, 0]).rotation.y = angle;
+    this.ghostFeasibility.add(this.ghostCheck, this.ghostCross); this.ghost.add(this.ghostFeasibility);
     this.createOutline(this.selection, 0xffdc6e);
     this.selectedDirection.position.set(0, 1.45, -0.18);
     this.selectedDirection.scale.setScalar(1.9);
@@ -200,6 +209,8 @@ export class WorldView {
 
   private portGlyph(): PortGlyph {
     const group = new THREE.Group(), linked = new THREE.Group(), missing = new THREE.Group(), stop = new THREE.Group(), invalid = new THREE.Group();
+    this.box(stop, 0x344441, [0.29, 0.02, 0.29], [0, -0.035, 0]).userData.visualBackdrop = true;
+    this.box(invalid, 0x344441, [0.31, 0.02, 0.29], [0, -0.035, 0]).userData.visualBackdrop = true;
     for (const x of [-0.055, 0.055]) {
       const link = new THREE.Mesh(this.geometry('link', () => new THREE.TorusGeometry(0.078, 0.023, 4, 8)), this.material(0x93efe0));
       link.position.x = x; link.rotation.x = Math.PI / 2; linked.add(link);
@@ -216,7 +227,7 @@ export class WorldView {
     glyph.stop.visible = state === 'full'; glyph.invalid.visible = state === 'incompatible' || state === 'edge';
     const colors = { linked: 0x93efe0, missing: 0xf1ca7b, stop: 0xffb466, invalid: 0xff8276 };
     for (const name of ['linked', 'missing', 'stop', 'invalid'] as const) glyph[name].traverse(child => {
-      if (child instanceof THREE.Mesh) child.material = this.material(colors[name]);
+      if (child instanceof THREE.Mesh) child.material = this.material(child.userData.visualBackdrop ? 0x344441 : colors[name]);
     });
   }
 
@@ -582,6 +593,8 @@ export class WorldView {
     }
     for (const [id, view] of this.facilities) if (!ids.has(id)) { this.scene.remove(view.group); this.disposeFacility(view); this.facilities.delete(id); }
     this.ghost.visible = !!options.kind && !!options.hover && this.cursorOnMap;
+    if (this.ghost.visible) this.renderer.domElement.dataset.ghostValid = String(options.valid);
+    else delete this.renderer.domElement.dataset.ghostValid;
     if (this.ghost.visible && options.hover) {
       if (this.ghostPreview?.kind !== options.kind) {
         if (this.ghostPreview) { this.ghost.remove(this.ghostPreview.group); this.disposeFacility(this.ghostPreview); }
@@ -627,6 +640,10 @@ export class WorldView {
         }
       }
       for (const socket of this.ghostPreview?.sockets ?? []) socket.material = this.material(0x96d9ee, 0, true);
+      this.ghostCheck.visible = options.valid; this.ghostCross.visible = !options.valid;
+      this.ghostFeasibility.traverse(child => {
+        if (child instanceof THREE.Mesh) child.material = this.material(child.userData.visualBackdrop ? 0x344441 : options.valid ? 0xc7ffdb : 0xffd2c6);
+      });
       if (this.ghostPower) {
         const powerKind = options.kind && powerKinds.has(options.kind);
         this.ghostPower.visible = !!powerKind;

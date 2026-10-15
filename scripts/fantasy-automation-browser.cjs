@@ -1,3 +1,4 @@
+/* global __dirname, process */
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -34,8 +35,18 @@ const http = require('node:http');
       target.on('response', response => { if (response.status() >= 400 && !response.url().endsWith('favicon.ico')) requests.push(response.url()); });
     };
     monitor(page);
-    const action = name => page.locator(`[data-action="${name}"]`);
+    const action = name => page.locator(`[data-action="${name}"]:visible`).first();
     const dismissGuide = async () => { const close = page.locator('[data-action="guide-close"]'); if (await close.count() && await close.isVisible()) await close.click(); };
+    const chooseBuild = async kind => {
+      if (!await page.locator('.build-dock').isVisible()) await action('build-open').click();
+      const categories = page.locator('[data-category]');
+      for (let index = 0; index < await categories.count(); index += 1) {
+        await categories.nth(index).click();
+        const choice = page.locator(`[data-build="${kind}"]:visible`);
+        if (await choice.count()) { await choice.click(); return; }
+      }
+      throw new Error(`Building category missing ${kind}`);
+    };
     const menu = async () => {
       if (!await page.locator('.game-menu').evaluate(node => node.open)) await page.locator('.game-menu > summary').click();
     };
@@ -53,12 +64,14 @@ const http = require('node:http');
       await menu();
       await action('save').click();
       await page.waitForFunction(() => document.querySelector('#game-message')?.textContent.includes('保存しました'));
+      if (await page.locator('.game-menu').evaluate(n=>n.open)) await action('menu-close').click();
       return readSave();
     };
     const load = async () => {
       await menu();
       await action('load').click();
       await page.waitForFunction(() => document.querySelector('#game-message')?.textContent.includes('再開しました'));
+      if (await page.locator('.game-menu').evaluate(n=>n.open)) await action('menu-close').click();
     };
     const cellPoint = async (x, z) => page.evaluate(async ({ x, z }) => {
         const THREE = await import('three');
@@ -76,17 +89,16 @@ const http = require('node:http');
     };
     await page.goto(url);
     await page.waitForSelector('#world canvas');
-    await page.waitForSelector('[data-build="belt"]');
     await dismissGuide();
     assert.equal(await page.title(), 'AI Games');
     await page.locator('[data-speed="0"]').click();
     const initial = await save();
-    assert(initial && initial.version === 2);
+    assert(initial && initial.version === 3);
     // Real canvas picking builds a belt; menus must not accidentally build cells.
     const canvas = page.locator('#world canvas');
     const box = await canvas.boundingBox();
     assert(box.width > 0 && box.height > 0);
-    await page.locator('[data-build="belt"]').click();
+    await chooseBuild('belt');
     await page.mouse.click(box.x + box.width * 0.52, box.y + box.height * 0.48);
     await action('cancel').click();
     const placed = await save();
@@ -115,7 +127,7 @@ const http = require('node:http');
     await clickCell(8, 14);
     await page.keyboard.up('KeyX');
     assert.equal((await save()).buildings.length, 1, 'X plus click removes only the selected facility');
-    await page.locator('[data-build="belt"]').click();
+    await chooseBuild('belt');
     const start = await cellPoint(10, 14), end = await cellPoint(12, 14);
     await page.mouse.move(start.x, start.y); await page.mouse.down();
     await page.mouse.move(end.x, end.y, { steps: 1 }); await page.mouse.up();
@@ -154,7 +166,7 @@ const http = require('node:http');
       ['lumber', 9, 18], ['belt', 10, 18], ['belt', 11, 18],
     ];
     for (const [kind, x, z] of starter) {
-      await page.locator(`[data-build="${kind}"]`).click();
+      await chooseBuild(kind);
       await clickCell(x, z);
     }
     await action('cancel').click();
@@ -200,7 +212,7 @@ const http = require('node:http');
       assert.equal(layout.overflow, false, `No horizontal overflow at ${width}px`);
       assert(Math.abs(layout.canvasWidth - width) <= 1);
       assert(Math.abs(layout.canvasHeight - (width === 1440 ? 900 : 844)) <= 1);
-      assert.equal(layout.paletteCount, 12);
+      assert.equal(layout.paletteCount, 16);
       await page.screenshot({ path: path.join(output, `viewport-${width}.png`), fullPage: true });
       checks.push({ width, ...layout });
     }

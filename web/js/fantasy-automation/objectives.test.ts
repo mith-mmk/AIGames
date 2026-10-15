@@ -45,10 +45,9 @@ test('research opportunities are surfaced at five produced ingots and ten delive
   assert.match(goal.title, /結晶加工.*研究する/); assert.equal(goal.current, 10); assert.equal(goal.target, 10);
 });
 
-test('iron delivery 99, 100 and greater never freezes the goal once the iron quest is achieved', () => {
+test('crystal research advances to assembly at iron delivery 99, 100 and greater', () => {
   const value = state(99, ['basic', 'logistics', 'crystals']);
-  assert.equal(getObjective(value).target, 100);
-  for (const delivered of [100, 101, 1000]) {
+  for (const delivered of [99, 100, 101, 1000]) {
     value.delivered = delivered; value.stats!.produced.ingot = delivered; value.stats!.delivered.ingot = delivered;
     const goal = getObjective(value);
     assert.match(goal.title, /魔導剣の組立/); assert.equal(goal.resource, 'crystal');
@@ -154,4 +153,46 @@ test('mastery advances into rune crafting, golem assembly and automated fuel sup
   assert.equal(getObjective(value).current, 19, 'Other material transfers do not complete the fuel goal');
   value.stats!.golemFuelTransfers = 20;
   assert.match(getObjective(value).title, /自動運営を研究する/);
+});
+
+
+test('initial basic and logistics stages retain the iron objective until research becomes available', () => {
+  const value = state(4);
+  assert.match(getObjective(value).title, /鉄の延べ棒を100本/);
+  value.research!.unlocked.push('logistics'); value.delivered = 9;
+  value.stats!.produced.ingot = 9; value.stats!.delivered.ingot = 9;
+  assert.match(getObjective(value).title, /鉄の延べ棒を100本/);
+  value.delivered = 99; value.stats!.produced.ingot = 99; value.stats!.delivered.ingot = 99;
+  assert.match(getObjective(value).title, /結晶加工を研究する/);
+});
+
+test('late production stages never revert to iron quota when only ten iron ingots were delivered', () => {
+  const value = state(10, ['basic', 'logistics', 'crystals']);
+  assert.match(getObjective(value).title, /魔導剣の組立/);
+  value.stats!.produced.ingot = 30; value.stats!.produced.crystal = 10;
+  assert.match(getObjective(value).title, /魔導剣の組立を研究する/);
+  value.research!.unlocked.push('assembly');
+  assert.match(getObjective(value).title, /魔導剣の量産技術/);
+  value.stats!.produced.sword = 10; value.stats!.delivered.sword = 10; value.stats!.peakSwordRate = 10;
+  value.research!.unlocked.push('mastery');
+  assert.match(getObjective(value).title, /ルーン.*研究する/);
+  const old = structuredClone(value); old.version = 2;
+  delete old.inventory.runeCore; delete old.inventory.golemFrame; delete old.inventory.golem;
+  delete old.stats!.golemTransfers; delete old.stats!.golemFuelTransfers;
+  assert.deepEqual(getObjective(validateSave(old)), getObjective(value), 'Old second-stage save resumes at rune research');
+  value.research!.unlocked.push('runecraft');
+  assert.match(getObjective(value).title, /魔導核を自動生産/);
+  value.stats!.produced.runeCore = 3;
+  assert.match(getObjective(value).title, /鉄の躯体を自動生産/);
+  value.stats!.produced.golemFrame = 3;
+  assert.match(getObjective(value).title, /ゴーレム組立.*研究する/);
+  value.research!.unlocked.push('golemcraft');
+  assert.match(getObjective(value).title, /ゴーレムを自動生産/);
+  value.stats!.produced.golem = 3;
+  assert.match(getObjective(value).title, /木材を魔力炉へ自動補給/);
+  value.stats!.golemTransfers = 20; value.stats!.golemFuelTransfers = 20;
+  assert.match(getObjective(value).title, /自動運営を研究する/);
+  value.research!.unlocked.push('sanctuary');
+  assert.match(getObjective(value).title, /自由に拡張/);
+  assert.deepEqual(getObjective(validateSave(value)), getObjective(value), 'Third-stage progress survives save reload');
 });

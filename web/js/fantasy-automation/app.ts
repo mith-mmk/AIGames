@@ -157,6 +157,7 @@ class WorkshopApp {
     this.sync();
   }
   pick(x: number, z: number, event: PointerEvent) {
+    if (this.ui.isWorldInputBlocked()) return;
     if (event.type === 'pointermove' && this.kind !== 'belt' && !this.removeMode && !this.xHeld) return;
     const building = this.simulation.state.buildings.find(b => b.x === x && b.z === z);
     if (event.type === 'pointermove' && building && !this.removeMode && !this.xHeld) return;
@@ -213,6 +214,7 @@ class WorkshopApp {
       }
     }
     this.ui.update(this.simulation.state, { kind: this.kind, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover, guide: this.guideStep, technologyOpen: this.technologyOpen });
+    this.view?.setInputBlocked(this.ui.isWorldInputBlocked());
   }
   key(event: KeyboardEvent) {
     if (this.technologyOpen && event.code === 'Escape') { this.toggleTechnology(false); return; }

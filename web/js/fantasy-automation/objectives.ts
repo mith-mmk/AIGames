@@ -63,11 +63,13 @@ export function getObjective(original: GameState): Objective {
     detail: `全技術を解放しました。ゴーレムの自動生産 ${state.stats?.produced.golem ?? 0}体、木材の自動補給 ${state.stats?.golemFuelTransfers ?? 0}個。収納や分岐、ゴーレムを使って工房を広げられます。`,
     resource: 'wood', current: state.stats?.golemFuelTransfers ?? 0, target: 20, action: null, completed: true,
   };
+  const remaining = nodes.find(node => node.status !== 'unlocked')!;
+  // Research beyond basic logistics establishes a new production stage even before the optional iron quota is met.
+  if (nodes.some(node => node.status === 'unlocked' && node.id !== 'basic' && node.id !== 'logistics')) return technologyObjective(state, prerequisiteGoal(remaining));
   if (state.delivered < GOAL) return {
     title: '鉄の延べ棒を100本自動納品',
     detail: '採掘機→魔導炉→納品箱をつなぎ、自動生産した鉄の延べ棒を自動搬送してください。手で投入・回収した品は数えません。研究条件を達成すると次の目標へ進みます。',
     resource: 'ingot', current: state.delivered, target: GOAL, action: 'guide', completed: false,
   };
-  const remaining = nodes.find(node => node.status !== 'unlocked')!;
   return technologyObjective(state, prerequisiteGoal(remaining));
 }

@@ -2,6 +2,7 @@ import { BELT_SECONDS, DEFINITIONS, RECIPES, RESOURCE_NAMES } from './data.js';
 import { techNodeStates, currentSwordRate, TECHNOLOGIES, isKindUnlocked, isRecipeUnlocked } from './technology.js';
 import { resourceIcon } from './icons.js';
 import { getObjective } from './objectives.js';
+import { hasBufferRoom } from './logistics-visuals.js';
 import type { GuideStep } from './onboarding.js';
 import type { Direction, GameState, Kind, Resource, TechId, RecipeId, Building } from './types.js';
 
@@ -69,6 +70,7 @@ export class GameUI {
   private readonly root: HTMLElement;
   private readonly callbacks: UICallbacks;
   private lastSelected: number | null = null;
+  private previousGuideMode: GuideStep['mode'] | null = null;
   private guideLists = '';
   private lastMessage = '';
 
@@ -197,6 +199,7 @@ export class GameUI {
       const collapsed = this.node('#selection-panel').classList.toggle('is-collapsed');
       button.textContent = collapsed ? '+' : '×';
       button.setAttribute('aria-label', collapsed ? '設備詳細を開く' : '設備詳細を閉じる');
+      this.root.classList.toggle('expanded-selection', !collapsed);
     }
   }
   handleFeed(event: Event): void {
@@ -299,6 +302,11 @@ export class GameUI {
       this.text('#selection-power', `${Math.floor(selected.energy)}${selected.pendingEnergy ? ` · 内部完成 ${selected.pendingEnergy}` : ''}`);
       this.node('#advanced-feed').hidden = !['generator', 'smelter', 'delivery', 'storage', 'splitter', 'belt', 'crystalRefiner', 'assembler', 'runeCarver', 'frameForge', 'golemForge', 'golemRelay'].includes(selected.kind);
     }
+    if (selected && view.guide && (this.previousGuideMode === 'feed' || this.previousGuideMode === 'rotate') && view.guide.mode !== 'feed' && view.guide.mode !== 'rotate') {
+      panel.classList.add('is-collapsed'); const close = this.node('[data-action="close-panel"]'); close.textContent = '+'; close.setAttribute('aria-label', '設備詳細を開く');
+    }
+    this.root.classList.toggle('expanded-selection', !!selected && !panel.hidden && !panel.classList.contains('is-collapsed'));
+    this.previousGuideMode = view.guide?.mode ?? null;
     this.lastSelected = view.selectedId;
   }
   private loadPreferences(): void {
@@ -370,7 +378,7 @@ export class GameUI {
     if (!this.node('.build-dock').hidden) { this.node('.build-dock').hidden = true; this.callbacks.onCancel(); return true; }
     const selected = this.node('#selection-panel');
     if (!selected.hidden && !selected.classList.contains('is-collapsed')) {
-      selected.classList.add('is-collapsed'); const close = this.node('[data-action="close-panel"]'); close.textContent = '+'; close.setAttribute('aria-label', '設備詳細を開く'); return true;
+      selected.classList.add('is-collapsed'); this.root.classList.remove('expanded-selection'); const close = this.node('[data-action="close-panel"]'); close.textContent = '+'; close.setAttribute('aria-label', '設備詳細を開く'); return true;
     }
     return false;
   }
@@ -432,7 +440,7 @@ export class GameUI {
       const set = (selector: string, text: string) => { const element = node.querySelector<HTMLElement>(selector)!; if (element.textContent !== text) element.textContent = text; };
       set('h3', technology.label); set('.tech-status', labels[technology.status]); set('.tech-description', technology.description);
       set('.tech-prerequisites', `前提: ${technology.prerequisites.map(id => nodes.find(other => other.id === id)?.label ?? TECH_LABELS[id]).join(' ＋ ') || 'なし（最初から利用可）'}`);
-      set('.tech-unlocks', `解放: ${[...technology.unlocks.kinds.map(kind => DEFINITIONS[kind].label), ...technology.unlocks.recipes.map(recipe => `${RECIPES[recipe].label}レシピ`)].join('・') || '魔導剣の連続生産達成'}`);
+      set('.tech-unlocks', `解放: ${[...technology.unlocks.kinds.map(kind => DEFINITIONS[kind].label), ...technology.unlocks.recipes.map(recipe => `${RECIPES[recipe].label}レシピ`)].join('・') || (technology.id === 'sanctuary' ? 'ゴーレム工房の自動運営を達成' : '魔導剣の連続生産達成・ゴーレム製造へ')}`);
       set('.tech-reason', technology.reason);
       const requirements = node.querySelector<HTMLElement>('.tech-requirements')!;
       const text = technology.requirements.map(requirement => `${requirement.met ? '✓' : '○'} ${requirement.label} ${requirement.current} / ${requirement.target}`).join('\n');
@@ -459,14 +467,14 @@ export class GameUI {
     this.node('#facility-feed-slots').hidden = storage || !feedResources.length;
     this.node('#facility-feed-slots').querySelectorAll<HTMLButtonElement>('[data-feed-resource]').forEach(button => {
       const resource = button.dataset.feedResource as Resource; button.hidden = !feedResources.includes(resource);
-      button.disabled = !(state.inventory[resource] ?? 0) || (selected.kind === 'golemRelay' ? !!selected.golemWorker : selected.kind !== 'delivery' && selected.input.length >= 8);
+      button.disabled = !(state.inventory[resource] ?? 0) || !hasBufferRoom(selected, resource);
       button.title = `${RESOURCE_LABELS[resource]}を1個補給 · 所持 ${state.inventory[resource] ?? 0}`;
     });
     this.node('#storage-controls').hidden = !storage;
     this.node('#selection-panel').classList.toggle('chest-selected', storage);
     if (storage) {
       this.updateChestSlots(state, selected);
-      this.text('#storage-capacity', `収納 ${selected.input.length} / 32品（納品はしません）`);
+      this.text('#storage-capacity', `収納 ${selected.input.length} / 32品 · 空き ${32 - selected.input.length}個（納品はしません）`);
       const list = this.node('#storage-items'); const values = selected.input.map(item => `${item.resource}:${item.automated}:${!!item.handled}`).join('|');
       if (list.dataset.value !== values) {
         list.dataset.value = values; list.replaceChildren();
@@ -481,7 +489,7 @@ export class GameUI {
     this.node('#relay-controls').hidden = selected.kind !== 'golemRelay';
     if (selected.kind === 'golemRelay') {
       this.text('#relay-worker', selected.golemWorker ? '♟ ゴーレム配置済み' : '♟ ゴーレムの搬入を待っています');
-      this.text('#relay-transfers', `補給 ${state.stats?.golemTransfers ?? 0}回 · 木材 ${state.stats?.golemFuelTransfers ?? 0} / 20回`);
+      this.text('#relay-transfers', `工房全体の補給 ${state.stats?.golemTransfers ?? 0}回 · 木材 ${state.stats?.golemFuelTransfers ?? 0} / 20回`);
       this.node('#relay-controls').querySelectorAll<HTMLButtonElement>('[data-relay-policy]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.relayPolicy === (selected.golemPolicy ?? 'fuel'))));
     }
     this.node('#delivery-summary').hidden = selected.kind !== 'delivery';

@@ -1,3 +1,4 @@
+/* global __dirname, process */
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -24,7 +25,7 @@ const { execFileSync } = require('node:child_process');
     fs.writeFileSync(output+'/available.json',JSON.stringify(validateSave(basic.snapshot())));
     for(const facility of basic.state.buildings){const excess=facility.input.length+(facility.reserved?.length||0)-8;if(excess>0)basic.command({type:'collect',id:facility.id,amount:excess});}
     const legacy=basic.snapshot();legacy.version=1;delete legacy.stats;delete legacy.research;delete legacy.inventoryItems;delete legacy.pendingCrystalCells;
-    for(const resource of ['rawCrystal','crystal','sword'])delete legacy.inventory[resource];
+    for(const resource of ['rawCrystal','crystal','sword','runeCore','golemFrame','golem'])delete legacy.inventory[resource];
     legacy.terrain=legacy.terrain.map(tile=>tile==='crystal'?'grass':tile);
     for(const facility of legacy.buildings){facility.input=[...(facility.reserved||[]),...facility.input];delete facility.reserved;delete facility.recipe;delete facility.splitCursor;for(const item of [...facility.input,...facility.output,...(facility.item?[facility.item]:[])])delete item.handled;}
     fs.writeFileSync(output+'/legacy.json',JSON.stringify(legacy));
@@ -60,6 +61,15 @@ const { execFileSync } = require('node:child_process');
     const action = name => page.locator(`[data-action="${name}"]:visible`).first();
     const menu = async () => { if (!await page.locator('.game-menu').evaluate(node => node.open)) await page.locator('.game-menu > summary').click(); };
     const closeGuide = async () => { if (await action('guide-close').isVisible()) await action('guide-close').click(); };
+    const chooseBuild = async kind => {
+      if (!await page.locator('.build-dock').isVisible()) await action('build-open').click();
+      const categories = page.locator('[data-category]');
+      for (let index = 0; index < await categories.count(); index += 1) {
+        await categories.nth(index).click(); const choice = page.locator(`[data-build="${kind}"]:visible`);
+        if (await choice.count()) { await choice.click();return; }
+      }
+      throw new Error(`Building category missing ${kind}`);
+    };
     const readSlot = () => page.evaluate(() => new Promise((resolve, reject) => {
       const open = indexedDB.open('aigames-fantasy-automation', 1);
       open.onerror = () => reject(open.error);
@@ -93,7 +103,7 @@ const { execFileSync } = require('node:child_process');
     assert((await page.locator('#tracked-goal').innerText()).includes('魔導剣'));
     await page.screenshot({ path: path.join(output, 'tree-initial.png'), fullPage: true });
     await closeTree();
-    await page.locator('[data-build="storage"]').click();
+    await chooseBuild('storage');
     assert(await page.locator('#technology-panel').isVisible(), 'Locked facility leads to its visible research requirements');
     assert.equal((await save()).buildings.length, 0, 'UI research interactions do not place buildings through the overlay');
     await closeTree();
@@ -102,7 +112,7 @@ const { execFileSync } = require('node:child_process');
     const legacy = fixture('legacy'); await load(legacy);
     assert.deepEqual(await readSlot(), legacy, 'Loading old save does not overwrite the IndexedDB slot');
     const migrated = await save(); assert.deepEqual(migrated, fixture('legacy-migrated'));
-    assert.equal(migrated.version, 2);
+    assert.equal(migrated.version, 3);
     checks.push('Real legacy workshop retains ticks/items/progress/power; old slot unchanged until explicit save');
 
     await load(fixture('available')); await tree();
@@ -115,7 +125,7 @@ const { execFileSync } = require('node:child_process');
 
     await load(fixture('advanced')); await closeGuide();
     if (await page.locator('.game-menu').evaluate(node => node.open)) await action('menu-close').click();
-    assert((await page.locator('.workshop-title').innerText()).includes('鉄の延べ棒'), 'Goal explicitly names iron ingots');
+    assert.match(await page.locator('#objective-title').innerText(), /魔導剣|量産/, 'Advanced workshop shows its current sword-production research goal');
     await tree(); assert.equal(await page.locator('[data-tech="mastery"]').getAttribute('data-tech-status'), 'available');
     await page.locator('[data-track="mastery"]').click();
     await closeTree();
@@ -149,6 +159,7 @@ const { execFileSync } = require('node:child_process');
     assert((await page.locator('#selection-title').innerText()).includes('収納箱'));
     assert((await page.locator('#storage-capacity').innerText()).includes('32'));
     const stored = await save(); await action('menu-close').click();
+    if (!await page.locator('#advanced-collect').evaluate(node => node.open)) await page.locator('#advanced-collect > summary').click();
     await page.locator('#collect-resource').selectOption('wood'); await page.locator('#collect-amount').fill('1');
     await action('collect-count').click();
     const collected = await save();
@@ -166,6 +177,7 @@ const { execFileSync } = require('node:child_process');
     await page.locator('#main-help [data-action="help-close"]').click();
     assert.equal(await page.locator('#main-help').evaluate(node => node.open), false);
     await action('menu-close').click();
+    if (!await page.locator('.build-dock').isVisible()) await action('build-open').click();
     await action('build-close').click(); assert(await page.locator('#build-reopen').isVisible());
     await action('build-open').click();
     const saved = await save();
@@ -174,7 +186,7 @@ const { execFileSync } = require('node:child_process');
     checks.push('Menu/build panels close and reopen; progressed sword factory survives reload/load exactly');
     for (const width of [1440, 390, 320]) {
       await page.setViewportSize({ width, height: width === 1440 ? 900 : 844 }); await tree();
-      await page.waitForTimeout(100);
+      await page.waitForFunction(()=>{const b=document.querySelector('canvas').getBoundingClientRect();return Math.abs(b.width-innerWidth)<=1&&Math.abs(b.height-innerHeight)<=1});
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
       await page.screenshot({ path: path.join(output, `tree-${width}.png`), fullPage: true });
       await closeTree();
