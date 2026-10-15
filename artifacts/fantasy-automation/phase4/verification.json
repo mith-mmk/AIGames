@@ -1,0 +1,86 @@
+{
+  "codeCommit": "47679e9e33354dc0a15dbafb85dfd40903d5cc8d",
+  "runtimeSHA256": "113df0de76262fb5ffec195b43b1b088ab998b86cba17a093cfe1937a8b0e668",
+  "node": "v24.19.0",
+  "npm": "11.9.0",
+  "unitAndRegression": {
+    "command": "npm test",
+    "fantasyTests": 127,
+    "typescriptTests": 120,
+    "clockTests": 7,
+    "legacyGames": "passed",
+    "typecheck": "passed",
+    "runtimeRebuildMatch": true,
+    "fantasyCssLintErrors": 0,
+    "fantasyCssLintWarnings": 2
+  },
+  "browser": {
+    "source": {
+      "integrationChecks": 8,
+      "touchViewports": [
+        1440,
+        390,
+        320
+      ],
+      "legacyVisualChecks": 14,
+      "portalTransfers": 20,
+      "worldSeedsProduced": 10,
+      "treeGrowth": 10,
+      "unlockedTechs": 12,
+      "auxiliaryManualWoodClicks": 16,
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    "built": {
+      "integrationChecks": 8,
+      "touchViewports": [
+        1440,
+        390,
+        320
+      ],
+      "legacyVisualChecks": 14,
+      "portalTransfers": 20,
+      "worldSeedsProduced": 10,
+      "treeGrowth": 10,
+      "unlockedTechs": 12,
+      "auxiliaryManualWoodClicks": 16,
+      "pageErrors": [],
+      "failedRequests": []
+    }
+  },
+  "freshCheckout": {
+    "cloneCommit": "47679e9e33354dc0a15dbafb85dfd40903d5cc8d",
+    "install": "npm ci --cache /tmp/fantasy-phase4-npm-cache",
+    "fullTests": "passed",
+    "completeCommandTraceMatches": true,
+    "pagesFiles": 306,
+    "worktreeCleanAfterBuild": true,
+    "standaloneBasePath": "/AIGames/"
+  },
+  "mainMerged": false,
+  "published": false,
+  "ciWaited": false,
+  "remainingBlockers": [],
+  "normalCommandProof": {
+    "seed": 662,
+    "gameSeconds": 1350,
+    "successfulCommands": 1014,
+    "failedCommands": 0,
+    "portalTransfers": 20,
+    "treeGrowth": 10,
+    "produced": {
+      "wood": 373,
+      "ore": 1161,
+      "ingot": 572,
+      "rawCrystal": 275,
+      "crystal": 202,
+      "sword": 40,
+      "runeCore": 48,
+      "golemFrame": 5,
+      "golem": 5,
+      "essence": 40,
+      "portalCore": 8,
+      "worldSeed": 10
+    }
+  }
+}

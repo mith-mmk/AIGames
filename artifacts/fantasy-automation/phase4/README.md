@@ -35,4 +35,19 @@ node scripts/fantasy-automation-touch.cjs --built
 
 `fixtures/` の中間状態は同じ通常命令の実行中に保存したもの。旧v3との比較用データは `before/golem-active-v3.json` を保持する。
 
-ブラウザの最終確認結果は実操作の完了後に追記する。
+## 最終結果
+
+| 確認 | 通常版 | Pages生成物 |
+| --- | --- | --- |
+| 検索・登録、Delete・取消・連打・入力中の抑止、旧v3保持、ゴーレム案内、転送設定・断線復旧、成長途中の保存、成長10・全12研究、リサイズ | [8項目成功](source/results.json) | [8項目成功](built/results.json) |
+| 1440／390／320px、実タップによる建設・選択・解体・取消・確定 | [3画面成功](touch-source/results.json) | [3画面成功](touch-built/results.json) |
+| 収納・登録・方向・物流・目的・ゴーレムの既存UI回帰 | [14項目成功](../visual-ui/source/results.json) | [14項目成功](../visual-ui/built/results.json) |
+| 独立cloneの`/AIGames/`配信 | [依存導入前に成功](../distribution/phase4-clean-source.json) | [生成物だけで成功](../distribution/phase4-clean-built.json) |
+
+両版とも世界樹の種10個、初回転送20個、世界樹の成長10を実際に達成。補助魔力炉への木材1個の手動補給は各16回行った。原料や実績を直接書き換えず、画面の補給ボタンを使った。ページ例外・失敗応答は0。全取得状態の保存検証は [browser-validation.json](browser-validation.json)。
+
+[完成した世界樹（通常版）](source/world-awakened.png)／[配布版](built/world-awakened.png)、[成長途中](source/tree-growth-mid.png)、[モバイル解体確認](touch-built/delete-confirm-320.png)。
+
+クリーンcheckoutでは依存導入・全テスト・到達検証・Pages306ファイル生成が成功し、ゲーム本体を変えずに作業ツリーが空のまま再現できた。新作127件（従来96件を含む）と既存作品のテストが成功。[総合結果](verification.json)と[仕様・条件](../../../docs/fantasy-automation/stage4.md)を参照。
+
+Headless Chromium/SwiftShaderでの確認。実機GPU性能、Safari／Firefoxは未測定。mainへのマージ・公開は実施していない。

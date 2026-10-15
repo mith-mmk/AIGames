@@ -56,3 +56,5 @@ SHA-256は両方 `6a08d3bd848d4af812bcd713ecb4c2622e2ffb539582c1ba53396cf3f17d23
 その後`npm ci --cache /tmp/fantasy-phase4-npm-cache`、`npm test`、通常命令による第四段階到達検証、`npm run build:pages`が成功。キャッシュは実行環境で書込み可能な`/tmp`に指定した。新作127テストと既存ゲームのテストが通り、1,014命令の全結果・途中実績は保存した記録と深い比較で一致。Pagesは306ファイルで、再ビルド後もGitの作業ツリーは空だった。
 
 ソース版とPages版のruntime SHA-256はいずれも`113df0de76262fb5ffec195b43b1b088ab998b86cba17a093cfe1937a8b0e668`。この確認後のコミットは検証スクリプト・画像・文書を追加するもので、ゲーム本体は同じ。
+
+その独立cloneから作った`.pages-dist/`だけの`/AIGames/`配信も成功。全runtime依存の読込みとキャンバスでの建設を確認し、例外・失敗応答は0。証拠は`distribution/phase4-clean-source.json`と`phase4-clean-built.json`、各PNG。mainへのマージ・公開は行っていない。

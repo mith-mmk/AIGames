@@ -1,0 +1,32 @@
+{
+  "verified": "2026-10-15T06:24:34.132Z",
+  "historicalV3SchemaRetained": true,
+  "evidence": [
+    {
+      "mode": "source",
+      "checks": 8,
+      "auxiliaryWoodFuelButtonActions": 16,
+      "portalTransfers": 20,
+      "worldSeedsProduced": 10,
+      "treeGrowth": 10,
+      "technologies": 12,
+      "runtimeSHA256": "113df0de76262fb5ffec195b43b1b088ab998b86cba17a093cfe1937a8b0e668",
+      "errors": 0,
+      "failedRequests": 0,
+      "strictCapturedStateValidation": "passed"
+    },
+    {
+      "mode": "built",
+      "checks": 8,
+      "auxiliaryWoodFuelButtonActions": 16,
+      "portalTransfers": 20,
+      "worldSeedsProduced": 10,
+      "treeGrowth": 10,
+      "technologies": 12,
+      "runtimeSHA256": "113df0de76262fb5ffec195b43b1b088ab998b86cba17a093cfe1937a8b0e668",
+      "errors": 0,
+      "failedRequests": 0,
+      "strictCapturedStateValidation": "passed"
+    }
+  ]
+}

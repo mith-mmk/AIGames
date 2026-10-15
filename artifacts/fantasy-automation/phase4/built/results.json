@@ -1,0 +1,18 @@
+{
+  "completed": "2026-10-15T06:24:00.763Z",
+  "runtimeSHA256": "113df0de76262fb5ffec195b43b1b088ab998b86cba17a093cfe1937a8b0e668",
+  "mode": "built",
+  "checks": [
+    "21-item All/search catalog exposes locked costs; quick-slot registration persists across reload and places through real canvas input",
+    "Delete defaults to cancel; cancel/Escape/Enter preserve stock, UI inputs ignore Delete, modal blocks world keys, speed restores, and double confirmation returns contents once",
+    "Historical v3 is retained byte-for-value in the slot until explicit v4 save; worker, route, items, cooldown and elapsed tick are preserved",
+    "Guide actions research rune/golem technology, build a real automatic golem forge, collect and deploy a worker, diagnose policy, supply actual wood 20 times, and unlock sanctuary",
+    "Normal-command achievements unlock alchemy and portal craft through real research buttons",
+    "Portal channel/role mismatch and queued-config rejection preserve goods; cutting source power stalls transfer, reconnecting resumes, receiver works without power, and route/cooldown/provenance save exactly",
+    "Actual automated ingredients produce seeds, brand them through portals, and grow the tree from 0 to 10; partial growth saves exactly and the twelfth technology unlocks through UI (auxiliary furnace fuel is supplied through real buttons)",
+    "320/390/1440 playfield and catalog resize with no document overflow"
+  ],
+  "auxiliaryFuelActions": 16,
+  "pageErrors": [],
+  "failedRequests": []
+}
