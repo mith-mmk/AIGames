@@ -6,7 +6,8 @@ import { FixedStepLoop } from './loop.mjs';
 import { evaluateGuide, type GuideStep } from './onboarding';
 import { isKindUnlocked } from './technology';
 import type { Direction, Kind, Resource, RecipeId, TechId } from './types';
-import { DIRECTIONS, SIZE } from './types';
+import { SIZE } from './types';
+import { logisticsPorts } from './logistics-visuals';
 
 class WorkshopApp {
   simulation = new Simulation();
@@ -50,6 +51,10 @@ class WorkshopApp {
       onResearch: id => this.research(id),
       onTrack: id => this.track(id),
       onRecipe: recipe => this.chooseRecipe(recipe),
+      onRelayPolicy: policy => {
+        if (this.selectedId !== null) this.message = this.simulation.command({ type: 'relayPolicy', id: this.selectedId, policy }).reason;
+        this.sync();
+      },
       onGatherWood: () => { this.message = this.simulation.command({ type: 'gatherWood' }).reason; this.sync(); },
       onCancel: () => this.cancel(),
       onResetCamera: () => this.view?.resetCamera(),
@@ -117,7 +122,7 @@ class WorkshopApp {
     if (guide.mode === 'run') { this.kind = null; this.selectedId = null; this.setSpeed(1); return; }
     if (guide.mode === 'rotate' || guide.mode === 'feed') {
       this.kind = null; this.selectedId = guide.focusId;
-      this.message = guide.mode === 'feed' ? '手動補給で木材・1個を選び「補給する」。木材から魔力を作ります。' : '設備の詳細にある「回転 R」で目印と同じ向きにします。';
+      this.message = guide.mode === 'feed' ? '所持品の木材スロットを押すと1個を補給できます。木材から魔力を作ります。' : '設備の詳細にある「回転 R」で目印と同じ向きにします。';
     } else {
       this.kind = guide.kind; this.direction = guide.direction ?? 1; this.selectedId = null;
       this.message = '設備を選びました。地図の光る目印を左クリックして建設してください。';
@@ -190,6 +195,7 @@ class WorkshopApp {
     this.frame = requestAnimationFrame(next => this.animate(next));
   }
   render() {
+    this.view?.setInputBlocked(this.ui.isWorldInputBlocked());
     const valid = !!this.kind && !!this.hover && this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction).ok;
     this.view?.render(this.simulation.state, { kind: this.kind, direction: this.direction, valid, hover: this.hover, selectedId: this.selectedId, guideTarget: this.guideStep?.target ? { ...this.guideStep.target, kind: this.guideStep.kind, direction: this.guideStep.direction } : null });
   }
@@ -200,22 +206,26 @@ class WorkshopApp {
       const checked = this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction);
       if (!checked.ok && !(this.placedAt?.x === this.hover.x && this.placedAt?.z === this.hover.z)) message = checked.reason;
       else if (checked.ok) {
-        const [dx, dz] = DIRECTIONS[this.direction];
-        const next = this.simulation.state.buildings.find(b => b.x === this.hover!.x + dx && b.z === this.hover!.z + dz);
-        const inMap = this.hover.x + dx >= 0 && this.hover.x + dx < SIZE && this.hover.z + dz >= 0 && this.hover.z + dz < SIZE;
-        message += ` 出力 → ${!inMap ? 'マップ外' : next ? '隣の設備' : '未接続（次にベルトを設置）'}。`;
+        const cells = new Map(this.simulation.state.buildings.map(building => [`${building.x},${building.z}`, building]));
+        const ports = logisticsPorts({ kind: this.kind, ...this.hover, direction: this.direction }, cells);
+        const labels = { connected: '接続', missing: '未接続', incompatible: '素材不一致', full: '詰まり', edge: 'マップ外' };
+        if (ports.length) message += ` 出口 ${ports.map(port => `${['北 ↑', '東 →', '南 ↓', '西 ←'][port.direction]} ${labels[port.state]}`).join(' / ')}。`;
       }
     }
     this.ui.update(this.simulation.state, { kind: this.kind, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover, guide: this.guideStep, technologyOpen: this.technologyOpen });
   }
   key(event: KeyboardEvent) {
     if (this.technologyOpen && event.code === 'Escape') { this.toggleTechnology(false); return; }
+    if (event.code === 'Escape' && this.ui.closeOverlay()) return;
+    if (this.ui.isWorldInputBlocked()) return;
     if (event.target instanceof Element && event.target.closest('#technology-panel')) return;
     if (event.target instanceof Element) {
+      if (event.target.closest('#game-ui')) return;
       if (event.target.closest('input,select,textarea,[contenteditable="true"]')) return;
       if (event.target.closest('button') && !['KeyR', 'Escape'].includes(event.code)) return;
     }
     if (event.repeat && event.code !== 'KeyX') return;
+    if (/^Digit[1-6]$/.test(event.code)) { event.preventDefault(); this.ui.chooseQuickSlot(Number(event.code.slice(-1)) - 1); return; }
     if (event.code === 'KeyX') { this.xHeld = true; this.message = 'Xを押しながら施設をクリックして撤去。'; }
     if (event.code === 'KeyR') this.rotate();
     if (event.code === 'Escape') this.cancel();

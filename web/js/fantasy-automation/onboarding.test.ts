@@ -71,7 +71,7 @@ test('wrong building and resource shortages provide concrete fixes without mutat
   simulation.command({ type: 'remove', id: wrong.id }); place(simulation, 'miner', 12, 16);
   simulation.state.inventory.wood = 0; simulation.state.inventory.ingot = 0;
   const shortage = evaluateGuide(simulation.state);
-  assert.match(shortage.blockers.join(' '), /木材があと1個/); assert.match(shortage.blockers.join(' '), /鉄延べ棒があと1個/);
+  assert.match(shortage.blockers.join(' '), /木材があと1個/); assert.match(shortage.blockers.join(' '), /鉄の延べ棒があと1個/);
 });
 
 test('cut power returns to the missing wire and explains the stopped machines', () => {

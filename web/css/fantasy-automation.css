@@ -1,180 +1,142 @@
-:root { color-scheme: dark; font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; color: #f5eedc; background: #162e2b; --panel: #173730ee; --border: #a7c2a542; --gold: #f2d38a; }
+:root { color-scheme: dark; font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; color: #f8ecd3; background: #152820; --panel: #33291feb; --border: #c69b575d; --gold: #efd08e; --ink-soft: #c9bb9f; --wood: #453628; }
 * { box-sizing: border-box; }
 body { margin: 0; overflow: hidden; }
 button, input, select, summary { font: inherit; }
-button, select, input { color: inherit; border: 1px solid var(--border); border-radius: 8px; background: #234b40; }
-button { cursor: pointer; min-height: 44px; padding: 6px 12px; touch-action: manipulation; }
-button:hover { background: #355e4b; }
+button, input, select { color: inherit; border: 1px solid var(--border); border-radius: 6px; background: #42372a; }
+button { cursor: pointer; min-height: 44px; padding: 5px 9px; touch-action: manipulation; }
+button:hover { background: #5a4730; border-color: #c8ab70; }
 button:focus-visible, a:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-button[aria-pressed="true"] { color: #fff6d0; background: #536541; border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
-button.danger { color: #ffc3b1; }
+button[aria-pressed="true"] { background: #625035; border-color: var(--gold); box-shadow: inset 0 0 0 1px #c9a65d; }
+button:disabled { opacity: .55; cursor: default; }
+button.danger { color: #ffb7a2; }
 a { color: inherit; }
 #game-ui [hidden] { display: none; }
 .workshop, #world { position: fixed; inset: 0; }
 #world canvas { width: 100%; height: 100%; display: block; touch-action: none; }
 #game-ui { position: fixed; inset: 0; pointer-events: none; }
 #game-ui > * { pointer-events: auto; }
-/* eslint-disable-next-line css/no-invalid-properties -- Safe-area env() offsets inside max()/calc() are valid CSS; the parser cannot resolve them. */
-.workshop-top { z-index: 3; position: absolute; top: max(10px, env(safe-area-inset-top)); left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right)); display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--panel); box-shadow: 0 4px 18px #071b2420; }
-.home-link { white-space: nowrap; font-size: 12px; text-decoration: none; }
-.workshop-title { font-weight: 700; white-space: nowrap; font-size: 15px; }
-.workshop-title > span { display: block; font-size: 11px; font-weight: 400; color: var(--gold); margin-top: 3px; }
-.resource-strip { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; flex: 1; }
-.resource-strip span { white-space: nowrap; }
-.resource-strip b { color: #fff3c9; font-variant-numeric: tabular-nums; margin-left: 3px; }
-.time-controls { display: flex; gap: 4px; }
-.time-controls button { padding: 6px 10px; min-width: 44px; }
+.workshop-top, .selection-panel, .build-dock, .guide-card, .technology-panel { background: var(--panel); border: 1px solid var(--border); box-shadow: inset 0 1px #ead49720, 0 5px 18px #0b140f40; border-radius: 9px; }
+/* eslint-disable-next-line css/no-invalid-properties -- Safe-area env() offsets are valid CSS; the lint parser cannot resolve them. */
+.workshop-top { position: absolute; z-index: 6; top: max(8px, env(safe-area-inset-top)); left: max(10px, env(safe-area-inset-left)); width: min(730px, calc(100vw - 20px)); padding: 7px 10px; display: flex; align-items: center; gap: 6px 10px; flex-wrap: wrap; }
+.home-link { font-size: 10px; white-space: nowrap; text-decoration: none; }
+.workshop-title { font-size: 10px; color: var(--ink-soft); flex: 1; min-width: 120px; }
+.workshop-title > #objective-summary { display: block; margin-top: 4px; color: var(--gold); font-size: 12px; line-height: 1.4; }
+#objective-count { font-variant-numeric: tabular-nums; white-space: nowrap; margin-left: 4px; }
+.workshop-title > .legacy-goal { display: none; }
+.resource-strip { order: 5; flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 10px; }
+.resource-strip > span { display: inline-flex; align-items: center; gap: 3px; white-space: nowrap; }
+.resource-strip b { color: #fff3ca; font-variant-numeric: tabular-nums; }
+.hud-resource-icon { display: inline-flex; }
+.hud-resource-icon .resource-icon { width: 17px; height: 17px; }
+.time-controls { display: flex; gap: 3px; }
+.time-controls button { padding: 5px; min-width: 44px; font-size: 11px; }
+.workshop-top > .technology-open { font-size: 10px; white-space: nowrap; }
 .game-menu { position: relative; }
-summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; gap: 8px; padding: 8px; }
-.game-menu > summary { white-space: nowrap; }
-.menu-body { position: absolute; right: 0; top: calc(100% + 12px); width: min(340px, calc(100vw - 24px)); max-height: calc(100dvh - 180px); overflow-y: auto; padding: 14px; border: 1px solid var(--border); border-radius: 12px; background: #173730fa; box-shadow: 0 8px 24px #081b2860; }
-.menu-actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-.help-text { font-size: 12px; line-height: 1.8; color: #e2e7d4; }
-/* eslint-disable-next-line css/no-invalid-properties -- Safe-area env() offsets inside max()/calc() are valid CSS; the parser cannot resolve them. */
-#game-ui > .workshop-notices { position: absolute; top: calc(max(10px, env(safe-area-inset-top)) + 72px); left: 18px; max-width: min(560px, calc(100vw - 36px)); pointer-events: none; }
-.workshop-notices p { margin: 0 0 6px; padding: 8px 12px; border-radius: 8px; background: #18362ad4; font-size: 12px; line-height: 1.5; box-shadow: 0 2px 10px #12211920; }
-#victory-message { color: var(--gold); border: 1px solid var(--gold); }
-/* eslint-disable-next-line css/no-invalid-properties -- Safe-area env() offsets inside max()/calc() are valid CSS; the parser cannot resolve them. */
-.selection-panel { z-index: 2; position: absolute; right: max(12px, env(safe-area-inset-right)); top: 88px; width: 290px; max-height: calc(100dvh - 242px); overflow: auto; border: 1px solid var(--border); border-radius: 12px; padding: 15px; background: var(--panel); font-size: 12px; }
-.selection-panel.is-collapsed > :not(h2):not(.panel-close) { display: none; }
-.selection-panel h2 { font-size: 16px; padding-right: 30px; margin: 2px 0 8px; }
-.selection-panel p { color: #d9e4cd; line-height: 1.65; margin: 8px 0; }
-.panel-close { position: absolute; top: 4px; right: 4px; width: 44px; padding: 0; background: transparent; border-color: transparent; font-size: 24px; }
-dl { margin: 12px 0; }
-dl div { padding: 5px 0; display: grid; grid-template-columns: 84px 1fr; border-bottom: 1px solid #a7c2a51c; gap: 8px; }
-dt { color: #c5d9bd; } dd { margin: 0; overflow-wrap: anywhere; }
-.selection-actions { display: flex; flex-wrap: wrap; gap: 6px; }
-.selection-actions button { flex: 1; font-size: 11px; padding: 6px 8px; white-space: nowrap; }
-#feed-form { display: grid; grid-template-columns: 1fr 70px; gap: 8px; margin-top: 14px; border-top: 1px solid var(--border); padding-top: 12px; }
-#feed-form label { display: grid; gap: 5px; }
-#feed-form input, #feed-form select { min-height: 44px; width: 100%; padding: 6px; }
-#feed-form button, #feed-form small { grid-column: 1 / -1; }
-#feed-form small { color: #d9e4cd; line-height: 1.5; }
-/* eslint-disable-next-line css/no-invalid-properties -- Safe-area env() offsets inside max()/calc() are valid CSS; the parser cannot resolve them. */
-.build-dock { position: absolute; bottom: max(12px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: min(840px, calc(100vw - 24px)); padding: 8px; border: 1px solid var(--border); border-radius: 12px; background: var(--panel); }
-.build-context { display: flex; gap: 8px; align-items: center; padding: 0 4px 6px; font-size: 12px; }
-.build-context span { flex: 1; min-width: 0; }
-.build-context button { min-height: 44px; padding: 4px 10px; font-size: 11px; }
-.build-palette { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
-.build-palette button { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 5px 3px; min-height: 72px; }
-.build-icon { font-size: 19px; line-height: 1; color: var(--gold); }
-.build-name { font-size: 11px; white-space: nowrap; }
-.build-cost { color: #d5e4bd; font-size: 9px; line-height: 1.5; }
-.build-palette button.unaffordable .build-cost { color: #ffbdaa; }
-noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 20px; background: var(--panel); text-align: center; }
-@media (max-width: 900px) {
-  .workshop-top { gap: 8px; flex-wrap: wrap; padding: 6px 8px; }
-  .home-link { display: none; }
-  .resource-strip { gap: 5px 12px; }
-  .game-menu > summary span { display: none; }
-  .selection-panel { top: 130px; width: 270px; max-height: calc(100dvh - 295px); }
-}
-@media (max-width: 600px) {
-  /* eslint-disable-next-line css/no-invalid-properties -- Safe-area env() offsets inside max()/calc() are valid CSS; the parser cannot resolve them. */
-  .workshop-top { left: 6px; right: 6px; top: max(6px, env(safe-area-inset-top)); gap: 4px 8px; }
-  .workshop-title { font-size: 12px; flex: 1; min-width: 0; white-space: normal; }
-  .workshop-title > span { display: block; margin-left: 0; font-size: 10px; }
-  .resource-strip { flex-basis: 100%; order: 4; font-size: 11px; justify-content: space-between; gap: 3px; padding: 4px 0; }
-  .time-controls button { min-width: 44px; padding: 4px 6px; }
-  /* eslint-disable-next-line css/no-invalid-properties -- Safe-area env() offsets inside max()/calc() are valid CSS; the parser cannot resolve them. */
-  #game-ui > .workshop-notices { top: calc(max(6px, env(safe-area-inset-top)) + 95px); left: 8px; max-width: calc(100vw - 16px); }
-  .workshop-notices p { font-size: 11px; padding: 6px 8px; }
-  /* eslint-disable-next-line css/no-invalid-properties -- Safe-area env() offsets inside max()/calc() are valid CSS; the parser cannot resolve them. */
-  .build-dock { bottom: max(6px, env(safe-area-inset-bottom)); width: calc(100vw - 12px); padding: 5px; }
-  .build-context { font-size: 10px; gap: 4px; padding-bottom: 4px; }
-  .build-context button { padding: 4px 6px; }
-  .build-palette { overflow-x: auto; display: flex; gap: 4px; scrollbar-width: thin; }
-  .build-palette button { flex: 0 0 72px; min-height: 72px; }
-  .selection-panel { top: 136px; right: 6px; width: 260px; max-height: calc(100dvh - 287px); padding: 12px; }
-  .menu-body { max-height: calc(100dvh - 215px); }
-}
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto; transition: none; animation: none; } }
-.guide-card { position: absolute; z-index: 1; top: 88px; left: 14px; width: 310px; max-height: calc(100dvh - 260px); overflow-y: auto; border: 1px solid #e7c98580; border-radius: 12px; padding: 12px; background: #173730f2; box-shadow: 0 8px 25px #081b2840; }
-.guide-heading { display: flex; align-items: center; gap: 8px; color: var(--gold); font-size: 11px; }
-.guide-heading > span { flex: 1; }
-.guide-heading button { background: transparent; padding: 4px 7px; min-height: 44px; font-size: 10px; white-space: nowrap; }
-.guide-progress { color: #bfd5b6; font-size: 10px; letter-spacing: .04em; margin: 2px 0 4px; }
-.guide-card h2 { font-size: 15px; margin: 4px 0 7px; line-height: 1.4; }
-.guide-card p { font-size: 12px; line-height: 1.7; margin: 6px 0; }
-.guide-card .guide-target { font-size: 11px; color: var(--gold); }
-.guide-card ul { list-style: none; margin: 6px 0; padding: 0; font-size: 11px; line-height: 1.6; }
-.guide-blockers { color: #ffd0a3; }
-.guide-checks { color: #c5e3b9; }
-.guide-action { width: 100%; border-color: var(--gold); font-size: 12px; }
-.guide-next { display: block; color: #bfd5b6; font-size: 10px; margin-top: 6px; }
-@media (max-width: 900px) { .guide-card { top: 118px; width: 290px; max-height: calc(100dvh - 280px); } }
-@media (max-width: 600px) {
-  .guide-card { top: 110px; left: 8px; width: min(290px, calc(100vw - 16px)); max-height: min(205px, calc(100dvh - 270px)); padding: 8px 10px; }
-  .guide-heading > span { font-size: 10px; }
-  .guide-card h2 { font-size: 13px; }
-  .guide-card p { font-size: 11px; line-height: 1.6; }
-  #game-ui.guide-open.has-selection .guide-card { max-height: 124px; }
-  #game-ui.guide-open.has-selection .selection-panel { top: 242px; max-height: max(80px, calc(100dvh - 395px)); }
-}
-@media (max-height: 500px) {
-  .guide-card { top: 84px; max-height: max(75px, calc(100dvh - 240px)); }
-  #game-ui.guide-open.has-selection .selection-panel { top: 84px; max-height: max(75px, calc(100dvh - 240px)); }
-}
-
-.guide-card .guide-feedback { font-size: 11px; border-top: 1px solid var(--border); padding-top: 7px; color: #ffe7a7; overflow-wrap: anywhere; }
-.guide-card #guide-check-summary { min-height: 44px; font-size: 11px; padding: 4px 0; color: #bfd5b6; }
-.ingot-icon { display: inline-block; width: 17px; height: 8px; margin-right: 3px; border: 1px solid #f8fbff; border-radius: 1px; background: linear-gradient(150deg, #f7fbff, #a6b8bd 55%, #758e98); transform: skewX(-18deg); }
-.workshop-top { z-index: 6; }
-.workshop-top > .technology-open { font-size: 11px; white-space: nowrap; }
+summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; padding: 7px; gap: 6px; }
+.game-menu > summary { font-size: 12px; }
+.game-menu > summary span { display: none; }
+.menu-body { position: absolute; top: calc(100% + 10px); right: 0; width: min(320px, calc(100vw - 20px)); max-height: calc(100dvh - 135px); overflow: auto; padding: 12px; background: #33291ffb; border: 1px solid var(--border); border-radius: 9px; }
 .menu-close { width: 100%; margin-bottom: 8px; }
-.build-palette { display: flex; overflow-x: auto; }
-.build-palette button { flex: 0 0 102px; }
-.build-palette button.tech-locked { border-style: dashed; color: #a4b6aa; }
-.build-palette button.tech-locked .build-cost { color: #ebca8b; }
-.build-reopen { position: absolute; bottom: 14px; left: 14px; background: var(--panel); }
-.technology-panel { position: absolute; z-index: 4; top: 84px; right: 14px; width: min(720px, calc(100vw - 28px)); max-height: calc(100dvh - 110px); overflow: auto; padding: 16px; border: 1px solid #e8d39380; border-radius: 12px; background: #173730fa; box-shadow: 0 12px 35px #041b2860; font-size: 12px; }
-.technology-heading { display: flex; align-items: flex-start; gap: 12px; }
-.technology-heading > div { flex: 1; }
-.technology-heading h2 { margin: 0 0 7px; font-size: 20px; color: var(--gold); }
-.technology-heading p { margin: 0; line-height: 1.6; }
-.technology-heading > button { white-space: nowrap; }
-.technology-path { padding: 10px; border-radius: 8px; background: #253f32; color: var(--gold); line-height: 1.7; }
-.technology-map { display: grid; grid-template-columns: 1fr 1fr; grid-template-areas: "basic basic" "logistics crystals" "assembly assembly" "mastery mastery"; gap: 12px; }
-.technology-node { padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: #29483bd9; }
-.technology-node[data-tech="basic"] { grid-area: basic; }
-.technology-node[data-tech="logistics"] { grid-area: logistics; }
-.technology-node[data-tech="crystals"] { grid-area: crystals; }
-.technology-node[data-tech="assembly"] { grid-area: assembly; }
-.technology-node[data-tech="mastery"] { grid-area: mastery; }
-.technology-node[data-tech-status="available"] { border-color: var(--gold); background: #45543acf; }
-.technology-node[data-tech-status="locked"] { border-style: dashed; }
-.tech-node-heading { display: flex; gap: 8px; justify-content: space-between; align-items: center; }
-.tech-node-heading h3 { margin: 0; font-size: 15px; }
-.tech-status { font-size: 10px; white-space: nowrap; color: var(--gold); }
-.technology-node p { line-height: 1.6; margin: 7px 0; font-size: 11px; }
-.tech-description { color: #dbe8d4; }
-.tech-requirements { padding: 0; margin: 8px 0; list-style: none; line-height: 1.8; font-variant-numeric: tabular-nums; }
-.tech-reason { color: #ffe0ad; }
-.tech-actions { display: flex; gap: 8px; }
-.tech-actions button { flex: 1; font-size: 11px; padding: 5px; }
-button:disabled { opacity: .6; cursor: default; }
-.future-tech { line-height: 1.7; color: #baceb2; font-size: 11px; }
-.tracked-goal { position: absolute; right: 14px; top: 78px; width: min(330px, calc(100vw - 28px)); min-height: 44px; max-height: 75px; overflow: auto; background: var(--panel); text-align: left; font-size: 11px; line-height: 1.5; z-index: 1; }
-#storage-controls, #recipe-controls, #delivery-summary { margin: 12px 0; padding: 10px 0; border-top: 1px solid var(--border); line-height: 1.6; }
-#storage-items { padding: 0; margin: 8px 0; list-style: none; font-size: 11px; }
-#storage-controls label, #recipe-controls label { display: block; margin: 6px 0; }
-#storage-controls input, #storage-controls select, #recipe-controls select { display: block; width: 100%; min-height: 44px; padding: 6px; margin-top: 4px; }
-#storage-controls small { display: block; font-size: 10px; margin-top: 7px; color: #d9e4cd; }
-#recipe-lock-reason { font-size: 11px; color: #ffe0ad; }
-@media (max-width: 900px) { .technology-panel { top: 130px; max-height: calc(100dvh - 145px); } .tracked-goal { top: 122px; } }
+.menu-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.menu-actions button { font-size: 11px; }
+.help-text { font-size: 12px; line-height: 1.8; }
+#game-ui > .workshop-notices { position: absolute; top: 105px; left: 12px; max-width: min(440px, calc(100vw - 24px)); pointer-events: none; }
+.workshop-notices p { margin: 0 0 5px; padding: 6px 9px; font-size: 11px; line-height: 1.5; background: #33291fd4; border-radius: 6px; }
+#victory-message { color: var(--gold); }
+.guide-card { position: absolute; z-index: 1; top: 107px; left: 12px; width: 280px; max-height: min(255px, calc(100dvh - 200px)); overflow: auto; padding: 10px; }
+.guide-heading { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--gold); }
+.guide-heading > span { flex: 1; }
+.guide-heading button { padding: 4px 6px; min-height: 44px; font-size: 9px; background: transparent; white-space: nowrap; }
+.guide-progress { color: var(--ink-soft); font-size: 10px; margin: 3px 0; }
+.guide-card h2 { font-size: 13px; margin: 4px 0 7px; line-height: 1.4; }
+.guide-card p { font-size: 11px; line-height: 1.6; margin: 7px 0; }
+.guide-card ul { list-style: none; padding: 0; font-size: 10px; line-height: 1.6; }
+.guide-card .guide-target { color: var(--gold); font-size: 10px; }
+.guide-blockers { color: #ffd6ac; }
+.guide-checks { color: #d3dbb3; }
+.guide-action { width: 100%; font-size: 11px; border-color: var(--gold); }
+.guide-next { display: block; font-size: 9px; color: var(--ink-soft); }
+.guide-card #guide-check-summary { font-size: 10px; padding: 4px 0; }
+.guide-feedback { border-top: 1px solid var(--border); padding-top: 6px; color: #ffda8e; overflow-wrap: anywhere; }
+.selection-panel { position: absolute; z-index: 2; right: 12px; top: 95px; width: 300px; max-height: calc(100dvh - 185px); overflow: auto; padding: 12px; font-size: 11px; }
+.selection-panel.chest-selected { width: 430px; }
+.selection-panel h2 { font-size: 15px; margin: 0 30px 8px 0; }
+.selection-panel p { color: #e0d4bb; font-size: 11px; line-height: 1.6; }
+.selection-panel.is-collapsed > :not(h2):not(.panel-close) { display: none; }
+.panel-close { position: absolute; top: 1px; right: 2px; width: 44px; background: transparent; border-color: transparent; font-size: 22px; }
+dl { margin: 10px 0; }
+dl div { display: grid; grid-template-columns: 80px 1fr; gap: 7px; border-bottom: 1px solid #c69b5720; padding: 5px 0; }
+dt { color: var(--ink-soft); } dd { margin: 0; overflow-wrap: anywhere; }
+.selection-actions { display: flex; gap: 5px; }
+.selection-actions button { flex: 1; font-size: 10px; white-space: nowrap; padding: 5px; }
+#feed-form { display: grid; grid-template-columns: 1fr 70px; gap: 7px; }
+#feed-form label { display: grid; gap: 4px; }
+#feed-form input, #feed-form select, #collect-resource, #collect-amount, #recipe-select { width: 100%; min-height: 44px; padding: 5px; }
+#feed-form button, #feed-form small { grid-column: 1 / -1; }
+#feed-form small, .transfer-hint { font-size: 10px; line-height: 1.6; color: var(--ink-soft); }
+#advanced-feed > summary, #advanced-collect > summary { font-size: 11px; }
+#storage-controls, #recipe-controls, #delivery-summary { border-top: 1px solid var(--border); padding-top: 9px; margin: 10px 0; }
+#storage-capacity { color: var(--gold); font-weight: bold; }
+.transfer-toolbar { display: flex; align-items: center; gap: 5px; font-size: 10px; }
+.transfer-toolbar > span { flex: 1; }
+.transfer-toolbar button { min-width: 44px; font-size: 10px; }
+.chest-transfer { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.chest-transfer h3 { font-size: 12px; margin: 8px 0; color: var(--gold); }
+.chest-transfer h3 span { float: right; }
+.chest-transfer section > button { width: 100%; font-size: 10px; margin-top: 7px; }
+.item-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
+.item-slot { position: relative; min-width: 0; min-height: 76px; padding: 5px 3px; display: flex; flex-direction: column; align-items: center; gap: 3px; background: linear-gradient(135deg, #29241d, #3c3326); box-shadow: inset 0 0 0 1px #0f160b80; }
+.item-slot .slot-count { position: absolute; top: 4px; right: 5px; font-size: 12px; color: #fff2ca; text-shadow: 0 1px 2px #000; }
+.slot-name { font-size: 9px; white-space: nowrap; }
+.slot-origin { font-size: 8px; color: var(--ink-soft); }
+.resource-icon { width: 29px; height: 29px; fill: #bf9259; stroke: #f3d494; stroke-width: 1.3; stroke-linejoin: round; }
+.resource-ore { fill: #849080; stroke: #c0c7b6; }.resource-ingot { fill: #aebfc2; stroke: #f1f5e9; }.resource-rawCrystal { fill: #976493; stroke: #e7b2e8; }.resource-crystal { fill: #997cca; stroke: #ece0fd; }.resource-sword { fill: #adb5da; stroke: #eff4ff; }
+#storage-items { list-style: none; padding: 0; font-size: 10px; }
+#recipe-lock-reason { font-size: 10px; color: #ffd79d; }
+.quickbar { position: absolute; z-index: 3; right: 12px; bottom: 12px; max-width: calc(100vw - 24px); display: flex; align-items: center; gap: 5px; padding: 5px; border: 1px solid var(--border); border-radius: 8px; background: var(--panel); }
+.quickbar > button { font-size: 10px; white-space: nowrap; min-width: 44px; }
+#quick-slots { display: flex; gap: 4px; overflow-x: auto; min-width: 0; }
+.quick-slot { position: relative; min-width: 53px; padding: 4px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.quick-slot small { position: absolute; top: 3px; left: 4px; font-size: 8px; color: var(--ink-soft); }
+.quick-icon { font-size: 20px; color: var(--gold); }
+.quick-name { font-size: 8px; white-space: nowrap; }
+.quick-slot.tech-locked { opacity: .6; border-style: dashed; }
+.build-dock { position: absolute; z-index: 4; left: 12px; bottom: 82px; width: min(550px, calc(100vw - 24px)); max-height: calc(100dvh - 190px); overflow: auto; padding: 10px; }
+.build-context { display: flex; align-items: center; gap: 5px; font-size: 11px; }
+.build-context > span { flex: 1; }
+.build-context button { font-size: 10px; }
+#build-categories { display: flex; gap: 5px; margin: 6px 0; }
+#build-categories button { flex: 1; font-size: 11px; }
+.registration-hint { display: flex; align-items: center; gap: 6px; color: var(--ink-soft); font-size: 10px; margin: 4px 0 8px; }
+#registration-slot { min-height: 44px; width: 44px; padding: 4px; }
+.build-palette { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+.build-tile { position: relative; }
+.build-tile > [data-build] { width: 100%; min-height: 92px; display: flex; align-items: center; flex-direction: column; justify-content: center; gap: 5px; padding: 7px 4px; }
+.build-icon { font-size: 22px; color: var(--gold); }.build-name { font-size: 11px; }.build-cost { font-size: 9px; color: #d6c7a7; }
+.register-build { position: absolute; top: 1px; right: 1px; min-width: 44px; min-height: 44px; padding: 3px; background: transparent; border-color: transparent; color: var(--gold); }
+.build-palette .tech-locked { border-style: dashed; }.build-palette .tech-locked .build-cost { color: #d9ad66; }.unaffordable .build-cost { color: #ffc4ae; }
+.technology-panel { position: absolute; z-index: 4; top: 103px; right: 12px; width: min(690px, calc(100vw - 24px)); max-height: calc(100dvh - 180px); overflow: auto; padding: 14px; font-size: 11px; }
+.technology-heading { display: flex; gap: 10px; align-items: flex-start; }.technology-heading > div { flex: 1; }.technology-heading h2 { font-size: 18px; color: var(--gold); margin: 0 0 6px; }.technology-heading p { line-height: 1.6; margin: 0; }.technology-heading button { white-space: nowrap; font-size: 11px; }
+.technology-path { padding: 8px; color: var(--gold); line-height: 1.7; }.technology-map { display: grid; grid-template-columns: 1fr 1fr; grid-template-areas: "basic basic" "logistics crystals" "assembly assembly" "mastery mastery"; gap: 9px; }.technology-node { padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: #473c2ac7; }.technology-node[data-tech="basic"] { grid-area: basic; }.technology-node[data-tech="logistics"] { grid-area: logistics; }.technology-node[data-tech="crystals"] { grid-area: crystals; }.technology-node[data-tech="assembly"] { grid-area: assembly; }.technology-node[data-tech="mastery"] { grid-area: mastery; }.technology-node[data-tech-status="available"] { border-color: var(--gold); }.technology-node[data-tech-status="locked"] { border-style: dashed; }.tech-node-heading { display: flex; justify-content: space-between; gap: 6px; }.tech-node-heading h3 { font-size: 14px; margin: 0; }.tech-status { white-space: nowrap; color: var(--gold); font-size: 10px; }.technology-node p { margin: 6px 0; font-size: 10px; line-height: 1.6; }.tech-requirements { padding: 0; list-style: none; line-height: 1.8; font-size: 10px; }.tech-reason { color: #ffe1a7; }.tech-actions { display: flex; gap: 6px; }.tech-actions button { flex: 1; font-size: 10px; padding: 5px; }.future-tech { line-height: 1.7; font-size: 10px; color: var(--ink-soft); }
+.tracked-goal { position: absolute; right: 12px; top: 10px; width: min(320px, calc(100vw - 24px)); max-height: 65px; overflow: auto; padding: 7px; font-size: 10px; line-height: 1.5; background: var(--panel); border-color: var(--border); }
+noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 15px; background: var(--panel); }
+@media (max-width: 900px) { .home-link { display: none; }.tracked-goal { top: 100px; right: 10px; width: 230px; }.selection-panel { top: 103px; width: 280px; }.selection-panel.chest-selected { width: 390px; } }
 @media (max-width: 600px) {
-  .workshop-title { font-size: 11px; flex-basis: calc(100% - 180px); }
-  .workshop-title > span { font-size: 9px; }
-  .workshop-top > .technology-open { order: 4; flex: 0 0 76px; padding: 4px 6px; }
-  .resource-strip { order: 5; flex: 1; font-size: 9px; gap: 3px 5px; justify-content: flex-start; }
-  .build-palette button { flex-basis: 80px; }
-  .technology-panel { top: 138px; right: 6px; width: calc(100vw - 12px); max-height: calc(100dvh - 150px); padding: 12px; }
-  .technology-map { grid-template-columns: 1fr; grid-template-areas: "basic" "logistics" "crystals" "assembly" "mastery"; gap: 8px; }
-  .technology-heading h2 { font-size: 17px; }
-  .tracked-goal { top: 134px; width: 200px; right: 6px; }
-  #game-ui.guide-open .tracked-goal { top: auto; bottom: 152px; }
-  .guide-card { top: 134px; }
-  #game-ui.guide-open.has-selection .selection-panel { top: 266px; max-height: max(80px, calc(100dvh - 419px)); }
+  .workshop-top { left: 6px; top: 6px; width: calc(100vw - 12px); gap: 4px 6px; padding: 5px 7px; }.workshop-title { min-width: 110px; font-size: 9px; }.workshop-title > #objective-summary { font-size: 10px; }.workshop-top > .technology-open { font-size: 9px; padding: 4px; }.time-controls button { min-width: 44px; }.resource-strip { gap: 3px 8px; font-size: 9px; }.hud-resource-icon .resource-icon { width: 14px; height: 14px; }.game-menu > summary { padding: 5px; }.menu-body { position: fixed; left: 6px; right: 6px; top: 116px; width: auto; max-height: calc(100dvh - 195px); }
+  .guide-card { top: 128px; left: 8px; width: 260px; max-height: 190px; padding: 8px; }.guide-card h2 { font-size: 12px; }.guide-heading button { font-size: 9px; }.guide-card p { font-size: 10px; }
+  .selection-panel, .selection-panel.chest-selected { top: 128px; right: 6px; width: calc(100vw - 12px); max-height: calc(100dvh - 205px); padding: 10px; }.selection-panel:not(.chest-selected) { width: min(270px, calc(100vw - 12px)); }.chest-selected #selection-description { display: none; }.item-slot { min-height: 72px; }.slot-origin { font-size: 7px; }.slot-name { font-size: 8px; }
+  #game-ui.guide-open.has-selection .guide-card { display: none; }
+  .quickbar { right: 6px; left: 6px; bottom: 6px; padding: 4px; gap: 3px; }.quick-slot { min-width: 44px; padding: 4px 2px; }.quick-name { display: none; }.quickbar > button { padding: 4px; font-size: 9px; }.quickbar > [data-action="cancel"] { display: none; }
+  .build-dock { left: 6px; bottom: 68px; width: calc(100vw - 12px); max-height: calc(100dvh - 205px); padding: 8px; }.build-palette { grid-template-columns: repeat(2, minmax(0, 1fr)); }.build-context { font-size: 10px; }.build-context button { font-size: 9px; padding: 4px; }.registration-hint { flex-wrap: wrap; font-size: 9px; }.build-tile > [data-build] { min-height: 94px; }
+  .technology-panel { top: 127px; right: 6px; width: calc(100vw - 12px); max-height: calc(100dvh - 200px); padding: 10px; }.technology-heading h2 { font-size: 16px; }.technology-map { grid-template-columns: 1fr; grid-template-areas: "basic" "logistics" "crystals" "assembly" "mastery"; }.tracked-goal { display: none; }
 }
-
-.goal-condition { display: block; color: #cfdfc3; font-size: 9px; font-weight: 400; margin-top: 2px; }
+@media (max-height: 500px) and (min-width: 601px) { .guide-card { max-height: calc(100dvh - 185px); }.selection-panel, .selection-panel.chest-selected, .technology-panel { max-height: calc(100dvh - 185px); }.build-dock { max-height: calc(100dvh - 185px); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto; transition: none; animation: none; } }
+.resource-runeCore { fill: #bf8291; stroke: #f9d8ed; }.resource-golemFrame { fill: #b7adb0; stroke: #eee8d8; }.resource-golem { fill: #819e82; stroke: #d1f4be; }
+.technology-map { grid-template-areas: "basic basic" "logistics crystals" "assembly assembly" "mastery mastery" "runecraft runecraft" "golemcraft golemcraft" "sanctuary sanctuary"; }
+.technology-node[data-tech="runecraft"] { grid-area: runecraft; }.technology-node[data-tech="golemcraft"] { grid-area: golemcraft; }.technology-node[data-tech="sanctuary"] { grid-area: sanctuary; }
+.relay-policies { display: flex; gap: 5px; }.relay-policies button { flex: 1; font-size: 10px; }#relay-controls { border-top: 1px solid var(--border); padding-top: 8px; margin: 9px 0; }#relay-controls small { font-size: 10px; color: var(--ink-soft); }
+@media (max-width: 600px) { .technology-map { grid-template-areas: "basic" "logistics" "crystals" "assembly" "mastery" "runecraft" "golemcraft" "sanctuary"; } }
+.chest-selected #selection-description { display: none; }
+.quick-lock { position: absolute; top: 4px; right: 3px; font-size: 9px; }.quick-cost { display: none; font-size: 7px; white-space: nowrap; }.quick-slot[aria-pressed="true"] .quick-cost { display: block; }.quick-slot.unaffordable .quick-cost { color: #ffbca4; }
+.facility-feed-slots { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0; }.facility-feed-slots button { display: flex; align-items: center; gap: 6px; flex: 1; font-size: 10px; }.facility-feed-slots .resource-icon { width: 23px; height: 23px; }

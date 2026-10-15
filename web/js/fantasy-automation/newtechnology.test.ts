@@ -25,14 +25,14 @@ test('technology graph has unique nodes, valid edges, no cycles and attainable p
     completed.add(id);
   };
   for (const id of ids) visit(id);
-  const producers: Record<Resource, TechId> = { wood: 'basic', ore: 'basic', ingot: 'basic', rawCrystal: 'crystals', crystal: 'crystals', sword: 'assembly' };
+  const producers: Record<Resource, TechId> = { wood: 'basic', ore: 'basic', ingot: 'basic', rawCrystal: 'crystals', crystal: 'crystals', sword: 'assembly', runeCore: 'runecraft', golemFrame: 'runecraft', golem: 'golemcraft' };
   const ancestors = (id: TechId): Set<TechId> => {
     const result = new Set<TechId>();
     for (const parent of TECHNOLOGIES.find(node => node.id === id)!.prerequisites) { result.add(parent); for (const ancestor of ancestors(parent)) result.add(ancestor); }
     return result;
   };
   for (const node of TECHNOLOGIES) for (const requirement of node.requirements) {
-    const producer = requirement.metric === 'peakSwordRate' ? 'assembly' : producers[requirement.resource!];
+    const producer = requirement.metric === 'peakSwordRate' ? 'assembly' : requirement.metric === 'golemFuelTransfers' ? 'golemcraft' : producers[requirement.resource!];
     assert(ancestors(node.id).has(producer), `${node.id} can produce its prerequisite ${requirement.label} before unlocking itself`);
   }
 });
@@ -71,7 +71,9 @@ test('each branch changes from locked to available to unlocked only at its exact
   value.stats!.peakSwordRate = 10;
   assert(canResearch(value, 'mastery').ok);
   value.research!.unlocked.push('mastery');
-  assert(techNodeStates(value).every(node => node.status === 'unlocked'));
+  assert(techNodeStates(value).filter(node => ['basic', 'logistics', 'crystals', 'assembly', 'mastery'].includes(node.id)).every(node => node.status === 'unlocked'));
+  assert(canResearch(value, 'runecraft').ok, 'Completed sword mastery leads into the next stage');
+  assert.equal(canResearch(value, 'golemcraft').ok, false);
 });
 
 test('sword rate uses completed production ticks in a rolling 60 game second window', () => {

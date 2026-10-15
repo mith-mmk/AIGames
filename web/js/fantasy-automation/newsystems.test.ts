@@ -17,7 +17,7 @@ function factory(buildings: Building[] = []): Simulation {
   const state = simulation.snapshot();
   state.terrain = Array(SIZE * SIZE).fill('grass'); state.buildings = buildings;
   state.nextId = Math.max(0, ...buildings.map(value => value.id)) + 1;
-  state.inventory = { wood: 1000, ore: 1000, ingot: 1000, rawCrystal: 1000, crystal: 1000, sword: 1000 };
+  state.inventory = { ...state.inventory, wood: 1000, ore: 1000, ingot: 1000, rawCrystal: 1000, crystal: 1000, sword: 1000 };
   state.inventoryItems = []; state.kits = {};
   state.research = { unlocked: ['basic', 'logistics', 'crystals', 'assembly'], tracked: null };
   for (const value of buildings) {
@@ -181,7 +181,7 @@ export function swordFactory(): Simulation {
     buildings.push(building(23 + offset, 'storage', 3 + offset, 1, { direction: 2, input: Array.from({ length: 32 }, () => auto('wood')) }));
   }
   const simulation = factory(buildings);
-  simulation.state.inventory = { wood: 0, ore: 0, ingot: 0, rawCrystal: 0, crystal: 0, sword: 0 };
+  simulation.state.inventory = { ...simulation.state.inventory, wood: 0, ore: 0, ingot: 0, rawCrystal: 0, crystal: 0, sword: 0 };
   simulation.state.stats!.produced.wood = 120;
   return simulation;
 }

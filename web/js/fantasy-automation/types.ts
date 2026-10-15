@@ -1,9 +1,9 @@
 export type BaseResource = 'wood' | 'ore' | 'ingot';
-export type Resource = BaseResource | 'rawCrystal' | 'crystal' | 'sword';
-export type Kind = 'miner' | 'belt' | 'smelter' | 'generator' | 'wire' | 'lumber' | 'delivery' | 'splitter' | 'storage' | 'crystalMiner' | 'crystalRefiner' | 'assembler';
+export type Resource = BaseResource | 'rawCrystal' | 'crystal' | 'sword' | 'runeCore' | 'golemFrame' | 'golem';
+export type Kind = 'miner' | 'belt' | 'smelter' | 'generator' | 'wire' | 'lumber' | 'delivery' | 'splitter' | 'storage' | 'crystalMiner' | 'crystalRefiner' | 'assembler' | 'runeCarver' | 'frameForge' | 'golemForge' | 'golemRelay';
 export type Direction = 0 | 1 | 2 | 3;
-export type TechId = 'basic' | 'logistics' | 'crystals' | 'assembly' | 'mastery';
-export type RecipeId = 'ingot' | 'crystal' | 'sword';
+export type TechId = 'basic' | 'logistics' | 'crystals' | 'assembly' | 'mastery' | 'runecraft' | 'golemcraft' | 'sanctuary';
+export type RecipeId = 'ingot' | 'crystal' | 'sword' | 'runeCore' | 'golemFrame' | 'golem';
 export type Item = { resource: Resource; automated: boolean; handled?: boolean };
 export type Inventory = Record<BaseResource, number> & Partial<Record<Exclude<Resource, BaseResource>, number>>;
 export interface Building {
@@ -12,14 +12,17 @@ export interface Building {
   energy: number; pendingEnergy?: number; status: string;
   item: Item | null; beltProgress: number; recipe?: RecipeId;
   splitCursor?: 0 | 1; reserved?: Item[];
+  golemWorker?: Item; golemPolicy?: 'fuel' | 'materials'; golemCooldown?: number;
+  golemRoute?: { sourceId: number; targetId: number; resource: Resource; tick: number };
 }
 export interface ProductionStats {
   produced: Partial<Inventory>; delivered: Partial<Inventory>;
   recentSwordTicks: number[]; peakSwordRate: number;
+  golemFuelTransfers?: number; golemTransfers?: number;
 }
 export interface ResearchState { unlocked: TechId[]; tracked: TechId | null; }
 export interface GameState {
-  version: 1 | 2; seed: number; tick: number; nextId: number;
+  version: 1 | 2 | 3; seed: number; tick: number; nextId: number;
   terrain: ('grass' | 'ore' | 'forest' | 'crystal')[];
   inventory: Inventory; kits: Partial<Record<Kind, number>>;
   buildings: Building[]; delivered: number; won: boolean;
@@ -34,7 +37,8 @@ export type Command =
   | { type: 'collect'; id: number; resource?: Resource; amount?: number }
   | { type: 'research'; id: TechId }
   | { type: 'track'; id: TechId | null }
-  | { type: 'recipe'; id: number; recipe: RecipeId };
+  | { type: 'recipe'; id: number; recipe: RecipeId }
+  | { type: 'relayPolicy'; id: number; policy: 'fuel' | 'materials' };
 export interface CommandResult { ok: boolean; reason: string; }
 export interface Definition { label: string; cost: Partial<Inventory>; seconds?: number; input?: Partial<Inventory>; output?: Partial<Inventory>; energy?: number; generatedEnergy?: number; technology?: TechId; recipes?: RecipeId[]; }
 export interface RecipeDefinition { label: string; seconds: number; input: Partial<Inventory>; output: Partial<Inventory>; energy: number; technology: TechId; }

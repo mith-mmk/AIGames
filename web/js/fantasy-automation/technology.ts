@@ -2,7 +2,7 @@ import definitions from './technologies.json';
 import { STEP, type CommandResult, type GameState, type Kind, type RecipeId, type Resource, type TechId } from './types.js';
 
 export interface TechRequirement {
-  metric: 'produced' | 'delivered' | 'peakSwordRate'; resource?: Resource; target: number; label: string;
+  metric: 'produced' | 'delivered' | 'peakSwordRate' | 'golemFuelTransfers'; resource?: Resource; target: number; label: string;
 }
 export interface TechDefinition {
   id: TechId; label: string; description: string; prerequisites: TechId[]; requirements: TechRequirement[];
@@ -22,6 +22,7 @@ export function currentSwordRate(state: GameState): number {
 }
 function current(state: GameState, requirement: TechRequirement): number {
   if (requirement.metric === 'peakSwordRate') return state.stats?.peakSwordRate ?? 0;
+  if (requirement.metric === 'golemFuelTransfers') return state.stats?.golemFuelTransfers ?? 0;
   return state.stats?.[requirement.metric][requirement.resource!] ??
     (requirement.metric === 'delivered' && requirement.resource === 'ingot' ? state.delivered : 0);
 }

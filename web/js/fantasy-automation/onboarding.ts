@@ -1,5 +1,6 @@
-import { BELT_SECONDS, DEFINITIONS, INPUT_CAPACITY, OUTPUT_CAPACITY } from './data';
+import { BELT_SECONDS, DEFINITIONS, INPUT_CAPACITY, OUTPUT_CAPACITY, RESOURCE_NAMES } from './data';
 import { DIRECTIONS, type Building, type Direction, type GameState, type Kind, type Resource } from './types';
+import { getObjective } from './objectives';
 
 export interface GuideStep {
   id: string; step: number; total: number; title: string; text: string;
@@ -14,7 +15,6 @@ interface Placement {
 }
 
 const TOTAL = 14;
-const RESOURCE_NAMES: Record<Resource, string> = { wood: '木材', ore: '鉄鉱石', ingot: '鉄延べ棒', rawCrystal: '粗結晶', crystal: '魔力結晶', sword: '魔導剣' };
 const POWER_KINDS: readonly Kind[] = ['generator', 'wire', 'miner', 'smelter'];
 const FIRST_LINE: readonly Placement[] = [
   { id: 'miner', kind: 'miner', x: 12, z: 16, direction: 1, text: 'まずは見本の配置で工房を作ります。鉄鉱脈の光る区画に採掘機を置き、東→の向き（目印の矢印と同じ）へ出力します。' },
@@ -116,6 +116,11 @@ function runningBlockers(state: GameState): string[] {
 /** Stateless guide: derived exclusively from the saveable game state. */
 export function evaluateGuide(state: GameState): GuideStep {
   const checks: string[] = [];
+  if (state.delivered >= 100 || state.research?.unlocked.includes('crystals')) {
+    const objective = getObjective(state);
+    return result(TOTAL, 'done', '初回案内を完了：次の工房づくりへ',
+      `ここからは自由に建設できます。次の目標：${objective.title}。${objective.detail}`, checks, { mode: 'done' });
+  }
   const centralWorkshop = at(state, 12, 16)?.kind === 'miner' && at(state, 14, 16)?.kind === 'smelter' && at(state, 12, 18)?.kind === 'generator';
   if (state.delivered >= 1 && centralWorkshop) {
     for (let index = 0; index < FIRST_LINE.length; index++) {
@@ -134,7 +139,7 @@ export function evaluateGuide(state: GameState): GuideStep {
     const generator = at(state, 12, 18)!;
     const fueled = generator.working || generator.input.some(item => item.resource === 'wood') || generator.energy > 0 || (generator.pendingEnergy ?? 0) > 0;
     if (!fueled) return result(10, 'feed', '魔力炉へ木材を1個補給する',
-      '魔力炉を選択し「設備の詳細を開く」へ。「手動補給」で木材・個数1を選び、「補給する」を押してください。木材は10秒で魔力になります。このあと燃料も自動化します。', checks,
+      '魔力炉を選択し「設備の詳細を開く」へ。所持品の木材スロットを押すと1個を補給できます。木材は10秒で魔力になります。このあと燃料も自動化します。', checks,
       { kind: 'generator', target: { x: 12, z: 18 }, focusId: generator.id, mode: 'feed', blockers: state.inventory.wood < 1 ? ['木材が1個必要です。メニューの「木材を手採取」で補充してください。'] : [] });
     checks.push('魔力炉に燃料、稼働中の仕事、または蓄積魔力があります');
     if (generator.working && !(generator.pendingEnergy ?? 0)) {
@@ -147,7 +152,7 @@ export function evaluateGuide(state: GameState): GuideStep {
   }
   checks.push(`最初の自動納品を確認（${state.delivered}本）`);
   if (automaticFuelConnected(state)) return result(TOTAL, 'done', '案内完了：工房が自動で動きます',
-    '木材採取から魔力炉への補給がつながりました。ここからは自由に建設してください。導線と搬送経路を保ち、鉄延べ棒100本の自動納品を目指しましょう。', checks,
+    `木材採取から魔力炉への補給がつながりました。ここからは自由に建設してください。次の目標：${getObjective(state).title}。`, checks,
     { mode: 'done', checks: [...checks, '木材採取場→ベルト→魔力炉が接続済み'] });
   // A player who already produced an ingot elsewhere keeps their chosen layout.
   if (at(state, 12, 18)?.kind !== 'generator') {
@@ -164,5 +169,5 @@ export function evaluateGuide(state: GameState): GuideStep {
     checks.push(`${DEFINITIONS[wanted.kind].label}${location(wanted.x, wanted.z)}を配置済み`);
   }
   return result(TOTAL, 'done', '案内完了：ここからは自由に建設',
-    '燃料補給の経路も完成しました。ここからは自由に建設し、鉄延べ棒100本の自動納品を目指しましょう。', checks, { mode: 'done' });
+    `燃料補給の経路も完成しました。ここからは自由に建設してください。次の目標：${getObjective(state).title}。`, checks, { mode: 'done' });
 }

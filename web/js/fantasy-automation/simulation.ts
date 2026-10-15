@@ -1,11 +1,11 @@
-import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, INPUT_CAPACITY, OUTPUT_CAPACITY, POWER_KINDS, RECIPES, RESOURCES, RESOURCE_NAMES, STORAGE_CAPACITY, getRecipe } from './data';
+import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, GOLEM_INTERVAL, GOLEM_RANGE, INPUT_CAPACITY, OUTPUT_CAPACITY, POWER_KINDS, RECIPES, RESOURCES, RESOURCE_NAMES, STORAGE_CAPACITY, getRecipe } from './data';
 import { migrateGameState } from './migration';
 import { canResearch, currentSwordRate, isKindUnlocked, isRecipeUnlocked } from './technology';
 import { DIRECTIONS, SIZE, STEP, type Building, type Command, type CommandResult, type Direction, type GameState, type Item, type Kind, type Resource } from './types';
 
 type Network = { generators: Building[] };
 type Transfer = { source: Building; target: Building; item: Item; sourceSlot: 'item' | 'input' | 'output'; port: 0 | 1 };
-const TECHNOLOGIES = ['basic', 'logistics', 'crystals', 'assembly', 'mastery'] as const;
+const TECHNOLOGIES = ['basic', 'logistics', 'crystals', 'assembly', 'mastery', 'runecraft', 'golemcraft', 'sanctuary'] as const;
 const key = (x: number, z: number): number => z * SIZE + x;
 const success = (reason = ''): CommandResult => ({ ok: true, reason });
 const failure = (reason: string): CommandResult => ({ ok: false, reason });
@@ -41,10 +41,10 @@ export class Simulation {
     terrain[key(9, 18)] = terrain[key(9, 19)] = 'forest';
     terrain[key(20, 16)] = terrain[key(20, 15)] = 'crystal';
     this.state = {
-      version: 2, seed, tick: 0, nextId: 1, terrain,
-      inventory: { wood: 40, ore: 0, ingot: 20, rawCrystal: 0, crystal: 0, sword: 0 },
+      version: 3, seed, tick: 0, nextId: 1, terrain,
+      inventory: { wood: 40, ore: 0, ingot: 20, rawCrystal: 0, crystal: 0, sword: 0, runeCore: 0, golemFrame: 0, golem: 0 },
       kits: { miner: 1, smelter: 1, generator: 1 }, buildings: [], delivered: 0, won: false,
-      stats: { produced: {}, delivered: {}, recentSwordTicks: [], peakSwordRate: 0 },
+      stats: { produced: {}, delivered: {}, recentSwordTicks: [], peakSwordRate: 0, golemTransfers: 0, golemFuelTransfers: 0 },
       research: { unlocked: ['basic'], tracked: null }, inventoryItems: [],
     };
   }
@@ -102,6 +102,7 @@ export class Simulation {
         id: this.state.nextId++, kind: command.kind, x: command.x, z: command.z, direction: command.direction,
         input: [], output: [], reserved: [], progress: 0, working: false, energy: 0, status: '待機中', item: null, beltProgress: 0,
         ...(recipe ? { recipe } : {}), ...(command.kind === 'splitter' ? { splitCursor: 0 } : {}),
+        ...(command.kind === 'golemRelay' ? { golemPolicy: 'fuel', golemCooldown: 0 } : {}),
       });
       return success(`${DEFINITIONS[command.kind].label}を設置しました`);
     }
@@ -110,7 +111,7 @@ export class Simulation {
     if (command.type === 'remove') {
       // Completed generator fuel is burned; its remaining magic is an output, not recoverable wood.
       const reserved = building.kind === 'generator' && (building.pendingEnergy ?? 0) > 0 ? [] : (building.reserved ?? []);
-      this.putInventory([...building.input, ...building.output, ...reserved, ...(building.item ? [building.item] : [])]);
+      this.putInventory([...building.input, ...building.output, ...reserved, ...(building.item ? [building.item] : []), ...(building.golemWorker ? [building.golemWorker] : [])]);
       for (const resource of RESOURCES) this.state.inventory[resource] = (this.state.inventory[resource] ?? 0) + Math.floor((DEFINITIONS[building.kind].cost[resource] ?? 0) / 2);
       this.state.buildings = this.state.buildings.filter(candidate => candidate.id !== building.id);
       const cell = key(building.x, building.z);
@@ -123,6 +124,13 @@ export class Simulation {
     if (command.type === 'rotate') {
       building.direction = ((building.direction + 1) % 4) as Direction;
       return success('出力方向を回転しました');
+    }
+    if (command.type === 'relayPolicy') {
+      if (building.kind !== 'golemRelay') return failure('運搬方針はゴーレム補給所で設定してください');
+      if (command.policy !== 'fuel' && command.policy !== 'materials') return failure('運搬方針が不正です');
+      building.golemPolicy = command.policy;
+      building.status = command.policy === 'fuel' ? '燃料補給を優先します' : 'レシピ素材の運搬を優先します';
+      return success(building.status);
     }
     if (command.type === 'recipe') {
       if (!Object.hasOwn(RECIPES, command.recipe) || !isRecipeUnlocked(this.state, command.recipe)) return failure('このレシピは技術ツリーで研究すると解放されます');
@@ -184,10 +192,14 @@ export class Simulation {
     stats.recentSwordTicks = stats.recentSwordTicks.filter(tick => tick > this.state.tick - 1200);
     const buildings = [...this.state.buildings].sort((a, b) => a.id - b.id);
     const occupants = new Map(buildings.map(building => [key(building.x, building.z), building]));
+    // Relays read the initial storage contents. Belt arrivals cannot be relayed in
+    // the same tick, and a carried physical item is removed before belt planning.
+    this.supplyGolems(buildings);
     for (const building of buildings) if (conveyor(building) && building.item) building.beltProgress = Math.min(BELT_SECONDS, building.beltProgress + STEP);
     this.transport(buildings, occupants);
     const networks = this.networks();
     for (const building of buildings) {
+      if (building.kind === 'golemRelay') continue;
       if (conveyor(building)) { building.status = building.item ? (building.beltProgress + 1e-9 >= BELT_SECONDS ? '搬送先が詰まっています' : '搬送中') : '搬送品を待っています'; continue; }
       if (building.kind === 'storage') { building.status = building.input.length >= STORAGE_CAPACITY ? '収納庫が満杯です（32個）' : `収納中 ${building.input.length}/32個`; continue; }
       if (building.kind === 'wire') { building.status = networks.get(building.id)?.generators.length ? '魔力網に接続中' : '魔力炉に接続してください'; continue; }
@@ -222,12 +234,13 @@ export class Simulation {
   private recipeInput(building: Building): Partial<Record<Resource, number>> { return getRecipe(building)?.input ?? DEFINITIONS[building.kind].input ?? {}; }
 
   private accepts(building: Building, resource: Resource): boolean {
-    return conveyor(building) || building.kind === 'storage' || (this.recipeInput(building)[resource] ?? 0) > 0 || (building.kind === 'delivery' && (resource === 'ingot' || resource === 'sword'));
+    return conveyor(building) || building.kind === 'storage' || (building.kind === 'golemRelay' && resource === 'golem') || (this.recipeInput(building)[resource] ?? 0) > 0 || (building.kind === 'delivery' && (resource === 'ingot' || resource === 'sword'));
   }
 
   private canReceive(building: Building, resource: Resource, amount: number, incoming = 0, sameResourceIncoming = 0): boolean {
     if (!this.accepts(building, resource)) return false;
     if (building.kind === 'delivery') return true;
+    if (building.kind === 'golemRelay') return amount === 1 && !building.golemWorker && building.input.length + incoming === 0;
     if (conveyor(building)) return amount === 1 && incoming === 0 && (!building.item || building.beltProgress + 1e-9 >= BELT_SECONDS);
     const capacity = building.kind === 'storage' ? STORAGE_CAPACITY : INPUT_CAPACITY;
     if (building.input.length + incoming + amount > capacity) return false;
@@ -235,6 +248,56 @@ export class Simulation {
     const input = this.recipeInput(building);
     const otherMinimum = RESOURCES.reduce((sum, other) => sum + (other === resource ? 0 : input[other] ?? 0), 0);
     return building.input.filter(item => item.resource === resource).length + sameResourceIncoming + amount <= capacity - otherMinimum;
+  }
+
+  /** Golems carry existing items; they neither create fuel nor need magic to carry it. */
+  private supplyGolems(buildings: Building[]): void {
+    const storages = buildings.filter(building => building.kind === 'storage');
+    const snapshot = new Map(storages.map(storage => [storage.id, [...storage.input]]));
+    for (const relay of buildings.filter(building => building.kind === 'golemRelay')) {
+      if (!isKindUnlocked(this.state, relay.kind)) { relay.status = 'ゴーレム補給所を技術ツリーで研究してください'; continue; }
+      if (!relay.golemWorker && relay.input[0]?.resource === 'golem') relay.golemWorker = relay.input.shift();
+      if (!relay.golemWorker) { relay.status = 'ゴーレムを1体投入してください'; continue; }
+      if ((relay.golemCooldown ?? 0) > 0) { relay.golemCooldown!--; continue; }
+      relay.golemCooldown = GOLEM_INTERVAL - 1;
+      const inRange = (building: Building): boolean => Math.abs(building.x - relay.x) + Math.abs(building.z - relay.z) <= GOLEM_RANGE;
+      const sources = storages.filter(inRange);
+      if (sources.length === 0) { relay.status = '範囲6区画以内に収納箱がありません'; continue; }
+      const fuel = relay.golemPolicy !== 'materials';
+      const targets = buildings.filter(building => inRange(building) && isKindUnlocked(this.state, building.kind) &&
+        (fuel ? building.kind === 'generator' : building.kind !== 'generator' && building.kind !== 'miner' && building.kind !== 'crystalMiner' && building.kind !== 'golemRelay' && Object.keys(this.recipeInput(building)).length > 0));
+      if (targets.length === 0) { relay.status = fuel ? '範囲6区画以内に魔力炉がありません' : '範囲6区画以内に素材を使う製造設備がありません'; continue; }
+      const needs: { target: Building; resource: Resource; fill: number; energy: number }[] = [];
+      for (const target of targets) {
+        const recipe = this.recipeInput(target);
+        for (const resource of fuel ? ['wood' as const] : RESOURCES) {
+          const required = fuel ? 1 : recipe[resource] ?? 0;
+          if (required === 0) continue;
+          const count = [...target.input, ...(target.reserved ?? [])].filter(item => item.resource === resource).length;
+          needs.push({ target, resource, fill: count / required, energy: fuel ? target.energy : 0 });
+        }
+      }
+      needs.sort((a, b) => a.fill - b.fill || a.energy - b.energy || a.target.id - b.target.id || RESOURCES.indexOf(a.resource) - RESOURCES.indexOf(b.resource));
+      const available = needs.filter(need => this.canReceive(need.target, need.resource, 1));
+      if (available.length === 0) { relay.status = '搬送先の入力庫が満杯です（他の素材用の空きを含む）'; continue; }
+      let carried = false;
+      for (const need of available) {
+        for (const source of sources) {
+          const item = snapshot.get(source.id)!.find(item => item.resource === need.resource && source.input.includes(item));
+          if (!item) continue;
+          source.input.splice(source.input.indexOf(item), 1);
+          need.target.input.push(item);
+          relay.golemRoute = { sourceId: source.id, targetId: need.target.id, resource: item.resource, tick: this.state.tick };
+          this.state.stats!.golemTransfers = (this.state.stats!.golemTransfers ?? 0) + 1;
+          if (fuel && item.resource === 'wood' && automatic(item)) this.state.stats!.golemFuelTransfers = (this.state.stats!.golemFuelTransfers ?? 0) + 1;
+          relay.status = `${RESOURCE_NAMES[item.resource]}を${DEFINITIONS[need.target.kind].label}へ運びました`;
+          carried = true;
+          break;
+        }
+        if (carried) break;
+      }
+      if (!carried) relay.status = fuel ? '収納箱に木材がありません（手動品は自動補給実績に算入されません）' : '収納箱にレシピに合う素材がありません';
+    }
   }
 
   private networks(): Map<number, Network> {

@@ -1,5 +1,8 @@
 {
   "ingot": { "label": "鉄の延べ棒", "seconds": 4, "input": { "ore": 2 }, "output": { "ingot": 1 }, "energy": 5, "technology": "basic" },
   "crystal": { "label": "精製魔晶", "seconds": 3, "input": { "rawCrystal": 1 }, "output": { "crystal": 1 }, "energy": 3, "technology": "crystals" },
-  "sword": { "label": "魔導剣", "seconds": 4, "input": { "ingot": 2, "crystal": 1 }, "output": { "sword": 1 }, "energy": 8, "technology": "assembly" }
+  "sword": { "label": "魔導剣", "seconds": 4, "input": { "ingot": 2, "crystal": 1 }, "output": { "sword": 1 }, "energy": 8, "technology": "assembly" },
+  "runeCore": { "label": "魔導核", "seconds": 6, "input": { "crystal": 2, "ingot": 1 }, "output": { "runeCore": 1 }, "energy": 8, "technology": "runecraft" },
+  "golemFrame": { "label": "鉄の躯体", "seconds": 6, "input": { "ingot": 3, "wood": 2 }, "output": { "golemFrame": 1 }, "energy": 6, "technology": "runecraft" },
+  "golem": { "label": "ゴーレム", "seconds": 8, "input": { "runeCore": 1, "golemFrame": 1 }, "output": { "golem": 1 }, "energy": 12, "technology": "golemcraft" }
 }

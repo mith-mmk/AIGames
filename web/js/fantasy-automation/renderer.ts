@@ -1,11 +1,13 @@
 import * as THREE from 'three';
 import { WorldInput } from './input.js';
-import { BELT_SECONDS, DEFINITIONS, POWER_KINDS, RESOURCES, STORAGE_CAPACITY, getRecipe } from './data.js';
+import { BELT_SECONDS, DEFINITIONS, POWER_KINDS, STORAGE_CAPACITY } from './data.js';
 import { DIRECTIONS, SIZE, type Building, type Direction, type GameState, type Kind, type RecipeId, type Resource } from './types.js';
+import { acceptedResources, logisticsPorts, outputDirections, outputResources as sourceResources, type PortVisual, type PortVisualState } from './logistics-visuals.js';
 
 const RESOURCE_COLORS: Record<Resource, number> = {
   wood: 0xb68752, ore: 0x82c2d6, ingot: 0xd6d9d3,
   rawCrystal: 0xc9ace0, crystal: 0x9862df, sword: 0xebd18e,
+  runeCore: 0xffbe70, golemFrame: 0x8babae, golem: 0x8ce2c4,
 };
 
 export interface ViewOptions {
@@ -21,7 +23,8 @@ export interface ViewCallbacks {
   onHover(x: number, z: number): void;
   onStatus(message: string): void;
 }
-type FacilityView = { group: THREE.Group; arrow: THREE.Group; sideArrow: THREE.Group | null; item: THREE.Mesh; lamp: THREE.Mesh; kind: Kind; wires: THREE.Mesh[]; contents: THREE.InstancedMesh | null; contentsKey: string };
+type PortGlyph = { group: THREE.Group; linked: THREE.Group; missing: THREE.Group; stop: THREE.Group; invalid: THREE.Group };
+type FacilityView = { group: THREE.Group; arrow: THREE.Group; sideArrow: THREE.Group | null; item: THREE.Mesh; lamp: THREE.Mesh; kind: Kind; wires: THREE.Mesh[]; sockets: THREE.Mesh[]; ports: PortGlyph[]; chevrons: THREE.InstancedMesh | null; flowKey: string; contents: THREE.InstancedMesh | null; contentsKey: string; worker: THREE.Group | null; route: THREE.Line | null; bead: THREE.Mesh | null };
 
 /** Scene graph is a view of the simulation, never its owner. */
 export class WorldView {
@@ -47,6 +50,18 @@ export class WorldView {
   private ghostSidePort = this.arrow();
   private ghostPower: THREE.Mesh | null = null;
   private selection = new THREE.Group();
+  private selectedDirection = this.arrow(0xffeb94);
+  private selectedSideDirection = this.arrow(0xffeb94);
+  private flowMatrix = new THREE.Matrix4();
+  private flowPosition = new THREE.Vector3();
+  private flowRotation = new THREE.Quaternion();
+  private flowScale = new THREE.Vector3(1, 1, 1);
+  private routeStart = new THREE.Vector3();
+  private routeEnd = new THREE.Vector3();
+  private relayLineMaterial = new THREE.LineBasicMaterial({ color: 0x9cebd4, transparent: true, opacity: 0.7 });
+  private selectedRelayRange = new THREE.LineLoop(this.geometry('relay-range', () => new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(6, 0.08, 0), new THREE.Vector3(0, 0.08, 6), new THREE.Vector3(-6, 0.08, 0), new THREE.Vector3(0, 0.08, -6),
+  ])), this.relayLineMaterial);
   private guideMarker = new THREE.Group();
   private guideDirection = this.arrow(0xffee82);
   private guideLabel: HTMLDivElement;
@@ -91,16 +106,23 @@ export class WorldView {
     this.scene.add(new THREE.HemisphereLight(0xfff8dd, 0x536865, 2.5));
     const sun = new THREE.DirectionalLight(0xffedd0, 2.1);
     sun.position.set(-12, 28, 8);
-    this.scene.add(sun, this.terrain, this.ghost, this.selection, this.guideMarker);
+    this.scene.add(sun, this.terrain, this.ghost, this.selection, this.guideMarker, this.selectedRelayRange);
+    this.selectedRelayRange.visible = false;
     this.createOutline(this.ghost, 0x7eedaf);
-    this.ghostPort.position.set(0, 0.12, -0.37);
+    this.ghostPort.position.set(0, 0.42, -0.37);
     this.ghost.add(this.ghostPort);
-    this.ghostSidePort.position.set(0.37, 0.12, 0);
+    this.ghostSidePort.position.set(0.37, 0.42, 0);
     this.ghostSidePort.rotation.y = -Math.PI / 2;
     this.ghostSidePort.visible = false;
     this.ghost.add(this.ghostSidePort);
     this.ghostPower = this.cylinder(this.ghost, 0x94eaff, 0.085, 0.14, [0.38, 0.22, 0.38], true);
     this.createOutline(this.selection, 0xffdc6e);
+    this.selectedDirection.position.set(0, 1.45, -0.18);
+    this.selectedDirection.scale.setScalar(1.9);
+    this.selectedSideDirection.position.set(0.18, 1.45, 0);
+    this.selectedSideDirection.rotation.y = -Math.PI / 2;
+    this.selectedSideDirection.scale.setScalar(1.9);
+    this.selection.add(this.selectedDirection, this.selectedSideDirection);
     this.createOutline(this.guideMarker, 0xffee82);
     this.guideDirection.position.set(0, 0.25, 0);
     this.guideMarker.add(this.guideDirection);
@@ -176,6 +198,28 @@ export class WorldView {
     this.box(group, color, [0.045, 0.04, 1.03], [0.51, 0.05, 0]);
   }
 
+  private portGlyph(): PortGlyph {
+    const group = new THREE.Group(), linked = new THREE.Group(), missing = new THREE.Group(), stop = new THREE.Group(), invalid = new THREE.Group();
+    for (const x of [-0.055, 0.055]) {
+      const link = new THREE.Mesh(this.geometry('link', () => new THREE.TorusGeometry(0.078, 0.023, 4, 8)), this.material(0x93efe0));
+      link.position.x = x; link.rotation.x = Math.PI / 2; linked.add(link);
+      this.box(missing, 0xf1ca7b, [0.075, 0.035, 0.055], [x * 1.5, 0, 0]);
+      this.box(stop, 0xffb466, [0.055, 0.055, 0.25], [x, 0, 0]);
+    }
+    for (const angle of [-Math.PI / 4, Math.PI / 4]) this.box(invalid, 0xff8276, [0.28, 0.055, 0.05], [0, 0, 0]).rotation.y = angle;
+    group.add(linked, missing, stop, invalid);
+    return { group, linked, missing, stop, invalid };
+  }
+
+  private paintPort(glyph: PortGlyph, state: PortVisualState): void {
+    glyph.linked.visible = state === 'connected'; glyph.missing.visible = state === 'missing';
+    glyph.stop.visible = state === 'full'; glyph.invalid.visible = state === 'incompatible' || state === 'edge';
+    const colors = { linked: 0x93efe0, missing: 0xf1ca7b, stop: 0xffb466, invalid: 0xff8276 };
+    for (const name of ['linked', 'missing', 'stop', 'invalid'] as const) glyph[name].traverse(child => {
+      if (child instanceof THREE.Mesh) child.material = this.material(colors[name]);
+    });
+  }
+
   private rebuildTerrain(state: GameState): void {
     // Instancing makes the 1,024 map tiles and repeated scenery cheap to draw.
     for (const child of this.terrain.children) if (child instanceof THREE.InstancedMesh) child.dispose();
@@ -234,19 +278,32 @@ export class WorldView {
     const arrow = this.arrow();
     let sideArrow: THREE.Group | null = null;
     let contents: THREE.InstancedMesh | null = null;
-    arrow.visible = !['wire', 'generator', 'delivery'].includes(kind);
+    let chevrons: THREE.InstancedMesh | null = null;
+    let worker: THREE.Group | null = null;
+    let route: THREE.Line | null = null;
+    let bead: THREE.Mesh | null = null;
+    const sockets: THREE.Mesh[] = [], ports: PortGlyph[] = [];
+    arrow.visible = outputDirections(kind, 0).length > 0;
     const wires: THREE.Mesh[] = [];
-    arrow.position.y = kind === 'belt' || kind === 'splitter' ? 0.17 : 0.08;
-    arrow.position.z = kind === 'belt' ? 0 : -0.22;
+    arrow.position.y = kind === 'belt' || kind === 'splitter' ? 0.245 : 0.36;
+    arrow.position.z = -0.29;
+    arrow.scale.setScalar(1.3);
     group.add(arrow);
     if (kind === 'belt' || kind === 'splitter') {
       this.box(group, 0x424e52, [0.7, 0.13, 0.9], [0, 0.07, 0]);
       for (const x of [-0.31, 0.31]) this.box(group, 0xb79657, [0.06, 0.15, 0.9], [x, 0.15, 0]);
+      chevrons = new THREE.InstancedMesh(this.geometry('chevron', () => {
+        const shape = new THREE.Shape(); shape.moveTo(-0.19, -0.04);
+        for (const [x, y] of [[-0.14,-0.10],[0,0.015],[0.14,-0.10],[0.19,-0.04],[0,0.12]]) shape.lineTo(x, y);
+        shape.closePath(); const geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.018, bevelEnabled: false });
+        geometry.rotateX(-Math.PI / 2); return geometry;
+      }), this.material(0xe9dba8), 3);
+      chevrons.frustumCulled = false; group.add(chevrons);
       if (kind === 'splitter') {
         this.box(group, 0x424e52, [0.43, 0.13, 0.38], [0.25, 0.07, 0]);
         this.cylinder(group, 0x72b9b3, 0.2, 0.16, [0, 0.21, 0]);
         sideArrow = this.arrow(); sideArrow.rotation.y = -Math.PI / 2;
-        sideArrow.position.set(0.18, 0.18, 0); group.add(sideArrow);
+        sideArrow.position.set(0.29, 0.245, 0); sideArrow.scale.setScalar(1.3); group.add(sideArrow);
       }
     } else if (kind === 'wire') {
       this.cylinder(group, 0x596b77, 0.065, 0.55, [0, 0.28, 0]);
@@ -292,6 +349,41 @@ export class WorldView {
         this.box(group, 0xd3b77d, [0.07, 0.43, 0.07], [-0.27, 0.75, 0.18]);
         const hammer = this.box(group, 0x98abb1, [0.22, 0.13, 0.15], [-0.25, 0.96, 0.18]);
         hammer.rotation.z = 0.2;
+      } else if (kind === 'runeCarver') {
+        this.box(group, 0x826175, [0.62, 0.34, 0.53], [0, 0.33, 0]);
+        this.box(group, 0xc8ac75, [0.72, 0.07, 0.63], [0, 0.54, 0]);
+        const ring = new THREE.Mesh(this.geometry('rune-ring', () => new THREE.TorusGeometry(0.22, 0.035, 4, 10)), this.material(0xffcb83, 0x392714));
+        ring.rotation.x = Math.PI / 2; ring.position.y = 0.61; group.add(ring);
+        for (const angle of [0, Math.PI / 3, -Math.PI / 3]) this.box(group, 0xe9d6ae, [0.35, 0.025, 0.035], [0, 0.60, 0]).rotation.y = angle;
+        this.box(group, 0x9eacc2, [0.065, 0.4, 0.065], [0.25, 0.79, 0.20]).rotation.z = 0.2;
+      } else if (kind === 'frameForge') {
+        this.box(group, 0x65777c, [0.7, 0.24, 0.61], [0, 0.30, 0]);
+        this.box(group, 0xb3a684, [0.75, 0.085, 0.68], [0, 0.47, 0]);
+        this.box(group, 0x829fa8, [0.25, 0.25, 0.16], [0, 0.76, 0]);
+        this.box(group, 0xb9cbd0, [0.16, 0.16, 0.16], [0, 0.98, 0]);
+        for (const x of [-0.2, 0.2]) this.box(group, 0x93b0b6, [0.15, 0.11, 0.15], [x, 0.81, 0]);
+        for (const x of [-0.09, 0.09]) this.box(group, 0x93b0b6, [0.09, 0.21, 0.13], [x, 0.57, 0]);
+      } else if (kind === 'golemForge') {
+        this.cylinder(group, 0x71618a, 0.34, 0.33, [0, 0.31, 0]);
+        for (const x of [-0.29, 0.29]) this.box(group, 0xc5a874, [0.09, 0.8, 0.12], [x, 0.65, 0]);
+        const halo = new THREE.Mesh(this.geometry('awakening-halo', () => new THREE.TorusGeometry(0.3, 0.055, 4, 10)), this.material(0xf6d49b, 0x342915));
+        halo.position.set(0, 0.9, 0); group.add(halo);
+        this.cylinder(group, 0x8ce2c4, 0.13, 0.34, [0, 0.62, 0]);
+        this.box(group, 0xb7f0d3, [0.18, 0.18, 0.17], [0, 0.91, 0]);
+      } else if (kind === 'golemRelay') {
+        this.cylinder(group, 0x557f79, 0.37, 0.17, [0, 0.23, 0]);
+        for (const x of [-0.28, 0.28]) for (const z of [-0.28, 0.28]) this.box(group, 0xb7a883, [0.08, 0.28, 0.08], [x, 0.36, z]);
+        worker = new THREE.Group(); worker.position.y = 0.3;
+        this.box(worker, 0x87b5ae, [0.19, 0.23, 0.15], [0, 0.27, 0]);
+        this.box(worker, 0xb8e4d2, [0.16, 0.16, 0.16], [0, 0.5, 0]);
+        this.box(worker, 0x244941, [0.095, 0.035, 0.02], [0, 0.51, -0.09]);
+        for (const x of [-0.15, 0.15]) this.box(worker, 0x96c7bb, [0.085, 0.21, 0.11], [x, 0.27, 0]);
+        for (const x of [-0.055, 0.055]) this.box(worker, 0x739e9a, [0.085, 0.16, 0.13], [x, 0.09, 0]);
+        worker.visible = false; group.add(worker);
+        const routeGeometry = new THREE.BufferGeometry(); routeGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(6), 3));
+        route = new THREE.Line(routeGeometry, this.relayLineMaterial); route.visible = false; route.frustumCulled = false; group.add(route);
+        bead = new THREE.Mesh(this.geometry('gem', () => new THREE.OctahedronGeometry(1, 0)), this.material(0xe1d2a1));
+        bead.scale.setScalar(0.13); bead.visible = false; group.add(bead);
       } else if (kind === 'storage') {
         this.box(group, 0x466f78, [0.74, 0.12, 0.74], [0, 0.22, 0]);
         for (const z of [-0.36, 0.36]) this.box(group, 0x85b4b0, [0.76, 0.22, 0.055], [0, 0.37, z]);
@@ -309,12 +401,26 @@ export class WorldView {
         this.box(group, 0xedd594, [0.09, 0.48, 0.66], [0, 0.35, 0]);
       }
     }
+    // Round sockets denote accepted items on every side; mechanics impose no dedicated inlet.
+    if (acceptedResources({ kind }).length) for (let direction = 0; direction < 4; direction++) {
+      const [dx, dz] = DIRECTIONS[direction];
+      const radius = kind === 'belt' || kind === 'splitter' ? 0.055 : 0.09;
+      const socket = new THREE.Mesh(this.geometry(`socket-${radius}`, () => new THREE.TorusGeometry(radius, 0.023, 4, 8)), this.material(0x96d9ee));
+      socket.rotation.x = Math.PI / 2; socket.position.set(dx * 0.43, 0.18, dz * 0.43); group.add(socket); sockets.push(socket);
+    }
+    for (let index = 0; index < outputDirections(kind, 0).length; index++) {
+      const outlet = new THREE.Group(); outlet.rotation.y = -index * Math.PI / 2;
+      this.box(outlet, 0xcaa666, [0.3, 0.10, 0.23], [0, 0.18, -0.43]);
+      this.box(outlet, 0x313f40, [0.18, 0.065, 0.025], [0, 0.20, -0.552]);
+      const glyph = this.portGlyph(); glyph.group.position.set(0, 0.30, -0.61); outlet.add(glyph.group);
+      this.paintPort(glyph, 'missing'); group.add(outlet); ports.push(glyph);
+    }
     const item = new THREE.Mesh(this.geometry('cube', () => new THREE.BoxGeometry(1, 1, 1)), this.material(0xe0c494));
     item.scale.set(0.19, 0.14, 0.22); item.visible = false; group.add(item);
     const lamp = new THREE.Mesh(this.geometry('rock', () => new THREE.DodecahedronGeometry(1, 0)), this.material(0x74837a));
     lamp.scale.setScalar(0.055); lamp.position.set(0.25, kind === 'belt' ? 0.22 : 0.66, 0.22);
     lamp.visible = !['wire', 'belt', 'splitter', 'storage'].includes(kind); group.add(lamp);
-    return { group, arrow, sideArrow, item, lamp, kind, wires, contents, contentsKey: '' };
+    return { group, arrow, sideArrow, item, lamp, kind, wires, sockets, ports, chevrons, flowKey: '', contents, contentsKey: '', worker, route, bead };
   }
 
   private itemColor(resource: Resource): number {
@@ -332,6 +438,21 @@ export class WorldView {
     } else if (resource === 'crystal') {
       item.geometry = this.geometry('gem', () => new THREE.OctahedronGeometry(1, 0));
       item.scale.set(0.105, 0.2, 0.105);
+    } else if (resource === 'runeCore') {
+      item.geometry = this.geometry('rune-ring', () => new THREE.TorusGeometry(0.22, 0.035, 4, 10));
+      item.scale.setScalar(0.65); item.rotation.x = Math.PI / 2;
+    } else if (resource === 'golemFrame' || resource === 'golem') {
+      item.geometry = this.geometry(`item-${resource}`, () => {
+        const silhouette = new THREE.Shape(); silhouette.moveTo(-0.2, -0.4);
+        for (const [x, y] of [[-0.03,-0.4],[-0.03,-0.16],[0.03,-0.16],[0.03,-0.4],[0.2,-0.4],[0.2,0.02],[0.36,0.02],[0.36,0.18],[0.2,0.18],[0.2,0.32],[0.14,0.32],[0.14,0.53],[-0.14,0.53],[-0.14,0.32],[-0.2,0.32],[-0.2,0.18],[-0.36,0.18],[-0.36,0.02],[-0.2,0.02]]) silhouette.lineTo(x, y);
+        silhouette.closePath();
+        if (resource === 'golemFrame') {
+          const hole = new THREE.Path(); hole.moveTo(-0.105, -0.02); hole.lineTo(-0.105, 0.23); hole.lineTo(0.105, 0.23); hole.lineTo(0.105, -0.02); hole.closePath(); silhouette.holes.push(hole);
+        }
+        const geometry = new THREE.ExtrudeGeometry(silhouette, { depth: resource === 'golem' ? 0.13 : 0.065, bevelEnabled: false });
+        geometry.rotateX(-Math.PI / 2); return geometry;
+      });
+      item.scale.setScalar(0.39);
     } else if (resource === 'sword') {
       item.geometry = this.geometry('sword', () => {
         const silhouette = new THREE.Shape();
@@ -349,19 +470,44 @@ export class WorldView {
   }
 
   private outputResources(kind: Kind, recipe?: RecipeId): Resource[] {
-    if (kind === 'belt' || kind === 'splitter' || kind === 'storage') return [...RESOURCES];
-    const output = getRecipe({ kind, recipe })?.output ?? DEFINITIONS[kind].output;
-    return Object.keys(output ?? {}) as Resource[];
+    return sourceResources({ kind, recipe, x: 0, z: 0, direction: 0 });
   }
 
-  private acceptedResources(building: Building): Resource[] {
-    if (['belt', 'splitter', 'storage'].includes(building.kind)) return [...RESOURCES];
-    if (building.kind === 'delivery') return ['ingot', 'sword'];
-    const input = getRecipe(building)?.input ?? DEFINITIONS[building.kind].input;
-    return Object.keys(input ?? {}) as Resource[];
+  private disposeFacility(view: FacilityView): void { view.contents?.dispose(); view.chevrons?.dispose(); view.route?.geometry.dispose(); }
+
+  private updateFlow(view: FacilityView, building: Building, tick: number, ports: PortVisual[]): void {
+    ports.forEach((port, index) => this.paintPort(view.ports[index], port.state));
+    if (!view.chevrons) return;
+    const stalled = !!building.item && building.beltProgress + 1e-9 >= BELT_SECONDS && ports.every(port => port.state !== 'connected');
+    const phase = stalled || this.reducedMotion.matches ? 0 : building.item ? Math.min(1, building.beltProgress / BELT_SECONDS) : (tick / 10) % 1;
+    const key = `${phase}:${stalled}`;
+    if (view.flowKey === key) return; view.flowKey = key;
+    for (let index = 0; index < 3; index++) {
+      const z = 0.36 - ((index / 3 + phase / 3) % 1) * 0.72;
+      this.flowPosition.set(0, 0.18, z); this.flowMatrix.compose(this.flowPosition, this.flowRotation, this.flowScale);
+      view.chevrons.setMatrixAt(index, this.flowMatrix);
+    }
+    view.chevrons.instanceMatrix.needsUpdate = true;
   }
 
-  private disposeFacility(view: FacilityView): void { view.contents?.dispose(); }
+  private updateRelay(view: FacilityView, building: Building, tick: number, buildings: ReadonlyMap<number, Building>): void {
+    if (!view.worker || !view.route || !view.bead) return;
+    view.worker.visible = !!building.golemWorker;
+    view.lamp.material = this.material(building.golemWorker ? 0x8be0bc : 0xcd9979);
+    const route = building.golemRoute, source = route ? buildings.get(route.sourceId) : null, target = route ? buildings.get(route.targetId) : null;
+    const age = route ? tick - route.tick : 20;
+    const active = !!building.golemWorker && !!route && !!source && !!target && age >= 0 && age < 20;
+    view.route.visible = view.bead.visible = active;
+    if (!active || !source || !target || !route) return;
+    view.group.updateMatrixWorld(true);
+    this.routeStart.set(source.x, 0.86, source.z); view.group.worldToLocal(this.routeStart);
+    this.routeEnd.set(target.x, 0.86, target.z); view.group.worldToLocal(this.routeEnd);
+    const vertices = view.route.geometry.getAttribute('position') as THREE.BufferAttribute;
+    vertices.setXYZ(0, this.routeStart.x, this.routeStart.y, this.routeStart.z);
+    vertices.setXYZ(1, this.routeEnd.x, this.routeEnd.y, this.routeEnd.z); vertices.needsUpdate = true;
+    view.bead.position.copy(this.routeStart).lerp(this.routeEnd, age / 20);
+    view.bead.material = this.material(this.itemColor(route.resource)); this.setItemShape(view.bead, route.resource);
+  }
 
   private updateFacility(view: FacilityView, building: Building): void {
     view.group.position.set(building.x, 0, building.z);
@@ -398,6 +544,7 @@ export class WorldView {
     const key = `${state.seed}:${state.terrain.join(',')}:${resourceOccupancy}`;
     if (key !== this.terrainKey) { this.rebuildTerrain(state); this.terrainKey = key; }
     const ids = new Set<number>();
+    const buildingsById = new Map(state.buildings.map(building => [building.id, building]));
     const cells = new Map(state.buildings.map(building => [`${building.x},${building.z}`, building]));
     const powerKinds = new Set<Kind>(POWER_KINDS);
     const energized = new Set<string>();
@@ -417,6 +564,14 @@ export class WorldView {
       if (view && view.kind !== building.kind) { this.scene.remove(view.group); this.disposeFacility(view); this.facilities.delete(building.id); view = undefined; }
       if (!view) { view = this.facility(building.kind); this.facilities.set(building.id, view); this.scene.add(view.group); }
       this.updateFacility(view, building);
+      this.updateRelay(view, building, state.tick, buildingsById);
+      const ports = logisticsPorts(building, cells);
+      this.updateFlow(view, building, state.tick, ports);
+      if (building.id === options.selectedId) {
+        this.renderer.domElement.dataset.selectedDirection = String(building.direction);
+        this.renderer.domElement.dataset.selectedPorts = ports.map(port => `${port.direction}:${port.state}`).join(',');
+        this.renderer.domElement.dataset.selectedFlowProgress = String(building.beltProgress);
+      }
       if (building.kind === 'wire') for (let index = 0; index < 4; index++) {
         const [dx, dz] = DIRECTIONS[index];
         const neighbor = cells.get(`${building.x + dx},${building.z + dz}`);
@@ -440,7 +595,7 @@ export class WorldView {
         if (child instanceof THREE.Mesh) child.material = this.material(options.valid ? 0x8fffb1 : 0xff786e, 0, child.parent !== this.ghost);
       });
       this.ghost.rotation.y = -options.direction * Math.PI / 2;
-      this.ghostPort.visible = !!options.kind && !['wire', 'generator', 'delivery'].includes(options.kind);
+      this.ghostPort.visible = !!options.kind && outputDirections(options.kind, options.direction).length > 0;
       this.ghostSidePort.visible = options.kind === 'splitter';
       if (this.ghostPort.visible && options.kind) {
         let outputs = this.outputResources(options.kind);
@@ -458,21 +613,20 @@ export class WorldView {
           const known = incoming.flatMap(building => building.item ? [building.item.resource] : building.output.length ? building.output.map(item => item.resource) : building.kind === 'storage' && building.input.length ? building.input.map(item => item.resource) : ['belt', 'splitter', 'storage'].includes(building.kind) ? [] : this.outputResources(building.kind, building.recipe));
           if (known.length) outputs = known;
         }
-        const portCount = options.kind === 'splitter' ? 2 : 1;
-        for (let index = 0; index < portCount; index++) {
-          const [dx, dz] = DIRECTIONS[(options.direction + index) % 4];
-          const outX = options.hover.x + dx, outZ = options.hover.z + dz;
-          const outOfMap = outX < 0 || outX >= SIZE || outZ < 0 || outZ >= SIZE;
-          const receiver = cells.get(`${outX},${outZ}`);
-          const accepted = receiver ? this.acceptedResources(receiver) : [];
-          const compatible = outputs.some(resource => accepted.includes(resource));
-          const portColor = outOfMap || (receiver && !compatible) ? 0xff6259 : receiver ? 0x8fffad : 0xf3b354;
+        const ghostPorts = logisticsPorts({ kind: options.kind, x: options.hover.x, z: options.hover.z, direction: options.direction }, cells, outputs);
+        this.renderer.domElement.dataset.ghostDirection = String(options.direction);
+        this.renderer.domElement.dataset.ghostPorts = ghostPorts.map(port => `${port.direction}:${port.state}`).join(',');
+        for (let index = 0; index < ghostPorts.length; index++) {
+          const port = ghostPorts[index];
+          const portColor = port.state === 'edge' || port.state === 'incompatible' ? 0xff6259 : port.state === 'connected' ? 0x8fffad : 0xf3b354;
           const outer = index === 0 ? this.ghostPort : this.ghostSidePort;
           const preview = index === 0 ? this.ghostPreview?.arrow : this.ghostPreview?.sideArrow;
           outer.traverse(child => { if (child instanceof THREE.Mesh) child.material = this.material(portColor); });
           preview?.traverse(child => { if (child instanceof THREE.Mesh) child.material = this.material(portColor); });
+          if (this.ghostPreview) this.paintPort(this.ghostPreview.ports[index], port.state);
         }
       }
+      for (const socket of this.ghostPreview?.sockets ?? []) socket.material = this.material(0x96d9ee, 0, true);
       if (this.ghostPower) {
         const powerKind = options.kind && powerKinds.has(options.kind);
         this.ghostPower.visible = !!powerKind;
@@ -486,7 +640,18 @@ export class WorldView {
     }
     const selected = options.selectedId == null ? null : this.facilities.get(options.selectedId);
     this.selection.visible = !!selected;
-    if (selected) this.selection.position.copy(selected.group.position);
+    this.selectedRelayRange.visible = selected?.kind === 'golemRelay';
+    if (this.selectedRelayRange.visible && selected) this.selectedRelayRange.position.copy(selected.group.position);
+    if (selected) {
+      this.selection.position.copy(selected.group.position);
+      this.selection.rotation.y = selected.group.rotation.y;
+      this.selectedDirection.visible = outputDirections(selected.kind, 0).length > 0;
+      this.selectedSideDirection.visible = selected.kind === 'splitter';
+    } else {
+      delete this.renderer.domElement.dataset.selectedDirection;
+      delete this.renderer.domElement.dataset.selectedPorts;
+      delete this.renderer.domElement.dataset.selectedFlowProgress;
+    }
     this.updateGuide(options.guideTarget ?? null, now);
     if (!this.contextLost) this.renderer.render(this.scene, this.camera);
   }
@@ -569,6 +734,8 @@ export class WorldView {
 
   resetCamera(): void { this.target.set(13, 0, 16); this.bearing = Math.PI / 4; this.extent = 11; this.resize(); }
 
+  setInputBlocked(blocked: boolean): void { this.input.setBlocked(blocked); }
+
   /** Bring an edge/offscreen guide cell into reach without disturbing a visible view. */
   revealTile(x: number, z: number): void {
     if (this.disposed || x < 0 || x >= SIZE || z < 0 || z >= SIZE) return;
@@ -590,6 +757,7 @@ export class WorldView {
     if (this.ghostPreview) this.disposeFacility(this.ghostPreview);
     for (const geometry of this.geometries.values()) geometry.dispose();
     for (const material of this.materials.values()) material.dispose();
+    this.relayLineMaterial.dispose();
     this.scene.clear(); this.facilities.clear(); this.renderer.dispose(); this.renderer.domElement.remove();
     this.guideLabel.remove();
   }

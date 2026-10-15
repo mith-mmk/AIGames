@@ -15,6 +15,7 @@ export class WorldInput {
   private pointer: { id: number; button: number; x: number; y: number } | null = null;
   private lastCell = '';
   private keys = new Set<string>();
+  private blocked = false;
 
   constructor(canvas: HTMLCanvasElement, actions: WorldInputActions) {
     this.canvas = canvas;
@@ -31,6 +32,7 @@ export class WorldInput {
     canvas.addEventListener('contextmenu', event => event.preventDefault(), options);
     canvas.addEventListener('wheel', event => {
       event.preventDefault();
+      if (this.blocked) return;
       this.actions.zoom(Math.sign(event.deltaY) * 0.12);
     }, { ...options, passive: false });
     canvas.addEventListener('keydown', event => this.keyDown(event), options);
@@ -40,6 +42,7 @@ export class WorldInput {
   }
 
   private pointerDown(event: PointerEvent): void {
+    if (this.blocked) return;
     if (this.pointer || event.button > 2) return;
     event.preventDefault();
     this.canvas.focus({ preventScroll: true });
@@ -65,6 +68,7 @@ export class WorldInput {
   }
 
   private pointerMove(event: PointerEvent): void {
+    if (this.blocked) return;
     if (this.pointer?.id === event.pointerId) {
       const dx = event.clientX - this.pointer.x;
       const dy = event.clientY - this.pointer.y;
@@ -86,18 +90,28 @@ export class WorldInput {
   }
 
   private keyDown(event: KeyboardEvent): void {
+    if (this.blocked) return;
     if (!['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyQ', 'KeyE'].includes(event.code)) return;
     event.preventDefault();
     this.keys.add(event.code);
   }
 
   update(seconds: number): void {
+    if (this.blocked) return;
     const dt = Math.min(0.1, seconds);
     const horizontal = Number(this.keys.has('KeyA')) - Number(this.keys.has('KeyD'));
     const vertical = Number(this.keys.has('KeyW')) - Number(this.keys.has('KeyS'));
     if (horizontal || vertical) this.actions.pan(horizontal * dt * 400, vertical * dt * 400);
     const rotation = Number(this.keys.has('KeyQ')) - Number(this.keys.has('KeyE'));
     if (rotation) this.actions.rotate(rotation * dt * 1.2);
+  }
+
+  setBlocked(blocked: boolean): void {
+    this.blocked = blocked;
+    if (!blocked) return;
+    this.keys.clear();
+    if (this.pointer && this.canvas.hasPointerCapture(this.pointer.id)) this.canvas.releasePointerCapture(this.pointer.id);
+    this.pointer = null; this.lastCell = '';
   }
 
   dispose(): void {

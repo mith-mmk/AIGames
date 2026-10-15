@@ -10,5 +10,9 @@
   "storage": { "label": "収納箱", "cost": { "wood": 6, "ingot": 2 }, "technology": "logistics" },
   "crystalMiner": { "label": "魔晶採掘機", "cost": { "wood": 4, "ingot": 8 }, "seconds": 2, "output": { "rawCrystal": 1 }, "energy": 2, "technology": "crystals" },
   "crystalRefiner": { "label": "魔晶精製炉", "cost": { "wood": 4, "ingot": 8 }, "seconds": 3, "input": { "rawCrystal": 1 }, "output": { "crystal": 1 }, "energy": 3, "technology": "crystals", "recipes": ["crystal"] },
-  "assembler": { "label": "魔導組立機", "cost": { "wood": 6, "ingot": 12 }, "seconds": 4, "input": { "ingot": 2, "crystal": 1 }, "output": { "sword": 1 }, "energy": 8, "technology": "assembly", "recipes": ["sword"] }
+  "assembler": { "label": "魔導組立機", "cost": { "wood": 6, "ingot": 12 }, "seconds": 4, "input": { "ingot": 2, "crystal": 1 }, "output": { "sword": 1 }, "energy": 8, "technology": "assembly", "recipes": ["sword"] },
+  "runeCarver": { "label": "刻印台", "cost": { "wood": 6, "ingot": 8 }, "seconds": 6, "input": { "crystal": 2, "ingot": 1 }, "output": { "runeCore": 1 }, "energy": 8, "technology": "runecraft", "recipes": ["runeCore"] },
+  "frameForge": { "label": "躯体工房", "cost": { "wood": 8, "ingot": 10 }, "seconds": 6, "input": { "ingot": 3, "wood": 2 }, "output": { "golemFrame": 1 }, "energy": 6, "technology": "runecraft", "recipes": ["golemFrame"] },
+  "golemForge": { "label": "覚醒炉", "cost": { "wood": 8, "ingot": 12 }, "seconds": 8, "input": { "runeCore": 1, "golemFrame": 1 }, "output": { "golem": 1 }, "energy": 12, "technology": "golemcraft", "recipes": ["golem"] },
+  "golemRelay": { "label": "ゴーレム補給所", "cost": { "wood": 8, "ingot": 6 }, "technology": "golemcraft" }
 }

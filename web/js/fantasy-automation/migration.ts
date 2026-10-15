@@ -7,9 +7,10 @@ function automatic(items: Item[], resource: Resource): number { return items.fil
 
 /** Pure migration. Loading never writes the IndexedDB slot; only an explicit save does. */
 export function migrateGameState(value: GameState): GameState {
-  if (value.version !== 1 && value.version !== 2) throw new Error('この保存形式には対応していません（対応: version 1・2）。');
+  if (value.version !== 1 && value.version !== 2 && value.version !== 3) throw new Error('この保存形式には対応していません（対応: version 1・2・3）。');
   const state: GameState = structuredClone(value);
-  if (state.version === 2) return state;
+  if (state.version === 3) return state;
+  if (state.version === 2) return migrateThirdStage(state);
   for (const building of state.buildings) {
     if (!BASE_KINDS.has(building.kind)) throw new Error('旧保存形式に未対応の設備があります。');
     if (building.reserved?.length) throw new Error('旧保存形式に未対応の予約素材があります。');
@@ -48,5 +49,14 @@ export function migrateGameState(value: GameState): GameState {
   }
   if (pending.length) state.pendingCrystalCells = pending;
   state.version = 2;
+  return migrateThirdStage(state);
+}
+
+function migrateThirdStage(state: GameState): GameState {
+  for (const resource of ['runeCore', 'golemFrame', 'golem'] as const) state.inventory[resource] = 0;
+  if (!state.stats || !state.research || !state.inventoryItems) throw new Error('旧保存データの進行情報がありません。');
+  state.stats.golemFuelTransfers = 0;
+  state.stats.golemTransfers = 0;
+  state.version = 3;
   return state;
 }
