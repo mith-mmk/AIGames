@@ -1,6 +1,6 @@
-import { BELT_SECONDS, DEFINITIONS, RECIPES, RESOURCE_NAMES } from './data.js';
+import { BELT_SECONDS, DEFINITIONS, RECIPES, RESOURCE_NAMES, constructionRefund } from './data.js';
 import { techNodeStates, currentSwordRate, TECHNOLOGIES, isKindUnlocked, isRecipeUnlocked } from './technology.js';
-import { resourceIcon } from './icons.js';
+import { resourceIcon, furnaceIcon } from './icons.js';
 import { getGolemGuide } from './golem-guide.js';
 import { getObjective } from './objectives.js';
 import { hasBufferRoom } from './logistics-visuals.js';
@@ -10,6 +10,7 @@ import type { Direction, GameState, Kind, Resource, TechId, RecipeId, Building }
 export interface UICallbacks {
   onBuild(kind: Kind): void; onSpeed(speed: 0 | 1 | 2): void;
   onSave(): void; onLoad(): void; onRotate(): void; onRemove(): void;
+  onUndoBuild(): void;
   onFeed(resource: Resource, amount: number): void; onCollect(resource?: Resource, amount?: number): void;
   onCancel(): void; onResetCamera(): void; onNew(): void;
   onGuideAction(): void; onGuideToggle(show?: boolean): void;
@@ -20,7 +21,7 @@ export interface UICallbacks {
   onTechnologyToggle(show?: boolean): void; onResearch(id: TechId): void; onTrack(id: TechId | null): void; onRecipe(recipe: RecipeId): void;
 }
 export interface UIState {
-  kind: Kind | null; direction: Direction; selectedId: number | null; speed: 0 | 1 | 2;
+  kind: Kind | null; direction: Direction; selectedId: number | null; speed: 0 | 1 | 2; undoLabel?: string | null;
   power: { stored: number; capacity: number }; message: string; hover?: { x: number; z: number } | null; guide?: GuideStep | null; technologyOpen?: boolean; golemGuideOpen?: boolean; demolition?: Building | null;
 }
 const RESOURCE_LABELS = RESOURCE_NAMES;
@@ -29,13 +30,13 @@ const TECH_IDS: TechId[] = TECHNOLOGIES.map(node => node.id);
 const TECH_LABELS = Object.fromEntries(TECHNOLOGIES.map(node => [node.id, node.label])) as Record<TechId, string>;
 const DIRECTIONS = ['北 ↑', '東 →', '南 ↓', '西 ←'];
 const BUILDINGS = Object.keys(DEFINITIONS) as Kind[];
-const ICONS: Record<Kind, string> = { miner: '⚒', belt: '→', smelter: '♨', generator: '✦', wire: '⌁', lumber: '♣', delivery: '▣', splitter: '⑂', storage: '▤', crystalMiner: '◇', crystalRefiner: '◈', assembler: '⚔', runeCarver: '✧', frameForge: '□', golemForge: '♟', golemRelay: '⇄', alchemyLab: '⚗', portalForge: '◉', portalGate: '◎', seedLoom: '❋', worldTree: '♧' };
+const ICONS: Record<Kind, string> = { miner: '⚒', belt: '→', smelter: '▰', generator: 'ϟ', wire: '⌁', lumber: '♣', delivery: '▣', splitter: '⑂', storage: '▤', crystalMiner: '◇', crystalRefiner: '◈', assembler: '⚔', runeCarver: '✧', frameForge: '□', golemForge: '♟', golemRelay: '⇄', alchemyLab: '⚗', portalForge: '◉', portalGate: '◎', seedLoom: '❋', worldTree: '♧' };
 const DESCRIPTIONS: Record<Kind, string> = {
   miner: '鉱脈の上に設置。魔力2で鉄鉱石1を2秒で採掘。矢印へ排出。',
   belt: '矢印の先へ1個ずつ搬送。1区画0.5秒。ドラッグで連続配置。',
-  smelter: '鉄鉱石2と魔力5で鉄延べ棒1を4秒で精錬。入力は隣接、出力は矢印。',
-  generator: '木材1から魔力30を10秒で生成。蓄積上限30。隣接する導線へ供給。',
-  wire: '隣り合う導線・魔力炉・採掘機・魔導炉を魔力網で接続。',
+  smelter: '角形の炉と煙突。鉄鉱石2＋魔力5 → 鉄の延べ棒1（4秒）。素材は隣接から、完成品は矢印側のベルトへ出力。',
+  generator: '浮いた結晶と支柱。木材1 → 魔力30（10秒、蓄積30）。魔力は導線へ供給し、ベルトへの完成品出力はありません。',
+  wire: '隣り合う導線・魔力発生炉・採掘機・製錬炉を魔力網で接続。',
   lumber: '森林の上に設置。木材1を3秒で採取。矢印へ排出。',
   delivery: '鉄の延べ棒・魔導剣を受け取る納品専用の箱。自動生産し自動搬送された品だけ目標に加算。収納・取り出しはできません。',
   splitter: '前方と右側（時計回り90°）の2つの出力口へ交互に分岐。片方が詰まると空いた口へ送ります。',
@@ -96,7 +97,7 @@ export class GameUI {
         <div class="workshop-title">魔導からくり工房<span id="objective-summary"><b id="objective-title"></b> <b id="objective-count"></b></span><span class="legacy-goal" title="鉄の延べ棒の累積自動納品"><i class="ingot-icon" aria-hidden="true"></i> 鉄の延べ棒 自動納品 <b id="delivered-count">0</b> / 100 <small class="goal-condition">自動生産→自動搬送品のみ</small></span></div>
         <div class="resource-strip" aria-label="所持資源"><span title="所持 木材">木材 <b data-resource="wood">0</b></span><span title="所持 鉄鉱石">鉱石 <b data-resource="ore">0</b></span><span title="所持 鉄の延べ棒">延べ棒 <b data-resource="ingot">0</b></span><span title="所持 精製魔晶原石">原石 <b data-resource="rawCrystal">0</b></span><span title="所持 精製魔晶">魔晶 <b data-resource="crystal">0</b></span><span title="所持 魔導剣">魔導剣 <b data-resource="sword">0</b></span><span>魔力 <b id="power-count">0 / 0</b></span></div><button data-action="technology-open" class="technology-open">技術ツリー</button>
         <div class="time-controls" aria-label="時間速度"><button data-speed="0" aria-label="一時停止" title="一時停止（Space）">Ⅱ</button><button data-speed="1" aria-label="1倍速">1×</button><button data-speed="2" aria-label="2倍速">2×</button></div>
-        <details class="game-menu"><summary aria-label="操作と保存メニュー">☰ <span>メニュー</span></summary><div class="menu-body"><button data-action="menu-close" class="menu-close">メニューを閉じる ×</button><div class="menu-actions"><button data-action="save">保存</button><button data-action="load">読込</button><button data-action="camera">視点を戻す</button><button data-action="new">新しい工房</button><button data-action="golem-guide-open">ゴーレムの使い方</button><button data-action="gather-wood" title="森林から木材1個を手採取。生産実績には算入しません。">木材を手採取</button><button data-action="guide-open">はじめての案内</button><button data-action="build-open">建設一覧を表示</button><button data-action="selection-open">設備詳細を表示</button><button data-action="help-close">操作説明を閉じる</button></div><details id="main-help"><summary>操作方法・つくり方</summary><div class="help-text"><p>鉱脈に採掘機 → ベルト → 魔導炉 → ベルト → 納品箱をつなごう。魔力炉と機械は魔力導線で接続。魔力炉を選び木材を補給すると起動できます。</p><p>最初の配置例（座標 X, Z。地形を指すと座標が表示されます）:<br>採掘機 (12,16) → ベルト (13,16) → 魔導炉 (14,16) → ベルト (15,16) → 納品箱 (16,16)。全て東向き。<br>魔力炉 (12,18) と、導線 (12,17)・(13,17)・(14,17) を設置。魔力炉を選び木材1を補給。<br>木材採取場 (9,18) → ベルト (10,18)・(11,18) → 魔力炉 (12,18) と東向きにつなぐと燃料も自動化。</p><p>左クリック: 配置 / 選択<br>ベルト選択中に左ドラッグ: 連続敷設<br>右ドラッグ / WASD: 移動<br>中ドラッグ / Q・E: 視点回転<br>ホイール: ズーム<br>R: 設備回転、Shift＋クリック: 複製<br>X＋クリック: 撤去確認、Delete: 選択設備の撤去確認<br>Esc: 建設取消・撤去のキャンセル<br>Space: 一時停止 / 再開</p><p>配置プレビュー: 緑は建設可能、赤は建設不可。金の矢印が出力方向。結晶の青は魔力あり、紫は魔力網につながっているが蓄積なし、橙は魔力網に未接続。</p><p>納品箱は鉄の延べ棒と魔導剣を受け入れます。採掘から加工・搬送まで自動でつないだ品だけを実績へ数えます。手で取り出し・再投入した品は算入しません。魔力切れは木材の手動補給で復旧できます。木材が0なら、メニューの「木材を手採取」で1個ずつ採れます。保存はこのブラウザの1スロットです。</p><button data-action="help-close">操作説明を閉じる ×</button></div></details></div></details>
+        <details class="game-menu"><summary aria-label="操作と保存メニュー">☰ <span>メニュー</span></summary><div class="menu-body"><button data-action="menu-close" class="menu-close">メニューを閉じる ×</button><div class="menu-actions"><button data-action="save">保存</button><button data-action="load">読込</button><button data-action="camera">視点を戻す</button><button data-action="new">新しい工房</button><button data-action="golem-guide-open">ゴーレムの使い方</button><button data-action="gather-wood" title="森林から木材1個を手採取。生産実績には算入しません。">木材を手採取</button><button data-action="guide-open">はじめての案内</button><button data-action="build-open">建設一覧を表示</button><button data-action="selection-open">設備詳細を表示</button><button data-action="help-close">操作説明を閉じる</button></div><details id="main-help"><summary>操作方法・つくり方</summary><div class="help-text"><p>鉱脈に採掘機 → ベルト → 製錬炉 → ベルト → 納品箱をつなごう。魔力発生炉と機械は魔力導線で接続。魔力発生炉を選び木材を補給すると起動できます。</p><p>最初の配置例（座標 X, Z。地形を指すと座標が表示されます）:<br>採掘機 (12,16) → ベルト (13,16) → 製錬炉 (14,16) → ベルト (15,16) → 納品箱 (16,16)。全て東向き。<br>魔力発生炉 (12,18) と、導線 (12,17)・(13,17)・(14,17) を設置。魔力発生炉を選び木材1を補給。<br>木材採取場 (9,18) → ベルト (10,18)・(11,18) → 魔力発生炉 (12,18) と東向きにつなぐと燃料も自動化。</p><p>1本指タップ（離した時）: 配置 / 選択<br>2本指: 地図移動・ピンチ拡縮<br>1本指ドラッグは配置しません。マウス左ドラッグ: ベルト連続敷設<br>↶ 配置取消 / Ctrl・⌘ Z: 未稼働の配置を全額取消<br>既存ベルトも撤去で木材1・鉄1を全額回収<br>左クリック: 配置 / 選択<br>右ドラッグ / WASD: 移動<br>中ドラッグ / Q・E: 視点回転<br>ホイール: ズーム<br>R: 設備回転、Shift＋クリック: 複製<br>X＋クリック: 撤去確認、Delete: 選択設備の撤去確認<br>Esc: 建設取消・撤去のキャンセル<br>Space: 一時停止 / 再開</p><p>配置プレビュー: 緑は建設可能、赤は建設不可。金の矢印が出力方向。結晶の青は魔力あり、紫は魔力網につながっているが蓄積なし、橙は魔力網に未接続。</p><p>納品箱は鉄の延べ棒と魔導剣を受け入れます。採掘から加工・搬送まで自動でつないだ品だけを実績へ数えます。手で取り出し・再投入した品は算入しません。魔力切れは木材の手動補給で復旧できます。木材が0なら、メニューの「木材を手採取」で1個ずつ採れます。保存はこのブラウザの1スロットです。</p><button data-action="help-close">操作説明を閉じる ×</button></div></details></div></details>
       </header>
       <button id="tracked-goal" class="tracked-goal" data-action="technology-open" hidden></button>
       <aside id="golem-guide" class="golem-guide" hidden aria-label="ゴーレムの使い方"><div class="golem-guide-heading"><h2>ゴーレムの使い方</h2><button data-action="golem-guide-close">閉じる ×</button></div><p id="golem-guide-progress"></p><h3 id="golem-guide-title"></h3><p id="golem-guide-detail"></p><button data-action="golem-guide-action">次の操作へ</button><ul id="golem-guide-blockers"></ul></aside>
@@ -114,12 +115,12 @@ export class GameUI {
       </aside>
       <div class="workshop-notices"><p id="game-message" role="status" aria-live="polite">鉱脈に採掘機を建て、工房を動かそう。</p><p id="victory-message" hidden>工房完成！ 鉄延べ棒100本の自動納品を達成しました。続けて工房を拡張できます。</p></div>
       <aside id="selection-panel" class="selection-panel" hidden aria-label="設備の詳細">
-        <button class="panel-close" data-action="close-panel" aria-label="設備詳細を閉じる">×</button><h2 id="selection-title"></h2><p id="selection-description"></p>
+        <button class="panel-close" data-action="close-panel" aria-label="設備詳細を閉じる">×</button><h2 id="selection-title"></h2><p id="selection-description"></p><div id="furnace-role" class="furnace-role" hidden></div>
         <div id="facility-feed-slots" class="facility-feed-slots"></div><div id="portal-controls" hidden><div class="portal-channels" aria-label="転送門の接続番号"><button data-portal-channel="1">接続1</button><button data-portal-channel="2">接続2</button><button data-portal-channel="3">接続3</button></div><div class="portal-roles"><button data-portal-role="send">送信門</button><button data-portal-role="receive">受信門</button></div><p id="portal-pair"></p><p id="portal-state"></p></div><div id="tree-controls" hidden><label>世界樹の成長 <progress id="tree-growth" max="10" value="0"></progress></label><p id="tree-growth-text"></p><small>自動生産し、手で回収せず、転送門を通して届いた世界樹の種が対象です。</small></div><div id="relay-controls" hidden><p id="relay-worker"></p><div class="relay-policies"><button data-relay-policy="fuel">♣ 燃料補給</button><button data-relay-policy="materials">◇ 材料補給</button></div><p id="relay-transfers"></p><p id="relay-route"></p><div id="relay-inspections"><button data-action="relay-source">収納箱を見る</button><button data-action="relay-target">補給先を見る</button></div><button data-action="golem-guide-open">運用の案内を見る</button><small>収納箱と補給先は半径6区画。燃料補給20回で自律工房の実績を達成。</small></div><div id="delivery-summary" hidden></div><div id="recipe-controls" hidden><label>生産レシピ<select id="recipe-select"></select></label><p id="recipe-lock-reason"></p></div><div id="storage-controls" hidden><p id="storage-capacity"></p><div class="transfer-toolbar"><span>移動する個数</span><button data-transfer-mode="one" aria-pressed="true">1個</button><button data-transfer-mode="all" aria-pressed="false">全量</button></div><div class="chest-transfer"><section><h3>手持ち <span>→</span></h3><div id="inventory-slots" class="item-slots"></div><button data-action="deposit-all">まとめて預ける</button></section><section><h3>収納箱 <span>←</span></h3><div id="chest-slots" class="item-slots"></div><button data-action="withdraw-all">まとめて取り出す</button></section></div><p class="transfer-hint">クリックで1個、Shift＋クリックで全量。キーボードのEnterでも移動できます。取り出した品は手動扱いになります。</p><details id="advanced-collect"><summary>品目と個数を指定</summary><ul id="storage-items"></ul><label>取り出す品<select id="collect-resource"></select></label><label>個数<input id="collect-amount" type="number" min="1" max="32" value="1" step="1"></label><button data-action="collect-count">選んだ品を取り出す</button></details></div><dl><div><dt>稼働状態</dt><dd id="selection-status"></dd></div><div><dt>入出力・方向</dt><dd id="selection-direction"></dd></div><div><dt>内部の資源</dt><dd id="selection-buffer"></dd></div><div><dt>作業進捗</dt><dd id="selection-progress"></dd></div><div><dt>蓄積魔力</dt><dd id="selection-power"></dd></div></dl>
         <div class="selection-actions"><button data-action="rotate">回転 R</button><button data-action="collect">資源を回収</button><button data-action="remove" class="danger">撤去</button></div>
         <details id="advanced-feed"><summary>個数を指定して補給</summary><form id="feed-form"><label>手動補給<select id="feed-resource"><option value="wood">木材</option><option value="ore">鉄鉱石</option><option value="ingot">鉄の延べ棒</option><option value="rawCrystal">魔晶原石</option><option value="crystal">精製魔晶</option><option value="sword">魔導剣</option></select></label><label>個数<input id="feed-amount" type="number" min="1" max="1000" step="1" value="1" inputmode="numeric"></label><button type="submit" data-action="feed">補給する</button><small>手動の鉱石・延べ棒・精製魔晶等は目標に含めません。木材燃料は手動補給できます。</small></form></details>
       </aside>
-      <nav id="quickbar" class="quickbar" aria-label="登録した建設設備"><button id="build-reopen" data-action="build-open">建設一覧</button><div id="quick-slots"></div><button data-action="golem-guide-open" class="quick-golem-guide" aria-label="ゴーレムの使い方">♟？</button><button data-action="rotate" aria-label="建設方向を回転">↻</button><button data-action="cancel" aria-label="建設を取り消す">×</button></nav>
+      <nav id="quickbar" class="quickbar" aria-label="登録した建設設備"><button id="build-reopen" data-action="build-open">建設一覧</button><div id="quick-slots"></div><button data-action="undo-build" class="undo-build" disabled>↶<span>配置取消</span></button><button data-action="golem-guide-open" class="quick-golem-guide" aria-label="ゴーレムの使い方">♟？</button><button data-action="rotate" aria-label="建設方向を回転">↻</button><button data-action="cancel" aria-label="建設を取り消す">×</button></nav>
       <footer class="build-dock" hidden><div class="build-context"><span id="build-context">建設する設備を選ぶ</span><button data-action="rotate" aria-label="建設方向を回転">↻ R</button><button data-action="cancel">取消 Esc</button><button data-action="build-close" aria-label="建設一覧を閉じる">閉じる ×</button></div><label class="catalog-search">設備を探す<input id="build-search" type="search" placeholder="名前・素材・用途で検索" autocomplete="off"></label><p id="catalog-suggestion"></p><nav id="build-categories" aria-label="設備のカテゴリー"></nav><div class="registration-hint"><span id="registration-label">登録先 1</span><div id="registration-buttons" aria-label="クイックスロット登録先"></div><details class="registration-advanced"><summary>番号指定</summary><select id="registration-slot" aria-label="登録先クイックスロット"></select></details><small>番号を選び、設備の☆で登録 · キー1〜6で選択</small></div><nav class="build-palette" aria-label="建設する設備"></nav></footer>`;
     const palette = this.node('.build-palette');
     for (const kind of BUILDINGS) {
@@ -128,7 +129,7 @@ export class GameUI {
       button.type = 'button'; button.dataset.build = kind; button.setAttribute('aria-pressed', 'false');
       const cost = this.costLabel(kind);
       button.title = `${definition.label} — ${DESCRIPTIONS[kind]} 建設費: ${cost}`;
-      const icon = document.createElement('span'); icon.className = 'build-icon'; icon.textContent = ICONS[kind]; icon.setAttribute('aria-hidden', 'true');
+      const icon = document.createElement('span'); icon.className = 'build-icon'; icon.innerHTML = furnaceIcon(kind) || ICONS[kind]; icon.setAttribute('aria-hidden', 'true');
       const name = document.createElement('span'); name.className = 'build-name'; name.textContent = definition.label;
       const lock = document.createElement('small'); lock.className = 'build-lock-reason';
       const amount = document.createElement('small'); amount.className = 'build-cost'; amount.textContent = cost;
@@ -207,6 +208,7 @@ export class GameUI {
     else if (action === 'camera') this.callbacks.onResetCamera();
     else if (action === 'rotate') this.callbacks.onRotate();
     else if (action === 'remove') this.callbacks.onRemove();
+    else if (action === 'undo-build') this.callbacks.onUndoBuild();
     else if (action === 'collect') this.callbacks.onCollect();
     else if (action === 'cancel') this.callbacks.onCancel();
     else if (action === 'guide-action') {
@@ -274,10 +276,14 @@ export class GameUI {
     this.text('#objective-title', objective.title); this.text('#objective-count', `${objective.current} / ${objective.target}`); this.text('#guide-objective', objective.title);
     this.node('#objective-summary').title = objective.detail;
     this.updateQuickSlots(state, view.kind);
+    const undo = this.node('[data-action="undo-build"]') as HTMLButtonElement;
+    undo.disabled = !view.undoLabel || this.isWorldInputBlocked();
+    undo.title = view.undoLabel ? `${view.undoLabel}の未稼働の配置を全額取消（Ctrl / ⌘ Z）。使用後・読込後は対象外` : '取り消せる未稼働の配置なし。既存ベルトは確認付き撤去で木材・鉄を全額回収できます';
+    undo.setAttribute('aria-label', view.undoLabel ? `${view.undoLabel}の配置を取り消す（全額返却）` : '未稼働の配置を取り消す');
     this.updateGuide(view.guide ?? null);
     this.updateTechnology(state, !!view.technologyOpen);
     this.updateGolemGuide(state, !!view.golemGuideOpen); this.updateDemolition(view.demolition ?? null);
-    const feedback = !!view.guide && /保存|読込|読み込|再開しました|WebGL|表示でき|できません|不正|素材を補給しました|手採取/.test(view.message);
+    const feedback = !!view.guide && /保存|読込|読み込|再開しました|WebGL|表示でき|できません|不正|素材を補給しました|手採取|取り消|返却|未稼働/.test(view.message);
     this.node('#guide-feedback').hidden = !feedback;
     if (feedback) this.text('#guide-feedback', view.message);
     for (const resource of RESOURCES) {
@@ -320,7 +326,13 @@ export class GameUI {
       }
       this.text('#selection-title', `${DEFINITIONS[selected.kind].label} (${selected.x}, ${selected.z})`);
       this.text('#selection-description', DESCRIPTIONS[selected.kind]);
-      this.text('#selection-status', selected.status || (selected.working ? '稼働中' : '待機中'));
+      const role = this.node('#furnace-role'); role.hidden = selected.kind !== 'smelter' && selected.kind !== 'generator';
+      if (!role.hidden && role.dataset.kind !== selected.kind) {
+        role.dataset.kind = selected.kind;
+        role.innerHTML = selected.kind === 'smelter' ? `${furnaceIcon('smelter')}<span>${resourceIcon('ore')} 鉄鉱石2 ＋ 魔力5<br>↓ ${resourceIcon('ingot')} 延べ棒1 → ベルト</span>` : `${furnaceIcon('generator')}<span>${resourceIcon('wood')} 木材1<br>↓ ϟ 魔力30 → 導線<br><small>ベルトへの物品出力なし</small></span>`;
+      }
+
+      this.text('#selection-status', (selected.status || (selected.working ? '稼働中' : '待機中')).replaceAll('魔導炉', '製錬炉').replaceAll('魔力炉', '魔力発生炉'));
       this.text('#selection-direction', selected.kind === 'generator' ? '木材は隣接から · 魔力は導線網' : selected.kind === 'wire' ? '直交接続（方向なし）' : selected.kind === 'golemRelay' ? '半径6区画（方向なし）' : selected.kind === 'worldTree' ? '種を隣接から受け入れ（出力なし）' : selected.kind === 'portalGate' ? (selected.portalRole === 'receive' ? `受信門 · 出力 ${DIRECTIONS[selected.direction]}` : '送信門 · 全隣接から入力（通常出力なし）') : selected.kind === 'delivery' ? '全隣接から受け入れ（出力なし）' : `${DIRECTIONS[selected.direction]}${selected.kind === 'splitter' ? ` / 右側 ${DIRECTIONS[(selected.direction + 1) % 4]}` : ''} · 入力は隣接から`);
       const counts = Object.fromEntries(RESOURCES.map(resource => [resource, 0])) as Record<Resource, number>;
       [...selected.input, ...selected.output, ...(selected.reserved ?? []), ...(selected.item ? [selected.item] : [])].forEach(item => counts[item.resource]++);
@@ -376,11 +388,12 @@ export class GameUI {
     if (changed) { this.demolitionId = building.id; this.demolitionSubmitted = false; }
     const reserved = building.kind === 'generator' && (building.pendingEnergy ?? 0) > 0 ? [] : building.reserved ?? [];
     const contents = [...building.input, ...building.output, ...reserved, ...(building.item ? [building.item] : []), ...(building.golemWorker ? [building.golemWorker] : [])];
-    const resources = Object.fromEntries(RESOURCES.map(resource => [resource, Math.floor((DEFINITIONS[building.kind].cost[resource] ?? 0) / 2)])) as Record<Resource, number>;
+    const refund = constructionRefund(building.kind);
+    const resources = Object.fromEntries(RESOURCES.map(resource => [resource, refund[resource] ?? 0])) as Record<Resource, number>;
     for (const item of contents) resources[item.resource]++;
     const summary = RESOURCES.filter(resource => resources[resource]).map(resource => `${RESOURCE_LABELS[resource]} ${resources[resource]}`).join('、') || '回収できる資源はありません';
     this.text('#demolition-target', `${ICONS[building.kind]} ${DEFINITIONS[building.kind].label} (${building.x}, ${building.z})`);
-    this.text('#demolition-summary', `撤去すると建設素材の半分（切り捨て）と現在の中身を回収します。回収予定: ${summary}。${building.golemWorker ? '配置中のゴーレムも回収します。' : ''}`);
+    this.text('#demolition-summary', `撤去すると${building.kind === 'belt' ? 'ベルトの建設素材は全額' : '建設素材の半分（切り捨て）'}と現在の中身を回収します。回収予定: ${summary}。${building.golemWorker ? '配置中のゴーレムも回収します。' : ''}`);
     (this.node('[data-action="remove-confirm"]') as HTMLButtonElement).disabled = this.demolitionSubmitted;
     if (!dialog.open) { dialog.showModal(); this.node('[data-action="remove-cancel"]').focus(); }
   }
@@ -423,7 +436,7 @@ export class GameUI {
     host.replaceChildren();
     this.quickSlots.forEach((kind, index) => {
       const button = document.createElement('button'); button.type = 'button'; button.dataset.quick = String(index); button.className = 'quick-slot';
-      button.innerHTML = `<small>${index + 1}</small><span class="quick-icon" aria-hidden="true">${ICONS[kind]}</span><span class="quick-name"></span><span class="quick-lock" hidden>🔒</span><span class="quick-cost"></span>`;
+      button.innerHTML = `<small>${index + 1}</small><span class="quick-icon" aria-hidden="true">${furnaceIcon(kind) || ICONS[kind]}</span><span class="quick-name"></span><span class="quick-lock" hidden>🔒</span><span class="quick-cost"></span>`;
       button.querySelector('.quick-name')!.textContent = DEFINITIONS[kind].label; button.setAttribute('aria-label', `${index + 1}: ${DEFINITIONS[kind].label}`); host.append(button);
     });
   }
@@ -441,7 +454,8 @@ export class GameUI {
   private filterPalette(): void {
     this.node('#build-categories').querySelectorAll<HTMLButtonElement>('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.category === this.category)));
     this.node('.build-palette').querySelectorAll<HTMLElement>('[data-build-tile]').forEach(tile => {
-      const kind = tile.dataset.buildTile as Kind; const text = `${DEFINITIONS[kind].label} ${DESCRIPTIONS[kind]} ${this.costLabel(kind)} ${TECH_LABELS[DEFINITIONS[kind].technology ?? 'basic']}`.toLocaleLowerCase();
+      const kind = tile.dataset.buildTile as Kind; const alias = kind === 'smelter' ? '魔導炉' : kind === 'generator' ? '魔力炉' : '';
+      const text = `${DEFINITIONS[kind].label} ${alias} ${DESCRIPTIONS[kind]} ${this.costLabel(kind)} ${TECH_LABELS[DEFINITIONS[kind].technology ?? 'basic']}`.toLocaleLowerCase();
       tile.hidden = !CATEGORIES[this.category].kinds.includes(kind) || !text.includes(this.search);
     });
   }

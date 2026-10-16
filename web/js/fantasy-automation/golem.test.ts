@@ -87,7 +87,7 @@ test('both source and target use Manhattan range independently and report missin
   const valid=fixture([building(1,'storage',4,10,{input:[auto('wood')]}),building(2,'golemRelay',10,10,{golemWorker:auto('golem')}),building(3,'generator',16,10)]);
   valid.step(); assert.equal(valid.state.stats!.golemTransfers,1);
   const tooFar=fixture([building(1,'storage',4,10,{input:[auto('wood')]}),building(2,'golemRelay',10,10,{golemWorker:auto('golem')}),building(3,'generator',17,10)]);
-  tooFar.step(); assert.match(tooFar.state.buildings[1].status,/範囲6.*魔力炉/); assert.equal(tooFar.state.stats!.golemTransfers,0);
+  tooFar.step(); assert.match(tooFar.state.buildings[1].status,/範囲6.*魔力発生炉/); assert.equal(tooFar.state.stats!.golemTransfers,0);
   const empty=fixture([building(1,'golemRelay',10,10)]); empty.step(); assert.match(empty.state.buildings[0].status,/1体投入/);
   empty.state.buildings[0].golemWorker=auto('golem'); empty.step(); assert.match(empty.state.buildings[0].status,/範囲6.*収納箱/);
 });

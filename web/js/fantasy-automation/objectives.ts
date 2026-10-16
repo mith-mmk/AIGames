@@ -68,7 +68,7 @@ export function getObjective(original: GameState): Objective {
   if (nodes.some(node => node.status === 'unlocked' && node.id !== 'basic' && node.id !== 'logistics')) return technologyObjective(state, prerequisiteGoal(remaining));
   if (state.delivered < GOAL) return {
     title: '鉄の延べ棒を100本自動納品',
-    detail: '採掘機→魔導炉→納品箱をつなぎ、自動生産した鉄の延べ棒を自動搬送してください。手で投入・回収した品は数えません。研究条件を達成すると次の目標へ進みます。',
+    detail: '採掘機→製錬炉→納品箱をつなぎ、自動生産した鉄の延べ棒を自動搬送してください。手で投入・回収した品は数えません。研究条件を達成すると次の目標へ進みます。',
     resource: 'ingot', current: state.delivered, target: GOAL, action: 'guide', completed: false,
   };
   return technologyObjective(state, prerequisiteGoal(remaining));

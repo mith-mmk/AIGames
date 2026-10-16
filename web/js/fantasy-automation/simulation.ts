@@ -1,9 +1,10 @@
-import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, GOLEM_INTERVAL, GOLEM_RANGE, INPUT_CAPACITY, OUTPUT_CAPACITY, PORTAL_ENERGY, PORTAL_INTERVAL, POWER_KINDS, RECIPES, RESOURCES, RESOURCE_NAMES, STORAGE_CAPACITY, TREE_INTERVAL, getRecipe } from './data';
+import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, GOLEM_INTERVAL, GOLEM_RANGE, INPUT_CAPACITY, OUTPUT_CAPACITY, PORTAL_ENERGY, PORTAL_INTERVAL, POWER_KINDS, RECIPES, RESOURCES, RESOURCE_NAMES, STORAGE_CAPACITY, TREE_INTERVAL, constructionRefund, getRecipe } from './data';
 import { migrateGameState } from './migration';
 import { canResearch, currentSwordRate, isKindUnlocked, isRecipeUnlocked } from './technology';
 import { DIRECTIONS, SIZE, STEP, type Building, type Command, type CommandResult, type Direction, type GameState, type Item, type Kind, type Resource } from './types';
 
-type Network = { generators: Building[] };
+type Network = { generators: Building[]; members: number[] };
+type PlacementReceipt = { id: number; kind: Kind; kit: boolean; paid: Item[]; tracked: Item[] };
 type Transfer = { source: Building; target: Building; item: Item; sourceSlot: 'item' | 'input' | 'output'; port: 0 | 1 };
 const TECHNOLOGIES = ['basic', 'logistics', 'crystals', 'assembly', 'mastery', 'runecraft', 'golemcraft', 'sanctuary', 'alchemy', 'portalcraft', 'worldGrafting', 'worldAwakened'] as const;
 const key = (x: number, z: number): number => z * SIZE + x;
@@ -15,10 +16,12 @@ const conveyor = (building: Building): boolean => building.kind === 'belt' || bu
 /** A serializable simulation: one step is exactly 50 ms, independent of the view. */
 export class Simulation {
   state!: GameState;
+  private placements: PlacementReceipt[] = [];
 
   constructor(seed = 662) { this.init(seed); }
 
   init(seed = this.state?.seed ?? 662): void {
+    this.placements = [];
     const terrain: GameState['terrain'] = Array(SIZE * SIZE).fill('grass');
     let randomState = seed >>> 0;
     const random = (): number => {
@@ -54,6 +57,7 @@ export class Simulation {
   restore(state: GameState): void {
     if (!Array.isArray(state.terrain) || state.terrain.length !== SIZE * SIZE || !Array.isArray(state.buildings)) throw new Error('保存データの形式が正しくありません');
     this.state = migrateGameState(structuredClone(state));
+    this.placements = [];
     this.state.buildings.sort((a, b) => a.id - b.id);
   }
 
@@ -76,6 +80,18 @@ export class Simulation {
   }
 
   command(command: Command): CommandResult {
+    if (command.type === 'undoBuild') {
+      const candidate = this.undoPlacement();
+      if (!candidate) return failure('取り消せる未稼働の配置がありません。読込後には配置履歴を引き継ぎません');
+      const receipt = this.placements.find(value => value.id === candidate.id)!;
+      this.markUsed(candidate.id); this.detach(candidate);
+      if (receipt.kit) this.state.kits[receipt.kind] = (this.state.kits[receipt.kind] ?? 0) + 1;
+      else {
+        for (const item of receipt.paid) this.state.inventory[item.resource] = (this.state.inventory[item.resource] ?? 0) + 1;
+        this.state.inventoryItems!.push(...receipt.tracked.map(item => ({ ...item })));
+      }
+      return success(`${DEFINITIONS[receipt.kind].label}の未稼働の配置を取り消し、支払った資材・キットを全額返却しました`);
+    }
     if (command.type === 'gatherWood') {
       if (!this.state.terrain.includes('forest')) return failure('この地図には手採取できる森林がありません');
       this.putInventory([{ resource: 'wood', automated: false, handled: true }]);
@@ -95,8 +111,12 @@ export class Simulation {
     if (command.type === 'build') {
       const result = this.canBuild(command.kind, command.x, command.z, command.direction);
       if (!result.ok) return result;
-      if ((this.state.kits[command.kind] ?? 0) > 0) this.state.kits[command.kind]!--;
-      else for (const resource of RESOURCES) this.takeInventory(resource, DEFINITIONS[command.kind].cost[resource] ?? 0);
+      const kit = (this.state.kits[command.kind] ?? 0) > 0;
+      const tracked = new Set(this.state.inventoryItems);
+      const paid: Item[] = [];
+      if (kit) this.state.kits[command.kind]!--;
+      else for (const resource of RESOURCES) paid.push(...this.takeInventory(resource, DEFINITIONS[command.kind].cost[resource] ?? 0));
+      const id = this.state.nextId;
       const recipe = DEFINITIONS[command.kind].recipes?.[0];
       this.state.buildings.push({
         id: this.state.nextId++, kind: command.kind, x: command.x, z: command.z, direction: command.direction,
@@ -106,22 +126,21 @@ export class Simulation {
         ...(command.kind === 'portalGate' ? { portalChannel: 1, portalRole: 'send', portalCooldown: 0 } : {}),
         ...(command.kind === 'worldTree' ? { treeGrowth: 0 } : {}),
       });
+      this.placements.push({ id, kind: command.kind, kit, paid, tracked: paid.filter(item => tracked.has(item)) });
+      if (this.placements.length > 64) this.placements.shift();
       return success(`${DEFINITIONS[command.kind].label}を設置しました`);
     }
     const building = this.state.buildings.find(candidate => candidate.id === command.id);
     if (!building) return failure('設備が見つかりません');
     if (command.type === 'remove') {
+      this.markUsed(building.id);
       // Completed generator fuel is burned; its remaining magic is an output, not recoverable wood.
       const reserved = building.kind === 'generator' && (building.pendingEnergy ?? 0) > 0 ? [] : (building.reserved ?? []);
       this.putInventory([...building.input, ...building.output, ...reserved, ...(building.item ? [building.item] : []), ...(building.golemWorker ? [building.golemWorker] : [])]);
-      for (const resource of RESOURCES) this.state.inventory[resource] = (this.state.inventory[resource] ?? 0) + Math.floor((DEFINITIONS[building.kind].cost[resource] ?? 0) / 2);
-      this.state.buildings = this.state.buildings.filter(candidate => candidate.id !== building.id);
-      const cell = key(building.x, building.z);
-      if (this.state.pendingCrystalCells?.includes(cell)) {
-        this.state.terrain[cell] = 'crystal';
-        this.state.pendingCrystalCells = this.state.pendingCrystalCells.filter(pending => pending !== cell);
-      }
-      return success('設備を撤去しました。中身と建設素材の半分を回収');
+      const refund = constructionRefund(building.kind);
+      for (const resource of RESOURCES) this.state.inventory[resource] = (this.state.inventory[resource] ?? 0) + (refund[resource] ?? 0);
+      this.detach(building);
+      return success(building.kind === 'belt' ? 'ベルトを撤去しました。中身と建設素材の全額を回収（木材1・鉄の延べ棒1）' : '設備を撤去しました。中身と建設素材の半分を回収');
     }
     if (command.type === 'rotate') {
       building.direction = ((building.direction + 1) % 4) as Direction;
@@ -159,6 +178,7 @@ export class Simulation {
       if (conveyor(building) && (building.item || command.amount !== 1)) return failure('搬送設備には空き区画へ1個ずつ投入してください');
       if (!conveyor(building) && building.kind !== 'delivery' && !this.canReceive(building, command.resource, command.amount)) return failure('入力庫が満杯、または他のレシピ素材用の空きが必要です');
       const items = this.takeInventory(command.resource, command.amount).map(item => ({ ...item, handled: true }));
+      this.markUsed(building.id);
       if (building.kind === 'delivery') building.status = '手動納品（目標には算入されません）';
       else if (conveyor(building)) { building.item = items[0]; building.beltProgress = 0; }
       else building.input.push(...items);
@@ -170,6 +190,7 @@ export class Simulation {
       const available = [...building.input, ...building.output, ...(building.item ? [building.item] : [])].filter(item => command.resource === undefined || item.resource === command.resource).length;
       if (command.amount !== undefined && command.amount > available) return failure(`回収できる品は${available}個です（稼働中の素材は予約済み）`);
       let remaining = command.amount ?? available;
+      if (remaining > 0) this.markUsed(building.id);
       const recovered: Item[] = [];
       const take = (items: Item[]): Item[] => items.filter(item => {
         if (remaining > 0 && (command.resource === undefined || item.resource === command.resource)) { recovered.push(item); remaining--; return false; }
@@ -184,6 +205,26 @@ export class Simulation {
       return success(`素材を${recovered.length}個回収しました${building.working ? '（稼働中の素材は予約済み）' : ''}`);
     }
     return failure('操作が不正です');
+  }
+
+  /** Receipts are session-only and exclude any equipment that has ever been used. */
+  undoPlacement(): Building | null {
+    for (const receipt of [...this.placements].reverse()) {
+      const building = this.state.buildings.find(value => value.id === receipt.id);
+      if (building && !building.input.length && !building.output.length && !building.reserved?.length && !building.item && !building.working && !building.progress && !building.energy && !building.pendingEnergy && !building.golemWorker && !building.treeGrowth && !building.golemRoute && !building.portalRoute) return building;
+    }
+    return null;
+  }
+
+  private markUsed(...ids: number[]): void { this.placements = this.placements.filter(receipt => !ids.includes(receipt.id)); }
+
+  private detach(building: Building): void {
+    this.state.buildings = this.state.buildings.filter(candidate => candidate.id !== building.id);
+    const cell = key(building.x, building.z);
+    if (this.state.pendingCrystalCells?.includes(cell)) {
+      this.state.terrain[cell] = 'crystal';
+      this.state.pendingCrystalCells = this.state.pendingCrystalCells.filter(pending => pending !== cell);
+    }
   }
 
   powerSummary(): { stored: number; capacity: number } {
@@ -216,7 +257,7 @@ export class Simulation {
       if (building.kind === 'golemRelay') continue;
       if (conveyor(building)) { building.status = building.item ? (building.beltProgress + 1e-9 >= BELT_SECONDS ? '搬送先が詰まっています' : '搬送中') : '搬送品を待っています'; continue; }
       if (building.kind === 'storage') { building.status = building.input.length >= STORAGE_CAPACITY ? '収納庫が満杯です（32個）' : `収納中 ${building.input.length}/32個`; continue; }
-      if (building.kind === 'wire') { building.status = networks.get(building.id)?.generators.length ? '魔力網に接続中' : '魔力炉に接続してください'; continue; }
+      if (building.kind === 'wire') { building.status = networks.get(building.id)?.generators.length ? '魔力網に接続中' : '魔力発生炉に接続してください'; continue; }
       if (building.kind === 'delivery') { if (!building.status.startsWith('手動')) building.status = this.state.won ? '鉄の延べ棒の目標達成！' : '鉄の延べ棒・魔導剣の自動納品を待っています'; continue; }
       this.produce(building, networks.get(building.id));
     }
@@ -289,6 +330,7 @@ export class Simulation {
       if (receiver.output.length >= OUTPUT_CAPACITY) { sender.status = '受信側の出力庫が満杯です'; continue; }
       if (!this.spend(networks.get(sender.id), PORTAL_ENERGY)) { sender.status = '転送用の魔力が不足しています（2単位必要）'; continue; }
       sender.input.shift(); receiver.output.push({ ...item, throughPortal: true });
+      this.markUsed(sender.id, receiver.id);
       sender.portalCooldown = PORTAL_INTERVAL - 1;
       sender.portalRoute = { targetId: receiver.id, resource: item.resource, tick: this.state.tick };
       sender.status = `${RESOURCE_NAMES[item.resource]}をチャネル${channel}へ転送しました`;
@@ -306,6 +348,7 @@ export class Simulation {
     if (!seed.throughPortal) { tree.status = 'この種は転送門を通っていません。回収し、転送経路を確認してください'; return; }
     if (this.state.tick % TREE_INTERVAL !== 0) { tree.status = `世界樹が成長中です（${tree.treeGrowth ?? 0}/10）`; return; }
     tree.input.shift(); tree.treeGrowth = (tree.treeGrowth ?? 0) + 1;
+    this.markUsed(tree.id);
     this.state.stats!.treeGrowth = (this.state.stats!.treeGrowth ?? 0) + 1;
     tree.status = `世界樹が成長しました（${tree.treeGrowth}/10）`;
   }
@@ -316,7 +359,7 @@ export class Simulation {
     const snapshot = new Map(storages.map(storage => [storage.id, [...storage.input]]));
     for (const relay of buildings.filter(building => building.kind === 'golemRelay')) {
       if (!isKindUnlocked(this.state, relay.kind)) { relay.status = 'ゴーレム補給所を技術ツリーで研究してください'; continue; }
-      if (!relay.golemWorker && relay.input[0]?.resource === 'golem') relay.golemWorker = relay.input.shift();
+      if (!relay.golemWorker && relay.input[0]?.resource === 'golem') { relay.golemWorker = relay.input.shift(); this.markUsed(relay.id); }
       if (!relay.golemWorker) { relay.status = 'ゴーレムを1体投入してください'; continue; }
       if ((relay.golemCooldown ?? 0) > 0) { relay.golemCooldown!--; continue; }
       relay.golemCooldown = GOLEM_INTERVAL - 1;
@@ -326,7 +369,7 @@ export class Simulation {
       const fuel = relay.golemPolicy !== 'materials';
       const targets = buildings.filter(building => inRange(building) && isKindUnlocked(this.state, building.kind) &&
         (fuel ? building.kind === 'generator' : building.kind !== 'generator' && building.kind !== 'miner' && building.kind !== 'crystalMiner' && building.kind !== 'golemRelay' && building.kind !== 'portalGate' && building.kind !== 'worldTree' && Object.keys(this.recipeInput(building)).length > 0));
-      if (targets.length === 0) { relay.status = fuel ? '範囲6区画以内に魔力炉がありません' : '範囲6区画以内に素材を使う製造設備がありません'; continue; }
+      if (targets.length === 0) { relay.status = fuel ? '範囲6区画以内に魔力発生炉がありません' : '範囲6区画以内に素材を使う製造設備がありません'; continue; }
       const needs: { target: Building; resource: Resource; fill: number; energy: number }[] = [];
       for (const target of targets) {
         const recipe = this.recipeInput(target);
@@ -347,6 +390,7 @@ export class Simulation {
           if (!item) continue;
           source.input.splice(source.input.indexOf(item), 1);
           need.target.input.push(item);
+          this.markUsed(source.id, need.target.id, relay.id);
           relay.golemRoute = { sourceId: source.id, targetId: need.target.id, resource: item.resource, tick: this.state.tick };
           this.state.stats!.golemTransfers = (this.state.stats!.golemTransfers ?? 0) + 1;
           if (fuel && item.resource === 'wood' && automatic(item)) this.state.stats!.golemFuelTransfers = (this.state.stats!.golemFuelTransfers ?? 0) + 1;
@@ -366,10 +410,11 @@ export class Simulation {
     const result = new Map<number, Network>();
     for (const building of powered) {
       if (result.has(building.id)) continue;
-      const network: Network = { generators: [] };
+      const network: Network = { generators: [], members: [] };
       const queue = [building]; result.set(building.id, network);
       for (let index = 0; index < queue.length; index++) {
         const current = queue[index];
+        network.members.push(current.id);
         if (current.kind === 'generator') network.generators.push(current);
         for (const [dx, dz] of DIRECTIONS) {
           const x = current.x + dx, z = current.z + dz;
@@ -385,6 +430,7 @@ export class Simulation {
 
   private spend(network: Network | undefined, amount: number): boolean {
     if (!network || network.generators.reduce((sum, generator) => sum + generator.energy, 0) < amount) return false;
+    if (amount > 0) this.markUsed(...network.members);
     let needed = amount;
     for (const generator of network.generators) {
       const consumed = Math.min(needed, generator.energy);
@@ -412,6 +458,7 @@ export class Simulation {
       }
       if (building.kind !== 'generator' && building.output.length >= OUTPUT_CAPACITY) { building.status = '出力庫が満杯です'; return; }
       if (energy > 0 && !this.spend(network, energy)) { building.status = `魔力が不足しています（開始時に${energy}単位必要）`; return; }
+      this.markUsed(building.id);
       // Reserve first matching indices in deterministic input order, including mixed ingredients.
       const needed = { ...input };
       const reserved: Item[] = [];
@@ -483,6 +530,7 @@ export class Simulation {
       for (const transfer of blocked) rejected.add(`${transfer.source.id}:${transfer.target.id}`);
     }
     for (const transfer of plan) {
+      this.markUsed(transfer.source.id, transfer.target.id);
       if (transfer.sourceSlot === 'item') { transfer.source.item = null; transfer.source.beltProgress = 0; }
       else transfer.source[transfer.sourceSlot].shift();
       if (transfer.source.kind === 'splitter') transfer.source.splitCursor = transfer.port === 0 ? 1 : 0;

@@ -1,4 +1,12 @@
-import type { Resource } from './types.js';
+import type { Kind, Resource } from './types.js';
+/** Furnace silhouettes match the square kiln and open crystal generator in the world. */
+export function furnaceIcon(kind: Kind): string {
+  if (kind !== 'smelter' && kind !== 'generator') return '';
+  const shape = kind === 'smelter'
+    ? '<path d="M5 14h20v15H5zM20 14V3h6v21M9 29v-9h12v9M2 29h28"/><path d="m12 25 2-5 3 3 2-4M8 9h6l3 5H6z"/>'
+    : '<path d="m16 2 7 10-7 10-7-10zM5 15v12h22V15M2 30h28M16 6v12M9 12h14"/><path d="m4 21 4-3 3 3m10 0 3-3 4 3M11 27l4-6-1 5h6l-4 5"/>';
+  return `<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" class="furnace-icon furnace-${kind}">${shape}</svg>`;
+}
 /** Original tiny silhouettes, shared by resource slots and the compact HUD. */
 export function resourceIcon(resource: Resource): string {
   const shapes: Record<Resource, string> = {

@@ -9,6 +9,7 @@ import type { Direction, Kind, Resource, RecipeId, TechId } from './types';
 import { SIZE } from './types';
 import { logisticsPorts } from './logistics-visuals';
 import type { GolemGuide } from './golem-guide';
+import { DEFINITIONS } from './data';
 
 class WorkshopApp {
   simulation = new Simulation();
@@ -23,7 +24,7 @@ class WorkshopApp {
   placedAt: { x: number; z: number } | null = null;
   speed: 0 | 1 | 2 = 1;
   previousSpeed: 1 | 2 = 1;
-  message = '採掘機・魔導炉・魔力炉を設置し、ベルトと導線でつなぎましょう。';
+  message = '採掘機・製錬炉・魔力発生炉を設置し、ベルトと導線でつなぎましょう。';
   rendererMessage = '';
   removeMode = false;
   last = 0;
@@ -49,6 +50,7 @@ class WorkshopApp {
       onLoad: () => { void this.resume(); },
       onRotate: () => this.rotate(),
       onRemove: () => this.remove(),
+      onUndoBuild: () => this.undoBuild(),
       onConfirmRemove: id => this.confirmRemove(id),
       onCancelRemove: () => this.cancelRemove(),
       onGolemGuideToggle: show => { this.golemGuideOpen = show ?? !this.golemGuideOpen; this.sync(); },
@@ -169,6 +171,14 @@ class WorkshopApp {
     else if (this.selectedId !== null) this.message = this.simulation.command({ type: 'rotate', id: this.selectedId }).reason;
     this.sync();
   }
+  undoBuild() {
+    if (this.ui.isWorldInputBlocked()) return;
+    const target = this.simulation.undoPlacement();
+    const result = this.simulation.command({ type: 'undoBuild' });
+    this.message = result.reason;
+    if (result.ok) { if (this.selectedId === target?.id) this.selectedId = null; this.placedAt = null; }
+    this.sync();
+  }
   remove() {
     if (this.pendingDemolitionId !== null) return;
     if (this.selectedId !== null) {
@@ -176,7 +186,7 @@ class WorkshopApp {
       this.pendingDemolitionId = this.selectedId; this.demolitionSpeed = this.speed;
       this.removeMode = false; this.xHeld = false; this.kind = null;
       this.setSpeed(0);
-    } else { this.kind = null; this.removeMode = !this.removeMode; this.message = this.removeMode ? '撤去する施設をクリック。Escで取消。' : '撤去モードを解除しました。'; }
+    } else { this.kind = null; this.removeMode = !this.removeMode; this.message = this.removeMode ? '撤去対象をタップ／クリックし、確認画面で確定します。Escで取消。' : '撤去モードを解除しました。'; }
     this.sync();
   }
   confirmRemove(id: number) {
@@ -204,6 +214,7 @@ class WorkshopApp {
   }
   pick(x: number, z: number, event: PointerEvent) {
     if (this.ui.isWorldInputBlocked()) return;
+    if (event.type === 'pointermove' && (this.removeMode || this.xHeld)) return;
     if (event.type === 'pointermove' && this.kind !== 'belt' && !this.removeMode && !this.xHeld) return;
     const building = this.simulation.state.buildings.find(b => b.x === x && b.z === z);
     if (event.type === 'pointermove' && building && !this.removeMode && !this.xHeld) return;
@@ -211,8 +222,7 @@ class WorkshopApp {
       this.kind = building.kind; this.direction = building.direction; this.selectedId = null;
       this.message = '同じ設備を選びました。空き区画へ建設できます。';
     } else if ((this.removeMode || this.xHeld) && building) {
-      this.message = this.simulation.command({ type: 'remove', id: building.id }).reason;
-      if (this.selectedId === building.id) this.selectedId = null;
+      this.selectedId = building.id; this.remove(); return;
     } else if (this.kind && !building) {
       const result = this.simulation.command({ type: 'build', kind: this.kind, x, z, direction: this.direction });
       this.message = result.reason; this.placedAt = result.ok ? { x, z } : null;
@@ -259,7 +269,8 @@ class WorkshopApp {
         if (ports.length) message += ` 出口 ${ports.map(port => `${['北 ↑', '東 →', '南 ↓', '西 ←'][port.direction]} ${labels[port.state]}`).join(' / ')}。`;
       }
     }
-    this.ui.update(this.simulation.state, { kind: this.kind, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover, guide: this.guideStep, technologyOpen: this.technologyOpen, golemGuideOpen: this.golemGuideOpen, demolition: this.simulation.state.buildings.find(building => building.id === this.pendingDemolitionId) ?? null });
+    const undo = this.simulation.undoPlacement();
+    this.ui.update(this.simulation.state, { kind: this.kind, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover, guide: this.guideStep, technologyOpen: this.technologyOpen, golemGuideOpen: this.golemGuideOpen, undoLabel: undo ? `${DEFINITIONS[undo.kind].label} (${undo.x}, ${undo.z})` : null, demolition: this.simulation.state.buildings.find(building => building.id === this.pendingDemolitionId) ?? null });
     this.view?.setInputBlocked(this.ui.isWorldInputBlocked());
   }
   key(event: KeyboardEvent) {
@@ -277,6 +288,7 @@ class WorkshopApp {
       if (event.target.closest('button') && !['KeyR', 'Escape'].includes(event.code)) return;
     }
     if (event.repeat && event.code !== 'KeyX') return;
+    if ((event.ctrlKey || event.metaKey) && event.code === 'KeyZ' && !event.shiftKey) { event.preventDefault(); this.undoBuild(); return; }
     if (event.code === 'Delete' && this.selectedId !== null) { event.preventDefault(); this.remove(); return; }
     if (/^Digit[1-6]$/.test(event.code)) { event.preventDefault(); this.ui.chooseQuickSlot(Number(event.code.slice(-1)) - 1); return; }
     if (event.code === 'KeyX') { this.xHeld = true; this.message = 'Xを押しながら施設をクリックして撤去。'; }

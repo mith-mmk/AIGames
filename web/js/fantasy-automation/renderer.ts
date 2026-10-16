@@ -341,14 +341,22 @@ export class WorldView {
           gem.scale.set(0.16, 0.26, 0.16); gem.position.set(0.23, 0.77, 0.15); group.add(gem);
         }
       } else if (kind === 'smelter') {
-        this.cylinder(group, 0xa36a59, 0.32, 0.58, [0, 0.41, 0]);
-        this.cylinder(group, 0xeacb9a, 0.2, 0.16, [0, 0.77, 0], true);
-        this.box(group, 0x544e50, [0.17, 0.6, 0.17], [0.23, 0.86, 0.2]);
-        this.box(group, 0xffbd66, [0.23, 0.17, 0.035], [0, 0.35, 0.33]);
+        this.box(group, 0xa66a48, [0.65, 0.53, 0.59], [0, 0.39, 0]);
+        this.box(group, 0xe4ba80, [0.73, 0.08, 0.65], [0, 0.69, 0]);
+        this.box(group, 0x423f40, [0.2, 0.7, 0.2], [0.23, 0.99, 0.17]);
+        this.box(group, 0x292b2c, [0.36, 0.26, 0.025], [0, 0.34, 0.31]);
+        this.box(group, 0xffac4b, [0.25, 0.14, 0.03], [0, 0.29, 0.33]);
+        this.box(group, 0x414d55, [0.46, 0.08, 0.25], [-0.12, 0.22, -0.36]);
+        for (const x of [-0.2, -0.04]) this.box(group, 0xd0d9d8, [0.12, 0.07, 0.17], [x, 0.29, -0.35]);
       } else if (kind === 'generator') {
-        this.cylinder(group, 0x736ba0, 0.34, 0.55, [0, 0.39, 0]);
-        this.cylinder(group, 0xadcbd8, 0.24, 0.3, [0, 0.82, 0], true);
-        this.box(group, 0xc7a66f, [0.65, 0.08, 0.65], [0, 0.63, 0]);
+        this.cylinder(group, 0x5e5687, 0.39, 0.19, [0, 0.22, 0]);
+        for (const x of [-0.29, 0.29]) for (const z of [-0.23, 0.23]) this.box(group, 0xd0ad67, [0.055, 0.64, 0.055], [x, 0.57, z]);
+        const crystal = new THREE.Mesh(this.geometry('gem', () => new THREE.OctahedronGeometry(1, 0)), this.material(0x83cce7, 0x184065));
+        crystal.scale.set(0.23, 0.4, 0.23); crystal.position.set(0, 0.93, 0); group.add(crystal);
+        const ring = new THREE.Mesh(this.geometry('generator-ring', () => new THREE.TorusGeometry(0.29, 0.035, 4, 10)), this.material(0xe1c17b));
+        ring.rotation.x = Math.PI / 2; ring.position.y = 0.56; group.add(ring);
+        for (const [dx, dz] of DIRECTIONS) this.box(group, 0x7fcddd, [dx ? 0.21 : 0.055, 0.055, dz ? 0.21 : 0.055], [dx * 0.35, 0.25, dz * 0.35]);
+        this.cylinder(group, 0xa17c4e, 0.055, 0.35, [0, 0.36, 0.22]).rotation.z = Math.PI / 2;
       } else if (kind === 'lumber') {
         this.box(group, 0xa4845f, [0.56, 0.44, 0.52], [0, 0.35, 0]);
         const roof = this.cylinder(group, 0x64807a, 0.43, 0.34, [0, 0.7, 0], true); roof.rotation.y = Math.PI / 6;
@@ -845,6 +853,8 @@ export class WorldView {
   private updateCamera(): void {
     this.camera.position.set(this.target.x + Math.sin(this.bearing) * 25, 29, this.target.z + Math.cos(this.bearing) * 25);
     this.camera.lookAt(this.target); this.camera.updateMatrixWorld();
+    this.renderer.domElement.dataset.cameraExtent = String(this.extent);
+    this.renderer.domElement.dataset.cameraTarget = `${this.target.x},${this.target.z}`;
   }
 
   private pan(dx: number, dy: number): void {

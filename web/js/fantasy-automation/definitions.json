@@ -1,8 +1,8 @@
 {
   "miner": { "label": "採掘機", "cost": { "wood": 4, "ingot": 6 }, "seconds": 2, "output": { "ore": 1 }, "energy": 2, "technology": "basic" },
   "belt": { "label": "搬送ベルト", "cost": { "wood": 1, "ingot": 1 }, "seconds": 0.5, "technology": "basic" },
-  "smelter": { "label": "魔導炉", "cost": { "wood": 4, "ingot": 8 }, "seconds": 4, "input": { "ore": 2 }, "output": { "ingot": 1 }, "energy": 5, "technology": "basic", "recipes": ["ingot"] },
-  "generator": { "label": "魔力炉", "cost": { "wood": 6, "ingot": 6 }, "seconds": 10, "input": { "wood": 1 }, "generatedEnergy": 30, "technology": "basic" },
+  "smelter": { "label": "製錬炉", "cost": { "wood": 4, "ingot": 8 }, "seconds": 4, "input": { "ore": 2 }, "output": { "ingot": 1 }, "energy": 5, "technology": "basic", "recipes": ["ingot"] },
+  "generator": { "label": "魔力発生炉", "cost": { "wood": 6, "ingot": 6 }, "seconds": 10, "input": { "wood": 1 }, "generatedEnergy": 30, "technology": "basic" },
   "wire": { "label": "魔力導線", "cost": { "wood": 1 }, "technology": "basic" },
   "lumber": { "label": "木材採取場", "cost": { "wood": 4, "ingot": 4 }, "seconds": 3, "output": { "wood": 1 }, "technology": "basic" },
   "delivery": { "label": "納品箱", "cost": { "wood": 6 }, "technology": "basic" },

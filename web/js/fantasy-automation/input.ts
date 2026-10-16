@@ -16,19 +16,26 @@ export class WorldInput {
   private lastCell = '';
   private keys = new Set<string>();
   private blocked = false;
+  private touches = new Map<number, { x: number; y: number }>();
+  private tap: { id: number; x: number; y: number; moved: boolean } | null = null;
+  private touchGesture = false;
+  private suppressMouseUntil = 0;
 
   constructor(canvas: HTMLCanvasElement, actions: WorldInputActions) {
     this.canvas = canvas;
     this.actions = actions;
     canvas.tabIndex = 0;
-    canvas.setAttribute('aria-label', '工房の地図。右ドラッグまたは WASD で移動、中ドラッグまたは QE で回転');
+    canvas.setAttribute('aria-label', '工房の地図。1本指タップで配置・選択、2本指で移動とピンチ拡縮。右ドラッグまたは WASD で移動、中ドラッグまたは QE で回転');
     canvas.style.touchAction = 'none';
     const options = { signal: this.abort.signal };
     canvas.addEventListener('pointerdown', event => this.pointerDown(event), options);
     canvas.addEventListener('pointermove', event => this.pointerMove(event), options);
     canvas.addEventListener('pointerup', event => this.pointerUp(event), options);
-    canvas.addEventListener('pointercancel', event => this.pointerUp(event), options);
-    canvas.addEventListener('lostpointercapture', () => { this.pointer = null; this.lastCell = ''; }, options);
+    canvas.addEventListener('pointercancel', event => this.pointerUp(event, true), options);
+    canvas.addEventListener('lostpointercapture', event => this.captureLost(event), options);
+    canvas.addEventListener('click', event => {
+      if (performance.now() < this.suppressMouseUntil) { event.preventDefault(); event.stopImmediatePropagation(); }
+    }, options);
     canvas.addEventListener('contextmenu', event => event.preventDefault(), options);
     canvas.addEventListener('wheel', event => {
       event.preventDefault();
@@ -37,12 +44,25 @@ export class WorldInput {
     }, { ...options, passive: false });
     canvas.addEventListener('keydown', event => this.keyDown(event), options);
     window.addEventListener('keyup', event => this.keys.delete(event.code), options);
-    canvas.addEventListener('blur', () => this.keys.clear(), options);
-    window.addEventListener('blur', () => { this.keys.clear(); this.pointer = null; }, options);
+    window.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'touch' && event.target !== this.canvas && this.touches.size) { this.tap = null; this.touchGesture = true; }
+    }, options);
+    canvas.addEventListener('blur', () => this.resetPointers(), options);
+    window.addEventListener('blur', () => this.resetPointers(), options);
+    window.addEventListener('resize', () => this.resetPointers(), options);
   }
 
   private pointerDown(event: PointerEvent): void {
     if (this.blocked) return;
+    if (event.pointerType === 'touch') {
+      event.preventDefault(); this.canvas.focus({ preventScroll: true });
+      this.touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      this.canvas.setPointerCapture(event.pointerId);
+      if (this.touches.size === 1) { this.tap = { id: event.pointerId, x: event.clientX, y: event.clientY, moved: false }; this.touchGesture = false; }
+      else { this.touchGesture = true; this.tap = null; }
+      return;
+    }
+    if (performance.now() < this.suppressMouseUntil || this.touches.size) return;
     if (this.pointer || event.button > 2) return;
     event.preventDefault();
     this.canvas.focus({ preventScroll: true });
@@ -69,6 +89,21 @@ export class WorldInput {
 
   private pointerMove(event: PointerEvent): void {
     if (this.blocked) return;
+    if (event.pointerType === 'touch') {
+      if (!this.touches.has(event.pointerId)) return;
+      event.preventDefault();
+      const before = [...this.touches.values()].slice(0, 2);
+      this.touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      if (this.touches.size >= 2) {
+        const after = [...this.touches.values()].slice(0, 2);
+        const oldDistance = Math.hypot(before[1].x - before[0].x, before[1].y - before[0].y);
+        const distance = Math.hypot(after[1].x - after[0].x, after[1].y - after[0].y);
+        this.actions.pan((after[0].x + after[1].x - before[0].x - before[1].x) / 2, (after[0].y + after[1].y - before[0].y - before[1].y) / 2);
+        this.actions.zoom(Math.max(-0.35, Math.min(0.35, Math.log(Math.max(8, oldDistance) / Math.max(8, distance)))));
+      } else if (this.tap && Math.hypot(event.clientX - this.tap.x, event.clientY - this.tap.y) > 8) this.tap.moved = true;
+      if (!this.touchGesture) { const cell = this.actions.pick(event); if (cell) this.actions.onHover(cell.x, cell.z); }
+      return;
+    }
     if (this.pointer?.id === event.pointerId) {
       const dx = event.clientX - this.pointer.x;
       const dy = event.clientY - this.pointer.y;
@@ -82,11 +117,37 @@ export class WorldInput {
     if (cell) this.actions.onHover(cell.x, cell.z);
   }
 
-  private pointerUp(event: PointerEvent): void {
+  private pointerUp(event: PointerEvent, cancelled = false): void {
+    if (event.pointerType === 'touch') {
+      if (!this.touches.has(event.pointerId)) return;
+      event.preventDefault();
+      const tap = this.tap;
+      const commit = !this.blocked && !cancelled && !this.touchGesture && this.touches.size === 1 && tap?.id === event.pointerId && !tap.moved && Math.hypot(event.clientX - tap.x, event.clientY - tap.y) <= 8;
+      this.touches.delete(event.pointerId); this.tap = null;
+      if (cancelled) this.touchGesture = true;
+      if (!this.touches.size) this.touchGesture = false;
+      this.suppressMouseUntil = performance.now() + 700;
+      if (this.canvas.hasPointerCapture(event.pointerId)) this.canvas.releasePointerCapture(event.pointerId);
+      if (commit) { const cell = this.actions.pick(event); if (cell) { this.actions.onHover(cell.x, cell.z); this.actions.onPick(cell.x, cell.z, event); } }
+      return;
+    }
     if (this.pointer?.id !== event.pointerId) return;
     this.pointer = null;
     this.lastCell = '';
     if (this.canvas.hasPointerCapture(event.pointerId)) this.canvas.releasePointerCapture(event.pointerId);
+  }
+
+  private captureLost(event: PointerEvent): void {
+    if (this.touches.delete(event.pointerId)) { this.tap = null; this.touchGesture = this.touches.size > 0; this.suppressMouseUntil = performance.now() + 700; }
+    if (this.pointer?.id === event.pointerId) { this.pointer = null; this.lastCell = ''; }
+  }
+
+  private resetPointers(): void {
+    this.keys.clear(); this.tap = null; this.touchGesture = false;
+    const ids = [...this.touches.keys(), ...(this.pointer ? [this.pointer.id] : [])];
+    if (this.touches.size) this.suppressMouseUntil = performance.now() + 700;
+    this.touches.clear(); this.pointer = null; this.lastCell = '';
+    for (const id of ids) if (this.canvas.hasPointerCapture(id)) this.canvas.releasePointerCapture(id);
   }
 
   private keyDown(event: KeyboardEvent): void {
@@ -109,14 +170,11 @@ export class WorldInput {
   setBlocked(blocked: boolean): void {
     this.blocked = blocked;
     if (!blocked) return;
-    this.keys.clear();
-    if (this.pointer && this.canvas.hasPointerCapture(this.pointer.id)) this.canvas.releasePointerCapture(this.pointer.id);
-    this.pointer = null; this.lastCell = '';
+    this.resetPointers();
   }
 
   dispose(): void {
     this.abort.abort();
-    this.keys.clear();
-    this.pointer = null;
+    this.resetPointers();
   }
 }

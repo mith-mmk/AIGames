@@ -33,6 +33,7 @@ export interface GameState {
 }
 export type Command =
   | { type: 'gatherWood' }
+  | { type: 'undoBuild' }
   | { type: 'build'; kind: Kind; x: number; z: number; direction: Direction }
   | { type: 'remove'; id: number }
   | { type: 'rotate'; id: number }

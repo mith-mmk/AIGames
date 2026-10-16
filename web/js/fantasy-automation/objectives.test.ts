@@ -24,7 +24,7 @@ function legacy(delivered: number): GameState {
 test('new factories show the actual automatic iron delivery goal', () => {
   assert.deepEqual(getObjective(state()), {
     title: '鉄の延べ棒を100本自動納品',
-    detail: '採掘機→魔導炉→納品箱をつなぎ、自動生産した鉄の延べ棒を自動搬送してください。手で投入・回収した品は数えません。研究条件を達成すると次の目標へ進みます。',
+    detail: '採掘機→製錬炉→納品箱をつなぎ、自動生産した鉄の延べ棒を自動搬送してください。手で投入・回収した品は数えません。研究条件を達成すると次の目標へ進みます。',
     resource: 'ingot', current: 0, target: 100, action: 'guide', completed: false,
   });
 });
@@ -148,7 +148,7 @@ test('mastery advances into rune crafting, golem assembly and automated fuel sup
   value.stats!.produced.golemFrame = 3;
   assert.match(getObjective(value).title, /ゴーレム組立.*研究する/);
   value.research!.unlocked.push('golemcraft'); value.stats!.produced.golem = 3;
-  goal = getObjective(value); assert.match(goal.title, /木材を魔力炉へ自動補給/); assert.equal(goal.resource, 'wood'); assert.equal(goal.target, 20);
+  goal = getObjective(value); assert.match(goal.title, /木材を魔力発生炉へ自動補給/); assert.equal(goal.resource, 'wood'); assert.equal(goal.target, 20);
   value.stats!.golemFuelTransfers = 19; value.stats!.golemTransfers = 100;
   assert.equal(getObjective(value).current, 19, 'Other material transfers do not complete the fuel goal');
   value.stats!.golemFuelTransfers = 20;
@@ -191,7 +191,7 @@ test('late production stages never revert to iron quota when only ten iron ingot
   value.research!.unlocked.push('golemcraft');
   assert.match(getObjective(value).title, /ゴーレムを自動生産/);
   value.stats!.produced.golem = 3;
-  assert.match(getObjective(value).title, /木材を魔力炉へ自動補給/);
+  assert.match(getObjective(value).title, /木材を魔力発生炉へ自動補給/);
   value.stats!.golemTransfers = 20; value.stats!.golemFuelTransfers = 20;
   assert.match(getObjective(value).title, /自動運営を研究する/);
   value.research!.unlocked.push('sanctuary');

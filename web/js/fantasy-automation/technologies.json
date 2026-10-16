@@ -177,7 +177,7 @@
   {
     "id": "sanctuary",
     "label": "ゴーレム工房の自動運営",
-    "description": "ゴーレム3体を自動生産し、補助拠点から魔力炉へ木材を20個自動補給する。",
+    "description": "ゴーレム3体を自動生産し、補助拠点から魔力発生炉へ木材を20個自動補給する。",
     "prerequisites": [
       "golemcraft"
     ],
@@ -191,7 +191,7 @@
       {
         "metric": "golemFuelTransfers",
         "target": 20,
-        "label": "ゴーレムで木材を魔力炉へ自動補給"
+        "label": "ゴーレムで木材を魔力発生炉へ自動補給"
       }
     ],
     "unlocks": {

@@ -19,18 +19,18 @@ const POWER_KINDS: readonly Kind[] = ['generator', 'wire', 'miner', 'smelter'];
 const FIRST_LINE: readonly Placement[] = [
   { id: 'miner', kind: 'miner', x: 12, z: 16, direction: 1, text: 'まずは見本の配置で工房を作ります。鉄鉱脈の光る区画に採掘機を置き、東→の向き（目印の矢印と同じ）へ出力します。' },
   { id: 'belt-ore', kind: 'belt', x: 13, z: 16, direction: 1, text: '採掘機の東隣にベルトを置き、鉄鉱石を次の区画へ運びます。矢印は東へ。' },
-  { id: 'smelter', kind: 'smelter', x: 14, z: 16, direction: 1, text: 'ベルトの東隣に魔導炉を置きます。鉱石2個から延べ棒1本を作ります。出力は東へ。' },
-  { id: 'belt-ingot', kind: 'belt', x: 15, z: 16, direction: 1, text: '魔導炉の東隣にベルトを置きます。完成した延べ棒を東へ運びます。' },
+  { id: 'smelter', kind: 'smelter', x: 14, z: 16, direction: 1, text: 'ベルトの東隣に製錬炉を置きます。鉱石2個から延べ棒1本を作ります。出力は東へ。' },
+  { id: 'belt-ingot', kind: 'belt', x: 15, z: 16, direction: 1, text: '製錬炉の東隣にベルトを置きます。完成した延べ棒を東へ運びます。' },
   { id: 'delivery', kind: 'delivery', x: 16, z: 16, direction: null, text: 'ベルトの東隣に納品箱を置きます。ここへ届いた自動生産の延べ棒が目標に加算されます。' },
-  { id: 'generator', kind: 'generator', x: 12, z: 18, direction: null, text: '採掘機から南へ2区画の場所に魔力炉を置きます。木材を燃料に魔力を作ります。' },
-  { id: 'wire-miner', kind: 'wire', x: 12, z: 17, direction: null, text: '魔力炉と採掘機の間に導線を置き、魔力をつなぎます。導線の向きは関係ありません。' },
+  { id: 'generator', kind: 'generator', x: 12, z: 18, direction: null, text: '採掘機から南へ2区画の場所に魔力発生炉を置きます。木材を燃料に魔力を作ります。' },
+  { id: 'wire-miner', kind: 'wire', x: 12, z: 17, direction: null, text: '魔力発生炉と採掘機の間に導線を置き、魔力をつなぎます。導線の向きは関係ありません。' },
   { id: 'wire-link', kind: 'wire', x: 13, z: 17, direction: null, text: '導線を東へ延ばします。隣り合う導線と設備が1つの魔力網になります。' },
-  { id: 'wire-smelter', kind: 'wire', x: 14, z: 17, direction: null, text: '魔導炉の南隣にも導線を置きます。採掘機と魔導炉の両方に魔力が届く形です。' },
+  { id: 'wire-smelter', kind: 'wire', x: 14, z: 17, direction: null, text: '製錬炉の南隣にも導線を置きます。採掘機と製錬炉の両方に魔力が届く形です。' },
 ];
 const FUEL_LINE: readonly Placement[] = [
   { id: 'lumber', kind: 'lumber', x: 9, z: 18, direction: 1, text: '森林に木材採取場を置き、矢印を東へ。3秒ごとに木材を作り、燃料補給を自動化します。' },
-  { id: 'belt-wood-1', kind: 'belt', x: 10, z: 18, direction: 1, text: '木材採取場の東隣にベルトを置きます。木材を魔力炉へ向けて東へ運びます。' },
-  { id: 'belt-wood-2', kind: 'belt', x: 11, z: 18, direction: 1, text: 'もう1区画、東向きのベルトを置きます。木材採取場から魔力炉まで連結すれば手動補給が不要になります。' },
+  { id: 'belt-wood-1', kind: 'belt', x: 10, z: 18, direction: 1, text: '木材採取場の東隣にベルトを置きます。木材を魔力発生炉へ向けて東へ運びます。' },
+  { id: 'belt-wood-2', kind: 'belt', x: 11, z: 18, direction: 1, text: 'もう1区画、東向きのベルトを置きます。木材採取場から魔力発生炉まで連結すれば手動補給が不要になります。' },
 ];
 
 const at = (state: GameState, x: number, z: number): Building | undefined => state.buildings.find(building => building.x === x && building.z === z);
@@ -60,7 +60,7 @@ function placement(state: GameState, wanted: Placement, step: number, checks: st
       if (needed > 0) blockers.push(`${RESOURCE_NAMES[resource]}があと${needed}個必要です。設備を選択して中身を回収するか、稼働中の工房から素材を集めてください。`);
     }
   }
-  if (wanted.kind === 'wire') blockers.push('ここが途切れると採掘機・魔導炉が停止します。隣接する区画へ導線をつないでください。');
+  if (wanted.kind === 'wire') blockers.push('ここが途切れると採掘機・製錬炉が停止します。隣接する区画へ導線をつないでください。');
   return result(step, wanted.id, `${label}を${location(wanted.x, wanted.z)}に置く`, wanted.text, checks,
     { kind: wanted.kind, target, direction: wanted.direction, focusId: existing?.id ?? null, mode: 'build', blockers });
 }
@@ -138,13 +138,13 @@ export function evaluateGuide(state: GameState): GuideStep {
     }
     const generator = at(state, 12, 18)!;
     const fueled = generator.working || generator.input.some(item => item.resource === 'wood') || generator.energy > 0 || (generator.pendingEnergy ?? 0) > 0;
-    if (!fueled) return result(10, 'feed', '魔力炉へ木材を1個補給する',
-      '魔力炉を選択し「設備の詳細を開く」へ。所持品の木材スロットを押すと1個を補給できます。木材は10秒で魔力になります。このあと燃料も自動化します。', checks,
+    if (!fueled) return result(10, 'feed', '魔力発生炉へ木材を1個補給する',
+      '魔力発生炉を選択し「設備の詳細を開く」へ。所持品の木材スロットを押すと1個を補給できます。木材は10秒で魔力になります。このあと燃料も自動化します。', checks,
       { kind: 'generator', target: { x: 12, z: 18 }, focusId: generator.id, mode: 'feed', blockers: state.inventory.wood < 1 ? ['木材が1個必要です。メニューの「木材を手採取」で補充してください。'] : [] });
-    checks.push('魔力炉に燃料、稼働中の仕事、または蓄積魔力があります');
+    checks.push('魔力発生炉に燃料、稼働中の仕事、または蓄積魔力があります');
     if (generator.working && !(generator.pendingEnergy ?? 0)) {
       const remaining = Math.max(0, Math.ceil(DEFINITIONS.generator.seconds! - generator.progress));
-      checks.push(`魔力炉は稼働中：魔力生成まであと${remaining}秒（正常な待ち時間）`);
+      checks.push(`魔力発生炉は稼働中：魔力生成まであと${remaining}秒（正常な待ち時間）`);
     }
     return result(11, 'run', '最初の延べ棒が届くのを待つ',
       '1×または2×で動かしてください。初回は燃料の10秒、採掘、精錬、搬送の順で進みます。自動納品が1本になると次へ進みます。手動納品は数えません。', checks,
@@ -152,14 +152,14 @@ export function evaluateGuide(state: GameState): GuideStep {
   }
   checks.push(`最初の自動納品を確認（${state.delivered}本）`);
   if (automaticFuelConnected(state)) return result(TOTAL, 'done', '案内完了：工房が自動で動きます',
-    `木材採取から魔力炉への補給がつながりました。ここからは自由に建設してください。次の目標：${getObjective(state).title}。`, checks,
-    { mode: 'done', checks: [...checks, '木材採取場→ベルト→魔力炉が接続済み'] });
+    `木材採取から魔力発生炉への補給がつながりました。ここからは自由に建設してください。次の目標：${getObjective(state).title}。`, checks,
+    { mode: 'done', checks: [...checks, '木材採取場→ベルト→魔力発生炉が接続済み'] });
   // A player who already produced an ingot elsewhere keeps their chosen layout.
   if (at(state, 12, 18)?.kind !== 'generator') {
     const lumber = state.buildings.find(building => building.kind === 'lumber');
     return result(lumber ? 13 : 12, lumber ? 'belt-wood-1' : 'lumber', '今の工房へ燃料を自動補給する',
-      lumber ? '今の木材採取場から、使用中の魔力炉へベルトをつなげてください。配置場所は自由です。最初の工房を見本の位置へ作り直す必要はありません。'
-        : '好きな森林へ木材採取場を置き、使用中の魔力炉へベルトをつなげましょう。配置場所は自由です。', checks,
+      lumber ? '今の木材採取場から、使用中の魔力発生炉へベルトをつなげてください。配置場所は自由です。最初の工房を見本の位置へ作り直す必要はありません。'
+        : '好きな森林へ木材採取場を置き、使用中の魔力発生炉へベルトをつなげましょう。配置場所は自由です。', checks,
       { kind: lumber ? 'belt' : 'lumber', direction: null, focusId: lumber?.id ?? null, mode: 'build' });
   }
   for (let index = 0; index < FUEL_LINE.length; index++) {

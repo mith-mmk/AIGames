@@ -54,7 +54,7 @@ export function getGolemGuide(state: GameState): GolemGuide {
   const deployed = relay?.golemWorker || relay?.input.some(item => item.resource === 'golem');
   const physicalGolem = (state.inventory.golem ?? 0) > 0 || state.buildings.some(building => [...building.input, ...building.output, ...(building.item ? [building.item] : [])].some(item => item.resource === 'golem'));
   if (!deployed && !physicalGolem) return production(state, 'golemForge', 3, '覚醒炉で魔導核1個＋鉄の躯体1個からゴーレムを作ります。完成したゴーレム1体を補給所で働かせます。');
-  if (!relay) return guide(4, 'ゴーレム補給所を建てる', '収納箱と魔力炉の両方からマンハッタン距離6区画以内になる位置へ建ててください。横と縦の距離の合計で判定し、導線は不要です。', 'action', { type: 'build', kind: 'golemRelay' });
+  if (!relay) return guide(4, 'ゴーレム補給所を建てる', '収納箱と魔力発生炉の両方からマンハッタン距離6区画以内になる位置へ建ててください。横と縦の距離の合計で判定し、導線は不要です。', 'action', { type: 'build', kind: 'golemRelay' });
   if (!relay.golemWorker) {
     if (relay.input.some(item => item.resource === 'golem')) return guide(5, '投入したゴーレムの配属を待つ', 'ゴーレムは補給所の入力庫に到着しています。1×または2×にすると作業員へ配属されます。再投入は不要です。', 'waiting', { type: 'run', id: relay.id, kind: relay.kind });
     return guide(5, '補給所へゴーレムを1体投入する', '覚醒炉の出力からベルトで補給所へ運ぶか、ゴーレムを回収して所持品に入れ、補給所の詳細にあるゴーレムの投入操作を使ってください。手動配置した作業員も既存の品を運べます。', 'action', inspect(relay));
@@ -62,14 +62,14 @@ export function getGolemGuide(state: GameState): GolemGuide {
   const storages = state.buildings.filter(building => building.kind === 'storage');
   const sources = storages.filter(building => near(relay, building));
   if (!sources.length) return guide(6, '補給所の近くに収納箱を置く', '補給所は収納箱から品を取り出します。収納箱を補給所からマンハッタン距離6区画以内へ置き、木材採取場から木材をベルトで入れてください。', 'action', { type: 'build', kind: 'storage' }, [storages.length ? '収納箱が補給所の範囲外です。横＋縦の距離を6以内にしてください。' : '収納箱がありません。納品箱からは取り出せません。']);
-  if (relay.golemPolicy === 'materials') return guide(7, '補給所の方針を「燃料」にする', '補給所の詳細で方針を「燃料」にします。「素材」は製造設備への材料搬送用です。今回の木材20個補給実績には、燃料方針で魔力炉へ運んだ自動生産の木材が必要です。', 'action', inspect(relay), ['現在は素材方針のため、燃料の補給実績が増えません。']);
+  if (relay.golemPolicy === 'materials') return guide(7, '補給所の方針を「燃料」にする', '補給所の詳細で方針を「燃料」にします。「素材」は製造設備への材料搬送用です。今回の木材20個補給実績には、燃料方針で魔力発生炉へ運んだ自動生産の木材が必要です。', 'action', inspect(relay), ['現在は素材方針のため、燃料の補給実績が増えません。']);
   const generators = state.buildings.filter(building => building.kind === 'generator');
   const targets = generators.filter(building => near(relay, building));
-  if (!targets.length) return guide(7, '燃料の届け先を範囲6以内に用意する', '魔力炉と収納箱の両方を補給所から横＋縦6区画以内に置きます。方針は「燃料」にしてください。', 'action', { type: 'build', kind: 'generator' }, [generators.length ? '魔力炉が補給所の範囲外です。' : '補給先の魔力炉がありません。']);
+  if (!targets.length) return guide(7, '燃料の届け先を範囲6以内に用意する', '魔力発生炉と収納箱の両方を補給所から横＋縦6区画以内に置きます。方針は「燃料」にしてください。', 'action', { type: 'build', kind: 'generator' }, [generators.length ? '魔力発生炉が補給所の範囲外です。' : '補給先の魔力発生炉がありません。']);
   if (!sources.some(source => source.input.some(item => item.resource === 'wood' && automatic(item)))) {
     const manualWood = sources.some(source => source.input.some(item => item.resource === 'wood'));
     return guide(6, '収納箱へ自動生産の木材を入れる', '木材採取場→ベルト→収納箱をつなぎます。補給所が取り出せるのは収納箱の入力庫です。手採取・回収・手動投入した木材は運べますが、自動補給実績に数えません。', 'action', inspect(sources[0]), [manualWood ? '木材はありますが、手動由来のため実績に加算されません。木材採取場から直接運んでください。' : '収納箱に自動生産の木材がありません。']);
   }
-  if (targets.every(target => target.input.length >= INPUT_CAPACITY)) return guide(8, '魔力炉の燃料消費を待つ', '魔力炉の入力庫が満杯です。工房を稼働して燃料を消費すると補給が再開します。補給所・ゴーレム・収納箱を作り直す必要はありません。', 'waiting', inspect(targets[0]), ['搬送先の入力庫が満杯です。魔力を使う設備と導線も確認してください。']);
+  if (targets.every(target => target.input.length >= INPUT_CAPACITY)) return guide(8, '魔力発生炉の燃料消費を待つ', '魔力発生炉の入力庫が満杯です。工房を稼働して燃料を消費すると補給が再開します。補給所・ゴーレム・収納箱を作り直す必要はありません。', 'waiting', inspect(targets[0]), ['搬送先の入力庫が満杯です。魔力を使う設備と導線も確認してください。']);
   return guide(8, 'ゴーレムの木材自動補給を確認する', `接続と作業員を確認しました。1×または2×で稼働してください。補給はゲーム内1秒に最大1個、現在 ${completed}/20個です。魔力は運びません。`, 'waiting', { type: 'run', id: relay.id, kind: relay.kind });
 }

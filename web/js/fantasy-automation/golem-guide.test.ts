@@ -62,7 +62,7 @@ test('source and target range use Manhattan distance six, including exact bounda
   value.buildings[1].z = 11;
   guide = getGolemGuide(value); assert.equal(guide.step, 6); assert.match(guide.blockers.join(' '), /収納箱.*範囲外/);
   value.buildings[1].z = 10; value.buildings[2].x = 11;
-  guide = getGolemGuide(value); assert.equal(guide.step, 7); assert.match(guide.blockers.join(' '), /魔力炉.*範囲外/);
+  guide = getGolemGuide(value); assert.equal(guide.step, 7); assert.match(guide.blockers.join(' '), /魔力発生炉.*範囲外/);
 });
 
 test('manual wood, empty storage, materials policy and full receiver explain distinct fixes', () => {

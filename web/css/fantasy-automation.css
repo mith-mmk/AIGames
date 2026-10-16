@@ -150,3 +150,11 @@ noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 15px; back
 .technology-map { grid-template-areas: "basic basic" "logistics crystals" "assembly assembly" "mastery mastery" "runecraft runecraft" "golemcraft golemcraft" "sanctuary sanctuary" "alchemy alchemy" "portalcraft portalcraft" "worldGrafting worldGrafting" "worldAwakened worldAwakened"; }.technology-node[data-tech="alchemy"] { grid-area: alchemy; }.technology-node[data-tech="portalcraft"] { grid-area: portalcraft; }.technology-node[data-tech="worldGrafting"] { grid-area: worldGrafting; }.technology-node[data-tech="worldAwakened"] { grid-area: worldAwakened; }
 @media (max-width: 600px) { .build-dock { width: calc(100vw - 12px); max-height: calc(100dvh - 205px); }.build-context { top: -8px; }#build-categories { gap: 4px; }#build-categories button { min-width: 48px; font-size: 10px; padding: 4px; }.registration-advanced { margin-left: 0; }#registration-buttons { gap: 3px; }#registration-buttons button { width: 40px; min-width: 40px; }.golem-guide { top: 128px; left: 6px; width: calc(100vw - 12px); max-height: calc(100dvh - 205px); }.quickbar > .quick-golem-guide { min-width: 38px; padding: 3px; }.technology-map { grid-template-areas: "basic" "logistics" "crystals" "assembly" "mastery" "runecraft" "golemcraft" "sanctuary" "alchemy" "portalcraft" "worldGrafting" "worldAwakened"; } }
 #relay-inspections { display: flex; gap: 5px; }#relay-inspections button { flex: 1; font-size: 10px; }
+
+/* Undo stays reachable beside the scrollable slots on small touch screens. */
+.quickbar > .undo-build { min-width: 44px; display: grid; justify-items: center; gap: 2px; color: var(--gold); }
+.undo-build span { font-size: 9px; }.undo-build:disabled { opacity: 0.45; }
+.furnace-icon { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+.furnace-smelter { color: #efb177; }.furnace-generator { color: #a6d9f2; }.quick-icon .furnace-icon { width: 26px; height: 26px; }
+.furnace-role { display: flex; align-items: center; gap: 10px; margin: 8px 0; padding: 8px; border: 1px solid var(--border); border-radius: 6px; line-height: 1.7; font-size: 11px; }
+.furnace-role > .furnace-icon { width: 40px; height: 40px; flex: none; }.furnace-role .resource-icon { width: 20px; height: 20px; vertical-align: middle; }

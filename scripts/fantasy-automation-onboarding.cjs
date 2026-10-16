@@ -61,7 +61,7 @@ const http = require('node:http');
         await page.waitForTimeout(80);
         const point = await markerPoint(page);
         if ((await page.locator('#guide-step-target').innerText()).includes('魔力導線') && !wirePoint) wirePoint = point;
-        if (!rotatedWrong && /採掘機|魔導炉/.test(text)) {
+        if (!rotatedWrong && /採掘機|製錬炉/.test(text)) {
           await page.locator('#world canvas').focus();
           await page.keyboard.press('KeyR');
           rotatedWrong = true;
