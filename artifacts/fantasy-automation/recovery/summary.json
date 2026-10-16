@@ -1,0 +1,248 @@
+{
+  "baseCommit": "816c0de9b58ac3337ea820fc05d8e66f3fe6f36f",
+  "codeCommit": "2bf3b0747f980b5f6550b870b162d14ebae3fa66",
+  "branch": "fix/fantasy-touch-and-recovery",
+  "targetExistingSite": "https://fantasy-automation.mi-si.chatgpt.site",
+  "runtimeSHA256": "26818873f7350d5a86f830076021ef18a1358c7df4f53bd1bd73de14b261316f",
+  "npmTest": {
+    "status": "passed",
+    "legacyGames": "passed",
+    "fantasyTypeScriptTests": 137,
+    "fixedClockTests": 7,
+    "typecheck": "passed",
+    "lintErrors": 0,
+    "existingCSSWarnings": 2,
+    "trackedRuntimeRebuildMatch": "passed"
+  },
+  "pagesBuild": {
+    "status": "passed",
+    "files": 306
+  },
+  "touchRecovery": {
+    "source": {
+      "mode": "source",
+      "checks": [
+        "390px: native two-touch pinch/pan and cancel cause zero builds; compatibility pointer is suppressed; tap/undo refunds once; an old zero-iron save recovers and rebuilds its belt",
+        "320px: native two-touch pinch/pan and cancel cause zero builds; compatibility pointer is suppressed; tap/undo refunds once; an old zero-iron save recovers and rebuilds its belt",
+        "Desktop: real kits return as kits; furnace names, input/output diagrams, icons and models differ; X and remove-mode both require cancellable confirmation",
+        "A genuine historical v3 slot migrates only on explicit save; resources and equipment IDs are unchanged and the golem guide remains available"
+      ],
+      "runtimeSHA256": "26818873f7350d5a86f830076021ef18a1358c7df4f53bd1bd73de14b261316f",
+      "pageErrors": [],
+      "failedRequests": [],
+      "physicalIOS": "not tested; Chromium CDP touch sequences and unit pointer events only"
+    },
+    "built": {
+      "mode": "built",
+      "checks": [
+        "390px: native two-touch pinch/pan and cancel cause zero builds; compatibility pointer is suppressed; tap/undo refunds once; an old zero-iron save recovers and rebuilds its belt",
+        "320px: native two-touch pinch/pan and cancel cause zero builds; compatibility pointer is suppressed; tap/undo refunds once; an old zero-iron save recovers and rebuilds its belt",
+        "Desktop: real kits return as kits; furnace names, input/output diagrams, icons and models differ; X and remove-mode both require cancellable confirmation",
+        "A genuine historical v3 slot migrates only on explicit save; resources and equipment IDs are unchanged and the golem guide remains available"
+      ],
+      "runtimeSHA256": "26818873f7350d5a86f830076021ef18a1358c7df4f53bd1bd73de14b261316f",
+      "pageErrors": [],
+      "failedRequests": [],
+      "physicalIOS": "not tested; Chromium CDP touch sequences and unit pointer events only"
+    }
+  },
+  "regression": {
+    "phase4UI": {
+      "source": {
+        "completed": "2026-10-16T14:39:08.456Z",
+        "runtimeSHA256": "26818873f7350d5a86f830076021ef18a1358c7df4f53bd1bd73de14b261316f",
+        "mode": "source",
+        "checks": [
+          "21-item All/search catalog exposes locked costs; quick-slot registration persists across reload and places through real canvas input",
+          "Delete defaults to cancel; cancel/Escape/Enter preserve stock, UI inputs ignore Delete, modal blocks world keys, speed restores, and double confirmation returns contents once",
+          "Historical v3 is retained byte-for-value in the slot until explicit v4 save; worker, route, items, cooldown and elapsed tick are preserved",
+          "Guide actions research rune/golem technology, build a real automatic golem forge, collect and deploy a worker, diagnose policy, supply actual wood 20 times, and unlock sanctuary",
+          "320/390/1440 playfield and catalog resize with no document overflow"
+        ],
+        "auxiliaryFuelActions": 0,
+        "pageErrors": [],
+        "failedRequests": []
+      },
+      "built": {
+        "completed": "2026-10-16T14:40:47.737Z",
+        "runtimeSHA256": "26818873f7350d5a86f830076021ef18a1358c7df4f53bd1bd73de14b261316f",
+        "mode": "built",
+        "checks": [
+          "21-item All/search catalog exposes locked costs; quick-slot registration persists across reload and places through real canvas input",
+          "Delete defaults to cancel; cancel/Escape/Enter preserve stock, UI inputs ignore Delete, modal blocks world keys, speed restores, and double confirmation returns contents once",
+          "Historical v3 is retained byte-for-value in the slot until explicit v4 save; worker, route, items, cooldown and elapsed tick are preserved",
+          "Guide actions research rune/golem technology, build a real automatic golem forge, collect and deploy a worker, diagnose policy, supply actual wood 20 times, and unlock sanctuary",
+          "320/390/1440 playfield and catalog resize with no document overflow"
+        ],
+        "auxiliaryFuelActions": 0,
+        "pageErrors": [],
+        "failedRequests": []
+      }
+    },
+    "onboarding": {
+      "mode": "source",
+      "browser": "151.0.7922.173",
+      "approach": "Only visible guide text/actions and projected map markers. No solution coordinates, game-state injection, or game global access.",
+      "checks": [
+        "Guide-only first automatic ingot; intentional wrong rotation repair; live wire cut and recovery",
+        "Close guide; free construction; reopen from menu",
+        "Five guide close/open repetitions preserve exact saved state; reload and load preserve existing factory",
+        {
+          "width": 390,
+          "overflow": false,
+          "cardLeft": 8,
+          "cardRight": 268,
+          "ctaOnScreen": true,
+          "ctaHeight": 44,
+          "guideThroughFirstIngotAndAutomaticFuel": "touch passed; every target on screen and uncovered"
+        },
+        {
+          "width": 320,
+          "overflow": false,
+          "cardLeft": 8,
+          "cardRight": 268,
+          "ctaOnScreen": true,
+          "ctaHeight": 44,
+          "guideThroughFirstIngotAndAutomaticFuel": "touch passed; every target on screen and uncovered"
+        }
+      ],
+      "actions": [
+        {
+          "id": "miner",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n1 / 14 · はじめての工房づくり\n採掘機を（12, 16）に置く\nこの設備を選ぶ\n\nまずは見本の配置で工房を作ります。鉄鉱脈の光る区画に採掘機を置き、東→の向き（目印の矢印と同じ）へ出力します。\n\n採掘機 · 出力 東 → · 目印 (12, 16)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "miner",
+          "mode": "rotate",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n1 / 14 · はじめての工房づくり\n採掘機の出力を東へ向ける\n設備の詳細を開く\n\n（12, 16）の採掘機を選択し、Rを3回押してください。東→の向き（目印の矢印と同じ）へ合わせます。\n\n採掘機 · 出力 東 → · 目印 (12, 16)\n\n「設備の詳細を開く」→「回転 R」で向きを変更してください。\n\n確認: 出力方向が違うため、次の設備へ搬送できません。\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "miner",
+          "mode": "rotate",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n1 / 14 · はじめての工房づくり\n採掘機の出力を東へ向ける\n設備の詳細を開く\n\n（12, 16）の採掘機を選択し、Rを2回押してください。東→の向き（目印の矢印と同じ）へ合わせます。\n\n採掘機 · 出力 東 → · 目印 (12, 16)\n\n「設備の詳細を開く」→「回転 R」で向きを変更してください。\n\n確認: 出力方向が違うため、次の設備へ搬送できません。\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "miner",
+          "mode": "rotate",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n1 / 14 · はじめての工房づくり\n採掘機の出力を東へ向ける\n設備の詳細を開く\n\n（12, 16）の採掘機を選択し、Rを1回押してください。東→の向き（目印の矢印と同じ）へ合わせます。\n\n採掘機 · 出力 東 → · 目印 (12, 16)\n\n「設備の詳細を開く」→「回転 R」で向きを変更してください。\n\n確認: 出力方向が違うため、次の設備へ搬送できません。\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "belt-ore",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n2 / 14 · はじめての工房づくり\n搬送ベルトを（13, 16）に置く\nこの設備を選ぶ\n\n採掘機の東隣にベルトを置き、鉄鉱石を次の区画へ運びます。矢印は東へ。\n\n搬送ベルト · 出力 東 → · 目印 (13, 16)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n済 1段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "smelter",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n3 / 14 · はじめての工房づくり\n製錬炉を（14, 16）に置く\nこの設備を選ぶ\n\nベルトの東隣に製錬炉を置きます。鉱石2個から延べ棒1本を作ります。出力は東へ。\n\n製錬炉 · 出力 東 → · 目印 (14, 16)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n済 2段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "belt-ingot",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n4 / 14 · はじめての工房づくり\n搬送ベルトを（15, 16）に置く\nこの設備を選ぶ\n\n製錬炉の東隣にベルトを置きます。完成した延べ棒を東へ運びます。\n\n搬送ベルト · 出力 東 → · 目印 (15, 16)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n済 3段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "delivery",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n5 / 14 · はじめての工房づくり\n納品箱を（16, 16）に置く\nこの設備を選ぶ\n\nベルトの東隣に納品箱を置きます。ここへ届いた自動生産の延べ棒が目標に加算されます。\n\n納品箱 · 目印 (16, 16)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n済 4段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "generator",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n6 / 14 · はじめての工房づくり\n魔力発生炉を（12, 18）に置く\nこの設備を選ぶ\n\n採掘機から南へ2区画の場所に魔力発生炉を置きます。木材を燃料に魔力を作ります。\n\n魔力発生炉 · 目印 (12, 18)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n済 5段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "wire-miner",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n7 / 14 · はじめての工房づくり\n魔力導線を（12, 17）に置く\nこの設備を選ぶ\n\n魔力発生炉と採掘機の間に導線を置き、魔力をつなぎます。導線の向きは関係ありません。\n\n魔力導線 · 目印 (12, 17)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n確認: ここが途切れると採掘機・製錬炉が停止します。隣接する区画へ導線をつないでください。\n済 6段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "wire-link",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n8 / 14 · はじめての工房づくり\n魔力導線を（13, 17）に置く\nこの設備を選ぶ\n\n導線を東へ延ばします。隣り合う導線と設備が1つの魔力網になります。\n\n魔力導線 · 目印 (13, 17)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n確認: ここが途切れると採掘機・製錬炉が停止します。隣接する区画へ導線をつないでください。\n済 7段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "wire-smelter",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n9 / 14 · はじめての工房づくり\n魔力導線を（14, 17）に置く\nこの設備を選ぶ\n\n製錬炉の南隣にも導線を置きます。採掘機と製錬炉の両方に魔力が届く形です。\n\n魔力導線 · 目印 (14, 17)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n確認: ここが途切れると採掘機・製錬炉が停止します。隣接する区画へ導線をつないでください。\n済 8段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "feed",
+          "mode": "feed",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n10 / 14 · はじめての工房づくり\n魔力発生炉へ木材を1個補給する\n設備の詳細を開く\n\n魔力発生炉を選択し「設備の詳細を開く」へ。所持品の木材スロットを押すと1個を補給できます。木材は10秒で魔力になります。このあと燃料も自動化します。\n\n魔力発生炉 · 目印 (12, 18)\n\n「設備の詳細を開く」→木材のアイコン「木材 ×1」を押すと、燃料を1個補給できます。\n\n済 9段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "run",
+          "mode": "run",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n11 / 14 · はじめての工房づくり\n最初の延べ棒が届くのを待つ\n1×で動かす\n\n1×または2×で動かしてください。初回は燃料の10秒、採掘、精錬、搬送の順で進みます。自動納品が1本になると次へ進みます。手動納品は数えません。\n\n納品箱 · 目印 (16, 16)\n\n「1×で動かす」を押して、採掘・搬送・精錬が進むのを見てみましょう。\n\n済 11段階 · 直近の組立チェック\n\n素材を補給しました\n\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "wire-miner",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n7 / 14 · はじめての工房づくり\n魔力導線を（12, 17）に置く\nこの設備を選ぶ\n\n魔力発生炉と採掘機の間に導線を置き、魔力をつなぎます。導線の向きは関係ありません。\n\n魔力導線 · 目印 (12, 17)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n確認: ここが途切れると採掘機・製錬炉が停止します。隣接する区画へ導線をつないでください。\n済 6段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "run",
+          "mode": "run",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n11 / 14 · はじめての工房づくり\n最初の延べ棒が届くのを待つ\n1×で動かす\n\n1×または2×で動かしてください。初回は燃料の10秒、採掘、精錬、搬送の順で進みます。自動納品が1本になると次へ進みます。手動納品は数えません。\n\n納品箱 · 目印 (16, 16)\n\n「1×で動かす」を押して、採掘・搬送・精錬が進むのを見てみましょう。\n\n済 10段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "lumber",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n12 / 14 · はじめての工房づくり\n木材採取場を（9, 18）に置く\nこの設備を選ぶ\n\n森林に木材採取場を置き、矢印を東へ。3秒ごとに木材を作り、燃料補給を自動化します。\n\n木材採取場 · 出力 東 → · 目印 (9, 18)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n済 2段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "belt-wood-1",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n13 / 14 · はじめての工房づくり\n搬送ベルトを（10, 18）に置く\nこの設備を選ぶ\n\n木材採取場の東隣にベルトを置きます。木材を魔力発生炉へ向けて東へ運びます。\n\n搬送ベルト · 出力 東 → · 目印 (10, 18)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n済 3段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "belt-wood-2",
+          "mode": "build",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n14 / 14 · はじめての工房づくり\n搬送ベルトを（11, 18）に置く\nこの設備を選ぶ\n\nもう1区画、東向きのベルトを置きます。木材採取場から魔力発生炉まで連結すれば手動補給が不要になります。\n\n搬送ベルト · 出力 東 → · 目印 (11, 18)\n\n「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。\n\n済 4段階 · 直近の組立チェック\n条件を満たすと、次の案内へ進みます。"
+        },
+        {
+          "id": "done",
+          "mode": "done",
+          "text": "鉄の延べ棒を100本自動納品\n案内を閉じる\n14 / 14 · はじめての工房づくり\n案内完了：工房が自動で動きます\n自由建設へ\n\n木材採取から魔力発生炉への補給がつながりました。ここからは自由に建設してください。次の目標：鉄の延べ棒を100本自動納品。\n\n「自由建設へ」で案内を閉じられます。メニューからいつでも再表示できます。\n\n済 3段階 · 直近の組立チェック"
+        }
+      ],
+      "pageErrors": [],
+      "failedRequests": []
+    }
+  },
+  "standaloneDistribution": {
+    "basePath": "/",
+    "browser": "151.0.7922.173",
+    "checkedFiles": [
+      "fantasy-automation.html",
+      "css/fantasy-automation.css",
+      "js/fantasy-automation/runtime/app.js",
+      "js/vendor/three-0.180.0/three.module.min.js",
+      "js/vendor/three-0.180.0/three.core.min.js",
+      "js/vendor/three-0.180.0/LICENSE"
+    ],
+    "bundleSHA256": "26818873f7350d5a86f830076021ef18a1358c7df4f53bd1bd73de14b261316f",
+    "requiresBuildToServe": false,
+    "canvasPlacement": "passed",
+    "pageErrors": [],
+    "failedRequests": [],
+    "loadedPaths": [
+      "/fantasy-automation.html",
+      "/css/fantasy-automation.css",
+      "/js/fantasy-automation/runtime/app.js",
+      "/js/vendor/three-0.180.0/three.module.min.js",
+      "/js/vendor/three-0.180.0/three.core.min.js"
+    ]
+  },
+  "normalProgression": {
+    "status": "passed",
+    "commands": 1010,
+    "gameSeconds": 1346,
+    "treeGrowth": 10,
+    "portalTransfers": 20
+  },
+  "physicalIOS": "not tested; Chromium touch event sequences and unit PointerEvent tests only",
+  "deployment": "not performed in this task; update existing private Site through parent; no main merge and no new Site"
+}

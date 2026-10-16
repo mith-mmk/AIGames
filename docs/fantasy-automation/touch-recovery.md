@@ -48,4 +48,6 @@ node --import tsx scripts/fantasy-automation-stage4-reachability.ts --nofixtures
 
 物理iPhone/iPadおよび実機Safariでは未検証です。Chromiumのタッチイベント列と単体のPointerEventテストを、実機iOSでの動作保証とは扱いません。
 
+今回の結果は `recovery/summary.json` に集約しています。既存ゲームを含む `npm test` が成功し、新作は137件のTypeScriptテスト＋固定クロック7件が成功しました。Pages梱包306ファイル、ソースと生成物のタッチ・旧保存回復、既存UIの研究・ゴーレム補給・320/390/1440pxリサイズ、初回案内だけでの390/320pxタッチ進行、単独配布先での建設も成功しています。通常コマンド1010回・1346ゲーム秒で世界樹の成長10に到達しました。CSSには既存の互換性警告2件があり、エラーはありません。
+
 既存Siteの更新用配布物は同じURLへ適用するため、同一ブラウザ・同一オリジンのIndexedDBをそのまま使います。ストレージを消去せず再読込してください。別URLへコピーした場合にはブラウザの保存枠は共有されません。

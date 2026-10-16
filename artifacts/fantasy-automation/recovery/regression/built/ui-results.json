@@ -1,0 +1,15 @@
+{
+  "completed": "2026-10-16T14:40:47.737Z",
+  "runtimeSHA256": "26818873f7350d5a86f830076021ef18a1358c7df4f53bd1bd73de14b261316f",
+  "mode": "built",
+  "checks": [
+    "21-item All/search catalog exposes locked costs; quick-slot registration persists across reload and places through real canvas input",
+    "Delete defaults to cancel; cancel/Escape/Enter preserve stock, UI inputs ignore Delete, modal blocks world keys, speed restores, and double confirmation returns contents once",
+    "Historical v3 is retained byte-for-value in the slot until explicit v4 save; worker, route, items, cooldown and elapsed tick are preserved",
+    "Guide actions research rune/golem technology, build a real automatic golem forge, collect and deploy a worker, diagnose policy, supply actual wood 20 times, and unlock sanctuary",
+    "320/390/1440 playfield and catalog resize with no document overflow"
+  ],
+  "auxiliaryFuelActions": 0,
+  "pageErrors": [],
+  "failedRequests": []
+}

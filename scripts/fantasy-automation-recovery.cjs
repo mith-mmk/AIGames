@@ -111,6 +111,7 @@ const crypto = require('node:crypto');
     await page.locator('#quickbar [data-action="golem-guide-open"]').click(); assert.match(await page.locator('#golem-guide-detail').textContent(), /魔力発生炉|木材|補給/); await shot('legacy-golem-guide');
     record('A genuine historical v3 slot migrates only on explicit save; resources and equipment IDs are unchanged and the golem guide remains available');
     assert.deepEqual(errors, []); assert.deepEqual(failures, []);
+    fs.rmSync(path.join(output, 'failure.png'), { force: true });
     fs.writeFileSync(path.join(output, 'results.json'), JSON.stringify({ mode: built ? 'built' : 'source', checks, runtimeSHA256: crypto.createHash('sha256').update(fs.readFileSync(path.join(directory, 'js/fantasy-automation/runtime/app.js'))).digest('hex'), pageErrors: errors, failedRequests: failures, physicalIOS: 'not tested; Chromium CDP touch sequences and unit pointer events only' }, null, 2) + '\n');
     console.log('Touch/recovery browser QA passed.');
   } catch (error) { if (page) await page.screenshot({ path: path.join(output, 'failure.png'), fullPage: true }).catch(() => {}); throw error; }
