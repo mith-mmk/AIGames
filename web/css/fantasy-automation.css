@@ -213,7 +213,8 @@ noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 15px; back
   .game-menu > summary { min-width: 48px; }
   .game-menu > summary span { display: none; }
   .menu-body { left: 6px; right: 6px; top: 154px; width: auto; max-height: calc(100dvh - 250px); }
-  .selection-panel:not(.is-collapsed), .guide-card, .technology-panel, .golem-guide { top: 154px; max-height: calc(100dvh - 250px); }
+  .selection-panel:not(.is-collapsed), .technology-panel, .golem-guide { top: 154px; max-height: calc(100dvh - 250px); }
+  .guide-card { top: 154px; }
   .has-direction-control .selection-panel:not(.is-collapsed) { max-height: calc(100dvh - 390px); }
   .build-dock { max-height: calc(100dvh - 270px); }
   #game-ui > .workshop-notices { top: 154px; }

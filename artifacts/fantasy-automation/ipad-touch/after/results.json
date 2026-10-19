@@ -1,0 +1,230 @@
+{
+  "baseline": false,
+  "runtimeSHA256": "65b8435e25b10ff27f632617109ad267c59ed2ad8ec30f5c7dfae9d2ef925b27",
+  "cssSHA256": "72bb137191a0fbb40fff457478e6f32c4309f57ad137f0392940649d02e1a32b",
+  "measurements": [
+    {
+      "label": "landscape-menu",
+      "targets": [
+        {
+          "text": "☰ メニュー",
+          "width": 100,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "保存",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "読込",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "視点を戻す",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "新しい工房",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "ゴーレムの使い方",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "木材を手採取",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "はじめての案内",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "建設一覧を表示",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "設備詳細を表示",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "操作説明を閉じる",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        }
+      ]
+    },
+    {
+      "label": "landscape",
+      "targets": [
+        {
+          "text": "☰ メニュー",
+          "width": 100,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "北 ↑",
+          "width": 76.5,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "東 →",
+          "width": 76.5,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "南 ↓",
+          "width": 76.5,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "西 ←",
+          "width": 76.5,
+          "height": 48,
+          "fontSize": "14px"
+        }
+      ]
+    },
+    {
+      "label": "portrait-menu",
+      "targets": [
+        {
+          "text": "☰ メニュー",
+          "width": 100,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "保存",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "読込",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "視点を戻す",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "新しい工房",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "ゴーレムの使い方",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "木材を手採取",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "はじめての案内",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "建設一覧を表示",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "設備詳細を表示",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "操作説明を閉じる",
+          "width": 192,
+          "height": 48,
+          "fontSize": "14px"
+        }
+      ]
+    },
+    {
+      "label": "portrait",
+      "targets": [
+        {
+          "text": "☰ メニュー",
+          "width": 100,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "北 ↑",
+          "width": 76.5,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "東 →",
+          "width": 76.5,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "南 ↓",
+          "width": 76.5,
+          "height": 48,
+          "fontSize": "14px"
+        },
+        {
+          "text": "西 ←",
+          "width": 76.5,
+          "height": 48,
+          "fontSize": "14px"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "landscape: direct headings, repeated placement, same-heading idempotency, selected-only rotation, R key, collapse/reopen and canvas+UI multitouch; no extra placement or material cost",
+    "landscape: menu gates map taps; touch scroll preserves reachable close; catalog category/select and technology close work; orientation resize and v5 save/resume preserve all five belts",
+    "portrait: direct headings, repeated placement, same-heading idempotency, selected-only rotation, R key, collapse/reopen and canvas+UI multitouch; no extra placement or material cost",
+    "portrait: menu gates map taps; touch scroll preserves reachable close; catalog category/select and technology close work; orientation resize and v5 save/resume preserve all five belts",
+    "390px: touch placement and selected heading, unobstructed panel heading, menu open/close/save, no viewport overflow",
+    "320px: touch placement and selected heading, unobstructed panel heading, menu open/close/save, no viewport overflow"
+  ],
+  "errors": [],
+  "failures": [],
+  "physicalIPad": "not tested; Chromium touch emulation only"
+}

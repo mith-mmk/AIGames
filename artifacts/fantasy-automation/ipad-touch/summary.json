@@ -1,0 +1,68 @@
+{
+  "branch": "fix/fantasy-ipad-touch-ui",
+  "baselineCommit": "d70852694227c31d00338c96fe7af926f1207cc3",
+  "runtimeSHA256": "65b8435e25b10ff27f632617109ad267c59ed2ad8ec30f5c7dfae9d2ef925b27",
+  "cssSHA256": "72bb137191a0fbb40fff457478e6f32c4309f57ad137f0392940649d02e1a32b",
+  "validation": {
+    "npmTest": "passed; existing games plus 7 clock and 149 TypeScript workshop tests",
+    "buildPages": "passed; 309 runtime/license files verified",
+    "cssLint": "0 errors; 6 existing warnings across npm test",
+    "packagedAssets": "JS and CSS byte-identical to source web assets"
+  },
+  "browser": {
+    "ipadAndNarrowTouch": {
+      "result": "passed",
+      "checks": [
+        "landscape: direct headings, repeated placement, same-heading idempotency, selected-only rotation, R key, collapse/reopen and canvas+UI multitouch; no extra placement or material cost",
+        "landscape: menu gates map taps; touch scroll preserves reachable close; catalog category/select and technology close work; orientation resize and v5 save/resume preserve all five belts",
+        "portrait: direct headings, repeated placement, same-heading idempotency, selected-only rotation, R key, collapse/reopen and canvas+UI multitouch; no extra placement or material cost",
+        "portrait: menu gates map taps; touch scroll preserves reachable close; catalog category/select and technology close work; orientation resize and v5 save/resume preserve all five belts",
+        "390px: touch placement and selected heading, unobstructed panel heading, menu open/close/save, no viewport overflow",
+        "320px: touch placement and selected heading, unobstructed panel heading, menu open/close/save, no viewport overflow"
+      ]
+    },
+    "recipesShippingMigration": {
+      "result": "passed",
+      "checks": [
+        "390px: 15 catalog entries; real touch sales, purchase, quoted allocation, empty-stock repeat rejection and full belt undo preserve quantities",
+        "320px: 15 catalog entries; real touch sales, purchase, quoted allocation, empty-stock repeat rejection and full belt undo preserve quantities",
+        "Fresh workshop: an actual mining/refining/fuel line stocks goods without consuming them; explicit manual shipping fulfills ten ingots; research remains an explicit action with named unlocks",
+        "Genuine historical v4: load leaves the IndexedDB slot untouched, then explicit v5 save keeps IDs, work, stock, research and production statistics, with zero retroactive currency",
+        "Three common machines select unlocked products before placement and after placement; incompatible-stock switches reject without changing resources",
+        "Reload and explicit resume preserve the canonical factory and shipping account exactly"
+      ]
+    },
+    "onboarding": {
+      "result": "passed",
+      "checks": [
+        "Guide-only first automatic ingot; intentional wrong rotation repair; live wire cut and recovery",
+        "Close guide; free construction; reopen from menu",
+        "Five guide close/open repetitions preserve exact saved state; reload and load preserve existing factory",
+        {
+          "width": 390,
+          "overflow": false,
+          "cardLeft": 8,
+          "cardRight": 268,
+          "ctaOnScreen": true,
+          "ctaHeight": 48,
+          "guideThroughFirstIngotAndAutomaticFuel": "touch passed; every target on screen and uncovered"
+        },
+        {
+          "width": 320,
+          "overflow": false,
+          "cardLeft": 8,
+          "cardRight": 268,
+          "ctaOnScreen": true,
+          "ctaHeight": 48,
+          "guideThroughFirstIngotAndAutomaticFuel": "touch passed; every target on screen and uncovered"
+        }
+      ]
+    }
+  },
+  "publication": {
+    "performed": false,
+    "observedSiteVersion": 3,
+    "mainMerged": false
+  },
+  "limitation": "Physical iPad and iPadOS Safari not tested; Chromium touch emulation only"
+}

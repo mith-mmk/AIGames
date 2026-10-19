@@ -52,4 +52,6 @@ FANTASY_QA_OUTPUT=artifacts/fantasy-automation/ipad-touch/regression/onboarding 
 
 既存のレシピ・出荷テストは15設備・2/5/2の9レシピ、明示的な手動出荷・購入、二重出荷拒否、配置取消、v4→v5移行、保存再開を検証する。案内テストは初回ライン、誤った向き、断線、反復開閉、320／390pxでの案内を通す。結果は [regression](../../artifacts/fantasy-automation/ipad-touch/regression/)。保存形式・経済・レシピ・シミュレーションの仕様は変更していない。
 
+検証結果: 上記のブラウザ3系統はすべて成功し、JavaScript例外・HTTP失敗は0。`npm test` は既存ゲームと工房の固定クロック7件＋TypeScript149件を含め成功。`build:pages` は309ファイルを生成・検査した。CSSの既存警告6件（他ゲーム4件、工房2件）は残り、エラーは0。配布用JS・CSSはソース配信物とハッシュ一致を確認した。[検証要約](../../artifacts/fantasy-automation/ipad-touch/summary.json) に実行結果とハッシュを記録する。
+
 実機iPad／iPadOS Safariは未検証。Chromiumのタッチ・画面サイズのエミュレーションであり、Safari固有のスクロール、表示領域、タップ挙動の保証には実機確認が残る。変更前後画像はローカル版。Sitesはこの作業では更新しない。

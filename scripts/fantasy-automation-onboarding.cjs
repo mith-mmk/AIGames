@@ -44,6 +44,7 @@ const crypto = require('node:crypto');
       const viewport = target.viewportSize();
       assert(point.x > 0 && point.x < viewport.width && point.y > 0 && point.y < viewport.height, 'Guide target is on screen');
       const hit = await target.evaluate(({ x, y }) => Boolean(document.elementFromPoint(x, y)?.closest('#world, #guide-target')), point);
+      if (!hit) await target.screenshot({ path: path.join(output, 'covered-target.png'), fullPage: true });
       assert(hit, 'Guide target is clickable without being covered by UI');
       return point;
     };
@@ -220,7 +221,7 @@ const crypto = require('node:crypto');
     fs.writeFileSync(path.join(output, 'results.json'), JSON.stringify({ runtimeSHA256, mode: built ? 'built' : 'source', browser: await browser.version(),
       approach: 'Only visible guide text/actions and projected map markers. No solution coordinates, game-state injection, or game global access.',
       checks, actions, pageErrors: errors, failedRequests: badRequests }, null, 2) + '\n');
-    for (const name of ['failure.png', 'failure.json']) fs.rmSync(path.join(output, name), { force: true });
+    for (const name of ['failure.png', 'failure.json', 'covered-target.png']) fs.rmSync(path.join(output, name), { force: true });
     console.log(`Fantasy onboarding QA passed (${built ? 'built' : 'source'}): guide-only first ingot, repairs, free mode, 390/320 touch.`);
   } catch (error) {
     if (page) await page.screenshot({ path: path.join(output, 'failure.png'), fullPage: true }).catch(() => {});
