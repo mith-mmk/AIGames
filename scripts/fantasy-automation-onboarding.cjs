@@ -4,10 +4,12 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
+const crypto = require('node:crypto');
 
 (async () => {
   const root = path.resolve(__dirname, '..'), built = process.argv.includes('--built');
   const directory = path.join(root, built ? '.pages-dist' : 'web');
+  const runtimeSHA256 = crypto.createHash('sha256').update(fs.readFileSync(path.join(directory, 'js/fantasy-automation/runtime/app.js'))).digest('hex');
   const output = path.join(root, 'artifacts/fantasy-automation/recipes-shipping/onboarding', built ? 'built' : 'source');
   fs.mkdirSync(output, { recursive: true });
   const mime = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json' };
@@ -215,7 +217,7 @@ const http = require('node:http');
       await mobile.close();
     }
     assert.deepEqual(errors, []); assert.deepEqual(badRequests, []);
-    fs.writeFileSync(path.join(output, 'results.json'), JSON.stringify({ mode: built ? 'built' : 'source', browser: await browser.version(),
+    fs.writeFileSync(path.join(output, 'results.json'), JSON.stringify({ runtimeSHA256, mode: built ? 'built' : 'source', browser: await browser.version(),
       approach: 'Only visible guide text/actions and projected map markers. No solution coordinates, game-state injection, or game global access.',
       checks, actions, pageErrors: errors, failedRequests: badRequests }, null, 2) + '\n');
     for (const name of ['failure.png', 'failure.json']) fs.rmSync(path.join(output, name), { force: true });

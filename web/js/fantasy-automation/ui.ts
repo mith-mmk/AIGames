@@ -346,11 +346,12 @@ export class GameUI {
       [...selected.input, ...selected.output, ...(selected.reserved ?? []), ...(selected.item ? [selected.item] : [])].forEach(item => counts[item.resource]++);
       this.text('#selection-buffer', Object.entries(counts).filter(([, amount]) => amount > 0).map(([resource, amount]) => `${RESOURCE_LABELS[resource as Resource]} ${amount}`).join('、') || 'なし');
       this.updateSelectedSystems(state, selected);
-      this.text('#selection-progress', (selected.kind === 'belt' || selected.kind === 'splitter') ? `${Math.round(selected.beltProgress / BELT_SECONDS * 100)}%` : `${selected.progress.toFixed(1)}秒${DEFINITIONS[selected.kind].seconds ? ` / ${DEFINITIONS[selected.kind].seconds}秒` : ''}`);
+      const duration = selected.recipe ? RECIPES[selected.recipe].seconds : DEFINITIONS[selected.kind].seconds;
+      this.text('#selection-progress', (selected.kind === 'belt' || selected.kind === 'splitter') ? `${Math.round(selected.beltProgress / BELT_SECONDS * 100)}%` : `${selected.progress.toFixed(1)}秒${duration ? ` / ${duration}秒` : ''}`);
       this.text('#selection-power', `${Math.floor(selected.energy)}${selected.pendingEnergy ? ` · 内部完成 ${selected.pendingEnergy}` : ''}`);
       this.node('#advanced-feed').hidden = selected.kind === 'delivery' || !['generator', 'smelter', 'delivery', 'storage', 'splitter', 'belt', 'crystalRefiner', 'assembler', 'runeCarver', 'frameForge', 'golemForge', 'golemRelay', 'alchemyLab', 'portalForge', 'portalGate', 'seedLoom', 'worldTree'].includes(selected.kind);
     }
-    if (selected && view.guide && (this.previousGuideMode === 'feed' || this.previousGuideMode === 'rotate') && view.guide.mode !== 'feed' && view.guide.mode !== 'rotate') {
+    if (selected && view.guide && ['feed', 'rotate', 'ship', 'recipe'].includes(this.previousGuideMode ?? '') && !['feed', 'rotate', 'ship', 'recipe'].includes(view.guide.mode)) {
       panel.classList.add('is-collapsed'); const close = this.node('[data-action="close-panel"]'); close.textContent = '+'; close.setAttribute('aria-label', '設備詳細を開く');
     }
     this.root.classList.toggle('expanded-selection', !!selected && !panel.hidden && !panel.classList.contains('is-collapsed'));

@@ -1,0 +1,15 @@
+{
+  "mode": "source",
+  "checks": [
+    "390px: 15 catalog entries; real touch sales, purchase, quoted allocation, empty-stock repeat rejection and full belt undo preserve quantities",
+    "320px: 15 catalog entries; real touch sales, purchase, quoted allocation, empty-stock repeat rejection and full belt undo preserve quantities",
+    "Fresh workshop: an actual mining/refining/fuel line stocks goods without consuming them; explicit manual shipping fulfills ten ingots; research remains an explicit action with named unlocks",
+    "Genuine historical v4: load leaves the IndexedDB slot untouched, then explicit v5 save keeps IDs, work, stock, research and production statistics, with zero retroactive currency",
+    "Three common machines select unlocked products before placement and after placement; incompatible-stock switches reject without changing resources",
+    "Reload and explicit resume preserve the canonical factory and shipping account exactly"
+  ],
+  "runtimeSHA256": "8c60d08622923bebb75b64abd3ec07ef5c702d6403ea083dca4db6a57a197ac3",
+  "pageErrors": [],
+  "failedRequests": [],
+  "physicalIOS": "not tested; Chromium touch emulation only"
+}

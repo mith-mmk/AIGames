@@ -3970,7 +3970,9 @@ var R = d, z = Object.keys(R), Ne = S.map((e) => e.id), B = Object.fromEntries(S
 				...a.output,
 				...a.reserved ?? [],
 				...a.item ? [a.item] : []
-			].forEach((e) => r[e.resource]++), this.text("#selection-buffer", Object.entries(r).filter(([, e]) => e > 0).map(([e, t]) => `${R[e]} ${t}`).join("、") || "なし"), this.updateSelectedSystems(e, a), this.text("#selection-progress", a.kind === "belt" || a.kind === "splitter" ? `${Math.round(a.beltProgress / h * 100)}%` : `${a.progress.toFixed(1)}秒${o[a.kind].seconds ? ` / ${o[a.kind].seconds}秒` : ""}`), this.text("#selection-power", `${Math.floor(a.energy)}${a.pendingEnergy ? ` · 内部完成 ${a.pendingEnergy}` : ""}`), this.node("#advanced-feed").hidden = a.kind === "delivery" || ![
+			].forEach((e) => r[e.resource]++), this.text("#selection-buffer", Object.entries(r).filter(([, e]) => e > 0).map(([e, t]) => `${R[e]} ${t}`).join("、") || "なし"), this.updateSelectedSystems(e, a);
+			let i = a.recipe ? l[a.recipe].seconds : o[a.kind].seconds;
+			this.text("#selection-progress", a.kind === "belt" || a.kind === "splitter" ? `${Math.round(a.beltProgress / h * 100)}%` : `${a.progress.toFixed(1)}秒${i ? ` / ${i}秒` : ""}`), this.text("#selection-power", `${Math.floor(a.energy)}${a.pendingEnergy ? ` · 内部完成 ${a.pendingEnergy}` : ""}`), this.node("#advanced-feed").hidden = a.kind === "delivery" || ![
 				"generator",
 				"smelter",
 				"delivery",
@@ -3990,7 +3992,17 @@ var R = d, z = Object.keys(R), Ne = S.map((e) => e.id), B = Object.fromEntries(S
 				"worldTree"
 			].includes(a.kind);
 		}
-		if (a && t.guide && (this.previousGuideMode === "feed" || this.previousGuideMode === "rotate") && t.guide.mode !== "feed" && t.guide.mode !== "rotate") {
+		if (a && t.guide && [
+			"feed",
+			"rotate",
+			"ship",
+			"recipe"
+		].includes(this.previousGuideMode ?? "") && ![
+			"feed",
+			"rotate",
+			"ship",
+			"recipe"
+		].includes(t.guide.mode)) {
 			s.classList.add("is-collapsed");
 			let e = this.node("[data-action=\"close-panel\"]");
 			e.textContent = "+", e.setAttribute("aria-label", "設備詳細を開く");

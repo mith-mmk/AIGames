@@ -9,6 +9,7 @@ const crypto = require('node:crypto');
 (async () => {
   const root = path.resolve(__dirname, '..'), built = process.argv.includes('--built');
   const directory = path.join(root, built ? '.pages-dist' : 'web');
+  const runtimeSHA256 = crypto.createHash('sha256').update(fs.readFileSync(path.join(directory, 'js/fantasy-automation/runtime/app.js'))).digest('hex');
   const output = path.join(root, 'artifacts/fantasy-automation/recipes-shipping', built ? 'built' : 'source');
   fs.mkdirSync(output, { recursive: true });
   const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json' };
@@ -92,7 +93,7 @@ const crypto = require('node:crypto');
     const cells=new Set(funded.buildings.map(b=>`${b.x},${b.z}`)), free=[]; for(let z=12;z<=20;z++)for(let x=12;x<=18;x++)if(!cells.has(`${x},${z}`))free.push([x,z]);
     for (const [index,kind,recipe] of [[0,'smelter','crystal'],[1,'assembler','golem'],[2,'alchemyLab','worldSeed']]) {
       await choose(kind); await page.locator('#build-recipe-select').selectOption(recipe); await cell(...free[index]); const placed=await save(); const b=placed.buildings.find(b=>b.x===free[index][0]&&b.z===free[index][1]); assert.equal(b.kind,kind); assert.equal(b.recipe,recipe);
-      await action('cancel').click(); await cell(...free[index]); assert.match(await page.locator('#selection-title').textContent(), new RegExp({'crystal':'精製魔晶','golem':'ゴーレム','worldSeed':'世界樹の種'}[recipe])); await shot(`common-${kind}`);
+      await action('cancel').click(); await cell(...free[index]); assert.match(await page.locator('#selection-title').textContent(), new RegExp({'crystal':'精製魔晶','golem':'ゴーレム','worldSeed':'世界樹の種'}[recipe])); assert.match(await page.locator('#selection-progress').textContent(), new RegExp('/ ' + ({crystal:3,golem:8,worldSeed:8}[recipe]) + '秒')); await shot(`common-${kind}`);
     }
     await cell(...free[1]); const before=await save(); await page.locator('#recipe-select').selectOption('sword'); await page.locator('#recipe-select').selectOption('golem'); const after=await save(); assert.deepEqual(after.inventory,before.inventory);
     const invalid=structuredClone(after), assembler=invalid.buildings.find(b=>b.x===free[1][0]&&b.z===free[1][1]); assembler.input=[{resource:'golemFrame',automated:true}]; await load(invalid); await cell(...free[1]); await page.locator('#recipe-select').selectOption('sword'); await page.waitForTimeout(200);
@@ -101,7 +102,7 @@ const crypto = require('node:crypto');
     await page.reload(); await page.locator('canvas').waitFor(); await page.locator('[data-speed="0"]').click(); await action('guide-close').click(); await load(retained); assert.deepEqual(await save(),retained);
     record('Reload and explicit resume preserve the canonical factory and shipping account exactly');
     assert.deepEqual(errors,[]); assert.deepEqual(failures,[]); fs.rmSync(path.join(output,'failure.png'),{force:true});
-    fs.writeFileSync(path.join(output,'results.json'),JSON.stringify({mode:built?'built':'source',checks,runtimeSHA256:crypto.createHash('sha256').update(fs.readFileSync(path.join(directory,'js/fantasy-automation/runtime/app.js'))).digest('hex'),pageErrors:errors,failedRequests:failures,physicalIOS:'not tested; Chromium touch emulation only'},null,2)+'\n');
+    fs.writeFileSync(path.join(output,'results.json'),JSON.stringify({mode:built?'built':'source',checks,runtimeSHA256,pageErrors:errors,failedRequests:failures,physicalIOS:'not tested; Chromium touch emulation only'},null,2)+'\n');
     console.log('Recipes and manual shipping browser QA passed.');
   } catch (error) { if(page) await page.screenshot({path:path.join(output,'failure.png'),fullPage:true}).catch(()=>{}); throw error; }
   finally { await browser?.close(); await new Promise(resolve=>server.close(resolve)); }
