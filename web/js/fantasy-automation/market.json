@@ -1,0 +1,14 @@
+{
+  "sell": {
+    "wood": 1,
+    "ingot": 10,
+    "sword": 40
+  },
+  "buy": {
+    "ingot": 30
+  },
+  "deliveryTargets": {
+    "ingot": 10,
+    "sword": 10
+  }
+}

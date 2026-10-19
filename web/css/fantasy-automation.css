@@ -158,3 +158,10 @@ noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 15px; back
 .furnace-smelter { color: #efb177; }.furnace-generator { color: #a6d9f2; }.quick-icon .furnace-icon { width: 26px; height: 26px; }
 .furnace-role { display: flex; align-items: center; gap: 10px; margin: 8px 0; padding: 8px; border: 1px solid var(--border); border-radius: 6px; line-height: 1.7; font-size: 11px; }
 .furnace-role > .furnace-icon { width: 40px; height: 40px; flex: none; }.furnace-role .resource-icon { width: 20px; height: 20px; vertical-align: middle; }
+
+/* Recipe and shipping controls stay contextual to the selected machine. */
+#build-recipe-control { position: absolute; right: 0; bottom: calc(100% + 6px); background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; color: var(--gold); font-size: 11px; }
+#build-recipe-control[hidden] { display: none; }#build-recipe-select { min-height: 44px; max-width: 220px; margin-left: 6px; }
+.shipping-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }.shipping-fields label { display: grid; gap: 4px; }.shipping-fields input, .shipping-fields select { min-width: 0; width: 100%; min-height: 44px; }#shipping-controls button { min-height: 44px; margin: 3px 0; width: 100%; }#shipping-controls h3 { color: var(--gold); }#shipping-quote { color: var(--gold); }#wallet-count { white-space: nowrap; color: var(--gold); }#shipping-quests, #shipping-stock { overflow-wrap: anywhere; }
+
+.selection-heading { position: sticky; top: -10px; z-index: 2; background: #33291ffb; padding: 6px 0; }.selection-heading h2 { padding-right: 32px; }.selection-heading .panel-close { top: 4px; right: 0; }

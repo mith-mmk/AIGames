@@ -27,7 +27,7 @@ function contents(value: GameState): Item[] {
 
 test('version 1 migration preserves every item, provenance, elapsed tick, work progress and stored power', () => {
   const original = legacy(), before = structuredClone(original), converted = migrateGameState(original);
-  assert.equal(converted.version, 4);
+  assert.equal(converted.version, 5);
   assert.deepEqual(original, before, 'Migration cannot mutate the source slot or caller state');
   assert.equal(converted.tick, original.tick); assert.equal(converted.seed, original.seed);
   assert.equal(converted.delivered, original.delivered); assert.equal(converted.nextId, original.nextId);

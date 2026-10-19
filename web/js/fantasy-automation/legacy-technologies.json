@@ -1,0 +1,293 @@
+[
+  {
+    "id": "basic",
+    "label": "採掘と精錬",
+    "description": "鉄鉱石を鉄の延べ棒へ加工し、自動納品の工房を築く。",
+    "prerequisites": [],
+    "requirements": [],
+    "unlocks": {
+      "kinds": [
+        "miner",
+        "belt",
+        "smelter",
+        "generator",
+        "wire",
+        "lumber",
+        "delivery"
+      ],
+      "recipes": [
+        "ingot"
+      ]
+    }
+  },
+  {
+    "id": "logistics",
+    "label": "物流の分岐と収納",
+    "description": "自動生産の経験から、分岐器と有限の収納箱を解放する。",
+    "prerequisites": [
+      "basic"
+    ],
+    "requirements": [
+      {
+        "metric": "produced",
+        "resource": "ingot",
+        "target": 5,
+        "label": "鉄の延べ棒を自動生産"
+      }
+    ],
+    "unlocks": {
+      "kinds": [
+        "splitter",
+        "storage"
+      ],
+      "recipes": []
+    }
+  },
+  {
+    "id": "crystals",
+    "label": "結晶加工",
+    "description": "自動納品で得た知識を使い、結晶鉱脈の採掘と加工を始める。",
+    "prerequisites": [
+      "basic"
+    ],
+    "requirements": [
+      {
+        "metric": "delivered",
+        "resource": "ingot",
+        "target": 10,
+        "label": "鉄の延べ棒を自動納品"
+      }
+    ],
+    "unlocks": {
+      "kinds": [
+        "crystalMiner",
+        "crystalRefiner"
+      ],
+      "recipes": [
+        "crystal"
+      ]
+    }
+  },
+  {
+    "id": "assembly",
+    "label": "魔導剣の組立",
+    "description": "鉄の延べ棒と精製魔晶を組み合わせ、魔導剣を連続生産する。",
+    "prerequisites": [
+      "logistics",
+      "crystals"
+    ],
+    "requirements": [
+      {
+        "metric": "produced",
+        "resource": "ingot",
+        "target": 30,
+        "label": "鉄の延べ棒を自動生産"
+      },
+      {
+        "metric": "produced",
+        "resource": "crystal",
+        "target": 10,
+        "label": "精製魔晶を自動生産"
+      }
+    ],
+    "unlocks": {
+      "kinds": [
+        "assembler"
+      ],
+      "recipes": [
+        "sword"
+      ]
+    }
+  },
+  {
+    "id": "mastery",
+    "label": "魔導剣の量産技術",
+    "description": "ゲーム内の連続60秒で魔導剣10本を自動生産し、10本を自動納品する。次はルーン加工とゴーレム工房へ進む。",
+    "prerequisites": [
+      "assembly"
+    ],
+    "requirements": [
+      {
+        "metric": "peakSwordRate",
+        "target": 10,
+        "label": "魔導剣の最高生産速度（本/ゲーム内分）"
+      },
+      {
+        "metric": "delivered",
+        "resource": "sword",
+        "target": 10,
+        "label": "魔導剣を自動納品"
+      }
+    ],
+    "unlocks": {
+      "kinds": [],
+      "recipes": []
+    }
+  },
+  {
+    "id": "runecraft",
+    "label": "ルーン加工と機体製作",
+    "description": "精製魔晶と鉄を使って魔導核と鉄の躯体を生産する。",
+    "prerequisites": [
+      "mastery"
+    ],
+    "requirements": [],
+    "unlocks": {
+      "kinds": [
+        "runeCarver",
+        "frameForge"
+      ],
+      "recipes": [
+        "runeCore",
+        "golemFrame"
+      ]
+    }
+  },
+  {
+    "id": "golemcraft",
+    "label": "ゴーレム組立と物流補助",
+    "description": "魔導核と機体を組み立て、ゴーレムの物流補助を解放する。",
+    "prerequisites": [
+      "runecraft"
+    ],
+    "requirements": [
+      {
+        "metric": "produced",
+        "resource": "runeCore",
+        "target": 3,
+        "label": "魔導核を自動生産"
+      },
+      {
+        "metric": "produced",
+        "resource": "golemFrame",
+        "target": 3,
+        "label": "鉄の躯体を自動生産"
+      }
+    ],
+    "unlocks": {
+      "kinds": [
+        "golemForge",
+        "golemRelay"
+      ],
+      "recipes": [
+        "golem"
+      ]
+    }
+  },
+  {
+    "id": "sanctuary",
+    "label": "ゴーレム工房の自動運営",
+    "description": "ゴーレム3体を自動生産し、補助拠点から魔力発生炉へ木材を20個自動補給する。",
+    "prerequisites": [
+      "golemcraft"
+    ],
+    "requirements": [
+      {
+        "metric": "produced",
+        "resource": "golem",
+        "target": 3,
+        "label": "ゴーレムを自動生産"
+      },
+      {
+        "metric": "golemFuelTransfers",
+        "target": 20,
+        "label": "ゴーレムで木材を魔力発生炉へ自動補給"
+      }
+    ],
+    "unlocks": {
+      "kinds": [],
+      "recipes": []
+    }
+  },
+  {
+    "id": "alchemy",
+    "label": "錬金術",
+    "description": "魔晶原石・精製魔晶・木材から錬金精髄を精製し、転送技術の準備を始める。",
+    "prerequisites": [
+      "sanctuary"
+    ],
+    "requirements": [],
+    "unlocks": {
+      "kinds": [
+        "alchemyLab"
+      ],
+      "recipes": [
+        "essence"
+      ]
+    }
+  },
+  {
+    "id": "portalcraft",
+    "label": "転送門の製作",
+    "description": "錬金精髄と鉄の延べ棒から転送核を作り、離れた工房を転送門で結ぶ。",
+    "prerequisites": [
+      "alchemy"
+    ],
+    "requirements": [
+      {
+        "metric": "produced",
+        "resource": "essence",
+        "target": 5,
+        "label": "錬金精髄を自動生産"
+      },
+      {
+        "metric": "produced",
+        "resource": "runeCore",
+        "target": 5,
+        "label": "魔導核を自動生産"
+      }
+    ],
+    "unlocks": {
+      "kinds": [
+        "portalForge",
+        "portalGate"
+      ],
+      "recipes": [
+        "portalCore"
+      ]
+    }
+  },
+  {
+    "id": "worldGrafting",
+    "label": "世界樹の接ぎ木",
+    "description": "自動生産品を転送門で10個初回転送し、世界樹の種と世界樹を解放する。",
+    "prerequisites": [
+      "portalcraft"
+    ],
+    "requirements": [
+      {
+        "metric": "portalTransfers",
+        "target": 10,
+        "label": "自動生産品を転送門で初回転送"
+      }
+    ],
+    "unlocks": {
+      "kinds": [
+        "seedLoom",
+        "worldTree"
+      ],
+      "recipes": [
+        "worldSeed"
+      ]
+    }
+  },
+  {
+    "id": "worldAwakened",
+    "label": "世界樹の覚醒",
+    "description": "自動生産し、転送門を通して自動搬送した世界樹の種を10個与えて世界樹を育てる。",
+    "prerequisites": [
+      "worldGrafting"
+    ],
+    "requirements": [
+      {
+        "metric": "treeGrowth",
+        "target": 10,
+        "label": "世界樹を成長させる"
+      }
+    ],
+    "unlocks": {
+      "kinds": [],
+      "recipes": []
+    }
+  }
+]

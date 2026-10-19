@@ -8,7 +8,7 @@ const http = require('node:http');
 (async () => {
   const root = path.resolve(__dirname, '..'), built = process.argv.includes('--built');
   const directory = path.join(root, built ? '.pages-dist' : 'web');
-  const output = path.join(root, 'artifacts/fantasy-automation/onboarding', built ? 'built' : 'source');
+  const output = path.join(root, 'artifacts/fantasy-automation/recipes-shipping/onboarding', built ? 'built' : 'source');
   fs.mkdirSync(output, { recursive: true });
   const mime = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json' };
   const server = http.createServer((request, response) => {
@@ -53,7 +53,7 @@ const http = require('node:http');
       const id = await card.getAttribute('data-guide-id');
       const text = await card.innerText();
       actions.push({ id, mode, text });
-      assert(['build', 'rotate', 'feed', 'run', 'done'].includes(mode), `Recognizable guide mode: ${mode}`);
+      assert(['build', 'rotate', 'feed', 'run', 'ship', 'recipe', 'done'].includes(mode), `Recognizable guide mode: ${mode}`);
       const cta = page.locator('[data-action="guide-action"]');
       if (mode === 'done') break;
       if (mode === 'build') {
@@ -77,6 +77,9 @@ const http = require('node:http');
         assert(text.includes('木材'), 'Guide explicitly explains the fuel to supply');
         await cta.click();
         await page.locator('[data-feed-resource="wood"]').click();
+      } else if (mode === 'ship') {
+        await cta.click(); await page.locator('[data-action="dispatch"]').click();
+      } else if (mode === 'recipe') { await cta.click();
       } else if (mode === 'run') {
         await cta.click();
         if (wirePoint && !cutWire) {
@@ -94,7 +97,7 @@ const http = require('node:http');
           repairStep = await card.getAttribute('data-guide-id');
           await page.screenshot({ path: path.join(output, 'wire-repair-guidance.png'), fullPage: true });
         } else {
-          await page.waitForFunction(() => Number(document.querySelector('#delivered-count')?.textContent) >= 1, undefined, { timeout: 60000 });
+          await page.waitForFunction(() => document.querySelector('#guide-card')?.getAttribute('data-guide-mode') === 'ship' || Number(document.querySelector('#delivered-count')?.textContent) >= 1, undefined, { timeout: 60000 });
         }
       }
       await page.waitForTimeout(180);
@@ -193,9 +196,12 @@ const http = require('node:http');
         } else if (mode === 'feed') {
           await cta.tap();
           await mobile.locator('[data-feed-resource="wood"]').tap();
+        } else if (mode === 'ship') {
+          await cta.tap(); await mobile.locator('[data-action="dispatch"]').tap();
+        } else if (mode === 'recipe') { await cta.tap();
         } else if (mode === 'run') {
           await cta.tap();
-          await mobile.waitForFunction(() => Number(document.querySelector('#delivered-count')?.textContent) >= 1, undefined, { timeout: 60000 });
+          await mobile.waitForFunction(() => document.querySelector('#guide-card')?.getAttribute('data-guide-mode') === 'ship' || Number(document.querySelector('#delivered-count')?.textContent) >= 1, undefined, { timeout: 60000 });
         } else if (mode === 'rotate') {
           await cta.tap(); await mobile.locator('#selection-panel [data-action="rotate"]').tap();
         } else throw new Error(`Unknown mobile guide mode: ${mode}`);

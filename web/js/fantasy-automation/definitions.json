@@ -1,23 +1,191 @@
 {
-  "miner": { "label": "採掘機", "cost": { "wood": 4, "ingot": 6 }, "seconds": 2, "output": { "ore": 1 }, "energy": 2, "technology": "basic" },
-  "belt": { "label": "搬送ベルト", "cost": { "wood": 1, "ingot": 1 }, "seconds": 0.5, "technology": "basic" },
-  "smelter": { "label": "製錬炉", "cost": { "wood": 4, "ingot": 8 }, "seconds": 4, "input": { "ore": 2 }, "output": { "ingot": 1 }, "energy": 5, "technology": "basic", "recipes": ["ingot"] },
-  "generator": { "label": "魔力発生炉", "cost": { "wood": 6, "ingot": 6 }, "seconds": 10, "input": { "wood": 1 }, "generatedEnergy": 30, "technology": "basic" },
-  "wire": { "label": "魔力導線", "cost": { "wood": 1 }, "technology": "basic" },
-  "lumber": { "label": "木材採取場", "cost": { "wood": 4, "ingot": 4 }, "seconds": 3, "output": { "wood": 1 }, "technology": "basic" },
-  "delivery": { "label": "納品箱", "cost": { "wood": 6 }, "technology": "basic" },
-  "splitter": { "label": "分岐器", "cost": { "wood": 2, "ingot": 2 }, "seconds": 0.5, "technology": "logistics" },
-  "storage": { "label": "収納箱", "cost": { "wood": 6, "ingot": 2 }, "technology": "logistics" },
-  "crystalMiner": { "label": "魔晶採掘機", "cost": { "wood": 4, "ingot": 8 }, "seconds": 2, "output": { "rawCrystal": 1 }, "energy": 2, "technology": "crystals" },
-  "crystalRefiner": { "label": "魔晶精製炉", "cost": { "wood": 4, "ingot": 8 }, "seconds": 3, "input": { "rawCrystal": 1 }, "output": { "crystal": 1 }, "energy": 3, "technology": "crystals", "recipes": ["crystal"] },
-  "assembler": { "label": "魔導組立機", "cost": { "wood": 6, "ingot": 12 }, "seconds": 4, "input": { "ingot": 2, "crystal": 1 }, "output": { "sword": 1 }, "energy": 8, "technology": "assembly", "recipes": ["sword"] },
-  "runeCarver": { "label": "刻印台", "cost": { "wood": 6, "ingot": 8 }, "seconds": 6, "input": { "crystal": 2, "ingot": 1 }, "output": { "runeCore": 1 }, "energy": 8, "technology": "runecraft", "recipes": ["runeCore"] },
-  "frameForge": { "label": "躯体工房", "cost": { "wood": 8, "ingot": 10 }, "seconds": 6, "input": { "ingot": 3, "wood": 2 }, "output": { "golemFrame": 1 }, "energy": 6, "technology": "runecraft", "recipes": ["golemFrame"] },
-  "golemForge": { "label": "覚醒炉", "cost": { "wood": 8, "ingot": 12 }, "seconds": 8, "input": { "runeCore": 1, "golemFrame": 1 }, "output": { "golem": 1 }, "energy": 12, "technology": "golemcraft", "recipes": ["golem"] },
-  "golemRelay": { "label": "ゴーレム補給所", "cost": { "wood": 8, "ingot": 6 }, "technology": "golemcraft" },
-  "alchemyLab": { "label": "錬金工房", "cost": { "wood": 8, "ingot": 10 }, "seconds": 6, "input": { "rawCrystal": 1, "crystal": 1, "wood": 1 }, "output": { "essence": 1 }, "energy": 6, "technology": "alchemy", "recipes": ["essence"] },
-  "portalForge": { "label": "転送核工房", "cost": { "wood": 8, "ingot": 12 }, "seconds": 6, "input": { "essence": 2, "ingot": 2 }, "output": { "portalCore": 1 }, "energy": 8, "technology": "portalcraft", "recipes": ["portalCore"] },
-  "portalGate": { "label": "転送門", "cost": { "wood": 8, "ingot": 8, "portalCore": 1 }, "seconds": 1, "energy": 2, "technology": "portalcraft" },
-  "seedLoom": { "label": "育種工房", "cost": { "wood": 10, "ingot": 10 }, "seconds": 8, "input": { "wood": 3, "essence": 2, "runeCore": 1 }, "output": { "worldSeed": 1 }, "energy": 10, "technology": "worldGrafting", "recipes": ["worldSeed"] },
-  "worldTree": { "label": "世界樹", "cost": { "wood": 12, "ingot": 6, "portalCore": 1 }, "seconds": 1, "input": { "worldSeed": 1 }, "technology": "worldGrafting" }
+  "miner": {
+    "label": "採掘機",
+    "cost": {
+      "wood": 4,
+      "ingot": 6
+    },
+    "seconds": 2,
+    "output": {
+      "ore": 1
+    },
+    "energy": 2,
+    "technology": "basic"
+  },
+  "belt": {
+    "label": "搬送ベルト",
+    "cost": {
+      "wood": 1,
+      "ingot": 1
+    },
+    "seconds": 0.5,
+    "technology": "basic"
+  },
+  "smelter": {
+    "label": "製錬炉",
+    "cost": {
+      "wood": 4,
+      "ingot": 8
+    },
+    "seconds": 4,
+    "input": {
+      "ore": 2
+    },
+    "output": {
+      "ingot": 1
+    },
+    "energy": 5,
+    "technology": "basic",
+    "recipes": [
+      "ingot",
+      "crystal"
+    ]
+  },
+  "generator": {
+    "label": "魔力発生炉",
+    "cost": {
+      "wood": 6,
+      "ingot": 6
+    },
+    "seconds": 10,
+    "input": {
+      "wood": 1
+    },
+    "generatedEnergy": 30,
+    "technology": "basic"
+  },
+  "wire": {
+    "label": "魔力導線",
+    "cost": {
+      "wood": 1
+    },
+    "technology": "basic"
+  },
+  "lumber": {
+    "label": "木材採取場",
+    "cost": {
+      "wood": 4,
+      "ingot": 4
+    },
+    "seconds": 3,
+    "output": {
+      "wood": 1
+    },
+    "technology": "basic"
+  },
+  "delivery": {
+    "label": "出荷所",
+    "cost": {
+      "wood": 6
+    },
+    "technology": "basic"
+  },
+  "splitter": {
+    "label": "分岐器",
+    "cost": {
+      "wood": 2,
+      "ingot": 2
+    },
+    "seconds": 0.5,
+    "technology": "logistics"
+  },
+  "storage": {
+    "label": "収納箱",
+    "cost": {
+      "wood": 6,
+      "ingot": 2
+    },
+    "technology": "logistics"
+  },
+  "crystalMiner": {
+    "label": "魔晶採掘機",
+    "cost": {
+      "wood": 4,
+      "ingot": 8
+    },
+    "seconds": 2,
+    "output": {
+      "rawCrystal": 1
+    },
+    "energy": 2,
+    "technology": "crystals"
+  },
+  "assembler": {
+    "label": "魔導組立機",
+    "cost": {
+      "wood": 8,
+      "ingot": 12
+    },
+    "seconds": 4,
+    "input": {
+      "ingot": 2,
+      "crystal": 1
+    },
+    "output": {
+      "sword": 1
+    },
+    "energy": 8,
+    "technology": "assembly",
+    "recipes": [
+      "sword",
+      "runeCore",
+      "golemFrame",
+      "golem",
+      "portalCore"
+    ]
+  },
+  "golemRelay": {
+    "label": "ゴーレム補給所",
+    "cost": {
+      "wood": 8,
+      "ingot": 6
+    },
+    "technology": "golemcraft"
+  },
+  "alchemyLab": {
+    "label": "錬金工房",
+    "cost": {
+      "wood": 10,
+      "ingot": 10
+    },
+    "seconds": 6,
+    "input": {
+      "rawCrystal": 1,
+      "crystal": 1,
+      "wood": 1
+    },
+    "output": {
+      "essence": 1
+    },
+    "energy": 6,
+    "technology": "alchemy",
+    "recipes": [
+      "essence",
+      "worldSeed"
+    ]
+  },
+  "portalGate": {
+    "label": "転送門",
+    "cost": {
+      "wood": 8,
+      "ingot": 8,
+      "portalCore": 1
+    },
+    "seconds": 1,
+    "energy": 2,
+    "technology": "portalcraft"
+  },
+  "worldTree": {
+    "label": "世界樹",
+    "cost": {
+      "wood": 12,
+      "ingot": 6,
+      "portalCore": 1
+    },
+    "seconds": 1,
+    "input": {
+      "worldSeed": 1
+    },
+    "technology": "worldGrafting"
+  }
 }

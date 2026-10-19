@@ -21,7 +21,7 @@ function starter(simulation: Simulation): void {
   place(simulation, 'wire', 14, 17);
 }
 
-test('guide completes its 14 steps through actual construction, fuel and first auto delivery', () => {
+test('guide completes its 14 steps through actual construction, fuel and first confirmed manual shipment', () => {
   const simulation = new Simulation();
   const ids: string[] = [];
   for (let index = 0; index < 9; index++) {
@@ -37,7 +37,7 @@ test('guide completes its 14 steps through actual construction, fuel and first a
   assert.equal(simulation.command({ type: 'feed', id: guide.focusId!, resource: 'wood', amount: 1 }).ok, true);
   guide = evaluateGuide(simulation.state);
   assert.equal(guide.id, 'run'); assert.equal(guide.step, 11);
-  for (let tick = 0; tick < 1000 && simulation.state.delivered < 1; tick++) simulation.step();
+  for (let tick = 0; tick < 1000 && simulation.state.delivered < 1; tick++) stepAndShip(simulation);
   assert(simulation.state.delivered >= 1);
   for (let index = 0; index < 3; index++) {
     guide = evaluateGuide(simulation.state);
@@ -47,7 +47,7 @@ test('guide completes its 14 steps through actual construction, fuel and first a
   guide = evaluateGuide(simulation.state);
   assert.equal(guide.id, 'done'); assert.equal(guide.mode, 'done'); assert.match(guide.text, /自由に建設/);
   assert.deepEqual(ids, ['miner', 'belt-ore', 'smelter', 'belt-ingot', 'delivery', 'generator', 'wire-miner', 'wire-link', 'wire-smelter']);
-  for (let tick = 0; tick < 20000 && !simulation.state.won; tick++) simulation.step();
+  for (let tick = 0; tick < 20000 && !simulation.state.won; tick++) stepAndShip(simulation);
   assert.equal(simulation.state.won, true, 'Following the guide creates a genuinely self-sufficient factory');
 });
 
@@ -121,7 +121,7 @@ test('a delivered central workshop returns to wire repair and then resumes the f
   const simulation = new Simulation(); starter(simulation);
   const generator = simulation.state.buildings.find(building => building.kind === 'generator')!;
   simulation.command({ type: 'feed', id: generator.id, resource: 'wood', amount: 1 });
-  for (let tick = 0; tick < 1000 && simulation.state.delivered < 1; tick++) simulation.step();
+  for (let tick = 0; tick < 1000 && simulation.state.delivered < 1; tick++) stepAndShip(simulation);
   assert(simulation.state.delivered >= 1);
   const wire = simulation.state.buildings.find(building => building.kind === 'wire' && building.x === 13)!;
   simulation.command({ type: 'remove', id: wire.id });
@@ -149,8 +149,17 @@ test('initial generation is explained as normal timed work rather than a power f
   const simulation = new Simulation(); starter(simulation);
   const generator = simulation.state.buildings.find(building => building.kind === 'generator')!;
   simulation.command({ type: 'feed', id: generator.id, resource: 'wood', amount: 1 });
-  for (let tick = 0; tick < 20; tick++) simulation.step();
+  for (let tick = 0; tick < 20; tick++) stepAndShip(simulation);
   const guide = evaluateGuide(simulation.state);
   assert.equal(guide.id, 'run'); assert.match(guide.checks.join(' '), /魔力生成まであと9秒/);
   assert.equal(guide.blockers.length, 0);
 });
+
+function confirmShipments(s: Simulation) {
+  for (const b of s.state.buildings.filter(b => b.kind === 'delivery')) for (const resource of ['wood', 'ingot', 'sword'] as const) {
+    const amount = b.input.filter(i => i.resource === resource).length;
+    if (amount) assert(s.command({ type: 'dispatch', id: b.id, source: 'depot', resource, amount }).ok);
+  }
+}
+
+function stepAndShip(s: Simulation) { s.step(); confirmShipments(s); }

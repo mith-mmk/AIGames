@@ -4,12 +4,12 @@ import { GameUI } from './ui';
 import { GameSave } from './storage';
 import { FixedStepLoop } from './loop.mjs';
 import { evaluateGuide, type GuideStep } from './onboarding';
-import { isKindUnlocked } from './technology';
+import { isKindUnlocked, isRecipeUnlocked } from './technology';
 import type { Direction, Kind, Resource, RecipeId, TechId } from './types';
 import { SIZE } from './types';
 import { logisticsPorts } from './logistics-visuals';
 import type { GolemGuide } from './golem-guide';
-import { DEFINITIONS } from './data';
+import { DEFINITIONS, LEGACY_DEFINITIONS, commonKind } from './data';
 
 class WorkshopApp {
   simulation = new Simulation();
@@ -18,6 +18,7 @@ class WorkshopApp {
   ui: GameUI;
   loop: FixedStepLoop;
   kind: Kind | null = null;
+  buildRecipe: RecipeId | undefined;
   direction: Direction = 1;
   selectedId: number | null = null;
   hover: { x: number; z: number } | null = null;
@@ -60,6 +61,8 @@ class WorkshopApp {
         if (this.selectedId !== null) this.message = this.simulation.command({ type: 'portalConfig', id: this.selectedId, channel, role }).reason;
         this.sync();
       },
+      onDispatch: (source, resource, amount) => { if (this.selectedId !== null) this.message = this.simulation.command({ type: 'dispatch', id: this.selectedId, source, resource, amount }).reason; this.sync(); },
+      onBuyIron: () => { if (this.selectedId !== null) this.message = this.simulation.command({ type: 'buyIron', id: this.selectedId, amount: 1 }).reason; this.sync(); },
       onFeed: (resource, amount) => this.feed(resource, amount),
       onCollect: (resource, amount) => this.collect(resource, amount),
       onTechnologyToggle: show => this.toggleTechnology(show),
@@ -96,10 +99,12 @@ class WorkshopApp {
     this.message = '新しい工房を開きました。初期設備は建設時にキットを使用します。'; this.sync();
   }
   chooseBuild(kind: Kind) {
+    const original = kind; kind = commonKind(kind);
     if (!isKindUnlocked(this.simulation.state, kind)) {
       this.message = 'この設備は未解放です。技術ツリーで前提と実績条件を確認してください。';
       this.toggleTechnology(true); return;
     }
+    this.buildRecipe = commonKind(original) !== original ? LEGACY_DEFINITIONS[original].recipes?.[0] : DEFINITIONS[kind].recipes?.find(recipe => isRecipeUnlocked(this.simulation.state, recipe));
     this.placedAt = null; this.kind = kind; this.selectedId = null; this.removeMode = false;
     this.message = '区画をクリックして建設。Rで向き変更、Escで取消。';
     if (kind === 'crystalMiner') {
@@ -132,12 +137,16 @@ class WorkshopApp {
     if (action.type === 'run') { this.golemGuideOpen = false; this.setSpeed(1); }
   }
   research(id: TechId) {
-    this.message = this.simulation.command({ type: 'research', id }).reason; this.sync();
+    const result = this.simulation.command({ type: 'research', id });
+    this.message = result.reason;
+    if (result.ok) { const tech = this.ui.researchReward(id); this.message += ` 解放：${tech}`; }
+    this.sync();
   }
   track(id: TechId | null) {
     this.message = this.simulation.command({ type: 'track', id }).reason; this.sync();
   }
   chooseRecipe(recipe: RecipeId) {
+    if (this.kind) { if (DEFINITIONS[this.kind].recipes?.includes(recipe) && isRecipeUnlocked(this.simulation.state, recipe)) this.buildRecipe = recipe; this.sync(); return; }
     if (this.selectedId !== null) this.message = this.simulation.command({ type: 'recipe', id: this.selectedId, recipe }).reason;
     this.sync();
   }
@@ -150,11 +159,13 @@ class WorkshopApp {
     if (guide.target) { this.hover = { ...guide.target }; if (guide.mode === 'build') this.view?.revealTile(guide.target.x, guide.target.z); }
     if (guide.mode === 'done') { this.toggleGuide(false); return; }
     if (guide.mode === 'run') { this.kind = null; this.selectedId = null; this.setSpeed(1); return; }
-    if (guide.mode === 'rotate' || guide.mode === 'feed') {
+    if (guide.mode === 'rotate' || guide.mode === 'feed' || guide.mode === 'ship' || guide.mode === 'recipe') {
       this.kind = null; this.selectedId = guide.focusId;
-      this.message = guide.mode === 'feed' ? '所持品の木材スロットを押すと1個を補給できます。木材から魔力を作ります。' : '設備の詳細にある「回転 R」で目印と同じ向きにします。';
+      if (guide.mode === 'recipe') this.message = this.simulation.command({ type: 'recipe', id: guide.focusId!, recipe: 'ingot' }).reason;
+      else if (guide.mode === 'ship') this.message = '出荷元・品物・個数と見積もりを確認し、出荷ボタンを押してください。';
+      else this.message = guide.mode === 'feed' ? '所持品の木材スロットを押すと1個を補給できます。木材から魔力を作ります。' : '設備の詳細にある「回転 R」で目印と同じ向きにします。';
     } else {
-      this.kind = guide.kind; this.direction = guide.direction ?? 1; this.selectedId = null;
+      this.kind = guide.kind; this.buildRecipe = this.kind ? DEFINITIONS[this.kind].recipes?.[0] : undefined; this.direction = guide.direction ?? 1; this.selectedId = null;
       this.message = '設備を選びました。地図の光る目印を左クリックして建設してください。';
     }
     this.sync();
@@ -219,12 +230,12 @@ class WorkshopApp {
     const building = this.simulation.state.buildings.find(b => b.x === x && b.z === z);
     if (event.type === 'pointermove' && building && !this.removeMode && !this.xHeld) return;
     if (event.shiftKey && building) {
-      this.kind = building.kind; this.direction = building.direction; this.selectedId = null;
+      this.kind = building.kind; this.buildRecipe = building.recipe; this.direction = building.direction; this.selectedId = null;
       this.message = '同じ設備を選びました。空き区画へ建設できます。';
     } else if ((this.removeMode || this.xHeld) && building) {
       this.selectedId = building.id; this.remove(); return;
     } else if (this.kind && !building) {
-      const result = this.simulation.command({ type: 'build', kind: this.kind, x, z, direction: this.direction });
+      const result = this.simulation.command({ type: 'build', kind: this.kind, x, z, direction: this.direction, ...(this.buildRecipe ? { recipe: this.buildRecipe } : {}) });
       this.message = result.reason; this.placedAt = result.ok ? { x, z } : null;
     } else { this.selectedId = building?.id ?? null; if (building) this.kind = null; }
     this.sync();
@@ -254,7 +265,7 @@ class WorkshopApp {
   render() {
     this.view?.setInputBlocked(this.ui.isWorldInputBlocked());
     const valid = !!this.kind && !!this.hover && this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction).ok;
-    this.view?.render(this.simulation.state, { kind: this.kind, direction: this.direction, valid, hover: this.hover, selectedId: this.selectedId, guideTarget: this.guideStep?.target ? { ...this.guideStep.target, kind: this.guideStep.kind, direction: this.guideStep.direction } : null });
+    this.view?.render(this.simulation.state, { kind: this.kind, recipe: this.buildRecipe, direction: this.direction, valid, hover: this.hover, selectedId: this.selectedId, guideTarget: this.guideStep?.target ? { ...this.guideStep.target, kind: this.guideStep.kind, direction: this.guideStep.direction } : null });
   }
   sync() {
     this.guideStep = this.guideEnabled && !this.technologyOpen && !this.golemGuideOpen && this.pendingDemolitionId === null ? evaluateGuide(this.simulation.state) : null;
@@ -264,13 +275,13 @@ class WorkshopApp {
       if (!checked.ok && !(this.placedAt?.x === this.hover.x && this.placedAt?.z === this.hover.z) && !message.includes(checked.reason)) message += ` 配置予定: ${checked.reason}`;
       else if (checked.ok) {
         const cells = new Map(this.simulation.state.buildings.map(building => [`${building.x},${building.z}`, building]));
-        const ports = logisticsPorts({ kind: this.kind, ...this.hover, direction: this.direction }, cells);
+        const ports = logisticsPorts({ kind: this.kind, recipe: this.buildRecipe, ...this.hover, direction: this.direction }, cells);
         const labels = { connected: '接続', missing: '未接続', incompatible: '素材不一致', full: '詰まり', edge: 'マップ外' };
         if (ports.length) message += ` 出口 ${ports.map(port => `${['北 ↑', '東 →', '南 ↓', '西 ←'][port.direction]} ${labels[port.state]}`).join(' / ')}。`;
       }
     }
     const undo = this.simulation.undoPlacement();
-    this.ui.update(this.simulation.state, { kind: this.kind, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover, guide: this.guideStep, technologyOpen: this.technologyOpen, golemGuideOpen: this.golemGuideOpen, undoLabel: undo ? `${DEFINITIONS[undo.kind].label} (${undo.x}, ${undo.z})` : null, demolition: this.simulation.state.buildings.find(building => building.id === this.pendingDemolitionId) ?? null });
+    this.ui.update(this.simulation.state, { kind: this.kind, recipe: this.buildRecipe, direction: this.direction, selectedId: this.selectedId, speed: this.speed, power: this.simulation.powerSummary(), message, hover: this.hover, guide: this.guideStep, technologyOpen: this.technologyOpen, golemGuideOpen: this.golemGuideOpen, undoLabel: undo ? `${DEFINITIONS[undo.kind].label} (${undo.x}, ${undo.z})` : null, demolition: this.simulation.state.buildings.find(building => building.id === this.pendingDemolitionId) ?? null });
     this.view?.setInputBlocked(this.ui.isWorldInputBlocked());
   }
   key(event: KeyboardEvent) {

@@ -1,3 +1,4 @@
+import { commonKind, LEGACY_DEFINITIONS } from './data';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { migrateGameState } from './migration.ts';
@@ -23,10 +24,10 @@ function historical(): GameState {
       facility(5, 'golemForge', { recipe: 'golem', working: true, progress: 4, reserved: [{ resource: 'runeCore', automated: true }, { resource: 'golemFrame', automated: true }] })] };
 }
 
-test('version 3 migrates to version 4 preserving all old material, work, power and golem activity without gifting portal provenance', () => {
+test('version 3 migrates to version 5 preserving all old material, work, power and golem activity without gifting portal provenance', () => {
   const old = historical(), before = structuredClone(old), converted = validateSave(old);
-  assert.deepEqual(old, before); assert.equal(converted.version, 4);
-  assert.deepEqual(converted.buildings, old.buildings); assert.deepEqual(converted.inventoryItems, old.inventoryItems);
+  assert.deepEqual(old, before); assert.equal(converted.version, 5);
+  assert.deepEqual(converted.buildings, old.buildings.map(b => ({ ...b, kind: commonKind(b.kind), ...(LEGACY_DEFINITIONS[b.kind].recipes ? { recipe: b.recipe ?? LEGACY_DEFINITIONS[b.kind].recipes![0] } : {}), constructionCost: LEGACY_DEFINITIONS[b.kind].cost }))); assert.deepEqual(converted.inventoryItems, old.inventoryItems);
   assert.deepEqual(converted.terrain, old.terrain); assert.deepEqual(converted.research, old.research);
   assert.deepEqual(converted.inventory, { ...old.inventory, essence: 0, portalCore: 0, worldSeed: 0 });
   assert.deepEqual(converted.stats, { ...old.stats, portalTransfers: 0, treeGrowth: 0 });
@@ -97,7 +98,7 @@ test('version 4 strictly rejects malformed gates, tree state and nonboolean item
     state => { state.buildings[7].input[0].resource = 'wood'; }, state => { state.buildings[7].output.push({ resource: 'worldSeed', automated: true }); },
     state => { state.buildings[0].portalCooldown = 0; }, state => { state.buildings[2].treeGrowth = 0; },
     state => { state.stats.portalTransfers = -1; }, state => { state.stats.treeGrowth = 0.5; },
-    state => { delete state.stats.portalTransfers; }, state => { state.version = 5; },
+    state => { delete state.stats.portalTransfers; }, state => { state.version = 6; },
   ];
   for (const change of invalid) { const value = portalSave(); change(value); assert.throws(() => validateSave(value)); }
 });

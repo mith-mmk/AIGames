@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { WorldInput } from './input.js';
-import { BELT_SECONDS, DEFINITIONS, POWER_KINDS, STORAGE_CAPACITY, PORTAL_INTERVAL } from './data.js';
+import { BELT_SECONDS, RECIPES, DEFINITIONS, POWER_KINDS, STORAGE_CAPACITY, PORTAL_INTERVAL } from './data.js';
 import { DIRECTIONS, SIZE, type Building, type Direction, type GameState, type Kind, type RecipeId, type Resource } from './types.js';
 import { acceptedResources, logisticsPorts, outputDirections, outputResources as sourceResources, type PortVisual, type PortVisualState } from './logistics-visuals.js';
 
@@ -12,6 +12,7 @@ const RESOURCE_COLORS: Record<Resource, number> = {
 };
 
 export interface ViewOptions {
+  recipe?: RecipeId;
   kind: Kind | null;
   direction: Direction;
   valid: boolean;
@@ -469,6 +470,11 @@ export class WorldView {
           const geometry = new THREE.TorusGeometry(0.07, 0.013, 3, 8); geometry.rotateX(-Math.PI / 2); return geometry;
         }), this.material(0xe3c6ff, 0x22142e), STORAGE_CAPACITY);
         contentsBrands.count = 0; contentsBrands.frustumCulled = false; group.add(contentsBrands);
+      } else if (kind === 'delivery') {
+        this.box(group, 0x8e714e, [0.74, 0.28, 0.7], [0, 0.28, 0]);
+        this.box(group, 0xe9c886, [0.75, 0.06, 0.73], [0, 0.45, 0]);
+        this.cylinder(group, 0x6b5945, 0.035, 1.05, [0.31, 0.72, 0.23]);
+        this.box(group, 0xc9af71, [0.38, 0.26, 0.035], [0.12, 1.1, 0.23]);
       } else {
         this.box(group, 0xbca071, [0.62, 0.41, 0.62], [0, 0.35, 0]);
         this.box(group, 0x675a50, [0.66, 0.07, 0.66], [0, 0.59, 0]);
@@ -739,7 +745,7 @@ export class WorldView {
       this.ghostPort.visible = !!options.kind && outputDirections(options.kind, options.direction).length > 0;
       this.ghostSidePort.visible = options.kind === 'splitter';
       if (this.ghostPort.visible && options.kind) {
-        let outputs = this.outputResources(options.kind);
+        let outputs = options.recipe ? Object.keys(RECIPES[options.recipe].output) as Resource[] : this.outputResources(options.kind);
         if (['belt', 'splitter', 'storage'].includes(options.kind)) {
           // A neighboring source can make a prospective belt's resource known.
           const incoming = DIRECTIONS.map(([sx, sz]) => cells.get(`${options.hover!.x + sx},${options.hover!.z + sz}`))
@@ -754,7 +760,7 @@ export class WorldView {
           const known = incoming.flatMap(building => building.item ? [building.item.resource] : building.output.length ? building.output.map(item => item.resource) : building.kind === 'storage' && building.input.length ? building.input.map(item => item.resource) : ['belt', 'splitter', 'storage'].includes(building.kind) ? [] : sourceResources(building));
           if (known.length) outputs = known;
         }
-        const ghostPorts = logisticsPorts({ kind: options.kind, x: options.hover.x, z: options.hover.z, direction: options.direction }, cells, outputs);
+        const ghostPorts = logisticsPorts({ kind: options.kind, recipe: options.recipe, x: options.hover.x, z: options.hover.z, direction: options.direction }, cells, outputs);
         this.renderer.domElement.dataset.ghostDirection = String(options.direction);
         this.renderer.domElement.dataset.ghostPorts = ghostPorts.map(port => `${port.direction}:${port.state}`).join(',');
         for (let index = 0; index < ghostPorts.length; index++) {

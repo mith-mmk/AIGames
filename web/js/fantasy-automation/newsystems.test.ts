@@ -27,7 +27,7 @@ function factory(buildings: Building[] = []): Simulation {
   }
   simulation.restore(state); return simulation;
 }
-function run(simulation: Simulation, seconds: number) { for (let tick = 0; tick < seconds * 20; tick += 1) simulation.step(); }
+function run(simulation: Simulation, seconds: number) { for (let tick = 0; tick < seconds * 20; tick += 1) stepAndShip(simulation); }
 const auto = (resource: Resource): Item => ({ resource, automated: true });
 function buffered(state: GameState): Item[] { return state.buildings.flatMap(value => [...value.input, ...value.output, ...(value.reserved ?? []), ...(value.item ? [value.item] : [])]); }
 
@@ -70,18 +70,18 @@ test('storage holds exactly 32 items, preserves FIFO/provenance and stalls upstr
   assert.deepEqual(simulation.state.buildings[1].input.slice(0, 31), queue.slice(1));
 });
 
-test('taking stored automatic goods marks them handled, and refeeding cannot earn automatic delivery', () => {
+test('collected automatic goods keep their shipping eligibility and require manual dispatch', () => {
   const simulation = factory([building(1, 'storage', 4, 4, { input: [auto('ingot'), auto('sword')] }), building(2, 'belt', 5, 4), building(3, 'delivery', 6, 4)]);
   const before = simulation.state.inventory.ingot;
   assert(simulation.command({ type: 'collect', id: 1, resource: 'ingot', amount: 1 }).ok);
   assert.equal(simulation.state.inventory.ingot, before + 1);
-  assert.deepEqual(simulation.state.inventoryItems, [{ resource: 'ingot', automated: true, handled: true }]);
+  assert.deepEqual(simulation.state.inventoryItems, [{ resource: 'ingot', automated: true, handled: true, shipEligible: true }]);
   assert(simulation.command({ type: 'feed', id: 2, resource: 'ingot', amount: 1 }).ok);
   assert.equal(simulation.state.inventoryItems!.length, 0);
   assert.equal(simulation.state.buildings[1].item!.handled, true);
   run(simulation, 1);
-  assert.equal(simulation.state.delivered, 0);
-  assert.equal(simulation.state.stats!.delivered.ingot ?? 0, 0);
+  assert.equal(simulation.state.delivered, 1);
+  assert.equal(simulation.state.stats!.delivered.ingot ?? 0, 1);
   assert.equal(simulation.state.stats!.delivered.sword, 1, 'Unmodified storage output still counts as automatic sword delivery');
 });
 
@@ -212,3 +212,12 @@ test('manual wood gathering restores a zero-stock workshop without increasing pr
   assert.deepEqual(simulation.state.stats!.produced, produced);
   assert.deepEqual(simulation.state.inventoryItems, [{ resource: 'wood', automated: false, handled: true }]);
 });
+
+function confirmShipments(s: Simulation) {
+  for (const b of s.state.buildings.filter(b => b.kind === 'delivery')) for (const resource of ['wood', 'ingot', 'sword'] as const) {
+    const amount = b.input.filter(i => i.resource === resource).length;
+    if (amount) assert(s.command({ type: 'dispatch', id: b.id, source: 'depot', resource, amount }).ok);
+  }
+}
+
+function stepAndShip(s: Simulation) { s.step(); confirmShipments(s); }

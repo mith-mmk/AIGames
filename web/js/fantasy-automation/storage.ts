@@ -1,6 +1,6 @@
-import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, INPUT_CAPACITY, OUTPUT_CAPACITY, RECIPES, RESOURCES, STORAGE_CAPACITY } from './data.js';
+import { BELT_SECONDS, BUILDABLE_KINDS, commonKind, LEGACY_DEFINITIONS, DEFINITIONS, ENERGY_CAPACITY, GOAL, INPUT_CAPACITY, OUTPUT_CAPACITY, RECIPES, RESOURCES, STORAGE_CAPACITY } from './data.js';
 import { migrateGameState } from './migration.js';
-import { TECHNOLOGIES, isKindUnlocked, isRecipeUnlocked } from './technology.js';
+import { TECHNOLOGIES, isLegacyKindUnlocked, isKindUnlocked, isRecipeUnlocked } from './technology.js';
 import { SIZE, type Building, type GameState, type Inventory, type Item, type Kind, type ProductionStats, type RecipeId, type ResearchState, type Resource, type TechId } from './types.js';
 
 const KINDS = Object.keys(DEFINITIONS) as Kind[];
@@ -13,7 +13,7 @@ const V3_RESOURCES: readonly Resource[] = [...V2_RESOURCES, 'runeCore', 'golemFr
 const V3_KINDS: readonly Kind[] = [...V2_KINDS, 'runeCarver', 'frameForge', 'golemForge', 'golemRelay'];
 const V3_TECHS: readonly TechId[] = [...V2_TECHS, 'runecraft', 'golemcraft', 'sanctuary'];
 const resourcesFor = (version: GameState['version']): readonly Resource[] => version === 1 ? LEGACY_RESOURCES : version === 2 ? V2_RESOURCES : version === 3 ? V3_RESOURCES : RESOURCES;
-const kindsFor = (version: GameState['version']): readonly Kind[] => version === 1 ? LEGACY_KINDS : version === 2 ? V2_KINDS : version === 3 ? V3_KINDS : KINDS;
+const kindsFor = (version: GameState['version']): readonly Kind[] => version === 1 ? LEGACY_KINDS : version === 2 ? V2_KINDS : version === 3 ? V3_KINDS : version === 4 ? KINDS : BUILDABLE_KINDS;
 const TERRAIN = ['grass', 'ore', 'forest', 'crystal'];
 const DATABASE = 'aigames-fantasy-automation';
 const STORE = 'saves';
@@ -37,32 +37,34 @@ function flag(value: unknown, label: string): boolean {
 }
 function item(value: unknown, version: GameState['version'] = 3): Item {
   const legacy = version === 1;
-  const obj = record(value, legacy ? ['resource', 'automated'] : ['resource', 'automated', 'handled', ...(version === 4 ? ['throughPortal'] : [])], '搬送品');
+  const obj = record(value, legacy ? ['resource', 'automated'] : ['resource', 'automated', 'handled', ...(version >= 4 ? ['throughPortal'] : []), ...(version === 5 ? ['shipEligible'] : [])], '搬送品');
   if (!resourcesFor(version).includes(obj.resource as Resource)) throw new Error('保存された資源が未対応です。');
-  return { resource: obj.resource as Resource, automated: flag(obj.automated, '自動生産フラグ'), ...(Object.hasOwn(obj, 'handled') ? { handled: flag(obj.handled, '手動操作フラグ') } : {}), ...(Object.hasOwn(obj, 'throughPortal') ? { throughPortal: flag(obj.throughPortal, '転送門通過フラグ') } : {}) };
+  if (obj.shipEligible === true && (obj.automated !== true || !['ingot', 'sword'].includes(obj.resource as string))) throw new Error('手動出荷の由来が正しくありません。');
+  return { resource: obj.resource as Resource, automated: flag(obj.automated, '自動生産フラグ'), ...(Object.hasOwn(obj, 'handled') ? { handled: flag(obj.handled, '手動操作フラグ') } : {}), ...(Object.hasOwn(obj, 'throughPortal') ? { throughPortal: flag(obj.throughPortal, '転送門通過フラグ') } : {}), ...(Object.hasOwn(obj, 'shipEligible') ? { shipEligible: flag(obj.shipEligible, '手動出荷対象') } : {}) };
 }
 function items(value: unknown, capacity: number, version: GameState['version'] = 3): Item[] {
   if (!Array.isArray(value) || value.length > capacity) throw new Error('設備バッファが正しくありません。');
   return value.map(value => item(value, version));
 }
-function recipeDefinition(value: Building) {
+function recipeDefinition(value: Building, version: GameState['version']) {
   if (value.recipe) return RECIPES[value.recipe];
-  return DEFINITIONS[value.kind];
+  return (version < 5 ? LEGACY_DEFINITIONS : DEFINITIONS)[value.kind];
 }
 function building(value: unknown, version: GameState['version']): Building {
   const legacy = version === 1;
-  const obj = record(value, legacy ? BUILDING_FIELDS : [...BUILDING_FIELDS, 'reserved', 'recipe', 'splitCursor', ...(version >= 3 ? ['golemWorker', 'golemPolicy', 'golemCooldown', 'golemRoute'] : []), ...(version === 4 ? ['portalChannel', 'portalRole', 'portalCooldown', 'portalRoute', 'treeGrowth'] : [])], '設備');
+  const obj = record(value, legacy ? BUILDING_FIELDS : [...BUILDING_FIELDS, 'reserved', 'recipe', 'splitCursor', ...(version >= 3 ? ['golemWorker', 'golemPolicy', 'golemCooldown', 'golemRoute'] : []), ...(version >= 4 ? ['portalChannel', 'portalRole', 'portalCooldown', 'portalRoute', 'treeGrowth'] : []), ...(version === 5 ? ['constructionCost'] : [])], '設備');
   if (!kindsFor(version).includes(obj.kind as Kind)) throw new Error('保存された設備が未対応です。');
   if (typeof obj.status !== 'string' || obj.status.length > 256) throw new Error('設備の状態が正しくありません。');
   const id = number(obj.id, '設備ID');
   if (id === 0) throw new Error('設備IDが正しくありません。');
   const kind = obj.kind as Kind;
+  const definitions = version < 5 ? LEGACY_DEFINITIONS : DEFINITIONS;
   const recipe = Object.hasOwn(obj, 'recipe') ? obj.recipe as RecipeId : undefined;
-  if (recipe !== undefined && (!Object.hasOwn(RECIPES, recipe) || !DEFINITIONS[kind].recipes?.includes(recipe) || (version === 2 && !['ingot', 'crystal', 'sword'].includes(recipe)) || (version === 3 && !['ingot', 'crystal', 'sword', 'runeCore', 'golemFrame', 'golem'].includes(recipe)))) throw new Error('設備のレシピが正しくありません。');
-  const definition = recipe ? RECIPES[recipe] : DEFINITIONS[kind];
+  if (recipe !== undefined && (!Object.hasOwn(RECIPES, recipe) || !definitions[kind].recipes?.includes(recipe) || (version === 2 && !['ingot', 'crystal', 'sword'].includes(recipe)) || (version === 3 && !['ingot', 'crystal', 'sword', 'runeCore', 'golemFrame', 'golem'].includes(recipe)))) throw new Error('設備のレシピが正しくありません。');
+  const definition = recipe ? RECIPES[recipe] : definitions[kind];
   const result: Building = {
     id, kind, x: number(obj.x, 'X座標', SIZE - 1), z: number(obj.z, 'Z座標', SIZE - 1),
-    direction: number(obj.direction, '方向', 3) as Building['direction'], input: items(obj.input, kind === 'storage' ? STORAGE_CAPACITY : INPUT_CAPACITY, version), output: items(obj.output, OUTPUT_CAPACITY, version),
+    direction: number(obj.direction, '方向', 3) as Building['direction'], input: items(obj.input, (kind === 'storage' || (kind === 'delivery' && version === 5)) ? STORAGE_CAPACITY : INPUT_CAPACITY, version), output: items(obj.output, OUTPUT_CAPACITY, version),
     progress: number(obj.progress, '作業進捗', definition.seconds ?? 0, false), working: flag(obj.working, '作業フラグ'),
     energy: number(obj.energy, '魔力', ENERGY_CAPACITY, false), status: obj.status,
     item: obj.item === null ? null : item(obj.item, version), beltProgress: number(obj.beltProgress, '搬送進捗', BELT_SECONDS, false),
@@ -102,11 +104,16 @@ function building(value: unknown, version: GameState['version']): Building {
     result.portalRoute = { targetId, resource: route.resource as Resource, tick: number(route.tick, '転送時刻') };
   }
   if (Object.hasOwn(obj, 'treeGrowth')) result.treeGrowth = number(obj.treeGrowth, '世界樹の成長', 10);
-  validateBuildingSemantics(result, legacy);
+  if (Object.hasOwn(obj, 'constructionCost')) {
+    result.constructionCost = resourceCounts(obj.constructionCost, '建設費', version);
+    const prices = [DEFINITIONS[kind].cost, ...Object.entries(LEGACY_DEFINITIONS).filter(([old]) => commonKind(old as Kind) === kind).map(([, value]) => value.cost)];
+    if (!prices.some(cost => RESOURCES.every(r => (cost[r] ?? 0) === (result.constructionCost![r] ?? 0)))) throw new Error('設備の建設費が正しくありません。');
+  }
+  validateBuildingSemantics(result, legacy, version);
   return result;
 }
-function validateBuildingSemantics(value: Building, legacy: boolean): void {
-  const definition = recipeDefinition(value);
+function validateBuildingSemantics(value: Building, legacy: boolean, version: GameState['version']): void {
+  const definition = recipeDefinition(value, version);
   const recipe = definition.input ?? {};
   const reserved = value.reserved ?? [];
   if (value.kind === 'belt' || value.kind === 'splitter') {
@@ -135,6 +142,10 @@ function validateBuildingSemantics(value: Building, legacy: boolean): void {
     if (value.treeGrowth === undefined || value.working || value.progress || reserved.length || value.output.length || value.input.some(item => item.resource !== 'worldSeed')) throw new Error('世界樹の状態が正しくありません。');
     return;
   }
+  if (value.kind === 'delivery' && version === 5) {
+    if (value.output.length || reserved.length || value.working || value.input.some(item => !['wood', 'ingot', 'sword'].includes(item.resource))) throw new Error('出荷所の保管品が正しくありません。');
+    return;
+  }
   if (value.kind === 'storage') {
     if (value.output.length) throw new Error('収納箱の出力バッファが正しくありません。');
     return;
@@ -157,7 +168,7 @@ function resourceCounts(value: unknown, label: string, version: GameState['versi
   return result;
 }
 function stats(value: unknown, tick: number, delivered: number, version: GameState['version']): ProductionStats {
-  const obj = record(value, ['produced', 'delivered', 'recentSwordTicks', 'peakSwordRate', ...(version >= 3 ? ['golemFuelTransfers', 'golemTransfers'] : []), ...(version === 4 ? ['portalTransfers', 'treeGrowth'] : [])], '生産実績');
+  const obj = record(value, ['produced', 'delivered', 'recentSwordTicks', 'peakSwordRate', ...(version >= 3 ? ['golemFuelTransfers', 'golemTransfers'] : []), ...(version >= 4 ? ['portalTransfers', 'treeGrowth'] : [])], '生産実績');
   const produced = resourceCounts(obj.produced, '生産数', version);
   const deliveries = resourceCounts(obj.delivered, '納品数', version);
   if ((deliveries.ingot ?? 0) !== delivered) throw new Error('鉄の延べ棒の納品実績が一致しません。');
@@ -173,7 +184,7 @@ function stats(value: unknown, tick: number, delivered: number, version: GameSta
     result.golemTransfers = number(obj.golemTransfers, 'ゴーレム搬送数');
     if (result.golemFuelTransfers > result.golemTransfers) throw new Error('木材補給数が総搬送数を超えています。');
   }
-  if (version === 4) {
+  if (version >= 4) {
     result.portalTransfers = number(obj.portalTransfers, '初回自動転送数');
     result.treeGrowth = number(obj.treeGrowth, '世界樹の成長実績');
   }
@@ -190,7 +201,7 @@ function research(value: unknown, version: GameState['version']): ResearchState 
 }
 function validateSchema(value: unknown, version: GameState['version']): GameState {
   const legacy = version === 1;
-  const obj = record(value, legacy ? STATE_FIELDS : [...STATE_FIELDS, 'stats', 'research', 'inventoryItems', 'pendingCrystalCells'], '保存データ');
+  const obj = record(value, legacy ? STATE_FIELDS : [...STATE_FIELDS, 'stats', 'research', 'inventoryItems', 'pendingCrystalCells', ...(version === 5 ? ['market'] : [])], '保存データ');
   if (obj.version !== version) throw new Error('この保存形式には対応していません（対応: version 1・2・3・4）。');
   const allowedTerrain = legacy ? TERRAIN.slice(0, 3) : TERRAIN;
   if (!Array.isArray(obj.terrain) || obj.terrain.length !== SIZE * SIZE || obj.terrain.some(tile => !allowedTerrain.includes(tile))) throw new Error('保存された地形が正しくありません。');
@@ -198,7 +209,7 @@ function validateSchema(value: unknown, version: GameState['version']): GameStat
   const inventory = record(obj.inventory, resources, '所持資源');
   const validatedInventory = {} as Inventory;
   for (const resource of resources) validatedInventory[resource] = number(inventory[resource], '所持資源');
-  const kinds = kindsFor(version);
+  const kinds = version === 5 ? KINDS : kindsFor(version);
   const kits = record(obj.kits, kinds, '所持設備');
   const validatedKits: Partial<Record<Kind, number>> = {};
   for (const kind of kinds) if (Object.hasOwn(kits, kind)) validatedKits[kind] = number(kits[kind], '所持設備数');
@@ -219,6 +230,11 @@ function validateSchema(value: unknown, version: GameState['version']): GameStat
   if (won !== (delivered >= GOAL)) throw new Error('納品数とクリア状態が一致していません。');
   const tick = number(obj.tick, '経過時間');
   const result: GameState = { version, seed: number(obj.seed, '地形シード'), tick, nextId, terrain: [...obj.terrain] as GameState['terrain'], inventory: validatedInventory, kits: validatedKits, buildings, delivered, won };
+  if (version === 5) {
+    const market = record(obj.market, ['coins', 'sold'], '出荷会計');
+    const sold = record(market.sold, ['wood', 'ingot', 'sword'], '売却数');
+    result.market = { coins: number(market.coins, '所持金'), sold: resourceCounts(sold, '売却数', version) };
+  }
   if (!legacy) {
     if (Object.hasOwn(obj, 'pendingCrystalCells')) {
       if (!Array.isArray(obj.pendingCrystalCells) || obj.pendingCrystalCells.length > 2) throw new Error('未発見の結晶鉱脈が正しくありません。');
@@ -233,19 +249,19 @@ function validateSchema(value: unknown, version: GameState['version']): GameStat
     result.inventoryItems = items(obj.inventoryItems, RESOURCES.reduce((sum, resource) => Math.min(Number.MAX_SAFE_INTEGER, sum + (validatedInventory[resource] ?? 0)), 0), version);
     if (result.inventoryItems.some(item => !item.handled)) throw new Error('所持品の手動操作状態が正しくありません。');
     for (const resource of RESOURCES) if (result.inventoryItems.filter(item => item.resource === resource).length > (validatedInventory[resource] ?? 0)) throw new Error('所持品と資源数が一致していません。');
-    for (const facility of buildings) if (!isKindUnlocked(result, facility.kind) || (facility.recipe && !isRecipeUnlocked(result, facility.recipe))) throw new Error('未解放の設備・レシピが保存されています。');
-    for (const kind of kinds) if ((validatedKits[kind] ?? 0) > 0 && !isKindUnlocked(result, kind)) throw new Error('未解放の所持設備が保存されています。');
+    for (const facility of buildings) if (!(version < 5 ? isLegacyKindUnlocked : isKindUnlocked)(result, facility.kind) || (facility.recipe && !isRecipeUnlocked(result, facility.recipe))) throw new Error('未解放の設備・レシピが保存されています。');
+    for (const kind of kinds) if ((validatedKits[kind] ?? 0) > 0 && !isLegacyKindUnlocked(result, kind)) throw new Error('未解放の所持設備が保存されています。');
   }
   return result;
 }
 
-/** Validate the historical schema first, then explicitly migrate and strictly validate version 4. */
+/** Validate immutable historical definitions before migrating to canonical version 5. */
 export function validateSave(value: unknown): GameState {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('保存データが正しくありません。');
   const version = (value as { version?: unknown }).version;
-  if (version === 1 || version === 2 || version === 3) return validateSchema(migrateGameState(validateSchema(value, version)), 4);
-  if (version === 4) return validateSchema(value, 4);
-  throw new Error('この保存形式には対応していません（対応: version 1・2・3・4）。');
+  if (version === 1 || version === 2 || version === 3 || version === 4) return validateSchema(migrateGameState(validateSchema(value, version)), 5);
+  if (version === 5) return validateSchema(value, 5);
+  throw new Error('この保存形式には対応していません（対応: version 1・2・3・4・5）。');
 }
 
 export class GameSave {

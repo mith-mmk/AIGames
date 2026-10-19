@@ -8,6 +8,7 @@ import type { Command, Direction, Kind, TechId } from '../web/js/fantasy-automat
 const projectRequire = createRequire(join(process.cwd(), 'package.json'));
 const { Simulation } = projectRequire('./web/js/fantasy-automation/simulation.ts') as typeof import('../web/js/fantasy-automation/simulation.ts');
 const { canResearch, currentSwordRate } = projectRequire('./web/js/fantasy-automation/technology.ts') as typeof import('../web/js/fantasy-automation/technology.ts');
+const { DEFINITIONS, commonKind } = projectRequire('./web/js/fantasy-automation/data.ts') as typeof import('../web/js/fantasy-automation/data.ts');
 const { validateSave } = projectRequire('./web/js/fantasy-automation/storage.ts') as typeof import('../web/js/fantasy-automation/storage.ts');
 
 let autonomousMainFuel = false;
@@ -36,6 +37,7 @@ function wood(amount: number): void {
 }
 function build(kind: Kind, x: number, z: number, direction: Direction = 1): number {
   wood(40);
+  if (simulation.state.inventory.ingot < (DEFINITIONS[commonKind(kind)].cost.ingot ?? 0)) iron(DEFINITIONS[commonKind(kind)].cost.ingot!);
   command({ type: 'build', kind, x, z, direction });
   return simulation.state.buildings.find(building => building.x === x && building.z === z)!.id;
 }
@@ -51,6 +53,11 @@ function fuel(): void {
 function tick(): void {
   if (simulation.state.tick % 20 === 0) fuel();
   simulation.step();
+  // Replay explicit manual dispatch commands; runtime shipping is never automatic.
+  if (simulation.state.tick % 20 === 0) for (const depot of simulation.state.buildings.filter(b => b.kind === 'delivery')) for (const resource of ['wood', 'ingot', 'sword'] as const) {
+    const amount = depot.input.filter(item => item.resource === resource).length;
+    if (amount) command({ type: 'dispatch', id: depot.id, source: 'depot', resource, amount });
+  }
 }
 function until(condition: () => boolean, limitSeconds = 1200): void {
   const deadline = simulation.state.tick + limitSeconds * 20;

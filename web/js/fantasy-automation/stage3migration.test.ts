@@ -1,3 +1,4 @@
+import { commonKind, LEGACY_DEFINITIONS } from './data';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { migrateGameState } from './migration.ts';
@@ -21,10 +22,10 @@ function historical(): GameState {
       building(4, 'generator', { input: [], reserved: [{ resource: 'wood', automated: false }], working: true, progress: 10, energy: 25, pendingEnergy: 20 })] };
 }
 
-test('version 2 migrates to canonical version 4 without changing old items, provenance, work, power or research', () => {
+test('version 2 migrates to canonical version 5 without changing old items, provenance, work, power or research', () => {
   const old = historical(), before = structuredClone(old), converted = validateSave(old);
-  assert.deepEqual(old, before); assert.equal(converted.version, 4);
-  assert.deepEqual(converted.buildings, old.buildings); assert.deepEqual(converted.terrain, old.terrain);
+  assert.deepEqual(old, before); assert.equal(converted.version, 5);
+  assert.deepEqual(converted.buildings, old.buildings.map(b => ({ ...b, kind: commonKind(b.kind), ...(LEGACY_DEFINITIONS[b.kind].recipes ? { recipe: b.recipe ?? LEGACY_DEFINITIONS[b.kind].recipes![0] } : {}), constructionCost: LEGACY_DEFINITIONS[b.kind].cost }))); assert.deepEqual(converted.terrain, old.terrain);
   assert.deepEqual(converted.inventory, { ...old.inventory, runeCore: 0, golemFrame: 0, golem: 0, essence: 0, portalCore: 0, worldSeed: 0 });
   assert.deepEqual(converted.inventoryItems, old.inventoryItems); assert.deepEqual(converted.kits, old.kits);
   assert.deepEqual(converted.research, old.research); assert.equal(converted.tick, old.tick);
@@ -130,7 +131,7 @@ test('loading an old IndexedDB slot migrates in memory without opening a write t
   } });
   try {
     const loaded = await new GameSave().load();
-    assert.equal(loaded!.version, 4); assert.deepEqual(slot, before);
+    assert.equal(loaded!.version, 5); assert.deepEqual(slot, before);
     assert.deepEqual(modes, ['readonly']); assert.equal(writes, 0);
   } finally {
     if (descriptor) Object.defineProperty(globalThis, 'indexedDB', descriptor);

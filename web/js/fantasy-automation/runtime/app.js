@@ -31,6 +31,264 @@ var t = {
 		output: { ingot: 1 },
 		energy: 5,
 		technology: "basic",
+		recipes: ["ingot", "crystal"]
+	},
+	generator: {
+		label: "魔力発生炉",
+		cost: {
+			wood: 6,
+			ingot: 6
+		},
+		seconds: 10,
+		input: { wood: 1 },
+		generatedEnergy: 30,
+		technology: "basic"
+	},
+	wire: {
+		label: "魔力導線",
+		cost: { wood: 1 },
+		technology: "basic"
+	},
+	lumber: {
+		label: "木材採取場",
+		cost: {
+			wood: 4,
+			ingot: 4
+		},
+		seconds: 3,
+		output: { wood: 1 },
+		technology: "basic"
+	},
+	delivery: {
+		label: "出荷所",
+		cost: { wood: 6 },
+		technology: "basic"
+	},
+	splitter: {
+		label: "分岐器",
+		cost: {
+			wood: 2,
+			ingot: 2
+		},
+		seconds: .5,
+		technology: "logistics"
+	},
+	storage: {
+		label: "収納箱",
+		cost: {
+			wood: 6,
+			ingot: 2
+		},
+		technology: "logistics"
+	},
+	crystalMiner: {
+		label: "魔晶採掘機",
+		cost: {
+			wood: 4,
+			ingot: 8
+		},
+		seconds: 2,
+		output: { rawCrystal: 1 },
+		energy: 2,
+		technology: "crystals"
+	},
+	assembler: {
+		label: "魔導組立機",
+		cost: {
+			wood: 8,
+			ingot: 12
+		},
+		seconds: 4,
+		input: {
+			ingot: 2,
+			crystal: 1
+		},
+		output: { sword: 1 },
+		energy: 8,
+		technology: "assembly",
+		recipes: [
+			"sword",
+			"runeCore",
+			"golemFrame",
+			"golem",
+			"portalCore"
+		]
+	},
+	golemRelay: {
+		label: "ゴーレム補給所",
+		cost: {
+			wood: 8,
+			ingot: 6
+		},
+		technology: "golemcraft"
+	},
+	alchemyLab: {
+		label: "錬金工房",
+		cost: {
+			wood: 10,
+			ingot: 10
+		},
+		seconds: 6,
+		input: {
+			rawCrystal: 1,
+			crystal: 1,
+			wood: 1
+		},
+		output: { essence: 1 },
+		energy: 6,
+		technology: "alchemy",
+		recipes: ["essence", "worldSeed"]
+	},
+	portalGate: {
+		label: "転送門",
+		cost: {
+			wood: 8,
+			ingot: 8,
+			portalCore: 1
+		},
+		seconds: 1,
+		energy: 2,
+		technology: "portalcraft"
+	},
+	worldTree: {
+		label: "世界樹",
+		cost: {
+			wood: 12,
+			ingot: 6,
+			portalCore: 1
+		},
+		seconds: 1,
+		input: { worldSeed: 1 },
+		technology: "worldGrafting"
+	}
+}, n = {
+	ingot: {
+		label: "鉄の延べ棒",
+		seconds: 4,
+		input: { ore: 2 },
+		output: { ingot: 1 },
+		energy: 5,
+		technology: "basic"
+	},
+	crystal: {
+		label: "精製魔晶",
+		seconds: 3,
+		input: { rawCrystal: 1 },
+		output: { crystal: 1 },
+		energy: 3,
+		technology: "crystals"
+	},
+	sword: {
+		label: "魔導剣",
+		seconds: 4,
+		input: {
+			ingot: 2,
+			crystal: 1
+		},
+		output: { sword: 1 },
+		energy: 8,
+		technology: "assembly"
+	},
+	runeCore: {
+		label: "魔導核",
+		seconds: 6,
+		input: {
+			crystal: 2,
+			ingot: 1
+		},
+		output: { runeCore: 1 },
+		energy: 8,
+		technology: "runecraft"
+	},
+	golemFrame: {
+		label: "鉄の躯体",
+		seconds: 6,
+		input: {
+			ingot: 3,
+			wood: 2
+		},
+		output: { golemFrame: 1 },
+		energy: 6,
+		technology: "runecraft"
+	},
+	golem: {
+		label: "ゴーレム",
+		seconds: 8,
+		input: {
+			runeCore: 1,
+			golemFrame: 1
+		},
+		output: { golem: 1 },
+		energy: 12,
+		technology: "golemcraft"
+	},
+	essence: {
+		label: "錬金精髄",
+		seconds: 6,
+		input: {
+			rawCrystal: 1,
+			crystal: 1,
+			wood: 1
+		},
+		output: { essence: 1 },
+		energy: 6,
+		technology: "alchemy"
+	},
+	portalCore: {
+		label: "転送核",
+		seconds: 6,
+		input: {
+			essence: 2,
+			ingot: 2
+		},
+		output: { portalCore: 1 },
+		energy: 8,
+		technology: "portalcraft"
+	},
+	worldSeed: {
+		label: "世界樹の種",
+		seconds: 8,
+		input: {
+			wood: 3,
+			essence: 2,
+			runeCore: 1
+		},
+		output: { worldSeed: 1 },
+		energy: 10,
+		technology: "worldGrafting"
+	}
+}, r = {
+	miner: {
+		label: "採掘機",
+		cost: {
+			wood: 4,
+			ingot: 6
+		},
+		seconds: 2,
+		output: { ore: 1 },
+		energy: 2,
+		technology: "basic"
+	},
+	belt: {
+		label: "搬送ベルト",
+		cost: {
+			wood: 1,
+			ingot: 1
+		},
+		seconds: .5,
+		technology: "basic"
+	},
+	smelter: {
+		label: "製錬炉",
+		cost: {
+			wood: 4,
+			ingot: 8
+		},
+		seconds: 4,
+		input: { ore: 2 },
+		output: { ingot: 1 },
+		energy: 5,
+		technology: "basic",
 		recipes: ["ingot"]
 	},
 	generator: {
@@ -249,103 +507,17 @@ var t = {
 		input: { worldSeed: 1 },
 		technology: "worldGrafting"
 	}
-}, n = {
-	ingot: {
-		label: "鉄の延べ棒",
-		seconds: 4,
-		input: { ore: 2 },
-		output: { ingot: 1 },
-		energy: 5,
-		technology: "basic"
-	},
-	crystal: {
-		label: "精製魔晶",
-		seconds: 3,
-		input: { rawCrystal: 1 },
-		output: { crystal: 1 },
-		energy: 3,
-		technology: "crystals"
-	},
-	sword: {
-		label: "魔導剣",
-		seconds: 4,
-		input: {
-			ingot: 2,
-			crystal: 1
-		},
-		output: { sword: 1 },
-		energy: 8,
-		technology: "assembly"
-	},
-	runeCore: {
-		label: "魔導核",
-		seconds: 6,
-		input: {
-			crystal: 2,
-			ingot: 1
-		},
-		output: { runeCore: 1 },
-		energy: 8,
-		technology: "runecraft"
-	},
-	golemFrame: {
-		label: "鉄の躯体",
-		seconds: 6,
-		input: {
-			ingot: 3,
-			wood: 2
-		},
-		output: { golemFrame: 1 },
-		energy: 6,
-		technology: "runecraft"
-	},
-	golem: {
-		label: "ゴーレム",
-		seconds: 8,
-		input: {
-			runeCore: 1,
-			golemFrame: 1
-		},
-		output: { golem: 1 },
-		energy: 12,
-		technology: "golemcraft"
-	},
-	essence: {
-		label: "錬金精髄",
-		seconds: 6,
-		input: {
-			rawCrystal: 1,
-			crystal: 1,
-			wood: 1
-		},
-		output: { essence: 1 },
-		energy: 6,
-		technology: "alchemy"
-	},
-	portalCore: {
-		label: "転送核",
-		seconds: 6,
-		input: {
-			essence: 2,
-			ingot: 2
-		},
-		output: { portalCore: 1 },
-		energy: 8,
-		technology: "portalcraft"
-	},
-	worldSeed: {
-		label: "世界樹の種",
-		seconds: 8,
-		input: {
-			wood: 3,
-			essence: 2,
-			runeCore: 1
-		},
-		output: { worldSeed: 1 },
-		energy: 10,
-		technology: "worldGrafting"
-	}
-}, r = t, i = n, a = [
+}, i = r, a = Object.keys(t), o = {
+	...r,
+	...t
+}, s = {
+	crystalRefiner: "smelter",
+	runeCarver: "assembler",
+	frameForge: "assembler",
+	golemForge: "assembler",
+	portalForge: "assembler",
+	seedLoom: "alchemyLab"
+}, c = (e) => s[e] ?? e, l = n, u = [
 	"wood",
 	"ore",
 	"ingot",
@@ -358,7 +530,7 @@ var t = {
 	"essence",
 	"portalCore",
 	"worldSeed"
-], o = {
+], d = {
 	wood: "木材",
 	ore: "鉄鉱石",
 	ingot: "鉄の延べ棒",
@@ -371,7 +543,7 @@ var t = {
 	essence: "錬金精髄",
 	portalCore: "転送核",
 	worldSeed: "世界樹の種"
-}, s = [
+}, f = [
 	"wire",
 	"generator",
 	"miner",
@@ -387,19 +559,50 @@ var t = {
 	"portalGate",
 	"seedLoom"
 ];
-function c(e) {
-	return Object.fromEntries(a.map((t) => [t, e === "belt" ? r[e].cost[t] ?? 0 : Math.floor((r[e].cost[t] ?? 0) / 2)]));
+function p(e, t = o[e].cost) {
+	return Object.fromEntries(u.map((n) => [n, e === "belt" ? t[n] ?? 0 : Math.floor((t[n] ?? 0) / 2)]));
 }
-function l(e) {
-	let t = e.recipe ?? r[e.kind].recipes?.[0];
-	return t ? i[t] : void 0;
+function m(e) {
+	let t = e.recipe ?? o[e.kind].recipes?.[0];
+	return t ? l[t] : void 0;
 }
-var u = r.belt.seconds, d = .05, f = [
+var h = o.belt.seconds, g = {
+	sell: {
+		wood: 1,
+		ingot: 10,
+		sword: 40
+	},
+	buy: { ingot: 30 },
+	deliveryTargets: {
+		ingot: 10,
+		sword: 10
+	}
+}, _ = Object.keys(g.sell), v = (e) => e.automated && (!e.handled || e.shipEligible === !0);
+function y(e, t) {
+	let n = e.research?.unlocked ?? ["basic"];
+	return t === "ingot" && !n.includes("crystals") ? g.deliveryTargets.ingot : t === "sword" && n.includes("assembly") && !n.includes("mastery") ? g.deliveryTargets.sword : 0;
+}
+function b(e, t) {
+	let n = { ...e.stats?.delivered }, r = 0, i = 0, a = 0, o = 0;
+	for (let s of t) {
+		let t = (s.resource === "ingot" || s.resource === "sword") && v(s), c = n[s.resource] ?? 0;
+		t && (n[s.resource] = c + 1, o++), t && c < y(e, s.resource) ? r++ : (i++, a += g.sell[s.resource] ?? 0);
+	}
+	return {
+		assigned: r,
+		sold: i,
+		coins: a,
+		automatic: o
+	};
+}
+//#endregion
+//#region web/js/fantasy-automation/types.ts
+var ee = .05, x = [
 	[0, -1],
 	[1, 0],
 	[0, 1],
 	[-1, 0]
-], p = /* @__PURE__ */ new Set([
+], te = /* @__PURE__ */ new Set([
 	"miner",
 	"belt",
 	"smelter",
@@ -407,10 +610,10 @@ var u = r.belt.seconds, d = .05, f = [
 	"wire",
 	"lumber",
 	"delivery"
-]), m = {
+]), ne = {
 	smelter: { ore: 2 },
 	generator: { wood: 1 }
-}, h = [
+}, re = [
 	"wood",
 	"ore",
 	"ingot",
@@ -418,19 +621,23 @@ var u = r.belt.seconds, d = .05, f = [
 	"crystal",
 	"sword"
 ];
-function g(e, t) {
+function ie(e, t) {
 	return e.filter((e) => e.resource === t && e.automated && !e.handled).length;
 }
-function _(e) {
-	if (e.version !== 1 && e.version !== 2 && e.version !== 3 && e.version !== 4) throw Error("この保存形式には対応していません（対応: version 1・2・3・4）。");
+function ae(e) {
+	if (e.version !== 1 && e.version !== 2 && e.version !== 3 && e.version !== 4 && e.version !== 5) throw Error("この保存形式には対応していません（対応: version 1・2・3・4）。");
 	let t = structuredClone(e);
-	if (t.version === 4) return t;
-	if (t.version === 3) return y(t);
-	if (t.version === 2) return v(t);
+	if (t.version === 5) {
+		for (let e of t.buildings) c(e.kind) !== e.kind && (e.constructionCost ??= { ...i[e.kind].cost }, e.recipe ??= i[e.kind].recipes?.[0], e.kind = c(e.kind));
+		return t;
+	}
+	if (t.version === 4) return ce(t);
+	if (t.version === 3) return se(t);
+	if (t.version === 2) return oe(t);
 	for (let e of t.buildings) {
-		if (!p.has(e.kind)) throw Error("旧保存形式に未対応の設備があります。");
+		if (!te.has(e.kind)) throw Error("旧保存形式に未対応の設備があります。");
 		if (e.reserved?.length) throw Error("旧保存形式に未対応の予約素材があります。");
-		if (e.reserved = [], e.kind === "smelter" && (e.recipe = "ingot"), e.working) for (let [t, n] of Object.entries(m[e.kind] ?? {})) for (let r = 0; r < (n ?? 0); r++) {
+		if (e.reserved = [], e.kind === "smelter" && (e.recipe = "ingot"), e.working) for (let [t, n] of Object.entries(ne[e.kind] ?? {})) for (let r = 0; r < (n ?? 0); r++) {
 			let n = e.input.findIndex((e) => e.resource === t);
 			if (n < 0) throw Error("旧保存データの稼働中設備に予約素材がありません。");
 			e.reserved.push(e.input.splice(n, 1)[0]);
@@ -441,11 +648,11 @@ function _(e) {
 		...e.output,
 		...e.reserved ?? [],
 		...e.item ? [e.item] : []
-	]), r = t.delivered + g(n, "ingot");
+	]), r = t.delivered + ie(n, "ingot");
 	t.stats = {
 		produced: {
-			wood: g(n, "wood"),
-			ore: 2 * r + g(n, "ore"),
+			wood: ie(n, "wood"),
+			ore: 2 * r + ie(n, "ore"),
 			ingot: r,
 			rawCrystal: 0,
 			crystal: 0,
@@ -461,44 +668,261 @@ function _(e) {
 		unlocked: ["basic"],
 		tracked: "logistics"
 	}, t.inventoryItems = [];
-	for (let e of h) t.inventory[e] === void 0 && (t.inventory[e] = 0);
-	let i = new Set(t.buildings.map((e) => e.z * 32 + e.x)), a = t.terrain.filter((e) => e === "crystal").length, o = [
+	for (let e of re) t.inventory[e] === void 0 && (t.inventory[e] = 0);
+	let a = new Set(t.buildings.map((e) => e.z * 32 + e.x)), o = t.terrain.filter((e) => e === "crystal").length, s = [
 		532,
 		500,
 		...t.terrain.map((e, t) => t)
 	];
-	for (let e of o) {
-		if (a >= 2) break;
-		!i.has(e) && t.terrain[e] === "grass" && (t.terrain[e] = "crystal", a++);
+	for (let e of s) {
+		if (o >= 2) break;
+		!a.has(e) && t.terrain[e] === "grass" && (t.terrain[e] = "crystal", o++);
 	}
-	let s = [];
-	for (let e of o) {
-		if (a + s.length >= 2) break;
-		i.has(e) && t.terrain[e] === "grass" && !s.includes(e) && s.push(e);
+	let l = [];
+	for (let e of s) {
+		if (o + l.length >= 2) break;
+		a.has(e) && t.terrain[e] === "grass" && !l.includes(e) && l.push(e);
 	}
-	return s.length && (t.pendingCrystalCells = s), t.version = 2, v(t);
+	return l.length && (t.pendingCrystalCells = l), t.version = 2, oe(t);
 }
-function v(e) {
+function oe(e) {
 	for (let t of [
 		"runeCore",
 		"golemFrame",
 		"golem"
 	]) e.inventory[t] = 0;
 	if (!e.stats || !e.research || !e.inventoryItems) throw Error("旧保存データの進行情報がありません。");
-	return e.stats.golemFuelTransfers = 0, e.stats.golemTransfers = 0, e.version = 3, y(e);
+	return e.stats.golemFuelTransfers = 0, e.stats.golemTransfers = 0, e.version = 3, se(e);
 }
-function y(e) {
+function se(e) {
 	for (let t of [
 		"essence",
 		"portalCore",
 		"worldSeed"
 	]) e.inventory[t] = 0;
 	if (!e.stats) throw Error("旧保存データの進行情報がありません。");
-	return e.stats.portalTransfers = 0, e.stats.treeGrowth = 0, e.version = 4, e;
+	return e.stats.portalTransfers = 0, e.stats.treeGrowth = 0, e.version = 4, ce(e);
+}
+function ce(e) {
+	for (let t of e.buildings) {
+		let e = t.kind;
+		t.constructionCost = { ...i[e].cost }, i[e].recipes?.length && (t.recipe ??= i[e].recipes[0]), t.kind = c(e);
+	}
+	return e.market = {
+		coins: 0,
+		sold: {}
+	}, e.version = 5, e;
 }
 //#endregion
-//#region web/js/fantasy-automation/technology.ts
-var b = [
+//#region web/js/fantasy-automation/technologies.json
+var le = [
+	{
+		id: "basic",
+		label: "採掘と精錬",
+		description: "鉄鉱石を鉄の延べ棒へ加工し、自動納品の工房を築く。",
+		prerequisites: [],
+		requirements: [],
+		unlocks: {
+			kinds: [
+				"miner",
+				"belt",
+				"smelter",
+				"generator",
+				"wire",
+				"lumber",
+				"delivery"
+			],
+			recipes: ["ingot"]
+		}
+	},
+	{
+		id: "logistics",
+		label: "物流の分岐と収納",
+		description: "自動生産の経験から、分岐器と有限の収納箱を解放する。",
+		prerequisites: ["basic"],
+		requirements: [{
+			metric: "produced",
+			resource: "ingot",
+			target: 5,
+			label: "鉄の延べ棒を自動生産"
+		}],
+		unlocks: {
+			kinds: ["splitter", "storage"],
+			recipes: []
+		}
+	},
+	{
+		id: "crystals",
+		label: "結晶加工",
+		description: "自動納品で得た知識を使い、結晶鉱脈の採掘と加工を始める。",
+		prerequisites: ["basic"],
+		requirements: [{
+			metric: "delivered",
+			resource: "ingot",
+			target: 10,
+			label: "鉄の延べ棒を自動納品"
+		}],
+		unlocks: {
+			kinds: ["crystalMiner"],
+			recipes: ["crystal"]
+		}
+	},
+	{
+		id: "assembly",
+		label: "魔導剣の組立",
+		description: "鉄の延べ棒と精製魔晶を組み合わせ、魔導剣を連続生産する。",
+		prerequisites: ["logistics", "crystals"],
+		requirements: [{
+			metric: "produced",
+			resource: "ingot",
+			target: 30,
+			label: "鉄の延べ棒を自動生産"
+		}, {
+			metric: "produced",
+			resource: "crystal",
+			target: 10,
+			label: "精製魔晶を自動生産"
+		}],
+		unlocks: {
+			kinds: ["assembler"],
+			recipes: ["sword"]
+		}
+	},
+	{
+		id: "mastery",
+		label: "魔導剣の量産技術",
+		description: "ゲーム内の連続60秒で魔導剣10本を自動生産し、10本を自動納品する。次はルーン加工とゴーレム工房へ進む。",
+		prerequisites: ["assembly"],
+		requirements: [{
+			metric: "peakSwordRate",
+			target: 10,
+			label: "魔導剣の最高生産速度（本/ゲーム内分）"
+		}, {
+			metric: "delivered",
+			resource: "sword",
+			target: 10,
+			label: "魔導剣を自動納品"
+		}],
+		unlocks: {
+			kinds: [],
+			recipes: []
+		}
+	},
+	{
+		id: "runecraft",
+		label: "ルーン加工と機体製作",
+		description: "精製魔晶と鉄を使って魔導核と鉄の躯体を生産する。",
+		prerequisites: ["mastery"],
+		requirements: [],
+		unlocks: {
+			kinds: [],
+			recipes: ["runeCore", "golemFrame"]
+		}
+	},
+	{
+		id: "golemcraft",
+		label: "ゴーレム組立と物流補助",
+		description: "魔導核と機体を組み立て、ゴーレムの物流補助を解放する。",
+		prerequisites: ["runecraft"],
+		requirements: [{
+			metric: "produced",
+			resource: "runeCore",
+			target: 3,
+			label: "魔導核を自動生産"
+		}, {
+			metric: "produced",
+			resource: "golemFrame",
+			target: 3,
+			label: "鉄の躯体を自動生産"
+		}],
+		unlocks: {
+			kinds: ["golemRelay"],
+			recipes: ["golem"]
+		}
+	},
+	{
+		id: "sanctuary",
+		label: "ゴーレム工房の自動運営",
+		description: "ゴーレム3体を自動生産し、補助拠点から魔力発生炉へ木材を20個自動補給する。",
+		prerequisites: ["golemcraft"],
+		requirements: [{
+			metric: "produced",
+			resource: "golem",
+			target: 3,
+			label: "ゴーレムを自動生産"
+		}, {
+			metric: "golemFuelTransfers",
+			target: 20,
+			label: "ゴーレムで木材を魔力発生炉へ自動補給"
+		}],
+		unlocks: {
+			kinds: [],
+			recipes: []
+		}
+	},
+	{
+		id: "alchemy",
+		label: "錬金術",
+		description: "魔晶原石・精製魔晶・木材から錬金精髄を精製し、転送技術の準備を始める。",
+		prerequisites: ["sanctuary"],
+		requirements: [],
+		unlocks: {
+			kinds: ["alchemyLab"],
+			recipes: ["essence"]
+		}
+	},
+	{
+		id: "portalcraft",
+		label: "転送門の製作",
+		description: "錬金精髄と鉄の延べ棒から転送核を作り、離れた工房を転送門で結ぶ。",
+		prerequisites: ["alchemy"],
+		requirements: [{
+			metric: "produced",
+			resource: "essence",
+			target: 5,
+			label: "錬金精髄を自動生産"
+		}, {
+			metric: "produced",
+			resource: "runeCore",
+			target: 5,
+			label: "魔導核を自動生産"
+		}],
+		unlocks: {
+			kinds: ["portalGate"],
+			recipes: ["portalCore"]
+		}
+	},
+	{
+		id: "worldGrafting",
+		label: "世界樹の接ぎ木",
+		description: "自動生産品を転送門で10個初回転送し、世界樹の種と世界樹を解放する。",
+		prerequisites: ["portalcraft"],
+		requirements: [{
+			metric: "portalTransfers",
+			target: 10,
+			label: "自動生産品を転送門で初回転送"
+		}],
+		unlocks: {
+			kinds: ["worldTree"],
+			recipes: ["worldSeed"]
+		}
+	},
+	{
+		id: "worldAwakened",
+		label: "世界樹の覚醒",
+		description: "自動生産し、転送門を通して自動搬送した世界樹の種を10個与えて世界樹を育てる。",
+		prerequisites: ["worldGrafting"],
+		requirements: [{
+			metric: "treeGrowth",
+			target: 10,
+			label: "世界樹を成長させる"
+		}],
+		unlocks: {
+			kinds: [],
+			recipes: []
+		}
+	}
+], ue = [
 	{
 		id: "basic",
 		label: "採掘と精錬",
@@ -705,22 +1129,22 @@ var b = [
 			recipes: []
 		}
 	}
-];
-function x(e) {
-	let t = e.tick - Math.round(60 / d);
+], S = le;
+function de(e) {
+	let t = e.tick - Math.round(60 / ee);
 	return (e.stats?.recentSwordTicks ?? []).filter((n) => n > t && n <= e.tick).length;
 }
-function ee(e, t) {
+function fe(e, t) {
 	return t.metric === "peakSwordRate" ? e.stats?.peakSwordRate ?? 0 : t.metric === "golemFuelTransfers" ? e.stats?.golemFuelTransfers ?? 0 : t.metric === "portalTransfers" ? e.stats?.portalTransfers ?? 0 : t.metric === "treeGrowth" ? e.stats?.treeGrowth ?? 0 : e.stats?.[t.metric][t.resource] ?? (t.metric === "delivered" && t.resource === "ingot" ? e.delivered : 0);
 }
-function S(e) {
+function C(e) {
 	let t = new Set(e.research?.unlocked ?? ["basic"]);
-	return b.map((n) => {
+	return S.map((n) => {
 		let r = n.requirements.map((t) => ({
 			...t,
-			current: ee(e, t),
-			met: ee(e, t) >= t.target
-		})), i = n.prerequisites.filter((e) => !t.has(e)), a = i.length === 0 && r.every((e) => e.met), o = t.has(n.id) ? "unlocked" : a ? "available" : "locked", s = o === "unlocked" ? "解放済み" : i.length ? `前提技術: ${i.map((e) => b.find((t) => t.id === e).label).join("・")}` : a ? "実績条件を達成。研究して解放できます。" : r.filter((e) => !e.met).map((e) => `${e.label} ${e.current}/${e.target}`).join("・");
+			current: fe(e, t),
+			met: fe(e, t) >= t.target
+		})), i = n.prerequisites.filter((e) => !t.has(e)), a = i.length === 0 && r.every((e) => e.met), o = t.has(n.id) ? "unlocked" : a ? "available" : "locked", s = o === "unlocked" ? "解放済み" : i.length ? `前提技術: ${i.map((e) => S.find((t) => t.id === e).label).join("・")}` : a ? "実績条件を達成。研究して解放できます。" : r.filter((e) => !e.met).map((e) => `${e.label} ${e.current}/${e.target}`).join("・");
 		return {
 			...n,
 			prerequisites: [...n.prerequisites],
@@ -734,8 +1158,8 @@ function S(e) {
 		};
 	});
 }
-function te(e, t) {
-	let n = S(e).find((e) => e.id === t);
+function pe(e, t) {
+	let n = C(e).find((e) => e.id === t);
 	return n ? {
 		ok: n.status === "available",
 		reason: n.status === "available" ? `${n.label}を解放できます。` : n.reason
@@ -744,15 +1168,18 @@ function te(e, t) {
 		reason: "未対応の技術です。"
 	};
 }
-function C(e, t) {
-	return S(e).some((e) => e.status === "unlocked" && e.unlocks.kinds.includes(t));
-}
 function w(e, t) {
-	return S(e).some((e) => e.status === "unlocked" && e.unlocks.recipes.includes(t));
+	return C(e).some((e) => e.status === "unlocked" && e.unlocks.kinds.includes(t));
+}
+function T(e, t) {
+	return C(e).some((e) => e.status === "unlocked" && e.unlocks.recipes.includes(t));
+}
+function me(e, t) {
+	return ue.some((n) => (e.research?.unlocked ?? ["basic"]).includes(n.id) && n.unlocks.kinds.includes(t));
 }
 //#endregion
 //#region web/js/fantasy-automation/simulation.ts
-var ne = [
+var he = [
 	"basic",
 	"logistics",
 	"crystals",
@@ -765,13 +1192,13 @@ var ne = [
 	"portalcraft",
 	"worldGrafting",
 	"worldAwakened"
-], T = (e, t) => t * 32 + e, E = (e = "") => ({
+], E = (e, t) => t * 32 + e, D = (e = "") => ({
 	ok: !0,
 	reason: e
-}), D = (e) => ({
+}), O = (e) => ({
 	ok: !1,
 	reason: e
-}), O = (e) => e.automated && !e.handled, k = (e) => e.kind === "belt" || e.kind === "splitter", re = class {
+}), k = (e) => e.automated && !e.handled, A = (e) => e.kind === "belt" || e.kind === "splitter", ge = class {
 	state;
 	placements = [];
 	constructor(e = 662) {
@@ -786,11 +1213,11 @@ var ne = [
 		};
 		for (let e = 0; e < 26; e++) {
 			let n = 2 + Math.floor(r() * 28), i = 2 + Math.floor(r() * 28), a = e % 3 == 0 ? "ore" : "forest";
-			for (let e = -1; e <= 1; e++) for (let o = -1; o <= 1; o++) r() > .35 && (t[T(n + o, i + e)] = a);
+			for (let e = -1; e <= 1; e++) for (let o = -1; o <= 1; o++) r() > .35 && (t[E(n + o, i + e)] = a);
 		}
-		for (let e = 13; e <= 21; e++) for (let n = 8; n <= 18; n++) t[T(n, e)] = "grass";
-		t[T(12, 16)] = t[T(12, 15)] = "ore", t[T(9, 18)] = t[T(9, 19)] = "forest", t[T(20, 16)] = t[T(20, 15)] = "crystal", this.state = {
-			version: 4,
+		for (let e = 13; e <= 21; e++) for (let n = 8; n <= 18; n++) t[E(n, e)] = "grass";
+		t[E(12, 16)] = t[E(12, 15)] = "ore", t[E(9, 18)] = t[E(9, 19)] = "forest", t[E(20, 16)] = t[E(20, 15)] = "crystal", this.state = {
+			version: 5,
 			seed: e,
 			tick: 0,
 			nextId: 1,
@@ -831,7 +1258,11 @@ var ne = [
 				unlocked: ["basic"],
 				tracked: null
 			},
-			inventoryItems: []
+			inventoryItems: [],
+			market: {
+				coins: 0,
+				sold: {}
+			}
 		};
 	}
 	snapshot() {
@@ -839,57 +1270,64 @@ var ne = [
 	}
 	restore(e) {
 		if (!Array.isArray(e.terrain) || e.terrain.length !== 1024 || !Array.isArray(e.buildings)) throw Error("保存データの形式が正しくありません");
-		this.state = _(structuredClone(e)), this.placements = [], this.state.buildings.sort((e, t) => e.id - t.id);
+		this.state = ae(structuredClone(e)), this.placements = [], this.state.buildings.sort((e, t) => e.id - t.id);
 	}
-	canBuild(e, t, n, i) {
-		if (!Object.hasOwn(r, e)) return D("設備の種類が不正です");
-		if (!C(this.state, e)) return D(`${r[e].label}は技術ツリーで研究すると解放されます`);
-		if (!Number.isInteger(t) || !Number.isInteger(n) || t < 0 || n < 0 || t >= 32 || n >= 32) return D("地図の外には建設できません");
-		if (!Number.isInteger(i) || i < 0 || i > 3) return D("方向が不正です");
-		if (this.state.buildings.some((e) => e.x === t && e.z === n)) return D("この区画には設備があります");
-		let s = this.state.terrain[T(t, n)];
-		if (e === "miner" && s !== "ore") return D("採掘機は鉄鉱脈の上に配置してください");
-		if (e === "crystalMiner" && s !== "crystal") return D("魔晶採掘機は魔晶鉱脈の上に配置してください");
-		if (e === "lumber" && s !== "forest") return D("木材採取場は森林の上に配置してください");
-		if ((this.state.kits[e] ?? 0) > 0) return E("所持設備を設置");
-		for (let t of a) {
-			let n = r[e].cost[t] ?? 0;
-			if ((this.state.inventory[t] ?? 0) < n) return D(`建設素材が不足しています（${o[t]} ${n}）`);
+	canBuild(e, t, n, r) {
+		if (!Object.hasOwn(o, e)) return O("設備の種類が不正です");
+		if (!w(this.state, e)) return O(`${o[e].label}は技術ツリーで研究すると解放されます`);
+		if (!Number.isInteger(t) || !Number.isInteger(n) || t < 0 || n < 0 || t >= 32 || n >= 32) return O("地図の外には建設できません");
+		if (!Number.isInteger(r) || r < 0 || r > 3) return O("方向が不正です");
+		if (this.state.buildings.some((e) => e.x === t && e.z === n)) return O("この区画には設備があります");
+		let i = this.state.terrain[E(t, n)];
+		if (e === "miner" && i !== "ore") return O("採掘機は鉄鉱脈の上に配置してください");
+		if (e === "crystalMiner" && i !== "crystal") return O("魔晶採掘機は魔晶鉱脈の上に配置してください");
+		if (e === "lumber" && i !== "forest") return O("木材採取場は森林の上に配置してください");
+		if (this.kitFor(e)) return D("所持設備を設置");
+		for (let t of u) {
+			let n = o[e].cost[t] ?? 0;
+			if ((this.state.inventory[t] ?? 0) < n) return O(`建設素材が不足しています（${d[t]} ${n}）`);
 		}
-		return E();
+		return D();
 	}
 	command(e) {
 		if (e.type === "undoBuild") {
 			let e = this.undoPlacement();
-			if (!e) return D("取り消せる未稼働の配置がありません。読込後には配置履歴を引き継ぎません");
+			if (!e) return O("取り消せる未稼働の配置がありません。読込後には配置履歴を引き継ぎません");
 			let t = this.placements.find((t) => t.id === e.id);
-			if (this.markUsed(e.id), this.detach(e), t.kit) this.state.kits[t.kind] = (this.state.kits[t.kind] ?? 0) + 1;
+			if (this.markUsed(e.id), this.detach(e), t.kit) this.state.kits[t.kit] = (this.state.kits[t.kit] ?? 0) + 1;
 			else {
 				for (let e of t.paid) this.state.inventory[e.resource] = (this.state.inventory[e.resource] ?? 0) + 1;
 				this.state.inventoryItems.push(...t.tracked.map((e) => ({ ...e })));
 			}
-			return E(`${r[t.kind].label}の未稼働の配置を取り消し、支払った資材・キットを全額返却しました`);
+			return D(`${o[t.kind].label}の未稼働の配置を取り消し、支払った資材・キットを全額返却しました`);
 		}
 		if (e.type === "gatherWood") return this.state.terrain.includes("forest") ? (this.putInventory([{
 			resource: "wood",
 			automated: !1,
 			handled: !0
-		}]), E("森林で木材を1個手採取しました（自動生産の実績には算入されません）")) : D("この地図には手採取できる森林がありません");
+		}]), D("森林で木材を1個手採取しました（自動生産の実績には算入されません）")) : O("この地図には手採取できる森林がありません");
 		if (e.type === "research") {
-			let t = te(this.state, e.id);
-			return t.ok ? (this.state.research.unlocked.push(e.id), E("研究が完了しました。設備とレシピが解放されました")) : t;
+			let t = pe(this.state, e.id);
+			return t.ok ? (this.state.research.unlocked.push(e.id), D("研究が完了しました。設備とレシピが解放されました")) : t;
 		}
-		if (e.type === "track") return e.id !== null && !ne.includes(e.id) ? D("技術の種類が不正です") : (this.state.research.tracked = e.id, E(e.id === null ? "追跡を解除しました" : "次の研究目標を追跡します"));
+		if (e.type === "track") return e.id !== null && !he.includes(e.id) ? O("技術の種類が不正です") : (this.state.research.tracked = e.id, D(e.id === null ? "追跡を解除しました" : "次の研究目標を追跡します"));
 		if (e.type === "build") {
-			let t = this.canBuild(e.kind, e.x, e.z, e.direction);
-			if (!t.ok) return t;
-			let n = (this.state.kits[e.kind] ?? 0) > 0, i = new Set(this.state.inventoryItems), o = [];
-			if (n) this.state.kits[e.kind]--;
-			else for (let t of a) o.push(...this.takeInventory(t, r[e.kind].cost[t] ?? 0));
-			let s = this.state.nextId, c = r[e.kind].recipes?.[0];
+			if (!Object.hasOwn(o, e.kind)) return O("設備の種類が不正です");
+			let t = e.kind, n = e.recipe ?? (c(t) === t ? void 0 : i[t].recipes?.[0]) ?? o[c(t)].recipes?.[0];
+			if (e = {
+				...e,
+				kind: c(t)
+			}, n && (!o[e.kind].recipes?.includes(n) || !T(this.state, n))) return O("このレシピは未解放、または設備に対応していません");
+			let r = this.canBuild(e.kind, e.x, e.z, e.direction);
+			if (!r.ok) return r;
+			let a = this.kitFor(e.kind), s = new Set(this.state.inventoryItems), l = [];
+			if (a) this.state.kits[a]--;
+			else for (let t of u) l.push(...this.takeInventory(t, o[e.kind].cost[t] ?? 0));
+			let d = this.state.nextId;
 			return this.state.buildings.push({
 				id: this.state.nextId++,
 				kind: e.kind,
+				constructionCost: { ...a ? i[a].cost : o[e.kind].cost },
 				x: e.x,
 				z: e.z,
 				direction: e.direction,
@@ -902,7 +1340,7 @@ var ne = [
 				status: "待機中",
 				item: null,
 				beltProgress: 0,
-				...c ? { recipe: c } : {},
+				...n ? { recipe: n } : {},
 				...e.kind === "splitter" ? { splitCursor: 0 } : {},
 				...e.kind === "golemRelay" ? {
 					golemPolicy: "fuel",
@@ -915,15 +1353,15 @@ var ne = [
 				} : {},
 				...e.kind === "worldTree" ? { treeGrowth: 0 } : {}
 			}), this.placements.push({
-				id: s,
+				id: d,
 				kind: e.kind,
-				kit: n,
-				paid: o,
-				tracked: o.filter((e) => i.has(e))
-			}), this.placements.length > 64 && this.placements.shift(), E(`${r[e.kind].label}を設置しました`);
+				kit: a,
+				paid: l,
+				tracked: l.filter((e) => s.has(e))
+			}), this.placements.length > 64 && this.placements.shift(), D(`${o[e.kind].label}を設置しました`);
 		}
 		let t = this.state.buildings.find((t) => t.id === e.id);
-		if (!t) return D("設備が見つかりません");
+		if (!t) return O("設備が見つかりません");
 		if (e.type === "remove") {
 			this.markUsed(t.id);
 			let e = t.kind === "generator" && (t.pendingEnergy ?? 0) > 0 ? [] : t.reserved ?? [];
@@ -934,51 +1372,52 @@ var ne = [
 				...t.item ? [t.item] : [],
 				...t.golemWorker ? [t.golemWorker] : []
 			]);
-			let n = c(t.kind);
-			for (let e of a) this.state.inventory[e] = (this.state.inventory[e] ?? 0) + (n[e] ?? 0);
-			return this.detach(t), E(t.kind === "belt" ? "ベルトを撤去しました。中身と建設素材の全額を回収（木材1・鉄の延べ棒1）" : "設備を撤去しました。中身と建設素材の半分を回収");
+			let n = p(t.kind, t.constructionCost);
+			for (let e of u) this.state.inventory[e] = (this.state.inventory[e] ?? 0) + (n[e] ?? 0);
+			return this.detach(t), D(t.kind === "belt" ? "ベルトを撤去しました。中身と建設素材の全額を回収（木材1・鉄の延べ棒1）" : "設備を撤去しました。中身と建設素材の半分を回収");
 		}
-		if (e.type === "rotate") return t.direction = (t.direction + 1) % 4, E("出力方向を回転しました");
-		if (e.type === "relayPolicy") return t.kind === "golemRelay" ? e.policy !== "fuel" && e.policy !== "materials" ? D("運搬方針が不正です") : (t.golemPolicy = e.policy, t.status = e.policy === "fuel" ? "燃料補給を優先します" : "レシピ素材の運搬を優先します", E(t.status)) : D("運搬方針はゴーレム補給所で設定してください");
+		if (e.type === "dispatch" || e.type === "buyIron") return this.trade(e);
+		if (e.type === "rotate") return t.direction = (t.direction + 1) % 4, D("出力方向を回転しました");
+		if (e.type === "relayPolicy") return t.kind === "golemRelay" ? e.policy !== "fuel" && e.policy !== "materials" ? O("運搬方針が不正です") : (t.golemPolicy = e.policy, t.status = e.policy === "fuel" ? "燃料補給を優先します" : "レシピ素材の運搬を優先します", D(t.status)) : O("運搬方針はゴーレム補給所で設定してください");
 		if (e.type === "portalConfig") return t.kind === "portalGate" ? ![
 			1,
 			2,
 			3
-		].includes(e.channel) || e.role !== "send" && e.role !== "receive" ? D("チャネルまたは転送方向が不正です") : e.channel === t.portalChannel && e.role === t.portalRole ? E("同じ転送設定です") : t.input.length || t.output.length ? D("品が入っている間は転送設定を変更できません。先に回収してください") : (t.portalChannel = e.channel, t.portalRole = e.role, E(`チャネル${e.channel}の${e.role === "send" ? "送信" : "受信"}に設定しました`)) : D("転送設定は転送門で変更してください");
+		].includes(e.channel) || e.role !== "send" && e.role !== "receive" ? O("チャネルまたは転送方向が不正です") : e.channel === t.portalChannel && e.role === t.portalRole ? D("同じ転送設定です") : t.input.length || t.output.length ? O("品が入っている間は転送設定を変更できません。先に回収してください") : (t.portalChannel = e.channel, t.portalRole = e.role, D(`チャネル${e.channel}の${e.role === "send" ? "送信" : "受信"}に設定しました`)) : O("転送設定は転送門で変更してください");
 		if (e.type === "recipe") {
-			if (!Object.hasOwn(i, e.recipe) || !w(this.state, e.recipe)) return D("このレシピは技術ツリーで研究すると解放されます");
-			if (!r[t.kind].recipes?.includes(e.recipe)) return D("この設備ではそのレシピを使用できません");
-			if (t.working || (t.reserved?.length ?? 0) > 0) return D("稼働中はレシピを変更できません");
-			let n = i[e.recipe];
-			return t.input.some((e) => !(n.input[e.resource] ?? 0)) || t.output.some((e) => !(n.output[e.resource] ?? 0)) ? D("庫内に互換性のない素材があります。先に回収してください") : (t.recipe = e.recipe, t.progress = 0, E("レシピを変更しました"));
+			if (!Object.hasOwn(l, e.recipe) || !T(this.state, e.recipe)) return O("このレシピは技術ツリーで研究すると解放されます");
+			if (!o[t.kind].recipes?.includes(e.recipe)) return O("この設備ではそのレシピを使用できません");
+			if (t.working || (t.reserved?.length ?? 0) > 0) return O("稼働中はレシピを変更できません");
+			let n = l[e.recipe];
+			return t.input.some((e) => !(n.input[e.resource] ?? 0)) || t.output.some((e) => !(n.output[e.resource] ?? 0)) ? O("庫内に互換性のない素材があります。先に回収してください") : (t.recipe = e.recipe, t.progress = 0, D("レシピを変更しました"));
 		}
 		if (e.type === "feed") {
-			if (!a.includes(e.resource) || !Number.isSafeInteger(e.amount) || e.amount <= 0) return D("投入数が不正です");
-			if (!this.accepts(t, e.resource)) return D("この設備ではその素材を使用できません");
-			if ((this.state.inventory[e.resource] ?? 0) < e.amount) return D("所持素材が不足しています");
-			if (k(t) && (t.item || e.amount !== 1)) return D("搬送設備には空き区画へ1個ずつ投入してください");
-			if (!k(t) && t.kind !== "delivery" && !this.canReceive(t, e.resource, e.amount)) return D("入力庫が満杯、または他のレシピ素材用の空きが必要です");
+			if (!u.includes(e.resource) || !Number.isSafeInteger(e.amount) || e.amount <= 0) return O("投入数が不正です");
+			if (!this.accepts(t, e.resource)) return O("この設備ではその素材を使用できません");
+			if ((this.state.inventory[e.resource] ?? 0) < e.amount) return O("所持素材が不足しています");
+			if (A(t) && (t.item || e.amount !== 1)) return O("搬送設備には空き区画へ1個ずつ投入してください");
+			if (!A(t) && !this.canReceive(t, e.resource, e.amount)) return O("入力庫が満杯、または他のレシピ素材用の空きが必要です");
 			let n = this.takeInventory(e.resource, e.amount).map((e) => ({
 				...e,
 				handled: !0
 			}));
-			return this.markUsed(t.id), t.kind === "delivery" ? t.status = "手動納品（目標には算入されません）" : k(t) ? (t.item = n[0], t.beltProgress = 0) : t.input.push(...n), E(t.kind === "delivery" ? "手動納品は目標の本数・生産実績に算入されません" : "素材を補給しました");
+			return this.markUsed(t.id), t.kind === "delivery" ? (t.input.push(...n), t.status = "手動搬入。出荷所で内容を確認して出荷してください") : A(t) ? (t.item = n[0], t.beltProgress = 0) : t.input.push(...n), D(t.kind === "delivery" ? "出荷所へ搬入しました。まだ出荷・売却していません" : "素材を補給しました");
 		}
 		if (e.type === "collect") {
-			if (e.resource !== void 0 && !a.includes(e.resource)) return D("素材の種類が不正です");
-			if (e.amount !== void 0 && (!Number.isSafeInteger(e.amount) || e.amount <= 0)) return D("回収数が不正です");
+			if (e.resource !== void 0 && !u.includes(e.resource)) return O("素材の種類が不正です");
+			if (e.amount !== void 0 && (!Number.isSafeInteger(e.amount) || e.amount <= 0)) return O("回収数が不正です");
 			let n = [
 				...t.input,
 				...t.output,
 				...t.item ? [t.item] : []
 			].filter((t) => e.resource === void 0 || t.resource === e.resource).length;
-			if (e.amount !== void 0 && e.amount > n) return D(`回収できる品は${n}個です（稼働中の素材は予約済み）`);
+			if (e.amount !== void 0 && e.amount > n) return O(`回収できる品は${n}個です（稼働中の素材は予約済み）`);
 			let r = e.amount ?? n;
 			r > 0 && this.markUsed(t.id);
-			let i = [], o = (t) => t.filter((t) => r > 0 && (e.resource === void 0 || t.resource === e.resource) ? (i.push(t), r--, !1) : !0);
-			return t.input = o(t.input), t.output = o(t.output), t.item && r > 0 && (e.resource === void 0 || t.item.resource === e.resource) && (i.push(t.item), t.item = null, t.beltProgress = 0), this.putInventory(i), E(`素材を${i.length}個回収しました${t.working ? "（稼働中の素材は予約済み）" : ""}`);
+			let i = [], a = (t) => t.filter((t) => r > 0 && (e.resource === void 0 || t.resource === e.resource) ? (i.push(t), r--, !1) : !0);
+			return t.input = a(t.input), t.output = a(t.output), t.item && r > 0 && (e.resource === void 0 || t.item.resource === e.resource) && (i.push(t.item), t.item = null, t.beltProgress = 0), this.putInventory(i), D(`素材を${i.length}個回収しました${t.working ? "（稼働中の素材は予約済み）" : ""}`);
 		}
-		return D("操作が不正です");
+		return O("操作が不正です");
 	}
 	undoPlacement() {
 		for (let e of [...this.placements].reverse()) {
@@ -992,8 +1431,42 @@ var ne = [
 	}
 	detach(e) {
 		this.state.buildings = this.state.buildings.filter((t) => t.id !== e.id);
-		let t = T(e.x, e.z);
+		let t = E(e.x, e.z);
 		this.state.pendingCrystalCells?.includes(t) && (this.state.terrain[t] = "crystal", this.state.pendingCrystalCells = this.state.pendingCrystalCells.filter((e) => e !== t));
+	}
+	kitFor(e) {
+		return Object.keys(this.state.kits).find((t) => c(t) === e && (this.state.kits[t] ?? 0) > 0) ?? null;
+	}
+	trade(e) {
+		let t = this.state.buildings.find((t) => t.id === e.id);
+		if (!t || t.kind !== "delivery") return O("出荷所を選んでください");
+		if (!Number.isSafeInteger(e.amount) || e.amount < 1 || e.amount > 1e3) return O("数量は1〜1000個です");
+		let n = this.state.market;
+		if (e.type === "buyIron") {
+			let r = e.amount * g.buy.ingot, i = this.state.inventory.ingot + e.amount;
+			return n.coins < r ? O(`資金不足。延べ棒1個は${g.buy.ingot}コイン。木材を手採取して売却できます`) : Number.isSafeInteger(i) ? (n.coins -= r, this.putInventory(Array.from({ length: e.amount }, () => ({
+				resource: "ingot",
+				automated: !1,
+				handled: !0
+			}))), this.markUsed(t.id), D(`建設用の鉄の延べ棒${e.amount}個を購入（−${r}コイン）。購入品は依頼実績に入りません`)) : O("所持数の上限です");
+		}
+		if (!_.includes(e.resource) || !["inventory", "depot"].includes(e.source)) return O("出荷できるのは木材・延べ棒・魔導剣です");
+		let r = e.source === "inventory" ? this.state.inventoryItems.filter((t) => t.resource === e.resource) : t.input.filter((t) => t.resource === e.resource);
+		if ((e.source === "inventory" ? this.state.inventory[e.resource] ?? 0 : r.length) < e.amount) return O("出荷する品が不足しています");
+		let i = r.slice(0, e.amount);
+		for (; i.length < e.amount;) i.push({
+			resource: e.resource,
+			automated: !1,
+			handled: !0
+		});
+		let a = b(this.state, i);
+		if (!Number.isSafeInteger(n.coins + a.coins) || !Number.isSafeInteger((n.sold[e.resource] ?? 0) + a.sold)) return O("出荷会計の上限です");
+		if (e.source === "inventory") this.takeInventory(e.resource, e.amount);
+		else {
+			let n = e.amount;
+			t.input = t.input.filter((t) => t.resource === e.resource && n > 0 ? (n--, !1) : !0);
+		}
+		return n.coins += a.coins, n.sold[e.resource] = (n.sold[e.resource] ?? 0) + a.sold, a.automatic && (this.state.stats.delivered[e.resource] = (this.state.stats.delivered[e.resource] ?? 0) + a.automatic, e.resource === "ingot" && (this.state.delivered += a.automatic)), this.state.won = this.state.delivered >= 100, this.markUsed(t.id), D(`出荷完了：依頼へ${a.assigned}個、売却${a.sold}個、＋${a.coins}コイン。研究条件の達成は技術ツリーで確認できます`);
 	}
 	powerSummary() {
 		let e = this.state.buildings.filter((e) => e.kind === "generator");
@@ -1010,12 +1483,12 @@ var ne = [
 		this.state.tick++;
 		let e = this.state.stats;
 		e.recentSwordTicks = e.recentSwordTicks.filter((e) => e > this.state.tick - 1200);
-		let t = [...this.state.buildings].sort((e, t) => e.id - t.id), n = new Map(t.map((e) => [T(e.x, e.z), e])), r = this.networks(), i = new Map(t.filter((e) => e.kind === "portalGate").map((e) => [e.id, e.output[0]]));
+		let t = [...this.state.buildings].sort((e, t) => e.id - t.id), n = new Map(t.map((e) => [E(e.x, e.z), e])), r = this.networks(), i = new Map(t.filter((e) => e.kind === "portalGate").map((e) => [e.id, e.output[0]]));
 		this.transferPortals(t, r), this.supplyGolems(t);
-		for (let e of t) k(e) && e.item && (e.beltProgress = Math.min(u, e.beltProgress + d));
+		for (let e of t) A(e) && e.item && (e.beltProgress = Math.min(h, e.beltProgress + ee));
 		this.transport(t, n, i);
-		for (let e of t) e.kind !== "portalGate" && (e.kind === "worldTree" ? this.growTree(e) : e.kind !== "golemRelay" && (k(e) ? e.status = e.item ? e.beltProgress + 1e-9 >= u ? "搬送先が詰まっています" : "搬送中" : "搬送品を待っています" : e.kind === "storage" ? e.status = e.input.length >= 32 ? "収納庫が満杯です（32個）" : `収納中 ${e.input.length}/32個` : e.kind === "wire" ? e.status = r.get(e.id)?.generators.length ? "魔力網に接続中" : "魔力発生炉に接続してください" : e.kind === "delivery" ? e.status.startsWith("手動") || (e.status = this.state.won ? "鉄の延べ棒の目標達成！" : "鉄の延べ棒・魔導剣の自動納品を待っています") : this.produce(e, r.get(e.id))));
-		this.state.won = this.state.delivered >= 100, e.peakSwordRate = Math.max(e.peakSwordRate, x(this.state));
+		for (let e of t) e.kind !== "portalGate" && (e.kind === "worldTree" ? this.growTree(e) : e.kind !== "golemRelay" && (A(e) ? e.status = e.item ? e.beltProgress + 1e-9 >= h ? "搬送先が詰まっています" : "搬送中" : "搬送品を待っています" : e.kind === "storage" ? e.status = e.input.length >= 32 ? "収納庫が満杯です（32個）" : `収納中 ${e.input.length}/32個` : e.kind === "wire" ? e.status = r.get(e.id)?.generators.length ? "魔力網に接続中" : "魔力発生炉に接続してください" : e.kind === "delivery" ? e.status = `出荷待ち ${e.input.length}/32個。詳細で確認して手動出荷` : this.produce(e, r.get(e.id))));
+		this.state.won = this.state.delivered >= 100, e.peakSwordRate = Math.max(e.peakSwordRate, de(this.state));
 	}
 	takeInventory(e, t) {
 		if (t === 0) return [];
@@ -1031,24 +1504,24 @@ var ne = [
 	putInventory(e) {
 		for (let t of e) this.state.inventory[t.resource] = (this.state.inventory[t.resource] ?? 0) + 1, this.state.inventoryItems.push({
 			...t,
-			handled: !0
+			handled: !0,
+			...(t.resource === "ingot" || t.resource === "sword") && v(t) ? { shipEligible: !0 } : {}
 		});
 	}
 	recipeInput(e) {
-		return l(e)?.input ?? r[e.kind].input ?? {};
+		return m(e)?.input ?? o[e.kind].input ?? {};
 	}
 	accepts(e, t) {
-		return e.kind === "portalGate" ? e.portalRole === "send" : k(e) || e.kind === "storage" || e.kind === "golemRelay" && t === "golem" || (this.recipeInput(e)[t] ?? 0) > 0 || e.kind === "delivery" && (t === "ingot" || t === "sword");
+		return e.kind === "portalGate" ? e.portalRole === "send" : A(e) || e.kind === "storage" || e.kind === "golemRelay" && t === "golem" || (this.recipeInput(e)[t] ?? 0) > 0 || e.kind === "delivery" && _.includes(t);
 	}
 	canReceive(e, t, n, r = 0) {
 		if (!this.accepts(e, t)) return !1;
-		if (e.kind === "delivery") return !0;
 		if (e.kind === "golemRelay") return n === 1 && !e.golemWorker && e.input.length + r === 0;
-		if (k(e)) return n === 1 && r === 0 && (!e.item || e.beltProgress + 1e-9 >= u);
-		let i = e.kind === "storage" ? 32 : 8;
+		if (A(e)) return n === 1 && r === 0 && (!e.item || e.beltProgress + 1e-9 >= h);
+		let i = e.kind === "storage" || e.kind === "delivery" ? 32 : 8;
 		if (e.input.length + r + n > i) return !1;
-		let o = this.recipeInput(e), s = a.reduce((n, r) => n + (r === t ? 0 : Math.max(0, (o[r] ?? 0) - e.input.filter((e) => e.resource === r).length)), 0);
-		return i - e.input.length - r - n >= s;
+		let a = this.recipeInput(e), o = u.reduce((n, r) => n + (r === t ? 0 : Math.max(0, (a[r] ?? 0) - e.input.filter((e) => e.resource === r).length)), 0);
+		return i - e.input.length - r - n >= o;
 	}
 	transferPortals(e, t) {
 		let n = e.filter((e) => e.kind === "portalGate");
@@ -1060,7 +1533,7 @@ var ne = [
 			let r = n.filter((t) => t.portalChannel === e);
 			if (r.length === 0) continue;
 			let i = r.find((e) => e.portalRole === "send"), a = r.find((e) => e.portalRole === "receive");
-			if (r.some((e) => !C(this.state, e.kind))) {
+			if (r.some((e) => !w(this.state, e.kind))) {
 				for (let e of r) e.status = "転送門を技術ツリーで研究してください";
 				continue;
 			}
@@ -1073,19 +1546,19 @@ var ne = [
 				i.portalCooldown--, i.status = "転送の間隔を待っています";
 				continue;
 			}
-			let s = i.input[0];
-			s ? a.output.length >= 4 ? i.status = "受信側の出力庫が満杯です" : this.spend(t.get(i.id), 2) ? (i.input.shift(), a.output.push({
-				...s,
+			let o = i.input[0];
+			o ? a.output.length >= 4 ? i.status = "受信側の出力庫が満杯です" : this.spend(t.get(i.id), 2) ? (i.input.shift(), a.output.push({
+				...o,
 				throughPortal: !0
 			}), this.markUsed(i.id, a.id), i.portalCooldown = 19, i.portalRoute = {
 				targetId: a.id,
-				resource: s.resource,
+				resource: o.resource,
 				tick: this.state.tick
-			}, i.status = `${o[s.resource]}をチャネル${e}へ転送しました`, a.status = `${o[s.resource]}を受信しました`, O(s) && !s.throughPortal && (this.state.stats.portalTransfers = (this.state.stats.portalTransfers ?? 0) + 1)) : i.status = "転送用の魔力が不足しています（2単位必要）" : i.status = "転送する品を待っています";
+			}, i.status = `${d[o.resource]}をチャネル${e}へ転送しました`, a.status = `${d[o.resource]}を受信しました`, k(o) && !o.throughPortal && (this.state.stats.portalTransfers = (this.state.stats.portalTransfers ?? 0) + 1)) : i.status = "転送用の魔力が不足しています（2単位必要）" : i.status = "転送する品を待っています";
 		}
 	}
 	growTree(e) {
-		if (!C(this.state, e.kind)) {
+		if (!w(this.state, e.kind)) {
 			e.status = "世界樹を技術ツリーで研究してください";
 			return;
 		}
@@ -1094,76 +1567,76 @@ var ne = [
 			return;
 		}
 		let t = e.input[0];
-		t ? O(t) ? t.throughPortal ? this.state.tick % 20 == 0 ? (e.input.shift(), e.treeGrowth = (e.treeGrowth ?? 0) + 1, this.markUsed(e.id), this.state.stats.treeGrowth = (this.state.stats.treeGrowth ?? 0) + 1, e.status = `世界樹が成長しました（${e.treeGrowth}/10）`) : e.status = `世界樹が成長中です（${e.treeGrowth ?? 0}/10）` : e.status = "この種は転送門を通っていません。回収し、転送経路を確認してください" : e.status = "手動で取り出し・投入した種は成長に使えません。回収してください" : e.status = "転送門を通った自動生産の世界樹の種を待っています";
+		t ? k(t) ? t.throughPortal ? this.state.tick % 20 == 0 ? (e.input.shift(), e.treeGrowth = (e.treeGrowth ?? 0) + 1, this.markUsed(e.id), this.state.stats.treeGrowth = (this.state.stats.treeGrowth ?? 0) + 1, e.status = `世界樹が成長しました（${e.treeGrowth}/10）`) : e.status = `世界樹が成長中です（${e.treeGrowth ?? 0}/10）` : e.status = "この種は転送門を通っていません。回収し、転送経路を確認してください" : e.status = "手動で取り出し・投入した種は成長に使えません。回収してください" : e.status = "転送門を通った自動生産の世界樹の種を待っています";
 	}
 	supplyGolems(e) {
 		let t = e.filter((e) => e.kind === "storage"), n = new Map(t.map((e) => [e.id, [...e.input]]));
-		for (let i of e.filter((e) => e.kind === "golemRelay")) {
-			if (!C(this.state, i.kind)) {
-				i.status = "ゴーレム補給所を技術ツリーで研究してください";
+		for (let r of e.filter((e) => e.kind === "golemRelay")) {
+			if (!w(this.state, r.kind)) {
+				r.status = "ゴーレム補給所を技術ツリーで研究してください";
 				continue;
 			}
-			if (!i.golemWorker && i.input[0]?.resource === "golem" && (i.golemWorker = i.input.shift(), this.markUsed(i.id)), !i.golemWorker) {
-				i.status = "ゴーレムを1体投入してください";
+			if (!r.golemWorker && r.input[0]?.resource === "golem" && (r.golemWorker = r.input.shift(), this.markUsed(r.id)), !r.golemWorker) {
+				r.status = "ゴーレムを1体投入してください";
 				continue;
 			}
-			if ((i.golemCooldown ?? 0) > 0) {
-				i.golemCooldown--;
+			if ((r.golemCooldown ?? 0) > 0) {
+				r.golemCooldown--;
 				continue;
 			}
-			i.golemCooldown = 19;
-			let s = (e) => Math.abs(e.x - i.x) + Math.abs(e.z - i.z) <= 6, c = t.filter(s);
+			r.golemCooldown = 19;
+			let i = (e) => Math.abs(e.x - r.x) + Math.abs(e.z - r.z) <= 6, a = t.filter(i);
+			if (a.length === 0) {
+				r.status = "範囲6区画以内に収納箱がありません";
+				continue;
+			}
+			let s = r.golemPolicy !== "materials", c = e.filter((e) => i(e) && w(this.state, e.kind) && (s ? e.kind === "generator" : e.kind !== "generator" && e.kind !== "miner" && e.kind !== "crystalMiner" && e.kind !== "golemRelay" && e.kind !== "portalGate" && e.kind !== "worldTree" && Object.keys(this.recipeInput(e)).length > 0));
 			if (c.length === 0) {
-				i.status = "範囲6区画以内に収納箱がありません";
+				r.status = s ? "範囲6区画以内に魔力発生炉がありません" : "範囲6区画以内に素材を使う製造設備がありません";
 				continue;
 			}
-			let l = i.golemPolicy !== "materials", u = e.filter((e) => s(e) && C(this.state, e.kind) && (l ? e.kind === "generator" : e.kind !== "generator" && e.kind !== "miner" && e.kind !== "crystalMiner" && e.kind !== "golemRelay" && e.kind !== "portalGate" && e.kind !== "worldTree" && Object.keys(this.recipeInput(e)).length > 0));
-			if (u.length === 0) {
-				i.status = l ? "範囲6区画以内に魔力発生炉がありません" : "範囲6区画以内に素材を使う製造設備がありません";
-				continue;
-			}
-			let d = [];
-			for (let e of u) {
+			let l = [];
+			for (let e of c) {
 				let t = this.recipeInput(e);
-				for (let n of l ? ["wood"] : a) {
-					let r = l ? 1 : t[n] ?? 0;
+				for (let n of s ? ["wood"] : u) {
+					let r = s ? 1 : t[n] ?? 0;
 					if (r === 0) continue;
 					let i = [...e.input, ...e.reserved ?? []].filter((e) => e.resource === n).length;
-					d.push({
+					l.push({
 						target: e,
 						resource: n,
 						fill: i / r,
-						energy: l ? e.energy : 0
+						energy: s ? e.energy : 0
 					});
 				}
 			}
-			d.sort((e, t) => e.fill - t.fill || e.energy - t.energy || e.target.id - t.target.id || a.indexOf(e.resource) - a.indexOf(t.resource));
-			let f = d.filter((e) => this.canReceive(e.target, e.resource, 1));
+			l.sort((e, t) => e.fill - t.fill || e.energy - t.energy || e.target.id - t.target.id || u.indexOf(e.resource) - u.indexOf(t.resource));
+			let f = l.filter((e) => this.canReceive(e.target, e.resource, 1));
 			if (f.length === 0) {
-				i.status = "搬送先の入力庫が満杯です（他の素材用の空きを含む）";
+				r.status = "搬送先の入力庫が満杯です（他の素材用の空きを含む）";
 				continue;
 			}
 			let p = !1;
 			for (let e of f) {
-				for (let t of c) {
-					let a = n.get(t.id).find((n) => n.resource === e.resource && t.input.includes(n));
-					if (a) {
-						t.input.splice(t.input.indexOf(a), 1), e.target.input.push(a), this.markUsed(t.id, e.target.id, i.id), i.golemRoute = {
+				for (let t of a) {
+					let i = n.get(t.id).find((n) => n.resource === e.resource && t.input.includes(n));
+					if (i) {
+						t.input.splice(t.input.indexOf(i), 1), e.target.input.push(i), this.markUsed(t.id, e.target.id, r.id), r.golemRoute = {
 							sourceId: t.id,
 							targetId: e.target.id,
-							resource: a.resource,
+							resource: i.resource,
 							tick: this.state.tick
-						}, this.state.stats.golemTransfers = (this.state.stats.golemTransfers ?? 0) + 1, l && a.resource === "wood" && O(a) && (this.state.stats.golemFuelTransfers = (this.state.stats.golemFuelTransfers ?? 0) + 1), i.status = `${o[a.resource]}を${r[e.target.kind].label}へ運びました`, p = !0;
+						}, this.state.stats.golemTransfers = (this.state.stats.golemTransfers ?? 0) + 1, s && i.resource === "wood" && k(i) && (this.state.stats.golemFuelTransfers = (this.state.stats.golemFuelTransfers ?? 0) + 1), r.status = `${d[i.resource]}を${o[e.target.kind].label}へ運びました`, p = !0;
 						break;
 					}
 				}
 				if (p) break;
 			}
-			p || (i.status = l ? "収納箱に木材がありません（手動品は自動補給実績に算入されません）" : "収納箱にレシピに合う素材がありません");
+			p || (r.status = s ? "収納箱に木材がありません（手動品は自動補給実績に算入されません）" : "収納箱にレシピに合う素材がありません");
 		}
 	}
 	networks() {
-		let e = this.state.buildings.filter((e) => s.includes(e.kind)).sort((e, t) => e.id - t.id), t = new Map(e.map((e) => [T(e.x, e.z), e])), n = /* @__PURE__ */ new Map();
+		let e = this.state.buildings.filter((e) => f.includes(e.kind)).sort((e, t) => e.id - t.id), t = new Map(e.map((e) => [E(e.x, e.z), e])), n = /* @__PURE__ */ new Map();
 		for (let r of e) {
 			if (n.has(r.id)) continue;
 			let e = {
@@ -1174,10 +1647,10 @@ var ne = [
 			for (let r = 0; r < i.length; r++) {
 				let a = i[r];
 				e.members.push(a.id), a.kind === "generator" && e.generators.push(a);
-				for (let [r, o] of f) {
+				for (let [r, o] of x) {
 					let s = a.x + r, c = a.z + o;
 					if (s < 0 || s >= 32 || c < 0 || c >= 32) continue;
-					let l = t.get(T(s, c));
+					let l = t.get(E(s, c));
 					l && !n.has(l.id) && (n.set(l.id, e), i.push(l));
 				}
 			}
@@ -1196,25 +1669,25 @@ var ne = [
 		return !0;
 	}
 	produce(e, t) {
-		let n = r[e.kind];
-		if (!C(this.state, e.kind)) {
+		let n = o[e.kind];
+		if (!w(this.state, e.kind)) {
 			e.status = "設備を技術ツリーで研究してください";
 			return;
 		}
-		let i = e.recipe ?? n.recipes?.[0];
-		if (i && !w(this.state, i)) {
+		let r = e.recipe ?? n.recipes?.[0];
+		if (r && !T(this.state, r)) {
 			e.status = "レシピを技術ツリーで研究してください";
 			return;
 		}
-		let s = l(e), c = s?.seconds ?? n.seconds, u = s?.energy ?? n.energy ?? 0;
-		if (u > 0 && !t?.generators.length) e.status = "魔力導線がつながっていません";
+		let i = m(e), a = i?.seconds ?? n.seconds, s = i?.energy ?? n.energy ?? 0;
+		if (s > 0 && !t?.generators.length) e.status = "魔力導線がつながっていません";
 		else {
 			if (!e.working) {
-				let r = s?.input ?? n.input ?? {};
-				for (let t of a) {
+				let r = i?.input ?? n.input ?? {};
+				for (let t of u) {
 					let n = r[t] ?? 0, i = e.input.filter((e) => e.resource === t).length;
 					if (i < n) {
-						e.status = `${o[t]}が不足しています（あと${n - i}個）${e.kind === "generator" ? "・手動補給できます" : ""}`;
+						e.status = `${d[t]}が不足しています（あと${n - i}個）${e.kind === "generator" ? "・手動補給できます" : ""}`;
 						return;
 					}
 				}
@@ -1222,15 +1695,15 @@ var ne = [
 					e.status = "出力庫が満杯です";
 					return;
 				}
-				if (u > 0 && !this.spend(t, u)) {
-					e.status = `魔力が不足しています（開始時に${u}単位必要）`;
+				if (s > 0 && !this.spend(t, s)) {
+					e.status = `魔力が不足しています（開始時に${s}単位必要）`;
 					return;
 				}
 				this.markUsed(e.id);
-				let i = { ...r }, c = [];
-				e.input = e.input.filter((e) => (i[e.resource] ?? 0) > 0 ? (c.push(e), i[e.resource]--, !1) : !0), e.reserved = c, e.working = !0, e.progress = 0;
+				let a = { ...r }, o = [];
+				e.input = e.input.filter((e) => (a[e.resource] ?? 0) > 0 ? (o.push(e), a[e.resource]--, !1) : !0), e.reserved = o, e.working = !0, e.progress = 0;
 			}
-			if (e.progress = Math.min(c, e.progress + d), e.status = "稼働中", !(e.progress + 1e-9 < c)) {
+			if (e.progress = Math.min(a, e.progress + ee), e.status = "稼働中", !(e.progress + 1e-9 < a)) {
 				if (e.kind === "generator") {
 					(e.pendingEnergy === void 0 || e.pendingEnergy === 0) && (e.pendingEnergy = n.generatedEnergy);
 					let t = Math.min(30 - e.energy, e.pendingEnergy);
@@ -1243,12 +1716,12 @@ var ne = [
 						e.status = "完成品を保持中（出力庫が満杯）";
 						return;
 					}
-					let t = Object.keys(s?.output ?? n.output)[0], r = e.reserved ?? [], i = {
+					let t = Object.keys(i?.output ?? n.output)[0], r = e.reserved ?? [], a = {
 						resource: t,
 						automated: r.every((e) => e.automated),
 						...r.some((e) => e.handled) ? { handled: !0 } : {}
 					};
-					e.output.push(i), O(i) && (this.state.stats.produced[t] = (this.state.stats.produced[t] ?? 0) + 1, t === "sword" && this.state.stats.recentSwordTicks.push(this.state.tick));
+					e.output.push(a), k(a) && (this.state.stats.produced[t] = (this.state.stats.produced[t] ?? 0) + 1, t === "sword" && this.state.stats.recentSwordTicks.push(this.state.tick));
 				}
 				e.reserved = [], e.progress = 0, e.working = !1, e.status = "生産完了";
 			}
@@ -1258,13 +1731,13 @@ var ne = [
 		let r = /* @__PURE__ */ new Map();
 		for (let i of e) {
 			if (i.kind === "portalGate" && i.portalRole !== "receive") continue;
-			let e = k(i) ? "item" : i.kind === "storage" ? "input" : "output", a = i.kind === "portalGate" ? n.get(i.id) : e === "item" ? i.item : i[e][0];
-			if (!a || e === "item" && i.beltProgress + 1e-9 < u) continue;
+			let e = A(i) ? "item" : i.kind === "storage" ? "input" : "output", a = i.kind === "portalGate" ? n.get(i.id) : e === "item" ? i.item : i[e][0];
+			if (!a || e === "item" && i.beltProgress + 1e-9 < h) continue;
 			let o = i.kind === "splitter" ? i.splitCursor === 1 ? [1, 0] : [0, 1] : [0], s = [];
 			for (let n of o) {
-				let [r, o] = f[(i.direction + n) % 4], c = i.x + r, l = i.z + o;
+				let [r, o] = x[(i.direction + n) % 4], c = i.x + r, l = i.z + o;
 				if (c < 0 || c >= 32 || l < 0 || l >= 32) continue;
-				let u = t.get(T(c, l));
+				let u = t.get(E(c, l));
 				u && this.canReceive(u, a.resource, 1) && s.push({
 					source: i,
 					target: u,
@@ -1287,21 +1760,14 @@ var ne = [
 					break;
 				}
 			}
-			let n = new Set(a.filter((e) => e.sourceSlot === "item").map((e) => e.source.id)), o = a.filter((e) => k(e.target) && e.target.item && !n.has(e.target.id));
+			let n = new Set(a.filter((e) => e.sourceSlot === "item").map((e) => e.source.id)), o = a.filter((e) => A(e.target) && e.target.item && !n.has(e.target.id));
 			if (o.length === 0) break;
 			for (let e of o) i.add(`${e.source.id}:${e.target.id}`);
 		}
 		for (let e of a) this.markUsed(e.source.id, e.target.id), e.sourceSlot === "item" ? (e.source.item = null, e.source.beltProgress = 0) : e.source[e.sourceSlot].shift(), e.source.kind === "splitter" && (e.source.splitCursor = +(e.port === 0));
-		for (let e of a) if (k(e.target)) e.target.item = e.item, e.target.beltProgress = 0;
-		else if (e.target.kind === "delivery") {
-			if (O(e.item)) {
-				let t = e.item.resource;
-				this.state.stats.delivered[t] = (this.state.stats.delivered[t] ?? 0) + 1, t === "ingot" && this.state.delivered++;
-			}
-			e.target.status = O(e.item) ? `${o[e.item.resource]}を自動納品しました` : "手動で取り出し・投入した品は目標に算入されません";
-		} else e.target.input.push(e.item);
+		for (let e of a) A(e.target) ? (e.target.item = e.item, e.target.beltProgress = 0) : e.target.input.push(e.item);
 	}
-}, ie = class {
+}, _e = class {
 	canvas;
 	actions;
 	abort = new AbortController();
@@ -1424,41 +1890,44 @@ var ne = [
 	dispose() {
 		this.abort.abort(), this.resetPointers();
 	}
-}, A = (e) => e === "belt" || e === "splitter";
-function j(e, t, n) {
+}, j = (e) => e === "belt" || e === "splitter";
+function M(e, t, n) {
 	return e === "wire" || e === "generator" || e === "delivery" || e === "golemRelay" || e === "worldTree" || e === "portalGate" && n !== "receive" ? [] : e === "splitter" ? [t, (t + 1) % 4] : [t];
 }
-function ae(e) {
-	return A(e.kind) || e.kind === "storage" ? [...a] : e.kind === "delivery" ? ["ingot", "sword"] : e.kind === "golemRelay" ? ["golem"] : e.kind === "portalGate" ? e.portalRole === "receive" ? [] : [...a] : e.kind === "worldTree" ? ["worldSeed"] : Object.keys(l(e)?.input ?? r[e.kind].input ?? {});
+function ve(e) {
+	return j(e.kind) || e.kind === "storage" ? [...u] : e.kind === "delivery" ? [
+		"wood",
+		"ingot",
+		"sword"
+	] : e.kind === "golemRelay" ? ["golem"] : e.kind === "portalGate" ? e.portalRole === "receive" ? [] : [...u] : e.kind === "worldTree" ? ["worldSeed"] : Object.keys(m(e)?.input ?? o[e.kind].input ?? {});
 }
-function oe(e) {
+function ye(e) {
 	if (e.kind === "portalGate" && e.portalRole !== "receive") return [];
-	let t = A(e.kind) ? e.item : e.kind === "storage" ? e.input?.[0] : e.output?.[0];
-	return t ? [t.resource] : A(e.kind) || e.kind === "storage" || e.kind === "portalGate" ? [...a] : Object.keys(l(e)?.output ?? r[e.kind].output ?? {});
+	let t = j(e.kind) ? e.item : e.kind === "storage" ? e.input?.[0] : e.output?.[0];
+	return t ? [t.resource] : j(e.kind) || e.kind === "storage" || e.kind === "portalGate" ? [...u] : Object.keys(m(e)?.output ?? o[e.kind].output ?? {});
 }
-function se(e, t) {
-	if (!ae(e).includes(t)) return !1;
-	if (e.kind === "delivery") return !0;
+function be(e, t) {
+	if (!ve(e).includes(t)) return !1;
 	if (e.kind === "golemRelay") return !e.golemWorker && e.input.length === 0;
-	if (A(e.kind)) return !e.item || e.beltProgress + 1e-9 >= u;
-	let n = e.kind === "storage" ? 32 : 8;
+	if (j(e.kind)) return !e.item || e.beltProgress + 1e-9 >= h;
+	let n = e.kind === "storage" || e.kind === "delivery" ? 32 : 8;
 	if (e.input.length >= n) return !1;
-	let i = l(e)?.input ?? r[e.kind].input ?? {}, o = a.reduce((n, r) => n + (r === t ? 0 : Math.max(0, (i[r] ?? 0) - e.input.filter((e) => e.resource === r).length)), 0);
-	return e.input.length + 1 <= n - o;
+	let r = m(e)?.input ?? o[e.kind].input ?? {}, i = u.reduce((n, i) => n + (i === t ? 0 : Math.max(0, (r[i] ?? 0) - e.input.filter((e) => e.resource === i).length)), 0);
+	return e.input.length + 1 <= n - i;
 }
-function ce(e, t, n) {
-	if (!e.item || e.beltProgress + 1e-9 < u) return !1;
+function xe(e, t, n) {
+	if (!e.item || e.beltProgress + 1e-9 < h) return !1;
 	if (n.has(e.id)) return !0;
 	n.add(e.id);
-	for (let r of j(e.kind, e.direction, e.portalRole)) {
-		let [i, a] = f[r], o = t.get(`${e.x + i},${e.z + a}`);
-		if (o && se(o, e.item.resource) && (!A(o.kind) || !o.item || ce(o, t, n))) return n.delete(e.id), !0;
+	for (let r of M(e.kind, e.direction, e.portalRole)) {
+		let [i, a] = x[r], o = t.get(`${e.x + i},${e.z + a}`);
+		if (o && be(o, e.item.resource) && (!j(o.kind) || !o.item || xe(o, t, n))) return n.delete(e.id), !0;
 	}
 	return n.delete(e.id), !1;
 }
-function le(e, t, n = oe(e)) {
-	return j(e.kind, e.direction, e.portalRole).map((r) => {
-		let [i, a] = f[r], o = e.x + i, s = e.z + a;
+function Se(e, t, n = ye(e)) {
+	return M(e.kind, e.direction, e.portalRole).map((r) => {
+		let [i, a] = x[r], o = e.x + i, s = e.z + a;
 		if (o < 0 || o >= 32 || s < 0 || s >= 32) return {
 			direction: r,
 			state: "edge",
@@ -1470,13 +1939,13 @@ function le(e, t, n = oe(e)) {
 			state: "missing",
 			targetId: null
 		};
-		let l = n.filter((e) => ae(c).includes(e));
+		let l = n.filter((e) => ve(c).includes(e));
 		if (!l.length) return {
 			direction: r,
 			state: "incompatible",
 			targetId: c.id
 		};
-		let u = l.some((e) => se(c, e)), d = !A(c.kind) || !c.item || ce(c, t, /* @__PURE__ */ new Set());
+		let u = l.some((e) => be(c, e)), d = !j(c.kind) || !c.item || xe(c, t, /* @__PURE__ */ new Set());
 		return {
 			direction: r,
 			state: u && d ? "connected" : "full",
@@ -1486,7 +1955,7 @@ function le(e, t, n = oe(e)) {
 }
 //#endregion
 //#region web/js/fantasy-automation/renderer.ts
-var ue = {
+var Ce = {
 	wood: 11962194,
 	ore: 8569558,
 	ingot: 14080467,
@@ -1499,7 +1968,7 @@ var ue = {
 	essence: 8314837,
 	portalCore: 12228845,
 	worldSeed: 14609580
-}, de = class {
+}, we = class {
 	host;
 	callbacks;
 	renderer;
@@ -1642,7 +2111,7 @@ var ue = {
 			e.preventDefault(), this.contextLost = !0, n.onStatus("3D 表示が中断しました。復旧を待っています。進行は保存できます。");
 		}, { signal: this.abort.signal }), this.renderer.domElement.addEventListener("webglcontextrestored", () => {
 			this.contextLost = !1, this.lastTime = performance.now(), this.resize(), n.onStatus("3D 表示を復旧しました。");
-		}, { signal: this.abort.signal }), this.input = new ie(this.renderer.domElement, {
+		}, { signal: this.abort.signal }), this.input = new _e(this.renderer.domElement, {
 			pick: (e) => this.pick(e),
 			onPick: n.onPick,
 			onHover: n.onHover,
@@ -1836,9 +2305,9 @@ var ue = {
 		}
 	}
 	facility(t, n = "send") {
-		let r = new e.Group(), i = this.arrow(), a = null, o = null, s = null, c = null, l = null, u = null, d = null, p = null, m = null, h = [], g = [], _ = [];
-		i.visible = j(t, 0, n).length > 0;
-		let v = [];
+		let r = new e.Group(), i = this.arrow(), a = null, o = null, s = null, c = null, l = null, u = null, d = null, f = null, p = null, m = [], h = [], g = [];
+		i.visible = M(t, 0, n).length > 0;
+		let _ = [];
 		if (i.position.y = t === "belt" || t === "splitter" ? .245 : .36, i.position.z = -.29, i.scale.setScalar(1.3), r.add(i), t === "belt" || t === "splitter") {
 			this.box(r, 4345426, [
 				.7,
@@ -1899,7 +2368,7 @@ var ue = {
 				0
 			], !0);
 			e.rotation.z = Math.PI, i.visible = !1;
-			for (let [e, t] of f) {
+			for (let [e, t] of x) {
 				let n = this.box(r, 8571090, [
 					e ? .52 : .045,
 					.045,
@@ -1909,7 +2378,7 @@ var ue = {
 					.4,
 					t * .25
 				]);
-				n.visible = !1, v.push(n);
+				n.visible = !1, _.push(n);
 			}
 		} else if (this.box(r, 5531506, [
 			.76,
@@ -2022,7 +2491,7 @@ var ue = {
 			t.scale.set(.23, .4, .23), t.position.set(0, .93, 0), r.add(t);
 			let n = new e.Mesh(this.geometry("generator-ring", () => new e.TorusGeometry(.29, .035, 4, 10)), this.material(14795131));
 			n.rotation.x = Math.PI / 2, n.position.y = .56, r.add(n);
-			for (let [e, t] of f) this.box(r, 8375773, [
+			for (let [e, t] of x) this.box(r, 8375773, [
 				e ? .21 : .055,
 				.055,
 				t ? .21 : .055
@@ -2395,9 +2864,9 @@ var ue = {
 			]);
 			for (let t = 0; t < 3; t++) {
 				let n = new e.Mesh(this.geometry("gem", () => new e.OctahedronGeometry(1, 0)), this.material(16768419));
-				n.scale.setScalar(.045), n.position.set((t - 1) * .115, 1.1, 0), n.visible = t === 0, r.add(n), h.push(n);
+				n.scale.setScalar(.045), n.position.set((t - 1) * .115, 1.1, 0), n.visible = t === 0, r.add(n), m.push(n);
 			}
-			m = document.createElement("div"), m.className = "portal-world-label", m.hidden = !0, Object.assign(m.style, {
+			p = document.createElement("div"), p.className = "portal-world-label", p.hidden = !0, Object.assign(p.style, {
 				position: "absolute",
 				pointerEvents: "none",
 				zIndex: "1",
@@ -2409,7 +2878,7 @@ var ue = {
 				font: "bold 11px/1.5 sans-serif",
 				whiteSpace: "nowrap",
 				transform: "translate(-50%,-100%)"
-			}), this.host.append(m);
+			}), this.host.append(p);
 			let n = new e.BufferGeometry();
 			n.setAttribute("position", new e.BufferAttribute(/* @__PURE__ */ new Float32Array(6), 3)), u = new e.Line(n, this.portalLineMaterial), u.visible = !1, u.frustumCulled = !1, r.add(u), d = new e.Mesh(this.geometry("gem", () => new e.OctahedronGeometry(1, 0)), this.material(14401776)), d.visible = !1, r.add(d);
 		} else if (t === "seedLoom") {
@@ -2460,7 +2929,7 @@ var ue = {
 				0,
 				.18,
 				0
-			]), p = new e.Group(), p.position.y = .25, p.scale.setScalar(.15), r.add(p), this.cylinder(p, 9139284, .14, 1.65, [
+			]), f = new e.Group(), f.position.y = .25, f.scale.setScalar(.15), r.add(f), this.cylinder(f, 9139284, .14, 1.65, [
 				0,
 				.825,
 				0
@@ -2492,9 +2961,9 @@ var ue = {
 				]
 			]) {
 				let a = new e.Mesh(this.geometry("tree-crown", () => new e.IcosahedronGeometry(1, 0)), this.material(8830355));
-				a.position.set(t, n, r), a.scale.set(i, i * .8, i), p.add(a);
+				a.position.set(t, n, r), a.scale.set(i, i * .8, i), f.add(a);
 			}
-			for (let e of [-.42, .42]) this.cylinder(p, 14213035, .075, .14, [
+			for (let e of [-.42, .42]) this.cylinder(f, 14213035, .075, .14, [
 				e,
 				1.85,
 				.1
@@ -2534,7 +3003,35 @@ var ue = {
 				let t = new e.TorusGeometry(.07, .013, 3, 8);
 				return t.rotateX(-Math.PI / 2), t;
 			}), this.material(14927615, 2233390), 32), s.count = 0, s.frustumCulled = !1, r.add(s);
-		} else this.box(r, 12361841, [
+		} else t === "delivery" ? (this.box(r, 9335118, [
+			.74,
+			.28,
+			.7
+		], [
+			0,
+			.28,
+			0
+		]), this.box(r, 15321222, [
+			.75,
+			.06,
+			.73
+		], [
+			0,
+			.45,
+			0
+		]), this.cylinder(r, 7035205, .035, 1.05, [
+			.31,
+			.72,
+			.23
+		]), this.box(r, 13217649, [
+			.38,
+			.26,
+			.035
+		], [
+			.12,
+			1.1,
+			.23
+		])) : (this.box(r, 12361841, [
 			.62,
 			.41,
 			.62
@@ -2558,15 +3055,15 @@ var ue = {
 			0,
 			.35,
 			0
-		]);
-		if (ae({
+		]));
+		if (ve({
 			kind: t,
 			portalRole: n
 		}).length) for (let n = 0; n < 4; n++) {
-			let [i, a] = f[n], o = t === "belt" || t === "splitter" ? .055 : .09, s = new e.Mesh(this.geometry(`socket-${o}`, () => new e.TorusGeometry(o, .023, 4, 8)), this.material(9886190));
-			s.rotation.x = Math.PI / 2, s.position.set(i * .43, .18, a * .43), r.add(s), g.push(s);
+			let [i, a] = x[n], o = t === "belt" || t === "splitter" ? .055 : .09, s = new e.Mesh(this.geometry(`socket-${o}`, () => new e.TorusGeometry(o, .023, 4, 8)), this.material(9886190));
+			s.rotation.x = Math.PI / 2, s.position.set(i * .43, .18, a * .43), r.add(s), h.push(s);
 		}
-		for (let i = 0; i < j(t, 0, n).length; i++) {
+		for (let i = 0; i < M(t, 0, n).length; i++) {
 			let t = new e.Group();
 			t.rotation.y = -i * Math.PI / 2, this.box(t, 13280870, [
 				.3,
@@ -2586,29 +3083,29 @@ var ue = {
 				-.552
 			]);
 			let n = this.portGlyph();
-			n.group.position.set(0, .3, -.61), t.add(n.group), this.paintPort(n, "missing"), r.add(t), _.push(n);
+			n.group.position.set(0, .3, -.61), t.add(n.group), this.paintPort(n, "missing"), r.add(t), g.push(n);
 		}
-		let y = new e.Mesh(this.geometry("cube", () => new e.BoxGeometry(1, 1, 1)), this.material(14730388));
-		y.scale.set(.19, .14, .22), y.visible = !1, r.add(y);
-		let b = new e.Mesh(this.geometry("item-portal-brand", () => new e.TorusGeometry(.19, .022, 4, 12)), this.material(14927615, 2233390));
-		b.rotation.x = -Math.PI / 2, b.visible = !1, r.add(b);
-		let x = new e.Mesh(this.geometry("rock", () => new e.DodecahedronGeometry(1, 0)), this.material(7635834));
-		return x.scale.setScalar(.055), x.position.set(.25, t === "belt" ? .22 : .66, .22), x.visible = ![
+		let v = new e.Mesh(this.geometry("cube", () => new e.BoxGeometry(1, 1, 1)), this.material(14730388));
+		v.scale.set(.19, .14, .22), v.visible = !1, r.add(v);
+		let y = new e.Mesh(this.geometry("item-portal-brand", () => new e.TorusGeometry(.19, .022, 4, 12)), this.material(14927615, 2233390));
+		y.rotation.x = -Math.PI / 2, y.visible = !1, r.add(y);
+		let b = new e.Mesh(this.geometry("rock", () => new e.DodecahedronGeometry(1, 0)), this.material(7635834));
+		return b.scale.setScalar(.055), b.position.set(.25, t === "belt" ? .22 : .66, .22), b.visible = ![
 			"wire",
 			"belt",
 			"splitter",
 			"storage"
-		].includes(t), r.add(x), {
+		].includes(t), r.add(b), {
 			group: r,
 			arrow: i,
 			sideArrow: a,
-			item: y,
-			itemBrand: b,
-			lamp: x,
+			item: v,
+			itemBrand: y,
+			lamp: b,
 			kind: t,
-			wires: v,
-			sockets: g,
-			ports: _,
+			wires: _,
+			sockets: h,
+			ports: g,
 			chevrons: c,
 			flowKey: "",
 			contents: o,
@@ -2617,14 +3114,14 @@ var ue = {
 			worker: l,
 			route: u,
 			bead: d,
-			tree: p,
+			tree: f,
 			portalRole: t === "portalGate" ? n : void 0,
-			portalLabel: m,
-			channelMarks: h
+			portalLabel: p,
+			channelMarks: m
 		};
 	}
 	itemColor(e) {
-		return ue[e];
+		return Ce[e];
 	}
 	setItemShape(t, n) {
 		t.rotation.set(0, 0, 0), n === "wood" ? (t.geometry = this.geometry("cylinder", () => new e.CylinderGeometry(1, 1, 1, 8)), t.scale.set(.075, .25, .075), t.rotation.x = Math.PI / 2) : n === "ore" || n === "rawCrystal" ? (t.geometry = this.geometry("rock", () => new e.DodecahedronGeometry(1, 0)), t.scale.set(.13, n === "rawCrystal" ? .16 : .12, .13)) : n === "crystal" ? (t.geometry = this.geometry("gem", () => new e.OctahedronGeometry(1, 0)), t.scale.set(.105, .2, .105)) : n === "runeCore" ? (t.geometry = this.geometry("rune-ring", () => new e.TorusGeometry(.22, .035, 4, 10)), t.scale.setScalar(.65), t.rotation.x = Math.PI / 2) : n === "essence" ? (t.geometry = this.geometry("essence", () => new e.SphereGeometry(1, 8, 6)), t.scale.setScalar(.14)) : n === "portalCore" ? (t.geometry = this.geometry("portal-core-item", () => new e.TorusGeometry(1, .28, 5, 12)), t.scale.setScalar(.135), t.rotation.x = -Math.PI / 2) : n === "worldSeed" ? (t.geometry = this.geometry("seed", () => new e.IcosahedronGeometry(1, 0)), t.scale.set(.13, .19, .13)) : n === "golemFrame" || n === "golem" ? (t.geometry = this.geometry(`item-${n}`, () => {
@@ -2686,7 +3183,7 @@ var ue = {
 		}), t.scale.setScalar(.4)) : (t.geometry = this.geometry("cube", () => new e.BoxGeometry(1, 1, 1)), t.scale.set(.23, .09, .14));
 	}
 	outputResources(e, t) {
-		return oe({
+		return ye({
 			kind: e,
 			recipe: t,
 			x: 0,
@@ -2699,7 +3196,7 @@ var ue = {
 	}
 	updateFlow(e, t, n, r) {
 		if (r.forEach((t, n) => this.paintPort(e.ports[n], t.state)), !e.chevrons) return;
-		let i = !!t.item && t.beltProgress + 1e-9 >= u && r.every((e) => e.state !== "connected"), a = i || this.reducedMotion.matches ? 0 : t.item ? Math.min(1, t.beltProgress / u) : n / 10 % 1, o = `${a}:${i}`;
+		let i = !!t.item && t.beltProgress + 1e-9 >= h && r.every((e) => e.state !== "connected"), a = i || this.reducedMotion.matches ? 0 : t.item ? Math.min(1, t.beltProgress / h) : n / 10 % 1, o = `${a}:${i}`;
 		if (e.flowKey !== o) {
 			e.flowKey = o;
 			for (let t = 0; t < 3; t++) {
@@ -2741,7 +3238,7 @@ var ue = {
 		let r = n.item ?? n.output[0];
 		if (t.item.visible = !!r && n.kind !== "storage", t.itemBrand.visible = t.item.visible && r?.resource === "worldSeed" && !!r.throughPortal, r) {
 			t.item.material = this.material(this.itemColor(r.resource)), this.setItemShape(t.item, r.resource);
-			let e = n.kind === "belt" || n.kind === "splitter", i = e ? Math.min(1, n.beltProgress / u) : 0, a = n.kind === "splitter" && n.splitCursor === 1;
+			let e = n.kind === "belt" || n.kind === "splitter", i = e ? Math.min(1, n.beltProgress / h) : 0, a = n.kind === "splitter" && n.splitCursor === 1;
 			t.item.position.set(a ? i * .34 : 0, e ? .29 : .22, e ? a ? .34 * (1 - i) : .34 - i * .68 : -.36), t.itemBrand.position.copy(t.item.position), t.itemBrand.position.y += .035;
 		}
 		if (t.tree) {
@@ -2767,13 +3264,13 @@ var ue = {
 		this.input.update((r - this.lastTime) / 1e3), this.lastTime = r;
 		let i = t.buildings.map((e) => e.z * 32 + e.x).filter((e) => t.terrain[e] !== "grass").sort((e, t) => e - t).join(","), a = `${t.seed}:${t.terrain.join(",")}:${i}`;
 		a !== this.terrainKey && (this.rebuildTerrain(t), this.terrainKey = a);
-		let o = /* @__PURE__ */ new Set(), c = new Map(t.buildings.map((e) => [e.id, e])), l = new Map(t.buildings.map((e) => [`${e.x},${e.z}`, e])), u = new Set(s), d = /* @__PURE__ */ new Set(), p = t.buildings.filter((e) => e.kind === "generator" && e.energy > 0);
+		let o = /* @__PURE__ */ new Set(), s = new Map(t.buildings.map((e) => [e.id, e])), c = new Map(t.buildings.map((e) => [`${e.x},${e.z}`, e])), u = new Set(f), d = /* @__PURE__ */ new Set(), p = t.buildings.filter((e) => e.kind === "generator" && e.energy > 0);
 		for (let e = 0; e < p.length; e++) {
 			let t = p[e], n = `${t.x},${t.z}`;
 			if (!d.has(n)) {
 				d.add(n);
-				for (let [e, n] of f) {
-					let r = `${t.x + e},${t.z + n}`, i = l.get(r);
+				for (let [e, n] of x) {
+					let r = `${t.x + e},${t.z + n}`, i = c.get(r);
 					i && u.has(i.kind) && !d.has(r) && p.push(i);
 				}
 			}
@@ -2781,10 +3278,10 @@ var ue = {
 		for (let e of t.buildings) {
 			o.add(e.id);
 			let r = this.facilities.get(e.id);
-			r && (r.kind !== e.kind || e.kind === "portalGate" && r.portalRole !== (e.portalRole ?? "send")) && (this.scene.remove(r.group), this.disposeFacility(r), this.facilities.delete(e.id), r = void 0), r || (r = this.facility(e.kind, e.portalRole), this.facilities.set(e.id, r), this.scene.add(r.group)), this.updateFacility(r, e), this.updateRelay(r, e, t.tick, c), this.updatePortal(r, e, t.tick, c, e.id === n.selectedId);
-			let i = le(e, l);
+			r && (r.kind !== e.kind || e.kind === "portalGate" && r.portalRole !== (e.portalRole ?? "send")) && (this.scene.remove(r.group), this.disposeFacility(r), this.facilities.delete(e.id), r = void 0), r || (r = this.facility(e.kind, e.portalRole), this.facilities.set(e.id, r), this.scene.add(r.group)), this.updateFacility(r, e), this.updateRelay(r, e, t.tick, s), this.updatePortal(r, e, t.tick, s, e.id === n.selectedId);
+			let i = Se(e, c);
 			if (this.updateFlow(r, e, t.tick, i), e.id === n.selectedId && (this.renderer.domElement.dataset.selectedDirection = String(e.direction), this.renderer.domElement.dataset.selectedPorts = i.map((e) => `${e.direction}:${e.state}`).join(","), this.renderer.domElement.dataset.selectedFlowProgress = String(e.beltProgress)), e.kind === "wire") for (let t = 0; t < 4; t++) {
-				let [n, i] = f[t], a = l.get(`${e.x + n},${e.z + i}`);
+				let [n, i] = x[t], a = c.get(`${e.x + n},${e.z + i}`);
 				r.wires[t].visible = !!a && u.has(a.kind);
 			}
 			e.kind === "wire" && (r.group.rotation.y = 0);
@@ -2793,29 +3290,30 @@ var ue = {
 		if (this.ghost.visible = !!n.kind && !!n.hover && this.cursorOnMap, this.ghost.visible ? this.renderer.domElement.dataset.ghostValid = String(n.valid) : delete this.renderer.domElement.dataset.ghostValid, this.ghost.visible && n.hover) {
 			if (this.ghostPreview?.kind !== n.kind && (this.ghostPreview && (this.ghost.remove(this.ghostPreview.group), this.disposeFacility(this.ghostPreview)), this.ghostPreview = this.facility(n.kind), this.ghostPreview.item.visible = this.ghostPreview.lamp.visible = !1, this.ghost.add(this.ghostPreview.group)), this.ghost.position.set(n.hover.x, 0, n.hover.z), this.ghost.traverse((t) => {
 				t instanceof e.Mesh && (t.material = this.material(n.valid ? 9437105 : 16742510, 0, t.parent !== this.ghost));
-			}), this.ghost.rotation.y = -n.direction * Math.PI / 2, this.ghostPort.visible = !!n.kind && j(n.kind, n.direction).length > 0, this.ghostSidePort.visible = n.kind === "splitter", this.ghostPort.visible && n.kind) {
-				let t = this.outputResources(n.kind);
+			}), this.ghost.rotation.y = -n.direction * Math.PI / 2, this.ghostPort.visible = !!n.kind && M(n.kind, n.direction).length > 0, this.ghostSidePort.visible = n.kind === "splitter", this.ghostPort.visible && n.kind) {
+				let t = n.recipe ? Object.keys(l[n.recipe].output) : this.outputResources(n.kind);
 				if ([
 					"belt",
 					"splitter",
 					"storage"
 				].includes(n.kind)) {
-					let e = f.map(([e, t]) => l.get(`${n.hover.x + e},${n.hover.z + t}`)).filter((e) => !!e).filter((e) => j(e.kind, e.direction, e.portalRole).some((t) => {
-						let [r, i] = f[t];
+					let e = x.map(([e, t]) => c.get(`${n.hover.x + e},${n.hover.z + t}`)).filter((e) => !!e).filter((e) => M(e.kind, e.direction, e.portalRole).some((t) => {
+						let [r, i] = x[t];
 						return e.x + r === n.hover.x && e.z + i === n.hover.z;
 					})).flatMap((e) => e.item ? [e.item.resource] : e.output.length ? e.output.map((e) => e.resource) : e.kind === "storage" && e.input.length ? e.input.map((e) => e.resource) : [
 						"belt",
 						"splitter",
 						"storage"
-					].includes(e.kind) ? [] : oe(e));
+					].includes(e.kind) ? [] : ye(e));
 					e.length && (t = e);
 				}
-				let r = le({
+				let r = Se({
 					kind: n.kind,
+					recipe: n.recipe,
 					x: n.hover.x,
 					z: n.hover.z,
 					direction: n.direction
-				}, l, t);
+				}, c, t);
 				this.renderer.domElement.dataset.ghostDirection = String(n.direction), this.renderer.domElement.dataset.ghostPorts = r.map((e) => `${e.direction}:${e.state}`).join(",");
 				for (let t = 0; t < r.length; t++) {
 					let n = r[t], i = n.state === "edge" || n.state === "incompatible" ? 16736857 : n.state === "connected" ? 9437101 : 15971156, a = t === 0 ? this.ghostPort : this.ghostSidePort, o = t === 0 ? this.ghostPreview?.arrow : this.ghostPreview?.sideArrow;
@@ -2832,26 +3330,26 @@ var ue = {
 			}), this.ghostPower) {
 				let e = n.kind && u.has(n.kind);
 				this.ghostPower.visible = !!e;
-				let t = f.some(([e, t]) => {
-					let r = l.get(`${n.hover.x + e},${n.hover.z + t}`);
+				let t = x.some(([e, t]) => {
+					let r = c.get(`${n.hover.x + e},${n.hover.z + t}`);
 					return r && u.has(r.kind);
-				}), r = f.some(([e, t]) => d.has(`${n.hover.x + e},${n.hover.z + t}`));
+				}), r = x.some(([e, t]) => d.has(`${n.hover.x + e},${n.hover.z + t}`));
 				this.ghostPower.material = this.material(r ? 7005183 : t ? 12032737 : 15182441, 2111546);
 			}
 		}
 		let m = n.selectedId == null ? null : this.facilities.get(n.selectedId);
-		this.selection.visible = !!m, this.selectedRelayRange.visible = m?.kind === "golemRelay", this.selectedRelayRange.visible && m && this.selectedRelayRange.position.copy(m.group.position), m ? (this.selection.position.copy(m.group.position), this.selection.rotation.y = m.group.rotation.y, this.selectedDirection.visible = j(m.kind, 0, m.portalRole).length > 0, this.selectedSideDirection.visible = m.kind === "splitter") : (delete this.renderer.domElement.dataset.selectedDirection, delete this.renderer.domElement.dataset.selectedPorts, delete this.renderer.domElement.dataset.selectedFlowProgress), this.updateGuide(n.guideTarget ?? null, r), this.contextLost || this.renderer.render(this.scene, this.camera);
+		this.selection.visible = !!m, this.selectedRelayRange.visible = m?.kind === "golemRelay", this.selectedRelayRange.visible && m && this.selectedRelayRange.position.copy(m.group.position), m ? (this.selection.position.copy(m.group.position), this.selection.rotation.y = m.group.rotation.y, this.selectedDirection.visible = M(m.kind, 0, m.portalRole).length > 0, this.selectedSideDirection.visible = m.kind === "splitter") : (delete this.renderer.domElement.dataset.selectedDirection, delete this.renderer.domElement.dataset.selectedPorts, delete this.renderer.domElement.dataset.selectedFlowProgress), this.updateGuide(n.guideTarget ?? null, r), this.contextLost || this.renderer.render(this.scene, this.camera);
 	}
 	updateGuide(e, t) {
 		let n = !!e && e.x >= 0 && e.x < 32 && e.z >= 0 && e.z < 32;
 		if (this.guideMarker.visible = n, this.guideLabel.hidden = !n, !n || !e) return;
 		this.guideMarker.position.set(e.x, .09, e.z);
-		let i = this.reducedMotion.matches ? 1.08 : 1.08 + Math.sin(t / 350) * .025;
-		this.guideMarker.scale.set(i, 1, i), this.guideDirection.visible = e.direction !== null, e.direction !== null && (this.guideDirection.rotation.y = -e.direction * Math.PI / 2);
-		let a = `${e.x},${e.z},${e.kind},${e.direction}`;
-		if (a !== this.guideLabelKey) {
-			this.guideLabelKey = a;
-			let t = e.kind ? r[e.kind].label : "この区画", n = e.direction === null ? "" : ` · ${[
+		let r = this.reducedMotion.matches ? 1.08 : 1.08 + Math.sin(t / 350) * .025;
+		this.guideMarker.scale.set(r, 1, r), this.guideDirection.visible = e.direction !== null, e.direction !== null && (this.guideDirection.rotation.y = -e.direction * Math.PI / 2);
+		let i = `${e.x},${e.z},${e.kind},${e.direction}`;
+		if (i !== this.guideLabelKey) {
+			this.guideLabelKey = i;
+			let t = e.kind ? o[e.kind].label : "この区画", n = e.direction === null ? "" : ` · ${[
 				"北",
 				"東",
 				"南",
@@ -2859,9 +3357,9 @@ var ue = {
 			][e.direction]}向き`;
 			this.guideLabel.textContent = `${t} (${e.x}, ${e.z})${n}\n↓ 光る区画をクリック`, this.guideLabel.dataset.x = String(e.x), this.guideLabel.dataset.z = String(e.z);
 		}
-		let o = this.renderer.domElement.getBoundingClientRect();
+		let a = this.renderer.domElement.getBoundingClientRect();
 		this.guideProjection.set(e.x, 0, e.z).project(this.camera);
-		let s = o.left + (this.guideProjection.x + 1) * o.width / 2, c = o.top + (1 - this.guideProjection.y) * o.height / 2, l = s.toFixed(2), u = c.toFixed(2);
+		let s = a.left + (this.guideProjection.x + 1) * a.width / 2, c = a.top + (1 - this.guideProjection.y) * a.height / 2, l = s.toFixed(2), u = c.toFixed(2);
 		this.guideLabel.dataset.screenX !== l && (this.guideLabel.dataset.screenX = l), this.guideLabel.dataset.screenY !== u && (this.guideLabel.dataset.screenY = u);
 		let d = this.host.getBoundingClientRect(), f = Math.max(110, Math.min(d.width - 110, s - d.left)), p = Math.max(135, Math.min(d.height - 170, c - d.top - 50)), m = `${f}px`, h = `${p}px`;
 		this.guideLabel.style.left !== m && (this.guideLabel.style.left = m), this.guideLabel.style.top !== h && (this.guideLabel.style.top = h);
@@ -2922,10 +3420,10 @@ var ue = {
 };
 //#endregion
 //#region web/js/fantasy-automation/icons.ts
-function M(e) {
+function N(e) {
 	return e !== "smelter" && e !== "generator" ? "" : `<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" class="furnace-icon furnace-${e}">${e === "smelter" ? "<path d=\"M5 14h20v15H5zM20 14V3h6v21M9 29v-9h12v9M2 29h28\"/><path d=\"m12 25 2-5 3 3 2-4M8 9h6l3 5H6z\"/>" : "<path d=\"m16 2 7 10-7 10-7-10zM5 15v12h22V15M2 30h28M16 6v12M9 12h14\"/><path d=\"m4 21 4-3 3 3m10 0 3-3 4 3M11 27l4-6-1 5h6l-4 5\"/>"}</svg>`;
 }
-function N(e) {
+function P(e) {
 	return `<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" class="resource-icon resource-${e}">${{
 		wood: "<path d=\"M5 8 21 4 27 11 11 16Z\"/><path d=\"M11 16 27 11 27 23 11 28 5 21 5 8\"/><path d=\"m11 16 0 12M8 12l15-4\"/>",
 		ore: "<path d=\"m5 22 3-13 11-5 9 9-4 13-13 2Z\"/><path d=\"m8 9 9 8 11-4M17 17l-6 11m6-11 7 9\"/>",
@@ -2943,15 +3441,15 @@ function N(e) {
 }
 //#endregion
 //#region web/js/fantasy-automation/golem-guide.ts
-var fe = 8, pe = (e) => e.automated && !e.handled, me = (e, t) => Math.abs(e.x - t.x) + Math.abs(e.z - t.z) <= 6, P = (e) => ({
+var Te = 8, Ee = (e) => e.automated && !e.handled, De = (e, t) => Math.abs(e.x - t.x) + Math.abs(e.z - t.z) <= 6, F = (e) => ({
 	type: "inspect",
 	kind: e.kind,
 	id: e.id
 });
-function F(e, t, n, r, i, a = []) {
+function I(e, t, n, r, i, a = []) {
 	return {
 		step: e,
-		total: fe,
+		total: Te,
 		title: t,
 		detail: n,
 		status: r,
@@ -2959,63 +3457,63 @@ function F(e, t, n, r, i, a = []) {
 		blockers: a
 	};
 }
-function he(e, t, n, a) {
-	let s = e.buildings.find((e) => e.kind === t);
-	if (!s) return F(n, `${r[t].label}を建てる`, a, "action", {
+function Oe(e, t, n, r) {
+	let a = i[t].recipes?.[0], s = e.buildings.find((e) => e.kind === c(t) && e.recipe === a);
+	if (!s) return I(n, `${o[c(t)].label}（${l[i[t].recipes[0]].label}）を建てる`, r, "action", {
 		type: "build",
 		kind: t
 	});
-	let c = i[s.recipe ?? r[t].recipes[0]], l = Object.entries(c.input).flatMap(([e, t]) => {
+	let u = l[s.recipe ?? o[t].recipes[0]], f = Object.entries(u.input).flatMap(([e, t]) => {
 		let n = [...s.input, ...s.reserved ?? []].filter((t) => t.resource === e).length;
-		return n < t ? [`${o[e]} あと${t - n}個`] : [];
+		return n < t ? [`${d[e]} あと${t - n}個`] : [];
 	});
-	if (s.working) return F(n, `${r[t].label}の生産を待つ`, `${a} 現在は生産中です。作り直す必要はありません。1×または2×で進めてください。`, "waiting", {
+	if (s.working) return I(n, `${o[c(t)].label}（${l[i[t].recipes[0]].label}）の生産を待つ`, `${r} 現在は生産中です。作り直す必要はありません。1×または2×で進めてください。`, "waiting", {
 		type: "run",
 		id: s.id,
 		kind: t
 	});
-	let u = [...l, ...s.status ? [s.status] : []];
-	return F(n, `${r[t].label}へ素材と魔力をつなぐ`, `${a} ${Object.entries(c.input).map(([e, t]) => `${o[e]}${t}個`).join("＋")}と魔力${c.energy}が必要です。出力庫が満杯なら搬送先を用意してください。`, "action", P(s), u);
+	let p = [...f, ...s.status ? [s.status] : []];
+	return I(n, `${o[c(t)].label}（${l[i[t].recipes[0]].label}）へ素材と魔力をつなぐ`, `${r} ${Object.entries(u.input).map(([e, t]) => `${d[e]}${t}個`).join("＋")}と魔力${u.energy}が必要です。出力庫が満杯なら搬送先を用意してください。`, "action", F(s), p);
 }
-function ge(e) {
-	let t = S(e), n = t.find((e) => e.id === "runecraft"), r = t.find((e) => e.id === "golemcraft"), i = e.stats?.golemFuelTransfers ?? 0;
+function ke(e) {
+	let t = C(e), n = t.find((e) => e.id === "runecraft"), r = t.find((e) => e.id === "golemcraft"), i = e.stats?.golemFuelTransfers ?? 0;
 	if (i >= 20 || e.research?.unlocked.includes("sanctuary")) {
 		let e = t.find((e) => e.id === "sanctuary").requirements.filter((e) => !e.met).map((e) => `${e.label} ${e.current}/${e.target}`).join("・");
-		return F(8, "ゴーレムの自動補給を確認しました", `木材の自動補給 ${i}/20個。ゴーレムは収納箱にある品を運び、品を新しく作りません。${e ? `「ゴーレム工房の自動運営」の残り条件: ${e}。` : "技術ツリーの「ゴーレム工房の自動運営」を研究すると、錬金術へ進めます。"}`, "done", { type: "technology" });
+		return I(8, "ゴーレムの自動補給を確認しました", `木材の自動補給 ${i}/20個。ゴーレムは収納箱にある品を運び、品を新しく作りません。${e ? `「ゴーレム工房の自動運営」の残り条件: ${e}。` : "技術ツリーの「ゴーレム工房の自動運営」を研究すると、錬金術へ進めます。"}`, "done", { type: "technology" });
 	}
-	if (n.status !== "unlocked") return F(1, n.status === "available" ? "ルーン加工と機体製作を研究する" : "魔導剣の量産技術を解放する", "技術ツリーで前提技術と実績を確認してください。ルーン加工の研究で刻印台と躯体工房が使えます。", n.status === "available" ? "action" : "locked", { type: "technology" }, n.status === "available" ? [] : [n.reason]);
-	if (r.status !== "unlocked") return r.status === "available" ? F(2, "ゴーレム組立と物流補助を研究する", "魔導核3個と鉄の躯体3個の自動生産を確認しました。技術ツリーで研究し、覚醒炉とゴーレム補給所を解放してください。", "action", { type: "technology" }) : (e.stats?.produced.runeCore ?? 0) < 3 ? he(e, "runeCarver", 2, `魔導核を自動生産 ${e.stats?.produced.runeCore ?? 0}/3個。精製魔晶と鉄の延べ棒を自動搬送してください。`) : he(e, "frameForge", 2, `鉄の躯体を自動生産 ${e.stats?.produced.golemFrame ?? 0}/3個。鉄の延べ棒と木材を自動搬送してください。`);
-	let a = e.buildings.filter((e) => e.kind === "golemRelay"), o = (t) => (t.golemWorker ? 100 : t.input.some((e) => e.resource === "golem") ? 50 : 0) + e.buildings.filter((e) => me(t, e) && (e.kind === "storage" || e.kind === "generator")).length, s = [...a].sort((e, t) => o(t) - o(e) || e.id - t.id)[0], c = s?.golemWorker || s?.input.some((e) => e.resource === "golem"), l = (e.inventory.golem ?? 0) > 0 || e.buildings.some((e) => [
+	if (n.status !== "unlocked") return I(1, n.status === "available" ? "ルーン加工と機体製作を研究する" : "魔導剣の量産技術を解放する", "技術ツリーで前提技術と実績を確認してください。ルーン加工の研究で組立機で魔導核・鉄の躯体のレシピを選べます。", n.status === "available" ? "action" : "locked", { type: "technology" }, n.status === "available" ? [] : [n.reason]);
+	if (r.status !== "unlocked") return r.status === "available" ? I(2, "ゴーレム組立と物流補助を研究する", "魔導核3個と鉄の躯体3個の自動生産を確認しました。技術ツリーで研究し、組立機のゴーレムレシピと補給所を解放してください。", "action", { type: "technology" }) : (e.stats?.produced.runeCore ?? 0) < 3 ? Oe(e, "runeCarver", 2, `魔導核を自動生産 ${e.stats?.produced.runeCore ?? 0}/3個。精製魔晶と鉄の延べ棒を自動搬送してください。`) : Oe(e, "frameForge", 2, `鉄の躯体を自動生産 ${e.stats?.produced.golemFrame ?? 0}/3個。鉄の延べ棒と木材を自動搬送してください。`);
+	let a = e.buildings.filter((e) => e.kind === "golemRelay"), o = (t) => (t.golemWorker ? 100 : t.input.some((e) => e.resource === "golem") ? 50 : 0) + e.buildings.filter((e) => De(t, e) && (e.kind === "storage" || e.kind === "generator")).length, s = [...a].sort((e, t) => o(t) - o(e) || e.id - t.id)[0], c = s?.golemWorker || s?.input.some((e) => e.resource === "golem"), l = (e.inventory.golem ?? 0) > 0 || e.buildings.some((e) => [
 		...e.input,
 		...e.output,
 		...e.item ? [e.item] : []
 	].some((e) => e.resource === "golem"));
-	if (!c && !l) return he(e, "golemForge", 3, "覚醒炉で魔導核1個＋鉄の躯体1個からゴーレムを作ります。完成したゴーレム1体を補給所で働かせます。");
-	if (!s) return F(4, "ゴーレム補給所を建てる", "収納箱と魔力発生炉の両方からマンハッタン距離6区画以内になる位置へ建ててください。横と縦の距離の合計で判定し、導線は不要です。", "action", {
+	if (!c && !l) return Oe(e, "golemForge", 3, "組立機のゴーレムレシピで魔導核1個＋鉄の躯体1個からゴーレムを作ります。完成したゴーレム1体を補給所で働かせます。");
+	if (!s) return I(4, "ゴーレム補給所を建てる", "収納箱と魔力発生炉の両方からマンハッタン距離6区画以内になる位置へ建ててください。横と縦の距離の合計で判定し、導線は不要です。", "action", {
 		type: "build",
 		kind: "golemRelay"
 	});
-	if (!s.golemWorker) return s.input.some((e) => e.resource === "golem") ? F(5, "投入したゴーレムの配属を待つ", "ゴーレムは補給所の入力庫に到着しています。1×または2×にすると作業員へ配属されます。再投入は不要です。", "waiting", {
+	if (!s.golemWorker) return s.input.some((e) => e.resource === "golem") ? I(5, "投入したゴーレムの配属を待つ", "ゴーレムは補給所の入力庫に到着しています。1×または2×にすると作業員へ配属されます。再投入は不要です。", "waiting", {
 		type: "run",
 		id: s.id,
 		kind: s.kind
-	}) : F(5, "補給所へゴーレムを1体投入する", "覚醒炉の出力からベルトで補給所へ運ぶか、ゴーレムを回収して所持品に入れ、補給所の詳細にあるゴーレムの投入操作を使ってください。手動配置した作業員も既存の品を運べます。", "action", P(s));
-	let u = e.buildings.filter((e) => e.kind === "storage"), d = u.filter((e) => me(s, e));
-	if (!d.length) return F(6, "補給所の近くに収納箱を置く", "補給所は収納箱から品を取り出します。収納箱を補給所からマンハッタン距離6区画以内へ置き、木材採取場から木材をベルトで入れてください。", "action", {
+	}) : I(5, "補給所へゴーレムを1体投入する", "組立機のゴーレム出力からベルトで補給所へ運ぶか、ゴーレムを回収して所持品に入れ、補給所の詳細にあるゴーレムの投入操作を使ってください。手動配置した作業員も既存の品を運べます。", "action", F(s));
+	let u = e.buildings.filter((e) => e.kind === "storage"), d = u.filter((e) => De(s, e));
+	if (!d.length) return I(6, "補給所の近くに収納箱を置く", "補給所は収納箱から品を取り出します。収納箱を補給所からマンハッタン距離6区画以内へ置き、木材採取場から木材をベルトで入れてください。", "action", {
 		type: "build",
 		kind: "storage"
 	}, [u.length ? "収納箱が補給所の範囲外です。横＋縦の距離を6以内にしてください。" : "収納箱がありません。納品箱からは取り出せません。"]);
-	if (s.golemPolicy === "materials") return F(7, "補給所の方針を「燃料」にする", "補給所の詳細で方針を「燃料」にします。「素材」は製造設備への材料搬送用です。今回の木材20個補給実績には、燃料方針で魔力発生炉へ運んだ自動生産の木材が必要です。", "action", P(s), ["現在は素材方針のため、燃料の補給実績が増えません。"]);
-	let f = e.buildings.filter((e) => e.kind === "generator"), p = f.filter((e) => me(s, e));
-	if (!p.length) return F(7, "燃料の届け先を範囲6以内に用意する", "魔力発生炉と収納箱の両方を補給所から横＋縦6区画以内に置きます。方針は「燃料」にしてください。", "action", {
+	if (s.golemPolicy === "materials") return I(7, "補給所の方針を「燃料」にする", "補給所の詳細で方針を「燃料」にします。「素材」は製造設備への材料搬送用です。今回の木材20個補給実績には、燃料方針で魔力発生炉へ運んだ自動生産の木材が必要です。", "action", F(s), ["現在は素材方針のため、燃料の補給実績が増えません。"]);
+	let f = e.buildings.filter((e) => e.kind === "generator"), p = f.filter((e) => De(s, e));
+	if (!p.length) return I(7, "燃料の届け先を範囲6以内に用意する", "魔力発生炉と収納箱の両方を補給所から横＋縦6区画以内に置きます。方針は「燃料」にしてください。", "action", {
 		type: "build",
 		kind: "generator"
 	}, [f.length ? "魔力発生炉が補給所の範囲外です。" : "補給先の魔力発生炉がありません。"]);
-	if (!d.some((e) => e.input.some((e) => e.resource === "wood" && pe(e)))) {
+	if (!d.some((e) => e.input.some((e) => e.resource === "wood" && Ee(e)))) {
 		let e = d.some((e) => e.input.some((e) => e.resource === "wood"));
-		return F(6, "収納箱へ自動生産の木材を入れる", "木材採取場→ベルト→収納箱をつなぎます。補給所が取り出せるのは収納箱の入力庫です。手採取・回収・手動投入した木材は運べますが、自動補給実績に数えません。", "action", P(d[0]), [e ? "木材はありますが、手動由来のため実績に加算されません。木材採取場から直接運んでください。" : "収納箱に自動生産の木材がありません。"]);
+		return I(6, "収納箱へ自動生産の木材を入れる", "木材採取場→ベルト→収納箱をつなぎます。補給所が取り出せるのは収納箱の入力庫です。手採取・回収・手動投入した木材は運べますが、自動補給実績に数えません。", "action", F(d[0]), [e ? "木材はありますが、手動由来のため実績に加算されません。木材採取場から直接運んでください。" : "収納箱に自動生産の木材がありません。"]);
 	}
-	return p.every((e) => e.input.length >= 8) ? F(8, "魔力発生炉の燃料消費を待つ", "魔力発生炉の入力庫が満杯です。工房を稼働して燃料を消費すると補給が再開します。補給所・ゴーレム・収納箱を作り直す必要はありません。", "waiting", P(p[0]), ["搬送先の入力庫が満杯です。魔力を使う設備と導線も確認してください。"]) : F(8, "ゴーレムの木材自動補給を確認する", `接続と作業員を確認しました。1×または2×で稼働してください。補給はゲーム内1秒に最大1個、現在 ${i}/20個です。魔力は運びません。`, "waiting", {
+	return p.every((e) => e.input.length >= 8) ? I(8, "魔力発生炉の燃料消費を待つ", "魔力発生炉の入力庫が満杯です。工房を稼働して燃料を消費すると補給が再開します。補給所・ゴーレム・収納箱を作り直す必要はありません。", "waiting", F(p[0]), ["搬送先の入力庫が満杯です。魔力を使う設備と導線も確認してください。"]) : I(8, "ゴーレムの木材自動補給を確認する", `接続と作業員を確認しました。1×または2×で稼働してください。補給はゲーム内1秒に最大1個、現在 ${i}/20個です。魔力は運びません。`, "waiting", {
 		type: "run",
 		id: s.id,
 		kind: s.kind
@@ -3023,7 +3521,7 @@ function ge(e) {
 }
 //#endregion
 //#region web/js/fantasy-automation/objectives.ts
-function _e(e) {
+function Ae(e) {
 	if (e.version !== 1 || e.stats) return e;
 	let t = e.buildings.flatMap((e) => [
 		...e.input,
@@ -3041,12 +3539,12 @@ function _e(e) {
 		}
 	};
 }
-function ve(e) {
-	let t = e.unlocks.kinds.map((e) => r[e].label), n = e.unlocks.recipes.map((e) => i[e].label);
+function je(e) {
+	let t = e.unlocks.kinds.map((e) => o[e].label), n = e.unlocks.recipes.map((e) => l[e].label);
 	return [...t, ...n.map((e) => `${e}レシピ`)].join("・");
 }
-function ye(e, t, n) {
-	let r = t.requirements.find((e) => !e.met) ?? t.requirements[0], i = t.status === "available", a = t.requirements.map((e) => `${e.label} ${e.current}/${e.target}`).join("・"), o = ve(t), s = n && n.id !== t.id ? `追跡中「${n.label}」の前提技術です。` : "", c = t.id === "mastery" ? `現在 ${x(e)}本/ゲーム内分、最高 ${e.stats?.peakSwordRate ?? 0}本/ゲーム内分。納品累計とは別の実測速度です。` : "", l = i ? "条件達成。技術ツリーを開き「研究する（実績のみ）」を押してください。" : "自動生産・自動納品の実績を増やし、技術ツリーで条件を確認してください。";
+function Me(e, t, n) {
+	let r = t.requirements.find((e) => !e.met) ?? t.requirements[0], i = t.status === "available", a = t.requirements.map((e) => `${e.label} ${e.current}/${e.target}`).join("・"), o = je(t), s = n && n.id !== t.id ? `追跡中「${n.label}」の前提技術です。` : "", c = t.id === "mastery" ? `現在 ${de(e)}本/ゲーム内分、最高 ${e.stats?.peakSwordRate ?? 0}本/ゲーム内分。納品累計とは別の実測速度です。` : "", l = i ? "条件達成。技術ツリーを開き「研究する（実績のみ）」を押してください。" : "自動生産・自動納品の実績を増やし、技術ツリーで条件を確認してください。";
 	return {
 		title: i ? `${t.label}を研究する` : `${t.label}：${r?.label ?? "前提技術を解放"}`,
 		detail: `${s}${l}${a ? ` ${a}。` : ""}${o ? ` 解放: ${o}。` : ""}${c ? ` ${c}` : ""}`,
@@ -3057,12 +3555,12 @@ function ye(e, t, n) {
 		completed: !1
 	};
 }
-function I(e) {
-	let t = _e(e), n = S(t), r = n.find((e) => e.id === t.research?.tracked && e.status !== "unlocked"), i = (e) => {
+function L(e) {
+	let t = Ae(e), n = C(t), r = n.find((e) => e.id === t.research?.tracked && e.status !== "unlocked"), i = (e) => {
 		let t = n.find((t) => e.prerequisites.includes(t.id) && t.status !== "unlocked");
 		return t ? i(t) : e;
 	}, a = r ? i(r) : n.find((e) => e.status === "available");
-	if (a) return ye(t, a, r);
+	if (a) return Me(t, a, r);
 	if (n.every((e) => e.status === "unlocked")) return {
 		title: `${n[n.length - 1].label}を達成：工房を自由に拡張`,
 		detail: `全技術を解放し、世界樹が覚醒しました。成長 ${t.stats?.treeGrowth ?? 0}/10、転送門の初回自動転送 ${t.stats?.portalTransfers ?? 0}個。工房を自由に拡張できます。`,
@@ -3073,24 +3571,24 @@ function I(e) {
 		completed: !0
 	};
 	let o = n.find((e) => e.status !== "unlocked");
-	return n.some((e) => e.status === "unlocked" && e.id !== "basic" && e.id !== "logistics") ? ye(t, i(o)) : t.delivered < 100 ? {
-		title: "鉄の延べ棒を100本自動納品",
-		detail: "採掘機→製錬炉→納品箱をつなぎ、自動生産した鉄の延べ棒を自動搬送してください。手で投入・回収した品は数えません。研究条件を達成すると次の目標へ進みます。",
+	return n.some((e) => e.status === "unlocked" && e.id !== "basic" && e.id !== "logistics") ? Me(t, i(o)) : t.delivered < 100 ? {
+		title: "鉄の延べ棒を10本出荷して結晶加工へ",
+		detail: "採掘機→製錬炉→出荷所へ運び、詳細で手動出荷します。自動生産した延べ棒10本で結晶加工を研究可能。回収済みの対象品も手持ちから出荷できます。初期・購入資材は売却のみです。",
 		resource: "ingot",
 		current: t.delivered,
-		target: 100,
+		target: 10,
 		action: "guide",
 		completed: !1
-	} : ye(t, i(o));
+	} : Me(t, i(o));
 }
 //#endregion
 //#region web/js/fantasy-automation/ui.ts
-var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b.map((e) => [e.id, e.label])), B = [
+var R = d, z = Object.keys(R), Ne = S.map((e) => e.id), B = Object.fromEntries(S.map((e) => [e.id, e.label])), V = [
 	"北 ↑",
 	"東 →",
 	"南 ↓",
 	"西 ←"
-], V = Object.keys(r), xe = {
+], H = a, Pe = {
 	miner: "⚒",
 	belt: "→",
 	smelter: "▰",
@@ -3112,32 +3610,32 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 	portalGate: "◎",
 	seedLoom: "❋",
 	worldTree: "♧"
-}, H = {
+}, U = {
 	miner: "鉱脈の上に設置。魔力2で鉄鉱石1を2秒で採掘。矢印へ排出。",
 	belt: "矢印の先へ1個ずつ搬送。1区画0.5秒。ドラッグで連続配置。",
-	smelter: "角形の炉と煙突。鉄鉱石2＋魔力5 → 鉄の延べ棒1（4秒）。素材は隣接から、完成品は矢印側のベルトへ出力。",
+	smelter: "鉱石・魔晶原石を精製。製品レシピで鉄の延べ棒／精製魔晶を選択。素材は隣接から、製品は矢印へ。",
 	generator: "浮いた結晶と支柱。木材1 → 魔力30（10秒、蓄積30）。魔力は導線へ供給し、ベルトへの完成品出力はありません。",
 	wire: "隣り合う導線・魔力発生炉・採掘機・製錬炉を魔力網で接続。",
 	lumber: "森林の上に設置。木材1を3秒で採取。矢印へ排出。",
-	delivery: "鉄の延べ棒・魔導剣を受け取る納品専用の箱。自動生産し自動搬送された品だけ目標に加算。収納・取り出しはできません。",
+	delivery: "搬入品を32個保持。詳細から確認して手動出荷。対象品を依頼へ優先し、余剰・手動資材は売却。資金で建設用の鉄を購入できます。",
 	splitter: "前方と右側（時計回り90°）の2つの出力口へ交互に分岐。片方が詰まると空いた口へ送ります。",
-	storage: "32品まで保管する収納箱。納品はしません。受け取った品を前方へ順に排出。取り出した品は手動扱いとなり自動納品に数えません。",
+	storage: "32品まで保管する収納箱。納品はしません。受け取った品を前方へ順に排出。回収後も出荷対象の由来を保持した品は、手持ちから手動出荷できます。",
 	crystalMiner: "結晶鉱脈の上に設置。魔力2で魔晶原石1を2秒で採掘。",
 	crystalRefiner: "魔晶原石を精製魔晶へ精製。魔力導線で供給し、レシピの素材を隣接設備から入力します。",
-	assembler: "鉄の延べ棒と精製魔晶を魔導剣へ組み立てる設備。入力は隣接、完成品は矢印へ出力。",
+	assembler: "製品レシピで魔導剣・魔導核・鉄の躯体・ゴーレム・転送核を選択。各レシピは研究で解放。",
 	runeCarver: "素材に魔導の印を刻み、魔導核を生産します。魔力導線でつなぎ、レシピを確認してください。",
 	frameForge: "鉄の延べ棒から鉄の躯体を組み上げます。素材と魔力を供給してください。",
 	golemForge: "鉄の躯体と魔導核からゴーレムを覚醒させます。完成したゴーレムを補給所へ搬送してください。",
-	alchemyLab: "精製魔晶などを錬金精髄へ加工します。生産レシピに沿って素材と魔力を供給します。",
+	alchemyLab: "錬金精髄／世界樹の種を選択して合成。材料・加工時間・魔力はレシピごとに異なります。",
 	portalForge: "錬金精髄などから転送核を作る工房です。転送核を使って転送門と世界樹への道を開きます。",
 	portalGate: "同じ番号で送信門・受信門の2台を接続。送信は全隣接から入力し、1個につき魔力2を消費。受信門の魔力は不要です。",
 	seedLoom: "世界樹の種を育てる工房。自動生産した種を転送門経由で世界樹へ届けましょう。",
 	worldTree: "転送門を通った自動生産の世界樹の種だけが成長に使えます。10個を届けて世界樹を目覚めさせましょう。",
 	golemRelay: "ゴーレムを配置すると、半径6区画の収納箱から設備へ補給します。燃料補給か材料補給を選べます。"
-}, Se = {
+}, Fe = {
 	all: {
 		label: "すべて",
-		kinds: V
+		kinds: H
 	},
 	extraction: {
 		label: "採取",
@@ -3166,18 +3664,12 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 		label: "製造",
 		kinds: [
 			"smelter",
-			"crystalRefiner",
 			"assembler",
-			"runeCarver",
-			"frameForge",
-			"golemForge",
 			"alchemyLab",
-			"portalForge",
-			"seedLoom",
 			"worldTree"
 		]
 	}
-}, Ce = "aigames-workshop-ui-v1", we = class {
+}, Ie = "aigames-workshop-ui-v1", Le = class {
 	quickSlots = [
 		"miner",
 		"belt",
@@ -3209,48 +3701,48 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 	guideLists = "";
 	lastMessage = "";
 	constructor(e, t) {
-		this.root = e, this.callbacks = t, this.loadPreferences(), e.innerHTML = "\n      <header class=\"workshop-top\">\n        <a class=\"home-link\" href=\"index.html\" aria-label=\"AI Gamesへ戻る\">‹ AI Games</a>\n        <div class=\"workshop-title\">魔導からくり工房<span id=\"objective-summary\"><b id=\"objective-title\"></b> <b id=\"objective-count\"></b></span><span class=\"legacy-goal\" title=\"鉄の延べ棒の累積自動納品\"><i class=\"ingot-icon\" aria-hidden=\"true\"></i> 鉄の延べ棒 自動納品 <b id=\"delivered-count\">0</b> / 100 <small class=\"goal-condition\">自動生産→自動搬送品のみ</small></span></div>\n        <div class=\"resource-strip\" aria-label=\"所持資源\"><span title=\"所持 木材\">木材 <b data-resource=\"wood\">0</b></span><span title=\"所持 鉄鉱石\">鉱石 <b data-resource=\"ore\">0</b></span><span title=\"所持 鉄の延べ棒\">延べ棒 <b data-resource=\"ingot\">0</b></span><span title=\"所持 精製魔晶原石\">原石 <b data-resource=\"rawCrystal\">0</b></span><span title=\"所持 精製魔晶\">魔晶 <b data-resource=\"crystal\">0</b></span><span title=\"所持 魔導剣\">魔導剣 <b data-resource=\"sword\">0</b></span><span>魔力 <b id=\"power-count\">0 / 0</b></span></div><button data-action=\"technology-open\" class=\"technology-open\">技術ツリー</button>\n        <div class=\"time-controls\" aria-label=\"時間速度\"><button data-speed=\"0\" aria-label=\"一時停止\" title=\"一時停止（Space）\">Ⅱ</button><button data-speed=\"1\" aria-label=\"1倍速\">1×</button><button data-speed=\"2\" aria-label=\"2倍速\">2×</button></div>\n        <details class=\"game-menu\"><summary aria-label=\"操作と保存メニュー\">☰ <span>メニュー</span></summary><div class=\"menu-body\"><button data-action=\"menu-close\" class=\"menu-close\">メニューを閉じる ×</button><div class=\"menu-actions\"><button data-action=\"save\">保存</button><button data-action=\"load\">読込</button><button data-action=\"camera\">視点を戻す</button><button data-action=\"new\">新しい工房</button><button data-action=\"golem-guide-open\">ゴーレムの使い方</button><button data-action=\"gather-wood\" title=\"森林から木材1個を手採取。生産実績には算入しません。\">木材を手採取</button><button data-action=\"guide-open\">はじめての案内</button><button data-action=\"build-open\">建設一覧を表示</button><button data-action=\"selection-open\">設備詳細を表示</button><button data-action=\"help-close\">操作説明を閉じる</button></div><details id=\"main-help\"><summary>操作方法・つくり方</summary><div class=\"help-text\"><p>鉱脈に採掘機 → ベルト → 製錬炉 → ベルト → 納品箱をつなごう。魔力発生炉と機械は魔力導線で接続。魔力発生炉を選び木材を補給すると起動できます。</p><p>最初の配置例（座標 X, Z。地形を指すと座標が表示されます）:<br>採掘機 (12,16) → ベルト (13,16) → 製錬炉 (14,16) → ベルト (15,16) → 納品箱 (16,16)。全て東向き。<br>魔力発生炉 (12,18) と、導線 (12,17)・(13,17)・(14,17) を設置。魔力発生炉を選び木材1を補給。<br>木材採取場 (9,18) → ベルト (10,18)・(11,18) → 魔力発生炉 (12,18) と東向きにつなぐと燃料も自動化。</p><p>1本指タップ（離した時）: 配置 / 選択<br>2本指: 地図移動・ピンチ拡縮<br>1本指ドラッグは配置しません。マウス左ドラッグ: ベルト連続敷設<br>↶ 配置取消 / Ctrl・⌘ Z: 未稼働の配置を全額取消<br>既存ベルトも撤去で木材1・鉄1を全額回収<br>左クリック: 配置 / 選択<br>右ドラッグ / WASD: 移動<br>中ドラッグ / Q・E: 視点回転<br>ホイール: ズーム<br>R: 設備回転、Shift＋クリック: 複製<br>X＋クリック: 撤去確認、Delete: 選択設備の撤去確認<br>Esc: 建設取消・撤去のキャンセル<br>Space: 一時停止 / 再開</p><p>配置プレビュー: 緑は建設可能、赤は建設不可。金の矢印が出力方向。結晶の青は魔力あり、紫は魔力網につながっているが蓄積なし、橙は魔力網に未接続。</p><p>納品箱は鉄の延べ棒と魔導剣を受け入れます。採掘から加工・搬送まで自動でつないだ品だけを実績へ数えます。手で取り出し・再投入した品は算入しません。魔力切れは木材の手動補給で復旧できます。木材が0なら、メニューの「木材を手採取」で1個ずつ採れます。保存はこのブラウザの1スロットです。</p><button data-action=\"help-close\">操作説明を閉じる ×</button></div></details></div></details>\n      </header>\n      <button id=\"tracked-goal\" class=\"tracked-goal\" data-action=\"technology-open\" hidden></button>\n      <aside id=\"golem-guide\" class=\"golem-guide\" hidden aria-label=\"ゴーレムの使い方\"><div class=\"golem-guide-heading\"><h2>ゴーレムの使い方</h2><button data-action=\"golem-guide-close\">閉じる ×</button></div><p id=\"golem-guide-progress\"></p><h3 id=\"golem-guide-title\"></h3><p id=\"golem-guide-detail\"></p><button data-action=\"golem-guide-action\">次の操作へ</button><ul id=\"golem-guide-blockers\"></ul></aside>\n      <dialog id=\"demolition-dialog\" aria-labelledby=\"demolition-title\" aria-describedby=\"demolition-summary\"><h2 id=\"demolition-title\">設備を撤去しますか？</h2><p id=\"demolition-target\"></p><p id=\"demolition-summary\"></p><small>回収した中身は手動扱いになります。消費済みの燃料・魔力・世界樹の成長は戻りません。</small><div class=\"demolition-actions\"><button data-action=\"remove-cancel\" autofocus>キャンセル</button><button data-action=\"remove-confirm\" class=\"danger\">撤去する</button></div></dialog>\n      <section id=\"technology-panel\" class=\"technology-panel\" hidden aria-label=\"技術ツリー\">\n        <div class=\"technology-heading\"><div><h2>技術ツリー</h2><p>自動生産の実績で解放。研究に素材の支払いは不要です。</p></div><button data-action=\"technology-close\">閉じる ×</button></div>\n        <p class=\"technology-path\">基礎 → 物流 ＋ 魔晶 → 組立 → ゴーレム → 錬金 → 転送 → 世界樹</p><p id=\"sword-rate\"></p>\n        <div class=\"technology-map\"></div><p class=\"future-tech\">世界樹: 自動生産した世界樹の種を転送門経由で10個届けます。途中の技術を研究しながら工房を拡張しましょう。</p>\n      </section>\n      <aside id=\"guide-card\" class=\"guide-card\" hidden aria-label=\"はじめての工房づくり\">\n        <div class=\"guide-heading\"><span id=\"guide-objective\">鉄100本を自動納品しよう</span><button data-action=\"guide-close\" aria-label=\"案内を閉じる\">案内を閉じる</button></div>\n        <div id=\"guide-progress\" class=\"guide-progress\"></div><h2 id=\"guide-title\"></h2><button data-action=\"guide-action\" class=\"guide-action\">この設備を選ぶ</button><p id=\"guide-text\"></p>\n        <p id=\"guide-step-target\" class=\"guide-target\"></p><p id=\"guide-instruction\"></p>\n        <ul id=\"guide-blockers\" class=\"guide-blockers\"></ul><details id=\"guide-check-details\"><summary id=\"guide-check-summary\">組立チェック</summary><ul id=\"guide-checks\" class=\"guide-checks\"></ul></details><p id=\"guide-feedback\" class=\"guide-feedback\" role=\"status\" aria-live=\"polite\" hidden></p><small class=\"guide-next\">条件を満たすと、次の案内へ進みます。</small>\n      </aside>\n      <div class=\"workshop-notices\"><p id=\"game-message\" role=\"status\" aria-live=\"polite\">鉱脈に採掘機を建て、工房を動かそう。</p><p id=\"victory-message\" hidden>工房完成！ 鉄延べ棒100本の自動納品を達成しました。続けて工房を拡張できます。</p></div>\n      <aside id=\"selection-panel\" class=\"selection-panel\" hidden aria-label=\"設備の詳細\">\n        <button class=\"panel-close\" data-action=\"close-panel\" aria-label=\"設備詳細を閉じる\">×</button><h2 id=\"selection-title\"></h2><p id=\"selection-description\"></p><div id=\"furnace-role\" class=\"furnace-role\" hidden></div>\n        <div id=\"facility-feed-slots\" class=\"facility-feed-slots\"></div><div id=\"portal-controls\" hidden><div class=\"portal-channels\" aria-label=\"転送門の接続番号\"><button data-portal-channel=\"1\">接続1</button><button data-portal-channel=\"2\">接続2</button><button data-portal-channel=\"3\">接続3</button></div><div class=\"portal-roles\"><button data-portal-role=\"send\">送信門</button><button data-portal-role=\"receive\">受信門</button></div><p id=\"portal-pair\"></p><p id=\"portal-state\"></p></div><div id=\"tree-controls\" hidden><label>世界樹の成長 <progress id=\"tree-growth\" max=\"10\" value=\"0\"></progress></label><p id=\"tree-growth-text\"></p><small>自動生産し、手で回収せず、転送門を通して届いた世界樹の種が対象です。</small></div><div id=\"relay-controls\" hidden><p id=\"relay-worker\"></p><div class=\"relay-policies\"><button data-relay-policy=\"fuel\">♣ 燃料補給</button><button data-relay-policy=\"materials\">◇ 材料補給</button></div><p id=\"relay-transfers\"></p><p id=\"relay-route\"></p><div id=\"relay-inspections\"><button data-action=\"relay-source\">収納箱を見る</button><button data-action=\"relay-target\">補給先を見る</button></div><button data-action=\"golem-guide-open\">運用の案内を見る</button><small>収納箱と補給先は半径6区画。燃料補給20回で自律工房の実績を達成。</small></div><div id=\"delivery-summary\" hidden></div><div id=\"recipe-controls\" hidden><label>生産レシピ<select id=\"recipe-select\"></select></label><p id=\"recipe-lock-reason\"></p></div><div id=\"storage-controls\" hidden><p id=\"storage-capacity\"></p><div class=\"transfer-toolbar\"><span>移動する個数</span><button data-transfer-mode=\"one\" aria-pressed=\"true\">1個</button><button data-transfer-mode=\"all\" aria-pressed=\"false\">全量</button></div><div class=\"chest-transfer\"><section><h3>手持ち <span>→</span></h3><div id=\"inventory-slots\" class=\"item-slots\"></div><button data-action=\"deposit-all\">まとめて預ける</button></section><section><h3>収納箱 <span>←</span></h3><div id=\"chest-slots\" class=\"item-slots\"></div><button data-action=\"withdraw-all\">まとめて取り出す</button></section></div><p class=\"transfer-hint\">クリックで1個、Shift＋クリックで全量。キーボードのEnterでも移動できます。取り出した品は手動扱いになります。</p><details id=\"advanced-collect\"><summary>品目と個数を指定</summary><ul id=\"storage-items\"></ul><label>取り出す品<select id=\"collect-resource\"></select></label><label>個数<input id=\"collect-amount\" type=\"number\" min=\"1\" max=\"32\" value=\"1\" step=\"1\"></label><button data-action=\"collect-count\">選んだ品を取り出す</button></details></div><dl><div><dt>稼働状態</dt><dd id=\"selection-status\"></dd></div><div><dt>入出力・方向</dt><dd id=\"selection-direction\"></dd></div><div><dt>内部の資源</dt><dd id=\"selection-buffer\"></dd></div><div><dt>作業進捗</dt><dd id=\"selection-progress\"></dd></div><div><dt>蓄積魔力</dt><dd id=\"selection-power\"></dd></div></dl>\n        <div class=\"selection-actions\"><button data-action=\"rotate\">回転 R</button><button data-action=\"collect\">資源を回収</button><button data-action=\"remove\" class=\"danger\">撤去</button></div>\n        <details id=\"advanced-feed\"><summary>個数を指定して補給</summary><form id=\"feed-form\"><label>手動補給<select id=\"feed-resource\"><option value=\"wood\">木材</option><option value=\"ore\">鉄鉱石</option><option value=\"ingot\">鉄の延べ棒</option><option value=\"rawCrystal\">魔晶原石</option><option value=\"crystal\">精製魔晶</option><option value=\"sword\">魔導剣</option></select></label><label>個数<input id=\"feed-amount\" type=\"number\" min=\"1\" max=\"1000\" step=\"1\" value=\"1\" inputmode=\"numeric\"></label><button type=\"submit\" data-action=\"feed\">補給する</button><small>手動の鉱石・延べ棒・精製魔晶等は目標に含めません。木材燃料は手動補給できます。</small></form></details>\n      </aside>\n      <nav id=\"quickbar\" class=\"quickbar\" aria-label=\"登録した建設設備\"><button id=\"build-reopen\" data-action=\"build-open\">建設一覧</button><div id=\"quick-slots\"></div><button data-action=\"undo-build\" class=\"undo-build\" disabled>↶<span>配置取消</span></button><button data-action=\"golem-guide-open\" class=\"quick-golem-guide\" aria-label=\"ゴーレムの使い方\">♟？</button><button data-action=\"rotate\" aria-label=\"建設方向を回転\">↻</button><button data-action=\"cancel\" aria-label=\"建設を取り消す\">×</button></nav>\n      <footer class=\"build-dock\" hidden><div class=\"build-context\"><span id=\"build-context\">建設する設備を選ぶ</span><button data-action=\"rotate\" aria-label=\"建設方向を回転\">↻ R</button><button data-action=\"cancel\">取消 Esc</button><button data-action=\"build-close\" aria-label=\"建設一覧を閉じる\">閉じる ×</button></div><label class=\"catalog-search\">設備を探す<input id=\"build-search\" type=\"search\" placeholder=\"名前・素材・用途で検索\" autocomplete=\"off\"></label><p id=\"catalog-suggestion\"></p><nav id=\"build-categories\" aria-label=\"設備のカテゴリー\"></nav><div class=\"registration-hint\"><span id=\"registration-label\">登録先 1</span><div id=\"registration-buttons\" aria-label=\"クイックスロット登録先\"></div><details class=\"registration-advanced\"><summary>番号指定</summary><select id=\"registration-slot\" aria-label=\"登録先クイックスロット\"></select></details><small>番号を選び、設備の☆で登録 · キー1〜6で選択</small></div><nav class=\"build-palette\" aria-label=\"建設する設備\"></nav></footer>";
+		this.root = e, this.callbacks = t, this.loadPreferences(), e.innerHTML = "\n      <header class=\"workshop-top\">\n        <a class=\"home-link\" href=\"index.html\" aria-label=\"AI Gamesへ戻る\">‹ AI Games</a>\n        <div class=\"workshop-title\">魔導からくり工房 <span id=\"wallet-count\"></span><span id=\"objective-summary\"><b id=\"objective-title\"></b> <b id=\"objective-count\"></b></span><span class=\"legacy-goal\" title=\"鉄の延べ棒の累積自動納品\"><i class=\"ingot-icon\" aria-hidden=\"true\"></i> 鉄の延べ棒 自動納品 <b id=\"delivered-count\">0</b> / 100 <small class=\"goal-condition\">自動生産品の出荷・100本は記念実績</small></span></div>\n        <div class=\"resource-strip\" aria-label=\"所持資源\"><span title=\"所持 木材\">木材 <b data-resource=\"wood\">0</b></span><span title=\"所持 鉄鉱石\">鉱石 <b data-resource=\"ore\">0</b></span><span title=\"所持 鉄の延べ棒\">延べ棒 <b data-resource=\"ingot\">0</b></span><span title=\"所持 精製魔晶原石\">原石 <b data-resource=\"rawCrystal\">0</b></span><span title=\"所持 精製魔晶\">魔晶 <b data-resource=\"crystal\">0</b></span><span title=\"所持 魔導剣\">魔導剣 <b data-resource=\"sword\">0</b></span><span>魔力 <b id=\"power-count\">0 / 0</b></span></div><button data-action=\"technology-open\" class=\"technology-open\">技術ツリー</button>\n        <div class=\"time-controls\" aria-label=\"時間速度\"><button data-speed=\"0\" aria-label=\"一時停止\" title=\"一時停止（Space）\">Ⅱ</button><button data-speed=\"1\" aria-label=\"1倍速\">1×</button><button data-speed=\"2\" aria-label=\"2倍速\">2×</button></div>\n        <details class=\"game-menu\"><summary aria-label=\"操作と保存メニュー\">☰ <span>メニュー</span></summary><div class=\"menu-body\"><button data-action=\"menu-close\" class=\"menu-close\">メニューを閉じる ×</button><div class=\"menu-actions\"><button data-action=\"save\">保存</button><button data-action=\"load\">読込</button><button data-action=\"camera\">視点を戻す</button><button data-action=\"new\">新しい工房</button><button data-action=\"golem-guide-open\">ゴーレムの使い方</button><button data-action=\"gather-wood\" title=\"森林から木材1個を手採取。生産実績には算入しません。\">木材を手採取</button><button data-action=\"guide-open\">はじめての案内</button><button data-action=\"build-open\">建設一覧を表示</button><button data-action=\"selection-open\">設備詳細を表示</button><button data-action=\"help-close\">操作説明を閉じる</button></div><details id=\"main-help\"><summary>操作方法・つくり方</summary><div class=\"help-text\"><p>鉱脈に採掘機 → ベルト → 製錬炉 → ベルト → 出荷所をつなごう。魔力発生炉と機械は魔力導線で接続。魔力発生炉を選び木材を補給すると起動できます。</p><p>最初の配置例（座標 X, Z。地形を指すと座標が表示されます）:<br>採掘機 (12,16) → ベルト (13,16) → 製錬炉 (14,16) → ベルト (15,16) → 出荷所 (16,16)。全て東向き。<br>魔力発生炉 (12,18) と、導線 (12,17)・(13,17)・(14,17) を設置。魔力発生炉を選び木材1を補給。<br>木材採取場 (9,18) → ベルト (10,18)・(11,18) → 魔力発生炉 (12,18) と東向きにつなぐと燃料も自動化。</p><p>1本指タップ（離した時）: 配置 / 選択<br>2本指: 地図移動・ピンチ拡縮<br>1本指ドラッグは配置しません。マウス左ドラッグ: ベルト連続敷設<br>↶ 配置取消 / Ctrl・⌘ Z: 未稼働の配置を全額取消<br>既存ベルトも撤去で木材1・鉄1を全額回収<br>左クリック: 配置 / 選択<br>右ドラッグ / WASD: 移動<br>中ドラッグ / Q・E: 視点回転<br>ホイール: ズーム<br>R: 設備回転、Shift＋クリック: 複製<br>X＋クリック: 撤去確認、Delete: 選択設備の撤去確認<br>Esc: 建設取消・撤去のキャンセル<br>Space: 一時停止 / 再開</p><p>配置プレビュー: 緑は建設可能、赤は建設不可。金の矢印が出力方向。結晶の青は魔力あり、紫は魔力網につながっているが蓄積なし、橙は魔力網に未接続。</p><p>出荷所は木材・鉄の延べ棒・魔導剣を32個まで保持します。詳細で出荷元・品物・個数を選び、見積もりを確認して手動出荷します。自動生産品は依頼へ優先、余剰は売却。購入品・初期資材は売却のみです。自動生産品を回収した後も、対象の由来が残る品は手持ちから出荷できます。魔力切れは木材の手動補給で復旧できます。木材が0なら、メニューの「木材を手採取」で1個ずつ採れます。保存はこのブラウザの1スロットです。</p><button data-action=\"help-close\">操作説明を閉じる ×</button></div></details></div></details>\n      </header>\n      <button id=\"tracked-goal\" class=\"tracked-goal\" data-action=\"technology-open\" hidden></button>\n      <aside id=\"golem-guide\" class=\"golem-guide\" hidden aria-label=\"ゴーレムの使い方\"><div class=\"golem-guide-heading\"><h2>ゴーレムの使い方</h2><button data-action=\"golem-guide-close\">閉じる ×</button></div><p id=\"golem-guide-progress\"></p><h3 id=\"golem-guide-title\"></h3><p id=\"golem-guide-detail\"></p><button data-action=\"golem-guide-action\">次の操作へ</button><ul id=\"golem-guide-blockers\"></ul></aside>\n      <dialog id=\"demolition-dialog\" aria-labelledby=\"demolition-title\" aria-describedby=\"demolition-summary\"><h2 id=\"demolition-title\">設備を撤去しますか？</h2><p id=\"demolition-target\"></p><p id=\"demolition-summary\"></p><small>回収した中身は手動扱いになります。消費済みの燃料・魔力・世界樹の成長は戻りません。</small><div class=\"demolition-actions\"><button data-action=\"remove-cancel\" autofocus>キャンセル</button><button data-action=\"remove-confirm\" class=\"danger\">撤去する</button></div></dialog>\n      <section id=\"technology-panel\" class=\"technology-panel\" hidden aria-label=\"技術ツリー\">\n        <div class=\"technology-heading\"><div><h2>技術ツリー</h2><p>自動生産の実績で解放。研究に素材の支払いは不要です。</p></div><button data-action=\"technology-close\">閉じる ×</button></div>\n        <p class=\"technology-path\">基礎 → 物流 ＋ 魔晶 → 組立 → ゴーレム → 錬金 → 転送 → 世界樹</p><p id=\"sword-rate\"></p>\n        <div class=\"technology-map\"></div><p class=\"future-tech\">世界樹: 自動生産した世界樹の種を転送門経由で10個届けます。途中の技術を研究しながら工房を拡張しましょう。</p>\n      </section>\n      <aside id=\"guide-card\" class=\"guide-card\" hidden aria-label=\"はじめての工房づくり\">\n        <div class=\"guide-heading\"><span id=\"guide-objective\">鉄10本を出荷して結晶加工へ</span><button data-action=\"guide-close\" aria-label=\"案内を閉じる\">案内を閉じる</button></div>\n        <div id=\"guide-progress\" class=\"guide-progress\"></div><h2 id=\"guide-title\"></h2><button data-action=\"guide-action\" class=\"guide-action\">この設備を選ぶ</button><p id=\"guide-text\"></p>\n        <p id=\"guide-step-target\" class=\"guide-target\"></p><p id=\"guide-instruction\"></p>\n        <ul id=\"guide-blockers\" class=\"guide-blockers\"></ul><details id=\"guide-check-details\"><summary id=\"guide-check-summary\">組立チェック</summary><ul id=\"guide-checks\" class=\"guide-checks\"></ul></details><p id=\"guide-feedback\" class=\"guide-feedback\" role=\"status\" aria-live=\"polite\" hidden></p><small class=\"guide-next\">条件を満たすと、次の案内へ進みます。</small>\n      </aside>\n      <div class=\"workshop-notices\"><p id=\"game-message\" role=\"status\" aria-live=\"polite\">鉱脈に採掘機を建て、工房を動かそう。</p><p id=\"victory-message\" hidden>工房完成！ 鉄延べ棒100本の自動納品を達成しました。続けて工房を拡張できます。</p></div>\n      <aside id=\"selection-panel\" class=\"selection-panel\" hidden aria-label=\"設備の詳細\">\n        <div class=\"selection-heading\"><button class=\"panel-close\" data-action=\"close-panel\" aria-label=\"設備詳細を閉じる\">×</button><h2 id=\"selection-title\"></h2></div><p id=\"selection-description\"></p><div id=\"furnace-role\" class=\"furnace-role\" hidden></div>\n        <div id=\"facility-feed-slots\" class=\"facility-feed-slots\"></div><div id=\"portal-controls\" hidden><div class=\"portal-channels\" aria-label=\"転送門の接続番号\"><button data-portal-channel=\"1\">接続1</button><button data-portal-channel=\"2\">接続2</button><button data-portal-channel=\"3\">接続3</button></div><div class=\"portal-roles\"><button data-portal-role=\"send\">送信門</button><button data-portal-role=\"receive\">受信門</button></div><p id=\"portal-pair\"></p><p id=\"portal-state\"></p></div><div id=\"tree-controls\" hidden><label>世界樹の成長 <progress id=\"tree-growth\" max=\"10\" value=\"0\"></progress></label><p id=\"tree-growth-text\"></p><small>自動生産し、手で回収せず、転送門を通して届いた世界樹の種が対象です。</small></div><div id=\"relay-controls\" hidden><p id=\"relay-worker\"></p><div class=\"relay-policies\"><button data-relay-policy=\"fuel\">♣ 燃料補給</button><button data-relay-policy=\"materials\">◇ 材料補給</button></div><p id=\"relay-transfers\"></p><p id=\"relay-route\"></p><div id=\"relay-inspections\"><button data-action=\"relay-source\">収納箱を見る</button><button data-action=\"relay-target\">補給先を見る</button></div><button data-action=\"golem-guide-open\">運用の案内を見る</button><small>収納箱と補給先は半径6区画。燃料補給20回で自律工房の実績を達成。</small></div><section id=\"shipping-controls\" hidden><h3>手動出荷</h3><p>搬入だけでは消費しません。対象品は依頼へ優先、余剰は売却します。</p><p id=\"shipping-quests\"></p><button data-action=\"technology-open\">研究条件・解放内容を見る</button><p id=\"shipping-stock\"></p><div class=\"shipping-fields\"><label>出荷元<select id=\"shipping-source\"><option value=\"depot\">搬入庫</option><option value=\"inventory\">手持ち</option></select></label><label>品物<select id=\"shipping-resource\"><option value=\"ingot\">鉄の延べ棒</option><option value=\"wood\">木材</option><option value=\"sword\">魔導剣</option></select></label><label>個数<input id=\"shipping-amount\" type=\"number\" min=\"1\" max=\"1000\" value=\"1\"></label></div><p id=\"shipping-quote\" role=\"status\"></p><button data-action=\"dispatch\">確認して出荷</button><button data-action=\"dispatch-all\">この品をまとめて出荷</button><p id=\"shipping-wallet\"></p><button data-action=\"buy-iron\">建設用の延べ棒を1個購入</button><button data-action=\"gather-wood\">木材を手採取（無料）</button><small>初期・購入品は売却のみ。木材を手採取→売却で、資金0から鉄を買えます。出荷・売却後は品を消費します。</small></section><div id=\"delivery-summary\" hidden></div><div id=\"recipe-controls\" hidden><label>生産レシピ<select id=\"recipe-select\"></select></label><p id=\"recipe-lock-reason\"></p></div><div id=\"storage-controls\" hidden><p id=\"storage-capacity\"></p><div class=\"transfer-toolbar\"><span>移動する個数</span><button data-transfer-mode=\"one\" aria-pressed=\"true\">1個</button><button data-transfer-mode=\"all\" aria-pressed=\"false\">全量</button></div><div class=\"chest-transfer\"><section><h3>手持ち <span>→</span></h3><div id=\"inventory-slots\" class=\"item-slots\"></div><button data-action=\"deposit-all\">まとめて預ける</button></section><section><h3>収納箱 <span>←</span></h3><div id=\"chest-slots\" class=\"item-slots\"></div><button data-action=\"withdraw-all\">まとめて取り出す</button></section></div><p class=\"transfer-hint\">クリックで1個、Shift＋クリックで全量。キーボードのEnterでも移動できます。取り出した品は手動扱いになります。</p><details id=\"advanced-collect\"><summary>品目と個数を指定</summary><ul id=\"storage-items\"></ul><label>取り出す品<select id=\"collect-resource\"></select></label><label>個数<input id=\"collect-amount\" type=\"number\" min=\"1\" max=\"32\" value=\"1\" step=\"1\"></label><button data-action=\"collect-count\">選んだ品を取り出す</button></details></div><dl><div><dt>稼働状態</dt><dd id=\"selection-status\"></dd></div><div><dt>入出力・方向</dt><dd id=\"selection-direction\"></dd></div><div><dt>内部の資源</dt><dd id=\"selection-buffer\"></dd></div><div><dt>作業進捗</dt><dd id=\"selection-progress\"></dd></div><div><dt>蓄積魔力</dt><dd id=\"selection-power\"></dd></div></dl>\n        <div class=\"selection-actions\"><button data-action=\"rotate\">回転 R</button><button data-action=\"collect\">資源を回収</button><button data-action=\"remove\" class=\"danger\">撤去</button></div>\n        <details id=\"advanced-feed\"><summary>個数を指定して補給</summary><form id=\"feed-form\"><label>手動補給<select id=\"feed-resource\"><option value=\"wood\">木材</option><option value=\"ore\">鉄鉱石</option><option value=\"ingot\">鉄の延べ棒</option><option value=\"rawCrystal\">魔晶原石</option><option value=\"crystal\">精製魔晶</option><option value=\"sword\">魔導剣</option></select></label><label>個数<input id=\"feed-amount\" type=\"number\" min=\"1\" max=\"1000\" step=\"1\" value=\"1\" inputmode=\"numeric\"></label><button type=\"submit\" data-action=\"feed\">補給する</button><small>手動の鉱石・延べ棒・精製魔晶等は目標に含めません。木材燃料は手動補給できます。</small></form></details>\n      </aside>\n      <nav id=\"quickbar\" class=\"quickbar\" aria-label=\"登録した建設設備\"><button id=\"build-reopen\" data-action=\"build-open\">建設一覧</button><div id=\"quick-slots\"></div><label id=\"build-recipe-control\" hidden>製品<select id=\"build-recipe-select\" aria-label=\"配置する機械の製品レシピ\"></select></label><button data-action=\"undo-build\" class=\"undo-build\" disabled>↶<span>配置取消</span></button><button data-action=\"golem-guide-open\" class=\"quick-golem-guide\" aria-label=\"ゴーレムの使い方\">♟？</button><button data-action=\"rotate\" aria-label=\"建設方向を回転\">↻</button><button data-action=\"cancel\" aria-label=\"建設を取り消す\">×</button></nav>\n      <footer class=\"build-dock\" hidden><div class=\"build-context\"><span id=\"build-context\">建設する設備を選ぶ</span><button data-action=\"rotate\" aria-label=\"建設方向を回転\">↻ R</button><button data-action=\"cancel\">取消 Esc</button><button data-action=\"build-close\" aria-label=\"建設一覧を閉じる\">閉じる ×</button></div><label class=\"catalog-search\">設備を探す<input id=\"build-search\" type=\"search\" placeholder=\"名前・素材・用途で検索\" autocomplete=\"off\"></label><p id=\"catalog-suggestion\"></p><nav id=\"build-categories\" aria-label=\"設備のカテゴリー\"></nav><div class=\"registration-hint\"><span id=\"registration-label\">登録先 1</span><div id=\"registration-buttons\" aria-label=\"クイックスロット登録先\"></div><details class=\"registration-advanced\"><summary>番号指定</summary><select id=\"registration-slot\" aria-label=\"登録先クイックスロット\"></select></details><small>番号を選び、設備の☆で登録 · キー1〜6で選択</small></div><nav class=\"build-palette\" aria-label=\"建設する設備\"></nav></footer>";
 		let n = this.node(".build-palette");
-		for (let e of V) {
-			let t = r[e], i = document.createElement("button");
-			i.type = "button", i.dataset.build = e, i.setAttribute("aria-pressed", "false");
-			let a = this.costLabel(e);
-			i.title = `${t.label} — ${H[e]} 建設費: ${a}`;
-			let o = document.createElement("span");
-			o.className = "build-icon", o.innerHTML = M(e) || xe[e], o.setAttribute("aria-hidden", "true");
+		for (let e of H) {
+			let t = o[e], r = document.createElement("button");
+			r.type = "button", r.dataset.build = e, r.setAttribute("aria-pressed", "false");
+			let i = this.costLabel(e);
+			r.title = `${t.label} — ${U[e]} 建設費: ${i}`;
+			let a = document.createElement("span");
+			a.className = "build-icon", a.innerHTML = N(e) || Pe[e], a.setAttribute("aria-hidden", "true");
 			let s = document.createElement("span");
 			s.className = "build-name", s.textContent = t.label;
 			let c = document.createElement("small");
 			c.className = "build-lock-reason";
 			let l = document.createElement("small");
-			l.className = "build-cost", l.textContent = a, i.append(o, s, l, c);
+			l.className = "build-cost", l.textContent = i, r.append(a, s, l, c);
 			let u = document.createElement("div");
 			u.className = "build-tile", u.dataset.buildTile = e;
 			let d = document.createElement("button");
-			d.type = "button", d.className = "register-build", d.dataset.register = e, d.textContent = "☆", d.setAttribute("aria-label", `${t.label}をクイックスロットへ登録`), u.append(i, d), n.append(u), this.buildButtons.set(e, i);
+			d.type = "button", d.className = "register-build", d.dataset.register = e, d.textContent = "☆", d.setAttribute("aria-label", `${t.label}をクイックスロットへ登録`), u.append(r, d), n.append(u), this.buildButtons.set(e, r);
 		}
-		let i = this.node(".resource-strip"), a = this.node("#power-count").parentElement;
-		i.replaceChildren();
-		for (let e of R) {
+		let r = this.node(".resource-strip"), i = this.node("#power-count").parentElement;
+		r.replaceChildren();
+		for (let e of z) {
 			let t = document.createElement("span");
-			t.title = `所持 ${L[e]}`;
-			let n = e === "ingot" ? "延べ棒" : e === "rawCrystal" ? "原石" : e === "crystal" ? "魔晶" : L[e];
+			t.title = `所持 ${R[e]}`;
+			let n = e === "ingot" ? "延べ棒" : e === "rawCrystal" ? "原石" : e === "crystal" ? "魔晶" : R[e];
 			t.append(document.createTextNode(n + " "));
-			let r = document.createElement("b");
-			r.dataset.resource = e, r.textContent = "0", t.append(r), i.append(t);
+			let i = document.createElement("b");
+			i.dataset.resource = e, i.textContent = "0", t.append(i), r.append(t);
 		}
-		i.append(a);
-		for (let e of R) this.resourceNodes.set(e, this.node(`[data-resource="${e}"]`));
+		r.append(i);
+		for (let e of z) this.resourceNodes.set(e, this.node(`[data-resource="${e}"]`));
 		this.createTechnologyNodes(), this.createPresentationControls(), this.node("#feed-resource").replaceChildren();
-		for (let e of R) {
+		for (let e of z) {
 			let t = document.createElement("option");
-			t.value = e, t.textContent = L[e], this.node("#feed-resource").append(t);
+			t.value = e, t.textContent = R[e], this.node("#feed-resource").append(t);
 		}
-		for (let e of R) {
+		for (let e of z) {
 			let t = document.createElement("option");
-			t.value = e, t.textContent = L[e], this.node("#collect-resource").append(t);
+			t.value = e, t.textContent = R[e], this.node("#collect-resource").append(t);
 		}
-		e.querySelectorAll("[data-speed]").forEach((e) => this.speedButtons.set(Number(e.dataset.speed), e)), Te(this, e, this.controller.signal);
+		e.querySelectorAll("[data-speed]").forEach((e) => this.speedButtons.set(Number(e.dataset.speed), e)), Re(this, e, this.controller.signal);
 	}
 	node(e) {
 		let t = this.root.querySelector(e);
@@ -3262,7 +3754,7 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 		n.textContent !== t && (n.textContent = t);
 	}
 	costLabel(e) {
-		let t = Object.entries(r[e].cost).map(([e, t]) => `${L[e]}${t}`);
+		let t = Object.entries(o[e].cost).map(([e, t]) => `${R[e]}${t}`);
 		return t.length ? t.join("・") : "無料";
 	}
 	handleClick(e) {
@@ -3327,7 +3819,11 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 			return;
 		}
 		let n = t.dataset.action;
-		if (n === "save") this.callbacks.onSave();
+		if (n === "dispatch" || n === "dispatch-all") {
+			let e = this.shippingValues();
+			this.callbacks.onDispatch(e.source, e.resource, n === "dispatch-all" ? Math.min(1e3, e.available) : e.amount);
+		} else if (n === "buy-iron") this.callbacks.onBuyIron();
+		else if (n === "save") this.callbacks.onSave();
 		else if (n === "load") this.callbacks.onLoad();
 		else if (n === "new") this.callbacks.onNew();
 		else if (n === "technology-open" || n === "technology-close") this.callbacks.onTechnologyToggle(n === "technology-open"), this.node(".game-menu").open = !1;
@@ -3383,27 +3879,31 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 		if (t.hidden = !e, this.root.classList.toggle("guide-open", !!e), this.node("#game-message").hidden = !!e, !e) return;
 		t.dataset.guideId = e.id, t.dataset.guideMode = e.mode, this.text("#guide-progress", `${e.step} / ${e.total} · はじめての工房づくり`), this.text("#guide-title", e.title), this.text("#guide-text", e.text);
 		let n = [
-			e.kind ? r[e.kind].label : "",
-			e.direction === null ? "" : `出力 ${B[e.direction]}`,
+			e.kind ? o[e.kind].label : "",
+			e.direction === null ? "" : `出力 ${V[e.direction]}`,
 			e.target ? `目印 (${e.target.x}, ${e.target.z})` : ""
 		].filter(Boolean).join(" · ");
 		this.text("#guide-step-target", n), this.node("#guide-step-target").hidden = !n, this.text("[data-action=\"guide-action\"]", {
+			ship: "出荷所の詳細を開く",
+			recipe: "鉄のレシピへ切替",
 			build: "この設備を選ぶ",
 			rotate: "設備の詳細を開く",
 			feed: "設備の詳細を開く",
 			run: "1×で動かす",
 			done: "自由建設へ"
 		}[e.mode]);
-		let i = {
+		let r = {
+			ship: "出荷所の詳細で搬入庫・鉄の延べ棒を選び、確認して出荷してください。",
+			recipe: "稼働中・互換性のない在庫がある時は終了と排出を待って、鉄の延べ棒に切り替えます。",
 			build: e.target ? "「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。" : "「この設備を選ぶ」を押し、つなぎたい区画をクリックしてください。",
 			rotate: "「設備の詳細を開く」→「回転 R」で向きを変更してください。",
 			feed: "「設備の詳細を開く」→木材のアイコン「木材 ×1」を押すと、燃料を1個補給できます。",
 			run: "「1×で動かす」を押して、採掘・搬送・精錬が進むのを見てみましょう。",
 			done: "「自由建設へ」で案内を閉じられます。メニューからいつでも再表示できます。"
 		};
-		this.text("#guide-instruction", i[e.mode]), this.node("#guide-check-details").hidden = !e.checks.length, this.text("#guide-check-summary", `済 ${e.checks.length}段階 · 直近の組立チェック`), this.node(".guide-next").hidden = e.mode === "done";
-		let a = JSON.stringify([e.blockers, e.checks]);
-		if (a !== this.guideLists) {
+		this.text("#guide-instruction", r[e.mode]), this.node("#guide-check-details").hidden = !e.checks.length, this.text("#guide-check-summary", `済 ${e.checks.length}段階 · 直近の組立チェック`), this.node(".guide-next").hidden = e.mode === "done";
+		let i = JSON.stringify([e.blockers, e.checks]);
+		if (i !== this.guideLists) {
 			for (let [t, n, r] of [[
 				"#guide-blockers",
 				e.blockers,
@@ -3420,18 +3920,18 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 					n.textContent = r + t, e.append(n);
 				}
 			}
-			this.guideLists = a;
+			this.guideLists = i;
 		}
 	}
 	update(e, t) {
 		this.currentState = e, this.currentSelected = e.buildings.find((e) => e.id === t.selectedId) ?? null;
-		let n = I(e);
-		this.text("#objective-title", n.title), this.text("#objective-count", `${n.current} / ${n.target}`), this.text("#guide-objective", n.title), this.node("#objective-summary").title = n.detail, this.updateQuickSlots(e, t.kind);
-		let i = this.node("[data-action=\"undo-build\"]");
-		i.disabled = !t.undoLabel || this.isWorldInputBlocked(), i.title = t.undoLabel ? `${t.undoLabel}の未稼働の配置を全額取消（Ctrl / ⌘ Z）。使用後・読込後は対象外` : "取り消せる未稼働の配置なし。既存ベルトは確認付き撤去で木材・鉄を全額回収できます", i.setAttribute("aria-label", t.undoLabel ? `${t.undoLabel}の配置を取り消す（全額返却）` : "未稼働の配置を取り消す"), this.updateGuide(t.guide ?? null), this.updateTechnology(e, !!t.technologyOpen), this.updateGolemGuide(e, !!t.golemGuideOpen), this.updateDemolition(t.demolition ?? null);
-		let a = !!t.guide && /保存|読込|読み込|再開しました|WebGL|表示でき|できません|不正|素材を補給しました|手採取|取り消|返却|未稼働/.test(t.message);
-		this.node("#guide-feedback").hidden = !a, a && this.text("#guide-feedback", t.message);
-		for (let t of R) {
+		let n = L(e);
+		this.text("#objective-title", n.title), this.text("#objective-count", `${n.current} / ${n.target}`), this.text("#guide-objective", n.title), this.node("#objective-summary").title = n.detail, this.updateQuickSlots(e, t.kind), this.text("#wallet-count", `◉ ${e.market?.coins ?? 0}`), this.updateBuildRecipes(e, t);
+		let r = this.node("[data-action=\"undo-build\"]");
+		r.disabled = !t.undoLabel || this.isWorldInputBlocked(), r.title = t.undoLabel ? `${t.undoLabel}の未稼働の配置を全額取消（Ctrl / ⌘ Z）。使用後・読込後は対象外` : "取り消せる未稼働の配置なし。既存ベルトは確認付き撤去で木材・鉄を全額回収できます", r.setAttribute("aria-label", t.undoLabel ? `${t.undoLabel}の配置を取り消す（全額返却）` : "未稼働の配置を取り消す"), this.updateGuide(t.guide ?? null), this.updateTechnology(e, !!t.technologyOpen), this.updateGolemGuide(e, !!t.golemGuideOpen), this.updateDemolition(t.demolition ?? null);
+		let i = !!t.guide && /保存|読込|読み込|再開しました|WebGL|表示でき|できません|不正|素材を補給しました|手採取|取り消|返却|未稼働|出荷|購入|解放|資金/.test(t.message);
+		this.node("#guide-feedback").hidden = !i, i && this.text("#guide-feedback", t.message);
+		for (let t of z) {
 			let n = this.resourceNodes.get(t), r = String(e.inventory[t] ?? 0);
 			n.textContent !== r && (n.textContent = r), n.parentElement.hidden = !(e.inventory[t] ?? 0) && ![
 				"wood",
@@ -3441,36 +3941,36 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 		}
 		this.text("#power-count", `${Math.floor(t.power.stored)} / ${t.power.capacity}`), this.text("#delivered-count", String(e.delivered)), this.node("#victory-message").hidden = !n.completed, n.completed && this.text("#victory-message", `${n.title} — ${n.detail}`), t.message && t.message !== this.lastMessage && (this.text("#game-message", t.message), this.lastMessage = t.message);
 		for (let [e, n] of this.speedButtons) n.setAttribute("aria-pressed", String(e === t.speed));
-		for (let [n, i] of this.buildButtons) {
-			i.setAttribute("aria-pressed", String(n === t.kind));
-			let a = e.kits[n] ?? 0, o = i.querySelector(".build-cost"), s = a > 0 ? `所持 ${a}台 / ${this.costLabel(n)}` : this.costLabel(n);
-			o.textContent !== s && (o.textContent = s);
-			let c = a > 0 || Object.entries(r[n].cost).every(([t, n]) => (e.inventory[t] ?? 0) >= n), l = C(e, n);
-			i.classList.toggle("unaffordable", !c), i.classList.toggle("tech-locked", !l);
-			let u = r[n].technology;
-			i.title = `${H[n]} 建設費: ${this.costLabel(n)}${!l && u ? ` · 未解放: ${z[u]}の研究が必要。技術ツリーで条件を確認。` : ""}`, i.querySelector(".build-lock-reason").textContent = !l && u ? `未解放 · ${z[u]}` : c ? "建設可能" : "素材不足", i.setAttribute("aria-label", `${r[n].label}、${s}${l ? "" : "、技術未解放"}${c ? "" : "、資源不足"}`);
+		for (let [n, r] of this.buildButtons) {
+			r.setAttribute("aria-pressed", String(n === t.kind));
+			let i = Object.entries(e.kits).reduce((e, [t, r]) => e + (c(t) === n ? r ?? 0 : 0), 0), a = r.querySelector(".build-cost"), s = i > 0 ? `所持 ${i}台 / ${this.costLabel(n)}` : this.costLabel(n);
+			a.textContent !== s && (a.textContent = s);
+			let l = i > 0 || Object.entries(o[n].cost).every(([t, n]) => (e.inventory[t] ?? 0) >= n), u = w(e, n);
+			r.classList.toggle("unaffordable", !l), r.classList.toggle("tech-locked", !u);
+			let d = o[n].technology;
+			r.title = `${U[n]} 建設費: ${this.costLabel(n)}${!u && d ? ` · 未解放: ${B[d]}の研究が必要。技術ツリーで条件を確認。` : ""}`, r.querySelector(".build-lock-reason").textContent = !u && d ? `未解放 · ${B[d]}` : l ? "建設可能" : "素材不足", r.setAttribute("aria-label", `${o[n].label}、${s}${u ? "" : "、技術未解放"}${l ? "" : "、資源不足"}`);
 		}
-		this.updateCatalogRecommendations(e), this.filterPalette(), this.text("#build-context", `${t.kind ? `${r[t.kind].label} · 出力 ${B[t.direction]}` : "設備を選んで建設"}${t.hover ? ` · (${t.hover.x}, ${t.hover.z})` : ""}`);
-		let o = e.buildings.find((e) => e.id === t.selectedId), s = this.node("#selection-panel");
-		if (this.root.classList.toggle("has-selection", !!o), !o) s.hidden = !0;
+		this.updateCatalogRecommendations(e), this.filterPalette(), this.text("#build-context", `${t.kind ? `${o[t.kind].label} · 出力 ${V[t.direction]}` : "設備を選んで建設"}${t.hover ? ` · (${t.hover.x}, ${t.hover.z})` : ""}`);
+		let a = e.buildings.find((e) => e.id === t.selectedId), s = this.node("#selection-panel");
+		if (this.root.classList.toggle("has-selection", !!a), !a) s.hidden = !0;
 		else {
 			if (t.selectedId !== this.lastSelected) {
 				s.hidden = !1, s.classList.remove("is-collapsed");
 				let e = this.node("[data-action=\"close-panel\"]");
 				e.textContent = "×", e.setAttribute("aria-label", "設備詳細を閉じる");
 				let t = this.node("#feed-resource");
-				this.node("#advanced-feed").open = o.kind === "generator", t.value = o.kind === "generator" ? "wood" : o.kind === "smelter" ? "ore" : o.kind === "crystalRefiner" ? "rawCrystal" : o.kind === "golemRelay" ? "golem" : "ingot";
+				this.node("#advanced-feed").open = a.kind === "generator", t.value = a.kind === "generator" ? "wood" : a.kind === "golemRelay" ? "golem" : a.recipe ? Object.keys(l[a.recipe].input)[0] : "ingot";
 			}
-			this.text("#selection-title", `${r[o.kind].label} (${o.x}, ${o.z})`), this.text("#selection-description", H[o.kind]);
+			this.text("#selection-title", `${o[a.kind].label}${a.recipe ? ` · ${l[a.recipe].label}` : ""} (${a.x}, ${a.z})`), this.text("#selection-description", U[a.kind]);
 			let n = this.node("#furnace-role");
-			n.hidden = o.kind !== "smelter" && o.kind !== "generator", !n.hidden && n.dataset.kind !== o.kind && (n.dataset.kind = o.kind, n.innerHTML = o.kind === "smelter" ? `${M("smelter")}<span>${N("ore")} 鉄鉱石2 ＋ 魔力5<br>↓ ${N("ingot")} 延べ棒1 → ベルト</span>` : `${M("generator")}<span>${N("wood")} 木材1<br>↓ ϟ 魔力30 → 導線<br><small>ベルトへの物品出力なし</small></span>`), this.text("#selection-status", (o.status || (o.working ? "稼働中" : "待機中")).replaceAll("魔導炉", "製錬炉").replaceAll("魔力炉", "魔力発生炉")), this.text("#selection-direction", o.kind === "generator" ? "木材は隣接から · 魔力は導線網" : o.kind === "wire" ? "直交接続（方向なし）" : o.kind === "golemRelay" ? "半径6区画（方向なし）" : o.kind === "worldTree" ? "種を隣接から受け入れ（出力なし）" : o.kind === "portalGate" ? o.portalRole === "receive" ? `受信門 · 出力 ${B[o.direction]}` : "送信門 · 全隣接から入力（通常出力なし）" : o.kind === "delivery" ? "全隣接から受け入れ（出力なし）" : `${B[o.direction]}${o.kind === "splitter" ? ` / 右側 ${B[(o.direction + 1) % 4]}` : ""} · 入力は隣接から`);
-			let i = Object.fromEntries(R.map((e) => [e, 0]));
+			n.hidden = a.kind !== "smelter" && a.kind !== "generator", !n.hidden && n.dataset.kind !== `${a.kind}:${a.recipe ?? ""}` && (n.dataset.kind = `${a.kind}:${a.recipe ?? ""}`, n.innerHTML = a.kind === "smelter" ? `${N("smelter")}<span>${Object.entries(l[a.recipe ?? "ingot"].input).map(([e, t]) => `${P(e)} ${R[e]}${t}`).join("＋")} ＋ 魔力${l[a.recipe ?? "ingot"].energy}<br>↓ ${l[a.recipe ?? "ingot"].label}1 → ベルト</span>` : `${N("generator")}<span>${P("wood")} 木材1<br>↓ ϟ 魔力30 → 導線<br><small>ベルトへの物品出力なし</small></span>`), this.text("#selection-status", (a.status || (a.working ? "稼働中" : "待機中")).replaceAll("魔導炉", "製錬炉").replaceAll("魔力炉", "魔力発生炉")), this.text("#selection-direction", a.kind === "generator" ? "木材は隣接から · 魔力は導線網" : a.kind === "wire" ? "直交接続（方向なし）" : a.kind === "golemRelay" ? "半径6区画（方向なし）" : a.kind === "worldTree" ? "種を隣接から受け入れ（出力なし）" : a.kind === "portalGate" ? a.portalRole === "receive" ? `受信門 · 出力 ${V[a.direction]}` : "送信門 · 全隣接から入力（通常出力なし）" : a.kind === "delivery" ? "全隣接から受け入れ（出力なし）" : `${V[a.direction]}${a.kind === "splitter" ? ` / 右側 ${V[(a.direction + 1) % 4]}` : ""} · 入力は隣接から`);
+			let r = Object.fromEntries(z.map((e) => [e, 0]));
 			[
-				...o.input,
-				...o.output,
-				...o.reserved ?? [],
-				...o.item ? [o.item] : []
-			].forEach((e) => i[e.resource]++), this.text("#selection-buffer", Object.entries(i).filter(([, e]) => e > 0).map(([e, t]) => `${L[e]} ${t}`).join("、") || "なし"), this.updateSelectedSystems(e, o), this.text("#selection-progress", o.kind === "belt" || o.kind === "splitter" ? `${Math.round(o.beltProgress / u * 100)}%` : `${o.progress.toFixed(1)}秒${r[o.kind].seconds ? ` / ${r[o.kind].seconds}秒` : ""}`), this.text("#selection-power", `${Math.floor(o.energy)}${o.pendingEnergy ? ` · 内部完成 ${o.pendingEnergy}` : ""}`), this.node("#advanced-feed").hidden = ![
+				...a.input,
+				...a.output,
+				...a.reserved ?? [],
+				...a.item ? [a.item] : []
+			].forEach((e) => r[e.resource]++), this.text("#selection-buffer", Object.entries(r).filter(([, e]) => e > 0).map(([e, t]) => `${R[e]} ${t}`).join("、") || "なし"), this.updateSelectedSystems(e, a), this.text("#selection-progress", a.kind === "belt" || a.kind === "splitter" ? `${Math.round(a.beltProgress / h * 100)}%` : `${a.progress.toFixed(1)}秒${o[a.kind].seconds ? ` / ${o[a.kind].seconds}秒` : ""}`), this.text("#selection-power", `${Math.floor(a.energy)}${a.pendingEnergy ? ` · 内部完成 ${a.pendingEnergy}` : ""}`), this.node("#advanced-feed").hidden = a.kind === "delivery" || ![
 				"generator",
 				"smelter",
 				"delivery",
@@ -3488,14 +3988,14 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 				"portalGate",
 				"seedLoom",
 				"worldTree"
-			].includes(o.kind);
+			].includes(a.kind);
 		}
-		if (o && t.guide && (this.previousGuideMode === "feed" || this.previousGuideMode === "rotate") && t.guide.mode !== "feed" && t.guide.mode !== "rotate") {
+		if (a && t.guide && (this.previousGuideMode === "feed" || this.previousGuideMode === "rotate") && t.guide.mode !== "feed" && t.guide.mode !== "rotate") {
 			s.classList.add("is-collapsed");
 			let e = this.node("[data-action=\"close-panel\"]");
 			e.textContent = "+", e.setAttribute("aria-label", "設備詳細を開く");
 		}
-		this.root.classList.toggle("expanded-selection", !!o && !s.hidden && !s.classList.contains("is-collapsed")), this.previousGuideMode = t.guide?.mode ?? null, this.lastSelected = t.selectedId;
+		this.root.classList.toggle("expanded-selection", !!a && !s.hidden && !s.classList.contains("is-collapsed")), this.previousGuideMode = t.guide?.mode ?? null, this.lastSelected = t.selectedId;
 	}
 	searchCatalog() {
 		this.search = this.node("#build-search").value.trim().toLocaleLowerCase(), this.search && (this.category = "all"), this.filterPalette();
@@ -3503,30 +4003,30 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 	refreshRegistration() {
 		this.text("#registration-label", `登録先 ${this.registerSlot + 1}`), this.node("#registration-slot").value = String(this.registerSlot), this.node("#registration-buttons").querySelectorAll("button").forEach((e) => {
 			let t = Number(e.dataset.registerSlot);
-			e.setAttribute("aria-pressed", String(t === this.registerSlot)), e.title = `${t + 1}: ${r[this.quickSlots[t]].label} · この枠へ☆で登録`, e.setAttribute("aria-label", `登録先 ${t + 1}: ${r[this.quickSlots[t]].label}`);
+			e.setAttribute("aria-pressed", String(t === this.registerSlot)), e.title = `${t + 1}: ${o[this.quickSlots[t]].label} · この枠へ☆で登録`, e.setAttribute("aria-label", `登録先 ${t + 1}: ${o[this.quickSlots[t]].label}`);
 		});
 	}
 	updateCatalogRecommendations(e) {
-		let t = I(e), n = S(e).find((e) => e.status !== "unlocked"), a = new Set(n?.unlocks.kinds ?? []);
-		for (let e of V) t.resource && ((r[e].output?.[t.resource] ?? 0) > 0 || r[e].recipes?.some((e) => (i[e].output[t.resource] ?? 0) > 0)) && a.add(e);
+		let t = L(e), n = C(e).find((e) => e.status !== "unlocked"), r = new Set(n?.unlocks.kinds ?? []);
+		for (let e of H) t.resource && ((o[e].output?.[t.resource] ?? 0) > 0 || o[e].recipes?.some((e) => (l[e].output[t.resource] ?? 0) > 0)) && r.add(e);
 		this.text("#catalog-suggestion", `次の目標: ${t.title} · おすすめの設備に◆印`);
-		for (let t of V) {
-			let n = this.node(`[data-build-tile="${t}"]`), r = a.has(t);
-			n.classList.toggle("recommended", r), n.style.order = String(r ? 0 : C(e, t) ? 1 : 2), n.dataset.recommended = String(r);
+		for (let t of H) {
+			let n = this.node(`[data-build-tile="${t}"]`), i = r.has(t);
+			n.classList.toggle("recommended", i), n.style.order = String(i ? 0 : w(e, t) ? 1 : 2), n.dataset.recommended = String(i);
 		}
 	}
 	updateGolemGuide(e, t) {
 		this.node("#golem-guide").hidden = !t;
-		let n = ge(e);
+		let n = ke(e);
 		this.golemAction = n.action, this.text("#golem-guide-progress", `${n.step} / ${n.total}`), this.text("#golem-guide-title", n.title), this.text("#golem-guide-detail", n.detail);
-		let i = this.node("[data-action=\"golem-guide-action\"]");
-		i.hidden = !n.action, i.disabled = !n.action, i.textContent = n.action?.type === "technology" ? "技術ツリーを開く" : n.action?.type === "build" ? `${r[n.action.kind].label}を選ぶ` : n.action?.type === "inspect" ? "対象の設備を確認" : "1×で動かす";
-		let a = this.node("#golem-guide-blockers"), o = n.blockers.slice(0, 3).join("\n");
-		if (a.dataset.value !== o) {
-			a.dataset.value = o, a.replaceChildren();
+		let r = this.node("[data-action=\"golem-guide-action\"]");
+		r.hidden = !n.action, r.disabled = !n.action, r.textContent = n.action?.type === "technology" ? "技術ツリーを開く" : n.action?.type === "build" ? `${o[n.action.kind].label}を選ぶ` : n.action?.type === "inspect" ? "対象の設備を確認" : "1×で動かす";
+		let i = this.node("#golem-guide-blockers"), a = n.blockers.slice(0, 3).join("\n");
+		if (i.dataset.value !== a) {
+			i.dataset.value = a, i.replaceChildren();
 			for (let e of n.blockers.slice(0, 3)) {
 				let t = document.createElement("li");
-				t.textContent = e, a.append(t);
+				t.textContent = e, i.append(t);
 			}
 		}
 	}
@@ -3537,30 +4037,30 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 			return;
 		}
 		this.demolitionId !== e.id && (this.demolitionId = e.id, this.demolitionSubmitted = !1);
-		let n = e.kind === "generator" && (e.pendingEnergy ?? 0) > 0 ? [] : e.reserved ?? [], i = [
+		let n = e.kind === "generator" && (e.pendingEnergy ?? 0) > 0 ? [] : e.reserved ?? [], r = [
 			...e.input,
 			...e.output,
 			...n,
 			...e.item ? [e.item] : [],
 			...e.golemWorker ? [e.golemWorker] : []
-		], a = c(e.kind), o = Object.fromEntries(R.map((e) => [e, a[e] ?? 0]));
-		for (let e of i) o[e.resource]++;
-		let s = R.filter((e) => o[e]).map((e) => `${L[e]} ${o[e]}`).join("、") || "回収できる資源はありません";
-		this.text("#demolition-target", `${xe[e.kind]} ${r[e.kind].label} (${e.x}, ${e.z})`), this.text("#demolition-summary", `撤去すると${e.kind === "belt" ? "ベルトの建設素材は全額" : "建設素材の半分（切り捨て）"}と現在の中身を回収します。回収予定: ${s}。${e.golemWorker ? "配置中のゴーレムも回収します。" : ""}`), this.node("[data-action=\"remove-confirm\"]").disabled = this.demolitionSubmitted, t.open || (t.showModal(), this.node("[data-action=\"remove-cancel\"]").focus());
+		], i = p(e.kind, e.constructionCost), a = Object.fromEntries(z.map((e) => [e, i[e] ?? 0]));
+		for (let e of r) a[e.resource]++;
+		let s = z.filter((e) => a[e]).map((e) => `${R[e]} ${a[e]}`).join("、") || "回収できる資源はありません";
+		this.text("#demolition-target", `${Pe[e.kind]} ${o[e.kind].label} (${e.x}, ${e.z})`), this.text("#demolition-summary", `撤去すると${e.kind === "belt" ? "ベルトの建設素材は全額" : "建設素材の半分（切り捨て）"}と現在の中身を回収します。回収予定: ${s}。${e.golemWorker ? "配置中のゴーレムも回収します。" : ""}`), this.node("[data-action=\"remove-confirm\"]").disabled = this.demolitionSubmitted, t.open || (t.showModal(), this.node("[data-action=\"remove-cancel\"]").focus());
 	}
 	cancelDemolition(e) {
 		e.preventDefault(), this.callbacks.onCancelRemove();
 	}
 	loadPreferences() {
 		try {
-			let e = JSON.parse(localStorage.getItem(Ce) ?? "null");
+			let e = JSON.parse(localStorage.getItem(Ie) ?? "null");
 			if (!e || e.version !== 1) return;
-			Array.isArray(e.quickSlots) && e.quickSlots.length === 6 && e.quickSlots.every((e) => V.includes(e)) && (this.quickSlots = [...e.quickSlots]), typeof e.category == "string" && Object.hasOwn(Se, e.category) && (this.category = e.category), (e.transferMode === "one" || e.transferMode === "all") && (this.transferMode = e.transferMode);
+			Array.isArray(e.quickSlots) && e.quickSlots.length === 6 && e.quickSlots.every((e) => typeof e == "string" && Object.hasOwn(o, e)) && (this.quickSlots = e.quickSlots.map(c)), typeof e.category == "string" && Object.hasOwn(Fe, e.category) && (this.category = e.category), (e.transferMode === "one" || e.transferMode === "all") && (this.transferMode = e.transferMode);
 		} catch {}
 	}
 	savePreferences() {
 		try {
-			localStorage.setItem(Ce, JSON.stringify({
+			localStorage.setItem(Ie, JSON.stringify({
 				version: 1,
 				quickSlots: this.quickSlots,
 				category: this.category,
@@ -3569,7 +4069,7 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 		} catch {}
 	}
 	createPresentationControls() {
-		for (let [e, t] of Object.entries(Se)) {
+		for (let [e, t] of Object.entries(Fe)) {
 			let n = document.createElement("button");
 			n.type = "button", n.dataset.category = e, n.textContent = t.label, this.node("#build-categories").append(n);
 		}
@@ -3582,36 +4082,37 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 			t.type = "button", t.dataset.registerSlot = String(e), t.textContent = String(e + 1), this.node("#registration-buttons").append(t);
 		}
 		this.refreshQuickSlots(), this.refreshRegistration(), this.filterPalette(), this.refreshTransferMode();
-		for (let e of R) {
+		for (let e of z) {
 			let t = document.createElement("button");
-			t.type = "button", t.dataset.feedResource = e, t.innerHTML = `${N(e)}<span></span>`, t.querySelector("span").textContent = `${L[e]} ×1`, this.node("#facility-feed-slots").append(t);
+			t.type = "button", t.dataset.feedResource = e, t.innerHTML = `${P(e)}<span></span>`, t.querySelector("span").textContent = `${R[e]} ×1`, this.node("#facility-feed-slots").append(t);
 			let n = document.createElement("span");
-			n.className = "hud-resource-icon", n.innerHTML = N(e), this.resourceNodes.get(e).parentElement.prepend(n);
+			n.className = "hud-resource-icon", n.innerHTML = P(e), this.resourceNodes.get(e).parentElement.prepend(n);
 			for (let t of ["deposit", "withdraw"]) {
 				let n = document.createElement("button");
-				n.type = "button", n.className = "item-slot", n.dataset.transfer = t, n.dataset.resource = e, n.innerHTML = `${N(e)}<span class="slot-name"></span><b class="slot-count">0</b><small class="slot-origin"></small>`, n.querySelector(".slot-name").textContent = L[e], this.node(t === "deposit" ? "#inventory-slots" : "#chest-slots").append(n), this.transferButtons.set(`${t}:${e}`, n);
+				n.type = "button", n.className = "item-slot", n.dataset.transfer = t, n.dataset.resource = e, n.innerHTML = `${P(e)}<span class="slot-name"></span><b class="slot-count">0</b><small class="slot-origin"></small>`, n.querySelector(".slot-name").textContent = R[e], this.node(t === "deposit" ? "#inventory-slots" : "#chest-slots").append(n), this.transferButtons.set(`${t}:${e}`, n);
 			}
 		}
 	}
 	refreshQuickSlots() {
+		this.quickSlots = this.quickSlots.map(c);
 		let e = this.node("#quick-slots");
 		e.replaceChildren(), this.quickSlots.forEach((t, n) => {
-			let i = document.createElement("button");
-			i.type = "button", i.dataset.quick = String(n), i.className = "quick-slot", i.innerHTML = `<small>${n + 1}</small><span class="quick-icon" aria-hidden="true">${M(t) || xe[t]}</span><span class="quick-name"></span><span class="quick-lock" hidden>🔒</span><span class="quick-cost"></span>`, i.querySelector(".quick-name").textContent = r[t].label, i.setAttribute("aria-label", `${n + 1}: ${r[t].label}`), e.append(i);
+			let r = document.createElement("button");
+			r.type = "button", r.dataset.quick = String(n), r.className = "quick-slot", r.innerHTML = `<small>${n + 1}</small><span class="quick-icon" aria-hidden="true">${N(t) || Pe[t]}</span><span class="quick-name"></span><span class="quick-lock" hidden>🔒</span><span class="quick-cost"></span>`, r.querySelector(".quick-name").textContent = o[t].label, r.setAttribute("aria-label", `${n + 1}: ${o[t].label}`), e.append(r);
 		});
 	}
 	updateQuickSlots(e, t) {
 		this.node("#quick-slots").querySelectorAll("button").forEach((n) => {
-			let i = this.quickSlots[Number(n.dataset.quick)], a = C(e, i);
-			n.querySelector(".quick-lock").hidden = a, n.querySelector(".quick-cost").textContent = (e.kits[i] ?? 0) > 0 ? `所持 ${e.kits[i]}` : this.costLabel(i);
-			let o = (e.kits[i] ?? 0) > 0 || Object.entries(r[i].cost).every(([t, n]) => (e.inventory[t] ?? 0) >= n);
-			n.classList.toggle("unaffordable", !o), n.classList.toggle("tech-locked", !a), n.setAttribute("aria-pressed", String(i === t)), n.title = `${r[i].label} · ${this.costLabel(i)}${a ? "" : ` · 未解放: ${z[r[i].technology]}`}`;
+			let r = this.quickSlots[Number(n.dataset.quick)], i = w(e, r);
+			n.querySelector(".quick-lock").hidden = i, n.querySelector(".quick-cost").textContent = (e.kits[r] ?? 0) > 0 ? `所持 ${e.kits[r]}` : this.costLabel(r);
+			let a = (e.kits[r] ?? 0) > 0 || Object.entries(o[r].cost).every(([t, n]) => (e.inventory[t] ?? 0) >= n);
+			n.classList.toggle("unaffordable", !a), n.classList.toggle("tech-locked", !i), n.setAttribute("aria-pressed", String(r === t)), n.title = `${o[r].label} · ${this.costLabel(r)}${i ? "" : ` · 未解放: ${B[o[r].technology]}`}`;
 		});
 	}
 	filterPalette() {
 		this.node("#build-categories").querySelectorAll("button").forEach((e) => e.setAttribute("aria-pressed", String(e.dataset.category === this.category))), this.node(".build-palette").querySelectorAll("[data-build-tile]").forEach((e) => {
-			let t = e.dataset.buildTile, n = t === "smelter" ? "魔導炉" : t === "generator" ? "魔力炉" : "", i = `${r[t].label} ${n} ${H[t]} ${this.costLabel(t)} ${z[r[t].technology ?? "basic"]}`.toLocaleLowerCase();
-			e.hidden = !Se[this.category].kinds.includes(t) || !i.includes(this.search);
+			let t = e.dataset.buildTile, n = t === "smelter" ? "魔導炉" : t === "generator" ? "魔力炉" : "", r = `${o[t].label} ${n} ${U[t]} ${this.costLabel(t)} ${B[o[t].technology ?? "basic"]}`.toLocaleLowerCase();
+			e.hidden = !Fe[this.category].kinds.includes(t) || !r.includes(this.search);
 		});
 	}
 	registrationChange() {
@@ -3655,31 +4156,31 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 		!t || !n || (n.inventory[e] ?? 0) < 1 || this.callbacks.onFeed(e, 1);
 	}
 	depositAll() {
-		for (let e of R) this.transferItem(e, !0, !0);
+		for (let e of z) this.transferItem(e, !0, !0);
 	}
 	updateChestSlots(e, t) {
-		for (let n of R) {
+		for (let n of z) {
 			let r = t.input.filter((e) => e.resource === n), i = r.filter((e) => e.automated && !e.handled).length;
 			for (let a of ["deposit", "withdraw"]) {
 				let o = this.transferButtons.get(`${a}:${n}`), s = a === "deposit" ? e.inventory[n] ?? 0 : r.length, c = a === "deposit" ? "収納箱へ預ける" : "手持ちへ取り出す", l = o.querySelector(".slot-count");
 				l.textContent !== String(s) && (l.textContent = String(s));
 				let u = a === "withdraw" ? `自動${i} / 手動${r.length - i}` : "手持ち", d = o.querySelector(".slot-origin");
-				d.textContent !== u && (d.textContent = u), o.disabled = s === 0 || a === "deposit" && t.input.length >= 32, o.title = `${L[n]} ${s}個 · ${c} · ${u}。Shiftで全量。取り出した品は手動扱いとなり自動納品に算入しません。`, o.setAttribute("aria-label", `${L[n]} ${s}個を${c}。${u}`);
+				d.textContent !== u && (d.textContent = u), o.disabled = s === 0 || a === "deposit" && t.input.length >= 32, o.title = `${R[n]} ${s}個 · ${c} · ${u}。Shiftで全量。回収した対象品は手持ちから出荷できます。材料として再投入すると自動生産実績の対象外になります。`, o.setAttribute("aria-label", `${R[n]} ${s}個を${c}。${u}`);
 			}
 		}
-		this.node("[data-action=\"deposit-all\"]").disabled = t.input.length >= 32 || R.every((t) => !(e.inventory[t] ?? 0)), this.node("[data-action=\"withdraw-all\"]").disabled = t.input.length === 0;
+		this.node("[data-action=\"deposit-all\"]").disabled = t.input.length >= 32 || z.every((t) => !(e.inventory[t] ?? 0)), this.node("[data-action=\"withdraw-all\"]").disabled = t.input.length === 0;
 	}
 	createTechnologyNodes() {
-		for (let e of be) {
+		for (let e of Ne) {
 			let t = document.createElement("article");
 			t.className = "technology-node", t.dataset.tech = e, t.innerHTML = `<div class="tech-node-heading"><h3></h3><span class="tech-status"></span></div><p class="tech-description"></p><p class="tech-prerequisites"></p><ul class="tech-requirements"></ul><p class="tech-unlocks"></p><p class="tech-reason"></p><div class="tech-actions"><button data-research="${e}">研究する</button><button data-track="${e}">追跡する</button></div>`, this.node(".technology-map").append(t), this.technologyNodes.set(e, t);
 		}
 	}
 	updateTechnology(e, t) {
 		this.node("#technology-panel").hidden = !t, this.root.classList.toggle("technology-open", t), this.tracked = e.research?.tracked ?? null;
-		let n = S(e), a = n.filter((e) => e.status === "available").length;
-		this.text("[data-action=\"technology-open\"].technology-open", `技術ツリー${a ? ` (${a})` : ""}`);
-		let o = {
+		let n = C(e), r = n.filter((e) => e.status === "available").length;
+		this.text("[data-action=\"technology-open\"].technology-open", `技術ツリー${r ? ` (${r})` : ""}`);
+		let i = {
 			unlocked: "解放済み",
 			available: "研究可能",
 			locked: "未解放"
@@ -3687,50 +4188,50 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 		for (let e of n) {
 			let t = this.technologyNodes.get(e.id);
 			t.dataset.techStatus = e.status;
-			let a = (e, n) => {
+			let r = (e, n) => {
 				let r = t.querySelector(e);
 				r.textContent !== n && (r.textContent = n);
 			};
-			a("h3", e.label), a(".tech-status", o[e.status]), a(".tech-description", e.description), a(".tech-prerequisites", `前提: ${e.prerequisites.map((e) => n.find((t) => t.id === e)?.label ?? z[e]).join(" ＋ ") || "なし（最初から利用可）"}`), a(".tech-unlocks", `解放: ${[...e.unlocks.kinds.map((e) => r[e].label), ...e.unlocks.recipes.map((e) => `${i[e].label}レシピ`)].join("・") || (e.id === "sanctuary" ? "ゴーレム工房の自動運営を達成" : "魔導剣の連続生産達成・ゴーレム製造へ")}`), a(".tech-reason", e.reason);
-			let s = t.querySelector(".tech-requirements"), c = e.requirements.map((e) => `${e.met ? "✓" : "○"} ${e.label} ${e.current} / ${e.target}`).join("\n");
-			if (s.dataset.value !== c) {
-				s.dataset.value = c, s.replaceChildren();
-				for (let e of c.split("\n").filter(Boolean)) {
+			r("h3", e.label), r(".tech-status", i[e.status]), r(".tech-description", e.description), r(".tech-prerequisites", `前提: ${e.prerequisites.map((e) => n.find((t) => t.id === e)?.label ?? B[e]).join(" ＋ ") || "なし（最初から利用可）"}`), r(".tech-unlocks", `解放: ${[...e.unlocks.kinds.map((e) => o[e].label), ...e.unlocks.recipes.map((e) => `${l[e].label}レシピ`)].join("・") || (e.id === "sanctuary" ? "ゴーレム工房の自動運営を達成" : "魔導剣の連続生産達成・ゴーレム製造へ")}`), r(".tech-reason", e.reason);
+			let a = t.querySelector(".tech-requirements"), s = e.requirements.map((e) => `${e.met ? "✓" : "○"} ${e.label} ${e.current} / ${e.target}`).join("\n");
+			if (a.dataset.value !== s) {
+				a.dataset.value = s, a.replaceChildren();
+				for (let e of s.split("\n").filter(Boolean)) {
 					let t = document.createElement("li");
-					t.textContent = e, s.append(t);
+					t.textContent = e, a.append(t);
 				}
 			}
-			let l = t.querySelector("[data-research]");
-			l.disabled = e.status !== "available", l.title = e.reason, l.textContent = e.status === "unlocked" ? "解放済み" : e.status === "available" ? "研究する（実績のみ）" : "条件未達成";
+			let c = t.querySelector("[data-research]");
+			c.disabled = e.status !== "available", c.title = e.reason, c.textContent = e.status === "unlocked" ? "解放済み" : e.status === "available" ? "研究する（実績のみ）" : "条件未達成";
 			let u = t.querySelector("[data-track]");
 			u.disabled = e.status === "unlocked" && this.tracked !== e.id, u.setAttribute("aria-pressed", String(this.tracked === e.id)), u.textContent = this.tracked === e.id ? "追跡を解除" : "追跡する";
 		}
-		this.text("#sword-rate", `魔導剣の自動生産: 現在 ${x(e)}本 / 分 · 最高 ${e.stats?.peakSwordRate ?? 0}本 / 分（ゲーム内の直近60秒）`);
-		let s = n.find((e) => e.id === this.tracked), c = this.node("#tracked-goal");
-		c.hidden = !s, s && this.text("#tracked-goal", `追跡: ${s.label} · ${s.reason} ›`);
+		this.text("#sword-rate", `魔導剣の自動生産: 現在 ${de(e)}本 / 分 · 最高 ${e.stats?.peakSwordRate ?? 0}本 / 分（ゲーム内の直近60秒）`);
+		let a = n.find((e) => e.id === this.tracked), s = this.node("#tracked-goal");
+		s.hidden = !a, a && this.text("#tracked-goal", `追跡: ${a.label} · ${a.reason} ›`);
 	}
 	updateSelectedSystems(e, t) {
-		let n = t.kind === "storage", a = t.recipe ?? r[t.kind].recipes?.[0], o = t.kind === "golemRelay" ? ["golem"] : t.kind === "delivery" ? ["ingot", "sword"] : Object.keys(a ? i[a].input : r[t.kind].input ?? {});
-		if (this.node("#facility-feed-slots").hidden = n || !o.length, this.node("#facility-feed-slots").querySelectorAll("[data-feed-resource]").forEach((n) => {
+		let n = t.kind === "storage", r = t.recipe ?? o[t.kind].recipes?.[0], i = t.kind === "golemRelay" ? ["golem"] : t.kind === "delivery" ? [] : Object.keys(r ? l[r].input : o[t.kind].input ?? {});
+		if (this.node("#facility-feed-slots").hidden = n || !i.length, this.node("#facility-feed-slots").querySelectorAll("[data-feed-resource]").forEach((n) => {
 			let r = n.dataset.feedResource;
-			n.hidden = !o.includes(r), n.disabled = !(e.inventory[r] ?? 0) || !se(t, r), n.title = `${L[r]}を1個補給 · 所持 ${e.inventory[r] ?? 0}`;
+			n.hidden = !i.includes(r), n.disabled = !(e.inventory[r] ?? 0) || !be(t, r), n.title = `${R[r]}を1個補給 · 所持 ${e.inventory[r] ?? 0}`;
 		}), this.node("#storage-controls").hidden = !n, this.node("#selection-panel").classList.toggle("chest-selected", n), n) {
 			this.updateChestSlots(e, t), this.text("#storage-capacity", `収納 ${t.input.length} / 32品 · 空き ${32 - t.input.length}個（納品はしません）`);
 			let n = this.node("#storage-items"), r = t.input.map((e) => `${e.resource}:${e.automated}:${!!e.handled}`).join("|");
 			if (n.dataset.value !== r) {
 				n.dataset.value = r, n.replaceChildren();
-				for (let e of R) {
+				for (let e of z) {
 					let r = t.input.filter((t) => t.resource === e);
 					if (!r.length) continue;
 					let i = r.filter((e) => e.automated && !e.handled).length, a = document.createElement("li");
-					a.textContent = `${L[e]} ${r.length} · 自動 ${i} / 手動扱い ${r.length - i}`, a.title = "自動: 自動生産され、手で取り出されていない品。手動扱い: 手動投入または手動で取り出した品。取り出すと全品が手動扱いになります。", n.append(a);
+					a.textContent = `${R[e]} ${r.length} · 自動 ${i} / 手動扱い ${r.length - i}`, a.title = "自動: 自動生産され、手で取り出されていない品。手動扱い: 手動投入または手動で取り出した品。取り出すと全品が手動扱いになります。", n.append(a);
 				}
 			}
 		}
 		if (this.node("#relay-controls").hidden = t.kind !== "golemRelay", t.kind === "golemRelay") {
 			this.text("#relay-worker", t.golemWorker ? "♟ ゴーレム配置済み" : "♟ ゴーレムの搬入を待っています");
-			let n = t.golemRoute, i = n ? e.buildings.find((e) => e.id === n.sourceId) : null, a = n ? e.buildings.find((e) => e.id === n.targetId) : null;
-			this.node("#relay-inspections").hidden = !n, this.text("#relay-route", `${t.status} · 次の作業 ${(Math.max(0, t.golemCooldown ?? 0) * .05).toFixed(1)}秒${n ? ` · 前回 ${L[n.resource]}: ${i ? `収納箱(${i.x},${i.z})` : "#" + n.sourceId} → ${a ? `${r[a.kind].label}(${a.x},${a.z})` : "#" + n.targetId}` : " · まだ補給していません"}`), this.text("#relay-transfers", `工房全体の補給 ${e.stats?.golemTransfers ?? 0}回 · 木材 ${e.stats?.golemFuelTransfers ?? 0} / 20回`), this.node("#relay-controls").querySelectorAll("[data-relay-policy]").forEach((e) => e.setAttribute("aria-pressed", String(e.dataset.relayPolicy === (t.golemPolicy ?? "fuel"))));
+			let n = t.golemRoute, r = n ? e.buildings.find((e) => e.id === n.sourceId) : null, i = n ? e.buildings.find((e) => e.id === n.targetId) : null;
+			this.node("#relay-inspections").hidden = !n, this.text("#relay-route", `${t.status} · 次の作業 ${(Math.max(0, t.golemCooldown ?? 0) * .05).toFixed(1)}秒${n ? ` · 前回 ${R[n.resource]}: ${r ? `収納箱(${r.x},${r.z})` : "#" + n.sourceId} → ${i ? `${o[i.kind].label}(${i.x},${i.z})` : "#" + n.targetId}` : " · まだ補給していません"}`), this.text("#relay-transfers", `工房全体の補給 ${e.stats?.golemTransfers ?? 0}回 · 木材 ${e.stats?.golemFuelTransfers ?? 0} / 20回`), this.node("#relay-controls").querySelectorAll("[data-relay-policy]").forEach((e) => e.setAttribute("aria-pressed", String(e.dataset.relayPolicy === (t.golemPolicy ?? "fuel"))));
 		}
 		if (this.node("#portal-controls").hidden = t.kind !== "portalGate", t.kind === "portalGate") {
 			let n = t.portalChannel ?? 1, r = t.portalRole ?? "send";
@@ -3744,23 +4245,69 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 			let n = t.input.filter((e) => e.resource === "worldSeed" && e.automated && !e.handled && e.throughPortal).length;
 			this.text("#tree-growth-text", e >= 10 ? `成長完了 10 / 10 · 余剰の種 ${t.input.length}個は回収できます。` : `成長 ${e} / 10 · 対象の種 ${n}個 · ${t.status}`);
 		}
-		this.node("#delivery-summary").hidden = t.kind !== "delivery", t.kind === "delivery" && this.text("#delivery-summary", `自動納品（工房全体）: 鉄の延べ棒 ${e.stats?.delivered.ingot ?? e.delivered} / 100本 · 魔導剣 ${e.stats?.delivered.sword ?? 0}本。自動生産・自動搬送し、手で取り出していない品だけ加算します。`);
-		let s = r[t.kind].recipes ?? [];
-		if (this.node("#recipe-controls").hidden = !s.length, s.length) {
+		this.updateShipping(e, t), this.node("#delivery-summary").hidden = t.kind !== "delivery", t.kind === "delivery" && this.text("#delivery-summary", `自動生産品の累計出荷: 鉄 ${e.delivered}本 · 剣 ${e.stats?.delivered.sword ?? 0}本。鉄100本は記念実績です。`);
+		let a = o[t.kind].recipes ?? [];
+		if (this.node("#recipe-controls").hidden = !a.length, a.length) {
 			let n = this.node("#recipe-select"), r = `${t.kind}:${e.research?.unlocked.join(",") ?? "basic"}`;
 			if (n.dataset.value !== r) {
 				n.dataset.value = r, n.replaceChildren();
-				for (let t of s) {
+				for (let t of a) {
 					let r = document.createElement("option");
 					r.value = t;
-					let a = w(e, t);
-					r.textContent = `${i[t].label}${a ? "" : "（未解放）"}`, r.title = a ? "生産レシピを選択" : `${z[i[t].technology]}の研究が必要`, n.append(r);
+					let i = T(e, t);
+					r.textContent = `${l[t].label}${i ? "" : "（未解放）"}`, r.title = i ? "生産レシピを選択" : `${B[l[t].technology]}の研究が必要`, n.append(r);
 				}
 			}
-			n.value = t.recipe ?? s[0];
-			let a = i[t.recipe ?? s[0]], o = s.filter((t) => !w(e, t));
-			this.text("#recipe-lock-reason", `${Object.entries(a.input).map(([e, t]) => `${L[e]}${t}`).join("＋")} → ${a.label} / ${a.seconds}秒・魔力${a.energy}${o.length ? `。未解放: ${o.map((e) => `${i[e].label}は${z[i[e].technology]}の研究が必要`).join("・")}` : ""}。稼働中・互換性のない在庫がある時は変更できません。`);
+			n.value = t.recipe ?? a[0], n.disabled = t.working || !!t.reserved?.length;
+			let i = l[t.recipe ?? a[0]], o = a.filter((t) => !T(e, t));
+			this.text("#recipe-lock-reason", `${Object.entries(i.input).map(([e, t]) => `${R[e]}${t}`).join("＋")} → ${i.label} / ${i.seconds}秒・魔力${i.energy}${o.length ? `。未解放: ${o.map((e) => `${l[e].label}は${B[l[e].technology]}の研究が必要`).join("・")}` : ""}。稼働中・互換性のない在庫がある時は変更できません。`);
 		}
+	}
+	researchReward(e) {
+		let t = S.find((t) => t.id === e);
+		return [...t.unlocks.kinds.map((e) => o[e].label), ...t.unlocks.recipes.map((e) => `${l[e].label}レシピ`)].join("・") || "次の研究へ進めます";
+	}
+	updateBuildRecipes(e, t) {
+		let n = t.kind ? o[t.kind].recipes ?? [] : [];
+		this.node("#build-recipe-control").hidden = !n.length;
+		let r = this.node("#build-recipe-select"), i = `${t.kind}:${e.research?.unlocked.join(",")}`;
+		if (r.dataset.key !== i) {
+			r.dataset.key = i, r.replaceChildren();
+			for (let t of n) {
+				let n = document.createElement("option");
+				n.value = t, n.disabled = !T(e, t), n.textContent = `${l[t].label}${n.disabled ? "（未解放）" : ""}`, r.append(n);
+			}
+		}
+		t.recipe && (r.value = t.recipe);
+	}
+	shippingValues() {
+		let e = this.node("#shipping-source").value, t = this.node("#shipping-resource").value, n = Number(this.node("#shipping-amount").value), r = e === "depot" ? this.currentSelected?.input.filter((e) => e.resource === t) ?? [] : this.currentState?.inventoryItems?.filter((e) => e.resource === t) ?? [];
+		return {
+			source: e,
+			resource: t,
+			amount: n,
+			items: r,
+			available: e === "depot" ? r.length : this.currentState?.inventory[t] ?? 0
+		};
+	}
+	refreshShipping() {
+		this.currentState && this.currentSelected && this.updateShipping(this.currentState, this.currentSelected);
+	}
+	updateShipping(e, t) {
+		if (this.node("#shipping-controls").hidden = t.kind !== "delivery", t.kind !== "delivery") return;
+		let n = e.market?.coins ?? 0, r = this.shippingValues(), i = Number.isSafeInteger(r.amount) && r.amount > 0 && r.amount <= 1e3 && r.available >= r.amount, a = r.items.slice(0, i ? r.amount : 0);
+		if (i) for (; a.length < r.amount;) a.push({
+			resource: r.resource,
+			automated: !1,
+			handled: !0
+		});
+		let o = b(e, a);
+		this.text("#shipping-quote", i ? `依頼へ ${o.assigned}個・売却 ${o.sold}個 → ＋${o.coins}コイン。出荷後に品を消費します。` : "出荷元・品物・所持数と個数を確認してください。"), this.node("[data-action=\"dispatch\"]").disabled = !i, this.node("[data-action=\"dispatch-all\"]").disabled = !r.available, this.node("[data-action=\"buy-iron\"]").disabled = n < g.buy.ingot, this.text("[data-action=\"buy-iron\"]", `建設用の延べ棒1個を購入（${g.buy.ingot}コイン）`), this.text("#shipping-wallet", `所持金 ${n}コイン · 売却単価: ${_.map((e) => `${R[e]}${g.sell[e]}`).join("／")}`), this.text("#shipping-stock", `搬入庫 ${t.input.length}/32個 · ${_.map((n) => `${R[n]}: 庫内${t.input.filter((e) => e.resource === n).length}／手持ち${e.inventory[n] ?? 0}`).join("・")}`);
+		let s = C(e).find((e) => e.id === "crystals"), c = C(e).find((e) => e.id === "mastery");
+		this.text("#shipping-quests", `鉄 ${Math.min(e.delivered, g.deliveryTargets.ingot)}/${g.deliveryTargets.ingot} → 結晶加工（魔晶採掘機・精製魔晶レシピ）: ${s.status === "unlocked" ? "研究済み" : s.status === "available" ? "研究可能" : "出荷条件が未達"}。剣 ${Math.min(e.stats?.delivered.sword ?? 0, g.deliveryTargets.sword)}/${g.deliveryTargets.sword} ＋ 最高生産速度10本/分 → 量産技術: ${c.status === "unlocked" ? "研究済み" : c.status === "available" ? "研究可能" : "納品数・生産速度・前提研究を確認"}。購入品・初期品は依頼に入りません。`);
+	}
+	callbacksBuildRecipe(e) {
+		this.callbacks.onRecipe(e);
 	}
 	recipeChange() {
 		this.callbacks.onRecipe(this.node("#recipe-select").value);
@@ -3769,8 +4316,14 @@ var L = o, R = Object.keys(L), be = b.map((e) => e.id), z = Object.fromEntries(b
 		this.controller.abort(), this.root.replaceChildren();
 	}
 };
-function Te(e, t, n) {
-	t.addEventListener("click", (t) => e.handleClick(t), { signal: n }), t.querySelector("#feed-form").addEventListener("submit", (t) => e.handleFeed(t), { signal: n }), t.querySelector("#build-search").addEventListener("input", () => e.searchCatalog(), { signal: n }), t.querySelector("#demolition-dialog").addEventListener("cancel", (t) => e.cancelDemolition(t), { signal: n }), t.querySelector("#registration-slot").addEventListener("change", () => e.registrationChange(), { signal: n }), t.querySelector("#recipe-select").addEventListener("change", () => e.recipeChange(), { signal: n });
+function Re(e, t, n) {
+	t.addEventListener("click", (t) => e.handleClick(t), { signal: n }), t.querySelector("#feed-form").addEventListener("submit", (t) => e.handleFeed(t), { signal: n }), t.querySelector("#build-search").addEventListener("input", () => e.searchCatalog(), { signal: n }), t.querySelector("#demolition-dialog").addEventListener("cancel", (t) => e.cancelDemolition(t), { signal: n }), t.querySelector("#registration-slot").addEventListener("change", () => e.registrationChange(), { signal: n }), t.querySelector("#build-recipe-select").addEventListener("change", (t) => e.callbacksBuildRecipe(t.target.value), { signal: n });
+	for (let r of [
+		"shipping-source",
+		"shipping-resource",
+		"shipping-amount"
+	]) t.querySelector("#" + r).addEventListener("input", () => e.refreshShipping(), { signal: n });
+	t.querySelector("#recipe-select").addEventListener("change", () => e.recipeChange(), { signal: n });
 	for (let e of [
 		"pointerdown",
 		"wheel",
@@ -3782,11 +4335,11 @@ function Te(e, t, n) {
 }
 //#endregion
 //#region web/js/fantasy-automation/storage.ts
-var Ee = Object.keys(r), De = [
+var ze = Object.keys(o), Be = [
 	"wood",
 	"ore",
 	"ingot"
-], Oe = [
+], Ve = [
 	"miner",
 	"belt",
 	"smelter",
@@ -3794,46 +4347,46 @@ var Ee = Object.keys(r), De = [
 	"wire",
 	"lumber",
 	"delivery"
-], ke = [
-	...De,
+], He = [
+	...Be,
 	"rawCrystal",
 	"crystal",
 	"sword"
-], Ae = [
-	...Oe,
+], Ue = [
+	...Ve,
 	"splitter",
 	"storage",
 	"crystalMiner",
 	"crystalRefiner",
 	"assembler"
-], je = [
+], We = [
 	"basic",
 	"logistics",
 	"crystals",
 	"assembly",
 	"mastery"
-], Me = [
-	...ke,
+], Ge = [
+	...He,
 	"runeCore",
 	"golemFrame",
 	"golem"
-], Ne = [
-	...Ae,
+], Ke = [
+	...Ue,
 	"runeCarver",
 	"frameForge",
 	"golemForge",
 	"golemRelay"
-], Pe = [
-	...je,
+], qe = [
+	...We,
 	"runecraft",
 	"golemcraft",
 	"sanctuary"
-], U = (e) => e === 1 ? De : e === 2 ? ke : e === 3 ? Me : a, Fe = (e) => e === 1 ? Oe : e === 2 ? Ae : e === 3 ? Ne : Ee, Ie = [
+], W = (e) => e === 1 ? Be : e === 2 ? He : e === 3 ? Ge : u, Je = (e) => e === 1 ? Ve : e === 2 ? Ue : e === 3 ? Ke : e === 4 ? ze : a, Ye = [
 	"grass",
 	"ore",
 	"forest",
 	"crystal"
-], Le = "aigames-fantasy-automation", W = "saves", Re = "workshop", ze = [
+], Xe = "aigames-fantasy-automation", G = "saves", Ze = "workshop", Qe = [
 	"version",
 	"seed",
 	"tick",
@@ -3844,7 +4397,7 @@ var Ee = Object.keys(r), De = [
 	"buildings",
 	"delivered",
 	"won"
-], Be = [
+], $e = [
 	"id",
 	"kind",
 	"x",
@@ -3860,45 +4413,48 @@ var Ee = Object.keys(r), De = [
 	"beltProgress",
 	"pendingEnergy"
 ];
-function G(e, t, n) {
+function K(e, t, n) {
 	if (!e || typeof e != "object" || Array.isArray(e)) throw Error(`${n}が正しくありません。`);
 	let r = e;
 	if (Object.keys(r).some((e) => !t.includes(e))) throw Error(`${n}に未対応の項目があります。`);
 	return r;
 }
-function K(e, t, n = 2 ** 53 - 1, r = !0) {
+function q(e, t, n = 2 ** 53 - 1, r = !0) {
 	if (typeof e != "number" || !Number.isFinite(e) || e < 0 || e > n || r && !Number.isSafeInteger(e)) throw Error(`${t}の数値が正しくありません。`);
 	return e;
 }
-function q(e, t) {
+function J(e, t) {
 	if (typeof e != "boolean") throw Error(`${t}が正しくありません。`);
 	return e;
 }
-function Ve(e, t = 3) {
-	let n = G(e, t === 1 ? ["resource", "automated"] : [
+function et(e, t = 3) {
+	let n = K(e, t === 1 ? ["resource", "automated"] : [
 		"resource",
 		"automated",
 		"handled",
-		...t === 4 ? ["throughPortal"] : []
+		...t >= 4 ? ["throughPortal"] : [],
+		...t === 5 ? ["shipEligible"] : []
 	], "搬送品");
-	if (!U(t).includes(n.resource)) throw Error("保存された資源が未対応です。");
+	if (!W(t).includes(n.resource)) throw Error("保存された資源が未対応です。");
+	if (n.shipEligible === !0 && (n.automated !== !0 || !["ingot", "sword"].includes(n.resource))) throw Error("手動出荷の由来が正しくありません。");
 	return {
 		resource: n.resource,
-		automated: q(n.automated, "自動生産フラグ"),
-		...Object.hasOwn(n, "handled") ? { handled: q(n.handled, "手動操作フラグ") } : {},
-		...Object.hasOwn(n, "throughPortal") ? { throughPortal: q(n.throughPortal, "転送門通過フラグ") } : {}
+		automated: J(n.automated, "自動生産フラグ"),
+		...Object.hasOwn(n, "handled") ? { handled: J(n.handled, "手動操作フラグ") } : {},
+		...Object.hasOwn(n, "throughPortal") ? { throughPortal: J(n.throughPortal, "転送門通過フラグ") } : {},
+		...Object.hasOwn(n, "shipEligible") ? { shipEligible: J(n.shipEligible, "手動出荷対象") } : {}
 	};
 }
-function J(e, t, n = 3) {
+function Y(e, t, n = 3) {
 	if (!Array.isArray(e) || e.length > t) throw Error("設備バッファが正しくありません。");
-	return e.map((e) => Ve(e, n));
+	return e.map((e) => et(e, n));
 }
-function He(e) {
-	return e.recipe ? i[e.recipe] : r[e.kind];
+function tt(e, t) {
+	return e.recipe ? l[e.recipe] : (t < 5 ? i : o)[e.kind];
 }
-function Ue(e, t) {
-	let n = t === 1, o = G(e, n ? Be : [
-		...Be,
+function nt(e, t) {
+	let n = t === 1, r = K(e, n ? $e : [
+		...$e,
 		"reserved",
 		"recipe",
 		"splitCursor",
@@ -3908,197 +4464,208 @@ function Ue(e, t) {
 			"golemCooldown",
 			"golemRoute"
 		] : [],
-		...t === 4 ? [
+		...t >= 4 ? [
 			"portalChannel",
 			"portalRole",
 			"portalCooldown",
 			"portalRoute",
 			"treeGrowth"
-		] : []
+		] : [],
+		...t === 5 ? ["constructionCost"] : []
 	], "設備");
-	if (!Fe(t).includes(o.kind)) throw Error("保存された設備が未対応です。");
-	if (typeof o.status != "string" || o.status.length > 256) throw Error("設備の状態が正しくありません。");
-	let s = K(o.id, "設備ID");
-	if (s === 0) throw Error("設備IDが正しくありません。");
-	let c = o.kind, l = Object.hasOwn(o, "recipe") ? o.recipe : void 0;
-	if (l !== void 0 && (!Object.hasOwn(i, l) || !r[c].recipes?.includes(l) || t === 2 && ![
+	if (!Je(t).includes(r.kind)) throw Error("保存された設備が未対応です。");
+	if (typeof r.status != "string" || r.status.length > 256) throw Error("設備の状態が正しくありません。");
+	let a = q(r.id, "設備ID");
+	if (a === 0) throw Error("設備IDが正しくありません。");
+	let s = r.kind, d = t < 5 ? i : o, f = Object.hasOwn(r, "recipe") ? r.recipe : void 0;
+	if (f !== void 0 && (!Object.hasOwn(l, f) || !d[s].recipes?.includes(f) || t === 2 && ![
 		"ingot",
 		"crystal",
 		"sword"
-	].includes(l) || t === 3 && ![
+	].includes(f) || t === 3 && ![
 		"ingot",
 		"crystal",
 		"sword",
 		"runeCore",
 		"golemFrame",
 		"golem"
-	].includes(l))) throw Error("設備のレシピが正しくありません。");
-	let d = l ? i[l] : r[c], f = {
-		id: s,
-		kind: c,
-		x: K(o.x, "X座標", 31),
-		z: K(o.z, "Z座標", 31),
-		direction: K(o.direction, "方向", 3),
-		input: J(o.input, c === "storage" ? 32 : 8, t),
-		output: J(o.output, 4, t),
-		progress: K(o.progress, "作業進捗", d.seconds ?? 0, !1),
-		working: q(o.working, "作業フラグ"),
-		energy: K(o.energy, "魔力", 30, !1),
-		status: o.status,
-		item: o.item === null ? null : Ve(o.item, t),
-		beltProgress: K(o.beltProgress, "搬送進捗", u, !1),
-		...Object.hasOwn(o, "pendingEnergy") ? { pendingEnergy: K(o.pendingEnergy, "内部完成魔力", 30, !1) } : {},
-		...l ? { recipe: l } : {},
-		...n ? {} : { reserved: J(o.reserved, 8, t) },
-		...Object.hasOwn(o, "splitCursor") ? { splitCursor: K(o.splitCursor, "分配方向", 1) } : {}
+	].includes(f))) throw Error("設備のレシピが正しくありません。");
+	let p = f ? l[f] : d[s], m = {
+		id: a,
+		kind: s,
+		x: q(r.x, "X座標", 31),
+		z: q(r.z, "Z座標", 31),
+		direction: q(r.direction, "方向", 3),
+		input: Y(r.input, s === "storage" || s === "delivery" && t === 5 ? 32 : 8, t),
+		output: Y(r.output, 4, t),
+		progress: q(r.progress, "作業進捗", p.seconds ?? 0, !1),
+		working: J(r.working, "作業フラグ"),
+		energy: q(r.energy, "魔力", 30, !1),
+		status: r.status,
+		item: r.item === null ? null : et(r.item, t),
+		beltProgress: q(r.beltProgress, "搬送進捗", h, !1),
+		...Object.hasOwn(r, "pendingEnergy") ? { pendingEnergy: q(r.pendingEnergy, "内部完成魔力", 30, !1) } : {},
+		...f ? { recipe: f } : {},
+		...n ? {} : { reserved: Y(r.reserved, 8, t) },
+		...Object.hasOwn(r, "splitCursor") ? { splitCursor: q(r.splitCursor, "分配方向", 1) } : {}
 	};
-	if (Object.hasOwn(o, "golemWorker") && (f.golemWorker = Ve(o.golemWorker, t)), Object.hasOwn(o, "golemPolicy")) {
-		if (o.golemPolicy !== "fuel" && o.golemPolicy !== "materials") throw Error("ゴーレムの補助方針が正しくありません。");
-		f.golemPolicy = o.golemPolicy;
+	if (Object.hasOwn(r, "golemWorker") && (m.golemWorker = et(r.golemWorker, t)), Object.hasOwn(r, "golemPolicy")) {
+		if (r.golemPolicy !== "fuel" && r.golemPolicy !== "materials") throw Error("ゴーレムの補助方針が正しくありません。");
+		m.golemPolicy = r.golemPolicy;
 	}
-	if (Object.hasOwn(o, "golemCooldown") && (f.golemCooldown = K(o.golemCooldown, "ゴーレムの待機時間", 19)), Object.hasOwn(o, "golemRoute")) {
-		let e = G(o.golemRoute, [
+	if (Object.hasOwn(r, "golemCooldown") && (m.golemCooldown = q(r.golemCooldown, "ゴーレムの待機時間", 19)), Object.hasOwn(r, "golemRoute")) {
+		let e = K(r.golemRoute, [
 			"sourceId",
 			"targetId",
 			"resource",
 			"tick"
 		], "ゴーレムの搬送記録");
-		if (!U(t).includes(e.resource)) throw Error("ゴーレムの搬送資源が未対応です。");
-		let n = K(e.sourceId, "搬送元ID"), r = K(e.targetId, "搬送先ID");
-		if (!n || !r || n === r) throw Error("ゴーレムの搬送先が正しくありません。");
-		f.golemRoute = {
+		if (!W(t).includes(e.resource)) throw Error("ゴーレムの搬送資源が未対応です。");
+		let n = q(e.sourceId, "搬送元ID"), i = q(e.targetId, "搬送先ID");
+		if (!n || !i || n === i) throw Error("ゴーレムの搬送先が正しくありません。");
+		m.golemRoute = {
 			sourceId: n,
-			targetId: r,
+			targetId: i,
 			resource: e.resource,
-			tick: K(e.tick, "搬送時刻")
+			tick: q(e.tick, "搬送時刻")
 		};
 	}
-	if (Object.hasOwn(o, "portalChannel")) {
-		let e = K(o.portalChannel, "転送門のチャンネル", 3);
+	if (Object.hasOwn(r, "portalChannel")) {
+		let e = q(r.portalChannel, "転送門のチャンネル", 3);
 		if (e < 1) throw Error("転送門のチャンネルが正しくありません。");
-		f.portalChannel = e;
+		m.portalChannel = e;
 	}
-	if (Object.hasOwn(o, "portalRole")) {
-		if (o.portalRole !== "send" && o.portalRole !== "receive") throw Error("転送門の役割が正しくありません。");
-		f.portalRole = o.portalRole;
+	if (Object.hasOwn(r, "portalRole")) {
+		if (r.portalRole !== "send" && r.portalRole !== "receive") throw Error("転送門の役割が正しくありません。");
+		m.portalRole = r.portalRole;
 	}
-	if (Object.hasOwn(o, "portalCooldown") && (f.portalCooldown = K(o.portalCooldown, "転送門の待機時間", 19)), Object.hasOwn(o, "portalRoute")) {
-		let e = G(o.portalRoute, [
+	if (Object.hasOwn(r, "portalCooldown") && (m.portalCooldown = q(r.portalCooldown, "転送門の待機時間", 19)), Object.hasOwn(r, "portalRoute")) {
+		let e = K(r.portalRoute, [
 			"targetId",
 			"resource",
 			"tick"
 		], "転送門の搬送記録");
-		if (!a.includes(e.resource)) throw Error("転送門の搬送資源が未対応です。");
-		let t = K(e.targetId, "転送先ID");
-		if (!t || t === s) throw Error("転送先が正しくありません。");
-		f.portalRoute = {
+		if (!u.includes(e.resource)) throw Error("転送門の搬送資源が未対応です。");
+		let t = q(e.targetId, "転送先ID");
+		if (!t || t === a) throw Error("転送先が正しくありません。");
+		m.portalRoute = {
 			targetId: t,
 			resource: e.resource,
-			tick: K(e.tick, "転送時刻")
+			tick: q(e.tick, "転送時刻")
 		};
 	}
-	return Object.hasOwn(o, "treeGrowth") && (f.treeGrowth = K(o.treeGrowth, "世界樹の成長", 10)), We(f, n), f;
+	if (Object.hasOwn(r, "treeGrowth") && (m.treeGrowth = q(r.treeGrowth, "世界樹の成長", 10)), Object.hasOwn(r, "constructionCost") && (m.constructionCost = it(r.constructionCost, "建設費", t), ![o[s].cost, ...Object.entries(i).filter(([e]) => c(e) === s).map(([, e]) => e.cost)].some((e) => u.every((t) => (e[t] ?? 0) === (m.constructionCost[t] ?? 0))))) throw Error("設備の建設費が正しくありません。");
+	return rt(m, n, t), m;
 }
-function We(e, t) {
-	let n = He(e), r = n.input ?? {}, i = e.reserved ?? [];
+function rt(e, t, n) {
+	let r = tt(e, n), i = r.input ?? {}, a = e.reserved ?? [];
 	if (e.kind === "belt" || e.kind === "splitter") {
-		if (e.input.length || e.output.length || i.length || e.progress || e.working || !e.item && e.beltProgress) throw Error("ベルトの搬送状態が正しくありません。");
+		if (e.input.length || e.output.length || a.length || e.progress || e.working || !e.item && e.beltProgress) throw Error("ベルトの搬送状態が正しくありません。");
 	} else if (e.item !== null || e.beltProgress !== 0) throw Error("設備に未対応の搬送品があります。");
 	if (e.kind !== "splitter" && e.splitCursor !== void 0) throw Error("分配器以外に分配方向があります。");
 	if (e.kind === "splitter" && e.splitCursor === void 0) throw Error("分配器に分配方向がありません。");
 	if (e.kind !== "generator" && (e.energy !== 0 || e.pendingEnergy !== void 0)) throw Error("魔力を保持できない設備です。");
-	if (!e.working && (e.progress !== 0 || i.length)) throw Error("停止中の設備に作業進捗・予約素材があります。");
-	if (e.working && (n.seconds === void 0 || ["belt", "splitter"].includes(e.kind))) throw Error("この設備は生産作業できません。");
+	if (!e.working && (e.progress !== 0 || a.length)) throw Error("停止中の設備に作業進捗・予約素材があります。");
+	if (e.working && (r.seconds === void 0 || ["belt", "splitter"].includes(e.kind))) throw Error("この設備は生産作業できません。");
 	if (e.kind !== "golemRelay" && (e.golemWorker !== void 0 || e.golemPolicy !== void 0 || e.golemCooldown !== void 0 || e.golemRoute !== void 0)) throw Error("ゴーレム補助拠点以外に補助状態があります。");
 	if (e.kind === "golemRelay" && (e.portalChannel !== void 0 || e.portalRole !== void 0 || e.portalCooldown !== void 0 || e.portalRoute !== void 0 || e.treeGrowth !== void 0)) throw Error("補給所に未対応の転送・成長状態があります。");
 	if (e.kind === "golemRelay") {
-		if (e.working || e.progress || i.length || e.output.length || e.input.length > 1 || e.input.some((e) => e.resource !== "golem") || e.golemWorker && e.golemWorker.resource !== "golem" || e.golemPolicy === void 0 || e.golemCooldown === void 0) throw Error("ゴーレム補助拠点の状態が正しくありません。");
+		if (e.working || e.progress || a.length || e.output.length || e.input.length > 1 || e.input.some((e) => e.resource !== "golem") || e.golemWorker && e.golemWorker.resource !== "golem" || e.golemPolicy === void 0 || e.golemCooldown === void 0) throw Error("ゴーレム補助拠点の状態が正しくありません。");
 		if (e.golemWorker && e.input.length) throw Error("ゴーレムが重複しています。");
 		return;
 	}
 	if (e.kind !== "portalGate" && (e.portalChannel !== void 0 || e.portalRole !== void 0 || e.portalCooldown !== void 0 || e.portalRoute !== void 0)) throw Error("転送門以外に転送状態があります。");
 	if (e.kind !== "worldTree" && e.treeGrowth !== void 0) throw Error("世界樹以外に成長状態があります。");
 	if (e.kind === "portalGate") {
-		if (e.portalChannel === void 0 || e.portalRole === void 0 || e.portalCooldown === void 0 || e.working || e.progress || i.length || e.portalRole === "send" && e.output.length || e.portalRole === "receive" && e.input.length) throw Error("転送門の状態が正しくありません。");
+		if (e.portalChannel === void 0 || e.portalRole === void 0 || e.portalCooldown === void 0 || e.working || e.progress || a.length || e.portalRole === "send" && e.output.length || e.portalRole === "receive" && e.input.length) throw Error("転送門の状態が正しくありません。");
 		if (e.treeGrowth !== void 0) throw Error("転送門に世界樹の成長があります。");
 		return;
 	}
 	if (e.kind === "worldTree") {
-		if (e.treeGrowth === void 0 || e.working || e.progress || i.length || e.output.length || e.input.some((e) => e.resource !== "worldSeed")) throw Error("世界樹の状態が正しくありません。");
+		if (e.treeGrowth === void 0 || e.working || e.progress || a.length || e.output.length || e.input.some((e) => e.resource !== "worldSeed")) throw Error("世界樹の状態が正しくありません。");
+		return;
+	}
+	if (e.kind === "delivery" && n === 5) {
+		if (e.output.length || a.length || e.working || e.input.some((e) => ![
+			"wood",
+			"ingot",
+			"sword"
+		].includes(e.resource))) throw Error("出荷所の保管品が正しくありません。");
 		return;
 	}
 	if (e.kind === "storage") {
 		if (e.output.length) throw Error("収納箱の出力バッファが正しくありません。");
 		return;
 	}
-	if (e.input.some((e) => !Object.hasOwn(r, e.resource))) throw Error("設備の入力素材がレシピと一致しません。");
-	let a = Object.keys(n.output ?? {});
-	if (e.output.some((e) => !a.includes(e.resource))) throw Error("設備の完成品がレシピと一致しません。");
+	if (e.input.some((e) => !Object.hasOwn(i, e.resource))) throw Error("設備の入力素材がレシピと一致しません。");
+	let o = Object.keys(r.output ?? {});
+	if (e.output.some((e) => !o.includes(e.resource))) throw Error("設備の完成品がレシピと一致しません。");
 	if (e.working) {
-		let n = Object.values(r).reduce((e, t) => e + (t ?? 0), 0), a = t ? e.input.slice(0, n) : i;
-		if (a.length !== n) throw Error("稼働中の設備に予約素材がありません。");
-		for (let [e, t] of Object.entries(r)) if (a.filter((t) => t.resource === e).length !== t) throw Error("稼働中の設備に予約素材がありません。");
+		let n = Object.values(i).reduce((e, t) => e + (t ?? 0), 0), r = t ? e.input.slice(0, n) : a;
+		if (r.length !== n) throw Error("稼働中の設備に予約素材がありません。");
+		for (let [e, t] of Object.entries(i)) if (r.filter((t) => t.resource === e).length !== t) throw Error("稼働中の設備に予約素材がありません。");
 	}
-	if ((e.pendingEnergy ?? 0) > 0 && (!e.working || e.progress !== n.seconds)) throw Error("完成魔力の待機状態が正しくありません。");
+	if ((e.pendingEnergy ?? 0) > 0 && (!e.working || e.progress !== r.seconds)) throw Error("完成魔力の待機状態が正しくありません。");
 }
-function Ge(e, t, n) {
-	let r = G(e, U(n), t), i = {};
-	for (let e of U(n)) Object.hasOwn(r, e) && (i[e] = K(r[e], t));
+function it(e, t, n) {
+	let r = K(e, W(n), t), i = {};
+	for (let e of W(n)) Object.hasOwn(r, e) && (i[e] = q(r[e], t));
 	return i;
 }
-function Ke(e, t, n, r) {
-	let i = G(e, [
+function at(e, t, n, r) {
+	let i = K(e, [
 		"produced",
 		"delivered",
 		"recentSwordTicks",
 		"peakSwordRate",
 		...r >= 3 ? ["golemFuelTransfers", "golemTransfers"] : [],
-		...r === 4 ? ["portalTransfers", "treeGrowth"] : []
-	], "生産実績"), o = Ge(i.produced, "生産数", r), s = Ge(i.delivered, "納品数", r);
-	if ((s.ingot ?? 0) !== n) throw Error("鉄の延べ棒の納品実績が一致しません。");
-	if (a.some((e) => (s[e] ?? 0) > (o[e] ?? 0))) throw Error("納品実績が生産実績を超えています。");
+		...r >= 4 ? ["portalTransfers", "treeGrowth"] : []
+	], "生産実績"), a = it(i.produced, "生産数", r), o = it(i.delivered, "納品数", r);
+	if ((o.ingot ?? 0) !== n) throw Error("鉄の延べ棒の納品実績が一致しません。");
+	if (u.some((e) => (o[e] ?? 0) > (a[e] ?? 0))) throw Error("納品実績が生産実績を超えています。");
 	if (!Array.isArray(i.recentSwordTicks)) throw Error("生産速度の記録が正しくありません。");
-	let c = i.recentSwordTicks.map((e) => K(e, "生産時刻", t));
-	if (c.some((e, t) => t > 0 && e < c[t - 1]) || c.length > (o.sword ?? 0)) throw Error("生産速度の記録が正しくありません。");
-	let l = K(i.peakSwordRate, "最高生産速度");
-	if (l > (o.sword ?? 0) || l < c.filter((e) => e > t - 1200).length) throw Error("最高生産速度が正しくありません。");
-	let u = {
-		produced: o,
-		delivered: s,
-		recentSwordTicks: c,
-		peakSwordRate: l
+	let s = i.recentSwordTicks.map((e) => q(e, "生産時刻", t));
+	if (s.some((e, t) => t > 0 && e < s[t - 1]) || s.length > (a.sword ?? 0)) throw Error("生産速度の記録が正しくありません。");
+	let c = q(i.peakSwordRate, "最高生産速度");
+	if (c > (a.sword ?? 0) || c < s.filter((e) => e > t - 1200).length) throw Error("最高生産速度が正しくありません。");
+	let l = {
+		produced: a,
+		delivered: o,
+		recentSwordTicks: s,
+		peakSwordRate: c
 	};
-	if (r >= 3 && (u.golemFuelTransfers = K(i.golemFuelTransfers, "木材自動補給数"), u.golemTransfers = K(i.golemTransfers, "ゴーレム搬送数"), u.golemFuelTransfers > u.golemTransfers)) throw Error("木材補給数が総搬送数を超えています。");
-	return r === 4 && (u.portalTransfers = K(i.portalTransfers, "初回自動転送数"), u.treeGrowth = K(i.treeGrowth, "世界樹の成長実績")), u;
+	if (r >= 3 && (l.golemFuelTransfers = q(i.golemFuelTransfers, "木材自動補給数"), l.golemTransfers = q(i.golemTransfers, "ゴーレム搬送数"), l.golemFuelTransfers > l.golemTransfers)) throw Error("木材補給数が総搬送数を超えています。");
+	return r >= 4 && (l.portalTransfers = q(i.portalTransfers, "初回自動転送数"), l.treeGrowth = q(i.treeGrowth, "世界樹の成長実績")), l;
 }
-function qe(e, t) {
-	let n = G(e, ["unlocked", "tracked"], "研究状態"), r = t === 2 ? je : t === 3 ? Pe : b.map((e) => e.id);
+function ot(e, t) {
+	let n = K(e, ["unlocked", "tracked"], "研究状態"), r = t === 2 ? We : t === 3 ? qe : S.map((e) => e.id);
 	if (!Array.isArray(n.unlocked) || n.unlocked.some((e) => !r.includes(e)) || new Set(n.unlocked).size !== n.unlocked.length || !n.unlocked.includes("basic")) throw Error("解放技術が正しくありません。");
 	let i = [...n.unlocked];
-	if (b.some((e) => i.includes(e.id) && e.prerequisites.some((e) => !i.includes(e)))) throw Error("解放技術の前提が一致しません。");
+	if (S.some((e) => i.includes(e.id) && e.prerequisites.some((e) => !i.includes(e)))) throw Error("解放技術の前提が一致しません。");
 	if (n.tracked !== null && !r.includes(n.tracked)) throw Error("追跡技術が正しくありません。");
 	return {
 		unlocked: i,
 		tracked: n.tracked
 	};
 }
-function Je(e, t) {
-	let n = t === 1, r = G(e, n ? ze : [
-		...ze,
+function st(e, t) {
+	let n = t === 1, r = K(e, n ? Qe : [
+		...Qe,
 		"stats",
 		"research",
 		"inventoryItems",
-		"pendingCrystalCells"
+		"pendingCrystalCells",
+		...t === 5 ? ["market"] : []
 	], "保存データ");
 	if (r.version !== t) throw Error("この保存形式には対応していません（対応: version 1・2・3・4）。");
-	let i = n ? Ie.slice(0, 3) : Ie;
+	let i = n ? Ye.slice(0, 3) : Ye;
 	if (!Array.isArray(r.terrain) || r.terrain.length !== 1024 || r.terrain.some((e) => !i.includes(e))) throw Error("保存された地形が正しくありません。");
-	let o = U(t), s = G(r.inventory, o, "所持資源"), c = {};
-	for (let e of o) c[e] = K(s[e], "所持資源");
-	let l = Fe(t), u = G(r.kits, l, "所持設備"), d = {};
-	for (let e of l) Object.hasOwn(u, e) && (d[e] = K(u[e], "所持設備数"));
+	let a = W(t), o = K(r.inventory, a, "所持資源"), s = {};
+	for (let e of a) s[e] = q(o[e], "所持資源");
+	let c = t === 5 ? ze : Je(t), l = K(r.kits, c, "所持設備"), d = {};
+	for (let e of c) Object.hasOwn(l, e) && (d[e] = q(l[e], "所持設備数"));
 	if (!Array.isArray(r.buildings) || r.buildings.length > 1024) throw Error("設備一覧が正しくありません。");
-	let f = r.buildings.map((e) => Ue(e, t)), p = /* @__PURE__ */ new Set(), m = /* @__PURE__ */ new Set();
+	let f = r.buildings.map((e) => nt(e, t)), p = /* @__PURE__ */ new Set(), m = /* @__PURE__ */ new Set();
 	for (let e of f) {
 		let t = `${e.x},${e.z}`;
 		if (p.has(e.id) || m.has(t)) throw Error("設備IDまたは配置が重複しています。");
@@ -4106,46 +4673,57 @@ function Je(e, t) {
 		let n = r.terrain[e.z * 32 + e.x];
 		if (e.kind === "miner" && n !== "ore" || e.kind === "lumber" && n !== "forest" || e.kind === "crystalMiner" && n !== "crystal") throw Error("設備と地形が一致していません。");
 	}
-	let h = K(r.nextId, "次の設備ID");
+	let h = q(r.nextId, "次の設備ID");
 	if (h < 1 || f.some((e) => e.id >= h)) throw Error("次の設備IDが正しくありません。");
-	let g = K(r.delivered, "自動納品数"), _ = q(r.won, "クリアフラグ");
+	let g = q(r.delivered, "自動納品数"), _ = J(r.won, "クリアフラグ");
 	if (_ !== g >= 100) throw Error("納品数とクリア状態が一致していません。");
-	let v = K(r.tick, "経過時間"), y = {
+	let v = q(r.tick, "経過時間"), y = {
 		version: t,
-		seed: K(r.seed, "地形シード"),
+		seed: q(r.seed, "地形シード"),
 		tick: v,
 		nextId: h,
 		terrain: [...r.terrain],
-		inventory: c,
+		inventory: s,
 		kits: d,
 		buildings: f,
 		delivered: g,
 		won: _
 	};
+	if (t === 5) {
+		let e = K(r.market, ["coins", "sold"], "出荷会計"), n = K(e.sold, [
+			"wood",
+			"ingot",
+			"sword"
+		], "売却数");
+		y.market = {
+			coins: q(e.coins, "所持金"),
+			sold: it(n, "売却数", t)
+		};
+	}
 	if (!n) {
 		if (Object.hasOwn(r, "pendingCrystalCells")) {
 			if (!Array.isArray(r.pendingCrystalCells) || r.pendingCrystalCells.length > 2) throw Error("未発見の結晶鉱脈が正しくありません。");
-			let e = r.pendingCrystalCells.map((e) => K(e, "未発見鉱脈の座標", 1023));
+			let e = r.pendingCrystalCells.map((e) => q(e, "未発見鉱脈の座標", 1023));
 			if (new Set(e).size !== e.length || e.some((e) => y.terrain[e] !== "grass" || !m.has(`${e % 32},${Math.floor(e / 32)}`))) throw Error("未発見の結晶鉱脈と設備配置が一致しません。");
 			y.pendingCrystalCells = e;
 		}
 		for (let e of f) if (e.golemRoute && (e.golemRoute.sourceId >= h || e.golemRoute.targetId >= h || e.golemRoute.tick > v)) throw Error("ゴーレムの搬送記録と経過時間が一致しません。");
 		for (let e of f) if (e.portalRoute && (e.portalRoute.targetId >= h || e.portalRoute.tick > v)) throw Error("転送門の搬送記録と経過時間が一致しません。");
-		if (y.stats = Ke(r.stats, v, g, t), y.research = qe(r.research, t), y.inventoryItems = J(r.inventoryItems, a.reduce((e, t) => Math.min(2 ** 53 - 1, e + (c[t] ?? 0)), 0), t), y.inventoryItems.some((e) => !e.handled)) throw Error("所持品の手動操作状態が正しくありません。");
-		for (let e of a) if (y.inventoryItems.filter((t) => t.resource === e).length > (c[e] ?? 0)) throw Error("所持品と資源数が一致していません。");
-		for (let e of f) if (!C(y, e.kind) || e.recipe && !w(y, e.recipe)) throw Error("未解放の設備・レシピが保存されています。");
-		for (let e of l) if ((d[e] ?? 0) > 0 && !C(y, e)) throw Error("未解放の所持設備が保存されています。");
+		if (y.stats = at(r.stats, v, g, t), y.research = ot(r.research, t), y.inventoryItems = Y(r.inventoryItems, u.reduce((e, t) => Math.min(2 ** 53 - 1, e + (s[t] ?? 0)), 0), t), y.inventoryItems.some((e) => !e.handled)) throw Error("所持品の手動操作状態が正しくありません。");
+		for (let e of u) if (y.inventoryItems.filter((t) => t.resource === e).length > (s[e] ?? 0)) throw Error("所持品と資源数が一致していません。");
+		for (let e of f) if (!(t < 5 ? me : w)(y, e.kind) || e.recipe && !T(y, e.recipe)) throw Error("未解放の設備・レシピが保存されています。");
+		for (let e of c) if ((d[e] ?? 0) > 0 && !me(y, e)) throw Error("未解放の所持設備が保存されています。");
 	}
 	return y;
 }
-function Ye(e) {
+function ct(e) {
 	if (!e || typeof e != "object" || Array.isArray(e)) throw Error("保存データが正しくありません。");
 	let t = e.version;
-	if (t === 1 || t === 2 || t === 3) return Je(_(Je(e, t)), 4);
-	if (t === 4) return Je(e, 4);
-	throw Error("この保存形式には対応していません（対応: version 1・2・3・4）。");
+	if (t === 1 || t === 2 || t === 3 || t === 4) return st(ae(st(e, t)), 5);
+	if (t === 5) return st(e, 5);
+	throw Error("この保存形式には対応していません（対応: version 1・2・3・4・5）。");
 }
-var Xe = class {
+var lt = class {
 	database = null;
 	open() {
 		return this.database ||= new Promise((e, t) => {
@@ -4153,9 +4731,9 @@ var Xe = class {
 				t(/* @__PURE__ */ Error("この環境では保存機能を利用できません。"));
 				return;
 			}
-			let n = indexedDB.open(Le, 1);
+			let n = indexedDB.open(Xe, 1);
 			n.onupgradeneeded = () => {
-				n.result.objectStoreNames.contains(W) || n.result.createObjectStore(W);
+				n.result.objectStoreNames.contains(G) || n.result.createObjectStore(G);
 			}, n.onerror = () => t(/* @__PURE__ */ Error("保存領域を開けませんでした。")), n.onblocked = () => t(/* @__PURE__ */ Error("別のタブを閉じてから保存してください。")), n.onsuccess = () => {
 				let t = n.result;
 				t.onversionchange = () => {
@@ -4169,24 +4747,24 @@ var Xe = class {
 	async transaction(e, t) {
 		let n = await this.open();
 		return new Promise((r, i) => {
-			let a = n.transaction(W, e), o = t(a.objectStore(W)), s;
+			let a = n.transaction(G, e), o = t(a.objectStore(G)), s;
 			o.onsuccess = () => {
 				s = o.result;
 			}, a.oncomplete = () => r(s), a.onerror = () => i(/* @__PURE__ */ Error("保存領域へのアクセスに失敗しました。")), a.onabort = () => i(/* @__PURE__ */ Error("保存処理が中断されました。"));
 		});
 	}
 	async load() {
-		let e = await this.transaction("readonly", (e) => e.get(Re));
-		return e === void 0 ? null : Ye(e);
+		let e = await this.transaction("readonly", (e) => e.get(Ze));
+		return e === void 0 ? null : ct(e);
 	}
 	async save(e) {
-		let t = Ye(e);
-		await this.transaction("readwrite", (e) => e.put(t, Re));
+		let t = ct(e);
+		await this.transaction("readwrite", (e) => e.put(t, Ze));
 	}
 	async clear() {
-		await this.transaction("readwrite", (e) => e.delete(Re));
+		await this.transaction("readwrite", (e) => e.delete(Ze));
 	}
-}, Ze = class {
+}, ut = class {
 	constructor({ step: e, render: t, stepSeconds: n = 1 / 20, maxSteps: r = 8 }) {
 		if (typeof e != "function" || typeof t != "function") throw TypeError("step and render must be functions");
 		if (!Number.isFinite(n) || n <= 0) throw RangeError("stepSeconds must be finite and positive");
@@ -4208,7 +4786,7 @@ var Xe = class {
 	reset() {
 		this.accumulator = 0;
 	}
-}, Y = 14, Qe = [
+}, dt = 14, ft = [
 	"generator",
 	"wire",
 	"miner",
@@ -4252,7 +4830,7 @@ var Xe = class {
 		x: 16,
 		z: 16,
 		direction: null,
-		text: "ベルトの東隣に納品箱を置きます。ここへ届いた自動生産の延べ棒が目標に加算されます。"
+		text: "ベルトの東隣に出荷所を置きます。届いた品を保持し、詳細で確認して手動出荷します。"
 	},
 	{
 		id: "generator",
@@ -4286,7 +4864,7 @@ var Xe = class {
 		direction: null,
 		text: "製錬炉の南隣にも導線を置きます。採掘機と製錬炉の両方に魔力が届く形です。"
 	}
-], $e = [
+], pt = [
 	{
 		id: "lumber",
 		kind: "lumber",
@@ -4316,7 +4894,7 @@ function $(e, t, n, r, i, a = {}) {
 	return {
 		id: t,
 		step: e,
-		total: Y,
+		total: dt,
 		title: n,
 		text: r,
 		kind: null,
@@ -4329,84 +4907,89 @@ function $(e, t, n, r, i, a = {}) {
 		...a
 	};
 }
-function et(e, t, n, i) {
-	let a = Z(e, t.x, t.z), s = r[t.kind].label;
-	if (a?.kind === t.kind && (t.direction === null || a.direction === t.direction)) return null;
-	let c = {
+function mt(e, t, n, r) {
+	let i = Z(e, t.x, t.z), a = o[t.kind].label;
+	if (i?.kind === "smelter" && t.kind === "smelter" && i.recipe !== "ingot") return $(n, t.id, "製錬炉を鉄の延べ棒レシピへ戻す", "詳細で鉄の延べ棒を選択してください。稼働中・互換性のない在庫がある時は終了と排出を待ちます。", r, {
+		focusId: i.id,
+		kind: "smelter",
+		mode: "recipe"
+	});
+	if (i?.kind === t.kind && (t.direction === null || i.direction === t.direction)) return null;
+	let s = {
 		x: t.x,
 		z: t.z
 	};
-	if (a?.kind === t.kind) {
-		let e = (t.direction - a.direction + 4) % 4;
-		return $(n, t.id, `${s}の出力を東へ向ける`, `${Q(t.x, t.z)}の${s}を選択し、Rを${e}回押してください。東→の向き（目印の矢印と同じ）へ合わせます。`, i, {
+	if (i?.kind === t.kind) {
+		let e = (t.direction - i.direction + 4) % 4;
+		return $(n, t.id, `${a}の出力を東へ向ける`, `${Q(t.x, t.z)}の${a}を選択し、Rを${e}回押してください。東→の向き（目印の矢印と同じ）へ合わせます。`, r, {
 			kind: t.kind,
-			target: c,
+			target: s,
 			direction: t.direction,
-			focusId: a.id,
+			focusId: i.id,
 			mode: "rotate",
 			blockers: ["出力方向が違うため、次の設備へ搬送できません。"]
 		});
 	}
-	let l = [];
-	if (a && l.push(`${Q(t.x, t.z)}には${r[a.kind].label}があります。Xを押してこの区画をクリックし、撤去してから建ててください。`), !(e.kits[t.kind] ?? 0)) for (let n of Object.keys(r[t.kind].cost)) {
-		let i = r[t.kind].cost[n] - (e.inventory[n] ?? 0);
-		i > 0 && l.push(`${o[n]}があと${i}個必要です。設備を選択して中身を回収するか、稼働中の工房から素材を集めてください。`);
+	let c = [];
+	if (i && c.push(`${Q(t.x, t.z)}には${o[i.kind].label}があります。Xを押してこの区画をクリックし、撤去してから建ててください。`), !(e.kits[t.kind] ?? 0)) for (let n of Object.keys(o[t.kind].cost)) {
+		let r = o[t.kind].cost[n] - (e.inventory[n] ?? 0);
+		r > 0 && c.push(`${d[n]}があと${r}個必要です。設備を選択して中身を回収するか、稼働中の工房から素材を集めてください。`);
 	}
-	return t.kind === "wire" && l.push("ここが途切れると採掘機・製錬炉が停止します。隣接する区画へ導線をつないでください。"), $(n, t.id, `${s}を${Q(t.x, t.z)}に置く`, t.text, i, {
+	return t.kind === "wire" && c.push("ここが途切れると採掘機・製錬炉が停止します。隣接する区画へ導線をつないでください。"), $(n, t.id, `${a}を${Q(t.x, t.z)}に置く`, t.text, r, {
 		kind: t.kind,
-		target: c,
+		target: s,
 		direction: t.direction,
-		focusId: a?.id ?? null,
+		focusId: i?.id ?? null,
 		mode: "build",
-		blockers: l
+		blockers: c
 	});
 }
-function tt(e) {
+function ht(e) {
 	return e.buildings.filter((e) => e.kind === "lumber").some((t) => {
 		let n = /* @__PURE__ */ new Set(), r = t;
 		for (; r && !n.has(r.id);) {
 			n.add(r.id);
-			let [t, i] = f[r.direction];
+			let [t, i] = x[r.direction];
 			if (r = Z(e, r.x + t, r.z + i), r?.kind === "generator") return !0;
 			if (r?.kind !== "belt") return !1;
 		}
 		return !1;
 	});
 }
-function nt(e, t) {
+function gt(e, t) {
 	let n = /* @__PURE__ */ new Set([t.id]), r = [t];
 	for (let t = 0; t < r.length; t++) {
 		let i = r[t];
 		if (i.kind === "generator") return !0;
-		for (let [t, a] of f) {
+		for (let [t, a] of x) {
 			let o = Z(e, i.x + t, i.z + a);
-			o && Qe.includes(o.kind) && !n.has(o.id) && (n.add(o.id), r.push(o));
+			o && ft.includes(o.kind) && !n.has(o.id) && (n.add(o.id), r.push(o));
 		}
 	}
 	return !1;
 }
-function rt(e) {
+function _t(e) {
 	let t = [];
 	for (let n of X) {
-		let i = Z(e, n.x, n.z);
-		if (!i || i.kind !== n.kind) continue;
-		let a = `${r[i.kind].label}${Q(i.x, i.z)}`;
-		(i.kind === "miner" || i.kind === "smelter") && !nt(e, i) && t.push(`${a}に魔力が届きません。導線の切れ目をつなぎ直してください。`), i.kind === "belt" && i.item && i.beltProgress + 1e-9 >= u && t.push(`${a}の品が滞留しています。先の設備の向き・入力庫・詰まりを確認し、不要な品は「回収」で取り出してください。`);
-		let s = n.id === "belt-ore" ? "ore" : n.id === "belt-ingot" ? "ingot" : null;
-		s && i.item && i.item.resource !== s && t.push(`${a}には${o[i.item.resource]}があります。この経路で運ぶ${o[s]}と違うため、「回収」で取り出してください。`), i.output.length >= 4 && t.push(`${a}の出力庫が満杯です。東向きのベルトと搬送先の詰まりを確認してください。`), i.kind === "smelter" && i.input.length >= 8 && t.push(`${a}の入力庫が満杯です。魔力と出力先を確認してください。`);
+		let r = Z(e, n.x, n.z);
+		if (!r || r.kind !== n.kind) continue;
+		let i = `${o[r.kind].label}${Q(r.x, r.z)}`;
+		(r.kind === "miner" || r.kind === "smelter") && !gt(e, r) && t.push(`${i}に魔力が届きません。導線の切れ目をつなぎ直してください。`), r.kind === "belt" && r.item && r.beltProgress + 1e-9 >= h && t.push(`${i}の品が滞留しています。先の設備の向き・入力庫・詰まりを確認し、不要な品は「回収」で取り出してください。`);
+		let a = n.id === "belt-ore" ? "ore" : n.id === "belt-ingot" ? "ingot" : null;
+		a && r.item && r.item.resource !== a && t.push(`${i}には${d[r.item.resource]}があります。この経路で運ぶ${d[a]}と違うため、「回収」で取り出してください。`), r.output.length >= 4 && t.push(`${i}の出力庫が満杯です。東向きのベルトと搬送先の詰まりを確認してください。`), r.kind === "smelter" && r.input.length >= 8 && t.push(`${i}の入力庫が満杯です。魔力と出力先を確認してください。`);
 	}
 	return t;
 }
-function it(e) {
+function vt(e) {
 	let t = [];
 	if (e.delivered >= 100 || e.research?.unlocked.includes("crystals")) {
-		let n = I(e);
-		return $(Y, "done", "初回案内を完了：次の工房づくりへ", `ここからは自由に建設できます。次の目標：${n.title}。${n.detail}`, t, { mode: "done" });
+		let n = L(e);
+		return $(dt, "done", "初回案内を完了：次の工房づくりへ", `ここからは自由に建設できます。次の目標：${n.title}。${n.detail}`, t, { mode: "done" });
 	}
 	let n = Z(e, 12, 16)?.kind === "miner" && Z(e, 14, 16)?.kind === "smelter" && Z(e, 12, 18)?.kind === "generator";
 	if (e.delivered >= 1 && n) {
 		for (let n = 0; n < X.length; n++) {
-			let r = et(e, X[n], n + 1, t);
+			let r = mt(e, X[n], n + 1, t);
 			if (r) return {
 				...r,
 				title: `工房を復旧：${r.title}`,
@@ -4417,26 +5000,36 @@ function it(e) {
 	}
 	if (e.delivered < 1) {
 		for (let n = 0; n < X.length; n++) {
-			let i = X[n], a = et(e, i, n + 1, t);
-			if (a) return a;
-			t.push(`${r[i.kind].label}${Q(i.x, i.z)}を配置済み`);
+			let r = X[n], i = mt(e, r, n + 1, t);
+			if (i) return i;
+			t.push(`${o[r.kind].label}${Q(r.x, r.z)}を配置済み`);
 		}
-		let n = Z(e, 12, 18);
-		if (!(n.working || n.input.some((e) => e.resource === "wood") || n.energy > 0 || (n.pendingEnergy ?? 0) > 0)) return $(10, "feed", "魔力発生炉へ木材を1個補給する", "魔力発生炉を選択し「設備の詳細を開く」へ。所持品の木材スロットを押すと1個を補給できます。木材は10秒で魔力になります。このあと燃料も自動化します。", t, {
+		let n = Z(e, 16, 16);
+		if (n.input.some((e) => e.resource === "ingot")) return $(11, "ship", "出荷所で最初の延べ棒を出荷する", "設備の詳細を開き、搬入庫・鉄の延べ棒を選んで「確認して出荷」を押してください。依頼10本で結晶加工を研究可能になります。余剰は売上になります。", t, {
+			kind: "delivery",
+			focusId: n.id,
+			target: {
+				x: 16,
+				z: 16
+			},
+			mode: "ship"
+		});
+		let r = Z(e, 12, 18);
+		if (!(r.working || r.input.some((e) => e.resource === "wood") || r.energy > 0 || (r.pendingEnergy ?? 0) > 0)) return $(10, "feed", "魔力発生炉へ木材を1個補給する", "魔力発生炉を選択し「設備の詳細を開く」へ。所持品の木材スロットを押すと1個を補給できます。木材は10秒で魔力になります。このあと燃料も自動化します。", t, {
 			kind: "generator",
 			target: {
 				x: 12,
 				z: 18
 			},
-			focusId: n.id,
+			focusId: r.id,
 			mode: "feed",
 			blockers: e.inventory.wood < 1 ? ["木材が1個必要です。メニューの「木材を手採取」で補充してください。"] : []
 		});
-		if (t.push("魔力発生炉に燃料、稼働中の仕事、または蓄積魔力があります"), n.working && !(n.pendingEnergy ?? 0)) {
-			let e = Math.max(0, Math.ceil(r.generator.seconds - n.progress));
+		if (t.push("魔力発生炉に燃料、稼働中の仕事、または蓄積魔力があります"), r.working && !(r.pendingEnergy ?? 0)) {
+			let e = Math.max(0, Math.ceil(o.generator.seconds - r.progress));
 			t.push(`魔力発生炉は稼働中：魔力生成まであと${e}秒（正常な待ち時間）`);
 		}
-		return $(11, "run", "最初の延べ棒が届くのを待つ", "1×または2×で動かしてください。初回は燃料の10秒、採掘、精錬、搬送の順で進みます。自動納品が1本になると次へ進みます。手動納品は数えません。", t, {
+		return $(11, "run", "最初の延べ棒が届くのを待つ", "1×または2×で動かしてください。初回は燃料の10秒、採掘、精錬、搬送の順で進みます。出荷所へ届いたら、詳細で確認して手動出荷します。購入品・初期資材は依頼に数えません。", t, {
 			kind: "delivery",
 			target: {
 				x: 16,
@@ -4444,10 +5037,10 @@ function it(e) {
 			},
 			focusId: Z(e, 16, 16).id,
 			mode: "run",
-			blockers: rt(e)
+			blockers: _t(e)
 		});
 	}
-	if (t.push(`最初の自動納品を確認（${e.delivered}本）`), tt(e)) return $(Y, "done", "案内完了：工房が自動で動きます", `木材採取から魔力発生炉への補給がつながりました。ここからは自由に建設してください。次の目標：${I(e).title}。`, t, {
+	if (t.push(`最初の自動納品を確認（${e.delivered}本）`), ht(e)) return $(dt, "done", "案内完了：工房が自動で動きます", `木材採取から魔力発生炉への補給がつながりました。ここからは自由に建設してください。次の目標：${L(e).title}。`, t, {
 		mode: "done",
 		checks: [...t, "木材採取場→ベルト→魔力発生炉が接続済み"]
 	});
@@ -4460,22 +5053,23 @@ function it(e) {
 			mode: "build"
 		});
 	}
-	for (let n = 0; n < $e.length; n++) {
-		let i = $e[n], a = et(e, i, 12 + n, t);
-		if (a) return a;
-		t.push(`${r[i.kind].label}${Q(i.x, i.z)}を配置済み`);
+	for (let n = 0; n < pt.length; n++) {
+		let r = pt[n], i = mt(e, r, 12 + n, t);
+		if (i) return i;
+		t.push(`${o[r.kind].label}${Q(r.x, r.z)}を配置済み`);
 	}
-	return $(Y, "done", "案内完了：ここからは自由に建設", `燃料補給の経路も完成しました。ここからは自由に建設してください。次の目標：${I(e).title}。`, t, { mode: "done" });
+	return $(dt, "done", "案内完了：ここからは自由に建設", `燃料補給の経路も完成しました。ここからは自由に建設してください。次の目標：${L(e).title}。`, t, { mode: "done" });
 }
 //#endregion
 //#region web/js/fantasy-automation/app.ts
-var at = class {
-	simulation = new re();
-	save = new Xe();
+var yt = class {
+	simulation = new ge();
+	save = new lt();
 	view = null;
 	ui;
 	loop;
 	kind = null;
+	buildRecipe;
 	direction = 1;
 	selectedId = null;
 	hover = null;
@@ -4497,7 +5091,7 @@ var at = class {
 	guideStep = null;
 	constructor(e, t) {
 		try {
-			this.view = new de(e, {
+			this.view = new we(e, {
 				onPick: (e, t, n) => this.pick(e, t, n),
 				onHover: (e, t) => {
 					this.placedAt && (this.placedAt.x !== e || this.placedAt.z !== t) && (this.placedAt = null), this.hover = {
@@ -4512,7 +5106,7 @@ var at = class {
 		} catch {
 			this.rendererMessage = "3D表示を開始できません。WebGL対応ブラウザで開いてください。保存・読込は利用できます。";
 		}
-		this.ui = new we(t, {
+		this.ui = new Le(t, {
 			onBuild: (e) => this.chooseBuild(e),
 			onSpeed: (e) => this.setSpeed(e),
 			onSave: () => {
@@ -4539,6 +5133,22 @@ var at = class {
 					role: t
 				}).reason), this.sync();
 			},
+			onDispatch: (e, t, n) => {
+				this.selectedId !== null && (this.message = this.simulation.command({
+					type: "dispatch",
+					id: this.selectedId,
+					source: e,
+					resource: t,
+					amount: n
+				}).reason), this.sync();
+			},
+			onBuyIron: () => {
+				this.selectedId !== null && (this.message = this.simulation.command({
+					type: "buyIron",
+					id: this.selectedId,
+					amount: 1
+				}).reason), this.sync();
+			},
 			onFeed: (e, t) => this.feed(e, t),
 			onCollect: (e, t) => this.collect(e, t),
 			onTechnologyToggle: (e) => this.toggleTechnology(e),
@@ -4562,20 +5172,21 @@ var at = class {
 			onNew: () => {
 				confirm("工房を最初から始めますか？ 保存枠は「保存」するまで残ります。") && this.init();
 			}
-		}), this.loop = new Ze({
+		}), this.loop = new ut({
 			step: () => this.simulation.step(),
 			render: () => this.render(),
 			stepSeconds: .05,
 			maxSteps: 40
-		}), ot(this), this.last = performance.now(), this.frame = requestAnimationFrame((e) => this.animate(e)), this.sync();
+		}), bt(this), this.last = performance.now(), this.frame = requestAnimationFrame((e) => this.animate(e)), this.sync();
 	}
 	init() {
 		this.pendingDemolitionId = null, this.golemGuideOpen = !1, this.technologyOpen = !1, this.simulation.init(), this.placedAt = null, this.selectedId = null, this.kind = null, this.hover = null, this.direction = 1, this.removeMode = !1, this.xHeld = !1, this.previousSpeed = 1, this.speed = 1, this.guideEnabled = !0, this.loop.reset(), this.view?.resetCamera(), this.message = "新しい工房を開きました。初期設備は建設時にキットを使用します。", this.sync();
 	}
 	chooseBuild(e) {
-		if (!C(this.simulation.state, e)) this.message = "この設備は未解放です。技術ツリーで前提と実績条件を確認してください。", this.toggleTechnology(!0);
+		let t = e;
+		if (e = c(e), !w(this.simulation.state, e)) this.message = "この設備は未解放です。技術ツリーで前提と実績条件を確認してください。", this.toggleTechnology(!0);
 		else {
-			if (this.placedAt = null, this.kind = e, this.selectedId = null, this.removeMode = !1, this.message = "区画をクリックして建設。Rで向き変更、Escで取消。", e === "crystalMiner") {
+			if (this.buildRecipe = c(t) === t ? o[e].recipes?.find((e) => T(this.simulation.state, e)) : i[t].recipes?.[0], this.placedAt = null, this.kind = e, this.selectedId = null, this.removeMode = !1, this.message = "区画をクリックして建設。Rで向き変更、Escで取消。", e === "crystalMiner") {
 				let e = this.simulation.state, t = e.terrain.findIndex((t, n) => t === "crystal" && !e.buildings.some((e) => e.z * 32 + e.x === n));
 				t < 0 && (t = e.pendingCrystalCells?.[0] ?? -1), t >= 0 && (this.hover = {
 					x: t % 32,
@@ -4599,10 +5210,15 @@ var at = class {
 		e.type === "technology" ? this.toggleTechnology(!0) : e.type === "build" && e.kind ? (this.golemGuideOpen = !1, this.chooseBuild(e.kind)) : e.type === "inspect" && e.id !== void 0 ? this.inspect(e.id) : e.type === "run" && (this.golemGuideOpen = !1, this.setSpeed(1));
 	}
 	research(e) {
-		this.message = this.simulation.command({
+		let t = this.simulation.command({
 			type: "research",
 			id: e
-		}).reason, this.sync();
+		});
+		if (this.message = t.reason, t.ok) {
+			let t = this.ui.researchReward(e);
+			this.message += ` 解放：${t}`;
+		}
+		this.sync();
 	}
 	track(e) {
 		this.message = this.simulation.command({
@@ -4611,18 +5227,22 @@ var at = class {
 		}).reason, this.sync();
 	}
 	chooseRecipe(e) {
-		this.selectedId !== null && (this.message = this.simulation.command({
+		this.kind ? (o[this.kind].recipes?.includes(e) && T(this.simulation.state, e) && (this.buildRecipe = e), this.sync()) : (this.selectedId !== null && (this.message = this.simulation.command({
 			type: "recipe",
 			id: this.selectedId,
 			recipe: e
-		}).reason), this.sync();
+		}).reason), this.sync());
 	}
 	toggleGuide(e = !this.guideEnabled) {
 		this.guideEnabled = e, this.sync();
 	}
 	guideAction() {
-		let e = it(this.simulation.state);
-		this.placedAt = null, this.removeMode = !1, this.xHeld = !1, e.target && (this.hover = { ...e.target }, e.mode === "build" && this.view?.revealTile(e.target.x, e.target.z)), e.mode === "done" ? this.toggleGuide(!1) : e.mode === "run" ? (this.kind = null, this.selectedId = null, this.setSpeed(1)) : (e.mode === "rotate" || e.mode === "feed" ? (this.kind = null, this.selectedId = e.focusId, this.message = e.mode === "feed" ? "所持品の木材スロットを押すと1個を補給できます。木材から魔力を作ります。" : "設備の詳細にある「回転 R」で目印と同じ向きにします。") : (this.kind = e.kind, this.direction = e.direction ?? 1, this.selectedId = null, this.message = "設備を選びました。地図の光る目印を左クリックして建設してください。"), this.sync(), e.mode === "build" && document.querySelector("#world canvas")?.focus({ preventScroll: !0 }));
+		let e = vt(this.simulation.state);
+		this.placedAt = null, this.removeMode = !1, this.xHeld = !1, e.target && (this.hover = { ...e.target }, e.mode === "build" && this.view?.revealTile(e.target.x, e.target.z)), e.mode === "done" ? this.toggleGuide(!1) : e.mode === "run" ? (this.kind = null, this.selectedId = null, this.setSpeed(1)) : (e.mode === "rotate" || e.mode === "feed" || e.mode === "ship" || e.mode === "recipe" ? (this.kind = null, this.selectedId = e.focusId, this.message = e.mode === "recipe" ? this.simulation.command({
+			type: "recipe",
+			id: e.focusId,
+			recipe: "ingot"
+		}).reason : e.mode === "ship" ? "出荷元・品物・個数と見積もりを確認し、出荷ボタンを押してください。" : e.mode === "feed" ? "所持品の木材スロットを押すと1個を補給できます。木材から魔力を作ります。" : "設備の詳細にある「回転 R」で目印と同じ向きにします。") : (this.kind = e.kind, this.buildRecipe = this.kind ? o[this.kind].recipes?.[0] : void 0, this.direction = e.direction ?? 1, this.selectedId = null, this.message = "設備を選びました。地図の光る目印を左クリックして建設してください。"), this.sync(), e.mode === "build" && document.querySelector("#world canvas")?.focus({ preventScroll: !0 }));
 	}
 	setSpeed(e) {
 		this.speed = e, e && (this.previousSpeed = e), this.loop.reset(), this.last = performance.now(), this.sync();
@@ -4682,7 +5302,7 @@ var at = class {
 		if (this.ui.isWorldInputBlocked() || n.type === "pointermove" && (this.removeMode || this.xHeld) || n.type === "pointermove" && this.kind !== "belt" && !this.removeMode && !this.xHeld) return;
 		let r = this.simulation.state.buildings.find((n) => n.x === e && n.z === t);
 		if (n.type !== "pointermove" || !r || this.removeMode || this.xHeld) {
-			if (n.shiftKey && r) this.kind = r.kind, this.direction = r.direction, this.selectedId = null, this.message = "同じ設備を選びました。空き区画へ建設できます。";
+			if (n.shiftKey && r) this.kind = r.kind, this.buildRecipe = r.recipe, this.direction = r.direction, this.selectedId = null, this.message = "同じ設備を選びました。空き区画へ建設できます。";
 			else if ((this.removeMode || this.xHeld) && r) {
 				this.selectedId = r.id, this.remove();
 				return;
@@ -4692,7 +5312,8 @@ var at = class {
 					kind: this.kind,
 					x: e,
 					z: t,
-					direction: this.direction
+					direction: this.direction,
+					...this.buildRecipe ? { recipe: this.buildRecipe } : {}
 				});
 				this.message = n.reason, this.placedAt = n.ok ? {
 					x: e,
@@ -4737,6 +5358,7 @@ var at = class {
 		let e = !!this.kind && !!this.hover && this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction).ok;
 		this.view?.render(this.simulation.state, {
 			kind: this.kind,
+			recipe: this.buildRecipe,
 			direction: this.direction,
 			valid: e,
 			hover: this.hover,
@@ -4749,14 +5371,15 @@ var at = class {
 		});
 	}
 	sync() {
-		this.guideStep = this.guideEnabled && !this.technologyOpen && !this.golemGuideOpen && this.pendingDemolitionId === null ? it(this.simulation.state) : null;
+		this.guideStep = this.guideEnabled && !this.technologyOpen && !this.golemGuideOpen && this.pendingDemolitionId === null ? vt(this.simulation.state) : null;
 		let e = [this.rendererMessage, this.message].filter(Boolean).join(" ");
 		if (this.kind && this.hover) {
 			let t = this.simulation.canBuild(this.kind, this.hover.x, this.hover.z, this.direction);
 			if (!t.ok && (this.placedAt?.x !== this.hover.x || this.placedAt?.z !== this.hover.z) && !e.includes(t.reason)) e += ` 配置予定: ${t.reason}`;
 			else if (t.ok) {
-				let t = new Map(this.simulation.state.buildings.map((e) => [`${e.x},${e.z}`, e])), n = le({
+				let t = new Map(this.simulation.state.buildings.map((e) => [`${e.x},${e.z}`, e])), n = Se({
 					kind: this.kind,
+					recipe: this.buildRecipe,
 					...this.hover,
 					direction: this.direction
 				}, t), r = {
@@ -4777,6 +5400,7 @@ var at = class {
 		let t = this.simulation.undoPlacement();
 		this.ui.update(this.simulation.state, {
 			kind: this.kind,
+			recipe: this.buildRecipe,
 			direction: this.direction,
 			selectedId: this.selectedId,
 			speed: this.speed,
@@ -4786,7 +5410,7 @@ var at = class {
 			guide: this.guideStep,
 			technologyOpen: this.technologyOpen,
 			golemGuideOpen: this.golemGuideOpen,
-			undoLabel: t ? `${r[t.kind].label} (${t.x}, ${t.z})` : null,
+			undoLabel: t ? `${o[t.kind].label} (${t.x}, ${t.z})` : null,
 			demolition: this.simulation.state.buildings.find((e) => e.id === this.pendingDemolitionId) ?? null
 		}), this.view?.setInputBlocked(this.ui.isWorldInputBlocked());
 	}
@@ -4794,7 +5418,7 @@ var at = class {
 		this.pendingDemolitionId === null ? this.technologyOpen && e.code === "Escape" ? this.toggleTechnology(!1) : e.code === "Escape" && this.ui.closeOverlay() || this.ui.isWorldInputBlocked() || e.target instanceof Element && e.target.closest("#technology-panel") || e.target instanceof Element && (e.target.closest("#game-ui") || e.target.closest("input,select,textarea,[contenteditable=\"true\"]") || e.target.closest("button") && !["KeyR", "Escape"].includes(e.code)) || e.repeat && e.code !== "KeyX" || ((e.ctrlKey || e.metaKey) && e.code === "KeyZ" && !e.shiftKey ? (e.preventDefault(), this.undoBuild()) : e.code === "Delete" && this.selectedId !== null ? (e.preventDefault(), this.remove()) : /^Digit[1-6]$/.test(e.code) ? (e.preventDefault(), this.ui.chooseQuickSlot(Number(e.code.slice(-1)) - 1)) : (e.code === "KeyX" && (this.xHeld = !0, this.message = "Xを押しながら施設をクリックして撤去。"), e.code === "KeyR" && this.rotate(), e.code === "Escape" && this.cancel(), e.code === "Space" && (e.preventDefault(), this.togglePause()))) : e.code === "Escape" && (e.preventDefault(), this.cancelRemove());
 	}
 };
-function ot(e) {
+function bt(e) {
 	document.addEventListener("keydown", (t) => e.key(t)), document.addEventListener("keyup", (t) => {
 		t.code === "KeyX" && (e.xHeld = !1);
 	}), window.addEventListener("blur", () => {
@@ -4805,6 +5429,6 @@ function ot(e) {
 		cancelAnimationFrame(e.frame), e.ui.dispose(), e.view?.dispose();
 	}, { once: !0 });
 }
-var st = document.querySelector("#world"), ct = document.querySelector("#game-ui");
-st && ct && new at(st, ct);
+var xt = document.querySelector("#world"), St = document.querySelector("#game-ui");
+xt && St && new yt(xt, St);
 //#endregion

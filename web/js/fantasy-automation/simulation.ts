@@ -1,10 +1,11 @@
-import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, GOLEM_INTERVAL, GOLEM_RANGE, INPUT_CAPACITY, OUTPUT_CAPACITY, PORTAL_ENERGY, PORTAL_INTERVAL, POWER_KINDS, RECIPES, RESOURCES, RESOURCE_NAMES, STORAGE_CAPACITY, TREE_INTERVAL, constructionRefund, getRecipe } from './data';
+import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, GOLEM_INTERVAL, GOLEM_RANGE, INPUT_CAPACITY, OUTPUT_CAPACITY, PORTAL_ENERGY, PORTAL_INTERVAL, POWER_KINDS, RECIPES, RESOURCES, RESOURCE_NAMES, STORAGE_CAPACITY, TREE_INTERVAL, constructionRefund, commonKind, LEGACY_DEFINITIONS, getRecipe } from './data';
+import { MARKET, SALE_RESOURCES, eligibleShipment, shipmentQuote } from './market';
 import { migrateGameState } from './migration';
 import { canResearch, currentSwordRate, isKindUnlocked, isRecipeUnlocked } from './technology';
 import { DIRECTIONS, SIZE, STEP, type Building, type Command, type CommandResult, type Direction, type GameState, type Item, type Kind, type Resource } from './types';
 
 type Network = { generators: Building[]; members: number[] };
-type PlacementReceipt = { id: number; kind: Kind; kit: boolean; paid: Item[]; tracked: Item[] };
+type PlacementReceipt = { id: number; kind: Kind; kit: Kind | null; paid: Item[]; tracked: Item[] };
 type Transfer = { source: Building; target: Building; item: Item; sourceSlot: 'item' | 'input' | 'output'; port: 0 | 1 };
 const TECHNOLOGIES = ['basic', 'logistics', 'crystals', 'assembly', 'mastery', 'runecraft', 'golemcraft', 'sanctuary', 'alchemy', 'portalcraft', 'worldGrafting', 'worldAwakened'] as const;
 const key = (x: number, z: number): number => z * SIZE + x;
@@ -44,11 +45,11 @@ export class Simulation {
     terrain[key(9, 18)] = terrain[key(9, 19)] = 'forest';
     terrain[key(20, 16)] = terrain[key(20, 15)] = 'crystal';
     this.state = {
-      version: 4, seed, tick: 0, nextId: 1, terrain,
+      version: 5, seed, tick: 0, nextId: 1, terrain,
       inventory: { wood: 40, ore: 0, ingot: 20, rawCrystal: 0, crystal: 0, sword: 0, runeCore: 0, golemFrame: 0, golem: 0, essence: 0, portalCore: 0, worldSeed: 0 },
       kits: { miner: 1, smelter: 1, generator: 1 }, buildings: [], delivered: 0, won: false,
       stats: { produced: {}, delivered: {}, recentSwordTicks: [], peakSwordRate: 0, golemTransfers: 0, golemFuelTransfers: 0, portalTransfers: 0, treeGrowth: 0 },
-      research: { unlocked: ['basic'], tracked: null }, inventoryItems: [],
+      research: { unlocked: ['basic'], tracked: null }, inventoryItems: [], market: { coins: 0, sold: {} },
     };
   }
 
@@ -71,7 +72,7 @@ export class Simulation {
     if (kind === 'miner' && terrain !== 'ore') return failure('採掘機は鉄鉱脈の上に配置してください');
     if (kind === 'crystalMiner' && terrain !== 'crystal') return failure('魔晶採掘機は魔晶鉱脈の上に配置してください');
     if (kind === 'lumber' && terrain !== 'forest') return failure('木材採取場は森林の上に配置してください');
-    if ((this.state.kits[kind] ?? 0) > 0) return success('所持設備を設置');
+    if (this.kitFor(kind)) return success('所持設備を設置');
     for (const resource of RESOURCES) {
       const cost = DEFINITIONS[kind].cost[resource] ?? 0;
       if ((this.state.inventory[resource] ?? 0) < cost) return failure(`建設素材が不足しています（${RESOURCE_NAMES[resource]} ${cost}）`);
@@ -85,7 +86,7 @@ export class Simulation {
       if (!candidate) return failure('取り消せる未稼働の配置がありません。読込後には配置履歴を引き継ぎません');
       const receipt = this.placements.find(value => value.id === candidate.id)!;
       this.markUsed(candidate.id); this.detach(candidate);
-      if (receipt.kit) this.state.kits[receipt.kind] = (this.state.kits[receipt.kind] ?? 0) + 1;
+      if (receipt.kit) this.state.kits[receipt.kit] = (this.state.kits[receipt.kit] ?? 0) + 1;
       else {
         for (const item of receipt.paid) this.state.inventory[item.resource] = (this.state.inventory[item.resource] ?? 0) + 1;
         this.state.inventoryItems!.push(...receipt.tracked.map(item => ({ ...item })));
@@ -109,17 +110,21 @@ export class Simulation {
       return success(command.id === null ? '追跡を解除しました' : '次の研究目標を追跡します');
     }
     if (command.type === 'build') {
+      if (!Object.hasOwn(DEFINITIONS, command.kind)) return failure('設備の種類が不正です');
+      const requested = command.kind;
+      const recipe = command.recipe ?? (commonKind(requested) !== requested ? LEGACY_DEFINITIONS[requested].recipes?.[0] : undefined) ?? DEFINITIONS[commonKind(requested)].recipes?.[0];
+      command = { ...command, kind: commonKind(requested) };
+      if (recipe && (!DEFINITIONS[command.kind].recipes?.includes(recipe) || !isRecipeUnlocked(this.state, recipe))) return failure('このレシピは未解放、または設備に対応していません');
       const result = this.canBuild(command.kind, command.x, command.z, command.direction);
       if (!result.ok) return result;
-      const kit = (this.state.kits[command.kind] ?? 0) > 0;
+      const kit = this.kitFor(command.kind);
       const tracked = new Set(this.state.inventoryItems);
       const paid: Item[] = [];
-      if (kit) this.state.kits[command.kind]!--;
+      if (kit) this.state.kits[kit]!--;
       else for (const resource of RESOURCES) paid.push(...this.takeInventory(resource, DEFINITIONS[command.kind].cost[resource] ?? 0));
       const id = this.state.nextId;
-      const recipe = DEFINITIONS[command.kind].recipes?.[0];
       this.state.buildings.push({
-        id: this.state.nextId++, kind: command.kind, x: command.x, z: command.z, direction: command.direction,
+        id: this.state.nextId++, kind: command.kind, constructionCost: { ...(kit ? LEGACY_DEFINITIONS[kit].cost : DEFINITIONS[command.kind].cost) }, x: command.x, z: command.z, direction: command.direction,
         input: [], output: [], reserved: [], progress: 0, working: false, energy: 0, status: '待機中', item: null, beltProgress: 0,
         ...(recipe ? { recipe } : {}), ...(command.kind === 'splitter' ? { splitCursor: 0 } : {}),
         ...(command.kind === 'golemRelay' ? { golemPolicy: 'fuel', golemCooldown: 0 } : {}),
@@ -137,11 +142,12 @@ export class Simulation {
       // Completed generator fuel is burned; its remaining magic is an output, not recoverable wood.
       const reserved = building.kind === 'generator' && (building.pendingEnergy ?? 0) > 0 ? [] : (building.reserved ?? []);
       this.putInventory([...building.input, ...building.output, ...reserved, ...(building.item ? [building.item] : []), ...(building.golemWorker ? [building.golemWorker] : [])]);
-      const refund = constructionRefund(building.kind);
+      const refund = constructionRefund(building.kind, building.constructionCost);
       for (const resource of RESOURCES) this.state.inventory[resource] = (this.state.inventory[resource] ?? 0) + (refund[resource] ?? 0);
       this.detach(building);
       return success(building.kind === 'belt' ? 'ベルトを撤去しました。中身と建設素材の全額を回収（木材1・鉄の延べ棒1）' : '設備を撤去しました。中身と建設素材の半分を回収');
     }
+    if (command.type === 'dispatch' || command.type === 'buyIron') return this.trade(command);
     if (command.type === 'rotate') {
       building.direction = ((building.direction + 1) % 4) as Direction;
       return success('出力方向を回転しました');
@@ -176,13 +182,13 @@ export class Simulation {
       if (!this.accepts(building, command.resource)) return failure('この設備ではその素材を使用できません');
       if ((this.state.inventory[command.resource] ?? 0) < command.amount) return failure('所持素材が不足しています');
       if (conveyor(building) && (building.item || command.amount !== 1)) return failure('搬送設備には空き区画へ1個ずつ投入してください');
-      if (!conveyor(building) && building.kind !== 'delivery' && !this.canReceive(building, command.resource, command.amount)) return failure('入力庫が満杯、または他のレシピ素材用の空きが必要です');
+      if (!conveyor(building) && !this.canReceive(building, command.resource, command.amount)) return failure('入力庫が満杯、または他のレシピ素材用の空きが必要です');
       const items = this.takeInventory(command.resource, command.amount).map(item => ({ ...item, handled: true }));
       this.markUsed(building.id);
-      if (building.kind === 'delivery') building.status = '手動納品（目標には算入されません）';
+      if (building.kind === 'delivery') { building.input.push(...items); building.status = '手動搬入。出荷所で内容を確認して出荷してください'; }
       else if (conveyor(building)) { building.item = items[0]; building.beltProgress = 0; }
       else building.input.push(...items);
-      return success(building.kind === 'delivery' ? '手動納品は目標の本数・生産実績に算入されません' : '素材を補給しました');
+      return success(building.kind === 'delivery' ? '出荷所へ搬入しました。まだ出荷・売却していません' : '素材を補給しました');
     }
     if (command.type === 'collect') {
       if (command.resource !== undefined && !RESOURCES.includes(command.resource)) return failure('素材の種類が不正です');
@@ -227,6 +233,45 @@ export class Simulation {
     }
   }
 
+  private kitFor(kind: Kind): Kind | null {
+    return (Object.keys(this.state.kits) as Kind[]).find(key => commonKind(key) === kind && (this.state.kits[key] ?? 0) > 0) ?? null;
+  }
+
+  private trade(command: Extract<Command, { type: 'dispatch' | 'buyIron' }>): CommandResult {
+    const depot = this.state.buildings.find(value => value.id === command.id);
+    if (!depot || depot.kind !== 'delivery') return failure('出荷所を選んでください');
+    if (!Number.isSafeInteger(command.amount) || command.amount < 1 || command.amount > 1000) return failure('数量は1〜1000個です');
+    const market = this.state.market!;
+    if (command.type === 'buyIron') {
+      const cost = command.amount * MARKET.buy.ingot;
+      const inventory = this.state.inventory.ingot + command.amount;
+      if (market.coins < cost) return failure(`資金不足。延べ棒1個は${MARKET.buy.ingot}コイン。木材を手採取して売却できます`);
+      if (!Number.isSafeInteger(inventory)) return failure('所持数の上限です');
+      market.coins -= cost;
+      this.putInventory(Array.from({ length: command.amount }, () => ({ resource: 'ingot' as const, automated: false, handled: true })));
+      this.markUsed(depot.id);
+      return success(`建設用の鉄の延べ棒${command.amount}個を購入（−${cost}コイン）。購入品は依頼実績に入りません`);
+    }
+    if (!SALE_RESOURCES.includes(command.resource as typeof SALE_RESOURCES[number]) || !['inventory', 'depot'].includes(command.source)) return failure('出荷できるのは木材・延べ棒・魔導剣です');
+    const held = command.source === 'inventory' ? this.state.inventoryItems!.filter(item => item.resource === command.resource) : depot.input.filter(item => item.resource === command.resource);
+    const available = command.source === 'inventory' ? this.state.inventory[command.resource] ?? 0 : held.length;
+    if (available < command.amount) return failure('出荷する品が不足しています');
+    const items = held.slice(0, command.amount);
+    while (items.length < command.amount) items.push({ resource: command.resource, automated: false, handled: true });
+    const quote = shipmentQuote(this.state, items);
+    if (!Number.isSafeInteger(market.coins + quote.coins) || !Number.isSafeInteger((market.sold[command.resource] ?? 0) + quote.sold)) return failure('出荷会計の上限です');
+    if (command.source === 'inventory') this.takeInventory(command.resource, command.amount);
+    else { let left = command.amount; depot.input = depot.input.filter(item => { if (item.resource === command.resource && left > 0) { left--; return false; } return true; }); }
+    market.coins += quote.coins; market.sold[command.resource] = (market.sold[command.resource] ?? 0) + quote.sold;
+    if (quote.automatic) {
+      this.state.stats!.delivered[command.resource] = (this.state.stats!.delivered[command.resource] ?? 0) + quote.automatic;
+      if (command.resource === 'ingot') this.state.delivered += quote.automatic;
+    }
+    this.state.won = this.state.delivered >= GOAL;
+    this.markUsed(depot.id);
+    return success(`出荷完了：依頼へ${quote.assigned}個、売却${quote.sold}個、＋${quote.coins}コイン。研究条件の達成は技術ツリーで確認できます`);
+  }
+
   powerSummary(): { stored: number; capacity: number } {
     const generators = this.state.buildings.filter(building => building.kind === 'generator');
     return { stored: generators.reduce((sum, generator) => sum + generator.energy, 0), capacity: generators.length * ENERGY_CAPACITY };
@@ -258,7 +303,7 @@ export class Simulation {
       if (conveyor(building)) { building.status = building.item ? (building.beltProgress + 1e-9 >= BELT_SECONDS ? '搬送先が詰まっています' : '搬送中') : '搬送品を待っています'; continue; }
       if (building.kind === 'storage') { building.status = building.input.length >= STORAGE_CAPACITY ? '収納庫が満杯です（32個）' : `収納中 ${building.input.length}/32個`; continue; }
       if (building.kind === 'wire') { building.status = networks.get(building.id)?.generators.length ? '魔力網に接続中' : '魔力発生炉に接続してください'; continue; }
-      if (building.kind === 'delivery') { if (!building.status.startsWith('手動')) building.status = this.state.won ? '鉄の延べ棒の目標達成！' : '鉄の延べ棒・魔導剣の自動納品を待っています'; continue; }
+      if (building.kind === 'delivery') { building.status = `出荷待ち ${building.input.length}/${STORAGE_CAPACITY}個。詳細で確認して手動出荷`; continue; }
       this.produce(building, networks.get(building.id));
     }
     this.state.won = this.state.delivered >= GOAL;
@@ -282,7 +327,7 @@ export class Simulation {
   private putInventory(items: Item[]): void {
     for (const item of items) {
       this.state.inventory[item.resource] = (this.state.inventory[item.resource] ?? 0) + 1;
-      this.state.inventoryItems!.push({ ...item, handled: true });
+      this.state.inventoryItems!.push({ ...item, handled: true, ...((item.resource === 'ingot' || item.resource === 'sword') && eligibleShipment(item) ? { shipEligible: true } : {}) });
     }
   }
 
@@ -290,15 +335,14 @@ export class Simulation {
 
   private accepts(building: Building, resource: Resource): boolean {
     if (building.kind === 'portalGate') return building.portalRole === 'send';
-    return conveyor(building) || building.kind === 'storage' || (building.kind === 'golemRelay' && resource === 'golem') || (this.recipeInput(building)[resource] ?? 0) > 0 || (building.kind === 'delivery' && (resource === 'ingot' || resource === 'sword'));
+    return conveyor(building) || building.kind === 'storage' || (building.kind === 'golemRelay' && resource === 'golem') || (this.recipeInput(building)[resource] ?? 0) > 0 || (building.kind === 'delivery' && SALE_RESOURCES.includes(resource as typeof SALE_RESOURCES[number]));
   }
 
   private canReceive(building: Building, resource: Resource, amount: number, incoming = 0): boolean {
     if (!this.accepts(building, resource)) return false;
-    if (building.kind === 'delivery') return true;
     if (building.kind === 'golemRelay') return amount === 1 && !building.golemWorker && building.input.length + incoming === 0;
     if (conveyor(building)) return amount === 1 && incoming === 0 && (!building.item || building.beltProgress + 1e-9 >= BELT_SECONDS);
-    const capacity = building.kind === 'storage' ? STORAGE_CAPACITY : INPUT_CAPACITY;
+    const capacity = (building.kind === 'storage' || building.kind === 'delivery') ? STORAGE_CAPACITY : INPUT_CAPACITY;
     if (building.input.length + incoming + amount > capacity) return false;
     // Preserve all missing ingredients jointly. Independent per-resource limits
     // allow two surplus ingredients to fill a three-ingredient recipe's buffer.
@@ -537,14 +581,7 @@ export class Simulation {
     }
     for (const transfer of plan) {
       if (conveyor(transfer.target)) { transfer.target.item = transfer.item; transfer.target.beltProgress = 0; }
-      else if (transfer.target.kind === 'delivery') {
-        if (automatic(transfer.item)) {
-          const resource = transfer.item.resource;
-          this.state.stats!.delivered[resource] = (this.state.stats!.delivered[resource] ?? 0) + 1;
-          if (resource === 'ingot') this.state.delivered++;
-        }
-        transfer.target.status = automatic(transfer.item) ? `${RESOURCE_NAMES[transfer.item.resource]}を自動納品しました` : '手動で取り出し・投入した品は目標に算入されません';
-      } else transfer.target.input.push(transfer.item);
+ else transfer.target.input.push(transfer.item);
     }
   }
 }

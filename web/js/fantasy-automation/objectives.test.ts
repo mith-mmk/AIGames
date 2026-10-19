@@ -23,9 +23,9 @@ function legacy(delivered: number): GameState {
 
 test('new factories show the actual automatic iron delivery goal', () => {
   assert.deepEqual(getObjective(state()), {
-    title: '鉄の延べ棒を100本自動納品',
-    detail: '採掘機→製錬炉→納品箱をつなぎ、自動生産した鉄の延べ棒を自動搬送してください。手で投入・回収した品は数えません。研究条件を達成すると次の目標へ進みます。',
-    resource: 'ingot', current: 0, target: 100, action: 'guide', completed: false,
+    title: '鉄の延べ棒を10本出荷して結晶加工へ',
+    detail: '採掘機→製錬炉→出荷所へ運び、詳細で手動出荷します。自動生産した延べ棒10本で結晶加工を研究可能。回収済みの対象品も手持ちから出荷できます。初期・購入資材は売却のみです。',
+    resource: 'ingot', current: 0, target: 10, action: 'guide', completed: false,
   });
 });
 
@@ -39,7 +39,7 @@ test('research opportunities are surfaced at five produced ingots and ten delive
   assert.equal(goal.current, 5); assert.equal(goal.target, 5); assert.equal(goal.completed, false);
   assert.match(goal.detail, /収納箱/); assert.equal(goal.action, 'technology');
   value.research!.unlocked.push('logistics'); value.delivered = 9; value.stats!.produced.ingot = 9; value.stats!.delivered.ingot = 9;
-  assert.equal(getObjective(value).target, 100);
+  assert.equal(getObjective(value).target, 10);
   value.delivered = 10; value.stats!.produced.ingot = 10; value.stats!.delivered.ingot = 10;
   goal = getObjective(value);
   assert.match(goal.title, /結晶加工.*研究する/); assert.equal(goal.current, 10); assert.equal(goal.target, 10);
@@ -124,7 +124,7 @@ test('objective display derives iron completion from deliveries without weakenin
   assert.match(getObjective(complete).title, /魔導剣の組立/);
   assert.throws(() => validateSave(complete), /クリア状態/);
   const incomplete = state(2); incomplete.won = true;
-  assert.equal(getObjective(incomplete).target, 100);
+  assert.equal(getObjective(incomplete).target, 10);
   assert.throws(() => validateSave(incomplete), /クリア状態/);
 });
 
@@ -140,7 +140,7 @@ test('goal lookup neither mutates simulation state nor shares mutable display st
 test('mastery advances into rune crafting, golem assembly and automated fuel support', () => {
   const value = state(100, ['basic', 'logistics', 'crystals', 'assembly', 'mastery']);
   let goal = getObjective(value);
-  assert.match(goal.title, /ルーン.*研究する/); assert.match(goal.detail, /ルーン|刻印/); assert.equal(goal.completed, false);
+  assert.match(goal.title, /ルーン.*研究する/); assert.match(goal.detail, /魔導核|鉄の躯体/); assert.equal(goal.completed, false);
   value.research!.unlocked.push('runecraft');
   goal = getObjective(value); assert.match(goal.title, /魔導核を自動生産/); assert.equal(goal.current, 0); assert.equal(goal.target, 3);
   value.stats!.produced.runeCore = 3;
@@ -158,10 +158,10 @@ test('mastery advances into rune crafting, golem assembly and automated fuel sup
 
 test('initial basic and logistics stages retain the iron objective until research becomes available', () => {
   const value = state(4);
-  assert.match(getObjective(value).title, /鉄の延べ棒を100本/);
+  assert.match(getObjective(value).title, /鉄の延べ棒を10本/);
   value.research!.unlocked.push('logistics'); value.delivered = 9;
   value.stats!.produced.ingot = 9; value.stats!.delivered.ingot = 9;
-  assert.match(getObjective(value).title, /鉄の延べ棒を100本/);
+  assert.match(getObjective(value).title, /鉄の延べ棒を10本/);
   value.delivered = 99; value.stats!.produced.ingot = 99; value.stats!.delivered.ingot = 99;
   assert.match(getObjective(value).title, /結晶加工を研究する/);
 });
@@ -176,7 +176,7 @@ test('late production stages never revert to iron quota when only ten iron ingot
   value.stats!.produced.sword = 10; value.stats!.delivered.sword = 10; value.stats!.peakSwordRate = 10;
   value.research!.unlocked.push('mastery');
   assert.match(getObjective(value).title, /ルーン.*研究する/);
-  const old = structuredClone(value); old.version = 2;
+  const old = structuredClone(value); old.version = 2; delete old.market;
   delete old.inventory.runeCore; delete old.inventory.golemFrame; delete old.inventory.golem;
   delete old.stats!.golemTransfers; delete old.stats!.golemFuelTransfers;
   delete old.inventory.essence; delete old.inventory.portalCore; delete old.inventory.worldSeed;

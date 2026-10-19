@@ -6,7 +6,7 @@ export interface GuideStep {
   id: string; step: number; total: number; title: string; text: string;
   kind: Kind | null; target: { x: number; z: number } | null;
   direction: Direction | null; focusId: number | null;
-  mode: 'build' | 'rotate' | 'feed' | 'run' | 'done';
+  mode: 'build' | 'rotate' | 'feed' | 'run' | 'done' | 'ship' | 'recipe';
   blockers: string[]; checks: string[];
 }
 
@@ -21,7 +21,7 @@ const FIRST_LINE: readonly Placement[] = [
   { id: 'belt-ore', kind: 'belt', x: 13, z: 16, direction: 1, text: '採掘機の東隣にベルトを置き、鉄鉱石を次の区画へ運びます。矢印は東へ。' },
   { id: 'smelter', kind: 'smelter', x: 14, z: 16, direction: 1, text: 'ベルトの東隣に製錬炉を置きます。鉱石2個から延べ棒1本を作ります。出力は東へ。' },
   { id: 'belt-ingot', kind: 'belt', x: 15, z: 16, direction: 1, text: '製錬炉の東隣にベルトを置きます。完成した延べ棒を東へ運びます。' },
-  { id: 'delivery', kind: 'delivery', x: 16, z: 16, direction: null, text: 'ベルトの東隣に納品箱を置きます。ここへ届いた自動生産の延べ棒が目標に加算されます。' },
+  { id: 'delivery', kind: 'delivery', x: 16, z: 16, direction: null, text: 'ベルトの東隣に出荷所を置きます。届いた品を保持し、詳細で確認して手動出荷します。' },
   { id: 'generator', kind: 'generator', x: 12, z: 18, direction: null, text: '採掘機から南へ2区画の場所に魔力発生炉を置きます。木材を燃料に魔力を作ります。' },
   { id: 'wire-miner', kind: 'wire', x: 12, z: 17, direction: null, text: '魔力発生炉と採掘機の間に導線を置き、魔力をつなぎます。導線の向きは関係ありません。' },
   { id: 'wire-link', kind: 'wire', x: 13, z: 17, direction: null, text: '導線を東へ延ばします。隣り合う導線と設備が1つの魔力網になります。' },
@@ -44,6 +44,7 @@ function result(step: number, id: string, title: string, text: string, checks: s
 function placement(state: GameState, wanted: Placement, step: number, checks: string[]): GuideStep | null {
   const existing = at(state, wanted.x, wanted.z);
   const label = DEFINITIONS[wanted.kind].label;
+  if (existing?.kind === 'smelter' && wanted.kind === 'smelter' && existing.recipe !== 'ingot') return result(step, wanted.id, '製錬炉を鉄の延べ棒レシピへ戻す', '詳細で鉄の延べ棒を選択してください。稼働中・互換性のない在庫がある時は終了と排出を待ちます。', checks, { focusId: existing.id, kind: 'smelter', mode: 'recipe' });
   if (existing?.kind === wanted.kind && (wanted.direction === null || existing.direction === wanted.direction)) return null;
   const target = { x: wanted.x, z: wanted.z };
   if (existing?.kind === wanted.kind) {
@@ -136,6 +137,8 @@ export function evaluateGuide(state: GameState): GuideStep {
       if (next) return next;
       checks.push(`${DEFINITIONS[wanted.kind].label}${location(wanted.x, wanted.z)}を配置済み`);
     }
+    const depot = at(state, 16, 16)!;
+    if (depot.input.some(item => item.resource === 'ingot')) return result(11, 'ship', '出荷所で最初の延べ棒を出荷する', '設備の詳細を開き、搬入庫・鉄の延べ棒を選んで「確認して出荷」を押してください。依頼10本で結晶加工を研究可能になります。余剰は売上になります。', checks, { kind: 'delivery', focusId: depot.id, target: { x: 16, z: 16 }, mode: 'ship' });
     const generator = at(state, 12, 18)!;
     const fueled = generator.working || generator.input.some(item => item.resource === 'wood') || generator.energy > 0 || (generator.pendingEnergy ?? 0) > 0;
     if (!fueled) return result(10, 'feed', '魔力発生炉へ木材を1個補給する',
@@ -147,7 +150,7 @@ export function evaluateGuide(state: GameState): GuideStep {
       checks.push(`魔力発生炉は稼働中：魔力生成まであと${remaining}秒（正常な待ち時間）`);
     }
     return result(11, 'run', '最初の延べ棒が届くのを待つ',
-      '1×または2×で動かしてください。初回は燃料の10秒、採掘、精錬、搬送の順で進みます。自動納品が1本になると次へ進みます。手動納品は数えません。', checks,
+      '1×または2×で動かしてください。初回は燃料の10秒、採掘、精錬、搬送の順で進みます。出荷所へ届いたら、詳細で確認して手動出荷します。購入品・初期資材は依頼に数えません。', checks,
       { kind: 'delivery', target: { x: 16, z: 16 }, focusId: at(state, 16, 16)!.id, mode: 'run', blockers: runningBlockers(state) });
   }
   checks.push(`最初の自動納品を確認（${state.delivered}本）`);

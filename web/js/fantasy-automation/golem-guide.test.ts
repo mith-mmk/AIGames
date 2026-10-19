@@ -31,7 +31,7 @@ test('golem guide explains prerequisite research and available rune research ins
 test('component guide follows actual recipes, running work and independent three-core/three-frame achievements', () => {
   const value = state(STAGE3.slice(0, -1));
   let guide = getGolemGuide(value); assert.equal(guide.step, 2); assert.equal(guide.action!.kind, 'runeCarver');
-  value.buildings.push(facility(1, 'runeCarver', 3, 3, { recipe: 'runeCore', working: true, progress: 2 }));
+  value.buildings.push(facility(1, 'assembler', 3, 3, { recipe: 'runeCore', working: true, progress: 2 }));
   guide = getGolemGuide(value); assert.equal(guide.status, 'waiting'); assert.equal(guide.action!.type, 'run');
   assert.match(guide.detail, /作り直す必要はありません/);
   value.buildings[0].working = false; value.buildings[0].progress = 0;

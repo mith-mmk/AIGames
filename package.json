@@ -11,7 +11,7 @@
     "playtest:mirror-light": "node scripts/mirror-light-browser.cjs",
     "build:fantasy": "tsc -p tsconfig.fantasy.json && vite build --config vite.fantasy.config.mjs",
     "test:fantasy": "node --test web/js/fantasy-automation/loop.test.mjs && tsx --test web/js/fantasy-automation/*.test.ts && tsc -p tsconfig.fantasy.json && eslint web/js/fantasy-automation/loop.mjs web/css/fantasy-automation.css vite.fantasy.config.mjs && npm run check:fantasy-runtime",
-    "playtest:fantasy": "node scripts/fantasy-automation-browser.cjs",
+    "playtest:fantasy": "node scripts/fantasy-automation-recipes-shipping.cjs",
     "prestart": "npm run build:fantasy",
     "check:fantasy-runtime": "node scripts/check-fantasy-runtime.cjs",
     "playtest:fantasy-guide": "node scripts/fantasy-automation-onboarding.cjs",
@@ -21,7 +21,8 @@
     "check:fantasy-stage3": "node --import tsx scripts/fantasy-automation-stage3-reachability.ts --nofixtures",
     "check:fantasy-stage4": "node --import tsx scripts/fantasy-automation-stage4-reachability.ts --nofixtures",
     "playtest:fantasy-stage4": "node scripts/fantasy-automation-phase4.cjs",
-    "playtest:fantasy-touch": "node scripts/fantasy-automation-touch.cjs"
+    "playtest:fantasy-touch": "node scripts/fantasy-automation-touch.cjs",
+    "playtest:fantasy-recipes": "node scripts/fantasy-automation-recipes-shipping.cjs"
   },
   "author": "MITH@mmk",
   "license": "MIT",

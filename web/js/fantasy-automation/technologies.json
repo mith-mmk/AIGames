@@ -60,8 +60,7 @@
     ],
     "unlocks": {
       "kinds": [
-        "crystalMiner",
-        "crystalRefiner"
+        "crystalMiner"
       ],
       "recipes": [
         "crystal"
@@ -133,10 +132,7 @@
     ],
     "requirements": [],
     "unlocks": {
-      "kinds": [
-        "runeCarver",
-        "frameForge"
-      ],
+      "kinds": [],
       "recipes": [
         "runeCore",
         "golemFrame"
@@ -166,7 +162,6 @@
     ],
     "unlocks": {
       "kinds": [
-        "golemForge",
         "golemRelay"
       ],
       "recipes": [
@@ -239,7 +234,6 @@
     ],
     "unlocks": {
       "kinds": [
-        "portalForge",
         "portalGate"
       ],
       "recipes": [
@@ -263,7 +257,6 @@
     ],
     "unlocks": {
       "kinds": [
-        "seedLoom",
         "worldTree"
       ],
       "recipes": [

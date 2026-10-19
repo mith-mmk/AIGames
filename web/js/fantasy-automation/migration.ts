@@ -1,3 +1,4 @@
+import { commonKind, LEGACY_DEFINITIONS } from './data.js';
 import { SIZE, type Building, type GameState, type Inventory, type Item, type Resource } from './types.js';
 
 const BASE_KINDS = new Set(['miner', 'belt', 'smelter', 'generator', 'wire', 'lumber', 'delivery']);
@@ -7,9 +8,18 @@ function automatic(items: Item[], resource: Resource): number { return items.fil
 
 /** Pure migration. Loading never writes the IndexedDB slot; only an explicit save does. */
 export function migrateGameState(value: GameState): GameState {
-  if (value.version !== 1 && value.version !== 2 && value.version !== 3 && value.version !== 4) throw new Error('この保存形式には対応していません（対応: version 1・2・3・4）。');
+  if (value.version !== 1 && value.version !== 2 && value.version !== 3 && value.version !== 4 && value.version !== 5) throw new Error('この保存形式には対応していません（対応: version 1・2・3・4）。');
   const state: GameState = structuredClone(value);
-  if (state.version === 4) return state;
+  if (state.version === 5) {
+    // In-process legacy fixtures/importers may still use old kind aliases.
+    for (const building of state.buildings) if (commonKind(building.kind) !== building.kind) {
+      building.constructionCost ??= { ...LEGACY_DEFINITIONS[building.kind].cost };
+      building.recipe ??= LEGACY_DEFINITIONS[building.kind].recipes?.[0];
+      building.kind = commonKind(building.kind);
+    }
+    return state;
+  }
+  if (state.version === 4) return migrateRecipes(state);
   if (state.version === 3) return migrateFourthStage(state);
   if (state.version === 2) return migrateThirdStage(state);
   for (const building of state.buildings) {
@@ -68,5 +78,18 @@ function migrateFourthStage(state: GameState): GameState {
   state.stats.portalTransfers = 0;
   state.stats.treeGrowth = 0;
   state.version = 4;
+  return migrateRecipes(state);
+}
+
+function migrateRecipes(state: GameState): GameState {
+  for (const building of state.buildings) {
+    const original = building.kind;
+    building.constructionCost = { ...LEGACY_DEFINITIONS[original].cost };
+    if (LEGACY_DEFINITIONS[original].recipes?.length) building.recipe ??= LEGACY_DEFINITIONS[original].recipes![0];
+    building.kind = commonKind(original);
+  }
+  // Keep old kit vouchers under their original keys, including their original refund value.
+  state.market = { coins: 0, sold: {} };
+  state.version = 5;
   return state;
 }

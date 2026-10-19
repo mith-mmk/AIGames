@@ -1,4 +1,5 @@
 import definitions from './technologies.json';
+import legacyDefinitions from './legacy-technologies.json';
 import { STEP, type CommandResult, type GameState, type Kind, type RecipeId, type Resource, type TechId } from './types.js';
 
 export interface TechRequirement {
@@ -50,4 +51,8 @@ export function isKindUnlocked(state: GameState, kind: Kind): boolean {
 }
 export function isRecipeUnlocked(state: GameState, recipe: RecipeId): boolean {
   return techNodeStates(state).some(node => node.status === 'unlocked' && node.unlocks.recipes.includes(recipe));
+}
+
+export function isLegacyKindUnlocked(state: GameState, kind: Kind): boolean {
+  return legacyDefinitions.some(node => (state.research?.unlocked ?? ['basic']).includes(node.id as TechId) && (node.unlocks.kinds as string[]).includes(kind));
 }

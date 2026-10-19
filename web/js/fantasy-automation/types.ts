@@ -4,13 +4,13 @@ export type Kind = 'miner' | 'belt' | 'smelter' | 'generator' | 'wire' | 'lumber
 export type Direction = 0 | 1 | 2 | 3;
 export type TechId = 'basic' | 'logistics' | 'crystals' | 'assembly' | 'mastery' | 'runecraft' | 'golemcraft' | 'sanctuary' | 'alchemy' | 'portalcraft' | 'worldGrafting' | 'worldAwakened';
 export type RecipeId = 'ingot' | 'crystal' | 'sword' | 'runeCore' | 'golemFrame' | 'golem' | 'essence' | 'portalCore' | 'worldSeed';
-export type Item = { resource: Resource; automated: boolean; handled?: boolean; throughPortal?: boolean };
+export type Item = { resource: Resource; automated: boolean; handled?: boolean; throughPortal?: boolean; shipEligible?: boolean };
 export type Inventory = Record<BaseResource, number> & Partial<Record<Exclude<Resource, BaseResource>, number>>;
 export interface Building {
   id: number; kind: Kind; x: number; z: number; direction: Direction;
   input: Item[]; output: Item[]; progress: number; working: boolean;
   energy: number; pendingEnergy?: number; status: string;
-  item: Item | null; beltProgress: number; recipe?: RecipeId;
+  item: Item | null; beltProgress: number; recipe?: RecipeId; constructionCost?: Partial<Inventory>;
   splitCursor?: 0 | 1; reserved?: Item[];
   golemWorker?: Item; golemPolicy?: 'fuel' | 'materials'; golemCooldown?: number;
   golemRoute?: { sourceId: number; targetId: number; resource: Resource; tick: number };
@@ -25,16 +25,18 @@ export interface ProductionStats {
 }
 export interface ResearchState { unlocked: TechId[]; tracked: TechId | null; }
 export interface GameState {
-  version: 1 | 2 | 3 | 4; seed: number; tick: number; nextId: number;
+  version: 1 | 2 | 3 | 4 | 5; seed: number; tick: number; nextId: number;
   terrain: ('grass' | 'ore' | 'forest' | 'crystal')[];
   inventory: Inventory; kits: Partial<Record<Kind, number>>;
   buildings: Building[]; delivered: number; won: boolean;
-  stats?: ProductionStats; research?: ResearchState; inventoryItems?: Item[]; pendingCrystalCells?: number[];
+  stats?: ProductionStats; research?: ResearchState; inventoryItems?: Item[]; pendingCrystalCells?: number[]; market?: { coins: number; sold: Partial<Inventory> };
 }
 export type Command =
   | { type: 'gatherWood' }
   | { type: 'undoBuild' }
-  | { type: 'build'; kind: Kind; x: number; z: number; direction: Direction }
+  | { type: 'build'; kind: Kind; x: number; z: number; direction: Direction; recipe?: RecipeId }
+  | { type: 'dispatch'; id: number; source: 'inventory' | 'depot'; resource: Resource; amount: number }
+  | { type: 'buyIron'; id: number; amount: number }
   | { type: 'remove'; id: number }
   | { type: 'rotate'; id: number }
   | { type: 'feed'; id: number; resource: Resource; amount: number }

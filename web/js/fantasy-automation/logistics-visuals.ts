@@ -13,7 +13,7 @@ export function outputDirections(kind: Kind, direction: Direction, portalRole?: 
 
 export function acceptedResources(building: Pick<Building, 'kind' | 'recipe' | 'portalRole'>): Resource[] {
   if (conveyor(building.kind) || building.kind === 'storage') return [...RESOURCES];
-  if (building.kind === 'delivery') return ['ingot', 'sword'];
+  if (building.kind === 'delivery') return ['wood', 'ingot', 'sword'];
   if (building.kind === 'golemRelay') return ['golem'];
   if (building.kind === 'portalGate') return building.portalRole === 'receive' ? [] : [...RESOURCES];
   if (building.kind === 'worldTree') return ['worldSeed'];
@@ -31,10 +31,9 @@ export function outputResources(source: LogisticsSource): Resource[] {
 /** Current buffer room, including the simulator's reserved room for other recipe ingredients. */
 export function hasBufferRoom(target: Building, resource: Resource): boolean {
   if (!acceptedResources(target).includes(resource)) return false;
-  if (target.kind === 'delivery') return true;
   if (target.kind === 'golemRelay') return !target.golemWorker && target.input.length === 0;
   if (conveyor(target.kind)) return !target.item || target.beltProgress + 1e-9 >= BELT_SECONDS;
-  const capacity = target.kind === 'storage' ? STORAGE_CAPACITY : INPUT_CAPACITY;
+  const capacity = (target.kind === 'storage' || target.kind === 'delivery') ? STORAGE_CAPACITY : INPUT_CAPACITY;
   if (target.input.length >= capacity) return false;
   const recipe = getRecipe(target)?.input ?? DEFINITIONS[target.kind].input ?? {};
   const missingOthers = RESOURCES.reduce((sum, other) => sum + (other === resource ? 0 : Math.max(0, (recipe[other] ?? 0) - target.input.filter(item => item.resource === other).length)), 0);

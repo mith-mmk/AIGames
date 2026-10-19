@@ -34,7 +34,7 @@ function fixture(buildings: Building[] = []): Simulation {
 }
 
 function advance(simulation: Simulation, seconds: number) {
-  for (let tick = 0; tick < Math.round(seconds * 20); tick += 1) simulation.step();
+  for (let tick = 0; tick < Math.round(seconds * 20); tick += 1) stepAndShip(simulation);
 }
 
 function ironUnits(state: GameState): number {
@@ -126,7 +126,7 @@ test('construction charges its recipe and removal recovers contents plus half th
 test('two-phase belt movement advances an item at most one cell per step', () => {
   const simulation = fixture([building(1, 'belt', 4, 4, { item: { resource: 'ore', automated: true }, beltProgress: BELT_SECONDS }),
     building(2, 'belt', 5, 4), building(3, 'belt', 6, 4)]);
-  simulation.step();
+  stepAndShip(simulation);
   assert.equal(simulation.state.buildings[0].item, null);
   assert.deepEqual(simulation.state.buildings[1].item, { resource: 'ore', automated: true });
   assert.equal(simulation.state.buildings[1].beltProgress, 0);
@@ -138,7 +138,7 @@ test('ready belt lines move simultaneously and deterministically in stable ID or
     building(2, 'belt', 5, 4, { item: { resource: 'ingot', automated: true }, beltProgress: BELT_SECONDS }), building(3, 'delivery', 6, 4)];
   const first = fixture(input);
   const second = fixture([...input].reverse());
-  first.step(); second.step();
+  first.step(); confirmShipments(first); second.step(); confirmShipments(second);
   assert.deepEqual(first.snapshot(), second.snapshot());
   assert.equal(first.state.delivered, 1);
   assert.equal(first.state.buildings[0].item, null);
@@ -153,7 +153,7 @@ test('an obstructed belt stalls without losing items and resumes after downstrea
   assert.equal(simulation.state.buildings.filter(value => value.item).length, 2);
   assert.equal(ironUnits(simulation.snapshot()), total);
   assert(simulation.command({ type: 'collect', id: 2 }).ok);
-  simulation.step();
+  stepAndShip(simulation);
   assert.equal(simulation.state.buildings[0].item, null);
   assert.equal(simulation.state.buildings[1].item!.automated, true);
   assert.equal(ironUnits(simulation.snapshot()), total);
@@ -175,7 +175,7 @@ test('100 automatic ingots are conserved through a stalled three-belt line and r
       assert.equal(simulation.state.buildings.filter(value => value.item).length, 3);
       assert(simulation.command({ type: 'build', kind: 'delivery', x: 8, z: 4, direction: 1 }).ok);
     }
-    simulation.step();
+    stepAndShip(simulation);
     const pending = simulation.state.buildings.reduce((total, value) => total + value.output.length + value.input.length + Number(!!value.item), 0);
     assert.equal(simulation.state.delivered + pending, injected, `No lost or duplicated ingots at transport tick ${tick}`);
     assert.equal(ironUnits(simulation.snapshot()), injected * Number(DEFINITIONS.smelter.input?.ore), `Material units conserved at tick ${tick}`);
@@ -194,7 +194,7 @@ test('smelting conserves 100 units of ore through reservation, completion and co
     generator.energy = ENERGY_CAPACITY;
     assert(simulation.command({ type: 'feed', id: 2, resource: 'ore', amount: 2 }).ok);
     for (let tick = 0; tick < DEFINITIONS.smelter.seconds! * 20; tick += 1) {
-      simulation.step();
+      stepAndShip(simulation);
       assert.equal(ironUnits(simulation.snapshot()), 100, `Ore units retained at batch ${batch}, tick ${tick}`);
     }
     assert(simulation.command({ type: 'collect', id: 2 }).ok);
@@ -223,7 +223,7 @@ test('cutting the power wire pauses a reserved job and reconnecting resumes it',
 test('collect cannot reclaim ore that is already reserved for a smelting job', () => {
   const simulation = fixture([building(1, 'generator', 4, 5, { energy: ENERGY_CAPACITY }), building(2, 'smelter', 4, 4)]);
   assert(simulation.command({ type: 'feed', id: 2, resource: 'ore', amount: 4 }).ok);
-  simulation.step();
+  stepAndShip(simulation);
   const before = ironUnits(simulation.snapshot());
   assert(simulation.command({ type: 'collect', id: 2 }).ok);
   assert.equal(simulation.state.buildings[1].reserved!.length, 2);
@@ -266,7 +266,7 @@ test('manual items retain their provenance through belt input and never count to
   assert.equal(simulation.state.buildings[0].item, null);
   assert.equal(simulation.state.delivered, 0);
   assert.equal(simulation.state.won, false);
-  assert(simulation.command({ type: 'feed', id: 2, resource: 'ingot', amount: 100 }).ok);
+  assert(simulation.command({ type: 'feed', id: 2, resource: 'ingot', amount: 1 }).ok);
   assert.equal(simulation.state.delivered, 0);
   assert.equal(simulation.state.won, false);
 });
@@ -276,7 +276,7 @@ test('100 automatic ingots trigger victory, while manual smelting marks its outp
   for (let count = 0; count < GOAL; count += 1) {
     simulation.state.buildings[0].item = { resource: 'ingot', automated: true };
     simulation.state.buildings[0].beltProgress = BELT_SECONDS;
-    simulation.step();
+    stepAndShip(simulation);
     assert.equal(simulation.state.delivered, count + 1);
     assert.equal(simulation.state.won, count + 1 >= GOAL);
   }
@@ -286,15 +286,24 @@ test('100 automatic ingots trigger victory, while manual smelting marks its outp
   assert.equal(smelting.state.buildings[1].output[0].automated, false);
 });
 
-test('an autonomous mining, fuel, smelting and delivery chain can complete the goal', () => {
+test('an autonomous production line with explicit manual shipping can complete the goal', () => {
   const simulation = fixture([
     building(1, 'miner', 12, 16), building(2, 'belt', 13, 16), building(3, 'smelter', 14, 16),
     building(4, 'belt', 15, 16), building(5, 'delivery', 16, 16), building(6, 'generator', 12, 18),
     building(7, 'wire', 12, 17), building(8, 'wire', 13, 17), building(9, 'wire', 14, 17),
     building(10, 'lumber', 9, 18), building(11, 'belt', 10, 18), building(12, 'belt', 11, 18),
   ]);
-  for (let tick = 0; tick < 20 * 1200 && !simulation.state.won; tick += 1) simulation.step();
+  for (let tick = 0; tick < 20 * 1200 && !simulation.state.won; tick += 1) stepAndShip(simulation);
   assert.equal(simulation.state.won, true);
   assert.equal(simulation.state.delivered, GOAL);
   assert(simulation.state.buildings.find(value => value.kind === 'generator')!.input.length > 0);
 });
+
+function confirmShipments(s: Simulation) {
+  for (const b of s.state.buildings.filter(b => b.kind === 'delivery')) for (const resource of ['wood', 'ingot', 'sword'] as const) {
+    const amount = b.input.filter(i => i.resource === resource).length;
+    if (amount) assert(s.command({ type: 'dispatch', id: b.id, source: 'depot', resource, amount }).ok);
+  }
+}
+
+function stepAndShip(s: Simulation) { s.step(); confirmShipments(s); }
