@@ -20,6 +20,7 @@ export class WorldInput {
   private tap: { id: number; x: number; y: number; moved: boolean } | null = null;
   private touchGesture = false;
   private suppressMouseUntil = 0;
+  private touchClickFromCanvas = false;
 
   constructor(canvas: HTMLCanvasElement, actions: WorldInputActions) {
     this.canvas = canvas;
@@ -45,8 +46,14 @@ export class WorldInput {
     canvas.addEventListener('keydown', event => this.keyDown(event), options);
     window.addEventListener('keyup', event => this.keys.delete(event.code), options);
     window.addEventListener('pointerdown', event => {
+      if (event.isPrimary !== false) this.touchClickFromCanvas = event.pointerType === 'touch' && event.target === this.canvas;
       if (event.pointerType === 'touch' && event.target !== this.canvas && this.touches.size) { this.tap = null; this.touchGesture = true; }
-    }, options);
+    }, { ...options, capture: true }); // Observe UI touches before its propagation boundary.
+    window.addEventListener('click', event => {
+      // Selection can reveal a panel under the finger before the compatibility click.
+      // A fresh UI press resets the origin above, so intentional fast UI taps still work.
+      if (event.detail && this.touchClickFromCanvas && performance.now() < this.suppressMouseUntil) { event.preventDefault(); event.stopImmediatePropagation(); }
+    }, { ...options, capture: true });
     canvas.addEventListener('blur', () => this.resetPointers(), options);
     window.addEventListener('blur', () => this.resetPointers(), options);
     window.addEventListener('resize', () => this.resetPointers(), options);
@@ -55,6 +62,7 @@ export class WorldInput {
   private pointerDown(event: PointerEvent): void {
     if (this.blocked) return;
     if (event.pointerType === 'touch') {
+      if (!this.touches.size) this.touchClickFromCanvas = true;
       event.preventDefault(); this.canvas.focus({ preventScroll: true });
       this.touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
       this.canvas.setPointerCapture(event.pointerId);

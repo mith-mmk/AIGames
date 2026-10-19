@@ -51,6 +51,15 @@ test('a second touch on the surrounding interface cancels the canvas tap', t => 
   s.event('pointerup', 1); assert.deepEqual(s.picks, []);
 });
 
+test('a canvas touch cannot click a panel revealed under its release; the next real UI press still works', t => {
+  const s = setup(t); s.event('pointerdown', 1); s.event('pointerup', 1);
+  const retargeted = Object.assign(new Event('click', { cancelable: true }), { detail: 1 });
+  s.window.dispatchEvent(retargeted); assert(retargeted.defaultPrevented);
+  s.window.dispatchEvent(Object.assign(new Event('pointerdown'), { pointerType: 'touch', pointerId: 2, isPrimary: true }));
+  const deliberate = Object.assign(new Event('click', { cancelable: true }), { detail: 1 });
+  s.window.dispatchEvent(deliberate); assert(!deliberate.defaultPrevented);
+});
+
 test('pointer cancellation and capture loss never become taps, including the last finger of a gesture', t => {
   const s = setup(t); s.event('pointerdown', 1); s.event('pointercancel', 1); s.event('pointerup', 1);
   s.event('pointerdown', 2); s.canvas.releasePointerCapture(2); s.event('pointerup', 2);

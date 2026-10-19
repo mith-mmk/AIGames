@@ -12,6 +12,8 @@ export interface UICallbacks {
   onBuild(kind: Kind): void; onSpeed(speed: 0 | 1 | 2): void;
   onSave(): void; onLoad(): void; onRotate(): void; onRemove(): void;
   onUndoBuild(): void;
+  onDirection(direction: Direction): void;
+  onOverlayChange(): void;
   onDispatch(source: 'inventory' | 'depot', resource: Resource, amount: number): void; onBuyIron(): void;
   onFeed(resource: Resource, amount: number): void; onCollect(resource?: Resource, amount?: number): void;
   onCancel(): void; onResetCamera(): void; onNew(): void;
@@ -122,7 +124,8 @@ export class GameUI {
         <div class="selection-actions"><button data-action="rotate">回転 R</button><button data-action="collect">資源を回収</button><button data-action="remove" class="danger">撤去</button></div>
         <details id="advanced-feed"><summary>個数を指定して補給</summary><form id="feed-form"><label>手動補給<select id="feed-resource"><option value="wood">木材</option><option value="ore">鉄鉱石</option><option value="ingot">鉄の延べ棒</option><option value="rawCrystal">魔晶原石</option><option value="crystal">精製魔晶</option><option value="sword">魔導剣</option></select></label><label>個数<input id="feed-amount" type="number" min="1" max="1000" step="1" value="1" inputmode="numeric"></label><button type="submit" data-action="feed">補給する</button><small>手動の鉱石・延べ棒・精製魔晶等は目標に含めません。木材燃料は手動補給できます。</small></form></details>
       </aside>
-      <nav id="quickbar" class="quickbar" aria-label="登録した建設設備"><button id="build-reopen" data-action="build-open">建設一覧</button><div id="quick-slots"></div><label id="build-recipe-control" hidden>製品<select id="build-recipe-select" aria-label="配置する機械の製品レシピ"></select></label><button data-action="undo-build" class="undo-build" disabled>↶<span>配置取消</span></button><button data-action="golem-guide-open" class="quick-golem-guide" aria-label="ゴーレムの使い方">♟？</button><button data-action="rotate" aria-label="建設方向を回転">↻</button><button data-action="cancel" aria-label="建設を取り消す">×</button></nav>
+      <section id="direction-control" class="direction-control" hidden aria-label="方向のクイック操作"><div class="direction-heading"><strong id="direction-title"></strong><span id="direction-current"></span></div><div class="direction-buttons" role="group" aria-label="地図の方角を指定">${DIRECTIONS.map((label, direction) => `<button data-direction="${direction}" aria-label="${label}に向ける" aria-pressed="false">${label}</button>`).join('')}</div><small>地図の方角 · Rキーでも90°回転</small></section>
+      <nav id="quickbar" class="quickbar" aria-label="登録した建設設備"><button id="build-reopen" data-action="build-open">建設一覧</button><div id="quick-slots"></div><label id="build-recipe-control" hidden>製品<select id="build-recipe-select" aria-label="配置する機械の製品レシピ"></select></label><button data-action="undo-build" class="undo-build" disabled>↶<span>配置取消</span></button><button data-action="golem-guide-open" class="quick-golem-guide" aria-label="ゴーレムの使い方">♟？</button><button data-action="rotate" aria-label="建設方向を回転">↻ 回転</button><button data-action="cancel" aria-label="建設を取り消す">×</button></nav>
       <footer class="build-dock" hidden><div class="build-context"><span id="build-context">建設する設備を選ぶ</span><button data-action="rotate" aria-label="建設方向を回転">↻ R</button><button data-action="cancel">取消 Esc</button><button data-action="build-close" aria-label="建設一覧を閉じる">閉じる ×</button></div><label class="catalog-search">設備を探す<input id="build-search" type="search" placeholder="名前・素材・用途で検索" autocomplete="off"></label><p id="catalog-suggestion"></p><nav id="build-categories" aria-label="設備のカテゴリー"></nav><div class="registration-hint"><span id="registration-label">登録先 1</span><div id="registration-buttons" aria-label="クイックスロット登録先"></div><details class="registration-advanced"><summary>番号指定</summary><select id="registration-slot" aria-label="登録先クイックスロット"></select></details><small>番号を選び、設備の☆で登録 · キー1〜6で選択</small></div><nav class="build-palette" aria-label="建設する設備"></nav></footer>`;
     const palette = this.node('.build-palette');
     for (const kind of BUILDINGS) {
@@ -174,6 +177,7 @@ export class GameUI {
   handleClick(event: Event): void {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>('button');
     if (!button || !this.root.contains(button)) return;
+    if (button.dataset.direction !== undefined) { this.callbacks.onDirection(Number(button.dataset.direction) as Direction); return; }
     if (button.dataset.quick) { this.chooseQuickSlot(Number(button.dataset.quick)); return; }
     if (button.dataset.register) { this.quickSlots[this.registerSlot] = button.dataset.register as Kind; this.savePreferences(); this.refreshQuickSlots(); this.refreshRegistration(); return; }
     if (button.dataset.registerSlot !== undefined) { this.registerSlot = Number(button.dataset.registerSlot); this.refreshRegistration(); return; }
@@ -189,6 +193,7 @@ export class GameUI {
     if (button.dataset.build) { this.node('.build-dock').hidden = true; this.callbacks.onBuild(button.dataset.build as Kind); return; }
     if (button.dataset.speed) { this.callbacks.onSpeed(Number(button.dataset.speed) as 0 | 1 | 2); return; }
     const action = button.dataset.action;
+    if (button.closest('.menu-actions') && ['camera', 'build-open', 'selection-open', 'golem-guide-open', 'guide-open'].includes(action ?? '')) (this.node('.game-menu') as HTMLDetailsElement).open = false;
     if (action === 'dispatch' || action === 'dispatch-all') { const values = this.shippingValues(); this.callbacks.onDispatch(values.source, values.resource, action === 'dispatch-all' ? Math.min(1000, values.available) : values.amount); return; }
     if (action === 'buy-iron') { this.callbacks.onBuyIron(); return; }
     if (action === 'save') this.callbacks.onSave();
@@ -202,7 +207,7 @@ export class GameUI {
     else if (action === 'relay-target' && this.currentSelected?.golemRoute) this.callbacks.onInspect?.(this.currentSelected.golemRoute.targetId);
     else if (action === 'remove-cancel') this.callbacks.onCancelRemove();
     else if (action === 'remove-confirm' && this.demolitionId !== null && !this.demolitionSubmitted) { this.demolitionSubmitted = true; button.disabled = true; this.callbacks.onConfirmRemove(this.demolitionId); }
-    else if (action === 'menu-close') (this.node('.game-menu') as HTMLDetailsElement).open = false;
+    else if (action === 'menu-close') { (this.node('.game-menu') as HTMLDetailsElement).open = false; this.menuToggle(); }
     else if (action === 'help-close') (this.node('#main-help') as HTMLDetailsElement).open = false;
     else if (action === 'build-open' || action === 'build-close') { if (action === 'build-open') { this.category = 'all'; this.search = ''; (this.node('#build-search') as HTMLInputElement).value = ''; this.filterPalette(); } this.node('.build-dock').hidden = action === 'build-close'; this.node('#build-reopen').setAttribute('aria-expanded', String(action === 'build-open')); if (action === 'build-close') this.callbacks.onCancel(); }
     else if (action === 'selection-open') { const panel = this.node('#selection-panel'); if (this.lastSelected !== null) { panel.hidden = false; panel.classList.remove('is-collapsed'); const close = this.node('[data-action="close-panel"]'); close.textContent = '×'; close.setAttribute('aria-label', '設備詳細を閉じる'); } }
@@ -321,6 +326,7 @@ export class GameUI {
     this.updateCatalogRecommendations(state); this.filterPalette();
     this.text('#build-context', `${view.kind ? `${DEFINITIONS[view.kind].label} · 出力 ${DIRECTIONS[view.direction]}` : '設備を選んで建設'}${view.hover ? ` · (${view.hover.x}, ${view.hover.z})` : ''}`);
     const selected = state.buildings.find(building => building.id === view.selectedId);
+    this.updateDirectionControl(view, selected);
     const panel = this.node('#selection-panel');
     this.root.classList.toggle('has-selection', !!selected);
     if (!selected) panel.hidden = true;
@@ -476,10 +482,24 @@ export class GameUI {
     if (!this.node('#technology-panel').hidden) this.callbacks.onTechnologyToggle(false);
     this.callbacks.onBuild(this.quickSlots[index]);
   }
-  isWorldInputBlocked(): boolean { return (this.node('#demolition-dialog') as HTMLDialogElement).open || !this.node('.build-dock').hidden || !this.node('#technology-panel').hidden || !this.node('#golem-guide').hidden; }
+  private updateDirectionControl(view: UIState, selected?: Building): void {
+    const control = this.node('#direction-control');
+    const kind = view.kind ?? (selected?.kind === 'belt' ? 'belt' : null);
+    control.hidden = !kind || this.isWorldInputBlocked();
+    this.root.classList.toggle('has-direction-control', !control.hidden);
+    if (!kind) return;
+    const direction = view.kind ? view.direction : selected!.direction;
+    this.text('#direction-title', view.kind ? `${DEFINITIONS[kind].label}の配置方向` : `選択ベルト (${selected!.x}, ${selected!.z})`);
+    this.text('#direction-current', DIRECTIONS[direction]);
+    control.querySelectorAll<HTMLButtonElement>('[data-direction]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.direction) === direction)));
+    this.node('#quickbar [data-action="rotate"]').setAttribute('aria-label', view.kind ? '配置方向を90度回転' : '選択設備を90度回転');
+  }
+  menuToggle(): void { this.callbacks.onOverlayChange(); }
+  isWorldInputBlocked(): boolean { return (this.node('.game-menu') as HTMLDetailsElement).open || (this.node('#demolition-dialog') as HTMLDialogElement).open || !this.node('.build-dock').hidden || !this.node('#technology-panel').hidden || !this.node('#golem-guide').hidden; }
   openSelection(): void { this.node('#selection-panel').hidden = false; this.node('#selection-panel').classList.remove('is-collapsed'); const button = this.node('[data-action="close-panel"]'); button.textContent = '×'; button.setAttribute('aria-label', '設備詳細を閉じる'); }
   closeOverlay(): boolean {
     if ((this.node('#demolition-dialog') as HTMLDialogElement).open) { this.callbacks.onCancelRemove(); return true; }
+    if ((this.node('.game-menu') as HTMLDetailsElement).open) { (this.node('.game-menu') as HTMLDetailsElement).open = false; this.menuToggle(); return true; }
     if (!this.node('#golem-guide').hidden) { this.callbacks.onGolemGuideToggle(false); return true; }
     if (!this.node('#technology-panel').hidden) { this.callbacks.onTechnologyToggle(false); return true; }
     if (!this.node('.build-dock').hidden) { this.node('.build-dock').hidden = true; this.callbacks.onCancel(); return true; }
@@ -691,6 +711,7 @@ export class GameUI {
 /** DOM listeners delegate to instance methods; no game state is exposed globally. */
 function bindUIEvents(ui: GameUI, root: HTMLElement, signal: AbortSignal): void {
   root.addEventListener('click', event => ui.handleClick(event), { signal });
+  root.querySelector('.game-menu')!.addEventListener('toggle', () => ui.menuToggle(), { signal });
   root.querySelector('#feed-form')!.addEventListener('submit', event => ui.handleFeed(event), { signal });
   root.querySelector('#build-search')!.addEventListener('input', () => ui.searchCatalog(), { signal });
   root.querySelector('#demolition-dialog')!.addEventListener('cancel', event => ui.cancelDemolition(event), { signal });

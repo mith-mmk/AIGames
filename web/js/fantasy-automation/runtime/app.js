@@ -1779,6 +1779,7 @@ var he = [
 	tap = null;
 	touchGesture = !1;
 	suppressMouseUntil = 0;
+	touchClickFromCanvas = !1;
 	constructor(e, t) {
 		this.canvas = e, this.actions = t, e.tabIndex = 0, e.setAttribute("aria-label", "工房の地図。1本指タップで配置・選択、2本指で移動とピンチ拡縮。右ドラッグまたは WASD で移動、中ドラッグまたは QE で回転"), e.style.touchAction = "none";
 		let n = { signal: this.abort.signal };
@@ -1790,11 +1791,19 @@ var he = [
 			...n,
 			passive: !1
 		}), e.addEventListener("keydown", (e) => this.keyDown(e), n), window.addEventListener("keyup", (e) => this.keys.delete(e.code), n), window.addEventListener("pointerdown", (e) => {
-			e.pointerType === "touch" && e.target !== this.canvas && this.touches.size && (this.tap = null, this.touchGesture = !0);
-		}, n), e.addEventListener("blur", () => this.resetPointers(), n), window.addEventListener("blur", () => this.resetPointers(), n), window.addEventListener("resize", () => this.resetPointers(), n);
+			e.isPrimary !== !1 && (this.touchClickFromCanvas = e.pointerType === "touch" && e.target === this.canvas), e.pointerType === "touch" && e.target !== this.canvas && this.touches.size && (this.tap = null, this.touchGesture = !0);
+		}, {
+			...n,
+			capture: !0
+		}), window.addEventListener("click", (e) => {
+			e.detail && this.touchClickFromCanvas && performance.now() < this.suppressMouseUntil && (e.preventDefault(), e.stopImmediatePropagation());
+		}, {
+			...n,
+			capture: !0
+		}), e.addEventListener("blur", () => this.resetPointers(), n), window.addEventListener("blur", () => this.resetPointers(), n), window.addEventListener("resize", () => this.resetPointers(), n);
 	}
 	pointerDown(e) {
-		this.blocked || (e.pointerType === "touch" ? (e.preventDefault(), this.canvas.focus({ preventScroll: !0 }), this.touches.set(e.pointerId, {
+		this.blocked || (e.pointerType === "touch" ? (this.touches.size || (this.touchClickFromCanvas = !0), e.preventDefault(), this.canvas.focus({ preventScroll: !0 }), this.touches.set(e.pointerId, {
 			x: e.clientX,
 			y: e.clientY
 		}), this.canvas.setPointerCapture(e.pointerId), this.touches.size === 1 ? (this.tap = {
@@ -3701,7 +3710,38 @@ var R = d, z = Object.keys(R), Ne = S.map((e) => e.id), B = Object.fromEntries(S
 	guideLists = "";
 	lastMessage = "";
 	constructor(e, t) {
-		this.root = e, this.callbacks = t, this.loadPreferences(), e.innerHTML = "\n      <header class=\"workshop-top\">\n        <a class=\"home-link\" href=\"index.html\" aria-label=\"AI Gamesへ戻る\">‹ AI Games</a>\n        <div class=\"workshop-title\">魔導からくり工房 <span id=\"wallet-count\"></span><span id=\"objective-summary\"><b id=\"objective-title\"></b> <b id=\"objective-count\"></b></span><span class=\"legacy-goal\" title=\"鉄の延べ棒の累積自動納品\"><i class=\"ingot-icon\" aria-hidden=\"true\"></i> 鉄の延べ棒 自動納品 <b id=\"delivered-count\">0</b> / 100 <small class=\"goal-condition\">自動生産品の出荷・100本は記念実績</small></span></div>\n        <div class=\"resource-strip\" aria-label=\"所持資源\"><span title=\"所持 木材\">木材 <b data-resource=\"wood\">0</b></span><span title=\"所持 鉄鉱石\">鉱石 <b data-resource=\"ore\">0</b></span><span title=\"所持 鉄の延べ棒\">延べ棒 <b data-resource=\"ingot\">0</b></span><span title=\"所持 精製魔晶原石\">原石 <b data-resource=\"rawCrystal\">0</b></span><span title=\"所持 精製魔晶\">魔晶 <b data-resource=\"crystal\">0</b></span><span title=\"所持 魔導剣\">魔導剣 <b data-resource=\"sword\">0</b></span><span>魔力 <b id=\"power-count\">0 / 0</b></span></div><button data-action=\"technology-open\" class=\"technology-open\">技術ツリー</button>\n        <div class=\"time-controls\" aria-label=\"時間速度\"><button data-speed=\"0\" aria-label=\"一時停止\" title=\"一時停止（Space）\">Ⅱ</button><button data-speed=\"1\" aria-label=\"1倍速\">1×</button><button data-speed=\"2\" aria-label=\"2倍速\">2×</button></div>\n        <details class=\"game-menu\"><summary aria-label=\"操作と保存メニュー\">☰ <span>メニュー</span></summary><div class=\"menu-body\"><button data-action=\"menu-close\" class=\"menu-close\">メニューを閉じる ×</button><div class=\"menu-actions\"><button data-action=\"save\">保存</button><button data-action=\"load\">読込</button><button data-action=\"camera\">視点を戻す</button><button data-action=\"new\">新しい工房</button><button data-action=\"golem-guide-open\">ゴーレムの使い方</button><button data-action=\"gather-wood\" title=\"森林から木材1個を手採取。生産実績には算入しません。\">木材を手採取</button><button data-action=\"guide-open\">はじめての案内</button><button data-action=\"build-open\">建設一覧を表示</button><button data-action=\"selection-open\">設備詳細を表示</button><button data-action=\"help-close\">操作説明を閉じる</button></div><details id=\"main-help\"><summary>操作方法・つくり方</summary><div class=\"help-text\"><p>鉱脈に採掘機 → ベルト → 製錬炉 → ベルト → 出荷所をつなごう。魔力発生炉と機械は魔力導線で接続。魔力発生炉を選び木材を補給すると起動できます。</p><p>最初の配置例（座標 X, Z。地形を指すと座標が表示されます）:<br>採掘機 (12,16) → ベルト (13,16) → 製錬炉 (14,16) → ベルト (15,16) → 出荷所 (16,16)。全て東向き。<br>魔力発生炉 (12,18) と、導線 (12,17)・(13,17)・(14,17) を設置。魔力発生炉を選び木材1を補給。<br>木材採取場 (9,18) → ベルト (10,18)・(11,18) → 魔力発生炉 (12,18) と東向きにつなぐと燃料も自動化。</p><p>1本指タップ（離した時）: 配置 / 選択<br>2本指: 地図移動・ピンチ拡縮<br>1本指ドラッグは配置しません。マウス左ドラッグ: ベルト連続敷設<br>↶ 配置取消 / Ctrl・⌘ Z: 未稼働の配置を全額取消<br>既存ベルトも撤去で木材1・鉄1を全額回収<br>左クリック: 配置 / 選択<br>右ドラッグ / WASD: 移動<br>中ドラッグ / Q・E: 視点回転<br>ホイール: ズーム<br>R: 設備回転、Shift＋クリック: 複製<br>X＋クリック: 撤去確認、Delete: 選択設備の撤去確認<br>Esc: 建設取消・撤去のキャンセル<br>Space: 一時停止 / 再開</p><p>配置プレビュー: 緑は建設可能、赤は建設不可。金の矢印が出力方向。結晶の青は魔力あり、紫は魔力網につながっているが蓄積なし、橙は魔力網に未接続。</p><p>出荷所は木材・鉄の延べ棒・魔導剣を32個まで保持します。詳細で出荷元・品物・個数を選び、見積もりを確認して手動出荷します。自動生産品は依頼へ優先、余剰は売却。購入品・初期資材は売却のみです。自動生産品を回収した後も、対象の由来が残る品は手持ちから出荷できます。魔力切れは木材の手動補給で復旧できます。木材が0なら、メニューの「木材を手採取」で1個ずつ採れます。保存はこのブラウザの1スロットです。</p><button data-action=\"help-close\">操作説明を閉じる ×</button></div></details></div></details>\n      </header>\n      <button id=\"tracked-goal\" class=\"tracked-goal\" data-action=\"technology-open\" hidden></button>\n      <aside id=\"golem-guide\" class=\"golem-guide\" hidden aria-label=\"ゴーレムの使い方\"><div class=\"golem-guide-heading\"><h2>ゴーレムの使い方</h2><button data-action=\"golem-guide-close\">閉じる ×</button></div><p id=\"golem-guide-progress\"></p><h3 id=\"golem-guide-title\"></h3><p id=\"golem-guide-detail\"></p><button data-action=\"golem-guide-action\">次の操作へ</button><ul id=\"golem-guide-blockers\"></ul></aside>\n      <dialog id=\"demolition-dialog\" aria-labelledby=\"demolition-title\" aria-describedby=\"demolition-summary\"><h2 id=\"demolition-title\">設備を撤去しますか？</h2><p id=\"demolition-target\"></p><p id=\"demolition-summary\"></p><small>回収した中身は手動扱いになります。消費済みの燃料・魔力・世界樹の成長は戻りません。</small><div class=\"demolition-actions\"><button data-action=\"remove-cancel\" autofocus>キャンセル</button><button data-action=\"remove-confirm\" class=\"danger\">撤去する</button></div></dialog>\n      <section id=\"technology-panel\" class=\"technology-panel\" hidden aria-label=\"技術ツリー\">\n        <div class=\"technology-heading\"><div><h2>技術ツリー</h2><p>自動生産の実績で解放。研究に素材の支払いは不要です。</p></div><button data-action=\"technology-close\">閉じる ×</button></div>\n        <p class=\"technology-path\">基礎 → 物流 ＋ 魔晶 → 組立 → ゴーレム → 錬金 → 転送 → 世界樹</p><p id=\"sword-rate\"></p>\n        <div class=\"technology-map\"></div><p class=\"future-tech\">世界樹: 自動生産した世界樹の種を転送門経由で10個届けます。途中の技術を研究しながら工房を拡張しましょう。</p>\n      </section>\n      <aside id=\"guide-card\" class=\"guide-card\" hidden aria-label=\"はじめての工房づくり\">\n        <div class=\"guide-heading\"><span id=\"guide-objective\">鉄10本を出荷して結晶加工へ</span><button data-action=\"guide-close\" aria-label=\"案内を閉じる\">案内を閉じる</button></div>\n        <div id=\"guide-progress\" class=\"guide-progress\"></div><h2 id=\"guide-title\"></h2><button data-action=\"guide-action\" class=\"guide-action\">この設備を選ぶ</button><p id=\"guide-text\"></p>\n        <p id=\"guide-step-target\" class=\"guide-target\"></p><p id=\"guide-instruction\"></p>\n        <ul id=\"guide-blockers\" class=\"guide-blockers\"></ul><details id=\"guide-check-details\"><summary id=\"guide-check-summary\">組立チェック</summary><ul id=\"guide-checks\" class=\"guide-checks\"></ul></details><p id=\"guide-feedback\" class=\"guide-feedback\" role=\"status\" aria-live=\"polite\" hidden></p><small class=\"guide-next\">条件を満たすと、次の案内へ進みます。</small>\n      </aside>\n      <div class=\"workshop-notices\"><p id=\"game-message\" role=\"status\" aria-live=\"polite\">鉱脈に採掘機を建て、工房を動かそう。</p><p id=\"victory-message\" hidden>工房完成！ 鉄延べ棒100本の自動納品を達成しました。続けて工房を拡張できます。</p></div>\n      <aside id=\"selection-panel\" class=\"selection-panel\" hidden aria-label=\"設備の詳細\">\n        <div class=\"selection-heading\"><button class=\"panel-close\" data-action=\"close-panel\" aria-label=\"設備詳細を閉じる\">×</button><h2 id=\"selection-title\"></h2></div><p id=\"selection-description\"></p><div id=\"furnace-role\" class=\"furnace-role\" hidden></div>\n        <div id=\"facility-feed-slots\" class=\"facility-feed-slots\"></div><div id=\"portal-controls\" hidden><div class=\"portal-channels\" aria-label=\"転送門の接続番号\"><button data-portal-channel=\"1\">接続1</button><button data-portal-channel=\"2\">接続2</button><button data-portal-channel=\"3\">接続3</button></div><div class=\"portal-roles\"><button data-portal-role=\"send\">送信門</button><button data-portal-role=\"receive\">受信門</button></div><p id=\"portal-pair\"></p><p id=\"portal-state\"></p></div><div id=\"tree-controls\" hidden><label>世界樹の成長 <progress id=\"tree-growth\" max=\"10\" value=\"0\"></progress></label><p id=\"tree-growth-text\"></p><small>自動生産し、手で回収せず、転送門を通して届いた世界樹の種が対象です。</small></div><div id=\"relay-controls\" hidden><p id=\"relay-worker\"></p><div class=\"relay-policies\"><button data-relay-policy=\"fuel\">♣ 燃料補給</button><button data-relay-policy=\"materials\">◇ 材料補給</button></div><p id=\"relay-transfers\"></p><p id=\"relay-route\"></p><div id=\"relay-inspections\"><button data-action=\"relay-source\">収納箱を見る</button><button data-action=\"relay-target\">補給先を見る</button></div><button data-action=\"golem-guide-open\">運用の案内を見る</button><small>収納箱と補給先は半径6区画。燃料補給20回で自律工房の実績を達成。</small></div><section id=\"shipping-controls\" hidden><h3>手動出荷</h3><p>搬入だけでは消費しません。対象品は依頼へ優先、余剰は売却します。</p><p id=\"shipping-quests\"></p><button data-action=\"technology-open\">研究条件・解放内容を見る</button><p id=\"shipping-stock\"></p><div class=\"shipping-fields\"><label>出荷元<select id=\"shipping-source\"><option value=\"depot\">搬入庫</option><option value=\"inventory\">手持ち</option></select></label><label>品物<select id=\"shipping-resource\"><option value=\"ingot\">鉄の延べ棒</option><option value=\"wood\">木材</option><option value=\"sword\">魔導剣</option></select></label><label>個数<input id=\"shipping-amount\" type=\"number\" min=\"1\" max=\"1000\" value=\"1\"></label></div><p id=\"shipping-quote\" role=\"status\"></p><button data-action=\"dispatch\">確認して出荷</button><button data-action=\"dispatch-all\">この品をまとめて出荷</button><p id=\"shipping-wallet\"></p><button data-action=\"buy-iron\">建設用の延べ棒を1個購入</button><button data-action=\"gather-wood\">木材を手採取（無料）</button><small>初期・購入品は売却のみ。木材を手採取→売却で、資金0から鉄を買えます。出荷・売却後は品を消費します。</small></section><div id=\"delivery-summary\" hidden></div><div id=\"recipe-controls\" hidden><label>生産レシピ<select id=\"recipe-select\"></select></label><p id=\"recipe-lock-reason\"></p></div><div id=\"storage-controls\" hidden><p id=\"storage-capacity\"></p><div class=\"transfer-toolbar\"><span>移動する個数</span><button data-transfer-mode=\"one\" aria-pressed=\"true\">1個</button><button data-transfer-mode=\"all\" aria-pressed=\"false\">全量</button></div><div class=\"chest-transfer\"><section><h3>手持ち <span>→</span></h3><div id=\"inventory-slots\" class=\"item-slots\"></div><button data-action=\"deposit-all\">まとめて預ける</button></section><section><h3>収納箱 <span>←</span></h3><div id=\"chest-slots\" class=\"item-slots\"></div><button data-action=\"withdraw-all\">まとめて取り出す</button></section></div><p class=\"transfer-hint\">クリックで1個、Shift＋クリックで全量。キーボードのEnterでも移動できます。取り出した品は手動扱いになります。</p><details id=\"advanced-collect\"><summary>品目と個数を指定</summary><ul id=\"storage-items\"></ul><label>取り出す品<select id=\"collect-resource\"></select></label><label>個数<input id=\"collect-amount\" type=\"number\" min=\"1\" max=\"32\" value=\"1\" step=\"1\"></label><button data-action=\"collect-count\">選んだ品を取り出す</button></details></div><dl><div><dt>稼働状態</dt><dd id=\"selection-status\"></dd></div><div><dt>入出力・方向</dt><dd id=\"selection-direction\"></dd></div><div><dt>内部の資源</dt><dd id=\"selection-buffer\"></dd></div><div><dt>作業進捗</dt><dd id=\"selection-progress\"></dd></div><div><dt>蓄積魔力</dt><dd id=\"selection-power\"></dd></div></dl>\n        <div class=\"selection-actions\"><button data-action=\"rotate\">回転 R</button><button data-action=\"collect\">資源を回収</button><button data-action=\"remove\" class=\"danger\">撤去</button></div>\n        <details id=\"advanced-feed\"><summary>個数を指定して補給</summary><form id=\"feed-form\"><label>手動補給<select id=\"feed-resource\"><option value=\"wood\">木材</option><option value=\"ore\">鉄鉱石</option><option value=\"ingot\">鉄の延べ棒</option><option value=\"rawCrystal\">魔晶原石</option><option value=\"crystal\">精製魔晶</option><option value=\"sword\">魔導剣</option></select></label><label>個数<input id=\"feed-amount\" type=\"number\" min=\"1\" max=\"1000\" step=\"1\" value=\"1\" inputmode=\"numeric\"></label><button type=\"submit\" data-action=\"feed\">補給する</button><small>手動の鉱石・延べ棒・精製魔晶等は目標に含めません。木材燃料は手動補給できます。</small></form></details>\n      </aside>\n      <nav id=\"quickbar\" class=\"quickbar\" aria-label=\"登録した建設設備\"><button id=\"build-reopen\" data-action=\"build-open\">建設一覧</button><div id=\"quick-slots\"></div><label id=\"build-recipe-control\" hidden>製品<select id=\"build-recipe-select\" aria-label=\"配置する機械の製品レシピ\"></select></label><button data-action=\"undo-build\" class=\"undo-build\" disabled>↶<span>配置取消</span></button><button data-action=\"golem-guide-open\" class=\"quick-golem-guide\" aria-label=\"ゴーレムの使い方\">♟？</button><button data-action=\"rotate\" aria-label=\"建設方向を回転\">↻</button><button data-action=\"cancel\" aria-label=\"建設を取り消す\">×</button></nav>\n      <footer class=\"build-dock\" hidden><div class=\"build-context\"><span id=\"build-context\">建設する設備を選ぶ</span><button data-action=\"rotate\" aria-label=\"建設方向を回転\">↻ R</button><button data-action=\"cancel\">取消 Esc</button><button data-action=\"build-close\" aria-label=\"建設一覧を閉じる\">閉じる ×</button></div><label class=\"catalog-search\">設備を探す<input id=\"build-search\" type=\"search\" placeholder=\"名前・素材・用途で検索\" autocomplete=\"off\"></label><p id=\"catalog-suggestion\"></p><nav id=\"build-categories\" aria-label=\"設備のカテゴリー\"></nav><div class=\"registration-hint\"><span id=\"registration-label\">登録先 1</span><div id=\"registration-buttons\" aria-label=\"クイックスロット登録先\"></div><details class=\"registration-advanced\"><summary>番号指定</summary><select id=\"registration-slot\" aria-label=\"登録先クイックスロット\"></select></details><small>番号を選び、設備の☆で登録 · キー1〜6で選択</small></div><nav class=\"build-palette\" aria-label=\"建設する設備\"></nav></footer>";
+		this.root = e, this.callbacks = t, this.loadPreferences(), e.innerHTML = `
+      <header class="workshop-top">
+        <a class="home-link" href="index.html" aria-label="AI Gamesへ戻る">‹ AI Games</a>
+        <div class="workshop-title">魔導からくり工房 <span id="wallet-count"></span><span id="objective-summary"><b id="objective-title"></b> <b id="objective-count"></b></span><span class="legacy-goal" title="鉄の延べ棒の累積自動納品"><i class="ingot-icon" aria-hidden="true"></i> 鉄の延べ棒 自動納品 <b id="delivered-count">0</b> / 100 <small class="goal-condition">自動生産品の出荷・100本は記念実績</small></span></div>
+        <div class="resource-strip" aria-label="所持資源"><span title="所持 木材">木材 <b data-resource="wood">0</b></span><span title="所持 鉄鉱石">鉱石 <b data-resource="ore">0</b></span><span title="所持 鉄の延べ棒">延べ棒 <b data-resource="ingot">0</b></span><span title="所持 精製魔晶原石">原石 <b data-resource="rawCrystal">0</b></span><span title="所持 精製魔晶">魔晶 <b data-resource="crystal">0</b></span><span title="所持 魔導剣">魔導剣 <b data-resource="sword">0</b></span><span>魔力 <b id="power-count">0 / 0</b></span></div><button data-action="technology-open" class="technology-open">技術ツリー</button>
+        <div class="time-controls" aria-label="時間速度"><button data-speed="0" aria-label="一時停止" title="一時停止（Space）">Ⅱ</button><button data-speed="1" aria-label="1倍速">1×</button><button data-speed="2" aria-label="2倍速">2×</button></div>
+        <details class="game-menu"><summary aria-label="操作と保存メニュー">☰ <span>メニュー</span></summary><div class="menu-body"><button data-action="menu-close" class="menu-close">メニューを閉じる ×</button><div class="menu-actions"><button data-action="save">保存</button><button data-action="load">読込</button><button data-action="camera">視点を戻す</button><button data-action="new">新しい工房</button><button data-action="golem-guide-open">ゴーレムの使い方</button><button data-action="gather-wood" title="森林から木材1個を手採取。生産実績には算入しません。">木材を手採取</button><button data-action="guide-open">はじめての案内</button><button data-action="build-open">建設一覧を表示</button><button data-action="selection-open">設備詳細を表示</button><button data-action="help-close">操作説明を閉じる</button></div><details id="main-help"><summary>操作方法・つくり方</summary><div class="help-text"><p>鉱脈に採掘機 → ベルト → 製錬炉 → ベルト → 出荷所をつなごう。魔力発生炉と機械は魔力導線で接続。魔力発生炉を選び木材を補給すると起動できます。</p><p>最初の配置例（座標 X, Z。地形を指すと座標が表示されます）:<br>採掘機 (12,16) → ベルト (13,16) → 製錬炉 (14,16) → ベルト (15,16) → 出荷所 (16,16)。全て東向き。<br>魔力発生炉 (12,18) と、導線 (12,17)・(13,17)・(14,17) を設置。魔力発生炉を選び木材1を補給。<br>木材採取場 (9,18) → ベルト (10,18)・(11,18) → 魔力発生炉 (12,18) と東向きにつなぐと燃料も自動化。</p><p>1本指タップ（離した時）: 配置 / 選択<br>2本指: 地図移動・ピンチ拡縮<br>1本指ドラッグは配置しません。マウス左ドラッグ: ベルト連続敷設<br>↶ 配置取消 / Ctrl・⌘ Z: 未稼働の配置を全額取消<br>既存ベルトも撤去で木材1・鉄1を全額回収<br>左クリック: 配置 / 選択<br>右ドラッグ / WASD: 移動<br>中ドラッグ / Q・E: 視点回転<br>ホイール: ズーム<br>R: 設備回転、Shift＋クリック: 複製<br>X＋クリック: 撤去確認、Delete: 選択設備の撤去確認<br>Esc: 建設取消・撤去のキャンセル<br>Space: 一時停止 / 再開</p><p>配置プレビュー: 緑は建設可能、赤は建設不可。金の矢印が出力方向。結晶の青は魔力あり、紫は魔力網につながっているが蓄積なし、橙は魔力網に未接続。</p><p>出荷所は木材・鉄の延べ棒・魔導剣を32個まで保持します。詳細で出荷元・品物・個数を選び、見積もりを確認して手動出荷します。自動生産品は依頼へ優先、余剰は売却。購入品・初期資材は売却のみです。自動生産品を回収した後も、対象の由来が残る品は手持ちから出荷できます。魔力切れは木材の手動補給で復旧できます。木材が0なら、メニューの「木材を手採取」で1個ずつ採れます。保存はこのブラウザの1スロットです。</p><button data-action="help-close">操作説明を閉じる ×</button></div></details></div></details>
+      </header>
+      <button id="tracked-goal" class="tracked-goal" data-action="technology-open" hidden></button>
+      <aside id="golem-guide" class="golem-guide" hidden aria-label="ゴーレムの使い方"><div class="golem-guide-heading"><h2>ゴーレムの使い方</h2><button data-action="golem-guide-close">閉じる ×</button></div><p id="golem-guide-progress"></p><h3 id="golem-guide-title"></h3><p id="golem-guide-detail"></p><button data-action="golem-guide-action">次の操作へ</button><ul id="golem-guide-blockers"></ul></aside>
+      <dialog id="demolition-dialog" aria-labelledby="demolition-title" aria-describedby="demolition-summary"><h2 id="demolition-title">設備を撤去しますか？</h2><p id="demolition-target"></p><p id="demolition-summary"></p><small>回収した中身は手動扱いになります。消費済みの燃料・魔力・世界樹の成長は戻りません。</small><div class="demolition-actions"><button data-action="remove-cancel" autofocus>キャンセル</button><button data-action="remove-confirm" class="danger">撤去する</button></div></dialog>
+      <section id="technology-panel" class="technology-panel" hidden aria-label="技術ツリー">
+        <div class="technology-heading"><div><h2>技術ツリー</h2><p>自動生産の実績で解放。研究に素材の支払いは不要です。</p></div><button data-action="technology-close">閉じる ×</button></div>
+        <p class="technology-path">基礎 → 物流 ＋ 魔晶 → 組立 → ゴーレム → 錬金 → 転送 → 世界樹</p><p id="sword-rate"></p>
+        <div class="technology-map"></div><p class="future-tech">世界樹: 自動生産した世界樹の種を転送門経由で10個届けます。途中の技術を研究しながら工房を拡張しましょう。</p>
+      </section>
+      <aside id="guide-card" class="guide-card" hidden aria-label="はじめての工房づくり">
+        <div class="guide-heading"><span id="guide-objective">鉄10本を出荷して結晶加工へ</span><button data-action="guide-close" aria-label="案内を閉じる">案内を閉じる</button></div>
+        <div id="guide-progress" class="guide-progress"></div><h2 id="guide-title"></h2><button data-action="guide-action" class="guide-action">この設備を選ぶ</button><p id="guide-text"></p>
+        <p id="guide-step-target" class="guide-target"></p><p id="guide-instruction"></p>
+        <ul id="guide-blockers" class="guide-blockers"></ul><details id="guide-check-details"><summary id="guide-check-summary">組立チェック</summary><ul id="guide-checks" class="guide-checks"></ul></details><p id="guide-feedback" class="guide-feedback" role="status" aria-live="polite" hidden></p><small class="guide-next">条件を満たすと、次の案内へ進みます。</small>
+      </aside>
+      <div class="workshop-notices"><p id="game-message" role="status" aria-live="polite">鉱脈に採掘機を建て、工房を動かそう。</p><p id="victory-message" hidden>工房完成！ 鉄延べ棒100本の自動納品を達成しました。続けて工房を拡張できます。</p></div>
+      <aside id="selection-panel" class="selection-panel" hidden aria-label="設備の詳細">
+        <div class="selection-heading"><button class="panel-close" data-action="close-panel" aria-label="設備詳細を閉じる">×</button><h2 id="selection-title"></h2></div><p id="selection-description"></p><div id="furnace-role" class="furnace-role" hidden></div>
+        <div id="facility-feed-slots" class="facility-feed-slots"></div><div id="portal-controls" hidden><div class="portal-channels" aria-label="転送門の接続番号"><button data-portal-channel="1">接続1</button><button data-portal-channel="2">接続2</button><button data-portal-channel="3">接続3</button></div><div class="portal-roles"><button data-portal-role="send">送信門</button><button data-portal-role="receive">受信門</button></div><p id="portal-pair"></p><p id="portal-state"></p></div><div id="tree-controls" hidden><label>世界樹の成長 <progress id="tree-growth" max="10" value="0"></progress></label><p id="tree-growth-text"></p><small>自動生産し、手で回収せず、転送門を通して届いた世界樹の種が対象です。</small></div><div id="relay-controls" hidden><p id="relay-worker"></p><div class="relay-policies"><button data-relay-policy="fuel">♣ 燃料補給</button><button data-relay-policy="materials">◇ 材料補給</button></div><p id="relay-transfers"></p><p id="relay-route"></p><div id="relay-inspections"><button data-action="relay-source">収納箱を見る</button><button data-action="relay-target">補給先を見る</button></div><button data-action="golem-guide-open">運用の案内を見る</button><small>収納箱と補給先は半径6区画。燃料補給20回で自律工房の実績を達成。</small></div><section id="shipping-controls" hidden><h3>手動出荷</h3><p>搬入だけでは消費しません。対象品は依頼へ優先、余剰は売却します。</p><p id="shipping-quests"></p><button data-action="technology-open">研究条件・解放内容を見る</button><p id="shipping-stock"></p><div class="shipping-fields"><label>出荷元<select id="shipping-source"><option value="depot">搬入庫</option><option value="inventory">手持ち</option></select></label><label>品物<select id="shipping-resource"><option value="ingot">鉄の延べ棒</option><option value="wood">木材</option><option value="sword">魔導剣</option></select></label><label>個数<input id="shipping-amount" type="number" min="1" max="1000" value="1"></label></div><p id="shipping-quote" role="status"></p><button data-action="dispatch">確認して出荷</button><button data-action="dispatch-all">この品をまとめて出荷</button><p id="shipping-wallet"></p><button data-action="buy-iron">建設用の延べ棒を1個購入</button><button data-action="gather-wood">木材を手採取（無料）</button><small>初期・購入品は売却のみ。木材を手採取→売却で、資金0から鉄を買えます。出荷・売却後は品を消費します。</small></section><div id="delivery-summary" hidden></div><div id="recipe-controls" hidden><label>生産レシピ<select id="recipe-select"></select></label><p id="recipe-lock-reason"></p></div><div id="storage-controls" hidden><p id="storage-capacity"></p><div class="transfer-toolbar"><span>移動する個数</span><button data-transfer-mode="one" aria-pressed="true">1個</button><button data-transfer-mode="all" aria-pressed="false">全量</button></div><div class="chest-transfer"><section><h3>手持ち <span>→</span></h3><div id="inventory-slots" class="item-slots"></div><button data-action="deposit-all">まとめて預ける</button></section><section><h3>収納箱 <span>←</span></h3><div id="chest-slots" class="item-slots"></div><button data-action="withdraw-all">まとめて取り出す</button></section></div><p class="transfer-hint">クリックで1個、Shift＋クリックで全量。キーボードのEnterでも移動できます。取り出した品は手動扱いになります。</p><details id="advanced-collect"><summary>品目と個数を指定</summary><ul id="storage-items"></ul><label>取り出す品<select id="collect-resource"></select></label><label>個数<input id="collect-amount" type="number" min="1" max="32" value="1" step="1"></label><button data-action="collect-count">選んだ品を取り出す</button></details></div><dl><div><dt>稼働状態</dt><dd id="selection-status"></dd></div><div><dt>入出力・方向</dt><dd id="selection-direction"></dd></div><div><dt>内部の資源</dt><dd id="selection-buffer"></dd></div><div><dt>作業進捗</dt><dd id="selection-progress"></dd></div><div><dt>蓄積魔力</dt><dd id="selection-power"></dd></div></dl>
+        <div class="selection-actions"><button data-action="rotate">回転 R</button><button data-action="collect">資源を回収</button><button data-action="remove" class="danger">撤去</button></div>
+        <details id="advanced-feed"><summary>個数を指定して補給</summary><form id="feed-form"><label>手動補給<select id="feed-resource"><option value="wood">木材</option><option value="ore">鉄鉱石</option><option value="ingot">鉄の延べ棒</option><option value="rawCrystal">魔晶原石</option><option value="crystal">精製魔晶</option><option value="sword">魔導剣</option></select></label><label>個数<input id="feed-amount" type="number" min="1" max="1000" step="1" value="1" inputmode="numeric"></label><button type="submit" data-action="feed">補給する</button><small>手動の鉱石・延べ棒・精製魔晶等は目標に含めません。木材燃料は手動補給できます。</small></form></details>
+      </aside>
+      <section id="direction-control" class="direction-control" hidden aria-label="方向のクイック操作"><div class="direction-heading"><strong id="direction-title"></strong><span id="direction-current"></span></div><div class="direction-buttons" role="group" aria-label="地図の方角を指定">${V.map((e, t) => `<button data-direction="${t}" aria-label="${e}に向ける" aria-pressed="false">${e}</button>`).join("")}</div><small>地図の方角 · Rキーでも90°回転</small></section>
+      <nav id="quickbar" class="quickbar" aria-label="登録した建設設備"><button id="build-reopen" data-action="build-open">建設一覧</button><div id="quick-slots"></div><label id="build-recipe-control" hidden>製品<select id="build-recipe-select" aria-label="配置する機械の製品レシピ"></select></label><button data-action="undo-build" class="undo-build" disabled>↶<span>配置取消</span></button><button data-action="golem-guide-open" class="quick-golem-guide" aria-label="ゴーレムの使い方">♟？</button><button data-action="rotate" aria-label="建設方向を回転">↻ 回転</button><button data-action="cancel" aria-label="建設を取り消す">×</button></nav>
+      <footer class="build-dock" hidden><div class="build-context"><span id="build-context">建設する設備を選ぶ</span><button data-action="rotate" aria-label="建設方向を回転">↻ R</button><button data-action="cancel">取消 Esc</button><button data-action="build-close" aria-label="建設一覧を閉じる">閉じる ×</button></div><label class="catalog-search">設備を探す<input id="build-search" type="search" placeholder="名前・素材・用途で検索" autocomplete="off"></label><p id="catalog-suggestion"></p><nav id="build-categories" aria-label="設備のカテゴリー"></nav><div class="registration-hint"><span id="registration-label">登録先 1</span><div id="registration-buttons" aria-label="クイックスロット登録先"></div><details class="registration-advanced"><summary>番号指定</summary><select id="registration-slot" aria-label="登録先クイックスロット"></select></details><small>番号を選び、設備の☆で登録 · キー1〜6で選択</small></div><nav class="build-palette" aria-label="建設する設備"></nav></footer>`;
 		let n = this.node(".build-palette");
 		for (let e of H) {
 			let t = o[e], r = document.createElement("button");
@@ -3760,6 +3800,10 @@ var R = d, z = Object.keys(R), Ne = S.map((e) => e.id), B = Object.fromEntries(S
 	handleClick(e) {
 		let t = e.target.closest("button");
 		if (!t || !this.root.contains(t)) return;
+		if (t.dataset.direction !== void 0) {
+			this.callbacks.onDirection(Number(t.dataset.direction));
+			return;
+		}
 		if (t.dataset.quick) {
 			this.chooseQuickSlot(Number(t.dataset.quick));
 			return;
@@ -3819,7 +3863,13 @@ var R = d, z = Object.keys(R), Ne = S.map((e) => e.id), B = Object.fromEntries(S
 			return;
 		}
 		let n = t.dataset.action;
-		if (n === "dispatch" || n === "dispatch-all") {
+		if (t.closest(".menu-actions") && [
+			"camera",
+			"build-open",
+			"selection-open",
+			"golem-guide-open",
+			"guide-open"
+		].includes(n ?? "") && (this.node(".game-menu").open = !1), n === "dispatch" || n === "dispatch-all") {
 			let e = this.shippingValues();
 			this.callbacks.onDispatch(e.source, e.resource, n === "dispatch-all" ? Math.min(1e3, e.available) : e.amount);
 		} else if (n === "buy-iron") this.callbacks.onBuyIron();
@@ -3834,7 +3884,7 @@ var R = d, z = Object.keys(R), Ne = S.map((e) => e.id), B = Object.fromEntries(S
 		else if (n === "relay-target" && this.currentSelected?.golemRoute) this.callbacks.onInspect?.(this.currentSelected.golemRoute.targetId);
 		else if (n === "remove-cancel") this.callbacks.onCancelRemove();
 		else if (n === "remove-confirm" && this.demolitionId !== null && !this.demolitionSubmitted) this.demolitionSubmitted = !0, t.disabled = !0, this.callbacks.onConfirmRemove(this.demolitionId);
-		else if (n === "menu-close") this.node(".game-menu").open = !1;
+		else if (n === "menu-close") this.node(".game-menu").open = !1, this.menuToggle();
 		else if (n === "help-close") this.node("#main-help").open = !1;
 		else if (n === "build-open" || n === "build-close") n === "build-open" && (this.category = "all", this.search = "", this.node("#build-search").value = "", this.filterPalette()), this.node(".build-dock").hidden = n === "build-close", this.node("#build-reopen").setAttribute("aria-expanded", String(n === "build-open")), n === "build-close" && this.callbacks.onCancel();
 		else if (n === "selection-open") {
@@ -3951,7 +4001,9 @@ var R = d, z = Object.keys(R), Ne = S.map((e) => e.id), B = Object.fromEntries(S
 			r.title = `${U[n]} 建設費: ${this.costLabel(n)}${!u && d ? ` · 未解放: ${B[d]}の研究が必要。技術ツリーで条件を確認。` : ""}`, r.querySelector(".build-lock-reason").textContent = !u && d ? `未解放 · ${B[d]}` : l ? "建設可能" : "素材不足", r.setAttribute("aria-label", `${o[n].label}、${s}${u ? "" : "、技術未解放"}${l ? "" : "、資源不足"}`);
 		}
 		this.updateCatalogRecommendations(e), this.filterPalette(), this.text("#build-context", `${t.kind ? `${o[t.kind].label} · 出力 ${V[t.direction]}` : "設備を選んで建設"}${t.hover ? ` · (${t.hover.x}, ${t.hover.z})` : ""}`);
-		let a = e.buildings.find((e) => e.id === t.selectedId), s = this.node("#selection-panel");
+		let a = e.buildings.find((e) => e.id === t.selectedId);
+		this.updateDirectionControl(t, a);
+		let s = this.node("#selection-panel");
 		if (this.root.classList.toggle("has-selection", !!a), !a) s.hidden = !0;
 		else {
 			if (t.selectedId !== this.lastSelected) {
@@ -4133,8 +4185,17 @@ var R = d, z = Object.keys(R), Ne = S.map((e) => e.id), B = Object.fromEntries(S
 	chooseQuickSlot(e) {
 		!Number.isInteger(e) || e < 0 || e >= this.quickSlots.length || (this.node(".build-dock").hidden = !0, this.node("#technology-panel").hidden || this.callbacks.onTechnologyToggle(!1), this.callbacks.onBuild(this.quickSlots[e]));
 	}
+	updateDirectionControl(e, t) {
+		let n = this.node("#direction-control"), r = e.kind ?? (t?.kind === "belt" ? "belt" : null);
+		if (n.hidden = !r || this.isWorldInputBlocked(), this.root.classList.toggle("has-direction-control", !n.hidden), !r) return;
+		let i = e.kind ? e.direction : t.direction;
+		this.text("#direction-title", e.kind ? `${o[r].label}の配置方向` : `選択ベルト (${t.x}, ${t.z})`), this.text("#direction-current", V[i]), n.querySelectorAll("[data-direction]").forEach((e) => e.setAttribute("aria-pressed", String(Number(e.dataset.direction) === i))), this.node("#quickbar [data-action=\"rotate\"]").setAttribute("aria-label", e.kind ? "配置方向を90度回転" : "選択設備を90度回転");
+	}
+	menuToggle() {
+		this.callbacks.onOverlayChange();
+	}
 	isWorldInputBlocked() {
-		return this.node("#demolition-dialog").open || !this.node(".build-dock").hidden || !this.node("#technology-panel").hidden || !this.node("#golem-guide").hidden;
+		return this.node(".game-menu").open || this.node("#demolition-dialog").open || !this.node(".build-dock").hidden || !this.node("#technology-panel").hidden || !this.node("#golem-guide").hidden;
 	}
 	openSelection() {
 		this.node("#selection-panel").hidden = !1, this.node("#selection-panel").classList.remove("is-collapsed");
@@ -4143,6 +4204,7 @@ var R = d, z = Object.keys(R), Ne = S.map((e) => e.id), B = Object.fromEntries(S
 	}
 	closeOverlay() {
 		if (this.node("#demolition-dialog").open) return this.callbacks.onCancelRemove(), !0;
+		if (this.node(".game-menu").open) return this.node(".game-menu").open = !1, this.menuToggle(), !0;
 		if (!this.node("#golem-guide").hidden) return this.callbacks.onGolemGuideToggle(!1), !0;
 		if (!this.node("#technology-panel").hidden) return this.callbacks.onTechnologyToggle(!1), !0;
 		if (!this.node(".build-dock").hidden) return this.node(".build-dock").hidden = !0, this.callbacks.onCancel(), !0;
@@ -4329,7 +4391,7 @@ var R = d, z = Object.keys(R), Ne = S.map((e) => e.id), B = Object.fromEntries(S
 	}
 };
 function Re(e, t, n) {
-	t.addEventListener("click", (t) => e.handleClick(t), { signal: n }), t.querySelector("#feed-form").addEventListener("submit", (t) => e.handleFeed(t), { signal: n }), t.querySelector("#build-search").addEventListener("input", () => e.searchCatalog(), { signal: n }), t.querySelector("#demolition-dialog").addEventListener("cancel", (t) => e.cancelDemolition(t), { signal: n }), t.querySelector("#registration-slot").addEventListener("change", () => e.registrationChange(), { signal: n }), t.querySelector("#build-recipe-select").addEventListener("change", (t) => e.callbacksBuildRecipe(t.target.value), { signal: n });
+	t.addEventListener("click", (t) => e.handleClick(t), { signal: n }), t.querySelector(".game-menu").addEventListener("toggle", () => e.menuToggle(), { signal: n }), t.querySelector("#feed-form").addEventListener("submit", (t) => e.handleFeed(t), { signal: n }), t.querySelector("#build-search").addEventListener("input", () => e.searchCatalog(), { signal: n }), t.querySelector("#demolition-dialog").addEventListener("cancel", (t) => e.cancelDemolition(t), { signal: n }), t.querySelector("#registration-slot").addEventListener("change", () => e.registrationChange(), { signal: n }), t.querySelector("#build-recipe-select").addEventListener("change", (t) => e.callbacksBuildRecipe(t.target.value), { signal: n });
 	for (let r of [
 		"shipping-source",
 		"shipping-resource",
@@ -5128,6 +5190,8 @@ var yt = class {
 				this.resume();
 			},
 			onRotate: () => this.rotate(),
+			onDirection: (e) => this.setDirection(e),
+			onOverlayChange: () => this.sync(),
 			onRemove: () => this.remove(),
 			onUndoBuild: () => this.undoBuild(),
 			onConfirmRemove: (e) => this.confirmRemove(e),
@@ -5270,6 +5334,26 @@ var yt = class {
 			type: "rotate",
 			id: this.selectedId
 		}).reason), this.sync();
+	}
+	setDirection(e) {
+		if (!this.ui.isWorldInputBlocked()) {
+			if (this.kind) this.direction = e;
+			else {
+				let t = this.simulation.state.buildings.find((e) => e.id === this.selectedId && e.kind === "belt");
+				if (!t) return;
+				let n = (e - t.direction + 4) % 4;
+				for (let e = 0; e < n; e++) this.simulation.command({
+					type: "rotate",
+					id: t.id
+				});
+			}
+			this.message = `方向を${[
+				"北 ↑",
+				"東 →",
+				"南 ↓",
+				"西 ←"
+			][e]}にしました。`, this.sync();
+		}
 	}
 	undoBuild() {
 		if (this.ui.isWorldInputBlocked()) return;
@@ -5427,7 +5511,7 @@ var yt = class {
 		}), this.view?.setInputBlocked(this.ui.isWorldInputBlocked());
 	}
 	key(e) {
-		this.pendingDemolitionId === null ? this.technologyOpen && e.code === "Escape" ? this.toggleTechnology(!1) : e.code === "Escape" && this.ui.closeOverlay() || this.ui.isWorldInputBlocked() || e.target instanceof Element && e.target.closest("#technology-panel") || e.target instanceof Element && (e.target.closest("#game-ui") || e.target.closest("input,select,textarea,[contenteditable=\"true\"]") || e.target.closest("button") && !["KeyR", "Escape"].includes(e.code)) || e.repeat && e.code !== "KeyX" || ((e.ctrlKey || e.metaKey) && e.code === "KeyZ" && !e.shiftKey ? (e.preventDefault(), this.undoBuild()) : e.code === "Delete" && this.selectedId !== null ? (e.preventDefault(), this.remove()) : /^Digit[1-6]$/.test(e.code) ? (e.preventDefault(), this.ui.chooseQuickSlot(Number(e.code.slice(-1)) - 1)) : (e.code === "KeyX" && (this.xHeld = !0, this.message = "Xを押しながら施設をクリックして撤去。"), e.code === "KeyR" && this.rotate(), e.code === "Escape" && this.cancel(), e.code === "Space" && (e.preventDefault(), this.togglePause()))) : e.code === "Escape" && (e.preventDefault(), this.cancelRemove());
+		this.pendingDemolitionId === null ? this.technologyOpen && e.code === "Escape" ? this.toggleTechnology(!1) : e.code === "Escape" && this.ui.closeOverlay() || this.ui.isWorldInputBlocked() || e.target instanceof Element && e.target.closest("#technology-panel") || e.target instanceof Element && (e.target.closest("#game-ui") && e.code !== "KeyR" || e.target.closest("input,select,textarea,[contenteditable=\"true\"]") || e.target.closest("button") && !["KeyR", "Escape"].includes(e.code)) || e.repeat && e.code !== "KeyX" || ((e.ctrlKey || e.metaKey) && e.code === "KeyZ" && !e.shiftKey ? (e.preventDefault(), this.undoBuild()) : e.code === "Delete" && this.selectedId !== null ? (e.preventDefault(), this.remove()) : /^Digit[1-6]$/.test(e.code) ? (e.preventDefault(), this.ui.chooseQuickSlot(Number(e.code.slice(-1)) - 1)) : (e.code === "KeyX" && (this.xHeld = !0, this.message = "Xを押しながら施設をクリックして撤去。"), e.code === "KeyR" && this.rotate(), e.code === "Escape" && this.cancel(), e.code === "Space" && (e.preventDefault(), this.togglePause()))) : e.code === "Escape" && (e.preventDefault(), this.cancelRemove());
 	}
 };
 function bt(e) {

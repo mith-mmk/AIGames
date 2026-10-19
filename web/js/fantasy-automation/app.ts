@@ -50,6 +50,8 @@ class WorkshopApp {
       onSave: () => { void this.persist(); },
       onLoad: () => { void this.resume(); },
       onRotate: () => this.rotate(),
+      onDirection: direction => this.setDirection(direction),
+      onOverlayChange: () => this.sync(),
       onRemove: () => this.remove(),
       onUndoBuild: () => this.undoBuild(),
       onConfirmRemove: id => this.confirmRemove(id),
@@ -182,6 +184,18 @@ class WorkshopApp {
     else if (this.selectedId !== null) this.message = this.simulation.command({ type: 'rotate', id: this.selectedId }).reason;
     this.sync();
   }
+  setDirection(direction: Direction) {
+    if (this.ui.isWorldInputBlocked()) return;
+    if (this.kind) this.direction = direction;
+    else {
+      const belt = this.simulation.state.buildings.find(building => building.id === this.selectedId && building.kind === 'belt');
+      if (!belt) return;
+      const turns = (direction - belt.direction + 4) % 4;
+      for (let turn = 0; turn < turns; turn++) this.simulation.command({ type: 'rotate', id: belt.id });
+    }
+    this.message = `方向を${['北 ↑', '東 →', '南 ↓', '西 ←'][direction]}にしました。`;
+    this.sync();
+  }
   undoBuild() {
     if (this.ui.isWorldInputBlocked()) return;
     const target = this.simulation.undoPlacement();
@@ -294,7 +308,7 @@ class WorkshopApp {
     if (this.ui.isWorldInputBlocked()) return;
     if (event.target instanceof Element && event.target.closest('#technology-panel')) return;
     if (event.target instanceof Element) {
-      if (event.target.closest('#game-ui')) return;
+      if (event.target.closest('#game-ui') && event.code !== 'KeyR') return;
       if (event.target.closest('input,select,textarea,[contenteditable="true"]')) return;
       if (event.target.closest('button') && !['KeyR', 'Escape'].includes(event.code)) return;
     }

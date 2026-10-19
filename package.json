@@ -22,7 +22,8 @@
     "check:fantasy-stage4": "node --import tsx scripts/fantasy-automation-stage4-reachability.ts --nofixtures",
     "playtest:fantasy-stage4": "node scripts/fantasy-automation-phase4.cjs",
     "playtest:fantasy-touch": "node scripts/fantasy-automation-touch.cjs",
-    "playtest:fantasy-recipes": "node scripts/fantasy-automation-recipes-shipping.cjs"
+    "playtest:fantasy-recipes": "node scripts/fantasy-automation-recipes-shipping.cjs",
+    "playtest:fantasy-ipad": "node scripts/fantasy-automation-ipad.cjs"
   },
   "author": "MITH@mmk",
   "license": "MIT",

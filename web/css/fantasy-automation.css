@@ -62,7 +62,7 @@ summary { cursor: pointer; min-height: 44px; display: flex; align-items: center;
 .selection-panel.chest-selected { width: 430px; }
 .selection-panel h2 { font-size: 15px; margin: 0 30px 8px 0; }
 .selection-panel p { color: #e0d4bb; font-size: 11px; line-height: 1.6; }
-.selection-panel.is-collapsed > :not(h2):not(.panel-close) { display: none; }
+.selection-panel.is-collapsed > :not(.selection-heading) { display: none; }
 .panel-close { position: absolute; top: 1px; right: 2px; width: 44px; background: transparent; border-color: transparent; font-size: 22px; }
 dl { margin: 10px 0; }
 dl div { display: grid; grid-template-columns: 80px 1fr; gap: 7px; border-bottom: 1px solid #c69b5720; padding: 5px 0; }
@@ -165,3 +165,60 @@ noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 15px; back
 .shipping-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }.shipping-fields label { display: grid; gap: 4px; }.shipping-fields input, .shipping-fields select { min-width: 0; width: 100%; min-height: 44px; }#shipping-controls button { min-height: 44px; margin: 3px 0; width: 100%; }#shipping-controls h3 { color: var(--gold); }#shipping-quote { color: var(--gold); }#wallet-count { white-space: nowrap; color: var(--gold); }#shipping-quests, #shipping-stock { overflow-wrap: anywhere; }
 
 .selection-heading { position: sticky; top: -10px; z-index: 2; background: #33291ffb; padding: 6px 0; }.selection-heading h2 { padding-right: 32px; }.selection-heading .panel-close { top: 4px; right: 0; }
+
+/* Direction is a contextual tool: one tap chooses a heading and keeps placement active. */
+.direction-control { position: absolute; z-index: 3; right: 12px; bottom: 92px; width: min(352px, calc(100vw - 24px)); padding: 10px; border: 1px solid var(--border); border-radius: 9px; background: var(--panel); }
+.direction-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; font-size: 12px; }
+.direction-heading > span { color: var(--gold); white-space: nowrap; }
+.direction-buttons { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.direction-buttons button { min-width: 48px; min-height: 48px; padding: 7px; font-size: 14px; }
+.direction-control > small { display: block; margin-top: 6px; color: var(--ink-soft); font-size: 10px; }
+.has-direction-control .selection-panel { max-height: calc(100dvh - 330px); }
+.has-direction-control #build-recipe-control { bottom: calc(100% + 140px); }
+.menu-body, .selection-panel, .build-dock, .technology-panel, .golem-guide { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.menu-close { position: sticky; top: -1px; z-index: 2; background: var(--wood); }
+.menu-body { scroll-padding-top: 66px; }.build-dock, .selection-panel { scroll-padding-top: 80px; }
+
+@media (pointer: coarse) {
+  .direction-control { bottom: 100px; }
+  #game-ui button, #game-ui summary, #game-ui select, #game-ui input { min-height: 48px; }
+  .game-menu > summary { min-width: 100px; justify-content: center; font-size: 14px; border: 1px solid var(--border); border-radius: 6px; }
+  .game-menu > summary span { display: inline; }
+  .workshop-top { gap: 8px; }
+  .workshop-top > .technology-open, .time-controls button { font-size: 12px; }
+  .menu-body { position: fixed; top: 110px; right: 12px; width: min(420px, calc(100vw - 24px)); max-height: calc(100dvh - 210px); padding: 12px; }
+  .menu-actions { gap: 10px; }
+  .menu-actions button, .menu-close { font-size: 14px; padding: 10px; }
+  .menu-close { margin-bottom: 10px; }
+  .quickbar { bottom: 8px; gap: 8px; padding: 6px; }
+  #quick-slots { gap: 8px; }
+  .quick-slot { min-width: 58px; min-height: 60px; }
+  .quick-name { font-size: 10px; }
+  .quickbar > button { min-width: 48px; font-size: 12px; }
+  .selection-panel { padding: 14px; }
+  .selection-panel p, .selection-actions button, .build-context, .build-context button { font-size: 13px; }
+  .selection-actions, .build-context { gap: 8px; }
+  .build-dock { bottom: 100px; max-height: calc(100dvh - 220px); }
+  .build-context { padding: 8px 0; }
+  .selection-heading { min-height: 52px; }
+  .selection-heading .panel-close { width: 48px; }
+  .technology-heading, .golem-guide-heading { position: sticky; top: -10px; z-index: 3; background: var(--wood); }
+}
+@media (max-width: 600px) {
+  .direction-control { right: 6px; width: calc(100vw - 12px); padding: 8px; }
+  .direction-heading { font-size: 11px; }
+  .has-direction-control .selection-panel.is-collapsed { bottom: 232px; }
+}
+@media (pointer: coarse) and (max-width: 600px) {
+  .game-menu > summary { min-width: 48px; }
+  .game-menu > summary span { display: none; }
+  .menu-body { left: 6px; right: 6px; top: 154px; width: auto; max-height: calc(100dvh - 250px); }
+  .selection-panel:not(.is-collapsed), .guide-card, .technology-panel, .golem-guide { top: 154px; max-height: calc(100dvh - 250px); }
+  .has-direction-control .selection-panel:not(.is-collapsed) { max-height: calc(100dvh - 390px); }
+  .build-dock { max-height: calc(100dvh - 270px); }
+  #game-ui > .workshop-notices { top: 154px; }
+  .quickbar { gap: 4px; }
+  .quickbar > button { padding: 4px; font-size: 10px; }
+  .quickbar > .quick-golem-guide { min-width: 48px; }
+  #registration-buttons button { min-width: 48px; width: 48px; }
+}

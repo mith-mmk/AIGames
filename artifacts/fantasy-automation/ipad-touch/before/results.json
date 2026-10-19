@@ -1,0 +1,176 @@
+{
+  "baseline": true,
+  "runtimeSHA256": "8c60d08622923bebb75b64abd3ec07ef5c702d6403ea083dca4db6a57a197ac3",
+  "measurements": [
+    {
+      "label": "landscape",
+      "targets": [
+        {
+          "text": "☰ メニュー",
+          "width": 24.765625,
+          "height": 44,
+          "fontSize": "12px"
+        },
+        {
+          "text": "保存",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "読込",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "視点を戻す",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "新しい工房",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "ゴーレムの使い方",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "木材を手採取",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "はじめての案内",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "建設一覧を表示",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "設備詳細を表示",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "操作説明を閉じる",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "回転 R",
+          "width": 88,
+          "height": 44,
+          "fontSize": "10px"
+        },
+        {
+          "text": "↻",
+          "width": 44,
+          "height": 44,
+          "fontSize": "10px"
+        }
+      ]
+    },
+    {
+      "label": "portrait",
+      "targets": [
+        {
+          "text": "☰ メニュー",
+          "width": 24.765625,
+          "height": 44,
+          "fontSize": "12px"
+        },
+        {
+          "text": "保存",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "読込",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "視点を戻す",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "新しい工房",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "ゴーレムの使い方",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "木材を手採取",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "はじめての案内",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "建設一覧を表示",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "設備詳細を表示",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "操作説明を閉じる",
+          "width": 144,
+          "height": 44,
+          "fontSize": "11px"
+        },
+        {
+          "text": "回転 R",
+          "width": 81.328125,
+          "height": 44,
+          "fontSize": "10px"
+        },
+        {
+          "text": "↻",
+          "width": 44,
+          "height": 44,
+          "fontSize": "10px"
+        }
+      ]
+    }
+  ],
+  "checks": [],
+  "errors": [],
+  "failures": [],
+  "physicalIPad": "not tested; Chromium touch emulation only"
+}

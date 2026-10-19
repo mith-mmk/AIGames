@@ -10,7 +10,7 @@ const crypto = require('node:crypto');
   const root = path.resolve(__dirname, '..'), built = process.argv.includes('--built');
   const directory = path.join(root, built ? '.pages-dist' : 'web');
   const runtimeSHA256 = crypto.createHash('sha256').update(fs.readFileSync(path.join(directory, 'js/fantasy-automation/runtime/app.js'))).digest('hex');
-  const output = path.join(root, 'artifacts/fantasy-automation/recipes-shipping/onboarding', built ? 'built' : 'source');
+  const output = process.env.FANTASY_QA_OUTPUT ? path.resolve(root, process.env.FANTASY_QA_OUTPUT) : path.join(root, 'artifacts/fantasy-automation/recipes-shipping/onboarding', built ? 'built' : 'source');
   fs.mkdirSync(output, { recursive: true });
   const mime = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json' };
   const server = http.createServer((request, response) => {
