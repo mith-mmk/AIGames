@@ -52,4 +52,3 @@ export function powerPreview(candidate: PowerNode, buildings: readonly Building[
   for (const building of connections) for (const generator of networks.get(building.id)?.generators ?? []) generators.set(generator.id, generator);
   return { connections, hasGenerator: generators.size > 0, energized: [...generators.values()].some(generator => generator.energy > 0) };
 }
-

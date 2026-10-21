@@ -1,0 +1,59 @@
+{
+  "branch": "fix/fantasy-rotation-power-grid",
+  "baseApplicationCommit": "d328a95bb824230d54643d50843e63fde25be0a4",
+  "publishedBaselineVersion": 4,
+  "runtimeSHA256": "dff403270ec46961e215774f6fd5192e7d985637c27779f876ca79e34a70e39b",
+  "cssSHA256": "62d21d2b7ea3b67032f396ae790b4fc70b2472fff9a525494edb43200315115f",
+  "changes": {
+    "rotation": "56px left/right controls and direct heading for all directional equipment; target name; touch cancellation/jitter tested; camera unchanged",
+    "power": "Manhattan range 3 for supply and pole links; 25-cell footprint; legacy adjacent power links retained",
+    "preview": "Pure shared power topology drives simulation, preview, range/connection lines and onboarding",
+    "save": "Version 5 retained; no new durable fields; v1-v4 migrations unchanged"
+  },
+  "validation": {
+    "npmTest": "passed: existing games plus 7 clock + 154 workshop TypeScript tests",
+    "buildPages": "passed; 309 files; runtime and CSS match source exactly",
+    "lint": "0 errors; 6 pre-existing CSS warnings",
+    "touch": [
+      "1024x768: real touch build heading, selected miner and smelter rotation, 4px finger jitter, cancellation, four rapid turns, R, camera isolation and exact save/resume passed",
+      "768x1024: real touch build heading, selected miner and smelter rotation, 4px finger jitter, cancellation, four rapid turns, R, camera isolation and exact save/resume passed",
+      "390x844: real touch build heading, selected miner and smelter rotation, 4px finger jitter, cancellation, four rapid turns, R, camera isolation and exact save/resume passed",
+      "Actual fuel generates mana across two three-cell pole gaps to a miner nine cells away; preview matches links and supply. Removing bridge stops work, save/resume preserves the broken grid, rebuilding resumes production without currency or shipments"
+    ],
+    "onboarding": [
+      "Guide-only first automatic ingot; intentional wrong rotation repair; live wire cut and recovery",
+      "Close guide; free construction; reopen from menu",
+      "Five guide close/open repetitions preserve exact saved state; reload and load preserve existing factory",
+      {
+        "width": 390,
+        "overflow": false,
+        "cardLeft": 8,
+        "cardRight": 268,
+        "ctaOnScreen": true,
+        "ctaHeight": 48,
+        "guideThroughFirstIngotAndAutomaticFuel": "touch passed; every target on screen and uncovered"
+      },
+      {
+        "width": 320,
+        "overflow": false,
+        "cardLeft": 8,
+        "cardRight": 268,
+        "ctaOnScreen": true,
+        "ctaHeight": 48,
+        "guideThroughFirstIngotAndAutomaticFuel": "touch passed; every target on screen and uncovered"
+      }
+    ]
+  },
+  "publication": {
+    "performed": false,
+    "currentSite": "https://fantasy-automation.mi-si.chatgpt.site",
+    "projectId": "appgprj_6ad223f99c508191bd90021dbffdd3c0",
+    "audience": "owner-private retained",
+    "mainMerged": false,
+    "workflow": "Official Sites helper absent in selected execution environment; parent official helper path previously succeeded for this existing Site. Update the two distribution files preserving hosting manifest, Site ID and audience."
+  },
+  "limitations": [
+    "Physical iPad/iPadOS Safari not tested",
+    "Published version 4 inspected through TLS-validated HTTP transport into isolated Chromium because this environment has a direct Chromium proxy certificate error"
+  ]
+}

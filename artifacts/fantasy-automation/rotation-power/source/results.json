@@ -1,0 +1,13 @@
+{
+  "mode": "source",
+  "runtimeSHA256": "dff403270ec46961e215774f6fd5192e7d985637c27779f876ca79e34a70e39b",
+  "checks": [
+    "1024x768: real touch build heading, selected miner and smelter rotation, 4px finger jitter, cancellation, four rapid turns, R, camera isolation and exact save/resume passed",
+    "768x1024: real touch build heading, selected miner and smelter rotation, 4px finger jitter, cancellation, four rapid turns, R, camera isolation and exact save/resume passed",
+    "390x844: real touch build heading, selected miner and smelter rotation, 4px finger jitter, cancellation, four rapid turns, R, camera isolation and exact save/resume passed",
+    "Actual fuel generates mana across two three-cell pole gaps to a miner nine cells away; preview matches links and supply. Removing bridge stops work, save/resume preserves the broken grid, rebuilding resumes production without currency or shipments"
+  ],
+  "pageErrors": [],
+  "failedRequests": [],
+  "physicalIPad": "not tested; Chromium touch emulation only"
+}
