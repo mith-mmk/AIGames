@@ -1,0 +1,78 @@
+{
+  "url": "https://fantasy-automation.mi-si.chatgpt.site/",
+  "expectedRuntime": "65b8435e25b10ff27f632617109ad267c59ed2ad8ec30f5c7dfae9d2ef925b27",
+  "expectedCSS": "72bb137191a0fbb40fff457478e6f32c4309f57ad137f0392940649d02e1a32b",
+  "checks": [
+    "Landscape touch: direct build headings, repeated placements, selected-only rotation, 15 equipment entries",
+    "Menu open/close and explicit save/reload/resume preserve both belt directions and all stock exactly",
+    "Portrait resize: selected belt buttons remain reachable; no viewport overflow or extra placement"
+  ],
+  "pageErrors": [],
+  "failedRequests": [],
+  "profile": "fresh isolated Chromium context; synthetic save only",
+  "physicalIPad": "not tested",
+  "rootHTTP": 200,
+  "runtimeSHA256": "65b8435e25b10ff27f632617109ad267c59ed2ad8ec30f5c7dfae9d2ef925b27",
+  "cssSHA256": "72bb137191a0fbb40fff457478e6f32c4309f57ad137f0392940649d02e1a32b",
+  "transport": "TLS-validated Node HTTPS fetch into browser routes at the original Site origin; direct Chromium proxy connection has ERR_CERT_AUTHORITY_INVALID",
+  "selectedMinerQuickRotationVisible": false,
+  "detailRotateTarget": {
+    "x": 727,
+    "y": 374.59375,
+    "width": 84.65625,
+    "height": 48
+  },
+  "verifiedFetches": [
+    {
+      "path": "/",
+      "status": 200,
+      "sha256": "e35e6f1cc7d0951ddefe46026b138ab0755b0defc04e986358c35b1a0ec6d794"
+    },
+    {
+      "path": "/css/fantasy-automation.css",
+      "status": 200,
+      "sha256": "72bb137191a0fbb40fff457478e6f32c4309f57ad137f0392940649d02e1a32b"
+    },
+    {
+      "path": "/js/fantasy-automation/runtime/app.js",
+      "status": 200,
+      "sha256": "65b8435e25b10ff27f632617109ad267c59ed2ad8ec30f5c7dfae9d2ef925b27"
+    },
+    {
+      "path": "/js/vendor/three-0.180.0/three.module.min.js",
+      "status": 200,
+      "sha256": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6"
+    },
+    {
+      "path": "/js/vendor/three-0.180.0/three.core.min.js",
+      "status": 200,
+      "sha256": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de"
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "sha256": "e35e6f1cc7d0951ddefe46026b138ab0755b0defc04e986358c35b1a0ec6d794"
+    },
+    {
+      "path": "/css/fantasy-automation.css",
+      "status": 200,
+      "sha256": "72bb137191a0fbb40fff457478e6f32c4309f57ad137f0392940649d02e1a32b"
+    },
+    {
+      "path": "/js/fantasy-automation/runtime/app.js",
+      "status": 200,
+      "sha256": "65b8435e25b10ff27f632617109ad267c59ed2ad8ec30f5c7dfae9d2ef925b27"
+    },
+    {
+      "path": "/js/vendor/three-0.180.0/three.module.min.js",
+      "status": 200,
+      "sha256": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6"
+    },
+    {
+      "path": "/js/vendor/three-0.180.0/three.core.min.js",
+      "status": 200,
+      "sha256": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de"
+    }
+  ],
+  "status": "passed"
+}

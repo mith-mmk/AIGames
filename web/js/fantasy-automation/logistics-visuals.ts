@@ -5,6 +5,7 @@ export type PortVisualState = 'connected' | 'missing' | 'incompatible' | 'full' 
 export type LogisticsSource = Pick<Building, 'kind' | 'x' | 'z' | 'direction' | 'recipe' | 'portalRole'> & Partial<Pick<Building, 'item' | 'input' | 'output' | 'beltProgress'>>;
 export interface PortVisual { direction: Direction; state: PortVisualState; targetId: number | null; }
 const conveyor = (kind: Kind) => kind === 'belt' || kind === 'splitter';
+export const directionMatters = (kind: Kind): boolean => !['wire', 'generator', 'delivery', 'golemRelay', 'worldTree'].includes(kind);
 
 export function outputDirections(kind: Kind, direction: Direction, portalRole?: Building['portalRole']): Direction[] {
   if (kind === 'wire' || kind === 'generator' || kind === 'delivery' || kind === 'golemRelay' || kind === 'worldTree' || (kind === 'portalGate' && portalRole !== 'receive')) return [];

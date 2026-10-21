@@ -68,6 +68,7 @@ export class WorldInput {
       this.canvas.setPointerCapture(event.pointerId);
       if (this.touches.size === 1) { this.tap = { id: event.pointerId, x: event.clientX, y: event.clientY, moved: false }; this.touchGesture = false; }
       else { this.touchGesture = true; this.tap = null; }
+      if (this.touches.size === 1) { const cell = this.actions.pick(event); if (cell) this.actions.onHover(cell.x, cell.z); }
       return;
     }
     if (performance.now() < this.suppressMouseUntil || this.touches.size) return;

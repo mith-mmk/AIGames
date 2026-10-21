@@ -1,6 +1,7 @@
 import { BELT_SECONDS, DEFINITIONS, INPUT_CAPACITY, OUTPUT_CAPACITY, RESOURCE_NAMES } from './data';
 import { DIRECTIONS, type Building, type Direction, type GameState, type Kind, type Resource } from './types';
 import { getObjective } from './objectives';
+import { powerNetworks } from './power-grid';
 
 export interface GuideStep {
   id: string; step: number; total: number; title: string; text: string;
@@ -15,7 +16,6 @@ interface Placement {
 }
 
 const TOTAL = 14;
-const POWER_KINDS: readonly Kind[] = ['generator', 'wire', 'miner', 'smelter'];
 const FIRST_LINE: readonly Placement[] = [
   { id: 'miner', kind: 'miner', x: 12, z: 16, direction: 1, text: 'まずは見本の配置で工房を作ります。鉄鉱脈の光る区画に採掘機を置き、東→の向き（目印の矢印と同じ）へ出力します。' },
   { id: 'belt-ore', kind: 'belt', x: 13, z: 16, direction: 1, text: '採掘機の東隣にベルトを置き、鉄鉱石を次の区画へ運びます。矢印は東へ。' },
@@ -23,8 +23,8 @@ const FIRST_LINE: readonly Placement[] = [
   { id: 'belt-ingot', kind: 'belt', x: 15, z: 16, direction: 1, text: '製錬炉の東隣にベルトを置きます。完成した延べ棒を東へ運びます。' },
   { id: 'delivery', kind: 'delivery', x: 16, z: 16, direction: null, text: 'ベルトの東隣に出荷所を置きます。届いた品を保持し、詳細で確認して手動出荷します。' },
   { id: 'generator', kind: 'generator', x: 12, z: 18, direction: null, text: '採掘機から南へ2区画の場所に魔力発生炉を置きます。木材を燃料に魔力を作ります。' },
-  { id: 'wire-miner', kind: 'wire', x: 12, z: 17, direction: null, text: '魔力発生炉と採掘機の間に導線を置き、魔力をつなぎます。導線の向きは関係ありません。' },
-  { id: 'wire-link', kind: 'wire', x: 13, z: 17, direction: null, text: '導線を東へ延ばします。隣り合う導線と設備が1つの魔力網になります。' },
+  { id: 'wire-miner', kind: 'wire', x: 12, z: 17, direction: null, text: '魔力発生炉と採掘機の間に電柱（魔力導線）を置きます。周囲3マス（ひし形）へ供給。電柱同士も3マス以内で網を延ばせます。向きは関係ありません。' },
+  { id: 'wire-link', kind: 'wire', x: 13, z: 17, direction: null, text: '電柱を3マス以内でつなぐと魔力網を延長できます。採掘機と製錬炉が供給範囲内なら追加の電柱は省略できます。' },
   { id: 'wire-smelter', kind: 'wire', x: 14, z: 17, direction: null, text: '製錬炉の南隣にも導線を置きます。採掘機と製錬炉の両方に魔力が届く形です。' },
 ];
 const FUEL_LINE: readonly Placement[] = [
@@ -43,6 +43,10 @@ function result(step: number, id: string, title: string, text: string, checks: s
 
 function placement(state: GameState, wanted: Placement, step: number, checks: string[]): GuideStep | null {
   const existing = at(state, wanted.x, wanted.z);
+  if (wanted.kind === 'wire') {
+    const miner = at(state, 12, 16), smelter = at(state, 14, 16);
+    if (miner && smelter && hasGeneratorConnection(state, miner) && hasGeneratorConnection(state, smelter)) return null;
+  }
   const label = DEFINITIONS[wanted.kind].label;
   if (existing?.kind === 'smelter' && wanted.kind === 'smelter' && existing.recipe !== 'ingot') return result(step, wanted.id, '製錬炉を鉄の延べ棒レシピへ戻す', '詳細で鉄の延べ棒を選択してください。稼働中・互換性のない在庫がある時は終了と排出を待ちます。', checks, { focusId: existing.id, kind: 'smelter', mode: 'recipe' });
   if (existing?.kind === wanted.kind && (wanted.direction === null || existing.direction === wanted.direction)) return null;
@@ -50,7 +54,7 @@ function placement(state: GameState, wanted: Placement, step: number, checks: st
   if (existing?.kind === wanted.kind) {
     const turns = (wanted.direction! - existing.direction + 4) % 4;
     return result(step, wanted.id, `${label}の出力を東へ向ける`,
-      `${location(wanted.x, wanted.z)}の${label}を選択し、Rを${turns}回押してください。東→の向き（目印の矢印と同じ）へ合わせます。`, checks,
+      `${location(wanted.x, wanted.z)}の${label}を選択し、右下の大きな回転ボタンか向きの選択で東→へ。Rを${turns}回押しても変更できます。`, checks,
       { kind: wanted.kind, target, direction: wanted.direction, focusId: existing.id, mode: 'rotate', blockers: ['出力方向が違うため、次の設備へ搬送できません。'] });
   }
   const blockers: string[] = [];
@@ -61,7 +65,7 @@ function placement(state: GameState, wanted: Placement, step: number, checks: st
       if (needed > 0) blockers.push(`${RESOURCE_NAMES[resource]}があと${needed}個必要です。設備を選択して中身を回収するか、稼働中の工房から素材を集めてください。`);
     }
   }
-  if (wanted.kind === 'wire') blockers.push('ここが途切れると採掘機・製錬炉が停止します。隣接する区画へ導線をつないでください。');
+  if (wanted.kind === 'wire') blockers.push('供給範囲外の設備は停止します。3マス以内に電柱をつなぎ、範囲を確認してください。');
   return result(step, wanted.id, `${label}を${location(wanted.x, wanted.z)}に置く`, wanted.text, checks,
     { kind: wanted.kind, target, direction: wanted.direction, focusId: existing?.id ?? null, mode: 'build', blockers });
 }
@@ -83,19 +87,7 @@ function automaticFuelConnected(state: GameState): boolean {
 }
 
 function hasGeneratorConnection(state: GameState, start: Building): boolean {
-  const seen = new Set([start.id]);
-  const queue = [start];
-  for (let index = 0; index < queue.length; index++) {
-    const current = queue[index];
-    if (current.kind === 'generator') return true;
-    for (const [dx, dz] of DIRECTIONS) {
-      const adjacent = at(state, current.x + dx, current.z + dz);
-      if (adjacent && POWER_KINDS.includes(adjacent.kind) && !seen.has(adjacent.id)) {
-        seen.add(adjacent.id); queue.push(adjacent);
-      }
-    }
-  }
-  return false;
+  return !!powerNetworks(state.buildings).get(start.id)?.generators.length;
 }
 
 function runningBlockers(state: GameState): string[] {
@@ -135,7 +127,7 @@ export function evaluateGuide(state: GameState): GuideStep {
       const wanted = FIRST_LINE[index];
       const next = placement(state, wanted, index + 1, checks);
       if (next) return next;
-      checks.push(`${DEFINITIONS[wanted.kind].label}${location(wanted.x, wanted.z)}を配置済み`);
+      checks.push(wanted.kind === 'wire' && !at(state, wanted.x, wanted.z) ? '採掘機・製錬炉は供給範囲内。追加の電柱は省略' : `${DEFINITIONS[wanted.kind].label}${location(wanted.x, wanted.z)}を配置済み`);
     }
     const depot = at(state, 16, 16)!;
     if (depot.input.some(item => item.resource === 'ingot')) return result(11, 'ship', '出荷所で最初の延べ棒を出荷する', '設備の詳細を開き、搬入庫・鉄の延べ棒を選んで「確認して出荷」を押してください。依頼10本で結晶加工を研究可能になります。余剰は売上になります。', checks, { kind: 'delivery', focusId: depot.id, target: { x: 16, z: 16 }, mode: 'ship' });

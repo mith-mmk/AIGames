@@ -21,10 +21,10 @@ function starter(simulation: Simulation): void {
   place(simulation, 'wire', 14, 17);
 }
 
-test('guide completes its 14 steps through actual construction, fuel and first confirmed manual shipment', () => {
+test('guide supplies the workshop with one ranged pole, then completes construction, fuel and manual shipment', () => {
   const simulation = new Simulation();
   const ids: string[] = [];
-  for (let index = 0; index < 9; index++) {
+  for (let index = 0; index < 7; index++) {
     const guide = evaluateGuide(simulation.state);
     assert.equal(guide.step, index + 1);
     assert.equal(guide.total, 14);
@@ -46,7 +46,7 @@ test('guide completes its 14 steps through actual construction, fuel and first c
   }
   guide = evaluateGuide(simulation.state);
   assert.equal(guide.id, 'done'); assert.equal(guide.mode, 'done'); assert.match(guide.text, /自由に建設/);
-  assert.deepEqual(ids, ['miner', 'belt-ore', 'smelter', 'belt-ingot', 'delivery', 'generator', 'wire-miner', 'wire-link', 'wire-smelter']);
+  assert.deepEqual(ids, ['miner', 'belt-ore', 'smelter', 'belt-ingot', 'delivery', 'generator', 'wire-miner']);
   for (let tick = 0; tick < 20000 && !simulation.state.won; tick++) stepAndShip(simulation);
   assert.equal(simulation.state.won, true, 'Following the guide creates a genuinely self-sufficient factory');
 });
@@ -78,10 +78,9 @@ test('cut power returns to the missing wire and explains the stopped machines', 
   const simulation = new Simulation(); starter(simulation);
   const generator = simulation.state.buildings.find(building => building.kind === 'generator')!;
   simulation.command({ type: 'feed', id: generator.id, resource: 'wood', amount: 1 });
-  const wire = simulation.state.buildings.find(building => building.kind === 'wire' && building.x === 13)!;
-  simulation.command({ type: 'remove', id: wire.id });
+  for (const wire of simulation.state.buildings.filter(building => building.kind === 'wire')) simulation.command({ type: 'remove', id: wire.id });
   const guide = evaluateGuide(simulation.state);
-  assert.equal(guide.id, 'wire-link'); assert.deepEqual(guide.target, { x: 13, z: 17 }); assert.match(guide.blockers.join(' '), /停止/);
+  assert.equal(guide.id, 'wire-miner'); assert.deepEqual(guide.target, { x: 12, z: 17 }); assert.match(guide.blockers.join(' '), /停止/);
 });
 
 test('first delivery waiting diagnoses belt contamination and downstream buffers', () => {
@@ -117,7 +116,7 @@ test('existing working, stored or pending generator fuel skips manual feeding', 
   }
 });
 
-test('a delivered central workshop returns to wire repair and then resumes the fuel guide', () => {
+test('removing a redundant pole does not invent an outage; a real disconnection still offers repair', () => {
   const simulation = new Simulation(); starter(simulation);
   const generator = simulation.state.buildings.find(building => building.kind === 'generator')!;
   simulation.command({ type: 'feed', id: generator.id, resource: 'wood', amount: 1 });
@@ -125,10 +124,12 @@ test('a delivered central workshop returns to wire repair and then resumes the f
   assert(simulation.state.delivered >= 1);
   const wire = simulation.state.buildings.find(building => building.kind === 'wire' && building.x === 13)!;
   simulation.command({ type: 'remove', id: wire.id });
+  assert.equal(evaluateGuide(simulation.state).id, 'lumber');
+  for (const remaining of simulation.state.buildings.filter(building => building.kind === 'wire')) simulation.command({ type: 'remove', id: remaining.id });
   const guide = evaluateGuide(simulation.state);
-  assert.equal(guide.id, 'wire-link'); assert.equal(guide.kind, 'wire'); assert.equal(guide.mode, 'build');
-  assert.deepEqual(guide.target, { x: 13, z: 17 }); assert.match(guide.title, /復旧/); assert.match(guide.blockers.join(' '), /停止/);
-  place(simulation, 'wire', 13, 17);
+  assert.equal(guide.id, 'wire-miner'); assert.equal(guide.kind, 'wire'); assert.equal(guide.mode, 'build');
+  assert.deepEqual(guide.target, { x: 12, z: 17 }); assert.match(guide.title, /復旧/); assert.match(guide.blockers.join(' '), /停止/);
+  place(simulation, 'wire', 12, 17);
   assert.equal(evaluateGuide(simulation.state).id, 'lumber');
   place(simulation, 'lumber', 9, 18); place(simulation, 'belt', 10, 18); place(simulation, 'belt', 11, 18);
   assert.equal(evaluateGuide(simulation.state).mode, 'done');

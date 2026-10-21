@@ -1,10 +1,10 @@
-import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, GOLEM_INTERVAL, GOLEM_RANGE, INPUT_CAPACITY, OUTPUT_CAPACITY, PORTAL_ENERGY, PORTAL_INTERVAL, POWER_KINDS, RECIPES, RESOURCES, RESOURCE_NAMES, STORAGE_CAPACITY, TREE_INTERVAL, constructionRefund, commonKind, LEGACY_DEFINITIONS, getRecipe } from './data';
+import { BELT_SECONDS, DEFINITIONS, ENERGY_CAPACITY, GOAL, GOLEM_INTERVAL, GOLEM_RANGE, INPUT_CAPACITY, OUTPUT_CAPACITY, PORTAL_ENERGY, PORTAL_INTERVAL, RECIPES, RESOURCES, RESOURCE_NAMES, STORAGE_CAPACITY, TREE_INTERVAL, constructionRefund, commonKind, LEGACY_DEFINITIONS, getRecipe } from './data';
 import { MARKET, SALE_RESOURCES, eligibleShipment, shipmentQuote } from './market';
 import { migrateGameState } from './migration';
 import { canResearch, currentSwordRate, isKindUnlocked, isRecipeUnlocked } from './technology';
 import { DIRECTIONS, SIZE, STEP, type Building, type Command, type CommandResult, type Direction, type GameState, type Item, type Kind, type Resource } from './types';
+import { powerNetworks, powerPreview, type PowerNetwork as Network } from './power-grid';
 
-type Network = { generators: Building[]; members: number[] };
 type PlacementReceipt = { id: number; kind: Kind; kit: Kind | null; paid: Item[]; tracked: Item[] };
 type Transfer = { source: Building; target: Building; item: Item; sourceSlot: 'item' | 'input' | 'output'; port: 0 | 1 };
 const TECHNOLOGIES = ['basic', 'logistics', 'crystals', 'assembly', 'mastery', 'runecraft', 'golemcraft', 'sanctuary', 'alchemy', 'portalcraft', 'worldGrafting', 'worldAwakened'] as const;
@@ -277,9 +277,8 @@ export class Simulation {
     return { stored: generators.reduce((sum, generator) => sum + generator.energy, 0), capacity: generators.length * ENERGY_CAPACITY };
   }
 
-  hasPowerAt(x: number, z: number): boolean {
-    const networks = this.networks();
-    return this.state.buildings.some(building => Math.abs(building.x - x) + Math.abs(building.z - z) <= 1 && (networks.get(building.id)?.generators.some(generator => generator.energy > 0) ?? false));
+  hasPowerAt(x: number, z: number, kind: Kind = 'wire'): boolean {
+    return powerPreview({ x, z, kind }, this.state.buildings).energized;
   }
 
   step(): void {
@@ -449,27 +448,7 @@ export class Simulation {
   }
 
   private networks(): Map<number, Network> {
-    const powered = this.state.buildings.filter(building => POWER_KINDS.includes(building.kind)).sort((a, b) => a.id - b.id);
-    const occupants = new Map(powered.map(building => [key(building.x, building.z), building]));
-    const result = new Map<number, Network>();
-    for (const building of powered) {
-      if (result.has(building.id)) continue;
-      const network: Network = { generators: [], members: [] };
-      const queue = [building]; result.set(building.id, network);
-      for (let index = 0; index < queue.length; index++) {
-        const current = queue[index];
-        network.members.push(current.id);
-        if (current.kind === 'generator') network.generators.push(current);
-        for (const [dx, dz] of DIRECTIONS) {
-          const x = current.x + dx, z = current.z + dz;
-          if (x < 0 || x >= SIZE || z < 0 || z >= SIZE) continue;
-          const adjacent = occupants.get(key(x, z));
-          if (adjacent && !result.has(adjacent.id)) { result.set(adjacent.id, network); queue.push(adjacent); }
-        }
-      }
-      network.generators.sort((a, b) => a.id - b.id);
-    }
-    return result;
+    return powerNetworks(this.state.buildings);
   }
 
   private spend(network: Network | undefined, amount: number): boolean {

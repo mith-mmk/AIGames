@@ -170,11 +170,16 @@ noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 15px; back
 .direction-control { position: absolute; z-index: 3; right: 12px; bottom: 92px; width: min(352px, calc(100vw - 24px)); padding: 10px; border: 1px solid var(--border); border-radius: 9px; background: var(--panel); }
 .direction-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; font-size: 12px; }
 .direction-heading > span { color: var(--gold); white-space: nowrap; }
-.direction-buttons { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
-.direction-buttons button { min-width: 48px; min-height: 48px; padding: 7px; font-size: 14px; }
+.direction-heading label { display: flex; align-items: center; gap: 5px; white-space: nowrap; color: var(--ink-soft); }
+#direction-select { min-height: 48px; min-width: 84px; padding: 7px; font-size: 14px; }
+.direction-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+#game-ui .direction-buttons button { min-width: 72px; min-height: 56px; padding: 10px; font-size: 17px; font-weight: bold; }
 .direction-control > small { display: block; margin-top: 6px; color: var(--ink-soft); font-size: 10px; }
-.has-direction-control .selection-panel { max-height: calc(100dvh - 330px); }
-.has-direction-control #build-recipe-control { bottom: calc(100% + 140px); }
+.has-direction-control .selection-panel { max-height: calc(100dvh - 380px); }
+.has-direction-control #build-recipe-control { bottom: calc(100% + 180px); }
+.power-preview { position: absolute; z-index: 3; right: 12px; bottom: 100px; width: min(352px, calc(100vw - 24px)); padding: 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 9px; font-size: 12px; }
+.power-preview strong { color: var(--gold); }.power-preview p { margin: 7px 0; line-height: 1.5; }.power-preview small { color: var(--ink-soft); line-height: 1.5; }
+.has-power-preview .selection-panel { max-height: calc(100dvh - 340px); }
 .menu-body, .selection-panel, .build-dock, .technology-panel, .golem-guide { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 .menu-close { position: sticky; top: -1px; z-index: 2; background: var(--wood); }
 .menu-body { scroll-padding-top: 66px; }.build-dock, .selection-panel { scroll-padding-top: 80px; }
@@ -195,6 +200,7 @@ noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 15px; back
   .quick-slot { min-width: 58px; min-height: 60px; }
   .quick-name { font-size: 10px; }
   .quickbar > button { min-width: 48px; font-size: 12px; }
+  .quickbar > [data-action="rotate"] { display: none; }
   .selection-panel { padding: 14px; }
   .selection-panel p, .selection-actions button, .build-context, .build-context button { font-size: 13px; }
   .selection-actions, .build-context { gap: 8px; }
@@ -207,7 +213,10 @@ noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 15px; back
 @media (max-width: 600px) {
   .direction-control { right: 6px; width: calc(100vw - 12px); padding: 8px; }
   .direction-heading { font-size: 11px; }
-  .has-direction-control .selection-panel.is-collapsed { bottom: 232px; }
+  .has-direction-control .selection-panel.is-collapsed { bottom: 272px; }
+  .has-power-preview .selection-panel.is-collapsed { bottom: 256px; }
+  .power-preview { right: 6px; width: calc(100vw - 12px); }
+  .quickbar > [data-action="cancel"] { display: block; min-width: 48px; }
 }
 @media (pointer: coarse) and (max-width: 600px) {
   .game-menu > summary { min-width: 48px; }
@@ -215,7 +224,7 @@ noscript { position: fixed; top: 40%; left: 10%; right: 10%; padding: 15px; back
   .menu-body { left: 6px; right: 6px; top: 154px; width: auto; max-height: calc(100dvh - 250px); }
   .selection-panel:not(.is-collapsed), .technology-panel, .golem-guide { top: 154px; max-height: calc(100dvh - 250px); }
   .guide-card { top: 154px; }
-  .has-direction-control .selection-panel:not(.is-collapsed) { max-height: calc(100dvh - 390px); }
+  .has-direction-control .selection-panel:not(.is-collapsed) { max-height: calc(100dvh - 430px); }
   .build-dock { max-height: calc(100dvh - 270px); }
   #game-ui > .workshop-notices { top: 154px; }
   .quickbar { gap: 4px; }

@@ -3,6 +3,7 @@ import { WorldInput } from './input.js';
 import { BELT_SECONDS, RECIPES, DEFINITIONS, POWER_KINDS, STORAGE_CAPACITY, PORTAL_INTERVAL } from './data.js';
 import { DIRECTIONS, SIZE, type Building, type Direction, type GameState, type Kind, type RecipeId, type Resource } from './types.js';
 import { acceptedResources, logisticsPorts, outputDirections, outputResources as sourceResources, type PortVisual, type PortVisualState } from './logistics-visuals.js';
+import { POWER_SUPPLY_RANGE, POWER_LINK_RANGE, powerCells, powerConnected, powerDistance, powerNetworks, powerPreview } from './power-grid.js';
 
 const RESOURCE_COLORS: Record<Resource, number> = {
   wood: 0xb68752, ore: 0x82c2d6, ingot: 0xd6d9d3,
@@ -82,6 +83,15 @@ export class WorldView {
   private disposed = false;
   private contextLost = false;
   private cursorOnMap = false;
+  private powerCableMaterial = new THREE.LineBasicMaterial({ color: 0x73c9de, transparent: true, opacity: 0.65 });
+  private powerPreviewMaterial = new THREE.LineBasicMaterial({ color: 0x73c9de, transparent: true, opacity: 0.95 });
+  private powerRangeMaterial = new THREE.MeshBasicMaterial({ color: 0x73c9de, transparent: true, opacity: 0.18, depthWrite: false, side: THREE.DoubleSide });
+  private powerCables = new THREE.LineSegments(new THREE.BufferGeometry(), this.powerCableMaterial);
+  private powerPreviewCables = new THREE.LineSegments(new THREE.BufferGeometry(), this.powerPreviewMaterial);
+  private powerRangeOutline = new THREE.LineSegments(new THREE.BufferGeometry(), this.powerPreviewMaterial);
+  private powerRangeTiles = new THREE.InstancedMesh(this.geometry('power-range-cell', () => new THREE.PlaneGeometry(0.96, 0.96).rotateX(-Math.PI / 2)), this.powerRangeMaterial, 25);
+  private powerLayoutKey = '';
+  private powerPreviewKey = '';
 
   constructor(host: HTMLElement, callbacks: ViewCallbacks) {
     this.host = host;
@@ -113,6 +123,8 @@ export class WorldView {
     const sun = new THREE.DirectionalLight(0xffedd0, 2.1);
     sun.position.set(-12, 28, 8);
     this.scene.add(sun, this.terrain, this.ghost, this.selection, this.guideMarker, this.selectedRelayRange);
+    this.scene.add(this.powerCables, this.powerPreviewCables, this.powerRangeOutline, this.powerRangeTiles);
+    this.powerRangeTiles.frustumCulled = false;
     this.selectedRelayRange.visible = false;
     this.createOutline(this.ghost, 0x7eedaf);
     this.ghostPort.position.set(0, 0.42, -0.37);
@@ -691,17 +703,8 @@ export class WorldView {
     const buildingsById = new Map(state.buildings.map(building => [building.id, building]));
     const cells = new Map(state.buildings.map(building => [`${building.x},${building.z}`, building]));
     const powerKinds = new Set<Kind>(POWER_KINDS);
-    const energized = new Set<string>();
-    const frontier = state.buildings.filter(building => building.kind === 'generator' && building.energy > 0);
-    for (let index = 0; index < frontier.length; index++) {
-      const building = frontier[index], cellKey = `${building.x},${building.z}`;
-      if (energized.has(cellKey)) continue;
-      energized.add(cellKey);
-      for (const [dx, dz] of DIRECTIONS) {
-        const neighborKey = `${building.x + dx},${building.z + dz}`, neighbor = cells.get(neighborKey);
-        if (neighbor && powerKinds.has(neighbor.kind) && !energized.has(neighborKey)) frontier.push(neighbor);
-      }
-    }
+    const networks = powerNetworks(state.buildings);
+    this.updatePowerVisuals(state, options, networks);
     for (const building of state.buildings) {
       ids.add(building.id);
       let view = this.facilities.get(building.id);
@@ -781,12 +784,8 @@ export class WorldView {
       if (this.ghostPower) {
         const powerKind = options.kind && powerKinds.has(options.kind);
         this.ghostPower.visible = !!powerKind;
-        const connected = DIRECTIONS.some(([dx, dz]) => {
-          const neighbor = cells.get(`${options.hover!.x + dx},${options.hover!.z + dz}`);
-          return neighbor && powerKinds.has(neighbor.kind);
-        });
-        const powered = DIRECTIONS.some(([dx, dz]) => energized.has(`${options.hover!.x + dx},${options.hover!.z + dz}`));
-        this.ghostPower.material = this.material(powered ? 0x6ae3ff : connected ? 0xb79ae1 : 0xe7aa69, 0x20383a);
+        const preview = powerPreview({ kind: options.kind!, ...options.hover }, state.buildings, networks);
+        this.ghostPower.material = this.material(preview.energized ? 0x6ae3ff : preview.hasGenerator ? 0xb79ae1 : 0xe7aa69, 0x20383a);
       }
     }
     const selected = options.selectedId == null ? null : this.facilities.get(options.selectedId);
@@ -805,6 +804,50 @@ export class WorldView {
     }
     this.updateGuide(options.guideTarget ?? null, now);
     if (!this.contextLost) this.renderer.render(this.scene, this.camera);
+  }
+
+  private updatePowerVisuals(state: GameState, options: ViewOptions, networks: ReturnType<typeof powerNetworks>): void {
+    const layout = state.buildings.map(b => `${b.id}:${b.kind}:${b.x},${b.z}`).join('|');
+    const replace = (line: THREE.LineSegments, points: number[]) => { line.geometry.dispose(); line.geometry = new THREE.BufferGeometry(); line.geometry.setAttribute('position', new THREE.Float32BufferAttribute(points, 3)); };
+    if (layout !== this.powerLayoutKey) {
+      const points: number[] = [];
+      for (const pole of state.buildings.filter(b => b.kind === 'wire')) for (const target of state.buildings) {
+        if (!['wire', 'generator'].includes(target.kind) || (target.kind === 'wire' && target.id < pole.id) || !powerConnected(pole, target)) continue;
+        const mx = (pole.x + target.x) / 2, mz = (pole.z + target.z) / 2;
+        points.push(pole.x, 0.61, pole.z, mx, 0.46, mz, mx, 0.46, mz, target.x, 0.61, target.z);
+      }
+      replace(this.powerCables, points); this.powerLayoutKey = layout;
+    }
+    const selected = state.buildings.find(b => b.id === options.selectedId && b.kind === 'wire');
+    const anchor = options.kind === 'wire' && options.hover ? { kind: 'wire' as const, ...options.hover } : selected;
+    this.powerPreviewCables.visible = this.powerRangeOutline.visible = this.powerRangeTiles.visible = !!anchor;
+    const diagnostic = this.renderer.domElement.dataset;
+    if (!anchor) { delete diagnostic.powerPreviewCell; delete diagnostic.powerPreviewLinks; delete diagnostic.powerPreviewState; delete diagnostic.powerRangeCells; return; }
+    const preview = powerPreview(anchor, state.buildings, networks);
+    const color = preview.energized ? 0x69dfff : preview.hasGenerator ? 0xb79ae1 : 0xf1b060;
+    this.powerRangeMaterial.color.setHex(color); this.powerPreviewMaterial.color.setHex(color);
+    diagnostic.powerRange = String(POWER_SUPPLY_RANGE); diagnostic.powerLinkDistance = String(POWER_LINK_RANGE);
+    diagnostic.powerPreviewCell = `${anchor.x},${anchor.z}`;
+    diagnostic.powerPreviewLinks = preview.connections.map(b => `${b.id}:${powerDistance(anchor, b)}`).join(',');
+    diagnostic.powerPreviewState = preview.energized ? 'energized' : preview.hasGenerator ? 'empty' : 'disconnected';
+    const previewKey = `${anchor.x},${anchor.z}:${layout}`;
+    if (previewKey !== this.powerPreviewKey) {
+      const cells = powerCells(anchor.x, anchor.z), occupied = new Set(cells.map(cell => `${cell.x},${cell.z}`));
+      const outline: number[] = [], links: number[] = [];
+      cells.forEach((cell, index) => {
+        this.flowMatrix.makeTranslation(cell.x, 0.025, cell.z); this.powerRangeTiles.setMatrixAt(index, this.flowMatrix);
+        for (const [dx, dz] of DIRECTIONS) {
+          if (occupied.has(`${cell.x + dx},${cell.z + dz}`)) continue;
+          const x = cell.x + dx * 0.5, z = cell.z + dz * 0.5;
+          outline.push(x - dz * 0.5, 0.04, z + dx * 0.5, x + dz * 0.5, 0.04, z - dx * 0.5);
+        }
+      });
+      this.powerRangeTiles.count = cells.length; this.powerRangeTiles.instanceMatrix.needsUpdate = true;
+      diagnostic.powerRangeCells = String(cells.length);
+      for (const target of preview.connections) links.push(anchor.x, 0.65, anchor.z, target.x, target.kind === 'wire' || target.kind === 'generator' ? 0.65 : 0.25, target.z);
+      replace(this.powerRangeOutline, outline); replace(this.powerPreviewCables, links); this.powerPreviewKey = previewKey;
+    }
+    diagnostic.powerRangeCells = String(this.powerRangeTiles.count);
   }
 
   private updateGuide(target: ViewOptions['guideTarget'], now: number): void {
@@ -861,6 +904,7 @@ export class WorldView {
     this.camera.lookAt(this.target); this.camera.updateMatrixWorld();
     this.renderer.domElement.dataset.cameraExtent = String(this.extent);
     this.renderer.domElement.dataset.cameraTarget = `${this.target.x},${this.target.z}`;
+    this.renderer.domElement.dataset.cameraBearing = String(this.bearing);
   }
 
   private pan(dx: number, dy: number): void {
@@ -886,6 +930,7 @@ export class WorldView {
   }
 
   resetCamera(): void { this.target.set(13, 0, 16); this.bearing = Math.PI / 4; this.extent = 11; this.resize(); }
+  centerTile(): { x: number; z: number } { return { x: THREE.MathUtils.clamp(Math.round(this.target.x), 0, SIZE - 1), z: THREE.MathUtils.clamp(Math.round(this.target.z), 0, SIZE - 1) }; }
 
   setInputBlocked(blocked: boolean): void { this.input.setBlocked(blocked); }
 
@@ -912,6 +957,8 @@ export class WorldView {
     for (const material of this.materials.values()) material.dispose();
     this.relayLineMaterial.dispose();
     this.portalLineMaterial.dispose();
+    for (const line of [this.powerCables, this.powerPreviewCables, this.powerRangeOutline]) line.geometry.dispose();
+    this.powerRangeTiles.dispose(); this.powerRangeMaterial.dispose(); this.powerCableMaterial.dispose(); this.powerPreviewMaterial.dispose();
     this.scene.clear(); this.facilities.clear(); this.renderer.dispose(); this.renderer.domElement.remove();
     this.guideLabel.remove();
   }

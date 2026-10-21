@@ -4,13 +4,14 @@ import { MARKET, SALE_RESOURCES, shipmentQuote } from './market.js';
 import { resourceIcon, furnaceIcon } from './icons.js';
 import { getGolemGuide } from './golem-guide.js';
 import { getObjective } from './objectives.js';
-import { hasBufferRoom } from './logistics-visuals.js';
+import { directionMatters, hasBufferRoom } from './logistics-visuals.js';
+import { POWER_SUPPLY_RANGE, POWER_LINK_RANGE, powerPreview } from './power-grid.js';
 import type { GuideStep } from './onboarding.js';
 import type { Direction, GameState, Kind, Resource, TechId, RecipeId, Building } from './types.js';
 
 export interface UICallbacks {
   onBuild(kind: Kind): void; onSpeed(speed: 0 | 1 | 2): void;
-  onSave(): void; onLoad(): void; onRotate(): void; onRemove(): void;
+  onSave(): void; onLoad(): void; onRotate(turn?: -1 | 1): void; onRemove(): void;
   onUndoBuild(): void;
   onDirection(direction: Direction): void;
   onOverlayChange(): void;
@@ -40,7 +41,7 @@ const DESCRIPTIONS: Record<Kind, string> = {
   belt: '矢印の先へ1個ずつ搬送。1区画0.5秒。ドラッグで連続配置。',
   smelter: '鉱石・魔晶原石を精製。製品レシピで鉄の延べ棒／精製魔晶を選択。素材は隣接から、製品は矢印へ。',
   generator: '浮いた結晶と支柱。木材1 → 魔力30（10秒、蓄積30）。魔力は導線へ供給し、ベルトへの完成品出力はありません。',
-  wire: '隣り合う導線・魔力発生炉・採掘機・製錬炉を魔力網で接続。',
+  wire: '電柱として周囲3マス（ひし形）へ供給。電柱同士・発生炉も3マス以内で接続し、魔力網を先へ延ばせます。従来の隣接接続も使用できます。',
   lumber: '森林の上に設置。木材1を3秒で採取。矢印へ排出。',
   delivery: '搬入品を32個保持。詳細から確認して手動出荷。対象品を依頼へ優先し、余剰・手動資材は売却。資金で建設用の鉄を購入できます。',
   splitter: '前方と右側（時計回り90°）の2つの出力口へ交互に分岐。片方が詰まると空いた口へ送ります。',
@@ -124,8 +125,9 @@ export class GameUI {
         <div class="selection-actions"><button data-action="rotate">回転 R</button><button data-action="collect">資源を回収</button><button data-action="remove" class="danger">撤去</button></div>
         <details id="advanced-feed"><summary>個数を指定して補給</summary><form id="feed-form"><label>手動補給<select id="feed-resource"><option value="wood">木材</option><option value="ore">鉄鉱石</option><option value="ingot">鉄の延べ棒</option><option value="rawCrystal">魔晶原石</option><option value="crystal">精製魔晶</option><option value="sword">魔導剣</option></select></label><label>個数<input id="feed-amount" type="number" min="1" max="1000" step="1" value="1" inputmode="numeric"></label><button type="submit" data-action="feed">補給する</button><small>手動の鉱石・延べ棒・精製魔晶等は目標に含めません。木材燃料は手動補給できます。</small></form></details>
       </aside>
-      <section id="direction-control" class="direction-control" hidden aria-label="方向のクイック操作"><div class="direction-heading"><strong id="direction-title"></strong><span id="direction-current"></span></div><div class="direction-buttons" role="group" aria-label="地図の方角を指定">${DIRECTIONS.map((label, direction) => `<button data-direction="${direction}" aria-label="${label}に向ける" aria-pressed="false">${label}</button>`).join('')}</div><small>地図の方角 · Rキーでも90°回転</small></section>
-      <nav id="quickbar" class="quickbar" aria-label="登録した建設設備"><button id="build-reopen" data-action="build-open">建設一覧</button><div id="quick-slots"></div><label id="build-recipe-control" hidden>製品<select id="build-recipe-select" aria-label="配置する機械の製品レシピ"></select></label><button data-action="undo-build" class="undo-build" disabled>↶<span>配置取消</span></button><button data-action="golem-guide-open" class="quick-golem-guide" aria-label="ゴーレムの使い方">♟？</button><button data-action="rotate" aria-label="建設方向を回転">↻ 回転</button><button data-action="cancel" aria-label="建設を取り消す">×</button></nav>
+      <section id="direction-control" class="direction-control" hidden aria-label="設備の回転操作"><div class="direction-heading"><strong id="direction-title"></strong><label>向き<select id="direction-select" aria-label="設備の方向を直接指定">${DIRECTIONS.map((label, direction) => `<option value="${direction}">${label}</option>`).join('')}</select></label></div><div class="direction-buttons" role="group" aria-label="設備の出力を90度回転"><button data-turn="-1" aria-label="設備を左へ90度回転">↶ 左へ90°</button><button data-turn="1" aria-label="設備を右へ90度回転">右へ90° ↷</button></div><small>設備だけを回転 · Rキーも使用可</small></section>
+      <section id="power-preview" class="power-preview" hidden aria-label="電柱の供給範囲と接続"><strong id="power-preview-title"></strong><p>供給 ${POWER_SUPPLY_RANGE}マス（ひし形）・電柱間 ${POWER_LINK_RANGE}マス</p><p id="power-preview-connections"></p><small>色つきの区画へ供給。線が接続先。指を置いたまま確認できます。</small></section>
+      <nav id="quickbar" class="quickbar" aria-label="登録した建設設備"><button id="build-reopen" data-action="build-open">建設一覧</button><div id="quick-slots"></div><label id="build-recipe-control" hidden>製品<select id="build-recipe-select" aria-label="配置する機械の製品レシピ"></select></label><button data-action="undo-build" class="undo-build" disabled>↶<span>配置取消</span></button><button data-action="golem-guide-open" class="quick-golem-guide" aria-label="ゴーレムの使い方">♟？</button><button data-action="rotate" aria-label="建設方向を回転">↻ 回転</button><button data-action="cancel" aria-label="建設を終えて設備を選択">選択</button></nav>
       <footer class="build-dock" hidden><div class="build-context"><span id="build-context">建設する設備を選ぶ</span><button data-action="rotate" aria-label="建設方向を回転">↻ R</button><button data-action="cancel">取消 Esc</button><button data-action="build-close" aria-label="建設一覧を閉じる">閉じる ×</button></div><label class="catalog-search">設備を探す<input id="build-search" type="search" placeholder="名前・素材・用途で検索" autocomplete="off"></label><p id="catalog-suggestion"></p><nav id="build-categories" aria-label="設備のカテゴリー"></nav><div class="registration-hint"><span id="registration-label">登録先 1</span><div id="registration-buttons" aria-label="クイックスロット登録先"></div><details class="registration-advanced"><summary>番号指定</summary><select id="registration-slot" aria-label="登録先クイックスロット"></select></details><small>番号を選び、設備の☆で登録 · キー1〜6で選択</small></div><nav class="build-palette" aria-label="建設する設備"></nav></footer>`;
     const palette = this.node('.build-palette');
     for (const kind of BUILDINGS) {
@@ -177,7 +179,7 @@ export class GameUI {
   handleClick(event: Event): void {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>('button');
     if (!button || !this.root.contains(button)) return;
-    if (button.dataset.direction !== undefined) { this.callbacks.onDirection(Number(button.dataset.direction) as Direction); return; }
+    if (button.dataset.turn) { this.callbacks.onRotate(Number(button.dataset.turn) as -1 | 1); return; }
     if (button.dataset.quick) { this.chooseQuickSlot(Number(button.dataset.quick)); return; }
     if (button.dataset.register) { this.quickSlots[this.registerSlot] = button.dataset.register as Kind; this.savePreferences(); this.refreshQuickSlots(); this.refreshRegistration(); return; }
     if (button.dataset.registerSlot !== undefined) { this.registerSlot = Number(button.dataset.registerSlot); this.refreshRegistration(); return; }
@@ -262,7 +264,7 @@ export class GameUI {
       ship: '出荷所の詳細で搬入庫・鉄の延べ棒を選び、確認して出荷してください。',
       recipe: '稼働中・互換性のない在庫がある時は終了と排出を待って、鉄の延べ棒に切り替えます。',
       build: guide.target ? '「この設備を選ぶ」を押し、地図の光る目印をクリック。設備は自分で置きます。' : '「この設備を選ぶ」を押し、つなぎたい区画をクリックしてください。',
-      rotate: '「設備の詳細を開く」→「回転 R」で向きを変更してください。',
+      rotate: '設備を選ぶと右下に大きな回転ボタンが出ます。向きの選択やRキーでも変更できます。',
       feed: '「設備の詳細を開く」→木材のアイコン「木材 ×1」を押すと、燃料を1個補給できます。',
       run: '「1×で動かす」を押して、採掘・搬送・精錬が進むのを見てみましょう。',
       done: '「自由建設へ」で案内を閉じられます。メニューからいつでも再表示できます。',
@@ -347,7 +349,7 @@ export class GameUI {
       }
 
       this.text('#selection-status', (selected.status || (selected.working ? '稼働中' : '待機中')).replaceAll('魔導炉', '製錬炉').replaceAll('魔力炉', '魔力発生炉'));
-      this.text('#selection-direction', selected.kind === 'generator' ? '木材は隣接から · 魔力は導線網' : selected.kind === 'wire' ? '直交接続（方向なし）' : selected.kind === 'golemRelay' ? '半径6区画（方向なし）' : selected.kind === 'worldTree' ? '種を隣接から受け入れ（出力なし）' : selected.kind === 'portalGate' ? (selected.portalRole === 'receive' ? `受信門 · 出力 ${DIRECTIONS[selected.direction]}` : '送信門 · 全隣接から入力（通常出力なし）') : selected.kind === 'delivery' ? '全隣接から受け入れ（出力なし）' : `${DIRECTIONS[selected.direction]}${selected.kind === 'splitter' ? ` / 右側 ${DIRECTIONS[(selected.direction + 1) % 4]}` : ''} · 入力は隣接から`);
+      this.text('#selection-direction', selected.kind === 'generator' ? '木材は隣接から · 魔力は導線網' : selected.kind === 'wire' ? '供給3マス・電柱接続3マス（方向なし）' : selected.kind === 'golemRelay' ? '半径6区画（方向なし）' : selected.kind === 'worldTree' ? '種を隣接から受け入れ（出力なし）' : selected.kind === 'portalGate' ? (selected.portalRole === 'receive' ? `受信門 · 出力 ${DIRECTIONS[selected.direction]}` : '送信門 · 全隣接から入力（通常出力なし）') : selected.kind === 'delivery' ? '全隣接から受け入れ（出力なし）' : `${DIRECTIONS[selected.direction]}${selected.kind === 'splitter' ? ` / 右側 ${DIRECTIONS[(selected.direction + 1) % 4]}` : ''} · 入力は隣接から`);
       const counts = Object.fromEntries(RESOURCES.map(resource => [resource, 0])) as Record<Resource, number>;
       [...selected.input, ...selected.output, ...(selected.reserved ?? []), ...(selected.item ? [selected.item] : [])].forEach(item => counts[item.resource]++);
       this.text('#selection-buffer', Object.entries(counts).filter(([, amount]) => amount > 0).map(([resource, amount]) => `${RESOURCE_LABELS[resource as Resource]} ${amount}`).join('、') || 'なし');
@@ -361,6 +363,7 @@ export class GameUI {
       panel.classList.add('is-collapsed'); const close = this.node('[data-action="close-panel"]'); close.textContent = '+'; close.setAttribute('aria-label', '設備詳細を開く');
     }
     this.root.classList.toggle('expanded-selection', !!selected && !panel.hidden && !panel.classList.contains('is-collapsed'));
+    this.updatePowerPreview(state, view, selected);
     this.previousGuideMode = view.guide?.mode ?? null;
     this.lastSelected = view.selectedId;
   }
@@ -484,17 +487,32 @@ export class GameUI {
   }
   private updateDirectionControl(view: UIState, selected?: Building): void {
     const control = this.node('#direction-control');
-    const kind = view.kind ?? (selected?.kind === 'belt' ? 'belt' : null);
+    const candidate = view.kind ?? selected?.kind ?? null;
+    const kind = candidate && directionMatters(candidate) ? candidate : null;
     control.hidden = !kind || this.isWorldInputBlocked();
     this.root.classList.toggle('has-direction-control', !control.hidden);
+    (this.node('#quickbar [data-action="rotate"]') as HTMLButtonElement).disabled = !kind || this.isWorldInputBlocked();
+    (this.node('.selection-actions [data-action="rotate"]') as HTMLButtonElement).disabled = !selected || !directionMatters(selected.kind);
     if (!kind) return;
     const direction = view.kind ? view.direction : selected!.direction;
-    this.text('#direction-title', view.kind ? `${DEFINITIONS[kind].label}の配置方向` : `選択ベルト (${selected!.x}, ${selected!.z})`);
-    this.text('#direction-current', DIRECTIONS[direction]);
-    control.querySelectorAll<HTMLButtonElement>('[data-direction]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.direction) === direction)));
+    this.text('#direction-title', view.kind ? `配置中: ${DEFINITIONS[kind].label}` : `選択中: ${DEFINITIONS[kind].label} (${selected!.x}, ${selected!.z})`);
+    const select = this.node('#direction-select') as HTMLSelectElement;
+    if (select.value !== String(direction)) select.value = String(direction);
     this.node('#quickbar [data-action="rotate"]').setAttribute('aria-label', view.kind ? '配置方向を90度回転' : '選択設備を90度回転');
   }
+  private updatePowerPreview(state: GameState, view: UIState, selected?: Building): void {
+    const candidate = view.kind === 'wire' && view.hover ? { kind: 'wire' as const, ...view.hover } : selected?.kind === 'wire' ? selected : null;
+    const panel = this.node('#power-preview'); panel.hidden = !candidate || this.isWorldInputBlocked();
+    this.root.classList.toggle('has-power-preview', !panel.hidden);
+    if (!candidate) return;
+    const preview = powerPreview(candidate, state.buildings);
+    this.text('#power-preview-title', `${view.kind === 'wire' ? '電柱の配置範囲' : '選択電柱の範囲'} (${candidate.x}, ${candidate.z})`);
+    const status = preview.energized ? '発生炉に接続・魔力あり' : preview.hasGenerator ? '発生炉に接続・蓄積魔力なし' : '発生炉につながっていません';
+    this.text('#power-preview-connections', `接続先 ${preview.connections.length}台 · ${status}`);
+    if (selected?.kind === 'wire') this.text('#selection-status', status);
+  }
   menuToggle(): void { this.callbacks.onOverlayChange(); }
+  directionChange(): void { this.callbacks.onDirection(Number((this.node('#direction-select') as HTMLSelectElement).value) as Direction); }
   isWorldInputBlocked(): boolean { return (this.node('.game-menu') as HTMLDetailsElement).open || (this.node('#demolition-dialog') as HTMLDialogElement).open || !this.node('.build-dock').hidden || !this.node('#technology-panel').hidden || !this.node('#golem-guide').hidden; }
   openSelection(): void { this.node('#selection-panel').hidden = false; this.node('#selection-panel').classList.remove('is-collapsed'); const button = this.node('[data-action="close-panel"]'); button.textContent = '×'; button.setAttribute('aria-label', '設備詳細を閉じる'); }
   closeOverlay(): boolean {
@@ -712,6 +730,7 @@ export class GameUI {
 function bindUIEvents(ui: GameUI, root: HTMLElement, signal: AbortSignal): void {
   root.addEventListener('click', event => ui.handleClick(event), { signal });
   root.querySelector('.game-menu')!.addEventListener('toggle', () => ui.menuToggle(), { signal });
+  root.querySelector('#direction-select')!.addEventListener('change', () => ui.directionChange(), { signal });
   root.querySelector('#feed-form')!.addEventListener('submit', event => ui.handleFeed(event), { signal });
   root.querySelector('#build-search')!.addEventListener('input', () => ui.searchCatalog(), { signal });
   root.querySelector('#demolition-dialog')!.addEventListener('cancel', event => ui.cancelDemolition(event), { signal });

@@ -7,7 +7,7 @@ import { evaluateGuide, type GuideStep } from './onboarding';
 import { isKindUnlocked, isRecipeUnlocked } from './technology';
 import type { Direction, Kind, Resource, RecipeId, TechId } from './types';
 import { SIZE } from './types';
-import { logisticsPorts } from './logistics-visuals';
+import { directionMatters, logisticsPorts } from './logistics-visuals';
 import type { GolemGuide } from './golem-guide';
 import { DEFINITIONS, LEGACY_DEFINITIONS, commonKind } from './data';
 
@@ -49,7 +49,7 @@ class WorkshopApp {
       onSpeed: speed => this.setSpeed(speed),
       onSave: () => { void this.persist(); },
       onLoad: () => { void this.resume(); },
-      onRotate: () => this.rotate(),
+      onRotate: turn => this.rotate(turn),
       onDirection: direction => this.setDirection(direction),
       onOverlayChange: () => this.sync(),
       onRemove: () => this.remove(),
@@ -108,6 +108,7 @@ class WorkshopApp {
     }
     this.buildRecipe = commonKind(original) !== original ? LEGACY_DEFINITIONS[original].recipes?.[0] : DEFINITIONS[kind].recipes?.find(recipe => isRecipeUnlocked(this.simulation.state, recipe));
     this.placedAt = null; this.kind = kind; this.selectedId = null; this.removeMode = false;
+    if (kind === 'wire' && !this.hover) this.hover = this.view?.centerTile() ?? { x: 13, z: 16 };
     this.message = '区画をクリックして建設。Rで向き変更、Escで取消。';
     if (kind === 'crystalMiner') {
       const state = this.simulation.state;
@@ -179,21 +180,23 @@ class WorkshopApp {
   }
   togglePause() { this.setSpeed(this.speed ? 0 : this.previousSpeed); }
   cancel() { this.kind = null; this.removeMode = false; this.message = '選択モード。施設をクリックして稼働状況を確認できます。'; this.sync(); }
-  rotate() {
-    if (this.kind) this.direction = ((this.direction + 1) % 4) as Direction;
-    else if (this.selectedId !== null) this.message = this.simulation.command({ type: 'rotate', id: this.selectedId }).reason;
-    this.sync();
+  rotate(turn: -1 | 1 = 1) {
+    const selected = this.simulation.state.buildings.find(building => building.id === this.selectedId);
+    const direction = this.kind ? this.direction : selected?.direction;
+    if (direction !== undefined) this.setDirection(((direction + turn + 4) % 4) as Direction);
   }
   setDirection(direction: Direction) {
     if (this.ui.isWorldInputBlocked()) return;
+    const kind = this.kind ?? this.simulation.state.buildings.find(building => building.id === this.selectedId)?.kind;
+    if (!kind || !directionMatters(kind)) return;
     if (this.kind) this.direction = direction;
     else {
-      const belt = this.simulation.state.buildings.find(building => building.id === this.selectedId && building.kind === 'belt');
-      if (!belt) return;
-      const turns = (direction - belt.direction + 4) % 4;
-      for (let turn = 0; turn < turns; turn++) this.simulation.command({ type: 'rotate', id: belt.id });
+      const selected = this.simulation.state.buildings.find(building => building.id === this.selectedId);
+      if (!selected) return;
+      const turns = (direction - selected.direction + 4) % 4;
+      for (let turn = 0; turn < turns; turn++) this.simulation.command({ type: 'rotate', id: selected.id });
     }
-    this.message = `方向を${['北 ↑', '東 →', '南 ↓', '西 ←'][direction]}にしました。`;
+    this.message = `${DEFINITIONS[kind].label}の${this.kind ? '配置' : '出力'}方向を${['北 ↑', '東 →', '南 ↓', '西 ←'][direction]}にしました。`;
     this.sync();
   }
   undoBuild() {
