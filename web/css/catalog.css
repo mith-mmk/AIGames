@@ -1,0 +1,38 @@
+:root { color-scheme: light; font-family: 'Segoe UI', 'Yu Gothic', sans-serif; color: #182d32; background: #f2f6f5; line-height: 1.6; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+[hidden], .game-card[hidden], .controls[hidden] { display: none; }
+.site-header { padding: 42px max(24px, calc((100% - 1240px) / 2)); background: #123c39; color: #f6fbf9; }
+.eyebrow { color: #add4c3; font-size: .75rem; letter-spacing: .16em; font-weight: 700; }
+h1 { margin: 4px 0; font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.2; letter-spacing: -.04em; }
+.site-header p { margin: 8px 0; }
+main { max-width: 1288px; margin: auto; padding: 28px 24px 56px; }
+.controls { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; padding: 18px; border: 1px solid #d2dfda; background: #fff; border-radius: 12px; }
+label { display: flex; flex-direction: column; gap: 5px; font-size: .8rem; font-weight: 700; }
+.search-field { flex: 1 1 240px; }
+input, select, button { font: inherit; font-size: 1rem; color: #182d32; border: 1px solid #a9bfb7; border-radius: 6px; background: #fff; padding: 9px 12px; min-height: 44px; }
+input { width: 100%; min-width: 0; }
+button { cursor: pointer; background: #edf5f0; }
+button:hover { background: #dcece2; }
+:focus-visible { outline: 3px solid #ca671e; outline-offset: 4px; }
+.results-bar { display: flex; flex-wrap: wrap; gap: 4px 20px; justify-content: space-between; color: #526b65; font-size: .85rem; margin: 15px 0; }
+.results-bar p { margin: 0; }
+#result-count { font-weight: 700; color: #234b42; }
+.game-list { display: flex; flex-wrap: wrap; gap: 22px; list-style: none; padding: 0; margin: 0; }
+.game-card { flex: 0 1 calc((100% - 44px) / 3); min-width: 0; border: 1px solid #d6e1dd; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px #173b2d08; }
+.game-link { display: flex; flex-direction: column; height: 100%; text-decoration: none; color: inherit; }
+.game-link:hover { background: #f8fcfa; }
+.game-link:hover h2 { color: #14745b; text-decoration: underline; text-underline-offset: 4px; }
+.game-link:focus-visible { outline-offset: -4px; }
+.game-link img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; background: #dce7e2; border-bottom: 1px solid #d6e1dd; }
+.card-body { display: flex; flex-direction: column; flex: 1; padding: 18px; }
+.genre { align-self: start; color: #326451; background: #eaf3ed; padding: 2px 8px; border-radius: 4px; font-size: .7rem; font-weight: 700; }
+h2 { font-size: 1.12rem; line-height: 1.45; margin: 10px 0 8px; overflow-wrap: anywhere; }
+.description { font-size: .88rem; color: #4a625b; margin: 0 0 20px; }
+.card-meta { display: flex; flex-direction: column; gap: 3px; font-size: .72rem; color: #61736d; margin: auto 0 0; overflow-wrap: anywhere; }
+.empty-state { border: 1px dashed #8ba79b; background: #fff; padding: 36px 20px; border-radius: 12px; text-align: center; }
+footer { border-top: 1px solid #d2dfda; padding: 24px; text-align: center; font-size: .85rem; color: #526b65; }
+footer p { margin: 0 0 6px; }
+footer a { color: #245f4c; }
+@media (max-width: 960px) { .game-card { flex-basis: calc((100% - 22px) / 2); } }
+@media (max-width: 580px) { .site-header { padding: 28px 18px; } main { padding: 20px 16px 36px; } .controls { padding: 14px; gap: 10px; } .search-field { flex-basis: 100%; } .controls label:not(.search-field) { flex: 1 1 125px; } .controls button { width: 100%; } .game-card { flex-basis: 100%; } .game-list { gap: 18px; } }

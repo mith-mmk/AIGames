@@ -3,45 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AIと作ったブラウザゲームとシミュレーター。気になる作品を探して遊べます。">
     <title>AI Games</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/catalog.css">
+    <script src="./js/catalog.js" defer></script>
 </head>
 <body>
-    <header>
+    <header class="site-header">
+        <p class="eyebrow">PLAY · EXPLORE · EXPERIMENT</p>
         <h1>AI Games</h1>
+        <p>AIと作った、遊びと実験のコレクション。</p>
     </header>
     <main>
-        <nav>
-            <ul>
-                <li><a href="lifegame.html">Life Game</a></li> 2025/06/26 ライフゲーム(by Gemini-cli)
-                <li><a href="evolution.html">生物進化シミュレーション</a></li> 2025/06/27 生物進化シミュレーション(by Gemini-cli)
-                <li><a href="evolution2.html">生物進化シミュレーション Part2</a></li> 2026/03/07 遺伝・突然変異・捕食連鎖(by Codex-cli)
-                <li><a href="15puzzle.html">15 Puzzle</a></li> 2025/06/28 15パズル(by Gemini-cli)
-                <li><a href="block.html">ブロック崩し</a></li> 2025/06/29 ブロック崩し（クリアできない）(by Gemini-cli)
-                <li><a href="plus3game.html">+3 Game</a></li> 2025/06/29 +3ゲーム(by Gemini-cli)
-                <li><a href="sequence.html">NEON SEQUENCE</a></li> 2026/03/07 数字巡回ゲーム(by Codex-cli)
-                <li><a href="rougelike-copilot.html">Rogue Dungeon</a></li> 2026/04/25 ローグライクRPG(by auto: GitHub Copilot / Claude Sonnet 4.6)
-                <li><a href="rougelike-codex.html">Rogue Dungeon Codex</a></li> 2026/05/02 3DローグライクRPG(by Codex + GPT 5.5)
-                <li><a href="cards.html">Solitaire Cards</a></li> 2026/05/06 ソリティア(by Codex + GPT 5.5)
-                <li><a href="cat.html">くろねこ さんぽ</a></li> 2026/05/08 横スクロールさんぽゲーム(by Codex + GPT 5.5)
-                <li><a href="train-defense.html">列車防衛</a></li> 2026/06/03 タワーディフェンス(by Codex + GPT 5.5)
-                <li><a href="orbit-salvage.html">オービット回収船</a></li> 2026/07/16 回収・防御切替アクション(by Codex + GPT 5.6 sol)
-                <li><a href="civilization.html">Chronicle Kingdoms</a></li> 2026/08/02 短編4X文明ストラテジー(by Codex + GPT 5.6 sol)
-                <li><a href="humanities-simulator.html">人文系論説シミュレーター</a> 2026/08/08 伝言ゲーム型文章生成シミュレーター(by Codex + GPT 5.6 sol)
-                <li><a href="natural-philosophy-network.html">近世自然哲学ネットワーク</a> 2026/08/14 書簡ネットワーク可視化(by Codex + GPT 5.6 sol)
-                <li><a href="kanbun-turing.html">漢文エディタ＋漢文チューリングマシン</a> 漢文の書き下し学習(by Codex + GPT 5.6 sol)
-                <li><a href="edo-fire-command.html">江戸火消し指図</a> 2026/08/25 ターン制災害対応ストラテジー(by Codex + GPT 5.6 sol)
-                <li><a href='karakuri.html'>机上のからくり工房</a> 2026/10/03 3D組立パズル・全10面 (by Codex GPT 6.1 sol)</li>
-                <li><a href="rubiks_cube_random_initial.html">3D ルービックキューブ</a> ホームページから移植・回転を観察 (by Codex 5.6 sol)</li>
-                <li><a href="rome-320.html">ローマ 320 — 永遠の都を空から</a> 2026/10/10 西暦320年の3D都市復元 (by Codex / GPT 6.0 Pro Chat 2shot + 5.6 sol)</li>
-                <li><a href="mirror-light.html">光の庭</a> 2026/10/11 3D 鏡・光線パズル・全10面 (by Codex + Game Studio Plugin / GPT 6.1 sol)</li>
-                <!-- 他のゲームへのリンクはここに追加 -->
-            </ul>
-        </nav>
+        <form id="catalog-controls" class="controls" role="search" aria-label="ゲームを探す" hidden>
+            <label class="search-field">タイトル検索<input type="search" id="title-search" placeholder="ゲーム名で探す" autocomplete="off" aria-controls="game-list"></label>
+            <label>ジャンル<select id="genre-filter" aria-controls="game-list"><option value="">すべて</option></select></label>
+            <label>並び順<select id="sort-order" aria-controls="game-list"><option value="newest">新しい順</option><option value="oldest">古い順</option><option value="name">名前順</option></select></label>
+            <button type="reset">リセット</button>
+        </form>
+        <div class="results-bar"><p id="result-count" role="status" aria-live="polite" aria-atomic="true">23件の作品</p><p>ブラウザでそのまま遊べます</p></div>
+        <p id="empty-state" class="empty-state" hidden>該当する作品がありません。検索語やジャンルを変えるか、リセットしてください。</p>
+        <ul id="game-list" class="game-list" aria-label="ゲーム一覧">
+            <li class="game-card" data-genre="シミュレーション" data-date="2025-06-26">
+                <a class="game-link" href="lifegame.html">
+                    <img src="./assets/catalog/lifegame.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">シミュレーション</span>
+                        <h2>Life Game</h2>
+                        <p class="description">ライフゲーム</p>
+                        <p class="card-meta"><time datetime="2025-06-26">2025/06/26</time><span>by Gemini-cli</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="シミュレーション" data-date="2025-06-27">
+                <a class="game-link" href="evolution.html">
+                    <img src="./assets/catalog/evolution.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">シミュレーション</span>
+                        <h2>生物進化シミュレーション</h2>
+                        <p class="description">生物進化シミュレーション</p>
+                        <p class="card-meta"><time datetime="2025-06-27">2025/06/27</time><span>by Gemini-cli</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="シミュレーション" data-date="2026-03-07">
+                <a class="game-link" href="evolution2.html">
+                    <img src="./assets/catalog/evolution2.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">シミュレーション</span>
+                        <h2>生物進化シミュレーション Part2</h2>
+                        <p class="description">遺伝・突然変異・捕食連鎖</p>
+                        <p class="card-meta"><time datetime="2026-03-07">2026/03/07</time><span>by Codex-cli</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="パズル" data-date="2025-06-28">
+                <a class="game-link" href="15puzzle.html">
+                    <img src="./assets/catalog/15puzzle.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">パズル</span>
+                        <h2>15 Puzzle</h2>
+                        <p class="description">15パズル</p>
+                        <p class="card-meta"><time datetime="2025-06-28">2025/06/28</time><span>by Gemini-cli</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="アクション" data-date="2025-06-29">
+                <a class="game-link" href="block.html">
+                    <img src="./assets/catalog/block.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">アクション</span>
+                        <h2>ブロック崩し</h2>
+                        <p class="description">ブロック崩し（クリアできない）</p>
+                        <p class="card-meta"><time datetime="2025-06-29">2025/06/29</time><span>by Gemini-cli</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="未分類" data-date="2025-06-29">
+                <a class="game-link" href="plus3game.html">
+                    <img src="./assets/catalog/plus3game.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">未分類</span>
+                        <h2>+3 Game</h2>
+                        <p class="description">+3ゲーム</p>
+                        <p class="card-meta"><time datetime="2025-06-29">2025/06/29</time><span>by Gemini-cli</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="パズル" data-date="2026-03-07">
+                <a class="game-link" href="sequence.html">
+                    <img src="./assets/catalog/sequence.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">パズル</span>
+                        <h2>NEON SEQUENCE</h2>
+                        <p class="description">数字巡回ゲーム</p>
+                        <p class="card-meta"><time datetime="2026-03-07">2026/03/07</time><span>by Codex-cli</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="RPG" data-date="2026-04-25">
+                <a class="game-link" href="rougelike-copilot.html">
+                    <img src="./assets/catalog/rougelike-copilot.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">RPG</span>
+                        <h2>Rogue Dungeon</h2>
+                        <p class="description">ローグライクRPG</p>
+                        <p class="card-meta"><time datetime="2026-04-25">2026/04/25</time><span>by auto: GitHub Copilot / Claude Sonnet 4.6</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="RPG" data-date="2026-05-02">
+                <a class="game-link" href="rougelike-codex.html">
+                    <img src="./assets/catalog/rougelike-codex.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">RPG</span>
+                        <h2>Rogue Dungeon Codex</h2>
+                        <p class="description">3DローグライクRPG</p>
+                        <p class="card-meta"><time datetime="2026-05-02">2026/05/02</time><span>by Codex + GPT 5.5</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="カード・テーブル" data-date="2026-05-06">
+                <a class="game-link" href="cards.html">
+                    <img src="./assets/catalog/cards.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">カード・テーブル</span>
+                        <h2>Solitaire Cards</h2>
+                        <p class="description">ソリティア</p>
+                        <p class="card-meta"><time datetime="2026-05-06">2026/05/06</time><span>by Codex + GPT 5.5</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="アクション" data-date="2026-05-08">
+                <a class="game-link" href="cat.html">
+                    <img src="./assets/catalog/cat.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">アクション</span>
+                        <h2>くろねこ さんぽ</h2>
+                        <p class="description">横スクロールさんぽゲーム</p>
+                        <p class="card-meta"><time datetime="2026-05-08">2026/05/08</time><span>by Codex + GPT 5.5</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="ストラテジー" data-date="2026-06-03">
+                <a class="game-link" href="train-defense.html">
+                    <img src="./assets/catalog/train-defense.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">ストラテジー</span>
+                        <h2>列車防衛</h2>
+                        <p class="description">タワーディフェンス</p>
+                        <p class="card-meta"><time datetime="2026-06-03">2026/06/03</time><span>by Codex + GPT 5.5</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="アクション" data-date="2026-07-16">
+                <a class="game-link" href="orbit-salvage.html">
+                    <img src="./assets/catalog/orbit-salvage.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">アクション</span>
+                        <h2>オービット回収船</h2>
+                        <p class="description">回収・防御切替アクション</p>
+                        <p class="card-meta"><time datetime="2026-07-16">2026/07/16</time><span>by Codex + GPT 5.6 sol</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="ストラテジー" data-date="2026-08-02">
+                <a class="game-link" href="civilization.html">
+                    <img src="./assets/catalog/civilization.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">ストラテジー</span>
+                        <h2>Chronicle Kingdoms</h2>
+                        <p class="description">短編4X文明ストラテジー</p>
+                        <p class="card-meta"><time datetime="2026-08-02">2026/08/02</time><span>by Codex + GPT 5.6 sol</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="シミュレーション" data-date="2026-08-08">
+                <a class="game-link" href="humanities-simulator.html">
+                    <img src="./assets/catalog/humanities-simulator.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">シミュレーション</span>
+                        <h2>人文系論説シミュレーター</h2>
+                        <p class="description">伝言ゲーム型文章生成シミュレーター</p>
+                        <p class="card-meta"><time datetime="2026-08-08">2026/08/08</time><span>by Codex + GPT 5.6 sol</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="可視化・学習" data-date="2026-08-14">
+                <a class="game-link" href="natural-philosophy-network.html">
+                    <img src="./assets/catalog/natural-philosophy-network.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">可視化・学習</span>
+                        <h2>近世自然哲学ネットワーク</h2>
+                        <p class="description">書簡ネットワーク可視化</p>
+                        <p class="card-meta"><time datetime="2026-08-14">2026/08/14</time><span>by Codex + GPT 5.6 sol</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="可視化・学習" data-date="">
+                <a class="game-link" href="kanbun-turing.html">
+                    <img src="./assets/catalog/kanbun-turing.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">可視化・学習</span>
+                        <h2>漢文エディタ＋漢文チューリングマシン</h2>
+                        <p class="description">漢文の書き下し学習</p>
+                        <p class="card-meta"><span>日付未記載</span><span>by Codex + GPT 5.6 sol</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="ストラテジー" data-date="2026-08-25">
+                <a class="game-link" href="edo-fire-command.html">
+                    <img src="./assets/catalog/edo-fire-command.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">ストラテジー</span>
+                        <h2>江戸火消し指図</h2>
+                        <p class="description">ターン制災害対応ストラテジー</p>
+                        <p class="card-meta"><time datetime="2026-08-25">2026/08/25</time><span>by Codex + GPT 5.6 sol</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="パズル" data-date="2026-10-03">
+                <a class="game-link" href="karakuri.html">
+                    <img src="./assets/catalog/karakuri.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">パズル</span>
+                        <h2>机上のからくり工房</h2>
+                        <p class="description">3D組立パズル・全10面</p>
+                        <p class="card-meta"><time datetime="2026-10-03">2026/10/03</time><span>by Codex GPT 6.1 sol</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="パズル" data-date="">
+                <a class="game-link" href="rubiks_cube_random_initial.html">
+                    <img src="./assets/catalog/rubiks_cube_random_initial.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">パズル</span>
+                        <h2>3D ルービックキューブ</h2>
+                        <p class="description">ホームページから移植・回転を観察</p>
+                        <p class="card-meta"><span>日付未記載</span><span>by Codex 5.6 sol</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="可視化・学習" data-date="2026-10-10">
+                <a class="game-link" href="rome-320.html">
+                    <img src="./assets/catalog/rome-320.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">可視化・学習</span>
+                        <h2>ローマ 320 — 永遠の都を空から</h2>
+                        <p class="description">西暦320年の3D都市復元</p>
+                        <p class="card-meta"><time datetime="2026-10-10">2026/10/10</time><span>by Codex / GPT 6.0 Pro Chat 2shot + 5.6 sol</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="パズル" data-date="2026-10-11">
+                <a class="game-link" href="mirror-light.html">
+                    <img src="./assets/catalog/mirror-light.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">パズル</span>
+                        <h2>光の庭</h2>
+                        <p class="description">3D 鏡・光線パズル・全10面</p>
+                        <p class="card-meta"><time datetime="2026-10-11">2026/10/11</time><span>by Codex + Game Studio Plugin / GPT 6.1 sol</span></p>
+                    </div>
+                </a>
+            </li>
+            <li class="game-card" data-genre="カード・テーブル" data-date="2026-10-19">
+                <a class="game-link" href="https://seiran-mahjong.mi-si.chatgpt.site">
+                    <img src="./assets/catalog/seiran-mahjong.jpg" alt="" width="640" height="400" loading="lazy">
+                    <div class="card-body">
+                        <span class="genre">カード・テーブル</span>
+                        <h2>翠嵐麻雀 — 3D自動卓</h2>
+                        <p class="description">3D 麻雀（四人打ち＋三麻）</p>
+                        <p class="card-meta"><time datetime="2026-10-19">2026/10/19</time><span>by GPT 6 Pro</span></p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <noscript><p>検索・絞り込み・並び替えにはJavaScriptが必要です。すべての作品は上のリンクから開けます。</p></noscript>
     </main>
-    <footer>
-        <p>&copy; 2025-2026 MITH@mmk</p>
-        <li><div class="goback"><a href="https://mith-mmk.github.io/script/" class="back">ホームページへ戻る</a></div></li>
-    </footer>
+    <footer><p>&copy; 2025-2026 MITH@mmk</p><a href="https://mith-mmk.github.io/script/">ホームページへ戻る</a></footer>
 </body>
 </html>
