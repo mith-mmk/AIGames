@@ -5,7 +5,7 @@ const http = require('node:http');
 const assert = require('node:assert/strict');
 const { execFileSync } = require('node:child_process');
 const root = path.resolve(__dirname, '..');
-const evidence = path.join(root, 'artifacts/catalog');
+const evidence = path.join(root, process.env.CATALOG_EVIDENCE || 'artifacts/catalog');
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.jpg': 'image/jpeg' };
 const server = http.createServer((req, res) => {
     const url = new URL(req.url, 'http://localhost');
@@ -30,12 +30,19 @@ const server = http.createServer((req, res) => {
         const cards = page.locator('.game-card');
         assert.equal(await cards.count(), 23);
         const baseline = execFileSync('git', ['show', 'origin/main:web/index.html'], { cwd: root, encoding: 'utf8' });
-        const original = [...baseline.matchAll(/<li><a href=["']([^"']+)["']>(.*?)<\/a>(.*?)(?=<li>|<!--)/gs)].map(([, href, title, tail]) => ({ href, title, text: tail.replace(/<\/li>/g, '').replace(/\s/g, '') }));
+        const original = baseline.includes('class="game-card"')
+            ? await page.evaluate(html => [...new DOMParser().parseFromString(html, 'text/html').querySelectorAll('.game-card')].map(el => ({ href: el.querySelector('a').getAttribute('href'), title: el.querySelector('h2').textContent, fields: [...el.querySelectorAll('.description,.card-meta')].map(part => part.textContent.replace(/\s/g, '')) })), baseline)
+            : [...baseline.matchAll(/<li><a href=["']([^"']+)["']>(.*?)<\/a>(.*?)(?=<li>|<!--)/gs)].map(([, href, title, tail]) => ({ href, title, text: tail.replace(/<\/li>/g, '').replace(/\s/g, '') }));
+        assert.ok(original.length >= 22);
         const current = await cards.evaluateAll(elements => elements.map(el => ({ href: el.querySelector('a').getAttribute('href'), title: el.querySelector('h2').textContent, text: el.querySelector('.card-body').textContent.replace(/\s/g, '') })));
         for (const old of original) {
             const card = current.find(item => item.href === old.href);
             assert.ok(card, old.href);
             assert.equal(card.title, old.title);
+            if (old.fields) {
+                for (const field of old.fields) assert.ok(card.text.includes(field), old.title);
+                continue;
+            }
             const parts = old.text.match(/^(\d{4}\/\d{2}\/\d{2})?(.*?)\((by.*?)\)$/);
             assert.ok(parts, old.title);
             for (const value of parts.slice(1).filter(Boolean)) assert.ok(card.text.includes(value), `${old.title}: ${value}`);
