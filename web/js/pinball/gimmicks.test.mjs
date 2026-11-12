@@ -27,3 +27,6 @@ test('inlane switch scores only a fresh real crossing, not sitting or pausing',a
 test('side coils are bounded, horizontal and stronger than their former impulse',async()=>{
  const g=await PinballPhysics.create();try{g.launch();for(const type of ['sling','bumper']){const [h,spec]=[...g.hitObjects].find(([,v])=>v.type===type&&(type!=='bumper'||v.key==='mini0'));g.ball.setTranslation({x:spec.x+.3,y:.18,z:spec.z},true);g.ball.setLinvel({x:0,y:0,z:0},true);g.hit(h);const v=g.ball.linvel();assert.ok(v.x>(type==='sling'?2:5));assert.ok(v.x<7);assert.equal(v.y,0);}}finally{g.dispose();}
 });
+test('visual bumper notifications are accepted-contact-only, bounded and restart clears',async()=>{
+ const g=await PinballPhysics.create();try{g.launch();const handle=[...g.hitObjects].find(([,h])=>h.key==='mini0')[0];g.hit(handle);const score=g.state.score;assert.deepEqual(g.takeVisualHits(),[{key:'mini0'}]);assert.equal(g.state.score,score);assert.deepEqual(g.takeVisualHits(),[]);g.hit(handle);assert.deepEqual(g.takeVisualHits(),[]);g.time+=.2;g.hit(handle);assert.equal(g.visualHits.length,1);g.restart();assert.deepEqual(g.takeVisualHits(),[]);}finally{g.dispose();}
+});

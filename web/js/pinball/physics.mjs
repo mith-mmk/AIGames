@@ -7,7 +7,7 @@ import { PinballGameState } from "./game-state.mjs";
 export class PinballPhysics {
   static async create() { await R.init(); return new PinballPhysics(); }
   constructor() {
-    this.state = new PinballGameState(); this.accumulator = 0; this.time = 0; this.eventSequence = 0; this.spinnerAngle = 0; this.spinnerSpeed = 0; this.rampStage = 0; this.rampTraversals=0;
+    this.state = new PinballGameState(); this.visualHits=[]; this.accumulator = 0; this.time = 0; this.eventSequence = 0; this.spinnerAngle = 0; this.spinnerSpeed = 0; this.rampStage = 0; this.rampTraversals=0;
     // Reduced downhill acceleration approximates rolling inertia for beginner play.
     this.world = new R.World({ x: 0, y: -98.1 * Math.cos(TABLE.tilt), z: 63.765 * Math.sin(TABLE.tilt) });
     this.world.timestep = 1 / 120;
@@ -23,6 +23,7 @@ export class PinballPhysics {
     this.ballCollider = this.world.createCollider(R.ColliderDesc.ball(TABLE.ballRadius).setMass(0.08).setRestitution(0.22).setFriction(0.06).setActiveEvents(R.ActiveEvents.COLLISION_EVENTS), this.ball);
     this.resetBall();
   }
+  takeVisualHits() { const hits=this.visualHits;this.visualHits=[];return hits; }
   get ballPosition() { return this.ball.translation(); }
   get metrics() { return { rampTraversals:this.rampTraversals, flipperContacts: [...this.flipperContacts], activeFlipperContacts: [...this.activeFlipperContacts], coilImpulses: [...this.coilImpulses], upfieldReturns: this.upfieldReturns }; }
   get ballRotation() { return this.ball.rotation(); }
@@ -113,7 +114,7 @@ export class PinballPhysics {
     return true;
   }
   restart() {
-    this.lastFlipperShot = null; this.rampTraversals=0;
+    this.visualHits.length=0; this.lastFlipperShot = null; this.rampTraversals=0;
     this.flipperCoilCooldown.fill(0); this.coilImpulses.fill(0); this.flipperRising.fill(false);
     this.flipperContacts.fill(0); this.activeFlipperContacts.fill(0); this.upfieldReturns = 0; this.returnPending = false;
     this.state.restart(); this.spinnerAngle = 0; this.spinnerSpeed = 0; this.accumulator = 0; this.cooldowns.clear(); this.resetBall();
@@ -161,6 +162,9 @@ export class PinballPhysics {
       return;
     }
     this.cooldowns.set(h.key, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, id: "contact-" + this.eventSequence++ });
+    if(h.type==="bumper" && accepted) {
+      this.visualHits.push({key:h.key});if(this.visualHits.length>12)this.visualHits.shift();
+    }
     if (h.type === "spinner" && accepted) this.spinnerSpeed = Math.min(50, this.spinnerSpeed + Math.max(8, Math.abs(this.ball.linvel().z) * 2));
     if (h.type === "bumper" || h.type === "sling") {
       const p = this.ball.translation(), dx = p.x - h.x, dz = p.z - h.z, len = Math.hypot(dx, dz) || 1;

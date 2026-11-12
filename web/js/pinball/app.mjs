@@ -1,3 +1,4 @@
+import { BumperEffects } from "./bumper-effects.mjs";
 import { Plunger, bindPlunger } from "./plunger.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { WorkshopRoom } from "./workshop.mjs";
@@ -24,6 +25,8 @@ export class PinballTablePreview {
     this.camera = new T.PerspectiveCamera(42, 1, 0.1, 100);
     this.assets = new WorkshopAssets();
     this.board = this.assets.build();
+    this.bumperEffects=new BumperEffects(this.assets.root);
+    this.reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
     this.board.rotation.x = TABLE.tilt;
     this.scene.add(this.board);
     this.plungerHandle = this.assets.mesh(new T.CylinderGeometry(.09, .09, .38, 16), "ball", this.board, 2.53, .18, 5.22);
@@ -163,7 +166,7 @@ export class PinballTablePreview {
   restart() {
     if (!this.game) return;
     this.plunger.cancel();
-    this.state.release(); this.game.restart(); this.last = 0;
+    this.state.release(); this.game.restart(); this.bumperEffects.reset(); this.last = 0;
     document.querySelectorAll("#left,#right").forEach(b => b.setAttribute("aria-pressed", "false"));
   }
   updateHUD() {
@@ -219,6 +222,8 @@ export class PinballTablePreview {
       this.ball.position.set(p.x, p.y, p.z);
       for (let i = 0; i < 2; i++) this.assets.flippers[i].rotation.y = this.game.flipperAngles[i];
       if (this.assets.spinnerPivot) this.assets.spinnerPivot.rotation.x = this.game.spinnerAngle || 0;
+      this.bumperEffects.update(this.game.state.phase==="paused"?0:dt,this.game.takeVisualHits(),this.reducedMotion.matches);
+      this.canvas.dataset.bumperEffects=this.bumperEffects.hits;
       this.updateHUD();
     }
     this.renderer.render(this.scene, this.camera);
