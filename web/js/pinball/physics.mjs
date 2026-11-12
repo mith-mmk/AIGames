@@ -174,7 +174,7 @@ export class PinballPhysics {
     }
     this.cooldowns.set(h.key, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, id: "contact-" + this.eventSequence++ });
     if(h.type==="bumper" && accepted) {
-      this.visualHits.push({key:h.key});if(this.visualHits.length>12)this.visualHits.shift();
+      this.visualHits.push({key:h.key,points:this.state.lastContactAward?.points??100});if(this.visualHits.length>12)this.visualHits.shift();
     }
     if (h.type === "spinner" && accepted) this.spinnerSpeed = Math.min(50, this.spinnerSpeed + Math.max(8, Math.abs(this.ball.linvel().z) * 2));
     if (h.type === "bumper" || h.type === "sling") {

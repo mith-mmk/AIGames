@@ -1,10 +1,11 @@
-import { PinballMissions } from "./missions.mjs";
+import { PinballMissions, PinballMultiplierMission } from "./missions.mjs";
 
 /** Rules are independent of renderer and physics engine. */
 export class PinballGameState {
   constructor() { this.restart(); }
   restart() {
     this.missions = new PinballMissions();
+    this.multiplierChallenge = new PinballMultiplierMission(); this.lastContactAward = null;
     this.rollovers = [false, false, false]; this.rolloverSets = 0;
     this.kickbackCharges = 1; this.kickbackUses = 0; this.eventIds = new Set();
     this.sideSaveCharges = 0; this.sideSaveUses = 0;
@@ -12,6 +13,23 @@ export class PinballGameState {
     this.lastEvent = "発射してスタート"; this.resumePhase = "ready";
   }
   get mission() { return this.missions.snapshot; }
+  get multiplier() { return this.multiplierChallenge.multiplier; }
+  get multiplierMission() { return this.multiplierChallenge.snapshot; }
+  get tilted() { return this._tilted; }
+  set tilted(value) {
+    this._tilted = Boolean(value);
+    if (this._tilted) this.multiplierChallenge.restart();
+  }
+  awardContact(points, label) {
+    if (this.phase !== "playing" || this.tilted) return;
+    const multiplier = this.multiplier;
+    this.award(points * multiplier, label);
+    this.lastContactAward = { ...this.lastAward, basePoints: points, multiplier };
+  }
+  advanceChallenges(event) {
+    this.advanceMission(event);
+    if (this.multiplierChallenge.onEvent(event)) this.lastEvent += " · MULTIPLIER ×" + this.multiplier;
+  }
   advanceMission(event) {
     const completed = this.missions.onEvent(event);
     if (completed) {
@@ -48,18 +66,19 @@ export class PinballGameState {
       this.kickbackCharges = 0; this.kickbackUses++; this.lastEvent = "CENTER SAVE"; return true;
     }
     if (event.type === "rollover") {
-      if (this.rollovers[event.lane]) { this.award(100,"LANE " + (event.lane+1)); this.advanceMission(event); return true; }
-      this.rollovers[event.lane] = true; this.award(100, "LANE " + (event.lane + 1));
+      if (this.rollovers[event.lane]) { this.awardContact(100,"LANE " + (event.lane+1)); this.advanceChallenges(event); return true; }
+      this.rollovers[event.lane] = true; this.awardContact(100, "LANE " + (event.lane + 1));
       if (this.rollovers.every(Boolean)) {
         this.rolloverSets++; this.kickbackCharges = 1; this.rollovers.fill(false);
         this.award(500, "LANES COMPLETE · CENTER SAVE READY");
       }
-      this.advanceMission(event); return true;
+      this.advanceChallenges(event); return true;
     }
-    this.award(points[event.type], event.type.toUpperCase()); this.advanceMission(event); return true;
+    this.awardContact(points[event.type], event.type.toUpperCase()); this.advanceChallenges(event); return true;
   }
   drain() {
     if (this.phase !== "playing") return false;
+    this.multiplierChallenge.restart();
     this.returnedShooter = false;
     if (this.ballNumber >= 3) { this.phase = "gameover"; this.lastEvent = "GAME OVER"; }
     else { this.ballNumber++; this.phase = "ready"; this.lastEvent = "次の球を発射"; }

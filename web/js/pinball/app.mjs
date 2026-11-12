@@ -20,8 +20,8 @@ export class PinballTablePreview {
     this.renderer.toneMapping = T.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.35;
     this.scene = new T.Scene();
-    this.scene.background = new T.Color(0x141418);
-    this.scene.fog = new T.Fog(0x141418, 24, 48);
+    this.scene.background = new T.Color(0x060d18);
+    this.scene.fog = new T.Fog(0x060d18, 24, 48);
     this.camera = new T.PerspectiveCamera(42, 1, 0.1, 100);
     this.assets = new WorkshopAssets();
     this.board = this.assets.build();
@@ -57,7 +57,7 @@ export class PinballTablePreview {
     this.scene.add(rim);
     const floor = new T.Mesh(
       new T.PlaneGeometry(200, 200),
-      new T.MeshStandardMaterial({ color: 0x1d1d20, roughness: 0.75 }),
+      new T.MeshStandardMaterial({ color: 0x07101c, roughness: 0.88 }),
     );
     floor.rotation.x = -Math.PI / 2;
     floor.position.y = -2.4;
@@ -143,7 +143,7 @@ export class PinballTablePreview {
     // Backdrop and non-colliding tall mascot must not hide the active ball lanes.
     this.scene.getObjectByName("chappy-automaton").visible = false;
     this.scene.getObjectByName("rear-mechanical-bank").visible = false;
-    this.room.root && (this.room.root.visible = false);
+    this.room.root && (this.room.root.visible = true);
     document
       .querySelectorAll("[data-view]")
       .forEach((b) => b.classList.toggle("selected", b.dataset.view === name));
@@ -197,6 +197,11 @@ export class PinballTablePreview {
     let delta=document.querySelector("#score-delta");
     if(!delta){delta=document.createElement("span");delta.id="score-delta";document.querySelector(".score-panel").append(delta);}
     delta.textContent=recent?`+${this.shownAward.points}`:"";
+    const multiplier=state.multiplierMission;
+    if(multiplier) {
+      document.querySelector('#multiplier').textContent=`×${state.multiplier}`;
+      document.querySelector('#multiplier-progress').textContent=`${multiplier.description} · ${multiplier.progress}/${multiplier.target}`;
+    }
     const mission=state.mission;
     if(mission && document.querySelector("#mission-title")) {
       document.querySelector("#mission-title").textContent=mission.title;

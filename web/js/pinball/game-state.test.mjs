@@ -84,3 +84,71 @@ test("target mission grants exactly one left save independent of center save", (
   hit("kickback"); assert.equal(state.kickbackUses, 1); assert.equal(state.sideSaveCharges, 0);
   state.restart(); assert.equal(state.sideSaveUses, 0); assert.equal(state.kickbackCharges, 1);
 });
+
+test("bumper challenge earns x2 after five hits; varied mechanisms earn x3 starting with the next hit", () => {
+  const { state, hit } = fixture();
+  hit("spinner"); hit("target"); hit("rollover", 0);
+  assert.equal(state.multiplierMission.progress, 0);
+  for (let i = 0; i < 5; i++) hit("bumper");
+  assert.equal(state.multiplier, 2); assert.equal(state.lastContactAward.points, 100);
+  assert.equal(state.multiplierMission.progress, 0, "earning bumper is not counted in next challenge");
+  hit("bank"); assert.equal(state.lastContactAward.points, 150);
+  hit("target"); assert.equal(state.multiplierMission.progress, 1, "bank and target share one group");
+  hit("rollover", 1); hit("inlane");
+  assert.equal(state.multiplierMission.progress, 2, "inlane and upper rollover share one group");
+  hit("spinner"); assert.equal(state.lastContactAward.points, 300);
+  assert.equal(state.multiplier, 3); assert.equal(state.multiplierMission.allComplete, true);
+  hit("bumper"); assert.equal(state.lastContactAward.points, 300);
+  hit("ramp"); assert.equal(state.lastContactAward.points, 900);
+  for (let i = 0; i < 10; i++) hit("bumper");
+  assert.equal(state.multiplier, 3); assert.equal(state.multiplierMission.progress, 3);
+  const snapshot = state.multiplierMission; snapshot.mechanisms.push("fake");
+  assert.equal(state.multiplierMission.mechanisms.includes("fake"), false);
+});
+
+test("multipliers never multiply mission or lane-set bonuses and saves do not progress challenges", () => {
+  const { state, hit } = fixture();
+  for (let i = 0; i < 5; i++) hit("bumper");
+  const beforeTargets = state.score;
+  for (let i = 0; i < 4; i++) hit("target");
+  assert.equal(state.score - beforeTargets, 4 * 50 * 2 + 750);
+  assert.equal(state.lastAward.points, 750); assert.equal(state.lastContactAward.points, 100);
+  hit("kickback"); hit("side-save"); assert.equal(state.multiplierMission.progress, 1);
+  hit("rollover", 0); hit("rollover", 1);
+  const beforeSet = state.score;
+  hit("rollover", 2); assert.equal(state.score - beforeSet, 100 * 2 + 500);
+  assert.equal(state.multiplier, 2);
+});
+
+test("duplicate and paused events cannot advance multiplier and weak returns preserve both challenges", () => {
+  const { state, hit } = fixture();
+  for (let i = 0; i < 4; i++) hit("bumper");
+  assert.equal(state.onEvent({ id: 4, type: "bumper" }), false);
+  state.setPaused(true); hit("bumper"); state.setPaused(false);
+  assert.equal(state.multiplier, 1); assert.equal(state.multiplierMission.progress, 4);
+  state.returnToShooter(); hit("bumper"); state.launch();
+  assert.equal(state.multiplierMission.progress, 4);
+  hit("bumper"); hit("target");
+  state.returnToShooter(); state.launch();
+  assert.equal(state.multiplier, 2); assert.equal(state.multiplierMission.progress, 1);
+  hit("sling"); assert.equal(state.lastContactAward.points, 50);
+  assert.equal(state.multiplierMission.progress, 1, "sling is not an aimed mechanism group");
+});
+
+test("drain, TILT and restart reset multiplier while preserving story progress between balls", () => {
+  const { state, hit } = fixture();
+  for (let i = 0; i < 5; i++) hit("bumper");
+  hit("target"); state.drain();
+  assert.equal(state.multiplier, 1); assert.equal(state.multiplierMission.progress, 0);
+  assert.equal(state.mission.id, "workshop"); assert.equal(state.mission.progress, 1);
+  state.launch(); for (let i = 0; i < 5; i++) hit("bumper");
+  const score = state.score;
+  state.tilted = true;
+  assert.equal(state.multiplier, 1); assert.equal(state.multiplierMission.progress, 0);
+  assert.equal(hit("bumper"), false); state.awardContact(100, "blocked");
+  assert.equal(state.score, score);
+  state.drain(); state.tilted = false; state.launch();
+  for (let i = 0; i < 5; i++) hit("bumper");
+  state.restart(); assert.equal(state.multiplier, 1); assert.equal(state.multiplierMission.progress, 0);
+  assert.equal(state.tilted, false); assert.equal(state.lastContactAward, null);
+});

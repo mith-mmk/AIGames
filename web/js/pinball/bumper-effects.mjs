@@ -4,9 +4,14 @@ import {BUMPERS, MINI_BUMPERS} from './layout.mjs';
 export class BumperEffects {
   constructor(root) {
     this.entries=new Map(); this.hits=0;
-    const canvas=document.createElement('canvas');canvas.width=128;canvas.height=64;
-    const c=canvas.getContext('2d');c.font='bold 40px sans-serif';c.textAlign='center';c.textBaseline='middle';c.strokeStyle='#09172c';c.lineWidth=7;c.strokeText('+100',64,32);c.fillStyle='#fff1ad';c.fillText('+100',64,32);
-    const texture=new T.CanvasTexture(canvas);texture.colorSpace=T.SRGBColorSpace;
+    this.textures=new Map();
+    for(const points of [100,200,300]) {
+      const canvas=document.createElement('canvas');canvas.width=128;canvas.height=64;
+      const c=canvas.getContext('2d');c.font='bold 40px sans-serif';c.textAlign='center';c.textBaseline='middle';c.strokeStyle='#09172c';c.lineWidth=7;c.strokeText('+'+points,64,32);c.fillStyle='#fff1ad';c.fillText('+'+points,64,32);
+      const texture=new T.CanvasTexture(canvas);texture.colorSpace=T.SRGBColorSpace;this.textures.set(points,texture);
+    }
+    root.userData.ownedTextures=[...(root.userData.ownedTextures??[]),...this.textures.values()];
+    const texture=this.textures.get(100);
     for(const [prefix,parts,radius,height] of [['b',BUMPERS,.48,.64],['mini',MINI_BUMPERS,.22,.40]])for(const [i,p] of parts.entries()) {
       const ring=new T.Mesh(new T.RingGeometry(radius,radius+.055,40),new T.MeshBasicMaterial({color:0xffe36b,transparent:true,opacity:0,side:T.DoubleSide,depthWrite:false,toneMapped:false}));
       ring.rotation.x=-Math.PI/2;ring.position.set(p.x,height,p.z);root.add(ring);
@@ -18,7 +23,7 @@ export class BumperEffects {
   reset(){for(const e of this.entries.values()){e.age=1;e.ring.visible=false;e.label.visible=false;}this.hits=0;}
   update(dt,events=[],reduced=false) {
     for(const e of this.entries.values())e.age+=Math.max(0,dt||0);
-    for(const event of events){const e=this.entries.get(event.key);if(e){e.age=0;this.hits++;}}
+    for(const event of events){const e=this.entries.get(event.key);if(e){e.age=0;e.label.material.map=this.textures.get(event.points)||this.textures.get(100);this.hits++;}}
     for(const e of this.entries.values()){
       const duration=reduced?.20:.48,t=e.age/duration,on=t<1;
       e.ring.visible=on;e.label.visible=on;

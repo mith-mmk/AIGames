@@ -487,6 +487,7 @@ export class WorkshopAssets {
       materials = new Set(),
       textures = new Set();
     this.root.traverse((o) => {
+      for (const texture of o.userData.ownedTextures??[]) textures.add(texture);
       if (o.geometry) geometries.add(o.geometry);
       if (o.material)
         for (const m of Array.isArray(o.material) ? o.material : [o.material]) {

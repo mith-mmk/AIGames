@@ -34,3 +34,34 @@ export class PinballMissions {
     return { id: mission.id, title: mission.title, bonus: mission.bonus };
   }
 }
+
+/** Two parallel-to-story challenges per ball: accessible hits, then varied shots. */
+export class PinballMultiplierMission {
+  constructor() { this.restart(); }
+  restart() { this.multiplier = 1; this.hits = 0; this.mechanisms = new Set(); }
+  get snapshot() {
+    const allComplete = this.multiplier === 3;
+    return {
+      title: allComplete ? "倍率チャレンジ達成" : this.multiplier === 1 ? "バンパーで×2" : "多彩なショットで×3",
+      description: allComplete ? "この球の接触得点は×3 · 落球・TILTで×1" : this.multiplier === 1 ? "バンパーに5回当てる → 次の接触から×2" : "バンパー・サイド・スピナー・ランプ・レーンのうち3種類に当てる → 次の接触から×3",
+      progress: allComplete ? 3 : this.multiplier === 1 ? this.hits : this.mechanisms.size,
+      target: this.multiplier === 1 ? 5 : 3, mechanisms: [...this.mechanisms],
+      multiplier: this.multiplier, nextMultiplier: Math.min(3, this.multiplier + 1),
+      maxMultiplier: 3, allComplete,
+    };
+  }
+  onEvent(event) {
+    if (this.multiplier === 3) return false;
+    if (this.multiplier === 1) {
+      if (event.type !== "bumper") return false;
+      this.hits++;
+      if (this.hits < 5) return false;
+      this.multiplier = 2; return true;
+    }
+    const groups = { bumper: "bumper", bank: "side", target: "side", spinner: "spinner", ramp: "ramp", inlane: "lane", rollover: "lane" };
+    if (!Object.hasOwn(groups, event.type)) return false;
+    this.mechanisms.add(groups[event.type]);
+    if (this.mechanisms.size < 3) return false;
+    this.multiplier = 3; return true;
+  }
+}
