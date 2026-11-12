@@ -1,6 +1,7 @@
+import { buildPhysicalRamp } from "./ramp-geometry.mjs";
 import R from "../vendor/rapier3d-0.17.3/rapier.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import { TABLE, BUMPERS, LOWER_LAYOUT, flipperAngle } from "./layout.mjs";
+import { TABLE, BUMPERS, LOWER_LAYOUT, TARGET_BANKS, flipperAngle } from "./layout.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
 export class PinballPhysics {
@@ -12,6 +13,7 @@ export class PinballPhysics {
     this.world.timestep = 1 / 120;
     this.world.numSolverIterations = 8;
     this.queue = new R.EventQueue(true); this.hitObjects = new Map(); this.cooldowns = new Map();
+    this.flipperAngularSpeeds = [0, 0]; this.flipperRising = [false, false]; this.coilImpulses = [0, 0];
     this.flipperCoilCooldown = [0, 0];
     this.upfieldReturns = 0; this.lastActiveContactTime = -99; this.returnPending = false;
     this.flipperContacts = [0, 0]; this.flipperHandles = new Map(); this.activeFlipperContacts = [0, 0];
@@ -22,7 +24,7 @@ export class PinballPhysics {
     this.resetBall();
   }
   get ballPosition() { return this.ball.translation(); }
-  get metrics() { return { flipperContacts: [...this.flipperContacts], activeFlipperContacts: [...this.activeFlipperContacts], upfieldReturns: this.upfieldReturns }; }
+  get metrics() { return { flipperContacts: [...this.flipperContacts], activeFlipperContacts: [...this.activeFlipperContacts], coilImpulses: [...this.coilImpulses], upfieldReturns: this.upfieldReturns }; }
   get ballRotation() { return this.ball.rotation(); }
   box(x, y, z, hx, hy, hz, restitution = 0.35) {
     return this.world.createCollider(R.ColliderDesc.cuboid(hx, hy, hz).setTranslation(x, y, z).setRestitution(restitution).setFriction(0.08));
@@ -56,12 +58,9 @@ export class PinballPhysics {
       for (let k = 0; k < guide.length - 1; k++) this.segment(guide[k], guide[k + 1], LOWER_LAYOUT.guideRadius);
       const sling = new T.CatmullRomCurve3([...LOWER_LAYOUT.slingVertices, LOWER_LAYOUT.slingVertices[0]].map(([x, z]) => new T.Vector3(side * x, .22, z))).getPoints(16);
       for (let i = 0; i < sling.length - 1; i++) this.segment(sling[i].toArray(), sling[i + 1].toArray(), .07, { type: "sling", x: side * 1.1, z: 2.25, points: 25, label: "SLING", key: "s" + side });
-      // Continuous sloped bank faces avoid ball-width pockets between standups.
-      this.segment([side * .6, .22, -.45], [side * 1.8, .22, -.95], .07,
-        { type: "target", points: 50, label: "TARGET", key: "t" + side });
-      this.segment([side * .9, .22, -1.25], [side * 1.65, .22, -1.65], .07,
-        { type: "bank", points: 75, label: "BANK", key: "u" + side });
     }
+    for(const bank of TARGET_BANKS) this.segment(bank.a,bank.b,.07,
+      {type:bank.type,points:bank.type==="bank"?75:50,label:"TARGET",key:bank.key});
     for (const x of [-1.875, -.625, .625, 1.875]) this.segment([x, .23, -5.0], [x, .23, -4.1], .035);
     for (let lane = 0; lane < 3; lane++) {
       const c = this.world.createCollider(R.ColliderDesc.cuboid(.35, .30, .08)
@@ -71,12 +70,11 @@ export class PinballPhysics {
     // Spinner is a sensor, so the low central shot remains passable.
     const spin = this.world.createCollider(R.ColliderDesc.cuboid(.35, .4, .05).setTranslation(0, .4, -1.35).setSensor(true));
     this.hitObjects.set(spin.handle, { type: "spinner", points: 150, label: "SPINNER", key: "spinner" });
-    // Elevated decorative ramps are not collision surfaces: their low undersides
-    // formed wedges against the floor. Keep the full floor-level orbit open.
+    this.ramp = buildPhysicalRamp(this);
     for (let i = 0; i < 2; i++) {
       const angle = this.flipperAngles[i];
       const body = this.world.createRigidBody(R.RigidBodyDesc.kinematicPositionBased().setTranslation((i ? 1 : -1) * LOWER_LAYOUT.flipperPivot[0], LOWER_LAYOUT.flipperPivot[1], LOWER_LAYOUT.flipperPivot[2]).setRotation({ x: 0, y: Math.sin(angle / 2), z: 0, w: Math.cos(angle / 2) }));
-      const blade = this.world.createCollider(R.ColliderDesc.cuboid(LOWER_LAYOUT.flipperHalfLength, .27, LOWER_LAYOUT.flipperHalfWidth).setTranslation(LOWER_LAYOUT.flipperCenter, 0, 0).setRestitution(.75).setFriction(.1), body);
+      const blade = this.world.createCollider(R.ColliderDesc.cuboid(LOWER_LAYOUT.flipperHalfLength, .27, LOWER_LAYOUT.flipperHalfWidth).setTranslation(LOWER_LAYOUT.flipperCenter, 0, 0).setRestitution(.1).setFriction(.35), body);
       this.flipperHandles.set(blade.handle, i);
       this.flippers.push(body);
     }
@@ -94,34 +92,50 @@ export class PinballPhysics {
     return true;
   }
   restart() {
-    this.flipperCoilCooldown.fill(0);
+    this.lastFlipperShot = null;
+    this.flipperCoilCooldown.fill(0); this.coilImpulses.fill(0); this.flipperRising.fill(false);
     this.flipperContacts.fill(0); this.activeFlipperContacts.fill(0); this.upfieldReturns = 0; this.returnPending = false;
     this.state.restart(); this.spinnerAngle = 0; this.spinnerSpeed = 0; this.accumulator = 0; this.cooldowns.clear(); this.resetBall();
     this.flipperAngles = [flipperAngle(false, false), flipperAngle(true, false)];
     for (let i = 0; i < 2; i++) this.flippers[i].setRotation({ x: 0, y: Math.sin(this.flipperAngles[i]/2), z: 0, w: Math.cos(this.flipperAngles[i]/2) }, true);
   }
   setPaused(value) { this.state.setPaused(value); this.accumulator = 0; }
+  strikeFlipper(side) {
+    if (!this.flipperRising[side] || this.time < this.flipperCoilCooldown[side]) return;
+    const v = this.ball.linvel();
+    if (v.z <= -8) return;
+    this.flipperCoilCooldown[side] = this.time + .18; this.coilImpulses[side]++;
+    this.activeFlipperContacts[side]++; this.lastActiveContactTime = this.time; this.returnPending = true;
+    const along = Math.max(0, Math.min(1, (LOWER_LAYOUT.flipperPivot[0] - Math.abs(this.ball.translation().x)) / (LOWER_LAYOUT.flipperCenter + LOWER_LAYOUT.flipperHalfLength)));
+    const faceAngle = side ? Math.PI - this.flipperAngles[side] : this.flipperAngles[side];
+    // Position-dependent shot spread is a pinball approximation for the box paddle.
+    const aimAngle = faceAngle - along * .7;
+    const angularSpeed = this.flipperAngularSpeeds[side];
+    const speed = Math.min(32, 8 + (12 + along * 24) * Math.min(1, angularSpeed / 12));
+    const lateral = (side ? 1 : -1) * Math.sin(aimAngle) * speed;
+    const forward = -Math.cos(aimAngle) * speed;
+    this.lastFlipperShot = { side, along, faceAngle, aimAngle, angularSpeed, speed, p: { ...this.ball.translation() }, vx: lateral, vz: forward };
+    this.ball.applyImpulse({ x: (lateral - v.x) * this.ball.mass(), y: 0, z: (forward - v.z) * this.ball.mass() }, true);
+  }
   hit(other) {
     if (this.flipperHandles.has(other)) {
       const side = this.flipperHandles.get(other); this.flipperContacts[side]++;
-      if (this.currentInput?.[side ? "right" : "left"]) { this.activeFlipperContacts[side]++; this.lastActiveContactTime = this.time; this.returnPending = true;
-        // Powered coil impulse is applied only on an actual pressed-blade contact.
-        // It supplements the simplified rectangular paddle, never moves the ball.
-        const v = this.ball.linvel();
-        if (v.z > -8 && this.time >= this.flipperCoilCooldown[side]) {
-          this.flipperCoilCooldown[side] = this.time + .18;
-          this.ball.applyImpulse({ x: ((side ? -1 : 1) * 2 - v.x) * this.ball.mass(), y: 0, z: (-11 - v.z) * this.ball.mass() }, true);
-        } }
+      this.strikeFlipper(side);
     }
+
     const h = this.hitObjects.get(other);
     if (!h || (this.cooldowns.get(h.key) ?? -99) > this.time) return;
     this.cooldowns.set(h.key, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, id: "contact-" + this.eventSequence++ });
     if (h.type === "spinner" && accepted) this.spinnerSpeed = Math.min(50, this.spinnerSpeed + Math.max(8, Math.abs(this.ball.linvel().z) * 2));
     if (h.type === "bumper" || h.type === "sling") {
       const p = this.ball.translation(), dx = p.x - h.x, dz = p.z - h.z, len = Math.hypot(dx, dz) || 1;
-      const v = this.ball.linvel(), speed = h.type === "bumper" ? 9 : 6;
+      const v = this.ball.linvel();
       if (h.type === "sling") this.ball.applyImpulse({ x: dx / len * .06, y: 0, z: dz / len * .06 }, true);
-      else this.ball.setLinvel({ x: dx / len * speed, y: Math.min(v.y, 1), z: dz / len * speed }, true);
+      else {
+        const outward = (v.x * dx + v.z * dz) / len;
+        const impulse = Math.max(0, 6 - outward) * this.ball.mass();
+        this.ball.applyImpulse({ x: dx / len * impulse, y: 0, z: dz / len * impulse }, true);
+      }
     }
   }
   step(dt, input = {}) {
@@ -133,8 +147,11 @@ export class PinballPhysics {
       for (let i = 0; i < 2; i++) {
         const desired = flipperAngle(Boolean(i), Boolean(i ? input.right : input.left));
         const difference = desired - this.flipperAngles[i];
-        const rate = (i ? input.right : input.left) ? .18 : .045;
-        this.flipperAngles[i] += Math.max(-rate, Math.min(rate, difference));
+        this.flipperRising[i] = Boolean(i ? input.right : input.left) && Math.abs(difference) > .001;
+        const rate = (i ? input.right : input.left) ? .10 : .035;
+        const angularStep = Math.max(-rate, Math.min(rate, difference));
+        this.flipperAngularSpeeds[i] = Math.abs(angularStep) * 120;
+        this.flipperAngles[i] += angularStep;
         const angle = this.flipperAngles[i];
         this.flippers[i].setNextKinematicRotation({ x: 0, y: Math.sin(angle/2), z: 0, w: Math.cos(angle/2) });
       }
@@ -146,6 +163,11 @@ export class PinballPhysics {
           if (a === this.ballCollider.handle) this.hit(b); else if (b === this.ballCollider.handle) this.hit(a);
         }
       });
+      for (const [handle, side] of this.flipperHandles) {
+        if (this.flipperRising[side]) this.world.contactPair(this.ballCollider, this.world.getCollider(handle), manifold => {
+          if (manifold.numSolverContacts() > 0) this.strikeFlipper(side);
+        });
+      }
       if (this.state.phase === "ready") { this.resetBall(); continue; }
       const p = this.ball.translation(), v = this.ball.linvel();
       if (this.returnPending && p.z < 3.2 && v.z < 0 && this.time - this.lastActiveContactTime < .8) {
@@ -160,7 +182,9 @@ export class PinballPhysics {
       if (p.z > 4.65 || p.y < -1.0 || Math.abs(p.x) > 3.2 || p.z < -6.5) {
         this.state.drain(); this.resetBall(); continue;
       }
-      if (Math.hypot(v.x, v.y, v.z) > 32) this.ball.setLinvel({ x: v.x * .85, y: v.y * .85, z: v.z * .85 }, true);
+      const currentVelocity = this.ball.linvel();
+      const ballSpeed = Math.hypot(currentVelocity.x, currentVelocity.y, currentVelocity.z);
+      if (ballSpeed > 32) this.ball.setLinvel({ x: currentVelocity.x * 32 / ballSpeed, y: currentVelocity.y * 32 / ballSpeed, z: currentVelocity.z * 32 / ballSpeed }, true);
     }
   }
   dispose() { this.queue.free(); this.world.free(); }

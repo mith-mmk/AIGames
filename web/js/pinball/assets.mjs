@@ -1,3 +1,4 @@
+import { buildVisualRamp } from "./ramp-geometry.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { PlayfieldParts } from "./playfield-parts.mjs";
 import { WorkshopMechanisms } from "./mechanisms.mjs";
@@ -170,9 +171,9 @@ export class WorkshopAssets {
       ctx.fillStyle = "#22262b"; ctx.fillRect(x - 94, y + 30, 188, 54); ctx.strokeRect(x - 94, y + 30, 188, 54);
       ctx.font = "bold 23px sans-serif"; ctx.textAlign = "center"; ctx.fillStyle = "#d3bf92"; ctx.fillText(label, x, y + 65);
     };
-    shot(330, 920, "LEFT BANK");
-    shot(512, 795, "ENERGY");
-    shot(694, 920, "RIGHT BANK");
+    shot(272, 820, "HACK");
+    shot(512, 1000, "UPGRADE");
+    shot(740, 1120, "BUILD");
     ctx.textAlign = "center"; ctx.fillStyle = "#91928d"; ctx.font = "20px monospace";
     ctx.fillText("WORKSHOP / No. 01", 512, 1770);
     const texture = new T.CanvasTexture(c);
@@ -223,7 +224,7 @@ export class WorkshopAssets {
       this.flipper(LOWER_LAYOUT.flipperPivot[0], LOWER_LAYOUT.flipperPivot[2], true),
     ];
     for (const [i, p] of BUMPERS.entries()) this.bumper(p.x, p.z, i);
-    // Ramps remain archived until collision geometry supports reliable play.
+    buildVisualRamp(this); // Shared physical and rendered route.
     this.robot();
     new WorkshopMechanisms(this).build(g);
     // Shooter walls match the physical straight-segment guide layout.
@@ -246,15 +247,6 @@ export class WorkshopAssets {
     rod.rotation.x = Math.PI / 2;
     const knob = this.cylinder(g, 0.16, 0.14, 2.53, 0.17, 5.3, "red");
     knob.rotation.x = Math.PI / 2;
-    // Lower lanes have raised metal guides and visible mounting posts.
-    for (const side of [-1, 1]) {
-      this.tube(g, [[side*.6,.22,-.45],[side*1.8,.22,-.95]], .07, "rubber");
-      for (let i = 0; i < 3; i++) {
-        const t=(i+.5)/3, x=side*(.6+1.2*t), z=-.45-.5*t;
-        const target=this.box(g,.3,.30,.12,x,.22,z,"cream"); target.rotation.y=side*Math.atan2(.5,1.2);
-      }
-    }
-
     new PlayfieldParts(this).build();
 
     return g;

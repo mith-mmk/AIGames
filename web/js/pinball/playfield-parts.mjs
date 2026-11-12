@@ -1,4 +1,4 @@
-import { UPPER_RAMP, LOWER_LAYOUT } from "./layout.mjs";
+import { UPPER_RAMP, LOWER_LAYOUT, TARGET_BANKS } from "./layout.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 
 /** Visual gameplay hardware. No collision/rule implementation is implied. */
@@ -8,15 +8,18 @@ export class PlayfieldParts {
     const a = this.a, g = a.root;
     for (const side of [-1, 1]) { this.inlane(side); this.sling(side); }
     // Upper ramp deferred while the base game is validated.
-    // Two raised, bracket-mounted three-target banks, upstream of existing banks.
-    for (const side of [-1, 1]) {
-      const bank = new T.Group(); bank.position.set(side * 1.275, 0, -1.45); bank.rotation.y=side*Math.atan2(.4,.75); g.add(bank);
-      a.roundedBox(bank, 0.85, 0.14, 0.14, 0, 0.22, 0, "rubber", 0.025);
-      for (let i = -1; i <= 1; i++) {
-        a.cylinder(bank, 0.035, 0.24, i * 0.24, 0.24, 0, "chrome");
-        a.roundedBox(bank, 0.19, 0.34, 0.1, i * 0.24, 0.4, 0, "brass", 0.022);
-        a.box(bank, 0.12, 0.22, 0.02, i * 0.24, 0.4, 0.065, "dark");
-        a.box(bank, 0.065, 0.08, 0.025, i * 0.24, 0.4, 0.08, "cream");
+    for (const spec of TARGET_BANKS) {
+      const dx=spec.b[0]-spec.a[0], dz=spec.b[2]-spec.a[2], length=Math.hypot(dx,dz);
+      const bank = new T.Group();
+      bank.position.set((spec.a[0]+spec.b[0])/2,0,(spec.a[2]+spec.b[2])/2);
+      bank.rotation.y=-Math.atan2(dz,dx); g.add(bank);
+      a.tube(g,[spec.a,spec.b],.07,"rubber");
+      for(let i=0;i<spec.count;i++) {
+        const x=((i+.5)/spec.count-.5)*length;
+        a.cylinder(bank,.035,.24,x,.24,0,"chrome");
+        a.roundedBox(bank,length/spec.count*.84,.30,.12,x,.30,0,"brass",.02);
+        a.box(bank,length/spec.count*.6,.18,.015,x,.32,.07,"dark");
+        a.box(bank,.055,.09,.018,x,.32,.08,"cream");
       }
     }
     // Spinner gate in the central shot opening, deliberately raised above a ball.

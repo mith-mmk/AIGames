@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { TABLE, BUMPERS, RAMP, TablePreviewState, flipperAngle } from "./layout.mjs";
-test("ramp stays inside table and above surface", () => {
+test("archived art ramp control points stay inside table", () => {
   for (const [x, y, z] of RAMP) {
     assert.ok(Math.abs(x) < TABLE.width / 2);
     assert.ok(Math.abs(z) < TABLE.length / 2);
@@ -37,7 +37,7 @@ test("both flippers rise toward negative-Z playfield when pressed", () => {
 });
 
 // These are visual-layout guards, not collision/playability tests.
-test("additional hardware preserves central corridor and ramp width", async () => {
+test("archived art hardware preserves its original clearance", async () => {
   const { UPPER_RAMP, SLING_VERTICES } = await import("./layout.mjs");
   for (const [x, z] of SLING_VERTICES) {
     assert.ok(x >= 0.96 && x < 2.0);
@@ -51,7 +51,7 @@ test("additional hardware preserves central corridor and ramp width", async () =
   assert.ok(0.62 - 0.15 > TABLE.ballRadius * 2); // Spinner lower edge.
 });
 
-test("preview ball clears both slingshot rubber curves", async () => {
+test("archived preview curve clears archived sling art", async () => {
   const T = await import("../vendor/three-0.180.0/three.module.min.js");
   const { SLING_VERTICES } = await import("./layout.mjs");
   const ballCurve = new T.CatmullRomCurve3(RAMP.map(p => new T.Vector3(...p)));
@@ -63,4 +63,14 @@ test("preview ball clears both slingshot rubber curves", async () => {
       for (const p of rubber) assert.ok(center.distanceTo(p) > TABLE.ballRadius + 0.055 + 0.02);
     }
   }
+});
+
+// Current production coordinates, distinct from archived art above.
+test("reference uses a rear bumper pair and forward center with asymmetric target banks", async () => {
+  const {TARGET_BANKS,LOWER_LAYOUT}=await import("./layout.mjs");
+  assert.equal(BUMPERS[0].z,BUMPERS[1].z);
+  assert.ok(BUMPERS[2].z>BUMPERS[0].z); assert.equal(BUMPERS[2].x,0);
+  assert.deepEqual(TARGET_BANKS.map(b=>b.count),[4,3,3]);
+  for(const b of TARGET_BANKS)for(const p of [b.a,b.b])assert.ok(Math.abs(p[0])+.07<TABLE.width/2);
+  assert.ok(LOWER_LAYOUT.guide.at(-1)[2]>3.3);
 });

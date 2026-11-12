@@ -4,10 +4,16 @@ export const TABLE = Object.freeze({
   ballRadius: 0.135,
   tilt: (6.5 * Math.PI) / 180,
 });
+// Reference layout: two rear bumpers and one forward, central bumper.
 export const BUMPERS = Object.freeze([
-  { x: -1.02, z: -2.65 },
-  { x: 0.12, z: -3.27 },
-  { x: 0.95, z: -2.15 },
+  { x: -.78, z: -3.15 }, { x: .78, z: -3.15 }, { x: 0, z: -2.15 },
+]);
+// The reference has asymmetric target banks, not four central barriers.
+// Endpoints are shared by the visible rubber and physical collision face.
+export const TARGET_BANKS = Object.freeze([
+  { key: "left-upper", a: [-1.95,.22,-1.45], b: [-.85,.22,-1.65], count: 4, type: "bank" },
+  { key: "left-side", a: [-1.98,.22,-.15], b: [-1.83,.22,1.0], count: 3, type: "target" },
+  { key: "right-side", a: [.45,.22,-.35], b: [.75,.22,.35], count: 3, type: "bank" },
 ]);
 export const RAMP = Object.freeze([
   [-1.7, 0.08, 0.7],
@@ -58,10 +64,10 @@ export const SLING_VERTICES = Object.freeze([[1.35, 1.95], [1.65, 2.9], [0.96, 3
 
 // Shared lower playfield geometry. Coordinates are table-local, right-hand side.
 export const LOWER_LAYOUT = Object.freeze({
-  guide: [[1.9, .22, 1.8], [1.85, .22, 3.0], [1.0, .22, 3.15]],
+  guide: [[1.90, .22, 1.65], [1.80, .22, 2.60], [1.65, .22, 3.10], [1.15, .22, 3.40]],
   guideRadius: .04,
   guideEntry: { left: [2.73, .22, .8], right: [2.30, .22, .8] },
-  slingVertices: [[1.10, 1.65], [1.40, 2.60], [.71, 2.75]],
+  slingVertices: [[1.05, 1.85], [1.30, 2.65], [.75, 2.85]],
   slingCenter: [1.10, 2.25],
   flipperPivot: [1.20, .27, 3.90],
   flipperCenter: .49, flipperHalfLength: .55, flipperHalfWidth: .14,

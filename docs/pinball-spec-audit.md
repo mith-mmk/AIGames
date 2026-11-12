@@ -63,3 +63,19 @@ Giant filled return wedges were a failed design: they buried slings, pinched hel
 The reference's lower architecture (compact slings, narrow inlane rails, separated flippers and open floor) is restored in simplified procedural form. Elaborate upper ramps, machine details and room art remain deferred; the implementation is not a visual replica of the generated concept.
 
 Camera is perspective, initially56 degrees from horizontal, with10–90 degree continuous slider and optional saved angle. Near-side viewing is for inspection, not guaranteed competitive readability. The cabinet is fitted from its actual corners for each aspect ratio.
+
+## Reference placement and cradle checkpoint
+
+The generated reference is not replaced by the simplified prototype. Its rear pair/front-center bumper triangle and asymmetric left upper, left side and right angled target banks now use shared collision/render endpoints. The lower inlane bends toward the pivot rather than cutting across beneath the sling. Its minimum curved-sling clearance is 0.353 table units, versus the 0.27 ball diameter. Target-bank clearance against the shooter divider was tested and widened to avoid a sub-diameter pocket.
+
+Stationary raised flippers no longer fire on every contact. Powered assistance requires actual contact while the blade is rising. Controlled incoming fixtures naturally cradle on both sides, then release and reflip with different trajectories at 0.5/0.6-second release intervals. Browser keyboard and touch-event recordings reproduce capture/hold/reflip; these are automated fixtures, not human-playtest or physical-phone validation. Full motor/coil fidelity, dead flips and advanced passing remain unverified. Bumper response preserves tangent velocity instead of replacing all velocity, avoiding a repeated upper-loop defect after the layout change.
+
+The reference's S-shaped upper ramp and separate left wire lane remain incomplete until physical traversal, underside clearance and return-feed tests pass; an experimental isolated module is not production completion.
+
+## Physical ramp reintegration (latest checkpoint)
+
+A shared continuous triangle-mesh deck and rails now form a right entrance, rear curve and left return. The entrance moved upstream of the sling to provide an actual shot line. Low underside space is closed by visible solid base geometry; a local beveled outer base seals the sub-ball-width gap beside the shooter divider. Ground balls are not teleported and ramp collision is not switched off according to ball height. The right target bank moved inward for real ball clearance.
+
+The powered rising-blade approximation now derives strength from contact position and angular speed, capped consistently with the world speed limit32. It remains a game approximation for a rectangular paddle, not a validated motor simulation. Five cradle-release timings reach and traverse the ramp via an actual flipper shot. Browser keyboard input reproduces a held ball, shot, complete ramp traversal and return to the left cradle. Incoming fixture placement is explicit; it is not a claim of a human playtest.
+
+Reference differences remain: the left return is a transparent trough rather than the separate wire-lane construction; the upper curve is simplified; robot body art, target mechanisms, original materials/details and physical spinner remain incomplete. Shared placement/route improvement does not mean visual reference fidelity is complete.
