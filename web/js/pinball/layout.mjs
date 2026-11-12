@@ -64,7 +64,12 @@ export const SLING_VERTICES = Object.freeze([[1.35, 1.95], [1.65, 2.9], [0.96, 3
 
 // Shared lower playfield geometry. Coordinates are table-local, right-hand side.
 export const LOWER_LAYOUT = Object.freeze({
-  guide: [[1.94, .22, 1.65], [1.90, .22, 2.60], [1.65, .22, 3.10], [1.15, .22, 3.40]],
+  // Keep the cradle entrance, then wrap the cheek around the paddle heel.
+  // Its lower face overlaps the root boundary, leaving no ball-sized side leak.
+  guide: [
+    [1.94,.22,1.65], [1.90,.22,2.60], [1.65,.22,3.10], [1.15,.22,3.40],
+    [1.35,.22,3.60], [1.25,.22,3.90], [1.25,.22,4.30],
+  ],
   guideRadius: .04,
   guideEntry: { left: [2.73, .22, .8], right: [2.30, .22, .8] },
   slingVertices: [[1.25, 1.85], [1.40, 2.55], [1.05, 2.75]],

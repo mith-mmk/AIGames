@@ -36,3 +36,21 @@ test('genuine outside lanes still drain without a flipper or invisible rescue',a
     }finally{g.dispose();}
   }
 });
+
+test('inside heel approach cannot leak sideways past the root cheek',async()=>{
+ for(const side of [-1,1]) {
+  const g=await PinballPhysics.create();
+  try {
+   g.launch();g.state.kickbackCharges=0;
+   g.ball.setTranslation({x:side*.7410067,y:.16575,z:3.1797516},true);
+   g.ball.setLinvel({x:side*2.621058,y:-.167,z:7.381197},true);
+   for(let tick=336;tick<936&&g.state.phase==='playing';tick++) {
+    const p=g.ballPosition,on=(tick+11*3)%45<15&&p.z>3.2;
+    g.step(1/120,{left:on&&p.x<0,right:on&&p.x>=0});
+    const q=g.ballPosition;
+    if(q.z>3.4&&q.z<4.3) assert.ok(Math.abs(q.x)<1.3,'escaped beside flipper heel');
+   }
+   assert.ok(g.metrics.upfieldReturns>0,'must produce an actual return, not trap the ball');
+  }finally{g.dispose();}
+ }
+});

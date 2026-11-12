@@ -93,3 +93,7 @@ The ramp's final return is straightened and physically narrows to .32 (ball diam
 Reproducible synthetic-policy comparison: `node scripts/pinball-balance.cjs aff43c3` and `node scripts/pinball-balance.cjs`. Each uses12 pulse phases of15/45 ticks on the ball's side below z3.2, a90s cap, and real same-ball shooter relaunches. It records actual accepted rollover events, side losses, returns and idle time. These statistics and browser key/touch fixtures do not replace human difficulty or physical-phone testing.
 
 Independent review found a returned-shooter lateral escape below the old divider end. The divider now visibly and physically reaches the plunger end; ±1/±3 lateral-velocity regressions retain the same ball. Returned-ready simulation also retains a bounds fallback rather than hanging indefinitely outside the table.
+
+## Flipper heel cheek replacement
+
+User follow-up exposed a ball escaping sideways after already reaching the paddle. The old guide terminated 0.5 units before the pivot. Its lower part is now a narrow angled root cheek that follows the heel down to the apron. It preserves the old cradle entrance, overlaps the root boundary rather than leaving a sub-ball pocket, and leaves genuine upstream outlanes open. No broad return wall, teleport or new powered rescue was added. Shared vertices generate both visible rail/posts and colliders. The original leaking trajectory is now a regression fixture on both sides.
