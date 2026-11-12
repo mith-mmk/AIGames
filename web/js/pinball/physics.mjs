@@ -96,7 +96,7 @@ export class PinballPhysics {
     power = Number.isFinite(power) ? power : 1;
     if (!this.state.launch()) return false;
     this.ball.setGravityScale(1, true);
-    this.ball.setLinvel({ x: 0, y: 0, z: -(18 + Math.max(0, Math.min(1, power)) * 5) }, true);
+    this.ball.setLinvel({ x: 0, y: 0, z: -(3 + Math.max(0, Math.min(1, power)) * 20) }, true);
     return true;
   }
   restart() {
@@ -117,11 +117,11 @@ export class PinballPhysics {
     const along = Math.max(0, Math.min(1, (LOWER_LAYOUT.flipperPivot[0] - Math.abs(this.ball.translation().x)) / (LOWER_LAYOUT.flipperCenter + LOWER_LAYOUT.flipperHalfLength)));
     const faceAngle = side ? Math.PI - this.flipperAngles[side] : this.flipperAngles[side];
     // Position-dependent shot spread is a pinball approximation for the box paddle.
-    // A broad heel-to-mid stroke can aim up-table; later tip shots retain
+    // A heel-to-mid stroke can aim around the bumper flanks; later tip shots retain
     // the cross-table ramp angle. This contact-local curve never selects a
     // target or changes the ball position, and passive cradles stay passive.
     const aimAngle = along < .4
-      ? -.12 - Math.max(0, along - .30) * 4
+      ? .08 - Math.max(0, along - .30) * 2
       : faceAngle - along * .7;
     const angularSpeed = this.flipperAngularSpeeds[side];
     const speed = Math.min(32, 8 + (12 + along * 24) * Math.min(1, angularSpeed / 12));

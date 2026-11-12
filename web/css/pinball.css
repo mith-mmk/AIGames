@@ -257,3 +257,7 @@ header p { display: none; }
 .camera-control input { width:110px; accent-color:#dfbd7f; touch-action:pan-x; }
 .camera-control output { width:28px; }
 @media(max-width:700px) { .camera-control { top:121px; bottom:auto; right:50%; transform:translateX(50%); padding:3px 9px; font-size:10px; } #table {top:154px;height:calc(100% - 314px);} }
+
+#launch { background-color: #b18b4e; background-image: linear-gradient(#efd08d, #efd08d); background-size: 0% 100%; background-repeat: no-repeat; }
+#launch output { font-variant-numeric: tabular-nums; display: inline-block; min-width: 3em; }
+#launch span { color: #302715; font-size: 9px; margin-top: 3px; }

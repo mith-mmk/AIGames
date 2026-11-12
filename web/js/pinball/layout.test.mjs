@@ -66,10 +66,10 @@ test("archived preview curve clears archived sling art", async () => {
 });
 
 // Current production coordinates, distinct from archived art above.
-test("upper layout leaves a central shot corridor with asymmetric target banks", async () => {
+test("reference triangle retains side passages and asymmetric target banks", async () => {
   const {TARGET_BANKS,LOWER_LAYOUT}=await import("./layout.mjs");
   assert.equal(BUMPERS[0].z,BUMPERS[1].z);
-  assert.ok(BUMPERS[2].z>BUMPERS[0].z); assert.ok(Math.abs(BUMPERS[2].x) > .4 + TABLE.ballRadius + .05);
+  assert.ok(BUMPERS[2].z>BUMPERS[0].z); assert.equal(BUMPERS[2].x, 0);
   assert.deepEqual(TARGET_BANKS.map(b=>b.count),[4,3,3]);
   for(const b of TARGET_BANKS)for(const p of [b.a,b.b])assert.ok(Math.abs(p[0])+.07<TABLE.width/2);
   assert.ok(LOWER_LAYOUT.guide.at(-1)[2]>3.3);

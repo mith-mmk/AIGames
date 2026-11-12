@@ -1,3 +1,4 @@
+import { Plunger, bindPlunger } from "./plunger.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { WorkshopRoom } from "./workshop.mjs";
 import { WorkshopAssets } from "./assets.mjs";
@@ -8,6 +9,7 @@ export class PinballTablePreview {
     this.canvas = canvas;
     this.state = new TablePreviewState();
     this.game = null;
+    this.plunger = new Plunger();
     this.viewAngle = 56;
     try { const saved=Number(localStorage.getItem("pinball-view-angle")); if(saved>=10&&saved<=90)this.viewAngle=saved; } catch { /* Storage is optional. */ }
     this.renderer = new T.WebGLRenderer({ canvas, antialias: true });
@@ -24,6 +26,8 @@ export class PinballTablePreview {
     this.board = this.assets.build();
     this.board.rotation.x = TABLE.tilt;
     this.scene.add(this.board);
+    this.plungerHandle = this.assets.mesh(new T.CylinderGeometry(.09, .09, .38, 16), "ball", this.board, 2.53, .18, 5.22);
+    this.plungerHandle.rotation.x = Math.PI / 2;
     this.ball = this.assets.mesh(
       new T.SphereGeometry(TABLE.ballRadius, 32, 20),
       "ball",
@@ -138,21 +142,30 @@ export class PinballTablePreview {
     if (new URLSearchParams(location.search).has("test")) window.__pinball = this;
     this.updateHUD();
   }
-  launch() { if (this.game) this.game.launch(); }
+  launch(power = 1) { if (this.game) this.game.launch(power); }
   togglePause() {
+    this.plunger.cancel();
     if (this.game && this.game.state.phase !== "gameover")
       this.game.setPaused(this.game.state.phase !== "paused");
   }
   restart() {
     if (!this.game) return;
+    this.plunger.cancel();
     this.state.release(); this.game.restart(); this.last = 0;
     document.querySelectorAll("#left,#right").forEach(b => b.setAttribute("aria-pressed", "false"));
   }
   updateHUD() {
     const state = this.game.state;
+    if (state.phase !== "ready") this.plunger.cancel();
+    const power = this.plunger.update(performance.now());
+    const percent = Math.round(power * 100);
+    document.querySelector("#launch-power").textContent = `${percent}%`;
+    document.querySelector("#launch").style.backgroundSize = `${percent}% 100%`;
+    document.querySelector("#launch").setAttribute("aria-pressed", String(this.plunger.owner !== null));
+    this.plungerHandle.position.z = 5.22 + power * .28;
     document.querySelector("#score").textContent = state.score.toLocaleString("ja-JP");
     document.querySelector("#balls").textContent = `${Math.min(state.ballNumber, 3)} / 3`;
-    const labels = { ready: state.returnedShooter ? "戻り球 · SPACEで同じ球を再発射" : "SPACE / 発射でスタート", playing: "バンパーとターゲットを狙おう", paused: "一時停止中", gameover: "GAME OVER" };
+    const labels = { ready: state.returnedShooter ? "戻り球 · 長押し→離して再発射" : "SPACE長押し→離す / ボタンを上に引いて発射", playing: "バンパーとターゲットを狙おう", paused: "一時停止中", gameover: "GAME OVER" };
     document.querySelector("#phase").textContent = labels[state.phase];
     document.querySelector("#pause").textContent = state.phase === "paused" ? "再開" : "一時停止";
     document.querySelector("#launch").disabled = state.phase !== "ready";
@@ -184,6 +197,7 @@ export class PinballTablePreview {
     }
   }
   pause() {
+    this.plunger.cancel();
     if (this.game && this.game.state.phase !== "gameover") this.game.setPaused(true);
     this.state.release();
     this.last = 0;
@@ -245,10 +259,6 @@ function bindInput(game) {
       held[side].add(e.code);
       sync(side);
     }
-    if (e.code === "Space" && !(e.target instanceof HTMLElement && e.target.closest("button,a,summary"))) {
-      e.preventDefault();
-      if (!e.repeat) game.launch();
-    }
     if ((e.code === "KeyP" || e.code === "Escape") && !e.repeat) game.togglePause();
     if (e.code === "KeyR" && !e.repeat) { held.left.clear(); held.right.clear(); game.restart(); }
     if (e.code === "KeyC" && !e.repeat) {
@@ -287,7 +297,7 @@ function bindInput(game) {
     game.viewAngle=Number(e.target.value); game.setView("custom");
     try { localStorage.setItem("pinball-view-angle",String(game.viewAngle)); } catch { /* Optional persistence. */ }
   });
-  document.querySelector("#launch").addEventListener("click", () => game.launch());
+  bindPlunger(game, document.querySelector("#launch"));
   document.querySelector("#pause").addEventListener("click", () => game.togglePause());
   for (const b of document.querySelectorAll("[data-restart]")) b.addEventListener("click", () => {
     held.left.clear(); held.right.clear(); game.restart();

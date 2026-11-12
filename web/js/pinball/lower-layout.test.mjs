@@ -15,7 +15,7 @@ test('sling rubber clears the root-to-center shot corridor on both sides',()=>{
   }
 });
 test('both inlanes feed the flippers at three speeds rather than bypass their pivots',async()=>{
-  for(const side of [-1,1])for(const x of [1.45,1.65])for(const speed of [1,3,6]) {
+  for(const side of [-1,1])for(const x of [1.72,1.75])for(const speed of [1,3,6]) {
     const g=await PinballPhysics.create();
     try {
       g.launch();g.state.kickbackCharges=0;

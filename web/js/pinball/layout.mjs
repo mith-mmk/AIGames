@@ -4,16 +4,18 @@ export const TABLE = Object.freeze({
   ballRadius: 0.135,
   tilt: (6.5 * Math.PI) / 180,
 });
-// Offset the forward bumper to leave a ball-width central shot corridor.
+// Reference triangle: a rear pair and a centered forward bumper.
+// The bumper area is reached through the two side openings, not a guaranteed
+// unobstructed straight shot through the middle.
 export const BUMPERS = Object.freeze([
-  { x: -1.15, z: -3.5 }, { x: 1.15, z: -3.5 }, { x: -1.5, z: -2.25 },
+  { x: -.78, z: -3.15 }, { x: .78, z: -3.15 }, { x: 0, z: -2.15 },
 ]);
 // The reference has asymmetric target banks, not four central barriers.
 // Endpoints are shared by the visible rubber and physical collision face.
 export const TARGET_BANKS = Object.freeze([
-  { key: "left-upper", a: [-1.95,.22,-.95], b: [-.85,.22,-1.15], count: 4, type: "bank" },
+  { key: "left-upper", a: [-2.10,.22,-1.65], b: [-1.65,.22,-2.10], count: 4, type: "bank" },
   { key: "left-side", a: [-1.98,.22,-.15], b: [-1.83,.22,1.0], count: 3, type: "target" },
-  { key: "right-side", a: [.90,.22,-2.10], b: [1.20,.22,-1.40], count: 3, type: "bank" },
+  { key: "right-side", a: [.65,.22,-2.10], b: [.85,.22,-1.40], count: 3, type: "bank" },
 ]);
 export const RAMP = Object.freeze([
   [-1.7, 0.08, 0.7],
@@ -67,13 +69,13 @@ export const LOWER_LAYOUT = Object.freeze({
   // Keep the cradle entrance, then wrap the cheek around the paddle heel.
   // Its lower face overlaps the root boundary, leaving no ball-sized side leak.
   guide: [
-    [1.94,.22,1.65], [1.90,.22,2.60], [1.65,.22,3.10], [1.15,.22,3.40],
+    [1.94,.22,1.65], [1.94,.22,2.60], [1.65,.22,3.10], [1.15,.22,3.40],
     [1.35,.22,3.60], [1.25,.22,3.90], [1.25,.22,4.30],
   ],
   guideRadius: .04,
   guideEntry: { left: [2.73, .22, .8], right: [2.30, .22, .8] },
-  slingVertices: [[1.25, 1.85], [1.40, 2.55], [1.05, 2.75]],
-  slingCenter: [1.23, 2.30],
+  slingVertices: [[1.45, 1.85], [1.45, 2.45], [1.25, 2.65]],
+  slingCenter: [1.38, 2.32],
   flipperPivot: [1.20, .27, 3.90],
   flipperCenter: .49, flipperHalfLength: .55, flipperHalfWidth: .14,
   centerSaveZ: [4.50, 4.63],

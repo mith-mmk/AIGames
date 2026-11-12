@@ -57,7 +57,7 @@ const http = require("node:http");
     assert.ok(metrics.drawCalls < 1000 && metrics.triangles < 500000);
     console.log("Render budget", metrics);
     await page.screenshot({ path: path.join(output, "full.png") });
-    await page.keyboard.press("Space");
+    await page.keyboard.down("Space"); await page.waitForTimeout(1250); await page.keyboard.up("Space");
     await page.waitForFunction(() => window.__pinball.game.state.phase === "playing");
     await page.waitForTimeout(1500);
     await page.keyboard.down("KeyZ"); await page.keyboard.down("Slash");
@@ -80,7 +80,7 @@ const http = require("node:http");
     assert.equal(await page.evaluate(() => window.__pinball.game.state.score), 0);
     assert.equal(await page.evaluate(() => window.__pinball.game.state.phase), "ready");
     // Real-time browser input: beginner pulses both flippers while the renderer runs.
-    await page.locator("#launch").click();
+    await page.waitForFunction(()=>!document.querySelector("#launch").disabled); await page.locator("#launch").focus(); await page.keyboard.down("Space"); await page.waitForTimeout(1250); await page.keyboard.up("Space");
     for (let pulse=0;pulse<8;pulse++) {
       await page.keyboard.down("KeyZ"); await page.keyboard.down("Slash");
       await page.waitForTimeout(120);
@@ -90,7 +90,7 @@ const http = require("node:http");
     await page.screenshot({path:path.join(output,"active-play.png")});
     await page.locator("nav [data-restart]").click();
     // Verify visible rule feedback through actual lane/spinner/save physics.
-    await page.locator("#launch").click();
+    await page.waitForFunction(()=>!document.querySelector("#launch").disabled); await page.locator("#launch").focus(); await page.keyboard.down("Space"); await page.waitForTimeout(1250); await page.keyboard.up("Space");
     await page.evaluate(()=>{ const g=window.__pinball.game; g.ball.setTranslation({x:-1.25,y:.18,z:-4.9},true);g.ball.setLinvel({x:0,y:0,z:4},true); });
     await page.waitForFunction(()=>window.__pinball.game.state.rollovers[0]);
     assert.match(await page.locator("#rollovers").textContent(), /A ●/);
@@ -102,13 +102,13 @@ const http = require("node:http");
     await page.screenshot({path:path.join(output,"backglass-active.png")});
     await page.locator("nav [data-restart]").click();
     // Controlled return fixture verifies UI and same-ball relaunch from its real location.
-    await page.locator("#launch").click();
+    await page.waitForFunction(()=>!document.querySelector("#launch").disabled); await page.locator("#launch").focus(); await page.keyboard.down("Space"); await page.waitForTimeout(1250); await page.keyboard.up("Space");
     await page.evaluate(()=>{const g=window.__pinball.game;g.ball.setTranslation({x:2.53,y:.18,z:4.58},true);g.ball.setLinvel({x:0,y:0,z:2},true);});
     await page.waitForFunction(()=>window.__pinball.game.state.returnedShooter);
     assert.equal(await page.evaluate(()=>window.__pinball.game.state.ballNumber),1);
     await page.waitForTimeout(200);
     assert.ok(await page.evaluate(()=>window.__pinball.game.ballPosition.z>4.6));
-    await page.locator("#launch").click();
+    await page.waitForFunction(()=>!document.querySelector("#launch").disabled); await page.locator("#launch").focus(); await page.keyboard.down("Space"); await page.waitForTimeout(1250); await page.keyboard.up("Space");
     assert.equal(await page.evaluate(()=>window.__pinball.game.state.ballNumber),1);
     await page.waitForFunction(()=>window.__pinball.game.ball.linvel().z<0);
     await page.locator("nav [data-restart]").click();
@@ -127,7 +127,7 @@ const http = require("node:http");
     await page.locator("#gameover [data-restart]").click();
     // Force physical drains (not state calls) to verify UI transitions for all three balls.
     for (let n = 1; n <= 3; n++) {
-      await page.locator("#launch").click();
+      await page.waitForFunction(()=>!document.querySelector("#launch").disabled); await page.locator("#launch").focus(); await page.keyboard.down("Space"); await page.waitForTimeout(1250); await page.keyboard.up("Space");
       await page.evaluate(() => {
         const game = window.__pinball.game;
         game.ball.setTranslation({x:0,y:.2,z:4.8}, true);
@@ -142,7 +142,7 @@ const http = require("node:http");
     await page.getByRole("button", { name: "プレイ", exact: true }).click();
     await page.screenshot({ path: path.join(output, "mobile.png") });
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
-    await page.locator("#launch").click();
+    await page.waitForFunction(()=>!document.querySelector("#launch").disabled); await page.locator("#launch").focus(); await page.keyboard.down("Space"); await page.waitForTimeout(1250); await page.keyboard.up("Space");
     await page.waitForFunction(() => window.__pinball.game.state.phase === "playing");
     const left = await page.locator("#left").boundingBox();
     await page.mouse.move(left.x + left.width / 2, left.y + left.height / 2); await page.mouse.down();
