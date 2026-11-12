@@ -8,7 +8,7 @@ export class PinballGameState {
     this.rollovers = [false, false, false]; this.rolloverSets = 0;
     this.kickbackCharges = 1; this.kickbackUses = 0; this.eventIds = new Set();
     this.sideSaveCharges = 0; this.sideSaveUses = 0;
-    this.score = 0; this.ballNumber = 1; this.phase = "ready"; this.returnedShooter = false;
+    this.score = 0; this.lastAward = null; this.ballNumber = 1; this.phase = "ready"; this.returnedShooter = false;
     this.lastEvent = "発射してスタート"; this.resumePhase = "ready";
   }
   get mission() { return this.missions.snapshot; }
@@ -30,12 +30,12 @@ export class PinballGameState {
   }
   award(points, label) {
     if (this.phase !== "playing") return;
-    this.score += points; this.lastEvent = label + " +" + points;
+    this.score += points; this.lastEvent = label + " +" + points; this.lastAward={points,label,score:this.score};
   }
   /** Events are emitted once per physical contact/traversal, never per frame. */
   onEvent(event) {
     if (this.phase !== "playing" || !event || !event.id || this.eventIds.has(event.id)) return false;
-    const points = { bumper: 100, sling: 25, target: 50, bank: 75, spinner: 150, ramp: 300 };
+    const points = { bumper: 100, sling: 25, target: 50, bank: 75, spinner: 150, ramp: 300, inlane: 100 };
     if (!Object.hasOwn(points, event.type) && !["rollover", "kickback", "side-save"].includes(event.type)) return false;
     if (event.type === "rollover" && (!Number.isInteger(event.lane) || event.lane < 0 || event.lane > 2)) return false;
     this.eventIds.add(event.id);
@@ -48,7 +48,7 @@ export class PinballGameState {
       this.kickbackCharges = 0; this.kickbackUses++; this.lastEvent = "CENTER SAVE"; return true;
     }
     if (event.type === "rollover") {
-      if (this.rollovers[event.lane]) { this.advanceMission(event); return false; }
+      if (this.rollovers[event.lane]) { this.award(100,"LANE " + (event.lane+1)); this.advanceMission(event); return true; }
       this.rollovers[event.lane] = true; this.award(100, "LANE " + (event.lane + 1));
       if (this.rollovers.every(Boolean)) {
         this.rolloverSets++; this.kickbackCharges = 1; this.rollovers.fill(false);

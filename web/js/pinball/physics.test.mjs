@@ -172,9 +172,9 @@ test("rules deduplicate events, complete lanes, and refill one center save", () 
   assert.equal(s.onEvent({ type: "kickback", id: "save2" }), false);
   for (let lane = 0; lane < 3; lane++) {
     s.onEvent({ type: "rollover", lane, id: "lane" + lane });
-    if (lane < 2) assert.equal(s.onEvent({ type: "rollover", lane, id: "repeat" + lane }), false);
+    if (lane < 2) assert.equal(s.onEvent({ type: "rollover", lane, id: "repeat" + lane }), true);
   }
-  assert.equal(s.score, 900); assert.equal(s.rolloverSets, 1);
+  assert.equal(s.score, 1100); assert.equal(s.rolloverSets, 1);
   assert.equal(s.kickbackCharges, 1); assert.deepEqual(s.rollovers, [false, false, false]);
   assert.equal(s.onEvent({ type: "rollover", lane: 2, id: "lane2" }), false);
 });

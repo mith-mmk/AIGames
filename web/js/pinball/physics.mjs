@@ -59,7 +59,7 @@ export class PinballPhysics {
     }
     for (const [i,p] of MINI_BUMPERS.entries()) {
       const c=this.world.createCollider(R.ColliderDesc.cylinder(.14,.16).setTranslation(p.x,.18,p.z).setRestitution(.75));
-      this.hitObjects.set(c.handle,{type:"bumper",x:p.x,z:p.z,key:"mini"+i,strength:4});
+      this.hitObjects.set(c.handle,{type:"bumper",x:p.x,z:p.z,key:"mini"+i,strength:6});
     }
     for (const side of [-1, 1]) {
       // Open inlane rail: outside this rail remains a genuine outlane.
@@ -77,6 +77,10 @@ export class PinballPhysics {
       const c = this.world.createCollider(R.ColliderDesc.cuboid(.35, .30, .08)
         .setTranslation((lane - 1) * 1.25, .30, -4.55).setSensor(true));
       this.hitObjects.set(c.handle, { type: "rollover", lane, key: "lane" + lane });
+    }
+    for(const side of [-1,1]) {
+      const c=this.world.createCollider(R.ColliderDesc.cuboid(.125,.20,.04).setTranslation(side*1.60,.20,2.85).setSensor(true));
+      this.hitObjects.set(c.handle,{type:"inlane",key:"inlane"+side});
     }
     // Spinner is a sensor, so the low central shot remains passable.
     const spin = this.world.createCollider(R.ColliderDesc.cuboid(.35, .4, .05).setTranslation(0, .4, -1.35).setSensor(true));
@@ -161,7 +165,7 @@ export class PinballPhysics {
     if (h.type === "bumper" || h.type === "sling") {
       const p = this.ball.translation(), dx = p.x - h.x, dz = p.z - h.z, len = Math.hypot(dx, dz) || 1;
       const v = this.ball.linvel();
-      if (h.type === "sling") this.ball.applyImpulse({ x: dx / len * .06, y: 0, z: dz / len * .06 }, true);
+      if (h.type === "sling") this.ball.applyImpulse({ x: dx / len * .18, y: 0, z: dz / len * .18 }, true);
       else {
         const outward = (v.x * dx + v.z * dz) / len;
         const impulse = Math.max(0, (h.strength??6) - outward) * this.ball.mass();

@@ -21,3 +21,9 @@ test('complete physical ramp awards exactly once and only after its exit lip',as
  const {sampleRamp}=await import('./ramp-geometry.mjs');
  for(const speed of [26,28]){const g=await PinballPhysics.create();try{g.launch();const r=sampleRamp()[0];g.ball.setTranslation({x:r.p.x,y:r.p.y+.14,z:r.p.z},true);g.ball.setLinvel({x:r.t.x*speed,y:r.t.y*speed,z:r.t.z*speed},true);let awarded=false;for(let i=0;i<1200;i++){g.step(1/120,{left:true});if(g.rampTraversals){assert.ok(g.ballPosition.z>=3,'must leave lip before reward');awarded=true;break;}}assert.ok(awarded);run(g,120);assert.equal(g.rampTraversals,1);}finally{g.dispose();}}
 });
+test('inlane switch scores only a fresh real crossing, not sitting or pausing',async()=>{
+ const g=await PinballPhysics.create();try{g.launch();g.state.kickbackCharges=0;g.ball.setTranslation({x:1.60,y:.18,z:2.65},true);g.ball.setLinvel({x:0,y:0,z:2},true);run(g,15);assert.ok(g.state.score>=100);assert.equal(g.state.lastAward.label,'INLANE');const score=g.state.score;g.setPaused(true);run(g,120);assert.equal(g.state.score,score);g.setPaused(false);}finally{g.dispose();}
+});
+test('side coils are bounded, horizontal and stronger than their former impulse',async()=>{
+ const g=await PinballPhysics.create();try{g.launch();for(const type of ['sling','bumper']){const [h,spec]=[...g.hitObjects].find(([,v])=>v.type===type&&(type!=='bumper'||v.key==='mini0'));g.ball.setTranslation({x:spec.x+.3,y:.18,z:spec.z},true);g.ball.setLinvel({x:0,y:0,z:0},true);g.hit(h);const v=g.ball.linvel();assert.ok(v.x>(type==='sling'?2:5));assert.ok(v.x<7);assert.equal(v.y,0);}}finally{g.dispose();}
+});

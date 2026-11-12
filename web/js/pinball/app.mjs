@@ -185,7 +185,15 @@ export class PinballTablePreview {
     document.querySelector("#final-score").textContent = state.score.toLocaleString("ja-JP");
     document.querySelector("#rollovers").textContent = ["A","B","C"].map((label,i)=>`${label} ${state.rollovers?.[i] ? "●" : "○"}`).join("　");
     document.querySelector("#kickback").textContent = `CENTER SAVE ${state.kickbackCharges ?? 0} / 1`;
-    document.querySelector("#score-event").textContent = state.lastEvent;
+    if(state.lastAward && state.lastAward.score!==this.shownAwardScore) {
+      this.shownAwardScore=state.lastAward.score;this.awardShownAt=performance.now();this.shownAward=state.lastAward;
+    }
+    if(!state.score) {this.shownAward=null;this.shownAwardScore=0;}
+    const recent=this.shownAward && performance.now()-this.awardShownAt<1800;
+    document.querySelector("#score-event").textContent=recent?`${this.shownAward.label} +${this.shownAward.points}`:state.lastEvent;
+    let delta=document.querySelector("#score-delta");
+    if(!delta){delta=document.createElement("span");delta.id="score-delta";document.querySelector(".score-panel").append(delta);}
+    delta.textContent=recent?`+${this.shownAward.points}`:"";
     const mission=state.mission;
     if(mission && document.querySelector("#mission-title")) {
       document.querySelector("#mission-title").textContent=mission.title;

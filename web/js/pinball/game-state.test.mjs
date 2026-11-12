@@ -25,8 +25,8 @@ test("five bounded missions award base points and each completion bonus exactly 
   assert.equal(state.mission.id, "ramp");
   hit("ramp");
   assert.equal(state.mission.allComplete, true); assert.equal(state.mission.completed, 5);
-  // Base: spinner warmup 150, bumpers 300, sides 250, spinner 300, lanes 800, ramp 300.
-  assert.equal(state.score, 2100 + 5500);
+  // Base: spinner warmup 150, bumpers 300, sides 250, spinner 300, lanes 900, ramp 300.
+  assert.equal(state.score, 2200 + 5500);
   const score = state.score;
   hit("ramp"); hit("bumper"); assert.equal(state.score, score + 400);
   assert.equal(state.mission.allComplete, true);
@@ -63,7 +63,7 @@ test("lane mission counts new traversals even if a lane was lit before the missi
   const { state, hit } = fixture();
   hit("rollover", 1); startSpinner(hit); hit("spinner"); hit("spinner");
   const score = state.score;
-  hit("rollover", 1); assert.equal(state.mission.progress, 1); assert.equal(state.score, score);
+  hit("rollover", 1); assert.equal(state.mission.progress, 1); assert.equal(state.score, score + 100);
   hit("rollover", 0); hit("rollover", 2); assert.equal(state.mission.id, "ramp");
   assert.equal(state.rolloverSets, 1); assert.equal(state.kickbackCharges, 1);
 });
