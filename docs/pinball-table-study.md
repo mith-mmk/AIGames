@@ -52,3 +52,7 @@ Desktop full view measured 542 draw calls / 133,144 triangles on hadrianus Chrom
 ## Art pass 04: reduce green dominance
 
 Per owner feedback, playfield and cabinet sides now use iron/graphite; wall, ambient light and rim light are neutral/cool instead of teal. Brass defines mechanisms and amber marks light sources. Muted green remains only on small robot/engine/tool accents. A separate bright silver ball material avoids inheriting the dark environment response of structural chrome. Previous green version is preserved in commit dfacd631.
+
+## Art pass 05: quieter illustrated target hierarchy
+
+Inspected the owner's neon/junk-mech reference and explicit request to calm its visual density. Kept iron/brass palette and a muted original robot stencil; did not import the reference's neon palette, signs, hazard stripes or fake scoring UI. Removed 11 crossing brass circuit lines and four decorative light inserts. Three non-flashing flat shot marks identify the two target banks and central bumper cluster. No game rules or active missions are implied. The low-contrast stencil and generous central negative space prioritize the silver ball.

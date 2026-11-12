@@ -149,40 +149,38 @@ export class WorkshopAssets {
       ctx.fillStyle = i % 3 ? "rgba(181,148,84,0.09)" : "rgba(9,18,17,0.18)";
       ctx.fillRect(x, y, 2 + i % 7, 1);
     }
-    // Screen-printed, original workshop seal with quiet negative space for play.
-    ctx.strokeStyle = "#b18b4e";
-    ctx.lineWidth = 6;
-    ctx.strokeRect(35, 35, 954, 1978);
-    ctx.lineWidth = 2;
-    ctx.strokeRect(49, 49, 926, 1950);
-    for (let i = 0; i < 3; i++) {
-      ctx.beginPath();
-      ctx.arc(512, 1220, 230 + i * 26, 0, Math.PI * 2);
-      ctx.strokeStyle = i === 1 ? "#777c83" : "#ad8c51";
-      ctx.stroke();
+    // Quiet stencil art; graphic detail stays below the contrast of ball and shot marks.
+    ctx.strokeStyle = "#77756b"; ctx.lineWidth = 3;
+    ctx.strokeRect(36, 36, 952, 1976);
+    for (const x of [105, 919]) {
+      ctx.strokeStyle = "#555b60"; ctx.lineWidth = 2;
+      ctx.strokeRect(x - 22, 210, 44, 1380);
     }
-    ctx.save();
-    ctx.translate(512, 1220);
-    for (let i = 0; i < 24; i++) {
-      ctx.rotate(Math.PI / 12);
-      ctx.fillStyle = "#9b804d";
-      ctx.fillRect(274, -5, 18, 10);
+    // Original robot stencil, adapted from the reference's playful central illustration.
+    ctx.save(); ctx.translate(512, 1220); ctx.scale(0.85, 0.85); ctx.rotate(-0.08);
+    ctx.fillStyle = "#41474d"; ctx.strokeStyle = "#60666b"; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.roundRect(-112, -130, 224, 130, 20); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = "#30363c"; ctx.fillRect(-88, -104, 176, 76);
+    ctx.fillStyle = "#777d80"; ctx.fillRect(-60, -80, 28, 24); ctx.fillRect(32, -80, 28, 24);
+    ctx.fillStyle = "#41474d"; ctx.fillRect(-72, 20, 144, 126); ctx.strokeRect(-72, 20, 144, 126);
+    ctx.beginPath(); ctx.arc(0, 80, 30, 0, Math.PI * 2); ctx.stroke();
+    for (const side of [-1, 1]) {
+      ctx.beginPath(); ctx.moveTo(side * 84, 38); ctx.lineTo(side * 142, 76); ctx.lineTo(side * 160, 12); ctx.stroke();
+      ctx.fillRect(side * 158 - 12, -8, 24, 28);
     }
     ctx.restore();
-    for (const x of [130, 894]) {
-      ctx.fillStyle = "#24272b";
-      ctx.fillRect(x - 42, 210, 84, 1420);
-      ctx.strokeStyle = "#787b80";
-      ctx.strokeRect(x - 42, 210, 84, 1420);
-      for (let y = 260; y < 1600; y += 115) {
-        ctx.beginPath(); ctx.moveTo(x - 20, y + 16); ctx.lineTo(x, y); ctx.lineTo(x + 20, y + 16); ctx.stroke();
-      }
-    }
-    ctx.fillStyle = "#bca46d";
-    ctx.textAlign = "center";
-    ctx.font = "22px monospace";
-    ctx.fillText("AUTOMATON LAB / No. 01", 512, 1810);
-    ctx.fillText("PRECISION • ENERGY • INVENTION", 512, 1848);
+    // Three stable, non-flashing shot marks. These are labels, not active mission states.
+    const shot = (x, y, label) => {
+      ctx.fillStyle = "#c2a468"; ctx.strokeStyle = "#e3c58a"; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(x, y - 35); ctx.lineTo(x - 25, y + 13); ctx.lineTo(x + 25, y + 13); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = "#22262b"; ctx.fillRect(x - 94, y + 30, 188, 54); ctx.strokeRect(x - 94, y + 30, 188, 54);
+      ctx.font = "bold 23px sans-serif"; ctx.textAlign = "center"; ctx.fillStyle = "#d3bf92"; ctx.fillText(label, x, y + 65);
+    };
+    shot(330, 1000, "LEFT BANK");
+    shot(512, 795, "ENERGY");
+    shot(694, 1000, "RIGHT BANK");
+    ctx.textAlign = "center"; ctx.fillStyle = "#91928d"; ctx.font = "20px monospace";
+    ctx.fillText("WORKSHOP / No. 01", 512, 1770);
     const texture = new T.CanvasTexture(c);
     texture.colorSpace = T.SRGBColorSpace;
     const surface = this.mesh(new T.PlaneGeometry(5.5, 11.5), new T.MeshStandardMaterial({ map: texture, roughness: 0.42, metalness: 0.1 }), this.root, 0, 0.038, 0);
@@ -193,31 +191,6 @@ export class WorkshopAssets {
     this.box(g, 5.85, 0.55, 11.9, 0, -0.32, 0, "dark");
     this.box(g, 5.5, 0.08, 11.5, 0, -0.005, 0, "steel");
     this.printedPlayfield();
-    // Original circuit-board illustration printed below the machinery.
-    for (let i = 0; i < 11; i++) {
-      const x = -2.4 + i * 0.48;
-      this.tube(
-        g,
-        [
-          [x, 0.045, 4.1],
-          [x, 0.045, 2.1],
-          [x * 0.5, 0.045, 1.4],
-          [x * 0.5, 0.045, -3.8],
-        ],
-        0.008,
-        "brass",
-      );
-    }
-    for (const [x, z] of [
-      [0, 1.25],
-      [-0.7, 0.5],
-      [0.7, 0.5],
-      [0, -0.2],
-    ]) {
-      this.ring(g, 0.34, 0.018, x, 0.055, z, "brass");
-      this.cylinder(g, 0.24, 0.012, x, 0.05, z, "dark");
-      this.cylinder(g, 0.1, 0.018, x, 0.062, z, "light");
-    }
     this.text(g, "CHAPPY", 0, 0.065, 2.2, 2.4, 0.55);
     this.text(g, "WORKSHOP", 0, 0.066, 2.65, 1.95, 0.27);
     this.text(g, "BUILD • CHARGE • LAUNCH", 0, 0.065, 3.05, 2.5, 0.16);
@@ -319,7 +292,7 @@ export class WorkshopAssets {
         this.text(g, `${i + 1}`, x, 0.07, -0.35, 0.2, 0.15);
       }
     }
-    this.text(g, "CHARGE", -0.9, 0.08, -1.35, 1.2, 0.18);
+
     this.text(g, "SKY RAIL", -1.7, 0.075, 1.35, 1, 0.17);
     return g;
   }
