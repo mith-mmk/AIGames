@@ -76,3 +76,7 @@ Art expansion is paused. Rapier 0.17.3 (vendored inline WASM with Apache license
 This is an initial gameplay implementation: complex art uses simplified collision proxies; upper receiver collection awards once then relocates the ball to the return lane; stalled balls trigger a non-scoring ball-search recovery. It is not a fully mechanically simulated machine. Touch layout was checked at 390x844 in desktop Chrome, not on a physical phone.
 
 Validation: 13 rules/layout/physics tests plus real Chromium launch, dual inputs, pause freeze, score/three drains/gameover, restart, narrow viewport, blur and WebGL context restoration. Distribution retains Three.js and Rapier license notices.
+
+## Playability correction
+
+User play exposed unusable diagonal framing and repeatable left-lane traps. Independent contact traces confirmed the ball wedged between floor and low ramp convex hulls. Both ramps are deferred and removed from render/collision, along with teleport rescue. Shortened flippers leave a real drain gap; continuous slanted target banks prevent pockets; balls returning to shooter bottom now drain. Orthographic high-angle/top views reserve UI space and hide non-colliding tall scenery. 90 varied shots and 12 three-ball sessions completed without rescue; browser natural three-ball play ended in 24.8 seconds without input. This validates basic play, not final balance or full ramp implementation.

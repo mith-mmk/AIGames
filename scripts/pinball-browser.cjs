@@ -73,12 +73,25 @@ const http = require("node:http");
     assert.deepEqual(await page.evaluate(() => window.__pinball.game.ballPosition), paused);
     await page.locator("#pause").click();
     await page.screenshot({ path: path.join(output, "playing.png") });
-    for (const name of ["接写", "真上", "全景"]) await page.getByRole("button", { name, exact: true }).click();
-    await page.getByRole("button", { name: "接写", exact: true }).click();
+    for (const name of ["真上", "プレイ"]) await page.getByRole("button", { name, exact: true }).click();
+    await page.getByRole("button", { name: "真上", exact: true }).click();
     await page.screenshot({ path: path.join(output, "detail.png") });
     await page.locator("nav [data-restart]").click();
     assert.equal(await page.evaluate(() => window.__pinball.game.state.score), 0);
     assert.equal(await page.evaluate(() => window.__pinball.game.state.phase), "ready");
+    // Continuous unassisted game: actual physics, no manual relocation or state drain calls.
+    const continuous = await page.evaluate(() => {
+      const g = window.__pinball.game; g.restart(); let steps = 0, launches = 0;
+      while (g.state.phase !== "gameover" && steps < 120 * 180) {
+        if (g.state.phase === "ready") { g.launch(); launches++; }
+        g.step(1/120, {left:false,right:false}); steps++;
+        if (g.state.lastEvent === "BALL SEARCH") throw new Error("Rescue masked a trapped ball");
+      }
+      return {phase:g.state.phase, launches, seconds:steps/120};
+    });
+    assert.equal(continuous.phase, "gameover"); assert.equal(continuous.launches, 3);
+    console.log("Unassisted continuous game", continuous);
+    await page.locator("#gameover [data-restart]").click();
     // Force physical drains (not state calls) to verify UI transitions for all three balls.
     for (let n = 1; n <= 3; n++) {
       await page.locator("#launch").click();
@@ -93,7 +106,7 @@ const http = require("node:http");
     await page.locator("#gameover [data-restart]").click();
     assert.equal(await page.evaluate(() => window.__pinball.game.state.ballNumber), 1);
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.getByRole("button", { name: "全景", exact: true }).click();
+    await page.getByRole("button", { name: "プレイ", exact: true }).click();
     await page.screenshot({ path: path.join(output, "mobile.png") });
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     await page.locator("#launch").click();

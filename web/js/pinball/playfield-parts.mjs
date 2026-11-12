@@ -7,11 +7,11 @@ export class PlayfieldParts {
   build() {
     const a = this.a, g = a.root;
     for (const side of [-1, 1]) this.sling(side);
-    this.upperRamp();
+    // Upper ramp deferred while the base game is validated.
     // Two raised, bracket-mounted three-target banks, upstream of existing banks.
     for (const side of [-1, 1]) {
-      const bank = new T.Group(); bank.position.set(side * 1.25, 0, -1.5); g.add(bank);
-      a.roundedBox(bank, 0.8, 0.12, 0.32, 0, 0.1, 0, "dark", 0.025);
+      const bank = new T.Group(); bank.position.set(side * 1.275, 0, -1.45); bank.rotation.y=side*Math.atan2(.4,.75); g.add(bank);
+      a.roundedBox(bank, 0.85, 0.14, 0.14, 0, 0.22, 0, "rubber", 0.025);
       for (let i = -1; i <= 1; i++) {
         a.cylinder(bank, 0.035, 0.24, i * 0.24, 0.24, 0, "chrome");
         a.roundedBox(bank, 0.19, 0.34, 0.1, i * 0.24, 0.4, 0, "brass", 0.022);

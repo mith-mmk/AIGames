@@ -1,6 +1,6 @@
 import R from "../vendor/rapier3d-0.17.3/rapier.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import { TABLE, BUMPERS, RAMP, UPPER_RAMP, SLING_VERTICES, flipperAngle } from "./layout.mjs";
+import { TABLE, BUMPERS, SLING_VERTICES, flipperAngle } from "./layout.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
 export class PinballPhysics {
@@ -48,51 +48,35 @@ export class PinballPhysics {
       for (let i = 0; i < 2; i++) this.segment(outer[i], outer[i + 1], .04);
       const sling = new T.CatmullRomCurve3([...SLING_VERTICES, SLING_VERTICES[0]].map(([x, z]) => new T.Vector3(side * x, .22, z))).getPoints(16);
       for (let i = 0; i < sling.length - 1; i++) this.segment(sling[i].toArray(), sling[i + 1].toArray(), .07, { type: "sling", x: side * 1.35, z: 2.55, points: 25, label: "SLING", key: "s" + side });
-      for (let i = 0; i < 3; i++) {
-        const x = side * (0.85 + i * 0.34), c = this.box(x, .23, -.7, .11, .18, .07, .8);
-        this.hitObjects.set(c.handle, { type: "target", points: 50, label: "TARGET", key: "t" + side + i });
-        const x2 = side * 1.25 + (i - 1) * .24, c2 = this.box(x2, .32, -1.5, .095, .3, .08, .7);
-        this.hitObjects.set(c2.handle, { type: "target", points: 75, label: "BANK", key: "u" + side + i });
-      }
+      // Continuous sloped bank faces avoid ball-width pockets between standups.
+      this.segment([side * .6, .22, -.45], [side * 1.8, .22, -.95], .07,
+        { type: "target", points: 50, label: "TARGET", key: "t" + side });
+      this.segment([side * .9, .22, -1.25], [side * 1.65, .22, -1.65], .07,
+        { type: "target", points: 75, label: "BANK", key: "u" + side });
     }
     // Spinner is a sensor, so the low central shot remains passable.
     const spin = this.world.createCollider(R.ColliderDesc.cuboid(.35, .4, .05).setTranslation(0, .4, -1.35).setSensor(true));
     this.hitObjects.set(spin.handle, { type: "spinner", points: 150, label: "SPINNER", key: "spinner" });
-    this.ramp(RAMP, .48); this.ramp(UPPER_RAMP, .38);
+    // Elevated decorative ramps are not collision surfaces: their low undersides
+    // formed wedges against the floor. Keep the full floor-level orbit open.
     for (let i = 0; i < 2; i++) {
       const angle = this.flipperAngles[i];
       const body = this.world.createRigidBody(R.RigidBodyDesc.kinematicPositionBased().setTranslation(i ? 1.05 : -1.05, .27, 3.75).setRotation({ x: 0, y: Math.sin(angle / 2), z: 0, w: Math.cos(angle / 2) }));
-      this.world.createCollider(R.ColliderDesc.cuboid(.55, .09, .14).setTranslation(.44, 0, 0).setRestitution(.75).setFriction(.1), body);
+      this.world.createCollider(R.ColliderDesc.cuboid(.48, .09, .14).setTranslation(.40, 0, 0).setRestitution(.75).setFriction(.1), body);
       this.flippers.push(body);
-    }
-  }
-  ramp(control, width) {
-    const curve = new T.CatmullRomCurve3(control.map(p => new T.Vector3(...p)));
-    const points = curve.getPoints(64), edges = [[], []];
-    for (let i = 0; i < points.length; i++) {
-      const t = curve.getTangent(i / 64), n = new T.Vector3(-t.z, 0, t.x).normalize();
-      for (const [j, side] of [-1, 1].entries()) edges[j].push(points[i].clone().addScaledVector(n, side * width / 2));
-    }
-    for (let i = 0; i < 64; i++) {
-      const vertices = [];
-      for (const y of [0, -.05]) for (const k of [i, i + 1]) for (const e of edges) vertices.push(e[k].x, e[k].y + y, e[k].z);
-      const hull = R.ColliderDesc.convexHull(new Float32Array(vertices));
-      if (hull) this.world.createCollider(hull.setFriction(.04).setRestitution(.05));
-      for (const e of edges) this.segment([e[i].x, e[i].y + .14, e[i].z], [e[i+1].x, e[i+1].y + .14, e[i+1].z], .025);
     }
   }
   resetBall() {
     this.ball.setTranslation({ x: 2.53, y: .2, z: 3.7 }, true);
     this.ball.setLinvel({ x: 0, y: 0, z: 0 }, true); this.ball.setAngvel({ x: 0, y: 0, z: 0 }, true); this.ball.setGravityScale(0, true);
-    this.lastActive = this.time; this.rescueCount = 0;
-    this.searchPosition = this.ball.translation(); this.searchTime = this.time;
+
   }
   launch(power = 1) {
     power = Number.isFinite(power) ? power : 1;
     if (!this.state.launch()) return false;
     this.ball.setGravityScale(1, true);
     this.ball.setLinvel({ x: 0, y: 0, z: -(18 + Math.max(0, Math.min(1, power)) * 5) }, true);
-    this.lastActive = this.time; return true;
+    return true;
   }
   restart() {
     this.state.restart(); this.accumulator = 0; this.cooldowns.clear(); this.resetBall();
@@ -130,27 +114,8 @@ export class PinballPhysics {
       });
       if (this.state.phase === "ready") { this.resetBall(); continue; }
       const p = this.ball.translation(), v = this.ball.linvel();
-      if (p.z > 4.65 && p.x < 2.28 || p.y < -1.0 || Math.abs(p.x) > 3.2 || p.z < -6.5) {
+      if (p.z > 4.65 || p.y < -1.0 || Math.abs(p.x) > 3.2 || p.z < -6.5) {
         this.state.drain(); this.resetBall(); continue;
-      }
-      // Covered return chute at the elevated collector: return to main lower-right lane.
-      if (p.x > 1.85 && p.z < -3.95 && p.z > -4.5 && p.y > 2.5) {
-        this.state.award(500, "UPPER RAMP");
-        this.ball.setTranslation({ x: 1.78, y: .2, z: 1.2 }, true);
-        this.ball.setLinvel({ x: -1.2, y: 0, z: 5 }, true); this.lastActive = this.time;
-      }
-      const speed = Math.hypot(v.x, v.z);
-      if (speed > .35) this.lastActive = this.time;
-      let trapped = false;
-      if (this.time - this.searchTime > 2.5) {
-        trapped = Math.hypot(p.x - this.searchPosition.x, p.z - this.searchPosition.z) < .6;
-        this.searchPosition = { x: p.x, y: p.y, z: p.z }; this.searchTime = this.time;
-      }
-      if (trapped || this.time - this.lastActive > 4) {
-        // Deterministic ball-search recovery, never award points for being stuck.
-        this.ball.setTranslation({ x: 0, y: .35, z: -.2 }, true);
-        this.ball.setLinvel({ x: this.rescueCount++ % 2 ? -2 : 2, y: 0, z: 2 }, true);
-        this.lastActive = this.time; this.searchPosition = this.ball.translation(); this.searchTime = this.time; this.state.lastEvent = "BALL SEARCH";
       }
       if (Math.hypot(v.x, v.y, v.z) > 32) this.ball.setLinvel({ x: v.x * .85, y: v.y * .85, z: v.z * .85 }, true);
     }
