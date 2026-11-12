@@ -13,8 +13,8 @@ export class PinballTablePreview {
     this.renderer.toneMapping = T.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.35;
     this.scene = new T.Scene();
-    this.scene.background = new T.Color(0x0b1418);
-    this.scene.fog = new T.Fog(0x0b1418, 24, 48);
+    this.scene.background = new T.Color(0x141418);
+    this.scene.fog = new T.Fog(0x141418, 24, 48);
     this.camera = new T.PerspectiveCamera(38, 1, 0.1, 80);
     this.assets = new WorkshopAssets();
     this.board = this.assets.build();
@@ -22,13 +22,13 @@ export class PinballTablePreview {
     this.scene.add(this.board);
     this.ball = this.assets.mesh(
       new T.SphereGeometry(TABLE.ballRadius, 32, 20),
-      "chrome",
+      "ball",
       this.board,
       2.53,
       0.16,
       3.7,
     );
-    this.scene.add(new T.HemisphereLight(0xd9f8f0, 0x304047, 3));
+    this.scene.add(new T.HemisphereLight(0xe5e7ee, 0x353339, 3));
     const key = new T.DirectionalLight(0xffeed5, 4);
     key.position.set(-5, 11, 4);
     key.castShadow = true;
@@ -43,12 +43,12 @@ export class PinballTablePreview {
     });
     key.shadow.normalBias = 0.015;
     this.scene.add(key);
-    const rim = new T.DirectionalLight(0x70e8dc, 2);
+    const rim = new T.DirectionalLight(0xc4d0ef, 2);
     rim.position.set(4, 4, -5);
     this.scene.add(rim);
     const floor = new T.Mesh(
       new T.PlaneGeometry(200, 200),
-      new T.MeshStandardMaterial({ color: 0x101e23, roughness: 0.75 }),
+      new T.MeshStandardMaterial({ color: 0x1d1d20, roughness: 0.75 }),
     );
     floor.rotation.x = -Math.PI / 2;
     floor.position.y = -2.4;

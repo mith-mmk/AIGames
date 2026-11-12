@@ -48,3 +48,7 @@ The owner requested an ImageGen concept before implementing more mechanical char
 Added rounded extrusions for bodywork, shared deterministic patina texture, robot ear ribs / elbow rings / gripped tool, ramp rail stanchions and an external cabinet service hatch. A 128px cubemap of the room is baked once at startup, filtered with PMREM and rebuilt on WebGL context restoration. No per-frame cube capture or remote texture requests.
 
 Desktop full view measured 542 draw calls / 133,144 triangles on hadrianus Chrome. Browser regression tests enforce <1,000 calls and <500,000 triangles; these are complexity guardrails, not a claim of mobile frame rate. Real-device mobile performance and physics remain unverified. Art remains a stylized interpretation, not photographic fidelity to the concept.
+
+## Art pass 04: reduce green dominance
+
+Per owner feedback, playfield and cabinet sides now use iron/graphite; wall, ambient light and rim light are neutral/cool instead of teal. Brass defines mechanisms and amber marks light sources. Muted green remains only on small robot/engine/tool accents. A separate bright silver ball material avoids inheriting the dark environment response of structural chrome. Previous green version is preserved in commit dfacd631.

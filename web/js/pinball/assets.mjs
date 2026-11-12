@@ -7,10 +7,12 @@ export class WorkshopAssets {
     this.root.name = "workshop-table";
     this.materials = {
       jade: new T.MeshStandardMaterial({
-        color: 0x176c68,
+        color: 0x36534b,
         roughness: 0.3,
         metalness: 0.35,
       }),
+      steel: new T.MeshStandardMaterial({ color: 0x4c5158, roughness: 0.46, metalness: 0.65 }),
+      ball: new T.MeshStandardMaterial({ color: 0xf3f5f7, roughness: 0.16, metalness: 0.68, emissive: 0x111318, emissiveIntensity: 0.15 }),
       brass: new T.MeshStandardMaterial({
         color: 0xc9a362,
         roughness: 0.26,
@@ -21,12 +23,12 @@ export class WorkshopAssets {
         roughness: 0.17,
         metalness: 0.95,
       }),
-      rubber: new T.MeshStandardMaterial({ color: 0x172124, roughness: 0.85 }),
+      rubber: new T.MeshStandardMaterial({ color: 0x191a1c, roughness: 0.85 }),
       cream: new T.MeshStandardMaterial({ color: 0xf0dfb5, roughness: 0.34 }),
-      dark: new T.MeshStandardMaterial({ color: 0x122b31, roughness: 0.45 }),
+      dark: new T.MeshStandardMaterial({ color: 0x24262a, roughness: 0.45 }),
       light: new T.MeshStandardMaterial({
-        color: 0x9af3dc,
-        emissive: 0x50cbb6,
+        color: 0xffdfa3,
+        emissive: 0xe9ac55,
         emissiveIntensity: 0.8,
       }),
       amber: new T.MeshStandardMaterial({ color: 0xffce75, emissive: 0xff8e22, emissiveIntensity: 1.3, roughness: 0.25, metalness: 0.15 }),
@@ -48,7 +50,7 @@ export class WorkshopAssets {
     }
     const texture = new T.CanvasTexture(c); texture.colorSpace = T.SRGBColorSpace;
     texture.wrapS = texture.wrapT = T.RepeatWrapping;
-    for (const name of ["jade", "brass"]) {
+    for (const name of ["jade", "brass", "steel"]) {
       this.materials[name].map = texture;
       this.materials[name].roughness = name === "brass" ? 0.33 : 0.42;
     }
@@ -140,7 +142,7 @@ export class WorkshopAssets {
     c.width = 1024;
     c.height = 2048;
     const ctx = c.getContext("2d");
-    ctx.fillStyle = "#173c3a";
+    ctx.fillStyle = "#30343a";
     ctx.fillRect(0, 0, c.width, c.height);
     for (let i = 0; i < 7000; i++) {
       const x = (i * 131.79) % 1024, y = (i * 313.37) % 2048;
@@ -156,7 +158,7 @@ export class WorkshopAssets {
     for (let i = 0; i < 3; i++) {
       ctx.beginPath();
       ctx.arc(512, 1220, 230 + i * 26, 0, Math.PI * 2);
-      ctx.strokeStyle = i === 1 ? "#517568" : "#ad8c51";
+      ctx.strokeStyle = i === 1 ? "#777c83" : "#ad8c51";
       ctx.stroke();
     }
     ctx.save();
@@ -168,9 +170,9 @@ export class WorkshopAssets {
     }
     ctx.restore();
     for (const x of [130, 894]) {
-      ctx.fillStyle = "#193e40";
+      ctx.fillStyle = "#24272b";
       ctx.fillRect(x - 42, 210, 84, 1420);
-      ctx.strokeStyle = "#587167";
+      ctx.strokeStyle = "#787b80";
       ctx.strokeRect(x - 42, 210, 84, 1420);
       for (let y = 260; y < 1600; y += 115) {
         ctx.beginPath(); ctx.moveTo(x - 20, y + 16); ctx.lineTo(x, y); ctx.lineTo(x + 20, y + 16); ctx.stroke();
@@ -189,7 +191,7 @@ export class WorkshopAssets {
   build() {
     const g = this.root;
     this.box(g, 5.85, 0.55, 11.9, 0, -0.32, 0, "dark");
-    this.box(g, 5.5, 0.08, 11.5, 0, -0.005, 0, "jade");
+    this.box(g, 5.5, 0.08, 11.5, 0, -0.005, 0, "steel");
     this.printedPlayfield();
     // Original circuit-board illustration printed below the machinery.
     for (let i = 0; i < 11; i++) {
@@ -228,7 +230,7 @@ export class WorkshopAssets {
     this.box(g, 5.65, 0.05, 0.18, 0, 0.455, -5.85, "brass");
     // Layered enamel cabinet sides and corner protectors.
     for (const x of [-2.94, 2.94]) {
-      this.box(g, 0.055, 0.25, 10.9, x, -0.28, 0, "jade");
+      this.box(g, 0.055, 0.25, 10.9, x, -0.28, 0, "steel");
       for (const z of [-5.55, 5.55]) this.box(g, 0.12, 0.6, 0.27, x, -0.2, z, "brass");
       for (let z = -2.6; z < 2.8; z += 0.35) this.box(g, 0.065, 0.11, 0.08, x, -0.29, z, "dark");
     }
@@ -346,7 +348,7 @@ export class WorkshopAssets {
     top.scale.set(0.95, 0.45, 0.7);
     this.cylinder(pivot, 0.09, 0.025, 0, 0.17, 0, "brass");
     this.screw(pivot, 0, 0.195, 0);
-    this.text(pivot, "CHAPPY", 0.48, 0.17, 0, 0.65, 0.11, "#235f5b");
+    this.text(pivot, "CHAPPY", 0.48, 0.17, 0, 0.65, 0.11, "#34373c");
     pivot.rotation.y = flipperAngle(mirror, false);
     return pivot;
   }

@@ -11,7 +11,7 @@ export class WorkshopRoom {
   build() {
     const a = this.a, g = this.root;
     const wood = new T.MeshStandardMaterial({ color: 0x29271f, roughness: 0.88 });
-    const plaster = new T.MeshStandardMaterial({ color: 0x273e41, roughness: 0.96 });
+    const plaster = new T.MeshStandardMaterial({ color: 0x343239, roughness: 0.96 });
     // Feet meet the horizontal floor even though the playfield is tilted.
     for (const x of [-2.1, 2.1]) for (const z of [-4.7, 4.7]) {
       const top = -0.58 * Math.cos(TABLE.tilt) - z * Math.sin(TABLE.tilt);
@@ -30,7 +30,7 @@ export class WorkshopRoom {
     }
     // Luminous frosted workshop window; no external image or texture required.
     a.box(g, 5, 4.3, 0.16, -5.7, 2.5, -8.65, "dark");
-    const glass = new T.MeshStandardMaterial({ color: 0x79b6c0, emissive: 0x426a76, emissiveIntensity: 0.6, roughness: 0.55 });
+    const glass = new T.MeshStandardMaterial({ color: 0xa7b6cc, emissive: 0x5e6a7c, emissiveIntensity: 0.6, roughness: 0.55 });
     a.box(g, 4.65, 3.95, 0.06, -5.7, 2.5, -8.53, glass);
     for (const x of [-7.95, -5.7, -3.45]) a.box(g, 0.09, 4, 0.12, x, 2.5, -8.45, "brass");
     a.box(g, 4.65, 0.09, 0.12, -5.7, 2.5, -8.45, "brass");
@@ -45,11 +45,11 @@ export class WorkshopRoom {
       a.ring(g, 0.11, 0.035, x, 2.08, -8.4, "brass").rotation.x = 0;
     }
     for (let i = 0; i < 5; i++) {
-      a.cylinder(g, 0.18, 0.45, 4 + i * 0.6, 0.08, -7.5, i % 2 ? "jade" : "cream");
+      a.cylinder(g, 0.18, 0.45, 4 + i * 0.6, 0.08, -7.5, i % 2 ? "steel" : "cream");
       a.cylinder(g, 0.2, 0.06, 4 + i * 0.6, 0.34, -7.5, "brass");
     }
     a.box(g, 5.3, 0.14, 0.8, 5.5, 3.25, -8.3, wood);
-    for (let i = 0; i < 6; i++) a.box(g, 0.35, 0.5 + (i % 3) * 0.18, 0.45, 3.5 + i * 0.62, 3.6, -8.3, i % 2 ? "jade" : "dark");
+    for (let i = 0; i < 6; i++) a.box(g, 0.35, 0.5 + (i % 3) * 0.18, 0.45, 3.5 + i * 0.62, 3.6, -8.3, i % 2 ? "steel" : "dark");
     // Warm practical light and its visible shade.
     a.tube(g, [[-4.1, -2.3, -3], [-4.1, 3.4, -3], [-2.8, 3.8, -3]], 0.055, "dark");
     a.cylinder(g, 0.58, 0.12, -4.1, -2.29, -3, "dark");

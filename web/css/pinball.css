@@ -2,7 +2,7 @@
   color-scheme: dark;
   font-family: Inter, "Noto Sans JP", sans-serif;
   color: #f4eedb;
-  background: #0b1418;
+  background: #141418;
 }
 * {
   box-sizing: border-box;
@@ -30,7 +30,7 @@ header {
 }
 header a {
   pointer-events: auto;
-  color: #b1c3c0;
+  color: #c0c2c7;
   text-decoration: none;
   font-size: 12px;
 }
@@ -54,7 +54,7 @@ h1 em {
 }
 header p {
   font-size: 11px;
-  color: #b1c3c0;
+  color: #c0c2c7;
 }
 .status {
   position: absolute;
@@ -66,14 +66,14 @@ header p {
 .status small {
   display: block;
   text-align: right;
-  color: #8b9e9b;
+  color: #9b9da5;
   margin-top: 6px;
 }
 .dot {
   display: inline-block;
   width: 6px;
   height: 6px;
-  background: #73ddc7;
+  background: #dfbd7f;
   border-radius: 100%;
   margin-right: 8px;
 }
@@ -84,7 +84,7 @@ nav {
   transform: translateX(-50%);
   display: flex;
   gap: 4px;
-  background: #142429e8;
+  background: #24252ae8;
   border: 1px solid #ffffff18;
   padding: 5px;
   border-radius: 30px;
@@ -93,7 +93,7 @@ nav {
 button {
   font: inherit;
   font-size: 11px;
-  color: #c6d4cf;
+  color: #d0d1d6;
   background: transparent;
   border: 1px solid transparent;
   border-radius: 22px;
@@ -109,7 +109,7 @@ button:focus-visible {
 .selected,
 button[aria-pressed="true"] {
   background: #dfbd7f;
-  color: #182729;
+  color: #24252a;
 }
 .controls {
   position: absolute;
@@ -121,20 +121,20 @@ button[aria-pressed="true"] {
   gap: 30px;
 }
 .controls button {
-  background: #20373c;
+  background: #303239;
   border: 1px solid #b9a26e60;
   min-width: 110px;
 }
 .controls p {
   font-size: 10px;
-  color: #b2c0ba;
+  color: #bfc0c6;
   text-align: center;
   white-space: nowrap;
 }
 .controls span {
   display: block;
   font-size: 9px;
-  color: #6d8583;
+  color: #898b94;
   margin-top: 6px;
 }
 #message {
@@ -143,7 +143,7 @@ button[aria-pressed="true"] {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 16px;
-  background: #142429;
+  background: #24252a;
   border-radius: 8px;
 }
 #message:empty {
@@ -155,11 +155,11 @@ details {
   bottom: 28px;
   width: 220px;
   font-size: 10px;
-  color: #9eb4b1;
+  color: #afb0ba;
 }
 details p {
   padding: 12px;
-  background: #142429;
+  background: #24252a;
   line-height: 1.7;
 }
 summary {
