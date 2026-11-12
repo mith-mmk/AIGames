@@ -4,11 +4,14 @@
 <body><main id="app">
 <canvas id="table" aria-label="Chappy Workshop ピンボール"></canvas>
 <header><a href="./index.html">← AI Games</a><h1>CHAPPY <em>WORKSHOP</em></h1><p>3球でハイスコアを狙おう</p></header>
-<section class="status" aria-label="スコア"><span>SCORE</span><strong id="score">0</strong><small>BALL <b id="balls">1 / 3</b></small></section>
+<section class="status backglass" aria-label="バックグラス：得点と台の状態">
+<div class="score-panel"><span>SCORE</span><strong id="score">0</strong></div>
+<div class="table-panel"><small>BALL <b id="balls">1 / 3</b></small><div id="rollovers" aria-label="トップレーン達成状況">A ○　B ○　C ○</div><div id="kickback">CENTER SAVE 1</div></div>
+<div id="score-event" aria-live="polite">トップレーンABCをそろえてセーブを補充</div></section>
 <div id="phase" role="status">読み込み中</div>
 <nav aria-label="ゲーム操作"><button id="pause" disabled>一時停止</button><button data-restart disabled>やり直す</button><button data-view="play" class="selected" disabled>プレイ</button><button data-view="top" disabled>真上</button></nav>
 <div class="controls"><button id="left" aria-label="左フリッパー" disabled>Z · 左</button><button id="launch" disabled>発射 · SPACE</button><button id="right" aria-label="右フリッパー" disabled>右 · /</button></div>
 <p id="message" role="status">読み込み中…</p>
 <section id="gameover" hidden><h2>GAME OVER</h2><p>FINAL SCORE <strong id="final-score">0</strong></p><button data-restart>もう一度遊ぶ</button></section>
-<details><summary>操作・この版について</summary><p>Z / 左Shift：左フリッパー<br>/ / 右Shift：右フリッパー<br>SPACE：発射、P / Esc：一時停止、R：やり直す、C：視点<br>スマホは左右ボタンを同時に長押しできます。画面を離れると一時停止します。</p><p>Rapier物理で球・機構を検証する初期プレイ版。衝突は簡略形状です。左右の戻りガイドと弱めの反発で遊びやすく調整しています。中央に落とすと失球します。ランプは一旦取り外しています。装飾機構はすべてが動作するものではありません。</p></details>
+<details><summary>操作・この版について</summary><p>Z / 左Shift：左フリッパー<br>/ / 右Shift：右フリッパー<br>SPACE：発射、P / Esc：一時停止、R：やり直す、C：視点<br>スマホは左右ボタンを同時に長押しできます。画面を離れると一時停止します。</p><p>Rapier物理で球・機構を検証する初期プレイ版。衝突は簡略形状です。左右の戻りガイドと弱めの反発で遊びやすく調整しています。中央セーブは1回分から開始し、トップレーンABC達成で1回分へ補充します。消費後は中央落球で失球します。ランプは一旦取り外しています。装飾機構はすべてが動作するものではありません。</p></details>
 </main><script type="module" src="./js/pinball/app.mjs"></script></body></html>

@@ -49,3 +49,9 @@ Source: user-provided “3Dピンボール 技術設計・ゲーム企画”, 42
 - Finish 0.1 controls: charge/release plunger, nudge/TILT and aiming/saving checks.
 - Implement the user's latest classic-table priorities (top lanes/rollovers, spinner, readable backglass, explicit kickback charge/use), with actual collision/scoring and regression tests.
 - Reintroduce ramps only with traversability and underside-clearance tests. Then proceed through remaining 0.2/0.3/0.4 items instead of marking them done by appearance.
+
+## Follow-up implementation checkpoint
+
+On pinball/0.1.0 the following latest requests are now implemented and tested: three upper physical lane dividers plus one-shot rollover detection/ABC completion; visible sensor-driven spinner rotation/decay; camera-independent readable backglass with score/ball/ABC/center-save state; one initial center-save charge recharged by ABC, consumed by a real impulse without teleportation. This is a center saver, not a conventional side outlane kickback, and the spinner is not a freely simulated rigid-body wheel. Scoring/progression now pass through state.onEvent with event-ID deduplication, an incremental separation step rather than the full typed EventBus/PinballComponent architecture.
+
+The earlier audit rows describe the pre-checkpoint version. TypeScript/Vite, charged plunger, nudge/TILT, proper ramp return, advanced modes and persistence remain incomplete. No milestone is declared complete by these additions.

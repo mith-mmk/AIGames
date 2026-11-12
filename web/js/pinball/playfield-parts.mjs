@@ -25,9 +25,24 @@ export class PlayfieldParts {
       a.cylinder(g, 0.095, 0.04, x, 0.065, -1.35, "brass");
     }
     a.tube(g, [[-0.44, 0.8, -1.35], [0.44, 0.8, -1.35]], 0.028, "chrome");
-    a.roundedBox(g, 0.34, 0.3, 0.07, 0, 0.62, -1.35, "brass", 0.02);
-    a.box(g, 0.23, 0.17, 0.025, 0, 0.62, -1.3, "dark");
-    a.ring(g, 0.055, 0.012, 0, 0.62, -1.28, "cream").rotation.x = 0;
+    const spinner = new T.Group(); spinner.position.set(0,.36,-1.35); g.add(spinner); a.spinnerPivot=spinner;
+    a.roundedBox(spinner, 0.34, 0.3, 0.07, 0, 0, 0, "brass", 0.02);
+    a.box(spinner, 0.23, 0.17, 0.025, 0, 0, .045, "dark");
+    a.ring(spinner, 0.055, 0.012, 0, 0, .065, "cream").rotation.x = 0;
+    for (const x of [-1.875,-.625,.625,1.875]) {
+      a.tube(g,[[x,.23,-5.0],[x,.23,-4.1]],.035,"chrome");
+      for(const z of [-5.0,-4.1]) a.cylinder(g,.055,.23,x,.12,z,"brass");
+    }
+    a.laneLamps=[];
+    for (const [i,x] of [-1.25,0,1.25].entries()) {
+      a.text(g,["A","B","C"][i],x,.08,-4.95,.48,.32);
+      a.ring(g,.23,.018,x,.065,-4.4,"brass");
+      a.laneLamps.push(a.cylinder(g,.14,.018,x,.055,-4.4,"jade"));
+    }
+    const kicker=a.cylinder(g,.17,.1,0,.11,4.3,"brass");
+    kicker.name="center-save-kicker";
+    a.text(g,"SAVE",0,.18,4.45,.6,.15);
+
   }
   inlane(side) {
     const a=this.a, g=a.root, edge=side<0?2.79:2.34;

@@ -2,6 +2,8 @@
 export class PinballGameState {
   constructor() { this.restart(); }
   restart() {
+    this.rollovers = [false, false, false]; this.rolloverSets = 0;
+    this.kickbackCharges = 1; this.kickbackUses = 0; this.eventIds = new Set();
     this.score = 0; this.ballNumber = 1; this.phase = "ready";
     this.lastEvent = "発射してスタート"; this.resumePhase = "ready";
   }
@@ -12,6 +14,28 @@ export class PinballGameState {
   award(points, label) {
     if (this.phase !== "playing") return;
     this.score += points; this.lastEvent = label + " +" + points;
+  }
+  /** Events are emitted once per physical contact/traversal, never per frame. */
+  onEvent(event) {
+    if (this.phase !== "playing" || !event || !event.id || this.eventIds.has(event.id)) return false;
+    const points = { bumper: 100, sling: 25, target: 50, bank: 75, spinner: 150 };
+    if (!(event.type in points) && !["rollover", "kickback"].includes(event.type)) return false;
+    if (event.type === "rollover" && (!Number.isInteger(event.lane) || event.lane < 0 || event.lane > 2)) return false;
+    this.eventIds.add(event.id);
+    if (event.type === "kickback") {
+      if (!this.kickbackCharges) return false;
+      this.kickbackCharges = 0; this.kickbackUses++; this.lastEvent = "CENTER SAVE"; return true;
+    }
+    if (event.type === "rollover") {
+      if (this.rollovers[event.lane]) return false;
+      this.rollovers[event.lane] = true; this.award(100, "LANE " + (event.lane + 1));
+      if (this.rollovers.every(Boolean)) {
+        this.rolloverSets++; this.kickbackCharges = 1; this.rollovers.fill(false);
+        this.award(500, "LANES COMPLETE · CENTER SAVE READY");
+      }
+      return true;
+    }
+    this.award(points[event.type], event.type.toUpperCase()); return true;
   }
   drain() {
     if (this.phase !== "playing") return false;

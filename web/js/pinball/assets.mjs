@@ -226,29 +226,10 @@ export class WorkshopAssets {
     // Ramps remain archived until collision geometry supports reliable play.
     this.robot();
     new WorkshopMechanisms(this).build(g);
-    // Shooter lane and spring-loaded plunger assembly.
-    this.tube(
-      g,
-      [
-        [2.35, 0.23, 4.5],
-        [2.35, 0.23, -3.9],
-        [2.1, 0.23, -4.8],
-        [1.45, 0.23, -5.12],
-      ],
-      0.045,
-      "chrome",
-    );
-    this.tube(
-      g,
-      [
-        [2.72, 0.23, 4.55],
-        [2.72, 0.23, -4.15],
-        [2.4, 0.23, -5.2],
-        [1.65, 0.23, -5.45],
-      ],
-      0.045,
-      "chrome",
-    );
+    // Shooter walls match the physical straight-segment guide layout.
+    this.tube(g,[[2.35,.23,4.6],[2.35,.23,-3.9]],.045,"chrome");
+    const roof=[[2.72,.23,4.55],[2.72,.23,-4.15],[2.4,.23,-5.2],[1.25,.23,-5.55],[.95,.23,-5.3]];
+    for(let i=0;i<roof.length-1;i++) this.tube(g,[roof[i],roof[i+1]],.06,"chrome");
     for (let i = 0; i < 14; i++) {
       const r = this.ring(
         g,

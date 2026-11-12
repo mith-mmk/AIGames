@@ -1,6 +1,6 @@
 # Chappy Workshop / implementation history
 
-Current status: **partial 0.1 prototype plus selected 0.2 features** on `pinball/0.1.0`. Physics, basic scoring and three balls exist; original-spec completion is not claimed. See [original specification audit](pinball-spec-audit.md) for implemented/missing requirements. Latest local tuning is not yet deployed to Site.
+Current status: **partial 0.1 prototype plus selected 0.2 features** on `pinball/0.1.0`. Physics, basic scoring and three balls exist; original-spec completion is not claimed. See [original specification audit](pinball-spec-audit.md) for implemented/missing requirements. See the deployment report for the exact published source revision.
 
 The sections below through Art pass 07 are historical records of the initial visual slice, not descriptions of the current runtime. Statements such as “Rapier not integrated” and “non-playable” apply only to that earlier slice.
 
@@ -88,3 +88,7 @@ User play exposed unusable diagonal framing and repeatable left-lane traps. Inde
 A front-centered view 34 degrees from overhead replaces the almost vertical default; top view remains available. The geometric board tilt remains 6.5 degrees. Downhill acceleration uses a documented 0.65 rolling-inertia/gameplay approximation, not an exact rigid-body simulation of a real table. Solid triangular return guides close the old side escape routes and guide balls inside flipper pivots; center drain remains. Bumper and sling kicks are softer. No automatic rescue or ball-save is used.
 
 After tuning, 31 launch-strength samples: no-input median 9.13 seconds, simple reactive-flipper median 10.17 seconds, maximum 56.53 seconds, minimum 3.52 seconds. Earlier 21-strength no-input sample median was 3.72 seconds; sample counts differ, so this is indicative rather than a controlled paired comparison. Tests also include 90 varied launches, 12 full sessions and explicit left/right guide delivery. Browser test now includes real-time key pulses with rendering running, in addition to fast physics sweeps. Physical-phone testing and player difficulty feedback remain outstanding.
+
+## Classic mechanisms checkpoint
+
+Three upper physical top lanes, rollover completion and refill rules, sensor-driven spinner with visible rotation/decay, readable HTML backglass, and one-charge center-save impulse are connected. Independent rules handle scoring and progress via onEvent, rejecting duplicate event IDs. The center saver starts charged and is refilled to one by completing ABC; no warp rescue exists. Browser checks exercise actual lane crossing, spinner triggering and save use, then verify the HUD. Initial rules/layout/physics suite now has 21 cases. Real phone and human subjective difficulty remain unverified; automated real-time key presses are not human playtesting.

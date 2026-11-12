@@ -6,7 +6,7 @@ import { PinballGameState } from "./game-state.mjs";
 export class PinballPhysics {
   static async create() { await R.init(); return new PinballPhysics(); }
   constructor() {
-    this.state = new PinballGameState(); this.accumulator = 0; this.time = 0;
+    this.state = new PinballGameState(); this.accumulator = 0; this.time = 0; this.eventSequence = 0; this.spinnerAngle = 0; this.spinnerSpeed = 0;
     // Reduced downhill acceleration approximates rolling inertia for beginner play.
     this.world = new R.World({ x: 0, y: -98.1 * Math.cos(TABLE.tilt), z: 63.765 * Math.sin(TABLE.tilt) });
     this.world.timestep = 1 / 120;
@@ -38,7 +38,7 @@ export class PinballPhysics {
     this.box(2.53, 0.3, 5.5, 0.27, 0.4, 0.08);
     // Shooter divider stops above the bumper area; curved roof feeds the ball left.
     this.segment([2.35, 0.23, 4.6], [2.35, 0.23, -3.9], 0.045);
-    const roof = [[2.72, .23, -4.15], [2.4, .23, -5.2], [1.65, .23, -5.45], [0.5, .23, -4.4]];
+    const roof = [[2.72, .23, -4.15], [2.4, .23, -5.2], [1.25, .23, -5.55], [.95, .23, -5.3]];
     for (let i = 0; i < roof.length - 1; i++) this.segment(roof[i], roof[i + 1], 0.06);
     for (const [i, p] of BUMPERS.entries()) {
       const c = this.world.createCollider(R.ColliderDesc.cylinder(0.32, 0.40).setTranslation(p.x, 0.34, p.z).setRestitution(0.9));
@@ -59,7 +59,13 @@ export class PinballPhysics {
       this.segment([side * .6, .22, -.45], [side * 1.8, .22, -.95], .07,
         { type: "target", points: 50, label: "TARGET", key: "t" + side });
       this.segment([side * .9, .22, -1.25], [side * 1.65, .22, -1.65], .07,
-        { type: "target", points: 75, label: "BANK", key: "u" + side });
+        { type: "bank", points: 75, label: "BANK", key: "u" + side });
+    }
+    for (const x of [-1.875, -.625, .625, 1.875]) this.segment([x, .23, -5.0], [x, .23, -4.1], .035);
+    for (let lane = 0; lane < 3; lane++) {
+      const c = this.world.createCollider(R.ColliderDesc.cuboid(.35, .30, .08)
+        .setTranslation((lane - 1) * 1.25, .30, -4.55).setSensor(true));
+      this.hitObjects.set(c.handle, { type: "rollover", lane, key: "lane" + lane });
     }
     // Spinner is a sensor, so the low central shot remains passable.
     const spin = this.world.createCollider(R.ColliderDesc.cuboid(.35, .4, .05).setTranslation(0, .4, -1.35).setSensor(true));
@@ -86,7 +92,7 @@ export class PinballPhysics {
     return true;
   }
   restart() {
-    this.state.restart(); this.accumulator = 0; this.cooldowns.clear(); this.resetBall();
+    this.state.restart(); this.spinnerAngle = 0; this.spinnerSpeed = 0; this.accumulator = 0; this.cooldowns.clear(); this.resetBall();
     this.flipperAngles = [flipperAngle(false, false), flipperAngle(true, false)];
     for (let i = 0; i < 2; i++) this.flippers[i].setRotation({ x: 0, y: Math.sin(this.flipperAngles[i]/2), z: 0, w: Math.cos(this.flipperAngles[i]/2) }, true);
   }
@@ -94,7 +100,8 @@ export class PinballPhysics {
   hit(other) {
     const h = this.hitObjects.get(other);
     if (!h || (this.cooldowns.get(h.key) ?? -99) > this.time) return;
-    this.cooldowns.set(h.key, this.time + .16); this.state.award(h.points, h.label);
+    this.cooldowns.set(h.key, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, id: "contact-" + this.eventSequence++ });
+    if (h.type === "spinner" && accepted) this.spinnerSpeed = Math.min(50, this.spinnerSpeed + Math.max(8, Math.abs(this.ball.linvel().z) * 2));
     if (h.type === "bumper" || h.type === "sling") {
       const p = this.ball.translation(), dx = p.x - h.x, dz = p.z - h.z, len = Math.hypot(dx, dz) || 1;
       const v = this.ball.linvel(), speed = h.type === "bumper" ? 9 : 6;
@@ -113,6 +120,8 @@ export class PinballPhysics {
         const angle = this.flipperAngles[i];
         this.flippers[i].setNextKinematicRotation({ x: 0, y: Math.sin(angle/2), z: 0, w: Math.cos(angle/2) });
       }
+      this.spinnerAngle = (this.spinnerAngle + this.spinnerSpeed / 120) % (Math.PI * 2);
+      this.spinnerSpeed *= Math.exp(-2 / 120);
       this.world.step(this.queue);
       this.queue.drainCollisionEvents((a, b, started) => {
         if (started && this.state.phase === "playing") {
@@ -121,6 +130,11 @@ export class PinballPhysics {
       });
       if (this.state.phase === "ready") { this.resetBall(); continue; }
       const p = this.ball.translation(), v = this.ball.linvel();
+      // A charged, visible center saver launches the descending ball physically.
+      if (Math.abs(p.x) < .6 && p.z > 4.05 && p.z < 4.5 && v.z > 0 &&
+          this.state.kickbackCharges && this.state.onEvent({ type: "kickback", id: "save-" + this.eventSequence++ })) {
+        this.ball.applyImpulse({ x: -p.x * .3, y: .48, z: (-16 - v.z) * this.ball.mass() }, true);
+      }
       if (p.z > 4.65 || p.y < -1.0 || Math.abs(p.x) > 3.2 || p.z < -6.5) {
         this.state.drain(); this.resetBall(); continue;
       }

@@ -89,6 +89,18 @@ const http = require("node:http");
     }
     await page.screenshot({path:path.join(output,"active-play.png")});
     await page.locator("nav [data-restart]").click();
+    // Verify visible rule feedback through actual lane/spinner/save physics.
+    await page.locator("#launch").click();
+    await page.evaluate(()=>{ const g=window.__pinball.game; g.ball.setTranslation({x:-1.25,y:.18,z:-4.9},true);g.ball.setLinvel({x:0,y:0,z:4},true); });
+    await page.waitForFunction(()=>window.__pinball.game.state.rollovers[0]);
+    assert.match(await page.locator("#rollovers").textContent(), /A ●/);
+    await page.evaluate(()=>{ const g=window.__pinball.game; g.ball.setTranslation({x:0,y:.18,z:-1.7},true);g.ball.setLinvel({x:0,y:0,z:4},true); });
+    await page.waitForFunction(()=>window.__pinball.game.spinnerSpeed>0);
+    await page.evaluate(()=>{ const g=window.__pinball.game; g.ball.setTranslation({x:0,y:.18,z:4.1},true);g.ball.setLinvel({x:0,y:0,z:3},true); });
+    await page.waitForFunction(()=>window.__pinball.game.state.kickbackUses===1);
+    await page.waitForFunction(()=>document.querySelector("#kickback").textContent.includes("0 / 1"));
+    await page.screenshot({path:path.join(output,"backglass-active.png")});
+    await page.locator("nav [data-restart]").click();
     // Continuous unassisted game: actual physics, no manual relocation or state drain calls.
     const continuous = await page.evaluate(() => {
       const g = window.__pinball.game; g.restart(); let steps = 0, launches = 0;

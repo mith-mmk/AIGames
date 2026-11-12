@@ -141,6 +141,10 @@ export class PinballTablePreview {
     document.querySelector("#launch").disabled = state.phase !== "ready";
     document.querySelector("#gameover").hidden = state.phase !== "gameover";
     document.querySelector("#final-score").textContent = state.score.toLocaleString("ja-JP");
+    document.querySelector("#rollovers").textContent = ["A","B","C"].map((label,i)=>`${label} ${state.rollovers?.[i] ? "●" : "○"}`).join("　");
+    document.querySelector("#kickback").textContent = `CENTER SAVE ${state.kickbackCharges ?? 0} / 1`;
+    document.querySelector("#score-event").textContent = state.lastEvent;
+    for(const [i,lamp] of (this.assets.laneLamps || []).entries()) lamp.material = this.assets.materials[state.rollovers?.[i] ? "light" : "jade"];
     this.canvas.dataset.phase = state.phase;
     this.canvas.dataset.score = state.score;
     this.canvas.dataset.ball = state.ballNumber;
@@ -153,6 +157,7 @@ export class PinballTablePreview {
       const p = this.game.ballPosition;
       this.ball.position.set(p.x, p.y, p.z);
       for (let i = 0; i < 2; i++) this.assets.flippers[i].rotation.y = this.game.flipperAngles[i];
+      if (this.assets.spinnerPivot) this.assets.spinnerPivot.rotation.x = this.game.spinnerAngle || 0;
       this.updateHUD();
     }
     this.renderer.render(this.scene, this.camera);

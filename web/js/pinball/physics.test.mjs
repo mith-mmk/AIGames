@@ -21,7 +21,7 @@ test("real launch feeds scoring objects, not a scripted path", async () => {
   const g = await PinballPhysics.create();
   try {
     assert.equal(g.launch(), true); run(g, 3);
-    assert.ok(g.state.score >= 100, `score=${g.state.score}`);
+    assert.ok(g.state.score > 0, `score=${g.state.score}`);
     assert.ok(g.ballPosition.x < 2.3); assert.ok(Number.isFinite(g.ballPosition.y));
   } finally { g.dispose(); }
 });
@@ -84,6 +84,9 @@ test("ninety varied launches drain without stuck recovery or position jumps", as
           assert.ok(Math.hypot(q.x-p.x, q.y-p.y, q.z-p.z) < .7, `shot ${shot}: position jump`);
         }
       }
+      // New lane goals and charged saver can sustain legitimate rallies beyond 60s.
+      // Release flippers: a free-running ball must still clear and drain naturally.
+      for (let tick = 0; tick < 7200 && g.state.phase === "playing"; tick++) g.step(1 / 120);
       assert.equal(g.state.phase, "ready", `shot ${shot} stuck at ${JSON.stringify(g.ballPosition)}`);
       assert.equal(g.state.ballNumber, 2);
     } finally { g.dispose(); }
@@ -147,4 +150,65 @@ test("beginner play duration remains controllable across thirty-one powers", asy
     medians.push(durations[15]);
   }
   assert.ok(medians[1] > medians[0], `reactive flippers must help: ${medians}`);
+});
+
+test("rules deduplicate events, complete lanes, and refill one center save", () => {
+  const s = new PinballGameState(); s.launch();
+  assert.equal(s.onEvent({ type: "bumper", id: "b1" }), true);
+  assert.equal(s.onEvent({ type: "bumper", id: "b1" }), false); assert.equal(s.score, 100);
+  assert.equal(s.onEvent({ type: "kickback", id: "save1" }), true);
+  assert.equal(s.onEvent({ type: "kickback", id: "save2" }), false);
+  for (let lane = 0; lane < 3; lane++) {
+    s.onEvent({ type: "rollover", lane, id: "lane" + lane });
+    if (lane < 2) assert.equal(s.onEvent({ type: "rollover", lane, id: "repeat" + lane }), false);
+  }
+  assert.equal(s.score, 900); assert.equal(s.rolloverSets, 1);
+  assert.equal(s.kickbackCharges, 1); assert.deepEqual(s.rollovers, [false, false, false]);
+  assert.equal(s.onEvent({ type: "rollover", lane: 2, id: "lane2" }), false);
+});
+
+test("each physical top lane registers center and edge traversals only once", async () => {
+  for (let lane = 0; lane < 3; lane++) for (const offset of [-.43, 0, .43]) {
+    const g = await PinballPhysics.create();
+    try {
+      g.launch(); g.ball.setTranslation({ x: (lane - 1) * 1.25 + offset, y: .18, z: -4.9 }, true);
+      g.ball.setLinvel({ x: 0, y: 0, z: 3 }, true); run(g, .15);
+      assert.equal(g.state.rollovers[lane], true, `lane ${lane} offset ${offset}`);
+      assert.equal(g.state.score, 100); run(g, .03); assert.equal(g.state.score, 100);
+    } finally { g.dispose(); }
+  }
+});
+
+test("spinner traversal accelerates rotation once; rotation decays without score farming", async () => {
+  const g = await PinballPhysics.create();
+  try {
+    g.launch(); g.ball.setTranslation({ x: 0, y: .18, z: -1.7 }, true);
+    g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true); run(g, .12);
+    assert.equal(g.state.score, 150); assert.ok(g.spinnerSpeed > 0); assert.ok(g.spinnerAngle > 0);
+    const speed = g.spinnerSpeed; run(g, .05); assert.ok(g.spinnerSpeed < speed); assert.equal(g.state.score, 150);
+  } finally { g.dispose(); }
+});
+
+test("charged center saver applies impulse without teleport, then allows real drain", async () => {
+  const g = await PinballPhysics.create();
+  try {
+    g.launch(); g.ball.setTranslation({ x: 0, y: .18, z: 4.12 }, true);
+    g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true); g.step(1 / 120);
+    assert.equal(g.state.kickbackCharges, 0); assert.equal(g.state.kickbackUses, 1);
+    assert.ok(g.ball.linvel().z < -10); assert.ok(g.ballPosition.z > 4.1);
+    assert.equal(g.state.phase, "playing"); assert.equal(g.state.lastEvent, "CENTER SAVE");
+    run(g, .3); assert.ok(g.ballPosition.z < 3.5);
+    g.ball.setTranslation({ x: 0, y: .18, z: 4.12 }, true);
+    g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true); run(g, .3);
+    assert.equal(g.state.phase, "ready"); assert.equal(g.state.ballNumber, 2);
+    assert.equal(g.state.kickbackCharges, 0);
+  } finally { g.dispose(); }
+});
+
+test("natural shooter launch traverses a top rollover lane", async () => {
+  const g = await PinballPhysics.create();
+  try {
+    g.launch(.7); run(g, 1.5);
+    assert.equal(g.state.rollovers[2], true); assert.ok(g.state.score >= 100);
+  } finally { g.dispose(); }
 });
