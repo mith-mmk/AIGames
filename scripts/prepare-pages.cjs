@@ -4,7 +4,7 @@ const { execFileSync } = require('node:child_process');
 const root = path.resolve(__dirname, '..');
 const source = path.join(root, 'web');
 const output = path.join(root, '.pages-dist');
-const runtime = new Set(['.html', '.css', '.js', '.mjs', '.json', '.png', '.jpg', '.jpeg', '.svg', '.webp', '.gif', '.ico', '.ogg', '.mp3', '.wav', '.woff', '.woff2', '.ttf']);
+const runtime = new Set(['.wasm', '.html', '.css', '.js', '.mjs', '.json', '.png', '.jpg', '.jpeg', '.svg', '.webp', '.gif', '.ico', '.ogg', '.mp3', '.wav', '.woff', '.woff2', '.ttf']);
 const copied = [];
 function visit(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {

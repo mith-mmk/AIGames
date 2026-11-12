@@ -68,3 +68,11 @@ Added 2 triangular slingshot assemblies (plates, rubber bands, posts, kicker lin
 These are rendered gameplay-hardware candidates, not functioning Rapier bodies. The new ramp ends at a modeled receiver, whose internal return path is not implemented. Layout guards check approach bounds, rail width and gate height; actual collisions, shot reachability and dynamics still need physics integration. Desktop full-view budget: 668 calls / 166,102 triangles.
 
 Review caught the original right-sling tip intersecting the existing preview ball path. Moved the upper sling vertex inward; minimum sampled ball-center/rubber-centerline distance is now 0.308 render units versus combined radii 0.190. Added both-sided curve-sampling regression coverage with an extra 0.02 margin. This remains geometric preview clearance, not a physical simulation test.
+
+## Playable alpha
+
+Art expansion is paused. Rapier 0.17.3 (vendored inline WASM with Apache license) drives a CCD ball at 120 Hz, kinematic flippers, bumpers, targets, slings and ramp collision proxies. Three balls, scoring, launch, restart, pause/gameover, keyboard and simultaneous pointer controls are connected. Blur/visibility/context loss pauses play; resuming is explicit. No external runtime CDN is required.
+
+This is an initial gameplay implementation: complex art uses simplified collision proxies; upper receiver collection awards once then relocates the ball to the return lane; stalled balls trigger a non-scoring ball-search recovery. It is not a fully mechanically simulated machine. Touch layout was checked at 390x844 in desktop Chrome, not on a physical phone.
+
+Validation: 13 rules/layout/physics tests plus real Chromium launch, dual inputs, pause freeze, score/three drains/gameover, restart, narrow viewport, blur and WebGL context restoration. Distribution retains Three.js and Rapier license notices.
