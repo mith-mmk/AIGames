@@ -1,6 +1,8 @@
-# Chappy Workshop / table study 01
+# Chappy Workshop / implementation history
 
-Status: **visual/mechanism study, not a playable physics game**. This first slice follows the owner's emphasis on table composition and well-made 3D parts. Do not label path animation as a collision or playability test.
+Current status: **partial 0.1 prototype plus selected 0.2 features** on `pinball/0.1.0`. Physics, basic scoring and three balls exist; original-spec completion is not claimed. See [original specification audit](pinball-spec-audit.md) for implemented/missing requirements. Latest local tuning is not yet deployed to Site.
+
+The sections below through Art pass 07 are historical records of the initial visual slice, not descriptions of the current runtime. Statements such as “Rapier not integrated” and “non-playable” apply only to that earlier slice.
 
 ## Art direction and scope
 
