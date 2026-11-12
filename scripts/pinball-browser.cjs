@@ -54,6 +54,11 @@ const http = require("node:http");
     await page.waitForFunction(
       () => document.querySelector("#message").textContent === "",
     );
+    await page.waitForFunction(() => Number(document.querySelector("#table").dataset.drawCalls) > 0);
+    const metrics = await page.locator("#table").evaluate((c) => ({ drawCalls: Number(c.dataset.drawCalls), triangles: Number(c.dataset.triangles) }));
+    assert.ok(metrics.drawCalls < 1000, `Draw call budget: ${metrics.drawCalls}`);
+    assert.ok(metrics.triangles < 500000, `Triangle budget: ${metrics.triangles}`);
+    console.log("Render budget (desktop full view):", metrics);
     await page.screenshot({ path: path.join(output, "full.png") });
     for (const name of ["機構の接写", "真上", "全景"]) {
       await page.getByRole("button", { name, exact: true }).click();
@@ -112,6 +117,15 @@ const http = require("node:http");
       ),
       false,
     );
+    await page.evaluate(() => {
+      const ext = document.querySelector("#table").getContext("webgl2").getExtension("WEBGL_lose_context");
+      if (!ext) throw new Error("Context-loss test extension unavailable");
+      ext.loseContext();
+      setTimeout(() => ext.restoreContext(), 500);
+    });
+    await page.waitForFunction(() => document.querySelector("#message").textContent.includes("中断"));
+    await page.waitForFunction(() => document.querySelector("#message").textContent === "");
+    await page.screenshot({ path: path.join(output, "restored.png") });
     await page.reload();
     await page.waitForFunction(
       () => document.querySelector("#message").textContent === "",
@@ -122,7 +136,7 @@ const http = require("node:http");
     );
     assert.deepEqual(errors, []);
     console.log(
-      "PASS: WebGL boot, cameras, path toggle, keyboard, mobile overflow, reload; screenshots " +
+      "PASS: WebGL boot, cameras, path toggle, keyboard, mobile overflow, context restore, reload; screenshots " +
         output,
     );
   } finally {

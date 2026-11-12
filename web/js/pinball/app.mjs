@@ -56,9 +56,27 @@ export class PinballTablePreview {
     this.scene.add(floor);
     this.room = new WorkshopRoom(this.assets);
     this.scene.add(this.room.build());
+    this.bakeEnvironment();
+    this.frameCount = 0;
     this.last = 0;
     this.running = true;
     this.init();
+  }
+  bakeEnvironment() {
+    this.scene.environment = null;
+    if (this.reflection) this.reflection.dispose();
+    // Bake only room lighting into reflections; never run six captures per frame.
+    const reflectionTarget = new T.WebGLCubeRenderTarget(128, { type: T.HalfFloatType });
+    const reflectionCamera = new T.CubeCamera(0.1, 60, reflectionTarget);
+    reflectionCamera.position.set(0, 2, 0);
+    this.board.visible = false;
+    reflectionCamera.update(this.renderer, this.scene);
+    this.board.visible = true;
+    const pmrem = new T.PMREMGenerator(this.renderer);
+    this.reflection = pmrem.fromCubemap(reflectionTarget.texture);
+    this.scene.environment = this.reflection.texture;
+    reflectionTarget.dispose();
+    pmrem.dispose();
   }
   init() {
     this.state.init();
@@ -112,6 +130,10 @@ export class PinballTablePreview {
       this.ball.rotation.x += dt * 8;
     }
     this.renderer.render(this.scene, this.camera);
+    if (this.frameCount++ % 60 === 0) {
+      this.canvas.dataset.drawCalls = this.renderer.info.render.calls;
+      this.canvas.dataset.triangles = this.renderer.info.render.triangles;
+    }
   }
   pause() {
     this.state.release();
@@ -221,6 +243,7 @@ function bindInput(game) {
       "描画が中断しました。復帰しない場合はページを再読み込みしてください。";
   });
   game.canvas.addEventListener("webglcontextrestored", () => {
+    game.bakeEnvironment();
     game.last = 0;
     document.querySelector("#message").textContent = "";
     game.renderer.setAnimationLoop((t) => game.frame(t));

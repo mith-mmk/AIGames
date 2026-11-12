@@ -40,3 +40,11 @@ Added an actual workshop backdrop: paneled wall, frosted window, workbench, hang
 Original canvas-printed playfield artwork adds a dial/gear seal, lane arrows, double border and maker legends, without putting extra solid obstacles in ball paths. Cabinet side panels, vents and corner protectors add depth. Local textures require no external requests.
 
 Still not final art: tools and bottles are stylized parametric silhouettes. Next visual pass should refine material microdetail and bevels, a recognizable landmark silhouette and environmental reflections, while keeping the ball and targets brighter than scenery. Physics remains unconnected.
+
+## Art pass 03: mechanical reference
+
+The owner requested an ImageGen concept before implementing more mechanical character. The supplied concept was inspected locally (private QA reference; not shipped). Adapted its large rear flywheel, toothed gears with hubs/spokes, crank linkage, guarded cylinders, warm luminous bumper caps, metallic ramp and brass-faced robot into actual editable meshes. Backboard machinery is behind the ramp; the lower central ball route remains open. Cosmetic mechanisms do not imply functioning physics.
+
+Added rounded extrusions for bodywork, shared deterministic patina texture, robot ear ribs / elbow rings / gripped tool, ramp rail stanchions and an external cabinet service hatch. A 128px cubemap of the room is baked once at startup, filtered with PMREM and rebuilt on WebGL context restoration. No per-frame cube capture or remote texture requests.
+
+Desktop full view measured 542 draw calls / 133,144 triangles on hadrianus Chrome. Browser regression tests enforce <1,000 calls and <500,000 triangles; these are complexity guardrails, not a claim of mobile frame rate. Real-device mobile performance and physics remain unverified. Art remains a stylized interpretation, not photographic fidelity to the concept.
