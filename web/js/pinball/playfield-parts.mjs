@@ -6,7 +6,7 @@ export class PlayfieldParts {
   constructor(assets) { this.a = assets; }
   build() {
     const a = this.a, g = a.root;
-    for (const side of [-1, 1]) this.sling(side);
+    for (const side of [-1, 1]) this.inlane(side);
     // Upper ramp deferred while the base game is validated.
     // Two raised, bracket-mounted three-target banks, upstream of existing banks.
     for (const side of [-1, 1]) {
@@ -28,6 +28,17 @@ export class PlayfieldParts {
     a.roundedBox(g, 0.34, 0.3, 0.07, 0, 0.62, -1.35, "brass", 0.02);
     a.box(g, 0.23, 0.17, 0.025, 0, 0.62, -1.3, "dark");
     a.ring(g, 0.055, 0.012, 0, 0.62, -1.28, "cream").rotation.x = 0;
+  }
+  inlane(side) {
+    const a=this.a, g=a.root, edge=side<0?2.79:2.34;
+    const vertices=[[side*edge,1.6],[side*.65,3.25],[side*edge,3.25]];
+    const shape=new T.Shape(); vertices.forEach(([x,z],i)=>i?shape.lineTo(x,-z):shape.moveTo(x,-z)); shape.closePath();
+    const geo=new T.ExtrudeGeometry(shape,{depth:.66,bevelEnabled:false});geo.rotateX(-Math.PI/2);
+    a.mesh(geo,"dark",g,0,.04,0);
+    a.tube(g,[...vertices,vertices[0]].map(([x,z])=>[x,.71,z]),.025,"brass");
+    // Inner face is a physical guide back toward the flippers, not an open outlane.
+    a.tube(g,vertices.slice(0,2).map(([x,z])=>[x,.22,z]),.055,"rubber");
+    a.text(g,"RETURN",side*1.9,.72,2.95,.75,.14);
   }
   sling(side) {
     const a = this.a, g = new T.Group(); a.root.add(g);

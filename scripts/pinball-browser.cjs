@@ -79,6 +79,16 @@ const http = require("node:http");
     await page.locator("nav [data-restart]").click();
     assert.equal(await page.evaluate(() => window.__pinball.game.state.score), 0);
     assert.equal(await page.evaluate(() => window.__pinball.game.state.phase), "ready");
+    // Real-time browser input: beginner pulses both flippers while the renderer runs.
+    await page.locator("#launch").click();
+    for (let pulse=0;pulse<8;pulse++) {
+      await page.keyboard.down("KeyZ"); await page.keyboard.down("Slash");
+      await page.waitForTimeout(120);
+      await page.keyboard.up("KeyZ"); await page.keyboard.up("Slash");
+      await page.waitForTimeout(280);
+    }
+    await page.screenshot({path:path.join(output,"active-play.png")});
+    await page.locator("nav [data-restart]").click();
     // Continuous unassisted game: actual physics, no manual relocation or state drain calls.
     const continuous = await page.evaluate(() => {
       const g = window.__pinball.game; g.restart(); let steps = 0, launches = 0;

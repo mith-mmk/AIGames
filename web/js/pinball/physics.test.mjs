@@ -105,3 +105,46 @@ test("twelve full three-ball sessions end without rescue", async () => {
     } finally { g.dispose(); }
   }
 });
+
+test("side-wall feeds reach the playable flipper area instead of side drains", async () => {
+  for (const side of [-1, 1]) {
+    const g = await PinballPhysics.create();
+    try {
+      g.launch(); g.ball.setTranslation({ x: side * 2.12, y: .18, z: 1.3 }, true);
+      g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true);
+      let reached = false;
+      for (let tick = 0; tick < 1200 && g.state.phase === "playing"; tick++) {
+        g.step(1 / 120);
+        if (g.ballPosition.z > 3.3) {
+          assert.ok(Math.abs(g.ballPosition.x) < .85, JSON.stringify(g.ballPosition)); reached = true; break;
+        }
+      }
+      assert.ok(reached, `side ${side} did not feed flippers`);
+    } finally { g.dispose(); }
+  }
+});
+
+test("beginner play duration remains controllable across thirty-one powers", async () => {
+  const medians = [];
+  for (const reactive of [false, true]) {
+    const durations = [];
+    for (let shot = 0; shot < 31; shot++) {
+      const g = await PinballPhysics.create();
+      try {
+        g.launch(shot / 30); let tick = 0;
+        for (; tick < 10800 && g.state.phase === "playing"; tick++) {
+          const p = g.ballPosition, v = g.ball.linvel();
+          g.step(1 / 120, { left: reactive && p.z > 3.35 && p.x < .3 && v.z > 0,
+            right: reactive && p.z > 3.35 && p.x > -.3 && v.z > 0 });
+        }
+        assert.equal(g.state.phase, "ready", `power ${shot}/30 did not finish`);
+        durations.push(tick / 120);
+      } finally { g.dispose(); }
+    }
+    durations.sort((a, b) => a - b);
+    assert.ok(durations[0] > 3, `instant drain: ${durations[0]}`);
+    assert.ok(durations[15] > 8, `median too short: ${durations[15]}`);
+    medians.push(durations[15]);
+  }
+  assert.ok(medians[1] > medians[0], `reactive flippers must help: ${medians}`);
+});
