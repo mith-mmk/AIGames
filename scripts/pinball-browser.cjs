@@ -46,7 +46,7 @@ const http = require("node:http");
       headless: true,
     });
     const page = await browser.newPage({
-      viewport: { width: 1440, height: 1000 },
+      viewport: { width: 1440, height: 1000 }, hasTouch: true,
     });
     const errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
@@ -149,6 +149,12 @@ const http = require("node:http");
     await page.waitForFunction(() => document.querySelector("#message").textContent === "");
     assert.equal(await page.evaluate(() => window.__pinball.game.state.phase), "paused");
     await page.screenshot({ path: path.join(output, "restored.png") });
+    const slider=await page.locator("#view-angle").boundingBox();
+    await page.touchscreen.tap(slider.x+slider.width*.75,slider.y+slider.height/2);
+    const touched=await page.evaluate(()=>window.__pinball.viewAngle);
+    assert.ok(touched>60&&touched<90);
+    await page.locator("#view-angle").focus();await page.keyboard.press("ArrowLeft");
+    assert.equal(await page.evaluate(()=>window.__pinball.viewAngle),touched-1);
     await page.locator("#view-angle").evaluate(e=>{e.value="10";e.dispatchEvent(new Event("input",{bubbles:true}));});
     assert.equal(await page.evaluate(()=>window.__pinball.viewAngle),10);
     await page.screenshot({path:path.join(output,"camera-side.png")});
