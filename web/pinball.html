@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AI Games</title>
+    <link rel="stylesheet" href="./css/pinball.css" />
+  </head>
+  <body>
+    <main id="app">
+      <canvas id="table" aria-label="ロボット工房の立体ピンボール盤面"></canvas>
+      <header>
+        <a href="./index.html">← AI Games</a><span>TABLE STUDY / 01</span>
+        <h1>CHAPPY<br /><em>WORKSHOP</em></h1>
+        <p>真鍮と翡翠色の、ちいさな発明工房。</p>
+      </header>
+      <div class="status">
+        <span class="dot"></span>盤面・アセット検証版
+        <small>物理ゲームは未接続</small>
+      </div>
+      <nav aria-label="盤面の表示">
+        <button data-view="play" class="selected">全景</button
+        ><button data-view="detail">機構の接写</button
+        ><button data-view="top">真上</button
+        ><button id="tour" aria-pressed="false">球の経路を見る</button>
+      </nav>
+      <div class="controls">
+        <button id="left" aria-label="左フリッパー">Z · LEFT</button>
+        <p>ボタン長押しで機構確認 <span>SPACE：球の経路 / C：視点</span></p>
+        <button id="right" aria-label="右フリッパー">RIGHT · /</button>
+      </div>
+      <p id="message" role="status">盤面を読み込み中…</p>
+      <details>
+        <summary>この版について</summary>
+        <p>
+          オリジナルのパラメトリック造形。球の通過は経路アニメーションで、衝突や得点の実装ではありません。次の段階でRapier物理を接続します。
+        </p>
+      </details>
+    </main>
+    <script type="module" src="./js/pinball/app.mjs"></script>
+  </body>
+</html>
