@@ -20,8 +20,8 @@ export class PinballTablePreview {
     this.renderer.toneMapping = T.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.35;
     this.scene = new T.Scene();
-    this.scene.background = new T.Color(0x060d18);
-    this.scene.fog = new T.Fog(0x060d18, 24, 48);
+    this.scene.background = new T.Color(0x100e0c);
+    this.scene.fog = new T.Fog(0x100e0c, 24, 48);
     this.camera = new T.PerspectiveCamera(42, 1, 0.1, 100);
     this.assets = new WorkshopAssets();
     this.board = this.assets.build();
@@ -57,7 +57,7 @@ export class PinballTablePreview {
     this.scene.add(rim);
     const floor = new T.Mesh(
       new T.PlaneGeometry(200, 200),
-      new T.MeshStandardMaterial({ color: 0x07101c, roughness: 0.88 }),
+      new T.MeshStandardMaterial({ color: 0x19150f, roughness: 0.88 }),
     );
     floor.rotation.x = -Math.PI / 2;
     floor.position.y = -2.4;

@@ -214,6 +214,24 @@ export class WorkshopAssets {
       const t=i*Math.PI/10;
       line([[Math.sin(t)*.96,1.2+Math.cos(t)*.96],[Math.sin(t)*1.015,1.2+Math.cos(t)*1.015]],"#557194",.018);
     }
+    // Chappy's original screen-face/heart identity, flat ink: no new collider
+    // and no bright round eye that could be mistaken for the silver ball.
+    ctx.save();ctx.translate(0,1.17);
+    line([[-.37,-.50],[.35,-.50],[.45,-.37],[.45,.04],[.32,.16],[-.34,.16],[-.45,.03],[-.45,-.38]],"#9eacb2",.035,true,"#667a87");
+    line([[-.35,-.39],[.34,-.39],[.34,.02],[-.35,.02]],"#3d697a",.025,true,"#071b29");
+    for(const side of [-1,1]) {
+      line([[side*.26,-.16],[side*.20,-.24],[side*.13,-.16]],"#64bed0",.045);
+      line([[side*.47,-.39],[side*.55,-.39],[side*.55,-.06],[side*.47,-.06]],"#aa8c44",.025,true,"#bc994b");
+      circle(side*.34,-.43,.025,"#bdac85","#7a6651",.01);
+    }
+    line([[-.13,-.035],[0,.005],[.13,-.035]],"#64bed0",.022);
+    line([[-.25,.20],[.26,.20],[.32,.54],[-.31,.54]],"#91a1a7",.025,true,"#556977");
+    line([[0,.44],[-.11,.33],[-.08,.27],[0,.30],[.08,.27],[.11,.33],[0,.44]],"#64bed0",.02,true,"#3a8ea4");
+    line([[-.34,.28],[-.51,.36],[-.62,.18]],"#b69b56",.055);
+    line([[.34,.28],[.50,.19],[.55,-.01]],"#b69b56",.055);
+    line([[.50,-.03],[.49,-.17],[.55,-.12],[.62,-.18],[.61,-.03]],"#a3b0b1",.025);
+    ctx.font="bold .115px sans-serif";ctx.textAlign="center";ctx.fillStyle="#9cbbc4";ctx.fillText("BUILD • HACK • PLAY",0,.75);
+    ctx.restore();
     // Printed angular purple fan points from the flippers towards the ring.
     for(const side of [-1,1]) {
       line([[side*.12,3.73],[side*.47,2.45],[side*.69,2.25],[side*.34,3.60]],"#65558f",.02,true,"#493e72");
