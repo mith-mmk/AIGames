@@ -56,3 +56,7 @@ Per owner feedback, playfield and cabinet sides now use iron/graphite; wall, amb
 ## Art pass 05: quieter illustrated target hierarchy
 
 Inspected the owner's neon/junk-mech reference and explicit request to calm its visual density. Kept iron/brass palette and a muted original robot stencil; did not import the reference's neon palette, signs, hazard stripes or fake scoring UI. Removed 11 crossing brass circuit lines and four decorative light inserts. Three non-flashing flat shot marks identify the two target banks and central bumper cluster. No game rules or active missions are implied. The low-contrast stencil and generous central negative space prioritize the silver ball.
+
+## Art pass 06: restore mechanical density without neon clutter
+
+The owner found pass 05 too sparse. Restored all 11 circuit runs in thinner, low-contrast dark bronze and four flush metal insert assemblies with concentric rings, small ivory centers and mounting screws. Replaced the stencil with a quiet maker crest so artwork no longer competes with those actual parts. Moved bank labels above the inserts to retain a clear hierarchy. Main mechanisms and ball paths are unchanged; no new raised obstacles were placed in the lanes.
