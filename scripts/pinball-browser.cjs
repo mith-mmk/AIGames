@@ -103,11 +103,11 @@ const http = require("node:http");
     await page.locator("nav [data-restart]").click();
     // Controlled return fixture verifies UI and same-ball relaunch from its real location.
     await page.waitForFunction(()=>!document.querySelector("#launch").disabled); await page.locator("#launch").focus(); await page.keyboard.down("Space"); await page.waitForTimeout(1250); await page.keyboard.up("Space");
-    await page.evaluate(()=>{const g=window.__pinball.game;g.ball.setTranslation({x:2.53,y:.18,z:4.58},true);g.ball.setLinvel({x:0,y:0,z:2},true);});
+    await page.evaluate(()=>{const g=window.__pinball.game;g.ball.setTranslation({x:2.53,y:.18,z:3.8},true);g.ball.setLinvel({x:0,y:0,z:2},true);});
     await page.waitForFunction(()=>window.__pinball.game.state.returnedShooter);
     assert.equal(await page.evaluate(()=>window.__pinball.game.state.ballNumber),1);
     await page.waitForTimeout(200);
-    assert.ok(await page.evaluate(()=>window.__pinball.game.ballPosition.z>4.6));
+    assert.ok(await page.evaluate(()=>Math.abs(window.__pinball.game.ballPosition.z-4.025)<.04));
     await page.waitForFunction(()=>!document.querySelector("#launch").disabled); await page.locator("#launch").focus(); await page.keyboard.down("Space"); await page.waitForTimeout(1250); await page.keyboard.up("Space");
     assert.equal(await page.evaluate(()=>window.__pinball.game.state.ballNumber),1);
     await page.waitForFunction(()=>window.__pinball.game.ball.linvel().z<0);

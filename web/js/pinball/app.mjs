@@ -29,15 +29,13 @@ export class PinballTablePreview {
     this.reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
     this.board.rotation.x = TABLE.tilt;
     this.scene.add(this.board);
-    this.plungerHandle = this.assets.mesh(new T.CylinderGeometry(.09, .09, .38, 16), "ball", this.board, 2.53, .18, 5.22);
-    this.plungerHandle.rotation.x = Math.PI / 2;
     this.ball = this.assets.mesh(
       new T.SphereGeometry(TABLE.ballRadius, 32, 20),
       "ball",
       this.board,
       2.53,
-      0.16,
-      3.7,
+      .175,
+      4.025,
     );
     this.scene.add(new T.HemisphereLight(0xe5e7ee, 0x353339, 3));
     const key = new T.DirectionalLight(0xffeed5, 4);
@@ -177,11 +175,13 @@ export class PinballTablePreview {
     document.querySelector("#launch-power").textContent = `${percent}%`;
     document.querySelector("#launch").style.backgroundSize = `${percent}% 100%`;
     document.querySelector("#launch").setAttribute("aria-pressed", String(this.plunger.owner !== null));
-    this.plungerHandle.position.z = 5.22 + power * .28;
+    if(this.assets.plungerRod)this.assets.plungerRod.position.z = 4.70 + power * .28;
+    if(this.assets.plungerKnob)this.assets.plungerKnob.position.z = 5.30 + power * .28;
     document.querySelector("#score").textContent = state.score.toLocaleString("ja-JP");
     document.querySelector("#balls").textContent = `${Math.min(state.ballNumber, 3)} / 3`;
     const labels = { ready: state.returnedShooter ? "戻り球 · 長押し→離して再発射" : "SPACE長押し→離す / ボタンを上に引いて発射", playing: "バンパーとターゲットを狙おう", paused: "一時停止中", gameover: "GAME OVER" };
-    document.querySelector("#phase").textContent = labels[state.phase];
+    document.querySelector("#phase").textContent = state.tilted?"TILT · 操作と加点停止／この球を終了":this.game.nudgeMeter.heat>=1.7?"警告 · ナッジを控えてください":labels[state.phase];
+    document.querySelector("#nudge").disabled=state.phase!=="playing"||state.tilted;
     document.querySelector("#pause").textContent = state.phase === "paused" ? "再開" : "一時停止";
     document.querySelector("#launch").disabled = state.phase !== "ready";
     document.querySelector("#gameover").hidden = state.phase !== "gameover";
@@ -296,6 +296,7 @@ function bindInput(game) {
       sync(side);
     }
     if ((e.code === "KeyP" || e.code === "Escape") && !e.repeat) game.togglePause();
+    if(e.code==="KeyN"&&!e.repeat){e.preventDefault();game.game?.nudge();}
     if (e.code === "KeyR" && !e.repeat) { held.left.clear(); held.right.clear(); game.restart(); }
     if (e.code === "KeyC" && !e.repeat) {
       const modes = ["play", "top"];
@@ -329,6 +330,7 @@ function bindInput(game) {
     .forEach((b) =>
       b.addEventListener("click", () => game.setView(b.dataset.view)),
     );
+  document.querySelector("#nudge").addEventListener("click",()=>game.game?.nudge());
   document.querySelector("#view-angle").addEventListener("input", e=>{
     game.viewAngle=Number(e.target.value); game.setView("custom");
     try { localStorage.setItem("pinball-view-angle",String(game.viewAngle)); } catch { /* Optional persistence. */ }

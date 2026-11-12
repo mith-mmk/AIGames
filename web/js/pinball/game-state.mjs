@@ -8,7 +8,7 @@ export class PinballGameState {
     this.rollovers = [false, false, false]; this.rolloverSets = 0;
     this.kickbackCharges = 1; this.kickbackUses = 0; this.eventIds = new Set();
     this.sideSaveCharges = 0; this.sideSaveUses = 0;
-    this.score = 0; this.lastAward = null; this.ballNumber = 1; this.phase = "ready"; this.returnedShooter = false;
+    this.tilted=false;this.score = 0; this.lastAward = null; this.ballNumber = 1; this.phase = "ready"; this.returnedShooter = false;
     this.lastEvent = "発射してスタート"; this.resumePhase = "ready";
   }
   get mission() { return this.missions.snapshot; }
@@ -29,12 +29,12 @@ export class PinballGameState {
     this.lastEvent = "発射レーンへ戻りました · 同じ球を再発射"; return true;
   }
   award(points, label) {
-    if (this.phase !== "playing") return;
+    if (this.phase !== "playing" || this.tilted) return;
     this.score += points; this.lastEvent = label + " +" + points; this.lastAward={points,label,score:this.score};
   }
   /** Events are emitted once per physical contact/traversal, never per frame. */
   onEvent(event) {
-    if (this.phase !== "playing" || !event || !event.id || this.eventIds.has(event.id)) return false;
+    if (this.phase !== "playing" || this.tilted || !event || !event.id || this.eventIds.has(event.id)) return false;
     const points = { bumper: 100, sling: 25, target: 50, bank: 75, spinner: 150, ramp: 300, inlane: 100 };
     if (!Object.hasOwn(points, event.type) && !["rollover", "kickback", "side-save"].includes(event.type)) return false;
     if (event.type === "rollover" && (!Number.isInteger(event.lane) || event.lane < 0 || event.lane > 2)) return false;

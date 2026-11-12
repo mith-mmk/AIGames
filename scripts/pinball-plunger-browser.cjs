@@ -9,6 +9,9 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
  const reset=async()=>{await page.locator('nav [data-restart]').click();await page.waitForFunction(()=>!document.querySelector('#launch').disabled);await page.locator('#launch').focus();};
  try {
  await page.goto(`http://127.0.0.1:${server.address().port}/pinball.html?test=1`);await page.waitForFunction(()=>window.__pinball?.game);
+ await page.screenshot({path:path.join(out,'shooter-initial-mobile.png')});
+ const hardware=await page.evaluate(()=>{const a=window.__pinball;return {ball:{...a.game.ballPosition},head:a.assets.plungerHead.position.z,rod:a.assets.plungerRod.position.z,knob:a.assets.plungerKnob.position.z};});
+ assert.ok(Math.abs(hardware.ball.z-4.025)<.001);assert.equal(hardware.head,4.2);
  // Record launches without replacing the physics implementation.
  await page.evaluate(()=>{const g=window.__pinball.game,launch=g.launch.bind(g);window.launches=[];g.launch=p=>{const ok=launch(p);if(ok)window.launches.push({power:p,speed:-g.ball.linvel().z});return ok;};});
  for (const hold of [120,600,1250]) {
@@ -16,7 +19,7 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
   if(hold===600)await page.screenshot({path:path.join(out,'plunger-half-mobile.png')});
   await page.keyboard.up('Space');assert.equal((await state()).phase,'playing');
   results.push(await page.evaluate(()=>window.launches.at(-1)));
-  if(hold===120){await page.waitForFunction(()=>window.__pinball.game.state.returnedShooter,{},{timeout:20000});assert.equal((await state()).ball,1);}
+  if(hold===120){await page.waitForFunction(()=>window.__pinball.game.state.returnedShooter,{},{timeout:20000});assert.equal((await state()).ball,1);await page.waitForTimeout(1500);await page.screenshot({path:path.join(out,'shooter-returned-mobile.png')});assert.ok(await page.evaluate(()=>Math.abs(window.__pinball.game.ballPosition.z-4.025)<.015));}
  }
  assert.ok(results[0].speed<results[1].speed-4 && results[1].speed<results[2].speed-4);
  for(const cancel of ['pause','restart','blur']) {
@@ -41,7 +44,7 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[t]});await page.waitForTimeout(200);
  await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});assert.equal((await state()).owner,null);assert.equal(await page.evaluate(()=>window.launches.length),count);
  assert.deepEqual(errors,[]);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
- const evidence={method:'Automated Chrome keyboard and CDP touch events, real physics; no physical phone/human test',results,checks:['release-only','weak same-ball return','pause/restart/blur cancel','focused flipper Space','touch drag decrease','touch cancellation'],launches:await page.evaluate(()=>window.launches)};
+ const evidence={hardware,method:'Automated Chrome keyboard and CDP touch events, real physics; no physical phone/human test',results,checks:['release-only','weak same-ball return','pause/restart/blur cancel','focused flipper Space','touch drag decrease','touch cancellation'],launches:await page.evaluate(()=>window.launches)};
  fs.writeFileSync(path.join(out,'plunger-input-evidence.json'),JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence));
  } finally {await ctx.close();await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exit(1);});

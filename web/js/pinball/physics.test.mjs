@@ -58,7 +58,7 @@ test("pause freezes simulation; resume and restart are deterministic", async () 
     g.launch(); run(g, .2); g.setPaused(true); const p = { ...g.ballPosition };
     run(g, 1, { left: true }); assert.deepEqual({ ...g.ballPosition }, p);
     g.setPaused(false); run(g, .1); assert.notDeepEqual({ ...g.ballPosition }, p);
-    g.restart(); run(g, 1); assert.equal(g.state.phase, "ready"); assert.ok(Math.abs(g.ballPosition.z - 3.7) < 1e-5);
+    g.restart(); run(g, 1); assert.equal(g.state.phase, "ready"); assert.ok(Math.abs(g.ballPosition.z - 4.025) < 1e-5);
   } finally { g.dispose(); }
 });
 

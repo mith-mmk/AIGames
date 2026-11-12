@@ -35,7 +35,7 @@ button:disabled { opacity: .45; cursor: default; }
 .camera-control { bottom: 178px; display: flex; align-items: center; gap: 8px; font-size: 12px; padding: 8px 0; }
 .camera-control input { min-width: 0; flex: 1; accent-color: #dfbd7f; touch-action: pan-x; }
 .camera-control output { width: 30px; font-variant-numeric: tabular-nums; }
-nav { bottom: 127px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 4px; background: #24252a; border: 1px solid #ffffff18; border-radius: 12px; }
+nav { bottom: 127px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; padding: 4px; background: #24252a; border: 1px solid #ffffff18; border-radius: 12px; }
 nav button { padding: 10px 2px; white-space: nowrap; }
 .controls { bottom: 50px; display: flex; gap: 5px; align-items: stretch; }
 .controls button { flex: 1; min-width: 0; min-height: 62px; background: #303239; border: 1px solid #b9a26e60; }

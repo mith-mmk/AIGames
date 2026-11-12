@@ -19,7 +19,8 @@ export const MINI_BUMPERS = Object.freeze([
 ]);
 export const TARGET_BANKS = Object.freeze([
   { key: "left-upper", a: [-2.10,.22,-1.65], b: [-1.65,.22,-2.10], count: 4, type: "bank" },
-  { key: "right-side", a: [.65,.22,-2.10], b: [.85,.22,-1.40], count: 3, type: "bank" },
+  // Leave a ball-width passage beside the forward bumper, including rubber.
+  { key: "right-side", a: [.85,.22,-2.10], b: [1.05,.22,-1.40], count: 3, type: "bank" },
 ]);
 export const RAMP = Object.freeze([
   [-1.7, 0.08, 0.7],

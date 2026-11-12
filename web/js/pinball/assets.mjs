@@ -309,10 +309,17 @@ export class WorkshopAssets {
       );
       r.rotation.x = 0;
     }
-    const rod = this.cylinder(g, 0.038, 0.95, 2.53, 0.17, 4.7, "brass");
+    // Fixed guide/stop face agrees with the physical stop at z=4.16.
+    // Pull feedback moves only the existing rod and knob, not this collision face.
+    this.plungerHead = this.cylinder(g, .12, .08, 2.53, .175, 4.20, "chrome");
+    this.plungerHead.rotation.x = Math.PI / 2;
+    this.plungerHead.name = "plunger-head";
+    const rod = this.cylinder(g, 0.038, 0.95, 2.53, 0.175, 4.7, "brass");
     rod.rotation.x = Math.PI / 2;
-    const knob = this.cylinder(g, 0.16, 0.14, 2.53, 0.17, 5.3, "red");
+    const knob = this.cylinder(g, 0.16, 0.14, 2.53, 0.175, 5.3, "red");
     knob.rotation.x = Math.PI / 2;
+    this.plungerRod = rod; this.plungerKnob = knob;
+    rod.name = "plunger-rod"; knob.name = "plunger-knob";
     new PlayfieldParts(this).build();
 
     return g;

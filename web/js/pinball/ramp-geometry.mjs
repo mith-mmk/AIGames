@@ -44,9 +44,15 @@ function skirt(rows,side) {
 function geometry(data) {const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(data.positions,3));g.setIndex(new T.BufferAttribute(data.indices,1));g.computeVertexNormals();return g;}
 export function buildPhysicalRamp(game) {
   const rows=sampleRamp(), colliders=[];
+  // Correct internal triangle edges around the crest: their contact normals
+  // otherwise form a tiny ridge that can hold a slow ball motionless. Keep
+  // the remaining thin-wall contacts unchanged for the fast entry/exit route.
+  // Adjacent sections share their boundary row, with no gap or overlapping face.
   for(const kind of ['deck','left','right']) {
-    const data=surface(rows,kind);
-    colliders.push(game.world.createCollider(R.ColliderDesc.trimesh(data.positions,data.indices).setFriction(.025).setRestitution(.02)));
+    for (const [start,end,flags] of [[0,80,undefined],[80,100,R.TriMeshFlags.FIX_INTERNAL_EDGES],[100,rows.length-1,undefined]]) {
+      const data=surface(rows.slice(start,end+1),kind);
+      colliders.push(game.world.createCollider(R.ColliderDesc.trimesh(data.positions,data.indices,flags).setFriction(.025).setRestitution(.02)));
+    }
   }
   // Fill every low strip down to the playfield. Side-only skirts allow a
   // ground ball entering at the elevated end to roll into a shrinking gap.

@@ -1,3 +1,4 @@
+import {NudgeMeter} from "./nudge.mjs";
 import { buildPhysicalRamp } from "./ramp-geometry.mjs";
 import R from "../vendor/rapier3d-0.17.3/rapier.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
@@ -7,7 +8,7 @@ import { PinballGameState } from "./game-state.mjs";
 export class PinballPhysics {
   static async create() { await R.init(); return new PinballPhysics(); }
   constructor() {
-    this.state = new PinballGameState(); this.visualHits=[]; this.accumulator = 0; this.time = 0; this.eventSequence = 0; this.spinnerAngle = 0; this.spinnerSpeed = 0; this.rampStage = 0; this.rampTraversals=0;
+    this.nudgeMeter=new NudgeMeter(); this.state = new PinballGameState(); this.visualHits=[]; this.accumulator = 0; this.time = 0; this.eventSequence = 0; this.spinnerAngle = 0; this.spinnerSpeed = 0; this.rampStage = 0; this.rampTraversals=0;
     // Reduced downhill acceleration approximates rolling inertia for beginner play.
     this.world = new R.World({ x: 0, y: -98.1 * Math.cos(TABLE.tilt), z: 63.765 * Math.sin(TABLE.tilt) });
     this.world.timestep = 1 / 120;
@@ -19,9 +20,17 @@ export class PinballPhysics {
     this.flipperContacts = [0, 0]; this.flipperHandles = new Map(); this.activeFlipperContacts = [0, 0];
     this.flippers = []; this.flipperAngles = [flipperAngle(false, false), flipperAngle(true, false)];
     this.build();
-    this.ball = this.world.createRigidBody(R.RigidBodyDesc.dynamic().setTranslation(2.53, 0.2, 3.7).setCcdEnabled(true).setLinearDamping(0.12).setAngularDamping(0.15).setCanSleep(false));
+    this.ball = this.world.createRigidBody(R.RigidBodyDesc.dynamic().setTranslation(2.53, .175, 4.025).setCcdEnabled(true).setLinearDamping(0.12).setAngularDamping(0.15).setCanSleep(false));
     this.ballCollider = this.world.createCollider(R.ColliderDesc.ball(TABLE.ballRadius).setMass(0.08).setRestitution(0.22).setFriction(0.06).setActiveEvents(R.ActiveEvents.COLLISION_EVENTS), this.ball);
     this.resetBall();
+  }
+  nudge() {
+    if(this.state.phase!=="playing") return false;
+    const result=this.nudgeMeter.push();if(result==="ignored")return false;
+    if(result==="tilt") {this.state.tilted=true;this.tiltUntil=this.time+1.5;this.state.lastEvent="TILT · この球を終了";return true;}
+    const p=this.ballPosition;
+    this.ball.applyImpulse({x:p.x>0?-.13:.13,y:0,z:-.11},true);
+    this.state.lastEvent=result==="warning"?"注意 · 連続ナッジでTILT":"NUDGE";return true;
   }
   takeVisualHits() { const hits=this.visualHits;this.visualHits=[];return hits; }
   get ballPosition() { return this.ball.translation(); }
@@ -43,6 +52,7 @@ export class PinballPhysics {
     for (const x of [-2.8, 2.8]) this.box(x, 0.45, 0, 0.07, 0.5, 5.85);
     this.box(0, 0.45, -5.8, 2.8, 0.5, 0.07);
     this.box(2.53, 0.3, 5.5, 0.27, 0.4, 0.08);
+    this.box(2.53,.19,4.20,.13,.15,.04,.02); // visible plunger head/ball stop
     // Shooter divider stops above the bumper area; curved roof feeds the ball left.
     this.segment([2.35, 0.23, 5.5], [2.35, 0.23, -3.9], 0.045);
     const roof = [[2.72, .23, -4.15], [2.4, .23, -5.2], [1.25, .23, -5.55], [.95, .23, -5.3]];
@@ -101,8 +111,8 @@ export class PinballPhysics {
     }
   }
   resetBall() {
-    this.state.returnedShooter = false; this.rampStage = 0;
-    this.ball.setTranslation({ x: 2.53, y: .2, z: 3.7 }, true);
+    this.nudgeMeter.reset();this.state.tilted=false;this.state.returnedShooter = false; this.rampStage = 0;
+    this.ball.setTranslation({ x: 2.53, y: .175, z: 4.025 }, true);
     this.ball.setLinvel({ x: 0, y: 0, z: 0 }, true); this.ball.setAngvel({ x: 0, y: 0, z: 0 }, true); this.ball.setGravityScale(0, true);
 
   }
@@ -145,6 +155,7 @@ export class PinballPhysics {
     this.ball.applyImpulse({ x: (lateral - v.x) * this.ball.mass(), y: 0, z: (forward - v.z) * this.ball.mass() }, true);
   }
   hit(other) {
+    if(this.state.tilted)return;
     if (this.flipperHandles.has(other)) {
       const side = this.flipperHandles.get(other); this.flipperContacts[side]++;
       this.strikeFlipper(side);
@@ -183,11 +194,14 @@ export class PinballPhysics {
     this.accumulator += Math.min(Math.max(dt || 0, 0), .1);
     while (this.accumulator >= 1/120) {
       this.accumulator -= 1/120; this.time += 1/120;
+      this.nudgeMeter.step(1/120);
+      if(this.state.tilted && this.time>=this.tiltUntil){this.state.drain();this.resetBall();continue;}
       for (let i = 0; i < 2; i++) {
-        const desired = flipperAngle(Boolean(i), Boolean(i ? input.right : input.left));
+        const active=!this.state.tilted && Boolean(i ? input.right : input.left);
+        const desired = flipperAngle(Boolean(i), active);
         const difference = desired - this.flipperAngles[i];
-        this.flipperRising[i] = Boolean(i ? input.right : input.left) && Math.abs(difference) > .001;
-        const rate = (i ? input.right : input.left) ? .10 : .035;
+        this.flipperRising[i] = active && Math.abs(difference) > .001;
+        const rate = active ? .10 : .035;
         const angularStep = Math.max(-rate, Math.min(rate, difference));
         this.flipperAngularSpeeds[i] = Math.abs(angularStep) * 120;
         this.flipperAngles[i] += angularStep;
@@ -225,12 +239,12 @@ export class PinballPhysics {
       }
       // A target-earned left outlane kickback remains a real, single-use return.
       if(p.x < -2.08 && p.x > -2.62 && p.z>3.45 && p.z<3.72 && p.y<.5 && v.z>0 &&
-          this.state.sideSaveCharges && this.state.onEvent({type:"side-save",id:"side-save-"+this.eventSequence++})) {
+          !this.state.tilted && this.state.sideSaveCharges && this.state.onEvent({type:"side-save",id:"side-save-"+this.eventSequence++})) {
         this.ball.applyImpulse({x:(2-v.x)*this.ball.mass(),y:0,z:(-12-v.z)*this.ball.mass()},true);
       }
       // A charged, visible center saver launches the descending ball physically.
       if (Math.abs(p.x) < .6 && p.z > LOWER_LAYOUT.centerSaveZ[0] && p.z < LOWER_LAYOUT.centerSaveZ[1] && v.z > 0 &&
-          this.state.kickbackCharges && this.state.onEvent({ type: "kickback", id: "save-" + this.eventSequence++ })) {
+          !this.state.tilted && this.state.kickbackCharges && this.state.onEvent({ type: "kickback", id: "save-" + this.eventSequence++ })) {
         this.returnPending = false;
         this.ball.applyImpulse({ x: -p.x * .3, y: .88, z: (-8 - v.z) * this.ball.mass() }, true);
       }
@@ -238,7 +252,7 @@ export class PinballPhysics {
       // drain. Keep its position, velocity and ball number; gravity rolls it to
       // the plunger end, and launch() fires from wherever it actually rests.
       const inShooter = p.x > 2.45 && p.x < 2.70 && p.y > -.1 && p.y < .5;
-      if (inShooter && p.z > 4.65 && p.z < 5.5 && v.z >= 0) {
+      if (!this.state.tilted && inShooter && p.z > 3.85 && p.z < 4.16 && v.z >= 0) {
         this.state.returnToShooter(); continue;
       }
       if ((!inShooter && p.z > 4.65) || p.y < -1.0 || Math.abs(p.x) > 3.2 || p.z < -6.5) {
