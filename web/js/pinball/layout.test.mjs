@@ -70,7 +70,7 @@ test("reference triangle retains side passages and asymmetric target banks", asy
   const {TARGET_BANKS,LOWER_LAYOUT}=await import("./layout.mjs");
   assert.equal(BUMPERS[0].z,BUMPERS[1].z);
   assert.ok(BUMPERS[2].z>BUMPERS[0].z); assert.equal(BUMPERS[2].x, 0);
-  assert.deepEqual(TARGET_BANKS.map(b=>b.count),[4,3,3]);
+  assert.deepEqual(TARGET_BANKS.map(b=>b.count),[4,3]);
   for(const b of TARGET_BANKS)for(const p of [b.a,b.b])assert.ok(Math.abs(p[0])+.07<TABLE.width/2);
   assert.ok(LOWER_LAYOUT.guide.at(-1)[2]>3.3);
 });

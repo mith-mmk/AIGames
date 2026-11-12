@@ -71,8 +71,8 @@ export function buildPhysicalRamp(game) {
 }
 export function buildVisualRamp(assets) {
   const rows=sampleRamp(),root=new T.Group();root.name='physical-s-ramp';assets.root.add(root);
-  const deck=new T.MeshStandardMaterial({color:0x467587,metalness:.18,roughness:.34,transparent:true,opacity:.28,depthWrite:false,side:T.DoubleSide});
-  const wall=new T.MeshStandardMaterial({color:0x86bbce,metalness:.15,roughness:.25,transparent:true,opacity:.12,depthWrite:false,side:T.DoubleSide});
+  const deck=new T.MeshStandardMaterial({color:0x467587,metalness:.18,roughness:.34,transparent:true,opacity:.14,depthWrite:false,side:T.DoubleSide});
+  const wall=new T.MeshStandardMaterial({color:0x86bbce,metalness:.15,roughness:.25,transparent:true,opacity:.045,depthWrite:false,side:T.DoubleSide});
   for(const kind of ['deck','left','right'])assets.mesh(geometry(surface(rows,kind)),kind==='deck'?deck:wall,root);
   // Open wire return appearance, with a nearly invisible shared collision floor.
   for(let i=0;i<rows.length;i+=16)for(const side of ['left','right']) {

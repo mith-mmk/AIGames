@@ -42,6 +42,12 @@ export class PlayfieldParts {
       a.ring(g,.23,.018,x,.065,-4.4,"brass");
       a.laneLamps.push(a.cylinder(g,.14,.018,x,.055,-4.4,"jade"));
     }
+    // Left outlane hardware is visible even while uncharged; no blocking wall.
+    a.box(g,.34,.10,.42,-2.30,.10,3.78,"steel");
+    a.tube(g,[[-2.30,.13,3.80],[-2.30,.13,3.50]],.06,"chrome");
+    a.sideSaveLamp=a.cylinder(g,.09,.018,-2.30,.055,3.32,"dark");
+    a.text(g,"SAVE",-2.30,.06,3.08,.34,.13);
+    a.text(g,"RAMP",1.45,.06,.85,.65,.22);
     const kicker=a.cylinder(g,.17,.1,0,.11,(LOWER_LAYOUT.centerSaveZ[0]+LOWER_LAYOUT.centerSaveZ[1])/2,"brass");
     kicker.name="center-save-kicker";
     a.text(g,"SAVE",0,.18,4.6,.6,.15);

@@ -12,9 +12,13 @@ export const BUMPERS = Object.freeze([
 ]);
 // The reference has asymmetric target banks, not four central barriers.
 // Endpoints are shared by the visible rubber and physical collision face.
+// Small left-middle pop pocket visible in the supplied Pinball Star reference.
+// Low hardware clears the existing elevated return (deck minimum .75 here).
+export const MINI_BUMPERS = Object.freeze([
+  {x:-2.05,z:-.90}, {x:-1.50,z:-.65}, {x:-1.95,z:0},
+]);
 export const TARGET_BANKS = Object.freeze([
   { key: "left-upper", a: [-2.10,.22,-1.65], b: [-1.65,.22,-2.10], count: 4, type: "bank" },
-  { key: "left-side", a: [-1.98,.22,-.15], b: [-1.83,.22,1.0], count: 3, type: "target" },
   { key: "right-side", a: [.65,.22,-2.10], b: [.85,.22,-1.40], count: 3, type: "bank" },
 ]);
 export const RAMP = Object.freeze([

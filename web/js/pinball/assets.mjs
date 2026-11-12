@@ -2,7 +2,7 @@ import { buildVisualRamp } from "./ramp-geometry.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { PlayfieldParts } from "./playfield-parts.mjs";
 import { WorkshopMechanisms } from "./mechanisms.mjs";
-import { BUMPERS, RAMP, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING } from "./layout.mjs";
+import { BUMPERS, MINI_BUMPERS, RAMP, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING } from "./layout.mjs";
 export class WorkshopAssets {
   constructor() {
     this.root = new T.Group();
@@ -168,9 +168,9 @@ export class WorkshopAssets {
       ctx.fillStyle = "#22262b"; ctx.fillRect(x - 94, y + 30, 188, 54); ctx.strokeRect(x - 94, y + 30, 188, 54);
       ctx.font = "bold 23px sans-serif"; ctx.textAlign = "center"; ctx.fillStyle = "#d3bf92"; ctx.fillText(label, x, y + 65);
     };
-    shot(272, 820, "HACK");
-    shot(512, 1000, "UPGRADE");
-    shot(740, 1120, "BUILD");
+    shot(272, 820, "REACTOR");
+    shot(512, 1000, "SPINNER");
+    shot(740, 1120, "RAMP");
     ctx.textAlign = "center"; ctx.fillStyle = "#91928d"; ctx.font = "20px monospace";
     ctx.fillText("WORKSHOP / No. 01", 512, 1770);
     const texture = new T.CanvasTexture(c);
@@ -188,16 +188,19 @@ export class WorkshopAssets {
       const x = -2.4 + i * 0.48;
       this.tube(g, [[x, 0.052, 4.1], [x, 0.052, 2.1], [x * 0.5, 0.052, 1.4], [x * 0.5, 0.052, -3.8]], 0.006, "bronze");
     }
-    for (const [x, z] of [[0, 1.45], [-0.7, 0.65], [0.7, 0.65], [0, -0.2]]) {
-      this.ring(g, 0.31, 0.018, x, 0.055, z, "brass");
-      this.cylinder(g, 0.27, 0.012, x, 0.05, z, "dark");
-      this.ring(g, 0.2, 0.009, x, 0.06, z, "chrome");
-      this.cylinder(g, 0.08, 0.014, x, 0.06, z, "cream");
-      for (const side of [-1, 1]) this.screw(g, x + side * 0.255, 0.063, z);
+    // The reference's large central circle is flush printed/inset hardware,
+    // leaving the actual shot fan open rather than adding a physical obstacle.
+    this.ring(g,.83,.018,0,.055,1.20,"chrome");
+    this.ring(g,.92,.012,0,.055,1.20,"brass");
+    this.missionLamps=[];
+    for(let i=0;i<10;i++) {
+      const angle=2*Math.PI*i/10, x=Math.sin(angle)*.76,z=1.20+Math.cos(angle)*.76;
+      this.cylinder(g,.085,.012,x,.05,z,"dark");
+      this.missionLamps.push(this.cylinder(g,.045,.016,x,.065,z,"amber"));
     }
-    this.text(g, "CHAPPY", 0, 0.065, 2.2, 2.4, 0.55);
-    this.text(g, "WORKSHOP", 0, 0.066, 2.65, 1.95, 0.27);
-    this.text(g, "BUILD • CHARGE • LAUNCH", 0, 0.065, 3.05, 2.5, 0.16);
+    this.text(g,"WORKSHOP",0,.065,1.20,1.14,.25);
+    this.text(g,"MISSION",0,.065,1.48,.80,.15);
+    this.text(g,"CHAPPY",0,.065,2.70,1.20,.25);
     for (const x of [-2.85, 2.85]) {
       this.box(g, 0.14, 0.52, 11.9, x, 0.17, 0, "dark");
       this.box(g, 0.16, 0.045, 11.9, x, 0.455, 0, "brass");
@@ -221,6 +224,14 @@ export class WorkshopAssets {
       this.flipper(LOWER_LAYOUT.flipperPivot[0], LOWER_LAYOUT.flipperPivot[2], true),
     ];
     for (const [i, p] of BUMPERS.entries()) this.bumper(p.x, p.z, i);
+    for(const [i,p] of MINI_BUMPERS.entries()) {
+      const pocket=new T.Group();pocket.position.set(p.x,0,p.z);pocket.name="mini-pop-"+i;g.add(pocket);
+      this.cylinder(pocket,.18,.05,0,.065,0,"chrome");
+      this.ring(pocket,.13,.035,0,.18,0,"rubber");
+      this.cylinder(pocket,.16,.06,0,.31,0,"brass");
+      this.cylinder(pocket,.10,.025,0,.355,0,"cream");
+    }
+    this.text(g,"REACTOR",-1.63,.055,.52,1.05,.20);
     buildVisualRamp(this); // Shared physical and rendered route.
     this.robot();
     new WorkshopMechanisms(this).build(g);

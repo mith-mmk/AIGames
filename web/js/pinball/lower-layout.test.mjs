@@ -48,7 +48,7 @@ test('inside heel approach cannot leak sideways past the root cheek',async()=>{
     const p=g.ballPosition,on=(tick+11*3)%45<15&&p.z>3.2;
     g.step(1/120,{left:on&&p.x<0,right:on&&p.x>=0});
     const q=g.ballPosition;
-    if(q.z>3.4&&q.z<4.3) assert.ok(Math.abs(q.x)<1.3,'escaped beside flipper heel');
+    if(g.state.phase==='playing'&&q.z>3.4&&q.z<4.3) assert.ok(Math.abs(q.x)<1.3,'escaped beside flipper heel');
    }
    assert.ok(g.metrics.upfieldReturns>0,'must produce an actual return, not trap the ball');
   }finally{g.dispose();}

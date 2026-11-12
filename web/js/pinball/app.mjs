@@ -126,7 +126,19 @@ export class PinballTablePreview {
     const position = new T.Vector3(0, distance*Math.sin(angle), distance*Math.cos(angle)).applyAxisAngle(new T.Vector3(1,0,0), TABLE.tilt);
     this.camera.position.copy(position);
     this.camera.lookAt(0, 0, 0);
+    this.camera.zoom=1; this.camera.updateProjectionMatrix(); this.camera.updateMatrixWorld(true);
+    // Perspective makes the cabinet asymmetric about its world origin. Fit and
+    // center its projected bounds rather than wasting the upper half of the view.
+    const corners=[];
+    for(const x of [-3.05,3.05]) for(const y of [-.6,1.5]) for(const z of [-6,6]) {
+      corners.push(new T.Vector3(x,y,z).applyAxisAngle(new T.Vector3(1,0,0),TABLE.tilt).project(this.camera));
+    }
+    const minX=Math.min(...corners.map(p=>p.x)),maxX=Math.max(...corners.map(p=>p.x));
+    const minY=Math.min(...corners.map(p=>p.y)),maxY=Math.max(...corners.map(p=>p.y));
+    this.camera.zoom=Math.min(1.94/(maxX-minX),1.94/(maxY-minY));
     this.camera.updateProjectionMatrix();
+    this.camera.projectionMatrix.elements[9]=(minY+maxY)/2*this.camera.zoom;
+    this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();
     // Backdrop and non-colliding tall mascot must not hide the active ball lanes.
     this.scene.getObjectByName("chappy-automaton").visible = false;
     this.scene.getObjectByName("rear-mechanical-bank").visible = false;
@@ -174,6 +186,17 @@ export class PinballTablePreview {
     document.querySelector("#rollovers").textContent = ["A","B","C"].map((label,i)=>`${label} ${state.rollovers?.[i] ? "●" : "○"}`).join("　");
     document.querySelector("#kickback").textContent = `CENTER SAVE ${state.kickbackCharges ?? 0} / 1`;
     document.querySelector("#score-event").textContent = state.lastEvent;
+    const mission=state.mission;
+    if(mission && document.querySelector("#mission-title")) {
+      document.querySelector("#mission-title").textContent=mission.title;
+      document.querySelector("#mission-progress").textContent=`${mission.description} · ${mission.progress}/${mission.target}`;
+    }
+    for(const [i,lamp] of (this.assets.missionLamps??[]).entries()) {
+      const lit=mission && (mission.allComplete || i<Math.floor(10*mission.progress/Math.max(1,mission.target)));
+      lamp.material=this.assets.materials[lit?"light":"amber"];
+    }
+    if(this.assets.sideSaveLamp) this.assets.sideSaveLamp.material=this.assets.materials[state.sideSaveCharges?"light":"dark"];
+    document.querySelector("#kickback").textContent += ` · LEFT SAVE ${state.sideSaveCharges??0}`;
     for(const [i,lamp] of (this.assets.laneLamps || []).entries()) lamp.material = this.assets.materials[state.rollovers?.[i] ? "light" : "jade"];
     this.canvas.dataset.phase = state.phase;
     this.canvas.dataset.score = state.score;

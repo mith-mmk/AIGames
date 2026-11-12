@@ -23,3 +23,16 @@ Publication must retain these limitations and report tested behavior separately 
 ## Verification for this pass
 
 54 pinball tests pass, including the actual leaking heel fixture, both flippers reaching upper lanes and bumper routes across a timing sweep, five full ramp-return/cradle/re-fire timings, and same-ball weak-shooter returns. Full npm test and static package build pass. Real Chrome keyboard/touch tests cover low/mid/full charge, canceled gestures, pause/restart/blur, focused button behavior, mobile viewport, three-ball games, flank scoring and ramp traversal. These are automated input tests, not a human difficulty rating.
+
+## 2026-11-12: Pinball Star layout reference and playable mission pass
+
+The newly supplied 450×253 Pinball Star screenshot was materialized and visually inspected. This pass follows its compact upper pop group, left-middle three-pop pocket, open central circular insert, side routes and lower flipper/inlane structure. It does not copy the image's artwork. The separate upper-left round feature is visually ambiguous at this resolution and has not been claimed as an implemented mechanism.
+
+- Replace the left-side standing bank with three low, contact-driven mini bumpers; retain both upper banks and their usable shot routes. Small bumper radius .16 and physical top .32 leave ball-width clearance and clear the elevated return.
+- Keep the shared lower heel cheeks, actual outlanes and shooter divider. Add a visible left-outlane kickback, earned once by the target mission and consumed by a physical impulse. It is an added gameplay rule, not inferred from the screenshot.
+- Five sequential missions: bumper contacts, side target contacts (earns left save), spinner passes, three distinct upper lanes, full ramp. Progress survives balls, resets on restart and uses deduplicated physical events. Ramp score requires ordered entrance/crest/released-exit gates, with abandoned traversal reset.
+- Central circle is flush artwork with static progress inserts, not a collision obstacle. No particle/glow effects pass. Ramp panels are less opaque without changing collision geometry.
+- Desktop full-height play area with sidebar; mobile compact HUD/controls remain outside the play area. Projected cabinet bounds are centered and fitted; selectable side-to-top angle retained. Oblique views on narrow phones remain width-limited; top view uses more available height.
+- Existing charged keyboard/touch plunger, same-ball weak return, hold/release/reflip, ramp recapture and upper-lane access retained.
+
+Verification: full repository tests and pinball tests; actual Chrome keyboard/touch input tests, built smoke test, four responsive sizes and 10/56/90-degree views. Independent review checked mini-pocket clearances and 25 passive release fixtures, mission rules and real ramp shots; its early ramp-score finding was fixed by moving reward beyond the physical lip. Added tests check mini-pop scoring/release, clearances, charged/uncharged outlane behavior, ramp gate order and exactly-one award after release. No physical phone or human difficulty rating. No claim of full reference parity: second independent orbit, uncertain upper-left feature, multiball, nudge/TILT, audio and elaborate art/effects remain unimplemented.
