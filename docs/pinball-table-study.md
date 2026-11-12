@@ -32,3 +32,11 @@ Browser images are local QA evidence in `artifacts/pinball/`. Inspect full view,
 2. Connect Rapier at 120 Hz, CCD ball and kinematic flippers, actual curved ramp colliders, plunger and drain. Validate high-speed contact and interrupted/repeated input before claiming playability.
 3. Integrate TypeScript build locally rather than migrate the entire site; permit WASM/GLB packaging and MIME only when those files are actually shipped.
 4. Add rules, sounds, three-ball game and touch plunger after the physical play loop is verified.
+
+## Art pass 02: workshop setting
+
+Added an actual workshop backdrop: paneled wall, frosted window, workbench, hanging hand tools, jars, books/parts boxes and a brass-shaded practical lamp. Floorboard seams establish scale. Cabinet legs now sit on the horizontal floor independently of playfield tilt. All scenery is explicitly separate from future gameplay colliders.
+
+Original canvas-printed playfield artwork adds a dial/gear seal, lane arrows, double border and maker legends, without putting extra solid obstacles in ball paths. Cabinet side panels, vents and corner protectors add depth. Local textures require no external requests.
+
+Still not final art: tools and bottles are stylized parametric silhouettes. Next visual pass should refine material microdetail and bevels, a recognizable landmark silhouette and environmental reflections, while keeping the ball and targets brighter than scenery. Physics remains unconnected.

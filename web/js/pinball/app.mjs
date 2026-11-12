@@ -1,4 +1,5 @@
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
+import { WorkshopRoom } from "./workshop.mjs";
 import { WorkshopAssets } from "./assets.mjs";
 import { TABLE, TablePreviewState, flipperAngle } from "./layout.mjs";
 export class PinballTablePreview {
@@ -53,6 +54,8 @@ export class PinballTablePreview {
     floor.position.y = -2.4;
     floor.receiveShadow = true;
     this.scene.add(floor);
+    this.room = new WorkshopRoom(this.assets);
+    this.scene.add(this.room.build());
     this.last = 0;
     this.running = true;
     this.init();

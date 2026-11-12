@@ -101,10 +101,57 @@ export class WorkshopAssets {
     m.rotation.x = -Math.PI / 2;
     return m;
   }
+  printedPlayfield() {
+    const c = document.createElement("canvas");
+    c.width = 1024;
+    c.height = 2048;
+    const ctx = c.getContext("2d");
+    ctx.fillStyle = "#124b4c";
+    ctx.fillRect(0, 0, c.width, c.height);
+    // Screen-printed, original workshop seal with quiet negative space for play.
+    ctx.strokeStyle = "#b18b4e";
+    ctx.lineWidth = 6;
+    ctx.strokeRect(35, 35, 954, 1978);
+    ctx.lineWidth = 2;
+    ctx.strokeRect(49, 49, 926, 1950);
+    for (let i = 0; i < 3; i++) {
+      ctx.beginPath();
+      ctx.arc(512, 1220, 230 + i * 26, 0, Math.PI * 2);
+      ctx.strokeStyle = i === 1 ? "#517568" : "#ad8c51";
+      ctx.stroke();
+    }
+    ctx.save();
+    ctx.translate(512, 1220);
+    for (let i = 0; i < 24; i++) {
+      ctx.rotate(Math.PI / 12);
+      ctx.fillStyle = "#9b804d";
+      ctx.fillRect(274, -5, 18, 10);
+    }
+    ctx.restore();
+    for (const x of [130, 894]) {
+      ctx.fillStyle = "#193e40";
+      ctx.fillRect(x - 42, 210, 84, 1420);
+      ctx.strokeStyle = "#587167";
+      ctx.strokeRect(x - 42, 210, 84, 1420);
+      for (let y = 260; y < 1600; y += 115) {
+        ctx.beginPath(); ctx.moveTo(x - 20, y + 16); ctx.lineTo(x, y); ctx.lineTo(x + 20, y + 16); ctx.stroke();
+      }
+    }
+    ctx.fillStyle = "#bca46d";
+    ctx.textAlign = "center";
+    ctx.font = "22px monospace";
+    ctx.fillText("AUTOMATON LAB / No. 01", 512, 1810);
+    ctx.fillText("PRECISION • ENERGY • INVENTION", 512, 1848);
+    const texture = new T.CanvasTexture(c);
+    texture.colorSpace = T.SRGBColorSpace;
+    const surface = this.mesh(new T.PlaneGeometry(5.5, 11.5), new T.MeshStandardMaterial({ map: texture, roughness: 0.42, metalness: 0.1 }), this.root, 0, 0.038, 0);
+    surface.rotation.x = -Math.PI / 2;
+  }
   build() {
     const g = this.root;
     this.box(g, 5.85, 0.55, 11.9, 0, -0.32, 0, "dark");
     this.box(g, 5.5, 0.08, 11.5, 0, -0.005, 0, "jade");
+    this.printedPlayfield();
     // Original circuit-board illustration printed below the machinery.
     for (let i = 0; i < 11; i++) {
       const x = -2.4 + i * 0.48;
@@ -140,11 +187,12 @@ export class WorkshopAssets {
     }
     this.box(g, 5.65, 0.52, 0.16, 0, 0.17, -5.85, "dark");
     this.box(g, 5.65, 0.05, 0.18, 0, 0.455, -5.85, "brass");
-    for (const x of [-2.1, 2.1])
-      for (const z of [-4.7, 4.7]) {
-        this.box(g, 0.16, 1.35, 0.2, x, -1.18, z, "chrome");
-        this.cylinder(g, 0.17, 0.07, x, -1.87, z, "rubber");
-      }
+    // Layered enamel cabinet sides and corner protectors.
+    for (const x of [-2.94, 2.94]) {
+      this.box(g, 0.055, 0.25, 10.9, x, -0.28, 0, "jade");
+      for (const z of [-5.55, 5.55]) this.box(g, 0.12, 0.6, 0.27, x, -0.2, z, "brass");
+      for (let z = -2.6; z < 2.8; z += 0.35) this.box(g, 0.065, 0.11, 0.08, x, -0.29, z, "dark");
+    }
     // Apron with inset score legends, coin-like workshop emblem and drain mouth.
     this.box(g, 5.45, 0.1, 1.1, 0, 0.13, 5.18, "dark");
     this.text(g, "01 / THE INVENTOR", -1.1, 0.19, 5.1, 2, 0.2);
