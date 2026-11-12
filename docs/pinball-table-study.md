@@ -92,3 +92,9 @@ After tuning, 31 launch-strength samples: no-input median 9.13 seconds, simple r
 ## Classic mechanisms checkpoint
 
 Three upper physical top lanes, rollover completion and refill rules, sensor-driven spinner with visible rotation/decay, readable HTML backglass, and one-charge center-save impulse are connected. Independent rules handle scoring and progress via onEvent, rejecting duplicate event IDs. The center saver starts charged and is refilled to one by completing ABC; no warp rescue exists. Browser checks exercise actual lane crossing, spinner triggering and save use, then verify the HUD. Initial rules/layout/physics suite now has 21 cases. Real phone and human subjective difficulty remain unverified; automated real-time key presses are not human playtesting.
+
+## Actual contact and live-browser rally evidence
+
+The previous powered-save launch intersected the returning flipper and could produce an immediate +30.6 downward velocity; held-flipper lifetime could also hide a stopped ball. Those are now explicit regression cases. 26 tests include normal UI fixed-power timing windows,20 seeded incoming trajectories, actual blade contacts/active contacts/upfield returns, save-clearance during return/hold, and outlane ball-width clearance.
+
+A recorded30-second browser session with normal fixed launch and keyboard pulses remained on ball1,1550points,9actual pressed-blade contacts and9upfield returns. This is automated keyboard evidence, not a human playtest. Recording script: scripts/pinball-rally-video.cjs; local video/trace under ignored artifacts/pinball. No-input ball lifetimes are not treated as proof of playability. Human feel, advanced aim/cradle skills and physical-phone testing remain unverified.

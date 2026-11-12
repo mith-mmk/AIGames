@@ -1,7 +1,7 @@
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { PlayfieldParts } from "./playfield-parts.mjs";
 import { WorkshopMechanisms } from "./mechanisms.mjs";
-import { BUMPERS, RAMP, flipperAngle } from "./layout.mjs";
+import { BUMPERS, RAMP, flipperAngle, LOWER_LAYOUT } from "./layout.mjs";
 export class WorkshopAssets {
   constructor() {
     this.root = new T.Group();
@@ -219,8 +219,8 @@ export class WorkshopAssets {
     this.text(g, "DESIGN STUDY", 1.1, 0.19, 5.1, 1.5, 0.18);
     this.box(g, 0.8, 0.05, 0.35, 0, 0.02, 4.55, "rubber");
     this.flippers = [
-      this.flipper(-1.05, 3.75, false),
-      this.flipper(1.05, 3.75, true),
+      this.flipper(-LOWER_LAYOUT.flipperPivot[0], LOWER_LAYOUT.flipperPivot[2], false),
+      this.flipper(LOWER_LAYOUT.flipperPivot[0], LOWER_LAYOUT.flipperPivot[2], true),
     ];
     for (const [i, p] of BUMPERS.entries()) this.bumper(p.x, p.z, i);
     // Ramps remain archived until collision geometry supports reliable play.
@@ -279,7 +279,7 @@ export class WorkshopAssets {
       steps: 1,
     });
     geo.rotateX(-Math.PI / 2);
-    geo.scale(.8, 1, 1);
+    geo.scale((LOWER_LAYOUT.flipperCenter+LOWER_LAYOUT.flipperHalfLength)/1.1, 1, 1);
     this.mesh(geo, "rubber", pivot);
     const top = this.mesh(geo, "cream", pivot, 0, 0.13, 0);
     top.scale.set(0.95, 0.45, 0.7);

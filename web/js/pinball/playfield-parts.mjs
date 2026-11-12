@@ -1,4 +1,4 @@
-import { UPPER_RAMP, SLING_VERTICES } from "./layout.mjs";
+import { UPPER_RAMP, LOWER_LAYOUT } from "./layout.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 
 /** Visual gameplay hardware. No collision/rule implementation is implied. */
@@ -6,7 +6,7 @@ export class PlayfieldParts {
   constructor(assets) { this.a = assets; }
   build() {
     const a = this.a, g = a.root;
-    for (const side of [-1, 1]) this.inlane(side);
+    for (const side of [-1, 1]) { this.inlane(side); this.sling(side); }
     // Upper ramp deferred while the base game is validated.
     // Two raised, bracket-mounted three-target banks, upstream of existing banks.
     for (const side of [-1, 1]) {
@@ -39,25 +39,21 @@ export class PlayfieldParts {
       a.ring(g,.23,.018,x,.065,-4.4,"brass");
       a.laneLamps.push(a.cylinder(g,.14,.018,x,.055,-4.4,"jade"));
     }
-    const kicker=a.cylinder(g,.17,.1,0,.11,4.3,"brass");
+    const kicker=a.cylinder(g,.17,.1,0,.11,(LOWER_LAYOUT.centerSaveZ[0]+LOWER_LAYOUT.centerSaveZ[1])/2,"brass");
     kicker.name="center-save-kicker";
-    a.text(g,"SAVE",0,.18,4.45,.6,.15);
+    a.text(g,"SAVE",0,.18,4.6,.6,.15);
 
   }
   inlane(side) {
-    const a=this.a, g=a.root, edge=side<0?2.79:2.34;
-    const vertices=[[side*edge,1.6],[side*.65,3.25],[side*edge,3.25]];
-    const shape=new T.Shape(); vertices.forEach(([x,z],i)=>i?shape.lineTo(x,-z):shape.moveTo(x,-z)); shape.closePath();
-    const geo=new T.ExtrudeGeometry(shape,{depth:.66,bevelEnabled:false});geo.rotateX(-Math.PI/2);
-    a.mesh(geo,"dark",g,0,.04,0);
-    a.tube(g,[...vertices,vertices[0]].map(([x,z])=>[x,.71,z]),.025,"brass");
-    // Inner face is a physical guide back toward the flippers, not an open outlane.
-    a.tube(g,vertices.slice(0,2).map(([x,z])=>[x,.22,z]),.055,"rubber");
-    a.text(g,"RETURN",side*1.9,.72,2.95,.75,.14);
+    const a=this.a,g=a.root;
+    const entry=LOWER_LAYOUT.guideEntry[side<0?"left":"right"];
+    const points=[[side*entry[0],entry[1],entry[2]],...LOWER_LAYOUT.guide.map(([x,y,z])=>[side*x,y,z])];
+    for(let i=0;i<points.length-1;i++) a.tube(g,[points[i],points[i+1]],LOWER_LAYOUT.guideRadius,"chrome");
+    for(const [x,y,z] of points.slice(1)) a.cylinder(g,.055,y,x,y/2,z,"brass");
   }
   sling(side) {
     const a = this.a, g = new T.Group(); a.root.add(g);
-    const vertices = SLING_VERTICES.map(([x, z]) => [side * x, z]);
+    const vertices = LOWER_LAYOUT.slingVertices.map(([x, z]) => [side * x, z]);
     const shape = new T.Shape();
     vertices.forEach(([x, z], i) => i ? shape.lineTo(x, -z) : shape.moveTo(x, -z)); shape.closePath();
     const geo = new T.ExtrudeGeometry(shape, { depth: 0.07, bevelEnabled: true, bevelSize: 0.04, bevelThickness: 0.03, bevelSegments: 2, steps: 1 }); geo.rotateX(-Math.PI / 2);
@@ -70,8 +66,8 @@ export class PlayfieldParts {
       a.cylinder(g, 0.03, 0.2, x, 0.22, z, "chrome");
       a.screw(g, x, 0.55, z);
     }
-    a.cylinder(g, 0.14, 0.3, side * 1.3, 0.24, 2.65, "amber");
-    a.ring(g, 0.16, 0.025, side * 1.3, 0.52, 2.65, "brass");
+    a.cylinder(g, 0.14, 0.3, side * LOWER_LAYOUT.slingCenter[0], 0.24, LOWER_LAYOUT.slingCenter[1], "amber");
+    a.ring(g, 0.16, 0.025, side * LOWER_LAYOUT.slingCenter[0], 0.52, LOWER_LAYOUT.slingCenter[1], "brass");
     // Exposed kicker linkage under the plate, not across the central lane.
     a.box(g, 0.28, 0.07, 0.08, side * 1.42, 0.16, 2.7, "chrome");
   }

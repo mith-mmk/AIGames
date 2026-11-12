@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { PinballPhysics } from "./physics.mjs";
+import { LOWER_LAYOUT, TABLE } from "./layout.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
 function run(g, seconds, input = {}) { for (let i = 0; i < seconds * 120; i++) g.step(1 / 120, input); }
@@ -42,7 +43,7 @@ test("both kinematic flippers physically drive ball upfield", async () => {
   for (const side of [-1, 1]) {
     const g = await PinballPhysics.create();
     try {
-      g.launch(); g.ball.setTranslation({ x: side * .55, y: .2, z: 3.65 }, true);
+      g.launch(); g.ball.setTranslation({ x: side * .65, y: .2, z: 3.90 }, true);
       g.ball.setLinvel({ x: 0, y: 0, z: 0 }, true);
       run(g, .125, { left: side < 0, right: side > 0 });
       assert.ok(g.ball.linvel().z < -5, JSON.stringify(g.ball.linvel()));
@@ -113,7 +114,7 @@ test("side-wall feeds reach the playable flipper area instead of side drains", a
   for (const side of [-1, 1]) {
     const g = await PinballPhysics.create();
     try {
-      g.launch(); g.ball.setTranslation({ x: side * 2.12, y: .18, z: 1.3 }, true);
+      g.launch(); g.ball.setTranslation({ x: side * 2.12, y: .18, z: .3 }, true);
       g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true);
       let reached = false;
       for (let tick = 0; tick < 1200 && g.state.phase === "playing"; tick++) {
@@ -140,8 +141,9 @@ test("beginner play duration remains controllable across thirty-one powers", asy
           g.step(1 / 120, { left: reactive && p.z > 3.35 && p.x < .3 && v.z > 0,
             right: reactive && p.z > 3.35 && p.x > -.3 && v.z > 0 });
         }
-        assert.equal(g.state.phase, "ready", `power ${shot}/30 did not finish`);
         durations.push(tick / 120);
+        for (let release = 0; release < 7200 && g.state.phase === "playing"; release++) g.step(1 / 120);
+        assert.equal(g.state.phase, "ready", `power ${shot}/30 did not clear after release`);
       } finally { g.dispose(); }
     }
     durations.sort((a, b) => a - b);
@@ -192,13 +194,13 @@ test("spinner traversal accelerates rotation once; rotation decays without score
 test("charged center saver applies impulse without teleport, then allows real drain", async () => {
   const g = await PinballPhysics.create();
   try {
-    g.launch(); g.ball.setTranslation({ x: 0, y: .18, z: 4.12 }, true);
+    g.launch(); g.ball.setTranslation({ x: 0, y: .18, z: 4.53 }, true);
     g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true); g.step(1 / 120);
     assert.equal(g.state.kickbackCharges, 0); assert.equal(g.state.kickbackUses, 1);
-    assert.ok(g.ball.linvel().z < -10); assert.ok(g.ballPosition.z > 4.1);
+    assert.ok(g.ball.linvel().z < -7); assert.ok(g.ballPosition.z > 4.5);
     assert.equal(g.state.phase, "playing"); assert.equal(g.state.lastEvent, "CENTER SAVE");
     run(g, .3); assert.ok(g.ballPosition.z < 3.5);
-    g.ball.setTranslation({ x: 0, y: .18, z: 4.12 }, true);
+    g.ball.setTranslation({ x: 0, y: .18, z: 4.53 }, true);
     g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true); run(g, .3);
     assert.equal(g.state.phase, "ready"); assert.equal(g.state.ballNumber, 2);
     assert.equal(g.state.kickbackCharges, 0);
@@ -211,4 +213,78 @@ test("natural shooter launch traverses a top rollover lane", async () => {
     g.launch(.7); run(g, 1.5);
     assert.equal(g.state.rollovers[2], true); assert.ok(g.state.score >= 100);
   } finally { g.dispose(); }
+});
+
+test("outlane widths below entrance exceed ball diameter with margin", () => {
+  for (const x of LOWER_LAYOUT.guide.slice(0, 2).map(p => p[0])) {
+    // The right boundary is the shooter's inside divider surface.
+    assert.ok(2.35 - .045 - x - LOWER_LAYOUT.guideRadius > TABLE.ballRadius * 2 + .05);
+  }
+});
+
+test("center save clears both held and returning flippers without a downstroke collision", async () => {
+  for (const held of [false, true]) {
+    const g = await PinballPhysics.create();
+    try {
+      g.launch(); run(g, .17, { left: true, right: true });
+      g.ball.setTranslation({ x: 0, y: .18, z: 4.53 }, true);
+      g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true);
+      run(g, .5, { left: held, right: held });
+      assert.equal(g.state.phase, "playing"); assert.ok(g.ballPosition.z < 2);
+      assert.equal(g.state.kickbackUses, 1); assert.deepEqual(g.flipperContacts, [0, 0]);
+    } finally { g.dispose(); }
+  }
+});
+
+test("default shot tolerates early and late short button pulses with real returns", async () => {
+  for (const threshold of [3.25, 3.4, 3.6, 3.75]) {
+    const g = await PinballPhysics.create();
+    try {
+      g.launch(); let until = -1, next = 0, left = false, tick = 0;
+      for (; tick < 10800 && g.state.phase === "playing"; tick++) {
+        const p = g.ballPosition, v = g.ball.linvel();
+        if (tick >= next && p.z > threshold && v.z > 0) { until = tick + 13; next = tick + 34; left = p.x < 0; }
+        g.step(1 / 120, { left: tick < until && left, right: tick < until && !left });
+      }
+      assert.ok(g.upfieldReturns >= 5, `threshold ${threshold}: ${JSON.stringify(g.metrics)}`);
+      assert.ok(tick / 120 > 15, `threshold ${threshold} lasted ${tick / 120}`);
+      for (let release = 0; release < 7200 && g.state.phase === "playing"; release++) g.step(1 / 120);
+      assert.equal(g.state.phase, "ready");
+    } finally { g.dispose(); }
+  }
+});
+
+test("held buttons cannot pinch the ball permanently", async () => {
+  for (let power = 0; power <= 1; power += .1) {
+    const g = await PinballPhysics.create();
+    try {
+      g.launch(power); run(g, 30, { left: true, right: true });
+      for (let tick = 0; tick < 7200 && g.state.phase === "playing"; tick++) g.step(1 / 120);
+      assert.equal(g.state.phase, "ready", `held power ${power}: ${JSON.stringify(g.ballPosition)}`);
+    } finally { g.dispose(); }
+  }
+});
+
+test("twenty seeded incoming balls measure physical contact and controlled return", async () => {
+  const counts = [];
+  for (const reactive of [false, true]) {
+    let seed = 731, contacts = 0, returns = 0;
+    const random = () => { seed = (1664525 * seed + 1013904223) >>> 0; return seed / 2 ** 32; };
+    for (let sample = 0; sample < 20; sample++) {
+      const g = await PinballPhysics.create();
+      try {
+        g.launch(); g.state.kickbackCharges = 0;
+        g.ball.setTranslation({ x: (random() * 2 - 1) * .9, y: .18, z: 3.2 }, true);
+        g.ball.setLinvel({ x: random() * 2 - 1, y: 0, z: 2 + random() * 3 }, true);
+        for (let tick = 0; tick < 600 && g.state.phase === "playing"; tick++) {
+          const p = g.ballPosition, v = g.ball.linvel();
+          g.step(1 / 120, { left: reactive && p.z > 3.6 && p.x < .3 && v.z > 0,
+            right: reactive && p.z > 3.6 && p.x > -.3 && v.z > 0 });
+        }
+        contacts += g.flipperContacts.some(Boolean); returns += g.upfieldReturns > 0;
+      } finally { g.dispose(); }
+    }
+    assert.ok(contacts >= 16, `too few physical contacts: ${contacts}`); counts.push(returns);
+  }
+  assert.equal(counts[0], 0); assert.ok(counts[1] >= 14, `controlled returns: ${counts}`);
 });

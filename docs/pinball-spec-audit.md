@@ -55,3 +55,11 @@ Source: user-provided “3Dピンボール 技術設計・ゲーム企画”, 42
 On pinball/0.1.0 the following latest requests are now implemented and tested: three upper physical lane dividers plus one-shot rollover detection/ABC completion; visible sensor-driven spinner rotation/decay; camera-independent readable backglass with score/ball/ABC/center-save state; one initial center-save charge recharged by ABC, consumed by a real impulse without teleportation. This is a center saver, not a conventional side outlane kickback, and the spinner is not a freely simulated rigid-body wheel. Scoring/progression now pass through state.onEvent with event-ID deduplication, an incremental separation step rather than the full typed EventBus/PinballComponent architecture.
 
 The earlier audit rows describe the pre-checkpoint version. TypeScript/Vite, charged plunger, nudge/TILT, proper ramp return, advanced modes and persistence remain incomplete. No milestone is declared complete by these additions.
+
+## Lower-playfield and camera correction
+
+Giant filled return wedges were a failed design: they buried slings, pinched held flippers and diverted live-browser balls outside reachable flippers. They are removed, not merely restyled. Renderer and collision code now consume shared LOWER_LAYOUT rail, sling, pivot and blade geometry. The center saver triggers below the blades and arcs beyond them; return-angle speed is limited independently. A novice powered-coil correction requires a real pressed-blade contact and a cooldown; it never relocates the ball or acts off-collider.
+
+The reference's lower architecture (compact slings, narrow inlane rails, separated flippers and open floor) is restored in simplified procedural form. Elaborate upper ramps, machine details and room art remain deferred; the implementation is not a visual replica of the generated concept.
+
+Camera is perspective, initially56 degrees from horizontal, with10–90 degree continuous slider and optional saved angle. Near-side viewing is for inspection, not guaranteed competitive readability. The cabinet is fitted from its actual corners for each aspect ratio.

@@ -8,6 +8,8 @@ export class PinballTablePreview {
     this.canvas = canvas;
     this.state = new TablePreviewState();
     this.game = null;
+    this.viewAngle = 56;
+    try { const saved=Number(localStorage.getItem("pinball-view-angle")); if(saved>=10&&saved<=90)this.viewAngle=saved; } catch { /* Storage is optional. */ }
     this.renderer = new T.WebGLRenderer({ canvas, antialias: true });
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     this.renderer.shadowMap.enabled = true;
@@ -17,7 +19,7 @@ export class PinballTablePreview {
     this.scene = new T.Scene();
     this.scene.background = new T.Color(0x141418);
     this.scene.fog = new T.Fog(0x141418, 24, 48);
-    this.camera = new T.OrthographicCamera(-4, 4, 6.4, -6.4, 0.1, 80);
+    this.camera = new T.PerspectiveCamera(42, 1, 0.1, 100);
     this.assets = new WorkshopAssets();
     this.board = this.assets.build();
     this.board.rotation.x = TABLE.tilt;
@@ -82,8 +84,8 @@ export class PinballTablePreview {
   }
   init() {
     this.state.init();
+    this.state.view="custom";
     this.resize();
-    this.setView("play");
     this.renderer.setAnimationLoop((t) => this.frame(t));
     document.querySelector("#message").textContent = "物理エンジンを準備中…";
   }
@@ -97,12 +99,27 @@ export class PinballTablePreview {
   }
   setView(name) {
     this.state.view = name;
+    if(name === "play") this.viewAngle=56;
+    if(name === "top") this.viewAngle=90;
+    if(name === "play" || name === "top") {
+      try { localStorage.setItem("pinball-view-angle",String(this.viewAngle)); } catch { /* Optional persistence. */ }
+    }
+    document.querySelector("#view-angle").value=this.viewAngle;
+    document.querySelector("#view-angle-label").textContent=`${Math.round(this.viewAngle)}°`;
     // Gameplay views retain the complete lane and both flippers, without perspective compression.
     const aspect = this.canvas.clientWidth / this.canvas.clientHeight;
-    const halfHeight = Math.max(name === "top" ? 6.35 : 5.85, 3.1 / aspect);
-    Object.assign(this.camera, {left:-halfHeight*aspect, right:halfHeight*aspect, top:halfHeight, bottom:-halfHeight});
+    const angle=this.viewAngle*Math.PI/180;
+    // Fit the actual cabinet corners rather than adding two conservative margins.
+    const tangent=Math.tan(21*Math.PI/180); let distance=0;
+    for(const x of [-3.05,3.05]) for(const y of [-.6,.8]) for(const z of [-6,6]) {
+      const screenY=y*Math.cos(angle)-z*Math.sin(angle);
+      const towardCamera=y*Math.sin(angle)+z*Math.cos(angle);
+      distance=Math.max(distance,Math.abs(screenY)/tangent+towardCamera,Math.abs(x)/(tangent*aspect)+towardCamera);
+    }
+    distance*=1.04;
+    this.camera.aspect=aspect;
     this.camera.up.set(0, 0, -1);
-    const position = new T.Vector3(0, 24, name === "top" ? 0 : 16).applyAxisAngle(new T.Vector3(1,0,0), TABLE.tilt);
+    const position = new T.Vector3(0, distance*Math.sin(angle), distance*Math.cos(angle)).applyAxisAngle(new T.Vector3(1,0,0), TABLE.tilt);
     this.camera.position.copy(position);
     this.camera.lookAt(0, 0, 0);
     this.camera.updateProjectionMatrix();
@@ -266,6 +283,10 @@ function bindInput(game) {
     .forEach((b) =>
       b.addEventListener("click", () => game.setView(b.dataset.view)),
     );
+  document.querySelector("#view-angle").addEventListener("input", e=>{
+    game.viewAngle=Number(e.target.value); game.setView("custom");
+    try { localStorage.setItem("pinball-view-angle",String(game.viewAngle)); } catch { /* Optional persistence. */ }
+  });
   document.querySelector("#launch").addEventListener("click", () => game.launch());
   document.querySelector("#pause").addEventListener("click", () => game.togglePause());
   for (const b of document.querySelectorAll("[data-restart]")) b.addEventListener("click", () => {

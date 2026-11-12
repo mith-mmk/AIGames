@@ -252,3 +252,8 @@ header p { display: none; }
 #score-event { grid-column: 1 / -1; color: #dfd4b8; font-size: 10px; text-align: center; min-height: 15px; }
 #table { top: 140px; height: calc(100% - 300px); }
 @media(max-width:700px) { header h1 { font-size: 12px; } .status.backglass { padding: 7px 12px; } .backglass #score { font-size: 32px; } #table { top: 135px; height: calc(100% - 295px); } }
+
+.camera-control { position:absolute; right:14px; bottom:132px; display:flex; align-items:center; gap:6px; padding:6px 9px; border-radius:14px; background:#15171de8; font-size:11px; }
+.camera-control input { width:110px; accent-color:#dfbd7f; touch-action:pan-x; }
+.camera-control output { width:28px; }
+@media(max-width:700px) { .camera-control { top:121px; bottom:auto; right:50%; transform:translateX(50%); padding:3px 9px; font-size:10px; } #table {top:154px;height:calc(100% - 314px);} }

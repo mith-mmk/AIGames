@@ -55,3 +55,15 @@ export const UPPER_RAMP = Object.freeze([
   [-1.6, 2.8, -4.25], [0.15, 2.85, -4.2], [1.55, 2.7, -4.18], [2.08, 2.6, -4.2],
 ]);
 export const SLING_VERTICES = Object.freeze([[1.35, 1.95], [1.65, 2.9], [0.96, 3.05]]);
+
+// Shared lower playfield geometry. Coordinates are table-local, right-hand side.
+export const LOWER_LAYOUT = Object.freeze({
+  guide: [[1.9, .22, 1.8], [1.85, .22, 3.0], [1.0, .22, 3.15]],
+  guideRadius: .04,
+  guideEntry: { left: [2.73, .22, .8], right: [2.30, .22, .8] },
+  slingVertices: [[1.10, 1.65], [1.40, 2.60], [.71, 2.75]],
+  slingCenter: [1.10, 2.25],
+  flipperPivot: [1.20, .27, 3.90],
+  flipperCenter: .49, flipperHalfLength: .55, flipperHalfWidth: .14,
+  centerSaveZ: [4.50, 4.63],
+});
