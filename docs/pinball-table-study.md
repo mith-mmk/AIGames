@@ -80,3 +80,9 @@ Validation: 13 rules/layout/physics tests plus real Chromium launch, dual inputs
 ## Playability correction
 
 User play exposed unusable diagonal framing and repeatable left-lane traps. Independent contact traces confirmed the ball wedged between floor and low ramp convex hulls. Both ramps are deferred and removed from render/collision, along with teleport rescue. Shortened flippers leave a real drain gap; continuous slanted target banks prevent pockets; balls returning to shooter bottom now drain. Orthographic high-angle/top views reserve UI space and hide non-colliding tall scenery. 90 varied shots and 12 three-ball sessions completed without rescue; browser natural three-ball play ended in 24.8 seconds without input. This validates basic play, not final balance or full ramp implementation.
+
+## Beginner play tuning
+
+A front-centered view 34 degrees from overhead replaces the almost vertical default; top view remains available. The geometric board tilt remains 6.5 degrees. Downhill acceleration uses a documented 0.65 rolling-inertia/gameplay approximation, not an exact rigid-body simulation of a real table. Solid triangular return guides close the old side escape routes and guide balls inside flipper pivots; center drain remains. Bumper and sling kicks are softer. No automatic rescue or ball-save is used.
+
+After tuning, 31 launch-strength samples: no-input median 9.13 seconds, simple reactive-flipper median 10.17 seconds, maximum 56.53 seconds, minimum 3.52 seconds. Earlier 21-strength no-input sample median was 3.72 seconds; sample counts differ, so this is indicative rather than a controlled paired comparison. Tests also include 90 varied launches, 12 full sessions and explicit left/right guide delivery. Browser test now includes real-time key pulses with rendering running, in addition to fast physics sweeps. Physical-phone testing and player difficulty feedback remain outstanding.

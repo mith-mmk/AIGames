@@ -267,20 +267,6 @@ export class WorkshopAssets {
     knob.rotation.x = Math.PI / 2;
     // Lower lanes have raised metal guides and visible mounting posts.
     for (const side of [-1, 1]) {
-      this.tube(
-        g,
-        [
-          [side * 2.2, 0.22, 1.9],
-          [side * 2.1, 0.22, 3.1],
-          [side * 1.4, 0.22, 4.15],
-        ],
-        0.04,
-        "chrome",
-      );
-      for (const z of [2.0, 2.75]) {
-        this.cylinder(g, 0.075, 0.27, side * 1.85, 0.14, z, "cream");
-        this.screw(g, side * 1.85, 0.29, z);
-      }
       this.tube(g, [[side*.6,.22,-.45],[side*1.8,.22,-.95]], .07, "rubber");
       for (let i = 0; i < 3; i++) {
         const t=(i+.5)/3, x=side*(.6+1.2*t), z=-.45-.5*t;

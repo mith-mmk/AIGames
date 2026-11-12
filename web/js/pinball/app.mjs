@@ -99,10 +99,10 @@ export class PinballTablePreview {
     this.state.view = name;
     // Gameplay views retain the complete lane and both flippers, without perspective compression.
     const aspect = this.canvas.clientWidth / this.canvas.clientHeight;
-    const halfHeight = Math.max(6.35, 3.1 / aspect);
+    const halfHeight = Math.max(name === "top" ? 6.35 : 5.85, 3.1 / aspect);
     Object.assign(this.camera, {left:-halfHeight*aspect, right:halfHeight*aspect, top:halfHeight, bottom:-halfHeight});
     this.camera.up.set(0, 0, -1);
-    const position = new T.Vector3(0, 24, name === "top" ? 0 : 4.2).applyAxisAngle(new T.Vector3(1,0,0), TABLE.tilt);
+    const position = new T.Vector3(0, 24, name === "top" ? 0 : 16).applyAxisAngle(new T.Vector3(1,0,0), TABLE.tilt);
     this.camera.position.copy(position);
     this.camera.lookAt(0, 0, 0);
     this.camera.updateProjectionMatrix();

@@ -7,7 +7,8 @@ export class PinballPhysics {
   static async create() { await R.init(); return new PinballPhysics(); }
   constructor() {
     this.state = new PinballGameState(); this.accumulator = 0; this.time = 0;
-    this.world = new R.World({ x: 0, y: -98.1 * Math.cos(TABLE.tilt), z: 98.1 * Math.sin(TABLE.tilt) });
+    // Reduced downhill acceleration approximates rolling inertia for beginner play.
+    this.world = new R.World({ x: 0, y: -98.1 * Math.cos(TABLE.tilt), z: 63.765 * Math.sin(TABLE.tilt) });
     this.world.timestep = 1 / 120;
     this.world.numSolverIterations = 8;
     this.queue = new R.EventQueue(true); this.hitObjects = new Map(); this.cooldowns = new Map();
@@ -44,8 +45,14 @@ export class PinballPhysics {
       this.hitObjects.set(c.handle, { type: "bumper", x: p.x, z: p.z, points: 100, label: "ENERGY", key: "b" + i });
     }
     for (const side of [-1, 1]) {
-      const outer = [[side * 2.2, .22, 1.9], [side * 2.1, .22, 3.1], [side * 1.4, .22, 4.15]];
-      for (let i = 0; i < 2; i++) this.segment(outer[i], outer[i + 1], .04);
+      // Solid beginner inlane shoulders: no open path behind the guides.
+      // The sloping face returns side-wall shots to the flipper pivots.
+      const edge = side < 0 ? 2.79 : 2.34;
+      const outline = [[side * edge, 1.6], [side * .65, 3.25], [side * edge, 3.25]];
+      const verts = [];
+      for (const y of [.04, .7]) for (const [x, z] of outline) verts.push(x, y, z);
+      this.world.createCollider(R.ColliderDesc.convexHull(new Float32Array(verts))
+        .setFriction(.015).setRestitution(.15));
       const sling = new T.CatmullRomCurve3([...SLING_VERTICES, SLING_VERTICES[0]].map(([x, z]) => new T.Vector3(side * x, .22, z))).getPoints(16);
       for (let i = 0; i < sling.length - 1; i++) this.segment(sling[i].toArray(), sling[i + 1].toArray(), .07, { type: "sling", x: side * 1.35, z: 2.55, points: 25, label: "SLING", key: "s" + side });
       // Continuous sloped bank faces avoid ball-width pockets between standups.
@@ -62,7 +69,7 @@ export class PinballPhysics {
     for (let i = 0; i < 2; i++) {
       const angle = this.flipperAngles[i];
       const body = this.world.createRigidBody(R.RigidBodyDesc.kinematicPositionBased().setTranslation(i ? 1.05 : -1.05, .27, 3.75).setRotation({ x: 0, y: Math.sin(angle / 2), z: 0, w: Math.cos(angle / 2) }));
-      this.world.createCollider(R.ColliderDesc.cuboid(.48, .09, .14).setTranslation(.40, 0, 0).setRestitution(.75).setFriction(.1), body);
+      this.world.createCollider(R.ColliderDesc.cuboid(.48, .27, .14).setTranslation(.40, 0, 0).setRestitution(.75).setFriction(.1), body);
       this.flippers.push(body);
     }
   }
@@ -90,8 +97,8 @@ export class PinballPhysics {
     this.cooldowns.set(h.key, this.time + .16); this.state.award(h.points, h.label);
     if (h.type === "bumper" || h.type === "sling") {
       const p = this.ball.translation(), dx = p.x - h.x, dz = p.z - h.z, len = Math.hypot(dx, dz) || 1;
-      const v = this.ball.linvel(), speed = h.type === "bumper" ? 13 : 10;
-      this.ball.setLinvel({ x: dx / len * speed, y: Math.min(v.y, 1), z: dz / len * speed - (h.type === "sling" ? 3 : 0) }, true);
+      const v = this.ball.linvel(), speed = h.type === "bumper" ? 9 : 6;
+      this.ball.setLinvel({ x: h.type === "sling" ? -Math.sign(h.x) * 3.5 + v.x * .35 : dx / len * speed, y: Math.min(v.y, 1), z: h.type === "sling" ? -3.5 + Math.min(0, v.z) * .3 : dz / len * speed }, true);
     }
   }
   step(dt, input = {}) {
