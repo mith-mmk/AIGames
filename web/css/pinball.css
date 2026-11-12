@@ -215,3 +215,22 @@ summary {
     width: 210px;
   }
 }
+
+/* Compact gameplay overlay; the table remains the primary surface. */
+header { top: 14px; left: 20px; }
+header h1 { font-size: 20px; margin: 8px 0 4px; letter-spacing: -0.02em; }
+header p { margin: 0; }
+.status { top: 18px; right: 20px; text-align: right; }
+.status strong { display: block; font-size: 28px; color: #fff2d5; font-variant-numeric: tabular-nums; }
+.status > span { font-size: 9px; letter-spacing: .14em; }
+#phase { position: absolute; left: 50%; transform: translateX(-50%); bottom: 135px; font-size: 11px; background: #24252ad9; padding: 6px 14px; border-radius: 20px; white-space: nowrap; }
+.controls { gap: 12px; bottom: 32px; }
+.controls button { min-height: 48px; min-width: 120px; user-select: none; -webkit-user-select: none; }
+.controls button[aria-pressed="true"] { background: #dfbd7f; color: #24252a; }
+#launch { background: #b18b4e; color: #111; }
+button:disabled { opacity: .45; cursor: default; }
+#gameover { position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%); width: min(280px,80vw); text-align: center; padding: 24px; border: 1px solid #b18b4e; border-radius: 14px; background: #191b22f5; }
+#gameover[hidden] { display: none; }
+#gameover strong { display: block; font-size: 30px; }
+#gameover button { background: #dfbd7f; color: #17181c; }
+@media (max-width:700px) { header h1 { font-size: 14px; } header { left: 12px; top: 15px; } .status { top: 15px; right: 12px; } .status strong { font-size: 24px; } .controls { bottom: 30px; gap: 6px; width: 96%; } .controls button { min-width: 0; flex: 1; min-height: 52px; } nav { bottom: 93px; } nav button { padding: 8px 9px; } #phase { bottom: 138px; font-size: 10px; } details { bottom: 7px; font-size: 9px; } }

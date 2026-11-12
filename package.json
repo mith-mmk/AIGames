@@ -16,6 +16,7 @@
   "license": "MIT",
   "description": "",
   "devDependencies": {
+    "@dimforge/rapier3d-compat": "0.17.3",
     "@eslint/css": "^0.9.0",
     "@eslint/js": "^9.29.0",
     "@eslint/markdown": "^6.6.0",

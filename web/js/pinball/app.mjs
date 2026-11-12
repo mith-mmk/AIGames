@@ -1,11 +1,13 @@
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { WorkshopRoom } from "./workshop.mjs";
 import { WorkshopAssets } from "./assets.mjs";
-import { TABLE, TablePreviewState, flipperAngle } from "./layout.mjs";
+import { PinballPhysics } from "./physics.mjs";
+import { TABLE, TablePreviewState } from "./layout.mjs";
 export class PinballTablePreview {
   constructor(canvas) {
     this.canvas = canvas;
     this.state = new TablePreviewState();
+    this.game = null;
     this.renderer = new T.WebGLRenderer({ canvas, antialias: true });
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     this.renderer.shadowMap.enabled = true;
@@ -83,7 +85,7 @@ export class PinballTablePreview {
     this.resize();
     this.setView("play");
     this.renderer.setAnimationLoop((t) => this.frame(t));
-    document.querySelector("#message").textContent = "";
+    document.querySelector("#message").textContent = "物理エンジンを準備中…";
   }
   resize() {
     const w = this.canvas.clientWidth,
@@ -107,27 +109,46 @@ export class PinballTablePreview {
       .querySelectorAll("[data-view]")
       .forEach((b) => b.classList.toggle("selected", b.dataset.view === name));
   }
-  toggleTour() {
-    this.state.tour = !this.state.tour;
-    document
-      .querySelector("#tour")
-      .setAttribute("aria-pressed", String(this.state.tour));
+  async connectPhysics() {
+    this.game = await PinballPhysics.create();
+    document.querySelector("#message").textContent = "";
+    document.querySelectorAll("button").forEach(b => { b.disabled = false; });
+    if (new URLSearchParams(location.search).has("test")) window.__pinball = this;
+    this.updateHUD();
+  }
+  launch() { if (this.game) this.game.launch(); }
+  togglePause() {
+    if (this.game && this.game.state.phase !== "gameover")
+      this.game.setPaused(this.game.state.phase !== "paused");
+  }
+  restart() {
+    if (!this.game) return;
+    this.state.release(); this.game.restart(); this.last = 0;
+    document.querySelectorAll("#left,#right").forEach(b => b.setAttribute("aria-pressed", "false"));
+  }
+  updateHUD() {
+    const state = this.game.state;
+    document.querySelector("#score").textContent = state.score.toLocaleString("ja-JP");
+    document.querySelector("#balls").textContent = `${Math.min(state.ballNumber, 3)} / 3`;
+    const labels = { ready: "SPACE / 発射でスタート", playing: "バンパーとターゲットを狙おう", paused: "一時停止中", gameover: "GAME OVER" };
+    document.querySelector("#phase").textContent = labels[state.phase];
+    document.querySelector("#pause").textContent = state.phase === "paused" ? "再開" : "一時停止";
+    document.querySelector("#launch").disabled = state.phase !== "ready";
+    document.querySelector("#gameover").hidden = state.phase !== "gameover";
+    document.querySelector("#final-score").textContent = state.score.toLocaleString("ja-JP");
+    this.canvas.dataset.phase = state.phase;
+    this.canvas.dataset.score = state.score;
+    this.canvas.dataset.ball = state.ballNumber;
   }
   frame(time) {
     const dt = this.last ? Math.min((time - this.last) / 1000, 0.05) : 0;
     this.last = time;
-    this.state.update(dt);
-    for (let i = 0; i < 2; i++) {
-      const f = this.assets.flippers[i],
-        active = i ? this.state.right : this.state.left;
-      const target = flipperAngle(Boolean(i), active);
-      f.rotation.y = T.MathUtils.damp(f.rotation.y, target, 24, dt);
-    }
-    if (this.state.tour) {
-      const p = this.assets.curve.getPoint(this.state.progress);
-      this.ball.position.copy(p);
-      this.ball.position.y += TABLE.ballRadius;
-      this.ball.rotation.x += dt * 8;
+    if (this.game) {
+      this.game.step(dt, { left: this.state.left, right: this.state.right });
+      const p = this.game.ballPosition;
+      this.ball.position.set(p.x, p.y, p.z);
+      for (let i = 0; i < 2; i++) this.assets.flippers[i].rotation.y = this.game.flipperAngles[i];
+      this.updateHUD();
     }
     this.renderer.render(this.scene, this.camera);
     if (this.frameCount++ % 60 === 0) {
@@ -136,6 +157,7 @@ export class PinballTablePreview {
     }
   }
   pause() {
+    if (this.game && this.game.state.phase !== "gameover") this.game.setPaused(true);
     this.state.release();
     this.last = 0;
   }
@@ -154,6 +176,7 @@ function bindInput(game) {
     b.addEventListener("keydown", (e) => {
       if (e.code === "Space" || e.code === "Enter") {
         e.preventDefault();
+        e.stopPropagation();
         held[side].add(e.code);
         sync(side);
       }
@@ -188,18 +211,19 @@ function bindInput(game) {
         ? "right"
         : null;
   window.addEventListener("keydown", (e) => {
-    if (e.target instanceof HTMLElement && e.target.closest("button,summary,a"))
-      return;
+    if (e.defaultPrevented || (e.target instanceof HTMLElement && e.target.closest("input,textarea,select,[contenteditable]"))) return;
     const side = sideFor(e.code);
     if (side) {
       e.preventDefault();
       held[side].add(e.code);
       sync(side);
     }
-    if (e.code === "Space") {
+    if (e.code === "Space" && !(e.target instanceof HTMLElement && e.target.closest("button,a,summary"))) {
       e.preventDefault();
-      if (!e.repeat) game.toggleTour();
+      if (!e.repeat) game.launch();
     }
+    if ((e.code === "KeyP" || e.code === "Escape") && !e.repeat) game.togglePause();
+    if (e.code === "KeyR" && !e.repeat) { held.left.clear(); held.right.clear(); game.restart(); }
     if (e.code === "KeyC" && !e.repeat) {
       const modes = ["play", "detail", "top"];
       game.setView(modes[(modes.indexOf(game.state.view) + 1) % 3]);
@@ -232,9 +256,11 @@ function bindInput(game) {
     .forEach((b) =>
       b.addEventListener("click", () => game.setView(b.dataset.view)),
     );
-  document
-    .querySelector("#tour")
-    .addEventListener("click", () => game.toggleTour());
+  document.querySelector("#launch").addEventListener("click", () => game.launch());
+  document.querySelector("#pause").addEventListener("click", () => game.togglePause());
+  for (const b of document.querySelectorAll("[data-restart]")) b.addEventListener("click", () => {
+    held.left.clear(); held.right.clear(); game.restart();
+  });
   game.canvas.addEventListener("webglcontextlost", (e) => {
     e.preventDefault();
     game.renderer.setAnimationLoop(null);
@@ -250,7 +276,9 @@ function bindInput(game) {
   });
 }
 try {
-  bindInput(new PinballTablePreview(document.querySelector("#table")));
+  const game = new PinballTablePreview(document.querySelector("#table"));
+  bindInput(game);
+  await game.connectPhysics();
 } catch (error) {
   document.querySelector("#message").textContent =
     `3D表示を開始できませんでした。WebGL 2対応ブラウザをお試しください。 (${error.message})`;

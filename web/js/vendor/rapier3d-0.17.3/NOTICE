@@ -1,0 +1,4 @@
+Rapier 3D compat 0.17.3
+https://github.com/dimforge/rapier.js
+Apache-2.0
+Official npm rapier.es.js, renamed rapier.mjs. Inline WASM, no remote runtime fetch.

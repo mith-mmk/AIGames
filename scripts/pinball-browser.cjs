@@ -50,95 +50,74 @@ const http = require("node:http");
     });
     const errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
-    await page.goto(`http://127.0.0.1:${server.address().port}/pinball.html`);
-    await page.waitForFunction(
-      () => document.querySelector("#message").textContent === "",
-    );
-    await page.waitForFunction(() => Number(document.querySelector("#table").dataset.drawCalls) > 0);
-    const metrics = await page.locator("#table").evaluate((c) => ({ drawCalls: Number(c.dataset.drawCalls), triangles: Number(c.dataset.triangles) }));
-    assert.ok(metrics.drawCalls < 1000, `Draw call budget: ${metrics.drawCalls}`);
-    assert.ok(metrics.triangles < 500000, `Triangle budget: ${metrics.triangles}`);
-    console.log("Render budget (desktop full view):", metrics);
+    await page.goto(`http://127.0.0.1:${server.address().port}/pinball.html?test=1`);
+    await page.waitForFunction(() => window.__pinball?.game, { timeout: 30000 });
+    await page.waitForFunction(() => document.querySelector("#table").dataset.phase === "ready");
+    const metrics = await page.locator("#table").evaluate(c => ({ drawCalls: Number(c.dataset.drawCalls), triangles: Number(c.dataset.triangles) }));
+    assert.ok(metrics.drawCalls < 1000 && metrics.triangles < 500000);
+    console.log("Render budget", metrics);
     await page.screenshot({ path: path.join(output, "full.png") });
-    for (const name of ["機構の接写", "真上", "全景"]) {
-      await page.getByRole("button", { name, exact: true }).click();
-      assert.match(
-        await page
-          .getByRole("button", { name, exact: true })
-          .getAttribute("class"),
-        /selected/,
-      );
-    }
-    await page.locator("#tour").click();
-    assert.equal(
-      await page.locator("#tour").getAttribute("aria-pressed"),
-      "true",
-    );
-    await page.waitForTimeout(500);
-    await page.locator("#tour").click();
-    assert.equal(
-      await page.locator("#tour").getAttribute("aria-pressed"),
-      "false",
-    );
-    await page.locator("#left").focus();
-    await page.keyboard.down("Space");
-    assert.equal(
-      await page.locator("#left").getAttribute("aria-pressed"),
-      "true",
-    );
-    await page.keyboard.up("Space");
-    assert.equal(
-      await page.locator("#left").getAttribute("aria-pressed"),
-      "false",
-    );
-    const left = await page.locator("#left").boundingBox();
-    await page.mouse.move(left.x + left.width / 2, left.y + left.height / 2);
-    await page.mouse.down();
-    await page.locator("#right").focus();
-    await page.keyboard.down("Space");
+    await page.keyboard.press("Space");
+    await page.waitForFunction(() => window.__pinball.game.state.phase === "playing");
+    await page.waitForTimeout(1500);
+    await page.keyboard.down("KeyZ"); await page.keyboard.down("Slash");
+    await page.waitForTimeout(150);
     assert.equal(await page.locator("#left").getAttribute("aria-pressed"), "true");
     assert.equal(await page.locator("#right").getAttribute("aria-pressed"), "true");
-    await page.keyboard.up("Space");
-    await page.mouse.up();
-    assert.equal(await page.locator("#left").getAttribute("aria-pressed"), "false");
-    await page.locator("#table").click();
-    await page.keyboard.down("KeyZ");
-    await page.waitForTimeout(120);
-    await page.keyboard.up("KeyZ");
-    await page.keyboard.press("KeyC");
-    await page.getByRole("button", { name: "機構の接写" }).click();
+    await page.keyboard.up("KeyZ"); await page.keyboard.up("Slash");
+    await page.locator("#pause").focus();
+    await page.keyboard.press("Space");
+    await page.waitForFunction(() => window.__pinball.game.state.phase === "paused");
+    const paused = await page.evaluate(() => window.__pinball.game.ballPosition);
+    await page.waitForTimeout(300);
+    assert.deepEqual(await page.evaluate(() => window.__pinball.game.ballPosition), paused);
+    await page.locator("#pause").click();
+    await page.screenshot({ path: path.join(output, "playing.png") });
+    for (const name of ["接写", "真上", "全景"]) await page.getByRole("button", { name, exact: true }).click();
+    await page.getByRole("button", { name: "接写", exact: true }).click();
     await page.screenshot({ path: path.join(output, "detail.png") });
+    await page.locator("nav [data-restart]").click();
+    assert.equal(await page.evaluate(() => window.__pinball.game.state.score), 0);
+    assert.equal(await page.evaluate(() => window.__pinball.game.state.phase), "ready");
+    // Force physical drains (not state calls) to verify UI transitions for all three balls.
+    for (let n = 1; n <= 3; n++) {
+      await page.locator("#launch").click();
+      await page.evaluate(() => {
+        const game = window.__pinball.game;
+        game.ball.setTranslation({x:0,y:.2,z:4.8}, true);
+        game.ball.setLinvel({x:0,y:0,z:2}, true);
+      });
+      await page.waitForFunction(n => window.__pinball.game.state.phase === (n === 3 ? "gameover" : "ready"), n);
+    }
+    await page.locator("#gameover").waitFor({state:"visible"});
+    await page.locator("#gameover [data-restart]").click();
+    assert.equal(await page.evaluate(() => window.__pinball.game.state.ballNumber), 1);
     await page.setViewportSize({ width: 390, height: 844 });
     await page.getByRole("button", { name: "全景", exact: true }).click();
     await page.screenshot({ path: path.join(output, "mobile.png") });
-    assert.equal(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth > innerWidth,
-      ),
-      false,
-    );
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+    await page.locator("#launch").click();
+    await page.waitForFunction(() => window.__pinball.game.state.phase === "playing");
+    const left = await page.locator("#left").boundingBox();
+    await page.mouse.move(left.x + left.width / 2, left.y + left.height / 2); await page.mouse.down();
+    await page.locator("#right").focus(); await page.keyboard.down("Space");
+    assert.equal(await page.locator("#left").getAttribute("aria-pressed"), "true");
+    assert.equal(await page.locator("#right").getAttribute("aria-pressed"), "true");
+    await page.keyboard.up("Space"); await page.mouse.up();
+    await page.evaluate(() => window.dispatchEvent(new Event("blur")));
+    await page.waitForFunction(() => window.__pinball.game.state.phase === "paused");
     await page.evaluate(() => {
       const ext = document.querySelector("#table").getContext("webgl2").getExtension("WEBGL_lose_context");
-      if (!ext) throw new Error("Context-loss test extension unavailable");
-      ext.loseContext();
-      setTimeout(() => ext.restoreContext(), 500);
+      ext.loseContext(); setTimeout(() => ext.restoreContext(), 500);
     });
     await page.waitForFunction(() => document.querySelector("#message").textContent.includes("中断"));
     await page.waitForFunction(() => document.querySelector("#message").textContent === "");
+    assert.equal(await page.evaluate(() => window.__pinball.game.state.phase), "paused");
     await page.screenshot({ path: path.join(output, "restored.png") });
-    await page.reload();
-    await page.waitForFunction(
-      () => document.querySelector("#message").textContent === "",
-    );
-    assert.equal(
-      await page.locator("#tour").getAttribute("aria-pressed"),
-      "false",
-    );
+    await page.reload(); await page.waitForFunction(() => window.__pinball?.game);
+    assert.equal(await page.evaluate(() => window.__pinball.game.state.phase), "ready");
     assert.deepEqual(errors, []);
-    console.log(
-      "PASS: WebGL boot, cameras, path toggle, keyboard, mobile overflow, context restore, reload; screenshots " +
-        output,
-    );
+    console.log("PASS: actual physics launch, input, pause, restart, mobile, blur, context restoration, reload");
   } finally {
     if (browser) await browser.close();
     server.close();
