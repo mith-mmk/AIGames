@@ -101,6 +101,17 @@ const http = require("node:http");
     await page.waitForFunction(()=>document.querySelector("#kickback").textContent.includes("0 / 1"));
     await page.screenshot({path:path.join(output,"backglass-active.png")});
     await page.locator("nav [data-restart]").click();
+    // Controlled return fixture verifies UI and same-ball relaunch from its real location.
+    await page.locator("#launch").click();
+    await page.evaluate(()=>{const g=window.__pinball.game;g.ball.setTranslation({x:2.53,y:.18,z:4.58},true);g.ball.setLinvel({x:0,y:0,z:2},true);});
+    await page.waitForFunction(()=>window.__pinball.game.state.returnedShooter);
+    assert.equal(await page.evaluate(()=>window.__pinball.game.state.ballNumber),1);
+    await page.waitForTimeout(200);
+    assert.ok(await page.evaluate(()=>window.__pinball.game.ballPosition.z>4.6));
+    await page.locator("#launch").click();
+    assert.equal(await page.evaluate(()=>window.__pinball.game.state.ballNumber),1);
+    await page.waitForFunction(()=>window.__pinball.game.ball.linvel().z<0);
+    await page.locator("nav [data-restart]").click();
     // Continuous unassisted game: actual physics, no manual relocation or state drain calls.
     const continuous = await page.evaluate(() => {
       const g = window.__pinball.game; g.restart(); let steps = 0, launches = 0;
@@ -109,9 +120,9 @@ const http = require("node:http");
         g.step(1/120, {left:false,right:false}); steps++;
         if (g.state.lastEvent === "BALL SEARCH") throw new Error("Rescue masked a trapped ball");
       }
-      return {phase:g.state.phase, launches, seconds:steps/120};
+      return {phase:g.state.phase, ballNumber:g.state.ballNumber, launches, seconds:steps/120};
     });
-    assert.equal(continuous.phase, "gameover"); assert.equal(continuous.launches, 3);
+    assert.equal(continuous.phase, "gameover"); assert.equal(continuous.ballNumber,3); assert.ok(continuous.launches>=3); // Returned shooter balls can be re-launched without consuming a ball.
     console.log("Unassisted continuous game", continuous);
     await page.locator("#gameover [data-restart]").click();
     // Force physical drains (not state calls) to verify UI transitions for all three balls.

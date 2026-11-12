@@ -1,7 +1,7 @@
 import { buildPhysicalRamp } from "./ramp-geometry.mjs";
 import R from "../vendor/rapier3d-0.17.3/rapier.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import { TABLE, BUMPERS, LOWER_LAYOUT, TARGET_BANKS, flipperAngle } from "./layout.mjs";
+import { TABLE, BUMPERS, LOWER_LAYOUT, TARGET_BANKS, SHOOTER_BACKING, flipperAngle } from "./layout.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
 export class PinballPhysics {
@@ -43,9 +43,16 @@ export class PinballPhysics {
     this.box(0, 0.45, -5.8, 2.8, 0.5, 0.07);
     this.box(2.53, 0.3, 5.5, 0.27, 0.4, 0.08);
     // Shooter divider stops above the bumper area; curved roof feeds the ball left.
-    this.segment([2.35, 0.23, 4.6], [2.35, 0.23, -3.9], 0.045);
+    this.segment([2.35, 0.23, 5.5], [2.35, 0.23, -3.9], 0.045);
     const roof = [[2.72, .23, -4.15], [2.4, .23, -5.2], [1.25, .23, -5.55], [.95, .23, -5.3]];
     for (let i = 0; i < roof.length - 1; i++) this.segment(roof[i], roof[i + 1], 0.06);
+    // Triangulate the concave backing; one convex hull would intrude into
+    // the curved shooter path and the adjacent elevated return route.
+    for (let i=0; i<SHOOTER_BACKING.length-2; i++) {
+      const triangle=[SHOOTER_BACKING.at(-1),SHOOTER_BACKING[i],SHOOTER_BACKING[i+1]];
+      const vertices=new Float32Array([-.04,.55].flatMap(y=>triangle.flatMap(([x,z])=>[x,y,z])));
+      this.world.createCollider(R.ColliderDesc.convexHull(vertices).setRestitution(.35).setFriction(.05));
+    }
     for (const [i, p] of BUMPERS.entries()) {
       const c = this.world.createCollider(R.ColliderDesc.cylinder(0.32, 0.40).setTranslation(p.x, 0.34, p.z).setRestitution(0.9));
       this.hitObjects.set(c.handle, { type: "bumper", x: p.x, z: p.z, points: 100, label: "ENERGY", key: "b" + i });
@@ -57,7 +64,7 @@ export class PinballPhysics {
       guide.unshift([side * entry[0], entry[1], entry[2]]);
       for (let k = 0; k < guide.length - 1; k++) this.segment(guide[k], guide[k + 1], LOWER_LAYOUT.guideRadius);
       const sling = new T.CatmullRomCurve3([...LOWER_LAYOUT.slingVertices, LOWER_LAYOUT.slingVertices[0]].map(([x, z]) => new T.Vector3(side * x, .22, z))).getPoints(16);
-      for (let i = 0; i < sling.length - 1; i++) this.segment(sling[i].toArray(), sling[i + 1].toArray(), .07, { type: "sling", x: side * 1.1, z: 2.25, points: 25, label: "SLING", key: "s" + side });
+      for (let i = 0; i < sling.length - 1; i++) this.segment(sling[i].toArray(), sling[i + 1].toArray(), .07, { type: "sling", x: side * LOWER_LAYOUT.slingCenter[0], z: LOWER_LAYOUT.slingCenter[1], points: 25, label: "SLING", key: "s" + side });
     }
     for(const bank of TARGET_BANKS) this.segment(bank.a,bank.b,.07,
       {type:bank.type,points:bank.type==="bank"?75:50,label:"TARGET",key:bank.key});
@@ -80,6 +87,7 @@ export class PinballPhysics {
     }
   }
   resetBall() {
+    this.state.returnedShooter = false;
     this.ball.setTranslation({ x: 2.53, y: .2, z: 3.7 }, true);
     this.ball.setLinvel({ x: 0, y: 0, z: 0 }, true); this.ball.setAngvel({ x: 0, y: 0, z: 0 }, true); this.ball.setGravityScale(0, true);
 
@@ -109,7 +117,12 @@ export class PinballPhysics {
     const along = Math.max(0, Math.min(1, (LOWER_LAYOUT.flipperPivot[0] - Math.abs(this.ball.translation().x)) / (LOWER_LAYOUT.flipperCenter + LOWER_LAYOUT.flipperHalfLength)));
     const faceAngle = side ? Math.PI - this.flipperAngles[side] : this.flipperAngles[side];
     // Position-dependent shot spread is a pinball approximation for the box paddle.
-    const aimAngle = faceAngle - along * .7;
+    // A broad heel-to-mid stroke can aim up-table; later tip shots retain
+    // the cross-table ramp angle. This contact-local curve never selects a
+    // target or changes the ball position, and passive cradles stay passive.
+    const aimAngle = along < .4
+      ? -.12 - Math.max(0, along - .30) * 4
+      : faceAngle - along * .7;
     const angularSpeed = this.flipperAngularSpeeds[side];
     const speed = Math.min(32, 8 + (12 + along * 24) * Math.min(1, angularSpeed / 12));
     const lateral = (side ? 1 : -1) * Math.sin(aimAngle) * speed;
@@ -168,7 +181,15 @@ export class PinballPhysics {
           if (manifold.numSolverContacts() > 0) this.strikeFlipper(side);
         });
       }
-      if (this.state.phase === "ready") { this.resetBall(); continue; }
+      if (this.state.phase === "ready") {
+        if (!this.state.returnedShooter) { this.resetBall(); continue; }
+        const resting = this.ball.translation();
+        // Returned balls still simulate: never leave a lost ball stranded in ready.
+        if (resting.y < -1 || Math.abs(resting.x) > 3.2 || resting.z > 5.85 || resting.z < -6.5) {
+          this.state.launch(); this.state.drain(); this.resetBall();
+        }
+        continue;
+      }
       const p = this.ball.translation(), v = this.ball.linvel();
       if (this.returnPending && p.z < 3.2 && v.z < 0 && this.time - this.lastActiveContactTime < .8) {
         this.upfieldReturns++; this.returnPending = false;
@@ -179,7 +200,14 @@ export class PinballPhysics {
         this.returnPending = false;
         this.ball.applyImpulse({ x: -p.x * .3, y: .88, z: (-8 - v.z) * this.ball.mass() }, true);
       }
-      if (p.z > 4.65 || p.y < -1.0 || Math.abs(p.x) > 3.2 || p.z < -6.5) {
+      // A returning ball inside the physical shooter channel is not an outlane
+      // drain. Keep its position, velocity and ball number; gravity rolls it to
+      // the plunger end, and launch() fires from wherever it actually rests.
+      const inShooter = p.x > 2.45 && p.x < 2.70 && p.y > -.1 && p.y < .5;
+      if (inShooter && p.z > 4.65 && p.z < 5.5 && v.z >= 0) {
+        this.state.returnToShooter(); continue;
+      }
+      if ((!inShooter && p.z > 4.65) || p.y < -1.0 || Math.abs(p.x) > 3.2 || p.z < -6.5) {
         this.state.drain(); this.resetBall(); continue;
       }
       const currentVelocity = this.ball.linvel();

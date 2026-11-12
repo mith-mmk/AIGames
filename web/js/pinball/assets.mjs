@@ -2,7 +2,7 @@ import { buildVisualRamp } from "./ramp-geometry.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { PlayfieldParts } from "./playfield-parts.mjs";
 import { WorkshopMechanisms } from "./mechanisms.mjs";
-import { BUMPERS, RAMP, flipperAngle, LOWER_LAYOUT } from "./layout.mjs";
+import { BUMPERS, RAMP, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING } from "./layout.mjs";
 export class WorkshopAssets {
   constructor() {
     this.root = new T.Group();
@@ -155,10 +155,7 @@ export class WorkshopAssets {
     // Quiet stencil art; graphic detail stays below the contrast of ball and shot marks.
     ctx.strokeStyle = "#77756b"; ctx.lineWidth = 3;
     ctx.strokeRect(36, 36, 952, 1976);
-    for (const x of [105, 919]) {
-      ctx.strokeStyle = "#555b60"; ctx.lineWidth = 2;
-      ctx.strokeRect(x - 22, 210, 44, 1380);
-    }
+    // Lane markings are placed with the live guide geometry, not archived straight stripes.
     // Low-contrast maker crest behind the restored metal insert assembly.
     ctx.strokeStyle = "#555958"; ctx.lineWidth = 2;
     for (const r of [165, 185]) {
@@ -228,9 +225,16 @@ export class WorkshopAssets {
     this.robot();
     new WorkshopMechanisms(this).build(g);
     // Shooter walls match the physical straight-segment guide layout.
-    this.tube(g,[[2.35,.23,4.6],[2.35,.23,-3.9]],.045,"chrome");
+    this.tube(g,[[2.35,.23,5.5],[2.35,.23,-3.9]],.045,"chrome");
     const roof=[[2.72,.23,4.55],[2.72,.23,-4.15],[2.4,.23,-5.2],[1.25,.23,-5.55],[.95,.23,-5.3]];
     for(let i=0;i<roof.length-1;i++) this.tube(g,[roof[i],roof[i+1]],.06,"chrome");
+    const backingShape=new T.Shape();
+    SHOOTER_BACKING.forEach(([x,z],i)=>i?backingShape.lineTo(x,-z):backingShape.moveTo(x,-z));
+    backingShape.closePath();
+    const backingGeometry=new T.ExtrudeGeometry(backingShape,{depth:.59,bevelEnabled:false});
+    backingGeometry.rotateX(-Math.PI/2); backingGeometry.translate(0,-.04,0);
+    const backingMesh=new T.Mesh(backingGeometry,this.materials.rubber);
+    backingMesh.name="shooter-corner-backing"; g.add(backingMesh);
     for (let i = 0; i < 14; i++) {
       const r = this.ring(
         g,

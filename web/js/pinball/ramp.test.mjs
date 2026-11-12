@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
 import {PinballPhysics} from './physics.mjs';
-import {buildPhysicalRamp,sampleRamp,RAMP_WIDTH} from './ramp-geometry.mjs';
+import {buildPhysicalRamp,sampleRamp,RAMP_WIDTH,RAMP_POINTS} from './ramp-geometry.mjs';
 async function fixture(position,velocity) {
   await R.init();
   const world=new R.World({x:0,y:-97.47,z:7.22});world.timestep=1/120;
@@ -15,7 +15,7 @@ async function fixture(position,velocity) {
 }
 test('experimental ramp uses continuous finite mesh and adequate channel width',()=>{
   const rows=sampleRamp();assert.equal(rows.length,241);assert.ok(RAMP_WIDTH-.27>.15);
-  for(const r of rows){assert.ok(r.p.toArray().every(Number.isFinite));assert.ok(r.p.y>=.03);assert.ok(Math.abs(r.p.x)<2.6);}
+  for(const r of rows){assert.ok(r.p.toArray().every(Number.isFinite));assert.ok(r.p.y>=.03);assert.ok(Math.abs(r.p.x)<2.6);assert.ok(r.left.distanceTo(r.right)>=.319, "return channel must retain full ball-width clearance");}
 });
 test('floor ball passes below rear elevated deck without being lifted',async()=>{
   const {world,ball}=await fixture([0,.18,-4.8],[0,0,2]);
@@ -37,11 +37,11 @@ test('ramp traversal at speeds 26 and 28 with three lateral offsets in actual ta
       g.launch();const r=sampleRamp()[0];
       g.ball.setTranslation({x:r.p.x+offset,y:r.p.y+.14,z:r.p.z},true);
       g.ball.setLinvel({x:r.t.x*speed,y:r.t.y*speed,z:r.t.z*speed},true);
-      let rear=false,completed=false;
+      let rear=false,completed=false; const exit=RAMP_POINTS.at(-1);
       for(let tick=0;tick<1200;tick++) {
         g.world.step();const p=g.ballPosition;
         if(p.z< -3.5)rear=true;
-        if(rear&&p.x< -.7&&p.z>3.1&&p.y>.4){completed=true;break;}
+        if(rear&&Math.abs(p.x-exit[0])<.25&&p.z>exit[2]-.1&&p.y>exit[1]){completed=true;break;}
         assert.ok(p.y>-.5,'escaped ramp/table before exit');
       }
       assert.ok(completed,`speed ${speed}, offset ${offset}`);

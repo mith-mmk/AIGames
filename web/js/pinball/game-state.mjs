@@ -4,12 +4,17 @@ export class PinballGameState {
   restart() {
     this.rollovers = [false, false, false]; this.rolloverSets = 0;
     this.kickbackCharges = 1; this.kickbackUses = 0; this.eventIds = new Set();
-    this.score = 0; this.ballNumber = 1; this.phase = "ready";
+    this.score = 0; this.ballNumber = 1; this.phase = "ready"; this.returnedShooter = false;
     this.lastEvent = "発射してスタート"; this.resumePhase = "ready";
   }
   launch() {
     if (this.phase !== "ready") return false;
-    this.phase = "playing"; this.lastEvent = "BALL " + this.ballNumber; return true;
+    this.returnedShooter = false; this.phase = "playing"; this.lastEvent = "BALL " + this.ballNumber; return true;
+  }
+  returnToShooter() {
+    if (this.phase !== "playing") return false;
+    this.returnedShooter = true; this.phase = "ready";
+    this.lastEvent = "発射レーンへ戻りました · 同じ球を再発射"; return true;
   }
   award(points, label) {
     if (this.phase !== "playing") return;
@@ -39,6 +44,7 @@ export class PinballGameState {
   }
   drain() {
     if (this.phase !== "playing") return false;
+    this.returnedShooter = false;
     if (this.ballNumber >= 3) { this.phase = "gameover"; this.lastEvent = "GAME OVER"; }
     else { this.ballNumber++; this.phase = "ready"; this.lastEvent = "次の球を発射"; }
     return true;

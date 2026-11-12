@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { PinballPhysics } from "./physics.mjs";
 import { LOWER_LAYOUT, TABLE } from "./layout.mjs";
+import { RAMP_POINTS } from "./ramp-geometry.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
 function run(g, seconds, input = {}) { for (let i = 0; i < seconds * 120; i++) g.step(1 / 120, input); }
@@ -21,7 +22,7 @@ test("rules enforce three balls, pause and reset", () => {
 test("real launch feeds scoring objects, not a scripted path", async () => {
   const g = await PinballPhysics.create();
   try {
-    assert.equal(g.launch(), true); run(g, 3);
+    assert.equal(g.launch(.7), true); run(g, 5);
     assert.ok(g.state.score > 0, `score=${g.state.score}`);
     assert.ok(g.ballPosition.x < 2.3); assert.ok(Number.isFinite(g.ballPosition.y));
   } finally { g.dispose(); }
@@ -89,7 +90,16 @@ test("ninety varied launches drain without stuck recovery or position jumps", as
       // Release flippers: a free-running ball must still clear and drain naturally.
       for (let tick = 0; tick < 7200 && g.state.phase === "playing"; tick++) g.step(1 / 120);
       assert.equal(g.state.phase, "ready", `shot ${shot} stuck at ${JSON.stringify(g.ballPosition)}`);
-      assert.equal(g.state.ballNumber, 2);
+      let shooterReturns = 0;
+      while (g.state.returnedShooter && shooterReturns < 5) {
+        assert.equal(g.state.ballNumber, 1, "shooter return must not consume a ball");
+        assert.ok(g.ballPosition.x > 2.35, "returned ball must physically be inside shooter channel");
+        g.launch(.7); shooterReturns++;
+        for (let tick=0;tick<14400 && g.state.phase === "playing";tick++) g.step(1/120);
+      }
+      assert.equal(g.state.phase, "ready");
+      assert.equal(g.state.returnedShooter, false, `shot ${shot}: repeated shooter returns never reached a real drain`);
+      assert.equal(g.state.ballNumber, 2, "a real drain must consume exactly one ball");
     } finally { g.dispose(); }
   }
 });
@@ -98,14 +108,14 @@ test("twelve full three-ball sessions end without rescue", async () => {
   for (let session = 0; session < 12; session++) {
     const g = await PinballPhysics.create();
     try {
-      let launches = 0;
+      let launches = 0, servedBalls = 0, shooterReturns = 0;
       for (let tick = 0; tick < 120 * 180 && g.state.phase !== "gameover"; tick++) {
-        if (g.state.phase === "ready") { g.launch(((session * 7 + launches * 3) % 11) / 10); launches++; }
+        if (g.state.phase === "ready") { if(g.state.returnedShooter) shooterReturns++; else servedBalls++; g.launch(((session * 7 + launches * 3) % 11) / 10); launches++; }
         g.step(1 / 120, { left: session % 2 ? tick % (51 + session) < 9 : false,
           right: session % 2 ? tick % (83 + session) < 15 : false });
       }
       assert.equal(g.state.phase, "gameover", `session ${session} stuck at ${JSON.stringify(g.ballPosition)}`);
-      assert.equal(launches, 3); assert.equal(g.state.ballNumber, 3);
+      assert.equal(servedBalls, 3); assert.equal(launches, 3 + shooterReturns); assert.equal(g.state.ballNumber, 3);
     } finally { g.dispose(); }
   }
 });
@@ -354,6 +364,10 @@ test("five real cradle-reflip timings traverse the S ramp, cradle again and re-f
     const { g, held } = await cradle(-1);
     try {
       assert.ok(g.ramp, "ramp must be integrated, not injected at its entrance");
+      const exit = RAMP_POINTS.at(-1);
+      let positionResets = 0;
+      const setTranslation = g.ball.setTranslation.bind(g.ball);
+      g.ball.setTranslation = (...args) => { positionResets++; return setTranslation(...args); };
       for (let tick = 0; tick < releaseTicks; tick++) g.step(1 / 120);
       let crest = false, returnLane = false, floor = false;
       for (let tick = 0; tick < 1200 && g.state.phase === "playing"; tick++) {
@@ -361,7 +375,7 @@ test("five real cradle-reflip timings traverse the S ramp, cradle again and re-f
         const p = g.ballPosition, v = g.ball.linvel();
         assert.ok(Math.hypot(v.x, v.y, v.z) <= 32.0001);
         if (p.z < -3.5 && p.y > 1) crest = true;
-        if (crest && p.x < -1.3 && p.z > 2.8 && p.y > .5) returnLane = true;
+        if (crest && Math.abs(p.x - exit[0]) < .25 && p.z > exit[2] - .2 && p.y > exit[1]) returnLane = true;
         if (returnLane && p.y < .25) { floor = true; break; }
       }
       assert.ok(crest && returnLane && floor, `timing ${releaseTicks}: crest=${crest}, return=${returnLane}, floor=${floor}`);
@@ -380,6 +394,40 @@ test("five real cradle-reflip timings traverse the S ramp, cradle again and re-f
       }
       assert.ok(firedAgain, `return shot ${releaseTicks}`);
       assert.equal(g.coilImpulses[0], 2);
+      assert.equal(positionResets, 0, "same ball must traverse, cradle and re-fire without position resets");
     } finally { g.dispose(); }
   }
+});
+
+
+test("both flippers reach center B through a broad real cradle release window", async () => {
+  for (const side of [-1, 1]) for (let delay = 48; delay <= 62; delay += 2) {
+    const {g, held} = await cradle(side);
+    try {
+      let centerHits = 0;
+      const onEvent = g.state.onEvent.bind(g.state);
+      g.state.onEvent = event => {
+        if (event.type === "rollover" && event.lane === 1) centerHits++;
+        return onEvent(event);
+      };
+      for (let i=0; i<delay; i++) g.step(1/120);
+      for(let i=0;i<720 && !centerHits && g.state.phase === "playing";i++) g.step(1/120,held);
+      assert.ok(centerHits > 0, `side ${side}, release ${delay}/120 seconds misses B`);
+      assert.equal(g.coilImpulses[side < 0 ? 0 : 1], 1, "held paddle must not repeat fire");
+      assert.equal(g.state.ballNumber, 1);
+    } finally {g.dispose();}
+  }
+});
+
+test("shooter corner backing cannot retain a ball outside the bend", async () => {
+  const g=await PinballPhysics.create();
+  try {
+    g.launch(14/30);
+    for(let i=0;i<10800 && g.state.phase === "playing";i++) {
+      const p=g.ballPosition,v=g.ball.linvel();
+      g.step(1/120,{left:p.z>3.35&&p.x<.3&&v.z>0,right:p.z>3.35&&p.x>-.3&&v.z>0});
+    }
+    run(g,60);
+    assert.notEqual(g.state.phase,"playing",JSON.stringify(g.ballPosition));
+  } finally {g.dispose();}
 });

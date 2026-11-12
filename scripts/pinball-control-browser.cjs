@@ -17,9 +17,9 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
   await page.waitForTimeout(3200);const held=await sample();await page.waitForTimeout(1500);const still=await sample();
   assert.equal(still.phase,'playing');assert.ok(Math.hypot(still.p.x-held.p.x,still.p.z-held.p.z)<.03,JSON.stringify({held,still}));
   await page.screenshot({path:path.join(out,`cradle-${side<0?'left':'right'}.png`)});
-  await page.keyboard.up(key);await page.waitForTimeout(500);await page.keyboard.down(key);let shot;
+  await page.keyboard.up(key);await page.waitForTimeout(450);await page.keyboard.down(key);let shot;
   for(let i=0;i<40;i++){shot=await sample();if(shot.p.z<2.8&&shot.v.z<0)break;await page.waitForTimeout(10);}
-  assert.ok(shot.p.z<2.8&&shot.v.z<-5,JSON.stringify(shot));results.push({side,held,still,shot});await page.keyboard.up(key);
+  assert.ok(shot.p.z<2.8&&shot.v.z<-5,JSON.stringify(shot));await page.waitForFunction(()=>window.__pinball.game.state.rollovers[1],{},{timeout:4000});await page.screenshot({path:path.join(out,`central-B-${side<0?'left':'right'}.png`)});results.push({side,held,still,shot,centralB:true});await page.keyboard.up(key);
  }
  // Real touch events (not manually setting game input), including simultaneous capture and release.
  await page.setViewportSize({width:390,height:844});await page.keyboard.press('KeyR');await page.locator('#launch').click();
@@ -27,9 +27,9 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[touch]});await page.waitForTimeout(300);
  await page.evaluate(()=>{const g=window.__pinball.game;g.state.kickbackCharges=0;g.ball.setTranslation({x:-.85,y:.18,z:3.15},true);g.ball.setLinvel({x:0,y:0,z:2},true);});
  await page.waitForTimeout(3200);const held=await sample();assert.equal(held.input.left,true);await page.screenshot({path:path.join(out,'cradle-touch.png')});
- await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await page.waitForTimeout(500);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[touch]});let shot;
+ await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await page.waitForTimeout(450);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[touch]});let shot;
  for(let i=0;i<40;i++){shot=await sample();if(shot.p.z<2.8&&shot.v.z<0)break;await page.waitForTimeout(10);}
- assert.ok(shot.p.z<2.8&&shot.v.z<-5,JSON.stringify(shot));await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});results.push({touch:true,held,shot});
+ assert.ok(shot.p.z<2.8&&shot.v.z<-5,JSON.stringify(shot));await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await page.waitForFunction(()=>window.__pinball.game.state.rollovers[1],{},{timeout:4000});await page.screenshot({path:path.join(out,'central-B-touch.png')});results.push({touch:true,held,shot,centralB:true});
  // Left cradle -> timed shot -> complete physical ramp return. No entry teleport.
  await page.setViewportSize({width:720,height:960});await page.keyboard.press('KeyR');await page.locator('#launch').click();await page.keyboard.down('KeyZ');await page.waitForTimeout(300);
  await page.evaluate(()=>{const g=window.__pinball.game;g.state.kickbackCharges=0;g.ball.setTranslation({x:-.85,y:.18,z:3.15},true);g.ball.setLinvel({x:0,y:0,z:2},true);});

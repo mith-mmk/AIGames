@@ -53,16 +53,24 @@ export class PlayfieldParts {
     const points=[[side*entry[0],entry[1],entry[2]],...LOWER_LAYOUT.guide.map(([x,y,z])=>[side*x,y,z])];
     for(let i=0;i<points.length-1;i++) a.tube(g,[points[i],points[i+1]],LOWER_LAYOUT.guideRadius,"chrome");
     for(const [x,y,z] of points.slice(1)) a.cylinder(g,.055,y,x,y/2,z,"brass");
+    // Mark the actual playable lanes, not the archived decorative straight bands.
+    a.text(g,"IN",side*1.65,.065,2.10,.28,.16,"#a4c4b8");
+    for(const [x,z] of [[1.55,2.80],[1.13,3.20]]) a.text(g,"▼",side*x,.065,z,.18,.18,"#91b6a7");
+    const outerX=side<0?-2.30:2.10;
+    a.text(g,"OUT",outerX,.065,2.60,.28,.16,"#c7ae74");
+    a.text(g,"▼",outerX,.065,2.94,.18,.18,"#c7ae74");
   }
   sling(side) {
     const a = this.a, g = new T.Group(); a.root.add(g);
     const vertices = LOWER_LAYOUT.slingVertices.map(([x, z]) => [side * x, z]);
+    const outline = new T.CatmullRomCurve3([...vertices, vertices[0]].map(([x,z]) => new T.Vector3(x,.22,z))).getPoints(16);
     const shape = new T.Shape();
-    vertices.forEach(([x, z], i) => i ? shape.lineTo(x, -z) : shape.moveTo(x, -z)); shape.closePath();
+    outline.forEach(({x,z}, i) => i ? shape.lineTo(x, -z) : shape.moveTo(x, -z)); shape.closePath();
     const geo = new T.ExtrudeGeometry(shape, { depth: 0.07, bevelEnabled: true, bevelSize: 0.04, bevelThickness: 0.03, bevelSegments: 2, steps: 1 }); geo.rotateX(-Math.PI / 2);
     a.mesh(geo, "steel", g, 0, 0.43, 0);
-    const ring = [...vertices, vertices[0]].map(([x, z]) => [x, 0.34, z]);
-    a.tube(g, ring, 0.055, "rubber");
+    // Match the physical 16-segment rubber perimeter, including its height.
+    const ring = outline.map(p => p.toArray());
+    a.tube(g, ring, 0.07, "rubber");
     a.tube(g, ring.map(([x, , z]) => [x, 0.48, z]), 0.022, "brass");
     for (const [x, z] of vertices) {
       a.cylinder(g, 0.075, 0.35, x, 0.24, z, "brass");

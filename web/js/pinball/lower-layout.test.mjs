@@ -1,0 +1,38 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import * as T from '../vendor/three-0.180.0/three.module.min.js';
+import {LOWER_LAYOUT,TABLE} from './layout.mjs';
+import {PinballPhysics} from './physics.mjs';
+
+test('sling rubber clears the root-to-center shot corridor on both sides',()=>{
+  for(const side of [-1,1]) {
+    const a=new T.Vector3(side*.9,.22,3.7),b=new T.Vector3(0,.22,-4.55),d=b.clone().sub(a);
+    const outline=new T.CatmullRomCurve3([...LOWER_LAYOUT.slingVertices,LOWER_LAYOUT.slingVertices[0]].map(([x,z])=>new T.Vector3(side*x,.22,z))).getPoints(128);
+    for(const p of outline) {
+      const t=Math.max(0,Math.min(1,p.clone().sub(a).dot(d)/d.lengthSq()));
+      assert.ok(p.distanceTo(a.clone().addScaledVector(d,t))>TABLE.ballRadius+.07+.02);
+    }
+  }
+});
+test('both inlanes feed the flippers at three speeds rather than bypass their pivots',async()=>{
+  for(const side of [-1,1])for(const x of [1.45,1.65])for(const speed of [1,3,6]) {
+    const g=await PinballPhysics.create();
+    try {
+      g.launch();g.state.kickbackCharges=0;
+      g.ball.setTranslation({x:side*x,y:.18,z:2.1},true);g.ball.setLinvel({x:0,y:0,z:speed},true);
+      for(let i=0;i<1200&&g.state.phase==='playing';i++)g.step(1/120,{left:side<0,right:side>0});
+      assert.ok(g.metrics.flipperContacts[side<0?0:1]>0,`side ${side}, x ${x}, speed ${speed}`);
+    }finally{g.dispose();}
+  }
+});
+test('genuine outside lanes still drain without a flipper or invisible rescue',async()=>{
+  for(const side of [-1,1]) {
+    const g=await PinballPhysics.create();
+    try {
+      g.launch();g.state.kickbackCharges=0;
+      g.ball.setTranslation({x:side*2.2,y:.18,z:2.6},true);g.ball.setLinvel({x:0,y:0,z:3},true);
+      for(let i=0;i<1200&&g.state.phase==='playing';i++)g.step(1/120,{left:true,right:true});
+      assert.equal(g.state.phase,'ready');assert.deepEqual(g.metrics.flipperContacts,[0,0]);
+    }finally{g.dispose();}
+  }
+});

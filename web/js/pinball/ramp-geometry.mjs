@@ -7,14 +7,16 @@ export const RAMP_POINTS = Object.freeze([
   [1.50,.04,.35], [1.60,.08,-.05], [1.78,.28,-.65],
   [1.90,.58,-1.65], [1.95,.85,-2.6], [1.5,1.05,-3.65],
   [.25,.90,-4.20], [-1.15,.78,-4.0], [-2.10,.78,-3.05],
-  [-2.30,.78,-1.7], [-2.25,.78,.1], [-2.0,.75,1.6], [-1.10,.45,3.00],
+  [-2.30,.78,-1.7], [-2.25,.78,.1], [-2.0,.75,1.6], [-.90,.55,2.5], [-.90,.49,2.8], [-.90,.45,3.00],
 ]);
 export function sampleRamp(count=240) {
   const curve=new T.CatmullRomCurve3(RAMP_POINTS.map(p=>new T.Vector3(...p)),false,'centripetal');
   return Array.from({length:count+1},(_,i)=>{
     const p=curve.getPoint(i/count), t=curve.getTangent(i/count);
     const n=new T.Vector3(-t.z,0,t.x).normalize();
-    return {p,t,left:p.clone().addScaledVector(n,-RAMP_WIDTH/2),right:p.clone().addScaledVector(n,RAMP_WIDTH/2)};
+    const narrowing=p.x<0?Math.max(0,Math.min(1,(p.z-1.8)/.7)):0;
+    const width=RAMP_WIDTH-.23*narrowing*narrowing*(3-2*narrowing);
+    return {p,t,left:p.clone().addScaledVector(n,-width/2),right:p.clone().addScaledVector(n,width/2)};
   });
 }
 function surface(rows, kind) {

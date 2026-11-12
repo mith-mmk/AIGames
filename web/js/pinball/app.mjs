@@ -152,7 +152,7 @@ export class PinballTablePreview {
     const state = this.game.state;
     document.querySelector("#score").textContent = state.score.toLocaleString("ja-JP");
     document.querySelector("#balls").textContent = `${Math.min(state.ballNumber, 3)} / 3`;
-    const labels = { ready: "SPACE / 発射でスタート", playing: "バンパーとターゲットを狙おう", paused: "一時停止中", gameover: "GAME OVER" };
+    const labels = { ready: state.returnedShooter ? "戻り球 · SPACEで同じ球を再発射" : "SPACE / 発射でスタート", playing: "バンパーとターゲットを狙おう", paused: "一時停止中", gameover: "GAME OVER" };
     document.querySelector("#phase").textContent = labels[state.phase];
     document.querySelector("#pause").textContent = state.phase === "paused" ? "再開" : "一時停止";
     document.querySelector("#launch").disabled = state.phase !== "ready";

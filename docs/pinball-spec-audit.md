@@ -79,3 +79,17 @@ A shared continuous triangle-mesh deck and rails now form a right entrance, rear
 The powered rising-blade approximation now derives strength from contact position and angular speed, capped consistently with the world speed limit32. It remains a game approximation for a rectangular paddle, not a validated motor simulation. Five cradle-release timings reach and traverse the ramp via an actual flipper shot. Browser keyboard input reproduces a held ball, shot, complete ramp traversal and return to the left cradle. Incoming fixture placement is explicit; it is not a claim of a human playtest.
 
 Reference differences remain: the left return is a transparent trough rather than the separate wire-lane construction; the upper curve is simplified; robot body art, target mechanisms, original materials/details and physical spinner remain incomplete. Shared placement/route improvement does not mean visual reference fidelity is complete.
+
+## Guard and central-lane correction
+
+User playtesting exposed two failures missed by the ramp-only acceptance: broad side-drain routes and an effectively blocked central B shot. The lower guide's upper section is moved outward while preserving a genuine ball-width outlane. Extending its lower end beside the pivot was rejected because it pinched the held flipper. Compact slings now leave the root-to-center shot line open; visual rubber follows the same sampled curve, height and radius as collision. IN/OUT markings replace unrelated straight decorative stripes.
+
+The forward bumper moves left, rear bumpers spread, and target banks move outside the central shot corridor. Shared SHOOTER_ROOF and a visible corner backing close a newly reachable rear pocket. Root contacts have a forgiving central-shot angle band, while late tip contacts retain the ramp route; this is an explicit game-control approximation, not a motor simulation claim. Both sides' 400–517ms cradle release scenarios reach B without relocating the ball.
+
+A ball physically returning down the shooter lane is not a lost ball. It remains under gravity at its real position, retains score/ball number, enters same-ball ready state and can be launched again. New regression tests distinguish returned-ball launches from three actual ball losses.
+
+The ramp's final return is straightened and physically narrows to .32 (ball diameter .27) to reduce lateral landing variation. Visible and physical surfaces share the same width samples. Five shots must traverse, recapture and re-fire the same ball with zero position resets after the explicit initial incoming fixture.
+
+Reproducible synthetic-policy comparison: `node scripts/pinball-balance.cjs aff43c3` and `node scripts/pinball-balance.cjs`. Each uses12 pulse phases of15/45 ticks on the ball's side below z3.2, a90s cap, and real same-ball shooter relaunches. It records actual accepted rollover events, side losses, returns and idle time. These statistics and browser key/touch fixtures do not replace human difficulty or physical-phone testing.
+
+Independent review found a returned-shooter lateral escape below the old divider end. The divider now visibly and physically reaches the plunger end; ±1/±3 lateral-velocity regressions retain the same ball. Returned-ready simulation also retains a bounds fallback rather than hanging indefinitely outside the table.
