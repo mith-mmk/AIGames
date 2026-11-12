@@ -60,21 +60,48 @@ test("pause freezes simulation; resume and restart are deterministic", async () 
   } finally { g.dispose(); }
 });
 
-test("stalled ball recovery does not award points", async () => {
+test("former left ramp wedge clears naturally without ball search", async () => {
   const g = await PinballPhysics.create();
   try {
-    g.launch(); g.ball.setTranslation({ x: -2.17, y: .17, z: -.18 }, true); g.ball.setLinvel({ x: 0, y: 0, z: 0 }, true);
-    for (let i = 0; i < 960 && !g.rescueCount; i++) g.step(1 / 120);
-    assert.ok(g.rescueCount > 0); assert.ok(g.ballPosition.x > -1); assert.equal(g.state.score, 0);
+    g.launch(); g.ball.setTranslation({ x: -2.17, y: .175, z: -.18 }, true);
+    g.ball.setLinvel({ x: 0, y: 0, z: 0 }, true); run(g, 8);
+    assert.equal(g.state.phase, "ready"); assert.equal(g.state.ballNumber, 2);
+    assert.notEqual(g.state.lastEvent, "BALL SEARCH");
   } finally { g.dispose(); }
 });
 
-test("upper collector awards once and returns ball to lower lane", async () => {
-  const g = await PinballPhysics.create();
-  try {
-    g.launch(); g.ball.setTranslation({ x: 2.08, y: 2.8, z: -4.2 }, true);
-    g.ball.setLinvel({ x: 0, y: 0, z: 0 }, true); g.step(1 / 120);
-    assert.equal(g.state.score, 500); assert.ok(g.ballPosition.z > 1);
-    g.step(1 / 120); assert.equal(g.state.score, 500);
-  } finally { g.dispose(); }
+test("ninety varied launches drain without stuck recovery or position jumps", async () => {
+  for (let shot = 0; shot < 90; shot++) {
+    const g = await PinballPhysics.create();
+    try {
+      g.launch(shot / 89);
+      for (let tick = 0; tick < 7200 && g.state.phase === "playing"; tick++) {
+        const p = { ...g.ballPosition };
+        g.step(1 / 120, { left: shot % 3 ? tick % (47 + shot * 2) < 8 : false,
+          right: shot % 3 ? tick % (61 + shot) < 11 : false });
+        if (g.state.phase === "playing") {
+          const q = g.ballPosition;
+          assert.ok(Math.hypot(q.x-p.x, q.y-p.y, q.z-p.z) < .7, `shot ${shot}: position jump`);
+        }
+      }
+      assert.equal(g.state.phase, "ready", `shot ${shot} stuck at ${JSON.stringify(g.ballPosition)}`);
+      assert.equal(g.state.ballNumber, 2);
+    } finally { g.dispose(); }
+  }
+});
+
+test("twelve full three-ball sessions end without rescue", async () => {
+  for (let session = 0; session < 12; session++) {
+    const g = await PinballPhysics.create();
+    try {
+      let launches = 0;
+      for (let tick = 0; tick < 120 * 180 && g.state.phase !== "gameover"; tick++) {
+        if (g.state.phase === "ready") { g.launch(((session * 7 + launches * 3) % 11) / 10); launches++; }
+        g.step(1 / 120, { left: session % 2 ? tick % (51 + session) < 9 : false,
+          right: session % 2 ? tick % (83 + session) < 15 : false });
+      }
+      assert.equal(g.state.phase, "gameover", `session ${session} stuck at ${JSON.stringify(g.ballPosition)}`);
+      assert.equal(launches, 3); assert.equal(g.state.ballNumber, 3);
+    } finally { g.dispose(); }
+  }
 });

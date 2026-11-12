@@ -234,3 +234,7 @@ button:disabled { opacity: .45; cursor: default; }
 #gameover strong { display: block; font-size: 30px; }
 #gameover button { background: #dfbd7f; color: #17181c; }
 @media (max-width:700px) { header h1 { font-size: 14px; } header { left: 12px; top: 15px; } .status { top: 15px; right: 12px; } .status strong { font-size: 24px; } .controls { bottom: 30px; gap: 6px; width: 96%; } .controls button { min-width: 0; flex: 1; min-height: 52px; } nav { bottom: 93px; } nav button { padding: 8px 9px; } #phase { bottom: 138px; font-size: 10px; } details { bottom: 7px; font-size: 9px; } }
+
+/* Reserve UI space; never cover the flippers or shooter with control overlays. */
+#table { position: absolute; top: 85px; height: calc(100% - 245px); }
+@media (max-width:700px) { #table { top: 70px; height: calc(100% - 230px); } }

@@ -17,7 +17,7 @@ export class PinballTablePreview {
     this.scene = new T.Scene();
     this.scene.background = new T.Color(0x141418);
     this.scene.fog = new T.Fog(0x141418, 24, 48);
-    this.camera = new T.PerspectiveCamera(38, 1, 0.1, 80);
+    this.camera = new T.OrthographicCamera(-4, 4, 6.4, -6.4, 0.1, 80);
     this.assets = new WorkshopAssets();
     this.board = this.assets.build();
     this.board.rotation.x = TABLE.tilt;
@@ -97,14 +97,19 @@ export class PinballTablePreview {
   }
   setView(name) {
     this.state.view = name;
-    const mobile = this.camera.aspect < 0.8;
-    const positions = {
-      play: mobile ? [0, 19, 15] : [9, 14, 15],
-      detail: [5, 5.8, 6.8],
-      top: [0, 21, 0.01],
-    };
-    this.camera.position.set(...positions[name]);
-    this.camera.lookAt(0, 0, name === "detail" ? 1.1 : 0);
+    // Gameplay views retain the complete lane and both flippers, without perspective compression.
+    const aspect = this.canvas.clientWidth / this.canvas.clientHeight;
+    const halfHeight = Math.max(6.35, 3.1 / aspect);
+    Object.assign(this.camera, {left:-halfHeight*aspect, right:halfHeight*aspect, top:halfHeight, bottom:-halfHeight});
+    this.camera.up.set(0, 0, -1);
+    const position = new T.Vector3(0, 24, name === "top" ? 0 : 4.2).applyAxisAngle(new T.Vector3(1,0,0), TABLE.tilt);
+    this.camera.position.copy(position);
+    this.camera.lookAt(0, 0, 0);
+    this.camera.updateProjectionMatrix();
+    // Backdrop and non-colliding tall mascot must not hide the active ball lanes.
+    this.scene.getObjectByName("chappy-automaton").visible = false;
+    this.scene.getObjectByName("rear-mechanical-bank").visible = false;
+    this.room.root && (this.room.root.visible = false);
     document
       .querySelectorAll("[data-view]")
       .forEach((b) => b.classList.toggle("selected", b.dataset.view === name));
@@ -225,8 +230,8 @@ function bindInput(game) {
     if ((e.code === "KeyP" || e.code === "Escape") && !e.repeat) game.togglePause();
     if (e.code === "KeyR" && !e.repeat) { held.left.clear(); held.right.clear(); game.restart(); }
     if (e.code === "KeyC" && !e.repeat) {
-      const modes = ["play", "detail", "top"];
-      game.setView(modes[(modes.indexOf(game.state.view) + 1) % 3]);
+      const modes = ["play", "top"];
+      game.setView(modes[(modes.indexOf(game.state.view) + 1) % modes.length]);
     }
   });
   window.addEventListener("keyup", (e) => {

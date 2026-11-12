@@ -223,7 +223,7 @@ export class WorkshopAssets {
       this.flipper(1.05, 3.75, true),
     ];
     for (const [i, p] of BUMPERS.entries()) this.bumper(p.x, p.z, i);
-    this.ramp();
+    // Ramps remain archived until collision geometry supports reliable play.
     this.robot();
     new WorkshopMechanisms(this).build(g);
     // Shooter lane and spring-loaded plunger assembly.
@@ -281,16 +281,15 @@ export class WorkshopAssets {
         this.cylinder(g, 0.075, 0.27, side * 1.85, 0.14, z, "cream");
         this.screw(g, side * 1.85, 0.29, z);
       }
+      this.tube(g, [[side*.6,.22,-.45],[side*1.8,.22,-.95]], .07, "rubber");
       for (let i = 0; i < 3; i++) {
-        const x = side * (0.85 + i * 0.34);
-        this.box(g, 0.22, 0.35, 0.12, x, 0.23, -0.7, "cream");
-        this.box(g, 0.16, 0.22, 0.03, x, 0.25, -0.62, i === 1 ? "red" : "jade");
-        this.text(g, `${i + 1}`, x, 0.07, -0.35, 0.2, 0.15);
+        const t=(i+.5)/3, x=side*(.6+1.2*t), z=-.45-.5*t;
+        const target=this.box(g,.3,.30,.12,x,.22,z,"cream"); target.rotation.y=side*Math.atan2(.5,1.2);
       }
     }
 
     new PlayfieldParts(this).build();
-    this.text(g, "SKY RAIL", -1.7, 0.075, 1.35, 1, 0.17);
+
     return g;
   }
   flipper(x, z, mirror) {
@@ -313,6 +312,7 @@ export class WorkshopAssets {
       steps: 1,
     });
     geo.rotateX(-Math.PI / 2);
+    geo.scale(.8, 1, 1);
     this.mesh(geo, "rubber", pivot);
     const top = this.mesh(geo, "cream", pivot, 0, 0.13, 0);
     top.scale.set(0.95, 0.45, 0.7);
