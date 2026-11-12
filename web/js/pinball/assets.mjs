@@ -1,4 +1,5 @@
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
+import { PlayfieldParts } from "./playfield-parts.mjs";
 import { WorkshopMechanisms } from "./mechanisms.mjs";
 import { BUMPERS, RAMP, flipperAngle } from "./layout.mjs";
 export class WorkshopAssets {
@@ -276,16 +277,6 @@ export class WorkshopAssets {
         0.04,
         "chrome",
       );
-      this.tube(
-        g,
-        [
-          [side * 1.9, 0.22, 2.0],
-          [side * 1.6, 0.22, 2.8],
-          [side * 1.1, 0.22, 3.1],
-        ],
-        0.045,
-        "brass",
-      );
       for (const z of [2.0, 2.75]) {
         this.cylinder(g, 0.075, 0.27, side * 1.85, 0.14, z, "cream");
         this.screw(g, side * 1.85, 0.29, z);
@@ -298,6 +289,7 @@ export class WorkshopAssets {
       }
     }
 
+    new PlayfieldParts(this).build();
     this.text(g, "SKY RAIL", -1.7, 0.075, 1.35, 1, 0.17);
     return g;
   }

@@ -49,3 +49,9 @@ export function flipperAngle(mirror, active) {
   const angle = active ? 0.48 : -0.35;
   return mirror ? Math.PI - angle : angle;
 }
+
+export const UPPER_RAMP = Object.freeze([
+  [-2.38, 0.09, 1.1], [-2.4, 0.55, -0.8], [-2.35, 1.9, -3.05],
+  [-1.6, 2.8, -4.25], [0.15, 2.85, -4.2], [1.55, 2.7, -4.18], [2.08, 2.6, -4.2],
+]);
+export const SLING_VERTICES = Object.freeze([[1.35, 1.95], [1.65, 2.9], [0.96, 3.05]]);

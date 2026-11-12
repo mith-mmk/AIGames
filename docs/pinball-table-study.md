@@ -60,3 +60,11 @@ Inspected the owner's neon/junk-mech reference and explicit request to calm its 
 ## Art pass 06: restore mechanical density without neon clutter
 
 The owner found pass 05 too sparse. Restored all 11 circuit runs in thinner, low-contrast dark bronze and four flush metal insert assemblies with concentric rings, small ivory centers and mounting screws. Replaced the stencil with a quiet maker crest so artwork no longer competes with those actual parts. Moved bank labels above the inserts to retain a clear hierarchy. Main mechanisms and ball paths are unchanged; no new raised obstacles were placed in the lanes.
+
+## Art pass 07: substantial gameplay hardware
+
+Added 2 triangular slingshot assemblies (plates, rubber bands, posts, kicker linkages), 6 raised targets in 2 new banks, 1 spinner gate, a second elevated ramp with two rails / 22 rail stanchions / 2 support pylons, and 1 receiving tower. Existing 6 targets, 3 bumpers, 2 flippers and first ramp remain. The old two inner guide tubes were replaced by the sling boundaries rather than left intersecting them. Central corridor and flipper approach are reserved.
+
+These are rendered gameplay-hardware candidates, not functioning Rapier bodies. The new ramp ends at a modeled receiver, whose internal return path is not implemented. Layout guards check approach bounds, rail width and gate height; actual collisions, shot reachability and dynamics still need physics integration. Desktop full-view budget: 668 calls / 166,102 triangles.
+
+Review caught the original right-sling tip intersecting the existing preview ball path. Moved the upper sling vertex inward; minimum sampled ball-center/rubber-centerline distance is now 0.308 render units versus combined radii 0.190. Added both-sided curve-sampling regression coverage with an extra 0.02 margin. This remains geometric preview clearance, not a physical simulation test.
