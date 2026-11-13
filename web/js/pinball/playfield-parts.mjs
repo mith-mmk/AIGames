@@ -1,5 +1,6 @@
+import {targetDimensions,targetFaceAngle} from "./mechanical-contact.mjs";
 import { MechanicalSling, MechanicalTarget } from "./components/sling-target.mjs";
-import { LOWER_LAYOUT, TARGET_BANKS, lowerLanePaths } from "./layout.mjs";
+import { LOWER_LAYOUT, TARGET_BANKS, lowerLanePaths, lowerLaneMounts } from "./layout.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 
 /** Visual gameplay hardware. No collision/rule implementation is implied. */
@@ -15,8 +16,8 @@ export class PlayfieldParts {
       bank.position.set((spec.a[0]+spec.b[0])/2,0,(spec.a[2]+spec.b[2])/2);
       bank.rotation.y=-Math.atan2(dz,dx); g.add(bank);
       for(let i=0;i<spec.count;i++) {
-        const part=new MechanicalTarget({materials:spec.a[0]<0?{...a.materials,red:a.materials.flipperRubber}:a.materials,width:length/spec.count*.84,height:.30,depth:.085});
-        part.root.position.x=((i+.5)/spec.count-.5)*length;part.root.userData.targetId=`${spec.key}:${i}`;
+        const part=new MechanicalTarget({materials:{...a.materials,red:spec.color==="yellow"?a.materials.flipperRubber:a.materials.red,cream:spec.color==="yellow"?a.materials.flipperRubber:a.materials.red},glyph:spec.glyph,...targetDimensions(spec)});
+        part.root.rotation.y=targetFaceAngle(spec)-bank.rotation.y;part.root.position.x=((i+.5)/spec.count-.5)*length;part.root.userData.targetId=`${spec.key}:${i}`;
         bank.add(part.root);a.mechanical.targets.set(`${spec.key}:${i}`,part);
       }
     }
@@ -59,18 +60,20 @@ export class PlayfieldParts {
         const tube=a.tube(g,[path[i],path[i+1]],LOWER_LAYOUT.guideRadius,"chrome");
         tube.name="shared-lower-lane-contact-rail";
       }
-      for(const [x,y,z] of path) {
+    }
+    for(const [x,y,z] of lowerLaneMounts(side)) {
         a.cylinder(g,.055,.025,x,.062,z,"chrome");
         a.cylinder(g,.027,y-.07,x,(y+.07)/2,z,"steel");
         a.cylinder(g,.065,.025,x,y,z,"brass");
-      }
     }
     const [sx,,sz]=LOWER_LAYOUT.inlaneSensor;
     a.roundedBox(g,.25,.012,.08,side*sx,.055,sz,"insert",.02);
-    this.laneInsert(side*1.64,2.43,"IN",0x72eaff);
-    this.laneInsert(side*2.12,2.55,"OUT",0xffc93d);
+    for(const [key,label,color] of [["in","IN",0x72eaff],["out","OUT",0xffc93d]]) {
+      const [x,z,angle,width,height]=LOWER_LAYOUT.laneInserts[key];
+      this.laneInsert(side*x,z,label,color,side*angle,width,height);
+    }
   }
-  laneInsert(x,z,label,color) {
+  laneInsert(x,z,label,color,angle=0,width=.29,height=.78) {
     // Flat printed lane direction inset, not another obstacle or illuminated ball.
     const c=document.createElement("canvas");c.width=256;c.height=640;
     const ctx=c.getContext("2d"),ink=`#${color.toString(16).padStart(6,"0")}`;
@@ -80,8 +83,8 @@ export class PlayfieldParts {
     ctx.fillText(label,128,325);ctx.font="bold 75px sans-serif";ctx.fillText("LANE",128,425);
     ctx.beginPath();ctx.moveTo(128,100);ctx.lineTo(55,195);ctx.lineTo(128,160);ctx.lineTo(201,195);ctx.closePath();ctx.fill();
     const texture=new T.CanvasTexture(c);texture.colorSpace=T.SRGBColorSpace;
-    const mesh=new T.Mesh(new T.PlaneGeometry(.29,.78),new T.MeshBasicMaterial({map:texture}));
-    mesh.name=`${label.toLowerCase()}-lane-printed-insert`;mesh.rotation.x=-Math.PI/2;mesh.position.set(x,.048,z);this.a.root.add(mesh);
+    const mesh=new T.Mesh(new T.PlaneGeometry(width,height),new T.MeshBasicMaterial({map:texture}));
+    mesh.name=`${label.toLowerCase()}-lane-printed-insert`;mesh.rotation.x=-Math.PI/2;mesh.rotation.z=angle;mesh.position.set(x,.048,z);this.a.root.add(mesh);
   }
   sling(side) {
     const a=this.a,center=[side*LOWER_LAYOUT.slingCenter[0],LOWER_LAYOUT.slingCenter[1]];

@@ -77,3 +77,23 @@ export function plungerContactVertices() {
     const a=i*Math.PI/16;return [r*Math.cos(a),r*Math.sin(a),z];
   }).flat()));
 }
+
+// Visual estimates shared by the installed meshes and static strike surfaces.
+export function targetDimensions(bank) {
+  return {width:bank.width??Math.hypot(bank.b[0]-bank.a[0],bank.b[2]-bank.a[2])/bank.count*.84,height:bank.height??.30,depth:bank.depth??.085};
+}
+export function targetContactBoxes({width,height,depth}) {
+  const cy=.115+.055+height/2;
+  return [
+    [width/2+.006,height/2+.006,depth/2+.006,cy,-depth*.15],
+    [width*.435+.003,height*.435+.003,.009,cy,depth*.35+.006],
+    [width*.365+.002,height*.38+.002,.006,cy,depth*.35+.018],
+  ];
+}
+
+export function targetFaceAngle(bank) {
+ return bank.faceAngle??-Math.atan2(bank.b[2]-bank.a[2],bank.b[0]-bank.a[0]);
+}
+export function targetFrontNormal(bank) {
+ const angle=targetFaceAngle(bank);return [Math.sin(angle),Math.cos(angle)];
+}

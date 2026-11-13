@@ -89,7 +89,7 @@ class Assembly {
 export class MechanicalRamp extends Assembly {
   constructor({ materials = {}, rows = sampleRamp() } = {}) {
     super('mechanical-sheet-ramp-prototype', materials);
-    this.materials.acrylic = new T.MeshStandardMaterial({color:0x83d9ff,metalness:.04,roughness:.14,transparent:true,opacity:.36,depthWrite:false,side:T.DoubleSide});
+    this.materials.acrylic = new T.MeshStandardMaterial({color:0xb7edff,metalness:0,roughness:.08,transparent:true,opacity:.18,depthWrite:false,side:T.DoubleSide});
     this.ownedMaterials.add(this.materials.acrylic);
     this.rows = checkedRows(rows); this.build();
     this.root.name = 'mechanical-sheet-ramp';
@@ -145,11 +145,19 @@ export class MechanicalRamp extends Assembly {
     // and elevated horizontal crossheads keep the ground routes open.
     // Dimensions remain estimates, not certified structural engineering.
     const elevated = this.rows.filter(r => r.p.y >= .46 || r.p.x < 0);
-    for (const side of ['left', 'right']) this.tube(`${side}-continuous-underfloor-bearer`, elevated.map(r => point(r, side, side === 'left' ? .045 : -.045, -.065)), .028, 'dark', g);
+    for (const side of ['left', 'right']) this.tube(`${side}-continuous-underfloor-bearer`, elevated.map(r => point(r, side, side === 'left' ? .045 : -.045, -Math.min(.065,Math.max(.025,r.p.y-.38)))), .028, 'dark', g);
     let count = 0;
     const stations = [];
-    for (let i = 14; i < this.rows.length; i += 24) stations.push(i);
-    if (stations.at(-1) !== this.rows.length - 1) stations.push(this.rows.length - 1);
+    // Physical spacing, not spline parameter spacing: dense terminal knots
+    // must not produce a grille of crossheads over the left inlane.
+    let distance = 0;
+    for (let i = 1; i < this.rows.length; i++) {
+      distance += this.rows[i].p.distanceTo(this.rows[i-1].p);
+      if (distance >= 1.05) { stations.push(i); distance = 0; }
+    }
+    const end=this.rows.length-1;
+    if (distance >= .8 || !stations.length) stations.push(end);
+    else stations[stations.length-1]=end;
     for (const i of stations) {
       const r = this.rows[i];
       if (r.p.y < .46 && r.p.x >= 0) continue;
@@ -157,18 +165,19 @@ export class MechanicalRamp extends Assembly {
       // the back rail, entry climb from the shooter divider side.
       const x = r.p.x < -.45 ? -2.90 : r.p.z < -3.7 ? r.p.x : 2.90;
       const z = r.p.x >= -.45 && r.p.z < -3.7 ? -5.95 : r.p.z;
-      const y = r.p.y - .065;
+      const drop = Math.min(.065,Math.max(.025,r.p.y-.38));
+      const y = r.p.y - drop;
       const base = new T.Vector3(x, .055, z), top = new T.Vector3(x, y, z);
-      const saddle = r.p.clone().addScaledVector(UP, -.065);
+      const saddle = r.p.clone().addScaledVector(UP, -drop);
       this.tube(`support-post-${count}`, [base, top], .037, 'brass', g);
       this.tube(`cantilever-crosshead-${count}`, [top, saddle], .034, 'dark', g);
       // No low diagonal through the ground lane: horizontal beam clearance
       // exceeds the .31 ground-ball envelope; columns are outside the walls.
       const braceTop = top.clone().addScaledVector(UP, .12);
       this.tube(`external-column-head-${count}`, [top, braceTop], .037, 'brass', g);
-      this.tube(`underfloor-cross-saddle-${count}`, [point(r, 'left', .045, -.065), point(r, 'right', -.045, -.065)], .03, 'dark', g);
+      this.tube(`underfloor-cross-saddle-${count}`, [point(r, 'left', .045, -drop), point(r, 'right', -.045, -drop)], .03, 'dark', g);
       // Short vertical seat pads touch the floor underside, not the ball path.
-      for (const side of ['left', 'right']) this.tube(`${side}-floor-seat-${count}`, [point(r, side, side === 'left' ? .045 : -.045, -.065), point(r, side, side === 'left' ? .045 : -.045, -.025)], .034, 'brass', g);
+      for (const side of ['left', 'right']) this.tube(`${side}-floor-seat-${count}`, [point(r, side, side === 'left' ? .045 : -.045, -drop), point(r, side, side === 'left' ? .045 : -.045, -.025)], .034, 'brass', g);
       const foot = this.mesh(`mounting-foot-${count}`, new T.CylinderGeometry(.085, .085, .025, 16), 'dark', g);
       foot.position.copy(base);
       for (const sign of [-1, 1]) this.bolt(`foot-bolt-${count}-${sign}`, base.clone().add(new T.Vector3(0, .022, sign * .05)), g);

@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { BUMPERS, TABLE, TARGET_BANKS } from "./layout.mjs";
 import { PinballPhysics } from "./physics.mjs";
+import { RAMP_WALL_HEIGHT, WIRE_START_FRACTION } from "./ramp-geometry.mjs";
 
 test("right target bank leaves a full ball-width throat beside every main bumper", () => {
   const bank = TARGET_BANKS.find(bank => bank.key === "right-side");
@@ -93,17 +94,20 @@ test("ramp crest releases a resting ball without nudge or position rescue", asyn
   } finally { g.dispose(); }
 });
 
-test("crest collision sections share identical boundary vertices without gaps", async () => {
+test("continuous ramp collision meshes share every route row and triangle edge without gaps", async () => {
   const g = await PinballPhysics.create();
   try {
-    // Deck and both walls each have approach, corrected crest, and return meshes.
-    for (let surface = 0; surface < 3; surface++) {
-      const sections = g.ramp.colliders.slice(surface * 3, surface * 3 + 3);
-      for (let edge = 0; edge < 2; edge++) {
-        const before = sections[edge].shape.vertices;
-        const after = sections[edge + 1].shape.vertices;
-        assert.deepEqual(Array.from(before.slice(-6)), Array.from(after.slice(0, 6)),
-          `surface ${surface}, section boundary ${edge} has a gap`);
+    const rows=g.ramp.rows.slice(0,Math.round((g.ramp.rows.length-1)*WIRE_START_FRACTION)+1);
+    for(const [surface,kind] of ['deck','left','right'].entries()){
+      const {vertices,indices}=g.ramp.colliders[surface].shape;
+      assert.equal(vertices.length,rows.length*6);
+      assert.equal(indices.length,(rows.length-1)*6);
+      for(const [i,row] of rows.entries()){
+        const a=kind==='deck'?row.left:row[kind];
+        const b=kind==='deck'?row.right:row[kind].clone().add({x:0,y:RAMP_WALL_HEIGHT,z:0});
+        const expected=[a.x,a.y,a.z,b.x,b.y,b.z];
+        for(let k=0;k<6;k++)assert.ok(Math.abs(vertices[i*6+k]-expected[k])<1e-6,`${kind} row ${i} vertex ${k}`);
+        if(i<rows.length-1)assert.deepEqual(Array.from(indices.slice(i*6,i*6+6)),[2*i,2*i+1,2*i+2,2*i+1,2*i+3,2*i+2]);
       }
     }
   } finally { g.dispose(); }

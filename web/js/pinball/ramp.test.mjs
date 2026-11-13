@@ -30,21 +30,32 @@ test('elevated exit releases ball into left lower lane without teleport',async()
   const {world,ball}=await fixture([r.p.x,r.p.y+.14,r.p.z],[r.t.x*3,r.t.y*3,r.t.z*3]);
   try{let previous={...ball.translation()},released=false;for(let i=0;i<100;i++){world.step();const p=ball.translation();assert.ok(Math.hypot(p.x-previous.x,p.y-previous.y,p.z-previous.z)<.3);if(p.z>3.4&&p.y<.4)released=true;previous={...p};}assert.ok(released);}finally{world.free();}
 });
-test('ramp traversal at speeds 26 and 28 with three lateral offsets in actual table world',async()=>{
+test('legacy tangent approaches: four complete, two underpowered edge shots roll back and relaunch',async()=>{
   for(const speed of [26,28])for(const offset of [-.08,0,.08]) {
-    const g=await PinballPhysics.create();if(!g.ramp)g.ramp=buildPhysicalRamp(g);
+    const g=await PinballPhysics.create();
     try {
-      g.launch();const r=sampleRamp()[0];
+      g.launch();const r=sampleRamp()[0],sameBall=g.ball;
       g.ball.setTranslation({x:r.p.x+offset,y:r.p.y+.14,z:r.p.z},true);
       g.ball.setLinvel({x:r.t.x*speed,y:r.t.y*speed,z:r.t.z*speed},true);
-      let rear=false,completed=false; const exit=RAMP_POINTS.at(-1);
+      const expectsRollback=speed===26&&offset!==0;
+      let rear=false,completed=false,rolledBack=false,normalDrain=false;
+      const exit=RAMP_POINTS.at(-1);
       for(let tick=0;tick<1200;tick++) {
-        g.world.step();const p=g.ballPosition;
+        g.world.step();const p=g.ballPosition,v=g.ball.linvel();
         if(p.z< -3.5)rear=true;
+        if(tick>20&&p.x>0&&p.z>r.p.z+.05&&v.z>0)rolledBack=true;
         if(rear&&Math.abs(p.x-exit[0])<.25&&p.z>exit[2]-.1&&p.y>exit[1]){completed=true;break;}
-        assert.ok(p.y>-.5,'escaped ramp/table before exit');
+        if(p.y<-.5){assert.ok(p.z>4.6,'must not escape through ramp or side');normalDrain=true;break;}
       }
-      assert.ok(completed,`speed ${speed}, offset ${offset}`);
+      if(expectsRollback){
+        assert.equal(completed,false);assert.equal(rear,false);
+        assert.ok(rolledBack&&normalDrain,`speed ${speed}, offset ${offset} must return and drain, never stall`);
+        // Let ordinary gameplay process the drain, then prove another ball can launch.
+        g.step(1/120);assert.equal(g.state.phase,'ready');assert.equal(g.state.ballNumber,2);
+        g.launch();g.step(1/120);
+        assert.equal(g.state.phase,'playing');assert.equal(g.ball,sameBall);
+        assert.ok(g.ball.linvel().z< -1,'normal next-ball launch remains available');
+      }else assert.ok(completed,`speed ${speed}, offset ${offset} must complete`);
     }finally{g.dispose();}
   }
 });
@@ -66,6 +77,55 @@ test('ground balls approaching low base from high deck side deflect without wedg
       g.launch();g.ball.setTranslation({x,y:.18,z:-2.8},true);g.ball.setLinvel({x:0,y:0,z:2},true);
       for(let i=0;i<120*10&&g.state.phase==='playing';i++)g.step(1/120,{});
       assert.notEqual(g.state.phase,'playing',`underside approach ${x} stuck`);
+    }finally{g.dispose();}
+  }
+});
+
+
+test('five adjacent real flipper timings traverse the forward S and award once without teleport', async()=>{
+  for(const releaseTicks of [78,79,80,81,82]) {
+    const g=await PinballPhysics.create();
+    try {
+      g.launch();g.state.kickbackCharges=0;const held={left:true};
+      for(let i=0;i<30;i++)g.step(1/120,held);
+      // Incoming fixture only. Every movement after the settled cradle is real.
+      g.ball.setTranslation({x:-.55,y:.18,z:3.15},true);
+      g.ball.setLinvel({x:0,y:0,z:2},true);
+      for(let i=0;i<500;i++)g.step(1/120,held);
+      assert.ok(Math.hypot(g.ball.linvel().x,g.ball.linvel().z)<.03);
+      let resets=0;const set=g.ball.setTranslation.bind(g.ball);
+      g.ball.setTranslation=(...args)=>{resets++;return set(...args);};
+      for(let i=0;i<releaseTicks;i++)g.step(1/120);
+      let completed=false;
+      for(let i=0;i<1200&&g.state.phase==='playing';i++){
+        g.step(1/120,held);
+        if(g.rampTraversals){completed=true;break;}
+      }
+      assert.ok(completed,`natural release ${releaseTicks} did not traverse`);
+      assert.equal(g.rampTraversals,1);assert.equal(g.state.ballNumber,1);
+      assert.equal(resets,0,'no position reset, search, or replacement ball');
+    } finally {g.dispose();}
+  }
+});
+
+
+test('measured ground-level flipper approaches at 28/30 traverse with lateral tolerance',async()=>{
+  // Independent fixture derived from real release 78–82 crossings, not a
+  // velocity aligned artificially to the rising deck tangent.
+  for(const speed of [28,30])for(const offset of [-.05,0,.05]){
+    const g=await PinballPhysics.create();
+    try {
+      g.launch();const mouth=RAMP_POINTS[0],exit=RAMP_POINTS.at(-1);
+      g.ball.setTranslation({x:mouth[0]-.15+offset,y:mouth[1]+.135,z:mouth[2]},true);
+      g.ball.setLinvel({x:.55*speed,y:0,z:-Math.sqrt(1-.55*.55)*speed},true);
+      let rear=false,completed=false;
+      for(let i=0;i<1600;i++){
+        g.world.step();const p=g.ballPosition;
+        if(p.z< -3.5)rear=true;
+        if(rear&&Math.abs(p.x-exit[0])<.25&&p.z>exit[2]-.1&&p.y>exit[1]){completed=true;break;}
+        assert.ok(p.y>-.5,'measured approach escaped before return');
+      }
+      assert.ok(completed,`speed ${speed}, offset ${offset}`);
     }finally{g.dispose();}
   }
 });

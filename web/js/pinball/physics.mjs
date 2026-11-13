@@ -1,6 +1,6 @@
-import { flipperContactVertices, PLUNGER_CONTACT, targetContactId, slingContactPoints, plungerContactVertices } from "./mechanical-contact.mjs";
+import { targetFaceAngle, targetDimensions, targetContactBoxes, flipperContactVertices, PLUNGER_CONTACT, targetContactId, slingContactPoints, plungerContactVertices } from "./mechanical-contact.mjs";
 import {NudgeMeter} from "./nudge.mjs";
-import { buildPhysicalRamp } from "./ramp-geometry.mjs";
+import { buildPhysicalRamp, rampSensorGates } from "./ramp-geometry.mjs";
 import R from "../vendor/rapier3d-0.17.3/rapier.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { TABLE, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS, SHOOTER_BACKING, lowerLanePaths, flipperAngle } from "./layout.mjs";
@@ -87,16 +87,12 @@ export class PinballPhysics {
     }
     for(const bank of TARGET_BANKS) {
       const dx=bank.b[0]-bank.a[0], dz=bank.b[2]-bank.a[2];
-      const length=Math.hypot(dx,dz), angle=-Math.atan2(dz,dx), width=length/bank.count*.84;
+      const angle=targetFaceAngle(bank), dimensions=targetDimensions(bank);
       for(let i=0;i<bank.count;i++) {
         const t=(i+.5)/bank.count, x=bank.a[0]+dx*t,z=bank.a[2]+dz*t;
         // Thick molded standup and raised strike plate, not an invisible bank
         // capsule bridging the real gaps. Bounds include the visible bevel.
-        for(const [hx,hy,hz,cy,cz] of [
-          [width/2+.006,.156,.0485,.320,-.01275],
-          [width*.435+.003,.1335,.009,.320,.03575],
-          [width*.365+.002,.116,.006,.320,.04775],
-        ]) {
+        for(const [hx,hy,hz,cy,cz] of targetContactBoxes(dimensions)) {
           const c=this.world.createCollider(R.ColliderDesc.cuboid(hx,hy,hz)
             .setTranslation(x+Math.sin(angle)*cz,cy,z+Math.cos(angle)*cz)
             .setRotation({x:0,y:Math.sin(angle/2),z:0,w:Math.cos(angle/2)})
@@ -121,9 +117,11 @@ export class PinballPhysics {
     this.hitObjects.set(spin.handle, { type: "spinner", points: 150, label: "SPINNER", key: "spinner" });
     this.ramp = buildPhysicalRamp(this);
     // Ordered elevated gates count a completed ramp, never a ground shot below it.
-    for (const [index, [x,y,z,hx,hy,hz]] of [[1.6,.32,-.05,.25,.20,.09],[.25,1.14,-4.20,.25,.22,.12],[-.90,.38,3.25,.18,.23,.05]].entries()) {
-      const c=this.world.createCollider(R.ColliderDesc.cuboid(hx,hy,hz).setTranslation(x,y,z).setSensor(true));
-      this.hitObjects.set(c.handle,{type:"ramp-gate",index,key:"ramp-gate-"+index});
+    for (const [index,gate] of rampSensorGates(this.ramp.rows).entries()) {
+      const {position:p,direction:t,halfWidth,halfHeight,halfDepth}=gate;
+      const q=new T.Quaternion().setFromUnitVectors(new T.Vector3(0,0,1),t);
+      const c=this.world.createCollider(R.ColliderDesc.cuboid(halfWidth,halfHeight,halfDepth).setTranslation(p.x,p.y,p.z).setRotation(q).setSensor(true));
+      this.hitObjects.set(c.handle,{type:"ramp-gate",index,direction:t,key:"ramp-gate-"+index});
     }
     for (let i = 0; i < 2; i++) {
       const angle = this.flipperAngles[i];
@@ -173,15 +171,10 @@ export class PinballPhysics {
     this.activeFlipperContacts[side]++; this.lastActiveContactTime = this.time; this.returnPending = true;
     const along = Math.max(0, Math.min(1, (LOWER_LAYOUT.flipperPivot[0] - Math.abs(this.ball.translation().x)) / (LOWER_LAYOUT.flipperCenter + LOWER_LAYOUT.flipperHalfLength)));
     const faceAngle = side ? Math.PI - this.flipperAngles[side] : this.flipperAngles[side];
-    // Position-dependent shot spread is a pinball approximation for the tapered paddle.
-    // A heel-to-mid stroke can aim around the bumper flanks; later tip shots retain
-    // the cross-table ramp angle. This contact-local curve never selects a
-    // target or changes the ball position, and passive cradles stay passive.
-    // The tapered face releases laterally sooner than the former cuboid; .66
-    // retains a usable timing window without selecting a route or destination.
-    const aimAngle = along < .4
-      ? .04 - Math.max(0, along - .30) * 2
-      : faceAngle - along * .66;
+    // Continuous contact-local spread for the current tapered bat. Heel-to-tip
+    // timing smoothly changes direction; no discontinuous branch at mid-bat,
+    // destination selection, or post-contact correction is involved.
+    const aimAngle = .18 - 1.6 * along + .2 * (faceAngle + .5);
     const angularSpeed = this.flipperAngularSpeeds[side];
     const speed = Math.min(32, 8 + (12 + along * 24) * Math.min(1, angularSpeed / 12));
     const lateral = (side ? 1 : -1) * Math.sin(aimAngle) * speed;
@@ -200,9 +193,10 @@ export class PinballPhysics {
     if (!h || (this.cooldowns.get(h.key) ?? -99) > this.time) return;
     if (h.type === "ramp-gate") {
       this.cooldowns.set(h.key,this.time+.16);
-      if(h.index===0 && this.ball.linvel().z<0) {this.rampStage=1;this.rampStarted=this.time;}
-      else if(h.index===1 && this.rampStage===1 && this.time-this.rampStarted<30) this.rampStage=2;
-      else if(h.index===2 && this.rampStage===2 && this.time-this.rampStarted<30 && this.ball.linvel().z>0) {
+      const velocity=this.ball.linvel(),forward=velocity.x*h.direction.x+velocity.z*h.direction.z>0;
+      if(h.index===0 && forward) {this.rampStage=1;this.rampStarted=this.time;}
+      else if(h.index===1 && forward && this.rampStage===1 && this.time-this.rampStarted<30) this.rampStage=2;
+      else if(h.index===2 && this.rampStage===2 && this.time-this.rampStarted<30 && forward) {
         if(this.state.onEvent({type:"ramp",id:"ramp-"+this.eventSequence++})) this.rampTraversals++;this.rampStage=0;
       }
       return;
@@ -284,16 +278,17 @@ export class PinballPhysics {
         continue;
       }
       const p = this.ball.translation(), v = this.ball.linvel();
-      if(this.rampStage && (this.time-this.rampStarted>30 ||
-        (this.rampStage===1 && ((p.z< -1.2 && p.y<.4) || (p.z>.4 && v.z>0))) ||
-        (this.rampStage===2 && p.z<2.8 && p.y<.35))) this.rampStage=0;
+      // An ordered elevated run ends on the playfield or after its timeout.
+      // Do not use old fixed x/z limits: entrance and exit belong to the route.
+      if(this.rampStage && (this.time-this.rampStarted>30 || p.y<.28)) this.rampStage=0;
       if (this.returnPending && p.z < 3.2 && v.z < 0 && this.time - this.lastActiveContactTime < .8) {
         this.upfieldReturns++; this.returnPending = false;
       }
       // A target-earned left outlane kickback remains a real, single-use return.
       if(p.x < -2.08 && p.x > -2.62 && p.z>3.45 && p.z<3.72 && p.y<.5 && v.z>0 &&
           !this.state.tilted && this.state.sideSaveCharges && this.state.onEvent({type:"side-save",id:"side-save-"+this.eventSequence++})) {
-        this.ball.applyImpulse({x:(2-v.x)*this.ball.mass(),y:0,z:(-12-v.z)*this.ball.mass()},true);
+        // The plunger fires along the OUT lane, not sideways into its divider.
+        this.ball.applyImpulse({x:-v.x*this.ball.mass(),y:0,z:(-12-v.z)*this.ball.mass()},true);
       }
       // A charged, visible center saver launches the descending ball physically.
       if (Math.abs(p.x) < .6 && p.z > LOWER_LAYOUT.centerSaveZ[0] && p.z < LOWER_LAYOUT.centerSaveZ[1] && v.z > 0 &&

@@ -1,8 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { PinballPhysics } from "./physics.mjs";
-import { LOWER_LAYOUT, TABLE } from "./layout.mjs";
-import { RAMP_POINTS } from "./ramp-geometry.mjs";
+import { LOWER_LAYOUT, TABLE, flipperAngle, lowerLanePaths } from "./layout.mjs";
+import { flipperProfile } from "./mechanical-contact.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
 function run(g, seconds, input = {}) { for (let i = 0; i < seconds * 120; i++) g.step(1 / 120, input); }
@@ -44,10 +44,24 @@ test("both kinematic flippers physically drive ball upfield", async () => {
   for (const side of [-1, 1]) {
     const g = await PinballPhysics.create();
     try {
-      g.launch(); g.ball.setTranslation({ x: side * .65, y: .2, z: 3.90 }, true);
+      g.launch();
+      const length=LOWER_LAYOUT.flipperCenter+LOWER_LAYOUT.flipperHalfLength;
+      const px=length*.65,profile=flipperProfile(),crossings=[];
+      for(let i=0;i<profile.length;i++) {
+        const u=profile[i],v=profile[(i+1)%profile.length];
+        if((u[0]-px)*(v[0]-px)<=0&&u[0]!==v[0])crossings.push(u[1]+(v[1]-u[1])*(px-u[0])/(v[0]-u[0]));
+      }
+      const pz=Math.min(...crossings);
+      const a=flipperAngle(false,false),z=pz-TABLE.ballRadius-.002;
+      const x=-LOWER_LAYOUT.flipperPivot[0]+Math.cos(a)*px+Math.sin(a)*z;
+      g.ball.setTranslation({x:-side*x,y:.2,z:LOWER_LAYOUT.flipperPivot[2]-Math.sin(a)*px+Math.cos(a)*z},true);
       g.ball.setLinvel({ x: 0, y: 0, z: 0 }, true);
-      run(g, .125, { left: side < 0, right: side > 0 });
-      assert.ok(g.ball.linvel().z < -5, JSON.stringify(g.ball.linvel()));
+      let drive=null;
+      for(let tick=0;tick<15;tick++) {
+        g.step(1/120,{left:side<0,right:side>0});
+        if(g.metrics.coilImpulses[side<0?0:1]>0&&drive===null)drive={...g.ball.linvel()};
+      }
+      assert.ok(drive&&drive.z < -5, JSON.stringify({drive,final:g.ball.linvel()}));
     } finally { g.dispose(); }
   }
 });
@@ -127,7 +141,7 @@ test("side-wall approaches enter genuine outlanes and naturally drain when uncha
     const g = await PinballPhysics.create();
     try {
       g.launch(); g.state.kickbackCharges=0; g.state.sideSaveCharges=0;
-      g.ball.setTranslation({ x: side * 2.12, y: .18, z: .3 }, true);
+      g.ball.setTranslation({ x: side * 2.12, y: .18, z: 1.1 }, true);
       g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true);
       let crossedOutlane=false,liveResets=0;
       const setTranslation=g.ball.setTranslation.bind(g.ball);
@@ -343,8 +357,9 @@ test("curved sling and inlane have a full ball-width passage with margin", async
   const points = new T.CatmullRomCurve3([...LOWER_LAYOUT.slingVertices, LOWER_LAYOUT.slingVertices[0]]
     .map(([x, z]) => new T.Vector3(x, .22, z))).getPoints(128);
   let clearance = Infinity;
-  for (const p of points) for (let i = 0; i < LOWER_LAYOUT.guide.length - 1; i++) {
-    const a = new T.Vector3(...LOWER_LAYOUT.guide[i]), b = new T.Vector3(...LOWER_LAYOUT.guide[i + 1]);
+  const guide=lowerLanePaths(1)[0];
+  for (const p of points) for (let i = 0; i < guide.length - 1; i++) {
+    const a = new T.Vector3(...guide[i]), b = new T.Vector3(...guide[i + 1]);
     const d = b.sub(a), t = Math.max(0, Math.min(1, p.clone().sub(a).dot(d) / d.lengthSq()));
     clearance = Math.min(clearance, p.distanceTo(a.addScaledVector(d, t)) - .07 - LOWER_LAYOUT.guideRadius);
   }
@@ -367,11 +382,16 @@ test("rising shots gain energy toward the tip without exceeding the world limit"
 });
 
 test("five real cradle-reflip timings traverse the S ramp, cradle again and re-fire", async () => {
-  for (const releaseTicks of [82, 84, 86, 88, 90]) {
-    const { g, held } = await cradle(-1);
+  for (const releaseTicks of [78, 79, 80, 81, 82]) {
+    const g=await PinballPhysics.create();g.launch();g.state.kickbackCharges=0;
+    const held={left:true};
+    for(let i=0;i<30;i++)g.step(1/120,held);
+    g.ball.setTranslation({x:-.55,y:.18,z:3.15},true);
+    g.ball.setLinvel({x:0,y:0,z:2},true);
+    for(let i=0;i<500;i++)g.step(1/120,held);
+    const initialCradle={...g.ballPosition};
     try {
       assert.ok(g.ramp, "ramp must be integrated, not injected at its entrance");
-      const exit = RAMP_POINTS.at(-1);
       let positionResets = 0;
       const setTranslation = g.ball.setTranslation.bind(g.ball);
       g.ball.setTranslation = (...args) => { positionResets++; return setTranslation(...args); };
@@ -381,16 +401,16 @@ test("five real cradle-reflip timings traverse the S ramp, cradle again and re-f
         g.step(1 / 120, held);
         const p = g.ballPosition, v = g.ball.linvel();
         assert.ok(Math.hypot(v.x, v.y, v.z) <= 32.0001);
-        if (p.z < -3.5 && p.y > 1) crest = true;
-        if (crest && Math.abs(p.x - exit[0]) < .25 && p.z > exit[2] - .2 && p.y > exit[1]) returnLane = true;
+        if (g.rampStage===2) crest = true; // crossed the shared elevated rear gate
+        if (crest && g.rampTraversals===1) returnLane = true; // crossed actual outlet
         if (returnLane && p.y < .25) { floor = true; break; }
       }
       assert.ok(crest && returnLane && floor, `timing ${releaseTicks}: crest=${crest}, return=${returnLane}, floor=${floor}`);
       assert.ok(g.lastFlipperShot.speed <= 32);
       run(g, 5, held);
       assert.equal(g.state.phase, "playing"); assert.equal(g.state.ballNumber, 1);
-      assert.ok(Math.abs(g.ballPosition.x + 1.01169) < .03);
-      assert.ok(Math.abs(g.ballPosition.z - 3.49334) < .03);
+      assert.ok(Math.abs(g.ballPosition.x - initialCradle.x) < .03);
+      assert.ok(Math.abs(g.ballPosition.z - initialCradle.z) < .03);
       assert.ok(Math.hypot(g.ball.linvel().x, g.ball.linvel().z) < .03);
       assert.equal(g.coilImpulses[0], 1, "holding the returned ball must not fire");
       run(g, .5);

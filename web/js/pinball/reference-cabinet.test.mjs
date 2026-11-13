@@ -41,7 +41,7 @@ test('formed collection apron preserves central and outlane throats after active
  assert.ok(box.min.z>4.65,'no visible apron on active ball passage');
  for(const x of [0,-2.1,2.1]){
    const ray=new T.Raycaster(new T.Vector3(x,2,5.18),new T.Vector3(0,-1,0));
-   assert.equal(ray.intersectObject(a,true).length,0,`open throat at ${x}`);
+   assert.ok(ray.intersectObject(a,true).every(hit=>hit.point.y<-.1),`open deck throat at ${x}; only recessed basket permitted`);
  }
  for(const x of [-1.2,1.2]){
    const ray=new T.Raycaster(new T.Vector3(x,2,5.18),new T.Vector3(0,-1,0));
@@ -57,7 +57,7 @@ test('formed collection apron preserves central and outlane throats after active
  assert.ok(box.min.z>L-1.13);assert.ok(box.max.z<L-.22);
  for(const x of [0,-2.1,2.1]){
    const ray=new T.Raycaster(new T.Vector3(x,2,L-.57),new T.Vector3(0,-1,0));
-   assert.equal(ray.intersectObject(a,true).length,0);
+   assert.ok(ray.intersectObject(a,true).every(hit=>hit.point.y<-.1),'no basket at deck height');
  }
  c.dispose();
 });

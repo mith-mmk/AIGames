@@ -4,7 +4,7 @@ import { MechanicalPlunger } from "./components/plunger.mjs";
 import { MechanicalCabinet } from "./components/cabinet.mjs";
 import { MechanicalRamp } from "./components/ramp-wire.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import { drawReferencePlayfield } from "./reference-playfield.mjs";
+import { drawReferencePlayfield, REFERENCE_ART_LANDMARKS } from "./reference-playfield.mjs";
 import { PlayfieldParts } from "./playfield-parts.mjs";
 import { WorkshopMechanisms } from "./mechanisms.mjs";
 import { BUMPERS, MINI_BUMPERS, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING } from "./layout.mjs";
@@ -108,7 +108,10 @@ export class WorkshopAssets {
     const curve = new T.CatmullRomCurve3(
       points.map((p) => new T.Vector3(...p)),
     );
-    return this.mesh(new T.TubeGeometry(curve, 100, r, 8, false), mat, parent);
+    // A two-point rail is exactly straight: axial subdivisions add no
+    // silhouette or normal detail. Preserve curved rails and radial resolution.
+    const segments = points.length === 2 ? 1 : 100;
+    return this.mesh(new T.TubeGeometry(curve, segments, r, 8, false), mat, parent);
   }
   ring(parent, r, t, x, y, z, mat) {
     const m = this.mesh(
@@ -178,9 +181,9 @@ export class WorkshopAssets {
     // The original raised rings would obscure the reference's large robot art.
     this.missionLamps=[];
     for(let i=0;i<5;i++) {
-      const x=(i-2)*.29,z=3.25;
-      this.roundedBox(g,.23,.015,.13,x,.055,z,"dark",.025);
-      this.missionLamps.push(this.roundedBox(g,.17,.018,.07,x,.065,z,"insert",.018));
+      const x=(i-2)*REFERENCE_ART_LANDMARKS.missionIndicatorSpacing,z=REFERENCE_ART_LANDMARKS.missionIndicatorsZ;
+      this.roundedBox(g,.23,.004,.10,x,.046,z,"dark",.015);
+      this.missionLamps.push(this.roundedBox(g,.17,.003,.055,x,.049,z,"insert",.014));
     }
     for(const mirror of [false,true]) {
       const component=new MechanicalFlipper({materials:{...this.materials,rubber:this.materials.flipperRubber,cream:this.materials.chrome},angle:flipperAngle(mirror,false)});

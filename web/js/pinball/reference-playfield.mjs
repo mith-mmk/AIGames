@@ -3,7 +3,8 @@
  * Mechanical parts remain separate meshes above this surface.
  */
 export const REFERENCE_ART_LANDMARKS = Object.freeze({
-  robotHead: [0, .12], robotTorso: [0, 1.45], mission: [0, 2.50],
+  robotHead: [0, .12], robotTorso: [0, 1.45], mission: [0, 2.92],
+  missionIndicatorsZ: 3.60, missionIndicatorSpacing: .297,
   shotLabels: [[-.84, -1.02, 'HACK'], [0, -1.16, 'UPGRADE'], [.84, -1.02, 'BUILD']],
 });
 
@@ -54,7 +55,7 @@ class PlayfieldInk {
     }
   }
   robot() {
-    const c=this.c;c.save();c.translate(0,.05);
+    const c=this.c;c.save();c.translate(0,.05);c.scale(1.12,1.08);
     // Dark outline separates silver armor from the blue background.
     // Left upper arm reaches outward and returns to a broad forearm shell.
     this.circle(-.61,1.03,.25,'#101c29','#7f96ab',.04);
@@ -120,7 +121,9 @@ class PlayfieldInk {
     c.restore();c.restore();
   }
   mission() {
-    const c=this.c,center=REFERENCE_ART_LANDMARKS.mission;
+    const c=this.c,center=[0,2.50];
+    // Keep the five badges between the new lower sling tips, above the bats.
+    c.save();c.translate(0,REFERENCE_ART_LANDMARKS.mission[1]);c.scale(.90,.90);c.translate(0,-2.50);
     // Reference hierarchy: one main gear, four quieter secondary inserts.
     const gear=[];for(let i=0;i<48;i++){const t=i*Math.PI/24,r=i%4<2?.44:.49;gear.push([center[0]+Math.sin(t)*r,center[1]+Math.cos(t)*r]);}
     c.save();c.shadowColor='#ffc120';c.shadowBlur=9;this.path(gear,'#a47b14','#ffd447',.025);c.restore();
@@ -131,6 +134,7 @@ class PlayfieldInk {
       if(label==='MULTI'||label==='EXTRA')this.text('BALL',x,2.59,.085,color);
     }
     for(let i=0;i<5;i++)this.badge(`M${i+1}`,(i-2)*.33,3.14,.27,'#59d3e5',.13);
+    c.restore();
   }
 }
 

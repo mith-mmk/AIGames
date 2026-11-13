@@ -6,7 +6,7 @@ import {PinballPhysics} from './physics.mjs';
 
 test('sling rubber clears the root-to-center shot corridor on both sides',()=>{
   for(const side of [-1,1]) {
-    const a=new T.Vector3(side*.9,.22,3.7),b=new T.Vector3(0,.22,-4.55),d=b.clone().sub(a);
+    const a=new T.Vector3(side*(LOWER_LAYOUT.flipperPivot[0]-.3),.22,3.7),b=new T.Vector3(0,.22,-4.55),d=b.clone().sub(a);
     const outline=new T.CatmullRomCurve3([...LOWER_LAYOUT.slingVertices,LOWER_LAYOUT.slingVertices[0]].map(([x,z])=>new T.Vector3(side*x,.22,z))).getPoints(128);
     for(const p of outline) {
       const t=Math.max(0,Math.min(1,p.clone().sub(a).dot(d)/d.lengthSq()));
@@ -85,4 +85,23 @@ test('restored lane mouths pass descending balls without live position rescue',a
     divider[0][0]=999;
     assert.notEqual(lowerLanePaths(side)[0][0][0],999);
   }
+});
+
+test('side wire exit drops into the real IN guide and held flipper without rescue',async()=>{
+ for(const speed of [1,2,3]) {
+  const g=await PinballPhysics.create();
+  try {
+   g.launch();g.state.kickbackCharges=0;g.state.sideSaveCharges=0;
+   // Candidate deck outlet .45 above table, ball center at .60. This fixture
+   // tests the drop only, not a claim of full-ramp traversal.
+   g.ball.setTranslation({x:-1.4,y:.60,z:2.80},true);
+   g.ball.setLinvel({x:.5,y:0,z:speed},true);
+   let resets=0;const setTranslation=g.ball.setTranslation.bind(g.ball);
+   g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')resets++;return setTranslation(...args);};
+   for(let tick=0;tick<600&&g.state.phase==='playing';tick++)g.step(1/120,{left:true});
+   assert.equal(g.state.phase,'playing');assert.ok(g.metrics.flipperContacts[0]>0);
+   assert.ok(Math.hypot(g.ball.linvel().x,g.ball.linvel().z)<.05);
+   assert.equal(resets,0);
+  }finally{g.dispose();}
+ }
 });

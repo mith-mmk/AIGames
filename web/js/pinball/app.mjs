@@ -14,7 +14,7 @@ export class PinballTablePreview {
     this.game = null;
     this.plunger = new Plunger();
     this.sound=new PinballSound();this.feedback=new PinballFeedback();
-    this.viewAngle = 56;
+    this.viewAngle = 45;
     try { const saved=Number(localStorage.getItem("pinball-view-angle")); if(saved>=10&&saved<=90)this.viewAngle=saved; } catch { /* Storage is optional. */ }
     this.renderer = new T.WebGLRenderer({ canvas, antialias: true });
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -25,7 +25,7 @@ export class PinballTablePreview {
     this.scene = new T.Scene();
     this.scene.background = new T.Color(0x08111c);
     this.scene.fog = new T.Fog(0x08111c, 24, 48);
-    this.camera = new T.PerspectiveCamera(42, 1, 0.1, 100);
+    this.camera = new T.PerspectiveCamera(32, 1, 0.1, 100);
     this.assets = new WorkshopAssets();
     this.board = this.assets.build();
     this.bumperEffects=new BumperEffects(this.assets.root);
@@ -60,7 +60,7 @@ export class PinballTablePreview {
     this.scene.add(rim);
     const floor = new T.Mesh(
       new T.PlaneGeometry(200, 200),
-      new T.MeshStandardMaterial({ color: 0x19150f, roughness: 0.88 }),
+      new T.MeshStandardMaterial({ color: 0x10182d, roughness: 0.88 }),
     );
     floor.rotation.x = -Math.PI / 2;
     floor.position.y = -2.4;
@@ -81,9 +81,17 @@ export class PinballTablePreview {
     const reflectionTarget = new T.WebGLCubeRenderTarget(128, { type: T.HalfFloatType });
     const reflectionCamera = new T.CubeCamera(0.1, 60, reflectionTarget);
     reflectionCamera.position.set(0, 2, 0);
+    // Reflection-only softboxes separate silver, cyan and amber without extra
+    // runtime lights, shadow maps or per-frame environment capture.
+    const cards=new T.Group();
+    for(const [color,x,y,z,w,h] of [[0xf1f8ff,-5,6,1,3,7],[0x7bddff,5,5,-2,2,6],[0xffd98a,0,7,-7,5,2]]){
+      const card=new T.Mesh(new T.PlaneGeometry(w,h),new T.MeshBasicMaterial({color,side:T.DoubleSide}));card.position.set(x,y,z);card.lookAt(0,1,0);cards.add(card);
+    }
+    this.scene.add(cards);
     this.board.visible = false;
     reflectionCamera.update(this.renderer, this.scene);
     this.board.visible = true;
+    cards.removeFromParent();cards.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});
     const pmrem = new T.PMREMGenerator(this.renderer);
     this.reflection = pmrem.fromCubemap(reflectionTarget.texture);
     this.scene.environment = this.reflection.texture;
@@ -107,7 +115,7 @@ export class PinballTablePreview {
   }
   setView(name) {
     this.state.view = name;
-    if(name === "play") this.viewAngle=56;
+    if(name === "play") this.viewAngle=45;
     if(name === "top") this.viewAngle=90;
     if(name === "play" || name === "top") {
       try { localStorage.setItem("pinball-view-angle",String(this.viewAngle)); } catch { /* Optional persistence. */ }
@@ -118,13 +126,14 @@ export class PinballTablePreview {
     const aspect = this.canvas.clientWidth / this.canvas.clientHeight;
     const angle=this.viewAngle*Math.PI/180;
     // Fit the actual cabinet corners rather than adding two conservative margins.
-    const tangent=Math.tan(21*Math.PI/180); let distance=0;
+    const tangent=Math.tan(this.camera.fov*.5*Math.PI/180); let distance=0;
     const framePoints=[];
     for(const x of [-3.05,3.05]) for(const y of [-.6,.8]) for(const z of [-6,6]) framePoints.push([x,y,z]);
     // Tall backglass is only at the rear; a full-height bounding cuboid would
     // unnecessarily shrink the live playfield on portrait screens.
     for(const x of [-2.98,2.98]) for(const y of [.4,3.30]) framePoints.push([x,y,-6.50]);
     for(const x of [2.50,3.45]) for(const y of [.59,2.20]) for(const z of [-5.80,-4.90]) framePoints.push([x,y,z]);
+    for(const x of [-3.92,-2.65]) for(const y of [.55,2.25]) framePoints.push([x,y,-5.15]);
     for(const [x,y,z] of framePoints) {
       const screenY=y*Math.cos(angle)-z*Math.sin(angle);
       const towardCamera=y*Math.sin(angle)+z*Math.cos(angle);
@@ -154,8 +163,8 @@ export class PinballTablePreview {
     this.scene.getObjectByName("chappy-automaton").visible = false;
     this.scene.getObjectByName("rear-mechanical-bank").visible = false;
     this.room.root && (this.room.root.visible = true);
-    // Narrow screens put the reacting friend behind the cabinet, not outside the cropped side bench.
-    if(this.room.friend){const compact=innerWidth<=700;this.room.friend.root.position.set(compact?-2.05:-4.70,compact?-.9:-1.34,compact?-7.5:.05);if(this.room.friendStand)this.room.friendStand.visible=compact;}
+    // Mascot stays on the supported left shoulder balcony, in front of the backglass.
+    if(this.room.friend){this.room.friend.root.position.set(-3.25,.82,-5.15);this.room.friend.root.scale.setScalar(.62);if(this.room.friendStand)this.room.friendStand.visible=true;}
     document
       .querySelectorAll("[data-view]")
       .forEach((b) => b.classList.toggle("selected", b.dataset.view === name));

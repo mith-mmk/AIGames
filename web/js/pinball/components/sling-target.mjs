@@ -12,6 +12,17 @@ import * as T from '../../vendor/three-0.180.0/three.module.min.js';
 function mat(m,key,color,extra={}) { return m[key]?.clone()||new T.MeshStandardMaterial({color,roughness:.35,...extra}); }
 function add(parent,geometry,material,name,x=0,y=0,z=0){const a=new T.Mesh(geometry,material);a.name=name;a.position.set(x,y,z);a.castShadow=true;a.receiveShadow=true;parent.add(a);return a;}
 function shape(points){const s=new T.Shape();points.forEach(([x,y],i)=>i?s.lineTo(x,y):s.moveTo(x,y));s.closePath();return s;}
+// Tool-radius corners keep the formed cover from looking like a flat sharp triangle.
+function roundedPlateOutline(points,radius=.035) {
+  const s=new T.Shape(),corners=points.map((p,i)=>{
+    const before=points[(i+points.length-1)%points.length],after=points[(i+1)%points.length];
+    const a=new T.Vector2(before[0]-p[0],before[1]-p[1]),b=new T.Vector2(after[0]-p[0],after[1]-p[1]);
+    const r=Math.min(radius,a.length()*.25,b.length()*.25);a.normalize().multiplyScalar(r);b.normalize().multiplyScalar(r);
+    return {p,entry:[p[0]+a.x,p[1]+a.y],exit:[p[0]+b.x,p[1]+b.y]};
+  });
+  s.moveTo(...corners[0].entry);
+  for(const {p,entry,exit} of corners){s.lineTo(...entry);s.quadraticCurveTo(...p,...exit);}s.closePath();return s;
+}
 function extrude(s,depth,bevel=.003){return new T.ExtrudeGeometry(s,{depth,steps:1,bevelEnabled:bevel>0,bevelSize:bevel,bevelThickness:bevel,bevelSegments:2,curveSegments:10});}
 function plate(g,points,depth,y,m,name,holes=[]){const s=shape(points.map(([x,z])=>[x,-z]));for(const [x,z,r] of holes){const h=new T.Path();h.absarc(x,-z,r,0,Math.PI*2,true);s.holes.push(h);}const geo=extrude(s,depth);geo.rotateX(-Math.PI/2);return add(g,geo,m,name,0,y,0);}
 function turn(g,profile,m,name,x=0,y=0,z=0){return add(g,new T.LatheGeometry(profile.map(p=>new T.Vector2(...p)),24),m,name,x,y,z);}
@@ -46,18 +57,31 @@ export class MechanicalSling extends Mechanism {
     // Straight tension runs between round post arcs, unlike an overshooting spline triangle.
     const loop=slingRubberLoop(p,rubberHeight);
     this.restLoop=loop;this.rubber=pipe(g,loop,.025,rubber,'tensioned-rubber',true);
-    const outer=p.map(([x,z])=>[cx+(x-cx)*1.04,cz+(z-cz)*1.04]);const coverShape=shape(outer.map(([x,z])=>[x,-z])),opening=new T.Path();
-    p.forEach(([x,z],i)=>{const a=cx+(x-cx)*.45,b=-(cz+(z-cz)*.45);i?opening.lineTo(a,b):opening.moveTo(a,b);});opening.closePath();coverShape.holes.push(opening);
-    const cover=extrude(coverShape,.026,.008);cover.rotateX(-Math.PI/2);add(g,cover,plastic,'moulded-cover-with-service-window',0,coverHeight,0);
-    // A separately moulded navy service insert sits inside the silver frame.
-    // The underside remains open to inspect the kicker, posts and switch pair.
-    const infill=p.map(([x,z])=>[cx+(x-cx)*.46,cz+(z-cz)*.46]);
-    plate(g,infill,.014,coverHeight+.003,dark,'recessed-plastic-cover-insert');
+    const outer=p.map(([x,z])=>[cx+(x-cx)*1.04,cz+(z-cz)*1.04]);
+    const outline=points=>roundedPlateOutline(points.map(([x,z])=>[x,-z]),.055);
+    const coverShape=outline(outer),opening=outline(p.map(([x,z])=>[cx+(x-cx)*.77,cz+(z-cz)*.77]));
+    coverShape.holes.push(opening);
+    const cover=extrude(coverShape,.040,.010);cover.rotateX(-Math.PI/2);add(g,cover,plastic,'moulded-cover-with-service-window',0,coverHeight,0);
+    // Gold formed perimeter skirt is inside the existing tensioned-rubber
+    // envelope, above the kicker. It must not grow into either live lane.
+    const skirtShape=outline(p.map(([x,z])=>[cx+(x-cx)*.97,cz+(z-cz)*.97]));
+    skirtShape.holes.push(outline(p.map(([x,z])=>[cx+(x-cx)*.69,cz+(z-cz)*.69])));
+    const skirt=extrude(skirtShape,.108,.009);skirt.rotateX(-Math.PI/2);
+    add(g,skirt,brass,'formed-gold-perimeter-skirt',0,coverHeight-.115,0);
+    // Separate recessed navy insert and silver rim, with visible moulded depth.
+    const insert=extrude(outline(p.map(([x,z])=>[cx+(x-cx)*.78,cz+(z-cz)*.78])),.024,.006);insert.rotateX(-Math.PI/2);
+    add(g,insert,dark,'recessed-plastic-cover-insert',0,coverHeight+.005,0);
     for(const [x,z] of p) {
-      turn(g,[[0,0],[.034,0],[.034,.012],[.025,.025],[0,.030]],this.lampMaterial,'corner-indicator-lens',cx+(x-cx)*.75,coverHeight+.027,cz+(z-cz)*.75);
+      const lx=cx+(x-cx)*.78,lz=cz+(z-cz)*.78;
+      turn(g,[[0,0],[.071,0],[.071,.013],[.059,.025],[0,.025]],metal,'corner-lens-chrome-bezel',lx,coverHeight+.033,lz);
+      turn(g,[[0,0],[.052,0],[.052,.018],[.044,.037],[.020,.045],[0,.046]],this.lampMaterial,'corner-indicator-lens',lx,coverHeight+.050,lz);
     }
-    const trimPath=new T.CurvePath();outer.forEach(([x,z],i)=>{const q=outer[(i+1)%3];trimPath.add(new T.LineCurve3(new T.Vector3(x,coverHeight+.029,z),new T.Vector3(q[0],coverHeight+.029,q[1])));});
-    add(g,new T.TubeGeometry(trimPath,72,.008,6,true),brass,"cover-edge-trim");
+    const trimPath=new T.CurvePath();outer.forEach(([x,z],i)=>{const q=outer[(i+1)%3];trimPath.add(new T.LineCurve3(new T.Vector3(x,coverHeight+.041,z),new T.Vector3(q[0],coverHeight+.041,q[1])));});
+    add(g,new T.TubeGeometry(trimPath,72,.009,6,true),metal,"cover-edge-trim");
+    for(let i=0;i<p.length;i++) {
+      const a=p[i],b=p[(i+1)%p.length],aa=[cx+(a[0]-cx)*.96,coverHeight-.055,cz+(a[1]-cz)*.96],bb=[cx+(b[0]-cx)*.96,coverHeight-.055,cz+(b[1]-cz)*.96];
+      pipe(g,[aa,bb],.012,this.lampMaterial,'skirt-recessed-light-guide');
+    }
     turn(g,[[0,0],[.037,0],[.037,.014],[.018,.025],[.018,.23],[.039,.23],[.039,.252],[0,.252]],steel,"lamp-socket-and-support",cx,.028,cz);
     turn(g,[[0,0],[.033,0],[.033,.055],[.024,.075],[0,.075]],this.lampMaterial,'under-cover-lamp',cx,.28,cz);
     const lengths=p.map((a,i)=>Math.hypot(a[0]-p[(i+1)%3][0],a[1]-p[(i+1)%3][1]));this.edge=lengths.indexOf(Math.max(...lengths));
@@ -82,9 +106,9 @@ export class MechanicalSling extends Mechanism {
   }
 }
 export class MechanicalTarget extends Mechanism {
-  constructor({materials={},width=.16,height=.32,depth=.085}={}){
+  constructor({materials={},width=.16,height=.32,depth=.085,glyph="lightning"}={}){
     super();if([width,height,depth].some(v=>!Number.isFinite(v)||v<=0))throw new Error('Target dimensions must be positive');
-    this.root.name='mechanical-standup-target-prototype';this.parameters={width,height,depth,type:'standup',dimensionStatus:'visual estimates, not measured dimensions'};
+    this.root.name='mechanical-standup-target-prototype';this.parameters={width,height,depth,glyph,type:'standup',dimensionStatus:'visual estimates, not measured dimensions'};
     const g=this.root,m=materials,chrome=mat(m,'chrome',0xb8cad0,{metalness:.85}),steel=mat(m,'steel',0x3c4a54,{metalness:.7}),body=mat(m,'red',0xad3f40),cream=mat(m,'cream',0xffdf98),dark=mat(m,'dark',0x15212c);
     this.lampMaterial=mat(m,'amber',0xffc66d,{emissive:0xffad31,emissiveIntensity:.4});this.lampBase=this.lampMaterial.emissiveIntensity;
     plate(g,[[-width*.62,-depth*1.1],[width*.62,-depth*1.1],[width*.62,depth*.7],[-width*.62,depth*.7]],.018,.025,steel,'folded-mounting-shoe',[[0,-depth*.72,.014]]);
@@ -98,7 +122,22 @@ export class MechanicalTarget extends Mechanism {
     add(this.pivot,extrude(face(width,height,.025),depth,.006),body,'thick-moulded-target-body',0,.055,-depth*.65);
     add(this.pivot,extrude(face(width*.87,height*.87,.018),.012,.003),chrome,'raised-metal-face-bezel',0,.055+height*.065,depth*.35);
     add(this.pivot,extrude(face(width*.73,height*.76,.012),.008,.002),cream,'replaceable-strike-plate',0,.055+height*.12,depth*.35+.014);
-    add(this.pivot,extrude(shape([[-width*.22,0],[width*.03,height*.19],[-width*.02,height*.10],[width*.22,height*.10],[-width*.03,-height*.12],[width*.02,0]]),.002,0),dark,'strike-face-lightning',0,height*.63,depth*.35+.025);
+    const icon=new T.Group();icon.name=`strike-face-${glyph}`;icon.position.set(0,height*.63,depth*.35+.025);this.pivot.add(icon);
+    const size=Math.min(width*.58,height*.56);
+    if(glyph==="wrench") {
+      const outline=shape([[-.40,-.50],[-.50,-.40],[.10,.20],[.07,.40],[.23,.54],[.42,.52],[.24,.34],[.36,.22],[.54,.40],[.54,.21],[.39,.06],[.20,.09]]);
+      const geometry=extrude(outline,.002,0);geometry.scale(size,size,1);
+      add(icon,geometry,dark,"open-jaw-wrench-emblem");
+    } else if(glyph==="robot") {
+      const head=face(size*.77,size*.58,size*.06),eye=size*.085;
+      for(const x of [-size*.16,size*.16]){const h=new T.Path();h.moveTo(x-eye,eye);h.lineTo(x+eye,eye);h.lineTo(x+eye,eye*3);h.lineTo(x-eye,eye*3);h.closePath();head.holes.push(h);}
+      add(icon,extrude(head,.002,0),dark,"robot-screen-silhouette",0,-size*.20,0);
+      add(icon,extrude(shape([[-size*.26,-size*.30],[size*.26,-size*.30],[size*.26,-size*.46],[size*.12,-size*.46],[size*.12,-size*.38],[-size*.12,-size*.38],[-size*.12,-size*.46],[-size*.26,-size*.46]]),.002,0),dark,"robot-body-emblem");
+      for(const x of [-size*.46,size*.46])add(icon,new T.BoxGeometry(size*.12,size*.23,.002),dark,"robot-ear",x,size*.03,0);
+      add(icon,new T.BoxGeometry(size*.05,size*.17,.002),dark,"robot-antenna",0,size*.45,0);
+    } else {
+      add(icon,extrude(shape([[-width*.22,0],[width*.03,height*.19],[-width*.02,height*.10],[width*.22,height*.10],[-width*.03,-height*.12],[width*.02,0]]),.002,0),dark,'lightning-emblem');
+    }
     add(this.pivot,extrude(face(width*.38,.025,.009),.009,.002),this.lampMaterial,'status-light-lens',0,.07,depth*.35+.024);
     this.spring=pipe(g,this.springPoints(0),.004,chrome,'rear-return-coil');
     pipe(g,[[0,.04,-depth],[0,.07,-depth*1.5],[0,.14,-depth*1.5]],.011,steel,'rear-spring-anchor');

@@ -1,5 +1,5 @@
 const MISSIONS = Object.freeze([
-  { id: "charge", title: "動力をためる", description: "上部または左ポケットのバンパーに3回当てる", types: ["bumper"], target: 3, bonus: 500 },
+  { id: "charge", title: "動力をためる", description: "上部のポップバンパーに3回当てる", types: ["bumper"], target: 3, bonus: 500 },
   { id: "workshop", title: "サイドを点検", description: "左右のターゲット・バンクに合計4回当てる → 左アウトレーン救済1回", types: ["target", "bank"], target: 4, bonus: 750 },
   { id: "spin", title: "回転機を起動", description: "スピナーを2回通す", types: ["spinner"], target: 2, bonus: 1000 },
   { id: "lanes", title: "配線をつなぐ", description: "上部の3本のレーンをそれぞれ通す", types: ["rollover"], target: 3, bonus: 1250 },

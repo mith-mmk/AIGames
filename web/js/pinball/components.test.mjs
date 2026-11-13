@@ -35,3 +35,16 @@ test('cabinet inspection visibility survives production static batching',async()
  }
  cabinet.dispose();for(const material of Object.values(assets.materials))material.dispose();
 });
+
+test('sling silver cover, gold skirt and corner lamps retain functional rubber/kicker assembly',async()=>{
+ const {LOWER_LAYOUT}=await import('./layout.mjs');
+ const points=LOWER_LAYOUT.slingVertices.map(([x,z])=>[x-LOWER_LAYOUT.slingCenter[0],z-LOWER_LAYOUT.slingCenter[1]]);
+ const part=new MechanicalSling({points});
+ try {
+  for(const name of ['moulded-cover-with-service-window','formed-gold-perimeter-skirt','recessed-plastic-cover-insert','corner-lens-chrome-bezel','corner-indicator-lens','tensioned-rubber','guided-solenoid-plunger','pivoted-kicker-arm','plunger-return-spring'])assert.ok(part.root.getObjectByName(name),name);
+  const skirt=part.root.getObjectByName('formed-gold-perimeter-skirt');skirt.geometry.computeBoundingBox();
+  assert.ok(skirt.geometry.boundingBox.max.y-skirt.geometry.boundingBox.min.y>.10,'formed sidewall has real vertical depth');
+  let lamps=0;part.root.traverse(o=>{if(o.name==='corner-indicator-lens')lamps++;});assert.equal(lamps,3);
+  part.hit();part.update(.035);assert.ok(Math.abs(part.kicker.rotation.x)>.001);
+ }finally{part.dispose();}
+});

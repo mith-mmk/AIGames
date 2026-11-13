@@ -78,23 +78,31 @@ export class ReferenceCabinetDress {
     // with the front edge so every supported length retains the drain offsets.
     assembly.position.z=L-5.75;this.root.add(assembly);
     for(const side of [-1,1]){
-      const points=[[.66,4.90],[1.83,4.90],[1.83,5.46],[.34,5.46]];
+      const points=[[.58,5.05],[1.83,4.78],[1.83,5.46],[.34,5.46],[.34,5.24]];
       const shape=new T.Shape();points.forEach(([x,z],i)=>i?shape.lineTo(side*x,-z):shape.moveTo(side*x,-z));shape.closePath();
       const geo=new T.ExtrudeGeometry(shape,{depth:.045,bevelEnabled:true,bevelSize:.012,bevelThickness:.008,bevelSegments:2});geo.rotateX(-Math.PI/2);
       const pos=geo.attributes.position;for(let i=0;i<pos.count;i++)pos.setY(i,pos.getY(i)+.055+(pos.getZ(i)-4.90)*.17);geo.computeVertexNormals();
       this.cabinet.mesh(`formed-apron-wing-${side}`,geo,'ref-silver',assembly);
       // Folded front flange, stamped service access panel, ventilation slots and fasteners.
       this.rounded(`apron-folded-front-${side}`,1.48,.16,.035,side*1.085,.07,5.45,'ref-blue',.018,assembly);
-      const panel=this.rounded(`apron-service-panel-${side}`,.79,.28,.023,side*1.18,.155,5.20,'ref-blue',.025,assembly);panel.rotation.x=-Math.PI/2+.17;
-      for(let j=0;j<5;j++){
-        const slot=this.rounded(`apron-grille-slot-${side}-${j}`,.025,.18,.008,side*(.94+j*.12),.177,5.20,'ref-black',.009,assembly);slot.rotation.x=-Math.PI/2+.17;
-      }
+      // Wide uninterrupted brushed panel with a dark inset, not a small vent patch.
+      const inset=this.rounded(`apron-service-panel-${side}`,1.03,.27,.018,side*1.15,.135,5.22,'ref-blue',.035,assembly);inset.rotation.x=-Math.PI/2+.17;
+      this.tube(`apron-bright-leading-fold-${side}`,[[side*.58,.125,5.05],[side*1.20,.08,4.92],[side*1.82,.04,4.79]],.028,'ref-silver',assembly);
       for(const x of [.79,1.70])for(const z of [4.98,5.36]){
         const y=.102+(z-4.90)*.17;this.cabinet.screw(`collection-apron-bolt-${side}-${x}-${z}`,side*x,y,z,assembly);
         this.rounded(`collection-apron-standoff-${side}-${x}-${z}`,.07,.27,.07,side*x,-.06,z,'ref-black',.01,assembly);
       }
-      this.tube(`drain-throat-rolled-edge-${side}`,[[side*.66,.09,4.91],[side*.50,.14,5.18],[side*.34,.18,5.45]],.024,'ref-yellow',assembly);
+      this.tube(`drain-throat-rolled-edge-${side}`,[[side*1.82,.065,4.80],[side*.58,.13,5.05],[side*.38,.16,5.25],[side*.34,.18,5.45]],.024,'ref-yellow',assembly);
     }
+    // Recessed collection basket below the deck, AFTER the gameplay drain.
+    // Its visible gold grille is lower than the open throat, never a deck bridge.
+    const grille=new T.Group();grille.name='recessed-arched-drain-grille';assembly.add(grille);
+    const ring=this.cabinet.mesh('drain-gold-arched-rim',new T.TorusGeometry(.30,.028,8,48),'brass',grille);ring.rotation.x=-Math.PI/2;ring.position.set(0,-.18,5.06);
+    for(let i=-3;i<=3;i++){
+      const x=i*.075,reach=Math.sqrt(.28*.28-x*x);
+      this.tube(`drain-gold-grille-bar-${i}`,[[x,-.22,5.06-reach],[x,-.22,5.06+reach]],.016,'ref-amber',grille);
+    }
+    for(const side of [-1,1])this.rounded(`drain-basket-mount-${side}`,.09,.18,.12,side*.30,-.30,5.06,'ref-silver',.015,grille);
     assembly.userData.visualOnly=true;
     assembly.userData.openThroats={center:[[0,4.90],[0,5.45]],outlaneX:[-2.1,2.1]};
     const apron=this.rounded('front-hazard-apron',W*2-.38,.34,.06,-.12,.09,L-.15,'ref-silver',.04);apron.rotation.x=-Math.PI/2;

@@ -2,8 +2,8 @@ import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
 
 // Shared physical route; traversal and same-ball recapture are regression tested.
-export const RAMP_WIDTH = .55;
-export const RAMP_WALL_HEIGHT = .55;
+export const RAMP_WIDTH = 0.68;
+export const RAMP_WALL_HEIGHT = 0.65;
 export const WIRE_START_FRACTION = 160/240;
 export const WIRE_RADIUS = .018;
 export const WIRE_HALF_SPACING = .09;
@@ -17,10 +17,22 @@ export function rampWireRails(rows) {
   })));
 }
 export const RAMP_POINTS = Object.freeze([
-  [1.50,.04,.35], [1.60,.08,-.05], [1.78,.28,-.65],
-  [1.90,.58,-1.65], [1.95,.85,-2.6], [1.5,1.05,-3.65],
-  [.25,.90,-4.20], [-1.15,.78,-4.0], [-2.10,.78,-3.05],
-  [-2.30,.78,-1.7], [-2.25,.78,.1], [-2.0,.75,1.6], [-.90,.55,2.5], [-.90,.49,2.8], [-.90,.45,3.00],
+  [1.5, 0.04, 1.1],
+  [1.9, 0.24, 0.25],
+  [1.85, 0.5, -0.6333],
+  [1.55, 0.73, -1.4],
+  [1.45, 0.87, -2.1666666666666665],
+  [1.65, 0.86, -2.933333333333333],
+  [1.95, 0.78, -3.7],
+  [1.2, 0.6, -4.45],
+  [0, 0.56, -4.65],
+  [-1.4, 0.48, -4.05],
+  [-2.2, 0.47, -2.7],
+  [-2.3, 0.46, -1],
+  [-2.25, 0.45, 1.3],
+  [-1.75, 0.44, 2],
+  [-1.55, 0.44, 2.4000000000000004],
+  [-1.55, 0.44, 2.7],
 ]);
 export function sampleRamp(count=240) {
   const curve=new T.CatmullRomCurve3(RAMP_POINTS.map(p=>new T.Vector3(...p)),false,'centripetal');
@@ -29,8 +41,19 @@ export function sampleRamp(count=240) {
     const n=new T.Vector3(-t.z,0,t.x).normalize();
     const narrowing=p.x<0?Math.max(0,Math.min(1,(p.z-1.8)/.7)):0;
     const funnel=Math.max(0,Math.min(1,(i/count-130/240)/(30/240)));
-    const width=RAMP_WIDTH-.23*Math.max(narrowing*narrowing*(3-2*narrowing),funnel*funnel*(3-2*funnel));
+    const width=RAMP_WIDTH-.36*Math.max(narrowing*narrowing*(3-2*narrowing),funnel*funnel*(3-2*funnel));
     return {p,t,left:p.clone().addScaledVector(n,-width/2),right:p.clone().addScaledVector(n,width/2)};
+  });
+}
+// Sensors follow the actual route, including its direction at each crossing.
+export function rampSensorGates(rows=sampleRamp()) {
+  const rear=rows.reduce((best,r,i)=>r.p.z<rows[best].p.z?i:best,0);
+  return [Math.round((rows.length-1)*.10),rear,rows.length-1].map((i,index)=>{
+    const row=rows[i], direction=row.t.clone(); direction.y=0; direction.normalize();
+    const halfHeight=index===2?.20:(RAMP_WALL_HEIGHT+.22)/2;
+    const position=row.p.clone().add(new T.Vector3(0,index===2?.14:halfHeight+.04,0));
+    if(index===2)position.addScaledVector(direction,.28);
+    return {position,direction,halfWidth:row.left.distanceTo(row.right)/2+.035,halfHeight,halfDepth:.10};
   });
 }
 function surface(rows, kind) {
@@ -59,14 +82,12 @@ function geometry(data) {const g=new T.BufferGeometry();g.setAttribute('position
 export function buildPhysicalRamp(game) {
   const rows=sampleRamp(), colliders=[];
   const wireStart=Math.round((rows.length-1)*WIRE_START_FRACTION);
-  // Correct internal triangle edges around the crest: their contact normals
-  // otherwise form a tiny ridge that can hold a slow ball motionless. Keep
-  // the remaining thin-wall contacts unchanged for the fast entry/exit route.
-  // Adjacent sections share their boundary row, with no gap or overlapping face.
+  // One continuous deck removes seam ridges that trapped slow returning balls.
+  // Deck normals are corrected; sidewalls retain their physical inward normals.
   for(const kind of ['deck','left','right']) {
-    for (const [start,end,flags] of [[0,80,undefined],[80,100,R.TriMeshFlags.FIX_INTERNAL_EDGES],[100,wireStart,undefined]]) {
+    for (const [start,end,flags] of [[0,wireStart,kind==='deck'?R.TriMeshFlags.FIX_INTERNAL_EDGES:undefined]]) {
       const data=surface(rows.slice(start,end+1),kind);
-      colliders.push(game.world.createCollider(R.ColliderDesc.trimesh(data.positions,data.indices,flags).setFriction(.025).setRestitution(.02)));
+      colliders.push(game.world.createCollider(R.ColliderDesc.trimesh(data.positions,data.indices,flags).setFriction(0.025).setRestitution(.02)));
     }
   }
   for(const rail of rampWireRails(rows.slice(wireStart)))for(let i=1;i<rail.length;i++) {

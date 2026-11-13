@@ -11,6 +11,10 @@ test('workshop scenery has finite attached geometry and stays independent of phy
  try {
   const assets=new WorkshopAssets(),room=new WorkshopRoom(assets),root=room.build();
   assert.equal(root.name,'workshop-scenery');
+  assert.ok(root.getObjectByName('robobuddy-city-architecture'));
+  assert.ok(root.getObjectByName('chappy-city-balcony'));
+  assert.equal(root.getObjectByName('workshop-wall-machine'),undefined,'retired gearwall must not reappear');
+  assert.ok(root.getObjectByName('chappy-workbench-friend'),'animated mascot retained');
   root.updateMatrixWorld(true);
   let vertices=0;const geometries=new Set(),materials=new Set(),textures=new Set();
   root.traverse(o=>{assert.ok(o.matrixWorld.elements.every(Number.isFinite));if(o.geometry){geometries.add(o.geometry);for(const v of o.geometry.attributes.position.array)assert.ok(Number.isFinite(v));vertices+=o.geometry.attributes.position.count;}if(o.material)for(const m of Array.isArray(o.material)?o.material:[o.material]){materials.add(m);if(m.map)textures.add(m.map);}});

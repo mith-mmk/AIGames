@@ -16,7 +16,10 @@ test('installed ramp has matched sheet walls, true paired rails and visible anti
   assert.equal(wire.userData.runningRails,2);
   const floor=part.root.getObjectByName('continuous-floor-with-underside');
   assert.equal(floor.geometry.attributes.position.count,(Math.round(240*WIRE_START_FRACTION)+1)*4);
-  assert.ok(floor.material.opacity>=.35,'acrylic must remain visible rather than disguise a floor');
+  assert.ok(floor.material.opacity>=.12&&floor.material.opacity<=.25,'clear acrylic should reveal the playfield while remaining visibly tinted');
+  assert.equal(floor.material.transparent,true);
+  assert.equal(floor.material.depthWrite,false,'overlapping clear walls must not occlude the deck');
+  assert.equal(floor.material.side,T.DoubleSide,'both sides of the formed clear shell remain visible');
   const expected=sampleRamp()[160];
   const rows=rampWireRails(sampleRamp().slice(160));
   assert.ok(Math.abs(rows[0][0].distanceTo(rows[2][0])-2*WIRE_HALF_SPACING)<1e-8);
