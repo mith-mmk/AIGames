@@ -1,7 +1,20 @@
-import {targetDimensions,targetFaceAngle} from "./mechanical-contact.mjs";
+import {targetCarrierParts,targetDimensions,targetFaceAngle} from "./mechanical-contact.mjs";
 import { MechanicalSling, MechanicalTarget } from "./components/sling-target.mjs";
 import { LOWER_LAYOUT, TARGET_BANKS, lowerLanePaths, lowerLaneMounts } from "./layout.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
+
+// Flat, non-colliding ink follows the verified physical IN centerline.
+export function laneInkStrip(points, side, widthScale = 1) {
+  const positions=[],indices=[];
+  for(let i=0;i<points.length;i++) {
+    const a=points[Math.max(0,i-1)],b=points[Math.min(points.length-1,i+1)],p=points[i];
+    const dx=(b[0]-a[0])*side,dz=b[1]-a[1],length=Math.hypot(dx,dz),half=p[2]*widthScale/2;
+    const nx=-dz/length,nz=dx/length;
+    positions.push(side*p[0]-nx*half,.046,p[1]-nz*half,side*p[0]+nx*half,.046,p[1]+nz*half);
+    if(i<points.length-1){const k=2*i;indices.push(k,k+1,k+2,k+1,k+3,k+2);}
+  }
+  const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.Float32BufferAttribute(positions,3));geometry.setIndex(indices);geometry.computeVertexNormals();return geometry;
+}
 
 /** Visual gameplay hardware. No collision/rule implementation is implied. */
 export class PlayfieldParts {
@@ -15,6 +28,9 @@ export class PlayfieldParts {
       const bank = new T.Group();
       bank.position.set((spec.a[0]+spec.b[0])/2,0,(spec.a[2]+spec.b[2])/2);
       bank.rotation.y=-Math.atan2(dz,dx); g.add(bank);
+      for(const p of targetCarrierParts(spec)) {const mesh=new T.Mesh(p.geometry,a.materials[p.material]);mesh.name=p.name;mesh.castShadow=true;mesh.receiveShadow=true;bank.add(mesh);}
+
+
       for(let i=0;i<spec.count;i++) {
         const part=new MechanicalTarget({materials:{...a.materials,red:spec.color==="yellow"?a.materials.flipperRubber:a.materials.red,cream:spec.color==="yellow"?a.materials.flipperRubber:a.materials.red},glyph:spec.glyph,...targetDimensions(spec)});
         part.root.rotation.y=targetFaceAngle(spec)-bank.rotation.y;part.root.position.x=((i+.5)/spec.count-.5)*length;part.root.userData.targetId=`${spec.key}:${i}`;
@@ -66,6 +82,13 @@ export class PlayfieldParts {
         a.cylinder(g,.027,y-.07,x,(y+.07)/2,z,"steel");
         a.cylinder(g,.065,.025,x,y,z,"brass");
     }
+    // Surface printing, not a rail or a hidden ball support. It stops within
+    // the measured lane instead of extending a decorative stripe through walls.
+    for(const [scale,color,y] of [[1,0x54cedd,0],[.72,0x082b39,.0005]]) {
+      const geometry=laneInkStrip(LOWER_LAYOUT.inlaneInkPath,side,scale);
+      const strip=new T.Mesh(geometry,new T.MeshBasicMaterial({color,side:T.DoubleSide}));
+      strip.position.y=y;strip.name='inlane-flow-printed-band';strip.userData.collision=false;g.add(strip);
+    }
     const [sx,,sz]=LOWER_LAYOUT.inlaneSensor;
     a.roundedBox(g,.25,.012,.08,side*sx,.055,sz,"insert",.02);
     for(const [key,label,color] of [["in","IN",0x72eaff],["out","OUT",0xffc93d]]) {
@@ -89,7 +112,7 @@ export class PlayfieldParts {
   sling(side) {
     const a=this.a,center=[side*LOWER_LAYOUT.slingCenter[0],LOWER_LAYOUT.slingCenter[1]];
     const points=LOWER_LAYOUT.slingVertices.map(([x,z])=>[side*x-center[0],z-center[1]]);
-    const part=new MechanicalSling({materials:{...a.materials,jade:a.materials.chrome,rubber:a.materials.flipperRubber},points,rubberHeight:.22,coverHeight:.43});
+    const part=new MechanicalSling({materials:{...a.materials,jade:a.materials.chrome,rubber:a.materials.flipperRubber},points,rubberHeight:.22,coverHeight:LOWER_LAYOUT.slingCoverHeight});
     part.root.position.set(center[0],0,center[1]);part.root.userData.hitKey=`s${side}`;
     a.root.add(part.root);a.mechanical.slings.set(`s${side}`,part);
   }

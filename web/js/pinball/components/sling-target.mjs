@@ -82,8 +82,8 @@ export class MechanicalSling extends Mechanism {
       const a=p[i],b=p[(i+1)%p.length],aa=[cx+(a[0]-cx)*.96,coverHeight-.055,cz+(a[1]-cz)*.96],bb=[cx+(b[0]-cx)*.96,coverHeight-.055,cz+(b[1]-cz)*.96];
       pipe(g,[aa,bb],.012,this.lampMaterial,'skirt-recessed-light-guide');
     }
-    turn(g,[[0,0],[.037,0],[.037,.014],[.018,.025],[.018,.23],[.039,.23],[.039,.252],[0,.252]],steel,"lamp-socket-and-support",cx,.028,cz);
-    turn(g,[[0,0],[.033,0],[.033,.055],[.024,.075],[0,.075]],this.lampMaterial,'under-cover-lamp',cx,.28,cz);
+    turn(g,[[0,0],[.037,0],[.037,.014],[.018,.025],[.018,coverHeight-.20],[.039,coverHeight-.20],[.039,coverHeight-.178],[0,coverHeight-.178]],steel,"lamp-socket-and-support",cx,.028,cz);
+    turn(g,[[0,0],[.033,0],[.033,.055],[.024,.075],[0,.075]],this.lampMaterial,'under-cover-lamp',cx,coverHeight-.14,cz);
     const lengths=p.map((a,i)=>Math.hypot(a[0]-p[(i+1)%3][0],a[1]-p[(i+1)%3][1]));this.edge=lengths.indexOf(Math.max(...lengths));
     const a=p[this.edge],b=p[(this.edge+1)%3],dx=b[0]-a[0],dz=b[1]-a[1],len=Math.hypot(dx,dz);this.normal=new T.Vector3(dz/len,0,-dx/len);
     const mechanism=new T.Group();mechanism.position.set((a[0]+b[0])/2,0,(a[1]+b[1])/2);mechanism.rotation.y=-Math.atan2(dz,dx);g.add(mechanism);

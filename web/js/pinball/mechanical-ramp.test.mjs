@@ -20,8 +20,9 @@ test('installed ramp has matched sheet walls, true paired rails and visible anti
   assert.equal(floor.material.transparent,true);
   assert.equal(floor.material.depthWrite,false,'overlapping clear walls must not occlude the deck');
   assert.equal(floor.material.side,T.DoubleSide,'both sides of the formed clear shell remain visible');
-  const expected=sampleRamp()[160];
-  const rows=rampWireRails(sampleRamp().slice(160));
+  const split=Math.round(240*WIRE_START_FRACTION);
+  const expected=sampleRamp()[split];
+  const rows=rampWireRails(sampleRamp().slice(split));
   assert.ok(Math.abs(rows[0][0].distanceTo(rows[2][0])-2*WIRE_HALF_SPACING)<1e-8);
   const ball=new T.Vector3(expected.p.x,expected.p.y+.135,expected.p.z);
   assert.ok(Math.abs(ball.distanceTo(rows[0][0])-(.135+WIRE_RADIUS))<1e-8);
@@ -53,8 +54,9 @@ test('production return has an actual open gap, not a hidden supporting floor',a
   buildPhysicalRamp({world});world.step();
   const rows=sampleRamp();
   const rayAt=i=>{const p=rows[i].p;return world.castRay(new R.Ray({x:p.x,y:p.y+.5,z:p.z},{x:0,y:-1,z:0}),.7,true);};
-  assert.ok(rayAt(140),'sheet rise must have a real deck');
-  assert.equal(rayAt(190),null,'center gap between running wires must be physically open');
+  const split=Math.round((rows.length-1)*WIRE_START_FRACTION);
+  assert.ok(rayAt(split-4),'sheet rise must have a real deck');
+  assert.equal(rayAt(Math.round((split+rows.length-1)/2)),null,'center gap between running wires must be physically open');
   assert.equal(rayAt(225),null,'wire exit must not retain a hidden deck');
  } finally {world.free();}
 });

@@ -4,7 +4,9 @@ import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
 // Shared physical route; traversal and same-ball recapture are regression tested.
 export const RAMP_WIDTH = 0.68;
 export const RAMP_WALL_HEIGHT = 0.65;
-export const WIRE_START_FRACTION = 160/240;
+// Upper-center handoff: the leftward rear sweep is actual open wire, not acrylic.
+export const WIRE_START_FRACTION = 124/240;
+export const WIRE_FUNNEL_FRACTION = 24/240;
 export const WIRE_RADIUS = .018;
 export const WIRE_HALF_SPACING = .09;
 export const WIRE_GUARD_SPACING = .175;
@@ -40,7 +42,7 @@ export function sampleRamp(count=240) {
     const p=curve.getPoint(i/count), t=curve.getTangent(i/count);
     const n=new T.Vector3(-t.z,0,t.x).normalize();
     const narrowing=p.x<0?Math.max(0,Math.min(1,(p.z-1.8)/.7)):0;
-    const funnel=Math.max(0,Math.min(1,(i/count-130/240)/(30/240)));
+    const funnel=Math.max(0,Math.min(1,(i/count-(WIRE_START_FRACTION-WIRE_FUNNEL_FRACTION))/WIRE_FUNNEL_FRACTION));
     const width=RAMP_WIDTH-.36*Math.max(narrowing*narrowing*(3-2*narrowing),funnel*funnel*(3-2*funnel));
     return {p,t,left:p.clone().addScaledVector(n,-width/2),right:p.clone().addScaledVector(n,width/2)};
   });

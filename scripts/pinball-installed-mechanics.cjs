@@ -15,12 +15,14 @@ const {chromium}=require('playwright'),fs=require('node:fs'),path=require('node:
     ['plunger',[2.53,.175,4.7],3],['ramp',[1.3,.5,-2],6],['wire',[-1.9,.7,1.2],5],['cabinet',[0,-.4,4.8],7]];
  });
  for(const [name,center,distance] of views)for(const view of ['top','45','side','cutaway-side']){
-   await page.evaluate(async({center,distance,view})=>{
+   await page.evaluate(async({name,center,distance,view})=>{
      const a=window.__pinball,T=await import('/js/vendor/three-0.180.0/three.module.min.js');a.board.updateMatrixWorld(true);const c=new T.Vector3(...center);
      a.assets.mechanical.cabinet.setInspectionMode(view==='cutaway-side'?'cutaway':'assembled');a.assets.mechanical.cabinet.root.visible=view!=='cutaway-side';
-     const offset=view==='top'?new T.Vector3(0,1,.001):view==='45'?new T.Vector3(1,Math.SQRT2,1):new T.Vector3(1,.04,0);
+     let offset=view==='top'?new T.Vector3(0,1,.001):view==='45'?new T.Vector3(1,Math.SQRT2,1):new T.Vector3(1,.04,0);
+     if(name==='plunger'&&view==='side'){offset=new T.Vector3(-1,.32,.05);distance=4.6;c.set(2.53,.18,4.75);}
+     if(name==='flipper'&&view==='cutaway-side'){offset=new T.Vector3(-1,-.16,.45);distance=6;c.y=-.18;c.z-=.35;}
      a.camera.zoom=1;a.camera.updateProjectionMatrix();a.camera.position.copy(c).add(offset.normalize().multiplyScalar(distance));a.camera.position.applyMatrix4(a.board.matrixWorld);a.camera.up.set(0,1,0).transformDirection(a.board.matrixWorld);a.camera.lookAt(c.applyMatrix4(a.board.matrixWorld));a.camera.updateMatrixWorld(true);a.renderer.render(a.scene,a.camera);
-   },{center,distance,view});await page.screenshot({path:path.join(out,`${name}-installed-${view}.png`)});
+   },{name,center,distance,view});await page.screenshot({path:path.join(out,`${name}-installed-${view}.png`)});
  }
  const fixtures=await page.evaluate(async()=>{
    const {LOWER_LAYOUT:lower,BUMPERS,TARGET_BANKS}=await import('/js/pinball/layout.mjs');

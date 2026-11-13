@@ -1,5 +1,5 @@
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import {targetFrontNormal,targetDimensions,targetContactBoxes} from "./mechanical-contact.mjs";
+import {targetCarrierParts,targetFrontNormal,targetDimensions,targetContactBoxes} from "./mechanical-contact.mjs";
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {TARGET_BANKS,MINI_BUMPERS} from './layout.mjs';
@@ -43,3 +43,15 @@ test('derived contact bounds match the actual three extruded strike meshes',()=>
  });p.dispose();}
 });
 
+
+
+test('carrier has formed rim, separate rear plate, fixed studs and a continuous rounded mount',()=>{
+ for(const bank of TARGET_BANKS){const parts=targetCarrierParts(bank);if(bank.count!==3){assert.deepEqual(parts,[]);continue;}
+ for(const name of ['formed-silver-aperture-carrier','black-inset-aperture-bezel','sealed-rear-service-plate','continuous-rounded-rear-mount-rail'])assert.ok(parts.some(p=>p.name===name));
+ assert.equal(parts.filter(p=>p.name==='carrier-stud').length,3);
+ for(const p of parts){assert.ok([...p.geometry.attributes.position.array].every(Number.isFinite));p.geometry.dispose();}
+ }
+});
+test('both captured carrier pinch positions drain without rescue',async()=>{
+ for(const p of [[.927833,.171267,-.598225],[1.43595,.17127,-.257999]]){const g=await PinballPhysics.create();try{g.launch(.55);g.ball.setTranslation({x:p[0],y:p[1],z:p[2]},true);g.ball.setLinvel({x:0,y:0,z:0},true);for(let i=0;i<14400&&g.state.phase==='playing';i++)g.step(1/120);assert.equal(g.state.phase,'ready',JSON.stringify(p));}finally{g.dispose();}}
+});

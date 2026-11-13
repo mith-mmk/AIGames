@@ -17,7 +17,7 @@ export const MINI_BUMPERS = Object.freeze([]);
 export const TARGET_BANKS = Object.freeze([
   { key: "left-upper", a: [-1.85,.22,-1.95], b: [-.72,.22,-2.10], count: 3, type: "bank", glyph:"wrench", color:"yellow", height:.50, depth:.085 },
   { key: "left-middle", faceAngle:Math.PI/4, width:.32, a: [-1.65,.22,.80], b: [-1.87,.22,-.40], count: 2, type: "bank", glyph:"wrench", color:"yellow", height:.50, depth:.085 },
-  { key: "right-side", a: [.55,.22,-.70], b: [1.20,.22,-.05], count: 3, type: "bank", glyph:"robot", color:"red", height:.50, depth:.085 },
+  { key: "right-side", a: [.40,.22,-.80], b: [1.05,.22,-.15], count: 3, type: "bank", glyph:"robot", color:"red", height:.50, depth:.085 },
 ]);
 export const RAMP = Object.freeze([
   [-1.7, 0.08, 0.7],
@@ -71,22 +71,25 @@ export const LOWER_LAYOUT = Object.freeze({
   // Keep the cradle entrance, then wrap the cheek around the paddle heel.
   // Its lower face overlaps the root boundary, leaving no ball-sized side leak.
   guide: [
-    [1.96,.22,1.65], [1.96,.22,2.60], [1.65,.22,3.10], [.835,.22,3.40],
+    [1.90,.22,3.07], [1.88,.22,3.10], [1.80,.22,3.35], [1.185,.22,3.65],
     // Straight heel-side guide avoids a concave pocket against the rounded bat.
-    [.935,.22,3.60], [.935,.22,3.90], [.935,.22,4.30],
+    [1.285,.22,3.82], [1.285,.22,4.05], [1.285,.22,4.45],
   ],
   guideRadius: .020,
-  guideEntry: { left: [1.96, .22, 1.35], right: [1.96, .22, 1.35] },
+  guideEntry: { left: [1.90, .22, 3.00], right: [1.90, .22, 3.00] },
   // Two distinct passages: IN between sling/inner return and divider;
   // OUT between divider and outer wall, ending at the apron drain.
-  inlaneInner: [[1.49,.22,2.45],[1.25,.22,2.65],[1.04,.22,2.80]],
+  inlaneInner: [[1.35,.22,2.75],[1.35,.22,2.95]],
   outlaneOuter: [[2.33,.22,1.35],[2.33,.22,3.35],[2.05,.22,4.48]],
-  inlaneSensor: [1.50,.20,2.95],
-  laneInserts: {in: [1.38,2.97,-.25,.20,.44], out: [1.98,3.44,0,.22,.64]},
-  slingVertices: [[1.44, 1.70], [1.49, 2.45], [.84, 2.65]],
-  slingCenter: [1.26, 2.27],
-  flipperPivot: [.90, .27, 3.90],
-  flipperCenter: .42, flipperHalfLength: .48, flipperHalfWidth: .14,
+  inlaneSensor: [1.70,.20,3.05],
+  // Floor ink follows the open IN approach and the actual curved return; [x,z,width].
+  inlaneInkPath: [[1.70,2.73,.12],[1.69,3.02,.12],[1.53,3.30,.12],[1.31,3.43,.10]],
+  laneInserts: {in: [1.70,2.95,0,.20,.68], out: [1.98,3.44,0,.22,.64]},
+  slingVertices: [[1.83, 1.10], [1.88, 2.45], [1.10, 2.65]],
+  slingCoverHeight: .33,
+  slingCenter: [1.60, 2.07],
+  flipperPivot: [1.25, .27, 4.05],
+  flipperCenter: .54, flipperHalfLength: .60, flipperHalfWidth: .14,
   centerSaveZ: [4.50, 4.63],
 });
 
@@ -100,7 +103,7 @@ export function lowerLanePaths(side) {
     for(let i=1;i<path.length-1;i++) {
       const a=path[i-1],p=path[i],b=path[i+1];
       const la=Math.hypot(...a.map((v,k)=>v-p[k])),lb=Math.hypot(...b.map((v,k)=>v-p[k]));
-      const trim=Math.min(.08,la*.25,lb*.25);
+      const trim=Math.min(p[2]<3.5?.16:.08,la*.25,lb*.25);
       const u=p.map((v,k)=>v+(a[k]-v)*trim/la),w=p.map((v,k)=>v+(b[k]-v)*trim/lb);
       out.push(u);
       for(let j=1;j<=6;j++){const t=j/6;out.push(p.map((v,k)=>(1-t)**2*u[k]+2*(1-t)*t*v+t*t*w[k]));}

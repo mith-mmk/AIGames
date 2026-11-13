@@ -97,3 +97,26 @@ export function targetFaceAngle(bank) {
 export function targetFrontNormal(bank) {
  const angle=targetFaceAngle(bank);return [Math.sin(angle),Math.cos(angle)];
 }
+
+
+// Formed carrier with individual moving-face apertures; no open rear ball pocket.
+// Dimensions are visual estimates. Geometry itself is also the collision source.
+export function targetCarrierParts(bank) {
+ if(bank.count!==3)return [];
+ const d=targetDimensions(bank),length=Math.hypot(bank.b[0]-bank.a[0],bank.b[2]-bank.a[2]);
+ const span=length*2/3+d.width+.10,top=.17+d.height+.045;
+ function rect(w,h,r,x=0,y=0){const p=new T.Shape(),l=x-w/2;p.moveTo(l+r,y);p.lineTo(l+w-r,y);p.quadraticCurveTo(l+w,y,l+w,y+r);p.lineTo(l+w,y+h-r);p.quadraticCurveTo(l+w,y+h,l+w-r,y+h);p.lineTo(l+r,y+h);p.quadraticCurveTo(l,y+h,l,y+h-r);p.lineTo(l,y+r);p.quadraticCurveTo(l,y,l+r,y);return p;}
+ function piece(inset,depth,z,open){const left=-span/2+inset,right=span/2-inset,bottom=.40+inset,upper=top-inset,edge=.032;
+ let shape;
+ if(open){shape=new T.Shape();shape.moveTo(left,bottom);shape.lineTo(left,upper-.025);shape.quadraticCurveTo(left,upper,left+.025,upper);shape.lineTo(right-.025,upper);shape.quadraticCurveTo(right,upper,right,upper-.025);shape.lineTo(right,bottom);shape.lineTo(right-edge,bottom);shape.lineTo(right-edge,upper-edge);shape.lineTo(left+edge,upper-edge);shape.lineTo(left+edge,bottom);shape.closePath();}
+ else shape=rect(span-inset*2,top-.40-inset*2,.025,0,.40+inset);
+ const geometry=new T.ExtrudeGeometry(shape,{depth,steps:1,bevelEnabled:true,bevelSize:.003,bevelThickness:.003,bevelSegments:3,curveSegments:12});geometry.translate(0,0,z);return geometry;}
+ const parts=[
+ {name:'formed-silver-aperture-carrier',material:'chrome',geometry:piece(0,.025,-.15,true)},
+ {name:'black-inset-aperture-bezel',material:'dark',geometry:piece(.012,.009,-.122,true)},
+ {name:'sealed-rear-service-plate',material:'steel',geometry:piece(.004,.018,-.177,false)},
+ ];
+ for(let i=0;i<3;i++){const x=((i+.5)/3-.5)*length,stem=new T.CylinderGeometry(.012,.012,.44,12);stem.translate(x,.20,-.16);parts.push({name:'carrier-stud',material:'steel',geometry:stem});}
+ const rail=new T.CapsuleGeometry(.045,span-.09,6,16);rail.rotateZ(Math.PI/2);rail.translate(0,.17,-.16);parts.push({name:'continuous-rounded-rear-mount-rail',material:'steel',geometry:rail});
+ return parts;
+}

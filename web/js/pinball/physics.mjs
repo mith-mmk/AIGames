@@ -1,4 +1,4 @@
-import { targetFaceAngle, targetDimensions, targetContactBoxes, flipperContactVertices, PLUNGER_CONTACT, targetContactId, slingContactPoints, plungerContactVertices } from "./mechanical-contact.mjs";
+import { targetCarrierParts, targetFaceAngle, targetDimensions, targetContactBoxes, flipperContactVertices, PLUNGER_CONTACT, targetContactId, slingContactPoints, plungerContactVertices } from "./mechanical-contact.mjs";
 import {NudgeMeter} from "./nudge.mjs";
 import { buildPhysicalRamp, rampSensorGates } from "./ramp-geometry.mjs";
 import R from "../vendor/rapier3d-0.17.3/rapier.mjs";
@@ -88,6 +88,14 @@ export class PinballPhysics {
     for(const bank of TARGET_BANKS) {
       const dx=bank.b[0]-bank.a[0], dz=bank.b[2]-bank.a[2];
       const angle=targetFaceAngle(bank), dimensions=targetDimensions(bank);
+      const mount=-Math.atan2(dz,dx);
+      for(const p of targetCarrierParts(bank)) {
+        const position=p.geometry.getAttribute('position'),vertices=new Float32Array(position.array);
+        const indices=p.geometry.index?new Uint32Array(p.geometry.index.array):Uint32Array.from({length:position.count},(_,i)=>i);
+        this.world.createCollider(R.ColliderDesc.trimesh(vertices,indices).setTranslation((bank.a[0]+bank.b[0])/2,0,(bank.a[2]+bank.b[2])/2).setRotation({x:0,y:Math.sin(mount/2),z:0,w:Math.cos(mount/2)}).setRestitution(.35).setFriction(.05));p.geometry.dispose();
+      }
+
+
       for(let i=0;i<bank.count;i++) {
         const t=(i+.5)/bank.count, x=bank.a[0]+dx*t,z=bank.a[2]+dz*t;
         // Thick molded standup and raised strike plate, not an invisible bank

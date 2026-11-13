@@ -34,7 +34,8 @@ test('out-of-order or ground ramp contacts never count a complete traversal',asy
 });
 test('complete physical ramp awards exactly once and only after its exit lip',async()=>{
  const {sampleRamp}=await import('./ramp-geometry.mjs');
- for(const speed of [26,28]){const g=await PinballPhysics.create();try{g.launch();const r=sampleRamp()[0];g.ball.setTranslation({x:r.p.x,y:r.p.y+.14,z:r.p.z},true);g.ball.setLinvel({x:r.t.x*speed,y:r.t.y*speed,z:r.t.z*speed},true);let awarded=false;for(let i=0;i<1200;i++){g.step(1/120,{left:true});if(g.rampTraversals){const last=sampleRamp().at(-1),p=g.ballPosition;assert.ok((p.x-last.p.x)*last.t.x+(p.z-last.p.z)*last.t.z>0,'must leave the shared exit lip before reward');awarded=true;break;}}assert.ok(awarded);run(g,120);assert.equal(g.rampTraversals,1);}finally{g.dispose();}}
+ // The marginal 26-speed cases are classified in ramp.test.mjs.
+ for(const speed of [28]){const g=await PinballPhysics.create();try{g.launch();const r=sampleRamp()[0];g.ball.setTranslation({x:r.p.x,y:r.p.y+.14,z:r.p.z},true);g.ball.setLinvel({x:r.t.x*speed,y:r.t.y*speed,z:r.t.z*speed},true);let awarded=false;for(let i=0;i<1200;i++){g.step(1/120,{left:true});if(g.rampTraversals){const last=sampleRamp().at(-1),p=g.ballPosition;assert.ok((p.x-last.p.x)*last.t.x+(p.z-last.p.z)*last.t.z>0,'must leave the shared exit lip before reward');awarded=true;break;}}assert.ok(awarded);run(g,120);assert.equal(g.rampTraversals,1);}finally{g.dispose();}}
 });
 test('inlane switch scores only a fresh real crossing, not sitting or pausing',async()=>{
  const g=await PinballPhysics.create();try{g.launch();g.state.kickbackCharges=0;g.ball.setTranslation({x:1.60,y:.18,z:2.65},true);g.ball.setLinvel({x:0,y:0,z:2},true);run(g,15);assert.ok(g.state.score>=100);assert.equal(g.state.lastAward.label,'INLANE');const score=g.state.score;g.setPaused(true);run(g,120);assert.equal(g.state.score,score);g.setPaused(false);}finally{g.dispose();}

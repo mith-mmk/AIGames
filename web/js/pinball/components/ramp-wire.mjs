@@ -134,8 +134,8 @@ export class MechanicalRamp extends Assembly {
     rails.forEach((rail,i)=>this.tube(`${i%2?'containment':'running'}-rail-${i}`,rail,WIRE_RADIUS,'chrome',g));
     for(let i=0;i<rows.length;i+=8) {
       const r=rows[i], at=(x,y)=>r.p.clone().addScaledVector(r.n,x).addScaledVector(UP,y+WIRE_HEIGHT_OFFSET);
-      this.tube(`underslung-wire-tie-${i}`,[at(-WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT),at(-WIRE_GUARD_SPACING,-.05),at(WIRE_GUARD_SPACING,-.05),at(WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT)],.012,'brass',g);
-      for(const sign of [-1,1])this.tube(`wire-seat-${i}-${sign}`,[at(sign*.09,-.05),at(sign*.09,-.012)],.02,'chrome',g);
+      this.tube(`underslung-wire-tie-${i}`,[at(-WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT),at(-WIRE_GUARD_SPACING,-.028),at(WIRE_GUARD_SPACING,-.028),at(WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT)],.012,'brass',g);
+      for(const sign of [-1,1])this.tube(`wire-seat-${i}-${sign}`,[at(sign*.09,-.028),at(sign*.09,-.012)],.02,'chrome',g);
     }
     g.userData={hiddenFloor:false,runningRails:2,containmentRails:2,collision:'shared segmented capsules, same centers and radius as visible wire'};
   }
@@ -144,7 +144,8 @@ export class MechanicalRamp extends Assembly {
     // Continuous bearers carry the sheet and wire saddles. Exterior columns
     // and elevated horizontal crossheads keep the ground routes open.
     // Dimensions remain estimates, not certified structural engineering.
-    const elevated = this.rows.filter(r => r.p.y >= .46 || r.p.x < 0);
+    const spanStart=this.rows.findIndex(r=>r.p.x<0 && r.p.z>=1.30);
+    const elevated = this.rows.filter((r,i) => (r.p.y >= .46 || r.p.x < 0) && (spanStart<0 || i<=spanStart));
     for (const side of ['left', 'right']) this.tube(`${side}-continuous-underfloor-bearer`, elevated.map(r => point(r, side, side === 'left' ? .045 : -.045, -Math.min(.065,Math.max(.025,r.p.y-.38)))), .028, 'dark', g);
     let count = 0;
     const stations = [];
@@ -158,6 +159,12 @@ export class MechanicalRamp extends Assembly {
     const end=this.rows.length-1;
     if (distance >= .8 || !stations.length) stations.push(end);
     else stations[stations.length-1]=end;
+    // A four-wire bridge replaces the intrusive underframe over the sling.
+    // Both ends remain seated on real cabinet-supported clamp stations.
+    if(spanStart>=0){
+      for(let j=stations.length-1;j>=0;j--)if(stations[j]>=spanStart)stations.splice(j,1);
+      stations.push(spanStart,end);
+    }
     for (const i of stations) {
       const r = this.rows[i];
       if (r.p.y < .46 && r.p.x >= 0) continue;
@@ -185,7 +192,8 @@ export class MechanicalRamp extends Assembly {
       collar.position.copy(top);
       count++;
     }
-    g.userData = { subassembly: g.name, postCount: count, continuousBearers: 2,
+    const spanLength=spanStart<0?0:this.rows.slice(spanStart+1).reduce((sum,r,j)=>sum+r.p.distanceTo(this.rows[spanStart+j].p),0);
+    g.userData = { wireBridge:{start:spanStart<0?null:this.rows[spanStart].p.toArray(),end:this.rows[end].p.toArray(),length:spanLength,loadPath:"four continuous wires with U ties, cabinet-supported clamps at both ends",strengthCertified:false}, subassembly: g.name, postCount: count, continuousBearers: 2,
       clearance: 'columns outside ±2.75 table or rear z=-5.75; crossheads above ground-ball top .31',
       structuralStatus: 'continuous load-path prototype; not strength-certified' };
   }

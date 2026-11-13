@@ -306,8 +306,9 @@ async function cradle(side) {
   const g = await PinballPhysics.create(); g.launch(); g.state.kickbackCharges = 0;
   const held = { left: side < 0, right: side > 0 };
   run(g, .25, held);
-  // A controlled incoming fixture; all subsequent capture, hold and shots are physical.
-  g.ball.setTranslation({ x: side * .85, y: .18, z: 3.15 }, true);
+  // Approach through the actual redesigned IN mouth, not the former central
+  // x=.85 / z=3.15 fixture. Capture and every subsequent shot remain physical.
+  g.ball.setTranslation({ x: side * (LOWER_LAYOUT.inlaneInner[0][0]+.25), y: .18, z: LOWER_LAYOUT.inlaneInner[0][2]+.05 }, true);
   g.ball.setLinvel({ x: 0, y: 0, z: 2 }, true);
   run(g, 3, held);
   return { g, held };
@@ -382,14 +383,16 @@ test("rising shots gain energy toward the tip without exceeding the world limit"
 });
 
 test("five real cradle-reflip timings traverse the S ramp, cradle again and re-fire", async () => {
-  for (const releaseTicks of [78, 79, 80, 81, 82]) {
+  for (const releaseTicks of [80, 81, 82, 83, 84]) {
     const g=await PinballPhysics.create();g.launch();g.state.kickbackCharges=0;
     const held={left:true};
     for(let i=0;i<30;i++)g.step(1/120,held);
-    g.ball.setTranslation({x:-.55,y:.18,z:3.15},true);
+    // Measured consecutive release window after widening and moving the bats.
+    g.ball.setTranslation({x:-(LOWER_LAYOUT.inlaneInner[0][0]+.25),y:.18,z:LOWER_LAYOUT.inlaneInner[0][2]+.05},true);
     g.ball.setLinvel({x:0,y:0,z:2},true);
     for(let i=0;i<500;i++)g.step(1/120,held);
     const initialCradle={...g.ballPosition};
+    const diagnostic={releaseTicks,initialCradle,linear:{...g.ball.linvel()},angular:{...g.ball.angvel()},time:g.time};
     try {
       assert.ok(g.ramp, "ramp must be integrated, not injected at its entrance");
       let positionResets = 0;
@@ -405,7 +408,7 @@ test("five real cradle-reflip timings traverse the S ramp, cradle again and re-f
         if (crest && g.rampTraversals===1) returnLane = true; // crossed actual outlet
         if (returnLane && p.y < .25) { floor = true; break; }
       }
-      assert.ok(crest && returnLane && floor, `timing ${releaseTicks}: crest=${crest}, return=${returnLane}, floor=${floor}`);
+      assert.ok(crest && returnLane && floor, `timing ${releaseTicks}: crest=${crest}, return=${returnLane}, floor=${floor}; ${JSON.stringify({...diagnostic,shot:g.lastFlipperShot,final:{...g.ballPosition}})}`);
       assert.ok(g.lastFlipperShot.speed <= 32);
       run(g, 5, held);
       assert.equal(g.state.phase, "playing"); assert.equal(g.state.ballNumber, 1);

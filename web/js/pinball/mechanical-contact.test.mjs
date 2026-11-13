@@ -2,14 +2,17 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { flipperProfile, flipperContactVertices, targetContactId, PLUNGER_CONTACT } from "./mechanical-contact.mjs";
 import { PinballPhysics } from "./physics.mjs";
-import { TARGET_BANKS } from "./layout.mjs";
+import { TARGET_BANKS, LOWER_LAYOUT } from "./layout.mjs";
 
 test("tapered contact hull matches rubber height and rounded profile", () => {
   const points=flipperProfile(), vertices=flipperContactVertices();
   assert.equal(vertices.length,points.length*6);
-  assert.ok(Math.max(...points.map(p=>p[0]))<1.04);
+  // The installed bat grew from the old 1.04 maximum to the shared layout length.
+  const length=LOWER_LAYOUT.flipperCenter+LOWER_LAYOUT.flipperHalfLength;
+  const tip=Math.max(...points.map(p=>p[0]));
+  assert.ok(tip<length && tip>length-.003);
   assert.ok(Math.min(...points.map(p=>p[0]))>-.061);
-  assert.ok(Math.max(...points.filter(p=>p[0]>.95).map(p=>Math.abs(p[1])))<.09);
+  assert.ok(Math.max(...points.filter(p=>p[0]>length-.09).map(p=>Math.abs(p[1])))<.09);
   const ys=Array.from(vertices).filter((_,i)=>i%3===1);
   assert.ok(Math.abs(Math.min(...ys)+.109)<1e-7);
   assert.ok(Math.abs(Math.max(...ys)-.034)<1e-7);

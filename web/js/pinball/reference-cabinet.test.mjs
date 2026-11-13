@@ -54,10 +54,12 @@ test('formed collection apron preserves central and outlane throats after active
  const c=new MechanicalCabinet({length:8}),a=c.root.getObjectByName('formed-collection-apron');
  c.root.updateMatrixWorld(true);
  const box=new T.Box3().setFromObject(a),L=c.parameters.length/2;
- assert.ok(box.min.z>L-1.13);assert.ok(box.max.z<L-.22);
+ assert.ok(box.min.z>L-1.13);assert.ok(box.max.z<L-.04,'formed front edge stays inside cabinet');
  for(const x of [0,-2.1,2.1]){
    const ray=new T.Raycaster(new T.Vector3(x,2,L-.57),new T.Vector3(0,-1,0));
    assert.ok(ray.intersectObject(a,true).every(hit=>hit.point.y<-.1),'no basket at deck height');
  }
  c.dispose();
 });
+
+test('inner skyline is a rear-mounted relief outside live board',()=>{const c=new MechanicalCabinet();const p=c.root.getObjectByName('supported-inner-city-backplate');assert.ok(p);const b=new T.Box3().setFromObject(p);assert.ok(b.max.z < -c.parameters.length/2);assert.ok(p.getObjectByName('city-relief-building-14'));c.dispose();});

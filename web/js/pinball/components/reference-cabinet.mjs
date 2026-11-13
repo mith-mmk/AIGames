@@ -10,12 +10,14 @@ export class ReferenceCabinetDress {
     const material=(name,opts)=>{const m=new T.MeshStandardMaterial(opts);cabinet.materials[name]=m;cabinet.ownedMaterials.add(m);return m;};
     material('ref-black',{color:0x101723,roughness:.36,metalness:.5});
     material('ref-silver',{color:0xa7b7ca,roughness:.3,metalness:.86});
+    material('ref-city-purple',{color:0x363259,roughness:.48,metalness:.3});
+    material('ref-city-back',{color:0x23516b,roughness:.4,metalness:.4});
     material('ref-blue',{color:0x172e4c,roughness:.4,metalness:.5});
     material('ref-yellow',{color:0xffcb22,roughness:.32,metalness:.22});
     material('ref-cyan',{color:0x69efff,emissive:0x09cfee,emissiveIntensity:1.4,roughness:.25});
     material('ref-amber',{color:0xffbd24,emissive:0xff7100,emissiveIntensity:1.5});
     material('ref-red',{color:0xf44628,emissive:0xf02200,emissiveIntensity:1.1,transparent:true,opacity:.85});
-    this.buildBackglass();this.buildApron();this.buildTower();
+    this.buildBackglass();this.buildApron();this.buildTower();this.buildRearCityPanel();
   }
   rounded(name,w,h,d,x,y,z,key,r=.06,parent=this.root) {
     const s=new T.Shape();s.moveTo(-w/2+r,-h/2);s.lineTo(w/2-r,-h/2);s.quadraticCurveTo(w/2,-h/2,w/2,-h/2+r);s.lineTo(w/2,h/2-r);s.quadraticCurveTo(w/2,h/2,w/2-r,h/2);s.lineTo(-w/2+r,h/2);s.quadraticCurveTo(-w/2,h/2,-w/2,h/2-r);s.lineTo(-w/2,-h/2+r);s.quadraticCurveTo(-w/2,-h/2,-w/2+r,-h/2);
@@ -78,21 +80,21 @@ export class ReferenceCabinetDress {
     // with the front edge so every supported length retains the drain offsets.
     assembly.position.z=L-5.75;this.root.add(assembly);
     for(const side of [-1,1]){
-      const points=[[.58,5.05],[1.83,4.78],[1.83,5.46],[.34,5.46],[.34,5.24]];
+      const points=[[.58,5.05],[1.83,4.70],[1.83,5.37],[2.45,5.53],[2.45,5.68],[.34,5.68],[.34,5.24]];
       const shape=new T.Shape();points.forEach(([x,z],i)=>i?shape.lineTo(side*x,-z):shape.moveTo(side*x,-z));shape.closePath();
       const geo=new T.ExtrudeGeometry(shape,{depth:.045,bevelEnabled:true,bevelSize:.012,bevelThickness:.008,bevelSegments:2});geo.rotateX(-Math.PI/2);
       const pos=geo.attributes.position;for(let i=0;i<pos.count;i++)pos.setY(i,pos.getY(i)+.055+(pos.getZ(i)-4.90)*.17);geo.computeVertexNormals();
       this.cabinet.mesh(`formed-apron-wing-${side}`,geo,'ref-silver',assembly);
       // Folded front flange, stamped service access panel, ventilation slots and fasteners.
-      this.rounded(`apron-folded-front-${side}`,1.48,.16,.035,side*1.085,.07,5.45,'ref-blue',.018,assembly);
+      this.rounded(`apron-folded-front-${side}`,2.08,.20,.045,side*1.39,.13,5.66,'ref-blue',.018,assembly);
       // Wide uninterrupted brushed panel with a dark inset, not a small vent patch.
-      const inset=this.rounded(`apron-service-panel-${side}`,1.03,.27,.018,side*1.15,.135,5.22,'ref-blue',.035,assembly);inset.rotation.x=-Math.PI/2+.17;
-      this.tube(`apron-bright-leading-fold-${side}`,[[side*.58,.125,5.05],[side*1.20,.08,4.92],[side*1.82,.04,4.79]],.028,'ref-silver',assembly);
+      const inset=this.rounded(`apron-service-panel-${side}`,1.16,.34,.018,side*1.15,.151,5.26,'ref-blue',.035,assembly);inset.rotation.x=-Math.PI/2+.17;
+      this.tube(`apron-bright-leading-fold-${side}`,[[side*.58,.125,5.05],[side*1.20,.09,4.88],[side*1.82,.04,4.71]],.028,'ref-silver',assembly);
       for(const x of [.79,1.70])for(const z of [4.98,5.36]){
         const y=.102+(z-4.90)*.17;this.cabinet.screw(`collection-apron-bolt-${side}-${x}-${z}`,side*x,y,z,assembly);
         this.rounded(`collection-apron-standoff-${side}-${x}-${z}`,.07,.27,.07,side*x,-.06,z,'ref-black',.01,assembly);
       }
-      this.tube(`drain-throat-rolled-edge-${side}`,[[side*1.82,.065,4.80],[side*.58,.13,5.05],[side*.38,.16,5.25],[side*.34,.18,5.45]],.024,'ref-yellow',assembly);
+      this.tube(`drain-throat-rolled-edge-${side}`,[[side*1.82,.065,4.71],[side*.58,.13,5.05],[side*.38,.16,5.25],[side*.34,.23,5.66]],.024,'ref-yellow',assembly);
     }
     // Recessed collection basket below the deck, AFTER the gameplay drain.
     // Its visible gold grille is lower than the open throat, never a deck bridge.
@@ -105,10 +107,30 @@ export class ReferenceCabinetDress {
     for(const side of [-1,1])this.rounded(`drain-basket-mount-${side}`,.09,.18,.12,side*.30,-.30,5.06,'ref-silver',.015,grille);
     assembly.userData.visualOnly=true;
     assembly.userData.openThroats={center:[[0,4.90],[0,5.45]],outlaneX:[-2.1,2.1]};
-    const apron=this.rounded('front-hazard-apron',W*2-.38,.34,.06,-.12,.09,L-.15,'ref-silver',.04);apron.rotation.x=-Math.PI/2;
+    const apron=this.rounded('front-hazard-apron',W*2-.38,.34,.06,-.12,.25,L-.15,'ref-silver',.04);apron.rotation.x=-Math.PI/2;
     const c=this.canvas(1200,100);if(c){const ctx=c.getContext('2d');ctx.fillStyle='#111c29';ctx.fillRect(0,0,1200,100);ctx.fillStyle='#f6bf20';for(let x=-100;x<1300;x+=160){ctx.beginPath();ctx.moveTo(x,100);ctx.lineTo(x+90,100);ctx.lineTo(x+160,0);ctx.lineTo(x+70,0);ctx.closePath();ctx.fill();}}
-    const p=this.panel('apron-yellow-black-safety-stripe',c,W*2-.52,.22,-.12,.145,L-.15);p.mesh.rotation.x=-Math.PI/2;
+    const p=this.panel('apron-yellow-black-safety-stripe',c,W*2-.52,.22,-.12,.295,L-.15);p.mesh.rotation.x=-Math.PI/2;
     for(const x of [-W+.10,W-.40])this.cabinet.screw(`apron-mount-${x}`,x,.13,L-.15,this.root);
+  }
+
+  buildRearCityPanel(){
+    const L=this.cabinet.parameters.length/2,W=this.cabinet.parameters.width;
+    const g=new T.Group();g.name='supported-inner-city-backplate';g.position.z=-L-.14;this.root.add(g);
+    // Rear-wall mounted relief, outside the playable board and behind the wire.
+    this.rounded('city-backplate-folded-base',W-.32,.78,.065,0,.48,0,'ref-city-back',.045,g);
+    for(const side of [-1,1]){
+      this.rounded('city-backplate-bracket-'+side,.16,.84,.12,side*(W/2-.25),.44,-.035,'ref-black',.02,g);
+      for(const y of [.12,.78])this.frontBolt('city-backplate-fastener-'+side+'-'+y,side*(W/2-.25),y,.047,g);
+    }
+    for(let i=0;i<15;i++){
+      const x=(i-7)*(W-.65)/15,h=.19+(i*7%9)*.043,w=(W-.65)/18;
+      const shape=new T.Shape();shape.moveTo(-w/2,0);shape.lineTo(w/2,0);shape.lineTo(w/2,h*.72);shape.lineTo(w*.24,h*.72);shape.lineTo(w*.24,h);shape.lineTo(-w*.24,h);shape.lineTo(-w*.24,h*.85);shape.lineTo(-w/2,h*.85);shape.closePath();
+      const geo=new T.ExtrudeGeometry(shape,{depth:.027,bevelEnabled:true,bevelThickness:.005,bevelSize:.005,bevelSegments:1});
+      const building=this.cabinet.mesh('city-relief-building-'+i,geo,i%2?'ref-blue':'ref-city-purple',g);building.position.set(x,.17,.05);
+      for(let row=0;row<2;row++)this.rounded('city-relief-window-'+i+'-'+row,.025,.035,.008,x,.22+row*.07,.086,'ref-cyan',.004,g);
+    }
+    this.tube('city-backplate-rolled-top',[[-W/2+.18,.88,.045],[W/2-.18,.88,.045]],.025,'ref-silver',g);
+    g.userData.visualOnly=true;
   }
   buildTower(){
     const L=this.cabinet.parameters.length/2,W=this.cabinet.parameters.width/2,x=W+.15,z=-L+.40;
