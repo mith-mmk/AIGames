@@ -1,6 +1,7 @@
 import { buildVisualRamp } from "./ramp-geometry.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { PlayfieldParts } from "./playfield-parts.mjs";
+import { WorkshopPartsDetail } from "./parts-detail.mjs";
 import { WorkshopMechanisms } from "./mechanisms.mjs";
 import { BUMPERS, MINI_BUMPERS, RAMP, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING } from "./layout.mjs";
 export class WorkshopAssets {
@@ -339,6 +340,7 @@ export class WorkshopAssets {
     this.plungerRod = rod; this.plungerKnob = knob;
     rod.name = "plunger-rod"; knob.name = "plunger-knob";
     new PlayfieldParts(this).build();
+    new WorkshopPartsDetail(this).build();
 
     return g;
   }
