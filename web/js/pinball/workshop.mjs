@@ -70,9 +70,44 @@ export class WorkshopRoom {
   inventorBenches(g) {
     this.scenery = new WorkshopScenery();
     g.add(this.scenery.root);
-    new WorkshopFriend(this.a).build(g);
+    this.friend = new WorkshopFriend(this.a);
+    this.friend.build(g);
+    this.buildFriendStand(g);
     this.wallMachine(g);
   }
+  update(dt, events=[], state={}) { this.friend?.update(dt,events,state); }
+  resetAnimation() { this.friend?.resetAnimation(); }
+  reset() { this.resetAnimation(); }
+
+  buildFriendStand(parent) {
+    const a=this.a,g=new T.Group();
+    g.name="chappy-mobile-service-stool";
+    g.position.set(-2.05,-2.34,-7.5);
+    g.visible=false; // The app enables this only with the mobile mascot position.
+    g.userData.sceneryOnly=true;
+    this.friendStand=g;parent.add(g);
+    // Rolled seat rim, nonslip top, four splayed legs and a braced footrest.
+    // Pads touch the floor at y=-2.34; seat top supports Chappy at y=-.90.
+    a.cylinder(g,.54,.10,0,1.39,0,"brass");
+    a.cylinder(g,.49,.018,0,1.431,0,"rubber");
+    a.cylinder(g,.43,.07,0,1.305,0,"steel");
+    for(const x of [-1,1])for(const z of [-1,1]) {
+      const bottom=new T.Vector3(x*.39,.065,z*.39);
+      const top=new T.Vector3(x*.27,1.33,z*.27);
+      const direction=top.clone().sub(bottom);
+      const midpoint=top.clone().add(bottom).multiplyScalar(.5);
+      const leg=a.cylinder(g,.045,direction.length(),midpoint.x,midpoint.y,midpoint.z,"steel");
+      leg.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),direction.normalize());
+      a.cylinder(g,.085,.07,bottom.x,.035,bottom.z,"rubber");
+      a.cylinder(g,.025,.014,x*.35,1.446,z*.35,"brass");
+    }
+    for(const side of [-1,1]) {
+      a.box(g,.71,.045,.045,0,.55,side*.345,"steel");
+      a.box(g,.045,.045,.71,side*.345,.55,0,"steel");
+    }
+    a.batchStaticAssembly(g);
+  }
+
   wallMachine(parent) {
     const a=this.a,machine=new WorkshopMechanisms(a).build(parent);
     machine.name="workshop-wall-machine";
