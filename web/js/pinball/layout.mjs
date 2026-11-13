@@ -75,7 +75,8 @@ export const LOWER_LAYOUT = Object.freeze({
   // Its lower face overlaps the root boundary, leaving no ball-sized side leak.
   guide: [
     [1.94,.22,1.65], [1.94,.22,2.60], [1.65,.22,3.10], [1.15,.22,3.40],
-    [1.35,.22,3.60], [1.25,.22,3.90], [1.25,.22,4.30],
+    // Straight heel-side guide avoids a concave pocket against the rounded bat.
+    [1.25,.22,3.60], [1.25,.22,3.90], [1.25,.22,4.30],
   ],
   guideRadius: .04,
   guideEntry: { left: [2.73, .22, .8], right: [2.30, .22, .8] },

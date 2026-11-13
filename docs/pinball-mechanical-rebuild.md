@@ -1,6 +1,8 @@
 # Pinball mechanical rebuild audit
 
-## Baseline and status
+## Historical baseline and status (superseded by integration checkpoint)
+
+The baseline audit, requirement matrix and prototype notes below are retained as historical findings. Statements such as “no integration,” “all incomplete,” and “pending integrated clearance” describe that earlier checkpoint, not the current implementation. See the current integration checkpoint at the end for verified changes and remaining limits. This distinction does not declare all acceptance gates complete.
 
 Read-only source audit performed against branch `pinball/0.1.0`, baseline commit `8aab73c`. The repository's `AGENTS.md` applies. This document records requirements and review gates, not a claim that the rebuild is complete.
 
@@ -93,3 +95,39 @@ Stern manual p5 recommends 6.5 degrees pitch; p70 overall cabinet extents are no
 - Captures use exact 45-degree elevation, separate longitudinal side views for plunger/target, and a studio reflection environment so chrome is not judged from black reflections. These lights are review fixtures, not proof that the production lighting already works.
 - Static assemblies do not get a fictitious “moving” acceptance image. They still need real ball-traversal evidence.
 - Draw counts are not yet optimized: standalone ramp 141 meshes and cabinet around 127 meshes. Batch static geometry within each rigid assembly before production integration and measure desktop/mobile frame times. Do not silently trade away required visible structure.
+
+## Current integration checkpoint — 2026-11-13
+
+The reusable mechanical builders now replace the corresponding primary constructors in `assets.mjs` and `playfield-parts.mjs`; the former `WorkshopPartsDetail` overlay is no longer built. This checkpoint records inspected integration and test evidence, not production approval or full completion. The coordinating worker's final browser and regression acceptance pass is still in progress.
+
+### Installed construction and motion
+
+- **A, flippers:** Separate tapered bat/rubber, shaft, bearing, mount and underboard solenoid/linkage are installed. The shared contact profile supplies the tapered Rapier hull. The moving assembly follows the physical angle, while mounts remain fixed.
+- **B, pop bumpers:** Both full-size and mini models use separate housing, translucent lens, skirt, strike ring, pull rods and underboard actuation. Accepted physical hits drive bounded skirt/ring movement.
+- **C, slings:** Grooved posts, rubber loop, cover, articulated kicker, coil/plunger and switch parts replace the old assembly. Physics and resting rubber use the shared contact path; accepted hits drive the visual linkage.
+- **D/E, ramp and wire return:** The rise has a visibly thick acrylic floor/walls, joints, transitions, external supports and continuous underframe. The return uses two supporting rails and two containment rails with matched capsule contacts, not an invisible supporting floor. The gameplay-critical low anti-trap base remains visibly represented. Tests cover ground clearance, actual traversal and same-ball cradle/refire.
+- **F, targets:** Individual standup faces, brackets, hinges and return springs replace the bank-wide visual/contact shell. Per-target contact IDs drive the struck target's deflection and light; these remain standups, not drop targets. Existing bank scoring cooldown is retained.
+- **G, plunger:** Rod, tip, knob, guide and continuous compression spring move coherently. A kinematic stop follows the pull and safely returns on cancellation. Review found that an earlier immediate stop reset could strand the ball behind it; the fix passes the exact reproduction and a dedicated regression. Launch force remains the game's tested velocity assignment, not a simulated spring impulse.
+- **H, cabinet/playfield:** The thick board has an actual drain opening, with cabinet rails, mounts, apron and trough construction. The printed surface preserves the opening. Glass exists but is hidden by default for gameplay visibility. A powered trough feed and full physical ball-serving mechanism are not modeled.
+
+Rigid meshes are batched within their own assembly frames. Controller-owned meshes and moving groups retain their identities; hit events are consumed once and shared by mechanics and bumper effects.
+
+### Verification and evidence scope
+
+- Independent current-snapshot Node regression: **100/100 tests pass**, including ramp traversal, cradle/refire, shooter return, cancelled pull, trap checks, scoring and component lifecycle tests. ESLint reports no errors and three existing CSS baseline warnings. A further final combined acceptance run is in progress.
+- The coordinating worker reports real Chrome ball-contact → accepted score → mechanical motion checks for `b0`, `s1` and `right-side:1`. These are contact-driven checks, not only direct animation calls.
+- The coordinating worker reports actual keyboard/touch control tests with explicitly placed incoming-ball fixtures, plus ramp/refire checks. These fixtures establish repeatable control cases; they do not imply an entirely unassisted natural-play sequence.
+- Installed desktop and top images in `artifacts/pinball/parts-mechanical-batched-*.png` were independently inspected. Final installed images and metrics are under `parts-mechanical-final-*`. Historical component images may show earlier geometry, including a solid ramp return; do not present those older captures as current route evidence without regenerating them.
+- Recorded desktop render count: **632 draw calls, 348,211 triangles**. Mobile viewport: **573 draw calls, 342,547 triangles**. Recorded Chrome animation-frame intervals: median **16.7 ms**, p95 **≤16.8 ms**. These are headless Chrome rAF observations, not GPU timings or a physical-phone performance measurement.
+
+### Remaining limits and acceptance
+
+All unsourced dimensions, tolerances, travel and mechanical proportions remain table-local estimates. The models are not manufacturer CAD or certified engineering assemblies. Several contacts intentionally simplify the moving visual hardware; the tests establish game behavior, not a complete rigid-body simulation of every spring and fastener. The powered trough feed is absent, glass is hidden by default, and final browser/regression acceptance remains pending. Preserve these limits in any final handoff rather than treating the historical audit's replacement as proof of production readiness.
+
+## Final automated acceptance (2026-11-13)
+
+The integrated replacement passed full repository `npm test`, built-runtime Chrome smoke, keyboard/touch flipper capture and ramp-return/refire, plunger power/weak return/cancellation, nudge/TILT and multiplier browser checks. Physical incoming-ball fixtures verified accepted bumper/sling/target contact -> score -> nonzero mechanism movement. These are automated Chrome tests, not human playtesting or a physical-phone GPU measurement.
+
+Final cabinet inspection exposed a batching visibility regression. Panels now retain independent visibility, with a new regression. Final draw counts are 635 desktop and 576 mobile, below the 650 target; triangles remain about 348k / 343k. Standalone ramp/wire images were refreshed for the genuine floorless return. Actual installed top/45/side images and separately labeled cabinet-hidden cutaway-side inspection images are available under artifacts/pinball/installed-review. Ordinary side images intentionally retain real occlusion by the cabinet.
+
+The game preserves logical drain/serve; powered trough-to-shooter transfer is not simulated. Glass is modeled but hidden in the normal playing view. Dimensions remain estimated, and this is a mechanically structured game model rather than a manufacturing replica. These limits must accompany delivery.

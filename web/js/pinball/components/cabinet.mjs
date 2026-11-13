@@ -162,8 +162,12 @@ export class MechanicalCabinet {
   setInspectionMode(mode='assembled') {
     if(this.disposed)throw new Error('Cabinet has been disposed');
     if(!['assembled','cutaway','underside'].includes(mode))throw new RangeError('Unknown inspection mode');
-    this.root.getObjectByName('removable-bottom-panel').visible=mode==='assembled';
-    for(const name of ['front-lockbar-timber','cabinet-side-1'])this.root.getObjectByName(name).visible=mode!=='cutaway';
+    for(const name of ['removable-bottom-panel','front-lockbar-timber','cabinet-side-1']) {
+      const panel=this.root.getObjectByName(name);
+      // This visibility boundary must survive rigid geometry batching.
+      panel.userData.independentVisibility=true;
+      panel.visible=name==='removable-bottom-panel'?mode==='assembled':mode!=='cutaway';
+    }
     this.root.userData.inspectionMode=mode;return this;
   }
   dispose() {

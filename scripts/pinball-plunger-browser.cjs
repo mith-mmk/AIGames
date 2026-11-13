@@ -10,8 +10,8 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
  try {
  await page.goto(`http://127.0.0.1:${server.address().port}/pinball.html?test=1`);await page.waitForFunction(()=>window.__pinball?.game);
  await page.screenshot({path:path.join(out,'shooter-initial-mobile.png')});
- const hardware=await page.evaluate(()=>{const a=window.__pinball;return {ball:{...a.game.ballPosition},head:a.assets.plungerHead.position.z,rod:a.assets.plungerRod.position.z,knob:a.assets.plungerKnob.position.z};});
- assert.ok(Math.abs(hardware.ball.z-4.025)<.001);assert.equal(hardware.head,4.2);
+ const hardware=await page.evaluate(()=>{const a=window.__pinball;a.board.updateMatrixWorld(true);const localZ=o=>a.board.worldToLocal(o.getWorldPosition(a.game.ballPosition.clone?.()||a.assets.plungerHead.position.clone())).z;return {ball:{...a.game.ballPosition},head:localZ(a.assets.plungerHead),rod:localZ(a.assets.plungerRod),knob:localZ(a.assets.plungerKnob)};});
+ assert.ok(Math.abs(hardware.ball.z-4.025)<.001);assert.ok(Math.abs(hardware.head-4.2)<.001);
  // Record launches without replacing the physics implementation.
  await page.evaluate(()=>{const g=window.__pinball.game,launch=g.launch.bind(g);window.launches=[];g.launch=p=>{const ok=launch(p);if(ok)window.launches.push({power:p,speed:-g.ball.linvel().z});return ok;};});
  for (const hold of [120,600,1250]) {

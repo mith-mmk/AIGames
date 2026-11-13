@@ -1,10 +1,11 @@
 import * as T from '../../vendor/three-0.180.0/three.module.min.js';
-import { sampleRamp } from '../ramp-geometry.mjs';
+import R from '../../vendor/rapier3d-0.17.3/rapier.mjs';
+import { sampleRamp, buildRampBaseVisual, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_RADIUS, WIRE_HEIGHT_OFFSET, WIRE_GUARD_HEIGHT, WIRE_GUARD_SPACING, rampWireRails } from '../ramp-geometry.mjs';
 import { TABLE } from '../layout.mjs';
 
 // Construction vocabulary: Stern Jaws manual pp. 66–67 (not measured CAD).
 // Styling: mechanical-reference.png. All scene dimensions are estimates.
-export const RAMP_WIRE_DIMENSIONS = Object.freeze({ sheet: .018, wall: .31,
+export const RAMP_WIRE_DIMENSIONS = Object.freeze({ sheet: .018, wall: RAMP_WALL_HEIGHT,
   lip: .025, wireRadius: .018, runningHalfSpacing: .09,
   guardHalfSpacing: .175, guardHeight: .16, realBallDiameterMm: 26.9875 });
 const UP = new T.Vector3(0, 1, 0);
@@ -83,19 +84,27 @@ class Assembly {
     this.root.removeFromParent();
   }
 }
-/** Full continuous sheet chute, table-local. Replaces rather than overlays the
- * old visual ramp when integrated. No physics or gameplay changes here. */
+/** Table-local sheet rise and open paired-wire return. The shared route and
+ * rail profiles match ramp-geometry contacts without a hidden return floor. */
 export class MechanicalRamp extends Assembly {
   constructor({ materials = {}, rows = sampleRamp() } = {}) {
     super('mechanical-sheet-ramp-prototype', materials);
+    this.materials.acrylic = new T.MeshStandardMaterial({color:0x85b2a8,metalness:.08,roughness:.22,transparent:true,opacity:.4,depthWrite:false,side:T.DoubleSide});
+    this.ownedMaterials.add(this.materials.acrylic);
     this.rows = checkedRows(rows); this.build();
+    this.root.name = 'mechanical-sheet-ramp';
+    this.root.userData.routeType = 'sheet-rise-and-true-paired-wire-return';
+    this.root.userData.hiddenFloor = false;
+    this.root.userData.collisionIntegrated = true;
+    this.root.userData.clearance = 'ground-clearance analytically checked; installed traversal review required';
   }
   build() {
-    const rows = this.rows, d = RAMP_WIRE_DIMENSIONS;
+    const split=Math.round((this.rows.length-1)*WIRE_START_FRACTION);
+    const rows = this.rows.slice(0,split+1), d = RAMP_WIRE_DIMENSIONS;
     const sheet = this.group('formed-sheet-chute'), hardware = this.group('seams-and-fasteners');
-    this.mesh('continuous-floor-with-underside', loft(rows, r => [point(r, 'left'), point(r, 'right'), point(r, 'right', 0, -d.sheet), point(r, 'left', 0, -d.sheet)]), 'dark', sheet);
+    this.mesh('continuous-floor-with-underside', loft(rows, r => [point(r, 'left'), point(r, 'right'), point(r, 'right', 0, -d.sheet), point(r, 'left', 0, -d.sheet)]), 'acrylic', sheet);
     for (const [side, sign] of [['left', -1], ['right', 1]]) {
-      this.mesh(`${side}-folded-wall`, loft(rows, r => [point(r, side), point(r, side, 0, d.wall), point(r, side, sign * d.sheet, d.wall), point(r, side, sign * d.sheet, -d.sheet)]), 'chrome', sheet);
+      this.mesh(`${side}-folded-wall`, loft(rows, r => [point(r, side), point(r, side, 0, d.wall), point(r, side, sign * d.sheet, d.wall), point(r, side, sign * d.sheet, -d.sheet)]), 'acrylic', sheet);
       this.mesh(`${side}-outward-folded-lip`, loft(rows, r => [point(r, side, 0, d.wall), point(r, side, sign * d.lip, d.wall), point(r, side, sign * d.lip, d.wall - d.sheet), point(r, side, 0, d.wall - d.sheet)]), 'brass', sheet);
       for (let i = 16; i < rows.length - 1; i += 32) {
         const section = rows.slice(i, Math.min(rows.length, i + 3));
@@ -104,23 +113,38 @@ export class MechanicalRamp extends Assembly {
       }
     }
     const flaps = this.group('entry-and-exit-transition-flaps');
-    for (const [name, i] of [['entry', 0], ['exit', rows.length - 1]]) {
-      const r = rows[i], next = rows[i === 0 ? 1 : i - 1];
-      const tangent = r.p.clone().sub(next.p).normalize();
-      const end = { ...r, left: r.left.clone().addScaledVector(tangent, .13), right: r.right.clone().addScaledVector(tangent, .13) };
-      end.left.y -= .012; end.right.y -= .012;
-      this.mesh(`${name}-spring-steel-flap`, loft(i === 0 ? [end, r] : [r, end], row => [row.left.clone(), row.right.clone(), row.right.clone().addScaledVector(UP, -.006), row.left.clone().addScaledVector(UP, -.006)]), 'chrome', flaps);
+    for (const [name, i] of [['entry', 0], ['sheet-to-wire', rows.length - 1]]) {
+      const r = rows[i];
+      // End at the physical deck endpoint, never float past the release.
+      const segment = i === 0 ? rows.slice(0, 3) : rows.slice(-3);
+      this.mesh(`${name}-spring-steel-flap`, loft(segment, row => [row.left.clone(), row.right.clone(), row.right.clone().addScaledVector(UP, -.006), row.left.clone().addScaledVector(UP, -.006)]), 'chrome', flaps);
       for (const side of ['left', 'right']) this.bolt(`${name}-${side}-fixing`, point(r, side, side === 'left' ? -.015 : .015, .012), flaps);
     }
+    const baseMaterial=this.materials.dark.clone(); baseMaterial.side=T.DoubleSide;
+    this.ownedMaterials.add(baseMaterial);
+    const base = buildRampBaseVisual(this.rows, baseMaterial);
+    base.traverse(o => { if (o.geometry) this.geometries.add(o.geometry); });
+    this.root.add(base);
+    this.buildWireReturn(this.rows.slice(split));
     this.buildSupports();
+  }
+  buildWireReturn(rows) {
+    const g=this.group('true-paired-wire-return');
+    const rails=rampWireRails(rows);
+    rails.forEach((rail,i)=>this.tube(`${i%2?'containment':'running'}-rail-${i}`,rail,WIRE_RADIUS,'chrome',g));
+    for(let i=0;i<rows.length;i+=8) {
+      const r=rows[i], at=(x,y)=>r.p.clone().addScaledVector(r.n,x).addScaledVector(UP,y+WIRE_HEIGHT_OFFSET);
+      this.tube(`underslung-wire-tie-${i}`,[at(-WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT),at(-WIRE_GUARD_SPACING,-.05),at(WIRE_GUARD_SPACING,-.05),at(WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT)],.012,'brass',g);
+      for(const sign of [-1,1])this.tube(`wire-seat-${i}-${sign}`,[at(sign*.09,-.05),at(sign*.09,-.012)],.02,'chrome',g);
+    }
+    g.userData={hiddenFloor:false,runningRails:2,containmentRails:2,collision:'shared segmented capsules, same centers and radius as visible wire'};
   }
   buildSupports() {
     const g = this.group('perimeter-posts-and-continuous-underframe');
-    // Continuous bearers carry every part of the chute, including the long
-    // return. Posts stand at the perimeter/divider rather than being dropped
-    // into the central playfield. Brackets and diagonals form load paths from
-    // each saddle to its foot. These are candidate fixtures, not cleared lanes.
-    const elevated = this.rows.filter(r => r.p.y > .13);
+    // Continuous bearers carry the sheet and wire saddles. Exterior columns
+    // and elevated horizontal crossheads keep the ground routes open.
+    // Dimensions remain estimates, not certified structural engineering.
+    const elevated = this.rows.filter(r => r.p.y >= .46 || r.p.x < 0);
     for (const side of ['left', 'right']) this.tube(`${side}-continuous-underfloor-bearer`, elevated.map(r => point(r, side, side === 'left' ? .045 : -.045, -.065)), .028, 'dark', g);
     let count = 0;
     const stations = [];
@@ -128,18 +152,20 @@ export class MechanicalRamp extends Assembly {
     if (stations.at(-1) !== this.rows.length - 1) stations.push(this.rows.length - 1);
     for (const i of stations) {
       const r = this.rows[i];
-      if (r.p.y < .17) continue;
+      if (r.p.y < .46 && r.p.x >= 0) continue;
       // Left return is carried from the left cabinet rail, rear sweep from
       // the back rail, entry climb from the shooter divider side.
-      const x = r.p.x < -.45 ? -2.68 : r.p.z < -3.7 ? r.p.x : 2.24;
-      const z = r.p.x >= -.45 && r.p.z < -3.7 ? -5.35 : r.p.z;
+      const x = r.p.x < -.45 ? -2.90 : r.p.z < -3.7 ? r.p.x : 2.90;
+      const z = r.p.x >= -.45 && r.p.z < -3.7 ? -5.95 : r.p.z;
       const y = r.p.y - .065;
       const base = new T.Vector3(x, .055, z), top = new T.Vector3(x, y, z);
       const saddle = r.p.clone().addScaledVector(UP, -.065);
-      const knee = new T.Vector3(x, Math.max(.09, y * .42), z);
       this.tube(`support-post-${count}`, [base, top], .037, 'brass', g);
       this.tube(`cantilever-crosshead-${count}`, [top, saddle], .034, 'dark', g);
-      this.tube(`diagonal-knee-brace-${count}`, [knee, saddle], .025, 'chrome', g);
+      // No low diagonal through the ground lane: horizontal beam clearance
+      // exceeds the .31 ground-ball envelope; columns are outside the walls.
+      const braceTop = top.clone().addScaledVector(UP, .12);
+      this.tube(`external-column-head-${count}`, [top, braceTop], .037, 'brass', g);
       this.tube(`underfloor-cross-saddle-${count}`, [point(r, 'left', .045, -.065), point(r, 'right', -.045, -.065)], .03, 'dark', g);
       // Short vertical seat pads touch the floor underside, not the ball path.
       for (const side of ['left', 'right']) this.tube(`${side}-floor-seat-${count}`, [point(r, side, side === 'left' ? .045 : -.045, -.065), point(r, side, side === 'left' ? .045 : -.045, -.025)], .034, 'brass', g);
@@ -151,7 +177,7 @@ export class MechanicalRamp extends Assembly {
       count++;
     }
     g.userData = { subassembly: g.name, postCount: count, continuousBearers: 2,
-      clearance: 'pending installed review: perimeter orbit, shooter divider, under-ramp lanes and knee braces',
+      clearance: 'columns outside ±2.75 table or rear z=-5.75; crossheads above ground-ball top .31',
       structuralStatus: 'continuous load-path prototype; not strength-certified' };
   }
 }
@@ -170,6 +196,7 @@ export class MechanicalWireform extends Assembly {
       if (n.length() < .001) throw new RangeError('Wireform cannot have a vertical tangent');
       return { p, n: n.normalize() };
     });
+    this.rows = rows;
     const d = RAMP_WIRE_DIMENSIONS;
     this.root.userData.hiddenFloor = false;
     this.root.userData.runningWireCenterSpacing = d.runningHalfSpacing * 2;
@@ -194,4 +221,26 @@ export class MechanicalWireform extends Assembly {
       }
     }
   }
+  /** Explicit rail contacts, with no supporting plane or invisible floor.
+   * Caller owns returned collider lifetime, allowing standalone clearance tests
+   * without silently changing the production table route. */
+  createColliders(world) {
+    const d=RAMP_WIRE_DIMENSIONS, colliders=[];
+    const addRail=(offset,height)=>{
+      const points=this.rows.map(r=>r.p.clone().addScaledVector(r.n,offset).addScaledVector(UP,height));
+      for(let i=1;i<points.length;i++) {
+        const a=points[i-1], b=points[i], delta=b.clone().sub(a);
+        const midpoint=a.clone().add(b).multiplyScalar(.5);
+        const q=new T.Quaternion().setFromUnitVectors(UP,delta.clone().normalize());
+        const desc=R.ColliderDesc.capsule(delta.length()/2,d.wireRadius)
+          .setTranslation(midpoint.x,midpoint.y,midpoint.z).setRotation(q)
+          .setFriction(.025).setRestitution(.02);
+        colliders.push(world.createCollider(desc));
+      }
+    };
+    for(const sign of [-1,1]) {addRail(sign*d.runningHalfSpacing,0);addRail(sign*d.guardHalfSpacing,d.guardHeight);}
+    this.root.userData.collisionIntegrated=true;
+    return {colliders, hiddenFloor:false, dispose(){for(const c of colliders)world.removeCollider(c,true);}};
+  }
+
 }

@@ -164,7 +164,7 @@ export class PinballTablePreview {
   restart() {
     if (!this.game) return;
     this.plunger.cancel();
-    this.state.release(); this.game.restart(); this.bumperEffects.reset(); this.last = 0;
+    this.state.release(); this.game.restart(); this.bumperEffects.reset(); this.assets.resetMechanics?.(); this.last = 0;
     document.querySelectorAll("#left,#right").forEach(b => b.setAttribute("aria-pressed", "false"));
   }
   updateHUD() {
@@ -175,8 +175,7 @@ export class PinballTablePreview {
     document.querySelector("#launch-power").textContent = `${percent}%`;
     document.querySelector("#launch").style.backgroundSize = `${percent}% 100%`;
     document.querySelector("#launch").setAttribute("aria-pressed", String(this.plunger.owner !== null));
-    if(this.assets.plungerRod)this.assets.plungerRod.position.z = 4.70 + power * .28;
-    if(this.assets.plungerKnob)this.assets.plungerKnob.position.z = 5.30 + power * .28;
+
     document.querySelector("#score").textContent = state.score.toLocaleString("ja-JP");
     document.querySelector("#balls").textContent = `${Math.min(state.ballNumber, 3)} / 3`;
     const labels = { ready: state.returnedShooter ? "戻り球 · 長押し→離して再発射" : "SPACE長押し→離す / ボタンを上に引いて発射", playing: "バンパーとターゲットを狙おう", paused: "一時停止中", gameover: "GAME OVER" };
@@ -222,12 +221,14 @@ export class PinballTablePreview {
     const dt = this.last ? Math.min((time - this.last) / 1000, 0.05) : 0;
     this.last = time;
     if (this.game) {
+      if(this.game.state.phase === "ready") this.game.setPlungerPull(this.plunger.update(performance.now()));
       this.game.step(dt, { left: this.state.left, right: this.state.right });
       const p = this.game.ballPosition;
       this.ball.position.set(p.x, p.y, p.z);
-      for (let i = 0; i < 2; i++) this.assets.flippers[i].rotation.y = this.game.flipperAngles[i];
+      const hits=this.game.takeVisualHits();
+      this.assets.updateMechanics(this.game.state.phase === "paused" ? 0 : dt,hits,{flipperAngles:this.game.flipperAngles,pullPower:this.game.plungerPull});
       if (this.assets.spinnerPivot) this.assets.spinnerPivot.rotation.x = this.game.spinnerAngle || 0;
-      this.bumperEffects.update(this.game.state.phase==="paused"?0:dt,this.game.takeVisualHits(),this.reducedMotion.matches);
+      this.bumperEffects.update(this.game.state.phase==="paused"?0:dt,hits,this.reducedMotion.matches);
       this.canvas.dataset.bumperEffects=this.bumperEffects.hits;
       this.updateHUD();
     }

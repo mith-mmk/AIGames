@@ -20,3 +20,18 @@ test('mechanical model invalid scalar dimensions are rejected',()=>{
  assert.throws(()=>new MechanicalBumper({radius:NaN}));
  assert.throws(()=>new MechanicalTarget({width:-1}));
 });
+
+test('cabinet inspection visibility survives production static batching',async()=>{
+ const {WorkshopAssets}=await import('./assets.mjs');
+ const cabinet=new MechanicalCabinet(),assets=new WorkshopAssets();
+ assets.batchStaticAssembly(cabinet.root,new Set(),cabinet.geometries);
+ for(const mode of ['assembled','cutaway','underside','assembled']) {
+  cabinet.setInspectionMode(mode);
+  for(const name of ['removable-bottom-panel','front-lockbar-timber','cabinet-side-1']) {
+   const panel=cabinet.root.getObjectByName(name);
+   assert.ok(panel,`${name} remains an independent inspection panel`);
+   assert.equal(panel.visible,name==='removable-bottom-panel'?mode==='assembled':mode!=='cutaway');
+  }
+ }
+ cabinet.dispose();for(const material of Object.values(assets.materials))material.dispose();
+});

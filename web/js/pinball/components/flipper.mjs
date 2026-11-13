@@ -1,5 +1,6 @@
 import * as T from "../../vendor/three-0.180.0/three.module.min.js";
 import { LOWER_LAYOUT } from "../layout.mjs";
+import { flipperProfile } from "../mechanical-contact.mjs";
 
 /**
  * Standalone visual prototype, not a collider or a measured production part.
@@ -10,8 +11,8 @@ import { LOWER_LAYOUT } from "../layout.mjs";
  *
  * length: shaft-to-tip reach; defaults to collider center + half length (1.04).
  * halfWidth: maximum contact width (.14, from layout). heelBack: .06, from
- * collider center - half length. The tapered outline lies INSIDE that box;
- * the existing rectangular collider is intentionally not an exact silhouette.
+ * collider center - half length. The tapered outline lies inside that box.
+ * mechanical-contact.mjs supplies the shared profile for rendering/collision.
  * All heights, radii, fillets, belt thickness and decorative proportions below
  * are ART ESTIMATES from the two supplied reference images, not measurements.
  * height is a vertical proportion reference, NOT the rubber contact height.
@@ -73,17 +74,9 @@ export class MechanicalFlipper {
 
   // Exact common tangents between heel and tip circles, unlike a rounded box.
   outline(inset = 0, PathType = T.Shape) {
-    const { length, halfWidth, heelBack } = this.parameters;
-    const heelX = halfWidth - heelBack, tipRadius = halfWidth * .60;
-    const tipX = length - tipRadius;
-    const a = Math.acos((halfWidth - tipRadius) / (tipX - heelX));
-    const r0 = halfWidth - inset, r1 = tipRadius - inset;
     const p = new PathType();
-    p.moveTo(heelX + r0 * Math.cos(a), r0 * Math.sin(a));
-    p.lineTo(tipX + r1 * Math.cos(a), r1 * Math.sin(a));
-    p.absarc(tipX, 0, r1, a, -a, true);
-    p.lineTo(heelX + r0 * Math.cos(a), -r0 * Math.sin(a));
-    p.absarc(heelX, 0, r0, -a, a - Math.PI * 2, true);
+    const points = flipperProfile({ ...this.parameters, inset, samples: 64 });
+    points.forEach(([x,z], i) => i ? p.lineTo(x,z) : p.moveTo(x,z));
     p.closePath(); return p;
   }
 
@@ -157,7 +150,7 @@ export class MechanicalFlipper {
     this.mesh("engraved-sculpted-top-cap", this.extrude(cap,.080,.016,0), "body");
     // Heel is tied to a real coaxial shaft. Stationary flange remains still
     // while the shaft, bat, upper washer and retaining screw move together.
-    this.turn("pivot-shaft", [[0,-.28],[.039,-.28],[.041,-.26],[.041,.105],[0,.105]], "metal", this.moving);
+    this.turn("pivot-shaft", [[0,-.47],[.039,-.47],[.041,-.45],[.041,.105],[0,.105]], "metal", this.moving);
     this.turn("rotating-heel-hub", [[.041,-.15],[.065,-.15],[.074,-.135],
       [.074,-.105],[.064,-.09],[.041,-.09],[.041,-.15]], "inset", this.moving);
     this.turn("top-retaining-washer", [[.026,.095],[.049,.095],[.057,.100],
@@ -172,12 +165,95 @@ export class MechanicalFlipper {
     this.turn("bearing-dust-seal", [[.041,-.153],[.065,-.153],[.067,-.149],
       [.065,-.141],[.041,-.141],[.041,-.153]],"rubber");
     for (const z of [-.103,.103]) this.fastener(`mount-${z < 0 ? "rear" : "front"}`, .040,z,-.204,this.root);
+    this.buildActuation();
+  }
+
+  // Estimated underboard mechanism: fixed coil/brackets, coaxial crank and a
+  // constant-length pinned link. Geometry follows the supplied shaft angle;
+  // it does NOT simulate coil force, switch timing, spring force or collisions.
+  buildActuation() {
+    const plate = this.polygon([[-.15,-.98],[.31,-.98],[.34,-.90],[.34,.15],
+      [.25,.20],[-.15,.20],[-.20,.12],[-.20,-.90]].map(([x,z])=>[x,-z]));
+    for (const [x,z] of [[-.13,-.90],[.27,-.90],[-.13,.11],[.27,.11]]) {
+      const hole = new T.Path(); hole.absarc(x*this.sx,-z*this.sz,.022*this.sz,0,Math.PI*2);
+      plate.holes.push(hole);
+    }
+    this.mesh("underboard-stamped-baseplate",this.extrude(plate,-.56,.018,.005),"metal",this.root);
+    const crank = this.polygon([[-.057,-.050],[.02,-.057],[.175,-.036],
+      [.194,0],[.175,.036],[.02,.057],[-.057,.050]]);
+    this.mesh("shaft-clamped-crank",this.extrude(crank,-.465,.035,.006),"inset",this.moving);
+    this.turn("crank-shaft-clamp",[[.041,-.475],[.062,-.475],[.068,-.465],
+      [.068,-.411],[.058,-.401],[.041,-.401],[.041,-.475]],"metal",this.moving);
+    this.turn("crank-link-pin",[[0,-.455],[.020,-.455],[.020,-.377],[.026,-.377],
+      [.026,-.365],[0,-.365]],"bearing",this.moving,.16,0);
+    // Turned bobbin rotates onto Z; its central bore accepts the sliding core.
+    const coil = new T.Group(); coil.name="stationary-solenoid";
+    coil.position.set(.16*this.sx,-.40*this.sy,-.77*this.sz);
+    coil.rotation.x=Math.PI/2;this.root.add(coil);
+    this.turn("solenoid-bobbin",[[.027,-.16],[.104,-.16],[.112,-.15],
+      [.112,-.127],[.083,-.127],[.083,.127],[.112,.127],[.112,.15],
+      [.104,.16],[.027,.16],[.027,-.16]],"engraving",coil);
+    this.turn("copper-winding-envelope",[[.082,-.124],[.090,-.124],[.098,-.11],
+      [.098,.11],[.090,.124],[.082,.124],[.082,-.124]],"bearing",coil);
+    // Fine continuous winding helix; not stacked cylinder overlays.
+    const windingPoints=[];
+    for(let i=0;i<=640;i++) {const t=i/640,theta=t*Math.PI*2*24;
+      windingPoints.push(new T.Vector3(Math.cos(theta)*.099*this.sz,(-.115+t*.23)*this.sy,Math.sin(theta)*.099*this.sz));}
+    this.mesh("continuous-coil-winding",new T.TubeGeometry(new T.CatmullRomCurve3(windingPoints),640,.0018*this.sz,4,false),"bearing",coil);
+    // Each bracket is an extruded folded L section, not a box holding a tube.
+    for (const z of [-.94,-.60]) {
+      const shape=new T.Shape();shape.moveTo(-.14,-.15);shape.lineTo(.14,-.15);
+      shape.lineTo(.14,.13);shape.lineTo(.12,.13);shape.lineTo(.12,-.125);
+      shape.lineTo(-.14,-.125);shape.closePath();
+      const g=new T.ExtrudeGeometry(shape,{depth:.035,bevelEnabled:true,bevelSize:.003,bevelThickness:.003,bevelSegments:2});
+      g.scale(this.sx,this.sy,this.sz);g.translate(.16*this.sx,-.40*this.sy,z*this.sz);
+      this.mesh(`folded-solenoid-bracket-${z}`,g,"metal",this.root);
+    }
+    const rodGeometry = new T.LatheGeometry([new T.Vector2(0,0),new T.Vector2(.019,0),
+      new T.Vector2(.019,1),new T.Vector2(0,1)],24);
+    this.sliderRod=this.mesh("sliding-solenoid-plunger",rodGeometry,"metal",this.root);
+    const linkShape=this.polygon([[-.027,0],[.027,0],[.027,1],[-.027,1]]);
+    // Link is authored along local Y in geometry for endpoint orientation below.
+    const linkGeometry=new T.ExtrudeGeometry(linkShape,{depth:.016,bevelEnabled:true,bevelSize:.005,bevelThickness:.003,bevelSegments:2});
+    // Normalize the long axis independent of table-width scaling.
+    linkGeometry.scale(1,1/this.sz,1);linkGeometry.translate(0,0,-.008);
+    this.actuatorLink=this.mesh("pinned-plunger-crank-link",linkGeometry,"inset",this.root);
+    this.sliderPin=this.turn("slider-clevis-pin",[[0,-.424],[.023,-.424],[.023,-.374],[0,-.374]],"bearing",this.root);
+    const springPoints=[];
+    for(let i=0;i<=320;i++){const t=i/320,theta=t*Math.PI*2*16;
+      const radius=(t<.04||t>.96)?.004:.016;
+      springPoints.push(new T.Vector3(Math.cos(theta)*radius,t,Math.sin(theta)*radius));}
+    this.returnSpring=this.mesh("extension-return-spring",new T.TubeGeometry(new T.CatmullRomCurve3(springPoints),320,.003,5,false),"metal",this.root);
+    this.turn("return-spring-fixed-anchor",[[0,-.54],[.019,-.54],[.019,-.385],[0,-.385]],"bearing",this.root,-.12,-.42);
+    this.actuation = { crankRadius:.16*this.sx, linkLength:.42*Math.max(this.sx,this.sz),
+      sliderX:.16*this.sx, planeY:-.397*this.sy, springAnchor:new T.Vector3(-.12*this.sx,-.397*this.sy,-.42*this.sz) };
+  }
+
+  orientBetween(mesh, start, end) {
+    const direction=new T.Vector3().subVectors(end,start),length=direction.length();
+    mesh.position.copy(start);mesh.scale.y=length;
+    mesh.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),direction.normalize());
+  }
+
+  updateActuation(angle) {
+    if(!this.actuation)return;
+    const a=this.actuation;
+    const pin=new T.Vector3(a.crankRadius*Math.cos(angle),a.planeY,-a.crankRadius*Math.sin(angle));
+    const dx=pin.x-a.sliderX;
+    const slider=new T.Vector3(a.sliderX,a.planeY,pin.z-Math.sqrt(Math.max(0,a.linkLength*a.linkLength-dx*dx)));
+    this.orientBetween(this.actuatorLink,slider,pin);
+    this.orientBetween(this.sliderRod,new T.Vector3(a.sliderX,a.planeY,-.88*this.sz),slider);
+    this.sliderPin.position.x=slider.x;this.sliderPin.position.z=slider.z;
+    this.orientBetween(this.returnSpring,a.springAnchor,pin);
+    this.root.userData.actuation = { visualizationOnly:true, crankPin:pin.toArray(),
+      sliderPin:slider.toArray(), linkLength:a.linkLength, measuredLinkLength:pin.distanceTo(slider) };
   }
 
   setAngle(angle) {
     if (this.disposed) throw new Error("Cannot animate a disposed MechanicalFlipper");
     if (!Number.isFinite(angle)) throw new RangeError("angle must be finite radians");
     this.moving.rotation.y = angle;
+    this.updateActuation(angle);
     return this;
   }
 

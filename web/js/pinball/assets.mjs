@@ -1,13 +1,17 @@
-import { buildVisualRamp } from "./ramp-geometry.mjs";
+import { MechanicalFlipper } from "./components/flipper.mjs";
+import { MechanicalBumper } from "./components/bumper.mjs";
+import { MechanicalPlunger } from "./components/plunger.mjs";
+import { MechanicalCabinet } from "./components/cabinet.mjs";
+import { MechanicalRamp } from "./components/ramp-wire.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { PlayfieldParts } from "./playfield-parts.mjs";
-import { WorkshopPartsDetail } from "./parts-detail.mjs";
 import { WorkshopMechanisms } from "./mechanisms.mjs";
-import { BUMPERS, MINI_BUMPERS, RAMP, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING } from "./layout.mjs";
+import { BUMPERS, MINI_BUMPERS, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING } from "./layout.mjs";
 export class WorkshopAssets {
   constructor() {
     this.root = new T.Group();
     this.root.name = "workshop-table";
+    this.mechanical = { flippers: [], bumpers: new Map(), slings: new Map(), targets: new Map() };
     this.materials = {
       jade: new T.MeshStandardMaterial({
         color: 0x226f9b,
@@ -250,13 +254,22 @@ export class WorkshopAssets {
     ctx.restore();
     const texture = new T.CanvasTexture(c);
     texture.colorSpace = T.SRGBColorSpace;
-    const surface = this.mesh(new T.PlaneGeometry(5.5, 11.5), new T.MeshStandardMaterial({ map: texture, roughness: 0.42, metalness: 0.1 }), this.root, 0, 0.038, 0);
-    surface.rotation.x = -Math.PI / 2;
+    // Match the structural board opening rather than sealing it with artwork.
+    const outline=new T.Shape();
+    outline.moveTo(-2.75,-5.75);outline.lineTo(2.75,-5.75);outline.lineTo(2.75,5.75);outline.lineTo(-2.75,5.75);outline.closePath();
+    const hole=new T.Path();
+    this.mechanical.cabinet.root.userData.drainPolygon.forEach(([x,z],i)=>i?hole.lineTo(x,-z):hole.moveTo(x,-z));
+    hole.closePath();outline.holes.push(hole);
+    const geometry=new T.ShapeGeometry(outline),pos=geometry.attributes.position,uv=geometry.attributes.uv;
+    for(let i=0;i<pos.count;i++)uv.setXY(i,(pos.getX(i)+2.75)/5.5,(pos.getY(i)+5.75)/11.5);
+    const surface=this.mesh(geometry,new T.MeshStandardMaterial({map:texture,roughness:.42,metalness:.1}),this.root,0,.045,0);
+    surface.name="registered-playfield-print-with-open-drain";
+    surface.rotation.x=-Math.PI/2;
   }
   build() {
     const g = this.root;
-    this.box(g, 5.85, 0.55, 11.9, 0, -0.32, 0, "dark");
-    this.box(g, 5.5, 0.08, 11.5, 0, -0.005, 0, "steel");
+    this.mechanical.cabinet=new MechanicalCabinet({materials:this.materials});
+    g.add(this.mechanical.cabinet.root);
     this.printedPlayfield();
     // The reference's large central circle is flush printed/inset hardware,
     // leaving the actual shot fan open rather than adding a physical obstacle.
@@ -268,41 +281,20 @@ export class WorkshopAssets {
       this.cylinder(g,.085,.012,x,.05,z,"dark");
       this.missionLamps.push(this.cylinder(g,.045,.016,x,.065,z,"insert"));
     }
-    // Keep the reference's central circle open and the ball silhouette readable.
-    for (const x of [-2.85, 2.85]) {
-      this.box(g, 0.14, 0.52, 11.9, x, 0.17, 0, "cabinet");
-      this.box(g, 0.16, 0.045, 11.9, x, 0.455, 0, "chrome");
-      for (let z = -5.2; z <= 5.2; z += 1.3) this.screw(g, x, 0.49, z);
+    for(const mirror of [false,true]) {
+      const component=new MechanicalFlipper({materials:this.materials,angle:flipperAngle(mirror,false)});
+      component.root.position.set((mirror?1:-1)*LOWER_LAYOUT.flipperPivot[0],LOWER_LAYOUT.flipperPivot[1],LOWER_LAYOUT.flipperPivot[2]);
+      component.moving.userData.mirror=mirror;g.add(component.root);this.mechanical.flippers.push(component);
     }
-    this.box(g, 5.65, 0.52, 0.16, 0, 0.17, -5.85, "cabinet");
-    this.box(g, 5.65, 0.05, 0.18, 0, 0.455, -5.85, "chrome");
-    // Layered enamel cabinet sides and corner protectors.
-    for (const x of [-2.94, 2.94]) {
-      this.box(g, 0.055, 0.25, 10.9, x, -0.28, 0, "steel");
-      for (const z of [-5.55, 5.55]) this.box(g, 0.12, 0.6, 0.27, x, -0.2, z, "brass");
-      for (let z = -2.6; z < 2.8; z += 0.35) this.box(g, 0.065, 0.11, 0.08, x, -0.29, z, "dark");
-    }
-    // Apron with inset score legends, coin-like workshop emblem and drain mouth.
-    this.box(g, 5.45, 0.1, 1.1, 0, 0.13, 5.18, "cabinet");
-    this.text(g, "CHAPPY / ORBIT", -1.1, 0.19, 5.1, 2, 0.2);
-    this.text(g, "PINBALL WORKSHOP", 1.1, 0.19, 5.1, 1.5, 0.18);
-    this.box(g, 0.8, 0.05, 0.35, 0, 0.02, 4.55, "rubber");
-    this.flippers = [
-      this.flipper(-LOWER_LAYOUT.flipperPivot[0], LOWER_LAYOUT.flipperPivot[2], false),
-      this.flipper(LOWER_LAYOUT.flipperPivot[0], LOWER_LAYOUT.flipperPivot[2], true),
-    ];
-    for (const [i, p] of BUMPERS.entries()) this.bumper(p.x, p.z, i);
-    for(const [i,p] of MINI_BUMPERS.entries()) {
-      const pocket=new T.Group();pocket.position.set(p.x,0,p.z);pocket.name="mini-pop-"+i;g.add(pocket);
-      this.cylinder(pocket,.18,.05,0,.065,0,"chrome");
-      this.ring(pocket,.13,.035,0,.18,0,"rubber");
-      this.cylinder(pocket,.16,.06,0,.31,0,"purple");
-      this.cylinder(pocket,.10,.025,0,.355,0,"jade");
-      this.ring(pocket,.11,.012,0,.375,0,"cream");
-      this.text(pocket,"✦",0,.38,0,.14,.14,"#f9de63");
+    this.flippers=this.mechanical.flippers.map(c=>c.moving);
+    for(const [points,radius,prefix] of [[BUMPERS,.40,"b"],[MINI_BUMPERS,.16,"mini"]])for(const [i,p] of points.entries()) {
+      const component=new MechanicalBumper({materials:{...this.materials,bumperEnamel:this.materials.jade,bumperPlastic:this.materials.purple},radius});
+      component.root.position.set(p.x,0,p.z);component.root.userData.hitKey=prefix+i;
+      g.add(component.root);this.mechanical.bumpers.set(prefix+i,component);
     }
     this.text(g,"REACTOR",-1.75,.055,.40,.75,.12,"#c4b4e7");
-    buildVisualRamp(this); // Shared physical and rendered route.
+    this.mechanical.ramp=new MechanicalRamp({materials:this.materials});
+    g.add(this.mechanical.ramp.root);
     this.robot();
     new WorkshopMechanisms(this).build(g);
     // Shooter walls match the physical straight-segment guide layout.
@@ -316,135 +308,62 @@ export class WorkshopAssets {
     backingGeometry.rotateX(-Math.PI/2); backingGeometry.translate(0,-.04,0);
     const backingMesh=new T.Mesh(backingGeometry,this.materials.rubber);
     backingMesh.name="shooter-corner-backing"; g.add(backingMesh);
-    for (let i = 0; i < 14; i++) {
-      const r = this.ring(
-        g,
-        0.11,
-        0.017,
-        2.53,
-        0.17,
-        4.25 + i * 0.055,
-        "chrome",
-      );
-      r.rotation.x = 0;
-    }
-    // Fixed guide/stop face agrees with the physical stop at z=4.16.
-    // Pull feedback moves only the existing rod and knob, not this collision face.
-    this.plungerHead = this.cylinder(g, .12, .08, 2.53, .175, 4.20, "chrome");
-    this.plungerHead.rotation.x = Math.PI / 2;
-    this.plungerHead.name = "plunger-head";
-    const rod = this.cylinder(g, 0.038, 0.95, 2.53, 0.175, 4.7, "brass");
-    rod.rotation.x = Math.PI / 2;
-    const knob = this.cylinder(g, 0.16, 0.14, 2.53, 0.175, 5.3, "red");
-    knob.rotation.x = Math.PI / 2;
-    this.plungerRod = rod; this.plungerKnob = knob;
-    rod.name = "plunger-rod"; knob.name = "plunger-knob";
+    this.mechanical.plunger=new MechanicalPlunger({materials:this.materials});
+    this.mechanical.plunger.root.position.set(2.53,.175,4.20);g.add(this.mechanical.plunger.root);
+    this.plungerHead=this.mechanical.plunger.head;this.plungerRod=this.mechanical.plunger.moving;this.plungerKnob=this.mechanical.plunger.knob;
     new PlayfieldParts(this).build();
-    new WorkshopPartsDetail(this).build();
+    this.batchStaticAssembly(this.mechanical.cabinet.root,new Set(),this.mechanical.cabinet.geometries);
+    this.batchStaticAssembly(this.mechanical.ramp.root,new Set(),this.mechanical.ramp.geometries);
+    for(const component of [...this.mechanical.flippers,...this.mechanical.bumpers.values(),
+      ...this.mechanical.slings.values(),...this.mechanical.targets.values(),this.mechanical.plunger]) {
+      // A controller-owned mesh is an identity boundary: its transform,
+      // geometry or material may be updated. Groups remain independent frames.
+      const excluded=new Set(Object.values(component).filter(value=>value?.isMesh));
+      this.batchStaticAssembly(component.root,excluded,component.geometries);
+    }
 
     return g;
   }
-  flipper(x, z, mirror) {
-    const pivot = new T.Group();
-    pivot.position.set(x, 0.18, z);
-    this.root.add(pivot);
-    pivot.userData.mirror = mirror;
-    const shape = new T.Shape();
-    shape.moveTo(0, -0.16);
-    shape.bezierCurveTo(-0.23, -0.16, -0.23, 0.16, 0, 0.16);
-    shape.lineTo(0.94, 0.1);
-    shape.bezierCurveTo(1.1, 0.08, 1.1, -0.08, 0.94, -0.1);
-    shape.closePath();
-    const geo = new T.ExtrudeGeometry(shape, {
-      depth: 0.15,
-      bevelEnabled: true,
-      bevelSize: 0.025,
-      bevelThickness: 0.025,
-      bevelSegments: 3,
-      steps: 1,
-    });
-    geo.rotateX(-Math.PI / 2);
-    geo.scale((LOWER_LAYOUT.flipperCenter+LOWER_LAYOUT.flipperHalfLength)/1.1, 1, 1);
-    this.mesh(geo, "rubber", pivot);
-    const top = this.mesh(geo, "cream", pivot, 0, 0.13, 0);
-    top.scale.set(0.95, 0.45, 0.7);
-    this.cylinder(pivot, 0.09, 0.025, 0, 0.17, 0, "brass");
-    this.screw(pivot, 0, 0.195, 0);
-    this.text(pivot, "CHAPPY", 0.48, 0.17, 0, 0.65, 0.11, "#34373c");
-    pivot.rotation.y = flipperAngle(mirror, false);
-    return pivot;
+  updateMechanics(dt,hits=[],{flipperAngles,pullPower}={}) {
+    const m=this.mechanical;
+    if(flipperAngles)m.flippers.forEach((part,i)=>part.setAngle(flipperAngles[i]));
+    if(Number.isFinite(pullPower))m.plunger.setPull(pullPower);
+    for(const hit of hits) {
+      const bumper=m.bumpers.get(hit.key);
+      if(bumper&&(!hit.type||hit.type==="bumper"))bumper.hit(hit.direction);
+      if(hit.type==="sling")m.slings.get(hit.key)?.hit();
+      if(hit.type==="bank"||hit.type==="target")m.targets.get(hit.targetId??hit.key)?.hit();
+    }
+    for(const collection of [m.bumpers,m.slings,m.targets])for(const part of collection.values())part.update(dt);
+    if(!Number.isFinite(pullPower))m.plunger.update(dt);
   }
-  bumper(x, z, index) {
-    const g = new T.Group();
-    g.name = `bumper-${index}`;
-    g.position.set(x, 0, z);
-    this.root.add(g);
-    this.cylinder(g, 0.43, 0.08, 0, 0.09, 0, "brass");
-    this.cylinder(g, 0.25, 0.31, 0, 0.28, 0, "chrome");
-    this.ring(g, 0.35, 0.06, 0, 0.18, 0, "rubber");
-    this.cylinder(g, 0.42, 0.09, 0, 0.48, 0, index === 2 ? "red" : "purple", 0.36);
-    this.mesh(new T.SphereGeometry(0.29, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), "jade", g, 0, 0.52, 0);
-    this.cylinder(g, 0.2, 0.23, 0, 0.29, 0, "amber");
-    for (let i = 0; i < 6; i++) {
-      const angle = i * Math.PI / 3;
-      this.cylinder(g, 0.022, 0.29, Math.cos(angle) * 0.25, 0.29, Math.sin(angle) * 0.25, "brass");
-    }
-    this.ring(g, 0.31, 0.018, 0, 0.565, 0, "brass");
-    this.cylinder(g, 0.12, 0.035, 0, 0.58, 0, "insert");
-    for (let i = 0; i < 3; i++) {
-      const a = (i * Math.PI * 2) / 3;
-      this.screw(g, Math.cos(a) * 0.32, 0.55, Math.sin(a) * 0.32);
-    }
-    this.text(g, "ENERGY", 0, 0.565, 0.19, 0.42, 0.09);
+  resetMechanics() {
+    const m=this.mechanical;
+    m.flippers.forEach((part,i)=>part.setAngle(flipperAngle(i===1,false)));
+    for(const part of m.bumpers.values()){part.elapsed=Infinity;part.update(0);}
+    for(const collection of [m.slings,m.targets])for(const part of collection.values()){part.time=10;part.strength=0;part.update(0);}
+    m.plunger.setPull(0);
   }
-  ramp() {
-    const g = this.root;
-    this.curve = new T.CatmullRomCurve3(RAMP.map((p) => new T.Vector3(...p)));
-    const points = this.curve.getPoints(96),
-      positions = [],
-      indices = [];
-    const width = 0.48;
-    const edges = [[], []];
-    for (let i = 0; i < points.length; i++) {
-      const t = this.curve.getTangent(i / 96);
-      const n = new T.Vector3(-t.z, 0, t.x).normalize();
-      for (const side of [-1, 1]) {
-        const p = points[i].clone().addScaledVector(n, (side * width) / 2);
-        positions.push(p.x, p.y, p.z);
-        edges[side === -1 ? 0 : 1].push([p.x, p.y + 0.12, p.z]);
+  batchStaticAssembly(root,excluded=new Set(),ownedGeometries=null) {
+    // Keep visibility/inspection boundaries and exclude moving assemblies.
+    for(const child of [...root.children])if(child.isGroup)this.batchStaticAssembly(child,excluded,ownedGeometries);
+    const batches=new Map();
+    for(const child of root.children) {
+      if(child.userData.independentVisibility||excluded.has(child)||child.children.length||!child.isMesh||child.isInstancedMesh||Array.isArray(child.material)||child.material.transparent)continue;
+      const list=batches.get(child.material)??[];list.push(child);batches.set(child.material,list);
+    }
+    for(const [material,meshes] of batches) {
+      if(meshes.length<2)continue;
+      const positions=[],normals=[],uvs=[],names=[];
+      for(const mesh of meshes) {
+        mesh.updateMatrix();const g=mesh.geometry.index?mesh.geometry.toNonIndexed():mesh.geometry.clone();g.applyMatrix4(mesh.matrix);
+        const p=g.attributes.position,n=g.attributes.normal,u=g.attributes.uv;
+        for(let i=0;i<p.count;i++){positions.push(p.getX(i),p.getY(i),p.getZ(i));normals.push(n?.getX(i)??0,n?.getY(i)??1,n?.getZ(i)??0);uvs.push(u?.getX(i)??0,u?.getY(i)??0);}
+        g.dispose();names.push(mesh.name);root.remove(mesh);ownedGeometries?.delete(mesh.geometry);mesh.geometry.dispose();
       }
-      if (i < 96) {
-        const a = i * 2;
-        indices.push(a, a + 2, a + 1, a + 1, a + 2, a + 3);
-      }
-    }
-    const geo = new T.BufferGeometry();
-    geo.setAttribute("position", new T.Float32BufferAttribute(positions, 3));
-    geo.setIndex(indices);
-    geo.computeVertexNormals();
-    const mat = this.materials.chrome.clone();
-    mat.roughness = 0.32;
-    mat.side = T.DoubleSide;
-    this.mesh(geo, mat, g);
-    for (const edge of edges) {
-      this.tube(g, edge, 0.025, "brass");
-      this.tube(
-        g,
-        edge.map((p) => [p[0], p[1] - 0.08, p[2]]),
-        0.018,
-        "chrome",
-      );
-    }
-    // Rail stanchions: thin enough to keep the moving ball readable.
-    for (const edge of edges) for (let i = 0; i < edge.length; i += 6) {
-      const p = edge[i];
-      this.cylinder(g, 0.016, 0.13, p[0], p[1] - 0.05, p[2], "brass");
-    }
-    for (const t of [0.15, 0.32, 0.5, 0.68, 0.84]) {
-      const p = this.curve.getPoint(t);
-      this.cylinder(g, 0.048, p.y, p.x, p.y / 2, p.z, "chrome");
-      this.cylinder(g, 0.13, 0.035, p.x, 0.045, p.z, "brass");
-      this.screw(g, p.x + 0.06, 0.066, p.z);
+      const geometry=new T.BufferGeometry();geometry.setAttribute("position",new T.Float32BufferAttribute(positions,3));geometry.setAttribute("normal",new T.Float32BufferAttribute(normals,3));geometry.setAttribute("uv",new T.Float32BufferAttribute(uvs,2));
+      ownedGeometries?.add(geometry);
+      const mesh=new T.Mesh(geometry,material);mesh.name="rigid-assembly-batch";mesh.userData.sourceParts=names;mesh.castShadow=mesh.receiveShadow=true;root.add(mesh);
     }
   }
   robot() {

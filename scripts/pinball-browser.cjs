@@ -106,7 +106,8 @@ const http = require("node:http");
     await page.evaluate(()=>{const g=window.__pinball.game;g.ball.setTranslation({x:2.53,y:.18,z:3.8},true);g.ball.setLinvel({x:0,y:0,z:2},true);});
     await page.waitForFunction(()=>window.__pinball.game.state.returnedShooter);
     assert.equal(await page.evaluate(()=>window.__pinball.game.state.ballNumber),1);
-    await page.waitForTimeout(200);
+    // The mechanical stop recovers continuously; wait for natural settling, not a teleport.
+    await page.waitForFunction(()=>Math.abs(window.__pinball.game.ballPosition.z-4.025)<.04,{},{timeout:3000});
     assert.ok(await page.evaluate(()=>Math.abs(window.__pinball.game.ballPosition.z-4.025)<.04));
     await page.waitForFunction(()=>!document.querySelector("#launch").disabled); await page.locator("#launch").focus(); await page.keyboard.down("Space"); await page.waitForTimeout(1250); await page.keyboard.up("Space");
     assert.equal(await page.evaluate(()=>window.__pinball.game.state.ballNumber),1);

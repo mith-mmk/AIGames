@@ -1,3 +1,4 @@
+import { slingRubberLoop } from "../mechanical-contact.mjs";
 import * as T from '../../vendor/three-0.180.0/three.module.min.js';
 
 /** Structural prototypes; Y up, target front +Z, points are local [x,z].
@@ -43,11 +44,7 @@ export class MechanicalSling extends Mechanism {
       bolt(g,x,coverHeight+.033,z,metal,dark);
     }
     // Straight tension runs between round post arcs, unlike an overshooting spline triangle.
-    const loop=[];for(let i=0;i<3;i++){
-      const a=p[(i+2)%3],b=p[i],c=p[(i+1)%3];let start=Math.atan2(-(b[0]-a[0]),b[1]-a[1]),end=Math.atan2(-(c[0]-b[0]),c[1]-b[1]);while(end<start)end+=Math.PI*2;
-      for(let j=0;j<=10;j++){const angle=start+(end-start)*j/10;loop.push([b[0]+.047*Math.cos(angle),rubberHeight,b[1]+.047*Math.sin(angle)]);}
-      loop.push([(b[0]+c[0])/2+.047*Math.cos(end),rubberHeight,(b[1]+c[1])/2+.047*Math.sin(end)]);
-    }
+    const loop=slingRubberLoop(p,rubberHeight);
     this.restLoop=loop;this.rubber=pipe(g,loop,.025,rubber,'tensioned-rubber',true);
     const outer=p.map(([x,z])=>[cx+(x-cx)*1.04,cz+(z-cz)*1.04]);const coverShape=shape(outer.map(([x,z])=>[x,-z])),opening=new T.Path();
     p.forEach(([x,z],i)=>{const a=cx+(x-cx)*.45,b=-(cz+(z-cz)*.45);i?opening.lineTo(a,b):opening.moveTo(a,b);});opening.closePath();coverShape.holes.push(opening);

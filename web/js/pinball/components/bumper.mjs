@@ -7,6 +7,7 @@ export const BUMPER_DIMENSIONS = Object.freeze({
   contactRadius: .4, baseRadius: .345, capRadius: .395,
   skirtY: .145, ringY: .285, capY: .465, topY: .64,
   skirtTravel: .028, ringTravel: .065, strokeSeconds: .19,
+  yokeY: -.34, coilTopY: -.49, coilBottomY: -.79, bracketBottomY: -.83,
 });
 
 /** Standalone, Y-up pop bumper. Root origin sits on the playfield.
@@ -90,8 +91,8 @@ export class MechanicalBumper {
     this.turned("skirt-edge-rubber", [[.381,-.014],[.398,-.01],[.4,0],[.395,.008],[.382,.007],[.381,-.014]], "rubber", this.skirt);
     // Strike ring has a sloped striking face and underslung pull rods.
     this.turned("sloped-chrome-strike-ring", [[.226,.01],[.278,.015],[.342,-.025],[.353,-.018],[.355,0],[.285,.051],[.226,.046],[.226,.01]], "chrome", this.striker);
-    this.repeated("strike-pull-rods", new T.CylinderGeometry(.014,.014,.20,8), "chrome", 2,
-      (o,i,a) => o.position.set(Math.cos(a)*.254,-.075,Math.sin(a)*.254), this.striker);
+    this.repeated("strike-pull-rods", new T.CylinderGeometry(.014,.014,.66,8), "chrome", 2,
+      (o,i,a) => o.position.set(Math.cos(a)*.254,-.305,Math.sin(a)*.254), this.striker);
     // Stationary upper cage supports are distinct from the thinner moving rods.
     this.repeated("fixed-support-columns", new T.CylinderGeometry(.023,.027,.31,10), "brass", 6,
       (o,i,a) => o.position.set(Math.cos(a+.27)*.205,.287,Math.sin(a+.27)*.205));
@@ -99,7 +100,7 @@ export class MechanicalBumper {
       (o,i,a) => o.position.set(Math.cos(a)*.254,.088,Math.sin(a)*.254));
     // Stern JAWS manual p49 confirms two ring rods, a separate skirt spring,
     // and a central switch stem. These interior parts are normally occluded.
-    this.mesh("central-skirt-switch-stem", new T.CylinderGeometry(.012,.012,.15,8), "plastic", this.skirt).position.y = -.075;
+    this.mesh("central-skirt-switch-stem", new T.CylinderGeometry(.012,.012,.29,8), "plastic", this.skirt).position.y = -.145;
     const springPoints = [];
     for (let i = 0; i <= 72; i++) {
       const angle = i / 72 * Math.PI * 8;
@@ -108,7 +109,7 @@ export class MechanicalBumper {
     this.skirtSpring = this.mesh("independent-skirt-return-spring",
       new T.TubeGeometry(new T.CatmullRomCurve3(springPoints),72,.005,5,false), "chrome");
     this.skirtSpring.position.y = .035;
-    this.mesh("central-leaf-switch", new T.BoxGeometry(.028,.005,.105), "brass").position.set(0,.012,.033);
+    this.mesh("central-leaf-switch", new T.BoxGeometry(.028,.005,.105), "brass").position.set(0,-.145,.033);
     this.turned("barrel-light-lens", [[.192,.315],[.216,.315],[.224,.332],[.224,.406],[.211,.424],[.192,.424],[.192,.315]], "lens");
     this.turned("cap-underseal", [[.208,.439],[.362,.439],[.375,.453],[.366,.467],[.208,.467],[.208,.439]], "rubber");
     // Sculpted annular cap: substantial beveled shoulder, recessed lens seat.
@@ -138,6 +139,58 @@ export class MechanicalBumper {
       (o,i,a) => o.position.set(Math.cos(a)*.332,.543,Math.sin(a)*.332));
     this.repeated("fastener-slots", new T.BoxGeometry(.017,.003,.003), "dark", 8,
       (o,i,a) => { o.position.set(Math.cos(a)*.332,.550,Math.sin(a)*.332); o.rotation.y = -a; });
+    this.buildUnderboard();
+  }
+
+  buildUnderboard() {
+    const d = this.dimensions;
+    // JAWS p49: fixed coil bracket/sleeve, two rods through a fibre + metal
+    // yoke, central plunger and separate solenoid return spring. All dimensions
+    // here are clearance estimates; cabinet/playfield installation must be
+    // reviewed separately. No collision body is created by this component.
+    this.underboard = this.group("fixed-underboard-solenoid", this.fixed);
+    this.root.userData.underboardClearance = { minY: d.bracketBottomY-.003, radius: .29, verified: false };
+    const bracketShape = new T.Shape();
+    // Bent sheet section in (z,y), extruded across x, with top/bottom flanges.
+    [[.09,-.035],[.19,-.035],[.19,d.bracketBottomY],[-.145,d.bracketBottomY],
+      [-.145,-.805],[.163,-.805],[.163,-.06],[.09,-.06]].forEach(([x,y],i)=> i ? bracketShape.lineTo(x,y) : bracketShape.moveTo(x,y));
+    bracketShape.closePath();
+    const bracketGeo = new T.ExtrudeGeometry(bracketShape,{depth:.12,bevelEnabled:true,bevelSize:.003,bevelThickness:.003,bevelSegments:1,steps:1});
+    bracketGeo.translate(0,0,-.06); bracketGeo.rotateY(-Math.PI/2);
+    this.mesh("folded-solenoid-bracket", bracketGeo,"chrome",this.underboard);
+    this.repeated("underboard-mount-feet",new T.BoxGeometry(.11,.025,.15),"chrome",2,
+      (o,i,a)=>o.position.set(Math.cos(a)*.235,-.043,.115),this.underboard);
+    this.repeated("underboard-mount-screws",new T.CylinderGeometry(.018,.018,.06,6),"chrome",2,
+      (o,i,a)=>o.position.set(Math.cos(a)*.235,-.03,.14),this.underboard);
+    this.turned("solenoid-coil-bobbin",[[.037,d.coilBottomY],[.123,d.coilBottomY],[.123,-.765],[.106,-.765],[.106,-.515],[.123,-.515],[.123,d.coilTopY],[.037,d.coilTopY],[.037,d.coilBottomY]],"dark",this.underboard,32);
+    this.turned("copper-solenoid-winding",[[.104,-.76],[.115,-.755],[.115,-.525],[.104,-.52],[.104,-.76]],"brass",this.underboard,32);
+    this.turned("nylon-plunger-sleeve",[[.029,-.79],[.037,-.79],[.037,-.48],[.029,-.48],[.029,-.79]],"plastic",this.underboard,24);
+    const makeYoke = (name,y,thickness,material) => {
+      const shape = new T.Shape();
+      shape.moveTo(-.29,-.036);shape.lineTo(-.27,-.06);shape.lineTo(.27,-.06);shape.lineTo(.29,-.036);
+      shape.lineTo(.29,.036);shape.lineTo(.27,.06);shape.lineTo(-.27,.06);shape.lineTo(-.29,.036);shape.closePath();
+      for (const [x,r] of [[-.254,.015],[0,.026],[.254,.015]]) {
+        const hole = new T.Path(); hole.absarc(x,0,r,0,Math.PI*2,true);shape.holes.push(hole);
+      }
+      const geo = new T.ExtrudeGeometry(shape,{depth:thickness,bevelEnabled:false,steps:1,curveSegments:8});
+      geo.rotateX(-Math.PI/2);
+      const mesh = this.mesh(name,geo,material,this.striker);mesh.position.y=y-d.ringY;return mesh;
+    };
+    this.yoke = makeYoke("moving-metal-yoke",d.yokeY,.015,"chrome");
+    makeYoke("moving-fibre-yoke",d.yokeY-.014,.014,"dark");
+    this.repeated("pull-rod-locknuts",new T.CylinderGeometry(.025,.025,.018,6),"chrome",2,
+      (o,i,a)=>o.position.set(Math.cos(a)*.254,d.yokeY-d.ringY+.025,0),this.striker);
+    this.mesh("moving-solenoid-plunger",new T.CylinderGeometry(.026,.026,.35,16),"chrome",this.striker).position.y=d.yokeY-d.ringY-.16;
+    this.mesh("plunger-yoke-retainer",new T.CylinderGeometry(.043,.043,.018,16),"chrome",this.striker).position.y=d.yokeY-d.ringY+.022;
+    const springPoints = [];
+    for(let i=0;i<=80;i++) {
+      const angle=i/80*Math.PI*10;
+      springPoints.push(new T.Vector3(.045*Math.cos(angle),i/80*.13,.045*Math.sin(angle)));
+    }
+    this.solenoidSpring=this.mesh("solenoid-return-spring",new T.TubeGeometry(new T.CatmullRomCurve3(springPoints),80,.006,5,false),"chrome",this.underboard);
+    this.solenoidSpring.position.y=d.coilTopY;
+    this.repeated("coil-terminal-tabs",new T.BoxGeometry(.023,.008,.06),"brass",2,
+      (o,i)=>o.position.set(i===0?-.075:.075,-.78,-.13),this.underboard);
   }
 
   hit(direction) {
@@ -156,6 +209,7 @@ export class MechanicalBumper {
     const pull = t < .18 ? t / .18 : t < .34 ? 1 : t < 1 ? Math.pow((1-t)/.66,2) : 0;
     const skirt = t < .12 ? t/.12 : t < .8 ? Math.pow((.8-t)/.68,2) : 0;
     this.striker.position.y = d.ringY - d.ringTravel * pull;
+    this.solenoidSpring.scale.y = 1 - d.ringTravel / .13 * pull;
     this.skirt.position.y = d.skirtY - d.skirtTravel * skirt;
     this.skirtSpring.scale.y = 1 - d.skirtTravel / .075 * skirt;
     this.skirt.rotation.set(this.direction.y * .065 * skirt,0,-this.direction.x * .065 * skirt);
