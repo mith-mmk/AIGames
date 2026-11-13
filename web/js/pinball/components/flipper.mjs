@@ -9,7 +9,7 @@ import { flipperProfile } from "../mechanical-contact.mjs";
  * +X points along the bat; +Y is up. root is stationary; only moving rotates.
  * Call setAngle with the physics angle (radians), not a second animation clock.
  *
- * length: shaft-to-tip reach; defaults to collider center + half length (1.04).
+ * length: shaft-to-tip reach; defaults to the shared collider center + half length.
  * halfWidth: maximum contact width (.14, from layout). heelBack: .06, from
  * collider center - half length. The tapered outline lies inside that box.
  * mechanical-contact.mjs supplies the shared profile for rendering/collision.

@@ -20,10 +20,11 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
  if(part==='sling'){
    options.materials={...materials,jade:materials.chrome,rubber:materials.flipperRubber};
    options.points=LOWER_LAYOUT.slingVertices.map(([x,z])=>[x-LOWER_LAYOUT.slingCenter[0],z-LOWER_LAYOUT.slingCenter[1]]);
-   options.rubberHeight=.22;options.coverHeight=.43;
+   options.rubberHeight=.22;options.coverHeight=LOWER_LAYOUT.slingCoverHeight;
  }
  if(part==='target'){const bank=TARGET_BANKS[0];Object.assign(options,targetDimensions(bank),{glyph:bank.glyph});options.materials={...materials,cream:materials.flipperRubber,red:materials.flipperRubber};}
  const component=new module[name](options);
+ if(part==='sling' && component.parameters.coverHeight!==LOWER_LAYOUT.slingCoverHeight)throw new Error('Review fixture must use installed cover height');
  if(part==='wireform'){
    // Review the installed route's actual open return, not an unrelated default curve.
    for(const child of [...component.root.children])if(child.name!=='true-paired-wire-return'&&child.name!=='perimeter-posts-and-continuous-underframe')component.root.remove(child);
