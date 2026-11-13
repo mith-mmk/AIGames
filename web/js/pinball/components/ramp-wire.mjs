@@ -89,7 +89,7 @@ class Assembly {
 export class MechanicalRamp extends Assembly {
   constructor({ materials = {}, rows = sampleRamp() } = {}) {
     super('mechanical-sheet-ramp-prototype', materials);
-    this.materials.acrylic = new T.MeshStandardMaterial({color:0x85b2a8,metalness:.08,roughness:.22,transparent:true,opacity:.4,depthWrite:false,side:T.DoubleSide});
+    this.materials.acrylic = new T.MeshStandardMaterial({color:0x83d9ff,metalness:.04,roughness:.14,transparent:true,opacity:.36,depthWrite:false,side:T.DoubleSide});
     this.ownedMaterials.add(this.materials.acrylic);
     this.rows = checkedRows(rows); this.build();
     this.root.name = 'mechanical-sheet-ramp';
@@ -105,7 +105,7 @@ export class MechanicalRamp extends Assembly {
     this.mesh('continuous-floor-with-underside', loft(rows, r => [point(r, 'left'), point(r, 'right'), point(r, 'right', 0, -d.sheet), point(r, 'left', 0, -d.sheet)]), 'acrylic', sheet);
     for (const [side, sign] of [['left', -1], ['right', 1]]) {
       this.mesh(`${side}-folded-wall`, loft(rows, r => [point(r, side), point(r, side, 0, d.wall), point(r, side, sign * d.sheet, d.wall), point(r, side, sign * d.sheet, -d.sheet)]), 'acrylic', sheet);
-      this.mesh(`${side}-outward-folded-lip`, loft(rows, r => [point(r, side, 0, d.wall), point(r, side, sign * d.lip, d.wall), point(r, side, sign * d.lip, d.wall - d.sheet), point(r, side, 0, d.wall - d.sheet)]), 'brass', sheet);
+      this.mesh(`${side}-outward-folded-lip`, loft(rows, r => [point(r, side, 0, d.wall), point(r, side, sign * d.lip, d.wall), point(r, side, sign * d.lip, d.wall - d.sheet), point(r, side, 0, d.wall - d.sheet)]), 'chrome', sheet);
       for (let i = 16; i < rows.length - 1; i += 32) {
         const section = rows.slice(i, Math.min(rows.length, i + 3));
         this.mesh(`${side}-joint-strap-${i}`, loft(section, r => [point(r, side, sign * d.sheet, .025), point(r, side, sign * d.sheet, d.wall - .035), point(r, side, sign * (d.sheet + .012), d.wall - .035), point(r, side, sign * (d.sheet + .012), .025)]), 'brass', hardware);

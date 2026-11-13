@@ -12,7 +12,7 @@ test('mini pocket clearances retain a full ball diameter between posts',()=>{
  for(let a=0;a<MINI_BUMPERS.length;a++)for(let b=a+1;b<MINI_BUMPERS.length;b++)assert.ok(Math.hypot(MINI_BUMPERS[a].x-MINI_BUMPERS[b].x,MINI_BUMPERS[a].z-MINI_BUMPERS[b].z)-.32>.27);
 });
 test('earned side kickback reverses an outlane descent once, uncharged still drains',async()=>{
- for(const charged of [false,true]){const g=await PinballPhysics.create();try{g.launch();g.state.kickbackCharges=0;g.state.sideSaveCharges=Number(charged);g.ball.setTranslation({x:-2.30,y:.18,z:3.40},true);g.ball.setLinvel({x:0,y:0,z:3},true);run(g,12);if(charged){assert.equal(g.state.sideSaveUses,1);assert.equal(g.state.sideSaveCharges,0);assert.ok(g.ball.linvel().z<0);}else{run(g,240);assert.equal(g.state.phase,'ready');}}finally{g.dispose();}}
+ for(const charged of [false,true]){const g=await PinballPhysics.create();try{g.launch();g.state.kickbackCharges=0;g.state.sideSaveCharges=Number(charged);g.ball.setTranslation({x:-2.10,y:.18,z:3.40},true);g.ball.setLinvel({x:0,y:0,z:3},true);run(g,12);if(charged){assert.equal(g.state.sideSaveUses,1);assert.equal(g.state.sideSaveCharges,0);assert.ok(g.ball.linvel().z<0);}else{run(g,240);assert.equal(g.state.phase,'ready');}}finally{g.dispose();}}
 });
 test('out-of-order or ground ramp contacts never count a complete traversal',async()=>{
  const g=await PinballPhysics.create();try{g.launch();const gates=[...g.hitObjects].filter(([,h])=>h.type==='ramp-gate');g.hit(gates[2][0]);g.hit(gates[1][0]);assert.equal(g.state.score,0);g.rampStage=0;g.ball.setTranslation({x:.25,y:.18,z:-4.2},true);run(g,1);assert.equal(g.rampStage,0);}finally{g.dispose();}

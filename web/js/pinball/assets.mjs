@@ -4,6 +4,7 @@ import { MechanicalPlunger } from "./components/plunger.mjs";
 import { MechanicalCabinet } from "./components/cabinet.mjs";
 import { MechanicalRamp } from "./components/ramp-wire.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
+import { drawReferencePlayfield } from "./reference-playfield.mjs";
 import { PlayfieldParts } from "./playfield-parts.mjs";
 import { WorkshopMechanisms } from "./mechanisms.mjs";
 import { BUMPERS, MINI_BUMPERS, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING } from "./layout.mjs";
@@ -42,6 +43,7 @@ export class WorkshopAssets {
       amber: new T.MeshStandardMaterial({ color: 0xffce75, emissive: 0xff8e22, emissiveIntensity: 1.3, roughness: 0.25, metalness: 0.15 }),
       red: new T.MeshStandardMaterial({ color: 0xbf4146, roughness: 0.4 }),
     };
+    this.materials.flipperRubber = new T.MeshStandardMaterial({color:0xf8c625,roughness:.7});
     this.materials.purple = new T.MeshStandardMaterial({ color: 0x9161d5, roughness: 0.34, metalness: 0.14 });
     this.materials.cabinet = new T.MeshStandardMaterial({ color: 0x682027, roughness: 0.36, metalness: 0.12 });
     this.materials.insert = new T.MeshStandardMaterial({ color: 0xffe439, emissive: 0xe6c320, emissiveIntensity: 0.35, roughness: 0.3 });
@@ -152,106 +154,7 @@ export class WorkshopAssets {
     c.width = 1024;
     c.height = 2048;
     const ctx = c.getContext("2d");
-    // World-space print is registered to the live part footprints. It adds no
-    // collision surfaces: yellow chevrons are shot directions, circles are inserts.
-    ctx.fillStyle = "#091a30";
-    ctx.fillRect(0, 0, c.width, c.height);
-    ctx.save();
-    ctx.scale(c.width / 5.5, c.height / 11.5);
-    ctx.translate(2.75, 5.75);
-    const line = (points, color, width = .025, close = false, fill = null) => {
-      ctx.beginPath(); points.forEach(([x,z],i)=>i?ctx.lineTo(x,z):ctx.moveTo(x,z));
-      if (close) ctx.closePath();
-      if (fill) { ctx.fillStyle=fill; ctx.fill(); }
-      ctx.strokeStyle=color; ctx.lineWidth=width; ctx.stroke();
-    };
-    const circle = (x,z,r,color,fill=null,width=.025) => {
-      ctx.beginPath();ctx.arc(x,z,r,0,Math.PI*2);
-      if(fill){ctx.fillStyle=fill;ctx.fill();}
-      ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();
-    };
-    const arrow = (x,z,angle=0,size=.12) => {
-      ctx.save();ctx.translate(x,z);ctx.rotate(angle);
-      line([[0,-size],[-size*.65,size*.6],[size*.65,size*.6]],"#fff28a",.012,true,"#f2d62e");ctx.restore();
-    };
-    // Red lacquer perimeter and pale keyline echo the reference cabinet.
-    line([[-2.63,5.5],[-2.63,-4.6],[-2.05,-5.42],[1.9,-5.42],[2.61,-4.5],[2.61,5.5]],"#973e49",.15);
-    line([[-2.48,4.2],[-2.48,-4.5],[-1.99,-5.2],[1.8,-5.2],[2.40,-4.4]],"#6087a6",.035);
-    // Illustrated circuit panels follow the upper bumper cluster, leaving gaps
-    // between the actual posts and the central spinner approach.
-    line([[-1.35,-3.75],[-.42,-4.03],[.34,-3.75],[1.27,-3.83],[1.49,-2.68],[.66,-2.55],[.59,-1.7],[-.58,-1.58],[-1.2,-2.36]],"#7294ac",.035,true,"#1c354c");
-    for (const {x,z} of BUMPERS) {
-      circle(x,z,.52,"#69b6c2","#123a56",.045);
-      circle(x,z,.60,"#315f7a",null,.025);
-      for(let i=0;i<8;i++) {const t=i*Math.PI/4;circle(x+Math.sin(t)*.54,z+Math.cos(t)*.54,.023,"#ddce78","#ddce78",.01);}
-    }
-    // Small printed service panels make the compact upper assembly legible.
-    // These muted details sit under hardware rather than posing as targets.
-    for(const [x,z,angle] of [[-.99,-3.98,-.30],[.20,-3.72,.18],[.95,-2.42,.25],[-.75,-2.20,-.22]]) {
-      ctx.save();ctx.translate(x,z);ctx.rotate(angle);
-      line([[-.19,-.25],[.19,-.25],[.19,.25],[-.19,.25]],"#5f7f91",.016,true,"#102538");
-      for(let i=0;i<3;i++) line([[-.12,-.15+i*.12],[.09,-.15+i*.12]],i===1?"#ba9c49":"#38566c",.028);
-      circle(.12,.18,.023,"#708a9d","#708a9d",.01);ctx.restore();
-    }
-    // Red orbital sectors reference the upper return loop without pretending
-    // to change the real ramp geometry, which remains visible above this art.
-    for(const side of [-1,1]) {
-      for(let i=0;i<5;i++) {
-        const z=-4.35+i*.38, x=side*(1.48+Math.sin(i*.55)*.25);
-        line([[x-side*.12,z],[x+side*.12,z-.10],[x+side*.20,z+.13],[x-side*.05,z+.23]],"#794858",.018,true,"#68323f");
-      }
-      line([[side*.56,-1.40],[side*.78,-.99],[side*.71,-.54]],"#3b566d",.025);
-      for(let i=0;i<4;i++) circle(side*(.40+i*.14),-.88+i*.23,.028,"#4a6880",null,.014);
-    }
-    // The distinctive left purple island wraps all three existing mini pops.
-    line([[-2.48,-1.50],[-2.13,-1.8],[-1.48,-1.59],[-1.16,-1.06],[-1.18,-.35],[-1.48,.38],[-2.04,.48],[-2.48,.10]],"#c2a1ed",.045,true,"#5e3e8d");
-    line([[-2.47,-1.55],[-2.28,-1.98],[-1.89,-2.16],[-1.42,-1.99],[-1.05,-1.54],[-.96,-1.15]],"#b4a0dc",.12);
-    line([[-2.47,-1.55],[-2.28,-1.98],[-1.89,-2.16],[-1.42,-1.99],[-1.05,-1.54],[-.96,-1.15]],"#59427f",.052);
-    for(const {x,z} of MINI_BUMPERS) circle(x,z,.24,"#d8b9ff","#412e73",.035);
-    // Right ramp mouth is a clearly directional red panel, not an extra wall.
-    line([[1.28,.65],[1.13,.12],[1.33,-.53],[1.72,-.99],[1.86,-.49],[1.59,.32]],"#e9948d",.025,true,"#a64352");
-    for(const [x,z,t] of [[1.45,.17,.16],[1.60,-.32,.30],[-.98,-.75,-.35],[-1.10,-1.10,-.35],[-1.22,-1.43,-.35],[0,-.15,0],[0,-.55,0]]) arrow(x,z,t);
-    // An open navy mission circle, not a central logo or raised mechanism.
-    circle(0,1.2,1.04,"#3d5d8d","#172d4e",.055);
-    circle(0,1.2,.94,"#7798c1",null,.018);
-    circle(0,1.2,.64,"#254763",null,.018);
-    for(let i=0;i<20;i++) {
-      const t=i*Math.PI/10;
-      line([[Math.sin(t)*.96,1.2+Math.cos(t)*.96],[Math.sin(t)*1.015,1.2+Math.cos(t)*1.015]],"#557194",.018);
-    }
-    // Chappy's original screen-face/heart identity, flat ink: no new collider
-    // and no bright round eye that could be mistaken for the silver ball.
-    ctx.save();ctx.translate(0,1.17);
-    line([[-.37,-.50],[.35,-.50],[.45,-.37],[.45,.04],[.32,.16],[-.34,.16],[-.45,.03],[-.45,-.38]],"#9eacb2",.035,true,"#667a87");
-    line([[-.35,-.39],[.34,-.39],[.34,.02],[-.35,.02]],"#3d697a",.025,true,"#071b29");
-    for(const side of [-1,1]) {
-      line([[side*.26,-.16],[side*.20,-.24],[side*.13,-.16]],"#64bed0",.045);
-      line([[side*.47,-.39],[side*.55,-.39],[side*.55,-.06],[side*.47,-.06]],"#aa8c44",.025,true,"#bc994b");
-      circle(side*.34,-.43,.025,"#bdac85","#7a6651",.01);
-    }
-    line([[-.13,-.035],[0,.005],[.13,-.035]],"#64bed0",.022);
-    line([[-.25,.20],[.26,.20],[.32,.54],[-.31,.54]],"#91a1a7",.025,true,"#556977");
-    line([[0,.44],[-.11,.33],[-.08,.27],[0,.30],[.08,.27],[.11,.33],[0,.44]],"#64bed0",.02,true,"#3a8ea4");
-    line([[-.34,.28],[-.51,.36],[-.62,.18]],"#b69b56",.055);
-    line([[.34,.28],[.50,.19],[.55,-.01]],"#b69b56",.055);
-    line([[.50,-.03],[.49,-.17],[.55,-.12],[.62,-.18],[.61,-.03]],"#a3b0b1",.025);
-    ctx.font="bold .115px sans-serif";ctx.textAlign="center";ctx.fillStyle="#9cbbc4";ctx.fillText("BUILD • HACK • PLAY",0,.75);
-    ctx.restore();
-    // Printed angular purple fan points from the flippers towards the ring.
-    for(const side of [-1,1]) {
-      line([[side*.12,3.73],[side*.47,2.45],[side*.69,2.25],[side*.34,3.60]],"#65558f",.02,true,"#493e72");
-      line([[side*.42,3.70],[side*1.17,3.13],[side*.82,2.43],[side*.67,3.20]],"#3e5e88",.02,true,"#263d63");
-      const sling=LOWER_LAYOUT.slingVertices.map(([x,z])=>[side*x,z]);
-      line(sling,"#d77b81",.13,true,"#a1394c");
-      for(const z of [1.72,2.14,2.58,3.00]) arrow(side*2.15,z,Math.PI,.10);
-      for(const z of [-4.70,-4.22,-3.75,-3.27,-2.8]) arrow(side*2.36,z,side<0?0:Math.PI,.09);
-    }
-    // Small static guide inserts echo the rhythm of the reference without
-    // duplicating active lamps or adding bright ball-like white decorations.
-    for(const [x,z] of [[-.92,.32],[.93,.34],[-1.15,.63],[1.14,.65],[-1.18,1.17],[1.18,1.17],[-1.12,1.70],[1.12,1.70],[-.74,2.07],[.74,2.07],[-2.1,3.45],[2.1,3.45],[-.48,-4.65],[.48,-4.65]]) circle(x,z,.035,"#d8cf42","#d8cf42",.015);
-    ctx.fillStyle="#8fb1c8";ctx.font="bold .115px sans-serif";ctx.textAlign="center";
-    ctx.fillText("CHAPPY • ORBIT WORKSHOP",0,4.55);
-    ctx.restore();
+    drawReferencePlayfield(ctx, {width:c.width, height:c.height});
     const texture = new T.CanvasTexture(c);
     texture.colorSpace = T.SRGBColorSpace;
     // Match the structural board opening rather than sealing it with artwork.
@@ -271,28 +174,26 @@ export class WorkshopAssets {
     this.mechanical.cabinet=new MechanicalCabinet({materials:this.materials});
     g.add(this.mechanical.cabinet.root);
     this.printedPlayfield();
-    // The reference's large central circle is flush printed/inset hardware,
-    // leaving the actual shot fan open rather than adding a physical obstacle.
-    this.ring(g,.83,.012,0,.055,1.20,"steel");
-    this.ring(g,.92,.012,0,.055,1.20,"steel");
+    // Five flush mission indicators align with the lower printed M1–M5 bank.
+    // The original raised rings would obscure the reference's large robot art.
     this.missionLamps=[];
-    for(let i=0;i<10;i++) {
-      const angle=2*Math.PI*i/10, x=Math.sin(angle)*.76,z=1.20+Math.cos(angle)*.76;
-      this.cylinder(g,.085,.012,x,.05,z,"dark");
-      this.missionLamps.push(this.cylinder(g,.045,.016,x,.065,z,"insert"));
+    for(let i=0;i<5;i++) {
+      const x=(i-2)*.29,z=3.25;
+      this.roundedBox(g,.23,.015,.13,x,.055,z,"dark",.025);
+      this.missionLamps.push(this.roundedBox(g,.17,.018,.07,x,.065,z,"insert",.018));
     }
     for(const mirror of [false,true]) {
-      const component=new MechanicalFlipper({materials:this.materials,angle:flipperAngle(mirror,false)});
+      const component=new MechanicalFlipper({materials:{...this.materials,rubber:this.materials.flipperRubber,cream:this.materials.chrome},angle:flipperAngle(mirror,false)});
       component.root.position.set((mirror?1:-1)*LOWER_LAYOUT.flipperPivot[0],LOWER_LAYOUT.flipperPivot[1],LOWER_LAYOUT.flipperPivot[2]);
       component.moving.userData.mirror=mirror;g.add(component.root);this.mechanical.flippers.push(component);
     }
     this.flippers=this.mechanical.flippers.map(c=>c.moving);
     for(const [points,radius,prefix] of [[BUMPERS,.40,"b"],[MINI_BUMPERS,.16,"mini"]])for(const [i,p] of points.entries()) {
-      const component=new MechanicalBumper({materials:{...this.materials,bumperEnamel:this.materials.jade,bumperPlastic:this.materials.purple},radius});
+      const component=new MechanicalBumper({materials:{...this.materials,bumperEnamel:this.materials.chrome,bumperPlastic:this.materials.brass},radius});
       component.root.position.set(p.x,0,p.z);component.root.userData.hitKey=prefix+i;
       g.add(component.root);this.mechanical.bumpers.set(prefix+i,component);
     }
-    this.text(g,"REACTOR",-1.75,.055,.40,.75,.12,"#c4b4e7");
+    this.text(g,"POWER",-1.75,.055,.40,.75,.12,"#edc34f");
     this.mechanical.ramp=new MechanicalRamp({materials:this.materials});
     g.add(this.mechanical.ramp.root);
     this.robot();

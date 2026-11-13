@@ -1,5 +1,5 @@
 import { MechanicalSling, MechanicalTarget } from "./components/sling-target.mjs";
-import { LOWER_LAYOUT, TARGET_BANKS } from "./layout.mjs";
+import { LOWER_LAYOUT, TARGET_BANKS, lowerLanePaths } from "./layout.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 
 /** Visual gameplay hardware. No collision/rule implementation is implied. */
@@ -8,14 +8,14 @@ export class PlayfieldParts {
   build() {
     const a = this.a, g = a.root;
     for (const side of [-1, 1]) { this.inlane(side); this.sling(side); }
-    // Upper ramp deferred while the base game is validated.
+    // Stand-up banks preserve existing hit IDs and mission rules.
     for (const spec of TARGET_BANKS) {
       const dx=spec.b[0]-spec.a[0], dz=spec.b[2]-spec.a[2], length=Math.hypot(dx,dz);
       const bank = new T.Group();
       bank.position.set((spec.a[0]+spec.b[0])/2,0,(spec.a[2]+spec.b[2])/2);
       bank.rotation.y=-Math.atan2(dz,dx); g.add(bank);
       for(let i=0;i<spec.count;i++) {
-        const part=new MechanicalTarget({materials:a.materials,width:length/spec.count*.84,height:.30,depth:.085});
+        const part=new MechanicalTarget({materials:spec.a[0]<0?{...a.materials,red:a.materials.flipperRubber}:a.materials,width:length/spec.count*.84,height:.30,depth:.085});
         part.root.position.x=((i+.5)/spec.count-.5)*length;part.root.userData.targetId=`${spec.key}:${i}`;
         bank.add(part.root);a.mechanical.targets.set(`${spec.key}:${i}`,part);
       }
@@ -41,10 +41,10 @@ export class PlayfieldParts {
       a.laneLamps.push(a.cylinder(g,.14,.018,x,.055,-4.4,"jade"));
     }
     // Left outlane hardware is visible even while uncharged; no blocking wall.
-    a.box(g,.34,.10,.42,-2.30,.10,3.78,"steel");
-    a.tube(g,[[-2.30,.13,3.80],[-2.30,.13,3.50]],.06,"chrome");
-    a.sideSaveLamp=a.cylinder(g,.09,.018,-2.30,.055,3.32,"dark");
-    a.text(g,"SAVE",-2.30,.06,3.08,.34,.13);
+    a.roundedBox(g,.22,.10,.42,-2.10,.10,3.78,"steel",.035);
+    a.tube(g,[[-2.10,.13,3.80],[-2.10,.13,3.50]],.06,"chrome");
+    a.sideSaveLamp=a.cylinder(g,.09,.018,-2.10,.055,3.32,"dark");
+    a.text(g,"SAVE",-2.10,.06,3.08,.34,.13);
     a.text(g,"RAMP",1.45,.06,.85,.65,.22);
     const kicker=a.cylinder(g,.17,.1,0,.11,(LOWER_LAYOUT.centerSaveZ[0]+LOWER_LAYOUT.centerSaveZ[1])/2,"brass");
     kicker.name="center-save-kicker";
@@ -53,24 +53,40 @@ export class PlayfieldParts {
   }
   inlane(side) {
     const a=this.a,g=a.root;
-    const entry=LOWER_LAYOUT.guideEntry[side<0?"left":"right"];
-    const points=[[side*entry[0],entry[1],entry[2]],...LOWER_LAYOUT.guide.map(([x,y,z])=>[side*x,y,z])];
-    for(let i=0;i<points.length-1;i++) a.tube(g,[points[i],points[i+1]],LOWER_LAYOUT.guideRadius,"chrome");
-    for(const [x,y,z] of points.slice(1)) a.cylinder(g,.055,y,x,y/2,z,"brass");
-    // Flush rollover strip is registered to the scoring sensor in each inlane.
-    a.box(g,.25,.012,.08,side*1.60,.055,2.85,"insert");
-    a.text(g,"IN",side*1.60,.065,2.66,.25,.12,"#f5e546");
-    // Mark the actual playable lanes, not the archived decorative straight bands.
-    a.text(g,"IN",side*1.65,.065,2.10,.28,.16,"#d9d447");
-    for(const [x,z] of [[1.55,2.80],[1.13,3.20]]) a.text(g,"▼",side*x,.065,z,.18,.18,"#f5e546");
-    const outerX=side<0?-2.30:2.10;
-    a.text(g,"OUT",outerX,.065,2.60,.28,.16,"#f5e546");
-    a.text(g,"▼",outerX,.065,2.94,.18,.18,"#f5e546");
+    const paths=lowerLanePaths(side);
+    for(const path of paths) {
+      for(let i=0;i<path.length-1;i++) {
+        const tube=a.tube(g,[path[i],path[i+1]],LOWER_LAYOUT.guideRadius,"chrome");
+        tube.name="shared-lower-lane-contact-rail";
+      }
+      for(const [x,y,z] of path) {
+        a.cylinder(g,.055,.025,x,.062,z,"chrome");
+        a.cylinder(g,.027,y-.07,x,(y+.07)/2,z,"steel");
+        a.cylinder(g,.065,.025,x,y,z,"brass");
+      }
+    }
+    const [sx,,sz]=LOWER_LAYOUT.inlaneSensor;
+    a.roundedBox(g,.25,.012,.08,side*sx,.055,sz,"insert",.02);
+    this.laneInsert(side*1.64,2.43,"IN",0x72eaff);
+    this.laneInsert(side*2.12,2.55,"OUT",0xffc93d);
+  }
+  laneInsert(x,z,label,color) {
+    // Flat printed lane direction inset, not another obstacle or illuminated ball.
+    const c=document.createElement("canvas");c.width=256;c.height=640;
+    const ctx=c.getContext("2d"),ink=`#${color.toString(16).padStart(6,"0")}`;
+    ctx.fillStyle="#07121d";ctx.fillRect(0,0,256,640);
+    ctx.strokeStyle=ink;ctx.lineWidth=9;ctx.strokeRect(5,5,246,630);
+    ctx.fillStyle=ink;ctx.textAlign="center";ctx.font="bold 100px sans-serif";
+    ctx.fillText(label,128,325);ctx.font="bold 75px sans-serif";ctx.fillText("LANE",128,425);
+    ctx.beginPath();ctx.moveTo(128,100);ctx.lineTo(55,195);ctx.lineTo(128,160);ctx.lineTo(201,195);ctx.closePath();ctx.fill();
+    const texture=new T.CanvasTexture(c);texture.colorSpace=T.SRGBColorSpace;
+    const mesh=new T.Mesh(new T.PlaneGeometry(.29,.78),new T.MeshBasicMaterial({map:texture}));
+    mesh.name=`${label.toLowerCase()}-lane-printed-insert`;mesh.rotation.x=-Math.PI/2;mesh.position.set(x,.048,z);this.a.root.add(mesh);
   }
   sling(side) {
     const a=this.a,center=[side*LOWER_LAYOUT.slingCenter[0],LOWER_LAYOUT.slingCenter[1]];
     const points=LOWER_LAYOUT.slingVertices.map(([x,z])=>[side*x-center[0],z-center[1]]);
-    const part=new MechanicalSling({materials:a.materials,points,rubberHeight:.22,coverHeight:.43});
+    const part=new MechanicalSling({materials:{...a.materials,jade:a.materials.chrome,rubber:a.materials.flipperRubber},points,rubberHeight:.22,coverHeight:.43});
     part.root.position.set(center[0],0,center[1]);part.root.userData.hitKey=`s${side}`;
     a.root.add(part.root);a.mechanical.slings.set(`s${side}`,part);
   }

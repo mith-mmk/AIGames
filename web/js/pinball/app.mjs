@@ -23,8 +23,8 @@ export class PinballTablePreview {
     this.renderer.toneMapping = T.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.35;
     this.scene = new T.Scene();
-    this.scene.background = new T.Color(0x100e0c);
-    this.scene.fog = new T.Fog(0x100e0c, 24, 48);
+    this.scene.background = new T.Color(0x08111c);
+    this.scene.fog = new T.Fog(0x08111c, 24, 48);
     this.camera = new T.PerspectiveCamera(42, 1, 0.1, 100);
     this.assets = new WorkshopAssets();
     this.board = this.assets.build();
@@ -119,7 +119,13 @@ export class PinballTablePreview {
     const angle=this.viewAngle*Math.PI/180;
     // Fit the actual cabinet corners rather than adding two conservative margins.
     const tangent=Math.tan(21*Math.PI/180); let distance=0;
-    for(const x of [-3.05,3.05]) for(const y of [-.6,.8]) for(const z of [-6,6]) {
+    const framePoints=[];
+    for(const x of [-3.05,3.05]) for(const y of [-.6,.8]) for(const z of [-6,6]) framePoints.push([x,y,z]);
+    // Tall backglass is only at the rear; a full-height bounding cuboid would
+    // unnecessarily shrink the live playfield on portrait screens.
+    for(const x of [-2.98,2.98]) for(const y of [.4,3.30]) framePoints.push([x,y,-6.50]);
+    for(const x of [2.50,3.45]) for(const y of [.59,2.20]) for(const z of [-5.80,-4.90]) framePoints.push([x,y,z]);
+    for(const [x,y,z] of framePoints) {
       const screenY=y*Math.cos(angle)-z*Math.sin(angle);
       const towardCamera=y*Math.sin(angle)+z*Math.cos(angle);
       distance=Math.max(distance,Math.abs(screenY)/tangent+towardCamera,Math.abs(x)/(tangent*aspect)+towardCamera);
@@ -134,13 +140,14 @@ export class PinballTablePreview {
     // Perspective makes the cabinet asymmetric about its world origin. Fit and
     // center its projected bounds rather than wasting the upper half of the view.
     const corners=[];
-    for(const x of [-3.05,3.05]) for(const y of [-.6,1.5]) for(const z of [-6,6]) {
+    for(const [x,y,z] of framePoints) {
       corners.push(new T.Vector3(x,y,z).applyAxisAngle(new T.Vector3(1,0,0),TABLE.tilt).project(this.camera));
     }
     const minX=Math.min(...corners.map(p=>p.x)),maxX=Math.max(...corners.map(p=>p.x));
     const minY=Math.min(...corners.map(p=>p.y)),maxY=Math.max(...corners.map(p=>p.y));
     this.camera.zoom=Math.min(1.94/(maxX-minX),1.94/(maxY-minY));
     this.camera.updateProjectionMatrix();
+    this.camera.projectionMatrix.elements[8]=(minX+maxX)/2*this.camera.zoom;
     this.camera.projectionMatrix.elements[9]=(minY+maxY)/2*this.camera.zoom;
     this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();
     // Backdrop and non-colliding tall mascot must not hide the active ball lanes.
@@ -177,6 +184,7 @@ export class PinballTablePreview {
   }
   updateHUD() {
     const state = this.game.state;
+    this.assets.mechanical.cabinet.updateSnapshot(state);
     if (state.phase !== "ready") this.plunger.cancel();
     const power = this.plunger.update(performance.now());
     const percent = Math.round(power * 100);
@@ -215,7 +223,7 @@ export class PinballTablePreview {
       document.querySelector("#mission-progress").textContent=`${mission.description} · ${mission.progress}/${mission.target}`;
     }
     for(const [i,lamp] of (this.assets.missionLamps??[]).entries()) {
-      const lit=mission && (mission.allComplete || i<Math.floor(10*mission.progress/Math.max(1,mission.target)));
+      const lit=mission && (mission.allComplete || i<Math.floor(this.assets.missionLamps.length*mission.progress/Math.max(1,mission.target)));
       lamp.material=this.assets.materials[lit?"light":"amber"];
     }
     if(this.assets.sideSaveLamp) this.assets.sideSaveLamp.material=this.assets.materials[state.sideSaveCharges?"light":"dark"];

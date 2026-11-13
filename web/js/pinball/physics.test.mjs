@@ -120,20 +120,27 @@ test("twelve full three-ball sessions end without rescue", async () => {
   }
 });
 
-test("side-wall feeds reach the playable flipper area instead of side drains", async () => {
+test("side-wall approaches enter genuine outlanes and naturally drain when uncharged", async () => {
+  // x=2.12 is between divider x=1.94 and outer wall x=2.33 at the
+  // z=1.35 mouth. It is an OUT route, not an IN return or shooter lane.
   for (const side of [-1, 1]) {
     const g = await PinballPhysics.create();
     try {
-      g.launch(); g.ball.setTranslation({ x: side * 2.12, y: .18, z: .3 }, true);
+      g.launch(); g.state.kickbackCharges=0; g.state.sideSaveCharges=0;
+      g.ball.setTranslation({ x: side * 2.12, y: .18, z: .3 }, true);
       g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true);
-      let reached = false;
+      let crossedOutlane=false,liveResets=0;
+      const setTranslation=g.ball.setTranslation.bind(g.ball);
+      g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')liveResets++;return setTranslation(...args);};
       for (let tick = 0; tick < 1200 && g.state.phase === "playing"; tick++) {
         g.step(1 / 120);
-        if (g.ballPosition.z > 3.3) {
-          assert.ok(Math.abs(g.ballPosition.x) < LOWER_LAYOUT.flipperPivot[0], JSON.stringify(g.ballPosition)); reached = true; break;
-        }
+        const p=g.ballPosition;
+        if(p.z>2&&p.z<3&&Math.abs(p.x)>1.94&&Math.abs(p.x)<2.33)crossedOutlane=true;
       }
-      assert.ok(reached, `side ${side} did not feed flippers`);
+      assert.ok(crossedOutlane, `side ${side} must physically enter OUT`);
+      assert.equal(g.state.phase,'ready', `side ${side} must drain without trapping`);
+      assert.deepEqual(g.metrics.flipperContacts,[0,0], 'OUT must not be silently routed onto a flipper');
+      assert.equal(liveResets,0,'OUT descent must not teleport or use an invisible rescue');
     } finally { g.dispose(); }
   }
 });

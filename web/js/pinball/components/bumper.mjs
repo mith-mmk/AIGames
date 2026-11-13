@@ -80,7 +80,6 @@ export class MechanicalBumper {
   }
 
   build() {
-    const d = this.dimensions;
     // Turned flange with bevel, gasket and recessed center rather than stacked
     // solid cylinders. Open center permits the moving pull-rods to pass through.
     this.turned("mounting-flange", [[.13,.015],[.31,.015],[.345,.03],[.345,.055],[.325,.07],[.13,.07],[.13,.015]], "brass");
@@ -116,14 +115,19 @@ export class MechanicalBumper {
     this.turned("sculpted-enamel-cap", [[.257,.462],[.36,.462],[.388,.478],[.395,.498],[.387,.516],[.365,.531],[.29,.546],[.263,.54],[.257,.52],[.257,.462]], "enamel");
     this.turned("cap-chrome-lip", [[.382,.478],[.396,.488],[.397,.499],[.389,.511],[.381,.506],[.386,.494],[.382,.478]], "chrome");
     this.turned("lens-seat-bezel", [[.247,.528],[.267,.528],[.279,.545],[.267,.556],[.247,.551],[.247,.528]], "brass");
-    // Curved amber dome, with radial metal ribs that remain legible unlit.
-    this.turned("domed-light-lens", [[.0,d.topY],[.07,.636],[.135,.617],[.195,.587],[.248,.545],[.248,.535]], "lens");
-    const ribCurve = new T.CatmullRomCurve3([
-      new T.Vector3(.025,.64,0), new T.Vector3(.10,.63,0),
-      new T.Vector3(.18,.601,0), new T.Vector3(.25,.55,0),
-    ]);
-    this.repeated("dome-protective-ribs", new T.TubeGeometry(ribCurve,12,.006,5,false), "brass", 8, (o,i,a) => { o.rotation.y = a; });
-    this.turned("dome-crown", [[0,.638],[.037,.638],[.041,.646],[.031,.652],[0,.652]], "chrome", this.fixed, 24);
+    // Reference cap: silver shouldered lid, recessed dark medallion and a
+    // separately extruded eight-tooth gear. The light is an annular under-lid
+    // diffuser, so the visible mechanism is not merely an emissive disk.
+    this.turned("annular-light-diffuser", [[.198,.35],[.245,.35],[.257,.38],[.257,.50],[.247,.534],[.21,.534],[.198,.51],[.198,.35]], "lens");
+    this.turned("domed-light-lens", [[0,.54],[.24,.54],[.252,.548],[.248,.56],[0,.56]], "dark");
+    const gear=new T.Shape();
+    for(let i=0;i<32;i++) {
+      const angle=i*Math.PI/16, r=i%4<2?.172:.135, x=Math.cos(angle)*r,z=Math.sin(angle)*r;
+      if(i)gear.lineTo(x,z);else gear.moveTo(x,z);
+    }
+    gear.closePath();const hub=new T.Path();hub.absarc(0,0,.057,0,Math.PI*2,true);gear.holes.push(hub);
+    const emblem=new T.ExtrudeGeometry(gear,{depth:.008,bevelEnabled:true,bevelSize:.004,bevelThickness:.003,bevelSegments:2,curveSegments:24});
+    emblem.rotateX(-Math.PI/2);emblem.translate(0,.562,0);this.mesh("raised-eight-tooth-gear-medallion",emblem,"brass");
     // Three extruded fastening ears give the flange a manufactured outline.
     const ear = new T.Shape();
     ear.moveTo(-.047,-.035); ear.lineTo(.047,-.035); ear.lineTo(.045,.035);

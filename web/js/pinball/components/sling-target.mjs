@@ -49,6 +49,13 @@ export class MechanicalSling extends Mechanism {
     const outer=p.map(([x,z])=>[cx+(x-cx)*1.04,cz+(z-cz)*1.04]);const coverShape=shape(outer.map(([x,z])=>[x,-z])),opening=new T.Path();
     p.forEach(([x,z],i)=>{const a=cx+(x-cx)*.45,b=-(cz+(z-cz)*.45);i?opening.lineTo(a,b):opening.moveTo(a,b);});opening.closePath();coverShape.holes.push(opening);
     const cover=extrude(coverShape,.026,.008);cover.rotateX(-Math.PI/2);add(g,cover,plastic,'moulded-cover-with-service-window',0,coverHeight,0);
+    // A separately moulded navy service insert sits inside the silver frame.
+    // The underside remains open to inspect the kicker, posts and switch pair.
+    const infill=p.map(([x,z])=>[cx+(x-cx)*.46,cz+(z-cz)*.46]);
+    plate(g,infill,.014,coverHeight+.003,dark,'recessed-plastic-cover-insert');
+    for(const [x,z] of p) {
+      turn(g,[[0,0],[.034,0],[.034,.012],[.025,.025],[0,.030]],this.lampMaterial,'corner-indicator-lens',cx+(x-cx)*.75,coverHeight+.027,cz+(z-cz)*.75);
+    }
     const trimPath=new T.CurvePath();outer.forEach(([x,z],i)=>{const q=outer[(i+1)%3];trimPath.add(new T.LineCurve3(new T.Vector3(x,coverHeight+.029,z),new T.Vector3(q[0],coverHeight+.029,q[1])));});
     add(g,new T.TubeGeometry(trimPath,72,.008,6,true),brass,"cover-edge-trim");
     turn(g,[[0,0],[.037,0],[.037,.014],[.018,.025],[.018,.23],[.039,.23],[.039,.252],[0,.252]],steel,"lamp-socket-and-support",cx,.028,cz);

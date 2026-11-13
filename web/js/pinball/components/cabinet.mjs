@@ -1,5 +1,6 @@
 import * as T from "../../vendor/three-0.180.0/three.module.min.js";
 import { TABLE } from "../layout.mjs";
+import { ReferenceCabinetDress } from "./reference-cabinet.mjs";
 
 /** Standalone structural study; NOT production hardware, collider or gameplay.
  * X across, +Z toward player, Y up, board top .04. All dimensions except TABLE
@@ -23,8 +24,8 @@ export class MechanicalCabinet {
     this.geometries = new Set(); this.ownedMaterials = new Set(); this.disposed = false;
     this.materials = {};
     for(const [key,alias,settings] of [
-      ['wood','wood',{color:0x775033,roughness:.79}],
-      ['edge','edge',{color:0xb68c58,roughness:.75}],
+      ['wood','wood',{color:0x17283e,roughness:.42,metalness:.35}],
+      ['edge','edge',{color:0x73869a,roughness:.4,metalness:.7}],
       ['enamel','jade',{color:0x234e46,roughness:.42,metalness:.25}],
       ['metal','chrome',{color:0xbac3c1,roughness:.32,metalness:.88}],
       ['brass','brass',{color:0xb68e4e,roughness:.4,metalness:.78}],
@@ -36,7 +37,7 @@ export class MechanicalCabinet {
       this.materials[key] = supplied || new T.MeshStandardMaterial(settings);
       if(!supplied) this.ownedMaterials.add(this.materials[key]);
     }
-    this.build(); this.setGlassVisible(showGlass); this.setInspectionMode('assembled');
+    this.build(); this.referenceDress=new ReferenceCabinetDress(this); this.setGlassVisible(showGlass); this.setInspectionMode('assembled');
     this.root.userData.mechanicalCabinet = {...this.parameters,prototype:true,
       unverified:['glass/ramp clearance','ball capture and drain edges','powered shooter transfer','mount interference']};
   }
@@ -170,8 +171,9 @@ export class MechanicalCabinet {
     }
     this.root.userData.inspectionMode=mode;return this;
   }
+  updateSnapshot(state) { this.referenceDress.updateSnapshot(state); }
   dispose() {
-    if(this.disposed)return;for(const g of this.geometries)g.dispose();for(const m of this.ownedMaterials)m.dispose();
+    if(this.disposed)return;this.referenceDress.dispose();for(const g of this.geometries)g.dispose();for(const m of this.ownedMaterials)m.dispose();
     this.root.removeFromParent();this.root.clear();this.geometries.clear();this.ownedMaterials.clear();this.disposed=true;
   }
 }

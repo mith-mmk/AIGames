@@ -3,7 +3,7 @@ import {NudgeMeter} from "./nudge.mjs";
 import { buildPhysicalRamp } from "./ramp-geometry.mjs";
 import R from "../vendor/rapier3d-0.17.3/rapier.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import { TABLE, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS, SHOOTER_BACKING, flipperAngle } from "./layout.mjs";
+import { TABLE, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS, SHOOTER_BACKING, lowerLanePaths, flipperAngle } from "./layout.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
 export class PinballPhysics {
@@ -79,10 +79,9 @@ export class PinballPhysics {
     }
     for (const side of [-1, 1]) {
       // Open inlane rail: outside this rail remains a genuine outlane.
-      const guide = LOWER_LAYOUT.guide.map(([x, y, z]) => [side * x, y, z]);
-      const entry = LOWER_LAYOUT.guideEntry[side < 0 ? "left" : "right"];
-      guide.unshift([side * entry[0], entry[1], entry[2]]);
-      for (let k = 0; k < guide.length - 1; k++) this.segment(guide[k], guide[k + 1], LOWER_LAYOUT.guideRadius);
+      for (const path of lowerLanePaths(side)) {
+        for (let k=0;k<path.length-1;k++) this.segment(path[k],path[k+1],LOWER_LAYOUT.guideRadius);
+      }
       const sling = slingContactPoints(LOWER_LAYOUT.slingVertices.map(([x,z])=>[side*x,z]));
       for (let i = 0; i < sling.length - 1; i++) this.segment(sling[i], sling[i + 1], .025, { type: "sling", x: side * LOWER_LAYOUT.slingCenter[0], z: LOWER_LAYOUT.slingCenter[1], points: 25, label: "SLING", key: "s" + side });
     }
@@ -114,7 +113,7 @@ export class PinballPhysics {
       this.hitObjects.set(c.handle, { type: "rollover", lane, key: "lane" + lane });
     }
     for(const side of [-1,1]) {
-      const c=this.world.createCollider(R.ColliderDesc.cuboid(.125,.20,.04).setTranslation(side*1.60,.20,2.85).setSensor(true));
+      const c=this.world.createCollider(R.ColliderDesc.cuboid(.125,.20,.04).setTranslation(side*LOWER_LAYOUT.inlaneSensor[0],LOWER_LAYOUT.inlaneSensor[1],LOWER_LAYOUT.inlaneSensor[2]).setSensor(true));
       this.hitObjects.set(c.handle,{type:"inlane",key:"inlane"+side});
     }
     // Spinner is a sensor, so the low central shot remains passable.

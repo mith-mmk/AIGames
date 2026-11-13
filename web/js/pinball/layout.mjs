@@ -79,13 +79,25 @@ export const LOWER_LAYOUT = Object.freeze({
     [1.25,.22,3.60], [1.25,.22,3.90], [1.25,.22,4.30],
   ],
   guideRadius: .04,
-  guideEntry: { left: [2.73, .22, .8], right: [2.30, .22, .8] },
-  slingVertices: [[1.45, 1.85], [1.45, 2.45], [1.25, 2.65]],
-  slingCenter: [1.38, 2.32],
+  guideEntry: { left: [1.94, .22, 1.35], right: [1.94, .22, 1.35] },
+  // Two distinct passages: IN between sling/inner return and divider;
+  // OUT between divider and outer wall, ending at the apron drain.
+  inlaneInner: [[1.45,.22,2.45],[1.25,.22,2.65],[1.04,.22,2.94]],
+  outlaneOuter: [[2.33,.22,1.35],[2.33,.22,3.35],[2.05,.22,4.48]],
+  inlaneSensor: [1.59,.20,2.85],
+  slingVertices: [[1.40, 1.65], [1.45, 2.45], [1.05, 2.85]],
+  slingCenter: [1.23, 2.38],
   flipperPivot: [1.20, .27, 3.90],
   flipperCenter: .49, flipperHalfLength: .55, flipperHalfWidth: .14,
   centerSaveZ: [4.50, 4.63],
 });
+
+// One source for installed rails and contact capsules; returns fresh arrays.
+export function lowerLanePaths(side) {
+  const entry=LOWER_LAYOUT.guideEntry[side<0?'left':'right'];
+  return [[entry,...LOWER_LAYOUT.guide],LOWER_LAYOUT.inlaneInner,LOWER_LAYOUT.outlaneOuter]
+    .map(path=>path.map(([x,y,z])=>[side*x,y,z]));
+}
 
 // Solid backing closes the inaccessible pocket behind the shooter bend.
 export const SHOOTER_BACKING = Object.freeze([[2.73,-4.15],[2.40,-5.20],[1.25,-5.55],[1.25,-5.73],[2.73,-5.73]]);
