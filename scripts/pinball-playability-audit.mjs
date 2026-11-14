@@ -40,11 +40,11 @@ for(const power of powers)for(const delay of delays){
    lastScore=g.state.score;
    if(g.state.phase==='playing'&&tick-lastMotionTick>120*8){stalled=true;break;}
   }
-  const r={power,delay,phase:g.state.phase,ball:g.state.ballNumber,seconds:g.time,score:g.state.score,lanes,bumpers,ramps:g.rampTraversals,shots,launches,liveResets,stalled,hardwareContactTicks,hardwareContactEvents};results.push(r);
+  const r={power,delay,phase:g.state.phase,ball:g.state.ballNumber,seconds:g.time,score:g.state.score,lanes,bumpers,ramps:g.rampTraversals,shots,launches,liveResets,stalled,hardwareContactTicks,hardwareContactEvents,physicsMetrics:g.metrics,kickbackUses:g.state.kickbackUses,sideSaveUses:g.state.sideSaveUses};results.push(r);
   assert.equal(liveResets,0,'no live position rescue');
   assert.ok(Number.isFinite(r.score)&&Number.isFinite(r.seconds));
  }finally{g.dispose();}
 }
 const sum=k=>results.reduce((n,r)=>n+r[k],0),summary={games:results.length,finished:results.filter(r=>r.phase==='gameover').length,stalled:results.filter(r=>r.stalled).length,zeroScore:results.filter(r=>!r.score).length,score:sum('score'),ramps:sum('ramps'),lanes:sum('lanes'),bumpers:sum('bumpers'),shots:sum('shots'),seconds:sum('seconds'),liveResets:sum('liveResets'),hardwareContactEvents:sum('hardwareContactEvents'),hardwareContactTicks:sum('hardwareContactTicks')};
-const result={method:'54 deterministic three-ball sessions: six natural launch powers by nine fixed release delays; only legal launch/flipper input; catch regions relative to each layout. 180-second cap. hardwareContact fields count the shared metal/acrylic exterior collider, not individual material contacts. Not physical-phone or human difficulty evidence.',summary,results};
+const result={method:'54 fixed-input three-ball sessions (repeatability depends on world creation order): six natural launch powers by nine fixed release delays; only legal launch/flipper input; catch regions relative to each layout. 180-second cap. hardwareContact fields count the shared metal/acrylic exterior collider, not individual material contacts. shots counts controller release-stage entries, not physical flipper contacts; physicsMetrics separately records actual contact/coil events. Existing target-earned saves are counted separately from prohibited live position resets. Not physical-phone or human difficulty evidence.',summary,results};
 const output=process.argv[2]||'artifacts/pinball/playability-audit.json';fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,JSON.stringify(result,null,2));console.log(JSON.stringify(summary));
