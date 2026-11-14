@@ -13,6 +13,8 @@ The latest experimental revision is `receiver-r15-generic-contract-f7e4d30`: the
 
 Use a Git checkout whose directory is named **AIGames**. The preserved loader intentionally retains its original `/AIGames/` module-path selector. Do not silently edit the archived source to accommodate another directory name. Run commands from repository root. The history must contain the accepted commit. For the exact test snapshot use `f7e4d30bb465247305347485c5c33c31047bd4ae` in a separate checkout named AIGames and copy this recovery directory there; the source loaders obtain accepted modules directly from Git history.
 
+Newer checkouts can contain additional test-only modules absent from the pinned commit. For historical190 reproduction use the exact test snapshot specified above; the frozen loader intentionally cannot supply later test modules from c1 history. Run newly adopted QA tests without these experimental loaders.
+
 Tested with Node26.7.0. Synchronous `node:module.registerHooks` is required (Node22.15+/23.5+); use the tested version for exact numerical reproduction. Git and tar are needed. Core capture/API probes need no npm install: Three.js, ordinary Rapier and their local module dependencies are already tracked under `web/js/vendor`, and accepted pinball source comes from Git history. The optional deterministic package is not present in production package.json; the verified fetch helper supplies it only in ignored artifacts. Browser screenshots would additionally require the existing repository Playwright/browser setup, but no browser probe is included in this minimal package.
 
 ## Restore source
