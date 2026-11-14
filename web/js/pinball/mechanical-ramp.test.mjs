@@ -1,3 +1,4 @@
+import {handoffLift} from './ramp-profile.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
@@ -15,7 +16,7 @@ test('installed ramp has matched sheet walls, true paired rails and visible anti
   assert.equal(wire.userData.hiddenFloor,false);
   assert.equal(wire.userData.runningRails,2);
   const floor=part.root.getObjectByName('continuous-floor-with-underside');
-  assert.equal(floor.geometry.attributes.position.count,(Math.round(240*WIRE_START_FRACTION)+1)*4+26);
+  assert.equal(floor.geometry.attributes.position.count,(Math.round(240*WIRE_START_FRACTION)+1)*4+124);
   assert.ok(floor.material.opacity>=.12&&floor.material.opacity<=.25,'clear acrylic should reveal the playfield while remaining visibly tinted');
   assert.equal(floor.material.transparent,true);
   assert.equal(floor.material.depthWrite,false,'overlapping clear walls must not occlude the deck');
@@ -24,7 +25,9 @@ test('installed ramp has matched sheet walls, true paired rails and visible anti
   const expected=sampleRamp()[split];
   const rows=rampWireRails(sampleRamp().slice(split));
   assert.ok(Math.abs(rows[0][0].distanceTo(rows[2][0])-2*WIRE_HALF_SPACING)<1e-8);
-  const ball=new T.Vector3(expected.p.x,expected.p.y+.135,expected.p.z);
+  // The sheet now has a real drop; test the same centered sphere support
+  // on the running-stock datum rather than the elevated sheet datum.
+  const ball=new T.Vector3(expected.p.x,expected.p.y-handoffLift(expected.parameter).height+.135,expected.p.z);
   assert.ok(Math.abs(ball.distanceTo(rows[0][0])-(.135+WIRE_RADIUS))<1e-8);
   assert.ok(WIRE_HEIGHT_OFFSET>0);
  } finally {part.dispose();}

@@ -1,3 +1,4 @@
+import {railCapsules,capsuleStockGeometry} from '../wire-stock.mjs';
 import {rampAcrylicParts} from '../ramp-acrylic.mjs';
 import {loft,rampHardwareParts,rampBoltGeometry,RAMP_HARDWARE_DIMENSIONS} from '../ramp-hardware.mjs';
 import * as T from '../../vendor/three-0.180.0/three.module.min.js';
@@ -105,7 +106,7 @@ export class MechanicalRamp extends Assembly {
   buildWireReturn(rows) {
     const g=this.group('true-paired-wire-return');
     const rails=rampWireRails(rows);
-    rails.forEach((rail,i)=>this.tube(`${i%2?'containment':'running'}-rail-${i}`,rail,WIRE_RADIUS,'chrome',g));
+    rails.forEach((rail,i)=>this.mesh(`${i%2?'containment':'running'}-rail-${i}`,capsuleStockGeometry(railCapsules(rail,WIRE_RADIUS)),'chrome',g));
     for(const p of this.undersideParts.filter(p=>p.group==='wire'))this.tube(p.name,p.points,p.radius,p.material,g);
     g.userData={hiddenFloor:false,runningRails:2,containmentRails:2,collision:'running/guard capsules plus shared underside tie/seat cylinders'};
   }

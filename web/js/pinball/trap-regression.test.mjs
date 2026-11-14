@@ -100,8 +100,8 @@ test("continuous ramp collision meshes share every route row and triangle edge w
     const rows=g.ramp.rows.slice(0,Math.round((g.ramp.rows.length-1)*WIRE_START_FRACTION)+1);
     for(const [surface,kind] of ['deck','left','right'].entries()){
       const {vertices,indices}=g.ramp.colliders[surface].shape;
-      assert.equal(vertices.length,kind==='deck'?(rows.length*4+26)*3:rows.length*6);
-      assert.equal(indices.length,(rows.length-1)*6+(kind==='deck'?60:0));
+      assert.equal(vertices.length,kind==='deck'?(rows.length*4+124)*3:rows.length*6);
+      assert.equal(indices.length,(rows.length-1)*6+(kind==='deck'?279:0));
       for(const [i,row] of rows.entries()){
         const a=kind==='deck'?row.left:row[kind];
         const b=kind==='deck'?row.right:row[kind].clone().add({x:0,y:RAMP_WALL_HEIGHT,z:0});
@@ -150,7 +150,7 @@ test("continuous ramp collision meshes share every route row and triangle edge w
           };
           assert.ok(perimeter.some(([x,y])=>onSegment(a,x,y)&&onSegment(b,x,y)),'internal gap in deck');
         }
-        assert.equal(boundary,2*rows.length+6,'three repaired strips subdivide both side edges');
+        assert.equal(boundary,2*rows.length+31,'fifteen side splits plus the conforming exit-cap midpoint');
       }
     }
   } finally { g.dispose(); }

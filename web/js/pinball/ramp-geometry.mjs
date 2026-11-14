@@ -1,3 +1,5 @@
+import {railCapsules,capsuleStockGeometry} from './wire-stock.mjs';
+import {descentPose,handoffLift} from './ramp-profile.mjs';
 import {rampDeckGeometry} from './ramp-deck.mjs';
 import {baseShellStrips,baseShellVisualParts} from './ramp-base.mjs';
 import {rampAcrylicParts,rampAcrylicContactParts} from './ramp-acrylic.mjs';
@@ -16,7 +18,7 @@ export const WIRE_HALF_SPACING = .09;
 export const WIRE_GUARD_SPACING = .175;
 export const WIRE_GUARD_HEIGHT = .16;
 export const WIRE_HEIGHT_OFFSET = .135-Math.sqrt((.135+WIRE_RADIUS)**2-WIRE_HALF_SPACING**2);
-export function rampWireRails(rows) {
+function rampWireRailsBase(rows) {
   return [-1,1].flatMap(sign=>[false,true].map(guard=>rows.map(r=>{
     const n=r.right.clone().sub(r.left).normalize();
     return r.p.clone().addScaledVector(n,sign*(guard?WIRE_GUARD_SPACING:WIRE_HALF_SPACING)).add(new T.Vector3(0,WIRE_HEIGHT_OFFSET+(guard?WIRE_GUARD_HEIGHT:0),0));
@@ -58,7 +60,16 @@ export const WIRE_TAIL = (() => {
 
 function rampPose(curve,parameter) {
   const d=WIRE_TAIL;
-  if(parameter<d.startFraction)return {p:curve.getPoint(parameter),t:curve.getTangent(parameter)};
+  if(parameter<d.startFraction) {
+    const r=descentPose(curve,parameter),lift=handoffLift(parameter);
+    r.p.y+=lift.height;
+    if(lift.derivative) {
+      const lo=Math.max(0,parameter-.0001),hi=Math.min(1,parameter+.0001);
+      const v=descentPose(curve,hi).p.sub(descentPose(curve,lo).p).multiplyScalar(1/(hi-lo));
+      v.y+=lift.derivative;r.t=v.normalize();
+    }
+    return r;
+  }
   if(parameter<d.bridgeEndFraction) {
     const u=(parameter-d.startFraction)/(d.bridgeEndFraction-d.startFraction);
     const a=curve.getPoint(d.startFraction),b=new T.Vector3(d.startX,d.height,d.startZ);
@@ -177,7 +188,7 @@ export function rampUndersideParts(rows=sampleRamp()) {
     add(`underfloor-cross-saddle-${count}`,'underframe',[point(r,'left',.045,-m.drop),point(r,'right',-.045,-m.drop)],.03,'dark');
     for(const side of ['left','right'])add(`${side}-floor-seat-${count}`,'underframe',[point(r,side,side==='left'?.045:-.045,-m.drop),point(r,side,side==='left'?.045:-.045,-.025)],.034,'brass');
   });
-  const wire=rows.slice(Math.round((rows.length-1)*WIRE_START_FRACTION));
+  const wire=rows.slice(Math.round((rows.length-1)*WIRE_START_FRACTION)).map(r=>({...r,p:r.p.clone().add(new T.Vector3(0,-handoffLift(r.parameter??-1).height,0))}));
   for(let i=0;i<wire.length;i+=8){
     const r=wire[i],at=(x,y)=>r.p.clone().addScaledVector(n(r),x).addScaledVector(up,y+WIRE_HEIGHT_OFFSET);
     add(`underslung-wire-tie-${i}`,'wire',[at(-WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT),at(-WIRE_GUARD_SPACING,-.028),at(WIRE_GUARD_SPACING,-.028),at(WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT)],.012,'brass');
@@ -204,10 +215,10 @@ export function buildPhysicalRamp(game) {
       colliders.push(game.world.createCollider(R.ColliderDesc.trimesh(data.positions,data.indices,flags).setFriction(0.025).setRestitution(.02)));
     }
   }
-  for(const rail of rampWireRails(rows.slice(wireStart)))for(let i=1;i<rail.length;i++) {
-    const a=rail[i-1],b=rail[i],delta=b.clone().sub(a),mid=a.clone().add(b).multiplyScalar(.5);
-    const q=new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),delta.clone().normalize());
-    colliders.push(game.world.createCollider(R.ColliderDesc.capsule(delta.length()/2,WIRE_RADIUS).setTranslation(mid.x,mid.y,mid.z).setRotation(q).setFriction(.025).setRestitution(.02)));
+  for(const rail of rampWireRails(rows.slice(wireStart)))for(const part of railCapsules(rail,WIRE_RADIUS)) {
+    colliders.push(game.world.createCollider(R.ColliderDesc.capsule(part.halfHeight,part.radius)
+      .setTranslation(part.center.x,part.center.y,part.center.z).setRotation(part.rotation)
+      .setFriction(.025).setRestitution(.02)));
   }
   const baseColliderStart=colliders.length;
   // Match the actual closed housing boundary without convexifying its
@@ -261,7 +272,7 @@ export function buildVisualRamp(assets) {
   const split=Math.round((rows.length-1)*WIRE_START_FRACTION), sheet=rows.slice(0,split+1);
   const acrylic=new T.MeshStandardMaterial({color:0x85b2a8,metalness:.08,roughness:.22,transparent:true,opacity:.4,depthWrite:false,side:T.DoubleSide});
   for(const kind of ['deck','left','right'])assets.mesh(geometry(surface(sheet,kind)),acrylic,root);
-  for(const rail of rampWireRails(rows.slice(split)))assets.tube(root,rail.map(p=>p.toArray()),WIRE_RADIUS,'chrome');
+  for(const rail of rampWireRails(rows.slice(split)))assets.mesh(capsuleStockGeometry(railCapsules(rail,WIRE_RADIUS)),'chrome',root);
   for(const side of ['left','right'])assets.tube(root,sheet.map(r=>[r[side].x,r[side].y+RAMP_WALL_HEIGHT,r[side].z]),.022,'chrome');
   root.add(buildRampBaseVisual(rows,assets.materials.dark));
   return root;
@@ -275,4 +286,11 @@ export function buildRampBaseVisual(rows=sampleRamp(),material) {
   add('chamfered-anti-trap-nose',geometry(noseTop));
   for(const part of baseShellVisualParts(lowRampSegments(rows)))add(part.name,part.geometry);
   return root;
+}
+
+export function rampWireRails(rows) {
+  return rampWireRailsBase(rows.map(r=> {
+    const h=handoffLift(r.parameter??-1).height;
+    return h?{...r,p:r.p.clone().add(new T.Vector3(0,-h,0))}:r;
+  }));
 }

@@ -23,7 +23,7 @@ test('missing acrylic contacts lie on real visible exterior faces without duplic
   assembly.root.updateMatrixWorld(true);const rows=sampleRamp();
   assert.equal(g.ramp.acrylicContacts.length,7);
   assert.equal(g.ramp.acrylicFirstOpenRow,lowRampSegments(rows).at(-1).index+1);
-  assert.equal(g.ramp.acrylicContacts.reduce((n,p)=>n+p.indexCount/3,0),1478);
+  assert.equal(g.ramp.acrylicContacts.reduce((n,p)=>n+p.indexCount/3,0),1601);
   for(const part of g.ramp.acrylicContacts){
    const {name,collider,indexOffset,indexCount}=part,shape=collider.shape;
    const sourceName=name.endsWith('-exterior-contact')?name.replace('-exterior-contact',''):(name.startsWith('left')?'left':'right')+'-folded-wall';

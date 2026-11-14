@@ -9,8 +9,7 @@ export function rampDeckGeometry(rows,mode='solid',open=0) {
   if(!['top','solid','contact'].includes(mode))throw new RangeError(`Unknown ramp deck mode: ${mode}`);
   const repairs=new Set(rows.flatMap((row,i)=> {
     const inside=i<rows.length-1 && Number.isFinite(row.parameter) &&
-      row.parameter>=RAMP_DECK_REPAIR.start-1e-10 &&
-      rows[i+1].parameter<=RAMP_DECK_REPAIR.end+1e-10;
+      ((row.parameter>=RAMP_DECK_REPAIR.start-1e-10 && rows[i+1].parameter<=RAMP_DECK_REPAIR.end+1e-10)||(row.parameter>=112/240-1e-10 && rows[i+1].parameter<=124/240+1e-10));
     return inside?[i]:[];
   }));
   const points=rows.flatMap(row=>[row.left.clone(),row.right.clone()]);

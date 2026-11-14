@@ -30,7 +30,7 @@ const airborne=[
  {name:'right-outward-folded-lip',start:[2.0019637488385413,.4991263772646586,1.3208121021944685],normal:[.8989668842766757,0,.43801659897073053]},
  {name:'left-joint-strap-16',start:[1.358848869052717,.41084952410062153,.1346352592351577],normal:[-.9852759648803101,0,-.17097155619919327]},
  {name:'left-joint-bolt-16',start:[1.758171514070241,.7119999998708565,.18601533194056624],normal:[1,0,0]},
- {name:'sheet-to-wire-right-fixing',start:[.42703205376606557,.5941100359332275,-5.015353431645335],normal:[.5000000095043496,0,-.8660253982970998]}
+ {name:'sheet-to-wire-right-fixing',offsetFromPart:[.10651110866748559,.013999999870856539,-.17581598157933076],start:[.42703205376606557,.5941100359332275,-5.015353431645335],normal:[.5000000095043496,0,-.8660253982970998]}
 ];
 test('legal airborne approaches contact exposed lips straps and bolts rather than pass through',async()=>{
  for(const f of airborne){
@@ -39,7 +39,11 @@ test('legal airborne approaches contact exposed lips straps and bolts rather tha
    const g=await PinballPhysics.create(),assembly=new MechanicalRamp();assembly.root.updateMatrixWorld(true);
    try{
     if(!enabled)for(const collider of new Set(g.ramp.hardwareContacts.map(x=>x.collider)))g.world.removeCollider(collider,true);
-    const p=new T.Vector3(...f.start);
+    // Preserve the original relative approach and named contact when the real
+    // joint moves. Keep its old world start above as migration evidence.
+    const p=f.offsetFromPart?
+     assembly.root.getObjectByName(f.name).getWorldPosition(new T.Vector3()).add(new T.Vector3(...f.offsetFromPart)):
+     new T.Vector3(...f.start);
     g.world.forEachCollider(c=>{
      if(c.handle===g.ballCollider.handle||c.isSensor())return;
      const q=c.projectPoint(p,true);

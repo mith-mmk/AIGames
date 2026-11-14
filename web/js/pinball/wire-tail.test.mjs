@@ -1,12 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
+import {RAMP_DESCENT,RAMP_HANDOFF} from './ramp-profile.mjs';
 import {RAMP_POINTS,WIRE_TAIL,WIRE_START_FRACTION,WIRE_GUARD_SPACING,sampleRamp,sampleRampPose,rampWireRails} from './ramp-geometry.mjs';
 
 test('wire tail preserves prefix, endpoint, position and unit-tangent continuity',()=>{
  const old=RAMP_POINTS.map(p=>[...p]);old[old.length-1]=[-1.55,.44,3.15];
  const curve=new T.CatmullRomCurve3(old.map(p=>new T.Vector3(...p)),false,'centripetal'),rows=sampleRamp();
- for(let i=0;i<=192;i++){assert.ok(rows[i].p.distanceTo(curve.getPoint(i/240))<1e-12);assert.ok(rows[i].t.distanceTo(curve.getTangent(i/240))<1e-10);}
+ // The local rear descent/handoff intentionally changes Y before this tail.
+ // Preserve every other prefix position/tangent exactly, and all prefix XZ.
+ // Its endpoint C1 and material drop are independently checked in ramp-profile.
+ for(let i=0;i<=192;i++){
+  const u=i/240,p=curve.getPoint(u),t=curve.getTangent(u);
+  assert.equal(rows[i].p.x,p.x);assert.equal(rows[i].p.z,p.z);
+  const inProfile=u>Math.min(RAMP_DESCENT.start,RAMP_HANDOFF.start)&&u<Math.max(RAMP_DESCENT.end,RAMP_HANDOFF.end);
+  if(!inProfile){
+   assert.ok(rows[i].p.distanceTo(p)<1e-12);
+   assert.ok(rows[i].t.distanceTo(t)<1e-10);
+  }
+ }
  const end=sampleRampPose(1),d=WIRE_TAIL;
  assert.ok(end.p.distanceTo(new T.Vector3(...RAMP_POINTS.at(-1)))<1e-12);
  assert.ok(Math.abs(end.t.x/end.t.z-.171)<1e-12);
