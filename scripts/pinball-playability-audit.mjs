@@ -13,6 +13,7 @@ for(const power of powers)for(const delay of delays){
  let stage='catch',settled=0,until=0,side='left',shots=0,launches=0,liveResets=0;
  let lanes=0,bumpers=0,lastScore=0,lastMotionTick=0,stalled=false;
  let hardwareContactTicks=0,hardwareContactEvents=0,wasHardwareContact=false;
+ // This shared collider includes acrylic exterior faces when available.
  const hardware=g.ramp.hardwareContacts?.[0]?.collider;
  const set=g.ball.setTranslation.bind(g.ball),event=g.state.onEvent.bind(g.state);
  g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')liveResets++;return set(...args);};
@@ -45,5 +46,5 @@ for(const power of powers)for(const delay of delays){
  }finally{g.dispose();}
 }
 const sum=k=>results.reduce((n,r)=>n+r[k],0),summary={games:results.length,finished:results.filter(r=>r.phase==='gameover').length,stalled:results.filter(r=>r.stalled).length,zeroScore:results.filter(r=>!r.score).length,score:sum('score'),ramps:sum('ramps'),lanes:sum('lanes'),bumpers:sum('bumpers'),shots:sum('shots'),seconds:sum('seconds'),liveResets:sum('liveResets'),hardwareContactEvents:sum('hardwareContactEvents'),hardwareContactTicks:sum('hardwareContactTicks')};
-const result={method:'54 deterministic three-ball sessions: six natural launch powers by nine fixed release delays; only legal launch/flipper input; catch regions relative to each layout. 180-second cap. Not physical-phone or human difficulty evidence.',summary,results};
+const result={method:'54 deterministic three-ball sessions: six natural launch powers by nine fixed release delays; only legal launch/flipper input; catch regions relative to each layout. 180-second cap. hardwareContact fields count the shared metal/acrylic exterior collider, not individual material contacts. Not physical-phone or human difficulty evidence.',summary,results};
 const output=process.argv[2]||'artifacts/pinball/playability-audit.json';fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,JSON.stringify(result,null,2));console.log(JSON.stringify(summary));

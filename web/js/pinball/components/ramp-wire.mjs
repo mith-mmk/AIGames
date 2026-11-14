@@ -1,3 +1,4 @@
+import {rampAcrylicParts} from '../ramp-acrylic.mjs';
 import {loft,rampHardwareParts,rampBoltGeometry,RAMP_HARDWARE_DIMENSIONS} from '../ramp-hardware.mjs';
 import * as T from '../../vendor/three-0.180.0/three.module.min.js';
 import R from '../../vendor/rapier3d-0.17.3/rapier.mjs';
@@ -79,10 +80,7 @@ export class MechanicalRamp extends Assembly {
     const split=Math.round((this.rows.length-1)*WIRE_START_FRACTION);
     const rows = this.rows.slice(0,split+1), d = RAMP_WIRE_DIMENSIONS;
     const sheet = this.group('formed-sheet-chute'), hardware = this.group('seams-and-fasteners');
-    this.mesh('continuous-floor-with-underside', loft(rows, r => [point(r, 'left'), point(r, 'right'), point(r, 'right', 0, -d.sheet), point(r, 'left', 0, -d.sheet)]), 'acrylic', sheet);
-    for (const [side, sign] of [['left', -1], ['right', 1]]) {
-      this.mesh(`${side}-folded-wall`, loft(rows, r => [point(r, side), point(r, side, 0, d.wall), point(r, side, sign * d.sheet, d.wall), point(r, side, sign * d.sheet, -d.sheet)]), 'acrylic', sheet);
-    }
+    for(const part of rampAcrylicParts(rows,d.wall))this.mesh(part.name,part.geometry,'acrylic',sheet);
     const flaps = this.group('entry-and-exit-transition-flaps');
     for (const [name, i] of [['entry', 0], ['sheet-to-wire', rows.length - 1]]) {
       const r = rows[i];

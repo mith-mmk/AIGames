@@ -1,3 +1,4 @@
+import {rampAcrylicParts,rampAcrylicContactParts} from './ramp-acrylic.mjs';
 import {rampHardwareParts,rampHardwareMesh} from './ramp-hardware.mjs';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
@@ -205,12 +206,16 @@ export function buildPhysicalRamp(game) {
     colliders.push(collider);undersideContacts.push({name:part.name,segment:i-1,collider});
   }
   const hardwareParts=rampHardwareParts(rows.slice(0,wireStart+1),RAMP_WALL_HEIGHT);
-  const hardwareMesh=rampHardwareMesh(hardwareParts);
-  const hardwareCollider=game.world.createCollider(R.ColliderDesc.trimesh(hardwareMesh.vertices,hardwareMesh.indices).setFriction(.025).setRestitution(.02));
+  const acrylicParts=rampAcrylicParts(rows.slice(0,wireStart+1),RAMP_WALL_HEIGHT);
+  const acrylicFirstOpenRow=(lowRampSegments(rows).at(-1)?.index??-1)+1;
+  const acrylicFaces=rampAcrylicContactParts(acrylicParts,RAMP_WALL_HEIGHT,acrylicFirstOpenRow);
+  const hardwareMesh=rampHardwareMesh([...hardwareParts,...acrylicFaces]);
+  const hardwareCollider=game.world.createCollider(R.ColliderDesc.trimesh(hardwareMesh.vertices,hardwareMesh.indices,R.TriMeshFlags.FIX_INTERNAL_EDGES).setFriction(.025).setRestitution(.02));
   colliders.push(hardwareCollider);
-  const hardwareContacts=hardwareMesh.ranges.map(range=>({...range,collider:hardwareCollider}));
-  for(const part of hardwareParts)part.geometry.dispose();
-  return {colliders,baseColliders,supportColliders,undersideContacts,hardwareContacts,rows,dispose(){for(const c of colliders)game.world.removeCollider(c,true);}};
+  const ranges=hardwareMesh.ranges.map(range=>({...range,collider:hardwareCollider}));
+  const hardwareContacts=ranges.slice(0,hardwareParts.length),acrylicContacts=ranges.slice(hardwareParts.length);
+  for(const part of [...hardwareParts,...acrylicParts,...acrylicFaces])part.geometry.dispose();
+  return {colliders,baseColliders,supportColliders,undersideContacts,hardwareContacts,acrylicContacts,acrylicFirstOpenRow,rows,dispose(){for(const c of colliders)game.world.removeCollider(c,true);}};
 }
 export function buildVisualRamp(assets) {
   const rows=sampleRamp(),root=new T.Group();root.name='physical-s-ramp';assets.root.add(root);
