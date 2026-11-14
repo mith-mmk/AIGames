@@ -1,0 +1,125 @@
+{
+  "status": "Unadopted. Recovery only; no source correction or new trial.",
+  "candidateSourceSha256": "e8280a5a6a8cf1dcbb7aa570606ef4c2a0e8f2d9fd5bf7305315f2c7a8eb7e45",
+  "acceptedBase": "884960985a413986d57aff0c2280e59a7be79dcf",
+  "acceptedFullSuite": 202,
+  "fixed36": {
+    "rows": 36,
+    "delays": [
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70
+    ],
+    "baselineU": 14,
+    "candidateU": 10,
+    "bySide": {
+      "baseline": {
+        "-1": 6,
+        "1": 8
+      },
+      "candidate": {
+        "-1": 4,
+        "1": 6
+      }
+    },
+    "allCaptures": true,
+    "allOneCoil": true,
+    "allInitialGapsPositive": true,
+    "allNoLiveReset": true,
+    "additionalLostU": [
+      {
+        "delay": 35,
+        "side": -1,
+        "minimumZ": 2.8339648246765137
+      },
+      {
+        "delay": 35,
+        "side": 1,
+        "minimumZ": 2.8338990211486816
+      },
+      {
+        "delay": 40,
+        "side": 1,
+        "minimumZ": -0.012517701834440231
+      },
+      {
+        "delay": 60,
+        "side": -1,
+        "minimumZ": -0.9410585165023804
+      }
+    ],
+    "maxMatchedPreRepressLocalUDifference": 0.0001413363220221786,
+    "maxMatchedActualShotAimDifferenceRad": 0.000170541,
+    "candidateCaptureUApprox": [
+      0.3546,
+      0.35464
+    ],
+    "supportObservation": "No candidate Y.02 throughboard-support contact in first15ticks after coil. Not all-time/all-height clearance."
+  },
+  "naturalLaunch": {
+    "powers": [
+      0.55,
+      0.65,
+      0.75,
+      0.85,
+      0.925,
+      1
+    ],
+    "baselineAllField": true,
+    "candidateAllField": true,
+    "baselineScores": [
+      25,
+      25,
+      25,
+      525,
+      525,
+      325
+    ],
+    "candidateScores": [
+      25,
+      25,
+      25,
+      425,
+      500,
+      425
+    ],
+    "weakPower": 0.1,
+    "bothSameBallReturnAndInPlaceRelaunch": true
+  },
+  "outFixtures": "All legal explicit relative starts, uncharged left/right ordinary drain without firing; candidate one initialized charge fires once on cam contact and is consumed. Not natural earning proof.",
+  "worldPathLimit": "Same bat-relative capture/release does not preserve world-space obstacle access after an outward pivot translation. Candidate35both and40 encounter unchanged sling first;60left returns near opposite target with minZ-.941059.",
+  "budget": {
+    "limit": 500000,
+    "accepted45Triangles": 449612,
+    "candidate45Triangles": 487288,
+    "candidate10Triangles": 487144,
+    "candidateTopTriangles": 480968,
+    "pageErrors": 0,
+    "pass": true
+  },
+  "remainingFailures": [
+    "Accepted14/18 versus candidate10/18, despite old relative u/aim distribution recovery.",
+    "Real inherited heel rail penetration into bat rubber/core/pivot-shaft.",
+    "OUT local widening and conspicuous neck, short labels and cam crossing OUT print.",
+    "Static save actuation and missing coil-housing support bracket."
+  ],
+  "notRun": [
+    "Full202 suite on candidate",
+    "Natural54 controller suite",
+    "Continuous meaningful aim qualification",
+    "Natural wire descent qualification",
+    "Human play or physical-phone performance",
+    "New geometry/force/solver/timing search during packaging"
+  ],
+  "limits": [
+    "U is z<-1 observation, not full ramp or full-game success.",
+    "Fixtures are layout-relative and do not prove natural reachability.",
+    "Exact observations are retained; zero poststep contact impulse does not exclude CCD/substep effects."
+  ]
+}

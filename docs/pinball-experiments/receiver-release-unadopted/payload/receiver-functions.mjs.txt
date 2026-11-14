@@ -1,0 +1,43 @@
+// One receiver-led proposal. Controls are filled from the accepted runtime,
+// not rounded drawing samples. Same board, bat, input and force formulas.
+export const RECEIVER_LAYOUT = Object.freeze(__RECEIVER_LAYOUT__);
+const receiverDistance=(a,b)=>Math.hypot(...a.map((v,i)=>v-b[i]));
+const receiverMid=(a,b)=>a.map((v,i)=>(v+b[i])/2);
+function receiverPointSegmentDistance(p,a,b){
+ const d=b.map((v,i)=>v-a[i]),dd=d.reduce((s,v)=>s+v*v,0);
+ const t=dd?Math.max(0,Math.min(1,p.reduce((s,v,i)=>s+(v-a[i])*d[i],0)/dd)):0;
+ return receiverDistance(p,a.map((v,i)=>v+t*d[i]));
+}
+// Convex-control flatness bound: every retained Bezier subcurve is within
+// .0005 of its finite chord. This is approximation, not ball clearance.
+export function receiverBezierPoints(controls){
+ const result=[[...controls[0]]];
+ function split(c,depth){
+  const error=Math.max(receiverPointSegmentDistance(c[1],c[0],c[3]),receiverPointSegmentDistance(c[2],c[0],c[3]));
+  if(error<=RECEIVER_LAYOUT.chordTolerance){result.push([...c[3]]);return;}
+  if(depth>=16)throw new Error('Receiver curve flatness could not be bounded');
+  const a=receiverMid(c[0],c[1]),b=receiverMid(c[1],c[2]),d=receiverMid(c[2],c[3]),e=receiverMid(a,b),f=receiverMid(b,d),m=receiverMid(e,f);
+  split([c[0],a,e,m],depth+1);split([m,f,d,c[3]],depth+1);
+ }
+ split(controls,0);return result;
+}
+function receiverRightPaths(){
+ const d=RECEIVER_LAYOUT,rows=Array.from({length:25},(_,i)=>lowerCFrame(i/48));
+ const divider=[...rows.map(f=>f.p),...receiverBezierPoints(d.connector).slice(1),...d.terminal.slice(1).map(p=>[...p])];
+ const inner=LOWER_LAYOUT.inlaneInner.map(p=>[...p]);
+ const outer=[[2.33,.22,1.35],...rows.map(f=>[f.p[0]+.430*f.n[0],.22,f.p[2]+.430*f.n[2]]),...receiverBezierPoints(d.outerConnector).slice(1),[1.865,.22,4.85]];
+ return [divider,inner,outer];
+}
+export function lowerLanePaths(side){return receiverRightPaths().map(p=>p.map(([x,y,z])=>[side*x,y,z]));}
+export function lowerLaneMounts(side){return RECEIVER_LAYOUT.mounts.map(([x,y,z])=>[side*x,y,z]);}
+// Printing only: actual divider centerline up to the receiver junction.
+// Stop short of the tight terminal; no invisible collision or ball guidance.
+export function receiverDividerFrame(parameter){
+ const rows=Array.from({length:25},(_,i)=>lowerCFrame(i/48).p),points=[...rows,...receiverBezierPoints(RECEIVER_LAYOUT.connector).slice(1)];
+ const lengths=points.slice(1).map((p,i)=>receiverDistance(p,points[i])),total=lengths.reduce((a,b)=>a+b,0);
+ let left=Math.max(0,Math.min(1,parameter))*total;
+ for(let i=0;i<lengths.length;i++)if(left<=lengths[i]||i===lengths.length-1){
+  const a=points[i],b=points[i+1],d=b.map((v,j)=>v-a[j]),length=lengths[i],u=left/length,t=d.map(v=>v/length);
+  return {p:a.map((v,j)=>v+u*d[j]),t,n:[t[2],0,-t[0]]};
+ }else left-=lengths[i];
+}

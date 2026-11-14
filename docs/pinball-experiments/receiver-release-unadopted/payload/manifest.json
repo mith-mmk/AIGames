@@ -1,0 +1,429 @@
+{
+  "status": "One assembled receiver-release candidate; not adopted",
+  "base": "884960985a413986d57aff0c2280e59a7be79dcf",
+  "priorCFrozenSources": "f956dcc144691d8cb8a35c676ead2795f7dd04dc173a143b6ad043f80b6ccdc3",
+  "sourceSha256": "e8280a5a6a8cf1dcbb7aa570606ef4c2a0e8f2d9fd5bf7305315f2c7a8eb7e45",
+  "fullSuiteBaseline": 202,
+  "changedKeys": [
+    "web/js/pinball/layout.mjs",
+    "web/js/pinball/physics.mjs",
+    "web/js/pinball/playfield-parts.mjs",
+    "web/js/pinball/lower-c-study.mjs"
+  ],
+  "unchangedSourceKeys": [
+    "web/js/pinball/app.mjs",
+    "web/js/pinball/assets.mjs",
+    "web/js/pinball/bumper-effects.mjs",
+    "web/js/pinball/cabinet-boundary.mjs",
+    "web/js/pinball/cabinet-fasteners.mjs",
+    "web/js/pinball/components/bumper.mjs",
+    "web/js/pinball/components/cabinet.mjs",
+    "web/js/pinball/components/flipper.mjs",
+    "web/js/pinball/components/plunger.mjs",
+    "web/js/pinball/components/ramp-wire.mjs",
+    "web/js/pinball/components/reference-cabinet.mjs",
+    "web/js/pinball/components/sling-target.mjs",
+    "web/js/pinball/components/workshop-friend.mjs",
+    "web/js/pinball/feedback.mjs",
+    "web/js/pinball/game-state.mjs",
+    "web/js/pinball/mechanical-contact.mjs",
+    "web/js/pinball/mechanisms.mjs",
+    "web/js/pinball/missions.mjs",
+    "web/js/pinball/nudge.mjs",
+    "web/js/pinball/parts-detail.mjs",
+    "web/js/pinball/plunger.mjs",
+    "web/js/pinball/ramp-acrylic.mjs",
+    "web/js/pinball/ramp-base.mjs",
+    "web/js/pinball/ramp-deck.mjs",
+    "web/js/pinball/ramp-geometry.mjs",
+    "web/js/pinball/ramp-hardware.mjs",
+    "web/js/pinball/ramp-profile.mjs",
+    "web/js/pinball/reference-playfield.mjs",
+    "web/js/pinball/scenery-components.mjs",
+    "web/js/pinball/shooter-outer-rail.mjs",
+    "web/js/pinball/sound.mjs",
+    "web/js/pinball/sphere-clearance.test.helper.mjs",
+    "web/js/pinball/wire-stock.mjs",
+    "web/js/pinball/workshop.mjs"
+  ],
+  "files": {
+    "web/js/pinball/app.mjs": {
+      "sha256": "6014a1c8384ae9fd1d1b693bc0e959040a0f17b00e077ddce64307be3857b1e5",
+      "baselineSha256": "6014a1c8384ae9fd1d1b693bc0e959040a0f17b00e077ddce64307be3857b1e5"
+    },
+    "web/js/pinball/assets.mjs": {
+      "sha256": "32f589da1675c548c5a9aa5821d584d482b4ad12100625e2c34ad7cc21022d18",
+      "baselineSha256": "32f589da1675c548c5a9aa5821d584d482b4ad12100625e2c34ad7cc21022d18"
+    },
+    "web/js/pinball/bumper-effects.mjs": {
+      "sha256": "3698f9a01385d8e45d31755d5d3d83c1bb0914cb7630dd8abff76429d5d996ae",
+      "baselineSha256": "3698f9a01385d8e45d31755d5d3d83c1bb0914cb7630dd8abff76429d5d996ae"
+    },
+    "web/js/pinball/cabinet-boundary.mjs": {
+      "sha256": "8f24eeff985227a5ae98c783cfe33ad5c6e1db5ca536b1647e1df7bf9bfe8dfe",
+      "baselineSha256": "8f24eeff985227a5ae98c783cfe33ad5c6e1db5ca536b1647e1df7bf9bfe8dfe"
+    },
+    "web/js/pinball/cabinet-fasteners.mjs": {
+      "sha256": "adb7aa9e14b87960727ad477e6fb68de23f1e9a93b007b3557c6ee7a40e62423",
+      "baselineSha256": "adb7aa9e14b87960727ad477e6fb68de23f1e9a93b007b3557c6ee7a40e62423"
+    },
+    "web/js/pinball/components/bumper.mjs": {
+      "sha256": "2839bb9fe5e8387e2e6acbfb496969e2182084025672a8ceee0970787d3d7a7b",
+      "baselineSha256": "2839bb9fe5e8387e2e6acbfb496969e2182084025672a8ceee0970787d3d7a7b"
+    },
+    "web/js/pinball/components/cabinet.mjs": {
+      "sha256": "fe754a5680421fa40e4ec4f0c7b24796a9de27ff2a90399818d42583eb80d4b2",
+      "baselineSha256": "fe754a5680421fa40e4ec4f0c7b24796a9de27ff2a90399818d42583eb80d4b2"
+    },
+    "web/js/pinball/components/flipper.mjs": {
+      "sha256": "f4ffced4c38dadb629478de0e18ca339972b2fca63389448308d67862c9bc64c",
+      "baselineSha256": "f4ffced4c38dadb629478de0e18ca339972b2fca63389448308d67862c9bc64c"
+    },
+    "web/js/pinball/components/plunger.mjs": {
+      "sha256": "a6172825ea28300500d1bf08b3b10c134999a639ef813b83298b9e96bcba1f54",
+      "baselineSha256": "a6172825ea28300500d1bf08b3b10c134999a639ef813b83298b9e96bcba1f54"
+    },
+    "web/js/pinball/components/ramp-wire.mjs": {
+      "sha256": "980893f66e8fe6083bec7259eb4ebe85010bba0bace0ada3adb658c58f774f24",
+      "baselineSha256": "980893f66e8fe6083bec7259eb4ebe85010bba0bace0ada3adb658c58f774f24"
+    },
+    "web/js/pinball/components/reference-cabinet.mjs": {
+      "sha256": "b12383bd54b0c8a3b46c8b99e90b9e9c82a6028124141f34c00eb2571f7edb70",
+      "baselineSha256": "b12383bd54b0c8a3b46c8b99e90b9e9c82a6028124141f34c00eb2571f7edb70"
+    },
+    "web/js/pinball/components/sling-target.mjs": {
+      "sha256": "d30b7925cd2dc902b064f6d27babeaec5d6c68aaa29d87ef7e15ab8de8aa03da",
+      "baselineSha256": "d30b7925cd2dc902b064f6d27babeaec5d6c68aaa29d87ef7e15ab8de8aa03da"
+    },
+    "web/js/pinball/components/workshop-friend.mjs": {
+      "sha256": "8e7bbb71ecdc848371138f98840ae55dc2f6988b6f2a3b61e515bcf34a05f94c",
+      "baselineSha256": "8e7bbb71ecdc848371138f98840ae55dc2f6988b6f2a3b61e515bcf34a05f94c"
+    },
+    "web/js/pinball/feedback.mjs": {
+      "sha256": "0a10a97404ef76e4bd4450f3b4fd1553d0cb7485be5a849ba0280bf5c38bc960",
+      "baselineSha256": "0a10a97404ef76e4bd4450f3b4fd1553d0cb7485be5a849ba0280bf5c38bc960"
+    },
+    "web/js/pinball/game-state.mjs": {
+      "sha256": "faa5abf14a28219a69d3242571d10f028d7137fd53ed2ea419b8e396dfc2f626",
+      "baselineSha256": "faa5abf14a28219a69d3242571d10f028d7137fd53ed2ea419b8e396dfc2f626"
+    },
+    "web/js/pinball/layout.mjs": {
+      "sha256": "f30a0d24eb6f53e1843e1784e3ed786912d7088baf32ec33d70f9eae909f0bb1",
+      "baselineSha256": "1c9860b284831e46af2ddde75476c9563e064b29c38d84bb5df812f7366de609"
+    },
+    "web/js/pinball/mechanical-contact.mjs": {
+      "sha256": "3d27c9c038b4268ac98bf7086fe4a7e0c1f6bac5a64788f1e4fca5438eec097c",
+      "baselineSha256": "3d27c9c038b4268ac98bf7086fe4a7e0c1f6bac5a64788f1e4fca5438eec097c"
+    },
+    "web/js/pinball/mechanisms.mjs": {
+      "sha256": "a85e1703824fd17aacc97ca5c82534d1a1ba37cb496fd3bdb01776866b8cf25f",
+      "baselineSha256": "a85e1703824fd17aacc97ca5c82534d1a1ba37cb496fd3bdb01776866b8cf25f"
+    },
+    "web/js/pinball/missions.mjs": {
+      "sha256": "a0502cc8db92e639b7bf626ae128e6c33abe52a1e598e79e97cbc758accb7e99",
+      "baselineSha256": "a0502cc8db92e639b7bf626ae128e6c33abe52a1e598e79e97cbc758accb7e99"
+    },
+    "web/js/pinball/nudge.mjs": {
+      "sha256": "29aa735b334fa3c711edde1cc3678e1448dd562c6b51185f240876ef7ae53a34",
+      "baselineSha256": "29aa735b334fa3c711edde1cc3678e1448dd562c6b51185f240876ef7ae53a34"
+    },
+    "web/js/pinball/parts-detail.mjs": {
+      "sha256": "de4e78724ee2091e95cd2a910247781b9d6c3a56d239554033de84c88320b7c9",
+      "baselineSha256": "de4e78724ee2091e95cd2a910247781b9d6c3a56d239554033de84c88320b7c9"
+    },
+    "web/js/pinball/physics.mjs": {
+      "sha256": "4955130aec261b2ae7b61f96812075bb1522d5d7efcc2d0516636483607228e2",
+      "baselineSha256": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92"
+    },
+    "web/js/pinball/playfield-parts.mjs": {
+      "sha256": "b75d159430d8bac8da8901ac97564b4449e53ebd5174da2c7ee38cd14c31c3c7",
+      "baselineSha256": "685b5a78d656f55d3119720f5e4d7a4a3a08dd4f94d8c64623617d5cadd8c1e0"
+    },
+    "web/js/pinball/plunger.mjs": {
+      "sha256": "a7dcbcab59905f2a27f885c81d21b40b6e4e23f90ef8be29dd60d74df896e153",
+      "baselineSha256": "a7dcbcab59905f2a27f885c81d21b40b6e4e23f90ef8be29dd60d74df896e153"
+    },
+    "web/js/pinball/ramp-acrylic.mjs": {
+      "sha256": "cbb91fe5a2c1abe09ee60480cb277928b97aa62800c3fa28abf0c2976425a865",
+      "baselineSha256": "cbb91fe5a2c1abe09ee60480cb277928b97aa62800c3fa28abf0c2976425a865"
+    },
+    "web/js/pinball/ramp-base.mjs": {
+      "sha256": "66b2ea504cf762935274335605d3b8025bfe4ee7b1693caf7743147bf79aa803",
+      "baselineSha256": "66b2ea504cf762935274335605d3b8025bfe4ee7b1693caf7743147bf79aa803"
+    },
+    "web/js/pinball/ramp-deck.mjs": {
+      "sha256": "ee6e020fc16391e982d8120718f112206af448ae14744da7488be8f0324fb637",
+      "baselineSha256": "ee6e020fc16391e982d8120718f112206af448ae14744da7488be8f0324fb637"
+    },
+    "web/js/pinball/ramp-geometry.mjs": {
+      "sha256": "3a9dd4e4ad8bd3cf7418a395435e23a5552e11c2f15ab20d86065e7fff5670cd",
+      "baselineSha256": "3a9dd4e4ad8bd3cf7418a395435e23a5552e11c2f15ab20d86065e7fff5670cd"
+    },
+    "web/js/pinball/ramp-hardware.mjs": {
+      "sha256": "167091781dd1248f747b8caedfa53835719a261408dc5a35a3058cef4d8f53af",
+      "baselineSha256": "167091781dd1248f747b8caedfa53835719a261408dc5a35a3058cef4d8f53af"
+    },
+    "web/js/pinball/ramp-profile.mjs": {
+      "sha256": "15cbc28269be0c2046e57c4f613dc1e582e0240556f28452475444fa79d12b98",
+      "baselineSha256": "15cbc28269be0c2046e57c4f613dc1e582e0240556f28452475444fa79d12b98"
+    },
+    "web/js/pinball/reference-playfield.mjs": {
+      "sha256": "9de4cba1248237c8cc6f86d671545fb3a3e7fde42743f9f8cd36a69ac8023724",
+      "baselineSha256": "9de4cba1248237c8cc6f86d671545fb3a3e7fde42743f9f8cd36a69ac8023724"
+    },
+    "web/js/pinball/scenery-components.mjs": {
+      "sha256": "99ea5e005bcaa97d750637744d8e289922117367a8f5ddd5e75157541134dca6",
+      "baselineSha256": "99ea5e005bcaa97d750637744d8e289922117367a8f5ddd5e75157541134dca6"
+    },
+    "web/js/pinball/shooter-outer-rail.mjs": {
+      "sha256": "2c99ea82ea24bbbd55aaad98efe8a1c3071f25a365cfef6c10ed54d5c303a9d6",
+      "baselineSha256": "2c99ea82ea24bbbd55aaad98efe8a1c3071f25a365cfef6c10ed54d5c303a9d6"
+    },
+    "web/js/pinball/sound.mjs": {
+      "sha256": "0262e85bc78c4756614f25b1b50a1ec599cad24e0b6fae45abcee43fc9fac34d",
+      "baselineSha256": "0262e85bc78c4756614f25b1b50a1ec599cad24e0b6fae45abcee43fc9fac34d"
+    },
+    "web/js/pinball/sphere-clearance.test.helper.mjs": {
+      "sha256": "3b3f81e6c9f4024b22a232be239153af119b5967efd6b787fe97aa8230b51079",
+      "baselineSha256": "3b3f81e6c9f4024b22a232be239153af119b5967efd6b787fe97aa8230b51079"
+    },
+    "web/js/pinball/wire-stock.mjs": {
+      "sha256": "6746f5f3abeea64e98a44b6e07597e164590ed4616532c1329e786b8a2c3825f",
+      "baselineSha256": "6746f5f3abeea64e98a44b6e07597e164590ed4616532c1329e786b8a2c3825f"
+    },
+    "web/js/pinball/workshop.mjs": {
+      "sha256": "e97b8342f87c509d8256689abcb5a81d8ce16a1f7cd2a866f8ddc2652036c956",
+      "baselineSha256": "e97b8342f87c509d8256689abcb5a81d8ce16a1f7cd2a866f8ddc2652036c956"
+    },
+    "web/js/pinball/lower-c-study.mjs": {
+      "sha256": "1da3e05c962726a698f9bc3cafbc433bc8aba2b1b10025d448f667136db92e2b",
+      "baselineSha256": null
+    }
+  },
+  "dimensions": {
+    "chordTolerance": 0.0005,
+    "connector": [
+      [
+        1.6925,
+        0.22,
+        3.55
+      ],
+      [
+        1.5603941561612618,
+        0.22,
+        3.7001600680062943
+      ],
+      [
+        1.5589069968690994,
+        0.22,
+        3.9195377228040873
+      ],
+      [
+        1.3793162114557362,
+        0.22,
+        4.028382335875251
+      ]
+    ],
+    "outerConnector": [
+      [
+        2.0153441462135326,
+        0.22,
+        3.834027564253287
+      ],
+      [
+        1.909659471142542,
+        0.22,
+        3.9541556186583224
+      ],
+      [
+        1.865,
+        0.22,
+        4.15
+      ],
+      [
+        1.865,
+        0.22,
+        4.35
+      ]
+    ],
+    "terminal": [
+      [
+        1.3793162114557362,
+        0.22,
+        4.028382335875251
+      ],
+      [
+        1.366469591288706,
+        0.22000000000000003,
+        4.036168288802258
+      ],
+      [
+        1.3574738717581052,
+        0.22000000000000003,
+        4.045114371500111
+      ],
+      [
+        1.352329052863934,
+        0.22,
+        4.055220583968813
+      ],
+      [
+        1.3510351346061928,
+        0.22,
+        4.066486926208361
+      ],
+      [
+        1.3535921169848815,
+        0.22,
+        4.078913398218757
+      ],
+      [
+        1.3599999999999999,
+        0.22,
+        4.092499999999999
+      ],
+      [
+        1.41,
+        0.22,
+        4.1775
+      ],
+      [
+        1.417638888888889,
+        0.22000000000000003,
+        4.191855769647453
+      ],
+      [
+        1.4238888888888888,
+        0.22000000000000003,
+        4.206589745256477
+      ],
+      [
+        1.42875,
+        0.22,
+        4.221701926827072
+      ],
+      [
+        1.432222222222222,
+        0.22,
+        4.23719231435924
+      ],
+      [
+        1.4343055555555555,
+        0.22,
+        4.253060907852979
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.26930770730829
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.3925
+      ],
+      [
+        1.435,
+        0.22000000000000003,
+        4.411666666666667
+      ],
+      [
+        1.4349999999999998,
+        0.22000000000000003,
+        4.430833333333334
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.45
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.469166666666667
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.488333333333333
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.5075
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.85
+      ]
+    ],
+    "mounts": [
+      [
+        1.9,
+        0.22,
+        3
+      ],
+      [
+        1.6925,
+        0.22,
+        3.55
+      ],
+      [
+        1.435,
+        0.22,
+        4.65
+      ],
+      [
+        1.35,
+        0.22,
+        2.75
+      ],
+      [
+        1.35,
+        0.22,
+        3.1
+      ],
+      [
+        2.33,
+        0.22,
+        1.35
+      ],
+      [
+        2.33,
+        0.22,
+        3
+      ],
+      [
+        2.0153441462135326,
+        0.22,
+        3.834027564253287
+      ],
+      [
+        1.865,
+        0.22,
+        4.65
+      ]
+    ]
+  },
+  "fixed": [
+    "Board/shooter/upper/ramp/nose/wire/slings",
+    "Bat profile/length/angles; C pivot X+/-1.40/Z4.45",
+    "Keys, force formulas, masses, solver, existing physics materials",
+    "C fixed save mesh/contact/frame/impulse/conditions; no moving actuation added",
+    "Accepted 8849609 wire-stock rendering"
+  ],
+  "changedFromC": [
+    "Divider connector and translated accepted receiver",
+    "OUT tail connector",
+    "Lower mount stations: 9 per side",
+    "Noncolliding route ribbon follows the actual changed divider"
+  ],
+  "limits": [
+    "Arrival/capture/release/aim not yet tested",
+    "Receiver support span and all-height clearance remain gates",
+    "Static save and incomplete coil bracket remain unfinished",
+    "Geometry source uses full-precision accepted samples rather than rounded concept diagram",
+    "No full202 suite, natural54 or continuous aiming qualification performed on this source"
+  ]
+}

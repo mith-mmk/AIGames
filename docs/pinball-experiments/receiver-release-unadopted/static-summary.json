@@ -1,0 +1,133 @@
+{
+  "scope": "Condensed static evidence; omitted full results are hash-referenced, not claimed restored.",
+  "sourceSha256": "e8280a5a6a8cf1dcbb7aa570606ef4c2a0e8f2d9fd5bf7305315f2c7a8eb7e45",
+  "colliders": 1555,
+  "lowerCapsules": 216,
+  "attachments": 62,
+  "cam": {
+    "meshVertices": 10,
+    "hullVertices": 10,
+    "maxVertexError": 0
+  },
+  "mountMaxCenterError": 1.2084810165128617e-07,
+  "railMaxCenterError": 2.3592900820425455e-07,
+  "scanSamples": 5880,
+  "negativeSampleCountsByNearestObject": {
+    "receiver-rail": 296,
+    "flipper-0": 390,
+    "unchanged-other": 112,
+    "C-save-cam": 30,
+    "flipper-1": 390
+  },
+  "scanScope": "Actual divider arc-length frame, IN normal offset -.205 / OUT +.215, +/- .050 and five heights, both bat poses. The normal probe line is illustrative and can fold at the tight receiver. All negatives retained. Floors/ball/sensors excluded; open meshes surface-only. No continuous/full-height clearance assertion.",
+  "seams": [
+    {
+      "name": "dividerFirstJoin",
+      "p": [
+        1.6925,
+        0.22,
+        3.55
+      ],
+      "incidentCapsules": 2,
+      "matchingCenters": [
+        [
+          1.6925,
+          0.22,
+          3.55
+        ],
+        [
+          1.6925,
+          0.22,
+          3.55
+        ]
+      ],
+      "note": "Same exact center at adjacent capsule endpoints; their closed radius .020 solids overlap. Not a smooth-contact or natural-play proof."
+    },
+    {
+      "name": "receiverJoin",
+      "p": [
+        1.3793162114557362,
+        0.22,
+        4.028382335875251
+      ],
+      "incidentCapsules": 2,
+      "matchingCenters": [
+        [
+          1.3793162114557362,
+          0.22,
+          4.028382335875251
+        ],
+        [
+          1.3793162114557362,
+          0.22,
+          4.028382335875251
+        ]
+      ],
+      "note": "Same exact center at adjacent capsule endpoints; their closed radius .020 solids overlap. Not a smooth-contact or natural-play proof."
+    },
+    {
+      "name": "outerJoin",
+      "p": [
+        2.0153441462135326,
+        0.22,
+        3.834027564253287
+      ],
+      "incidentCapsules": 2,
+      "matchingCenters": [
+        [
+          2.0153441462135326,
+          0.22,
+          3.834027564253287
+        ],
+        [
+          2.0153441462135326,
+          0.22,
+          3.834027564253287
+        ]
+      ],
+      "note": "Same exact center at adjacent capsule endpoints; their closed radius .020 solids overlap. Not a smooth-contact or natural-play proof."
+    },
+    {
+      "name": "outerStraightJoin",
+      "p": [
+        1.865,
+        0.22,
+        4.35
+      ],
+      "incidentCapsules": 2,
+      "matchingCenters": [
+        [
+          1.865,
+          0.22,
+          4.35
+        ],
+        [
+          1.865,
+          0.22,
+          4.35
+        ]
+      ],
+      "note": "Same exact center at adjacent capsule endpoints; their closed radius .020 solids overlap. Not a smooth-contact or natural-play proof."
+    }
+  ],
+  "batStockOverlap": [
+    {
+      "held": false,
+      "count": 16,
+      "minimum": -0.058009423315525055
+    },
+    {
+      "held": true,
+      "count": 16,
+      "minimum": -0.05311974883079529
+    }
+  ],
+  "baselineComparison": "Exact same rest/held minima and counts in payload/baseline-bat-overlap.json. Inherited does not imply acceptable.",
+  "actualVisibleMeshSection": "Horizontal Y.220 sections locate rail inside moulded rubber, cast core and rotating bat pivot shaft. Diagram/raw mesh-section outputs are omitted and hash referenced. New ground-support shafts are not this overlap.",
+  "limits": [
+    "Bat-stock solid overlap records are retained; zero/negative is not silently excused by lane closure",
+    "Old fixed save still lacks moving action and completed coil bracket",
+    "Actual installed browser/camera transforms, budget, mobile and reference fidelity remain independent review gates",
+    "Receiver target and projected accepted traces are not dynamically imposed or replayed"
+  ]
+}

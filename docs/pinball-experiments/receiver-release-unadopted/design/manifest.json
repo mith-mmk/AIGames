@@ -1,0 +1,29 @@
+{
+  "status": "Concept comparison only. No runtime or dynamic trial.",
+  "files": {
+    "README.md": {
+      "bytes": 12521,
+      "sha256": "21e00e3b54eb6a9ebfc98430ed7e8fe887442b2a658e7b444b1bfabac9a69d63"
+    },
+    "analyze-and-draw.py": {
+      "bytes": 12931,
+      "sha256": "8892bd28e1e2ace1ed23923667658d848b4bf8f639e59af400789ed8f31da7b2"
+    },
+    "dimensions-and-reserve.json": {
+      "bytes": 26267,
+      "sha256": "79a157c19cb93774ace48e98bb51605b06fc0ba4407dbbbc0f7a1b260e097f2d"
+    },
+    "receiver-release-plan.html": {
+      "bytes": 31272,
+      "sha256": "c04e83a8e46fe7203e32c044c0d17d9d8997b5626360382149a104e459186f36"
+    },
+    "receiver-release-plan.png": {
+      "bytes": 278394,
+      "sha256": "cc9e563ad882b4d8c4c569587f7964d3d4c045e4282279be264eb0aabcf929be"
+    },
+    "receiver-release-plan.svg": {
+      "bytes": 31077,
+      "sha256": "9ec971227daedf1cd083e5c600373eab32da9b4b81d7c6dc1dfc216d5d98a4d4"
+    }
+  }
+}

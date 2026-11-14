@@ -1,0 +1,894 @@
+{
+  "status": "One conceptual dimensioned design; no runtime source, geometry freeze, simulation or adoption.",
+  "base": "c1f7aeb",
+  "head": "16e7e13",
+  "conceptName": "Receiver-led early curve; fixed outward pivots, accepted-relative cradle, exit-aware supports",
+  "pivot": [
+    1.4,
+    0.27,
+    4.45
+  ],
+  "batLength": 1.14,
+  "restProjectedGap": {
+    "accepted": 0.5906935644,
+    "C_and_concept": 0.8906935644
+  },
+  "receiverReference": {
+    "method": "Accepted actual sampled terminal rail z>=4.028382 shifted outward .15, with the bat pivot shifted the same amount. Does not predict delivery or a new equilibrium.",
+    "sampledNeckMinimumX": 1.3510350999999998,
+    "heelX": 1.435,
+    "heelEndZ": 4.85,
+    "tail": [
+      [
+        1.3793161999999999,
+        0.22,
+        4.0283823
+      ],
+      [
+        1.3664695999999998,
+        0.22,
+        4.0361683
+      ],
+      [
+        1.3574739,
+        0.22,
+        4.0451144
+      ],
+      [
+        1.3523291,
+        0.22,
+        4.0552206
+      ],
+      [
+        1.3510350999999998,
+        0.22,
+        4.0664869
+      ],
+      [
+        1.3535921,
+        0.22,
+        4.0789134
+      ],
+      [
+        1.3599999999999999,
+        0.22,
+        4.0925
+      ],
+      [
+        1.41,
+        0.22,
+        4.1775
+      ],
+      [
+        1.4176388999999998,
+        0.22,
+        4.1918558
+      ],
+      [
+        1.4238889,
+        0.22,
+        4.2065897
+      ],
+      [
+        1.42875,
+        0.22,
+        4.2217019
+      ],
+      [
+        1.4322222,
+        0.22,
+        4.2371923
+      ],
+      [
+        1.4343055999999998,
+        0.22,
+        4.2530609
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.2693077
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.3925
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.4116667
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.4308333
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.45
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.4691667
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.4883333
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.5075
+      ],
+      [
+        1.4349999999999998,
+        0.22,
+        4.85
+      ]
+    ]
+  },
+  "connectorControls": [
+    [
+      1.6925,
+      0.22,
+      3.55
+    ],
+    [
+      1.5603941561612618,
+      0.22,
+      3.7001600680062943
+    ],
+    [
+      1.558906617986212,
+      0.22,
+      3.9195370806858856
+    ],
+    [
+      1.3793161999999999,
+      0.22,
+      4.0283823
+    ]
+  ],
+  "outerControls": [
+    [
+      2.0153441462135326,
+      0.22,
+      3.834027564253287
+    ],
+    [
+      1.909659471142542,
+      0.22,
+      3.9541556186583224
+    ],
+    [
+      1.865,
+      0.22,
+      4.15
+    ],
+    [
+      1.865,
+      0.22,
+      4.35
+    ]
+  ],
+  "newAnchorStations": [
+    [
+      1.9,
+      0.02,
+      3
+    ],
+    [
+      1.6925,
+      0.02,
+      3.55
+    ],
+    [
+      1.435,
+      0.02,
+      4.65
+    ],
+    [
+      1.35,
+      0.02,
+      2.75
+    ],
+    [
+      1.35,
+      0.02,
+      3.1
+    ],
+    [
+      2.33,
+      0.02,
+      1.35
+    ],
+    [
+      2.33,
+      0.02,
+      3
+    ],
+    [
+      2.0153441462135326,
+      0.02,
+      3.834027564253287
+    ],
+    [
+      1.865,
+      0.02,
+      4.65
+    ]
+  ],
+  "retainedInnerRail": [
+    [
+      1.35,
+      0.22,
+      2.75
+    ],
+    [
+      1.35,
+      0.22,
+      3.35
+    ]
+  ],
+  "staticDrawingMeasures": {
+    "sampleAxisDistanceDividerToOuterMinimum": 0.4129168176896964,
+    "bareStockRadius": 0.02,
+    "notAFullHeightPassageProof": true,
+    "horizontalSectionsNotNormalWidths": [
+      {
+        "z": 3,
+        "horizontalAxisSeparation": 0.43000000000000016
+      },
+      {
+        "z": 3.55,
+        "horizontalAxisSeparation": 0.511413499188119
+      },
+      {
+        "z": 3.8,
+        "horizontalAxisSeparation": 0.4883133148837542
+      },
+      {
+        "z": 4.05,
+        "horizontalAxisSeparation": 0.5489640413743437
+      },
+      {
+        "z": 4.1,
+        "horizontalAxisSeparation": 0.5266786854582839
+      },
+      {
+        "z": 4.35,
+        "horizontalAxisSeparation": 0.43000000000000016
+      },
+      {
+        "z": 4.65,
+        "horizontalAxisSeparation": 0.43000000000000016
+      }
+    ]
+  },
+  "projectionOnly": [
+    {
+      "mode": "baseline",
+      "delay": 30,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -0.9884561779523265,
+        "y": 0.17117926224699045,
+        "z": 3.35
+      },
+      "projectedCrossingX": -1.1384561779523266,
+      "projectionShift": -0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 13,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.06927141681887322,
+      "sampleMinimumProposedAnchorGap": 0.08448773846193089,
+      "sampleMinimumConceptConnectorGap": 0.04265754980847733,
+      "firstDepartureMinimumZ": -0.5974642038345337
+    },
+    {
+      "mode": "baseline",
+      "delay": 30,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 0.9883174388720465,
+        "y": 0.17117926071559939,
+        "z": 3.35
+      },
+      "projectedCrossingX": 1.1383174388720465,
+      "projectionShift": 0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 13,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.06942127909047716,
+      "sampleMinimumProposedAnchorGap": 0.0846733050458939,
+      "sampleMinimumConceptConnectorGap": 0.042733867477692034,
+      "firstDepartureMinimumZ": 0.9984499216079712
+    },
+    {
+      "mode": "baseline",
+      "delay": 35,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -0.9337993431649455,
+        "y": 0.17136147273610908,
+        "z": 3.35
+      },
+      "projectedCrossingX": -1.0837993431649455,
+      "projectionShift": -0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.12255397010198907,
+      "sampleMinimumProposedAnchorGap": 0.1487125911555908,
+      "sampleMinimumConceptConnectorGap": 0.06528035894242301,
+      "firstDepartureMinimumZ": -1.8989341259002686
+    },
+    {
+      "mode": "baseline",
+      "delay": 35,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 0.9338279154889392,
+        "y": 0.17136143685185473,
+        "z": 3.35
+      },
+      "projectedCrossingX": 1.0838279154889392,
+      "projectionShift": 0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.12252629532290374,
+      "sampleMinimumProposedAnchorGap": 0.14868123187856827,
+      "sampleMinimumConceptConnectorGap": 0.06526382346755719,
+      "firstDepartureMinimumZ": -2.0851690769195557
+    },
+    {
+      "mode": "baseline",
+      "delay": 40,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -0.8719787393597627,
+        "y": 0.1713008297850324,
+        "z": 3.35
+      },
+      "projectedCrossingX": -1.0219787393597626,
+      "projectionShift": -0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.176643917336029,
+      "sampleMinimumProposedAnchorGap": 0.2223908244669939,
+      "sampleMinimumConceptConnectorGap": 0.09963265067635071,
+      "firstDepartureMinimumZ": -1.7153234481811523
+    },
+    {
+      "mode": "baseline",
+      "delay": 40,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 0.8720231007011187,
+        "y": 0.1713007710640895,
+        "z": 3.35
+      },
+      "projectedCrossingX": 1.0220231007011187,
+      "projectionShift": 0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.1766007484047474,
+      "sampleMinimumProposedAnchorGap": 0.2223437313156764,
+      "sampleMinimumConceptConnectorGap": 0.09960656562862788,
+      "firstDepartureMinimumZ": -1.7152833938598633
+    },
+    {
+      "mode": "baseline",
+      "delay": 45,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -0.8034971116948278,
+        "y": 0.17126155227690792,
+        "z": 3.35
+      },
+      "projectedCrossingX": -0.9534971116948279,
+      "projectionShift": -0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.23819972697276962,
+      "sampleMinimumProposedAnchorGap": 0.2908975361536812,
+      "sampleMinimumConceptConnectorGap": 0.1376880642533506,
+      "firstDepartureMinimumZ": -2.6443240642547607
+    },
+    {
+      "mode": "baseline",
+      "delay": 45,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 0.8035635360297014,
+        "y": 0.17126150134519189,
+        "z": 3.35
+      },
+      "projectedCrossingX": 0.9535635360297015,
+      "projectionShift": 0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.2381388358527888,
+      "sampleMinimumProposedAnchorGap": 0.29083039088192986,
+      "sampleMinimumConceptConnectorGap": 0.13765074037225547,
+      "firstDepartureMinimumZ": -1.9230310916900635
+    },
+    {
+      "mode": "baseline",
+      "delay": 50,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -0.7246758626058037,
+        "y": 0.17123281952264593,
+        "z": 3.35
+      },
+      "projectedCrossingX": -0.8746758626058038,
+      "projectionShift": -0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.30921313850138343,
+      "sampleMinimumProposedAnchorGap": 0.3205048986476221,
+      "sampleMinimumConceptConnectorGap": 0.18088914246014323,
+      "firstDepartureMinimumZ": -2.75555419921875
+    },
+    {
+      "mode": "baseline",
+      "delay": 50,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 0.7247634941263572,
+        "y": 0.1712328048678876,
+        "z": 3.35
+      },
+      "projectedCrossingX": 0.8747634941263572,
+      "projectionShift": 0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.3091341246862621,
+      "sampleMinimumProposedAnchorGap": 0.3205015186452338,
+      "sampleMinimumConceptConnectorGap": 0.1808409516089838,
+      "firstDepartureMinimumZ": -5.5760064125061035
+    },
+    {
+      "mode": "baseline",
+      "delay": 55,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -0.6347332196432304,
+        "y": 0.17120999540938556,
+        "z": 3.35
+      },
+      "projectedCrossingX": -0.7847332196432304,
+      "projectionShift": -0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.3899998069307151,
+      "sampleMinimumProposedAnchorGap": 0.33051575157893676,
+      "sampleMinimumConceptConnectorGap": 0.22930427688170604,
+      "firstDepartureMinimumZ": -1.0942388772964478
+    },
+    {
+      "mode": "baseline",
+      "delay": 55,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 0.6348441244924153,
+        "y": 0.1712100254297835,
+        "z": 3.35
+      },
+      "projectedCrossingX": 0.7848441244924154,
+      "projectionShift": 0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.38990078191708966,
+      "sampleMinimumProposedAnchorGap": 0.3305054909863284,
+      "sampleMinimumConceptConnectorGap": 0.2292448848502934,
+      "firstDepartureMinimumZ": -1.8900718688964844
+    },
+    {
+      "mode": "baseline",
+      "delay": 60,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -0.5323594816543272,
+        "y": 0.1711896113509811,
+        "z": 3.35
+      },
+      "projectedCrossingX": -0.6823594816543272,
+      "projectionShift": -0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.48074356036497845,
+      "sampleMinimumProposedAnchorGap": 0.3449433773611593,
+      "sampleMinimumConceptConnectorGap": 0.28304639032416845,
+      "firstDepartureMinimumZ": -0.8239363431930542
+    },
+    {
+      "mode": "baseline",
+      "delay": 60,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 0.5324968494563079,
+        "y": 0.17118966124016421,
+        "z": 3.35
+      },
+      "projectedCrossingX": 0.682496849456308,
+      "projectionShift": 0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.48062349873095056,
+      "sampleMinimumProposedAnchorGap": 0.3449257723094773,
+      "sampleMinimumConceptConnectorGap": 0.28297498407975785,
+      "firstDepartureMinimumZ": -1.837402105331421
+    },
+    {
+      "mode": "baseline",
+      "delay": 65,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -0.41503697290736064,
+        "y": 0.17116935332497743,
+        "z": 3.35
+      },
+      "projectedCrossingX": -0.5650369729073607,
+      "projectionShift": -0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.5787961479289613,
+      "sampleMinimumProposedAnchorGap": 0.3644857732582648,
+      "sampleMinimumConceptConnectorGap": 0.3426374298443974,
+      "firstDepartureMinimumZ": -0.5615348815917969
+    },
+    {
+      "mode": "baseline",
+      "delay": 65,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 0.41520410539055036,
+        "y": 0.17116948763919337,
+        "z": 3.35
+      },
+      "projectedCrossingX": 0.5652041053905503,
+      "projectionShift": 0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.5786775585643273,
+      "sampleMinimumProposedAnchorGap": 0.36445850366473276,
+      "sampleMinimumConceptConnectorGap": 0.34255355704053225,
+      "firstDepartureMinimumZ": -1.7801743745803833
+    },
+    {
+      "mode": "baseline",
+      "delay": 70,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -0.27962263398548537,
+        "y": 0.17114761005335904,
+        "z": 3.35
+      },
+      "projectedCrossingX": -0.4296226339854854,
+      "projectionShift": -0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.673228738434013,
+      "sampleMinimumProposedAnchorGap": 0.38977629021933036,
+      "sampleMinimumConceptConnectorGap": 0.40855397078653166,
+      "firstDepartureMinimumZ": -0.5677213668823242
+    },
+    {
+      "mode": "baseline",
+      "delay": 70,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 0.2798224885272823,
+        "y": 0.17114766989403515,
+        "z": 3.35
+      },
+      "projectedCrossingX": 0.42982248852728233,
+      "projectionShift": 0.15,
+      "samplesToFirstDownstreamTurnOrZ2_5": 9,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.6730905027154854,
+      "sampleMinimumProposedAnchorGap": 0.38973881159603385,
+      "sampleMinimumConceptConnectorGap": 0.4084588931394736,
+      "firstDepartureMinimumZ": -2.246511220932007
+    },
+    {
+      "mode": "candidate",
+      "delay": 30,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -1.0358122818443831,
+        "y": 0.17149266111371783,
+        "z": 3.35
+      },
+      "projectedCrossingX": -1.0358122818443831,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 13,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.1489425190308243,
+      "sampleMinimumProposedAnchorGap": 0.2305436769074735,
+      "sampleMinimumConceptConnectorGap": -0.03816407100496866,
+      "firstDepartureMinimumZ": -1.02497136592865
+    },
+    {
+      "mode": "candidate",
+      "delay": 30,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 1.0354029012396997,
+        "y": 0.17149316623229133,
+        "z": 3.35
+      },
+      "projectedCrossingX": 1.0354029012396997,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 13,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.14925479157940588,
+      "sampleMinimumProposedAnchorGap": 0.2309790469447727,
+      "sampleMinimumConceptConnectorGap": -0.03816080154583086,
+      "firstDepartureMinimumZ": -1.871209979057312
+    },
+    {
+      "mode": "candidate",
+      "delay": 35,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -1.1102554771508297,
+        "y": 0.1714294555561042,
+        "z": 3.35
+      },
+      "projectedCrossingX": -1.1102554771508297,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 13,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.09046847311036063,
+      "sampleMinimumProposedAnchorGap": 0.14763562018193813,
+      "sampleMinimumConceptConnectorGap": -0.03757938660971924,
+      "firstDepartureMinimumZ": -0.6044740676879883
+    },
+    {
+      "mode": "candidate",
+      "delay": 35,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 1.1110509501613743,
+        "y": 0.17142948144853193,
+        "z": 3.35
+      },
+      "projectedCrossingX": 1.1110509501613743,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 13,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.08977982279712865,
+      "sampleMinimumProposedAnchorGap": 0.1467110166359101,
+      "sampleMinimumConceptConnectorGap": -0.03756281113506546,
+      "firstDepartureMinimumZ": 0.5171986818313599
+    },
+    {
+      "mode": "candidate",
+      "delay": 40,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -1.1248090764830587,
+        "y": 0.17126624236582397,
+        "z": 3.35
+      },
+      "projectedCrossingX": -1.1248090764830587,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 17,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.07789810578017889,
+      "sampleMinimumProposedAnchorGap": 0.13059950778295118,
+      "sampleMinimumConceptConnectorGap": -0.037219038814188365,
+      "firstDepartureMinimumZ": -1.7133126258850098
+    },
+    {
+      "mode": "candidate",
+      "delay": 40,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 1.1279187347882667,
+        "y": 0.17126682483217787,
+        "z": 3.35
+      },
+      "projectedCrossingX": 1.1279187347882667,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 19,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.07517999483482263,
+      "sampleMinimumProposedAnchorGap": 0.12692903893174298,
+      "sampleMinimumConceptConnectorGap": -0.03715220770074866,
+      "firstDepartureMinimumZ": -0.7406799793243408
+    },
+    {
+      "mode": "candidate",
+      "delay": 45,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -1.1525766401183208,
+        "y": 0.171185495831381,
+        "z": 3.35
+      },
+      "projectedCrossingX": -1.1525766401183208,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 11,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.05340485241085863,
+      "sampleMinimumProposedAnchorGap": 0.0974521218719119,
+      "sampleMinimumConceptConnectorGap": -0.03802442117596504,
+      "firstDepartureMinimumZ": 2.8362529277801514
+    },
+    {
+      "mode": "candidate",
+      "delay": 45,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 1.1577228662354775,
+        "y": 0.17118593869162446,
+        "z": 3.35
+      },
+      "projectedCrossingX": 1.1577228662354775,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 11,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.04879600684847776,
+      "sampleMinimumProposedAnchorGap": 0.09122391824180764,
+      "sampleMinimumConceptConnectorGap": -0.03856247097419116,
+      "firstDepartureMinimumZ": 2.8393502235412598
+    },
+    {
+      "mode": "candidate",
+      "delay": 50,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -1.1895208986752688,
+        "y": 0.1711604601213473,
+        "z": 3.35
+      },
+      "projectedCrossingX": -1.1895208986752688,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 11,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 0.019930449393191746,
+      "sampleMinimumProposedAnchorGap": 0.05226208515655756,
+      "sampleMinimumConceptConnectorGap": -0.0419204653315729,
+      "firstDepartureMinimumZ": 2.8491618633270264
+    },
+    {
+      "mode": "candidate",
+      "delay": 50,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": {
+        "x": 1.190778173170313,
+        "y": 0.17116049461541863,
+        "z": 3.35
+      },
+      "projectedCrossingX": 1.190778173170313,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 12,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 4.430006137984277e-05,
+      "sampleMinimumProposedAnchorGap": 0.08054279415062554,
+      "sampleMinimumConceptConnectorGap": -0.042460284400833645,
+      "firstDepartureMinimumZ": 2.8403356075286865
+    },
+    {
+      "mode": "candidate",
+      "delay": 55,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": {
+        "x": -0.7447775042569287,
+        "y": 0.17117379771650232,
+        "z": 3.35
+      },
+      "projectedCrossingX": -0.7447775042569287,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 39,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 9.530207214225594e-07,
+      "sampleMinimumProposedAnchorGap": 0.23354839526217872,
+      "sampleMinimumConceptConnectorGap": -0.0487027564450041,
+      "firstDepartureMinimumZ": 2.9985039234161377
+    },
+    {
+      "mode": "candidate",
+      "delay": 55,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": null,
+      "projectedCrossingX": null,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 16,
+      "sampleMinimumOldInnerRailAndEndShaftGap": -2.5660797463855634e-06,
+      "sampleMinimumProposedAnchorGap": 0.23844109358746543,
+      "sampleMinimumConceptConnectorGap": -0.05031953306504637,
+      "firstDepartureMinimumZ": 3.4581971168518066
+    },
+    {
+      "mode": "candidate",
+      "delay": 60,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": null,
+      "projectedCrossingX": null,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 7,
+      "sampleMinimumOldInnerRailAndEndShaftGap": -0.014136132232462711,
+      "sampleMinimumProposedAnchorGap": 0.12433290872032413,
+      "sampleMinimumConceptConnectorGap": -0.08906952792046004,
+      "firstDepartureMinimumZ": 3.486483573913574
+    },
+    {
+      "mode": "candidate",
+      "delay": 60,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": null,
+      "projectedCrossingX": null,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 7,
+      "sampleMinimumOldInnerRailAndEndShaftGap": -0.014504686478427481,
+      "sampleMinimumProposedAnchorGap": 0.12571509709610648,
+      "sampleMinimumConceptConnectorGap": -0.08882651186474855,
+      "firstDepartureMinimumZ": 3.486222267150879
+    },
+    {
+      "mode": "candidate",
+      "delay": 65,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": null,
+      "projectedCrossingX": null,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 7,
+      "sampleMinimumOldInnerRailAndEndShaftGap": -0.016487436872455824,
+      "sampleMinimumProposedAnchorGap": 0.13285007075492192,
+      "sampleMinimumConceptConnectorGap": -0.08756527184183283,
+      "firstDepartureMinimumZ": 3.484758138656616
+    },
+    {
+      "mode": "candidate",
+      "delay": 65,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": null,
+      "projectedCrossingX": null,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 7,
+      "sampleMinimumOldInnerRailAndEndShaftGap": -0.01689869081504189,
+      "sampleMinimumProposedAnchorGap": 0.13236475617247265,
+      "sampleMinimumConceptConnectorGap": -0.08727076203033912,
+      "firstDepartureMinimumZ": 3.4844558238983154
+    },
+    {
+      "mode": "candidate",
+      "delay": 70,
+      "side": -1,
+      "firstOutboundCrossingZ3_35": null,
+      "projectedCrossingX": null,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 6,
+      "sampleMinimumOldInnerRailAndEndShaftGap": 9.021388157642862e-06,
+      "sampleMinimumProposedAnchorGap": 0.14645522791509494,
+      "sampleMinimumConceptConnectorGap": -0.08574289305657548,
+      "firstDepartureMinimumZ": 3.5021564960479736
+    },
+    {
+      "mode": "candidate",
+      "delay": 70,
+      "side": 1,
+      "firstOutboundCrossingZ3_35": null,
+      "projectedCrossingX": null,
+      "projectionShift": 0,
+      "samplesToFirstDownstreamTurnOrZ2_5": 6,
+      "sampleMinimumOldInnerRailAndEndShaftGap": -7.482974637318396e-06,
+      "sampleMinimumProposedAnchorGap": 0.14820313941713006,
+      "sampleMinimumConceptConnectorGap": -0.08539377298986166,
+      "firstDepartureMinimumZ": 3.5022261142730713
+    }
+  ],
+  "projectionLimits": [
+    "Saved accepted trajectories translated outward .15 without recomputing any collision or dynamics.",
+    "First outbound Z3.35 crossing only; stop at first downstream turn.",
+    "Distance samples are not continuous trajectory, CCD, curvature or complete world clearance proofs.",
+    "Reported clearances concern the stated inner rail/shaft, proposed support stations and conceptual connector only, not sling clearance."
+  ],
+  "saveScope": "Keep existing C fixed frame/low cam in any initial comparative diagnosis; moving actuation and bracket completion are separate. No finished-machine/adoption claim.",
+  "notChanged": [
+    "Keys",
+    "Forces",
+    "Solver",
+    "Board/shooter/upper/ramp/wire/slings",
+    "Bat shape/angles"
+  ],
+  "evidence": {
+    "artifacts/pinball/option-c-local-gates-1add1b7/baseline-coarse.json": {
+      "sha256": "45f3b6d0aab89c95694421d3b39a26ad64bde47d41ffa5674e9489736cdd8d1a",
+      "bytes": 13487617
+    },
+    "artifacts/pinball/option-c-local-gates-1add1b7/candidate-coarse.json": {
+      "sha256": "11a904ec353a12cc2599060ca525a60fb63935b982324b1e26fdb56ccea46d31",
+      "bytes": 7688928
+    },
+    "artifacts/pinball/option-c-local-gates-1add1b7/departure-analysis.json": {
+      "sha256": "7216d36d26c9c0b1abb9f755b993edd38393caf9bdbfae6926269e77e0cd25f6",
+      "bytes": 293902
+    },
+    "artifacts/pinball/option-c-local-gates-1add1b7/departure-findings.md": {
+      "sha256": "cc98e11d07deae1b2c63ab51833a4f2b8e558ed200e116faafcae7d10a7e91b0",
+      "bytes": 5551
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/sources.json": {
+      "sha256": "f956dcc144691d8cb8a35c676ead2795f7dd04dc173a143b6ad043f80b6ccdc3",
+      "bytes": 327648
+    }
+  }
+}

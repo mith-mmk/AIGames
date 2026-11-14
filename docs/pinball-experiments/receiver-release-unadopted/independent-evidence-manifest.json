@@ -1,0 +1,149 @@
+{
+  "candidateSHA256": "e8280a5a6a8cf1dcbb7aa570606ef4c2a0e8f2d9fd5bf7305315f2c7a8eb7e45",
+  "baseline": "8849609",
+  "status": "not adopted; visual/structure incomplete",
+  "render45": {
+    "baselineTriangles": 449612,
+    "candidateTriangles": 487288,
+    "candidateCalls": 572,
+    "budget": 500000
+  },
+  "physicalScope": "installed dimensional checks, not dynamics",
+  "files": [
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/baseline-lower-underside.png",
+      "bytes": 114483,
+      "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/candidate-lower-side.png",
+      "bytes": 113145,
+      "sha256": "21ad3fd7ab06245a413b01edfff1001bf49196360816e29242e87e9c6a35be60"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/candidate-lower-underside.png",
+      "bytes": 114483,
+      "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/candidate-lower-closeup.png",
+      "bytes": 792938,
+      "sha256": "0f327abf4ae9407e9d38236d7c296ceaab3de613a8c63aa57793bc5c7e05ee43"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/candidate-installed-90.png",
+      "bytes": 611250,
+      "sha256": "5504b81db66b45446d67ac11ea29f1c67f143c7dbe549b0f9e94aad4490a36fc"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/candidate-installed-45.png",
+      "bytes": 734230,
+      "sha256": "96b9d728aff7f499bb648b8cc1ce1c787e3572afb577bb39c200bedd4e6292e0"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/candidate-mobile-390.png",
+      "bytes": 249339,
+      "sha256": "7f211ee94d096831a567d4b86829d78864d070778e5c1917e1223f59c45117d2"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/baseline-installed-10.png",
+      "bytes": 429327,
+      "sha256": "a9baefbb89dcd31abda87f0f7eea52bf1b7e32511aa20c233577dd6ed2600b84"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/candidate-installed-10.png",
+      "bytes": 425999,
+      "sha256": "1c8c730bb26ec43a70606f3a4c25751c0b13e08387106c4276b3d76ce7385fb9"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/baseline-mobile-390.png",
+      "bytes": 252481,
+      "sha256": "dcf1e254317d3094e2653b12705caa72ba7b96502d54d18eb9acb2e4ce7b4d60"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/baseline-lower-side.png",
+      "bytes": 113297,
+      "sha256": "37fff113b73ae1ff9d55b94c99e41aaa7b30c60ea4d7f1cf3583c875b27b35e4"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/baseline-installed-45.png",
+      "bytes": 739686,
+      "sha256": "2c455a455527f98ef453a7151038c6bb95fa11a5255214b7b047b5933beb450d"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/baseline-installed-90.png",
+      "bytes": 615702,
+      "sha256": "88f6759271b141b16c2c511faee495455a4cfad43cfc540f8c25cbe5fe7e8654"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/preview-final/baseline-lower-closeup.png",
+      "bytes": 792028,
+      "sha256": "365df1f91c3285b55916c9ecf4b3c40f23ec77c24d227720e7a5b2ac73dd3a3b"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/geometry-review/cutaway-lower-underside.png",
+      "bytes": 161526,
+      "sha256": "7061be94937ce6c7d42aa8fde57254576c3f5dcdecb9646b53186bf8a663af29"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/geometry-review/cutaway-lower-top.png",
+      "bytes": 199210,
+      "sha256": "ae56ec96df0c87c6d996f3011f167cc5d8c0de1d3a163ebf6bc11719d25fda5e"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/heel-review/baseline-rest-cutaway-belt-core-rails.png",
+      "bytes": 136707,
+      "sha256": "a4394056ba0d2625bc8cb4c063d3fa2afd4720f87ff4a81b8f9e9b97df729e73"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/heel-review/candidate-rest-cutaway-belt-core-rails.png",
+      "bytes": 172577,
+      "sha256": "3070a9c3a2098e51c65a5fa877ba731a33546cc30b9b7e0cde85f96f41f30e7a"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/heel-review/baseline-held-installed-heel.png",
+      "bytes": 525395,
+      "sha256": "292b59efdabfab8c713226994df8ec44ddd86f5d3794348900117973726b6bfd"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/heel-review/candidate-rest-installed-heel.png",
+      "bytes": 481918,
+      "sha256": "37da29c5ce791066170ebbefc6fffd47b50621dff23b712eab6f169265c53d6c"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/heel-review/baseline-held-cutaway-belt-core-rails.png",
+      "bytes": 143698,
+      "sha256": "4de2ce73ddfd245554e1f7fa7e09f6e00bb31c1d4377955a758510e9778319d4"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/heel-review/candidate-held-cutaway-belt-core-rails.png",
+      "bytes": 180976,
+      "sha256": "c2c066a1a7a3aa0e77c90ffbee95ab1e33538d11063fb1d3933253b559b7c8d7"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/heel-review/baseline-rest-installed-heel.png",
+      "bytes": 499869,
+      "sha256": "74928b2011e64c651b360ddc5962284af061dd5f773dbff7f808012a1d1b0467"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/heel-review/candidate-held-installed-heel.png",
+      "bytes": 526299,
+      "sha256": "fef7f559cb86bec6e22e137f9e4f4f7ecb790f07f3eb6144671db9a09fb61502"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/README.md",
+      "bytes": 4189,
+      "sha256": "3699a2e9bcb812e0155730a7204b202db39b3c9dd019d914d623fa7cb35d8846"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/visual.log",
+      "bytes": 835,
+      "sha256": "470ff73f1547bcd9a5b740503aafe3115eeceab10a52d5ed912f5a5779769751"
+    },
+    {
+      "path": "artifacts/pinball/receiver-independent-8849609/geometry-review/actual-mesh-contact.json",
+      "bytes": 43844,
+      "sha256": "a0abb4bcdced56d20ca7383614bc9c690eb762afc0f112c775bb10beca5e23fb"
+    }
+  ]
+}

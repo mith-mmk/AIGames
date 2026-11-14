@@ -1,0 +1,68 @@
+{
+  "kind": "Additive departure analysis supplement",
+  "adopted": false,
+  "headAtPreservation": "884960985a413986d57aff0c2280e59a7be79dcf",
+  "acceptedRuntime": "c1f7aeba28e9fb55117fa0fedbc975f5e8e72d84",
+  "frozenCandidateSourcesSHA256": "f956dcc144691d8cb8a35c676ead2795f7dd04dc173a143b6ad043f80b6ccdc3",
+  "originalArtifactDirectory": "artifacts/pinball/option-c-local-gates-1add1b7",
+  "files": {
+    "departure-findings.md": {
+      "sha256": "cc98e11d07deae1b2c63ab51833a4f2b8e558ed200e116faafcae7d10a7e91b0",
+      "bytes": 5551
+    },
+    "departure-analysis.json": {
+      "sha256": "7216d36d26c9c0b1abb9f755b993edd38393caf9bdbfae6926269e77e0cd25f6",
+      "bytes": 293902
+    },
+    "departure-analysis.mjs": {
+      "sha256": "6c002f48443c6a4bfc05efb7e697a54c3497fa908b08312ab33d9f13f028af00",
+      "bytes": 2120
+    }
+  },
+  "rawTraceReferences": {
+    "baseline-coarse.json": {
+      "sha256": "45f3b6d0aab89c95694421d3b39a26ad64bde47d41ffa5674e9489736cdd8d1a",
+      "bytes": 13487617,
+      "preservedInPacket": false
+    },
+    "candidate-coarse.json": {
+      "sha256": "11a904ec353a12cc2599060ca525a60fb63935b982324b1e26fdb56ccea46d31",
+      "bytes": 7688928,
+      "preservedInPacket": false
+    }
+  },
+  "unchangedExistingFiles": {
+    "local-summary.json": "1e47d6de797c1a3958cf3addb85284055bd8722a6836b7b2043d3d1886a8deeb",
+    "coarse-summary.json": "e6b0adf63c8c8d453229af7bba654742b7916be3d53072752211549879eea882",
+    "evidence-references.json": "b991bc89f8a16ec97b5c46bfa06b0bd54e73b43fc0beeb8a64f5d3f28a4b5a16",
+    "diagnostic-summary.json": "fc590366b1bcd64d2ce052d820fdc7a6edb3e2f5e883d017da3f171f1ea8baf3",
+    "restore.mjs": "9d9a5b5abd3f244846c716316a2fc52540be286243a7b46b342dc02bd8757794",
+    "independent-review.md": "ed6aca34b9f081240688af098eba4decfd4278c7e940c361e6c0fa1d0bb1ad33",
+    "README.md": "ece76d7b341643fbb94ec9e7992120061abaad3860f86ef5fbae079d8ea39476",
+    "packet-manifest.json": "1a045f96e70a4b3d3600285b6970585e239f890f5f850eb54f939c740e8329bd",
+    "coarse-findings.md": "155b514701c41f8490f7f8237f93008a1fa0525ab618c8957a5dabe2a6d97c70",
+    "verification.json": "bb2f6d06559f16f154d55940564e80105f6b341d5edfa7072502909a7a230eed",
+    "payload/dependencies.json": "3575723c26a6a46373f63b484cda7caeafdd056cd64eadf587f099803204078d",
+    "payload/geometry-audit.json": "1b51ef4aeada9bf412d197e2643332e2273f3e31b2fda7e3690e6e144fa40317",
+    "payload/README.md": "33578e850dcedd51b9280f72087759706691c2bd28f698d25b0442d9d8b84135",
+    "payload/study-helper.mjs": "428ba71a007af7d7f862174da82edc1fa1c137c06260818073df769dafdf0854",
+    "payload/geometry-audit.mjs": "956a75d2c18843a2ba64eeb4700fd2e4eeb99511ff89e7e0c4ce371b813d79b3",
+    "payload/loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+    "payload/build.mjs": "adc083cbf25b26f6e5f66b23b18d6ef3035824f44c6ceee49aeb30e152746070",
+    "payload/manifest.json": "5aa22fd444abdacdafa4e689e23a4d426c2a502e4eb811e7d0ff1c2fbcc65425",
+    "payload/layout-functions.mjs.txt": "1056bf9eb1a342ba4532c406a4f68df683c0fe17dd3ed6beec2aec7eb8cb759a",
+    "payload/verify-freeze.mjs": "fdda7f76543dd1cf970aa95192bffcac5547b5d389f86172be86294ea0ee5d49",
+    "diagnostics/coarse.mjs": "871c34a5cd74fc82789cfce8d134b071fa0ee4d139b3ae3ed864d42a5219126f",
+    "diagnostics/summarize-coarse.mjs": "9b6272483a0f737dcac5e3cb2abc2c85f27eede2b10908d94feeb2e3a8c2d06f",
+    "diagnostics/launch.mjs": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6",
+    "diagnostics/lanes.mjs": "b8fe415d25c6f85b08edc3a0f54a1d8182c2dbf89fe24e1c5a120e7becf9526d"
+  },
+  "allExistingFilesUnchanged": true,
+  "correction": "Prior no-shaft wording only referred to heel shaft Z4.10. C60\u201370 contact retained inner rail endpoint and new shaft at Z3.35.",
+  "reproduce": "Restore original packet as documented. Copy departure-analysis.mjs to original diagnostic artifact directory alongside original baseline-coarse.json/candidate-coarse.json, verify hashes, then node that script. It performs offline analysis only. Large raw traces are references, not bundled; exact regeneration requires the frozen coarse runner and original order.",
+  "limits": [
+    "Bat pose reconstructed from input/update rules, not recorded transform.",
+    "Exact coil substep/lastFlipperShot absent; no new dynamics.",
+    "Not continuous aim qualification, natural reachability or adoption."
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "status": "Recovery verified; candidate remains unadopted.",
+  "node": "v26.7.0",
+  "originalBuildSha256": "b31504c193bac2db62ee14c54e8767d80e46e13d03bc1dfe01db8737240d7401",
+  "originalFreezeUnchanged": {
+    "sources.json": true,
+    "candidate-mesh-sections.log": true,
+    "dependencies.json": true,
+    "heel-mesh-overlap.svg": true,
+    "heel-mesh-overlap.html": true,
+    "prior-c-changes.json": true,
+    "geometry-audit.json": true,
+    "receiver-functions.mjs.txt": true,
+    "heel-mesh-overlap.png": true,
+    "README.md": true,
+    "geometry-audit.mjs": true,
+    "baseline-bat-overlap.mjs": true,
+    "loader.mjs": true,
+    "mesh-section.mjs": true,
+    "build.mjs": true,
+    "manifest.json": true,
+    "baseline-mesh-sections.json": true,
+    "changes.json": true,
+    "geometry-audit.log": true,
+    "prior-c-helper.mjs": true,
+    "baseline-mesh-sections.log": true,
+    "baseline-bat-overlap.json": true,
+    "baseline-sources.json": true,
+    "candidate-mesh-sections.json": true,
+    "verify-freeze.mjs": true
+  },
+  "existingDepartureSupplementUnchanged": {
+    "departure-analysis.json": true,
+    "departure-supplement-manifest.json": true,
+    "departure-analysis.mjs": true,
+    "departure-findings.md": true
+  },
+  "inMemoryReconstruction": {
+    "allFourGeneratedHashesMatch": true,
+    "generatedHashes": {
+      "sources.json": "e8280a5a6a8cf1dcbb7aa570606ef4c2a0e8f2d9fd5bf7305315f2c7a8eb7e45",
+      "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "changes.json": "f330007dc6398fe1ef68c9ceb99271aa1d95bf9feb6d15c464d617fd264f8f58",
+      "manifest.json": "c998468810e4933e49c2ce92f4ee4ec7faece1c20cec39dd32a55615dedd8ce8"
+    },
+    "originalArtifactWrites": 0,
+    "originalArtifactReads": "Only the three known build inputs are redirected to archived payload; unexpected original-directory reads throw."
+  },
+  "freshSeparateOutput": {
+    "filesCreated": 16,
+    "allSixteenRecoveryFilesByteIdentical": {
+      "sources.json": true,
+      "baseline-sources.json": true,
+      "changes.json": true,
+      "manifest.json": true,
+      "build.mjs": true,
+      "prior-c-changes.json": true,
+      "prior-c-helper.mjs": true,
+      "receiver-functions.mjs.txt": true,
+      "loader.mjs": true,
+      "dependencies.json": true,
+      "README.md": true,
+      "verify-freeze.mjs": true,
+      "geometry-audit.mjs": true,
+      "baseline-bat-overlap.mjs": true,
+      "baseline-bat-overlap.json": true,
+      "mesh-section.mjs": true
+    },
+    "sourceSetSha256": "e8280a5a6a8cf1dcbb7aa570606ef4c2a0e8f2d9fd5bf7305315f2c7a8eb7e45",
+    "scope": "Exact source recovery set; omitted images/static raw traces are not claimed restored."
+  },
+  "idempotentSecondRun": {
+    "filesCreated": 0,
+    "filesReused": 16
+  },
+  "recoveredLoaderAssembly": {
+    "colliders": 1555,
+    "attachments": 62,
+    "camVertices": 10,
+    "pivot": [
+      1.4,
+      0.27,
+      4.45
+    ],
+    "shooterX": 2.53,
+    "lowerSegmentsPerSide": [
+      65,
+      1,
+      42
+    ],
+    "mountStationsPerSide": 9,
+    "gameplayNotRerun": true
+  },
+  "differingExistingFileTest": {
+    "exitCode": 1,
+    "preflightRejectedBeforeWrites": true,
+    "sentinelUnchanged": true,
+    "directoryStillOnlySentinel": true
+  },
+  "outsideAllowedOutputTest": {
+    "exitCode": 1,
+    "rejected": true
+  },
+  "originalFrozenOutputTest": {
+    "exitCode": 1,
+    "rejectedEvenThoughMatching": true
+  },
+  "danglingDirectorySymlinkTest": {
+    "exitCode": 1,
+    "rejected": true
+  },
+  "danglingOutputFileSymlinkTest": {
+    "exitCode": 1,
+    "rejectedBeforeWrites": true
+  },
+  "payloadMatchesOriginal": {
+    "dependencies.json": true,
+    "prior-c-changes.json": true,
+    "receiver-functions.mjs.txt": true,
+    "README.md": true,
+    "geometry-audit.mjs": true,
+    "baseline-bat-overlap.mjs": true,
+    "loader.mjs": true,
+    "mesh-section.mjs": true,
+    "build.mjs": true,
+    "manifest.json": true,
+    "prior-c-helper.mjs": true,
+    "baseline-bat-overlap.json": true,
+    "verify-freeze.mjs": true
+  },
+  "temporaryOutputs": "Four temporary restore/conflict/symlink fixtures moved to Trash. No gameplay, browser or full-regression rerun. Original evidence retained.",
+  "trashDirectory": "/Users/tsaito/.Trash/receiver-release-recovery-checks-1ed9364825"
+}

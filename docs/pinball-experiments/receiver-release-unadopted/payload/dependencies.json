@@ -1,0 +1,134 @@
+{
+  "sourceSha256": "e8280a5a6a8cf1dcbb7aa570606ef4c2a0e8f2d9fd5bf7305315f2c7a8eb7e45",
+  "base": "884960985a413986d57aff0c2280e59a7be79dcf",
+  "files": {
+    "artifacts/pinball/receiver-release-8849609/README.md": {
+      "bytes": 11188,
+      "sha256": "71dcbdb4511ee1f144bb923b9329f76e290881da51e796fe66b3334810564a30"
+    },
+    "artifacts/pinball/receiver-release-8849609/baseline-bat-overlap.json": {
+      "bytes": 12129,
+      "sha256": "bd7619556e9eb85ba698c37a5ee585c2cd0349881df135e297bbcf200d10ed17"
+    },
+    "artifacts/pinball/receiver-release-8849609/baseline-bat-overlap.mjs": {
+      "bytes": 1313,
+      "sha256": "323d9b878b8d2cfd04686b3cf934f00756cdb219debaefe805cee674f8bbd0c6"
+    },
+    "artifacts/pinball/receiver-release-8849609/baseline-mesh-sections.json": {
+      "bytes": 109679,
+      "sha256": "c365eb3cf161f2b5183fb3f328859f3cce908aa3adaf4414ac308383efb11219"
+    },
+    "artifacts/pinball/receiver-release-8849609/baseline-mesh-sections.log": {
+      "bytes": 9430,
+      "sha256": "7bf1ada9111679a06bdaa185a3d01e7f7bc00841c192a122d269c775b14d8d63"
+    },
+    "artifacts/pinball/receiver-release-8849609/baseline-sources.json": {
+      "bytes": 329885,
+      "sha256": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199"
+    },
+    "artifacts/pinball/receiver-release-8849609/build.mjs": {
+      "bytes": 5242,
+      "sha256": "b31504c193bac2db62ee14c54e8767d80e46e13d03bc1dfe01db8737240d7401"
+    },
+    "artifacts/pinball/receiver-release-8849609/candidate-mesh-sections.json": {
+      "bytes": 249168,
+      "sha256": "8f3e47abd99249839b63bc36c8f35be857cfce82288854caf52687c23f88ca3e"
+    },
+    "artifacts/pinball/receiver-release-8849609/candidate-mesh-sections.log": {
+      "bytes": 9430,
+      "sha256": "7bf1ada9111679a06bdaa185a3d01e7f7bc00841c192a122d269c775b14d8d63"
+    },
+    "artifacts/pinball/receiver-release-8849609/changes.json": {
+      "bytes": 12932,
+      "sha256": "f330007dc6398fe1ef68c9ceb99271aa1d95bf9feb6d15c464d617fd264f8f58"
+    },
+    "artifacts/pinball/receiver-release-8849609/geometry-audit.json": {
+      "bytes": 244584,
+      "sha256": "69e95c9e1a99f98ee3b32cc628963a9b6c3920cc9b88760a221eb5179e402103"
+    },
+    "artifacts/pinball/receiver-release-8849609/geometry-audit.log": {
+      "bytes": 19616,
+      "sha256": "3031d2b865b1e59c26aa52d40ec1b2c83cf61f979e12716dd4f28ea69fa7a4f0"
+    },
+    "artifacts/pinball/receiver-release-8849609/geometry-audit.mjs": {
+      "bytes": 9008,
+      "sha256": "c1cd01dfd3c59709e687ec7cc6a89ae1d44188d278749dda812ebb5981f7232e"
+    },
+    "artifacts/pinball/receiver-release-8849609/heel-mesh-overlap.html": {
+      "bytes": 165582,
+      "sha256": "f93a5ccd2e750ced9c0f6830fe9f72e882a4367cc2fe622056fcb442b966cdb8"
+    },
+    "artifacts/pinball/receiver-release-8849609/heel-mesh-overlap.png": {
+      "bytes": 145274,
+      "sha256": "33f82e80d23ce8dc3a0e572bebb61d050cbb3813e28974705591e811d81d98b9"
+    },
+    "artifacts/pinball/receiver-release-8849609/heel-mesh-overlap.svg": {
+      "bytes": 165450,
+      "sha256": "36d27c00b318beb2046ad61161044df783679e3e88f1986e7a99adf6337f9051"
+    },
+    "artifacts/pinball/receiver-release-8849609/loader.mjs": {
+      "bytes": 948,
+      "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+    },
+    "artifacts/pinball/receiver-release-8849609/manifest.json": {
+      "bytes": 14511,
+      "sha256": "c998468810e4933e49c2ce92f4ee4ec7faece1c20cec39dd32a55615dedd8ce8"
+    },
+    "artifacts/pinball/receiver-release-8849609/mesh-section.mjs": {
+      "bytes": 4331,
+      "sha256": "f2b31aef6b8843831a6bc0ad69ded18c5a6d51c5e21b5ea9dae18d669e682a26"
+    },
+    "artifacts/pinball/receiver-release-8849609/prior-c-changes.json": {
+      "bytes": 6782,
+      "sha256": "0bb1859acb3131b42fb6710772e897e17bc9679a1782323d377a3559cffbd0d4"
+    },
+    "artifacts/pinball/receiver-release-8849609/prior-c-helper.mjs": {
+      "bytes": 6628,
+      "sha256": "428ba71a007af7d7f862174da82edc1fa1c137c06260818073df769dafdf0854"
+    },
+    "artifacts/pinball/receiver-release-8849609/receiver-functions.mjs.txt": {
+      "bytes": 2799,
+      "sha256": "b6becaaa02d5f4de0d1a41c6ee1ae4855e698d9fd51105e2d8e9184c622f036c"
+    },
+    "artifacts/pinball/receiver-release-8849609/sources.json": {
+      "bytes": 339856,
+      "sha256": "e8280a5a6a8cf1dcbb7aa570606ef4c2a0e8f2d9fd5bf7305315f2c7a8eb7e45"
+    },
+    "artifacts/pinball/receiver-release-8849609/verify-freeze.mjs": {
+      "bytes": 1992,
+      "sha256": "d0d037631080d4f1fffe405bbbe5aa4381b1d63b7864febc9cc8abcef8ce1592"
+    },
+    "web/js/vendor/rapier3d-0.17.3/LICENSE": {
+      "bytes": 11343,
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+    },
+    "web/js/vendor/rapier3d-0.17.3/NOTICE": {
+      "bytes": 158,
+      "sha256": "2d2673e951a4b20b2c06b561412b23a2731b5c0006031f66931234b7ec21161a"
+    },
+    "web/js/vendor/rapier3d-0.17.3/rapier.mjs": {
+      "bytes": 2407199,
+      "sha256": "e0f7783dae9d3d175ec62c0cafdad84261d8c64c5f7da6ae5b24e858cf9ab759"
+    },
+    "web/js/vendor/three-0.180.0/LICENSE": {
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    "web/js/vendor/three-0.180.0/controls/OrbitControls.js": {
+      "bytes": 38703,
+      "sha256": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c"
+    },
+    "web/js/vendor/three-0.180.0/package.json": {
+      "bytes": 77,
+      "sha256": "0cc47147be8fcf7c0325e3d81ff01f11ad848d6251faf9d58bc60f7483854f55"
+    },
+    "web/js/vendor/three-0.180.0/three.core.min.js": {
+      "bytes": 381124,
+      "sha256": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de"
+    },
+    "web/js/vendor/three-0.180.0/three.module.min.js": {
+      "bytes": 338908,
+      "sha256": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6"
+    }
+  }
+}
