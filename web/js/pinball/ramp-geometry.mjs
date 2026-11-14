@@ -67,6 +67,16 @@ function surface(rows, kind) {
     positions.push(...a.toArray(),...b.toArray());
   }
   for(let i=0;i<rows.length-1;i++){const k=i*2;indices.push(k,k+1,k+2,k+1,k+3,k+2);}
+  // The two channel walls face opposite directions. Edge correction needs
+  // both normals to face into the ball channel, not identical winding.
+  if(kind!=='deck')for(let i=0;i<indices.length;i+=3){
+    const row=Math.floor(i/6),at=index=>new T.Vector3(...positions.slice(index*3,index*3+3));
+    const a=at(indices[i]),b=at(indices[i+1]),c=at(indices[i+2]);
+    const normal=b.clone().sub(a).cross(c.clone().sub(a));
+    const inward=rows[row].p.clone().add(rows[row+1].p).multiplyScalar(.5).sub(a.clone().add(b).add(c).multiplyScalar(1/3));
+    inward.y=0;
+    if(normal.dot(inward)<0)[indices[i+1],indices[i+2]]=[indices[i+2],indices[i+1]];
+  }
   return {positions:new Float32Array(positions),indices:new Uint32Array(indices)};
 }
 function skirt(rows,side) {
@@ -85,9 +95,11 @@ export function buildPhysicalRamp(game) {
   const rows=sampleRamp(), colliders=[];
   const wireStart=Math.round((rows.length-1)*WIRE_START_FRACTION);
   // One continuous deck removes seam ridges that trapped slow returning balls.
-  // Deck normals are corrected; sidewalls retain their physical inward normals.
+  // Correct the deck and left S-bend internal edges after orienting the left
+  // face into the channel. Keep the right wall's established contact response:
+  // correcting it too loses required natural 82/83-tick ramp shots.
   for(const kind of ['deck','left','right']) {
-    for (const [start,end,flags] of [[0,wireStart,kind==='deck'?R.TriMeshFlags.FIX_INTERNAL_EDGES:undefined]]) {
+    for (const [start,end,flags] of [[0,wireStart,kind==='right'?undefined:R.TriMeshFlags.FIX_INTERNAL_EDGES]]) {
       const data=surface(rows.slice(start,end+1),kind);
       colliders.push(game.world.createCollider(R.ColliderDesc.trimesh(data.positions,data.indices,flags).setFriction(0.025).setRestitution(.02)));
     }

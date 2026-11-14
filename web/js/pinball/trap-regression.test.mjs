@@ -107,7 +107,22 @@ test("continuous ramp collision meshes share every route row and triangle edge w
         const b=kind==='deck'?row.right:row[kind].clone().add({x:0,y:RAMP_WALL_HEIGHT,z:0});
         const expected=[a.x,a.y,a.z,b.x,b.y,b.z];
         for(let k=0;k<6;k++)assert.ok(Math.abs(vertices[i*6+k]-expected[k])<1e-6,`${kind} row ${i} vertex ${k}`);
-        if(i<rows.length-1)assert.deepEqual(Array.from(indices.slice(i*6,i*6+6)),[2*i,2*i+1,2*i+2,2*i+1,2*i+3,2*i+2]);
+        if(i<rows.length-1){
+          const topology=[[2*i,2*i+1,2*i+2],[2*i+1,2*i+3,2*i+2]];
+          for(let triangle=0;triangle<2;triangle++){
+            const actual=Array.from(indices.slice(i*6+triangle*3,i*6+triangle*3+3));
+            if(kind==='deck')assert.deepEqual(actual,topology[triangle]);
+            else assert.deepEqual([...actual].sort((a,b)=>a-b),topology[triangle].sort((a,b)=>a-b));
+            if(kind!=='deck'){
+              const point=index=>row.p.clone().set(...vertices.slice(index*3,index*3+3));
+              const [a,b,c]=actual.map(point);
+              const normal=b.clone().sub(a).cross(c.clone().sub(a)).normalize();
+              const inward=row.p.clone().add(rows[i+1].p).multiplyScalar(.5).sub(a.clone().add(b).add(c).multiplyScalar(1/3));
+              inward.y=0;
+              assert.ok(normal.dot(inward)>0,`${kind} row ${i} triangle ${triangle} must face into the channel`);
+            }
+          }
+        }
       }
     }
   } finally { g.dispose(); }

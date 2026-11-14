@@ -90,3 +90,19 @@ A new `node scripts/pinball-ramp-entry-audit.mjs 3` runs every independent groun
 - Desktop views 10/45/56/90 degrees and mobile 45/56/90 degrees were recaptured with no page errors. Ramp, wireform and target were recaptured in top/45/side/underside/mounting/action views. These remain diagnostic images, not reference-quality sign-off.
 
 Next implementation work must jointly redesign the ramp's low structural base, entry/crest and target clearance, with all six strong ground entries and repeated world creation gated alongside actual flipper/capture/refire tests. Do not accept an isolated successful run or merely make the failure message disappear.
+
+## 2026-11-14 ramp contact correction: required gates now pass
+
+The continuation above was superseded by a concrete mesh-normal correction. The left ramp wall used the same triangle winding as the right wall, despite facing the opposite side of the channel. `surface()` now orients each wall triangle toward its local channel center. This also handles the two rear bend segments whose offset wall locally doubles back. Internal-edge correction is enabled on the left wall as well as the deck. The right wall retains its prior contact setting: enabling correction there too broke the required 82/83-tick natural shots and was not adopted.
+
+No ramp path points, height, channel width, target locations, launch speeds, required shot timings or completion thresholds were changed. No added wall, hidden supporting floor, rescue impulse or live position reset is used. The attempted low-support shell replacement and joint S-shape candidates were rejected because they broke existing natural routes. Existing support geometry remains; this is a contact fix, not the completed support/layout redesign.
+
+Final verification on this runtime:
+
+- Full `npm test`: **139/139 pinball tests pass**, with the preceding repository checks passing. Lint has zero errors and the same three CSS warnings. The wall regression checks every row and every triangle's vertex connectivity plus inward wall normals; the unchanged deck retains exact ordered-index checks. The final tightened topology test also passes separately (5/5).
+- Independent ground entries: **120/120 completions**, all six speed/offset cases repeated through twenty fresh-world batches. The full trace and source hashes are in `artifacts/pinball/ramp-entry-audit.json`; the command is `node scripts/pinball-ramp-entry-audit.mjs 20`.
+- The required ramp/lower-layout files pass **20/20**. Independent repeated natural 80–84-tick shots pass **15/15** and return the same ball to a settled left cradle. Final browser keyboard/touch controls also verify ramp entry/rear/exit, capture, re-fire and new scoring.
+- Fresh legal-input closed-loop games at .65/.85/1.0 reach three-ball game over with **3,075 / 2,700 / 3,300 points**, **1 / 0 / 0** ramp traversals and **zero live position resets**. These differ from the preceding checkpoint; do not reuse the previous score/traversal results as current behavior or claim improved human difficulty.
+- Browser smoke passes launch, input, pause/restart, mobile, blur, context restoration and reload. Static build verifies 356 runtime/license files. Desktop/mobile multiview and ramp/wireform/target component captures were regenerated and reviewed. Their silhouette and placement are unchanged.
+
+Limits: 120 successful fixtures do not prove bitwise determinism, all possible contacts, or a general Rapier fix. The two tightly curved rear offset-wall segments still have a small local fold; orienting their normals does not redesign that shape. The right-bank placement, low supports, S silhouette, left wire/sling overlap and reference likeness remain open. The public site has not been updated by this checkpoint. Physical-phone performance and human playability are still unverified.
