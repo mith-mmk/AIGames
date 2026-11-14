@@ -1,0 +1,51 @@
+{
+  "base": "c1f7aeb",
+  "baseFull": "c1f7aeba28e9fb55117fa0fedbc975f5e8e72d84",
+  "documentationHead": "1add1b7af93d18b724ac8f2d4cb53f893e2381e1",
+  "adopted": false,
+  "originalArtifactDirectory": "artifacts/pinball/option-c-earlycurve-1add1b7",
+  "payload": {
+    "payload/build.mjs": "adc083cbf25b26f6e5f66b23b18d6ef3035824f44c6ceee49aeb30e152746070",
+    "payload/study-helper.mjs": "428ba71a007af7d7f862174da82edc1fa1c137c06260818073df769dafdf0854",
+    "payload/layout-functions.mjs.txt": "1056bf9eb1a342ba4532c406a4f68df683c0fe17dd3ed6beec2aec7eb8cb759a",
+    "payload/loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+    "payload/manifest.json": "5aa22fd444abdacdafa4e689e23a4d426c2a502e4eb811e7d0ff1c2fbcc65425",
+    "payload/dependencies.json": "3575723c26a6a46373f63b484cda7caeafdd056cd64eadf587f099803204078d",
+    "payload/README.md": "33578e850dcedd51b9280f72087759706691c2bd28f698d25b0442d9d8b84135",
+    "payload/geometry-audit.mjs": "956a75d2c18843a2ba64eeb4700fd2e4eeb99511ff89e7e0c4ce371b813d79b3",
+    "payload/geometry-audit.json": "1b51ef4aeada9bf412d197e2643332e2273f3e31b2fda7e3690e6e144fa40317",
+    "payload/verify-freeze.mjs": "fdda7f76543dd1cf970aa95192bffcac5547b5d389f86172be86294ea0ee5d49"
+  },
+  "generated": {
+    "sources.json": "f956dcc144691d8cb8a35c676ead2795f7dd04dc173a143b6ad043f80b6ccdc3",
+    "baseline-sources.json": "7a9b9fd4d71d5f33ebcd6311093b568dfde34d87bec07409c84e2a2c6961207d",
+    "changes.json": "0bb1859acb3131b42fb6710772e897e17bc9679a1782323d377a3559cffbd0d4",
+    "manifest.json": "5aa22fd444abdacdafa4e689e23a4d426c2a502e4eb811e7d0ff1c2fbcc65425"
+  },
+  "restorePayload": [
+    "build.mjs",
+    "study-helper.mjs",
+    "layout-functions.mjs.txt",
+    "loader.mjs",
+    "dependencies.json",
+    "README.md",
+    "geometry-audit.mjs",
+    "geometry-audit.json",
+    "verify-freeze.mjs"
+  ],
+  "supportFiles": {
+    "README.md": "ece76d7b341643fbb94ec9e7992120061abaad3860f86ef5fbae079d8ea39476",
+    "coarse-findings.md": "155b514701c41f8490f7f8237f93008a1fa0525ab618c8957a5dabe2a6d97c70",
+    "coarse-summary.json": "e6b0adf63c8c8d453229af7bba654742b7916be3d53072752211549879eea882",
+    "diagnostic-summary.json": "fc590366b1bcd64d2ce052d820fdc7a6edb3e2f5e883d017da3f171f1ea8baf3",
+    "diagnostics/coarse.mjs": "871c34a5cd74fc82789cfce8d134b071fa0ee4d139b3ae3ed864d42a5219126f",
+    "diagnostics/lanes.mjs": "b8fe415d25c6f85b08edc3a0f54a1d8182c2dbf89fe24e1c5a120e7becf9526d",
+    "diagnostics/launch.mjs": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6",
+    "diagnostics/summarize-coarse.mjs": "9b6272483a0f737dcac5e3cb2abc2c85f27eede2b10908d94feeb2e3a8c2d06f",
+    "evidence-references.json": "b991bc89f8a16ec97b5c46bfa06b0bd54e73b43fc0beeb8a64f5d3f28a4b5a16",
+    "independent-review.md": "ed6aca34b9f081240688af098eba4decfd4278c7e940c361e6c0fa1d0bb1ad33",
+    "local-summary.json": "1e47d6de797c1a3958cf3addb85284055bd8722a6836b7b2043d3d1886a8deeb",
+    "restore.mjs": "9d9a5b5abd3f244846c716316a2fc52540be286243a7b46b342dc02bd8757794",
+    "verification.json": "bb2f6d06559f16f154d55940564e80105f6b341d5edfa7072502909a7a230eed"
+  }
+}

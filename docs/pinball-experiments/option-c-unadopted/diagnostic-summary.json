@@ -1,0 +1,127 @@
+{
+  "status": "Unadopted. Frozen C source recovered for diagnosis, not production.",
+  "sourceSha256": "f956dcc144691d8cb8a35c676ead2795f7dd04dc173a143b6ad043f80b6ccdc3",
+  "base": "c1f7aeb",
+  "documentationHead": "1add1b7",
+  "coarse": {
+    "allRows": 36,
+    "criterion": "Observed z < -1 after repress; not full-game success, continuous aiming width, or natural ramp reachability.",
+    "fixedReleaseTicks": [
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70
+    ],
+    "order": "Ascending delay, left then right, 18 accepted followed by 18 candidate in separate processes.",
+    "baselineUpstream": 14,
+    "candidateUpstream": 3,
+    "allInitialGapPositive": true,
+    "allCaptured": true,
+    "allExactlyOneCoil": true,
+    "allSameBallAtRepress": true,
+    "allNoLiveReset": true,
+    "candidateSuccessfulRows": [
+      {
+        "delay": 30,
+        "side": -1,
+        "minimumZ": -1.02497136592865
+      },
+      {
+        "delay": 30,
+        "side": 1,
+        "minimumZ": -1.871209979057312
+      },
+      {
+        "delay": 40,
+        "side": -1,
+        "minimumZ": -1.7133126258850098
+      }
+    ]
+  },
+  "naturalLaunch": {
+    "powers": [
+      0.55,
+      0.65,
+      0.75,
+      0.85,
+      0.925,
+      1
+    ],
+    "baselineAllReachedField": true,
+    "candidateAllReachedField": true,
+    "baselineScores": [
+      25,
+      25,
+      25,
+      525,
+      525,
+      325
+    ],
+    "candidateScores": [
+      25,
+      25,
+      25,
+      425,
+      425,
+      425
+    ],
+    "weakPower": 0.1,
+    "bothSameBallWeakReturnAndInPlaceRelaunch": true,
+    "note": "Reported from saved ordinary-engine diagnostic; not rerun during packaging."
+  },
+  "localFixtures": {
+    "candidateUnchargedOutDrainTicks": {
+      "left": 130,
+      "right": 119
+    },
+    "candidateUnchargedLeftCamContactTicks": 21,
+    "oneFixtureCharge": "One cam-gated event/firing and consumed charge; artificially initialized charge is not natural earning proof.",
+    "candidateHeldCaptureTicks": {
+      "left": 198,
+      "right": 199
+    },
+    "acceptedHeldCaptureTicks": {
+      "left": 322,
+      "right": 322
+    },
+    "release45": "Both C coils fire once but shaft/sling path returns downstream; C does not meet z < -1 in this matched timing.",
+    "invalidOffset": "Known inward .050 static shaft overlap was not dynamically spawned or corrected."
+  },
+  "budget": {
+    "unchangedTriangleLimit": 500000,
+    "candidate45": 501688,
+    "candidate10": 501544,
+    "candidateTop": 495368,
+    "pageErrors": 0,
+    "result": "FAIL at 45 and 10 degrees"
+  },
+  "visualAndMechanism": {
+    "improved": "OUT follows a parallel curve rather than fan widening.",
+    "unmet": [
+      "Reference long bands remain short printed patches.",
+      "Left cam crosses the OUT marking.",
+      "Static cam/rod plus impulse does not model moving actuation.",
+      "Coil housing-to-studs .029 lateral gap has no bridging bracket; fastening/load path unfinished."
+    ]
+  },
+  "notRun": [
+    "Full 198 regression",
+    "Natural 54 controller suite",
+    "Continuous aiming qualification",
+    "Natural wire handoff qualification",
+    "Physical phone or human play",
+    "Any additional source variant, geometry/force search or removal replay"
+  ],
+  "limits": [
+    "Relative fixtures differ by layout and are not common-state causal comparisons.",
+    "Three successful candidate timings disprove an absolute all-refire barrier, not a broad continuous aim range.",
+    "End shaft contact is observed at candidate delays30..55, but not60..70; it alone does not explain the whole degradation.",
+    "Recorded manifold impulse0 cannot exclude CCD/substep influence.",
+    "No test expectations, budgets or forces were weakened."
+  ]
+}

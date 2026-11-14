@@ -1,0 +1,86 @@
+{
+  "purpose": "Frozen artifact bytes and unchanged vendored dependency inventory; production is not edited.",
+  "sourceSha256": "f956dcc144691d8cb8a35c676ead2795f7dd04dc173a143b6ad043f80b6ccdc3",
+  "files": {
+    "artifacts/pinball/option-c-earlycurve-1add1b7/README.md": {
+      "bytes": 11601,
+      "sha256": "33578e850dcedd51b9280f72087759706691c2bd28f698d25b0442d9d8b84135"
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/baseline-sources.json": {
+      "bytes": 321239,
+      "sha256": "7a9b9fd4d71d5f33ebcd6311093b568dfde34d87bec07409c84e2a2c6961207d"
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/build.mjs": {
+      "bytes": 6169,
+      "sha256": "adc083cbf25b26f6e5f66b23b18d6ef3035824f44c6ceee49aeb30e152746070"
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/changes.json": {
+      "bytes": 6782,
+      "sha256": "0bb1859acb3131b42fb6710772e897e17bc9679a1782323d377a3559cffbd0d4"
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/geometry-audit.json": {
+      "bytes": 133049,
+      "sha256": "1b51ef4aeada9bf412d197e2643332e2273f3e31b2fda7e3690e6e144fa40317"
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/geometry-audit.mjs": {
+      "bytes": 7223,
+      "sha256": "956a75d2c18843a2ba64eeb4700fd2e4eeb99511ff89e7e0c4ce371b813d79b3"
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/layout-functions.mjs.txt": {
+      "bytes": 1443,
+      "sha256": "1056bf9eb1a342ba4532c406a4f68df683c0fe17dd3ed6beec2aec7eb8cb759a"
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/loader.mjs": {
+      "bytes": 948,
+      "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/manifest.json": {
+      "bytes": 11264,
+      "sha256": "5aa22fd444abdacdafa4e689e23a4d426c2a502e4eb811e7d0ff1c2fbcc65425"
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/sources.json": {
+      "bytes": 327648,
+      "sha256": "f956dcc144691d8cb8a35c676ead2795f7dd04dc173a143b6ad043f80b6ccdc3"
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/study-helper.mjs": {
+      "bytes": 6628,
+      "sha256": "428ba71a007af7d7f862174da82edc1fa1c137c06260818073df769dafdf0854"
+    },
+    "artifacts/pinball/option-c-earlycurve-1add1b7/verify-freeze.mjs": {
+      "bytes": 2052,
+      "sha256": "fdda7f76543dd1cf970aa95192bffcac5547b5d389f86172be86294ea0ee5d49"
+    },
+    "web/js/vendor/rapier3d-0.17.3/LICENSE": {
+      "bytes": 11343,
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+    },
+    "web/js/vendor/rapier3d-0.17.3/NOTICE": {
+      "bytes": 158,
+      "sha256": "2d2673e951a4b20b2c06b561412b23a2731b5c0006031f66931234b7ec21161a"
+    },
+    "web/js/vendor/rapier3d-0.17.3/rapier.mjs": {
+      "bytes": 2407199,
+      "sha256": "e0f7783dae9d3d175ec62c0cafdad84261d8c64c5f7da6ae5b24e858cf9ab759"
+    },
+    "web/js/vendor/three-0.180.0/LICENSE": {
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    "web/js/vendor/three-0.180.0/controls/OrbitControls.js": {
+      "bytes": 38703,
+      "sha256": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c"
+    },
+    "web/js/vendor/three-0.180.0/package.json": {
+      "bytes": 77,
+      "sha256": "0cc47147be8fcf7c0325e3d81ff01f11ad848d6251faf9d58bc60f7483854f55"
+    },
+    "web/js/vendor/three-0.180.0/three.core.min.js": {
+      "bytes": 381124,
+      "sha256": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de"
+    },
+    "web/js/vendor/three-0.180.0/three.module.min.js": {
+      "bytes": 338908,
+      "sha256": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6"
+    }
+  }
+}

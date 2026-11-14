@@ -1,0 +1,100 @@
+{
+  "status": "Recovery verified; candidate remains unadopted.",
+  "node": "v26.7.0",
+  "originalBuildSha256": "adc083cbf25b26f6e5f66b23b18d6ef3035824f44c6ceee49aeb30e152746070",
+  "originalArtifactHashesUnchanged": {
+    "sources.json": true,
+    "dependencies.json": true,
+    "geometry-audit.json": true,
+    "README.md": true,
+    "study-helper.mjs": true,
+    "geometry-audit.mjs": true,
+    "loader.mjs": true,
+    "build.mjs": true,
+    "manifest.json": true,
+    "changes.json": true,
+    "layout-functions.mjs.txt": true,
+    "baseline-sources.json": true,
+    "verify-freeze.mjs": true
+  },
+  "inMemoryReconstruction": {
+    "allGeneratedHashesMatch": {
+      "sources.json": true,
+      "baseline-sources.json": true,
+      "changes.json": true,
+      "manifest.json": true
+    },
+    "originalArtifactWrites": 0
+  },
+  "freshSeparateOutput": {
+    "filesCreated": 13,
+    "allThirteenOriginalFilesByteIdentical": {
+      "sources.json": true,
+      "dependencies.json": true,
+      "geometry-audit.json": true,
+      "README.md": true,
+      "study-helper.mjs": true,
+      "geometry-audit.mjs": true,
+      "loader.mjs": true,
+      "build.mjs": true,
+      "manifest.json": true,
+      "changes.json": true,
+      "layout-functions.mjs.txt": true,
+      "baseline-sources.json": true,
+      "verify-freeze.mjs": true
+    },
+    "sourceSetSha256": "f956dcc144691d8cb8a35c676ead2795f7dd04dc173a143b6ad043f80b6ccdc3"
+  },
+  "idempotentSecondRun": {
+    "filesCreated": 0,
+    "filesReused": 13
+  },
+  "recoveredLoaderAssembly": {
+    "colliders": 1551,
+    "attachments": 74,
+    "camVertices": 10,
+    "pivot": [
+      1.4,
+      0.27,
+      4.45
+    ],
+    "shooterX": 2.53,
+    "gameplayNotRerun": true
+  },
+  "differingExistingFileTest": {
+    "exitCode": 1,
+    "preflightRejectedBeforeWrites": true,
+    "sentinelBytesUnchanged": true,
+    "directoryStillContainsOnlySentinel": true
+  },
+  "outsideAllowedOutputTest": {
+    "exitCode": 1,
+    "rejected": true
+  },
+  "originalFrozenOutputTest": {
+    "exitCode": 1,
+    "rejectedEvenThoughMatching": true
+  },
+  "danglingSymlinkOutputTest": {
+    "exitCode": 1,
+    "rejected": true
+  },
+  "danglingSymlinkOutputFileTest": {
+    "exitCode": 1,
+    "rejectedBeforeWrites": true
+  },
+  "payloadMatchesOriginal": {
+    "dependencies.json": true,
+    "geometry-audit.json": true,
+    "README.md": true,
+    "study-helper.mjs": true,
+    "geometry-audit.mjs": true,
+    "loader.mjs": true,
+    "build.mjs": true,
+    "manifest.json": true,
+    "layout-functions.mjs.txt": true,
+    "verify-freeze.mjs": true
+  },
+  "temporaryGeneratedOutputs": "Four temporary restoration/conflict/symlink fixtures moved to Trash. Original evidence retained. No gameplay/browser rerun.",
+  "trashDirectory": "/Users/tsaito/.Trash/option-c-recovery-checks-a8c070832d"
+}

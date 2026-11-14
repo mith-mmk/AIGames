@@ -1,0 +1,5691 @@
+{
+  "status": "Static geometry audit only; no launch or capture test",
+  "sourceSha256": "f956dcc144691d8cb8a35c676ead2795f7dd04dc173a143b6ad043f80b6ccdc3",
+  "colliders": 1551,
+  "lowerRailCapsules": 200,
+  "addedAttachments": 74,
+  "cam": {
+    "meshVertexCount": 10,
+    "hullVertexCount": 10,
+    "triangles": 16,
+    "euler": 2,
+    "allEdgesPaired": true,
+    "signedVolume": 0.0031679980580478152,
+    "outwardFaceDotMin": 0.0007039993883900074,
+    "hullToMeshMaxDistance": 0,
+    "meshToHullMaxDistance": 0,
+    "bottomY": -0.03999999910593033,
+    "topY": 0.05999999865889549,
+    "floorStep": 0.019999999999999997
+  },
+  "supports": [
+    {
+      "name": "C-lane-throughboard-shaft--1-0",
+      "center": [
+        -1.9,
+        0.02,
+        3
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -1.899999976158142,
+        "y": 0.019999999552965164,
+        "z": 3
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 2.3846048404666972e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer--1-0",
+      "center": [
+        -1.9,
+        -0.146,
+        3
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -1.899999976158142,
+        "y": -0.1459999978542328,
+        "z": 3
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 2.3938222600301207e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut--1-0",
+      "center": [
+        -1.9,
+        -0.163,
+        3
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": -1.899999976158142,
+        "y": -0.16300000250339508,
+        "z": 3
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 2.397292579707998e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft--1-1",
+      "center": [
+        -1.6925,
+        0.02,
+        3.55
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -1.6924999952316284,
+        "y": 0.019999999552965164,
+        "z": 3.549999952316284
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 4.7923626158340216e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer--1-1",
+      "center": [
+        -1.6925,
+        -0.146,
+        3.55
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -1.6924999952316284,
+        "y": -0.1459999978542328,
+        "z": 3.549999952316284
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 4.796955723068748e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut--1-1",
+      "center": [
+        -1.6925,
+        -0.163,
+        3.55
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": -1.6924999952316284,
+        "y": -0.16300000250339508,
+        "z": 3.549999952316284
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 4.798688457192165e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft--1-2",
+      "center": [
+        -1.4849999999999999,
+        0.02,
+        4.1
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -1.4850000143051147,
+        "y": 0.019999999552965164,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 9.643538303738882e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer--1-2",
+      "center": [
+        -1.4849999999999999,
+        -0.146,
+        4.1
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -1.4850000143051147,
+        "y": -0.1459999978542328,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 9.645821674855778e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut--1-2",
+      "center": [
+        -1.4849999999999999,
+        -0.163,
+        4.1
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": -1.4850000143051147,
+        "y": -0.16300000250339508,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 9.64668349658186e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft--1-3",
+      "center": [
+        -1.485,
+        0.02,
+        4.85
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -1.4850000143051147,
+        "y": 0.019999999552965164,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 9.643538300445098e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer--1-3",
+      "center": [
+        -1.485,
+        -0.146,
+        4.85
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -1.4850000143051147,
+        "y": -0.1459999978542328,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 9.645821671562772e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut--1-3",
+      "center": [
+        -1.485,
+        -0.163,
+        4.85
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": -1.4850000143051147,
+        "y": -0.16300000250339508,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 9.646683493289148e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft--1-4",
+      "center": [
+        -1.35,
+        0.02,
+        2.75
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -1.350000023841858,
+        "y": 0.019999999552965164,
+        "z": 2.75
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 2.3846048404666972e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer--1-4",
+      "center": [
+        -1.35,
+        -0.146,
+        2.75
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -1.350000023841858,
+        "y": -0.1459999978542328,
+        "z": 2.75
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 2.3938222600301207e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut--1-4",
+      "center": [
+        -1.35,
+        -0.163,
+        2.75
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": -1.350000023841858,
+        "y": -0.16300000250339508,
+        "z": 2.75
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 2.397292579707998e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft--1-5",
+      "center": [
+        -1.35,
+        0.02,
+        3.35
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -1.350000023841858,
+        "y": 0.019999999552965164,
+        "z": 3.3499999046325684
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 9.830351498897514e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer--1-5",
+      "center": [
+        -1.35,
+        -0.146,
+        3.35
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -1.350000023841858,
+        "y": -0.1459999978542328,
+        "z": 3.3499999046325684
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 9.832591487462251e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut--1-5",
+      "center": [
+        -1.35,
+        -0.163,
+        3.35
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": -1.350000023841858,
+        "y": -0.16300000250339508,
+        "z": 3.3499999046325684
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 9.833436940328769e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft--1-6",
+      "center": [
+        -2.33,
+        0.02,
+        1.35
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -2.3299999237060547,
+        "y": 0.019999999552965164,
+        "z": 1.350000023841858
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 7.993372333819113e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer--1-6",
+      "center": [
+        -2.33,
+        -0.146,
+        1.35
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -2.3299999237060547,
+        "y": -0.1459999978542328,
+        "z": 1.350000023841858
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 7.996126939619163e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut--1-6",
+      "center": [
+        -2.33,
+        -0.163,
+        1.35
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": -2.3299999237060547,
+        "y": -0.16300000250339508,
+        "z": 1.350000023841858
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 7.997166544133658e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft--1-7",
+      "center": [
+        -2.33,
+        0.02,
+        3
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -2.3299999237060547,
+        "y": 0.019999999552965164,
+        "z": 3
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 7.629525504468523e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer--1-7",
+      "center": [
+        -2.33,
+        -0.146,
+        3
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -2.3299999237060547,
+        "y": -0.1459999978542328,
+        "z": 3
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 7.632411426985194e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut--1-7",
+      "center": [
+        -2.33,
+        -0.163,
+        3
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": -2.3299999237060547,
+        "y": -0.16300000250339508,
+        "z": 3
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 7.633500565984227e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft--1-8",
+      "center": [
+        -2.0153441462135326,
+        0.02,
+        3.834027564253287
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -2.0153441429138184,
+        "y": 0.019999999552965164,
+        "z": 3.8340275287628174
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 3.564633771045976e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer--1-8",
+      "center": [
+        -2.0153441462135326,
+        -0.146,
+        3.834027564253287
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -2.0153441429138184,
+        "y": -0.1459999978542328,
+        "z": 3.8340275287628174
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 3.5708064480058244e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut--1-8",
+      "center": [
+        -2.0153441462135326,
+        -0.163,
+        3.834027564253287
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": -2.0153441429138184,
+        "y": -0.16300000250339508,
+        "z": 3.8340275287628174
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 3.5731338330976754e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft--1-9",
+      "center": [
+        -1.9149999999999998,
+        0.02,
+        4.1
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -1.9149999618530273,
+        "y": 0.019999999552965164,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 1.0271483972006178e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer--1-9",
+      "center": [
+        -1.9149999999999998,
+        -0.146,
+        4.1
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -1.9149999618530273,
+        "y": -0.1459999978542328,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 1.0273627779641344e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut--1-9",
+      "center": [
+        -1.9149999999999998,
+        -0.163,
+        4.1
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": -1.9149999618530273,
+        "y": -0.16300000250339508,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 1.0274436941006825e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft--1-10",
+      "center": [
+        -1.915,
+        0.02,
+        4.85
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -1.9149999618530273,
+        "y": 0.019999999552965164,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 1.0271483980252632e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer--1-10",
+      "center": [
+        -1.915,
+        -0.146,
+        4.85
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -1.9149999618530273,
+        "y": -0.1459999978542328,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 1.0273627787886075e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut--1-10",
+      "center": [
+        -1.915,
+        -0.163,
+        4.85
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": -1.9149999618530273,
+        "y": -0.16300000250339508,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 1.0274436949250905e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft-1-0",
+      "center": [
+        1.9,
+        0.02,
+        3
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": 1.899999976158142,
+        "y": 0.019999999552965164,
+        "z": 3
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 2.3846048404666972e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer-1-0",
+      "center": [
+        1.9,
+        -0.146,
+        3
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": 1.899999976158142,
+        "y": -0.1459999978542328,
+        "z": 3
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 2.3938222600301207e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut-1-0",
+      "center": [
+        1.9,
+        -0.163,
+        3
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": 1.899999976158142,
+        "y": -0.16300000250339508,
+        "z": 3
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 2.397292579707998e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft-1-1",
+      "center": [
+        1.6925,
+        0.02,
+        3.55
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": 1.6924999952316284,
+        "y": 0.019999999552965164,
+        "z": 3.549999952316284
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 4.7923626158340216e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer-1-1",
+      "center": [
+        1.6925,
+        -0.146,
+        3.55
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": 1.6924999952316284,
+        "y": -0.1459999978542328,
+        "z": 3.549999952316284
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 4.796955723068748e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut-1-1",
+      "center": [
+        1.6925,
+        -0.163,
+        3.55
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": 1.6924999952316284,
+        "y": -0.16300000250339508,
+        "z": 3.549999952316284
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 4.798688457192165e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft-1-2",
+      "center": [
+        1.4849999999999999,
+        0.02,
+        4.1
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": 1.4850000143051147,
+        "y": 0.019999999552965164,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 9.643538303738882e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer-1-2",
+      "center": [
+        1.4849999999999999,
+        -0.146,
+        4.1
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": 1.4850000143051147,
+        "y": -0.1459999978542328,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 9.645821674855778e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut-1-2",
+      "center": [
+        1.4849999999999999,
+        -0.163,
+        4.1
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": 1.4850000143051147,
+        "y": -0.16300000250339508,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 9.64668349658186e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft-1-3",
+      "center": [
+        1.485,
+        0.02,
+        4.85
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": 1.4850000143051147,
+        "y": 0.019999999552965164,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 9.643538300445098e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer-1-3",
+      "center": [
+        1.485,
+        -0.146,
+        4.85
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": 1.4850000143051147,
+        "y": -0.1459999978542328,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 9.645821671562772e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut-1-3",
+      "center": [
+        1.485,
+        -0.163,
+        4.85
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": 1.4850000143051147,
+        "y": -0.16300000250339508,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 9.646683493289148e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft-1-4",
+      "center": [
+        1.35,
+        0.02,
+        2.75
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": 1.350000023841858,
+        "y": 0.019999999552965164,
+        "z": 2.75
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 2.3846048404666972e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer-1-4",
+      "center": [
+        1.35,
+        -0.146,
+        2.75
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": 1.350000023841858,
+        "y": -0.1459999978542328,
+        "z": 2.75
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 2.3938222600301207e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut-1-4",
+      "center": [
+        1.35,
+        -0.163,
+        2.75
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": 1.350000023841858,
+        "y": -0.16300000250339508,
+        "z": 2.75
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 2.397292579707998e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft-1-5",
+      "center": [
+        1.35,
+        0.02,
+        3.35
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": 1.350000023841858,
+        "y": 0.019999999552965164,
+        "z": 3.3499999046325684
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 9.830351498897514e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer-1-5",
+      "center": [
+        1.35,
+        -0.146,
+        3.35
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": 1.350000023841858,
+        "y": -0.1459999978542328,
+        "z": 3.3499999046325684
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 9.832591487462251e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut-1-5",
+      "center": [
+        1.35,
+        -0.163,
+        3.35
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": 1.350000023841858,
+        "y": -0.16300000250339508,
+        "z": 3.3499999046325684
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 9.833436940328769e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft-1-6",
+      "center": [
+        2.33,
+        0.02,
+        1.35
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": 2.3299999237060547,
+        "y": 0.019999999552965164,
+        "z": 1.350000023841858
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 7.993372333819113e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer-1-6",
+      "center": [
+        2.33,
+        -0.146,
+        1.35
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": 2.3299999237060547,
+        "y": -0.1459999978542328,
+        "z": 1.350000023841858
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 7.996126939619163e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut-1-6",
+      "center": [
+        2.33,
+        -0.163,
+        1.35
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": 2.3299999237060547,
+        "y": -0.16300000250339508,
+        "z": 1.350000023841858
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 7.997166544133658e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft-1-7",
+      "center": [
+        2.33,
+        0.02,
+        3
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": 2.3299999237060547,
+        "y": 0.019999999552965164,
+        "z": 3
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 7.629525504468523e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer-1-7",
+      "center": [
+        2.33,
+        -0.146,
+        3
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": 2.3299999237060547,
+        "y": -0.1459999978542328,
+        "z": 3
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 7.632411426985194e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut-1-7",
+      "center": [
+        2.33,
+        -0.163,
+        3
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": 2.3299999237060547,
+        "y": -0.16300000250339508,
+        "z": 3
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 7.633500565984227e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft-1-8",
+      "center": [
+        2.0153441462135326,
+        0.02,
+        3.834027564253287
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": 2.0153441429138184,
+        "y": 0.019999999552965164,
+        "z": 3.8340275287628174
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 3.564633771045976e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer-1-8",
+      "center": [
+        2.0153441462135326,
+        -0.146,
+        3.834027564253287
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": 2.0153441429138184,
+        "y": -0.1459999978542328,
+        "z": 3.8340275287628174
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 3.5708064480058244e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut-1-8",
+      "center": [
+        2.0153441462135326,
+        -0.163,
+        3.834027564253287
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": 2.0153441429138184,
+        "y": -0.16300000250339508,
+        "z": 3.8340275287628174
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 3.5731338330976754e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft-1-9",
+      "center": [
+        1.9149999999999998,
+        0.02,
+        4.1
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": 1.9149999618530273,
+        "y": 0.019999999552965164,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 1.0271483972006178e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer-1-9",
+      "center": [
+        1.9149999999999998,
+        -0.146,
+        4.1
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": 1.9149999618530273,
+        "y": -0.1459999978542328,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 1.0273627779641344e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut-1-9",
+      "center": [
+        1.9149999999999998,
+        -0.163,
+        4.1
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": 1.9149999618530273,
+        "y": -0.16300000250339508,
+        "z": 4.099999904632568
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 1.0274436941006825e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-throughboard-shaft-1-10",
+      "center": [
+        1.915,
+        0.02,
+        4.85
+      ],
+      "radius": 0.018,
+      "height": 0.4,
+      "actualCenter": {
+        "x": 1.9149999618530273,
+        "y": 0.019999999552965164,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 1.0271483980252632e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-washer-1-10",
+      "center": [
+        1.915,
+        -0.146,
+        4.85
+      ],
+      "radius": 0.045,
+      "height": 0.012,
+      "actualCenter": {
+        "x": 1.9149999618530273,
+        "y": -0.1459999978542328,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.045,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 1.0273627787886075e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-lane-underside-nut-1-10",
+      "center": [
+        1.915,
+        -0.163,
+        4.85
+      ],
+      "radius": 0.028,
+      "height": 0.022,
+      "actualCenter": {
+        "x": 1.9149999618530273,
+        "y": -0.16300000250339508,
+        "z": 4.849999904632568
+      },
+      "actualRadius": 0.028,
+      "actualHalfHeight": 0.011,
+      "nominalPoseError": 1.0274436949250905e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-save-cam-stem",
+      "center": [
+        -1.9261727043877628,
+        -0.095,
+        3.6
+      ],
+      "radius": 0.018,
+      "height": 0.17,
+      "actualCenter": {
+        "x": -1.9261727333068848,
+        "y": -0.0949999988079071,
+        "z": 3.5999999046325684
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.085,
+      "nominalPoseError": 9.966285033343594e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-save-underboard-drive-rod",
+      "center": [
+        -1.8116323464491442,
+        -0.2,
+        3.7639527566199886
+      ],
+      "radius": 0.02,
+      "height": 0.4,
+      "actualCenter": {
+        "x": -1.8116323947906494,
+        "y": -0.20000000298023224,
+        "z": 3.7639527320861816
+      },
+      "actualRadius": 0.02,
+      "actualHalfHeight": 0.2,
+      "nominalPoseError": 5.429263852989881e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-save-underboard-coil",
+      "center": [
+        -1.7543621674798349,
+        -0.2,
+        3.8459291349299827
+      ],
+      "radius": 0.055,
+      "height": 0.22,
+      "actualCenter": {
+        "x": -1.7543622255325317,
+        "y": -0.20000000298023224,
+        "z": 3.8459291458129883
+      },
+      "actualRadius": 0.055,
+      "actualHalfHeight": 0.11,
+      "nominalPoseError": 5.913913432987921e-8,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-save-board-anchored-stud--1",
+      "center": [
+        -1.8363385457898294,
+        -0.175,
+        3.9031993138992918
+      ],
+      "radius": 0.016,
+      "height": 0.27,
+      "actualCenter": {
+        "x": -1.8363385200500488,
+        "y": -0.17499999701976776,
+        "z": 3.9031991958618164
+      },
+      "actualRadius": 0.016,
+      "actualHalfHeight": 0.135,
+      "nominalPoseError": 1.2084810165128614e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-save-support-washer--1",
+      "center": [
+        -1.8363385457898294,
+        -0.146,
+        3.9031993138992918
+      ],
+      "radius": 0.035,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -1.8363385200500488,
+        "y": -0.1459999978542328,
+        "z": 3.9031991958618164
+      },
+      "actualRadius": 0.035,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 1.2083040265379165e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-save-board-anchored-stud-1",
+      "center": [
+        -1.6723857891698408,
+        -0.175,
+        3.7886589559606736
+      ],
+      "radius": 0.016,
+      "height": 0.27,
+      "actualCenter": {
+        "x": -1.672385811805725,
+        "y": -0.17499999701976776,
+        "z": 3.788658857345581
+      },
+      "actualRadius": 0.016,
+      "actualHalfHeight": 0.135,
+      "nominalPoseError": 1.0122352254858007e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-save-support-washer-1",
+      "center": [
+        -1.6723857891698408,
+        -0.146,
+        3.7886589559606736
+      ],
+      "radius": 0.035,
+      "height": 0.012,
+      "actualCenter": {
+        "x": -1.672385811805725,
+        "y": -0.1459999978542328,
+        "z": 3.788658857345581
+      },
+      "actualRadius": 0.035,
+      "actualHalfHeight": 0.006,
+      "nominalPoseError": 1.0120239152263512e-7,
+      "nominalDimensionsMatch": true
+    },
+    {
+      "name": "C-save-inclined-link",
+      "center": [
+        -1.8975376149031082,
+        -0.19,
+        3.640988189154997
+      ],
+      "radius": 0.018,
+      "height": 0.1019803902718556,
+      "actualCenter": {
+        "x": -1.8975375890731812,
+        "y": -0.1899999976158142,
+        "z": 3.6409881114959717
+      },
+      "actualRadius": 0.018,
+      "actualHalfHeight": 0.0509901951359278,
+      "nominalPoseError": 8.187669818882628e-8,
+      "nominalDimensionsMatch": true
+    }
+  ],
+  "scanScope": "Samples on illustrative IN/OUT center lines and +/- .050 offsets at five heights, both rest/held bat poses. Sphere R .135. Floors/sensors/ball excluded; open trimeshes queried as surfaces. Negative entries retained. This is not a continuous full-sphere proof or a claim of natural reachability. IN terminal bat contact and low cam contact are deliberately not filtered out.",
+  "scan": [
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "C-lane-throughboard-shaft--1-5": 2
+      },
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": -1.4694891047105496,
+          "y": 0.175,
+          "z": 3.4191085840824993
+        },
+        "gap": -0.014965106010351212,
+        "handle": 7.367e-321,
+        "name": "C-lane-throughboard-shaft--1-5",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -1.350000023841858,
+          "y": 0.019999999552965164,
+          "z": 3.3499999046325684
+        },
+        "closestPoint": {
+          "x": -1.3655816316604614,
+          "y": 0.17499999701976776,
+          "z": 3.3590118885040283
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": -1.5084797884778884,
+          "y": 0.175,
+          "z": 3.4504091684117957
+        },
+        "gap": 0.034610974443231246,
+        "handle": 7.367e-321,
+        "name": "C-lane-throughboard-shaft--1-5",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -1.350000023841858,
+          "y": 0.019999999552965164,
+          "z": 3.3499999046325684
+        },
+        "closestPoint": {
+          "x": -1.3652050495147705,
+          "y": 0.17499999701976776,
+          "z": 3.359633445739746
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.7449999999999999,
+          "y": 0.175,
+          "z": 3
+        },
+        "gap": 0.0019999694824220093,
+        "handle": 7.29e-321,
+        "name": "C-lane-throughboard-shaft--1-0",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -1.899999976158142,
+          "y": 0.019999999552965164,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.8819999694824219,
+          "y": 0.17499999701976776,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "C-lane-throughboard-shaft--1-5": 2
+      },
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": -1.4694891047105496,
+          "y": 0.195,
+          "z": 3.4191085840824993
+        },
+        "gap": -0.014965106010351031,
+        "handle": 7.367e-321,
+        "name": "C-lane-throughboard-shaft--1-5",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -1.350000023841858,
+          "y": 0.019999999552965164,
+          "z": 3.3499999046325684
+        },
+        "closestPoint": {
+          "x": -1.3655816316604614,
+          "y": 0.19499999284744263,
+          "z": 3.3590118885040283
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.6949999999999998,
+          "y": 0.195,
+          "z": 3
+        },
+        "gap": 0.01805556567035274,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.7200000286102295,
+          "y": 0.3460000157356262,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.46875,
+        "point": {
+          "x": -1.5957872883972724,
+          "y": 0.195,
+          "z": 3.4242266244172717
+        },
+        "gap": 0.001910213351924761,
+        "handle": 1.93e-322,
+        "name": "C-lower-rail-22",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.7165850400924683,
+          "y": 0.2199999988079071,
+          "z": 3.5211994647979736
+        },
+        "closestPoint": {
+          "x": -1.7011879682540894,
+          "y": 0.21681345999240875,
+          "z": 3.5088391304016113
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 5,
+      "negativeByName": {
+        "unchanged-other": 2,
+        "C-lower-rail": 3
+      },
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": -1.4694891047105496,
+          "y": 0.22,
+          "z": 3.4191085840824993
+        },
+        "gap": -0.01696511507751297,
+        "handle": 3.26e-322,
+        "name": "C-lower-rail-49",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.350000023841858,
+          "y": 0.2199999988079071,
+          "z": 3.049999952316284
+        },
+        "closestPoint": {
+          "x": -1.3673129081726074,
+          "y": 0.2199999988079071,
+          "z": 3.360013246536255
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "unchanged-other": 2
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.6949999999999998,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": -0.00654376077476676,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.7200000286102295,
+          "y": 0.3460000157356262,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 20,
+      "negativeByName": {
+        "unchanged-other": 2,
+        "C-lower-rail": 18
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.7449999999999999,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": -0.009000014066696094,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.7450000047683716,
+          "y": 0.34599998593330383,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 6,
+      "negativeByName": {
+        "unchanged-other": 6
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.645,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.13244535287555875,
+        "handle": 6.77e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -1.7200000286102295,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.6451672315597534,
+          "y": 0.3523541986942291,
+          "z": 2.9990222454071045
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 6,
+      "negativeByName": {
+        "unchanged-other": 6
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.6949999999999998,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.13470550776754364,
+        "handle": 6.77e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -1.7200000286102295,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.6950069665908813,
+          "y": 0.3502916395664215,
+          "z": 2.999959707260132
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 6,
+      "negativeByName": {
+        "unchanged-other": 6
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.7449999999999999,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.13499999236688104,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.7450000047683716,
+          "y": 0.3499999940395355,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 4,
+      "negativeByName": {
+        "unchanged-other": 4
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.645,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.04487451195697198,
+        "handle": 3.394e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.5526174306869507,
+          "y": 0.6112704277038574,
+          "z": 2.9482035636901855
+        },
+        "closestPoint": {
+          "x": -1.5637342929840088,
+          "y": 0.6052323579788208,
+          "z": 2.9754135608673096
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "unchanged-other": 2
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.6949999999999998,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.013005799105582277,
+        "handle": 2.82e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.6353368759155273,
+          "y": 0.4512704610824585,
+          "z": 2.967172384262085
+        },
+        "closestPoint": {
+          "x": -1.639479637145996,
+          "y": 0.46717920899391174,
+          "z": 2.9867806434631348
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "unchanged-other": 3
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.7449999999999999,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.013006810959092827,
+        "handle": 3.967e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.8105074167251587,
+          "y": 0.4512704610824585,
+          "z": 3.0073421001434326
+        },
+        "closestPoint": {
+          "x": -1.8006266355514526,
+          "y": 0.4671793282032013,
+          "z": 3.012756109237671
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 6,
+      "negativeByName": {
+        "C-save-cam": 6
+      },
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.8726914306730122,
+          "y": 0.175,
+          "z": 3.588843550245228
+        },
+        "gap": -0.018011955514974462,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.8846766948699951,
+          "y": 0.05989896133542061,
+          "z": 3.571688175201416
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 6,
+      "negativeByName": {
+        "C-save-cam": 6
+      },
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.91305350403454,
+          "y": 0.175,
+          "z": 3.6183546165417657
+        },
+        "gap": -0.017819308510030787,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.925058364868164,
+          "y": 0.05970947444438934,
+          "z": 3.601170539855957
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 4,
+      "negativeByName": {
+        "C-save-cam": 4
+      },
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.9534155773960675,
+          "y": 0.175,
+          "z": 3.6478656828383036
+        },
+        "gap": -0.017626716311397006,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.965440273284912,
+          "y": 0.05951996147632599,
+          "z": 3.6306536197662354
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.8726914306730122,
+          "y": 0.195,
+          "z": 3.588843550245228
+        },
+        "gap": 0.0016986880743007915,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.8849948644638062,
+          "y": 0.059999994933605194,
+          "z": 3.571232318878174
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.91305350403454,
+          "y": 0.195,
+          "z": 3.6183546165417657
+        },
+        "gap": 0.001872026370933616,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.9259734153747559,
+          "y": 0.059999994933605194,
+          "z": 3.599860668182373
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.9534155773960675,
+          "y": 0.195,
+          "z": 3.6478656828383036
+        },
+        "gap": 0.002053605552359117,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.9669523239135742,
+          "y": 0.059999994933605194,
+          "z": 3.6284892559051514
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "unchanged-other": 2
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.065,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": -0.009000014066683187,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.065000057220459,
+          "y": 0.34599998593330383,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "unchanged-other": 2
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.1149999999999998,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": -0.008999984264373428,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.115000009536743,
+          "y": 0.3460000157356262,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "unchanged-other": 2
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.165,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": -0.009000014066690404,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.1649999618530273,
+          "y": 0.34599998593330383,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 4,
+      "negativeByName": {
+        "unchanged-other": 4
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.065,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.1349999424699377,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.065000057220459,
+          "y": 0.3499999940395355,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 4,
+      "negativeByName": {
+        "unchanged-other": 4
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.1149999999999998,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.13499998875381794,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.115000009536743,
+          "y": 0.3499999940395355,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 4,
+      "negativeByName": {
+        "unchanged-other": 4
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.165,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.13499996139017403,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.1649999618530273,
+          "y": 0.3499999940395355,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "unchanged-other": 3
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.065,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.10619903146030757,
+        "handle": 4.476e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -2.0281786918640137,
+          "y": 0.6112704277038574,
+          "z": 2.974839687347412
+        },
+        "closestPoint": {
+          "x": -2.0627188682556152,
+          "y": 0.597320556640625,
+          "z": 2.9819421768188477
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "unchanged-other": 3
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.1149999999999998,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.09822716395964626,
+        "handle": 4.47e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -2.1051244735717773,
+          "y": 0.6112704277038574,
+          "z": 2.9601614475250244
+        },
+        "closestPoint": {
+          "x": -2.108147382736206,
+          "y": 0.5993508696556091,
+          "z": 2.973310708999634
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "unchanged-other": 3
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.165,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.0878133711343312,
+        "handle": 4.466e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -2.17962384223938,
+          "y": 0.6112704277038574,
+          "z": 2.935955047607422
+        },
+        "closestPoint": {
+          "x": -2.150566577911377,
+          "y": 0.6012550592422485,
+          "z": 2.963545560836792
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "C-lane-throughboard-shaft-1-5": 2
+      },
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": 1.4694891047105496,
+          "y": 0.175,
+          "z": 3.4191085840824993
+        },
+        "gap": -0.014965106010351212,
+        "handle": 7.53e-321,
+        "name": "C-lane-throughboard-shaft-1-5",
+        "shape": 10,
+        "colliderCenter": {
+          "x": 1.350000023841858,
+          "y": 0.019999999552965164,
+          "z": 3.3499999046325684
+        },
+        "closestPoint": {
+          "x": 1.3655816316604614,
+          "y": 0.17499999701976776,
+          "z": 3.3590118885040283
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": 1.5084797884778884,
+          "y": 0.175,
+          "z": 3.4504091684117957
+        },
+        "gap": 0.034610974443231246,
+        "handle": 7.53e-321,
+        "name": "C-lane-throughboard-shaft-1-5",
+        "shape": 10,
+        "colliderCenter": {
+          "x": 1.350000023841858,
+          "y": 0.019999999552965164,
+          "z": 3.3499999046325684
+        },
+        "closestPoint": {
+          "x": 1.3652050495147705,
+          "y": 0.17499999701976776,
+          "z": 3.359633445739746
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 1.7449999999999999,
+          "y": 0.175,
+          "z": 3
+        },
+        "gap": 0.0019999694824220093,
+        "handle": 7.455e-321,
+        "name": "C-lane-throughboard-shaft-1-0",
+        "shape": 10,
+        "colliderCenter": {
+          "x": 1.899999976158142,
+          "y": 0.019999999552965164,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": 1.8819999694824219,
+          "y": 0.17499999701976776,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "C-lane-throughboard-shaft-1-5": 2
+      },
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": 1.4694891047105496,
+          "y": 0.195,
+          "z": 3.4191085840824993
+        },
+        "gap": -0.014965106010351031,
+        "handle": 7.53e-321,
+        "name": "C-lane-throughboard-shaft-1-5",
+        "shape": 10,
+        "colliderCenter": {
+          "x": 1.350000023841858,
+          "y": 0.019999999552965164,
+          "z": 3.3499999046325684
+        },
+        "closestPoint": {
+          "x": 1.3655816316604614,
+          "y": 0.19499999284744263,
+          "z": 3.3590118885040283
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": 1.5084797884778884,
+          "y": 0.195,
+          "z": 3.4504091684117957
+        },
+        "gap": 0.034269165979029265,
+        "handle": 1.285e-321,
+        "name": "C-lower-rail-149",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.350000023841858,
+          "y": 0.2199999988079071,
+          "z": 3.049999952316284
+        },
+        "closestPoint": {
+          "x": 1.3667465448379517,
+          "y": 0.21735826134681702,
+          "z": 3.360610246658325
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.46875,
+        "point": {
+          "x": 1.5957872883972724,
+          "y": 0.195,
+          "z": 3.4242266244172717
+        },
+        "gap": 0.001910213351924761,
+        "handle": 1.15e-321,
+        "name": "C-lower-rail-122",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.7165850400924683,
+          "y": 0.2199999988079071,
+          "z": 3.5211994647979736
+        },
+        "closestPoint": {
+          "x": 1.7011879682540894,
+          "y": 0.21681345999240875,
+          "z": 3.5088391304016113
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "C-lower-rail": 3
+      },
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": 1.4694891047105496,
+          "y": 0.22,
+          "z": 3.4191085840824993
+        },
+        "gap": -0.01696511507751297,
+        "handle": 1.285e-321,
+        "name": "C-lower-rail-149",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.350000023841858,
+          "y": 0.2199999988079071,
+          "z": 3.049999952316284
+        },
+        "closestPoint": {
+          "x": 1.3673129081726074,
+          "y": 0.2199999988079071,
+          "z": 3.360013246536255
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": 1.5084797884778884,
+          "y": 0.22,
+          "z": 3.4504091684117957
+        },
+        "gap": 0.032610935340097125,
+        "handle": 1.285e-321,
+        "name": "C-lower-rail-149",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.350000023841858,
+          "y": 0.2199999988079071,
+          "z": 3.049999952316284
+        },
+        "closestPoint": {
+          "x": 1.3668944835662842,
+          "y": 0.2199999988079071,
+          "z": 3.360703945159912
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 20,
+      "negativeByName": {
+        "C-lower-rail": 20
+      },
+      "minimum": {
+        "parameter": 0.46875,
+        "point": {
+          "x": 1.5957872883972724,
+          "y": 0.22,
+          "z": 3.4242266244172717
+        },
+        "gap": -0.00009417740750006232,
+        "handle": 1.15e-321,
+        "name": "C-lower-rail-122",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.7165850400924683,
+          "y": 0.2199999988079071,
+          "z": 3.5211994647979736
+        },
+        "closestPoint": {
+          "x": 1.70098876953125,
+          "y": 0.2199999988079071,
+          "z": 3.508679151535034
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": 1.4694891047105496,
+          "y": 0.35,
+          "z": 3.4191085840824993
+        },
+        "gap": 0.03461446077333877,
+        "handle": 1.285e-321,
+        "name": "C-lower-rail-149",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.350000023841858,
+          "y": 0.2199999988079071,
+          "z": 3.049999952316284
+        },
+        "closestPoint": {
+          "x": 1.3626034259796143,
+          "y": 0.23371201753616333,
+          "z": 3.3572893142700195
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": 1.5084797884778884,
+          "y": 0.35,
+          "z": 3.4504091684117957
+        },
+        "gap": 0.07324953931800979,
+        "handle": 1.285e-321,
+        "name": "C-lower-rail-149",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.350000023841858,
+          "y": 0.2199999988079071,
+          "z": 3.049999952316284
+        },
+        "closestPoint": {
+          "x": 1.3638865947723389,
+          "y": 0.2313910722732544,
+          "z": 3.358798027038574
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.34375,
+        "point": {
+          "x": 1.6633214345074494,
+          "y": 0.35,
+          "z": 3.3225370216840213
+        },
+        "gap": 0.0472271943592486,
+        "handle": 1.12e-321,
+        "name": "C-lower-rail-116",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.7995566129684448,
+          "y": 0.2199999988079071,
+          "z": 3.3962650299072266
+        },
+        "closestPoint": {
+          "x": 1.7860832214355469,
+          "y": 0.23285682499408722,
+          "z": 3.3889732360839844
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": 1.4694891047105496,
+          "y": 0.575,
+          "z": 3.4191085840824993
+        },
+        "gap": 0.22589190840235285,
+        "handle": 1.285e-321,
+        "name": "C-lower-rail-149",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.350000023841858,
+          "y": 0.2199999988079071,
+          "z": 3.049999952316284
+        },
+        "closestPoint": {
+          "x": 1.3562742471694946,
+          "y": 0.2386404573917389,
+          "z": 3.353628635406494
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.2799999999999998,
+          "y": 0.575,
+          "z": 4.1
+        },
+        "gap": 0.24149705272262578,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.323946237564087,
+          "y": 0.30400002002716064,
+          "z": 4.357638835906982
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.28125,
+        "point": {
+          "x": 1.6899494345603214,
+          "y": 0.575,
+          "z": 3.2675466147435097
+        },
+        "gap": 0.23232522712029274,
+        "handle": 1.107e-321,
+        "name": "C-lower-rail-113",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.8322714567184448,
+          "y": 0.2199999988079071,
+          "z": 3.328704357147217
+        },
+        "closestPoint": {
+          "x": 1.8249224424362183,
+          "y": 0.23833084106445312,
+          "z": 3.3255465030670166
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.65,
+          "y": 0.175,
+          "z": 4.1
+        },
+        "gap": 0.011999979019195889,
+        "handle": 7.485e-321,
+        "name": "C-lane-throughboard-shaft-1-2",
+        "shape": 10,
+        "colliderCenter": {
+          "x": 1.4850000143051147,
+          "y": 0.019999999552965164,
+          "z": 4.099999904632568
+        },
+        "closestPoint": {
+          "x": 1.503000020980835,
+          "y": 0.17499999701976776,
+          "z": 4.099999904632568
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.1149999999999998,
+          "y": 0.175,
+          "z": 3
+        },
+        "gap": 0.06135014400978403,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.3061838150024414,
+          "y": 0.21974514424800873,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.5,
+        "point": {
+          "x": 1.8914620901083397,
+          "y": 0.175,
+          "z": 3.725040243086328
+        },
+        "gap": 0.011999934603460577,
+        "handle": 7.574e-321,
+        "name": "C-lane-throughboard-shaft-1-8",
+        "shape": 10,
+        "colliderCenter": {
+          "x": 2.0153441429138184,
+          "y": 0.019999999552965164,
+          "z": 3.8340275287628174
+        },
+        "closestPoint": {
+          "x": 2.0018296241760254,
+          "y": 0.17499999701976776,
+          "z": 3.8221380710601807
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.65625,
+        "point": {
+          "x": 1.7304732725288627,
+          "y": 0.195,
+          "z": 3.7822225085601766
+        },
+        "gap": 0.011790066165064922,
+        "handle": 1.196e-321,
+        "name": "C-lower-rail-131",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.585443377494812,
+          "y": 0.2199999988079071,
+          "z": 3.703735113143921
+        },
+        "closestPoint": {
+          "x": 1.6028341054916382,
+          "y": 0.21700221300125122,
+          "z": 3.713146686553955
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.1149999999999998,
+          "y": 0.195,
+          "z": 3
+        },
+        "gap": 0.05759186567102867,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.305490732192993,
+          "y": 0.22337089478969574,
+          "z": 2.999999761581421
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.165,
+          "y": 0.195,
+          "z": 3
+        },
+        "gap": 0.008281587683046016,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.305784225463867,
+          "y": 0.2216348499059677,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.65625,
+        "point": {
+          "x": 1.7304732725288627,
+          "y": 0.22,
+          "z": 3.7822225085601766
+        },
+        "gap": 0.00990580667091509,
+        "handle": 1.196e-321,
+        "name": "C-lower-rail-131",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.585443377494812,
+          "y": 0.2199999988079071,
+          "z": 3.703735113143921
+        },
+        "closestPoint": {
+          "x": 1.6030328273773193,
+          "y": 0.2199999988079071,
+          "z": 3.71325421333313
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.1149999999999998,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": 0.055212574488055916,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.3050405979156494,
+          "y": 0.2280866950750351,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.165,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": 0.005269862826704996,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.305065393447876,
+          "y": 0.22757099568843842,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.65625,
+        "point": {
+          "x": 1.7304732725288627,
+          "y": 0.35,
+          "z": 3.7822225085601766
+        },
+        "gap": 0.05498558169191761,
+        "handle": 1.196e-321,
+        "name": "C-lower-rail-131",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.585443377494812,
+          "y": 0.2199999988079071,
+          "z": 3.703735113143921
+        },
+        "closestPoint": {
+          "x": 1.5992567539215088,
+          "y": 0.23238180577754974,
+          "z": 3.7112104892730713
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.1149999999999998,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": 0.08386546093354869,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.309922695159912,
+          "y": 0.25046491622924805,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.165,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": 0.04051069042555491,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.312246561050415,
+          "y": 0.254488468170166,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": 1.7970108483561955,
+          "y": 0.575,
+          "z": 3.6820334924485874
+        },
+        "gap": 0.23643189905177225,
+        "handle": 1.166e-321,
+        "name": "C-lower-rail-125",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.6684149503707886,
+          "y": 0.2199999988079071,
+          "z": 3.5788004398345947
+        },
+        "closestPoint": {
+          "x": 1.6749855279922485,
+          "y": 0.23813852667808533,
+          "z": 3.5840752124786377
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.1149999999999998,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": 0.23743257446703142,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.3246665000915527,
+          "y": 0.26719164848327637,
+          "z": 2.999999761581421
+        }
+      }
+    },
+    {
+      "held": false,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.165,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": 0.21147147026682894,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.3287339210510254,
+          "y": 0.26965808868408203,
+          "z": 2.999999761581421
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "C-lane-throughboard-shaft--1-5": 2,
+        "flipper-0": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": -1.23,
+          "y": 0.175,
+          "z": 4.1
+        },
+        "gap": -0.029201534582574767,
+        "handle": 7.174e-321,
+        "name": "flipper-0",
+        "shape": 9,
+        "colliderCenter": {
+          "x": -1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": -1.1866092681884766,
+          "y": 0.17499998211860657,
+          "z": 4.196491241455078
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 1,
+      "negativeByName": {
+        "flipper-0": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": -1.2799999999999998,
+          "y": 0.175,
+          "z": 4.1
+        },
+        "gap": -0.008695089537059858,
+        "handle": 7.174e-321,
+        "name": "flipper-0",
+        "shape": 9,
+        "colliderCenter": {
+          "x": -1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": -1.2281991243362427,
+          "y": 0.17500001192092896,
+          "z": 4.215193748474121
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.7449999999999999,
+          "y": 0.175,
+          "z": 3
+        },
+        "gap": 0.0019999694824220093,
+        "handle": 7.29e-321,
+        "name": "C-lane-throughboard-shaft--1-0",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -1.899999976158142,
+          "y": 0.019999999552965164,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.8819999694824219,
+          "y": 0.17499999701976776,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "C-lane-throughboard-shaft--1-5": 2,
+        "flipper-0": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": -1.23,
+          "y": 0.195,
+          "z": 4.1
+        },
+        "gap": -0.02920153458257603,
+        "handle": 7.174e-321,
+        "name": "flipper-0",
+        "shape": 9,
+        "colliderCenter": {
+          "x": -1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": -1.1866092681884766,
+          "y": 0.19499999284744263,
+          "z": 4.196491241455078
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 1,
+      "negativeByName": {
+        "flipper-0": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": -1.2799999999999998,
+          "y": 0.195,
+          "z": 4.1
+        },
+        "gap": -0.008695089537060247,
+        "handle": 7.174e-321,
+        "name": "flipper-0",
+        "shape": 9,
+        "colliderCenter": {
+          "x": -1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": -1.2281991243362427,
+          "y": 0.19499999284744263,
+          "z": 4.215193748474121
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.46875,
+        "point": {
+          "x": -1.5957872883972724,
+          "y": 0.195,
+          "z": 3.4242266244172717
+        },
+        "gap": 0.001910213351924761,
+        "handle": 1.93e-322,
+        "name": "C-lower-rail-22",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.7165850400924683,
+          "y": 0.2199999988079071,
+          "z": 3.5211994647979736
+        },
+        "closestPoint": {
+          "x": -1.7011879682540894,
+          "y": 0.21681345999240875,
+          "z": 3.5088391304016113
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 6,
+      "negativeByName": {
+        "unchanged-other": 2,
+        "C-lower-rail": 3,
+        "flipper-0": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": -1.23,
+          "y": 0.22,
+          "z": 4.1
+        },
+        "gap": -0.029201534582576266,
+        "handle": 7.174e-321,
+        "name": "flipper-0",
+        "shape": 9,
+        "colliderCenter": {
+          "x": -1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": -1.1866092681884766,
+          "y": 0.2199999988079071,
+          "z": 4.196491241455078
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "unchanged-other": 2,
+        "flipper-0": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": -1.2799999999999998,
+          "y": 0.22,
+          "z": 4.1
+        },
+        "gap": -0.008695089537060413,
+        "handle": 7.174e-321,
+        "name": "flipper-0",
+        "shape": 9,
+        "colliderCenter": {
+          "x": -1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": -1.2281991243362427,
+          "y": 0.2199999988079071,
+          "z": 4.215193748474121
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 20,
+      "negativeByName": {
+        "unchanged-other": 2,
+        "C-lower-rail": 18
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.7449999999999999,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": -0.009000014066696094,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.7450000047683716,
+          "y": 0.34599998593330383,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 7,
+      "negativeByName": {
+        "unchanged-other": 6,
+        "flipper-0": 1
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.645,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.13244535287555875,
+        "handle": 6.77e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -1.7200000286102295,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.6451672315597534,
+          "y": 0.3523541986942291,
+          "z": 2.9990222454071045
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 7,
+      "negativeByName": {
+        "unchanged-other": 6,
+        "flipper-0": 1
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.6949999999999998,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.13470550776754364,
+        "handle": 6.77e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -1.7200000286102295,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.6950069665908813,
+          "y": 0.3502916395664215,
+          "z": 2.999959707260132
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 6,
+      "negativeByName": {
+        "unchanged-other": 6
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.7449999999999999,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.13499999236688104,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.7450000047683716,
+          "y": 0.3499999940395355,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 4,
+      "negativeByName": {
+        "unchanged-other": 4
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.645,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.04487451195697198,
+        "handle": 3.394e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.5526174306869507,
+          "y": 0.6112704277038574,
+          "z": 2.9482035636901855
+        },
+        "closestPoint": {
+          "x": -1.5637342929840088,
+          "y": 0.6052323579788208,
+          "z": 2.9754135608673096
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "unchanged-other": 2
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.6949999999999998,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.013005799105582277,
+        "handle": 2.82e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.6353368759155273,
+          "y": 0.4512704610824585,
+          "z": 2.967172384262085
+        },
+        "closestPoint": {
+          "x": -1.639479637145996,
+          "y": 0.46717920899391174,
+          "z": 2.9867806434631348
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "unchanged-other": 3
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -1.7449999999999999,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.013006810959092827,
+        "handle": 3.967e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.8105074167251587,
+          "y": 0.4512704610824585,
+          "z": 3.0073421001434326
+        },
+        "closestPoint": {
+          "x": -1.8006266355514526,
+          "y": 0.4671793282032013,
+          "z": 3.012756109237671
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 6,
+      "negativeByName": {
+        "C-save-cam": 6
+      },
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.8726914306730122,
+          "y": 0.175,
+          "z": 3.588843550245228
+        },
+        "gap": -0.018011955514974462,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.8846766948699951,
+          "y": 0.05989896133542061,
+          "z": 3.571688175201416
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 6,
+      "negativeByName": {
+        "C-save-cam": 6
+      },
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.91305350403454,
+          "y": 0.175,
+          "z": 3.6183546165417657
+        },
+        "gap": -0.017819308510030787,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.925058364868164,
+          "y": 0.05970947444438934,
+          "z": 3.601170539855957
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 4,
+      "negativeByName": {
+        "C-save-cam": 4
+      },
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.9534155773960675,
+          "y": 0.175,
+          "z": 3.6478656828383036
+        },
+        "gap": -0.017626716311397006,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.965440273284912,
+          "y": 0.05951996147632599,
+          "z": 3.6306536197662354
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.8726914306730122,
+          "y": 0.195,
+          "z": 3.588843550245228
+        },
+        "gap": 0.0016986880743007915,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.8849948644638062,
+          "y": 0.059999994933605194,
+          "z": 3.571232318878174
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.91305350403454,
+          "y": 0.195,
+          "z": 3.6183546165417657
+        },
+        "gap": 0.001872026370933616,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.9259734153747559,
+          "y": 0.059999994933605194,
+          "z": 3.599860668182373
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.4375,
+        "point": {
+          "x": -1.9534155773960675,
+          "y": 0.195,
+          "z": 3.6478656828383036
+        },
+        "gap": 0.002053605552359117,
+        "handle": 7.66e-321,
+        "name": "C-save-cam",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "closestPoint": {
+          "x": -1.9669523239135742,
+          "y": 0.059999994933605194,
+          "z": 3.6284892559051514
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "unchanged-other": 2
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.065,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": -0.009000014066683187,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.065000057220459,
+          "y": 0.34599998593330383,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "unchanged-other": 2
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.1149999999999998,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": -0.008999984264373428,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.115000009536743,
+          "y": 0.3460000157356262,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 2,
+      "negativeByName": {
+        "unchanged-other": 2
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.165,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": -0.009000014066690404,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.1649999618530273,
+          "y": 0.34599998593330383,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 4,
+      "negativeByName": {
+        "unchanged-other": 4
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.065,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.1349999424699377,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.065000057220459,
+          "y": 0.3499999940395355,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 4,
+      "negativeByName": {
+        "unchanged-other": 4
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.1149999999999998,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.13499998875381794,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.115000009536743,
+          "y": 0.3499999940395355,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 4,
+      "negativeByName": {
+        "unchanged-other": 4
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.165,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": -0.13499996139017403,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -2.1649999618530273,
+          "y": 0.3499999940395355,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "unchanged-other": 3
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.065,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.10619903146030757,
+        "handle": 4.476e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -2.0281786918640137,
+          "y": 0.6112704277038574,
+          "z": 2.974839687347412
+        },
+        "closestPoint": {
+          "x": -2.0627188682556152,
+          "y": 0.597320556640625,
+          "z": 2.9819421768188477
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "unchanged-other": 3
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.1149999999999998,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.09822716395964626,
+        "handle": 4.47e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -2.1051244735717773,
+          "y": 0.6112704277038574,
+          "z": 2.9601614475250244
+        },
+        "closestPoint": {
+          "x": -2.108147382736206,
+          "y": 0.5993508696556091,
+          "z": 2.973310708999634
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": -1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "unchanged-other": 3
+      },
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": -2.165,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": -0.0878133711343312,
+        "handle": 4.466e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -2.17962384223938,
+          "y": 0.6112704277038574,
+          "z": 2.935955047607422
+        },
+        "closestPoint": {
+          "x": -2.150566577911377,
+          "y": 0.6012550592422485,
+          "z": 2.963545560836792
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "C-lane-throughboard-shaft-1-5": 2,
+        "flipper-1": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.23,
+          "y": 0.175,
+          "z": 4.1
+        },
+        "gap": -0.029201534582574767,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.1866092681884766,
+          "y": 0.17499998211860657,
+          "z": 4.196491241455078
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 1,
+      "negativeByName": {
+        "flipper-1": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.2799999999999998,
+          "y": 0.175,
+          "z": 4.1
+        },
+        "gap": -0.008695138427793042,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.2281992435455322,
+          "y": 0.17500001192092896,
+          "z": 4.215193748474121
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.175,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 1.7449999999999999,
+          "y": 0.175,
+          "z": 3
+        },
+        "gap": 0.0019999694824220093,
+        "handle": 7.455e-321,
+        "name": "C-lane-throughboard-shaft-1-0",
+        "shape": 10,
+        "colliderCenter": {
+          "x": 1.899999976158142,
+          "y": 0.019999999552965164,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": 1.8819999694824219,
+          "y": 0.17499999701976776,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 3,
+      "negativeByName": {
+        "C-lane-throughboard-shaft-1-5": 2,
+        "flipper-1": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.23,
+          "y": 0.195,
+          "z": 4.1
+        },
+        "gap": -0.029201583473383502,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.1866093873977661,
+          "y": 0.19499999284744263,
+          "z": 4.196491241455078
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 1,
+      "negativeByName": {
+        "flipper-1": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.2799999999999998,
+          "y": 0.195,
+          "z": 4.1
+        },
+        "gap": -0.008695089537060247,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.2281991243362427,
+          "y": 0.19499999284744263,
+          "z": 4.215193748474121
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.195,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.46875,
+        "point": {
+          "x": 1.5957872883972724,
+          "y": 0.195,
+          "z": 3.4242266244172717
+        },
+        "gap": 0.001910213351924761,
+        "handle": 1.15e-321,
+        "name": "C-lower-rail-122",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.7165850400924683,
+          "y": 0.2199999988079071,
+          "z": 3.5211994647979736
+        },
+        "closestPoint": {
+          "x": 1.7011879682540894,
+          "y": 0.21681345999240875,
+          "z": 3.5088391304016113
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 4,
+      "negativeByName": {
+        "C-lower-rail": 3,
+        "flipper-1": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.23,
+          "y": 0.22,
+          "z": 4.1
+        },
+        "gap": -0.029201583473383738,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.1866093873977661,
+          "y": 0.2199999988079071,
+          "z": 4.196491241455078
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 1,
+      "negativeByName": {
+        "flipper-1": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.2799999999999998,
+          "y": 0.22,
+          "z": 4.1
+        },
+        "gap": -0.008695089537060413,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.2281991243362427,
+          "y": 0.2199999988079071,
+          "z": 4.215193748474121
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.22,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 20,
+      "negativeByName": {
+        "C-lower-rail": 20
+      },
+      "minimum": {
+        "parameter": 0.46875,
+        "point": {
+          "x": 1.5957872883972724,
+          "y": 0.22,
+          "z": 3.4242266244172717
+        },
+        "gap": -0.00009417740750006232,
+        "handle": 1.15e-321,
+        "name": "C-lower-rail-122",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.7165850400924683,
+          "y": 0.2199999988079071,
+          "z": 3.5211994647979736
+        },
+        "closestPoint": {
+          "x": 1.70098876953125,
+          "y": 0.2199999988079071,
+          "z": 3.508679151535034
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 1,
+      "negativeByName": {
+        "flipper-1": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.23,
+          "y": 0.35,
+          "z": 4.1
+        },
+        "gap": -0.01930998199116922,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.1864192485809326,
+          "y": 0.30400002002716064,
+          "z": 4.196793079376221
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 1,
+      "negativeByName": {
+        "flipper-1": 1
+      },
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.2799999999999998,
+          "y": 0.35,
+          "z": 4.1
+        },
+        "gap": -0.000227491069531488,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.2279915809631348,
+          "y": 0.30400002002716064,
+          "z": 4.215510845184326
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.35,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.3299999999999998,
+          "y": 0.35,
+          "z": 4.1
+        },
+        "gap": 0.019226582457724156,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.269563913345337,
+          "y": 0.30400002002716064,
+          "z": 4.234228610992432
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.23,
+          "y": 0.575,
+          "z": 4.1
+        },
+        "gap": 0.15604840019258187,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.1864192485809326,
+          "y": 0.30400002002716064,
+          "z": 4.196793079376221
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.2799999999999998,
+          "y": 0.575,
+          "z": 4.1
+        },
+        "gap": 0.16414648610871374,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.2279915809631348,
+          "y": 0.30400002002716064,
+          "z": 4.215510845184326
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "IN",
+      "height": 0.575,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.3299999999999998,
+          "y": 0.575,
+          "z": 4.1
+        },
+        "gap": 0.17340043729600457,
+        "handle": 7.18e-321,
+        "name": "flipper-1",
+        "shape": 9,
+        "colliderCenter": {
+          "x": 1.399999976158142,
+          "y": 0.27000001072883606,
+          "z": 4.449999809265137
+        },
+        "closestPoint": {
+          "x": 1.269563913345337,
+          "y": 0.30400002002716064,
+          "z": 4.234228610992432
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 1,
+        "point": {
+          "x": 1.65,
+          "y": 0.175,
+          "z": 4.1
+        },
+        "gap": 0.011999979019195889,
+        "handle": 7.485e-321,
+        "name": "C-lane-throughboard-shaft-1-2",
+        "shape": 10,
+        "colliderCenter": {
+          "x": 1.4850000143051147,
+          "y": 0.019999999552965164,
+          "z": 4.099999904632568
+        },
+        "closestPoint": {
+          "x": 1.503000020980835,
+          "y": 0.17499999701976776,
+          "z": 4.099999904632568
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.1149999999999998,
+          "y": 0.175,
+          "z": 3
+        },
+        "gap": 0.06135014400978403,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.3061838150024414,
+          "y": 0.21974514424800873,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.175,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.5,
+        "point": {
+          "x": 1.8914620901083397,
+          "y": 0.175,
+          "z": 3.725040243086328
+        },
+        "gap": 0.011999934603460577,
+        "handle": 7.574e-321,
+        "name": "C-lane-throughboard-shaft-1-8",
+        "shape": 10,
+        "colliderCenter": {
+          "x": 2.0153441429138184,
+          "y": 0.019999999552965164,
+          "z": 3.8340275287628174
+        },
+        "closestPoint": {
+          "x": 2.0018296241760254,
+          "y": 0.17499999701976776,
+          "z": 3.8221380710601807
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.65625,
+        "point": {
+          "x": 1.7304732725288627,
+          "y": 0.195,
+          "z": 3.7822225085601766
+        },
+        "gap": 0.011790066165064922,
+        "handle": 1.196e-321,
+        "name": "C-lower-rail-131",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.585443377494812,
+          "y": 0.2199999988079071,
+          "z": 3.703735113143921
+        },
+        "closestPoint": {
+          "x": 1.6028341054916382,
+          "y": 0.21700221300125122,
+          "z": 3.713146686553955
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.1149999999999998,
+          "y": 0.195,
+          "z": 3
+        },
+        "gap": 0.05759186567102867,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.305490732192993,
+          "y": 0.22337089478969574,
+          "z": 2.999999761581421
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.195,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.165,
+          "y": 0.195,
+          "z": 3
+        },
+        "gap": 0.008281587683046016,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.305784225463867,
+          "y": 0.2216348499059677,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.65625,
+        "point": {
+          "x": 1.7304732725288627,
+          "y": 0.22,
+          "z": 3.7822225085601766
+        },
+        "gap": 0.00990580667091509,
+        "handle": 1.196e-321,
+        "name": "C-lower-rail-131",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.585443377494812,
+          "y": 0.2199999988079071,
+          "z": 3.703735113143921
+        },
+        "closestPoint": {
+          "x": 1.6030328273773193,
+          "y": 0.2199999988079071,
+          "z": 3.71325421333313
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.1149999999999998,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": 0.055212574488055916,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.3050405979156494,
+          "y": 0.2280866950750351,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.22,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.165,
+          "y": 0.22,
+          "z": 3
+        },
+        "gap": 0.005269862826704996,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.305065393447876,
+          "y": 0.22757099568843842,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.65625,
+        "point": {
+          "x": 1.7304732725288627,
+          "y": 0.35,
+          "z": 3.7822225085601766
+        },
+        "gap": 0.05498558169191761,
+        "handle": 1.196e-321,
+        "name": "C-lower-rail-131",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.585443377494812,
+          "y": 0.2199999988079071,
+          "z": 3.703735113143921
+        },
+        "closestPoint": {
+          "x": 1.5992567539215088,
+          "y": 0.23238180577754974,
+          "z": 3.7112104892730713
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.1149999999999998,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": 0.08386546093354869,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.309922695159912,
+          "y": 0.25046491622924805,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.35,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.165,
+          "y": 0.35,
+          "z": 3
+        },
+        "gap": 0.04051069042555491,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.312246561050415,
+          "y": 0.254488468170166,
+          "z": 3
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": -0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0.53125,
+        "point": {
+          "x": 1.7970108483561955,
+          "y": 0.575,
+          "z": 3.6820334924485874
+        },
+        "gap": 0.23643189905177225,
+        "handle": 1.166e-321,
+        "name": "C-lower-rail-125",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 1.6684149503707886,
+          "y": 0.2199999988079071,
+          "z": 3.5788004398345947
+        },
+        "closestPoint": {
+          "x": 1.6749855279922485,
+          "y": 0.23813852667808533,
+          "z": 3.5840752124786377
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": 0,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.1149999999999998,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": 0.23743257446703142,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.3246665000915527,
+          "y": 0.26719164848327637,
+          "z": 2.999999761581421
+        }
+      }
+    },
+    {
+      "held": true,
+      "side": 1,
+      "role": "OUT",
+      "height": 0.575,
+      "normalOffset": 0.05,
+      "samples": 33,
+      "negative": 0,
+      "negativeByName": {},
+      "minimum": {
+        "parameter": 0,
+        "point": {
+          "x": 2.165,
+          "y": 0.575,
+          "z": 3
+        },
+        "gap": 0.21147147026682894,
+        "handle": 3.5e-323,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": 2.3499999046325684,
+          "y": 0.23000000417232513,
+          "z": 1
+        },
+        "closestPoint": {
+          "x": 2.3287339210510254,
+          "y": 0.26965808868408203,
+          "z": 2.999999761581421
+        }
+      }
+    }
+  ],
+  "wireColumn": [
+    {
+      "point": {
+        "x": -1.72,
+        "y": 0.175,
+        "z": 3
+      },
+      "all": {
+        "gap": 0.02699996948242192,
+        "handle": 7.29e-321,
+        "name": "C-lane-throughboard-shaft--1-0",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -1.899999976158142,
+          "y": 0.019999999552965164,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.8819999694824219,
+          "y": 0.17499999701976776,
+          "z": 3
+        }
+      },
+      "newLowerOnly": {
+        "gap": 0.02699996948242192,
+        "handle": 7.29e-321,
+        "name": "C-lane-throughboard-shaft--1-0",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -1.899999976158142,
+          "y": 0.019999999552965164,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.8819999694824219,
+          "y": 0.17499999701976776,
+          "z": 3
+        }
+      }
+    },
+    {
+      "point": {
+        "x": -1.72,
+        "y": 0.195,
+        "z": 3
+      },
+      "all": {
+        "gap": 0.015999985933306538,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.7200000286102295,
+          "y": 0.34599998593330383,
+          "z": 3
+        }
+      },
+      "newLowerOnly": {
+        "gap": 0.026707658036000892,
+        "handle": 8.4e-323,
+        "name": "C-lower-rail-0",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.899811863899231,
+          "y": 0.2199999988079071,
+          "z": 3.012514591217041
+        },
+        "closestPoint": {
+          "x": -1.8801517486572266,
+          "y": 0.2172483205795288,
+          "z": 3.0024075508117676
+        }
+      }
+    },
+    {
+      "point": {
+        "x": -1.72,
+        "y": 0.22,
+        "z": 3
+      },
+      "all": {
+        "gap": -0.008999984264370542,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.7200000286102295,
+          "y": 0.3460000157356262,
+          "z": 3
+        }
+      },
+      "newLowerOnly": {
+        "gap": 0.024979683571729167,
+        "handle": 8.4e-323,
+        "name": "C-lower-rail-0",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.899811863899231,
+          "y": 0.2199999988079071,
+          "z": 3.012514591217041
+        },
+        "closestPoint": {
+          "x": -1.879961609840393,
+          "y": 0.2199999988079071,
+          "z": 3.0024046897888184
+        }
+      }
+    },
+    {
+      "point": {
+        "x": -1.72,
+        "y": 0.35,
+        "z": 3
+      },
+      "all": {
+        "gap": -0.13499997077548342,
+        "handle": 4.96e-321,
+        "name": "unchanged-other",
+        "shape": 10,
+        "colliderCenter": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        },
+        "closestPoint": {
+          "x": -1.7200000286102295,
+          "y": 0.3499999940395355,
+          "z": 3
+        }
+      },
+      "newLowerOnly": {
+        "gap": 0.06701952690742236,
+        "handle": 8.4e-323,
+        "name": "C-lower-rail-0",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.899811863899231,
+          "y": 0.2199999988079071,
+          "z": 3.012514591217041
+        },
+        "closestPoint": {
+          "x": -1.883748173713684,
+          "y": 0.23171067237854004,
+          "z": 3.0024616718292236
+        }
+      }
+    },
+    {
+      "point": {
+        "x": -1.72,
+        "y": 0.575,
+        "z": 3
+      },
+      "all": {
+        "gap": -0.00008311599291846439,
+        "handle": 2.82e-321,
+        "name": "unchanged-other",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.6353368759155273,
+          "y": 0.4512704610824585,
+          "z": 2.967172384262085
+        },
+        "closestPoint": {
+          "x": -1.6427245140075684,
+          "y": 0.4658347964286804,
+          "z": 2.9822793006896973
+        }
+      },
+      "newLowerOnly": {
+        "gap": 0.2430172141640588,
+        "handle": 8.4e-323,
+        "name": "C-lower-rail-0",
+        "shape": 2,
+        "colliderCenter": {
+          "x": -1.899811863899231,
+          "y": 0.2199999988079071,
+          "z": 3.012514591217041
+        },
+        "closestPoint": {
+          "x": -1.8909165859222412,
+          "y": 0.23783841729164124,
+          "z": 3.0025694370269775
+        }
+      }
+    }
+  ],
+  "save": {
+    "frame": {
+      "parameter": 0.42257664614798085,
+      "center": [
+        -1.9261727043877628,
+        0,
+        3.6
+      ],
+      "down": [
+        0.5727017896930927,
+        0,
+        0.8197637830999419
+      ],
+      "cross": [
+        0.8197637830999419,
+        0,
+        -0.5727017896930927
+      ],
+      "halfAcross": 0.19,
+      "halfAlong": 0.135,
+      "maxY": 0.5,
+      "horizontalSpeed": 12,
+      "contactSkin": 0.001
+    },
+    "oldDetectorPlanArea": 0.1458,
+    "newDetectorPlanArea": 0.10260000000000001,
+    "rotationChecks": [
+      {
+        "incoming": {
+          "x": -7,
+          "z": 8
+        },
+        "impulse": {
+          "x": 0.010206281894630962,
+          "y": 0,
+          "z": -1.4269732317759443
+        },
+        "final": {
+          "x": -6.872421476317113,
+          "z": -9.837165397199303
+        },
+        "horizontalSpeed": 12,
+        "firings": 1
+      },
+      {
+        "incoming": {
+          "x": 0,
+          "z": 3
+        },
+        "impulse": {
+          "x": -0.549793718105369,
+          "y": 0,
+          "z": -1.0269732317759444
+        },
+        "final": {
+          "x": -6.872421476317113,
+          "z": -9.837165397199303
+        },
+        "horizontalSpeed": 12,
+        "firings": 1
+      },
+      {
+        "incoming": {
+          "x": 5,
+          "z": 20
+        },
+        "impulse": {
+          "x": -0.9497937181053691,
+          "y": 0,
+          "z": -2.3869732317759444
+        },
+        "final": {
+          "x": -6.872421476317113,
+          "z": -9.837165397199303
+        },
+        "horizontalSpeed": 12,
+        "firings": 1
+      }
+    ],
+    "unchargedTransit": "Unverified; fixed cam projects .020 above floor and must be crossed physically. No ball lift/reposition applied."
+  },
+  "limits": [
+    "No universal safe radius inferred",
+    "No separate fixture launch, natural progression, capture, refire, earned-save behavior or full regression in this script",
+    "Analytic capsule/cylinder physical solids versus inscribed rendered radial meshes share axes/dimensions, not identical faceted surfaces",
+    "Actual installed browser mesh and mobile/visibility review remains separate"
+  ]
+}

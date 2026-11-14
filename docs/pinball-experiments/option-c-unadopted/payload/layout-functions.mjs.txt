@@ -1,0 +1,19 @@
+export const LOWER_C=Object.freeze({startX:1.90,startZ:3.00,endX:1.485,endZ:4.10,shift:.415,run:1.10,outOffset:.430,stepsPerArc:24,heelEndZ:4.85,
+ radius:(1.10**2+.415**2)/(4*.415),angle:2*Math.atan(.415/1.10)});
+export function lowerCFrame(parameter){
+ const d=LOWER_C,q=Math.max(0,Math.min(1,parameter))*2,R=d.radius,A=d.angle;let x,z,a;
+ if(q<=1){a=q*A;x=d.startX-R*(1-Math.cos(a));z=d.startZ+R*Math.sin(a);}
+ else{a=(2-q)*A;x=d.startX-R*(1-Math.cos(A))-R*(Math.cos(a)-Math.cos(A));z=d.startZ+R*Math.sin(A)+R*(Math.sin(A)-Math.sin(a));}
+ return {p:[x,.22,z],t:[-Math.sin(a),0,Math.cos(a)],n:[Math.cos(a),0,Math.sin(a)]};
+}
+export function lowerLanePaths(side){
+ const d=LOWER_C,rows=Array.from({length:d.stepsPerArc*2+1},(_,i)=>lowerCFrame(i/(d.stepsPerArc*2)));
+ const divider=[...rows.map(f=>f.p),[d.endX,.22,d.heelEndZ]];
+ const inner=LOWER_LAYOUT.inlaneInner.map(p=>[...p]);
+ const outer=[[2.33,.22,1.35],...rows.map(f=>[f.p[0]+d.outOffset*f.n[0],.22,f.p[2]+d.outOffset*f.n[2]]),[d.endX+d.outOffset,.22,d.heelEndZ]];
+ return [divider,inner,outer].map(p=>p.map(([x,y,z])=>[side*x,y,z]));
+}
+export function lowerLaneMounts(side){
+ const d=LOWER_C,paths=lowerLanePaths(1),points=[paths[0][0],paths[0][24],paths[0][48],paths[0].at(-1),...paths[1],paths[2][0],paths[2][1],paths[2][25],paths[2][49],paths[2].at(-1)];
+ return points.filter((p,i)=>points.findIndex(q=>q.every((v,k)=>Math.abs(v-p[k])<1e-9))===i).map(([x,y,z])=>[side*x,y,z]);
+}
