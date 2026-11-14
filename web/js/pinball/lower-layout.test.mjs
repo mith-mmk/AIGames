@@ -33,7 +33,9 @@ test('genuine outside lanes still drain without a flipper or invisible rescue',a
     const g=await PinballPhysics.create();
     try {
       g.launch();g.state.kickbackCharges=0;
-      g.ball.setTranslation({x:side*2.2,y:.18,z:2.6},true);g.ball.setLinvel({x:0,y:0,z:3},true);
+      const start={x:side*2.12,y:.18,z:2.6};
+      assert.ok(sphereClearance(g,start)>=-1e-4,'OUT fixture must not overlap a rail');
+      g.ball.setTranslation(start,true);g.ball.setLinvel({x:0,y:0,z:3},true);
       for(let i=0;i<1200&&g.state.phase==='playing';i++)g.step(1/120,{left:true,right:true});
       assert.equal(g.state.phase,'ready');assert.deepEqual(g.metrics.flipperContacts,[0,0]);
     }finally{g.dispose();}
@@ -162,4 +164,82 @@ test('current outside wire outlet feeds the held left cradle at three speeds',as
    assert.equal(resets,0);
   }finally{g.dispose();}
  }
+});
+
+function sphereClearance(g,p) {
+ let distance=Infinity;
+ g.world.forEachCollider(c=>{
+  if(c.handle===g.ballCollider.handle||c.isSensor())return;
+  const q=c.projectPoint(p,true),d=Math.hypot(p.x-q.point.x,p.y-q.point.y,p.z-q.point.z);
+  assert.ok(Number.isFinite(d),'finite initial collider distance');
+  distance=Math.min(distance,d);
+ });
+ return distance-TABLE.ballRadius;
+}
+
+test('lane edge fixtures distinguish genuine mouths from initial rail penetration',async()=>{
+ const g=await PinballPhysics.create();
+ try {
+  // These are intentionally invalid probes, never silently skipped game routes:
+  // ±2.20/±2.24 penetrate the outer rail; +2.18 penetrates the shooter divider.
+  const invalid=[-2.20,2.20,-2.24,2.24,2.18];
+  for(const x of invalid)assert.ok(sphereClearance(g,{x,y:.18,z:2.6})<-.002,JSON.stringify({x}));
+  assert.equal(invalid.length,5);
+  assert.ok(sphereClearance(g,{x:-2.18,y:.18,z:2.6})>=-1e-4,'left edge remains a valid distinct boundary');
+ }finally{g.dispose();}
+});
+
+test('offset slow and fast lane entries and lateral approaches remain physical and releasable',async()=>{
+ const fixtures=[];
+ for(const side of [-1,1])for(const held of [false,true]){
+  for(const x of [1.60,1.72,1.82])for(const speed of [.25,12])
+   fixtures.push({side,held,lane:'in',x,z:2.8,vx:0,vz:speed});
+  for(const x of [2.02,2.12])for(const speed of [.25,12])
+   fixtures.push({side,held,lane:'out',x,z:2.6,vx:0,vz:speed});
+  for(const z of [2.85,3.2,3.6,4.0])for(const vx of [-3,3])
+   fixtures.push({side,held,lane:'lateral',x:1.65,z,vx:side*vx,vz:.25});
+ }
+ assert.equal(fixtures.length,72);
+ let executed=0;
+ for(const f of fixtures){
+  const g=await PinballPhysics.create();
+  try {
+   g.launch();g.state.kickbackCharges=0;g.state.sideSaveCharges=0;
+   const p={x:f.side*f.x,y:.18,z:f.z},detail=JSON.stringify(f);
+   assert.ok(sphereClearance(g,p)>=-1e-4,'invalid starting sphere: '+detail);
+   executed++;
+   g.ball.setTranslation(p,true);g.ball.setLinvel({x:f.vx,y:0,z:f.vz},true);
+   let liveResets=0,quiet=0,maxQuiet=0,last={...p};
+   const reset=g.ball.setTranslation.bind(g.ball);
+   g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')liveResets++;return reset(...args);};
+   for(let tick=0;tick<2400&&g.state.phase==='playing';tick++){
+    last={...g.ballPosition};g.step(1/120,f.held?{left:f.side<0,right:f.side>0}:{});
+    const v=g.ball.linvel();quiet=Math.hypot(v.x,v.y,v.z)<.025?quiet+1:0;maxQuiet=Math.max(maxQuiet,quiet);
+   }
+   const end={...g.ballPosition},contacts=[...g.metrics.flipperContacts];
+   const cradle=g.state.phase==='playing'&&f.held&&quiet>120&&
+    Math.abs(end.x-f.side*(LOWER_LAYOUT.flipperPivot[0]-.195))<.03&&
+    Math.abs(end.z-(LOWER_LAYOUT.flipperPivot[2]-.392))<.03;
+   assert.ok(maxQuiet<=600||cradle,'persistent stop outside held cradle: '+detail+JSON.stringify(end));
+   if(f.lane==='out'){
+    assert.equal(g.state.phase,'ready','OUT must drain without input rescue: '+detail);
+    assert.deepEqual(contacts,[0,0],'OUT must not cross a bat: '+detail);
+   }
+   if(f.lane==='in'&&f.held&&f.vz===.25){
+    assert.ok(cradle,'slow IN must reach same-side cradle: '+detail);
+    assert.ok(contacts[f.side<0?0:1]>0,detail);
+   }
+   // Fast IN may rebound across the bats and drain. Never manufacture capture.
+   // Every surviving held cradle must release and finish a normal ball.
+   for(let tick=0;tick<7200&&g.state.phase==='playing';tick++){
+    last={...g.ballPosition};g.step(1/120);
+   }
+   assert.equal(g.state.phase,'ready','must release/drain: '+detail);
+   assert.equal(g.state.ballNumber,2,detail);
+   assert.ok(last.z>LOWER_LAYOUT.drainZ-.45,'must leave through the lower edge: '+detail+JSON.stringify(last));
+   assert.equal(liveResets,0,'no live reposition: '+detail);
+   assert.equal(g.state.kickbackUses,0,detail);assert.equal(g.state.sideSaveUses,0,detail);
+  }finally{g.dispose();}
+ }
+ assert.equal(executed,72,'no invalid fixtures may be skipped');
 });

@@ -138,3 +138,18 @@ details p { line-height: 1.7; }
 
 #sound{font-size:10px;}
 @media(max-width:700px){nav button{font-size:9px;}#sound{font-size:9px;}}
+
+/* Short landscape screens keep controls clear; secondary HUD content scrolls
+   inside its own panel instead of painting over the camera and launch hints. */
+@media (min-width: 701px) and (max-height: 480px) {
+  .backglass { max-height: calc(100% - 245px); overflow-y: auto; }
+  .multiplier-panel { grid-column: 1 / -1; }
+  #phase { top: auto; bottom: 186px; }
+  .camera-control { bottom: 154px; padding: 4px 0; }
+}
+@media (max-width: 700px) {
+  .backglass { max-height: 124px; overflow-y: auto; }
+  nav { top: 154px; }
+  .camera-control { top: 155px; }
+  #table { top: 192px; height: calc(100% - 260px); }
+}
