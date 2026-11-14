@@ -1,0 +1,1389 @@
+{
+  "scope": "Analytic finite capsule/cylinder geometry for the fixed static plan; saved accepted trace queries only.",
+  "clearance": [
+    {
+      "role": "IN-approach",
+      "y": 0.175,
+      "samples": 401,
+      "minimum": {
+        "gap": 0.05200000000000002,
+        "name": "shaft-1",
+        "p": [
+          1.5774737730641901,
+          0.175,
+          3.273308944908106
+        ],
+        "i": 140
+      },
+      "maxSegmentLength": 0.004563232140867451,
+      "piecewiseLinearCenterPathLowerBound": 0.04971838392956629,
+      "limit": "Sphere-center existence corridor against new lower rails/supports only. Not a natural trajectory or speed/force feasibility proof."
+    },
+    {
+      "role": "IN-approach",
+      "y": 0.22,
+      "samples": 401,
+      "minimum": {
+        "gap": 0.0497289134445546,
+        "name": "rail-0-9",
+        "p": [
+          1.6333871925956807,
+          0.22,
+          3.206410009591109
+        ],
+        "i": 100
+      },
+      "maxSegmentLength": 0.004563232140867451,
+      "piecewiseLinearCenterPathLowerBound": 0.04744729737412087,
+      "limit": "Sphere-center existence corridor against new lower rails/supports only. Not a natural trajectory or speed/force feasibility proof."
+    },
+    {
+      "role": "IN-approach",
+      "y": 0.35,
+      "samples": 401,
+      "minimum": {
+        "gap": 0.08751583041151756,
+        "name": "rail-0-9",
+        "p": [
+          1.6333871925956807,
+          0.35,
+          3.206410009591109
+        ],
+        "i": 100
+      },
+      "maxSegmentLength": 0.004563232140867451,
+      "piecewiseLinearCenterPathLowerBound": 0.08523421434108383,
+      "limit": "Sphere-center existence corridor against new lower rails/supports only. Not a natural trajectory or speed/force feasibility proof."
+    },
+    {
+      "role": "IN-approach",
+      "y": 0.575,
+      "samples": 401,
+      "minimum": {
+        "gap": 0.25480352365516323,
+        "name": "rail-0-9",
+        "p": [
+          1.6333871925956807,
+          0.575,
+          3.206410009591109
+        ],
+        "i": 100
+      },
+      "maxSegmentLength": 0.004563232140867451,
+      "piecewiseLinearCenterPathLowerBound": 0.25252190758472953,
+      "limit": "Sphere-center existence corridor against new lower rails/supports only. Not a natural trajectory or speed/force feasibility proof."
+    },
+    {
+      "role": "OUT-entire",
+      "y": 0.175,
+      "samples": 752,
+      "minimum": {
+        "gap": -0.0016410148464267582,
+        "name": "rail-2-45",
+        "p": [
+          1.5776838484732107,
+          0.175,
+          4.239918290965121
+        ],
+        "i": 519
+      },
+      "maxSegmentLength": 0.004621247559124433,
+      "piecewiseLinearCenterPathLowerBound": -0.003951638625988975,
+      "limit": "Sphere-center existence corridor against new lower rails/supports only. Not a natural trajectory or speed/force feasibility proof."
+    },
+    {
+      "role": "OUT-entire",
+      "y": 0.22,
+      "samples": 752,
+      "minimum": {
+        "gap": -0.008391752185172408,
+        "name": "rail-2-45",
+        "p": [
+          1.5776838484732107,
+          0.22,
+          4.239918290965121
+        ],
+        "i": 519
+      },
+      "maxSegmentLength": 0.004621247559124433,
+      "piecewiseLinearCenterPathLowerBound": -0.010702375964734624,
+      "limit": "Sphere-center existence corridor against new lower rails/supports only. Not a natural trajectory or speed/force feasibility proof."
+    },
+    {
+      "role": "OUT-entire",
+      "y": 0.35,
+      "samples": 752,
+      "minimum": {
+        "gap": 0.04094381421043605,
+        "name": "rail-2-45",
+        "p": [
+          1.5776838484732107,
+          0.35,
+          4.239918290965121
+        ],
+        "i": 519
+      },
+      "maxSegmentLength": 0.004621247559124433,
+      "piecewiseLinearCenterPathLowerBound": 0.038633190430873834,
+      "limit": "Sphere-center existence corridor against new lower rails/supports only. Not a natural trajectory or speed/force feasibility proof."
+    },
+    {
+      "role": "OUT-entire",
+      "y": 0.575,
+      "samples": 752,
+      "minimum": {
+        "gap": 0.2290819942763965,
+        "name": "rail-2-45",
+        "p": [
+          1.5776838484732107,
+          0.575,
+          4.239918290965121
+        ],
+        "i": 519
+      },
+      "maxSegmentLength": 0.004621247559124433,
+      "piecewiseLinearCenterPathLowerBound": 0.2267713704968343,
+      "limit": "Sphere-center existence corridor against new lower rails/supports only. Not a natural trajectory or speed/force feasibility proof."
+    }
+  ],
+  "oldShots": [
+    {
+      "side": -1,
+      "delay": 30,
+      "repress": 352,
+      "samples": 15,
+      "rail": {
+        "gap": 0.015943032480841696,
+        "name": "rail-0-37",
+        "tick": 354,
+        "p": [
+          1.0380139350891113,
+          0.17117510735988617,
+          4.03776741027832
+        ]
+      },
+      "shaft": {
+        "gap": 0.23274831786470768,
+        "name": "shaft-4",
+        "tick": 359,
+        "p": [
+          0.9669955372810364,
+          0.17118626832962036,
+          3.054072380065918
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": 1,
+      "delay": 30,
+      "repress": 353,
+      "samples": 15,
+      "rail": {
+        "gap": 0.01602165359345034,
+        "name": "rail-0-37",
+        "tick": 355,
+        "p": [
+          1.037933111190796,
+          0.1711750626564026,
+          4.037726879119873
+        ]
+      },
+      "shaft": {
+        "gap": 0.2329292931079735,
+        "name": "shaft-4",
+        "tick": 360,
+        "p": [
+          0.966823935508728,
+          0.17118625342845917,
+          3.053983449935913
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": -1,
+      "delay": 35,
+      "repress": 358,
+      "samples": 15,
+      "rail": {
+        "gap": 0.036319863890517085,
+        "name": "rail-0-37",
+        "tick": 359,
+        "p": [
+          1.0162246227264404,
+          0.1714175045490265,
+          4.0558624267578125
+        ]
+      },
+      "shaft": {
+        "gap": 0.2980426769200442,
+        "name": "shaft-4",
+        "tick": 364,
+        "p": [
+          0.900303304195404,
+          0.1713436394929886,
+          3.065180778503418
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": 1,
+      "delay": 35,
+      "repress": 358,
+      "samples": 15,
+      "rail": {
+        "gap": 0.036305693136059,
+        "name": "rail-0-37",
+        "tick": 359,
+        "p": [
+          1.0162397623062134,
+          0.1714174449443817,
+          4.05584716796875
+        ]
+      },
+      "shaft": {
+        "gap": 0.29801089681927695,
+        "name": "shaft-4",
+        "tick": 364,
+        "p": [
+          0.9003357887268066,
+          0.1713436096906662,
+          3.0651729106903076
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": -1,
+      "delay": 40,
+      "repress": 363,
+      "samples": 15,
+      "rail": {
+        "gap": 0.06898687706959838,
+        "name": "rail-0-38",
+        "tick": 364,
+        "p": [
+          0.9823993444442749,
+          0.17133694887161255,
+          4.067134857177734
+        ]
+      },
+      "shaft": {
+        "gap": 0.3640350860541357,
+        "name": "shaft-4",
+        "tick": 368,
+        "p": [
+          0.8577845692634583,
+          0.17129658162593842,
+          3.2582695484161377
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": 1,
+      "delay": 40,
+      "repress": 363,
+      "samples": 15,
+      "rail": {
+        "gap": 0.06896478072038792,
+        "name": "rail-0-38",
+        "tick": 364,
+        "p": [
+          0.9824219346046448,
+          0.1713367998600006,
+          4.067107200622559
+        ]
+      },
+      "shaft": {
+        "gap": 0.36398790600053044,
+        "name": "shaft-4",
+        "tick": 368,
+        "p": [
+          0.8578283786773682,
+          0.17129652202129364,
+          3.258251667022705
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": -1,
+      "delay": 45,
+      "repress": 368,
+      "samples": 15,
+      "rail": {
+        "gap": 0.10532301670982688,
+        "name": "rail-0-38",
+        "tick": 369,
+        "p": [
+          0.9458044767379761,
+          0.1712837815284729,
+          4.082365036010742
+        ]
+      },
+      "shaft": {
+        "gap": 0.433320671727505,
+        "name": "shaft-4",
+        "tick": 373,
+        "p": [
+          0.7859103083610535,
+          0.17125897109508514,
+          3.259921073913574
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": 1,
+      "delay": 45,
+      "repress": 368,
+      "samples": 15,
+      "rail": {
+        "gap": 0.10528817676742983,
+        "name": "rail-0-38",
+        "tick": 369,
+        "p": [
+          0.9458385705947876,
+          0.17128372192382812,
+          4.08234167098999
+        ]
+      },
+      "shaft": {
+        "gap": 0.43325252918903867,
+        "name": "shaft-4",
+        "tick": 373,
+        "p": [
+          0.7859779596328735,
+          0.17125892639160156,
+          3.2599098682403564
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": -1,
+      "delay": 50,
+      "repress": 373,
+      "samples": 15,
+      "rail": {
+        "gap": 0.14700077970584016,
+        "name": "rail-0-39",
+        "tick": 374,
+        "p": [
+          0.9044644236564636,
+          0.17124707996845245,
+          4.098496437072754
+        ]
+      },
+      "shaft": {
+        "gap": 0.5135515659013782,
+        "name": "shaft-4",
+        "tick": 378,
+        "p": [
+          0.7036049365997314,
+          0.17123118042945862,
+          3.262678861618042
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": 1,
+      "delay": 50,
+      "repress": 373,
+      "samples": 15,
+      "rail": {
+        "gap": 0.1469551085210032,
+        "name": "rail-0-39",
+        "tick": 374,
+        "p": [
+          0.9045090079307556,
+          0.17124705016613007,
+          4.0984721183776855
+        ]
+      },
+      "shaft": {
+        "gap": 0.5134620688545335,
+        "name": "shaft-4",
+        "tick": 378,
+        "p": [
+          0.703694224357605,
+          0.17123116552829742,
+          3.262666940689087
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": -1,
+      "delay": 55,
+      "repress": 378,
+      "samples": 15,
+      "rail": {
+        "gap": 0.19396565053620093,
+        "name": "rail-0-39",
+        "tick": 379,
+        "p": [
+          0.8585359454154968,
+          0.1712196171283722,
+          4.11688232421875
+        ]
+      },
+      "shaft": {
+        "gap": 0.6051065880633484,
+        "name": "shaft-4",
+        "tick": 383,
+        "p": [
+          0.6109017729759216,
+          0.171208918094635,
+          3.2686991691589355
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": 1,
+      "delay": 55,
+      "repress": 378,
+      "samples": 15,
+      "rail": {
+        "gap": 0.1939083830023763,
+        "name": "rail-0-39",
+        "tick": 379,
+        "p": [
+          0.8585909008979797,
+          0.1712196320295334,
+          4.116854667663574
+        ]
+      },
+      "shaft": {
+        "gap": 0.6049944685463056,
+        "name": "shaft-4",
+        "tick": 383,
+        "p": [
+          0.6110132932662964,
+          0.1712089478969574,
+          3.268683910369873
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": -1,
+      "delay": 60,
+      "repress": 383,
+      "samples": 15,
+      "rail": {
+        "gap": 0.24647889242577872,
+        "name": "rail-0-39",
+        "tick": 384,
+        "p": [
+          0.8079493045806885,
+          0.17119626700878143,
+          4.137711048126221
+        ]
+      },
+      "shaft": {
+        "gap": 0.6781287019244229,
+        "name": "shaft-2",
+        "tick": 384,
+        "p": [
+          0.8079493045806885,
+          0.17119626700878143,
+          4.137711048126221
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": 1,
+      "delay": 60,
+      "repress": 383,
+      "samples": 15,
+      "rail": {
+        "gap": 0.24640941948234144,
+        "name": "rail-0-39",
+        "tick": 384,
+        "p": [
+          0.808014988899231,
+          0.1711963713169098,
+          4.137678146362305
+        ]
+      },
+      "shaft": {
+        "gap": 0.6781025934808181,
+        "name": "shaft-2",
+        "tick": 384,
+        "p": [
+          0.808014988899231,
+          0.1711963713169098,
+          4.137678146362305
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": -1,
+      "delay": 65,
+      "repress": 388,
+      "samples": 15,
+      "rail": {
+        "gap": 0.30500265429182827,
+        "name": "rail-0-39",
+        "tick": 389,
+        "p": [
+          0.7522793412208557,
+          0.17117337882518768,
+          4.161404132843018
+        ]
+      },
+      "shaft": {
+        "gap": 0.704867347717021,
+        "name": "shaft-2",
+        "tick": 389,
+        "p": [
+          0.7522793412208557,
+          0.17117337882518768,
+          4.161404132843018
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": 1,
+      "delay": 65,
+      "repress": 388,
+      "samples": 15,
+      "rail": {
+        "gap": 0.30492053998899915,
+        "name": "rail-0-39",
+        "tick": 389,
+        "p": [
+          0.7523560523986816,
+          0.17117351293563843,
+          4.161365509033203
+        ]
+      },
+      "shaft": {
+        "gap": 0.7048318924053433,
+        "name": "shaft-2",
+        "tick": 389,
+        "p": [
+          0.7523560523986816,
+          0.17117351293563843,
+          4.161365509033203
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": -1,
+      "delay": 70,
+      "repress": 393,
+      "samples": 15,
+      "rail": {
+        "gap": 0.3698044099130605,
+        "name": "rail-0-40",
+        "tick": 394,
+        "p": [
+          0.6911748051643372,
+          0.17115040123462677,
+          4.18841552734375
+        ]
+      },
+      "shaft": {
+        "gap": 0.7374520409826771,
+        "name": "shaft-2",
+        "tick": 394,
+        "p": [
+          0.6911748051643372,
+          0.17115040123462677,
+          4.18841552734375
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    },
+    {
+      "side": 1,
+      "delay": 70,
+      "repress": 393,
+      "samples": 15,
+      "rail": {
+        "gap": 0.3697111755198247,
+        "name": "rail-0-40",
+        "tick": 394,
+        "p": [
+          0.691261887550354,
+          0.17115047574043274,
+          4.188373565673828
+        ]
+      },
+      "shaft": {
+        "gap": 0.7374048769172289,
+        "name": "shaft-2",
+        "tick": 394,
+        "p": [
+          0.691261887550354,
+          0.17115047574043274,
+          4.188373565673828
+        ]
+      },
+      "scope": "Saved accepted points after repress, first15ticks. No new trajectory or collider response recomputed."
+    }
+  ],
+  "wireColumn": {
+    "samples": [
+      {
+        "p": [
+          1.72,
+          0.175,
+          3
+        ],
+        "gap": 0.02699999999999994,
+        "name": "shaft-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.18,
+          3
+        ],
+        "gap": 0.02699999999999994,
+        "name": "shaft-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.185,
+          3
+        ],
+        "gap": 0.02699999999999994,
+        "name": "shaft-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.19,
+          3
+        ],
+        "gap": 0.02699999999999994,
+        "name": "shaft-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.19499999999999998,
+          3
+        ],
+        "gap": 0.02664471122276954,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.19999999999999998,
+          3
+        ],
+        "gap": 0.026024310840293885,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.205,
+          3
+        ],
+        "gap": 0.025540303298746403,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.21,
+          3
+        ],
+        "gap": 0.02519378767094979,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.215,
+          3
+        ],
+        "gap": 0.024985558073983644,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.21999999999999997,
+          3
+        ],
+        "gap": 0.024916094653044674,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.22499999999999998,
+          3
+        ],
+        "gap": 0.024985558073983644,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.22999999999999998,
+          3
+        ],
+        "gap": 0.02519378767094979,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.235,
+          3
+        ],
+        "gap": 0.025540303298746403,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.24,
+          3
+        ],
+        "gap": 0.026024310840293885,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.245,
+          3
+        ],
+        "gap": 0.02664471122276954,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.25,
+          3
+        ],
+        "gap": 0.0274001127061147,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.255,
+          3
+        ],
+        "gap": 0.028288846128735667,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.26,
+          3
+        ],
+        "gap": 0.02930898273063995,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.265,
+          3
+        ],
+        "gap": 0.030458354126211673,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.27,
+          3
+        ],
+        "gap": 0.03173457396851645,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.275,
+          3
+        ],
+        "gap": 0.03313506083450618,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.28,
+          3
+        ],
+        "gap": 0.03465706186483894,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.28500000000000003,
+          3
+        ],
+        "gap": 0.036297676711462806,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.29000000000000004,
+          3
+        ],
+        "gap": 0.03805388137823945,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.29500000000000004,
+          3
+        ],
+        "gap": 0.03992255158191252,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.3,
+          3
+        ],
+        "gap": 0.04190048530972021,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.305,
+          3
+        ],
+        "gap": 0.04398442430301758,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.31,
+          3
+        ],
+        "gap": 0.046171074250756367,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.315,
+          3
+        ],
+        "gap": 0.048457123530249835,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.32,
+          3
+        ],
+        "gap": 0.05083926038344419,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.32499999999999996,
+          3
+        ],
+        "gap": 0.053314188463492146,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.32999999999999996,
+          3
+        ],
+        "gap": 0.05587864072779708,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.33499999999999996,
+          3
+        ],
+        "gap": 0.05852939168930196,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.33999999999999997,
+          3
+        ],
+        "gap": 0.061263268067425936,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.345,
+          3
+        ],
+        "gap": 0.06407715790379273,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.35,
+          3
+        ],
+        "gap": 0.06696801822605736,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.355,
+          3
+        ],
+        "gap": 0.06993288135620218,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.36,
+          3
+        ],
+        "gap": 0.0729688599682056,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.365,
+          3
+        ],
+        "gap": 0.07607315100461876,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.37,
+          3
+        ],
+        "gap": 0.07924303856294929,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.375,
+          3
+        ],
+        "gap": 0.0824758958614607,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.38,
+          3
+        ],
+        "gap": 0.08576918639062461,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.385,
+          3
+        ],
+        "gap": 0.08912046435152327,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.39,
+          3
+        ],
+        "gap": 0.09252737447644724,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.395,
+          3
+        ],
+        "gap": 0.09598765132014633,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.4,
+          3
+        ],
+        "gap": 0.09949911810299725,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.405,
+          3
+        ],
+        "gap": 0.1030596851800051,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.41000000000000003,
+          3
+        ],
+        "gap": 0.10666734820226112,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.41500000000000004,
+          3
+        ],
+        "gap": 0.11032018603039492,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.42000000000000004,
+          3
+        ],
+        "gap": 0.1140163584527962,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.425,
+          3
+        ],
+        "gap": 0.11775410375501835,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.43,
+          3
+        ],
+        "gap": 0.12153173618086469,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.435,
+          3
+        ],
+        "gap": 0.1253476433202236,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.44,
+          3
+        ],
+        "gap": 0.12920028345377024,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.445,
+          3
+        ],
+        "gap": 0.1330881828801788,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.45,
+          3
+        ],
+        "gap": 0.13700993324748964,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.455,
+          3
+        ],
+        "gap": 0.14096418890670429,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.46,
+          3
+        ],
+        "gap": 0.1449496643025349,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.465,
+          3
+        ],
+        "gap": 0.1489651314134622,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.47000000000000003,
+          3
+        ],
+        "gap": 0.15300941725084208,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.475,
+          3
+        ],
+        "gap": 0.15708140142469776,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.48000000000000004,
+          3
+        ],
+        "gap": 0.16118001378202787,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.485,
+          3
+        ],
+        "gap": 0.16530423212190523,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.49000000000000005,
+          3
+        ],
+        "gap": 0.16945307999031747,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.495,
+          3
+        ],
+        "gap": 0.17362562455658162,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.5,
+          3
+        ],
+        "gap": 0.17782097457222154,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.505,
+          3
+        ],
+        "gap": 0.18203827841241318,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.51,
+          3
+        ],
+        "gap": 0.1862767221994541,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.515,
+          3
+        ],
+        "gap": 0.1905355280071839,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.52,
+          3
+        ],
+        "gap": 0.19481395214485567,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.5249999999999999,
+          3
+        ],
+        "gap": 0.19911128351861837,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.53,
+          3
+        ],
+        "gap": 0.20342684206850822,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.5349999999999999,
+          3
+        ],
+        "gap": 0.20775997727864534,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.54,
+          3
+        ],
+        "gap": 0.2121100667581909,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.5449999999999999,
+          3
+        ],
+        "gap": 0.21647651489051542,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.55,
+          3
+        ],
+        "gap": 0.22085875154797627,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.5549999999999999,
+          3
+        ],
+        "gap": 0.2252562308696641,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.56,
+          3
+        ],
+        "gap": 0.22966843009948637,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.565,
+          3
+        ],
+        "gap": 0.23409484848196502,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.5700000000000001,
+          3
+        ],
+        "gap": 0.23853500621317467,
+        "name": "rail-0-0"
+      },
+      {
+        "p": [
+          1.72,
+          0.575,
+          3
+        ],
+        "gap": 0.24298844344428308,
+        "name": "rail-0-0"
+      }
+    ],
+    "minimum": {
+      "p": [
+        1.72,
+        0.21999999999999997,
+        3
+      ],
+      "gap": 0.024916094653044674,
+      "name": "rail-0-0"
+    },
+    "limit": "Vertical XZ column only, not the wire exit tangent or predicted descent. Other existing wire solids are not part of this lower-only query."
+  },
+  "innerToDividerVertexMinimum": {
+    "distance": 0.418956245457516,
+    "inner": [
+      1.292236328125,
+      0.22,
+      3.194627685546875
+    ],
+    "segment": 21
+  }
+}

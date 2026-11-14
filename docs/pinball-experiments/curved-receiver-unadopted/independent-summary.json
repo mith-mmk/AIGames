@@ -1,0 +1,60 @@
+{
+  "status": "not adopted; independent installed/static review only",
+  "sourceSHA256": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0",
+  "baseline": "884960985a413986d57aff0c2280e59a7be79dcf",
+  "budget": [
+    {
+      "mode": "baseline",
+      "view": "installed-45",
+      "triangles": 449612,
+      "calls": 685
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-10",
+      "triangles": 449468,
+      "calls": 673
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-90",
+      "triangles": 443292,
+      "calls": 658
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-45",
+      "triangles": 498808,
+      "calls": 572
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-10",
+      "triangles": 498664,
+      "calls": 560
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-90",
+      "triangles": 492488,
+      "calls": 545
+    }
+  ],
+  "pageErrors": [],
+  "attachmentCount": 62,
+  "attachmentCenterMax": 1.955192621993741e-07,
+  "railCount": 276,
+  "railCenterLengthMax": 2.35875327074978e-07,
+  "railVertexRadialMax": 2.411456521272948e-07,
+  "cam": {
+    "visibleCount": 10,
+    "physicalCount": 10,
+    "maxVisibleToHullVertexDistance": 4.47545209131181e-16
+  },
+  "limitations": [
+    "Reference long IN/OUT bands unmet; strong lower S remains",
+    "Static save, unfinished bracket/bores/join detail",
+    "No full gameplay/regression/physical-mobile/human qualification",
+    "The two stopped endpoints are documented in separate physics evidence"
+  ]
+}

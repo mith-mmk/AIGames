@@ -1,0 +1,485 @@
+{
+  "scope": "Original byte hashes. Large source maps, raw traces, witness point arrays and images are references only. Readable copied reports replace internal coordination terms with neutral technical wording; numerical results and artifact payload bytes are unchanged.",
+  "files": {
+    "artifacts/pinball/curved-receiver-eaf9be3/README.md": {
+      "bytes": 6228,
+      "sha256": "0153bedd59cbdbdae62dd16bb33a29c1fcada67f271b23225fb8f789c6530be5"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/assembly.json": {
+      "bytes": 2511,
+      "sha256": "d40bfdd95e3d188c494436512c88afb80de5da39e399c5faf2a34f09d5d0063f"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/assembly.log": {
+      "bytes": 2512,
+      "sha256": "c64823153b72a4736ec1b69cfa8071e11c12ebc217c02d4a0de0449c636d6808"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/baseline-sources.json": {
+      "bytes": 329885,
+      "sha256": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/build.mjs": {
+      "bytes": 5046,
+      "sha256": "9b466e9029916b167c2406e91dea009c4feacff59ff2988e9f261677034c09b3"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/changes.json": {
+      "bytes": 12245,
+      "sha256": "0305bea7ad7ff12580eae9bfd793625f09ddf5c8ef665e2b0829d55d085def48"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/dependencies.json": {
+      "bytes": 3773,
+      "sha256": "1f2f8f181c590f82c8704ea81a9af30b141d07de17a3b8da6935ad5ec40dc5ba"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/fixed-plan.mjs": {
+      "bytes": 2805,
+      "sha256": "824163d6c3c9b0ee44a29c08c0716c40052ff7cbb241852c4e326d645e38ea4c"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/loader.mjs": {
+      "bytes": 948,
+      "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/manifest.json": {
+      "bytes": 11829,
+      "sha256": "738a39408043df970522fb3a9920cd8e69235248b8f0aefd0ffa291ff5ae9a86"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/prior-c-changes.json": {
+      "bytes": 6782,
+      "sha256": "0bb1859acb3131b42fb6710772e897e17bc9679a1782323d377a3559cffbd0d4"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/prior-c-helper.mjs": {
+      "bytes": 6628,
+      "sha256": "428ba71a007af7d7f862174da82edc1fa1c137c06260818073df769dafdf0854"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/sources.json": {
+      "bytes": 338145,
+      "sha256": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0"
+    },
+    "artifacts/pinball/curved-receiver-eaf9be3/verify-assembly.mjs": {
+      "bytes": 3751,
+      "sha256": "0164de987d06dd2beec80ea317b0c99d5c2b1d74e0e96084bab65e98ccf84611"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/README.md": {
+      "bytes": 3354,
+      "sha256": "209fb04cadd1bd2a326a75262af38f478fef5082afc9ea9f7b4db2906ab59b53"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/audit.mjs": {
+      "bytes": 6958,
+      "sha256": "cbbd73440a6816b0bcd22c31109b597575db51d029d53fec4aab87bf6dedcebb"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/corridors.json": {
+      "bytes": 29484,
+      "sha256": "ef1f9b11a0889834f0bdb760198898364580d5f4b9c25c5f7ee523e218e158df"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/corridors.log": {
+      "bytes": 5930,
+      "sha256": "2e583c58445a7530630a10b126ec995420780f10279488c86a5e85fff2482929"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/corridors.mjs": {
+      "bytes": 5381,
+      "sha256": "8a91e968d3607163f175412b776b1a8b75caee524eed60b12f69f28c162cc3c3"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/initial-audit.mjs": {
+      "bytes": 6958,
+      "sha256": "cbbd73440a6816b0bcd22c31109b597575db51d029d53fec4aab87bf6dedcebb"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/initial-plan.mjs": {
+      "bytes": 2743,
+      "sha256": "24ea108d218914f457467956fb3a6fab3142eebe7f294e56971db748c5e8dde9"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/initial-static-audit.json": {
+      "bytes": 48164,
+      "sha256": "9d00d0b314ef6df06847149d6339e4e0065fc988c763901e6aefbb9588c7e14c"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/initial-static-audit.log": {
+      "bytes": 13219,
+      "sha256": "8a2e51e928ecb52938a4e65b06af356c2050224e318e4ec4b54a3ec0102a427f"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/out-witness.json": {
+      "bytes": 157240,
+      "sha256": "81e8337a069343d0e0452861b0819af130a21a495cfa194c348978550fb66a22"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/plan.mjs": {
+      "bytes": 2805,
+      "sha256": "824163d6c3c9b0ee44a29c08c0716c40052ff7cbb241852c4e326d645e38ea4c"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/static-audit.json": {
+      "bytes": 49094,
+      "sha256": "f6b5ea675cff7c3eac6466a3380f18bc4ee3614fc3b9599b0c34d0058d1e198f"
+    },
+    "artifacts/pinball/curved-receiver-static-eaf9be3/static-audit.log": {
+      "bytes": 13133,
+      "sha256": "28ec69f2c25d29ac80e23332f8f71d0b27833667518d51500249cfd62061c36c"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/README.md": {
+      "bytes": 4977,
+      "sha256": "34e65d734e7a0728d8722ccaba048f0f2c3a59e4e0a78bd0b41c6bb1e23df055"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/baseline-coarse.json": {
+      "bytes": 21223123,
+      "sha256": "5ea83c68b62defd92625d810b90d562ba3e8a896cf143662013a82da652a8896"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/baseline-coarse.txt": {
+      "bytes": 54972,
+      "sha256": "98873cea6d9f6c61a3b7477b4603ba71c855a2465f138decadb6434e2f777322"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/baseline-launch.txt": {
+      "bytes": 6033,
+      "sha256": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/baseline-loader.mjs": {
+      "bytes": 982,
+      "sha256": "8bc110d6c45bc8a6fd42c2a2d5c44018fdb7efeececafbf659a18fbdde2cef4c"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/baseline-out.json": {
+      "bytes": 541257,
+      "sha256": "53acba204740bb4b6fe5949acc059b7d631e38a7dfd32fc58fff8176e17485c9"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/baseline-out.txt": {
+      "bytes": 3356,
+      "sha256": "c992a0b9bcc970d1ee729ed91cec4dccde40725f1bb1f5443ba30f34adc692f5"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/baseline.json": {
+      "bytes": 1432426,
+      "sha256": "990facd9be7e337a694680ecc0c527f3bfa4eca4a3c4679b9e6e7ee57cfeaacd"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/candidate-coarse.json": {
+      "bytes": 26900078,
+      "sha256": "9cd396edb2dd7ceefefbfe5f2bebeabec039264411f2270a18dfa9e9f0fcd3c7"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/candidate-coarse.txt": {
+      "bytes": 55630,
+      "sha256": "a240d451402e77c5981adf4e4197b8c84f6ff9c5d8073c77dcacb04dac9b0d15"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/candidate-launch.txt": {
+      "bytes": 6034,
+      "sha256": "ae5692abd80dbed2ff678da98e790c8c3192d508fc44ae58a87b78468b4b8850"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/candidate-out.json": {
+      "bytes": 877366,
+      "sha256": "4d95cca352cbefda0b2d8ddab3434f5c53214e576196bf865c4bef00a1bb19f3"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/candidate-out.txt": {
+      "bytes": 4278,
+      "sha256": "fa3de47b18f7150ace42f00f353163c73fad9fba1b42207fe15a94964227f2cb"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/candidate.json": {
+      "bytes": 1412464,
+      "sha256": "7718f52224b453d7172a27a9cab05e2694233800c75a037c8eb560a9a8e55a4e"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/coarse.mjs": {
+      "bytes": 4769,
+      "sha256": "9c28d4c8775d93cdc300f49be8c105de9abbbeae74217d21328e891c76eb0b13"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/launch.mjs": {
+      "bytes": 3126,
+      "sha256": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/manifest.json": {
+      "bytes": 3089,
+      "sha256": "2e3df46117a6405e87ff82e1292d2aaf679bf16b3d8a800dfaa6b24eb9214baa"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/out.mjs": {
+      "bytes": 4774,
+      "sha256": "a48c008cc219519e3727b6efbfb90d9ea2aec9d712a0a5cd2fcaabc432e79ee7"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/stopped-endpoints.json": {
+      "bytes": 8293,
+      "sha256": "df01419e1f72d5ecda857d768cfe8ebcbfa11f213413c12d567e5c62f3298238"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/summarize.mjs": {
+      "bytes": 2145,
+      "sha256": "3b86b9ae49418173559baec2203a5f9535dfe2dd7d30ec60e1947a245e2a34e0"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/summary.json": {
+      "bytes": 229025,
+      "sha256": "4ad1b388d83ce71d1206a7bfb96268a2ab10b4515e81b8d3566172a144981673"
+    },
+    "artifacts/pinball/curved-receiver-local-eaf9be3/summary.txt": {
+      "bytes": 9557,
+      "sha256": "5a7fbddbe74c136bfac5f3f2b550f123b7b1f12bee620a993748d204be7d1813"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/BROWSER-REVIEW.md": {
+      "bytes": 5202,
+      "sha256": "d0e1f5b6acef86dbef7687714bbf33f8fe33d7b2645d18dea5ac003c2b1650fb"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/README.md": {
+      "bytes": 7690,
+      "sha256": "a2fda163c1d4270a8eb3aff0cf8b3a46bcb1751c1aed2e81b810c4487e34e0eb"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/SHA256SUMS.txt": {
+      "bytes": 1070,
+      "sha256": "68f5f7dde44d7a33e35c44b3c7388c8002ab510267c6ba793d8efba890ce0a7e"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/gaps.json": {
+      "bytes": 6462,
+      "sha256": "d7452dab32b4c19ffbf950d6c598603cc8d46061c8e636f02de2c3c5a6dd6732"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/gaps.log": {
+      "bytes": 6463,
+      "sha256": "58823fd0807c6bcd6266717179af477cdcda1705b3c11f2c037d59e59208f987"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/gaps.mjs": {
+      "bytes": 3409,
+      "sha256": "6d1e72e52b152e1fd08338a2c3487f69fe0acc299b5551c94da49f4f7f60987c"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-browser.cjs": {
+      "bytes": 5576,
+      "sha256": "2699bd634580084402cdf7e26136e6b3bd94cbfb14ce4d55047a816e3c79bc3c"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-browser.log": {
+      "bytes": 149,
+      "sha256": "7eeaa12aafb0d902201381841127b37af20a91befae7bd53efffa9bca9f0fd70"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-review/actual-mesh-contact.json": {
+      "bytes": 48424,
+      "sha256": "220c83207a3672b12da023557a4bcbc3e059371616cbec8d77f1bbca337143f6"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-review/cutaway-lower-top.png": {
+      "bytes": 185146,
+      "sha256": "9ff0b2bcc5edcf70768e1c1d259daf742e76abb71e1e7502678d1205d6ec0f58"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-review/cutaway-lower-underside.png": {
+      "bytes": 155322,
+      "sha256": "c0c659a2db930072ad372d305bdfd0514da10b552194979b52c774969c9b282c"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-review/evidence.json": {
+      "bytes": 284,
+      "sha256": "81f504765cfa0963fdfc5338da5c18c3b957dc7b6af4674d50f64b95b5396e11"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-review/served-candidate-sources.json": {
+      "bytes": 338145,
+      "sha256": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-surface-browser.cjs": {
+      "bytes": 6383,
+      "sha256": "41fb81451d12141d42fc2e2224a9ae67c6f7df76f7bce9f3e7b0b8e75e558206"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-surface-browser.log": {
+      "bytes": 157,
+      "sha256": "1369c16f8e9000360940e831591e6cf7b25b9dc01d773c9ef616ec3516a0d210"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-surface-review/actual-mesh-contact.json": {
+      "bytes": 109536,
+      "sha256": "a19bcec0850670be8026bbd972bd66d344a5dcdb1d6be5d43ce58699130b6e77"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-surface-review/cutaway-lower-top.png": {
+      "bytes": 185146,
+      "sha256": "9ff0b2bcc5edcf70768e1c1d259daf742e76abb71e1e7502678d1205d6ec0f58"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-surface-review/cutaway-lower-underside.png": {
+      "bytes": 155322,
+      "sha256": "c0c659a2db930072ad372d305bdfd0514da10b552194979b52c774969c9b282c"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-surface-review/evidence.json": {
+      "bytes": 284,
+      "sha256": "81f504765cfa0963fdfc5338da5c18c3b957dc7b6af4674d50f64b95b5396e11"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/geometry-surface-review/served-candidate-sources.json": {
+      "bytes": 338145,
+      "sha256": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-browser.cjs": {
+      "bytes": 4228,
+      "sha256": "b992fa3b13016e981e55633f88e19d476c1a411d6fe9f7892dbb09d7cf30b9b4"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-browser.log": {
+      "bytes": 145,
+      "sha256": "7f1635a380d3cc39ca04fbb807d114e706ab8a7e041582903c113d659457a8a4"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-review/baseline-held-cutaway-belt-core-rails.png": {
+      "bytes": 143698,
+      "sha256": "4de2ce73ddfd245554e1f7fa7e09f6e00bb31c1d4377955a758510e9778319d4"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-review/baseline-held-installed-heel.png": {
+      "bytes": 525395,
+      "sha256": "292b59efdabfab8c713226994df8ec44ddd86f5d3794348900117973726b6bfd"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-review/baseline-rest-cutaway-belt-core-rails.png": {
+      "bytes": 136707,
+      "sha256": "a4394056ba0d2625bc8cb4c063d3fa2afd4720f87ff4a81b8f9e9b97df729e73"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-review/baseline-rest-installed-heel.png": {
+      "bytes": 499869,
+      "sha256": "74928b2011e64c651b360ddc5962284af061dd5f773dbff7f808012a1d1b0467"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-review/candidate-held-cutaway-belt-core-rails.png": {
+      "bytes": 184297,
+      "sha256": "25c0c09dcb1216b827e433eb4d40f8bd52d5e0819580ca1135453e23e4f5faff"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-review/candidate-held-installed-heel.png": {
+      "bytes": 558293,
+      "sha256": "2360597016caa72b3b6208befb994c626cf9e629e6cb31f29719e8c863e877ba"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-review/candidate-rest-cutaway-belt-core-rails.png": {
+      "bytes": 174278,
+      "sha256": "f8ef8385e784e49b36fd8e66135de5d53c7e74afad79fb1046fae3d0dc16c991"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-review/candidate-rest-installed-heel.png": {
+      "bytes": 535093,
+      "sha256": "10a792ccfcb6c559ac79502daa503a92f4203211d3e50c55439d5f8dcf905b5b"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-review/evidence.json": {
+      "bytes": 284,
+      "sha256": "81f504765cfa0963fdfc5338da5c18c3b957dc7b6af4674d50f64b95b5396e11"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-review/served-candidate-sources.json": {
+      "bytes": 338145,
+      "sha256": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-browser.cjs": {
+      "bytes": 4230,
+      "sha256": "107baee18a8f192d85b8df764f57d5cf79eac873306e891912b312a51e2e13b5"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-browser.log": {
+      "bytes": 149,
+      "sha256": "ddcf2453fbc80a83d4bf673113586b211203a7535c23051dfcf607d45d04bbdf"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-review/baseline-held-cutaway-belt-core-rails.png": {
+      "bytes": 138624,
+      "sha256": "5156cb410191540c3efdbb23f2267b4af89103739c5285ace0ce72f86bfc29c1"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-review/baseline-held-installed-heel.png": {
+      "bytes": 455547,
+      "sha256": "74065ac39931315065c4d2c0cefb1657b9d2ebcbc4fe3f151557119c2b850342"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-review/baseline-rest-cutaway-belt-core-rails.png": {
+      "bytes": 134957,
+      "sha256": "6afc6a34fa9e21ed5da660bcb1d5c36962745c27723be7ce30670f2858c267e7"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-review/baseline-rest-installed-heel.png": {
+      "bytes": 446741,
+      "sha256": "1fe397f519a48286d046725c5cc3dc6537a2362ebd99db27d7f8bed63f837b89"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-review/candidate-held-cutaway-belt-core-rails.png": {
+      "bytes": 149112,
+      "sha256": "c6fffbb4196528b923aab01c3ddda90e89eaf0171b9b4590da61b02dbd16bb5f"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-review/candidate-held-installed-heel.png": {
+      "bytes": 486437,
+      "sha256": "2e0af48cea6e43ee99e468d4e8e37f12c3b46c7fe902c668293abc85dda0ee33"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-review/candidate-rest-cutaway-belt-core-rails.png": {
+      "bytes": 143970,
+      "sha256": "eabfc82db1d9d43b47f96d2f4fb0a5ec6a520b86b7f8acd2117a9750f6188bd4"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-review/candidate-rest-installed-heel.png": {
+      "bytes": 476357,
+      "sha256": "69d36240afcd761cf8ad7547bea96a2819841381983e79890026b978b21c7583"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-review/evidence.json": {
+      "bytes": 284,
+      "sha256": "81f504765cfa0963fdfc5338da5c18c3b957dc7b6af4674d50f64b95b5396e11"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/heel-top-review/served-candidate-sources.json": {
+      "bytes": 338145,
+      "sha256": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/baseline-installed-10.png": {
+      "bytes": 429327,
+      "sha256": "a9baefbb89dcd31abda87f0f7eea52bf1b7e32511aa20c233577dd6ed2600b84"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/baseline-installed-45.png": {
+      "bytes": 739686,
+      "sha256": "2c455a455527f98ef453a7151038c6bb95fa11a5255214b7b047b5933beb450d"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/baseline-installed-90.png": {
+      "bytes": 615702,
+      "sha256": "88f6759271b141b16c2c511faee495455a4cfad43cfc540f8c25cbe5fe7e8654"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/baseline-lower-closeup.png": {
+      "bytes": 792028,
+      "sha256": "365df1f91c3285b55916c9ecf4b3c40f23ec77c24d227720e7a5b2ac73dd3a3b"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/baseline-lower-side.png": {
+      "bytes": 113297,
+      "sha256": "37fff113b73ae1ff9d55b94c99e41aaa7b30c60ea4d7f1cf3583c875b27b35e4"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/baseline-lower-underside.png": {
+      "bytes": 114483,
+      "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/baseline-mobile-390.png": {
+      "bytes": 252481,
+      "sha256": "dcf1e254317d3094e2653b12705caa72ba7b96502d54d18eb9acb2e4ce7b4d60"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/candidate-installed-10.png": {
+      "bytes": 428993,
+      "sha256": "f37eb095820d4c5e26570a05d20db4bc0cfa9c10daf4eda6d7f0e4c77bea4f45"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/candidate-installed-45.png": {
+      "bytes": 737065,
+      "sha256": "de47ce3e4d1c4f3e612a9707148eebe230380ff05d5f312d34f7cbf0936e448f"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/candidate-installed-90.png": {
+      "bytes": 614288,
+      "sha256": "7ddaac8cf8ba1c1083753e0824e69b2ef1932443d5d641b96f47ac8d892f5b07"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/candidate-lower-closeup.png": {
+      "bytes": 788690,
+      "sha256": "03518d6b9c99adbac2e65f3d8ad11af22d05d90819f3f68e6144fe958dbda76b"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/candidate-lower-side.png": {
+      "bytes": 113297,
+      "sha256": "37fff113b73ae1ff9d55b94c99e41aaa7b30c60ea4d7f1cf3583c875b27b35e4"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/candidate-lower-underside.png": {
+      "bytes": 114483,
+      "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/candidate-mobile-390.png": {
+      "bytes": 250838,
+      "sha256": "1f64b143d691f12326a89ae728cd43dfe2ab79f871e70158930f2a5994e4b36c"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/evidence.json": {
+      "bytes": 979,
+      "sha256": "c5d4303d42bc7846ac8e474637ca7942511c285f715a6d1c3046874183fbf1ea"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/preview-final/served-candidate-sources.json": {
+      "bytes": 338145,
+      "sha256": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/review-manifest.json": {
+      "bytes": 13290,
+      "sha256": "50fd0a1f50c6bd69436d687d50bfcc6e871819b3523f2e570eec764df655ba7f"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/review-summary.json": {
+      "bytes": 1538,
+      "sha256": "ea91f54d64040bc802827c3303c4b8e4f68feea79abe68f1fd56ad0886efb734"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/saved-shot-segments.json": {
+      "bytes": 16426,
+      "sha256": "991918cc3ba5374728fafe29fbed2221c11b2ac75e9a6fe7f73fef84fc50ac60"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/surroundings.json": {
+      "bytes": 175007,
+      "sha256": "8ebcf04f39cb9f636a0170009801b0ec5b453cbd60034bbcd4634846b6105486"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/surroundings.log": {
+      "bytes": 12923,
+      "sha256": "8a2f89b73c48428c1746f7757d1b49a480ca5c42e8ce6e082a8a25d630eeed86"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/surroundings.mjs": {
+      "bytes": 2215,
+      "sha256": "e5788f94736f729d95e5911b9f36391679f3c887735f5b576b97f589e368d4c9"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/sweep.json": {
+      "bytes": 6289,
+      "sha256": "0465d7d5a2c084e515962cdb18392e7e15b84f8fc5b12152ec13e187e8738450"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/sweep.log": {
+      "bytes": 6380,
+      "sha256": "d0fd3f08768a2117dc602c9cf8481b49b993e76c5bd3fe9c01b5fa08709a97dd"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/sweep.mjs": {
+      "bytes": 3717,
+      "sha256": "8564269c297ef703408122c9bb96b9a75f45731ea28063e84a3b8b865dcbd0cf"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/visual.cjs": {
+      "bytes": 4659,
+      "sha256": "5106e8ed8c2429e70f4f29dda2d339da11fc0e2dc50006e09462199f926a6b60"
+    },
+    "artifacts/pinball/curved-receiver-independent-eaf9be3/visual.log": {
+      "bytes": 842,
+      "sha256": "76cabde37428ade9d9ac8cff0a83dbe2c8022b6cafa19af90df2dacfae632765"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "status": "not adopted",
+  "sourceSha256": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0",
+  "naturalSixPowers": {
+    "powers": [
+      0.55,
+      0.65,
+      0.75,
+      0.85,
+      0.925,
+      1
+    ],
+    "baselineAndCandidateFieldEntry": 6,
+    "bothScores": [
+      25,
+      25,
+      25,
+      525,
+      525,
+      325
+    ],
+    "weakPointOneSameBallReturnAndRelaunch": true
+  },
+  "outFixtures": {
+    "legalInitialGap": 0.005,
+    "candidateUnchargedLeftRightDrainTicks": [
+      172,
+      155
+    ],
+    "chargedLeft": {
+      "chargeExplicitlyAssigned": true,
+      "firings": 1,
+      "drainTicks": 665
+    }
+  },
+  "fixed36": {
+    "baselineUpstream": 14,
+    "candidateUpstream": 13,
+    "candidateHeldCaptureURange": [
+      0.354706,
+      0.354745
+    ],
+    "maxMatchedPreRepressUDifference": 0.000360477,
+    "maxAimAngleDifferenceRadians": 0.000439778,
+    "all36Capture": true,
+    "all36CoilCount": 1,
+    "all36Resets": 0,
+    "additionalMiss": "left60, minZ -.822832 versus accepted -1.086753; nearby target contact, not a universal blocked route"
+  },
+  "majorStops": {
+    "cases": [
+      "right45",
+      "left55"
+    ],
+    "lowSpeedTailTicks": [
+      870,
+      924
+    ],
+    "sampledSeconds": [
+      7.25,
+      7.7
+    ],
+    "thresholdSpeed": 0.025,
+    "locationApprox": [
+      -2.4805,
+      0.17128,
+      2.99
+    ],
+    "contacts": [
+      "new shaft(-2.33,.02,3)",
+      "existing stock(-2.65,.2175,3)",
+      "existing low stock(-2.65,.055,3)",
+      "floor"
+    ],
+    "nonzeroShaftAndOuterStockNormalImpulse": true,
+    "heldBatContact": false,
+    "finiteObservedStopNotProofOfPermanentImmobility": true,
+    "initialPathOrigin": "explicit legal IN fixtures; subsequent upper return and stop follow ordinary dynamics"
+  },
+  "imageGate": {
+    "triangles45": 498808,
+    "drawCalls45": 572,
+    "limit": 500000,
+    "headroom": 1192,
+    "referenceImprovement": false,
+    "reasons": [
+      "Strong lower S and outward tail replace the desired long relatively straight bands",
+      "Short print bands and static cam crossing OUT text remain"
+    ]
+  },
+  "notRun": [
+    "full202",
+    "natural54",
+    "continuous aim qualification",
+    "natural wire arrival",
+    "physical phone",
+    "human play"
+  ],
+  "stop": "No local shaft tuning or subsequent geometry trial. Frozen source preserved."
+}

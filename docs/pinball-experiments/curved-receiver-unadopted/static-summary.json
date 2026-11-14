@@ -1,0 +1,106 @@
+{
+  "initialClosedThroat": {
+    "axisGap": 0.25550054321180166,
+    "surfaceGap": 0.21550054321180165,
+    "floorCenterDeficit": -0.041147396272024836
+  },
+  "revisedInnerAxisGap": 0.418956245457516,
+  "batContinuousYawLowerBound": 0.07149099,
+  "outTail": {
+    "axisGap": 0.3266854397,
+    "surfaceGap": 0.2866854397,
+    "railHeightBallDiameterSpare": 0.0166854397,
+    "floorCenterFreeWidth": 0.0300375002,
+    "notRobustThirtyThousandthsMargin": true
+  },
+  "invalidMidpoint": [
+    {
+      "role": "OUT-entire",
+      "y": 0.175,
+      "samples": 752,
+      "minimum": {
+        "gap": -0.0016410148464267582,
+        "name": "rail-2-45",
+        "p": [
+          1.5776838484732107,
+          0.175,
+          4.239918290965121
+        ],
+        "i": 519
+      },
+      "maxSegmentLength": 0.004621247559124433,
+      "piecewiseLinearCenterPathLowerBound": -0.003951638625988975,
+      "limit": "Sphere-center existence corridor against new lower rails/supports only. Not a natural trajectory or speed/force feasibility proof."
+    },
+    {
+      "role": "OUT-entire",
+      "y": 0.22,
+      "samples": 752,
+      "minimum": {
+        "gap": -0.008391752185172408,
+        "name": "rail-2-45",
+        "p": [
+          1.5776838484732107,
+          0.22,
+          4.239918290965121
+        ],
+        "i": 519
+      },
+      "maxSegmentLength": 0.004621247559124433,
+      "piecewiseLinearCenterPathLowerBound": -0.010702375964734624,
+      "limit": "Sphere-center existence corridor against new lower rails/supports only. Not a natural trajectory or speed/force feasibility proof."
+    }
+  ],
+  "witness": [
+    {
+      "y": 0.175,
+      "minimum": {
+        "gap": 0.014428028691689299,
+        "name": "rail-2-43",
+        "p": [
+          1.5125991440680604,
+          0.175,
+          4.196
+        ]
+      },
+      "maxSegment": 0.0054383015497385225,
+      "conservativePiecewiseLinearLowerBound": 0.011708877916820038,
+      "scope": "Offline clear-point witness for finite lower stock and shafts. Not a new runtime path, no ball is constrained or guided to it. No speed or natural traversal guarantee."
+    },
+    {
+      "y": 0.22,
+      "minimum": {
+        "gap": 0.008342758965164704,
+        "name": "rail-2-43",
+        "p": [
+          1.5125991440680604,
+          0.22,
+          4.196
+        ]
+      },
+      "maxSegment": 0.004685347009318921,
+      "conservativePiecewiseLinearLowerBound": 0.006000085460505244,
+      "scope": "Offline clear-point witness for finite lower stock and shafts. Not a new runtime path, no ball is constrained or guided to it. No speed or natural traversal guarantee."
+    }
+  ],
+  "savedOldShotOnly": {
+    "pointRailMinimum": 0.015943032480841696,
+    "pointShaftMinimum": 0.23274831786470768,
+    "wholeSegmentRailMinimum": 0.01275314,
+    "wholeSegmentShaftMinimum": 0.22567442
+  },
+  "wireVerticalColumnOnly": {
+    "p": [
+      1.72,
+      0.21999999999999997,
+      3
+    ],
+    "gap": 0.024916094653044674,
+    "name": "rail-0-0"
+  },
+  "limits": [
+    "Static lower-only corridors did not cover adjacent reachable outer region.",
+    "The dynamic stationary endpoints override a full-safety claim.",
+    "Moving save, natural wire, continuous aim, physical-phone and full202/54 remain unqualified."
+  ]
+}

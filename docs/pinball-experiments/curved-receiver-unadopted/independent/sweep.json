@@ -1,0 +1,193 @@
+{
+  "scope": "Static isolated geometry only; independent fresh zero-gravity world, no PinballPhysics construction or steps. Left meshes/obstacles; right follows exact reflection in layout. Conservative convex envelope of each actual moving mesh, holes filled. Contact solver numerical error not formally bounded.",
+  "hashBefore": "824163d6c3c9b0ee44a29c08c0716c40052ff7cbb241852c4e326d645e38ea4c",
+  "hashAfter": "824163d6c3c9b0ee44a29c08c0716c40052ff7cbb241852c4e326d645e38ea4c",
+  "angularSamples": 270,
+  "step": 0.004,
+  "method": "Midpoints of disjoint equal angular cells. Each point moves at most 2*r*sin(step/4) from nearest sampled pose; subtract this from distance to obtain geometric continuous-yaw bound, subject to Rapier query accuracy.",
+  "obstacles": 165,
+  "results": [
+    {
+      "name": "continuous-moulded-rubber-belt",
+      "radius": 1.1391011476516724,
+      "gap": 0.07376918941736221,
+      "angle": 0.4780000000000001,
+      "obstacle": "rail-0-49",
+      "point": {
+        "x": -1.2764729261398315,
+        "y": 0.21999454498291016,
+        "z": 4.31399393081665
+      },
+      "motionBound": 0.002278201915602981,
+      "continuousLowerBound": 0.07149098750175924
+    },
+    {
+      "name": "sculpted-lower-carrier",
+      "radius": 1.11580228805542,
+      "gap": 0.10326697677373886,
+      "angle": 0.4780000000000001,
+      "obstacle": "rail-0-50",
+      "point": {
+        "x": -1.2684900760650635,
+        "y": 0.1880764365196228,
+        "z": 4.3421101570129395
+      },
+      "motionBound": 0.0022316042041767626,
+      "continuousLowerBound": 0.1010353725695621
+    },
+    {
+      "name": "tapered-cast-bat-core",
+      "radius": 1.1164027452468872,
+      "gap": 0.09646104276180267,
+      "angle": 0.4780000000000001,
+      "obstacle": "rail-0-49",
+      "point": {
+        "x": -1.2605621814727783,
+        "y": 0.2200038582086563,
+        "z": 4.330182075500488
+      },
+      "motionBound": 0.002232805118359545,
+      "continuousLowerBound": 0.09422823764344312
+    },
+    {
+      "name": "pivot-shaft",
+      "radius": 0.04100000115277622,
+      "gap": 0.10900919139385223,
+      "angle": -0.26199999999999996,
+      "obstacle": "rail-0-60",
+      "point": {
+        "x": -1.2910000085830688,
+        "y": 0.22005441784858704,
+        "z": 4.449991703033447
+      },
+      "motionBound": 0.00008199998863888607,
+      "continuousLowerBound": 0.10892719140521334
+    },
+    {
+      "name": "rotating-heel-hub",
+      "radius": 0.07400000112458811,
+      "gap": 0.09065546095371246,
+      "angle": -0.12999999999999995,
+      "obstacle": "rail-0-60",
+      "point": {
+        "x": -1.3240000009536743,
+        "y": 0.16500002145767212,
+        "z": 4.450066566467285
+      },
+      "motionBound": 0.00014799997758251042,
+      "continuousLowerBound": 0.09050746097612995
+    },
+    {
+      "name": "shaft-clamped-crank",
+      "radius": 0.219585582613945,
+      "gap": 0.16935226321220398,
+      "angle": 0.29400000000000004,
+      "obstacle": "washer-2",
+      "point": {
+        "x": -1.299452781677246,
+        "y": -0.1599999964237213,
+        "z": 4.522984981536865
+      },
+      "motionBound": 0.00043917109203269947,
+      "continuousLowerBound": 0.16891309212017128
+    },
+    {
+      "name": "crank-shaft-clamp",
+      "radius": 0.06800000369548798,
+      "gap": 0.1893243044614792,
+      "angle": -0.46599999999999997,
+      "obstacle": "washer-2",
+      "point": {
+        "x": -1.2882214784622192,
+        "y": -0.1499999463558197,
+        "z": 4.506241321563721
+      },
+      "motionBound": 0.00013599998472430918,
+      "continuousLowerBound": 0.1891883044767549
+    },
+    {
+      "name": "crank-link-pin",
+      "radius": 0.20138461592105722,
+      "gap": 0.28159064054489136,
+      "angle": -0.598,
+      "obstacle": "washer-2",
+      "point": {
+        "x": -1.1269807815551758,
+        "y": -0.13225451111793518,
+        "z": 4.557103157043457
+      },
+      "motionBound": 0.0004027691647139125,
+      "continuousLowerBound": 0.2811878713801774
+    },
+    {
+      "name": "shared-contact",
+      "radius": 1.1390999555587769,
+      "gap": 0.07378633320331573,
+      "angle": 0.4780000000000001,
+      "obstacle": "rail-0-49",
+      "point": {
+        "x": -1.2813913822174072,
+        "y": 0.21999241411685944,
+        "z": 4.319082736968994
+      },
+      "motionBound": 0.0022781995314175877,
+      "continuousLowerBound": 0.07150813367189815
+    }
+  ],
+  "excluded": [
+    {
+      "name": "machined-cap-shoulder",
+      "ymin": 0.30999999910593035,
+      "ymax": 0.3459999975562096,
+      "reason": "Y interval disjoint from all proposed rails/supports for every yaw"
+    },
+    {
+      "name": "engraving-counter-2",
+      "ymin": 0.3499999982118607,
+      "ymax": 0.36600000083446504,
+      "reason": "Y interval disjoint from all proposed rails/supports for every yaw"
+    },
+    {
+      "name": "engraving-counter-3",
+      "ymin": 0.3499999982118607,
+      "ymax": 0.36600000083446504,
+      "reason": "Y interval disjoint from all proposed rails/supports for every yaw"
+    },
+    {
+      "name": "engraving-counter-4",
+      "ymin": 0.3499999982118607,
+      "ymax": 0.36600000083446504,
+      "reason": "Y interval disjoint from all proposed rails/supports for every yaw"
+    },
+    {
+      "name": "recessed-engraving-bed",
+      "ymin": 0.35699999749660494,
+      "ymax": 0.36099999815225603,
+      "reason": "Y interval disjoint from all proposed rails/supports for every yaw"
+    },
+    {
+      "name": "engraved-sculpted-top-cap",
+      "ymin": 0.3499999982118607,
+      "ymax": 0.36600000083446504,
+      "reason": "Y interval disjoint from all proposed rails/supports for every yaw"
+    },
+    {
+      "name": "top-retaining-washer",
+      "ymin": 0.3649999988079071,
+      "ymax": 0.38699999868869783,
+      "reason": "Y interval disjoint from all proposed rails/supports for every yaw"
+    },
+    {
+      "name": "shaft-retainer-head",
+      "ymin": 0.3820000034570694,
+      "ymax": 0.3989999932050705,
+      "reason": "Y interval disjoint from all proposed rails/supports for every yaw"
+    },
+    {
+      "name": "shaft-retainer-slot",
+      "ymin": 0.3989999932050705,
+      "ymax": 0.39950000166893007,
+      "reason": "Y interval disjoint from all proposed rails/supports for every yaw"
+    }
+  ]
+}

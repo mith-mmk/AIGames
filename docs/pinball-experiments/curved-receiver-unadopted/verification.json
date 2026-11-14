@@ -1,0 +1,168 @@
+{
+  "status": "Recovery verified; candidate remains unadopted.",
+  "node": "v26.7.0",
+  "originalBuildSha256": "9b466e9029916b167c2406e91dea009c4feacff59ff2988e9f261677034c09b3",
+  "originalFreezeUnchanged": {
+    "assembly.json": true,
+    "assembly.log": true,
+    "sources.json": true,
+    "dependencies.json": true,
+    "prior-c-changes.json": true,
+    "fixed-plan.mjs": true,
+    "README.md": true,
+    "loader.mjs": true,
+    "build.mjs": true,
+    "manifest.json": true,
+    "changes.json": true,
+    "prior-c-helper.mjs": true,
+    "verify-assembly.mjs": true,
+    "baseline-sources.json": true
+  },
+  "payloadMatchesOriginal": {
+    "assembly.json": true,
+    "assembly.log": true,
+    "dependencies.json": true,
+    "prior-c-changes.json": true,
+    "fixed-plan.mjs": true,
+    "README.md": true,
+    "loader.mjs": true,
+    "build.mjs": true,
+    "manifest.json": true,
+    "prior-c-helper.mjs": true,
+    "verify-assembly.mjs": true
+  },
+  "inMemoryReconstruction": {
+    "status": "verified",
+    "adopted": false,
+    "originalBuildBytesUnchanged": true,
+    "originalArtifactWrites": 0,
+    "sourceSetSha256": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0",
+    "generatedHashes": {
+      "sources.json": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0",
+      "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "changes.json": "0305bea7ad7ff12580eae9bfd793625f09ddf5c8ef665e2b0829d55d085def48",
+      "manifest.json": "738a39408043df970522fb3a9920cd8e69235248b8f0aefd0ffa291ff5ae9a86"
+    },
+    "vendorFiles": 8,
+    "suppressedOriginalBuildMessages": 1
+  },
+  "freshSeparateOutput": {
+    "status": "restored",
+    "adopted": false,
+    "originalBuildBytesUnchanged": true,
+    "originalArtifactWrites": 0,
+    "sourceSetSha256": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0",
+    "generatedHashes": {
+      "sources.json": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0",
+      "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "changes.json": "0305bea7ad7ff12580eae9bfd793625f09ddf5c8ef665e2b0829d55d085def48",
+      "manifest.json": "738a39408043df970522fb3a9920cd8e69235248b8f0aefd0ffa291ff5ae9a86"
+    },
+    "vendorFiles": 8,
+    "suppressedOriginalBuildMessages": 1,
+    "output": "artifacts/pinball/_curved-recovery-6712ccbb20",
+    "written": 14,
+    "reused": 0,
+    "fileCount": 14,
+    "allFourteenFilesByteIdentical": {
+      "sources.json": true,
+      "baseline-sources.json": true,
+      "changes.json": true,
+      "manifest.json": true,
+      "README.md": true,
+      "assembly.json": true,
+      "assembly.log": true,
+      "build.mjs": true,
+      "dependencies.json": true,
+      "fixed-plan.mjs": true,
+      "loader.mjs": true,
+      "prior-c-changes.json": true,
+      "prior-c-helper.mjs": true,
+      "verify-assembly.mjs": true
+    }
+  },
+  "idempotentSecondRun": {
+    "filesCreated": 0,
+    "filesReused": 14
+  },
+  "recoveredLoaderAssembly": {
+    "status": "assembled",
+    "worldSteps": 0,
+    "colliders": 1615,
+    "attachments": 62,
+    "camVertices": 10,
+    "pivot": [
+      1.25,
+      0.27,
+      4.45
+    ],
+    "shooterX": 2.53,
+    "lowerSegmentsPerSide": [
+      61,
+      14,
+      63
+    ],
+    "mountsPerSide": 9,
+    "saveFrame": {
+      "parameter": 0.36756541772215257,
+      "center": [
+        -1.842372386735566,
+        0,
+        3.6
+      ],
+      "down": [
+        0.7532435886408368,
+        0,
+        0.6577416637035195
+      ],
+      "cross": [
+        0.6577416637035195,
+        0,
+        -0.7532435886408368
+      ],
+      "halfAcross": 0.19,
+      "halfAlong": 0.135,
+      "maxY": 0.5,
+      "horizontalSpeed": 12,
+      "contactSkin": 0.001
+    },
+    "pathsEqual": true,
+    "mountsEqual": true
+  },
+  "differingExistingFileTest": {
+    "exitCode": 1,
+    "preflightRejectedBeforeWrites": true,
+    "sentinelUnchanged": true,
+    "directoryStillOnlySentinel": true
+  },
+  "originalFrozenOutputTest": {
+    "exitCode": 1,
+    "rejectedEvenThoughMatching": true
+  },
+  "outsideAllowedOutputTest": {
+    "exitCode": 1,
+    "rejected": true
+  },
+  "danglingDirectorySymlinkTest": {
+    "exitCode": 1,
+    "rejected": true
+  },
+  "danglingOutputFileSymlinkTest": {
+    "exitCode": 1,
+    "rejectedBeforeWrites": true
+  },
+  "productionDiff": "",
+  "head": "eaf9be3a21bf5f09b1d17e277198e13dd9aead3f",
+  "noGameplayRerun": true,
+  "temporaryOutputs": {
+    "action": "Moved to Trash",
+    "directory": "/Users/tsaito/.Trash/curved-receiver-recovery-checks-6712ccbb20",
+    "count": 4,
+    "items": [
+      "_curved-recovery-6712ccbb20",
+      "_curved-conflict-6712ccbb20",
+      "_curved-dirlink-6712ccbb20",
+      "_curved-filelink-6712ccbb20"
+    ]
+  }
+}

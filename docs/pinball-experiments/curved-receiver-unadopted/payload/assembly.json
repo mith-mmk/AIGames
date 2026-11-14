@@ -1,0 +1,83 @@
+{
+  "sourceSha256": "613f54747cc4fbbf66ee8c1cedbe4ff64c99271ee5cd17697c28ea381eb1ace0",
+  "scope": "Single loader, ordinary engine assembly only. No world step, launch or dynamics. Static dimensions match exactly.",
+  "base": "884960985a413986d57aff0c2280e59a7be79dcf",
+  "pathsEqual": true,
+  "mountsEqual": true,
+  "colliders": 1615,
+  "rails": 276,
+  "attachments": 62,
+  "mountError": 1.9551926219830798e-7,
+  "railError": 2.3587532707497801e-7,
+  "camMeshVertices": 10,
+  "camHullVertices": 10,
+  "camError": 0,
+  "pivot": [
+    1.25,
+    0.27,
+    4.45
+  ],
+  "saveFrame": {
+    "parameter": 0.36756541772215257,
+    "center": [
+      -1.842372386735566,
+      0,
+      3.6
+    ],
+    "down": [
+      0.7532435886408368,
+      0,
+      0.6577416637035195
+    ],
+    "cross": [
+      0.6577416637035195,
+      0,
+      -0.7532435886408368
+    ],
+    "halfAcross": 0.19,
+    "halfAlong": 0.135,
+    "maxY": 0.5,
+    "horizontalSpeed": 12,
+    "contactSkin": 0.001
+  },
+  "frameError": 0,
+  "unchangedModules": [
+    "web/js/pinball/app.mjs",
+    "web/js/pinball/assets.mjs",
+    "web/js/pinball/bumper-effects.mjs",
+    "web/js/pinball/cabinet-boundary.mjs",
+    "web/js/pinball/cabinet-fasteners.mjs",
+    "web/js/pinball/components/bumper.mjs",
+    "web/js/pinball/components/cabinet.mjs",
+    "web/js/pinball/components/flipper.mjs",
+    "web/js/pinball/components/plunger.mjs",
+    "web/js/pinball/components/ramp-wire.mjs",
+    "web/js/pinball/components/reference-cabinet.mjs",
+    "web/js/pinball/components/sling-target.mjs",
+    "web/js/pinball/components/workshop-friend.mjs",
+    "web/js/pinball/feedback.mjs",
+    "web/js/pinball/game-state.mjs",
+    "web/js/pinball/mechanical-contact.mjs",
+    "web/js/pinball/mechanisms.mjs",
+    "web/js/pinball/missions.mjs",
+    "web/js/pinball/nudge.mjs",
+    "web/js/pinball/parts-detail.mjs",
+    "web/js/pinball/plunger.mjs",
+    "web/js/pinball/ramp-acrylic.mjs",
+    "web/js/pinball/ramp-base.mjs",
+    "web/js/pinball/ramp-deck.mjs",
+    "web/js/pinball/ramp-geometry.mjs",
+    "web/js/pinball/ramp-hardware.mjs",
+    "web/js/pinball/ramp-profile.mjs",
+    "web/js/pinball/reference-playfield.mjs",
+    "web/js/pinball/scenery-components.mjs",
+    "web/js/pinball/shooter-outer-rail.mjs",
+    "web/js/pinball/sound.mjs",
+    "web/js/pinball/sphere-clearance.test.helper.mjs",
+    "web/js/pinball/wire-stock.mjs",
+    "web/js/pinball/workshop.mjs"
+  ],
+  "physicsMatchesPriorReceiver": true,
+  "helperMatchesPriorC": true,
+  "gitDiffProduction": ""
+}
