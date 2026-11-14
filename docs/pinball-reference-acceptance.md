@@ -133,3 +133,17 @@ The wire's last three stations now remain outside the sling at [-2.30,.44,2.45],
 - New evidence uses `artifacts/pinball/outside-wire-*`. Component mount views are isolated fixtures, not proof of whole-game assembly. Temporary videos and build outputs are moved to Trash after review.
 
 Reference completion is still open: the right S silhouette and its tightly curved rear fold, low support base, IN/OUT proportions, surrounding city/apron and materials need more work. The left outlet now clears the sling but does not by itself make the entire machine reference-approved. Physical-phone performance and unscripted human play remain unverified. No site deployment was made.
+
+## 2026-11-14 S curvature, low-base alignment and lane legibility
+
+Two S centerline stations move inward by 0.15: the middle valley is x1.30 and the rear shoulder x1.80. This modestly deepens the S while removing the rear left offset-wall fold. Both walls are tested at 240 and 24,000 sections for forward progress relative to the centerline; the normalized progress must exceed 0.10. A deeper valley candidate broke the required 83-tick natural route and was rejected. Wall winding correction remains necessary, but no longer compensates for a folded path in this layout.
+
+Low ramp strips now share one selection function for collision, side skirts and visual top/outer/end faces. The former display stopped one endpoint early (about 0.055 in z); it now ends at the same full strip as the physical hull. This does not remove the existing low solid base or claim a complete thin-leg redesign. Floor-to-sheet and beam clearances explain why simply removing the low fill can admit a ball into a narrowing, trapped gap. The higher underside remains open.
+
+IN/OUT printed panels are wider, rotated along the real passages, and the OUT panel is longer. A sampled regression checks that the whole printed rectangles do not cross actual rails or sling rubber. Passage geometry and IN/OUT functions are unchanged; these panels are not raised colliders. Their improved proportions still do not match the reference's long straight lanes.
+
+Final verification: **148/148 pinball tests**, **120/120 strong entries**, PC/mobile browser smoke and strict keyboard/touch same-ball ramp/capture/re-fire/scoring pass. The 356-file build passes; lint has zero errors and the same three CSS warnings. Render budget is 376,901 triangles / 679 calls. Legal-input games finish at 75/2,550/1,900 points, zero ramp traversals and no live resets. Outside-wire continuous physical clearance remains at least 0.0331999. Desktop/mobile and component multiview captures were refreshed, with evidence under `artifacts/pinball/s-curve-final-*`.
+
+Mobile validation means Chrome viewport/touch emulation at 390×844, layout screenshots, and scripted controls. It is not physical-phone GPU, thermals, Safari or human usability validation. Small on-table lettering remains limited at that size.
+
+Still unfinished: the overall acrylic S appearance, low support architecture, full IN/OUT proportions, city/apron/material finish and human playability. The previous rear-fold issue is resolved for this sampled curve, not every possible future shape. The public Site is unchanged.

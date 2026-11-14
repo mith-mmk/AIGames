@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {laneInkStrip} from './playfield-parts.mjs';
-import {LOWER_LAYOUT} from './layout.mjs';
+import {LOWER_LAYOUT,lowerLanePaths} from './layout.mjs';
+import {slingContactPoints} from './mechanical-contact.mjs';
+import * as T from '../vendor/three-0.180.0/three.module.min.js';
 
 test('printed IN bands mirror the verified centerline and add no raised route',()=>{
  const left=laneInkStrip(LOWER_LAYOUT.inlaneInkPath,-1),right=laneInkStrip(LOWER_LAYOUT.inlaneInkPath,1);
@@ -19,4 +21,18 @@ test('printed IN bands mirror the verified centerline and add no raised route',(
    }
   }
  }finally{left.dispose();right.dispose();}
+});
+
+test('larger lane labels follow the open passages without printing over rails',()=>{
+ const paths=lowerLanePaths(1).map(path=>[path.map(([x,,z])=>new T.Vector2(x,z)),LOWER_LAYOUT.guideRadius]);
+ paths.push([slingContactPoints(LOWER_LAYOUT.slingVertices).map(([x,,z])=>new T.Vector2(x,z)),.025]);
+ for(const [name,[x,z,angle,width,height]] of Object.entries(LOWER_LAYOUT.laneInserts)){
+  for(let i=0;i<=12;i++)for(let j=0;j<=24;j++){
+   const u=width*(i/12-.5),v=height*(j/24-.5),p=new T.Vector2(x+u*Math.cos(angle)-v*Math.sin(angle),z-u*Math.sin(angle)-v*Math.cos(angle));
+   for(const [path,radius] of paths)for(let k=1;k<path.length;k++){
+    const a=path[k-1],d=path[k].clone().sub(a),t=Math.max(0,Math.min(1,p.clone().sub(a).dot(d)/d.lengthSq()));
+    assert.ok(p.distanceTo(a.clone().addScaledVector(d,t))>radius+.01,`${name} label crosses a rail at ${p.x},${p.y}`);
+   }
+  }
+ }
 });

@@ -23,9 +23,9 @@ export const RAMP_POINTS = Object.freeze([
   [1.9, 0.24, 0.25],
   [1.85, 0.5, -0.6333],
   [1.55, 0.73, -1.4],
-  [1.45, 0.87, -2.1666666666666665],
+  [1.30, 0.87, -2.1666666666666665],
   [1.65, 0.86, -2.933333333333333],
-  [1.95, 0.78, -3.7],
+  [1.80, 0.78, -3.7],
   [1.2, 0.6, -4.45],
   [0, 0.56, -4.65],
   [-1.4, 0.48, -4.05],
@@ -79,12 +79,18 @@ function surface(rows, kind) {
   }
   return {positions:new Float32Array(positions),indices:new Uint32Array(indices)};
 }
+// Select complete strips, including the first endpoint above the low threshold.
+// Render and collision must terminate at the same section of the ramp.
+export function lowRampSegments(rows=sampleRamp()) {
+  const segments=[];
+  for(let i=0;i<rows.length-1;i++)if(rows[i].p.x>=0&&Math.min(rows[i].p.y,rows[i+1].p.y)<.46)segments.push({a:rows[i],b:rows[i+1],index:i});
+  return segments;
+}
 function skirt(rows,side) {
   const positions=[],indices=[];
-  for(let i=0;i<rows.length-1;i++) {
+  for(const segment of lowRampSegments(rows)) {
     // Block low underside access. Above this threshold the free gap is >= .37.
-    if(rows[i].p.x<0||Math.min(rows[i].p.y,rows[i+1].p.y)>=.46)continue;
-    const a=rows[i][side],b=rows[i+1][side],k=positions.length/3;
+    const a=segment.a[side],b=segment.b[side],k=positions.length/3;
     positions.push(a.x,.04,a.z,a.x,a.y,a.z,b.x,.04,b.z,b.x,b.y,b.z);
     indices.push(k,k+1,k+2,k+1,k+3,k+2);
   }
@@ -131,15 +137,14 @@ export function buildPhysicalRamp(game) {
   const baseColliderStart=colliders.length;
   // Fill every low strip down to the playfield. Side-only skirts allow a
   // ground ball entering at the elevated end to roll into a shrinking gap.
-  for(let i=0;i<rows.length-1;i++) {
-    if(rows[i].p.x<0||Math.min(rows[i].p.y,rows[i+1].p.y)>=.46)continue;
+  for(const {a,b} of lowRampSegments(rows)) {
     const vertices=[];
-    for(const row of [rows[i],rows[i+1]])for(const side of ['left','right']) {
+    for(const row of [a,b])for(const side of ['left','right']) {
       const p=row[side];vertices.push(p.x,p.y,p.z,p.x,.035,p.z);
     }
     // The outside sliver is narrower than a ball: merge it into the base,
     // rather than leaving a dead-end between the skirt and shooter divider.
-    for(const row of [rows[i],rows[i+1]])vertices.push(2.35,row.p.y,row.p.z,2.35,.035,row.p.z);
+    for(const row of [a,b])vertices.push(2.35,row.p.y,row.p.z,2.35,.035,row.p.z);
     const desc=R.ColliderDesc.convexHull(new Float32Array(vertices));
     if(desc)colliders.push(game.world.createCollider(desc.setFriction(.025).setRestitution(.02)));
   }
@@ -180,7 +185,8 @@ export function buildRampBaseVisual(rows=sampleRamp(),material) {
   const add=(name,g)=>{const m=new T.Mesh(g,material);m.name=name;m.castShadow=true;m.receiveShadow=true;root.add(m);return m;};
   const noseTop={positions:new Float32Array([1.55,.40,-1.25,2.35,.40,-1.25,2.35,.40,-2.35,1.55,.035,-1.25,2.35,.035,-1.25,2.35,.035,-2.35]),indices:new Uint32Array([0,2,1,0,1,3,1,4,3,1,2,4,2,5,4,2,0,5,0,3,5])};
   add('chamfered-anti-trap-nose',geometry(noseTop));
-  const baseRows=rows.filter(r=>r.p.x>0&&r.p.y<.46);
+  const segments=lowRampSegments(rows);
+  const baseRows=segments.length?[segments[0].a,...segments.map(s=>s.b)]:[];
   const basePositions=[],baseIndices=[];
   for(const r of baseRows)basePositions.push(r.right.x,r.right.y,r.right.z,2.35,r.p.y,r.p.z);
   for(let i=0;i<baseRows.length-1;i++){const k=i*2;baseIndices.push(k,k+1,k+2,k+1,k+3,k+2);}

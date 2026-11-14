@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
 import { MechanicalRamp, MechanicalWireform, RAMP_WIRE_DIMENSIONS } from './components/ramp-wire.mjs';
-import { buildPhysicalRamp, sampleRamp, rampSupportStations, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_HEIGHT_OFFSET, WIRE_RADIUS, WIRE_HALF_SPACING, rampWireRails } from './ramp-geometry.mjs';
+import { buildPhysicalRamp, sampleRamp, lowRampSegments, rampSupportStations, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_HEIGHT_OFFSET, WIRE_RADIUS, WIRE_HALF_SPACING, rampWireRails } from './ramp-geometry.mjs';
 
 test('installed ramp has matched sheet walls, true paired rails and visible anti-trap base',()=>{
  const part=new MechanicalRamp();
@@ -94,4 +94,31 @@ test('divider-mounted ramp supports have matching physical posts and arms',async
    assert.ok(arm.translation().y-arm.shape.radius>.31);
   });
  }finally{world.free();}
+});
+
+test('acrylic offset walls never fold backwards along the centerline',()=>{
+ for(const count of [240,24000]){
+  const rows=sampleRamp(count),end=Math.round(count*WIRE_START_FRACTION);
+  for(let i=0;i<end;i++){
+   const d=rows[i+1].p.clone().sub(rows[i].p);d.y=0;
+   assert.ok(d.lengthSq()>0);
+   for(const side of ['left','right']){
+    const edge=rows[i+1][side].clone().sub(rows[i][side]);edge.y=0;
+    assert.ok(edge.dot(d)/d.lengthSq()>.10,`${side} offset folds near ${i}/${count}`);
+   }
+  }
+ }
+});
+
+test('low base drawing ends at the same complete strip as its collider',()=>{
+ const rows=sampleRamp(),segments=lowRampSegments(rows),last=segments.at(-1).b;
+ assert.equal(segments[0].index,0);assert.ok(last.p.y>=.46);
+ assert.ok(segments.at(-1).a.p.y<.46);
+ const part=new MechanicalRamp();
+ try{
+  const cap=part.root.getObjectByName('low-base-end-cap').geometry.attributes.position;
+  const expected=[[last.left.x,.035,last.left.z],[last.left.x,last.left.y,last.left.z],[2.35,.035,last.p.z],[2.35,last.p.y,last.p.z]];
+  assert.equal(cap.count,expected.length);
+  for(let i=0;i<cap.count;i++)assert.ok(new T.Vector3().fromBufferAttribute(cap,i).distanceTo(new T.Vector3(...expected[i]))<1e-6);
+ }finally{part.dispose();}
 });
