@@ -3,7 +3,7 @@ import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
 
 // Shared physical route; traversal and same-ball recapture are regression tested.
 export const RAMP_WIDTH = 0.68;
-export const RAMP_WALL_HEIGHT = 0.65;
+export const RAMP_WALL_HEIGHT = 0.45;
 // Upper-center handoff: the leftward rear sweep is actual open wire, not acrylic.
 export const WIRE_START_FRACTION = 124/240;
 export const WIRE_FUNNEL_FRACTION = 24/240;

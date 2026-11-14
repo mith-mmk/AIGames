@@ -147,3 +147,11 @@ Final verification: **148/148 pinball tests**, **120/120 strong entries**, PC/mo
 Mobile validation means Chrome viewport/touch emulation at 390×844, layout screenshots, and scripted controls. It is not physical-phone GPU, thermals, Safari or human usability validation. Small on-table lettering remains limited at that size.
 
 Still unfinished: the overall acrylic S appearance, low support architecture, full IN/OUT proportions, city/apron/material finish and human playability. The previous rear-fold issue is resolved for this sampled curve, not every possible future shape. The public Site is unchanged.
+
+## 2026-11-14 lower acrylic wall checkpoint
+
+The acrylic sidewalls are reduced from 0.65 to **0.45**, making the S channel less visually dominant. The same exported height drives the visible formed walls, physical wall vertices and sensor envelope. No tall invisible wall remains. In-memory comparisons at .55 and .45 passed the required routes; .35 lost a 28-speed/+0.08 tangent completion and was rejected despite passing the simpler entry audit.
+
+At .45, final `npm test` is **148/148**, strong entry audit **120/120**, strict same-ball browser controls and PC/mobile smoke pass. Natural 80–84, weak/boundary approaches and outlet capture remain covered. Component and desktop/mobile multiview were reviewed, including top and side views. Static build passes; render budget remains 376,901 triangles / 679 calls. Legal-input games score 75/2,275/1,900 with zero ramp traversals and zero live resets, superseding the preceding checkpoint's middle score. Evidence is under `artifacts/pinball/lower-acrylic-*`.
+
+This height is validated for the covered shots, not all possible high-energy collisions. The existing low base and long perimeter crossheads still differ from the reference; simply hiding them or removing their contacts would not be an acceptable redesign. Overall reference approval, full IN/OUT proportions, finish and physical-phone/human testing remain open. No public deployment was made.
