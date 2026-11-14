@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import {MechanicalCabinet} from './components/cabinet.mjs';
+import {TABLE,LOWER_LAYOUT} from './layout.mjs';
 
 test('reference cabinet includes supported backbox, speakers, apron and rear tower',()=>{
  const c=new MechanicalCabinet();
@@ -36,15 +37,21 @@ test('score drawing is cached and uses live score plus ball number',()=>{
 
 test('formed collection apron preserves central and outlane throats after active drain',()=>{
  const c=new MechanicalCabinet(),a=c.root.getObjectByName('formed-collection-apron');
+ c.root.position.z=TABLE.centerZ;
  c.root.updateMatrixWorld(true);
+ const board=new T.Box3().setFromObject(c.root.getObjectByName('laminated-playfield-board'));
+ assert.ok(Math.abs(board.min.z-(-5.75))<1e-6,'upper board datum remains fixed');
+ assert.ok(Math.abs(board.max.z-6.15)<1e-6,'extended board reaches the new front');
+ const drainWorld=c.root.userData.drainPolygon.map(([x,z])=>new T.Vector3(x,0,z).applyMatrix4(c.root.matrixWorld));
+ assert.ok(Math.min(...drainWorld.map(p=>p.z))>LOWER_LAYOUT.drainZ-.04,'visible drain begins at the physical drain edge');
  const box=new T.Box3().setFromObject(a);
- assert.ok(box.min.z>4.65,'no visible apron on active ball passage');
+ assert.ok(box.min.z>LOWER_LAYOUT.drainZ,'no visible apron on active ball passage');
  for(const x of [0,-2.1,2.1]){
-   const ray=new T.Raycaster(new T.Vector3(x,2,5.18),new T.Vector3(0,-1,0));
+   const ray=new T.Raycaster(new T.Vector3(x,2,5.18+LOWER_LAYOUT.downstreamOffset),new T.Vector3(0,-1,0));
    assert.ok(ray.intersectObject(a,true).every(hit=>hit.point.y<-.1),`open deck throat at ${x}; only recessed basket permitted`);
  }
  for(const x of [-1.2,1.2]){
-   const ray=new T.Raycaster(new T.Vector3(x,2,5.18),new T.Vector3(0,-1,0));
+   const ray=new T.Raycaster(new T.Vector3(x,2,5.18+LOWER_LAYOUT.downstreamOffset),new T.Vector3(0,-1,0));
    assert.ok(ray.intersectObject(a,true).length>0,'formed service wing exists');
  }
  c.dispose();

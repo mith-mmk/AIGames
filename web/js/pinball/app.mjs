@@ -6,7 +6,7 @@ import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { WorkshopRoom } from "./workshop.mjs";
 import { WorkshopAssets } from "./assets.mjs";
 import { PinballPhysics } from "./physics.mjs";
-import { TABLE, TablePreviewState } from "./layout.mjs";
+import { TABLE, SHOOTER_LAYOUT, TablePreviewState } from "./layout.mjs";
 export class PinballTablePreview {
   constructor(canvas) {
     this.canvas = canvas;
@@ -38,7 +38,7 @@ export class PinballTablePreview {
       this.board,
       2.53,
       .175,
-      4.025,
+      SHOOTER_LAYOUT.ballZ,
     );
     this.scene.add(new T.HemisphereLight(0xe5e7ee, 0x353339, 1.5));
     const key = new T.DirectionalLight(0xffeed5, 3.8);

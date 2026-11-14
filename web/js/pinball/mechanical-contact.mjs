@@ -1,10 +1,10 @@
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import { LOWER_LAYOUT } from "./layout.mjs";
+import { LOWER_LAYOUT, SHOOTER_LAYOUT } from "./layout.mjs";
 
 // Table-local artistic estimates shared by rendering and physics, not measured
 // manufacturer dimensions. Chord approximation error is < .001 at default size.
 export const FLIPPER_CONTACT = Object.freeze({ bottom: -.109, top: .034 });
-export const PLUNGER_CONTACT = Object.freeze({ restZ: 4.20, pullTravel: .32 });
+export const PLUNGER_CONTACT = Object.freeze({ restZ: SHOOTER_LAYOUT.restZ, pullTravel: .32 });
 export function flipperProfile({length=LOWER_LAYOUT.flipperCenter+LOWER_LAYOUT.flipperHalfLength,
   halfWidth=LOWER_LAYOUT.flipperHalfWidth,
   heelBack=LOWER_LAYOUT.flipperHalfLength-LOWER_LAYOUT.flipperCenter,

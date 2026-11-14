@@ -1,5 +1,5 @@
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import { BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS } from "./layout.mjs";
+import { SHOOTER_LAYOUT, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS } from "./layout.mjs";
 
 /** Manufactured surface detail only. No collision or scoring data. */
 export class WorkshopPartsDetail {
@@ -132,7 +132,7 @@ export class WorkshopPartsDetail {
   plunger() {
     const root = this.a.root;
     // Fixed ferrules behind contact head, never across the ball rest.
-    for (const z of [4.245,4.98]) this.ring(root,"brass",.105,.016,2.53,.175,z,true);
+    for (const offset of [.045,.78]) this.ring(root,"brass",.105,.016,SHOOTER_LAYOUT.x,.175,SHOOTER_LAYOUT.restZ+offset,true);
     // Knob already rotates onto Z; use its local cylinder frame.
     const knob = this.a.plungerKnob;
     for (const y of [-.055,.055]) this.ring(knob,"brass",.148,.009,0,y,0);

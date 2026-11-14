@@ -7,7 +7,7 @@ import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { drawReferencePlayfield, REFERENCE_ART_LANDMARKS } from "./reference-playfield.mjs";
 import { PlayfieldParts } from "./playfield-parts.mjs";
 import { WorkshopMechanisms } from "./mechanisms.mjs";
-import { BUMPERS, MINI_BUMPERS, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING } from "./layout.mjs";
+import { TABLE, SHOOTER_LAYOUT, BUMPERS, MINI_BUMPERS, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING } from "./layout.mjs";
 export class WorkshopAssets {
   constructor() {
     this.root = new T.Group();
@@ -162,11 +162,13 @@ export class WorkshopAssets {
     texture.colorSpace = T.SRGBColorSpace;
     // Match the structural board opening rather than sealing it with artwork.
     const outline=new T.Shape();
-    outline.moveTo(-2.75,-5.75);outline.lineTo(2.75,-5.75);outline.lineTo(2.75,5.75);outline.lineTo(-2.75,5.75);outline.closePath();
+    outline.moveTo(-TABLE.width/2,-TABLE.frontZ);outline.lineTo(TABLE.width/2,-TABLE.frontZ);outline.lineTo(TABLE.width/2,-TABLE.rearZ);outline.lineTo(-TABLE.width/2,-TABLE.rearZ);outline.closePath();
     const hole=new T.Path();
-    this.mechanical.cabinet.root.userData.drainPolygon.forEach(([x,z],i)=>i?hole.lineTo(x,-z):hole.moveTo(x,-z));
+    this.mechanical.cabinet.root.userData.drainPolygon.forEach(([x,z],i)=>i?hole.lineTo(x,-z-TABLE.centerZ):hole.moveTo(x,-z-TABLE.centerZ));
     hole.closePath();outline.holes.push(hole);
     const geometry=new T.ShapeGeometry(outline),pos=geometry.attributes.position,uv=geometry.attributes.uv;
+    // Preserve original art registration; the added apron-edge strip clamps
+    // to the existing border ink instead of stretching every gameplay landmark.
     for(let i=0;i<pos.count;i++)uv.setXY(i,(pos.getX(i)+2.75)/5.5,(pos.getY(i)+5.75)/11.5);
     const surface=this.mesh(geometry,new T.MeshStandardMaterial({map:texture,roughness:.30,metalness:.1}),this.root,0,.045,0);
     surface.name="registered-playfield-print-with-open-drain";
@@ -175,7 +177,7 @@ export class WorkshopAssets {
   build() {
     const g = this.root;
     this.mechanical.cabinet=new MechanicalCabinet({materials:this.materials});
-    g.add(this.mechanical.cabinet.root);
+    this.mechanical.cabinet.root.position.z=TABLE.centerZ;g.add(this.mechanical.cabinet.root);
     this.printedPlayfield();
     // Five flush mission indicators align with the lower printed M1–M5 bank.
     // The original raised rings would obscure the reference's large robot art.
@@ -202,8 +204,8 @@ export class WorkshopAssets {
     this.robot();
     new WorkshopMechanisms(this).build(g);
     // Shooter walls match the physical straight-segment guide layout.
-    this.tube(g,[[2.35,.23,5.5],[2.35,.23,-3.9]],.045,"chrome");
-    const roof=[[2.72,.23,4.55],[2.72,.23,-4.15],[2.4,.23,-5.2],[1.25,.23,-5.55],[.95,.23,-5.3]];
+    this.tube(g,[[2.35,.23,SHOOTER_LAYOUT.frontZ],[2.35,.23,-3.9]],.045,"chrome");
+    const roof=[[2.72,.23,4.55+LOWER_LAYOUT.downstreamOffset],[2.72,.23,-4.15],[2.4,.23,-5.2],[1.25,.23,-5.55],[.95,.23,-5.3]];
     for(let i=0;i<roof.length-1;i++) this.tube(g,[roof[i],roof[i+1]],.06,"chrome");
     const backingShape=new T.Shape();
     SHOOTER_BACKING.forEach(([x,z],i)=>i?backingShape.lineTo(x,-z):backingShape.moveTo(x,-z));
@@ -213,7 +215,7 @@ export class WorkshopAssets {
     const backingMesh=new T.Mesh(backingGeometry,this.materials.rubber);
     backingMesh.name="shooter-corner-backing"; g.add(backingMesh);
     this.mechanical.plunger=new MechanicalPlunger({materials:this.materials});
-    this.mechanical.plunger.root.position.set(2.53,.175,4.20);g.add(this.mechanical.plunger.root);
+    this.mechanical.plunger.root.position.set(SHOOTER_LAYOUT.x,.175,SHOOTER_LAYOUT.restZ);g.add(this.mechanical.plunger.root);
     this.plungerHead=this.mechanical.plunger.head;this.plungerRod=this.mechanical.plunger.moving;this.plungerKnob=this.mechanical.plunger.knob;
     new PlayfieldParts(this).build();
     this.batchStaticAssembly(this.mechanical.cabinet.root,new Set(),this.mechanical.cabinet.geometries);

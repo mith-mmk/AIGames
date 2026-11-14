@@ -3,7 +3,7 @@ import {NudgeMeter} from "./nudge.mjs";
 import { buildPhysicalRamp, rampSensorGates } from "./ramp-geometry.mjs";
 import R from "../vendor/rapier3d-0.17.3/rapier.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import { TABLE, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS, SHOOTER_BACKING, lowerLanePaths, flipperAngle } from "./layout.mjs";
+import { TABLE, SHOOTER_LAYOUT, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS, SHOOTER_BACKING, lowerLanePaths, flipperAngle } from "./layout.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
 export class PinballPhysics {
@@ -21,7 +21,7 @@ export class PinballPhysics {
     this.flipperContacts = [0, 0]; this.flipperHandles = new Map(); this.activeFlipperContacts = [0, 0];
     this.flippers = []; this.flipperAngles = [flipperAngle(false, false), flipperAngle(true, false)];
     this.build();
-    this.ball = this.world.createRigidBody(R.RigidBodyDesc.dynamic().setTranslation(2.53, .175, 4.025).setCcdEnabled(true).setLinearDamping(0.12).setAngularDamping(0.15).setCanSleep(false));
+    this.ball = this.world.createRigidBody(R.RigidBodyDesc.dynamic().setTranslation(SHOOTER_LAYOUT.x, .175, SHOOTER_LAYOUT.ballZ).setCcdEnabled(true).setLinearDamping(0.12).setAngularDamping(0.15).setCanSleep(false));
     this.ballCollider = this.world.createCollider(R.ColliderDesc.ball(TABLE.ballRadius).setMass(0.08).setRestitution(0.22).setFriction(0.06).setActiveEvents(R.ActiveEvents.COLLISION_EVENTS), this.ball);
     this.resetBall();
   }
@@ -48,18 +48,18 @@ export class PinballPhysics {
   }
   build() {
     // Floor ends before apron so misses naturally enter drain; shooter lane remains solid.
-    this.box(0, -0.04, -0.55, 2.75, 0.08, 5.15);
-    this.box(2.53, -0.04, 4.8, 0.22, 0.08, 0.9);
-    for (const x of [-2.8, 2.8]) this.box(x, 0.45, 0, 0.07, 0.5, 5.85);
+    this.box(0, -0.04, -.55+LOWER_LAYOUT.downstreamOffset/2, TABLE.width/2, .08, 5.15+LOWER_LAYOUT.downstreamOffset/2);
+    this.box(SHOOTER_LAYOUT.x, -.04, 4.8+LOWER_LAYOUT.downstreamOffset, .22, .08, .9);
+    for (const x of [-2.8, 2.8]) this.box(x, .45, TABLE.centerZ, .07, .5, TABLE.length/2+.10);
     this.box(0, 0.45, -5.8, 2.8, 0.5, 0.07);
-    this.box(2.53, 0.3, 5.5, 0.27, 0.4, 0.08);
+    this.box(SHOOTER_LAYOUT.x, .3, SHOOTER_LAYOUT.frontZ, .27, .4, .08);
     this.plungerPull = 0; this.plungerTargetPull = 0; this.readyPullActive = false;
     this.plungerBody=this.world.createRigidBody(R.RigidBodyDesc.kinematicPositionBased()
-      .setTranslation(2.53,.175,PLUNGER_CONTACT.restZ));
+      .setTranslation(SHOOTER_LAYOUT.x,.175,PLUNGER_CONTACT.restZ));
     this.plungerStop = this.world.createCollider(R.ColliderDesc.convexHull(plungerContactVertices())
       .setRestitution(.02).setFriction(.08),this.plungerBody);
     // Shooter divider stops above the bumper area; curved roof feeds the ball left.
-    this.segment([2.35, 0.23, 5.5], [2.35, 0.23, -3.9], 0.045);
+    this.segment([2.35, .23, SHOOTER_LAYOUT.frontZ], [2.35, 0.23, -3.9], 0.045);
     const roof = [[2.72, .23, -4.15], [2.4, .23, -5.2], [1.25, .23, -5.55], [.95, .23, -5.3]];
     for (let i = 0; i < roof.length - 1; i++) this.segment(roof[i], roof[i + 1], 0.06);
     // Triangulate the concave backing; one convex hull would intrude into
@@ -161,10 +161,10 @@ export class PinballPhysics {
   }
   resetBall() {
     this.plungerPull=0; this.plungerTargetPull=0; this.readyPullActive=false;
-    this.plungerBody.setTranslation({x:2.53,y:.175,z:PLUNGER_CONTACT.restZ},true);
-    this.plungerBody.setNextKinematicTranslation({x:2.53,y:.175,z:PLUNGER_CONTACT.restZ});
+    this.plungerBody.setTranslation({x:SHOOTER_LAYOUT.x,y:.175,z:PLUNGER_CONTACT.restZ},true);
+    this.plungerBody.setNextKinematicTranslation({x:SHOOTER_LAYOUT.x,y:.175,z:PLUNGER_CONTACT.restZ});
     this.nudgeMeter.reset();this.state.tilted=false;this.state.returnedShooter = false; this.rampStage = 0;
-    this.ball.setTranslation({ x: 2.53, y: .175, z: 4.025 }, true);
+    this.ball.setTranslation({ x: SHOOTER_LAYOUT.x, y: .175, z: SHOOTER_LAYOUT.ballZ }, true);
     this.ball.setLinvel({ x: 0, y: 0, z: 0 }, true); this.ball.setAngvel({ x: 0, y: 0, z: 0 }, true); this.ball.setGravityScale(0, true);
 
   }
@@ -269,14 +269,14 @@ export class PinballPhysics {
       if (this.state.phase === "ready") {
         const delta=this.plungerTargetPull-this.plungerPull;
         this.plungerPull+=Math.max(-1/38.4,Math.min(1/14,delta));
-        this.plungerBody.setNextKinematicTranslation({x:2.53,y:.175,z:PLUNGER_CONTACT.restZ+PLUNGER_CONTACT.pullTravel*this.plungerPull});
+        this.plungerBody.setNextKinematicTranslation({x:SHOOTER_LAYOUT.x,y:.175,z:PLUNGER_CONTACT.restZ+PLUNGER_CONTACT.pullTravel*this.plungerPull});
       }
       // Do not teleport the released stop through the ball. Once the ball has
       // cleared its rest face, return the tip without adding a second launch.
       if (this.state.phase === "playing" && this.plungerPull > 0 &&
           this.ball.translation().z + TABLE.ballRadius < PLUNGER_CONTACT.restZ - .04) {
         this.plungerPull=Math.max(0,this.plungerPull-1/(120*.115));
-        this.plungerBody.setNextKinematicTranslation({x:2.53,y:.175,z:PLUNGER_CONTACT.restZ+PLUNGER_CONTACT.pullTravel*this.plungerPull});
+        this.plungerBody.setNextKinematicTranslation({x:SHOOTER_LAYOUT.x,y:.175,z:PLUNGER_CONTACT.restZ+PLUNGER_CONTACT.pullTravel*this.plungerPull});
       }
       this.world.step(this.queue);
       this.queue.drainCollisionEvents((a, b, started) => {
@@ -293,7 +293,7 @@ export class PinballPhysics {
         if (!this.state.returnedShooter && !this.readyPullActive) { this.resetBall(); continue; }
         const resting = this.ball.translation();
         // Returned balls still simulate: never leave a lost ball stranded in ready.
-        if (resting.y < -1 || Math.abs(resting.x) > 3.2 || resting.z > 5.85 || resting.z < -6.5) {
+        if (resting.y < -1 || Math.abs(resting.x) > 3.2 || resting.z > TABLE.frontZ+.10 || resting.z < -6.5) {
           this.state.launch(); this.state.drain(); this.resetBall();
         }
         continue;
@@ -321,10 +321,10 @@ export class PinballPhysics {
       // drain. Keep its position, velocity and ball number; gravity rolls it to
       // the plunger end, and launch() fires from wherever it actually rests.
       const inShooter = p.x > 2.45 && p.x < 2.70 && p.y > -.1 && p.y < .5;
-      if (!this.state.tilted && inShooter && p.z > 3.85 && p.z < 4.16 && v.z >= 0) {
+      if (!this.state.tilted && inShooter && p.z > SHOOTER_LAYOUT.returnMinZ && p.z < SHOOTER_LAYOUT.returnMaxZ && v.z >= 0) {
         this.state.returnToShooter(); continue;
       }
-      if ((!inShooter && p.z > 4.65) || p.y < -1.0 || Math.abs(p.x) > 3.2 || p.z < -6.5) {
+      if ((!inShooter && p.z > LOWER_LAYOUT.drainZ) || p.y < -1.0 || Math.abs(p.x) > 3.2 || p.z < -6.5) {
         this.state.drain(); this.resetBall(); continue;
       }
       const currentVelocity = this.ball.linvel();

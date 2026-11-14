@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { PinballPhysics } from "./physics.mjs";
-import { LOWER_LAYOUT, TABLE, flipperAngle, lowerLanePaths } from "./layout.mjs";
+import { LOWER_LAYOUT, TABLE, SHOOTER_LAYOUT, flipperAngle, lowerLanePaths } from "./layout.mjs";
 import { flipperProfile } from "./mechanical-contact.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
@@ -32,7 +32,7 @@ test("physical drain serves next ball and ends after third", async () => {
   const g = await PinballPhysics.create();
   try {
     for (let i = 1; i <= 3; i++) {
-      g.launch(); g.ball.setTranslation({ x: 0, y: .2, z: 4.9 }, true); run(g, .04);
+      g.launch(); g.ball.setTranslation({ x: 0, y: .2, z: LOWER_LAYOUT.drainZ + .25 }, true); run(g, .04);
       assert.equal(g.state.phase, i === 3 ? "gameover" : "ready");
     }
     g.restart(); assert.equal(g.state.ballNumber, 1); assert.equal(g.state.phase, "ready");
@@ -72,7 +72,7 @@ test("pause freezes simulation; resume and restart are deterministic", async () 
     g.launch(); run(g, .2); g.setPaused(true); const p = { ...g.ballPosition };
     run(g, 1, { left: true }); assert.deepEqual({ ...g.ballPosition }, p);
     g.setPaused(false); run(g, .1); assert.notDeepEqual({ ...g.ballPosition }, p);
-    g.restart(); run(g, 1); assert.equal(g.state.phase, "ready"); assert.ok(Math.abs(g.ballPosition.z - 4.025) < 1e-5);
+    g.restart(); run(g, 1); assert.equal(g.state.phase, "ready"); assert.ok(Math.abs(g.ballPosition.z - SHOOTER_LAYOUT.ballZ) < 1e-5);
   } finally { g.dispose(); }
 });
 
@@ -225,13 +225,13 @@ test("spinner traversal accelerates rotation once; rotation decays without score
 test("charged center saver applies impulse without teleport, then allows real drain", async () => {
   const g = await PinballPhysics.create();
   try {
-    g.launch(); g.ball.setTranslation({ x: 0, y: .18, z: 4.53 }, true);
+    g.launch(); g.ball.setTranslation({ x: 0, y: .18, z: LOWER_LAYOUT.centerSaveZ[0] + .03 }, true);
     g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true); g.step(1 / 120);
     assert.equal(g.state.kickbackCharges, 0); assert.equal(g.state.kickbackUses, 1);
-    assert.ok(g.ball.linvel().z < -7); assert.ok(g.ballPosition.z > 4.5);
+    assert.ok(g.ball.linvel().z < -7); assert.ok(g.ballPosition.z > LOWER_LAYOUT.centerSaveZ[0]);
     assert.equal(g.state.phase, "playing"); assert.equal(g.state.lastEvent, "CENTER SAVE");
-    run(g, .3); assert.ok(g.ballPosition.z < 3.5);
-    g.ball.setTranslation({ x: 0, y: .18, z: 4.53 }, true);
+    run(g, .3); assert.ok(g.ballPosition.z < 3.5 + LOWER_LAYOUT.downstreamOffset);
+    g.ball.setTranslation({ x: 0, y: .18, z: LOWER_LAYOUT.centerSaveZ[0] + .03 }, true);
     g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true); run(g, .3);
     assert.equal(g.state.phase, "ready"); assert.equal(g.state.ballNumber, 2);
     assert.equal(g.state.kickbackCharges, 0);
@@ -258,10 +258,12 @@ test("center save clears both held and returning flippers without a downstroke c
     const g = await PinballPhysics.create();
     try {
       g.launch(); run(g, .17, { left: true, right: true });
-      g.ball.setTranslation({ x: 0, y: .18, z: 4.53 }, true);
+      g.ball.setTranslation({ x: 0, y: .18, z: LOWER_LAYOUT.centerSaveZ[0] + .03 }, true);
       g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true);
       run(g, .5, { left: held, right: held });
-      assert.equal(g.state.phase, "playing"); assert.ok(g.ballPosition.z < 2);
+      assert.equal(g.state.phase, "playing");
+      // Preserve the original .5-second minimum travel, independent of board origin.
+      assert.ok(LOWER_LAYOUT.centerSaveZ[0] + .03 - g.ballPosition.z > 2.53);
       assert.equal(g.state.kickbackUses, 1); assert.deepEqual(g.flipperContacts, [0, 0]);
     } finally { g.dispose(); }
   }
@@ -433,7 +435,8 @@ test("five real cradle-reflip timings traverse the S ramp, cradle again and re-f
 test("both flippers can reach upper lanes and bumper routes around reference triangle", async () => {
   for (const side of [-1, 1]) {
     let lanes=0, bumpers=0;
-    for(let delay=40;delay<=96;delay+=4) {
+    // Sample every original-window tick: relocation shifts which shots reach the lane.
+    for(let delay=40;delay<=96;delay++) {
       const {g,held}=await cradle(side);
       try {
         const onEvent=g.state.onEvent.bind(g.state);

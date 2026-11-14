@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { flipperProfile, flipperContactVertices, targetContactId, PLUNGER_CONTACT } from "./mechanical-contact.mjs";
 import { PinballPhysics } from "./physics.mjs";
-import { TARGET_BANKS, LOWER_LAYOUT } from "./layout.mjs";
+import { TARGET_BANKS, LOWER_LAYOUT, SHOOTER_LAYOUT } from "./layout.mjs";
 
 test("tapered contact hull matches rubber height and rounded profile", () => {
   const points=flipperProfile(), vertices=flipperContactVertices();
@@ -43,7 +43,7 @@ test("pull retracts actual stop and ball follows gravity without position resets
     g.setPlungerPull(1);
     for(let i=0;i<240;i++)g.step(1/120);
     assert.ok(Math.abs(g.plungerStop.translation().z-PLUNGER_CONTACT.restZ-.32)<1e-6);
-    assert.equal(g.state.phase,"ready");assert.ok(g.ballPosition.z>4.30&&g.ballPosition.z<4.40);
+    assert.equal(g.state.phase,"ready");assert.ok(g.ballPosition.z>SHOOTER_LAYOUT.ballZ+.275&&g.ballPosition.z<SHOOTER_LAYOUT.ballZ+.375);
     assert.equal(resets,0);const before=g.ballPosition.z;
     g.launch(.8);assert.equal(g.ballPosition.z,before);
     for(let i=0;i<120;i++)g.step(1/120);
@@ -57,6 +57,6 @@ test("cancelled full pull cannot strand the ball behind the stop", async () => {
     g.setPlungerPull(1); for(let i=0;i<240;i++)g.step(1/120);
     g.setPlungerPull(0); for(let i=0;i<480;i++)g.step(1/120);
     assert.equal(g.state.phase,"ready"); assert.equal(g.state.ballNumber,1);
-    assert.ok(g.ballPosition.z>3.95&&g.ballPosition.z<4.04);
+    assert.ok(g.ballPosition.z>SHOOTER_LAYOUT.ballZ-.075&&g.ballPosition.z<SHOOTER_LAYOUT.ballZ+.015);
   } finally {g.dispose();}
 });

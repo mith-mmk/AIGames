@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Plunger } from './plunger.mjs';
 import { PinballPhysics } from './physics.mjs';
+import { SHOOTER_LAYOUT } from './layout.mjs';
 test('hold charges continuously, repeat cannot reset, and release fires once', () => {
   const p = new Plunger(); assert.equal(p.begin('Space', 0), true);
   assert.equal(p.update(300), .25); assert.equal(p.begin('Space', 300), false);
@@ -22,7 +23,7 @@ test('low medium high produce distinct physical speeds and weak ball naturally r
     }
     g.restart(); g.launch(.1); let minZ = g.ballPosition.z;
     for (let i=0;i<120*20 && g.state.phase==='playing';i++) { g.step(1/120); minZ=Math.min(minZ,g.ballPosition.z); }
-    assert.ok(minZ < 3); assert.equal(g.state.phase,'ready'); assert.equal(g.state.returnedShooter,true);
+    assert.ok(SHOOTER_LAYOUT.ballZ - minZ > 1.025); assert.equal(g.state.phase,'ready'); assert.equal(g.state.returnedShooter,true);
     assert.equal(g.state.ballNumber,1); assert.equal(g.launch(1),true); assert.equal(g.state.ballNumber,1);
   } finally { g.dispose(); }
 });

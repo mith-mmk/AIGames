@@ -65,7 +65,7 @@ export class PlayfieldParts {
     a.text(g,"RAMP",1.45,.06,.85,.65,.22);
     const kicker=a.cylinder(g,.17,.1,0,.11,(LOWER_LAYOUT.centerSaveZ[0]+LOWER_LAYOUT.centerSaveZ[1])/2,"brass");
     kicker.name="center-save-kicker";
-    a.text(g,"SAVE",0,.18,4.6,.6,.15);
+    a.text(g,"SAVE",0,.18,LOWER_LAYOUT.centerSaveZ[0]+.10,.6,.15);
 
   }
   inlane(side) {

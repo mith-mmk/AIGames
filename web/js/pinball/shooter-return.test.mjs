@@ -1,12 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {PinballPhysics} from './physics.mjs';
+import {LOWER_LAYOUT,SHOOTER_LAYOUT} from './layout.mjs';
 
 test('returned shooter ball rolls to plunger and relaunches in place without consuming a ball',async()=>{
   const g=await PinballPhysics.create();
   try {
     g.launch();g.state.award(325,'fixture');
-    g.ball.setTranslation({x:2.53,y:.18,z:3.8},true);g.ball.setLinvel({x:0,y:0,z:2},true);
+    g.ball.setTranslation({x:SHOOTER_LAYOUT.x,y:.18,z:SHOOTER_LAYOUT.ballZ-.225},true);g.ball.setLinvel({x:0,y:0,z:2},true);
     let previous={...g.ballPosition};
     for(let i=0;i<240;i++) {
       g.step(1/120);const p=g.ballPosition;
@@ -15,7 +16,7 @@ test('returned shooter ball rolls to plunger and relaunches in place without con
     }
     assert.equal(g.state.phase,'ready');assert.equal(g.state.returnedShooter,true);
     assert.equal(g.state.ballNumber,1);assert.equal(g.state.score,325);
-    assert.ok(Math.abs(g.ballPosition.z-4.025)<.015,'must physically roll down to the plunger');
+    assert.ok(Math.abs(g.ballPosition.z-SHOOTER_LAYOUT.ballZ)<.015,'must physically roll down to the plunger');
     const rested={...g.ballPosition};
     g.setPaused(true);g.step(.1);assert.deepEqual({...g.ballPosition},rested);g.setPaused(false);
     assert.equal(g.state.returnedShooter,true);
@@ -32,25 +33,25 @@ test('normal drains still consume three balls and restart resets returned-shoote
   try {
     for(let ball=1;ball<=3;ball++) {
       assert.equal(g.state.ballNumber,ball);assert.equal(g.launch(),true);
-      g.ball.setTranslation({x:2.1,y:.18,z:4.7},true);g.ball.setLinvel({x:0,y:0,z:2},true);
+      g.ball.setTranslation({x:2.1,y:.18,z:LOWER_LAYOUT.drainZ+.05},true);g.ball.setLinvel({x:0,y:0,z:2},true);
       g.step(1/120);assert.equal(g.state.returnedShooter,false);
       assert.equal(g.state.phase,ball<3?'ready':'gameover');
     }
     g.restart();assert.equal(g.state.ballNumber,1);assert.equal(g.state.phase,'ready');
-    assert.equal(g.state.returnedShooter,false);assert.equal(g.state.score,0);assert.equal(g.ballPosition.z,Math.fround(4.025));
+    assert.equal(g.state.returnedShooter,false);assert.equal(g.state.score,0);assert.equal(g.ballPosition.z,Math.fround(SHOOTER_LAYOUT.ballZ));
   }finally{g.dispose();}
 });
 
 for (const vx of [-3, -1, 1, 3]) test(`returned shooter contains lateral speed ${vx}`, async () => {
   const g = await PinballPhysics.create();
   try {
-    g.launch(); g.ball.setTranslation({x:2.53,y:.18,z:3.7},true);
+    g.launch(); g.ball.setTranslation({x:SHOOTER_LAYOUT.x,y:.18,z:SHOOTER_LAYOUT.ballZ-.325},true);
     g.ball.setLinvel({x:vx,y:0,z:4},true);
     for(let i=0;i<600;i++) g.step(1/120);
     assert.equal(g.state.phase,'ready'); assert.equal(g.state.returnedShooter,true);
     assert.equal(g.state.ballNumber,1); assert.ok(g.ballPosition.y>0);
     assert.ok(g.ballPosition.x>2.45 && g.ballPosition.x<2.7);
-    assert.ok(Math.abs(g.ballPosition.z-4.025)<.015);
+    assert.ok(Math.abs(g.ballPosition.z-SHOOTER_LAYOUT.ballZ)<.015);
     assert.equal(g.launch(),true);
   } finally {g.dispose();}
 });

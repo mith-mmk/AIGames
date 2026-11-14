@@ -1,6 +1,8 @@
 export const TABLE = Object.freeze({
   width: 5.5,
-  length: 11.5,
+  length: 11.9,
+  // Extend only the downstream end; keep every upper mechanism at its datum.
+  centerZ: .20, rearZ: -5.75, frontZ: 6.15,
   ballRadius: 0.135,
   tilt: (6.5 * Math.PI) / 180,
 });
@@ -68,29 +70,31 @@ export const SLING_VERTICES = Object.freeze([[1.35, 1.95], [1.65, 2.9], [0.96, 3
 
 // Shared lower playfield geometry. Coordinates are table-local, right-hand side.
 export const LOWER_LAYOUT = Object.freeze({
+  downstreamOffset: .40,
+  drainZ: 5.05,
   // Keep the cradle entrance, then wrap the cheek around the paddle heel.
   // Its lower face overlaps the root boundary, leaving no ball-sized side leak.
   guide: [
-    [1.90,.22,3.07], [1.88,.22,3.10], [1.80,.22,3.35], [1.185,.22,3.65],
+    [1.90,.22,3.47], [1.88,.22,3.50], [1.80,.22,3.75], [1.185,.22,4.05],
     // Straight heel-side guide avoids a concave pocket against the rounded bat.
-    [1.285,.22,3.82], [1.285,.22,4.05], [1.285,.22,4.45],
+    [1.285,.22,4.22], [1.285,.22,4.45], [1.285,.22,4.85],
   ],
   guideRadius: .020,
   guideEntry: { left: [1.90, .22, 3.00], right: [1.90, .22, 3.00] },
   // Two distinct passages: IN between sling/inner return and divider;
   // OUT between divider and outer wall, ending at the apron drain.
-  inlaneInner: [[1.35,.22,2.75],[1.35,.22,2.95]],
-  outlaneOuter: [[2.33,.22,1.35],[2.33,.22,3.35],[2.05,.22,4.48]],
+  inlaneInner: [[1.35,.22,2.75],[1.35,.22,3.35]],
+  outlaneOuter: [[2.33,.22,1.35],[2.33,.22,3.35],[2.05,.22,4.88]],
   inlaneSensor: [1.70,.20,3.05],
   // Floor ink follows the open IN approach and the actual curved return; [x,z,width].
-  inlaneInkPath: [[1.70,2.73,.12],[1.69,3.02,.12],[1.53,3.30,.12],[1.31,3.43,.10]],
-  laneInserts: {in: [1.62,3.08,-.35,.27,.55], out: [1.99,3.60,-.20,.30,1.10]},
+  inlaneInkPath: [[1.70,3.13,.12],[1.69,3.42,.12],[1.53,3.70,.12],[1.31,3.83,.10]],
+  laneInserts: {in: [1.575,3.25,-.25,.27,1.10], out: [2.04,3.70,-.15,.24,1.70]},
   slingVertices: [[1.83, 1.10], [1.88, 2.45], [1.10, 2.65]],
   slingCoverHeight: .33,
   slingCenter: [1.60, 2.07],
-  flipperPivot: [1.25, .27, 4.05],
+  flipperPivot: [1.25, .27, 4.45],
   flipperCenter: .54, flipperHalfLength: .60, flipperHalfWidth: .14,
-  centerSaveZ: [4.50, 4.63],
+  centerSaveZ: [4.90, 5.03],
 });
 
 // One source for installed rails and contact capsules; returns fresh arrays.
@@ -124,3 +128,9 @@ export function lowerLaneMounts(side) {
 
 // Solid backing closes the inaccessible pocket behind the shooter bend.
 export const SHOOTER_BACKING = Object.freeze([[2.73,-4.15],[2.40,-5.20],[1.25,-5.55],[1.25,-5.73],[2.73,-5.73]]);
+
+// Shared installed shooter datum. The upper bend remains unchanged.
+export const SHOOTER_LAYOUT = Object.freeze({
+  x: 2.53, restZ: 4.60, ballZ: 4.425, frontZ: 5.90,
+  returnMinZ: 4.25, returnMaxZ: 4.56,
+});

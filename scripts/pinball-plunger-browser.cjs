@@ -11,7 +11,7 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
  await page.goto(`http://127.0.0.1:${server.address().port}/pinball.html?test=1`);await page.waitForFunction(()=>window.__pinball?.game);
  await page.screenshot({path:path.join(out,'shooter-initial-mobile.png')});
  const hardware=await page.evaluate(()=>{const a=window.__pinball;a.board.updateMatrixWorld(true);const localZ=o=>a.board.worldToLocal(o.getWorldPosition(a.game.ballPosition.clone?.()||a.assets.plungerHead.position.clone())).z;return {ball:{...a.game.ballPosition},head:localZ(a.assets.plungerHead),rod:localZ(a.assets.plungerRod),knob:localZ(a.assets.plungerKnob)};});
- assert.ok(Math.abs(hardware.ball.z-4.025)<.001);assert.ok(Math.abs(hardware.head-4.2)<.001);
+ assert.ok(Math.abs(hardware.ball.z-4.425)<.001);assert.ok(Math.abs(hardware.head-4.6)<.001);
  // Record launches without replacing the physics implementation.
  await page.evaluate(()=>{const g=window.__pinball.game,launch=g.launch.bind(g);window.launches=[];g.launch=p=>{const ok=launch(p);if(ok)window.launches.push({power:p,speed:-g.ball.linvel().z});return ok;};});
  for (const hold of [120,600,1250]) {
@@ -19,7 +19,7 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
   if(hold===600)await page.screenshot({path:path.join(out,'plunger-half-mobile.png')});
   await page.keyboard.up('Space');assert.equal((await state()).phase,'playing');
   results.push(await page.evaluate(()=>window.launches.at(-1)));
-  if(hold===120){await page.waitForFunction(()=>window.__pinball.game.state.returnedShooter,{},{timeout:20000});assert.equal((await state()).ball,1);await page.waitForTimeout(1500);await page.screenshot({path:path.join(out,'shooter-returned-mobile.png')});assert.ok(await page.evaluate(()=>Math.abs(window.__pinball.game.ballPosition.z-4.025)<.015));}
+  if(hold===120){await page.waitForFunction(()=>window.__pinball.game.state.returnedShooter,{},{timeout:20000});assert.equal((await state()).ball,1);await page.waitForTimeout(1500);await page.screenshot({path:path.join(out,'shooter-returned-mobile.png')});assert.ok(await page.evaluate(()=>Math.abs(window.__pinball.game.ballPosition.z-4.425)<.015));}
  }
  assert.ok(results[0].speed<results[1].speed-4 && results[1].speed<results[2].speed-4);
  for(const cancel of ['pause','restart','blur']) {

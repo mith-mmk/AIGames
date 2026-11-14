@@ -1,8 +1,9 @@
+import {SHOOTER_LAYOUT} from "../layout.mjs";
 import * as T from "../../vendor/three-0.180.0/three.module.min.js";
 
 /** Authored visual estimates, in table units, NOT manufacturer dimensions.
  * Local origin = resting head centre; +Z points toward the player.
- * Intended installation origin: (2.53, .175, 4.20), with no rotation.
+ * Installation uses SHOOTER_LAYOUT, with no rotation.
  */
 export const PLUNGER_PARAMETERS = Object.freeze({
   pullTravel: .32,
@@ -32,9 +33,8 @@ class HelicalSpring extends T.Curve {
 }
 
 /** Standalone moving mechanism. Does NOT create or move a collider.
- * The legacy ball stop stays at world z=4.16; this tip's face coincides only
- * at rest. Integrators must reconcile that fixed stop before claiming that
- * a ball follows the moving tip, or that this supplies physical launch force.
+ * The game integrates its kinematic tip at the shared SHOOTER_LAYOUT datum.
+ * Standalone previews do not simulate contact or launch force.
  */
 export class MechanicalPlunger {
   constructor({ materials = {}, parameters = {} } = {}) {
@@ -84,9 +84,9 @@ export class MechanicalPlunger {
     };
     this.root = new T.Group(); this.root.name = "mechanical-plunger";
     this.root.userData.contract = {
-      origin: [2.53, .175, 4.20], axis: "+Z toward player", restContactZ: -.04,
+      origin: [SHOOTER_LAYOUT.x, .175, SHOOTER_LAYOUT.restZ], axis: "+Z toward player", restContactZ: -.04,
       contactMotion: "restContactZ + pullTravel * pull; visual only",
-      legacyCollider: "fixed world z=4.16; not updated by this prototype",
+      integration: "game kinematic contact follows the shared installed datum",
       dimensions: "Authored proportions, not measured manufacturer dimensions",
       mechanismReference: "Stern JAWS LE/Premium manual p46, 500-2604-07: long spring, washers, rod, short spring, retaining ring, rubber tip",
     };
