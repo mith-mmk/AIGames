@@ -1,0 +1,76 @@
+{
+  "status": "Read-only concept/constraint documentation; not candidate qualification",
+  "base": "c1f7aeba28e9fb55117fa0fedbc975f5e8e72d84",
+  "documentationHeadAtExtraction": "4b3b4f0f85c028f3ea2d88c358e10e52ab4e6f85",
+  "referenceIsPerspectiveNotCAD": true,
+  "files": {
+    "01-accepted-plan.svg": {
+      "bytes": 87589,
+      "sha256": "e4621fe2f0b332be6200a1bf786a618a0a6082fd52e824146962b0cadec853a4"
+    },
+    "01-sheet.png": {
+      "bytes": 281495,
+      "sha256": "382364097728401ec50b679232acc6c51d74c84c0c7f4e9eb1ff2038285d823d"
+    },
+    "02-sections.svg": {
+      "bytes": 8596,
+      "sha256": "28e27fa92bceb959cda86b2d91783ab533bda21f9a1124eb828fb387a3690bab"
+    },
+    "02-sheet.png": {
+      "bytes": 260245,
+      "sha256": "923cd95fc2ea40bb3e2cad74fe833000df9fae5ce32213b13e42df9c6b2448f6"
+    },
+    "03-sheet.png": {
+      "bytes": 282872,
+      "sha256": "38c99224f0e4c479fb2d6edc48d1b487694689bd91095112c826e253213f1f7f"
+    },
+    "03-whole-layout-options.svg": {
+      "bytes": 8712,
+      "sha256": "dd653a8ce2bfe68d87596712958f1279030aab91cfc24f934611ee0eb6b4e868"
+    },
+    "README.md": {
+      "bytes": 14250,
+      "sha256": "570144b319f86347c93688a1d05192ba11b14baf29f5c6a8fb4c922b9e4d39f2"
+    },
+    "accepted-geometry.json": {
+      "bytes": 59829,
+      "sha256": "4161efd2917d31da4ad3f5aee4896a4473ba42de1d10001c563405676cbcd8c1"
+    },
+    "build-diagrams.py": {
+      "bytes": 16262,
+      "sha256": "c405def2bd3724ebfc4f1d096b56b2c959b4269b857d866dc55a332d1143730b"
+    },
+    "constraints.html": {
+      "bytes": 105318,
+      "sha256": "6c5f4b1c35a6204940bcb76ac3bfbec93daa02fff1a1a88b95f3dbd39aeb0d21"
+    },
+    "extract-accepted.mjs": {
+      "bytes": 5561,
+      "sha256": "2d00cc4fba3309f6c405bea62a728eadc40af8144b80d25dfeae0bc44e7e9f9a"
+    },
+    "pinball-layout-constraints.pdf": {
+      "bytes": 314075,
+      "sha256": "13e4d1bdd7da28c4a1077c7159c98bf3236f9c2da8832938ed45ff6c12a7f7e9"
+    },
+    "render-check.json": {
+      "bytes": 349,
+      "sha256": "bade4d87bb1627a0868b9982e1b998ea24d3bc7376eaf70dd937bced4d1f643c"
+    },
+    "render.cjs": {
+      "bytes": 1384,
+      "sha256": "adbb46107402e7fb36d1fb40c123c6d3c4d6f1a8c34b4e1d76bab15f382a8613"
+    },
+    "source-index.json": {
+      "bytes": 2038,
+      "sha256": "176acce04b43932de2a6482d8900ac4ce0e503960af79eeb1668ba23a563ede4"
+    },
+    "verification.json": {
+      "bytes": 2325,
+      "sha256": "9e6868d1b27810c8a1cb04bc915eca7490f79787a101fea08607de1ea18ab20e"
+    },
+    "verify-pdf.swift": {
+      "bytes": 1299,
+      "sha256": "87e567b477f43866239b84b38b965250ab350b1231da202a58ed9c5dbaa8d343"
+    }
+  }
+}

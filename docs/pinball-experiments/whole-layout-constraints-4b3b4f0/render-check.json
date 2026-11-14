@@ -1,0 +1,22 @@
+{
+  "pages": [
+    {
+      "page": 1,
+      "textCount": 33,
+      "outsidePage": []
+    },
+    {
+      "page": 2,
+      "textCount": 39,
+      "outsidePage": []
+    },
+    {
+      "page": 3,
+      "textCount": 45,
+      "outsidePage": []
+    }
+  ],
+  "browser": "Installed Chrome through existing Playwright",
+  "pdfWritten": true,
+  "errors": []
+}

@@ -1,0 +1,37 @@
+{
+  "scope": "Inputs at creation; no reference image redistribution. Re-reading evolving documents later may change their hashes.",
+  "files": {
+    "artifacts/reference/current-reference.png": "5eee331823a5b995cce694626ad331c9ac71aa1f3872a5aa5e02e4b8c7bd1027",
+    "artifacts/pinball/rear-wall-taper-01/preview/stable-installed-45.png": "2c455a455527f98ef453a7151038c6bb95fa11a5255214b7b047b5933beb450d",
+    "docs/pinball-reference-acceptance.md": "969a1f16f7164d7fac2da6c548cec436caa363835c7aa8f6fccb23fa4b90450a",
+    "artifacts/pinball/lower-lane-constraints-5401c4a/README.md": "0cdf0fe1aa816bc5d27d4ded83ffe21ea5a5425478fe491801ccdd1d0ad0ca94",
+    "artifacts/pinball/lower-lane-design-constraints-a4d4ad7/README.md": "7bbc08aec6a303a223753f2cfc92461eda55300abeccba29f67b728b2046cddf",
+    "artifacts/pinball/path-constraints-4b3b4f0/README.md": "001c853efddbc65acb1b741afe718743ee0e13a9db6854352c2e264f2bbcc965",
+    "artifacts/pinball/infeed-cause-a4d4ad7/README.md": "cd0e3bd78ca50e870c7a0defaf7bd4f51d56fd7be6adad0b068266db44161cff",
+    "artifacts/pinball/infeed-cause-a4d4ad7/summary.json": "048f009532f3cc1eac4799fe32eab42eaf72253896199594475c42f4dcbea131",
+    "docs/pinball-experiments/lane-entry-unadopted/README.md": "597af5b5c4cd35b51412b7d261511ca317fda5a96c62e92316c6adcf8c499741",
+    "docs/pinball-experiments/upper-inlet-unadopted/README.md": "35b4e00e542a8104ec78e2a9e9c6de5ec668a1d2490973dfa5ad271aae0d9973",
+    "docs/pinball-experiments/upper-inlet-unadopted/reversal-findings.md": "9b9a9c5777d9c7fb5485cc01a270ca1a5e69786bebe31ae89a6ed9451128a785"
+  },
+  "referenceEstimate": {
+    "image": [
+      1087,
+      1447
+    ],
+    "method": "Manually chosen visible right-band vertical extents only; not world/CAD dimensions or physical route endpoints",
+    "IN_y": [
+      930,
+      1195
+    ],
+    "OUT_y": [
+      920,
+      1155
+    ],
+    "nominalRatio": 1.127659574468085,
+    "eachEndpointUncertaintyPx": 15,
+    "illustrativeRatioRange": [
+      0.8867924528301887,
+      1.4390243902439024
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1300" viewBox="0 0 1600 1300"><style>text{font-family:Arial,sans-serif;fill:#152c41}.small{font-size:17px}.body{font-size:21px}.title{font-size:34px;font-weight:700}</style>
+<rect width="1600" height="1300" fill="#f4f6fa"/>
+<text x="35" y="53" class="title" text-anchor="start">2  Sections: conditional constraints, not universal impossibility</text>
+<text x="35" y="86" class="small" text-anchor="start">ACTUAL dimensions and explicit idealized calculations. Red means a failed condition; orange means a design assumption.</text>
+<text x="1550" y="53" class="title" text-anchor="end">2</text>
+<rect x="30" y="110" width="755" height="520" rx="16" fill="white" stroke="#c9d3dd"/>
+<text x="50" y="145" class="body" text-anchor="start">A  Lower width allocation beside the broad sling</text>
+<text x="60" y="180" class="small" text-anchor="start">Fixed plan envelope: sling outer 1.951968 to divider face 2.305</text>
+<rect x="95" y="220" width="261.243828" height="44" fill="#a1cecc" stroke="#11998e"/>
+<path d="M95,216 L356.243828,216" fill="none" stroke="#52687a" stroke-width="1.5"/>
+<path d="M95,211 L95,221" fill="none" stroke="#52687a" stroke-width="2"/>
+<path d="M356.243828,211 L356.243828,221" fill="none" stroke="#52687a" stroke-width="2"/>
+<text x="225.621914" y="206.0" class="small" text-anchor="middle">.353032 available</text>
+<text x="60" y="307" class="small" text-anchor="start">Assumed target: .320 clear IN + .040 divider + .320 clear OUT</text>
+<rect x="95" y="335" width="236.8" height="45" fill="#cce7e3"/>
+<rect x="331.8" y="335" width="29.6" height="45" fill="#607b89"/>
+<rect x="361.4" y="335" width="236.8" height="45" fill="#f5ddb3"/>
+<path d="M113.5,357 L313.30000000000007,357" fill="none" stroke="#52687a" stroke-width="1.5"/>
+<path d="M113.5,352 L113.5,362" fill="none" stroke="#52687a" stroke-width="2"/>
+<path d="M313.30000000000007,352 L313.30000000000007,362" fill="none" stroke="#52687a" stroke-width="2"/>
+<text x="213.40000000000003" y="399.0" class="small" text-anchor="middle">D .270</text>
+<path d="M379.90000000000003,357 L579.7,357" fill="none" stroke="#52687a" stroke-width="1.5"/>
+<path d="M379.90000000000003,352 L379.90000000000003,362" fill="none" stroke="#52687a" stroke-width="2"/>
+<path d="M579.7,352 L579.7,362" fill="none" stroke="#52687a" stroke-width="2"/>
+<text x="479.80000000000007" y="399.0" class="small" text-anchor="middle">D .270</text>
+<path d="M356.243828,215 L356.243828,463" fill="none" stroke="#be4d49" stroke-width="2" stroke-dasharray="7 5"/>
+<path d="M95,469 L598.2,469" fill="none" stroke="#52687a" stroke-width="1.5"/>
+<path d="M95,464 L95,474" fill="none" stroke="#52687a" stroke-width="2"/>
+<path d="M598.2,464 L598.2,474" fill="none" stroke="#52687a" stroke-width="2"/>
+<text x="346.6" y="494.0" class="small" text-anchor="middle">.680 target; deficit .326968</text>
+<text x="60" y="530" style="font-size:19px;fill:#152c41">.320 = ball .270 + assumed .050 total spare, not a proven tolerance.</text>
+<text x="60" y="559" style="font-size:19px;fill:#152c41">Even .270 + .040 + .270 needs .580 in this fixed PLAN allocation.</text>
+<text x="60" y="588" style="font-size:19px;fill:#152c41">This rules out that allocation, not every 3D route or overall redesign.</text>
+<rect x="815" y="110" width="755" height="520" rx="16" fill="white" stroke="#c9d3dd"/>
+<text x="835" y="145" class="body" text-anchor="start">B  Shooter X-Y section: ground fit is not all-height fit</text>
+<rect x="850" y="373.6" width="685" height="118.8" fill="#d2dbe3"/>
+<circle cx="1031.8" cy="248.2" r="29.7" fill="#587e9a" stroke="none" stroke-width="2"/>
+<polygon points="1276.000,208.600 1247.999,220.199 1236.400,248.200 1247.999,276.201 1276.000,287.800 1304.001,276.201 1315.600,248.200 1304.001,220.199 1276.000,208.600" fill="#587e9a" stroke="#237cbb" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1150.6" cy="284.5" r="89.10000000000001" fill="#99c6e333" stroke="#237cbb" stroke-width="2"/>
+<circle cx="1150.6" cy="248.2" r="89.10000000000001" fill="none" stroke="#be4d49" stroke-width="2" stroke-dasharray="6 5"/>
+<path d="M860,248.2 L1465,248.2" fill="none" stroke="#839aaa" stroke-width="1" stroke-dasharray="3 4"/>
+<path d="M1031.8,526 L1276.0,526" fill="none" stroke="#52687a" stroke-width="1.5"/>
+<path d="M1031.8,521 L1031.8,531" fill="none" stroke="#52687a" stroke-width="2"/>
+<path d="M1276.0,521 L1276.0,531" fill="none" stroke="#52687a" stroke-width="2"/>
+<text x="1153.9" y="516.0" class="small" text-anchor="middle">Axis separation .370</text>
+<text x="1410" y="236.2" class="small" text-anchor="end">Y .230</text>
+<text x="1500" y="363.6" class="small" text-anchor="end">Top .040</text>
+<text x="850" y="555" style="font-size:18px;fill:#152c41">Blue: floor-center .175. Red dashed: axis-height .230.</text>
+<text x="850" y="582" style="font-size:18px;fill:#152c41">Ideal circles: axis-height gap .265 &lt; D .270; floor-center interval ~.01152.</text>
+<text x="850" y="609" style="font-size:18px;fill:#152c41">Accepted outer is OCTAGONAL. Round-stock change adds up to .004567.</text>
+<rect x="30" y="660" width="755" height="570" rx="16" fill="white" stroke="#c9d3dd"/>
+<text x="50" y="695" class="body" text-anchor="start">C  Mount height: visible board Y [-.140, +.040]</text>
+<rect x="65" y="979.4" width="680" height="115.19999999999999" fill="#d2dbe3"/>
+<text x="170" y="742" class="small" text-anchor="middle">Accepted lower</text>
+<text x="400" y="742" class="small" text-anchor="middle">Rejected old foot</text>
+<text x="635" y="742" class="small" text-anchor="middle">Rejected upper mount</text>
+<rect x="152.72" y="864.2" width="34.56" height="96.0" fill="#638398"/>
+<rect x="128.4" y="856.2" width="83.2" height="16.0" fill="#c5a046"/>
+<rect x="134.8" y="957.32" width="70.4" height="16.0" fill="#638398"/>
+<rect x="388.48" y="864.2" width="23.04" height="166.4" fill="#bd7770"/>
+<rect x="371.2" y="1017.8" width="57.599999999999994" height="19.2" fill="#be4d49"/>
+<rect x="623.48" y="857.8" width="23.04" height="262.4" fill="#638398"/>
+<rect x="603.0" y="1094.6" width="64.0" height="7.68" fill="#d9b553"/>
+<rect x="614.52" y="1102.28" width="40.96" height="14.079999999999998" fill="#738a98"/>
+<text x="75" y="1144" style="font-size:18px;fill:#152c41">Old foot [-.050, -.020] is inside the board, not under it.</text>
+<text x="75" y="1168" style="font-size:18px;fill:#152c41">Upper washer [-.152, -.140] and shaft to -.180 reach the underside.</text>
+<text x="75" y="1192" style="font-size:18px;fill:#152c41">Accepted lower caps are visible .130-wide parts; no dedicated cap collider.</text>
+<text x="75" y="1216" style="font-size:18px;fill:#152c41">No drawing here certifies holes, load paths or whole-candidate acceptance.</text>
+<rect x="815" y="660" width="755" height="570" rx="16" fill="white" stroke="#c9d3dd"/>
+<text x="835" y="695" class="body" text-anchor="start">D  Coupled handoffs and outside-board support</text>
+<text x="845" y="735" style="font-size:20px;fill:#152c41">Wire end: (-1.72, .44, 3.00). Release direction and speed matter.</text>
+<text x="845" y="766" style="font-size:20px;fill:#152c41">At the SAME XZ, rejected lower rail gaps were:</text>
+<text x="845" y="797" style="font-size:20px;fill:#152c41"> +.217768 at supported sphere-center Y .575; -.032706 at Y .175.</text>
+<text x="845" y="828" style="font-size:20px;fill:#152c41">These two samples are a vertical column, NOT the flight trajectory.</text>
+<path d="M900,900 L1500,900" fill="none" stroke="#708b9d" stroke-width="2"/>
+<rect x="1055" y="900" width="445" height="105" fill="#d2dbe3"/>
+<text x="1500" y="1033" class="small" text-anchor="end">Board begins x -2.750</text>
+<rect x="1002.8" y="835" width="44.4" height="191" fill="#bd7770"/>
+<path d="M1047.2,865 L1055,865" fill="none" stroke="#be4d49" stroke-width="3"/>
+<text x="852" y="1073" class="small" text-anchor="start">Old relocated shaft x -2.800, r .037 ends at x -2.763:</text>
+<text x="852" y="1102" class="small" text-anchor="start">a .013 lateral gap to the board. Longer shaft alone cannot attach.</text>
+<text x="845" y="1150" style="font-size:20px;fill:#152c41">OUT guide also shares the left earned-save region and firing axis.</text>
+<text x="845" y="1180" style="font-size:20px;fill:#152c41">Preserve real discharge; do not hide an exterior pocket with artwork.</text>
+<text x="35" y="1275" class="small" text-anchor="start">SOURCE: accepted c1f7aeb at docs HEAD 4b3b4f0. Model units, not manufacturer dimensions. No new geometry or dynamic test.</text>
+</svg>

@@ -1,0 +1,85 @@
+{
+  "scope": "Static documentation only, not candidate or runtime acceptance",
+  "runtimeSourceFiles": 36,
+  "allRuntimeHashesStillMatchC1": true,
+  "newGeometryOrDynamics": false,
+  "browserRender": {
+    "pages": [
+      {
+        "page": 1,
+        "textCount": 33,
+        "outsidePage": []
+      },
+      {
+        "page": 2,
+        "textCount": 39,
+        "outsidePage": []
+      },
+      {
+        "page": 3,
+        "textCount": 45,
+        "outsidePage": []
+      }
+    ],
+    "browser": "Installed Chrome through existing Playwright",
+    "pdfWritten": true,
+    "errors": []
+  },
+  "actualPDF": {
+    "pageCount": 3,
+    "pages": [
+      {
+        "mediaBox": [
+          1200,
+          974.88
+        ],
+        "page": 1,
+        "png": [
+          1600,
+          1299
+        ],
+        "textCharacters": 1495
+      },
+      {
+        "mediaBox": [
+          1200,
+          974.88
+        ],
+        "page": 2,
+        "png": [
+          1600,
+          1299
+        ],
+        "textCharacters": 1992
+      },
+      {
+        "mediaBox": [
+          1200,
+          974.88
+        ],
+        "page": 3,
+        "png": [
+          1600,
+          1299
+        ],
+        "textCharacters": 2794
+      }
+    ],
+    "renderer": "macOS PDFKit, actual generated PDF",
+    "pdfSha256": "13e4d1bdd7da28c4a1077c7159c98bf3236f9c2da8832938ed45ff6c12a7f7e9",
+    "pageImagesIndividuallyViewed": true,
+    "visualResult": "Final three pages complete and readable. Latest page 3 wording was re-rendered and viewed; page 1/2 PDFKit raster hashes match the already inspected pages exactly. No clipping or overlapping text.",
+    "rasterEvidenceSha256": {
+      "pdf-page-1.png": "f23b64e89e64066ee5b52228efa7df93324244f540ee1c91839e7234a49984ac",
+      "pdf-page-3.png": "5d0b94e6937a2f17bbb53e72afc89b36665967baa166f176ac860fb0cc784d5f",
+      "pdf-page-2.png": "1e37b8a6586fd77632f5a43eb141f8d287de4b02493d54f47ac7a973bbc598b9"
+    }
+  },
+  "documentationChecks": [
+    "Node syntax for extraction/render scripts",
+    "Python AST parse",
+    "Whitespace check for every new text/SVG/HTML file",
+    "No production runtime diff"
+  ],
+  "cleanup": "Temporary PDFKit raster proofs and its isolated Swift module cache moved to Trash after inspection. Three requested PNG sheets remain with the PDF/SVG/HTML deliverable."
+}

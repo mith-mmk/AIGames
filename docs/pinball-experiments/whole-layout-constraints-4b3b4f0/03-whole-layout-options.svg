@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1300" viewBox="0 0 1600 1300"><style>text{font-family:Arial,sans-serif;fill:#152c41}.small{font-size:17px}.body{font-size:21px}.title{font-size:34px;font-weight:700}</style>
+<rect width="1600" height="1300" fill="#f4f6fa"/>
+<text x="35" y="53" class="title" text-anchor="start">3  Whole-layout choices: concepts, not tested shapes</text>
+<text x="35" y="86" class="small" text-anchor="start">All three retain user-facing input/force behavior and must prove natural play plus equal-or-better continuous aim range.</text>
+<text x="1550" y="53" class="title" text-anchor="end">3</text>
+<rect x="45" y="115" width="470" height="680" rx="16" fill="white" stroke="#c9d3dd"/>
+<text x="65" y="150" class="body" text-anchor="start">A  Keep the current play skeleton</text>
+<rect x="65" y="172" width="430" height="7" fill="#11998e"/>
+<text x="67" y="220" style="font-size:19px;fill:#152c41">Keep current shooter / roof / nose / bats.</text>
+<text x="67" y="251" style="font-size:19px;fill:#152c41">Preserve terminal heel and wire handoff.</text>
+<text x="67" y="282" style="font-size:19px;fill:#152c41">Explore earlier coupled IN + OUT transition.</text>
+<text x="67" y="313" style="font-size:19px;fill:#152c41">Mounts and outside collection stay in scope.</text>
+<rect x="95" y="365" width="370" height="164" fill="#eef3f7" stroke="#c9d3dd"/>
+<path d="M133,382 L133,511" fill="none" stroke="#11998e" stroke-width="8"/>
+<path d="M427,382 L427,511" fill="none" stroke="#11998e" stroke-width="8"/>
+<polygon points="175.000,398.000 211.000,454.000 157.000,467.000" fill="#bbd4e0" stroke="#be4d49" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="385.000,398.000 349.000,454.000 403.000,467.000" fill="#bbd4e0" stroke="#be4d49" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M203,490 L258,515" fill="none" stroke="#bb527d" stroke-width="14"/>
+<path d="M357,490 L302,515" fill="none" stroke="#bb527d" stroke-width="14"/>
+<text x="280" y="562" class="small" text-anchor="middle">RELATIONSHIP SKETCH / NOT TO SCALE</text>
+<text x="67" y="615" style="font-size:18px;fill:#152c41">Base: tested play; reference incomplete.</text>
+<text x="67" y="647" style="font-size:18px;fill:#152c41">Any new transition is still unproved.</text>
+<text x="67" y="679" style="font-size:18px;fill:#152c41">Limit: no promise of reference-long lanes.</text>
+<text x="67" y="711" style="font-size:18px;fill:#152c41">Unknown: IN arrival / wire / save axis.</text>
+<text x="67" y="743" style="font-size:18px;fill:#152c41">Reject: cosmetic-only elongation.</text>
+<rect x="565" y="115" width="470" height="680" rx="16" fill="white" stroke="#c9d3dd"/>
+<text x="585" y="150" class="body" text-anchor="start">B  Redistribute width as one system</text>
+<rect x="585" y="172" width="430" height="7" fill="#237cbb"/>
+<text x="587" y="220" style="font-size:19px;fill:#152c41">Allocate width to both IN and OUT.</text>
+<text x="587" y="251" style="font-size:19px;fill:#152c41">Co-design board, straight shooter and exit.</text>
+<text x="587" y="282" style="font-size:19px;fill:#152c41">Include nose access, bars, sensors, supports.</text>
+<text x="587" y="313" style="font-size:19px;fill:#152c41">Keep current bat / heel as a chosen baseline.</text>
+<rect x="615" y="365" width="370" height="164" fill="#eef3f7" stroke="#c9d3dd"/>
+<path d="M653,382 L653,511" fill="none" stroke="#237cbb" stroke-width="8"/>
+<path d="M947,382 L947,511" fill="none" stroke="#237cbb" stroke-width="8"/>
+<polygon points="695.000,398.000 731.000,454.000 677.000,467.000" fill="#bbd4e0" stroke="#be4d49" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="905.000,398.000 869.000,454.000 923.000,467.000" fill="#bbd4e0" stroke="#be4d49" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M723,490 L778,515" fill="none" stroke="#bb527d" stroke-width="14"/>
+<path d="M877,490 L822,515" fill="none" stroke="#bb527d" stroke-width="14"/>
+<text x="800" y="562" class="small" text-anchor="middle">RELATIONSHIP SKETCH / NOT TO SCALE</text>
+<text x="587" y="615" style="font-size:18px;fill:#152c41">Section room may exist; route is unproved.</text>
+<text x="587" y="647" style="font-size:18px;fill:#152c41">Cost: entrance and lower return are coupled.</text>
+<text x="587" y="679" style="font-size:18px;fill:#152c41">Unknown: all-height connector + natural feed.</text>
+<text x="587" y="711" style="font-size:18px;fill:#152c41">Reject: rigid roof shift / repeat R1.70 wedge.</text>
+<rect x="1085" y="115" width="470" height="680" rx="16" fill="white" stroke="#c9d3dd"/>
+<text x="1105" y="150" class="body" text-anchor="start">C  Replan the mechanical topology</text>
+<rect x="1105" y="172" width="430" height="7" fill="#8e5caa"/>
+<text x="1107" y="220" style="font-size:19px;fill:#152c41">Allow pivot / heel / drain locations to change.</text>
+<text x="1107" y="251" style="font-size:19px;fill:#152c41">First compare current bat length (~1.14).</text>
+<text x="1107" y="282" style="font-size:19px;fill:#152c41">Do not silently require old center opening.</text>
+<text x="1107" y="313" style="font-size:19px;fill:#152c41">Decide if raised mouth is entry or return.</text>
+<rect x="1135" y="365" width="370" height="164" fill="#eef3f7" stroke="#c9d3dd"/>
+<path d="M1173,382 L1173,511" fill="none" stroke="#8e5caa" stroke-width="8"/>
+<path d="M1467,382 L1467,511" fill="none" stroke="#8e5caa" stroke-width="8"/>
+<polygon points="1215.000,398.000 1251.000,454.000 1197.000,467.000" fill="#bbd4e0" stroke="#be4d49" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="1425.000,398.000 1389.000,454.000 1443.000,467.000" fill="#bbd4e0" stroke="#be4d49" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1213,490 L1268,515" fill="none" stroke="#bb527d" stroke-width="14"/>
+<path d="M1427,490 L1372,515" fill="none" stroke="#bb527d" stroke-width="14"/>
+<text x="1320" y="562" class="small" text-anchor="middle">RELATIONSHIP SKETCH / NOT TO SCALE</text>
+<text x="1107" y="615" style="font-size:18px;fill:#152c41">Layout freedom, not proven viability.</text>
+<text x="1107" y="647" style="font-size:18px;fill:#152c41">Cost: save, difficulty, capture and aim requalify.</text>
+<text x="1107" y="679" style="font-size:18px;fill:#152c41">If mouth returns: another natural ascent needed.</text>
+<text x="1107" y="711" style="font-size:18px;fill:#152c41">No portal, hidden floor or automatic rescue.</text>
+<rect x="45" y="825" width="1510" height="392" rx="16" fill="white" stroke="#c9d3dd"/>
+<text x="65" y="860" class="body" text-anchor="start">Fixed outcomes vs selectable geometry</text>
+<text x="68" y="891" style="font-size:20px;fill:#152c41">MUST KEEP: keyboard/touch semantics, force contract, natural weak/medium/strong feed, real IN capture then release/repress refire,</text>
+<text x="68" y="922" style="font-size:20px;fill:#152c41">OUT drain and earned kickback, shared visible/contact boundaries, equal-or-better continuous aim coverage, reference quality and mobile.</text>
+<text x="68" y="974" style="font-size:20px;fill:#152c41">NOT absolute user constraints: old pivot X/Z, exact center gap, board width/length, old shooter axis, or the reference mouth being an entry.</text>
+<text x="68" y="1005" style="font-size:20px;fill:#152c41">Illustration only: each pivot +.400 outward with the SAME bat/angle increases projected rest gap .590694 -&gt; 1.390694.</text>
+<text x="68" y="1036" style="font-size:20px;fill:#152c41">The older ~1.625 bat calculation additionally FIXED the old opening; it is not a required bat length or an impossibility proof.</text>
+<text x="68" y="1084" style="font-size:20px;fill:#152c41">FIRST DECISION: choose route topology and which datums may move. No concept is qualified for adoption by this sheet.</text>
+<text x="68" y="1115" style="font-size:20px;fill:#152c41">Then: shared all-height corridor + reference views -&gt; six natural powers / weak return -&gt; IN capture/refire + OUT save -&gt;</text>
+<text x="68" y="1146" style="font-size:20px;fill:#152c41">strong shots + original aim matrix -&gt; full regression / controller games -&gt; real phone and human play. Preserve every failed assertion.</text>
+<text x="68" y="1197" class="small" text-anchor="start" style="fill:#be4d49">No independent geometry improvement is currently qualified for adoption. A useful proposal is evidence/diagram tooling, not a cosmetic patch.</text>
+<text x="35" y="1275" class="small" text-anchor="start">SOURCE: accepted c1f7aeb at docs HEAD 4b3b4f0. Model units, not manufacturer dimensions. No new geometry or dynamic test.</text>
+</svg>
