@@ -1,3 +1,4 @@
+import {cabinetBoundaryBoxes} from './cabinet-boundary.mjs';
 import { targetCarrierParts, targetFaceAngle, targetDimensions, targetContactBoxes, flipperContactVertices, PLUNGER_CONTACT, targetContactId, slingContactPoints, plungerContactVertices } from "./mechanical-contact.mjs";
 import {NudgeMeter} from "./nudge.mjs";
 import { buildPhysicalRamp, rampSensorGates } from "./ramp-geometry.mjs";
@@ -50,8 +51,9 @@ export class PinballPhysics {
     // Floor ends before apron so misses naturally enter drain; shooter lane remains solid.
     this.box(0, -0.04, -.55+LOWER_LAYOUT.downstreamOffset/2, TABLE.width/2, .08, 5.15+LOWER_LAYOUT.downstreamOffset/2);
     this.box(SHOOTER_LAYOUT.x, -.04, 4.8+LOWER_LAYOUT.downstreamOffset, .22, .08, .9);
-    for (const x of [-2.8, 2.8]) this.box(x, .45, TABLE.centerZ, .07, .5, TABLE.length/2+.10);
-    this.box(0, 0.45, -5.8, 2.8, 0.5, 0.07);
+    this.cabinetBoundaryContacts=cabinetBoundaryBoxes().map(part=>({
+      ...part,collider:this.box(...part.center,...part.size.map(v=>v/2))
+    }));
     this.box(SHOOTER_LAYOUT.x, .3, SHOOTER_LAYOUT.frontZ, .27, .4, .08);
     this.plungerPull = 0; this.plungerTargetPull = 0; this.readyPullActive = false;
     this.plungerBody=this.world.createRigidBody(R.RigidBodyDesc.kinematicPositionBased()

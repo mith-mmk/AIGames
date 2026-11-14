@@ -1,4 +1,5 @@
 import * as T from "../../vendor/three-0.180.0/three.module.min.js";
+import { CABINET_BOUNDARY, cabinetBoundaryBoxes, cabinetBoundaryLayers } from '../cabinet-boundary.mjs';
 import { TABLE } from "../layout.mjs";
 import { ReferenceCabinetDress } from "./reference-cabinet.mjs";
 
@@ -69,6 +70,16 @@ export class MechanicalCabinet {
     const shaft=this.mesh(`${name}-shank`,new T.CylinderGeometry(.014,.014,shankLength,12),'metal',parent);
     shaft.position.set(x,y-shankLength/2+.012,z);
   }
+  flushBoundaryScrew(name,x,y,z) {
+    // Countersunk seat and head finish on the cap plane, with the shank inside
+    // the solid backing. Polygon offset affects drawing only, never geometry.
+    const seat=this.mesh(`${name}-seat`,new T.RingGeometry(.026,.040,24),'boundary-flush-brass');
+    const head=this.mesh(`${name}-hex-head`,new T.CircleGeometry(.026,6),'boundary-flush-metal');
+    const slot=this.mesh(`${name}-slot`,new T.PlaneGeometry(.028,.004),'boundary-flush-slot');
+    for(const mesh of [seat,head,slot]){mesh.rotation.x=-Math.PI/2;mesh.position.set(x,y,z);}
+    const shaft=this.mesh(`${name}-shank`,new T.CylinderGeometry(.014,.014,.10,12),'metal');
+    shaft.position.set(x,y-.05,z);
+  }
   build() {
     const {width:w,length:l,boardThickness:t,wallThickness:wt,glassFront:gf,glassRear:gr}=this.parameters;
     const W=w/2,L=l/2,top=.04,bottom=top-t;
@@ -80,20 +91,30 @@ export class MechanicalCabinet {
     for(const dy of [.035,.075,.115]) if(dy<t) for(const side of [-1,1])
       this.profile(`ply-edge-${side}-${dy}`,[[0,0],[.003,0],[.003,.009],[0,.009]],l,'edge',side*W,bottom+dy,-L);
     const glassY=z=>gf+(gr-gf)*(L-z)/l;
-    const rim=.28; // Body belongs BELOW the playfield, not around the ramps.
+    const rim=.28; // Exterior timber remains low; the inner boundary is separate.
+    for(const [key,base] of [['boundary-flush-metal','metal'],['boundary-flush-brass','brass'],['boundary-flush-slot','dark']]) {
+      const material=this.materials[base].clone();material.polygonOffset=true;
+      material.polygonOffsetFactor=key.endsWith('slot')?-2:-1;material.polygonOffsetUnits=-1;
+      this.materials[key]=material;this.ownedMaterials.add(material);
+    }
+    for(const part of cabinetBoundaryBoxes({width:w,length:l,centerZ:0})) {
+      const assembly=new T.Group();assembly.name=`cabinet-boundary-${part.name}`;this.root.add(assembly);
+      for(const layer of cabinetBoundaryLayers(part)) {
+        const mesh=this.mesh(`${assembly.name}-${layer.name}`,new T.BoxGeometry(...layer.size),'metal',assembly);
+        mesh.position.set(...layer.center);
+      }
+    }
+    for(const x of [-W+.25,0,W-.25])this.flushBoundaryScrew(`rear-cap-fastener-${x}`,x,CABINET_BOUNDARY.top,-L-CABINET_BOUNDARY.rearOffset);
     for(const side of [-1,1]) {
       // Profile X maps to world Z, extruded Z maps to -X.
       const panel=this.profile(`cabinet-side-${side}`,[[ -L,-1.40],[L,-1.40],[L,rim],[-L,rim]],wt,'wood');
       panel.rotation.y=-Math.PI/2;panel.position.x=side<0?-W:W+wt;
-      const rail=this.profile(`folded-glass-channel-${side}`,[[0,0],[.22,0],[.22,.08],[.20,.08],[.20,.022],[.022,.022],[.022,.105],[0,.105]],l,'metal');
-      rail.position.set(side<0?-W-.20:W-.02,rim,-L);
-      // Shallow constant-height side rail leaves the playfield visible.
       // Support angles: horizontal leg is UNDER board, upright OUTSIDE board.
       const section=side<0?[[0,0],[.20,0],[.20,.025],[.025,.025],[.025,.22],[0,.22]]:
         [[0,0],[.20,0],[.20,.22],[.175,.22],[.175,.025],[0,.025]];
       this.profile(`board-support-angle-${side}`,section,l-.40,'metal',side<0?-W-.025:W-.175,bottom-.025,-L+.20);
       for(const z of [-L+.40,-L/2,0,L/2,L-.40]) {
-        this.screw(`glass-rail-${side}-${z}`,side*(W+.10),rim+.027,z);
+        this.flushBoundaryScrew(`cap-fastener-${side}-${z}`,side*(W+CABINET_BOUNDARY.sideOffset),CABINET_BOUNDARY.top,z);
         this.screw(`board-edge-${side}-${z}`,side*(W-.09),top+.008,z,this.root,t+.08);
       }
     }
