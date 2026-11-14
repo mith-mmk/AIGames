@@ -1,3 +1,4 @@
+import {rampHardwareParts,rampHardwareMesh} from './ramp-hardware.mjs';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
 
@@ -203,7 +204,13 @@ export function buildPhysicalRamp(game) {
     const collider=game.world.createCollider(R.ColliderDesc.cylinder(delta.length()/2,part.radius).setTranslation(mid.x,mid.y,mid.z).setRotation(q).setFriction(.025).setRestitution(.02));
     colliders.push(collider);undersideContacts.push({name:part.name,segment:i-1,collider});
   }
-  return {colliders,baseColliders,supportColliders,undersideContacts,rows,dispose(){for(const c of colliders)game.world.removeCollider(c,true);}};
+  const hardwareParts=rampHardwareParts(rows.slice(0,wireStart+1),RAMP_WALL_HEIGHT);
+  const hardwareMesh=rampHardwareMesh(hardwareParts);
+  const hardwareCollider=game.world.createCollider(R.ColliderDesc.trimesh(hardwareMesh.vertices,hardwareMesh.indices).setFriction(.025).setRestitution(.02));
+  colliders.push(hardwareCollider);
+  const hardwareContacts=hardwareMesh.ranges.map(range=>({...range,collider:hardwareCollider}));
+  for(const part of hardwareParts)part.geometry.dispose();
+  return {colliders,baseColliders,supportColliders,undersideContacts,hardwareContacts,rows,dispose(){for(const c of colliders)game.world.removeCollider(c,true);}};
 }
 export function buildVisualRamp(assets) {
   const rows=sampleRamp(),root=new T.Group();root.name='physical-s-ramp';assets.root.add(root);
@@ -235,6 +242,13 @@ export function buildRampBaseVisual(rows=sampleRamp(),material) {
   add('divider-base-outer-wall',geometry({positions:new Float32Array(outer),indices:new Uint32Array(indices)}));
   // Cap the elevated end where the low solid base stops.
   const r=baseRows.at(-1);
-  if(r)add('low-base-end-cap',geometry({positions:new Float32Array([r.left.x,.035,r.left.z,r.left.x,r.left.y,r.left.z,2.35,.035,r.p.z,2.35,r.p.y,r.p.z]),indices:new Uint32Array([0,2,1,1,2,3])}));
+  if(r){
+    // Follow the skewed channel edge before reaching the divider. A single
+    // left-to-divider panel sits behind the actual convex collision boundary.
+    const positions=[];
+    for(const p of [r.left,r.right,new T.Vector3(2.35,r.p.y,r.p.z)])
+      positions.push(p.x,.035,p.z,p.x,p.y,p.z);
+    add('low-base-end-cap',geometry({positions:new Float32Array(positions),indices:new Uint32Array([0,2,1,1,2,3,2,4,3,3,4,5])}));
+  }
   return root;
 }

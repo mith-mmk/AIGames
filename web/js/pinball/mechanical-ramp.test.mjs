@@ -124,7 +124,7 @@ test('low base drawing ends at the same complete strip as its collider',()=>{
  const part=new MechanicalRamp();
  try{
   const cap=part.root.getObjectByName('low-base-end-cap').geometry.attributes.position;
-  const expected=[[last.left.x,.035,last.left.z],[last.left.x,last.left.y,last.left.z],[2.35,.035,last.p.z],[2.35,last.p.y,last.p.z]];
+  const expected=[[last.left.x,.035,last.left.z],[last.left.x,last.left.y,last.left.z],[last.right.x,.035,last.right.z],[last.right.x,last.right.y,last.right.z],[2.35,.035,last.p.z],[2.35,last.p.y,last.p.z]];
   assert.equal(cap.count,expected.length);
   for(let i=0;i<cap.count;i++)assert.ok(new T.Vector3().fromBufferAttribute(cap,i).distanceTo(new T.Vector3(...expected[i]))<1e-6);
  }finally{part.dispose();}
@@ -170,5 +170,21 @@ test('underfloor bearers, saddles and wire ties share nominal visual and contact
     assert.ok(Math.abs(axis.dot(delta.normalize()))>.999999);
    }
   }
+ }finally{part.dispose();world.free();}
+});
+
+
+test('low base end cap follows its accessible convex boundary',async()=>{
+ await R.init();const world=new R.World({x:0,y:-9.81,z:0}),physical=buildPhysicalRamp({world}),part=new MechanicalRamp();
+ try{
+  part.root.updateMatrixWorld(true);const cap=part.root.getObjectByName('low-base-end-cap');let checked=0;
+  for(const x of [1.6,1.8,2.0,2.1,2.2,2.3])for(const y of [.08,.18,.30,.42]){
+   const origin={x,y,z:-.9},direction={x:0,y:0,z:1};
+   const distances=physical.baseColliders.map(c=>c.castRay(new R.Ray(origin,direction),2,true)).filter(t=>t>=0).sort((a,b)=>a-b);
+   const visible=new T.Raycaster(new T.Vector3(x,y,-.9),new T.Vector3(0,0,1),0,2).intersectObject(cap)[0];
+   assert.ok(distances.length,`missing physical boundary ${x},${y}`);assert.ok(visible,`missing visible cap ${x},${y}`);
+   assert.ok(Math.abs(distances[0]-visible.distance)<1e-5,`cap mismatch ${x},${y}`);checked++;
+  }
+  assert.equal(checked,24);
  }finally{part.dispose();world.free();}
 });

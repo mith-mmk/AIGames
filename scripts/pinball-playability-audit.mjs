@@ -12,6 +12,8 @@ for(const power of powers)for(const delay of delays){
  const g=await PinballPhysics.create(),hold={left:0,right:0};
  let stage='catch',settled=0,until=0,side='left',shots=0,launches=0,liveResets=0;
  let lanes=0,bumpers=0,lastScore=0,lastMotionTick=0,stalled=false;
+ let hardwareContactTicks=0,hardwareContactEvents=0,wasHardwareContact=false;
+ const hardware=g.ramp.hardwareContacts?.[0]?.collider;
  const set=g.ball.setTranslation.bind(g.ball),event=g.state.onEvent.bind(g.state);
  g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')liveResets++;return set(...args);};
  g.state.onEvent=e=>{const accepted=event(e);if(accepted&&e.type==='rollover')lanes++;if(accepted&&e.type==='bumper')bumpers++;return accepted;};
@@ -29,15 +31,19 @@ for(const power of powers)for(const delay of delays){
    if(stage==='release'){input[side]=false;if(tick>=until){input[side]=true;hold[side]=tick+240;stage='refire';until=tick+36;}}
    else if(stage==='refire'&&tick>=until){stage='catch';settled=0;}
    g.step(1/120,input);
+   let touchingHardware=false;
+   if(hardware)g.world.contactPair(g.ballCollider,hardware,m=>{if(m.numContacts()>0)touchingHardware=true;});
+   if(touchingHardware){hardwareContactTicks++;if(!wasHardwareContact)hardwareContactEvents++;}
+   wasHardwareContact=touchingHardware;
    if(Math.hypot(v.x,v.z)>.03||g.state.score!==lastScore||stage!=='catch')lastMotionTick=tick;
    lastScore=g.state.score;
    if(g.state.phase==='playing'&&tick-lastMotionTick>120*8){stalled=true;break;}
   }
-  const r={power,delay,phase:g.state.phase,ball:g.state.ballNumber,seconds:g.time,score:g.state.score,lanes,bumpers,ramps:g.rampTraversals,shots,launches,liveResets,stalled};results.push(r);
+  const r={power,delay,phase:g.state.phase,ball:g.state.ballNumber,seconds:g.time,score:g.state.score,lanes,bumpers,ramps:g.rampTraversals,shots,launches,liveResets,stalled,hardwareContactTicks,hardwareContactEvents};results.push(r);
   assert.equal(liveResets,0,'no live position rescue');
   assert.ok(Number.isFinite(r.score)&&Number.isFinite(r.seconds));
  }finally{g.dispose();}
 }
-const sum=k=>results.reduce((n,r)=>n+r[k],0),summary={games:results.length,finished:results.filter(r=>r.phase==='gameover').length,stalled:results.filter(r=>r.stalled).length,zeroScore:results.filter(r=>!r.score).length,score:sum('score'),ramps:sum('ramps'),lanes:sum('lanes'),bumpers:sum('bumpers'),shots:sum('shots'),seconds:sum('seconds'),liveResets:sum('liveResets')};
+const sum=k=>results.reduce((n,r)=>n+r[k],0),summary={games:results.length,finished:results.filter(r=>r.phase==='gameover').length,stalled:results.filter(r=>r.stalled).length,zeroScore:results.filter(r=>!r.score).length,score:sum('score'),ramps:sum('ramps'),lanes:sum('lanes'),bumpers:sum('bumpers'),shots:sum('shots'),seconds:sum('seconds'),liveResets:sum('liveResets'),hardwareContactEvents:sum('hardwareContactEvents'),hardwareContactTicks:sum('hardwareContactTicks')};
 const result={method:'54 deterministic three-ball sessions: six natural launch powers by nine fixed release delays; only legal launch/flipper input; catch regions relative to each layout. 180-second cap. Not physical-phone or human difficulty evidence.',summary,results};
 const output=process.argv[2]||'artifacts/pinball/playability-audit.json';fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,JSON.stringify(result,null,2));console.log(JSON.stringify(summary));

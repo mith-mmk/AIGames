@@ -1,3 +1,4 @@
+import {loft,rampHardwareParts,rampBoltGeometry,RAMP_HARDWARE_DIMENSIONS} from '../ramp-hardware.mjs';
 import * as T from '../../vendor/three-0.180.0/three.module.min.js';
 import R from '../../vendor/rapier3d-0.17.3/rapier.mjs';
 import { sampleRamp, rampSupportStations, rampUndersideParts, buildRampBaseVisual, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_RADIUS, rampWireRails } from '../ramp-geometry.mjs';
@@ -5,8 +6,8 @@ import { TABLE } from '../layout.mjs';
 
 // Construction vocabulary: Stern Jaws manual pp. 66–67 (not measured CAD).
 // Styling: mechanical-reference.png. All scene dimensions are estimates.
-export const RAMP_WIRE_DIMENSIONS = Object.freeze({ sheet: .018, wall: RAMP_WALL_HEIGHT,
-  lip: .025, wireRadius: .018, runningHalfSpacing: .09,
+export const RAMP_WIRE_DIMENSIONS = Object.freeze({ ...RAMP_HARDWARE_DIMENSIONS, wall: RAMP_WALL_HEIGHT,
+  wireRadius: .018, runningHalfSpacing: .09,
   guardHalfSpacing: .175, guardHeight: .16, realBallDiameterMm: 26.9875 });
 const UP = new T.Vector3(0, 1, 0);
 const vec = p => p?.isVector3 ? p.clone() : new T.Vector3(...p);
@@ -19,30 +20,6 @@ function checkedRows(rows) {
     if (n.length() < .01) throw new RangeError('Route width must be positive');
     return { p, left, right, n: n.normalize() };
   });
-}
-// Closed cross-section loft: real thickness, underside and capped ends.
-function loft(rows, profile) {
-  const positions = [], indices = [], size = profile(rows[0]).length;
-  for (const row of rows) {
-    const section = profile(row);
-    const area = section.reduce((sum, p, i) => {
-      const q = section[(i + 1) % section.length];
-      return sum + p.dot(row.n) * q.y - q.dot(row.n) * p.y;
-    }, 0);
-    if (area > 0) section.reverse();
-    for (const p of section) positions.push(...p.toArray());
-  }
-  for (let i = 0; i < rows.length - 1; i++) for (let j = 0; j < size; j++) {
-    const a = i * size + j, b = i * size + (j + 1) % size;
-    indices.push(a, b, a + size, b, b + size, a + size);
-  }
-  for (let j = 1; j < size - 1; j++) {
-    indices.push(0, j + 1, j);
-    const k = (rows.length - 1) * size; indices.push(k, k + j, k + j + 1);
-  }
-  const g = new T.BufferGeometry();
-  g.setAttribute('position', new T.Float32BufferAttribute(positions, 3));
-  g.setIndex(indices); g.computeVertexNormals(); return g;
 }
 function point(row, side, across = 0, height = 0) {
   return row[side].clone().addScaledVector(row.n, across).addScaledVector(UP, height);
@@ -75,7 +52,7 @@ class Assembly {
     return this.mesh(name, new T.TubeGeometry(path, Math.max(2, points.length * 2), radius, 8, false), material, parent);
   }
   bolt(name, p, parent) {
-    const m = this.mesh(name, new T.CylinderGeometry(.026, .026, .018, 6), 'brass', parent);
+    const m = this.mesh(name, rampBoltGeometry(), 'brass', parent);
     m.position.copy(p); return m;
   }
   dispose() {
@@ -105,12 +82,6 @@ export class MechanicalRamp extends Assembly {
     this.mesh('continuous-floor-with-underside', loft(rows, r => [point(r, 'left'), point(r, 'right'), point(r, 'right', 0, -d.sheet), point(r, 'left', 0, -d.sheet)]), 'acrylic', sheet);
     for (const [side, sign] of [['left', -1], ['right', 1]]) {
       this.mesh(`${side}-folded-wall`, loft(rows, r => [point(r, side), point(r, side, 0, d.wall), point(r, side, sign * d.sheet, d.wall), point(r, side, sign * d.sheet, -d.sheet)]), 'acrylic', sheet);
-      this.mesh(`${side}-outward-folded-lip`, loft(rows, r => [point(r, side, 0, d.wall), point(r, side, sign * d.lip, d.wall), point(r, side, sign * d.lip, d.wall - d.sheet), point(r, side, 0, d.wall - d.sheet)]), 'chrome', sheet);
-      for (let i = 16; i < rows.length - 1; i += 32) {
-        const section = rows.slice(i, Math.min(rows.length, i + 3));
-        this.mesh(`${side}-joint-strap-${i}`, loft(section, r => [point(r, side, sign * d.sheet, .025), point(r, side, sign * d.sheet, d.wall - .035), point(r, side, sign * (d.sheet + .012), d.wall - .035), point(r, side, sign * (d.sheet + .012), .025)]), 'brass', hardware);
-        this.bolt(`${side}-joint-bolt-${i}`, point(rows[i], side, sign * .014, d.wall + .008), hardware);
-      }
     }
     const flaps = this.group('entry-and-exit-transition-flaps');
     for (const [name, i] of [['entry', 0], ['sheet-to-wire', rows.length - 1]]) {
@@ -118,7 +89,12 @@ export class MechanicalRamp extends Assembly {
       // End at the physical deck endpoint, never float past the release.
       const segment = i === 0 ? rows.slice(0, 3) : rows.slice(-3);
       this.mesh(`${name}-spring-steel-flap`, loft(segment, row => [row.left.clone(), row.right.clone(), row.right.clone().addScaledVector(UP, -.006), row.left.clone().addScaledVector(UP, -.006)]), 'chrome', flaps);
-      for (const side of ['left', 'right']) this.bolt(`${name}-${side}-fixing`, point(r, side, side === 'left' ? -.015 : .015, .012), flaps);
+      if(name==='entry')for (const side of ['left', 'right']) this.bolt(`${name}-${side}-fixing`, point(r, side, side === 'left' ? -.015 : .015, .012), flaps);
+    }
+    for(const part of rampHardwareParts(rows,d.wall)){
+      const parent={sheet,hardware,flaps}[part.group];
+      const mesh=this.mesh(part.name,part.geometry,part.material,parent);
+      if(part.position)mesh.position.copy(part.position);
     }
     const baseMaterial=this.materials.dark.clone(); baseMaterial.side=T.DoubleSide;
     this.ownedMaterials.add(baseMaterial);
