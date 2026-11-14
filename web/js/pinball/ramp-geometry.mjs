@@ -116,6 +116,12 @@ export function rampSupportStations(rows=sampleRamp()) {
     return {i,x,z,drop,y:r.p.y-drop,divider};
   });
 }
+// Compact formed nose, shared by its visible shell and convex contact.
+export function rampNoseVertices() {
+  const vertices=[];
+  for(const [x,z] of [[1.55,-1.25],[2.35,-1.25],[2.35,-1.65]])for(const y of [.035,.32])vertices.push(x,y,z);
+  return new Float32Array(vertices);
+}
 export function buildPhysicalRamp(game) {
   const rows=sampleRamp(), colliders=[];
   const wireStart=Math.round((rows.length-1)*WIRE_START_FRACTION);
@@ -150,9 +156,7 @@ export function buildPhysicalRamp(game) {
   }
   // A chamfered nose closes the base upstream without a perpendicular
   // dead-end against the shooter divider. Its low prism remains below the ramp.
-  const nose=[];
-  for(const [x,z] of [[1.55,-1.25],[2.35,-1.25],[2.35,-2.35]])for(const y of [.035,.40])nose.push(x,y,z);
-  colliders.push(game.world.createCollider(R.ColliderDesc.convexHull(new Float32Array(nose)).setFriction(.02).setRestitution(.1)));
+  colliders.push(game.world.createCollider(R.ColliderDesc.convexHull(rampNoseVertices()).setFriction(.02).setRestitution(.1)));
   const baseColliders=colliders.slice(baseColliderStart);
   // Right columns grow directly from the existing shooter divider footprint,
   // rather than long arms reaching beyond the cabinet. Airborne balls also
@@ -183,7 +187,7 @@ export function buildVisualRamp(assets) {
 export function buildRampBaseVisual(rows=sampleRamp(),material) {
   const root=new T.Group(); root.name='solid-anti-trap-ramp-base';
   const add=(name,g)=>{const m=new T.Mesh(g,material);m.name=name;m.castShadow=true;m.receiveShadow=true;root.add(m);return m;};
-  const noseTop={positions:new Float32Array([1.55,.40,-1.25,2.35,.40,-1.25,2.35,.40,-2.35,1.55,.035,-1.25,2.35,.035,-1.25,2.35,.035,-2.35]),indices:new Uint32Array([0,2,1,0,1,3,1,4,3,1,2,4,2,5,4,2,0,5,0,3,5])};
+  const noseTop={positions:rampNoseVertices(),indices:new Uint32Array([1,3,5,0,4,2,0,2,1,2,3,1,2,4,3,4,5,3,4,0,5,0,1,5])};
   add('chamfered-anti-trap-nose',geometry(noseTop));
   const segments=lowRampSegments(rows);
   const baseRows=segments.length?[segments[0].a,...segments.map(s=>s.b)]:[];

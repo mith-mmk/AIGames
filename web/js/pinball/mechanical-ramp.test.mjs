@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
 import { MechanicalRamp, MechanicalWireform, RAMP_WIRE_DIMENSIONS } from './components/ramp-wire.mjs';
-import { buildPhysicalRamp, sampleRamp, lowRampSegments, rampSupportStations, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_HEIGHT_OFFSET, WIRE_RADIUS, WIRE_HALF_SPACING, rampWireRails } from './ramp-geometry.mjs';
+import { buildPhysicalRamp, sampleRamp, rampNoseVertices, lowRampSegments, rampSupportStations, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_HEIGHT_OFFSET, WIRE_RADIUS, WIRE_HALF_SPACING, rampWireRails } from './ramp-geometry.mjs';
 
 test('installed ramp has matched sheet walls, true paired rails and visible anti-trap base',()=>{
  const part=new MechanicalRamp();
@@ -121,4 +121,20 @@ test('low base drawing ends at the same complete strip as its collider',()=>{
   assert.equal(cap.count,expected.length);
   for(let i=0;i<cap.count;i++)assert.ok(new T.Vector3().fromBufferAttribute(cap,i).distanceTo(new T.Vector3(...expected[i]))<1e-6);
  }finally{part.dispose();}
+});
+
+test('compact low nose uses one closed shell and matching convex contact vertices',async()=>{
+ await R.init();const world=new R.World({x:0,y:-9.81,z:0}),physical=buildPhysicalRamp({world}),part=new MechanicalRamp();
+ try{
+  const visible=part.root.getObjectByName('chamfered-anti-trap-nose').geometry;
+  assert.deepEqual(Array.from(visible.attributes.position.array),Array.from(rampNoseVertices()));
+  assert.equal(visible.index.count,24);
+  const contact=physical.baseColliders.at(-1),vertices=contact.vertices();
+  for(let i=0;i<visible.attributes.position.count;i++){
+   const p=new T.Vector3().fromBufferAttribute(visible.attributes.position,i);let closest=Infinity;
+   for(let j=0;j<vertices.length;j+=3)closest=Math.min(closest,p.distanceTo(new T.Vector3(vertices[j],vertices[j+1],vertices[j+2])));
+   assert.ok(closest<1e-6);
+  }
+  visible.computeBoundingBox();assert.ok(visible.boundingBox.max.y<=.320001);assert.ok(visible.boundingBox.min.z>=-1.650001);
+ }finally{part.dispose();world.free();}
 });
