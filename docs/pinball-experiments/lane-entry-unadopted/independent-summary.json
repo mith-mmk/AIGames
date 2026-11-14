@@ -1,0 +1,181 @@
+{
+  "sourceSha256": "31556815264efdaf5523aaa33ac4960255fb3bc7966555e31fcf7a49ee4ca10c",
+  "wire": {
+    "endpoint": [
+      -1.72,
+      0.44,
+      3
+    ],
+    "supportedBallCenterY": 0.575,
+    "clearanceToNewInnerAtSupportedHeight": 0.21776771484500795,
+    "clearanceAtGroundCenter": -0.03270621753020635,
+    "scope": "Same-XZ vertical column only, not a predicted trajectory or proof of natural reachability"
+  },
+  "oldInnerGapAtSameGroundPoint": 0.2177264412407577,
+  "fixtures": [
+    {
+      "side": -1,
+      "lane": "in",
+      "start": {
+        "x": -2.08,
+        "y": 0.18,
+        "z": 2.85
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 3
+      },
+      "initialGap": 0.005000000894122919,
+      "ticks": 256,
+      "lastPlayingPosition": {
+        "x": 0.11721132695674896,
+        "y": 0.16472485661506653,
+        "z": 5.049183368682861
+      },
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          1
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "liveResets": 0,
+      "maxQuietTicks": 1,
+      "phase": "ready",
+      "ballNumber": 2
+    },
+    {
+      "side": -1,
+      "lane": "out",
+      "start": {
+        "x": -2.515,
+        "y": 0.18,
+        "z": 2.6
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 3
+      },
+      "initialGap": 0.005000000894141432,
+      "ticks": 80,
+      "lastPlayingPosition": {
+        "x": -2.247945785522461,
+        "y": 0.1697041094303131,
+        "z": 5.031215667724609
+      },
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "liveResets": 0,
+      "maxQuietTicks": 1,
+      "phase": "ready",
+      "ballNumber": 2
+    },
+    {
+      "side": 1,
+      "lane": "in",
+      "start": {
+        "x": 2.08,
+        "y": 0.18,
+        "z": 2.85
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 3
+      },
+      "initialGap": 0.005000000894122919,
+      "ticks": 259,
+      "lastPlayingPosition": {
+        "x": -0.10029659420251846,
+        "y": 0.16422855854034424,
+        "z": 5.0492448806762695
+      },
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          2
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "liveResets": 0,
+      "maxQuietTicks": 1,
+      "phase": "ready",
+      "ballNumber": 2
+    },
+    {
+      "side": 1,
+      "lane": "out",
+      "start": {
+        "x": 2.515,
+        "y": 0.18,
+        "z": 2.6
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 3
+      },
+      "initialGap": 0.005000000894141432,
+      "ticks": 80,
+      "lastPlayingPosition": {
+        "x": 2.247945785522461,
+        "y": 0.1697041094303131,
+        "z": 5.031215667724609
+      },
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "liveResets": 0,
+      "maxQuietTicks": 1,
+      "phase": "ready",
+      "ballNumber": 2
+    }
+  ]
+}

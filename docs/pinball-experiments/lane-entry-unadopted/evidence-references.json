@@ -1,0 +1,195 @@
+{
+  "note": "Reference paths/hashes only. Large evidence omitted from packet; preservation does not claim full gameplay approval.",
+  "files": [
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/README.md",
+      "bytes": 4338,
+      "sha256": "3e786310e994e83254ce40654f3fd3e15f51659fee63aaf5b451b5f6d3bdfa65"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/summary.json",
+      "bytes": 28302,
+      "sha256": "ed4f8eec4fda5b0b5f11ebde48f3f90867e7e40defa5733d0ec937f4ccb7cdd5"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/probe.mjs",
+      "bytes": 2786,
+      "sha256": "71f552f3e88c3ad8aa90c6eb404bb269ffe39927ff2db890c57c764eb0e8b20f"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/repeat.mjs",
+      "bytes": 1490,
+      "sha256": "5de8dc2e8c3b1d2c76ec6e91818d30d8afed109e8b36a24767432b3fa6bf659e"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/baseline-loader.mjs",
+      "bytes": 305,
+      "sha256": "96b93abc12873aa194ee2134bbd2a04af967b1a2ab46e2ff253e19339d8a3432"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/manifest.json",
+      "bytes": 763,
+      "sha256": "264af816ba270d5bdd7bc59353456e563e24278be29783147c0e13a9a67b82c8"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/baseline.json",
+      "bytes": 1432151,
+      "sha256": "d81be83ade1e79751cec9c2335816aefbda6d1551345541549587b7a03a6c1b0"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/candidate.json",
+      "bytes": 872084,
+      "sha256": "f630f37035474bd2e7dcb0a15dbce6b14eff942f65650f3a5fe5573db7ebdc1d"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/repeat-baseline.json",
+      "bytes": 6780,
+      "sha256": "b7874b7c620b7bf56110df97536f17865810892b42a02193577292ed581eb8db"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/repeat-candidate.json",
+      "bytes": 6740,
+      "sha256": "c6fd49632cf28408d0b44b1334757f50a3187644d9c2db49f2972ad9bf5d0dee"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/weak-baseline.txt",
+      "bytes": 1093,
+      "sha256": "b4de464257925647cfbc81558d693baf245481d6f06c8552e6c074267e46c8e3"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/weak-candidate.txt",
+      "bytes": 3766,
+      "sha256": "138ff5a9a3cbee1925ebc5378ff3c6af9fe4ca1b93749e374061fb0ca0b8ad01"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/low-power-contact-context.json",
+      "bytes": 5762,
+      "sha256": "e3ca90d2f37e42219fb1a37b95e525cccf5ccdbaf15610f0556ed6b01fd69f1f"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-launch-a4d4ad7/low-power-contact-context.md",
+      "bytes": 2071,
+      "sha256": "d4b379add0616cb49817ff9a7bf4cf79df4de35d6bf1fc21dbc9692df8da8244"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/README.md",
+      "bytes": 4720,
+      "sha256": "92187da1067f4492f5c5117991b6d1c513f25283d8c876933f8317dfe464482b"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/summary.json",
+      "bytes": 3644,
+      "sha256": "642e9b0cbb5f7713614b34809731e5fb09a7a2aae2f418b435aecea97455fc7a"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/bounded-lanes.json",
+      "bytes": 245838,
+      "sha256": "5f1313c27656818ed37979c9e1cd851763bbc6bf236b679a21f2a4841a0d9fe6"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/bounded-lanes.mjs",
+      "bytes": 2931,
+      "sha256": "271dbbab05442bf6dbe48b0be44c3d3172a5c26c256be27d435c71ee7fa4c0ca"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/mount-browser.json",
+      "bytes": 34520,
+      "sha256": "2c5d1c684c5609ea9539cb02ab14a1bc3afdd9a7c4d724cabdcfa876c3531737"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/mount-browser-world-frame.json",
+      "bytes": 34245,
+      "sha256": "77912b2077dd6622394092a7f278b12f319c4b29cf843961058a4d2721c87140"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/mount-browser.cjs",
+      "bytes": 2551,
+      "sha256": "f8bdbd538f0174e1c50cf6bc19b924b13707c9fc59582cb96185893bd824efa8"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/visual.cjs",
+      "bytes": 6122,
+      "sha256": "7f71670f26f07b4f0c3fe1922f40f973c7ee79f341ee44f2d7f65c6fb4f1242a"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/baseline-component-side.png",
+      "bytes": 50067,
+      "sha256": "944507bad99ea4a2c095cd8df5e1ad47b8d30115c9d8e0ef38eb49b25bbd410d"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/baseline-installed-10.png",
+      "bytes": 429327,
+      "sha256": "a9baefbb89dcd31abda87f0f7eea52bf1b7e32511aa20c233577dd6ed2600b84"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/baseline-installed-45.png",
+      "bytes": 739686,
+      "sha256": "2c455a455527f98ef453a7151038c6bb95fa11a5255214b7b047b5933beb450d"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/baseline-installed-90.png",
+      "bytes": 615702,
+      "sha256": "88f6759271b141b16c2c511faee495455a4cfad43cfc540f8c25cbe5fe7e8654"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/baseline-low-outside-side.png",
+      "bytes": 54754,
+      "sha256": "939fc04cae9e79404921f7b9a1d035a6a8c30abbd17d8b681192d3f599dd2655"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/baseline-mobile-390.png",
+      "bytes": 252481,
+      "sha256": "dcf1e254317d3094e2653b12705caa72ba7b96502d54d18eb9acb2e4ce7b4d60"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/baseline-rear-wall-45.png",
+      "bytes": 209738,
+      "sha256": "626cb77de6e4a5f487bd899754d8c2b5fa0439a21d381f4116da0d34da53851b"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/candidate-component-side.png",
+      "bytes": 50212,
+      "sha256": "32e49ebd3cf4378d112d3d19f481ef15c3f6447db4a4c162a2ef136b9b7b63c6"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/candidate-installed-10.png",
+      "bytes": 439613,
+      "sha256": "6b4791609e583e08130f35cc8671137285a500415e02879f82d2755d72a06a92"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/candidate-installed-45.png",
+      "bytes": 754664,
+      "sha256": "67a6626a7b626c1423cd7921570c1cb55097f59f8d701f53afe35b1bb65d356f"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/candidate-installed-90.png",
+      "bytes": 628648,
+      "sha256": "7f890ce85fabe9dd71e1263346f3e76ffe3bd1ba15cfb902bd0125e370561d36"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/candidate-low-outside-side.png",
+      "bytes": 54926,
+      "sha256": "6a083450cd2d609de17fbc97313cae2a9516c80cbe0fc44f25bff0a54ee5a7da"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/candidate-mobile-390.png",
+      "bytes": 258079,
+      "sha256": "55b96ec8f15860508a519b63f2b7ca14902d28354d99309b0627a55a7797d72c"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/candidate-rear-wall-45.png",
+      "bytes": 213693,
+      "sha256": "5d0cbe180adbd932c066d8c2406588528fef549a2cf9ffa24d0865735c176955"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/evidence.json",
+      "bytes": 948,
+      "sha256": "8f7005f962b9ef3174fcafbc9fb83ab89b6ce2bed5c307fe5166a626cd680137"
+    },
+    {
+      "path": "artifacts/pinball/lane-entry-independent-a4d4ad7/preview/served-candidate-sources.json",
+      "bytes": 323981,
+      "sha256": "31556815264efdaf5523aaa33ac4960255fb3bc7966555e31fcf7a49ee4ca10c"
+    }
+  ]
+}

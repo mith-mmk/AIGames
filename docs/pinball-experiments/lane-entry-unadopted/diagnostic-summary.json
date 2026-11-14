@@ -1,0 +1,351 @@
+{
+  "status": "rejected, not adopted",
+  "sourceSha256": "31556815264efdaf5523aaa33ac4960255fb3bc7966555e31fcf7a49ee4ca10c",
+  "method": "Fixed-order no-key natural launches; ordinary vendored Rapier0.17.3; not artificial ramp fixtures, human play or existing54 controller",
+  "firstLaunch": {
+    "baseline": [
+      {
+        "power": 0.55,
+        "score": 25,
+        "fieldAccess": true,
+        "barManifoldTicks": 3,
+        "groundRollovers": 0,
+        "bumpers": 0,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 8.983333333333464
+      },
+      {
+        "power": 0.65,
+        "score": 25,
+        "fieldAccess": true,
+        "barManifoldTicks": 23,
+        "groundRollovers": 0,
+        "bumpers": 0,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 8.583333333333487
+      },
+      {
+        "power": 0.75,
+        "score": 25,
+        "fieldAccess": true,
+        "barManifoldTicks": 65,
+        "groundRollovers": 0,
+        "bumpers": 0,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 8.333333333333501
+      },
+      {
+        "power": 0.85,
+        "score": 525,
+        "fieldAccess": true,
+        "barManifoldTicks": 4,
+        "groundRollovers": 3,
+        "bumpers": 2,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 9.383333333333441
+      },
+      {
+        "power": 0.925,
+        "score": 525,
+        "fieldAccess": true,
+        "barManifoldTicks": 6,
+        "groundRollovers": 3,
+        "bumpers": 2,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 9.208333333333451
+      },
+      {
+        "power": 1,
+        "score": 325,
+        "fieldAccess": true,
+        "barManifoldTicks": 5,
+        "groundRollovers": 2,
+        "bumpers": 1,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 8.00833333333352
+      },
+      {
+        "power": 0.1,
+        "score": 0,
+        "fieldAccess": false,
+        "barManifoldTicks": 0,
+        "groundRollovers": 0,
+        "bumpers": 0,
+        "ball": 1,
+        "phase": "ready",
+        "returnedShooter": true,
+        "seconds": 1.333333333333331
+      }
+    ],
+    "candidate": [
+      {
+        "power": 0.55,
+        "score": 0,
+        "fieldAccess": false,
+        "barManifoldTicks": 3,
+        "groundRollovers": 0,
+        "bumpers": 0,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 3.849999999999989
+      },
+      {
+        "power": 0.65,
+        "score": 0,
+        "fieldAccess": false,
+        "barManifoldTicks": 1,
+        "groundRollovers": 0,
+        "bumpers": 0,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 3.4583333333333237
+      },
+      {
+        "power": 0.75,
+        "score": 0,
+        "fieldAccess": false,
+        "barManifoldTicks": 55,
+        "groundRollovers": 0,
+        "bumpers": 0,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 3.1833333333333247
+      },
+      {
+        "power": 0.85,
+        "score": 25,
+        "fieldAccess": true,
+        "barManifoldTicks": 2,
+        "groundRollovers": 0,
+        "bumpers": 0,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 8.983333333333464
+      },
+      {
+        "power": 0.925,
+        "score": 200,
+        "fieldAccess": true,
+        "barManifoldTicks": 4,
+        "groundRollovers": 1,
+        "bumpers": 1,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 3.4833333333333236
+      },
+      {
+        "power": 1,
+        "score": 250,
+        "fieldAccess": true,
+        "barManifoldTicks": 4,
+        "groundRollovers": 1,
+        "bumpers": 1,
+        "ball": 2,
+        "phase": "ready",
+        "returnedShooter": false,
+        "seconds": 8.675000000000148
+      },
+      {
+        "power": 0.1,
+        "score": 0,
+        "fieldAccess": false,
+        "barManifoldTicks": 0,
+        "groundRollovers": 0,
+        "bumpers": 0,
+        "ball": 1,
+        "phase": "ready",
+        "returnedShooter": true,
+        "seconds": 1.333333333333331
+      }
+    ]
+  },
+  "threeBallNoKey": {
+    "baseline": [
+      {
+        "power": 0.55,
+        "launches": 3,
+        "seconds": 24.199999999999267,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 25,
+        "ramps": 0
+      },
+      {
+        "power": 0.65,
+        "launches": 3,
+        "seconds": 23.166666666665993,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 25,
+        "ramps": 0
+      },
+      {
+        "power": 0.75,
+        "launches": 3,
+        "seconds": 22.241666666666045,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 25,
+        "ramps": 0
+      },
+      {
+        "power": 0.85,
+        "launches": 3,
+        "seconds": 23.99999999999928,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 1825,
+        "ramps": 0
+      },
+      {
+        "power": 0.925,
+        "launches": 3,
+        "seconds": 25.14166666666588,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 2025,
+        "ramps": 0
+      },
+      {
+        "power": 1,
+        "launches": 3,
+        "seconds": 23.6499999999993,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 1625,
+        "ramps": 0
+      }
+    ],
+    "candidate": [
+      {
+        "power": 0.55,
+        "launches": 3,
+        "seconds": 11.549999999999985,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 0,
+        "ramps": 0
+      },
+      {
+        "power": 0.65,
+        "launches": 3,
+        "seconds": 10.525000000000043,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 0,
+        "ramps": 0
+      },
+      {
+        "power": 0.75,
+        "launches": 3,
+        "seconds": 9.566666666666764,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 0,
+        "ramps": 0
+      },
+      {
+        "power": 0.85,
+        "launches": 3,
+        "seconds": 23.09999999999933,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 25,
+        "ramps": 0
+      },
+      {
+        "power": 0.925,
+        "launches": 3,
+        "seconds": 10.466666666666713,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 1100,
+        "ramps": 0
+      },
+      {
+        "power": 1,
+        "launches": 3,
+        "seconds": 22.80833333333268,
+        "phase": "gameover",
+        "ball": 3,
+        "score": 1150,
+        "ramps": 0
+      }
+    ]
+  },
+  "settledWeakReturn": {
+    "baseline": {
+      "phase": "ready",
+      "ball": 1,
+      "returned": true,
+      "stopErrorZ": 0.0012270927429200995,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.1726202666759491,
+        "z": 4.42622709274292
+      },
+      "relaunch": true,
+      "positionUnchanged": true
+    },
+    "candidate": {
+      "phase": "ready",
+      "ball": 1,
+      "returned": true,
+      "stopErrorZ": 0.0012270927429200995,
+      "p": {
+        "x": 2.930000066757202,
+        "y": 0.1726202666759491,
+        "z": 4.42622709274292
+      },
+      "relaunch": true,
+      "positionUnchanged": true
+    }
+  },
+  "unchangedReturnTests": {
+    "baseline": "10/10",
+    "candidate": "6 pass / 4 fail",
+    "failures": "Old absolute X2.45..2.70 bounds. Earlier phase/returned/ball assertions passed; later assertions after failure did not execute. No test changed."
+  },
+  "structureFailure": {
+    "footY": [
+      -0.05,
+      -0.02
+    ],
+    "visibleBoardY": [
+      -0.14,
+      0.04
+    ],
+    "physicsFloorY": [
+      -0.12,
+      0.04
+    ],
+    "stemBottomY": -0.04,
+    "finding": "Feet embedded in board, stems do not cross underside. Frozen geometry intentionally retains this error."
+  },
+  "visualFailure": "IN converges abruptly toward fixed heel; OUT becomes a broad fan; curved labels distort. Independent installed top45/low/mobile review rejected reference likeness.",
+  "contactCauseLimits": "No uniform first-bar mechanism. .55 first loaded bar contact is translated-equivalent; .65 one manifold has zero positive impulse. Outside-aisle bypass of old nose redirection is a trajectory-supported inference, not an individual-nose manifold proof.",
+  "notRun": [
+    "full198",
+    "strong120",
+    "same-ball qualification",
+    "natural54",
+    "physical-phone/human validation"
+  ]
+}

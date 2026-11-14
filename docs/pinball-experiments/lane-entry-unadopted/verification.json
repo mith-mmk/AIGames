@@ -1,0 +1,56 @@
+{
+  "status": "recovery verified, candidate remains rejected",
+  "node": "v26.7.0",
+  "originalBuildSha256": "298e2c022fb33943d1c0d6c09980f76ae56cafe0f4bca8aed863e6932b62e2df",
+  "originalArtifactHashesUnchanged": {
+    "loader.mjs": true,
+    "sources.json": true,
+    "baseline-sources.json": true,
+    "manifest.json": true,
+    "changes.json": true,
+    "build.mjs": true,
+    "study-helper.mjs": true,
+    "README.md": true
+  },
+  "inMemoryReconstruction": {
+    "allGeneratedHashesMatch": {
+      "sources.json": true,
+      "baseline-sources.json": true,
+      "changes.json": true,
+      "manifest.json": true
+    },
+    "originalArtifactWrites": 0
+  },
+  "freshSeparateOutput": {
+    "filesCreated": 8,
+    "sourceSetSha256": "31556815264efdaf5523aaa33ac4960255fb3bc7966555e31fcf7a49ee4ca10c"
+  },
+  "idempotentSecondRun": {
+    "filesCreated": 0,
+    "filesReused": 8
+  },
+  "recoveredLoaderAssembly": {
+    "colliders": 1466,
+    "mountContacts": 72,
+    "shooterX": 2.93,
+    "gameplayNotRerun": true
+  },
+  "differingExistingFileTest": {
+    "exitCode": 1,
+    "preflightRejectedBeforeWrites": true,
+    "sentinelBytesUnchanged": true,
+    "directoryStillContainsOnlySentinel": true
+  },
+  "outsideAllowedOutputTest": {
+    "exitCode": 1,
+    "rejected": true
+  },
+  "payloadMatchesOriginal": {
+    "build.mjs": true,
+    "study-helper.mjs": true,
+    "loader.mjs": true,
+    "manifest.json": true,
+    "dependencies.json": true
+  },
+  "temporaryGeneratedOutputs": "Moved to Trash after verification; original artifact retained."
+}

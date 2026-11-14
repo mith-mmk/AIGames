@@ -1,0 +1,22 @@
+{
+  "artifacts": {
+    "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+    "sources.json": "31556815264efdaf5523aaa33ac4960255fb3bc7966555e31fcf7a49ee4ca10c",
+    "baseline-sources.json": "7a9b9fd4d71d5f33ebcd6311093b568dfde34d87bec07409c84e2a2c6961207d",
+    "manifest.json": "c66e4ad9e07b79f75c1e8060eac771d803c19cb2e731f54227f74f174479176b",
+    "changes.json": "b8f05688a169bc954b57df55aa395aa2910ac60d0b09221928260755285d16c4",
+    "build.mjs": "298e2c022fb33943d1c0d6c09980f76ae56cafe0f4bca8aed863e6932b62e2df",
+    "study-helper.mjs": "2c9009d09ce827635b9dae17d04f37ca53e7299051fb594bd3b68f90d763ea37",
+    "README.md": "e33aed585bf8c31ef5f8381314241d974a4e5a31e83dd10404d3408f394f37be"
+  },
+  "vendor": {
+    "web/js/vendor/rapier3d-0.17.3/LICENSE": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519",
+    "web/js/vendor/rapier3d-0.17.3/NOTICE": "2d2673e951a4b20b2c06b561412b23a2731b5c0006031f66931234b7ec21161a",
+    "web/js/vendor/rapier3d-0.17.3/rapier.mjs": "e0f7783dae9d3d175ec62c0cafdad84261d8c64c5f7da6ae5b24e858cf9ab759",
+    "web/js/vendor/three-0.180.0/LICENSE": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+    "web/js/vendor/three-0.180.0/controls/OrbitControls.js": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c",
+    "web/js/vendor/three-0.180.0/package.json": "0cc47147be8fcf7c0325e3d81ff01f11ad848d6251faf9d58bc60f7483854f55",
+    "web/js/vendor/three-0.180.0/three.core.min.js": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de",
+    "web/js/vendor/three-0.180.0/three.module.min.js": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6"
+  }
+}

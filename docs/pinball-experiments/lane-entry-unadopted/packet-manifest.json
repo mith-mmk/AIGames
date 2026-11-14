@@ -1,0 +1,28 @@
+{
+  "base": "c1f7aeb",
+  "baseFull": "c1f7aeba28e9fb55117fa0fedbc975f5e8e72d84",
+  "documentationHead": "a4d4ad74930b20e1e0b937de9aa70a2568331160",
+  "adopted": false,
+  "originalArtifactDirectory": "artifacts/pinball/lane-entry-integrated-a4d4ad7",
+  "payload": {
+    "payload/build.mjs": "298e2c022fb33943d1c0d6c09980f76ae56cafe0f4bca8aed863e6932b62e2df",
+    "payload/study-helper.mjs": "2c9009d09ce827635b9dae17d04f37ca53e7299051fb594bd3b68f90d763ea37",
+    "payload/loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+    "payload/manifest.json": "c66e4ad9e07b79f75c1e8060eac771d803c19cb2e731f54227f74f174479176b",
+    "payload/dependencies.json": "eeefb00643fa39289bb527ff956b54b5fca90cb6832aeb10beda3646e7c9648c"
+  },
+  "generated": {
+    "sources.json": "31556815264efdaf5523aaa33ac4960255fb3bc7966555e31fcf7a49ee4ca10c",
+    "baseline-sources.json": "7a9b9fd4d71d5f33ebcd6311093b568dfde34d87bec07409c84e2a2c6961207d",
+    "changes.json": "b8f05688a169bc954b57df55aa395aa2910ac60d0b09221928260755285d16c4",
+    "manifest.json": "c66e4ad9e07b79f75c1e8060eac771d803c19cb2e731f54227f74f174479176b"
+  },
+  "supportFiles": {
+    "README.md": "597af5b5c4cd35b51412b7d261511ca317fda5a96c62e92316c6adcf8c499741",
+    "restore.mjs": "d21d490b15e13f3f379c29d8a448562afefa239069b2f1755c17a97399fe71fd",
+    "diagnostic-summary.json": "d8843b84670f21def395d8ff8299e44dbec4f452174db96ff046451337ca4025",
+    "independent-summary.json": "642e9b0cbb5f7713614b34809731e5fb09a7a2aae2f418b435aecea97455fc7a",
+    "evidence-references.json": "15fe991a162282f3ec77c007915086ce7e06f7cb88b6a3d22e073d9c1bdbfa58",
+    "verification.json": "a5416b8084e81464a42fd553e44fbc9ec4e023cc435b5e6ae1f16f5850bfaf89"
+  }
+}
