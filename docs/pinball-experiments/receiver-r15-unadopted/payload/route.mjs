@@ -1,0 +1,6 @@
+import * as T from '../../../web/js/vendor/three-0.180.0/three.module.min.js';
+const A=Math.atan(.73/1.55),B=-.3441409911156231,R=1.5,d=.48923742682954086,mid=.7566756576200493,L=2.422354428556243,M=[1.2865277899204586,.9444814925286698];
+function route(s){let x=M[0],z=M[1],theta=A;if(s<=d)return{x:x+s*Math.sin(A),z:z-s*Math.cos(A),theta:A};x+=d*Math.sin(A);z-=d*Math.cos(A);s-=d;if(s<=R*A){theta=A-s/R;return{x:x+R*(Math.cos(theta)-Math.cos(A)),z:z-R*(Math.sin(A)-Math.sin(theta)),theta};}x+=R*(1-Math.cos(A));z-=R*Math.sin(A);s-=R*A;if(s<=mid)return{x,z:z-s,theta:0};z-=mid;s-=mid;theta=-s/R;return{x:x+R*(Math.cos(theta)-1),z:z+R*Math.sin(theta),theta};}
+function height(s){if(s<=1)return{y:.04-.304*s**3+.646*s*s,m:-.912*s*s+1.292*s,dd:-1.824*s+1.292};let q=(s-1)/(L-1),dy=.73-.382,len=L-1,m0=.38*len,m1=.22045961456768748/Math.hypot(.32908709711253137,.91820435680665)*len,a=-2*dy+m0+m1,b=3*dy-2*m0-m1;return{y:.382+a*q**3+b*q*q+m0*q,m:(3*a*q*q+2*b*q+m0)/len,dd:(6*a*q+2*b)/(len*len)};}
+
+export function designPose(original,u){if(u>=48/240)return original(u);const s=u<=25/240?u*240/25:1+(u*240-25)/23*(L-1),p=route(s),f=height(s);return{p:new T.Vector3(p.x,f.y,p.z),t:new T.Vector3(Math.sin(p.theta),f.m,-Math.cos(p.theta)).normalize()};}

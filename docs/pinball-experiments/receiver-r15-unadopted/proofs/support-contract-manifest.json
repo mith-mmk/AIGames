@@ -1,0 +1,25 @@
+{
+  "loadOrder": [
+    "loader.mjs",
+    "prism-full-loader.mjs",
+    "installed-mode-loader.mjs",
+    "station-contract-loader.mjs",
+    "../deterministic-current-gate/loader.mjs"
+  ],
+  "hashes": {
+    "loader.mjs": "3b167246b1454134c1d4fd1b195628244b17ba9f095725fe34a8d9dcef9ffba0",
+    "prism-full-loader.mjs": "af132b0d8a67ced58775914e1cf778fee823cb1079b85a34773d61be1ff8f174",
+    "prism-full.mjs": "e05c90732d522045219625ec47c44d9b528a47d5df2b699faed14be94ef31059",
+    "route.mjs": "2344e2b999d958cb8d9990518b76ee1e9b2b9e148827a4f357b649c8eda88498",
+    "receiver.mjs": "bbf2915a82f7311976b29f0d3e5dd8ff20d4e5860b5e0bdea0e7caeab2101c27",
+    "installed-mode-loader.mjs": "86f893dcf32ed86cc7e3a4079458812a39d44c66316ecec26b06f501d18526ba",
+    "station-contract-loader.mjs": "085f4bbc90db774e95ec0b5af5b7de2e0c3a70916500fcb7e9cc8fc7ebdc7b5b"
+  },
+  "engineSha256": "abc3b7640fc4a5e955bb86941bd19d92f67aac684768f5254c3dfd8de12fd1db",
+  "installedExactAgainst": "receiver-r15-support-datum-f7e4d30",
+  "colliderCount": 1370,
+  "colliderHash": "f5d7a7f60f11c7d55b379e4b76fdf28a3ca06759bf3944ac0193a9d401f8b6d7",
+  "meshCount": 222,
+  "meshHash": "2a8f6a37109977764c51cb29b005f6687b6531fd0aec6ea005ef6e2801490c64",
+  "full190": "not rerun;171/19 belongs only to preceding unscoped freeze"
+}

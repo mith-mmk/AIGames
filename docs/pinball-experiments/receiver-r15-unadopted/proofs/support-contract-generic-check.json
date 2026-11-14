@@ -1,0 +1,273 @@
+{
+  "results": [
+    {
+      "count": 60,
+      "scope": "full",
+      "rowCount": 61,
+      "stations": [
+        12,
+        18,
+        24,
+        29,
+        33,
+        36,
+        39,
+        42,
+        45,
+        47,
+        48,
+        60
+      ],
+      "exact": true
+    },
+    {
+      "count": 60,
+      "scope": "short",
+      "rowCount": 9,
+      "stations": [
+        8
+      ],
+      "exact": true
+    },
+    {
+      "count": 60,
+      "scope": "upper",
+      "rowCount": 49,
+      "stations": [
+        6,
+        12,
+        17,
+        21,
+        24,
+        27,
+        30,
+        33,
+        35,
+        36,
+        48
+      ],
+      "exact": true
+    },
+    {
+      "count": 120,
+      "scope": "full",
+      "rowCount": 121,
+      "stations": [
+        22,
+        32,
+        42,
+        52,
+        60,
+        67,
+        73,
+        78,
+        84,
+        89,
+        93,
+        96,
+        120
+      ],
+      "exact": true
+    },
+    {
+      "count": 120,
+      "scope": "short",
+      "rowCount": 18,
+      "stations": [
+        17
+      ],
+      "exact": true
+    },
+    {
+      "count": 120,
+      "scope": "upper",
+      "rowCount": 97,
+      "stations": [
+        11,
+        21,
+        31,
+        39,
+        45,
+        51,
+        56,
+        62,
+        67,
+        71,
+        72,
+        96
+      ],
+      "exact": true
+    },
+    {
+      "count": 240,
+      "scope": "full",
+      "rowCount": 241,
+      "stations": [
+        42,
+        61,
+        82,
+        103,
+        119,
+        132,
+        143,
+        154,
+        165,
+        175,
+        183,
+        191,
+        192,
+        240
+      ],
+      "exact": true
+    },
+    {
+      "count": 240,
+      "scope": "short",
+      "rowCount": 36,
+      "stations": [
+        35
+      ],
+      "exact": true
+    },
+    {
+      "count": 240,
+      "scope": "upper",
+      "rowCount": 193,
+      "stations": [
+        21,
+        41,
+        60,
+        75,
+        87,
+        98,
+        108,
+        119,
+        129,
+        137,
+        144,
+        192
+      ],
+      "exact": true
+    },
+    {
+      "count": 300,
+      "scope": "full",
+      "rowCount": 301,
+      "stations": [
+        52,
+        76,
+        102,
+        128,
+        148,
+        164,
+        178,
+        191,
+        204,
+        217,
+        227,
+        236,
+        240,
+        300
+      ],
+      "exact": true
+    },
+    {
+      "count": 300,
+      "scope": "short",
+      "rowCount": 45,
+      "stations": [
+        44
+      ],
+      "exact": true
+    },
+    {
+      "count": 300,
+      "scope": "upper",
+      "rowCount": 241,
+      "stations": [
+        26,
+        51,
+        75,
+        94,
+        109,
+        123,
+        136,
+        149,
+        161,
+        170,
+        180,
+        240
+      ],
+      "exact": true
+    },
+    {
+      "count": 480,
+      "scope": "full",
+      "rowCount": 481,
+      "stations": [
+        83,
+        121,
+        162,
+        203,
+        235,
+        261,
+        283,
+        304,
+        325,
+        345,
+        362,
+        376,
+        384,
+        480
+      ],
+      "exact": true
+    },
+    {
+      "count": 480,
+      "scope": "short",
+      "rowCount": 72,
+      "stations": [
+        71
+      ],
+      "exact": true
+    },
+    {
+      "count": 480,
+      "scope": "upper",
+      "rowCount": 385,
+      "stations": [
+        41,
+        81,
+        119,
+        149,
+        173,
+        195,
+        215,
+        236,
+        256,
+        271,
+        286,
+        288,
+        384
+      ],
+      "exact": true
+    }
+  ],
+  "defaultExact": true,
+  "installedRows": [
+    42,
+    57,
+    78,
+    99,
+    116,
+    130,
+    141,
+    152,
+    163,
+    173,
+    181,
+    188,
+    192,
+    240
+  ]
+}

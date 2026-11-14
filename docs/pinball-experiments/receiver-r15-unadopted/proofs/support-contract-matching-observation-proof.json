@@ -1,0 +1,8 @@
+{
+  "onlyImportChanged": true,
+  "testBodyIdentical": true,
+  "originalBodySha256": "1bbff18d6262f99cdb81a2a835c54f0bca110e720b5822000f40680237735e0b",
+  "observedBodySha256": "1bbff18d6262f99cdb81a2a835c54f0bca110e720b5822000f40680237735e0b",
+  "from": "lowRampSegments, rampSupportStations, RAMP_WALL_HEIGHT",
+  "to": "lowRampSegments, receiverSupportStations as rampSupportStations, RAMP_WALL_HEIGHT"
+}

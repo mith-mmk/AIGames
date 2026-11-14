@@ -1,0 +1,50 @@
+{
+  "notice": "Historical output identities only; outputs are intentionally not bundled, not required source dependencies, and may need regeneration. Their hashes do not assert latest revision acceptance.",
+  "files": [
+    {
+      "path": "artifacts/pinball/r15-boundary-diagnosis/result.json",
+      "bytes": 335818,
+      "sha256": "9717c3dee6d6bf2e9fbca7e5a11c6e9afae37a353d3cb3733d319552145caa77"
+    },
+    {
+      "path": "artifacts/pinball/r15-boundary-diagnosis/baseline.json",
+      "bytes": 315820,
+      "sha256": "6c4c1cd18796ced715b74ff3d102b221c347c9262c4cbf5fa7c53a2e21449950"
+    },
+    {
+      "path": "artifacts/pinball/receiver-r15-det-190/test-pinball.log",
+      "bytes": 36952,
+      "sha256": "162d6caa9add7420dc157e9602eaad9b9ff75a153236736de95cd61837a5f5be"
+    },
+    {
+      "path": "artifacts/pinball/receiver-r15-deterministic/entry18.json",
+      "bytes": 2492597,
+      "sha256": "8afeb05ebc52963227d22d8697a2cca47255ad523d6c5ed5c52deb3f654d7f28"
+    },
+    {
+      "path": "artifacts/pinball/receiver-r15-deterministic/matrix-summary.json",
+      "bytes": 12590,
+      "sha256": "6b1582a765cd7a07798c217ec794a037f8b010a24e50e606d1a871c581b2fdf7"
+    },
+    {
+      "path": "artifacts/pinball/receiver-r15-deterministic/natural54-comparison.json",
+      "bytes": 7292,
+      "sha256": "860ff5c1f741e875c74978db92750fac7b310a4b42e8f35fd579a95574873ae7"
+    },
+    {
+      "path": "artifacts/pinball/receiver-r15-det-contact-review/entry120.json",
+      "bytes": 16611194,
+      "sha256": "4aaeeb9f6da41195496ba80037e01167312e75ee029e63d27fb589c172870d02"
+    },
+    {
+      "path": "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/capture-original.json",
+      "bytes": 3601242,
+      "sha256": "1ba01acfecfcbaa0eb760971c60c51b79685850bf92109a4684856c3c1a8c941"
+    },
+    {
+      "path": "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/capture-revision.json",
+      "bytes": 3601242,
+      "sha256": "aa58a5b67c21e3a83427fcaa788300ffcf1bf2584fd847cd5097dd45983ca6db"
+    }
+  ]
+}

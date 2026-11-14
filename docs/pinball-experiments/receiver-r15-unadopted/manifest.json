@@ -1,0 +1,233 @@
+{
+  "schema": 1,
+  "status": "Unadopted experiment, not production code or approval.",
+  "accepted_runtime_commit": "c1f7aeba28e9fb55117fa0fedbc975f5e8e72d84",
+  "repository_snapshot_commit": "f7e4d30bb465247305347485c5c33c31047bd4ae",
+  "tested_node": "v26.7.0",
+  "required_runtime": "Node with synchronous node:module.registerHooks (at least22.15 or23.5); tested version preferred.",
+  "files": [
+    {
+      "file": "payload/loader.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/loader.mjs",
+      "sha256": "3b167246b1454134c1d4fd1b195628244b17ba9f095725fe34a8d9dcef9ffba0"
+    },
+    {
+      "file": "payload/prism-full-loader.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/prism-full-loader.mjs",
+      "sha256": "af132b0d8a67ced58775914e1cf778fee823cb1079b85a34773d61be1ff8f174"
+    },
+    {
+      "file": "payload/prism-full.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/prism-full.mjs",
+      "sha256": "e05c90732d522045219625ec47c44d9b528a47d5df2b699faed14be94ef31059"
+    },
+    {
+      "file": "payload/route.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/route.mjs",
+      "sha256": "2344e2b999d958cb8d9990518b76ee1e9b2b9e148827a4f357b649c8eda88498"
+    },
+    {
+      "file": "payload/receiver.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/receiver.mjs",
+      "sha256": "bbf2915a82f7311976b29f0d3e5dd8ff20d4e5860b5e0bdea0e7caeab2101c27"
+    },
+    {
+      "file": "payload/installed-mode-loader.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/installed-mode-loader.mjs",
+      "sha256": "86f893dcf32ed86cc7e3a4079458812a39d44c66316ecec26b06f501d18526ba"
+    },
+    {
+      "file": "payload/capture-installed.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/capture-installed.mjs",
+      "sha256": "b32eecda0c0d229a2ee4ba16178fa8c3d12cbe7f00f574cd13596aaffa9bdca5"
+    },
+    {
+      "file": "payload/deterministic-loader.mjs",
+      "restore_to": "artifacts/pinball/deterministic-current-gate/loader.mjs",
+      "sha256": "e55201a59baee222d5e82292af9b28cc2ee5fe121f16e5e57f3b1f79d6e97790"
+    },
+    {
+      "file": "regression-contracts.md",
+      "restore_to": "artifacts/pinball/r15-boundary-diagnosis/regression-contracts.md",
+      "sha256": "a7d198d1f529c3a8326e408da32462c650029d3c57873543b3159b8ac6104037"
+    },
+    {
+      "file": "payload/boundary-check.mjs",
+      "restore_to": "artifacts/pinball/r15-boundary-diagnosis/check.mjs",
+      "sha256": "a2de469cbc900e52080c5a7c7e242a4b5b0fc9b795f1e0331258aee2e9a034f7"
+    },
+    {
+      "file": "payload/matrix-hook.mjs",
+      "restore_to": "artifacts/pinball/prism-aim-window/matrix-hook.mjs",
+      "sha256": "b7dfab6aa7173613ded209540e1695aa0fa3eb005c92cd51cd0b9c08b2ae14cf"
+    },
+    {
+      "file": "payload/slow.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-det-contact-review/slow.mjs",
+      "sha256": "1bb51502881dce1eb9bd9316c327c09faa591b34a6fecf6e91127e15eb4ef0a6"
+    },
+    {
+      "file": "payload/old-pocket-nearby.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-det-contact-review/old-pocket-nearby.mjs",
+      "sha256": "0f91e11e6ca07756cae91a3cf9578094bfe82f96158bd82eadccd08d5ab77515"
+    },
+    {
+      "file": "payload/station-loader.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-support-datum-f7e4d30/station-loader.mjs",
+      "sha256": "40efa3e49d18da8bdca7034f7031264bf8be6fa60dd3af07f7f30f66d1f75e85",
+      "optional_layer": "support-datum"
+    },
+    {
+      "file": "payload/station-contract-loader.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-support-contract-f7e4d30/station-contract-loader.mjs",
+      "sha256": "085f4bbc90db774e95ec0b5af5b7de2e0c3a70916500fcb7e9cc8fc7ebdc7b5b",
+      "optional_layer": "support-contract"
+    },
+    {
+      "file": "payload/observation-loader.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-support-contract-f7e4d30/observation-loader.mjs",
+      "sha256": "b5987782835fcb76d3a09e3e7c94929cf25eadca66a9551a11de4928c5af949d",
+      "optional_layer": "support-contract"
+    },
+    {
+      "file": "payload/matching-observation-loader.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-support-contract-f7e4d30/matching-observation-loader.mjs",
+      "sha256": "5275b612b8cee1d84f05b083f0c53a33bfda508f04235e94f77debff4ecb8c14",
+      "optional_layer": "support-contract"
+    },
+    {
+      "file": "payload/generic-check.mjs",
+      "restore_to": "artifacts/pinball/receiver-r15-support-contract-f7e4d30/generic-check.mjs",
+      "sha256": "fe75cc17fd7c628930859f2aa4bf5d7e8777ecae11d7a639e2131ffe8eae9cfd",
+      "optional_layer": "support-contract"
+    }
+  ],
+  "engine": {
+    "name": "@dimforge/rapier3d-deterministic-compat",
+    "version": "0.17.3",
+    "url": "https://registry.npmjs.org/@dimforge/rapier3d-deterministic-compat/-/rapier3d-deterministic-compat-0.17.3.tgz",
+    "integrity": "sha512-6y9wJntR3kPhGaUudtMR0u8Rtw9Jm7N4PHLGu6DSvvFJQLoRTx9+zY0ubT4tv9GTMXWevblsPoLB7Dn+OVHFew==",
+    "esm_sha256": "abc3b7640fc4a5e955bb86941bd19d92f67aac684768f5254c3dfd8de12fd1db",
+    "restore_to": "artifacts/pinball/same-version-flavor-audit/package/rapier.es.js",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/dimforge/rapier.js"
+  },
+  "expected_normal_capture": {
+    "colliderCount": 1370,
+    "meshCount": 222,
+    "colliderHash": "4850c8a816a85b0010bd630f04a6356f228deefb12827a4a97e9b874cd7c824b",
+    "meshHash": "1256c26f7fbc96b01537a814bcd5aa39d1eba6a4dbac66196489e0f38383fc26"
+  },
+  "tracked_dependencies": [
+    "web/js/pinball/*.mjs from accepted commit via loader",
+    "web/js/vendor/three-0.180.0/three.module.min.js",
+    "web/js/vendor/rapier3d-0.17.3/rapier.mjs",
+    "web/js/pinball/ramp-base.test.mjs",
+    "scripts/pinball-ramp-entry-audit.mjs",
+    "web/js/pinball/lower-layout.test.mjs",
+    "scripts/pinball-playability-audit.mjs"
+  ],
+  "excluded": [
+    "engine ESM/WASM/archive",
+    "images",
+    "large traces and capture output",
+    "node_modules",
+    "internal notes and instructions"
+  ],
+  "variants": {
+    "generic-only": {
+      "status": "Unadopted. Preserved default reproduction; expected_normal_capture applies only here.",
+      "shared_source_directory": "artifacts/pinball/receiver-r15-generic-contract-f7e4d30",
+      "load_order": [
+        "loader.mjs",
+        "prism-full-loader.mjs",
+        "installed-mode-loader.mjs"
+      ],
+      "optional_engine_hook": "artifacts/pinball/deterministic-current-gate/loader.mjs"
+    },
+    "support-datum": {
+      "status": "Separate unadopted optional layer; full190 validation in progress/unconfirmed when packaged.",
+      "reuses_shared_sources": [
+        "loader.mjs",
+        "prism-full-loader.mjs",
+        "prism-full.mjs",
+        "route.mjs",
+        "receiver.mjs",
+        "installed-mode-loader.mjs"
+      ],
+      "additional_source": "artifacts/pinball/receiver-r15-support-datum-f7e4d30/station-loader.mjs",
+      "load_order": [
+        "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/loader.mjs",
+        "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/prism-full-loader.mjs",
+        "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/installed-mode-loader.mjs",
+        "artifacts/pinball/receiver-r15-support-datum-f7e4d30/station-loader.mjs",
+        "artifacts/pinball/deterministic-current-gate/loader.mjs"
+      ],
+      "normalized_upper_station_rows_at_241_samples": [
+        57,
+        78,
+        99,
+        116,
+        130,
+        141,
+        152,
+        163,
+        173,
+        181,
+        188,
+        192,
+        240
+      ],
+      "lower_station_policy": "Preserve generated stations below normalized parameter48/240. Current default lower station42.",
+      "additional_artifact_imports": []
+    },
+    "support-contract": {
+      "status": "Separate unadopted scoped support revision; full190 not rerun. Prior171/19 belongs only to unscoped support-datum.",
+      "reuses_variant_sources": "generic-only",
+      "replaces_optional_layer": "support-datum (do not load both station hooks)",
+      "load_order": [
+        "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/loader.mjs",
+        "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/prism-full-loader.mjs",
+        "artifacts/pinball/receiver-r15-generic-contract-f7e4d30/installed-mode-loader.mjs",
+        "artifacts/pinball/receiver-r15-support-contract-f7e4d30/station-contract-loader.mjs",
+        "artifacts/pinball/deterministic-current-gate/loader.mjs"
+      ],
+      "installed_identical_to": "support-datum",
+      "installed_capture_reference": {
+        "colliderCount": 1370,
+        "colliderHash": "f5d7a7f60f11c7d55b379e4b76fdf28a3ca06759bf3944ac0193a9d401f8b6d7",
+        "meshCount": 222,
+        "meshHash": "2a8f6a37109977764c51cb29b005f6687b6531fd0aec6ea005ef6e2801490c64"
+      },
+      "generic_support_selection": "15 explicit arrays plus default exactly match accepted helper; generic rampUndersideParts is not claimed restored.",
+      "observation_diagnostics": [
+        "observation-loader.mjs",
+        "matching-observation-loader.mjs"
+      ],
+      "original_tests": "Both original direct generic-helper observations fail; import-only diagnostic runs pass with unchanged test bodies.",
+      "additional_shape_dependencies": []
+    }
+  },
+  "bundled_evidence": [
+    {
+      "file": "proofs/support-contract-observation-proof.json",
+      "source": "artifacts/pinball/receiver-r15-support-contract-f7e4d30/observation-proof.json",
+      "sha256": "52c1a446f292971f95c9b58fd1ed2a8be25becc0fdd3e48ead3581694a4d18d9"
+    },
+    {
+      "file": "proofs/support-contract-matching-observation-proof.json",
+      "source": "artifacts/pinball/receiver-r15-support-contract-f7e4d30/matching-observation-proof.json",
+      "sha256": "3acd1fff312e6046b580b0fc7a8bd1398f977b940b859ee3fab09c40eb35dbdd"
+    },
+    {
+      "file": "proofs/support-contract-generic-check.json",
+      "source": "artifacts/pinball/receiver-r15-support-contract-f7e4d30/generic-check.json",
+      "sha256": "3faae24786e89794ca39608f407e272b8b14f69748f816d2f0392902a49c3a88"
+    },
+    {
+      "file": "proofs/support-contract-manifest.json",
+      "source": "artifacts/pinball/receiver-r15-support-contract-f7e4d30/manifest.json",
+      "sha256": "69616f91afdecc5fcbcd86dcf8ab2bbe7fcd27193862c9b70c1d507684316e56"
+    }
+  ]
+}

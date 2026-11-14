@@ -1,0 +1,8 @@
+{
+  "onlyImportChanged": true,
+  "testBodyIdentical": true,
+  "originalBodySha256": "c716cfff532668346498ca89d64ca0033ae7ae61ca1fbf95e07c2d1d2871444a",
+  "observedBodySha256": "c716cfff532668346498ca89d64ca0033ae7ae61ca1fbf95e07c2d1d2871444a",
+  "from": "import {rampSupportStations} from './ramp-geometry.mjs';",
+  "to": "import {receiverSupportStations as rampSupportStations} from './ramp-geometry.mjs';"
+}

@@ -1,0 +1,7 @@
+import {registerHooks} from 'node:module';
+// Accepted upper route parameters are datums, independent of lower-route arc length.
+const upper=[57,78,99,116,130,141,152,163,173,181,188,192,240];
+registerHooks({load(u,c,next){const r=next(u,c);if(u.endsWith('/components/ramp-wire.mjs')){const needle='sampleRamp, rampSupportStations, rampUndersideParts';if(!String(r.source).includes(needle))throw Error('Visible support import hook missing');r.source=String(r.source).replace(needle,'sampleRamp, receiverSupportStations as rampSupportStations, rampUndersideParts');return r;}if(!u.endsWith('/ramp-geometry.mjs'))return r;const needle='  return stations.filter(i=>rows[i].p.y>=.46||rows[i].p.x<0).map(i=>{';let s=String(r.source);if(!s.includes(needle))throw Error('Support station hook missing');const begin=s.indexOf('export function rampSupportStations('),end=s.indexOf('\n// Nominal round stock',begin);if(begin<0||end<0)throw Error('Generic support boundary missing');const generic=s.slice(begin,end);s=s.replace(needle,`  const pinnedUpper=${JSON.stringify(upper)}.map(i=>Math.round(i*(rows.length-1)/240));
+  const lower=stations.filter(i=>i/(rows.length-1)<48/240);
+  stations.splice(0,stations.length,...new Set([...lower,...pinnedUpper]));
+`+needle);s=s.replaceAll(/\brampSupportStations\b/g,'receiverSupportStations');r.source=s+'\n// Original generic helper contract; installed calls above use explicit factory.\n'+generic;return r;}});
