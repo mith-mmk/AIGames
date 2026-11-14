@@ -32,9 +32,9 @@ export const RAMP_POINTS = Object.freeze([
   [-2.35, 0.47, -2.7],
   [-2.45, 0.46, -1],
   [-2.40, 0.45, 1.3],
-  [-1.75, 0.44, 2],
-  [-1.55, 0.44, 2.4000000000000004],
-  [-1.55, 0.44, 2.7],
+  [-2.30, 0.44, 2.45],
+  [-1.90, 0.44, 2.95],
+  [-1.55, 0.44, 3.15],
 ]);
 export function sampleRamp(count=240) {
   const curve=new T.CatmullRomCurve3(RAMP_POINTS.map(p=>new T.Vector3(...p)),false,'centripetal');

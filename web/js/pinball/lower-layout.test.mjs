@@ -4,6 +4,7 @@ import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import {LOWER_LAYOUT,TABLE,lowerLanePaths} from './layout.mjs';
 import {PinballPhysics} from './physics.mjs';
 import {slingContactPoints} from './mechanical-contact.mjs';
+import {sampleRamp} from './ramp-geometry.mjs';
 
 test('sling rubber clears the root-to-center shot corridor on both sides',()=>{
   for(const side of [-1,1]) {
@@ -138,5 +139,27 @@ test('IN floor stripe stays clear of the real rails and sling rubber',()=>{
    const u=path[k],v=path[k+1],d=v.clone().sub(u),q=Math.max(0,Math.min(1,p.clone().sub(u).dot(d)/d.lengthSq()));
    assert.ok(p.distanceTo(u.clone().addScaledVector(d,q))>w/2+radius+.01,'floor ink crosses a physical rail');
   }
+ }
+});
+
+// The historical drop above remains separate coverage. Exercise the actual
+// current outlet tangent too, so moving the wire cannot hide a bad handoff.
+test('current outside wire outlet feeds the held left cradle at three speeds',async()=>{
+ const r=sampleRamp().at(-1);
+ for(const speed of [1,2,3]){
+  const g=await PinballPhysics.create();
+  try{
+   g.launch();g.state.kickbackCharges=0;g.state.sideSaveCharges=0;
+   g.ball.setTranslation({x:r.p.x,y:r.p.y+.135,z:r.p.z},true);
+   g.ball.setLinvel({x:r.t.x*speed,y:r.t.y*speed,z:r.t.z*speed},true);
+   let resets=0;const reset=g.ball.setTranslation.bind(g.ball);
+   g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')resets++;return reset(...args);};
+   for(let tick=0;tick<1200&&g.state.phase==='playing';tick++)g.step(1/120,{left:true});
+   assert.equal(g.state.phase,'playing');assert.ok(g.metrics.flipperContacts[0]>0);
+   assert.ok(Math.hypot(g.ball.linvel().x,g.ball.linvel().z)<.05);
+   assert.ok(Math.abs(g.ballPosition.x+(LOWER_LAYOUT.flipperPivot[0]-.195))<.03);
+   assert.ok(Math.abs(g.ballPosition.z-(LOWER_LAYOUT.flipperPivot[2]-.392))<.03);
+   assert.equal(resets,0);
+  }finally{g.dispose();}
  }
 });
