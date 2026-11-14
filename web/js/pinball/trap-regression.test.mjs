@@ -100,14 +100,14 @@ test("continuous ramp collision meshes share every route row and triangle edge w
     const rows=g.ramp.rows.slice(0,Math.round((g.ramp.rows.length-1)*WIRE_START_FRACTION)+1);
     for(const [surface,kind] of ['deck','left','right'].entries()){
       const {vertices,indices}=g.ramp.colliders[surface].shape;
-      assert.equal(vertices.length,rows.length*6);
-      assert.equal(indices.length,(rows.length-1)*6);
+      assert.equal(vertices.length,kind==='deck'?(rows.length*4+26)*3:rows.length*6);
+      assert.equal(indices.length,(rows.length-1)*6+(kind==='deck'?60:0));
       for(const [i,row] of rows.entries()){
         const a=kind==='deck'?row.left:row[kind];
         const b=kind==='deck'?row.right:row[kind].clone().add({x:0,y:RAMP_WALL_HEIGHT,z:0});
         const expected=[a.x,a.y,a.z,b.x,b.y,b.z];
         for(let k=0;k<6;k++)assert.ok(Math.abs(vertices[i*6+k]-expected[k])<1e-6,`${kind} row ${i} vertex ${k}`);
-        if(i<rows.length-1){
+        if(i<rows.length-1&&kind!=='deck'){
           const topology=[[2*i,2*i+1,2*i+2],[2*i+1,2*i+3,2*i+2]];
           for(let triangle=0;triangle<2;triangle++){
             const actual=Array.from(indices.slice(i*6+triangle*3,i*6+triangle*3+3));
@@ -123,6 +123,34 @@ test("continuous ramp collision meshes share every route row and triangle edge w
             }
           }
         }
+      }
+      if(kind==='deck'){
+        // A conforming bilinear patch adds triangles. Independently check every
+        // edge: internal edges occur twice, and single edges lie on the actual
+        // outer perimeter. This replaces the old uniform two-triangle premise.
+        const point=index=>rows[0].p.clone().set(...vertices.slice(index*3,index*3+3));
+        const edges=new Map();
+        for(let k=0;k<indices.length;k+=3)for(let j=0;j<3;j++){
+          const a=indices[k+j],b=indices[k+(j+1)%3],key=[Math.min(a,b),Math.max(a,b)].join(',');
+          const edge=edges.get(key)||{a,b,count:0,balance:0};
+          edge.count++;edge.balance+=a<b?1:-1;edges.set(key,edge);
+        }
+        const perimeter=[];
+        for(let i=0;i<rows.length-1;i++)for(const side of ['left','right'])perimeter.push([rows[i][side],rows[i+1][side]]);
+        perimeter.push([rows[0].left,rows[0].right],[rows.at(-1).left,rows.at(-1).right]);
+        let boundary=0;
+        for(const edge of edges.values()){
+          if(edge.count===2){assert.equal(edge.balance,0);continue;}
+          assert.equal(edge.count,1,'nonmanifold deck edge');boundary++;
+          const a=point(edge.a),b=point(edge.b);
+          const onSegment=(p,x,y)=>{
+            const direction=y.clone().sub(x);
+            const t=Math.max(0,Math.min(1,p.clone().sub(x).dot(direction)/direction.lengthSq()));
+            return p.distanceTo(x.clone().addScaledVector(direction,t))<1e-6;
+          };
+          assert.ok(perimeter.some(([x,y])=>onSegment(a,x,y)&&onSegment(b,x,y)),'internal gap in deck');
+        }
+        assert.equal(boundary,2*rows.length+6,'three repaired strips subdivide both side edges');
       }
     }
   } finally { g.dispose(); }

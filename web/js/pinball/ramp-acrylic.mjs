@@ -1,3 +1,4 @@
+import {rampDeckGeometry} from './ramp-deck.mjs';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import {loft,RAMP_HARDWARE_DIMENSIONS} from './ramp-hardware.mjs';
 const UP=new T.Vector3(0,1,0);
@@ -16,7 +17,7 @@ export function rampAcrylicParts(input,wall){
    return area>0?[3,2,1,0]:[0,1,2,3];
   });
   return {name:kind==='underside'?'continuous-floor-with-underside':kind+'-folded-wall',
-   kind,rows,maps,geometry:loft(rows,r=>sections[rows.indexOf(r)].map(p=>p.clone()))};
+   kind,rows,maps,geometry:kind==='underside'?rampDeckGeometry(rows,'solid'):loft(rows,r=>sections[rows.indexOf(r)].map(p=>p.clone()))};
  });
 }
 
@@ -25,6 +26,11 @@ export function rampAcrylicParts(input,wall){
 export function rampAcrylicContactParts(parts,wall,firstOpenRow){
  const contacts=[],sheet=RAMP_HARDWARE_DIMENSIONS.sheet;
  for(const part of parts){
+  // The deck has a locally conforming mesh, not the four-vertex loft layout.
+  if(part.kind==='underside'){
+   contacts.push({name:part.name+'-exterior-contact',geometry:rampDeckGeometry(part.rows,'contact',firstOpenRow),sourceName:part.name});
+   continue;
+  }
   const {kind,maps,rows,geometry}=part,source=geometry.index.array,indices=[];
   for(let k=0;k<source.length;k+=3){
    const tri=[source[k],source[k+1],source[k+2]],rs=tri.map(v=>Math.floor(v/4));

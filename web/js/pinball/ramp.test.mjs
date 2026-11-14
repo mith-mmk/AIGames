@@ -35,7 +35,20 @@ test('28-speed tangent approaches all complete with lateral tolerance',async()=>
  for(const offset of [-.08,0,.08]){
   const g=await PinballPhysics.create();try{
    g.launch();const r=sampleRamp()[0],exit=RAMP_POINTS.at(-1);
-   g.ball.setTranslation({x:r.p.x+offset,y:r.p.y+.14,z:r.p.z},true);
+   // The historical +.08 start at y=.18 penetrates the sloped deck
+   // by .00531428 (and the old convex base by .00546720). A common
+   // all-solid clearance +.0001 in old/new geometry requires y=.1857142374.
+   // Preserve lateral offset, speed, tangent and mandatory completion.
+   const y=offset===.08?.1857142374:r.p.y+.14;
+   const start={x:r.p.x+offset,y,z:r.p.z};
+   let initialGap=Infinity;
+   g.world.forEachCollider(c=>{
+    if(c.isSensor()||c.handle===g.ballCollider.handle)return;
+    const q=c.projectPoint(start,true).point;
+    initialGap=Math.min(initialGap,Math.hypot(start.x-q.x,start.y-q.y,start.z-q.z)-.135);
+   });
+   assert.ok(initialGap>=0,`tangent offset ${offset} starts inside a solid: ${initialGap}`);
+   g.ball.setTranslation(start,true);
    g.ball.setLinvel({x:r.t.x*28,y:r.t.y*28,z:r.t.z*28},true);
    let rear=false,completed=false;
    for(let tick=0;tick<1200;tick++){

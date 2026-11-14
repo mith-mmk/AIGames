@@ -1,3 +1,5 @@
+import {rampDeckGeometry} from './ramp-deck.mjs';
+import {baseShellStrips,baseShellVisualParts} from './ramp-base.mjs';
 import {rampAcrylicParts,rampAcrylicContactParts} from './ramp-acrylic.mjs';
 import {rampHardwareParts,rampHardwareMesh} from './ramp-hardware.mjs';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
@@ -92,7 +94,7 @@ export function sampleRamp(count=240) {
     const narrowing=p.x<0?Math.max(0,Math.min(1,(p.z-1.8)/.7)):0;
     const funnel=Math.max(0,Math.min(1,(i/count-(WIRE_START_FRACTION-WIRE_FUNNEL_FRACTION))/WIRE_FUNNEL_FRACTION));
     const width=RAMP_WIDTH-.36*Math.max(narrowing*narrowing*(3-2*narrowing),funnel*funnel*(3-2*funnel));
-    return {p,t,left:p.clone().addScaledVector(n,-width/2),right:p.clone().addScaledVector(n,width/2)};
+    return {parameter:i/count,p,t,left:p.clone().addScaledVector(n,-width/2),right:p.clone().addScaledVector(n,width/2)};
   });
 }
 // Sensors follow the actual route, including its direction at each crossing.
@@ -107,6 +109,12 @@ export function rampSensorGates(rows=sampleRamp()) {
   });
 }
 function surface(rows, kind) {
+  if(kind==='deck'){
+    const g=rampDeckGeometry(rows,'top');
+    const data={positions:g.attributes.position.array,indices:new Uint32Array(g.index.array)};
+    g.dispose();
+    return data;
+  }
   const positions=[], indices=[];
   for(const row of rows) {
     let a,b;
@@ -133,16 +141,6 @@ export function lowRampSegments(rows=sampleRamp()) {
   const segments=[];
   for(let i=0;i<rows.length-1;i++)if(rows[i].p.x>=0&&Math.min(rows[i].p.y,rows[i+1].p.y)<.46)segments.push({a:rows[i],b:rows[i+1],index:i});
   return segments;
-}
-function skirt(rows,side) {
-  const positions=[],indices=[];
-  for(const segment of lowRampSegments(rows)) {
-    // Block low underside access. Above this threshold the free gap is >= .37.
-    const a=segment.a[side],b=segment.b[side],k=positions.length/3;
-    positions.push(a.x,.04,a.z,a.x,a.y,a.z,b.x,.04,b.z,b.x,b.y,b.z);
-    indices.push(k,k+1,k+2,k+1,k+3,k+2);
-  }
-  return {positions:new Float32Array(positions),indices:new Uint32Array(indices)};
 }
 function geometry(data) {const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(data.positions,3));g.setIndex(new T.BufferAttribute(data.indices,1));g.computeVertexNormals();return g;}
 // Mount stations are shared by visible columns and their collision bodies.
@@ -212,18 +210,13 @@ export function buildPhysicalRamp(game) {
     colliders.push(game.world.createCollider(R.ColliderDesc.capsule(delta.length()/2,WIRE_RADIUS).setTranslation(mid.x,mid.y,mid.z).setRotation(q).setFriction(.025).setRestitution(.02)));
   }
   const baseColliderStart=colliders.length;
-  // Fill every low strip down to the playfield. Side-only skirts allow a
-  // ground ball entering at the elevated end to roll into a shrinking gap.
-  for(const {a,b} of lowRampSegments(rows)) {
-    const vertices=[];
-    for(const row of [a,b])for(const side of ['left','right']) {
-      const p=row[side];vertices.push(p.x,p.y,p.z,p.x,.035,p.z);
-    }
-    // The outside sliver is narrower than a ball: merge it into the base,
-    // rather than leaving a dead-end between the skirt and shooter divider.
-    for(const row of [a,b])vertices.push(2.35,row.p.y,row.p.z,2.35,.035,row.p.z);
-    const desc=R.ColliderDesc.convexHull(new Float32Array(vertices));
-    if(desc)colliders.push(game.world.createCollider(desc.setFriction(.025).setRestitution(.02)));
+  // Match the actual closed housing boundary without convexifying its
+  // outside fill above the deck. Keep one real mesh per existing strip.
+  for(const shell of baseShellStrips(lowRampSegments(rows))) {
+    colliders.push(game.world.createCollider(R.ColliderDesc.trimesh(
+      shell.attributes.position.array,new Uint32Array(shell.index.array),
+      R.TriMeshFlags.FIX_INTERNAL_EDGES).setFriction(.025).setRestitution(.02)));
+    shell.dispose();
   }
   // A chamfered nose closes the base upstream without a perpendicular
   // dead-end against the shooter divider. Its low prism remains below the ramp.
@@ -280,26 +273,6 @@ export function buildRampBaseVisual(rows=sampleRamp(),material) {
   const add=(name,g)=>{const m=new T.Mesh(g,material);m.name=name;m.castShadow=true;m.receiveShadow=true;root.add(m);return m;};
   const noseTop={positions:rampNoseVertices(),indices:new Uint32Array([1,3,5,0,4,2,0,2,1,2,3,1,2,4,3,4,5,3,4,0,5,0,1,5])};
   add('chamfered-anti-trap-nose',geometry(noseTop));
-  const segments=lowRampSegments(rows);
-  const baseRows=segments.length?[segments[0].a,...segments.map(s=>s.b)]:[];
-  const basePositions=[],baseIndices=[];
-  for(const r of baseRows)basePositions.push(r.right.x,r.right.y,r.right.z,2.35,r.p.y,r.p.z);
-  for(let i=0;i<baseRows.length-1;i++){const k=i*2;baseIndices.push(k,k+1,k+2,k+1,k+3,k+2);}
-  add('divider-base-top',geometry({positions:new Float32Array(basePositions),indices:new Uint32Array(baseIndices)}));
-  for(const side of ['left','right']) add(`${side}-low-base-skirt`,geometry(skirt(rows,side)));
-  const outer=[], indices=[];
-  for(const r of baseRows)outer.push(2.35,.035,r.p.z,2.35,r.p.y,r.p.z);
-  for(let i=0;i<baseRows.length-1;i++){const k=2*i;indices.push(k,k+2,k+1,k+1,k+2,k+3);}
-  add('divider-base-outer-wall',geometry({positions:new Float32Array(outer),indices:new Uint32Array(indices)}));
-  // Cap the elevated end where the low solid base stops.
-  const r=baseRows.at(-1);
-  if(r){
-    // Follow the skewed channel edge before reaching the divider. A single
-    // left-to-divider panel sits behind the actual convex collision boundary.
-    const positions=[];
-    for(const p of [r.left,r.right,new T.Vector3(2.35,r.p.y,r.p.z)])
-      positions.push(p.x,.035,p.z,p.x,p.y,p.z);
-    add('low-base-end-cap',geometry({positions:new Float32Array(positions),indices:new Uint32Array([0,2,1,1,2,3,2,4,3,3,4,5])}));
-  }
+  for(const part of baseShellVisualParts(lowRampSegments(rows)))add(part.name,part.geometry);
   return root;
 }

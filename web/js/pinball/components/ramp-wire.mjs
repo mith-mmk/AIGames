@@ -19,7 +19,7 @@ function checkedRows(rows) {
     if (![...p.toArray(), ...left.toArray(), ...right.toArray()].every(Number.isFinite)) throw new RangeError(`Non-finite route row ${i}`);
     const n = right.clone().sub(left); n.y = 0;
     if (n.length() < .01) throw new RangeError('Route width must be positive');
-    return { p, left, right, n: n.normalize() };
+    return { p, left, right, n: n.normalize(), ...(Number.isFinite(r.parameter)?{parameter:r.parameter}:{}) };
   });
 }
 function point(row, side, across = 0, height = 0) {

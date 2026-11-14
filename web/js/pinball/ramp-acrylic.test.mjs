@@ -23,7 +23,7 @@ test('missing acrylic contacts lie on real visible exterior faces without duplic
   assembly.root.updateMatrixWorld(true);const rows=sampleRamp();
   assert.equal(g.ramp.acrylicContacts.length,7);
   assert.equal(g.ramp.acrylicFirstOpenRow,lowRampSegments(rows).at(-1).index+1);
-  assert.equal(g.ramp.acrylicContacts.reduce((n,p)=>n+p.indexCount/3,0),1446);
+  assert.equal(g.ramp.acrylicContacts.reduce((n,p)=>n+p.indexCount/3,0),1478);
   for(const part of g.ramp.acrylicContacts){
    const {name,collider,indexOffset,indexCount}=part,shape=collider.shape;
    const sourceName=name.endsWith('-exterior-contact')?name.replace('-exterior-contact',''):(name.startsWith('left')?'left':'right')+'-folded-wall';
@@ -44,12 +44,22 @@ test('missing acrylic contacts lie on real visible exterior faces without duplic
      assert.ok(normal.dot(r.t)*(endpoint===0?-1:1)>0,'end outward winding: '+name);
      assert.ok(Math.max(...v.map(p=>p.y))<=r.p.y+RAMP_WALL_HEIGHT-RAMP_HARDWARE_DIMENSIONS.sheet+1e-7,'lip end must not be duplicated');
     }else{
-     const local=shape.indices[k]-part.vertexOffset,row=rows[Math.floor(local/4)];
-     const localRows=[0,1,2].map(j=>Math.floor((shape.indices[k+j]-part.vertexOffset)/4));
+     // Geometric classification, independent of vertex ordering and factory metadata.
+     const nearest=rows.slice(0,125).map((r,i)=>({r,i,d:r.p.distanceTo(center)})).sort((a,b)=>a.d-b.d)[0];
+     const row=nearest.r;
      if(name.startsWith('continuous-floor')){
-      assert.ok(Math.min(...localRows)>=g.ramp.acrylicFirstOpenRow,'sealed low underside must not be duplicated');
+      let distance=Infinity,strip=-1;
+      for(let i=0;i<124;i++)for(const pts of [[rows[i].left,rows[i].right,rows[i+1].left],[rows[i].right,rows[i+1].right,rows[i+1].left]]){
+       const t=new T.Triangle(...pts.map(p=>p.clone().add(new T.Vector3(0,-RAMP_HARDWARE_DIMENSIONS.sheet,0))));
+       const d=t.closestPointToPoint(center,new T.Vector3()).distanceTo(center);
+       if(d<distance){distance=d;strip=i;}
+      }
+      assert.ok(strip>=lowRampSegments(rows).at(-1).index+1,'sealed low underside must not be duplicated: '+strip);
      }
-     if(localRows.every(i=>i===124))assert.ok(normal.dot(rows[124].t)>0,'floor exit cap outward');
+     const exit=rows[124];
+     const exitTangent=exit.t.clone().setY(0).normalize();
+     const exitPlane=p=>Math.abs(p.clone().sub(exit.p).dot(exitTangent));
+     if(v.every(p=>exitPlane(p)<1e-6))assert.ok(normal.dot(exit.t)>0,'floor exit cap outward');
      else if(Math.abs(normal.y)>.1)assert.ok(normal.y<0,'underside/bevel faces downward: '+name);
      else {
       const side=name.startsWith('left')?'left':name.startsWith('right')?'right':
