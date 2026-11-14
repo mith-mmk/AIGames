@@ -1,6 +1,6 @@
 import * as T from '../../vendor/three-0.180.0/three.module.min.js';
 import R from '../../vendor/rapier3d-0.17.3/rapier.mjs';
-import { sampleRamp, buildRampBaseVisual, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_RADIUS, WIRE_HEIGHT_OFFSET, WIRE_GUARD_HEIGHT, WIRE_GUARD_SPACING, rampWireRails } from '../ramp-geometry.mjs';
+import { sampleRamp, rampSupportStations, buildRampBaseVisual, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_RADIUS, WIRE_HEIGHT_OFFSET, WIRE_GUARD_HEIGHT, WIRE_GUARD_SPACING, rampWireRails } from '../ramp-geometry.mjs';
 import { TABLE } from '../layout.mjs';
 
 // Construction vocabulary: Stern Jaws manual pp. 66–67 (not measured CAD).
@@ -148,53 +148,32 @@ export class MechanicalRamp extends Assembly {
     const elevated = this.rows.filter((r,i) => (r.p.y >= .46 || r.p.x < 0) && (spanStart<0 || i<=spanStart));
     for (const side of ['left', 'right']) this.tube(`${side}-continuous-underfloor-bearer`, elevated.map(r => point(r, side, side === 'left' ? .045 : -.045, -Math.min(.065,Math.max(.025,r.p.y-.38)))), .028, 'dark', g);
     let count = 0;
-    const stations = [];
-    // Physical spacing, not spline parameter spacing: dense terminal knots
-    // must not produce a grille of crossheads over the left inlane.
-    let distance = 0;
-    for (let i = 1; i < this.rows.length; i++) {
-      distance += this.rows[i].p.distanceTo(this.rows[i-1].p);
-      if (distance >= 1.05) { stations.push(i); distance = 0; }
-    }
     const end=this.rows.length-1;
-    if (distance >= .8 || !stations.length) stations.push(end);
-    else stations[stations.length-1]=end;
-    // A four-wire bridge replaces the intrusive underframe over the sling.
-    // Both ends remain seated on real cabinet-supported clamp stations.
-    if(spanStart>=0){
-      for(let j=stations.length-1;j>=0;j--)if(stations[j]>=spanStart)stations.splice(j,1);
-      stations.push(spanStart,end);
-    }
-    for (const i of stations) {
-      const r = this.rows[i];
-      if (r.p.y < .46 && r.p.x >= 0) continue;
-      // Left return is carried from the left cabinet rail, rear sweep from
-      // the back rail, entry climb from the shooter divider side.
-      const x = r.p.x < -.45 ? -2.90 : r.p.z < -3.7 ? r.p.x : 2.90;
-      const z = r.p.x >= -.45 && r.p.z < -3.7 ? -5.95 : r.p.z;
-      const drop = Math.min(.065,Math.max(.025,r.p.y-.38));
-      const y = r.p.y - drop;
+    for (const mount of rampSupportStations(this.rows)) {
+      const {i,x,z,drop,y}=mount,r=this.rows[i];
       const base = new T.Vector3(x, .055, z), top = new T.Vector3(x, y, z);
       const saddle = r.p.clone().addScaledVector(UP, -drop);
       this.tube(`support-post-${count}`, [base, top], .037, 'brass', g);
       this.tube(`cantilever-crosshead-${count}`, [top, saddle], .034, 'dark', g);
       // No low diagonal through the ground lane: horizontal beam clearance
-      // exceeds the .31 ground-ball envelope; columns are outside the walls.
-      const braceTop = top.clone().addScaledVector(UP, .12);
-      this.tube(`external-column-head-${count}`, [top, braceTop], .037, 'brass', g);
+      // exceeds the .31 ground-ball envelope; right columns share the divider.
+      if(!mount.divider){
+        const braceTop = top.clone().addScaledVector(UP, .12);
+        this.tube(`external-column-head-${count}`, [top, braceTop], .037, 'brass', g);
+      }
       this.tube(`underfloor-cross-saddle-${count}`, [point(r, 'left', .045, -drop), point(r, 'right', -.045, -drop)], .03, 'dark', g);
       // Short vertical seat pads touch the floor underside, not the ball path.
       for (const side of ['left', 'right']) this.tube(`${side}-floor-seat-${count}`, [point(r, side, side === 'left' ? .045 : -.045, -drop), point(r, side, side === 'left' ? .045 : -.045, -.025)], .034, 'brass', g);
-      const foot = this.mesh(`mounting-foot-${count}`, new T.CylinderGeometry(.085, .085, .025, 16), 'dark', g);
+      const foot = this.mesh(`mounting-foot-${count}`, new T.CylinderGeometry(mount.divider?.040:.085, mount.divider?.040:.085, .025, 16), 'dark', g);
       foot.position.copy(base);
-      for (const sign of [-1, 1]) this.bolt(`foot-bolt-${count}-${sign}`, base.clone().add(new T.Vector3(0, .022, sign * .05)), g);
-      const collar = this.mesh(`post-head-collar-${count}`, new T.CylinderGeometry(.057, .057, .045, 12), 'chrome', g);
+      for (const sign of [-1, 1]) this.bolt(`foot-bolt-${count}-${sign}`, base.clone().add(new T.Vector3(0, .022, sign * (mount.divider?.025:.05))), g);
+      const collar = this.mesh(`post-head-collar-${count}`, new T.CylinderGeometry(mount.divider?.040:.057, mount.divider?.040:.057, .045, 12), 'chrome', g);
       collar.position.copy(top);
       count++;
     }
     const spanLength=spanStart<0?0:this.rows.slice(spanStart+1).reduce((sum,r,j)=>sum+r.p.distanceTo(this.rows[spanStart+j].p),0);
     g.userData = { wireBridge:{start:spanStart<0?null:this.rows[spanStart].p.toArray(),end:this.rows[end].p.toArray(),length:spanLength,loadPath:"four continuous wires with U ties, cabinet-supported clamps at both ends",strengthCertified:false}, subassembly: g.name, postCount: count, continuousBearers: 2,
-      clearance: 'columns outside ±2.75 table or rear z=-5.75; crossheads above ground-ball top .31',
+      clearance: 'left/rear columns outside playfield; right columns share shooter-divider footprint and exact physical cylinders; crossheads above ground-ball top .31',
       structuralStatus: 'continuous load-path prototype; not strength-certified' };
   }
 }

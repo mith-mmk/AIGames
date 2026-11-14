@@ -5,7 +5,7 @@
 export const REFERENCE_ART_LANDMARKS = Object.freeze({
   robotHead: [0, .12], robotTorso: [0, 1.45], mission: [0, 2.92],
   missionIndicatorsZ: 3.60, missionIndicatorSpacing: .297,
-  shotLabels: [[-.84, -1.02, 'HACK'], [0, -1.16, 'UPGRADE'], [.84, -1.02, 'BUILD']],
+  shotLabels: [[-.84, -1.02, 'HACK'], [0, -1.16, 'UPGRADE'], [.70, -.64, 'BUILD']],
 });
 
 class PlayfieldInk {

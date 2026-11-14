@@ -106,3 +106,19 @@ Final verification on this runtime:
 - Browser smoke passes launch, input, pause/restart, mobile, blur, context restoration and reload. Static build verifies 356 runtime/license files. Desktop/mobile multiview and ramp/wireform/target component captures were regenerated and reviewed. Their silhouette and placement are unchanged.
 
 Limits: 120 successful fixtures do not prove bitwise determinism, all possible contacts, or a general Rapier fix. The two tightly curved rear offset-wall segments still have a small local fold; orienting their normals does not redesign that shape. The right-bank placement, low supports, S silhouette, left wire/sling overlap and reference likeness remain open. The public site has not been updated by this checkpoint. Physical-phone performance and human playability are still unverified.
+
+## 2026-11-14 joint target/support/wire checkpoint (not reference approval)
+
+The right three-target bank is moved right/up and slightly shortened, with its BUILD marking in front of the faces. The robot hand is no longer obscured by this bank. The right ramp posts now sit on the existing shooter divider instead of outside the cabinet, shortening their cantilevers. Shared support stations drive rendering and contact; the right post, arm and collar have matching explicit cylinders. The left wire's middle stations move outward by 0.15, while the three outlet stations remain unchanged to preserve natural left-cradle capture. Full outside-sling exit candidates broke existing routes and were rejected.
+
+Integration exposed a repeatable floor-ball wedge at the right carrier's curved rear rail. Extending the body and adding end cheeks did not solve it and were removed. Both three-target banks now use smooth analytic capsule contacts with the same shared radius, axis length, center and orientation as their displayed capsule rail, rather than its tessellated triangle soup. The recorded wedge position is a regression fixture. This is a scoped contact correction, not evidence of a general engine defect.
+
+Final verification:
+
+- Full repository `npm test` passes, including **144/144 pinball tests**, zero lint errors and the same three CSS warnings. Added tests cover divider support dimensions, whole rear-rail clearance from low ramp bases, nine slow rear approaches, the captured wedge, and render/capsule dimensions and orientation.
+- Strong ground-entry audit: **120/120**, six conditions across twenty fresh-world batches. Independent natural-launch checks finish **62/62** (31 passive and 31 reactive), without changing required timing or rescue rules.
+- Browser keyboard and touch checks retain ramp entry/rear/exit, same-ball capture, re-fire and scoring. Browser smoke passes launch, three-ball game over, pause/restart, mobile, blur, context restoration and reload. Render budget: **376,897 triangles / 679 calls**. Static build validates 356 runtime/license files.
+- Legal-input closed-loop games at .65/.85/1.0 finish at **75 / 2,275 / 1,900 points**, **0 / 0 / 0** ramp traversals and zero live position resets. The direct same-ball route still passes, but these games do not demonstrate improved scoring balance or human playability.
+- Desktop/mobile multiview, component views and installed mechanisms were regenerated. Sling/wire sampled clearance passes. Local evidence uses `artifacts/pinball/joint-layout-release-*` and the existing review directories; generated videos/build outputs are moved to Trash after review.
+
+Remaining: the left outlet still crosses above the sling, IN/OUT strips are short and bent relative to the reference, the S silhouette is shallow, and apron/city/material treatment needs further work. The rear offset-wall fold and low-base redesign are not solved by this checkpoint. Physical-phone performance and unscripted human play are unverified. The site remains unchanged. This is an intermediate stable implementation, not a finished or reference-approved pinball.

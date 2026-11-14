@@ -17,7 +17,7 @@ export const MINI_BUMPERS = Object.freeze([]);
 export const TARGET_BANKS = Object.freeze([
   { key: "left-upper", a: [-1.85,.22,-1.95], b: [-.72,.22,-2.10], count: 3, type: "bank", glyph:"wrench", color:"yellow", height:.50, depth:.085 },
   { key: "left-middle", faceAngle:Math.PI/4, width:.32, a: [-1.65,.22,.80], b: [-1.87,.22,-.40], count: 2, type: "bank", glyph:"wrench", color:"yellow", height:.50, depth:.085 },
-  { key: "right-side", a: [.40,.22,-.80], b: [1.05,.22,-.15], count: 3, type: "bank", glyph:"robot", color:"red", height:.50, depth:.085 },
+  { key: "right-side", a: [.80,.22,-1.25], b: [1.35,.22,-.70], count: 3, type: "bank", glyph:"robot", color:"red", height:.50, depth:.085 },
 ]);
 export const RAMP = Object.freeze([
   [-1.7, 0.08, 0.7],

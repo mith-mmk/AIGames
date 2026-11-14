@@ -90,9 +90,22 @@ export class PinballPhysics {
       const angle=targetFaceAngle(bank), dimensions=targetDimensions(bank);
       const mount=-Math.atan2(dz,dx);
       for(const p of targetCarrierParts(bank)) {
-        const position=p.geometry.getAttribute('position'),vertices=new Float32Array(position.array);
-        const indices=p.geometry.index?new Uint32Array(p.geometry.index.array):Uint32Array.from({length:position.count},(_,i)=>i);
-        this.world.createCollider(R.ColliderDesc.trimesh(vertices,indices).setTranslation((bank.a[0]+bank.b[0])/2,0,(bank.a[2]+bank.b[2])/2).setRotation({x:0,y:Math.sin(mount/2),z:0,w:Math.cos(mount/2)}).setRestitution(.35).setFriction(.05));p.geometry.dispose();
+        const rotation=new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),mount);
+        const center=new T.Vector3((bank.a[0]+bank.b[0])/2,0,(bank.a[2]+bank.b[2])/2);
+        let desc;
+        if(p.contact?.type==='capsule'){
+          // The displayed CapsuleGeometry represents one smooth formed rail.
+          // A triangle soup at its rounded end made multiple competing contact
+          // normals wedge a floor ball; use that same analytic capsule instead.
+          const c=p.contact,pos=new T.Vector3(0,c.y,c.z).applyQuaternion(rotation).add(center);
+          const q=rotation.clone().multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,0,1),Math.PI/2));
+          desc=R.ColliderDesc.capsule(c.halfHeight,c.radius).setTranslation(pos.x,pos.y,pos.z).setRotation(q);
+        }else{
+          const position=p.geometry.getAttribute('position'),vertices=new Float32Array(position.array);
+          const indices=p.geometry.index?new Uint32Array(p.geometry.index.array):Uint32Array.from({length:position.count},(_,i)=>i);
+          desc=R.ColliderDesc.trimesh(vertices,indices).setTranslation(center.x,center.y,center.z).setRotation(rotation);
+        }
+        this.world.createCollider(desc.setRestitution(.35).setFriction(.05));p.geometry.dispose();
       }
 
 

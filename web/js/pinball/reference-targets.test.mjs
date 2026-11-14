@@ -1,8 +1,8 @@
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import {targetCarrierParts,targetFrontNormal,targetDimensions,targetContactBoxes} from "./mechanical-contact.mjs";
+import {targetCarrierParts,targetCarrierRail,targetFrontNormal,targetDimensions,targetContactBoxes} from "./mechanical-contact.mjs";
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {TARGET_BANKS,MINI_BUMPERS} from './layout.mjs';
+import {TARGET_BANKS,MINI_BUMPERS,TABLE} from './layout.mjs';
 import {MechanicalTarget} from './components/sling-target.mjs';
 import {PinballPhysics} from './physics.mjs';
 test('reference banks have three upper wrenches, two middle wrenches and three robots',()=>{
@@ -54,4 +54,84 @@ test('carrier has formed rim, separate rear plate, fixed studs and a continuous 
 });
 test('both captured carrier pinch positions drain without rescue',async()=>{
  for(const p of [[.927833,.171267,-.598225],[1.43595,.17127,-.257999]]){const g=await PinballPhysics.create();try{g.launch(.55);g.ball.setTranslation({x:p[0],y:p[1],z:p[2]},true);g.ball.setLinvel({x:0,y:0,z:0},true);for(let i=0;i<14400&&g.state.phase==='playing';i++)g.step(1/120);assert.equal(g.state.phase,'ready',JSON.stringify(p));}finally{g.dispose();}}
+});
+
+
+test('right rear carrier rail retains ball clearance from the full low support base',async()=>{
+ const g=await PinballPhysics.create();
+ try{
+  const bank=TARGET_BANKS.find(b=>b.key==='right-side'),rail=targetCarrierRail(bank);
+  const dx=bank.b[0]-bank.a[0],dz=bank.b[2]-bank.a[2],length=Math.hypot(dx,dz),tx=dx/length,tz=dz/length;
+  const samples=200,step=rail.axisLength/samples;
+  assert.ok(g.ramp.baseColliders.length>0);
+  let sampledMin=Infinity;
+  for(let i=0;i<=samples;i++){
+   const along=(i/samples-.5)*rail.axisLength;
+   const p={x:(bank.a[0]+bank.b[0])/2+tz*rail.rearOffset+tx*along,y:rail.y,z:(bank.a[2]+bank.b[2])/2-tx*rail.rearOffset+tz*along};
+   for(const c of g.ramp.baseColliders){
+    const hit=c.projectPoint(p,false),q=hit.point;
+    const gap=hit.isInside?-rail.radius:Math.hypot(p.x-q.x,p.y-q.y,p.z-q.z)-rail.radius;
+    sampledMin=Math.min(sampledMin,gap);
+   }
+  }
+  // Distance to each fixed solid is 1-Lipschitz; subtract half the sample
+  // spacing to bound the entire rail axis, not just sparse mesh vertices.
+  assert.ok(Number.isFinite(sampledMin));
+  assert.ok(sampledMin-step/2>=TABLE.ballRadius*2+.05,`rear rail lower bound ${sampledMin-step/2}`);
+ }finally{g.dispose();}
+});
+
+test('nine slow approaches behind the right carrier drain without rescue',async()=>{
+ for(const x of [1.7,1.8,1.9])for(const vz of [-.4,0,.4]){
+  const g=await PinballPhysics.create();
+  try{
+   g.launch();g.ball.setTranslation({x,y:.175,z:-.95},true);g.ball.setLinvel({x:-1,y:0,z:vz},true);
+   let resets=0;const set=g.ball.setTranslation.bind(g.ball);
+   g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')resets++;return set(...args);};
+   for(let i=0;i<7200&&g.state.phase==='playing';i++)g.step(1/120);
+   assert.equal(g.state.phase,'ready',`${x}/${vz} stuck`);assert.equal(resets,0);
+  }finally{g.dispose();}
+ }
+});
+
+
+test('captured right target lower-edge wedge releases with the smooth carrier rail',async()=>{
+ const g=await PinballPhysics.create();
+ try{
+  g.launch();g.ball.setTranslation({x:.75083661,y:.14878066,z:-1.31753135},true);
+  g.ball.setLinvel({x:0,y:0,z:0},true);g.ball.setAngvel({x:0,y:0,z:0},true);
+  let resets=0;const set=g.ball.setTranslation.bind(g.ball);
+  g.ball.setTranslation=(...a)=>{if(g.state.phase==='playing')resets++;return set(...a);};
+  for(let i=0;i<7200&&g.state.phase==='playing';i++)g.step(1/120);
+  assert.equal(g.state.phase,'ready');assert.equal(resets,0);
+ }finally{g.dispose();}
+});
+
+test('smooth carrier contacts use the same capsule dimensions and placement as rendering',async()=>{
+ const g=await PinballPhysics.create();
+ try{
+  for(const bank of TARGET_BANKS.filter(b=>b.count===3)){
+   const parts=targetCarrierParts(bank),part=parts.find(p=>p.name==='continuous-rounded-rear-mount-rail');
+   const rail=targetCarrierRail(bank),c=part.contact;
+   assert.equal(c.type,'capsule');assert.equal(c.radius,rail.radius);assert.equal(c.halfHeight,rail.axisLength/2);
+   part.geometry.computeBoundingBox();const b=part.geometry.boundingBox;
+   assert.ok(Math.abs(b.min.x+rail.axisLength/2+rail.radius)<1e-6);
+   assert.ok(Math.abs(b.max.x-rail.axisLength/2-rail.radius)<1e-6);
+   assert.ok(Math.abs(b.min.y-rail.y+rail.radius)<1e-6);
+   assert.ok(Math.abs(b.max.z+rail.rearOffset-rail.radius)<1e-6);
+   const dx=bank.b[0]-bank.a[0],dz=bank.b[2]-bank.a[2],length=Math.hypot(dx,dz);
+   const x=(bank.a[0]+bank.b[0])/2+dz/length*rail.rearOffset,z=(bank.a[2]+bank.b[2])/2-dx/length*rail.rearOffset;
+   let matches=0;
+   g.world.forEachCollider(collider=>{
+    const p=collider.translation(),s=collider.shape;
+    if(Math.hypot(p.x-x,p.y-rail.y,p.z-z)<1e-6&&Math.abs((s.radius??0)-rail.radius)<1e-6&&Math.abs((s.halfHeight??0)-rail.axisLength/2)<1e-6){
+     const axis=new T.Vector3(0,1,0).applyQuaternion(collider.rotation());
+     assert.ok(Math.abs(axis.dot(new T.Vector3(dx/length,0,dz/length)))>.999999);
+     matches++;
+    }
+   });
+   assert.equal(matches,1,`${bank.key} has one exact smooth rail contact`);
+   for(const p of parts)p.geometry.dispose();
+  }
+ }finally{g.dispose();}
 });

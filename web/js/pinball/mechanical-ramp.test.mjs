@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
 import { MechanicalRamp, MechanicalWireform, RAMP_WIRE_DIMENSIONS } from './components/ramp-wire.mjs';
-import { buildPhysicalRamp, sampleRamp, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_HEIGHT_OFFSET, WIRE_RADIUS, WIRE_HALF_SPACING, rampWireRails } from './ramp-geometry.mjs';
+import { buildPhysicalRamp, sampleRamp, rampSupportStations, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_HEIGHT_OFFSET, WIRE_RADIUS, WIRE_HALF_SPACING, rampWireRails } from './ramp-geometry.mjs';
 
 test('installed ramp has matched sheet walls, true paired rails and visible anti-trap base',()=>{
  const part=new MechanicalRamp();
@@ -30,7 +30,7 @@ test('installed ramp has matched sheet walls, true paired rails and visible anti
  } finally {part.dispose();}
 });
 
-test('support columns are outside table and beams clear the ground ball envelope',()=>{
+test('support columns stay outside table or within the physical shooter divider, and beams clear ground balls',()=>{
  const part=new MechanicalRamp();
  try {
   part.root.updateMatrixWorld(true);
@@ -39,7 +39,7 @@ test('support columns are outside table and beams clear the ground ball envelope
    if(!o.geometry)return;
    const b=new T.Box3().setFromObject(o);
    if(/^support-post-/.test(o.name)) {
-    posts++;assert.ok(b.max.x< -2.75 || b.min.x>2.75 || b.max.z< -5.75,`${o.name} crosses table lane`);
+    posts++;assert.ok(b.max.x< -2.75 || b.min.x>2.75 || b.max.z< -5.75 || (b.min.x>=2.305&&b.max.x<=2.395),`${o.name} crosses table lane`);
    }
    if(/^cantilever-crosshead-/.test(o.name)) {beams++;assert.ok(b.min.y>.31,`${o.name} blocks ground ball at ${b.min.y}`);}
    assert.ok(!o.name.startsWith('diagonal-knee-brace'));
@@ -74,4 +74,24 @@ test('standalone paired rails support and roll a ball without any plane collider
   for(let i=0;i<120;i++){world.step();assert.ok(Math.abs(ball.translation().x)<.03);assert.ok(Math.abs(ball.translation().y-(.8+height))<.02);}
   assert.ok(ball.translation().z>.4,'ball must physically roll along wires');
  } finally {part.dispose();world.free();}
+});
+
+
+test('divider-mounted ramp supports have matching physical posts and arms',async()=>{
+ await R.init();const world=new R.World({x:0,y:-9.81,z:0});
+ try{
+  const ramp=buildPhysicalRamp({world}),mounts=rampSupportStations(ramp.rows).filter(m=>m.divider);
+  const supports=ramp.colliders.slice(-mounts.length*3);
+  assert.ok(mounts.length>0);
+  mounts.forEach((m,i)=>{
+   const post=supports[i*3],arm=supports[i*3+1],collar=supports[i*3+2];
+   assert.ok(Math.abs(post.translation().x-2.35)<1e-6);
+   assert.ok(Math.abs(post.shape.radius-.037)<1e-6);
+   assert.ok(Math.abs(post.shape.halfHeight-(m.y-.055)/2)<1e-6);
+   assert.ok(Math.abs(arm.shape.radius-.034)<1e-6);
+   assert.ok(Math.abs(collar.shape.radius-.040)<1e-6);
+   assert.ok(Math.abs(collar.shape.halfHeight-.045/2)<1e-6);
+   assert.ok(arm.translation().y-arm.shape.radius>.31);
+  });
+ }finally{world.free();}
 });

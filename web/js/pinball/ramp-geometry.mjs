@@ -29,9 +29,9 @@ export const RAMP_POINTS = Object.freeze([
   [1.2, 0.6, -4.45],
   [0, 0.56, -4.65],
   [-1.4, 0.48, -4.05],
-  [-2.2, 0.47, -2.7],
-  [-2.3, 0.46, -1],
-  [-2.25, 0.45, 1.3],
+  [-2.35, 0.47, -2.7],
+  [-2.45, 0.46, -1],
+  [-2.40, 0.45, 1.3],
   [-1.75, 0.44, 2],
   [-1.55, 0.44, 2.4000000000000004],
   [-1.55, 0.44, 2.7],
@@ -91,6 +91,25 @@ function skirt(rows,side) {
   return {positions:new Float32Array(positions),indices:new Uint32Array(indices)};
 }
 function geometry(data) {const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(data.positions,3));g.setIndex(new T.BufferAttribute(data.indices,1));g.computeVertexNormals();return g;}
+// Mount stations are shared by visible columns and their collision bodies.
+export function rampSupportStations(rows=sampleRamp()) {
+  const spanStart=rows.findIndex(r=>r.p.x<0&&r.p.z>=1.30), stations=[];
+  let distance=0;
+  for(let i=1;i<rows.length;i++){
+    distance+=rows[i].p.distanceTo(rows[i-1].p);
+    if(distance>=1.05){stations.push(i);distance=0;}
+  }
+  const end=rows.length-1;
+  if(distance>=.8||!stations.length)stations.push(end);else stations[stations.length-1]=end;
+  if(spanStart>=0){for(let i=stations.length-1;i>=0;i--)if(stations[i]>=spanStart)stations.splice(i,1);stations.push(spanStart,end);}
+  return stations.filter(i=>rows[i].p.y>=.46||rows[i].p.x<0).map(i=>{
+    const r=rows[i],divider=r.p.x>=-.45&&r.p.z>=-3.7;
+    const x=r.p.x<-.45?-2.90:r.p.z<-3.7?r.p.x:2.35;
+    const z=r.p.x>=-.45&&r.p.z<-3.7?-5.95:r.p.z;
+    const drop=Math.min(.065,Math.max(.025,r.p.y-.38));
+    return {i,x,z,drop,y:r.p.y-drop,divider};
+  });
+}
 export function buildPhysicalRamp(game) {
   const rows=sampleRamp(), colliders=[];
   const wireStart=Math.round((rows.length-1)*WIRE_START_FRACTION);
@@ -109,6 +128,7 @@ export function buildPhysicalRamp(game) {
     const q=new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),delta.clone().normalize());
     colliders.push(game.world.createCollider(R.ColliderDesc.capsule(delta.length()/2,WIRE_RADIUS).setTranslation(mid.x,mid.y,mid.z).setRotation(q).setFriction(.025).setRestitution(.02)));
   }
+  const baseColliderStart=colliders.length;
   // Fill every low strip down to the playfield. Side-only skirts allow a
   // ground ball entering at the elevated end to roll into a shrinking gap.
   for(let i=0;i<rows.length-1;i++) {
@@ -128,7 +148,20 @@ export function buildPhysicalRamp(game) {
   const nose=[];
   for(const [x,z] of [[1.55,-1.25],[2.35,-1.25],[2.35,-2.35]])for(const y of [.035,.40])nose.push(x,y,z);
   colliders.push(game.world.createCollider(R.ColliderDesc.convexHull(new Float32Array(nose)).setFriction(.02).setRestitution(.1)));
-  return {colliders,rows,dispose(){for(const c of colliders)game.world.removeCollider(c,true);}};
+  const baseColliders=colliders.slice(baseColliderStart);
+  // Right columns grow directly from the existing shooter divider footprint,
+  // rather than long arms reaching beyond the cabinet. Airborne balls also
+  // collide with these visible columns and horizontal support arms.
+  for(const m of rampSupportStations(rows))if(m.divider){
+    const top=new T.Vector3(m.x,m.y,m.z),bottom=new T.Vector3(m.x,.055,m.z),saddle=rows[m.i].p.clone().add(new T.Vector3(0,-m.drop,0));
+    for(const [a,b,radius] of [[bottom,top,.037],[top,saddle,.034]]){
+      const delta=b.clone().sub(a),mid=a.clone().add(b).multiplyScalar(.5);
+      const q=new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),delta.clone().normalize());
+      colliders.push(game.world.createCollider(R.ColliderDesc.cylinder(delta.length()/2,radius).setTranslation(mid.x,mid.y,mid.z).setRotation(q).setFriction(.025).setRestitution(.02)));
+    }
+    colliders.push(game.world.createCollider(R.ColliderDesc.cylinder(.045/2,.040).setTranslation(m.x,m.y,m.z).setFriction(.025).setRestitution(.02)));
+  }
+  return {colliders,baseColliders,rows,dispose(){for(const c of colliders)game.world.removeCollider(c,true);}};
 }
 export function buildVisualRamp(assets) {
   const rows=sampleRamp(),root=new T.Group();root.name='physical-s-ramp';assets.root.add(root);
