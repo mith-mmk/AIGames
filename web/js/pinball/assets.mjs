@@ -24,7 +24,7 @@ export class WorkshopAssets {
       ball: new T.MeshStandardMaterial({ color: 0xf3f5f7, roughness: 0.16, metalness: 0.68, emissive: 0x111318, emissiveIntensity: 0.15 }),
       brass: new T.MeshStandardMaterial({
         color: 0xe7b650,
-        roughness: 0.26,
+        roughness: 0.23,
         metalness: 0.8,
       }),
       chrome: new T.MeshStandardMaterial({
@@ -168,7 +168,7 @@ export class WorkshopAssets {
     hole.closePath();outline.holes.push(hole);
     const geometry=new T.ShapeGeometry(outline),pos=geometry.attributes.position,uv=geometry.attributes.uv;
     for(let i=0;i<pos.count;i++)uv.setXY(i,(pos.getX(i)+2.75)/5.5,(pos.getY(i)+5.75)/11.5);
-    const surface=this.mesh(geometry,new T.MeshStandardMaterial({map:texture,roughness:.42,metalness:.1}),this.root,0,.045,0);
+    const surface=this.mesh(geometry,new T.MeshStandardMaterial({map:texture,roughness:.30,metalness:.1}),this.root,0,.045,0);
     surface.name="registered-playfield-print-with-open-drain";
     surface.rotation.x=-Math.PI/2;
   }

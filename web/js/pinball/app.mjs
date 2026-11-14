@@ -21,7 +21,7 @@ export class PinballTablePreview {
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = T.PCFSoftShadowMap;
     this.renderer.toneMapping = T.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.35;
+    this.renderer.toneMappingExposure = 1.2;
     this.scene = new T.Scene();
     this.scene.background = new T.Color(0x08111c);
     this.scene.fog = new T.Fog(0x08111c, 24, 48);
@@ -40,8 +40,8 @@ export class PinballTablePreview {
       .175,
       4.025,
     );
-    this.scene.add(new T.HemisphereLight(0xe5e7ee, 0x353339, 3));
-    const key = new T.DirectionalLight(0xffeed5, 4);
+    this.scene.add(new T.HemisphereLight(0xe5e7ee, 0x353339, 1.5));
+    const key = new T.DirectionalLight(0xffeed5, 3.8);
     key.position.set(-5, 11, 4);
     key.castShadow = true;
     key.shadow.mapSize.set(2048, 2048);
@@ -55,7 +55,7 @@ export class PinballTablePreview {
     });
     key.shadow.normalBias = 0.015;
     this.scene.add(key);
-    const rim = new T.DirectionalLight(0xc4d0ef, 2);
+    const rim = new T.DirectionalLight(0xc4d0ef, 1.8);
     rim.position.set(4, 4, -5);
     this.scene.add(rim);
     const floor = new T.Mesh(
@@ -95,6 +95,7 @@ export class PinballTablePreview {
     const pmrem = new T.PMREMGenerator(this.renderer);
     this.reflection = pmrem.fromCubemap(reflectionTarget.texture);
     this.scene.environment = this.reflection.texture;
+    this.scene.environmentIntensity = 1.15;
     reflectionTarget.dispose();
     pmrem.dispose();
   }

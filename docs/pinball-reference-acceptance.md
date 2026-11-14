@@ -175,3 +175,15 @@ Legal-input games score **450 / 2,200 / 10,425**, with **0 / 0 / 3 ramp traversa
 A further diagnostic enabling right-wall internal-edge correction on the new S still failed the required natural release80 and same-ball route (19/21), despite passing 18 entries. It was rejected and the established wall setting remains.
 
 Still unfinished: IN/OUT passage proportions, the remaining filled low ramp base, the remaining underfloor contact details, full reference likeness and finish, physical-phone and human-play testing. The shorter crossheads improve placement but do not constitute reference approval. Public Site unchanged.
+
+## 2026-11-14 shared underside stock and warm-light finish
+
+The two underfloor bearers, cross saddles, floor seats, wire U ties and wire seats now derive from `rampUndersideParts`: 89 visible parts / 441 physical line segments. Each segment has a flat-ended cylinder with the shared centerline and radius. Added contacts follow the validated existing-support order. `supportColliders` explicitly identifies the main supports instead of relying on their being last. The geometry regression checks every rendered LineCurve3 endpoint plus each physical cylinder's radius, half-length, center and axis. Rendering has eight-sided tube cross sections while collision is an ideal circular cylinder; this is nominal stock agreement, not exact polygonal-surface identity at every joint.
+
+Finish changes reduce flat ambient illumination, modestly increase reflection contrast, and give each bumper an internal warm lens/lamp. Three bounded point lights have no shadow maps or per-frame environment captures. Brass and playfield roughness are adjusted. Desktop/mobile and isolated component views were compared before adopting this finish; it remains an approximation of the reference, not a photorealistic match.
+
+Final evidence: **152/152 tests**, **120/120 strong entries**, strict keyboard/touch same-ball ramp/capture/re-fire and browser smoke pass. The strengthened all-segment geometry test also passes separately (9/9). Existing 80 slow perimeter approaches pass. Build validates 356 files; lint has zero errors and the same three CSS warnings. Render budget remains 376,198 triangles / 679 calls. Wire/sling clearance lower bound remains 0.0331999. Legal-input games finish at **75 / 2,250 / 9,825**, **0 / 0 / 2 ramp traversals**, with zero live resets. Their local simulation times are not physical-phone performance evidence. Logs/captures use `artifacts/pinball/underside-stock-*` and the normal review directories.
+
+The browser chain was resumed after an environment reconnect; source hashes were checked against the completed 152-test/120-entry run before resuming. No source edits were lost. Temporary build/video outputs are moved to Trash after review.
+
+Remaining: longer reference-like IN/OUT passages, remaining low-base shape, final reference/material likeness and real-phone/human testing. Tiny fasteners and detailed trim are not all separate collision shapes. No Site deployment or completion claim.

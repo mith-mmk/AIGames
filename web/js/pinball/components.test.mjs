@@ -48,3 +48,14 @@ test('sling silver cover, gold skirt and corner lamps retain functional rubber/k
   part.hit();part.update(.035);assert.ok(Math.abs(part.kicker.rotation.x)>.001);
  }finally{part.dispose();}
 });
+
+test('bumper lens and bounded internal lamp provide warm light without extra shadows',()=>{
+ const p=new MechanicalBumper();
+ try{
+  const lamp=p.root.getObjectByName('bumper-internal-warm-lamp');
+  assert.ok(lamp.isPointLight);assert.equal(lamp.castShadow,false);
+  assert.equal(lamp.color.getHex(),0xffb51e);assert.equal(lamp.distance,1.65);
+  assert.equal(lamp.intensity,1.25);assert.equal(lamp.decay,2);
+  assert.equal(p.materials.lens.emissiveIntensity,1.1);
+ }finally{p.dispose();}
+});

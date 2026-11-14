@@ -116,6 +116,29 @@ export function rampSupportStations(rows=sampleRamp()) {
     return {i,x,z,drop,y:r.p.y-drop,divider};
   });
 }
+// Nominal round stock centerlines shared by rendering and underside contacts.
+// Tube rendering uses eight radial sides; collision uses ideal round cylinders.
+export function rampUndersideParts(rows=sampleRamp()) {
+  const parts=[],up=new T.Vector3(0,1,0);
+  const n=r=>r.right.clone().sub(r.left).normalize();
+  const point=(r,side,across,height)=>r[side].clone().addScaledVector(n(r),across).addScaledVector(up,height);
+  const add=(name,group,points,radius,material)=>parts.push({name,group,points,radius,material});
+  const spanStart=rows.findIndex(r=>r.p.x<0&&r.p.z>=1.30);
+  const elevated=rows.filter((r,i)=>(r.p.y>=.46||r.p.x<0)&&(spanStart<0||i<=spanStart));
+  for(const side of ['left','right'])add(`${side}-continuous-underfloor-bearer`,'underframe',elevated.map(r=>point(r,side,side==='left'?.045:-.045,-Math.min(.065,Math.max(.025,r.p.y-.38)))),.028,'dark');
+  rampSupportStations(rows).forEach((m,count)=>{
+    const r=rows[m.i];
+    add(`underfloor-cross-saddle-${count}`,'underframe',[point(r,'left',.045,-m.drop),point(r,'right',-.045,-m.drop)],.03,'dark');
+    for(const side of ['left','right'])add(`${side}-floor-seat-${count}`,'underframe',[point(r,side,side==='left'?.045:-.045,-m.drop),point(r,side,side==='left'?.045:-.045,-.025)],.034,'brass');
+  });
+  const wire=rows.slice(Math.round((rows.length-1)*WIRE_START_FRACTION));
+  for(let i=0;i<wire.length;i+=8){
+    const r=wire[i],at=(x,y)=>r.p.clone().addScaledVector(n(r),x).addScaledVector(up,y+WIRE_HEIGHT_OFFSET);
+    add(`underslung-wire-tie-${i}`,'wire',[at(-WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT),at(-WIRE_GUARD_SPACING,-.028),at(WIRE_GUARD_SPACING,-.028),at(WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT)],.012,'brass');
+    for(const sign of [-1,1])add(`wire-seat-${i}-${sign}`,'wire',[at(sign*.09,-.028),at(sign*.09,-.012)],.02,'chrome');
+  }
+  return parts;
+}
 // Compact formed nose, shared by its visible shell and convex contact.
 export function rampNoseVertices() {
   const vertices=[];
@@ -161,6 +184,7 @@ export function buildPhysicalRamp(game) {
   // Columns sit on the perimeter strip or shooter divider. Rear posts meet
   // the back wall instead of leaving a ball-sized inaccessible pocket.
   // Posts, crossheads, collars and feet all have matching visible contacts.
+  const supportColliderStart=colliders.length;
   for(const m of rampSupportStations(rows)){
     const top=new T.Vector3(m.x,m.y,m.z),bottom=new T.Vector3(m.x,.055,m.z),saddle=rows[m.i].p.clone().add(new T.Vector3(0,-m.drop,0));
     for(const [a,b,radius] of [[bottom,top,.037],[top,saddle,.034]]){
@@ -171,7 +195,15 @@ export function buildPhysicalRamp(game) {
     colliders.push(game.world.createCollider(R.ColliderDesc.cylinder(.045/2,.040).setTranslation(m.x,m.y,m.z).setFriction(.025).setRestitution(.02)));
     colliders.push(game.world.createCollider(R.ColliderDesc.cylinder(.025/2,m.divider?.040:.085).setTranslation(m.x,.055,m.z).setFriction(.025).setRestitution(.02)));
   }
-  return {colliders,baseColliders,rows,dispose(){for(const c of colliders)game.world.removeCollider(c,true);}};
+  const supportColliders=colliders.slice(supportColliderStart),undersideContacts=[];
+  // Append after existing supports to preserve the validated contact ordering.
+  for(const part of rampUndersideParts(rows))for(let i=1;i<part.points.length;i++){
+    const a=part.points[i-1],b=part.points[i],delta=b.clone().sub(a),mid=a.clone().add(b).multiplyScalar(.5);
+    const q=new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),delta.clone().normalize());
+    const collider=game.world.createCollider(R.ColliderDesc.cylinder(delta.length()/2,part.radius).setTranslation(mid.x,mid.y,mid.z).setRotation(q).setFriction(.025).setRestitution(.02));
+    colliders.push(collider);undersideContacts.push({name:part.name,segment:i-1,collider});
+  }
+  return {colliders,baseColliders,supportColliders,undersideContacts,rows,dispose(){for(const c of colliders)game.world.removeCollider(c,true);}};
 }
 export function buildVisualRamp(assets) {
   const rows=sampleRamp(),root=new T.Group();root.name='physical-s-ramp';assets.root.add(root);

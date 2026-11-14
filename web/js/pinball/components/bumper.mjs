@@ -40,7 +40,7 @@ export class MechanicalBumper {
     use("plastic", { color: 0xe5cda0, roughness: .34 }, "bumperPlastic");
     use("dark", { color: 0x20272b, metalness: .48, roughness: .47 });
     // Separate lens material avoids altering shared light/amber materials.
-    use("lens", { color: 0xffc36b, emissive: 0xff9a32, emissiveIntensity: .22,
+    use("lens", { color: 0xffc36b, emissive: 0xff9a32, emissiveIntensity: 1.1,
       transparent: true, opacity: .76, roughness: .23, metalness: .02,
       depthWrite: false, side: T.DoubleSide }, "bumperLens");
     this.fixed = this.group("fixed-housing", this.root);
@@ -51,6 +51,11 @@ export class MechanicalBumper {
     this.elapsed = Infinity;
     this.direction = new T.Vector2(1, 0);
     this.build();
+    // Lamp illuminates nearby metal and the playfield, not a painted glow.
+    // No extra shadow map or per-frame reflection capture is required.
+    this.lamp=new T.PointLight(0xffb51e,1.25*(radius/.4)**2,1.65*radius/.4,2);
+    this.lamp.name='bumper-internal-warm-lamp';this.lamp.position.set(0,.22,0);
+    this.lamp.castShadow=false;this.root.add(this.lamp);
   }
 
   group(name, parent) {

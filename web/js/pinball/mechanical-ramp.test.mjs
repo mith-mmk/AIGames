@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
 import { MechanicalRamp, MechanicalWireform, RAMP_WIRE_DIMENSIONS } from './components/ramp-wire.mjs';
-import { buildPhysicalRamp, sampleRamp, rampNoseVertices, lowRampSegments, rampSupportStations, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_HEIGHT_OFFSET, WIRE_RADIUS, WIRE_HALF_SPACING, rampWireRails } from './ramp-geometry.mjs';
+import { buildPhysicalRamp, sampleRamp, rampUndersideParts, rampNoseVertices, lowRampSegments, rampSupportStations, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_HEIGHT_OFFSET, WIRE_RADIUS, WIRE_HALF_SPACING, rampWireRails } from './ramp-geometry.mjs';
 
 test('installed ramp has matched sheet walls, true paired rails and visible anti-trap base',()=>{
  const part=new MechanicalRamp();
@@ -81,7 +81,8 @@ test('all perimeter ramp supports have matching physical posts, arms, collars an
  await R.init();const world=new R.World({x:0,y:-9.81,z:0});
  try{
   const ramp=buildPhysicalRamp({world}),mounts=rampSupportStations(ramp.rows);
-  const supports=ramp.colliders.slice(-mounts.length*4);
+  const supports=ramp.supportColliders;
+  assert.equal(supports.length,mounts.length*4);
   world.step();
   assert.ok(mounts.length>0);
   mounts.forEach((m,i)=>{
@@ -142,5 +143,32 @@ test('compact low nose uses one closed shell and matching convex contact vertice
    assert.ok(closest<1e-6);
   }
   visible.computeBoundingBox();assert.ok(visible.boundingBox.max.y<=.320001);assert.ok(visible.boundingBox.min.z>=-1.650001);
+ }finally{part.dispose();world.free();}
+});
+
+test('underfloor bearers, saddles and wire ties share nominal visual and contact stock',async()=>{
+ await R.init();const world=new R.World({x:0,y:-9.81,z:0}),ramp=buildPhysicalRamp({world}),part=new MechanicalRamp();
+ try{
+  const parts=rampUndersideParts(ramp.rows),expected=parts.reduce((n,p)=>n+p.points.length-1,0);
+  assert.equal(ramp.undersideContacts.length,expected);assert.ok(expected>300);
+  for(const p of parts){
+   const mesh=part.root.getObjectByName(p.name);assert.ok(mesh,p.name);
+   assert.equal(mesh.geometry.parameters.radius,p.radius);
+   assert.ok(mesh.geometry.parameters.path.getPoint(0).distanceTo(p.points[0])<1e-8);
+   assert.ok(mesh.geometry.parameters.path.getPoint(1).distanceTo(p.points.at(-1))<1e-8);
+   assert.equal(mesh.geometry.parameters.path.curves.length,p.points.length-1);
+   for(let i=1;i<p.points.length;i++){
+    const line=mesh.geometry.parameters.path.curves[i-1];
+    assert.ok(line.v1.distanceTo(p.points[i-1])<1e-8);
+    assert.ok(line.v2.distanceTo(p.points[i])<1e-8);
+    const entry=ramp.undersideContacts.find(c=>c.name===p.name&&c.segment===i-1),c=entry.collider;
+    const delta=p.points[i].clone().sub(p.points[i-1]),mid=p.points[i].clone().add(p.points[i-1]).multiplyScalar(.5);
+    assert.ok(Math.abs(c.shape.radius-p.radius)<1e-7);
+    assert.ok(Math.abs(c.shape.halfHeight-delta.length()/2)<1e-7);
+    const pos=c.translation();assert.ok(new T.Vector3(pos.x,pos.y,pos.z).distanceTo(mid)<1e-6);
+    const q=c.rotation(),axis=new T.Vector3(0,1,0).applyQuaternion(new T.Quaternion(q.x,q.y,q.z,q.w));
+    assert.ok(Math.abs(axis.dot(delta.normalize()))>.999999);
+   }
+  }
  }finally{part.dispose();world.free();}
 });

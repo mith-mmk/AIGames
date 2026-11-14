@@ -1,6 +1,6 @@
 import * as T from '../../vendor/three-0.180.0/three.module.min.js';
 import R from '../../vendor/rapier3d-0.17.3/rapier.mjs';
-import { sampleRamp, rampSupportStations, buildRampBaseVisual, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_RADIUS, WIRE_HEIGHT_OFFSET, WIRE_GUARD_HEIGHT, WIRE_GUARD_SPACING, rampWireRails } from '../ramp-geometry.mjs';
+import { sampleRamp, rampSupportStations, rampUndersideParts, buildRampBaseVisual, RAMP_WALL_HEIGHT, WIRE_START_FRACTION, WIRE_RADIUS, rampWireRails } from '../ramp-geometry.mjs';
 import { TABLE } from '../layout.mjs';
 
 // Construction vocabulary: Stern Jaws manual pp. 66–67 (not measured CAD).
@@ -91,7 +91,7 @@ export class MechanicalRamp extends Assembly {
     super('mechanical-sheet-ramp-prototype', materials);
     this.materials.acrylic = new T.MeshStandardMaterial({color:0xb7edff,metalness:0,roughness:.08,transparent:true,opacity:.18,depthWrite:false,side:T.DoubleSide});
     this.ownedMaterials.add(this.materials.acrylic);
-    this.rows = checkedRows(rows); this.build();
+    this.rows = checkedRows(rows); this.undersideParts=rampUndersideParts(this.rows); this.build();
     this.root.name = 'mechanical-sheet-ramp';
     this.root.userData.routeType = 'sheet-rise-and-true-paired-wire-return';
     this.root.userData.hiddenFloor = false;
@@ -132,12 +132,8 @@ export class MechanicalRamp extends Assembly {
     const g=this.group('true-paired-wire-return');
     const rails=rampWireRails(rows);
     rails.forEach((rail,i)=>this.tube(`${i%2?'containment':'running'}-rail-${i}`,rail,WIRE_RADIUS,'chrome',g));
-    for(let i=0;i<rows.length;i+=8) {
-      const r=rows[i], at=(x,y)=>r.p.clone().addScaledVector(r.n,x).addScaledVector(UP,y+WIRE_HEIGHT_OFFSET);
-      this.tube(`underslung-wire-tie-${i}`,[at(-WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT),at(-WIRE_GUARD_SPACING,-.028),at(WIRE_GUARD_SPACING,-.028),at(WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT)],.012,'brass',g);
-      for(const sign of [-1,1])this.tube(`wire-seat-${i}-${sign}`,[at(sign*.09,-.028),at(sign*.09,-.012)],.02,'chrome',g);
-    }
-    g.userData={hiddenFloor:false,runningRails:2,containmentRails:2,collision:'shared segmented capsules, same centers and radius as visible wire'};
+    for(const p of this.undersideParts.filter(p=>p.group==='wire'))this.tube(p.name,p.points,p.radius,p.material,g);
+    g.userData={hiddenFloor:false,runningRails:2,containmentRails:2,collision:'running/guard capsules plus shared underside tie/seat cylinders'};
   }
   buildSupports() {
     const g = this.group('perimeter-posts-and-continuous-underframe');
@@ -145,8 +141,7 @@ export class MechanicalRamp extends Assembly {
     // and elevated horizontal crossheads keep the ground routes open.
     // Dimensions remain estimates, not certified structural engineering.
     const spanStart=this.rows.findIndex(r=>r.p.x<0 && r.p.z>=1.30);
-    const elevated = this.rows.filter((r,i) => (r.p.y >= .46 || r.p.x < 0) && (spanStart<0 || i<=spanStart));
-    for (const side of ['left', 'right']) this.tube(`${side}-continuous-underfloor-bearer`, elevated.map(r => point(r, side, side === 'left' ? .045 : -.045, -Math.min(.065,Math.max(.025,r.p.y-.38)))), .028, 'dark', g);
+    for(const p of this.undersideParts.filter(p=>p.group==='underframe'))this.tube(p.name,p.points,p.radius,p.material,g);
     let count = 0;
     const end=this.rows.length-1;
     for (const mount of rampSupportStations(this.rows)) {
@@ -157,9 +152,6 @@ export class MechanicalRamp extends Assembly {
       this.tube(`cantilever-crosshead-${count}`, [top, saddle], .034, 'dark', g);
       // No low diagonal through the ground lane: horizontal beam clearance
       // exceeds the .31 ground-ball envelope; right columns share the divider.
-      this.tube(`underfloor-cross-saddle-${count}`, [point(r, 'left', .045, -drop), point(r, 'right', -.045, -drop)], .03, 'dark', g);
-      // Short vertical seat pads touch the floor underside, not the ball path.
-      for (const side of ['left', 'right']) this.tube(`${side}-floor-seat-${count}`, [point(r, side, side === 'left' ? .045 : -.045, -drop), point(r, side, side === 'left' ? .045 : -.045, -.025)], .034, 'brass', g);
       const foot = this.mesh(`mounting-foot-${count}`, new T.CylinderGeometry(mount.divider?.040:.085, mount.divider?.040:.085, .025, 16), 'dark', g);
       foot.position.copy(base);
       for (const sign of [-1, 1]) this.bolt(`foot-bolt-${count}-${sign}`, base.clone().add(new T.Vector3(0, .022, sign * (mount.divider?.025:.05))), g);
