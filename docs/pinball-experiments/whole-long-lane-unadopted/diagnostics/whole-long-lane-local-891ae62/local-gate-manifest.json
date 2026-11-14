@@ -1,0 +1,15 @@
+{
+  "sourceSHA256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+  "files": {
+    "coarse.mjs": "70515d3fe9777e0205877a5c9dab2da73dbcb3f416da2fcf1e9dafdca79282f5",
+    "out.mjs": "3afbf9f59cc7dfd56e4dd84ad6fb1aaf855953dd7091c33c2ffff89047c33224",
+    "coarse-summary.py": "780de38aad4e4607c6348d5b0eb65cd05b3cb33fafc9cfe54a8e4348d352dcec",
+    "coarse-summary.json": "049c910ad4739070ffbdf60d5d9b82630cf2e4bed95a0e034f59e3a10eb0b63d",
+    "baseline-coarse.json": "5ea83c68b62defd92625d810b90d562ba3e8a896cf143662013a82da652a8896",
+    "candidate-coarse.json": "c6845f3346fc270b2122e76b0d1a27621ff29f1b810a02b7eddebfc4840eaacc",
+    "baseline-out.json": "53acba204740bb4b6fe5949acc059b7d631e38a7dfd32fc58fff8176e17485c9",
+    "candidate-out.json": "d3030e4aefb724bb35591cc2dc4fe231cf8768534c29af7cea0d8246815bd75f",
+    "start-sections.json": "3ed581940f78a57867e37d60152baf3039baec636cb77e0cc39d3999068b68ae",
+    "README.md": "e051b34ef69a755568a025feb1ab2140f5a620adfb45bd8f5b04fb351db39903"
+  }
+}

@@ -1,0 +1,1043 @@
+{
+  "status": "Static ordinary-engine assembly only. No world stepping, launch or game resets beyond constructor.",
+  "sourceSha256": "d2ae6a0877c7f131ee9638329116c1f69b5b9537f3f8066605f1b0bf140e83a9",
+  "colliders": 1615,
+  "parts": 292,
+  "attachments": 59,
+  "sweep": {
+    "angles": 541,
+    "shared": {
+      "gap": 0.06593357026576996,
+      "angle": 0.4800000000000001,
+      "body": "shared-1",
+      "part": "stock",
+      "partCenter": {
+        "x": 1.9864403009414673,
+        "y": 0.2199999988079071,
+        "z": 4.252269744873047
+      },
+      "point": {
+        "x": 1.9252723455429077,
+        "y": 0.22017115354537964,
+        "z": 4.312617301940918
+      }
+    },
+    "actualMeshConvex": {
+      "gap": 0.06590718030929565,
+      "angle": 0.4800000000000001,
+      "body": "continuous-moulded-rubber-belt",
+      "part": "stock",
+      "partCenter": {
+        "x": -1.9864403009414673,
+        "y": 0.2199999988079071,
+        "z": 4.252269744873047
+      },
+      "point": {
+        "x": -1.9282581806182861,
+        "y": 0.21997198462486267,
+        "z": 4.315564155578613
+      }
+    },
+    "negativeExamples": [],
+    "meshEnvelopeCount": 8,
+    "maxMovingRadius": 1.6491011381149292,
+    "nearestAngleMotionBound": 0.0016491011381149293,
+    "scope": "Conservative mesh convex envelopes; negative needs actual visible triangle review. Positive sampled result minus angular bound is a continuous yaw lower bound with query error separate."
+  },
+  "routeProbes": [
+    {
+      "side": -1,
+      "role": "IN",
+      "y": 0.175,
+      "negative": 0,
+      "minimum": {
+        "gap": 8.940718443373186e-10,
+        "center": {
+          "x": 0.20999999344348907,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "type": 1,
+        "closest": {
+          "x": -2.112776756286621,
+          "y": 0.03999999910593033,
+          "z": 2.575298309326172
+        },
+        "inside": false,
+        "handle": 0,
+        "p": {
+          "x": -2.1127767331058496,
+          "y": 0.175,
+          "z": 2.575298316685485
+        },
+        "parameter": 0.44850000000000007
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "IN",
+      "y": 0.195,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.01614746566876299,
+        "center": {
+          "x": -2.5899999141693115,
+          "y": 0.3799999952316284,
+          "z": 2.75
+        },
+        "type": 10,
+        "closest": {
+          "x": -2.0757741928100586,
+          "y": 0.34602707624435425,
+          "z": 2.751356840133667
+        },
+        "inside": false,
+        "handle": 5.237e-321,
+        "p": {
+          "x": -2.0757742525206906,
+          "y": 0.195,
+          "z": 2.7573883092058202
+        },
+        "parameter": 0.5265000000000001
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "IN",
+      "y": 0.22,
+      "negative": 8,
+      "minimum": {
+        "gap": -0.00882950049689854,
+        "center": {
+          "x": -2.5899999141693115,
+          "y": 0.3799999952316284,
+          "z": 2.75
+        },
+        "type": 10,
+        "closest": {
+          "x": -2.0757741928100586,
+          "y": 0.3460361957550049,
+          "z": 2.75156831741333
+        },
+        "inside": false,
+        "handle": 5.237e-321,
+        "p": {
+          "x": -2.0757742525206906,
+          "y": 0.22,
+          "z": 2.7573883092058202
+        },
+        "parameter": 0.5265000000000001
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "IN",
+      "y": 0.35,
+      "negative": 88,
+      "minimum": {
+        "gap": -0.13499992201085828,
+        "center": {
+          "x": -2.5899999141693115,
+          "y": 0.3799999952316284,
+          "z": 2.75
+        },
+        "type": 10,
+        "closest": {
+          "x": -2.0757741928100586,
+          "y": 0.3500000238418579,
+          "z": 2.7573883533477783
+        },
+        "inside": true,
+        "handle": 5.237e-321,
+        "p": {
+          "x": -2.0757742525206906,
+          "y": 0.35,
+          "z": 2.7573883092058202
+        },
+        "parameter": 0.5265000000000001
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "IN",
+      "y": 0.575,
+      "negative": 85,
+      "minimum": {
+        "gap": -0.13310326019137603,
+        "center": {
+          "x": -2.1334846019744873,
+          "y": 0.5221349000930786,
+          "z": 1.8704503774642944
+        },
+        "type": 10,
+        "closest": {
+          "x": -2.121840476989746,
+          "y": 0.574999988079071,
+          "z": 1.8733513355255127
+        },
+        "inside": false,
+        "handle": 7.33e-321,
+        "p": {
+          "x": -2.1199999999999997,
+          "y": 0.575,
+          "z": 1.8738098836164374
+        },
+        "parameter": 0.18850000000000003
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "OUT",
+      "y": 0.175,
+      "negative": 16,
+      "minimum": {
+        "gap": -0.01997318892122997,
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "type": 9,
+        "closest": {
+          "x": -2.062832832336426,
+          "y": 0.05999999865889549,
+          "z": 3.600001335144043
+        },
+        "inside": false,
+        "handle": 7.974e-321,
+        "p": {
+          "x": -2.0618695440717847,
+          "y": 0.175,
+          "z": 3.6022902288104723
+        },
+        "parameter": 0.8190000000000001
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "OUT",
+      "y": 0.195,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.00002283999603636122,
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "type": 9,
+        "closest": {
+          "x": -2.062832832336426,
+          "y": 0.05999999865889549,
+          "z": 3.600001335144043
+        },
+        "inside": false,
+        "handle": 7.974e-321,
+        "p": {
+          "x": -2.0618695440717847,
+          "y": 0.195,
+          "z": 3.6022902288104723
+        },
+        "parameter": 0.8190000000000001
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "OUT",
+      "y": 0.22,
+      "negative": 5,
+      "minimum": {
+        "gap": -0.008944692332541665,
+        "center": {
+          "x": -2.5899999141693115,
+          "y": 0.3799999952316284,
+          "z": 2.75
+        },
+        "type": 10,
+        "closest": {
+          "x": -2.4852499961853027,
+          "y": 0.346011757850647,
+          "z": 2.7491064071655273
+        },
+        "inside": false,
+        "handle": 5.237e-321,
+        "p": {
+          "x": -2.485249975098867,
+          "y": 0.22,
+          "z": 2.7457931799582487
+        },
+        "parameter": 0.4875
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "OUT",
+      "y": 0.35,
+      "negative": 63,
+      "minimum": {
+        "gap": -0.13499991358699387,
+        "center": {
+          "x": -2.5899999141693115,
+          "y": 0.3799999952316284,
+          "z": 2.75
+        },
+        "type": 10,
+        "closest": {
+          "x": -2.4852499961853027,
+          "y": 0.34999996423721313,
+          "z": 2.745793104171753
+        },
+        "inside": true,
+        "handle": 5.237e-321,
+        "p": {
+          "x": -2.485249975098867,
+          "y": 0.35,
+          "z": 2.7457931799582487
+        },
+        "parameter": 0.4875
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "OUT",
+      "y": 0.575,
+      "negative": 57,
+      "minimum": {
+        "gap": -0.13270284097732826,
+        "center": {
+          "x": -2.5275869369506836,
+          "y": 0.5243451595306396,
+          "z": 1.6999666690826416
+        },
+        "type": 10,
+        "closest": {
+          "x": -2.5170223712921143,
+          "y": 0.574999988079071,
+          "z": 1.6942752599716187
+        },
+        "inside": false,
+        "handle": 7.317e-321,
+        "p": {
+          "x": -2.5149999999999997,
+          "y": 0.575,
+          "z": 1.693185785817666
+        },
+        "parameter": 0.1235
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "EXTERIOR",
+      "y": 0.175,
+      "negative": 0,
+      "minimum": {
+        "gap": 8.940697071579962e-10,
+        "center": {
+          "x": 0.20999999344348907,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "type": 1,
+        "closest": {
+          "x": -2.4868388175964355,
+          "y": 0.03999999910593033,
+          "z": 3.6602425575256348
+        },
+        "inside": false,
+        "handle": 0,
+        "p": {
+          "x": -2.4868388217846267,
+          "y": 0.175,
+          "z": 3.6602425583645006
+        },
+        "parameter": 0.741
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "EXTERIOR",
+      "y": 0.195,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.016022609645783725,
+        "center": {
+          "x": -2.5899999141693115,
+          "y": 0.3799999952316284,
+          "z": 2.75
+        },
+        "type": 10,
+        "closest": {
+          "x": -2.89650559425354,
+          "y": 0.3460041582584381,
+          "z": 2.7494685649871826
+        },
+        "inside": false,
+        "handle": 5.237e-321,
+        "p": {
+          "x": -2.8965057097451203,
+          "y": 0.195,
+          "z": 2.7471078843925216
+        },
+        "parameter": 0.46799999999999997
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "EXTERIOR",
+      "y": 0.22,
+      "negative": 4,
+      "minimum": {
+        "gap": -0.008973856451032686,
+        "center": {
+          "x": -2.5899999141693115,
+          "y": 0.3799999952316284,
+          "z": 2.75
+        },
+        "type": 10,
+        "closest": {
+          "x": -2.89650559425354,
+          "y": 0.34600555896759033,
+          "z": 2.7493855953216553
+        },
+        "inside": false,
+        "handle": 5.237e-321,
+        "p": {
+          "x": -2.8965057097451203,
+          "y": 0.22,
+          "z": 2.7471078843925216
+        },
+        "parameter": 0.46799999999999997
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "EXTERIOR",
+      "y": 0.35,
+      "negative": 20,
+      "minimum": {
+        "gap": -0.13499984651247046,
+        "center": {
+          "x": -2.5899999141693115,
+          "y": 0.3799999952316284,
+          "z": 2.75
+        },
+        "type": 10,
+        "closest": {
+          "x": -2.89650559425354,
+          "y": 0.3500000238418579,
+          "z": 2.747107982635498
+        },
+        "inside": true,
+        "handle": 5.237e-321,
+        "p": {
+          "x": -2.8965057097451203,
+          "y": 0.35,
+          "z": 2.7471078843925216
+        },
+        "parameter": 0.46799999999999997
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": -1,
+      "role": "EXTERIOR",
+      "y": 0.575,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.026021456868741438,
+        "center": {
+          "x": -2.5899999141693115,
+          "y": 0.3799999952316284,
+          "z": 2.75
+        },
+        "type": 10,
+        "closest": {
+          "x": -2.89650559425354,
+          "y": 0.41399624943733215,
+          "z": 2.7494957447052
+        },
+        "inside": false,
+        "handle": 5.237e-321,
+        "p": {
+          "x": -2.8965057097451203,
+          "y": 0.575,
+          "z": 2.7471078843925216
+        },
+        "parameter": 0.46799999999999997
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "IN",
+      "y": 0.175,
+      "negative": 0,
+      "minimum": {
+        "gap": 8.940703732918109e-10,
+        "center": {
+          "x": 0.20999999344348907,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "type": 1,
+        "closest": {
+          "x": 1.9794927835464478,
+          "y": 0.03999999910593033,
+          "z": 2.9854092597961426
+        },
+        "inside": false,
+        "handle": 0,
+        "p": {
+          "x": 1.97949278116553,
+          "y": 0.175,
+          "z": 2.9854092736014226
+        },
+        "parameter": 0.6305
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "IN",
+      "y": 0.195,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.02000000089407028,
+        "center": {
+          "x": 0.20999999344348907,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "type": 1,
+        "closest": {
+          "x": 1.9794927835464478,
+          "y": 0.03999999910593033,
+          "z": 2.9854092597961426
+        },
+        "inside": false,
+        "handle": 0,
+        "p": {
+          "x": 1.97949278116553,
+          "y": 0.195,
+          "z": 2.9854092736014226
+        },
+        "parameter": 0.6305
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "IN",
+      "y": 0.22,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.024646794182801413,
+        "center": {
+          "x": 2.1171181201934814,
+          "y": 0.2199999988079071,
+          "z": 3.1059765815734863
+        },
+        "type": 2,
+        "closest": {
+          "x": 2.1005873680114746,
+          "y": 0.2199999988079071,
+          "z": 3.0946600437164307
+        },
+        "inside": false,
+        "handle": 1.3e-321,
+        "p": {
+          "x": 1.96388548409313,
+          "y": 0.22,
+          "z": 3.012199787677408
+        },
+        "parameter": 0.6435000000000001
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "IN",
+      "y": 0.35,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.0667498133952123,
+        "center": {
+          "x": 2.1171181201934814,
+          "y": 0.2199999988079071,
+          "z": 3.1059765815734863
+        },
+        "type": 2,
+        "closest": {
+          "x": 2.1038389205932617,
+          "y": 0.23172491788864136,
+          "z": 3.096621513366699
+        },
+        "inside": false,
+        "handle": 1.3e-321,
+        "p": {
+          "x": 1.96388548409313,
+          "y": 0.35,
+          "z": 3.012199787677408
+        },
+        "parameter": 0.6435000000000001
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "IN",
+      "y": 0.575,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.1751950265364498,
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "type": 6,
+        "closest": {
+          "x": 1.8590372800827026,
+          "y": 0.5059892535209656,
+          "z": 1.1971702575683594
+        },
+        "inside": false,
+        "handle": 7.43e-321,
+        "p": {
+          "x": 2.1199999999999997,
+          "y": 0.575,
+          "z": 1.35
+        },
+        "parameter": 0
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "OUT",
+      "y": 0.175,
+      "negative": 0,
+      "minimum": {
+        "gap": 8.940707896254452e-10,
+        "center": {
+          "x": 0.20999999344348907,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "type": 1,
+        "closest": {
+          "x": 2.11435866355896,
+          "y": 0.03999999910593033,
+          "z": 3.4944021701812744
+        },
+        "inside": false,
+        "handle": 0,
+        "p": {
+          "x": 2.1143586810474324,
+          "y": 0.175,
+          "z": 3.4944021724073986
+        },
+        "parameter": 0.767
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "OUT",
+      "y": 0.195,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.02000000089407067,
+        "center": {
+          "x": 0.20999999344348907,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "type": 1,
+        "closest": {
+          "x": 2.11435866355896,
+          "y": 0.03999999910593033,
+          "z": 3.4944021701812744
+        },
+        "inside": false,
+        "handle": 0,
+        "p": {
+          "x": 2.1143586810474324,
+          "y": 0.195,
+          "z": 3.4944021724073986
+        },
+        "parameter": 0.767
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "OUT",
+      "y": 0.22,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.04500000089407055,
+        "center": {
+          "x": 0.20999999344348907,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "type": 1,
+        "closest": {
+          "x": 2.11435866355896,
+          "y": 0.03999999910593033,
+          "z": 3.4944021701812744
+        },
+        "inside": false,
+        "handle": 0,
+        "p": {
+          "x": 2.1143586810474324,
+          "y": 0.22,
+          "z": 3.4944021724073986
+        },
+        "parameter": 0.767
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "OUT",
+      "y": 0.35,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.08343978566684457,
+        "center": {
+          "x": 2.502335548400879,
+          "y": 0.23000000417232513,
+          "z": 3.3383443355560303
+        },
+        "type": 2,
+        "closest": {
+          "x": 2.4688432216644287,
+          "y": 0.25049805641174316,
+          "z": 3.3163092136383057
+        },
+        "inside": false,
+        "handle": 1.606e-321,
+        "p": {
+          "x": 2.30233027077226,
+          "y": 0.35,
+          "z": 3.215866491803826
+        },
+        "parameter": 0.6435000000000001
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "OUT",
+      "y": 0.575,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.23716365309623,
+        "center": {
+          "x": 2.502335548400879,
+          "y": 0.23000000417232513,
+          "z": 3.3383443355560303
+        },
+        "type": 2,
+        "closest": {
+          "x": 2.4814836978912354,
+          "y": 0.2672156095504761,
+          "z": 3.3239340782165527
+        },
+        "inside": false,
+        "handle": 1.606e-321,
+        "p": {
+          "x": 2.30233027077226,
+          "y": 0.575,
+          "z": 3.215866491803826
+        },
+        "parameter": 0.6435000000000001
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "EXTERIOR",
+      "y": 0.175,
+      "negative": 141,
+      "minimum": {
+        "gap": -0.1249977749610114,
+        "center": {
+          "x": 2.75,
+          "y": 0.23000000417232513,
+          "z": 3.200000047683716
+        },
+        "type": 2,
+        "closest": {
+          "x": 2.7495956420898438,
+          "y": 0.18500182032585144,
+          "z": 3.2345516681671143
+        },
+        "inside": false,
+        "handle": 3.5e-323,
+        "p": {
+          "x": 2.749505664926059,
+          "y": 0.175,
+          "z": 3.234551568403464
+        },
+        "parameter": 0.5915
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "EXTERIOR",
+      "y": 0.195,
+      "negative": 141,
+      "minimum": {
+        "gap": -0.1349999141723326,
+        "center": {
+          "x": 2.75,
+          "y": 0.23000000417232513,
+          "z": 3.200000047683716
+        },
+        "type": 2,
+        "closest": {
+          "x": 2.7711174488067627,
+          "y": 0.19499999284744263,
+          "z": 3.185333728790283
+        },
+        "inside": true,
+        "handle": 3.5e-323,
+        "p": {
+          "x": 2.77111745810374,
+          "y": 0.195,
+          "z": 3.185333643767959
+        },
+        "parameter": 0.5785
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "EXTERIOR",
+      "y": 0.22,
+      "negative": 141,
+      "minimum": {
+        "gap": -0.13499992389337334,
+        "center": {
+          "x": 2.75,
+          "y": 0.23000000417232513,
+          "z": 3.200000047683716
+        },
+        "type": 2,
+        "closest": {
+          "x": 2.791321039199829,
+          "y": 0.2199999988079071,
+          "z": 3.135521173477173
+        },
+        "inside": true,
+        "handle": 3.5e-323,
+        "p": {
+          "x": 2.791321101951035,
+          "y": 0.22,
+          "z": 3.1355211304297144
+        },
+        "parameter": 0.5655
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "EXTERIOR",
+      "y": 0.35,
+      "negative": 27,
+      "minimum": {
+        "gap": -0.059998981650691216,
+        "center": {
+          "x": 2.75,
+          "y": 0.23000000417232513,
+          "z": 3.200000047683716
+        },
+        "type": 2,
+        "closest": {
+          "x": 2.749814748764038,
+          "y": 0.27499961853027344,
+          "z": 3.2345516681671143
+        },
+        "inside": false,
+        "handle": 3.5e-323,
+        "p": {
+          "x": 2.749505664926059,
+          "y": 0.35,
+          "z": 3.234551568403464
+        },
+        "parameter": 0.5915
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    },
+    {
+      "side": 1,
+      "role": "EXTERIOR",
+      "y": 0.575,
+      "negative": 0,
+      "minimum": {
+        "gap": 0.16500033195397668,
+        "center": {
+          "x": 2.75,
+          "y": 0.23000000417232513,
+          "z": 3.200000047683716
+        },
+        "type": 2,
+        "closest": {
+          "x": 2.7499356269836426,
+          "y": 0.2749999761581421,
+          "z": 3.2345516681671143
+        },
+        "inside": false,
+        "handle": 3.5e-323,
+        "p": {
+          "x": 2.749505664926059,
+          "y": 0.575,
+          "z": 3.234551568403464
+        },
+        "parameter": 0.5915
+      },
+      "scope": "Inspection sample line, NOT runtime guidance or a qualified start/continuous path."
+    }
+  ],
+  "shooter": [
+    {
+      "y": 0.175,
+      "minimum": {
+        "gap": -0.09951942457709856,
+        "center": {
+          "x": 2.75,
+          "y": 0.4067874252796173,
+          "z": -1.8311413526535034
+        },
+        "type": 10,
+        "closest": {
+          "x": 2.713465929031372,
+          "y": 0.17499999701976776,
+          "z": -1.8252882957458496
+        },
+        "inside": false,
+        "handle": 4.995e-321,
+        "p": {
+          "x": 2.678432116973656,
+          "y": 0.175,
+          "z": -1.8196755205815642
+        },
+        "i": 15
+      },
+      "scope": "Geometric center sample, not a launch or a trajectory"
+    },
+    {
+      "y": 0.23,
+      "minimum": {
+        "gap": -0.09951942457709845,
+        "center": {
+          "x": 2.75,
+          "y": 0.4067874252796173,
+          "z": -1.8311413526535034
+        },
+        "type": 10,
+        "closest": {
+          "x": 2.713465929031372,
+          "y": 0.23000000417232513,
+          "z": -1.8252882957458496
+        },
+        "inside": false,
+        "handle": 4.995e-321,
+        "p": {
+          "x": 2.678432116973656,
+          "y": 0.23,
+          "z": -1.8196755205815642
+        },
+        "i": 15
+      },
+      "scope": "Geometric center sample, not a launch or a trajectory"
+    },
+    {
+      "y": 0.35,
+      "minimum": {
+        "gap": -0.09951942457709818,
+        "center": {
+          "x": 2.75,
+          "y": 0.4067874252796173,
+          "z": -1.8311413526535034
+        },
+        "type": 10,
+        "closest": {
+          "x": 2.713465929031372,
+          "y": 0.3499999940395355,
+          "z": -1.8252882957458496
+        },
+        "inside": false,
+        "handle": 4.995e-321,
+        "p": {
+          "x": 2.678432116973656,
+          "y": 0.35,
+          "z": -1.8196755205815642
+        },
+        "i": 15
+      },
+      "scope": "Geometric center sample, not a launch or a trajectory"
+    }
+  ],
+  "wireEnd": {
+    "parameter": 1,
+    "p": {
+      "x": -2.06,
+      "y": 0.44,
+      "z": 2.75
+    },
+    "t": {
+      "x": 0.2842646596324274,
+      "y": 0,
+      "z": 0.9587458491613198
+    },
+    "left": {
+      "x": -1.9066006641341888,
+      "y": 0.44,
+      "z": 2.7045176544588116
+    },
+    "right": {
+      "x": -2.2133993358658115,
+      "y": 0.44,
+      "z": 2.7954823455411884
+    }
+  },
+  "wireTerminalGate": {
+    "position": {
+      "x": -1.9804058953029204,
+      "y": 0.5800000000000001,
+      "z": 3.0184488377651695
+    },
+    "direction": {
+      "x": 0.2842646596324275,
+      "y": 0,
+      "z": 0.95874584916132
+    },
+    "halfWidth": 0.19500000000000015,
+    "halfHeight": 0.2,
+    "halfDepth": 0.1
+  },
+  "limits": [
+    "Positive isolated points do not prove a continuous free path",
+    "Negative line probe does not prove full channel blocked",
+    "Cam and intended rail/floor contact are included; floor-level probe can overlap intended low cam",
+    "Outer stock/support and wire ground-to-air conditions must be inspected as connected geometry"
+  ]
+}

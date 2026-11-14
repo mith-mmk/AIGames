@@ -1,0 +1,73 @@
+{
+  "scope": "concept diagrams only; no runtime freeze",
+  "files": {
+    "README.md": {
+      "bytes": 6175,
+      "sha256": "881488626d4e0a5f142a7f871f5061b6d96c98a3076ea0745370081e199c6cd1"
+    },
+    "SIDE-START.md": {
+      "bytes": 6074,
+      "sha256": "ba88b465180f50efa3fed01cb1e8fb1287ea411fe98d7f60435e1ed37f1ed17e"
+    },
+    "comparison.html": {
+      "bytes": 5495888,
+      "sha256": "2dd4f3f2a2acbe3d94bf7df60d2b08ec92d23a5b25c52f5bc80a564760fbde9b"
+    },
+    "dimensions.json": {
+      "bytes": 2233,
+      "sha256": "70a175c8a4244102403de44de2190000ed61724b219b27f2598730bf037c1cd6"
+    },
+    "draw-side-start.py": {
+      "bytes": 9973,
+      "sha256": "4685efaea289f904e78e71ae66014a488c8092497da440b298d34d77a0be001c"
+    },
+    "draw.py": {
+      "bytes": 11269,
+      "sha256": "c3b45b5a2f1209f6e6b7a4bf0d0d2912e6ae65304350121b05154869d77dad01"
+    },
+    "measure-side-start.mjs": {
+      "bytes": 2813,
+      "sha256": "f229970c17d361b7d7513d94360e13c3b7f313fc8b388966d5b723a7368c5ac5"
+    },
+    "render-check.json": {
+      "bytes": 59,
+      "sha256": "7532cd2fa1b1356020f47ccae94e53f0efed07b95eccc48a4cccb46c0e39d71b"
+    },
+    "render-side-start.cjs": {
+      "bytes": 972,
+      "sha256": "086ddb84d770718c3369757f3ed5523e9ccc1b8a4e5b818ebe8a2c714e99a447"
+    },
+    "render.cjs": {
+      "bytes": 950,
+      "sha256": "710a193854a09c23af8ae3ce267213961d84b18b408c77e2cd8c980e95862801"
+    },
+    "same-scale-comparison.png": {
+      "bytes": 917382,
+      "sha256": "29c55864ade7500bfd2f9b895e02ec2dcce1a2bcf19e696ad591d5e02431a84f"
+    },
+    "same-scale-comparison.svg": {
+      "bytes": 5495804,
+      "sha256": "f4ff4e691b503cf5db58bba171ba5a3416be51bc9be609d42ac9b9608ce9bda7"
+    },
+    "side-start-comparison.html": {
+      "bytes": 5511730,
+      "sha256": "78a57140efbc308a0f26163148fa8283995781b37bd04315f3e5b56a4ea36c2b"
+    },
+    "side-start-comparison.png": {
+      "bytes": 906827,
+      "sha256": "e890afcf66a95a97f671e11a072fec6df5ac13e15a613b9603296e94325bb427"
+    },
+    "side-start-comparison.svg": {
+      "bytes": 5511646,
+      "sha256": "f860fc60b001a3d2f683c0ff2e47cf138bc69fff1daca6adadc06f47a74fedab"
+    },
+    "side-start-dimensions.json": {
+      "bytes": 49613,
+      "sha256": "155ea6adae2df46b3de1de68786faad9c6b368847a6ce625b9b3a6a7346f8d19"
+    },
+    "side-start-render-check.json": {
+      "bytes": 59,
+      "sha256": "7532cd2fa1b1356020f47ccae94e53f0efed07b95eccc48a4cccb46c0e39d71b"
+    }
+  }
+}

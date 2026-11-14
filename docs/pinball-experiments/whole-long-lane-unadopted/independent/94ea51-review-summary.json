@@ -1,0 +1,61 @@
+{
+  "sourceSHA256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+  "baseline": "8849609",
+  "scope": "Static initialization and manual browser render only; no simulation trial",
+  "budget": {
+    "baseline": "accepted8849609",
+    "candidate": "whole layout snapshot 94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+    "results": [
+      {
+        "mode": "baseline",
+        "view": "installed-45",
+        "triangles": 449612,
+        "calls": 685
+      },
+      {
+        "mode": "baseline",
+        "view": "installed-10",
+        "triangles": 449468,
+        "calls": 673
+      },
+      {
+        "mode": "baseline",
+        "view": "installed-90",
+        "triangles": 443292,
+        "calls": 658
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-45",
+        "triangles": 493112,
+        "calls": 569
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-10",
+        "triangles": 492968,
+        "calls": 557
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-90",
+        "triangles": 486792,
+        "calls": 542
+      }
+    ],
+    "errors": [],
+    "scope": "Integrated geometry artifact; installed and isolated component views are distinct; not accepted."
+  },
+  "attachments": 59,
+  "maxAttachmentCenterError": 2.205524689483038e-07,
+  "attachmentDimensionError": 0.0,
+  "lowerRailChecks": 199,
+  "maxRailParameterError": 2.491620828177071e-07,
+  "maxRailVertexRadialError": 2.5574542257891797e-07,
+  "cam": {
+    "visibleCount": 10,
+    "physicalCount": 10,
+    "maxVisibleToHullVertexDistance": 8.899114524108741e-16
+  },
+  "qualification": "Render budget passes sampled views. Reference fidelity and physical safety not qualified."
+}

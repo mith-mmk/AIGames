@@ -1,0 +1,64 @@
+{
+  "status": "Not eligible for geometry freeze or dynamic trial: OUT tail requires redesign",
+  "sourceSha256": "4c586a1b7ff457e12bd6c7cda38a003c2b9ff39dca516af25bf96ea1168f19f4",
+  "initialFailedSourceSha256": "d2ae6a0877c7f131ee9638329116c1f69b5b9537f3f8066605f1b0bf140e83a9",
+  "tailFloorPlane": {
+    "leftAxisDistance": 0.29977352607209534,
+    "leftEffectiveSphereInflatedRadius": 0.14832396974191325,
+    "leftCenterInterval": 0.003125586588268836,
+    "right3dAxisDistance": 0.31382339665568704,
+    "rightPlanAxisDistance": 0.3136640309128745,
+    "rightEffectiveRadiusSum": 0.31971533475193936,
+    "rightCenterInterval": -0.006051303839064881,
+    "scope": "Local capsule-pair floor-plane restriction; not a claim all 3D trajectories impossible"
+  },
+  "contracts": {
+    "strikeFunctionByteEqual": true,
+    "launchFunctionByteEqual": true,
+    "gameStateByteEqual": true,
+    "plungerInputByteEqual": true,
+    "oldOutOfBounds": [
+      -3.2,
+      3.2
+    ],
+    "newOutOfBounds": [
+      -3.68,
+      4.1
+    ],
+    "oldShooterReturnX": [
+      2.45,
+      2.7
+    ],
+    "newShooterReturnX": [
+      2.85,
+      3.1
+    ]
+  },
+  "productionDiff": "",
+  "files": {
+    "build.mjs": {
+      "bytes": 10499,
+      "sha256": "be1f6f3fc07dedb96f61060a66e0a18f34a887a2cddb46dcd357495c9ade70eb"
+    },
+    "geometry.mjs": {
+      "bytes": 4996,
+      "sha256": "13b46d8a4020279c3766cef6aaee4347861413cca75cd53e539dbb949612de09"
+    },
+    "helper.mjs": {
+      "bytes": 6628,
+      "sha256": "428ba71a007af7d7f862174da82edc1fa1c137c06260818073df769dafdf0854"
+    },
+    "loader.mjs": {
+      "bytes": 948,
+      "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+    },
+    "manifest.json": {
+      "bytes": 11380,
+      "sha256": "261c3fbbd11e8aaa4396136c814ce801e1a889a6ae56c1c2e1dd9011b05f68f5"
+    },
+    "STATIC-RESULT.md": {
+      "bytes": 7155,
+      "sha256": "3027df9f91d3ad54f48f3161b97d568f86dc54beb648899eda374bae9aeaf5e4"
+    }
+  }
+}

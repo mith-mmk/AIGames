@@ -1,0 +1,85 @@
+{
+  "sourceSHA256": "d2ae6a0877c7f131ee9638329116c1f69b5b9537f3f8066605f1b0bf140e83a9",
+  "scope": "Exact finite segment-pair geometry of supplied shooter rails only. No posts, backing, other fixed bodies, velocities or physics steps. Positive pairwise width is not connected full installed corridor evidence.",
+  "closestAxisPair": {
+    "distance": 0.4549769775314595,
+    "p": [
+      2.6159348052629965,
+      0.23,
+      -0.9767178868175819
+    ],
+    "q": [
+      3.064274769332572,
+      0.23,
+      -1.054147381855028
+    ],
+    "s": 0,
+    "t": 0.9737146158290051,
+    "i": 10,
+    "j": 9
+  },
+  "solidGap": 0.3499769775314595,
+  "sections": [
+    {
+      "sphereCenterY": 0.175,
+      "projectedInflationInner": 0.17139136501002608,
+      "projectedInflationOuter": 0.18708286933869708,
+      "pairwiseCenterSpace": 0.09650274318273636
+    },
+    {
+      "sphereCenterY": 0.195,
+      "projectedInflationInner": 0.17656443583009573,
+      "projectedInflationOuter": 0.1918332609325088,
+      "pairwiseCenterSpace": 0.08657928076885496
+    },
+    {
+      "sphereCenterY": 0.23,
+      "projectedInflationInner": 0.18,
+      "projectedInflationOuter": 0.195,
+      "pairwiseCenterSpace": 0.07997697753145949
+    },
+    {
+      "sphereCenterY": 0.3,
+      "projectedInflationInner": 0.16583123951776998,
+      "projectedInflationOuter": 0.18200274723201298,
+      "pairwiseCenterSpace": 0.1071429907816765
+    },
+    {
+      "sphereCenterY": 0.35,
+      "projectedInflationInner": 0.1341640786499874,
+      "projectedInflationOuter": 0.153704261489394,
+      "pairwiseCenterSpace": 0.16710863739207812
+    }
+  ],
+  "outerToRoofJoinDistance": 0,
+  "roofFirstLegAngleDegrees": 21.092339505827514,
+  "oldRoofFirstLegAngleDegrees": 16.949224233821457,
+  "innerEndToRoof": {
+    "distance": 0.5191579721048307,
+    "p": [
+      2.35,
+      0.23,
+      -3.9
+    ],
+    "q": [
+      2.805,
+      0.23,
+      -4.15
+    ],
+    "s": 0,
+    "t": 0,
+    "i": 0,
+    "j": 0
+  },
+  "leftGroundExterior": {
+    "axisDistance": 0.39,
+    "postRadius": 0.037,
+    "outerRailRadius": 0.02,
+    "solidGap": 0.333,
+    "centerSpaceAtGround": 0.06967603025808677,
+    "centerSpaceAtRailHeight": 0.06300000000000003,
+    "terminalCrossHeadBottom": 0.35,
+    "maximumSphereCenterBelowCrossHead": 0.215,
+    "note": "Nominal terminal crosshead; full upper/support assembly not covered. Foot/cabinet edge and flying balls require separate checks."
+  }
+}

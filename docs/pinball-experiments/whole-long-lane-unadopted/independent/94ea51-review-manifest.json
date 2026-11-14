@@ -1,0 +1,170 @@
+{
+  "sourceSHA256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4346,
+      "sha256": "c3fdb9d5548a6082066d97cc366ad8ec91eac1ca0e384a5f8175eddadcd5c2d2"
+    },
+    {
+      "path": "baseline-sources.json",
+      "bytes": 329885,
+      "sha256": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199"
+    },
+    {
+      "path": "geometry-initial-import-error.log",
+      "bytes": 291,
+      "sha256": "cdc8ee60d01ea0dd0d44b560ec189a0038db2c5f52205cb8a52da115eb2d96ca"
+    },
+    {
+      "path": "geometry-surface-browser.cjs",
+      "bytes": 6604,
+      "sha256": "c1daa752f17788b15aeac540a6d50beb7a5cb19158d485771354692c74a2beea"
+    },
+    {
+      "path": "geometry-surface-review/actual-mesh-contact.json",
+      "bytes": 85280,
+      "sha256": "7d70032d9852b44c11acfa722e03f6565e5031223ca74c2553b4b5a170fc3df5"
+    },
+    {
+      "path": "geometry-surface-review/cutaway-lower-top.png",
+      "bytes": 191740,
+      "sha256": "d30f4e6b5e0eab91f30ce30c38aa81d3bb6d41fc06944c497bb047ae5e5dd42d"
+    },
+    {
+      "path": "geometry-surface-review/cutaway-lower-underside.png",
+      "bytes": 152342,
+      "sha256": "b3c0164f1142e5d50202dcb9022b1bee25cd90dfeee1698af19002dc31a53dd4"
+    },
+    {
+      "path": "geometry-surface-review/evidence.json",
+      "bytes": 225,
+      "sha256": "3ef23df06419fab90df87bae4d0a7ebfe023895e477bb75911ec9af11715f574"
+    },
+    {
+      "path": "geometry-surface-review/served-candidate-sources.json",
+      "bytes": 338664,
+      "sha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03"
+    },
+    {
+      "path": "geometry-surface.log",
+      "bytes": 156,
+      "sha256": "27cb3442d6846f9eb315443e6407eca3abc73b91d519b464d9ad3fd8585484ab"
+    },
+    {
+      "path": "geometry.mjs",
+      "bytes": 5848,
+      "sha256": "882884dad71d759f3d5e1f11f475d9bb612fb0917ae75b40f5d3feaa98d09ab5"
+    },
+    {
+      "path": "loader.mjs",
+      "bytes": 948,
+      "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 11380,
+      "sha256": "c8a743abcc18ab4c400bbbac0514984f216023d77e796fc61f42bf471a5b1181"
+    },
+    {
+      "path": "preview-final/baseline-installed-10.png",
+      "bytes": 429327,
+      "sha256": "a9baefbb89dcd31abda87f0f7eea52bf1b7e32511aa20c233577dd6ed2600b84"
+    },
+    {
+      "path": "preview-final/baseline-installed-45.png",
+      "bytes": 739686,
+      "sha256": "2c455a455527f98ef453a7151038c6bb95fa11a5255214b7b047b5933beb450d"
+    },
+    {
+      "path": "preview-final/baseline-installed-90.png",
+      "bytes": 615702,
+      "sha256": "88f6759271b141b16c2c511faee495455a4cfad43cfc540f8c25cbe5fe7e8654"
+    },
+    {
+      "path": "preview-final/baseline-lower-closeup.png",
+      "bytes": 792028,
+      "sha256": "365df1f91c3285b55916c9ecf4b3c40f23ec77c24d227720e7a5b2ac73dd3a3b"
+    },
+    {
+      "path": "preview-final/baseline-lower-side.png",
+      "bytes": 113297,
+      "sha256": "28339ec3fd71e37f2f19ced198d9dfbb3b00c827d4ccbef7a18a2a7f27618360"
+    },
+    {
+      "path": "preview-final/baseline-lower-underside.png",
+      "bytes": 114483,
+      "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+    },
+    {
+      "path": "preview-final/baseline-mobile-390.png",
+      "bytes": 252481,
+      "sha256": "dcf1e254317d3094e2653b12705caa72ba7b96502d54d18eb9acb2e4ce7b4d60"
+    },
+    {
+      "path": "preview-final/candidate-installed-10.png",
+      "bytes": 432043,
+      "sha256": "6a6317eba53267363a64e715d8d49ee2721a804fc06387904db816bfe8c21fd8"
+    },
+    {
+      "path": "preview-final/candidate-installed-45.png",
+      "bytes": 776546,
+      "sha256": "2fbf962a5fd60126ee92d62784deb7f8d3ca174eab5ba6b8770b22e2fc499dac"
+    },
+    {
+      "path": "preview-final/candidate-installed-90.png",
+      "bytes": 655724,
+      "sha256": "29990cadab7a10f03ebda13ecab553b1cab2428bb9d7d48cdc45833d42bd1d9d"
+    },
+    {
+      "path": "preview-final/candidate-lower-closeup.png",
+      "bytes": 800685,
+      "sha256": "9a47b0f27c000d7d5392fe5eea1d6b8ce5bbef2d55d8e1b2416497bfba15912c"
+    },
+    {
+      "path": "preview-final/candidate-lower-side.png",
+      "bytes": 110012,
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e"
+    },
+    {
+      "path": "preview-final/candidate-lower-underside.png",
+      "bytes": 86219,
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+    },
+    {
+      "path": "preview-final/candidate-mobile-390.png",
+      "bytes": 264092,
+      "sha256": "6bcb50efd83820422e141a89761fb9dbe8853f72f7114d86a9a4864a4ab03ca6"
+    },
+    {
+      "path": "preview-final/evidence.json",
+      "bytes": 979,
+      "sha256": "08d528612dc9659d730832c6daeaea041edf162e7e600eb55f3b7ae576ba1d7c"
+    },
+    {
+      "path": "preview-final/served-candidate-sources.json",
+      "bytes": 338664,
+      "sha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03"
+    },
+    {
+      "path": "review-summary.json",
+      "bytes": 1757,
+      "sha256": "8ea28979ac451b6f1e5064627fd76fac004692ba78c7084edc3c13cfd62499fa"
+    },
+    {
+      "path": "sources.json",
+      "bytes": 338664,
+      "sha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03"
+    },
+    {
+      "path": "visual.cjs",
+      "bytes": 4789,
+      "sha256": "64c3954f41ab45fb9a1ea302752449730d390b2a20d5f2e5d675ea212dd5b57d"
+    },
+    {
+      "path": "visual.log",
+      "bytes": 841,
+      "sha256": "96fe9f196b328b7c945152c035b2ac368492ed93eb63dc0799e0702b8a35e7cc"
+    }
+  ]
+}

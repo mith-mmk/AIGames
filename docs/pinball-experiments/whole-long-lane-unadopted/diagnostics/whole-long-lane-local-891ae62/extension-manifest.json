@@ -1,0 +1,12 @@
+{
+  "sourceHash": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+  "hashes": {
+    "extension.mjs": "5930e6086d609a40523ae79614f48cd0e95540ead66f3b68859cad36f368907c",
+    "extension-summary.py": "0b003790380d7856aab9be750d3374cdde65744228fd7d29210ea77450a11554",
+    "extension-compare.py": "08e3c3da1f5c7ec948cbe47afe9192f7fc532b47fef2c02e23e82ab992655267",
+    "extension-summary.json": "838da79aadd73fa0113e6c45897608fb9c33a31e2a7cf601980abe112245a395",
+    "extension-70-comparison.json": "14ab2d10f4e4406c1c92da0e6816b20e7712b5572a32de63ae7105b90e289701",
+    "baseline-extension.json": "52fc02cbe0d2c1adae7ba16986b121c88ed7868b85bc5017fb42a56279017c6f",
+    "candidate-extension.json": "d34c4265f8666b78e219f7ed679e1c19592bdf0b16445a8655dfa6f42d2316f7"
+  }
+}

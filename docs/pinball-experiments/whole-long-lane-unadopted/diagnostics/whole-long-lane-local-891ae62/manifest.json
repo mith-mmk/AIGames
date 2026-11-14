@@ -1,0 +1,14 @@
+{
+  "sourceSHA256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+  "files": {
+    "baseline-loader.mjs": "12304d5d37f7291afbb868b723ff6c1e0ebbf21d3483417837dfa3bff99d44e5",
+    "start-sections.mjs": "3f533df582ed0f007d432b238b63d3506172ccd2aad00ea27bb2ad3aa6eff03a",
+    "summary.json": "85b5fc78e6d0f3133e9804bb8239d1bb937f5ffada489ad0c0959344547e507c",
+    "candidate.json": "79a34bbc047a2d8c9b5345be12e973398d80162fd94ea976272aa83459b0d917",
+    "candidate.log": "02addbbe13ff520363009dcdb7798ca827ee6b50223759470086525accf9a6d7",
+    "launch.mjs": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6",
+    "baseline.log": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb",
+    "baseline.json": "990facd9be7e337a694680ecc0c527f3bfa4eca4a3c4679b9e6e7ee57cfeaacd",
+    "start-sections.json": "3ed581940f78a57867e37d60152baf3039baec636cb77e0cc39d3999068b68ae"
+  }
+}

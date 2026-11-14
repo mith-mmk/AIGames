@@ -1,0 +1,522 @@
+{
+  "status": "UNADOPTED. No further geometry trial in this packet.",
+  "sourceSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+  "baseline": "884960985a413986d57aff0c2280e59a7be79dcf",
+  "naturalLaunch": {
+    "baseline": [
+      {
+        "power": 0.55,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 337,
+          "p": {
+            "x": 2.022972822189331,
+            "y": 0.16953504085540771,
+            "z": -1.6478215456008911
+          }
+        },
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25
+      },
+      {
+        "power": 0.65,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 301,
+          "p": {
+            "x": 2.0297579765319824,
+            "y": 0.16909022629261017,
+            "z": -1.7616115808486938
+          }
+        },
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25
+      },
+      {
+        "power": 0.75,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 267,
+          "p": {
+            "x": 2.019087553024292,
+            "y": 0.168918639421463,
+            "z": -1.635311245918274
+          }
+        },
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25
+      },
+      {
+        "power": 0.85,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 196,
+          "p": {
+            "x": 0.798864483833313,
+            "y": 0.1705608367919922,
+            "z": -4.095780849456787
+          }
+        },
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 525
+      },
+      {
+        "power": 0.925,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 175,
+          "p": {
+            "x": 0.7971894145011902,
+            "y": 0.17053447663784027,
+            "z": -4.0891523361206055
+          }
+        },
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 525
+      },
+      {
+        "power": 1,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 175,
+          "p": {
+            "x": 0.9423328042030334,
+            "y": 0.1707238107919693,
+            "z": -4.075916767120361
+          }
+        },
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 325
+      },
+      {
+        "power": 0.1,
+        "weak": {
+          "phase": "ready",
+          "ball": 1,
+          "returned": true,
+          "stopErrorZ": 0.0012270927429200995,
+          "p": {
+            "x": 2.5299999713897705,
+            "y": 0.1726202666759491,
+            "z": 4.42622709274292
+          },
+          "relaunch": true,
+          "positionUnchanged": true
+        },
+        "fieldAccess": null,
+        "phase": "playing",
+        "ball": 1,
+        "returnedShooter": false,
+        "score": 0
+      }
+    ],
+    "candidate": [
+      {
+        "power": 0.55,
+        "weak": null,
+        "fieldAccess": null,
+        "phase": "ready",
+        "ball": 1,
+        "returnedShooter": true,
+        "score": 0
+      },
+      {
+        "power": 0.65,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 255,
+          "p": {
+            "x": 2.1496734619140625,
+            "y": 0.17069250345230103,
+            "z": -4.084994792938232
+          }
+        },
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25
+      },
+      {
+        "power": 0.75,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 214,
+          "p": {
+            "x": 2.118907928466797,
+            "y": 0.17070543766021729,
+            "z": -4.086297988891602
+          }
+        },
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25
+      },
+      {
+        "power": 0.85,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 202,
+          "p": {
+            "x": 1.3274641036987305,
+            "y": 0.17061389982700348,
+            "z": -4.090003490447998
+          }
+        },
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 225
+      },
+      {
+        "power": 0.925,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 175,
+          "p": {
+            "x": 0.8702464699745178,
+            "y": 0.17072169482707977,
+            "z": -4.075328826904297
+          }
+        },
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 425
+      },
+      {
+        "power": 1,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 199,
+          "p": {
+            "x": 0.9206346869468689,
+            "y": 0.17054259777069092,
+            "z": -4.083751201629639
+          }
+        },
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 325
+      },
+      {
+        "power": 0.1,
+        "weak": {
+          "phase": "ready",
+          "ball": 1,
+          "returned": true,
+          "stopErrorZ": 0.0012270927429200995,
+          "p": {
+            "x": 2.930000066757202,
+            "y": 0.17262029647827148,
+            "z": 4.42622709274292
+          },
+          "relaunch": true,
+          "positionUnchanged": true
+        },
+        "fieldAccess": null,
+        "phase": "playing",
+        "ball": 1,
+        "returnedShooter": false,
+        "score": 0
+      }
+    ]
+  },
+  "fixedDelay30to70": {
+    "casesPerLayout": 18,
+    "candidateUpfield": 3,
+    "baselineUpfield": 14,
+    "candidateEnd": {
+      "heldRecapture": 8,
+      "ordinaryDrain": 10,
+      "nonBatStop": 0
+    },
+    "captureAndCoil": "All36 actual bat capture, one repress coil and zero playing resets; different semantic start sections, not identical absolute positions."
+  },
+  "fixedDelay70to100": {
+    "casesPerLayout": 14,
+    "candidateUpfield": 9,
+    "baselineUpfield": 4,
+    "candidateEnd": {
+      "heldRecapture": 2,
+      "ordinaryDrain": 12,
+      "nonBatStop": 0
+    },
+    "warning": "Different normalized along ranges and fixed delay ranges. Not a performance improvement claim or a continuous-window certificate. Delay70 overlaps the first grid. Right repeated traces exact; left small differences with classifications unchanged."
+  },
+  "visualBudget": {
+    "sourceSHA256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+    "baseline": "8849609",
+    "scope": "Static initialization and manual browser render only; no simulation trial",
+    "budget": {
+      "baseline": "accepted8849609",
+      "candidate": "whole layout snapshot 94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "results": [
+        {
+          "mode": "baseline",
+          "view": "installed-45",
+          "triangles": 449612,
+          "calls": 685
+        },
+        {
+          "mode": "baseline",
+          "view": "installed-10",
+          "triangles": 449468,
+          "calls": 673
+        },
+        {
+          "mode": "baseline",
+          "view": "installed-90",
+          "triangles": 443292,
+          "calls": 658
+        },
+        {
+          "mode": "candidate",
+          "view": "installed-45",
+          "triangles": 493112,
+          "calls": 569
+        },
+        {
+          "mode": "candidate",
+          "view": "installed-10",
+          "triangles": 492968,
+          "calls": 557
+        },
+        {
+          "mode": "candidate",
+          "view": "installed-90",
+          "triangles": 486792,
+          "calls": 542
+        }
+      ],
+      "errors": [],
+      "scope": "Integrated geometry artifact; installed and isolated component views are distinct; not accepted."
+    },
+    "attachments": 59,
+    "maxAttachmentCenterError": 2.205524689483038e-07,
+    "attachmentDimensionError": 0.0,
+    "lowerRailChecks": 199,
+    "maxRailParameterError": 2.491620828177071e-07,
+    "maxRailVertexRadialError": 2.5574542257891797e-07,
+    "cam": {
+      "visibleCount": 10,
+      "physicalCount": 10,
+      "maxVisibleToHullVertexDistance": 8.899114524108741e-16
+    },
+    "qualification": "Render budget passes sampled views. Reference fidelity and physical safety not qualified."
+  },
+  "fixedElevatedDiagnostic": {
+    "sourceSHA256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+    "fixture": "one explicit restored high start; natural reachability unverified",
+    "initial": {
+      "gap": 0.003990361511560625,
+      "handle": 3.5e-323,
+      "type": 2,
+      "center": {
+        "x": 2.75,
+        "y": 0.23000000417232513,
+        "z": 3.200000047683716
+      }
+    },
+    "ticks": 112,
+    "seconds": 0.9333333333333333,
+    "final": {
+      "phase": "ready",
+      "ball": 2,
+      "p": {
+        "x": 2.930000066757202,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "resets": 0,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    "independentRailMinimum": {
+      "tick": 81,
+      "time": 0.6833333333333333,
+      "p": {
+        "x": 2.6522603034973145,
+        "y": 0.37701690196990967,
+        "z": 4.483729839324951
+      },
+      "v": {
+        "x": 0.09678220748901367,
+        "y": 0.06569720804691315,
+        "z": 2.0771377086639404
+      },
+      "spin": {
+        "x": 18.81025505065918,
+        "y": -0.04808766394853592,
+        "z": -0.8712210059165955
+      },
+      "rotation": {
+        "x": -0.6520292162895203,
+        "y": 0.14274068176746368,
+        "z": 0.06989270448684692,
+        "w": 0.7413487434387207
+      },
+      "contacts": [
+        {
+          "handle": 1.62e-321,
+          "type": 2,
+          "center": {
+            "x": 2.55830454826355,
+            "y": 0.23000000417232513,
+            "z": 4.578975200653076
+          },
+          "normal": {
+            "x": 0.542025625705719,
+            "y": 0.8121033906936646,
+            "z": -0.21609318256378174
+          },
+          "flipped": true,
+          "points": [
+            {
+              "dist": 0.0010322481393814087,
+              "impulse": 0
+            }
+          ]
+        },
+        {
+          "handle": 1.616e-321,
+          "type": 2,
+          "center": {
+            "x": 2.548919916152954,
+            "y": 0.23000000417232513,
+            "z": 4.465872764587402
+          },
+          "normal": {
+            "x": 0.5649564266204834,
+            "y": 0.823498010635376,
+            "z": -0.05172264575958252
+          },
+          "flipped": true,
+          "points": [
+            {
+              "dist": -0.0014726817607879639,
+              "impulse": 0.04509047046303749
+            }
+          ]
+        },
+        {
+          "handle": 3.5e-323,
+          "type": 2,
+          "center": {
+            "x": 2.75,
+            "y": 0.23000000417232513,
+            "z": 3.200000047683716
+          },
+          "normal": {
+            "x": -0.5536348223686218,
+            "y": 0.8327594995498657,
+            "z": 5.960464477539063e-08
+          },
+          "flipped": true,
+          "points": [
+            {
+              "dist": -0.003458186984062195,
+              "impulse": 0.045814551413059235
+            }
+          ]
+        }
+      ],
+      "railGap": {
+        "label": "shared shooter inner",
+        "handle": 3.5e-323,
+        "gap": -0.0034581700070289156
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "negativeRailGapFrames": 107,
+    "longestNegativeRun": 107,
+    "maximumManifoldOverlap": 0.003458186984062195,
+    "firstAxisEnd": 101,
+    "lastPlaying": {
+      "tick": 110,
+      "time": 0.9249999999999999,
+      "p": {
+        "x": 2.5805554389953613,
+        "y": 0.30245694518089294,
+        "z": 5.048603534698486
+      },
+      "v": {
+        "x": -1.9974170923233032,
+        "y": -3.2842414379119873,
+        "z": 2.8595826625823975
+      },
+      "spin": {
+        "x": 21.650333404541016,
+        "y": 0.4288998246192932,
+        "z": 3.8686859607696533
+      },
+      "rotation": {
+        "x": 0.9867701530456543,
+        "y": -0.040891632437705994,
+        "z": 0.0766790583729744,
+        "w": -0.1368676871061325
+      },
+      "contacts": [],
+      "railGap": {
+        "label": "shared shooter inner",
+        "handle": 3.5e-323,
+        "gap": 0.004286375402528464
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "railGapDefinition": "distance to designer finite axis segment minus rail radius minus ball .135; analytic capsule surface, not generic mesh query; frozen source endpoints Float32 rounding separate",
+    "sha256": {
+      "run.mjs": "cbe29ffca15be8a4287b41b0c2a5c04d1874c2e5e587da2cc80dd103067c37f2",
+      "trace.json": "09e13d7a02afd570e6dc1d219d43247f0e9ec5195f64275389c4dcb020190ba4"
+    }
+  },
+  "untested": [
+    "full202",
+    "natural54",
+    "dense or continuous aim qualification",
+    "natural wire handoff",
+    "human PC/mobile",
+    "real-phone tests"
+  ],
+  "unfinished": [
+    "reference band visibility/composition",
+    "natural .55 field entry differs",
+    "moving save actuator and coil bracket",
+    "board bores and fixed joints"
+  ],
+  "scope": "No simulation rerun for packaging. Full small coarse/extension summaries retained; raw large traces are only hash-referenced."
+}

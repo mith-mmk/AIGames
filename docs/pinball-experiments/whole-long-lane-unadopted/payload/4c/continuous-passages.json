@@ -1,0 +1,206 @@
+{
+  "sourceSha256": "4c586a1b7ff457e12bd6c7cda38a003c2b9ff39dca516af25bf96ea1168f19f4",
+  "status": "Static path witnesses only, no simulation or force changes. No witness is installed in runtime.",
+  "runs": [
+    {
+      "name": "left exterior ground fromZ-4.10 tofloor end",
+      "samples": 9100,
+      "minimum": {
+        "gap": 0.0170007508636158,
+        "center": {
+          "x": -2.7300000190734863,
+          "y": 0.019999999552965164,
+          "z": 1.350000023841858
+        },
+        "shapeType": 10,
+        "handle": 7.77e-321,
+        "inside": false,
+        "p": {
+          "x": -2.9,
+          "y": 0.175,
+          "z": 1.3505000000000003
+        },
+        "segment": 1
+      },
+      "continuousPolylineLowerBound": 0.0165007508636158,
+      "negativeExamples": [],
+      "limits": "Finite polyline sphere center existence only; scalar distance-to-solid is1-Lipschitz. Engine query numerical error is separate; no natural motion implied. Floor contact excluded explicitly."
+    },
+    {
+      "name": "right exterior outside shooter ground",
+      "samples": 9100,
+      "minimum": {
+        "gap": 0.000901848704561975,
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "shapeType": 9,
+        "handle": 7.66e-321,
+        "inside": false,
+        "p": {
+          "x": 3.45,
+          "y": 0.175,
+          "z": 0.19650000000000034
+        },
+        "segment": 1
+      },
+      "continuousPolylineLowerBound": 0.00040184870456197496,
+      "negativeExamples": [],
+      "limits": "Finite polyline sphere center existence only; scalar distance-to-solid is1-Lipschitz. Engine query numerical error is separate; no natural motion implied. Floor contact excluded explicitly."
+    },
+    {
+      "name": "shooter connector through inner open end",
+      "samples": 8370,
+      "minimum": {
+        "gap": 0.008265549381473003,
+        "center": {
+          "x": 2.75,
+          "y": 0.23000000417232513,
+          "z": 3.200000047683716
+        },
+        "shapeType": 2,
+        "handle": 3.5e-323,
+        "inside": false,
+        "p": {
+          "x": 2.930052570093458,
+          "y": 0.175,
+          "z": 4.424503504672897
+        },
+        "segment": 1
+      },
+      "continuousPolylineLowerBound": 0.007766278688801085,
+      "negativeExamples": [],
+      "limits": "Finite polyline sphere center existence only; scalar distance-to-solid is1-Lipschitz. Engine query numerical error is separate; no natural motion implied. Floor contact excluded explicitly."
+    },
+    {
+      "name": "IN approach -1 only, stops before receiver",
+      "samples": 2556,
+      "minimum": {
+        "gap": 0.02700067938138792,
+        "center": {
+          "x": -2.299999952316284,
+          "y": 0.019999999552965164,
+          "z": 1.350000023841858
+        },
+        "shapeType": 10,
+        "handle": 7.683e-321,
+        "inside": false,
+        "p": {
+          "x": -2.1199999999999997,
+          "y": 0.175,
+          "z": 1.3504958308567026
+        },
+        "segment": 1
+      },
+      "continuousPolylineLowerBound": 0.026504848524685414,
+      "negativeExamples": [],
+      "limits": "Finite polyline sphere center existence only; scalar distance-to-solid is1-Lipschitz. Engine query numerical error is separate; no natural motion implied. Floor contact excluded explicitly."
+    },
+    {
+      "name": "IN approach 1 only, stops before receiver",
+      "samples": 2556,
+      "minimum": {
+        "gap": 0.02700067938138792,
+        "center": {
+          "x": 2.299999952316284,
+          "y": 0.019999999552965164,
+          "z": 1.350000023841858
+        },
+        "shapeType": 10,
+        "handle": 7.816e-321,
+        "inside": false,
+        "p": {
+          "x": 2.1199999999999997,
+          "y": 0.175,
+          "z": 1.3504958308567026
+        },
+        "segment": 1
+      },
+      "continuousPolylineLowerBound": 0.026504848524685414,
+      "negativeExamples": [],
+      "limits": "Finite polyline sphere center existence only; scalar distance-to-solid is1-Lipschitz. Engine query numerical error is separate; no natural motion implied. Floor contact excluded explicitly."
+    }
+  ],
+  "pairs": [
+    {
+      "side": -1,
+      "a": [
+        -2.210513471792925,
+        0.22,
+        2.918349652061957
+      ],
+      "b": [
+        -1.8108036040528812,
+        0.22,
+        2.7598188297237227
+      ],
+      "axisDistance": 0.4296976768074112,
+      "i": 9,
+      "j": 1,
+      "solidSurfaceGap": 0.3896976768074112,
+      "spareBeyondBall": 0.11969767680741117
+    },
+    {
+      "side": -1,
+      "a": [
+        -1.999312769096878,
+        0.22,
+        4.265072683547624
+      ],
+      "b": [
+        -2.219816364482578,
+        0.22,
+        4.061990603206505
+      ],
+      "axisDistance": 0.29977352607209534,
+      "i": 42,
+      "j": 34,
+      "solidSurfaceGap": 0.2597735260720953,
+      "spareBeyondBall": -0.010226473927904711
+    },
+    {
+      "side": 1,
+      "a": [
+        2.210513471792925,
+        0.22,
+        2.918349652061957
+      ],
+      "b": [
+        1.8108036040528812,
+        0.22,
+        2.7598188297237227
+      ],
+      "axisDistance": 0.4296976768074112,
+      "i": 9,
+      "j": 1,
+      "solidSurfaceGap": 0.3896976768074112,
+      "spareBeyondBall": 0.11969767680741117
+    },
+    {
+      "side": 1,
+      "a": [
+        2.022379128654739,
+        0.22,
+        4.291141071021557
+      ],
+      "b": [
+        2.247966758341124,
+        0.23,
+        4.072753508647439
+      ],
+      "axisDistance": 0.31382339665568704,
+      "i": 43,
+      "j": 34,
+      "solidSurfaceGap": 0.24882339665568703,
+      "spareBeyondBall": -0.021176603344312983
+    }
+  ],
+  "limitations": [
+    "All-height samples elsewhere retain their negative contacts; these paths demonstrate one ground route, not all trajectories",
+    "OUT low cam remains an intended .020 rise requiring low-speed natural test",
+    "IN final receiver equilibrium/release and wire falling flight not proved",
+    "Right narrow fork between OUT and shooter is not the exterior path tested here; high drops into that fork remain a gate"
+  ]
+}

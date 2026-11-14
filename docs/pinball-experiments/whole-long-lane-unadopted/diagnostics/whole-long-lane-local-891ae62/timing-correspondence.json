@@ -1,0 +1,905 @@
+{
+  "definition": "along is clamp((pivotX-abs(ballX))/(flipperCenter+flipperHalfLength),0,1) at actual coil; not bat-local u divided by length",
+  "rows": [
+    {
+      "mode": "baseline",
+      "side": -1,
+      "delay": 30,
+      "releaseU": [
+        0.04019691393986064,
+        0.3452713462744657
+      ],
+      "reachedZminus1": false,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.04019691393986064,
+      "normalizedAlong": 0.17337140284086527,
+      "aimAngle": -0.0713942445453846,
+      "faceAngle": -0.37000000000000055,
+      "coilP": {
+        "x": -1.0523566007614136,
+        "y": 0.17117932438850403,
+        "z": 4.238022327423096
+      },
+      "shotV": [
+        1.7234851673890317,
+        -24.099364061299923
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": 1,
+      "delay": 30,
+      "releaseU": [
+        0.04023310247360912,
+        0.3453304337486287
+      ],
+      "reachedZminus1": false,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.04023310247360912,
+      "normalizedAlong": 0.17342619728623773,
+      "aimAngle": -0.07148191565798119,
+      "faceAngle": -0.3700000000000041,
+      "coilP": {
+        "x": 1.052294135093689,
+        "y": 0.17117926478385925,
+        "z": 4.237992286682129
+      },
+      "shotV": [
+        -1.725691902275121,
+        -24.100524577166063
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": -1,
+      "delay": 35,
+      "releaseU": [
+        0.037209727453075006,
+        0.34533183831051456
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.061525221296809506,
+      "normalizedAlong": 0.1845499925446092,
+      "aimAngle": -0.11527998807137474,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -1.0396130084991455,
+        "y": 0.1714390069246292,
+        "z": 4.257516384124756
+      },
+      "shotV": [
+        2.8099643752417256,
+        -24.267053881913007
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": 1,
+      "delay": 35,
+      "releaseU": [
+        0.0371936118340766,
+        0.3453304337486287
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.0615064290893656,
+      "normalizedAlong": 0.18453984929804215,
+      "aimAngle": -0.11526375887686746,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 1.039624571800232,
+        "y": 0.17143891751766205,
+        "z": 4.2574992179870605
+      },
+      "shotV": [
+        -2.8095425426554206,
+        -24.266857659594116
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": -1,
+      "delay": 40,
+      "releaseU": [
+        0.037209727453075006,
+        0.34533183831051456
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.08995509148766528,
+      "normalizedAlong": 0.20721178305776494,
+      "aimAngle": -0.15153885289242391,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -1.013778567314148,
+        "y": 0.17134980857372284,
+        "z": 4.272287368774414
+      },
+      "shotV": [
+        3.7699247953521238,
+        -24.68688986573074
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": 1,
+      "delay": 40,
+      "releaseU": [
+        0.0371936118340766,
+        0.3453304337486287
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.08992876230931052,
+      "normalizedAlong": 0.20719672504224274,
+      "aimAngle": -0.1515147600675884,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 1.0137957334518433,
+        "y": 0.1713496595621109,
+        "z": 4.272258281707764
+      },
+      "shotV": [
+        -3.769275470329915,
+        -24.686623434593542
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": -1,
+      "delay": 45,
+      "releaseU": [
+        0.037209727453075006,
+        0.34533183831051456
+      ],
+      "reachedZminus1": true,
+      "end": "held-recapture",
+      "preRepressLocalU": 0.12247644843047455,
+      "normalizedAlong": 0.2315190277601543,
+      "aimAngle": -0.1904304444162469,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -0.9860683083534241,
+        "y": 0.17129196226596832,
+        "z": 4.290915012359619
+      },
+      "shotV": [
+        4.837366387276076,
+        -25.09446878833748
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": 1,
+      "delay": 45,
+      "releaseU": [
+        0.0371936118340766,
+        0.3453304337486287
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.12244106268288601,
+      "normalizedAlong": 0.2314964930216471,
+      "aimAngle": -0.1903943888346354,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 0.9860939979553223,
+        "y": 0.17129190266132355,
+        "z": 4.29088830947876
+      },
+      "shotV": [
+        -4.8363592377527045,
+        -25.09411212540158
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": -1,
+      "delay": 50,
+      "releaseU": [
+        0.037209727453075006,
+        0.34533183831051456
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.158838248843537,
+      "normalizedAlong": 0.25873419485594096,
+      "aimAngle": -0.23397471176950557,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -0.9550430178642273,
+        "y": 0.1712525188922882,
+        "z": 4.310389518737793
+      },
+      "shotV": [
+        6.076589314849008,
+        -25.49547564386496
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": 1,
+      "delay": 50,
+      "releaseU": [
+        0.0371936118340766,
+        0.3453304337486287
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.1587960305528015,
+      "normalizedAlong": 0.2587049676660906,
+      "aimAngle": -0.23392794826574498,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 0.9550763368606567,
+        "y": 0.17125248908996582,
+        "z": 4.310361862182617
+      },
+      "shotV": [
+        -6.075234453544754,
+        -25.49507743121983
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": -1,
+      "delay": 55,
+      "releaseU": [
+        0.037209727453075006,
+        0.34533183831051456
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.19896739904280203,
+      "normalizedAlong": 0.28869284872423134,
+      "aimAngle": -0.2819085579587702,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -0.9208901524543762,
+        "y": 0.1712235063314438,
+        "z": 4.331862449645996
+      },
+      "shotV": [
+        7.491258272275738,
+        -25.865654357744777
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": 1,
+      "delay": 55,
+      "releaseU": [
+        0.0371936118340766,
+        0.3453304337486287
+      ],
+      "reachedZminus1": true,
+      "end": "held-recapture",
+      "preRepressLocalU": 0.19891722497526815,
+      "normalizedAlong": 0.28865713822214223,
+      "aimAngle": -0.2818514211554276,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 0.9209308624267578,
+        "y": 0.17122353613376617,
+        "z": 4.331831455230713
+      },
+      "shotV": [
+        -7.489542003505322,
+        -25.865259107463544
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": -1,
+      "delay": 60,
+      "releaseU": [
+        0.037209727453075006,
+        0.34533183831051456
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.24284240032764196,
+      "normalizedAlong": 0.32138693750950326,
+      "aimAngle": -0.3342191000152052,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -0.8836188912391663,
+        "y": 0.17119953036308289,
+        "z": 4.355312347412109
+      },
+      "shotV": [
+        9.090833149623515,
+        -26.17982049765487
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": 1,
+      "delay": 60,
+      "releaseU": [
+        0.0371936118340766,
+        0.3453304337486287
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.2427833646503732,
+      "normalizedAlong": 0.3213447436951754,
+      "aimAngle": -0.3341515899122807,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 0.8836669921875,
+        "y": 0.17119963467121124,
+        "z": 4.355276584625244
+      },
+      "shotV": [
+        -9.088733609428783,
+        -26.17947752040339
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": -1,
+      "delay": 65,
+      "releaseU": [
+        0.037209727453075006,
+        0.34533183831051456
+      ],
+      "reachedZminus1": false,
+      "end": "held-recapture",
+      "preRepressLocalU": 0.29044132129058225,
+      "normalizedAlong": 0.3570443705508583,
+      "aimAngle": -0.3912709928813733,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -0.8429694175720215,
+        "y": 0.17117691040039062,
+        "z": 4.380926609039307
+      },
+      "shotV": [
+        10.89520316631651,
+        -26.409960561078776
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": 1,
+      "delay": 65,
+      "releaseU": [
+        0.0371936118340766,
+        0.3453304337486287
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.29037484561173776,
+      "normalizedAlong": 0.35699548428518724,
+      "aimAngle": -0.3911927748562996,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 0.8430251479148865,
+        "y": 0.17117704451084137,
+        "z": 4.380887508392334
+      },
+      "shotV": [
+        -10.892690040183735,
+        -26.40972804598848
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": -1,
+      "delay": 70,
+      "releaseU": [
+        0.037209727453075006,
+        0.34533183831051456
+      ],
+      "reachedZminus1": false,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.3417429086493027,
+      "normalizedAlong": 0.3958518044990405,
+      "aimAngle": -0.4533628871984649,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -0.7987289428710938,
+        "y": 0.171153262257576,
+        "z": 4.4088640213012695
+      },
+      "shotV": [
+        12.920933707256214,
+        -26.52028709308882
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "baseline",
+      "side": 1,
+      "delay": 70,
+      "releaseU": [
+        0.0371936118340766,
+        0.3453304337486287
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.34166855315133554,
+      "normalizedAlong": 0.39579664406023524,
+      "aimAngle": -0.45327463049637645,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 0.7987918257713318,
+        "y": 0.17115336656570435,
+        "z": 4.4088215827941895
+      },
+      "shotV": [
+        -12.918013334053281,
+        -26.520237183439175
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "delay": 30,
+      "releaseU": [
+        0.08615863269745376,
+        0.4428918974659587
+      ],
+      "reachedZminus1": false,
+      "end": "held-recapture",
+      "preRepressLocalU": 0.08615863269745376,
+      "normalizedAlong": 0.17073473785862775,
+      "aimAngle": -0.0071755805738045325,
+      "faceAngle": -0.07000000000000056,
+      "coilP": {
+        "x": -1.6182876825332642,
+        "y": 0.1711614429950714,
+        "z": 4.226978778839111
+      },
+      "shotV": [
+        0.1729130284533224,
+        -24.097013330261213
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": 1,
+      "delay": 30,
+      "releaseU": [
+        0.0861813036486962,
+        0.4428931549043729
+      ],
+      "reachedZminus1": false,
+      "end": "held-recapture",
+      "preRepressLocalU": 0.0861813036486962,
+      "normalizedAlong": 0.17075467832160715,
+      "aimAngle": -0.007207485314572215,
+      "faceAngle": -0.07000000000000384,
+      "coilP": {
+        "x": 1.6182547807693481,
+        "y": 0.17116141319274902,
+        "z": 4.2269768714904785
+      },
+      "shotV": [
+        -0.17368528659315852,
+        -24.09748635993273
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "delay": 35,
+      "releaseU": [
+        0.0805863009780844,
+        0.44298057709163746
+      ],
+      "reachedZminus1": false,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.10664382186512385,
+      "normalizedAlong": 0.17080785288955222,
+      "aimAngle": -0.053292564623283564,
+      "faceAngle": -0.30000000000000004,
+      "coilP": {
+        "x": -1.6181670427322388,
+        "y": 0.17114128172397614,
+        "z": 4.265115261077881
+      },
+      "shotV": [
+        1.2837103722266983,
+        -24.065174262341035
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": 1,
+      "delay": 35,
+      "releaseU": [
+        0.08054675263443689,
+        0.4428931549043729
+      ],
+      "reachedZminus1": false,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.10660613759440918,
+      "normalizedAlong": 0.17076161413481736,
+      "aimAngle": -0.05321858261570778,
+      "faceAngle": -0.2999999999999998,
+      "coilP": {
+        "x": 1.6182433366775513,
+        "y": 0.17114141583442688,
+        "z": 4.265161991119385
+      },
+      "shotV": [
+        -1.2818709484206037,
+        -24.064161008967062
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "delay": 40,
+      "releaseU": [
+        0.0805863009780844,
+        0.44298057709163746
+      ],
+      "reachedZminus1": false,
+      "end": "held-recapture",
+      "preRepressLocalU": 0.14355449899124817,
+      "normalizedAlong": 0.1708143552144368,
+      "aimAngle": -0.09330296834309892,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -1.6181563138961792,
+        "y": 0.17111901938915253,
+        "z": 4.306363582611084
+      },
+      "shotV": [
+        2.2452980089090695,
+        -23.994721985693165
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": 1,
+      "delay": 40,
+      "releaseU": [
+        0.08054675263443689,
+        0.4428931549043729
+      ],
+      "reachedZminus1": false,
+      "end": "held-recapture",
+      "preRepressLocalU": 0.14351833708411743,
+      "normalizedAlong": 0.1707685499480276,
+      "aimAngle": -0.09322967991684417,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 1.6182318925857544,
+        "y": 0.17111912369728088,
+        "z": 4.306410789489746
+      },
+      "shotV": [
+        -2.2434371260253494,
+        -23.993791923305004
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "delay": 45,
+      "releaseU": [
+        0.0805863009780844,
+        0.44298057709163746
+      ],
+      "reachedZminus1": false,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.18251371138428885,
+      "normalizedAlong": 0.19210101618911277,
+      "aimAngle": -0.12736162590258043,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -1.5830333232879639,
+        "y": 0.17136502265930176,
+        "z": 4.31891393661499
+      },
+      "shotV": [
+        3.125956628488901,
+        -24.411091408226447
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": 1,
+      "delay": 45,
+      "releaseU": [
+        0.08054675263443689,
+        0.4428931549043729
+      ],
+      "reachedZminus1": false,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.1824776450675233,
+      "normalizedAlong": 0.1920583898370916,
+      "aimAngle": -0.12729342373934655,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 1.5831036567687988,
+        "y": 0.17136596143245697,
+        "z": 4.318953037261963
+      },
+      "shotV": [
+        -3.1241618580780095,
+        -24.410289793234014
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "delay": 50,
+      "releaseU": [
+        0.0805863009780844,
+        0.44298057709163746
+      ],
+      "reachedZminus1": false,
+      "end": "held-recapture",
+      "preRepressLocalU": 0.22439111841219828,
+      "normalizedAlong": 0.21325264555035212,
+      "aimAngle": -0.1612042328805634,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -1.548133134841919,
+        "y": 0.17129208147525787,
+        "z": 4.342670917510986
+      },
+      "shotV": [
+        4.031623569358593,
+        -24.792400550246107
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": 1,
+      "delay": 50,
+      "releaseU": [
+        0.08054675263443689,
+        0.4428931549043729
+      ],
+      "reachedZminus1": false,
+      "end": "held-recapture",
+      "preRepressLocalU": 0.22435210004826567,
+      "normalizedAlong": 0.21321825547651807,
+      "aimAngle": -0.16114920876242894,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 1.5481898784637451,
+        "y": 0.17129291594028473,
+        "z": 4.342684268951416
+      },
+      "shotV": [
+        -4.030126951811206,
+        -24.791807681239572
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "delay": 55,
+      "releaseU": [
+        0.0805863009780844,
+        0.44298057709163746
+      ],
+      "reachedZminus1": false,
+      "end": "held-recapture",
+      "preRepressLocalU": 0.2696857791181305,
+      "normalizedAlong": 0.23684279123942054,
+      "aimAngle": -0.19894846598307286,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -1.509209394454956,
+        "y": 0.17123717069625854,
+        "z": 4.365976810455322
+      },
+      "shotV": [
+        5.076195892114545,
+        -25.177604161748214
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": 1,
+      "delay": 55,
+      "releaseU": [
+        0.08054675263443689,
+        0.4428931549043729
+      ],
+      "reachedZminus1": false,
+      "end": "held-recapture",
+      "preRepressLocalU": 0.2696444712063015,
+      "normalizedAlong": 0.2368129527930057,
+      "aimAngle": -0.1989007244688092,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 1.5092586278915405,
+        "y": 0.17123746871948242,
+        "z": 4.365976333618164
+      },
+      "shotV": [
+        -5.074852369371545,
+        -25.177144474424455
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "delay": 60,
+      "releaseU": [
+        0.0805863009780844,
+        0.44298057709163746
+      ],
+      "reachedZminus1": false,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.3185485232398282,
+      "normalizedAlong": 0.2624350027604536,
+      "aimAngle": -0.23989600441672582,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -1.4669822454452515,
+        "y": 0.17119696736335754,
+        "z": 4.391359806060791
+      },
+      "shotV": [
+        6.248551707663733,
+        -25.545323475635275
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": 1,
+      "delay": 60,
+      "releaseU": [
+        0.08054675263443689,
+        0.4428931549043729
+      ],
+      "reachedZminus1": false,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.31850476523348537,
+      "normalizedAlong": 0.26240711501150416,
+      "aimAngle": -0.23985138401840667,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 1.467028260231018,
+        "y": 0.17119701206684113,
+        "z": 4.3913493156433105
+      },
+      "shotV": [
+        -6.247252859767298,
+        -25.54495211712408
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "delay": 65,
+      "releaseU": [
+        0.0805863009780844,
+        0.44298057709163746
+      ],
+      "reachedZminus1": false,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.3709556775102306,
+      "normalizedAlong": 0.2901338230479847,
+      "aimAngle": -0.2842141168767755,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -1.4212791919708252,
+        "y": 0.17116427421569824,
+        "z": 4.418923377990723
+      },
+      "shotV": [
+        7.560570390129241,
+        -25.88151006840975
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": 1,
+      "delay": 65,
+      "releaseU": [
+        0.08054675263443689,
+        0.4428931549043729
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.37091161832541075,
+      "normalizedAlong": 0.2901076692523378,
+      "aimAngle": -0.28417227080374047,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 1.4213223457336426,
+        "y": 0.17116425931453705,
+        "z": 4.418907165527344
+      },
+      "shotV": [
+        -7.55931136258125,
+        -25.88122390898452
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "delay": 70,
+      "releaseU": [
+        0.0805863009780844,
+        0.44298057709163746
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.4268885287473833,
+      "normalizedAlong": 0.31967164530898584,
+      "aimAngle": -0.3314746324943774,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": -1.3725417852401733,
+        "y": 0.17113371193408966,
+        "z": 4.448334693908691
+      },
+      "shotV": [
+        9.005552036616868,
+        -26.165745344659978
+      ],
+      "angularSpeed": 12
+    },
+    {
+      "mode": "candidate",
+      "side": 1,
+      "delay": 70,
+      "releaseU": [
+        0.08054675263443689,
+        0.4428931549043729
+      ],
+      "reachedZminus1": true,
+      "end": "ordinary-drain",
+      "preRepressLocalU": 0.4268433556314353,
+      "normalizedAlong": 0.3196462862419359,
+      "aimAngle": -0.3314340579870975,
+      "faceAngle": -0.5,
+      "coilP": {
+        "x": 1.3725836277008057,
+        "y": 0.17113365232944489,
+        "z": 4.448315620422363
+      },
+      "shotV": [
+        -9.004292323190082,
+        -26.16553522434344
+      ],
+      "angularSpeed": 12
+    }
+  ]
+}

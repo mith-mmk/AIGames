@@ -1,0 +1,117 @@
+{
+  "sourceSHA256": "d2ae6a0877c7f131ee9638329116c1f69b5b9537f3f8066605f1b0bf140e83a9",
+  "scope": "static working snapshot only; right-column obstruction unresolved; no natural trial",
+  "images": [
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/baseline-installed-10.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 429327,
+      "sha256": "a9baefbb89dcd31abda87f0f7eea52bf1b7e32511aa20c233577dd6ed2600b84"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/baseline-installed-45.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 739686,
+      "sha256": "2c455a455527f98ef453a7151038c6bb95fa11a5255214b7b047b5933beb450d"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/baseline-installed-90.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 615702,
+      "sha256": "88f6759271b141b16c2c511faee495455a4cfad43cfc540f8c25cbe5fe7e8654"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/baseline-lower-closeup.png",
+      "width": 1200,
+      "height": 900,
+      "bytes": 792028,
+      "sha256": "365df1f91c3285b55916c9ecf4b3c40f23ec77c24d227720e7a5b2ac73dd3a3b"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/baseline-lower-side.png",
+      "width": 1200,
+      "height": 900,
+      "bytes": 113297,
+      "sha256": "28339ec3fd71e37f2f19ced198d9dfbb3b00c827d4ccbef7a18a2a7f27618360"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/baseline-lower-underside.png",
+      "width": 1200,
+      "height": 900,
+      "bytes": 114483,
+      "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/baseline-mobile-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 252481,
+      "sha256": "dcf1e254317d3094e2653b12705caa72ba7b96502d54d18eb9acb2e4ce7b4d60"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/candidate-installed-10.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 433970,
+      "sha256": "c01917ac4ee1d9fba05fd78d2ca08f219fff244b89aa9b61e419ec714e9eb3b6"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/candidate-installed-45.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 779272,
+      "sha256": "f4c4897de43a41a3af6f0b795c190a2a8dae16a995833cad63638a4223e568e0"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/candidate-installed-90.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 657139,
+      "sha256": "67e55ed1625a98bda05f1a61f49e279d14ee8558c4d9b6fd353b1b399459f067"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/candidate-lower-closeup.png",
+      "width": 1200,
+      "height": 900,
+      "bytes": 805352,
+      "sha256": "36eaf157a192c460f08bc422c4eab205e4e2e76b4e169c6db432c509ef57546e"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/candidate-lower-side.png",
+      "width": 1200,
+      "height": 900,
+      "bytes": 111330,
+      "sha256": "09423c6be2a3bb69e50691eadeb77fc1fc84f8ed62e33ca9a7f0f444285c6e5d"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/candidate-lower-underside.png",
+      "width": 1200,
+      "height": 900,
+      "bytes": 86219,
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+    },
+    {
+      "path": "artifacts/pinball/whole-long-lane-independent-d2ae6a/preview-final/candidate-mobile-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 265403,
+      "sha256": "445db8183f6837e84b66088fd3f1de39e94ca093501a5863693a637de1044e9d"
+    }
+  ],
+  "files": {
+    "artifacts/pinball/whole-long-lane-independent-d2ae6a/README.md": "31160864d575f0dddfd244ef60f1d5da55793d93b450907e784d4644e33695ed",
+    "artifacts/pinball/whole-long-lane-independent-d2ae6a/baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+    "artifacts/pinball/whole-long-lane-independent-d2ae6a/geometry.mjs": "28c84b4a6729db0668d1f19591f7af49408aec3122fabfe7c17859a42a917c4d",
+    "artifacts/pinball/whole-long-lane-independent-d2ae6a/loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+    "artifacts/pinball/whole-long-lane-independent-d2ae6a/manifest.json": "cffbe5392ba70987ecd0e1c48c5cfbe8b586b19350ba4bfcbdf0b3e6cd7d824a",
+    "artifacts/pinball/whole-long-lane-independent-d2ae6a/sources.json": "d2ae6a0877c7f131ee9638329116c1f69b5b9537f3f8066605f1b0bf140e83a9",
+    "artifacts/pinball/whole-long-lane-independent-d2ae6a/upper-sections.json": "a85cb89a4b4903fc415ea9743069b31eb5a1256ed53a6969483e3ac4bfd02c46",
+    "artifacts/pinball/whole-long-lane-independent-d2ae6a/upper-sections.log": "11202c4506213c5405982d56d5e561c4a3c23a9590d5a3cc868fe87ed6d397d8",
+    "artifacts/pinball/whole-long-lane-independent-d2ae6a/upper-sections.mjs": "17fef8ba0349aaf8e61e22731f6ea9d3457d01a891682a7779ce3e205a29da30",
+    "artifacts/pinball/whole-long-lane-independent-d2ae6a/visual.cjs": "2d4f42e9d4f35f7d72610e7b6cc969d7ab6dec7a5c73576a007f6652c238ef0d",
+    "artifacts/pinball/whole-long-lane-independent-d2ae6a/visual.log": "e1ba8c66e426fec8b377cd7a2a7a8816d4ae75202a8737ba457fafe804629671"
+  }
+}

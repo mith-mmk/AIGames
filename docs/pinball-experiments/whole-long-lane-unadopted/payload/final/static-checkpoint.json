@@ -1,0 +1,534 @@
+{
+  "status": "FROZEN for independent limited contact diagnosis, NOT adoption or safety PASS",
+  "sourceSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+  "baselineSourceSha256": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+  "previousFailures": {
+    "d2ae6a": "initial-column-failure: right support projection -0.099519 in curved shooter",
+    "4c586a": "late-out-throat-failure: floor right OUT throat -0.0060513"
+  },
+  "changedFrom4c": [
+    "web/js/pinball/whole-layout-geometry.mjs",
+    "web/js/pinball/lower-c-study.mjs"
+  ],
+  "contracts": {
+    "strikeFunctionByteEqual": true,
+    "launchFunctionByteEqual": true,
+    "gameStateByteEqual": true,
+    "plungerInputByteEqual": true,
+    "oldOutOfBounds": [
+      -3.2,
+      3.2
+    ],
+    "newOutOfBounds": [
+      -3.68,
+      4.1
+    ],
+    "oldShooterReturnX": [
+      2.45,
+      2.7
+    ],
+    "newShooterReturnX": [
+      2.85,
+      3.1
+    ]
+  },
+  "changedFromAccepted": 12,
+  "unchangedAcceptedSources": 27,
+  "assembly": {
+    "colliders": 1581,
+    "attachments": 59,
+    "sweep": {
+      "angles": 541,
+      "shared": {
+        "gap": 0.06593357026576996,
+        "angle": 0.4800000000000001,
+        "body": "shared-1",
+        "part": "stock",
+        "partCenter": {
+          "x": 1.9864403009414673,
+          "y": 0.2199999988079071,
+          "z": 4.252269744873047
+        },
+        "point": {
+          "x": 1.9252723455429077,
+          "y": 0.22017115354537964,
+          "z": 4.312617301940918
+        }
+      },
+      "actualMeshConvex": {
+        "gap": 0.06590718030929565,
+        "angle": 0.4800000000000001,
+        "body": "continuous-moulded-rubber-belt",
+        "part": "stock",
+        "partCenter": {
+          "x": -1.9864403009414673,
+          "y": 0.2199999988079071,
+          "z": 4.252269744873047
+        },
+        "point": {
+          "x": -1.9282581806182861,
+          "y": 0.21997198462486267,
+          "z": 4.315564155578613
+        }
+      },
+      "negativeExamples": [],
+      "meshEnvelopeCount": 8,
+      "maxMovingRadius": 1.6491011381149292,
+      "nearestAngleMotionBound": 0.0016491011381149293,
+      "scope": "Conservative mesh convex envelopes; negative needs actual visible triangle review. Positive sampled result minus angular bound is a continuous yaw lower bound with query error separate."
+    }
+  },
+  "outSurfaceGaps": [
+    {
+      "side": -1,
+      "divider": {
+        "d": 0.4298802688981531,
+        "a": [
+          2.24940101624262,
+          0.22,
+          2.8049606184249405
+        ],
+        "b": [
+          2.6592095944909673,
+          0.22,
+          2.934783477667897
+        ],
+        "i": 7,
+        "j": 8,
+        "surfaceGap": 0.3898802688981531,
+        "spareBeyondDiameter": 0.11988026889815306
+      }
+    },
+    {
+      "side": 1,
+      "divider": {
+        "d": 0.4499858283421971,
+        "a": [
+          2.2312954286184747,
+          0.22,
+          2.8621140748028804
+        ],
+        "b": [
+          2.6532772681770718,
+          0.23,
+          3.0180582083621643
+        ],
+        "i": 8,
+        "j": 8,
+        "surfaceGap": 0.3849858283421971,
+        "spareBeyondDiameter": 0.11498582834219706
+      }
+    }
+  ],
+  "rightBridge": {
+    "sourceSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+    "status": "Static installed 94ea geometry inspection. No collider modification, no stepping, no ball injection trial.",
+    "method": "At each Z solve the exact sphere-inflated chord/capsule union and straight shooter stock contact surfaces. Use their normal cross product as the local ideal rolling direction, plus remaining real fixed-collider queries.",
+    "samples": 1713,
+    "minOtherCollider": {
+      "gap": 0.040673602677103016,
+      "p": [
+        2.623160387446313,
+        0.3577173155340756,
+        3.3846198914768326
+      ],
+      "center": {
+        "x": 2.5151796340942383,
+        "y": 0.019999999552965164,
+        "z": 3.3176450729370117
+      },
+      "type": 10,
+      "handle": 7.737e-321
+    },
+    "maxIntendedFloatPenetration": 4.3677927269447636e-07,
+    "minGravityAlongIdealRollingDirection": {
+      "value": 1.904686337409002,
+      "p": [
+        2.622371152593621,
+        0.3569286307722542,
+        3.9464081109236533
+      ],
+      "tangent": [
+        0.0540013841547972,
+        0.05429928910516886,
+        0.9970634070669927
+      ],
+      "outerSegment": 28
+    },
+    "start": {
+      "p": [
+        2.640349081572878,
+        0.37274689519596776,
+        3.3176451393363755
+      ],
+      "outerSegment": 11,
+      "normalOut": [
+        0.5358842135301739,
+        0.7930383066442653,
+        0.28968664774880903
+      ],
+      "normalShooter": [
+        -0.6091717690395676,
+        0.7930383066442653,
+        0
+      ],
+      "rollingTangent": [
+        -0.24102189603623742,
+        -0.18514078519983335,
+        0.952696874817319
+      ],
+      "gravityAlong": 24.922510980255485
+    },
+    "end": {
+      "p": [
+        2.570997222222222,
+        0.24892103453406825,
+        5.029
+      ],
+      "outerSegment": 36,
+      "normalOut": [
+        0.0055401234567906445,
+        0.10511685852260132,
+        0.994444444444446
+      ],
+      "normalShooter": [
+        -0.9944598765432103,
+        0.10511685852260132,
+        0
+      ],
+      "rollingTangent": [
+        -0.10453448022428755,
+        -0.9889502764773176,
+        0.10511847173392036
+      ],
+      "gravityAlong": 97.1511766144699
+    },
+    "yRange": [
+      0.24892103453406825,
+      0.38588456538422994
+    ],
+    "limits": [
+      "Finite Z samples, not a continuous proof",
+      "Capsule junction simultaneous contacts/friction/rolling damping/engine response not proven by normal cross product",
+      "High falling balls can reach this rail-top bridge; this is not an inaccessible sealed region",
+      "No ordinary OUT or elevated natural return can be claimed before actual diagnostic runs",
+      "The end sample lies after OUT cap but before drainZ5.05; physical drain trajectory has not been simulated"
+    ]
+  },
+  "highContactFixture": {
+    "sourceSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+    "status": "Predeclared geometry diagnostic start, not naturally reached or successful trajectory",
+    "rule": "Exact two-rail inflated contact solution at fixed OUT departure t=.40, raised Y by .005 only to avoid initial overlap. No success search.",
+    "p": [
+      2.640349081572878,
+      0.37774689519596777,
+      3.3176451393363755
+    ],
+    "v": [
+      0,
+      0,
+      0
+    ],
+    "spin": [
+      0,
+      0,
+      0
+    ],
+    "inputs": {
+      "left": false,
+      "right": false,
+      "launch": false,
+      "nudge": false
+    },
+    "dt": 0.008333333333333333,
+    "maxTicks": 1800,
+    "maxSeconds": 15,
+    "observation": {
+      "outerAxisEndZ": 4.85,
+      "sphereInflatedCapEndZ": 5.03,
+      "ordinaryDrainZ": 5.05,
+      "stop": "ordinary drain or maxTicks; record persistent low speed and all load-bearing contacts. No rescue."
+    },
+    "minimumFixedClearance": {
+      "gap": 0.003990361511560625,
+      "center": {
+        "x": 2.75,
+        "y": 0.23000000417232513,
+        "z": 3.200000047683716
+      },
+      "type": 2,
+      "handle": 3.5e-323
+    },
+    "scope": "All actual fixed non-sensor colliders including floor/caps/supports/cam queried. Flippers are distant but not counted as fixed. Sphere radius .135. Engine query numerical error remains separate."
+  },
+  "productionDiff": "",
+  "sourceIdentityVsPrecheck": true,
+  "mainOUT": {
+    "result": [
+      {
+        "side": -1,
+        "y": 0.175,
+        "samples": 1751,
+        "negativeSamples": 120,
+        "minimum": {
+          "gap": -0.019999998658817963,
+          "p": [
+            -2.144892599058728,
+            0.175,
+            3.6
+          ],
+          "center": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "handle": 7.806e-321,
+          "type": 9
+        },
+        "scope": "Fixed-height actual OUT median inspection only; negative samples are kept. Not a runtime centerline or all-height connectivity proof."
+      },
+      {
+        "side": -1,
+        "y": 0.195,
+        "samples": 1751,
+        "negativeSamples": 0,
+        "minimum": {
+          "gap": 1.3411705634958082e-09,
+          "p": [
+            -2.144892599058728,
+            0.195,
+            3.6
+          ],
+          "center": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "handle": 7.806e-321,
+          "type": 9
+        },
+        "scope": "Fixed-height actual OUT median inspection only; negative samples are kept. Not a runtime centerline or all-height connectivity proof."
+      },
+      {
+        "side": -1,
+        "y": 0.22,
+        "samples": 1751,
+        "negativeSamples": 55,
+        "minimum": {
+          "gap": -0.00900001406669615,
+          "p": [
+            -2.483485457529796,
+            0.22,
+            2.75
+          ],
+          "center": {
+            "x": -2.5899999141693115,
+            "y": 0.3799999952316284,
+            "z": 2.75
+          },
+          "handle": 5.07e-321,
+          "type": 10
+        },
+        "scope": "Fixed-height actual OUT median inspection only; negative samples are kept. Not a runtime centerline or all-height connectivity proof."
+      },
+      {
+        "side": -1,
+        "y": 0.35,
+        "samples": 1751,
+        "negativeSamples": 589,
+        "minimum": {
+          "gap": -0.13499999343507,
+          "p": [
+            -2.483485457529796,
+            0.35,
+            2.75
+          ],
+          "center": {
+            "x": -2.5899999141693115,
+            "y": 0.3799999952316284,
+            "z": 2.75
+          },
+          "handle": 5.07e-321,
+          "type": 10
+        },
+        "scope": "Fixed-height actual OUT median inspection only; negative samples are kept. Not a runtime centerline or all-height connectivity proof."
+      },
+      {
+        "side": -1,
+        "y": 0.575,
+        "samples": 1751,
+        "negativeSamples": 507,
+        "minimum": {
+          "gap": -0.13441290663252464,
+          "p": [
+            -2.5149999999999997,
+            0.575,
+            1.7000000000000002
+          ],
+          "center": {
+            "x": -2.5275869369506836,
+            "y": 0.5243451595306396,
+            "z": 1.6999666690826416
+          },
+          "handle": 7.15e-321,
+          "type": 10
+        },
+        "scope": "Fixed-height actual OUT median inspection only; negative samples are kept. Not a runtime centerline or all-height connectivity proof."
+      },
+      {
+        "side": 1,
+        "y": 0.175,
+        "samples": 1751,
+        "negativeSamples": 0,
+        "minimum": {
+          "gap": 0.051563716692716866,
+          "p": [
+            2.5215300541620125,
+            0.175,
+            2.5460000000000003
+          ],
+          "center": {
+            "x": 2.7452125549316406,
+            "y": 0.23000000417232513,
+            "z": 2.5716605186462402
+          },
+          "handle": 1.47e-321,
+          "type": 2
+        },
+        "scope": "Fixed-height actual OUT median inspection only; negative samples are kept. Not a runtime centerline or all-height connectivity proof."
+      },
+      {
+        "side": 1,
+        "y": 0.195,
+        "samples": 1751,
+        "negativeSamples": 0,
+        "minimum": {
+          "gap": 0.04764391969517598,
+          "p": [
+            2.521388222878692,
+            0.195,
+            2.548
+          ],
+          "center": {
+            "x": 2.7452125549316406,
+            "y": 0.23000000417232513,
+            "z": 2.5716605186462402
+          },
+          "handle": 1.47e-321,
+          "type": 2
+        },
+        "scope": "Fixed-height actual OUT median inspection only; negative samples are kept. Not a runtime centerline or all-height connectivity proof."
+      },
+      {
+        "side": 1,
+        "y": 0.22,
+        "samples": 1751,
+        "negativeSamples": 0,
+        "minimum": {
+          "gap": 0.04515937894004854,
+          "p": [
+            2.5236310015289622,
+            0.22,
+            2.508
+          ],
+          "center": {
+            "x": 2.74904203414917,
+            "y": 0.23000000417232513,
+            "z": 2.490583658218384
+          },
+          "handle": 1.467e-321,
+          "type": 2
+        },
+        "scope": "Fixed-height actual OUT median inspection only; negative samples are kept. Not a runtime centerline or all-height connectivity proof."
+      },
+      {
+        "side": 1,
+        "y": 0.35,
+        "samples": 1751,
+        "negativeSamples": 0,
+        "minimum": {
+          "gap": 0.07494458534731696,
+          "p": [
+            2.5236310015289622,
+            0.35,
+            2.508
+          ],
+          "center": {
+            "x": 2.74904203414917,
+            "y": 0.23000000417232513,
+            "z": 2.490583658218384
+          },
+          "handle": 1.467e-321,
+          "type": 2
+        },
+        "scope": "Fixed-height actual OUT median inspection only; negative samples are kept. Not a runtime centerline or all-height connectivity proof."
+      },
+      {
+        "side": 1,
+        "y": 0.575,
+        "samples": 1751,
+        "negativeSamples": 0,
+        "minimum": {
+          "gap": 0.23185162145596078,
+          "p": [
+            2.520395403895446,
+            0.575,
+            2.5620000000000003
+          ],
+          "center": {
+            "x": 2.7452125549316406,
+            "y": 0.23000000417232513,
+            "z": 2.5716605186462402
+          },
+          "handle": 1.47e-321,
+          "type": 2
+        },
+        "scope": "Fixed-height actual OUT median inspection only; negative samples are kept. Not a runtime centerline or all-height connectivity proof."
+      }
+    ],
+    "witnesses": [
+      {
+        "side": -1,
+        "samples": 3680,
+        "minimum": {
+          "gap": 0.0010003893901752436,
+          "p": [
+            -2.144844964539001,
+            0.196,
+            3.6003212635196555
+          ],
+          "center": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "handle": 7.806e-321,
+          "type": 9
+        },
+        "continuousPolylineLowerBound": 0.000547999395928531,
+        "scope": "Existence of one sphere-center polyline with a geometric rise over the static left cam; floor contact excluded. Scalar distance 1-Lipschitz; query error separate. Not natural motion, starting fixture, force correction or dynamic qualification."
+      },
+      {
+        "side": 1,
+        "samples": 3675,
+        "minimum": {
+          "gap": 0.05156367250617627,
+          "p": [
+            2.5236206718230436,
+            0.175,
+            2.5084376359477125
+          ],
+          "center": {
+            "x": 2.74904203414917,
+            "y": 0.23000000417232513,
+            "z": 2.490583658218384
+          },
+          "handle": 1.467e-321,
+          "type": 2
+        },
+        "continuousPolylineLowerBound": 0.051064066419735786,
+        "scope": "Existence of one sphere-center polyline with a geometric rise over the static left cam; floor contact excluded. Scalar distance 1-Lipschitz; query error separate. Not natural motion, starting fixture, force correction or dynamic qualification."
+      }
+    ]
+  }
+}

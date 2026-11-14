@@ -1,0 +1,91 @@
+{
+  "status": "Concept only; no runtime geometry or source freeze",
+  "baseHEAD": "891ae621f7d822dcb2c3d66ea1247fa4f4c97bb5",
+  "runtime": "884960985a413986d57aff0c2280e59a7be79dcf",
+  "board": {
+    "left": -2.85,
+    "right": 3.65,
+    "rear": -5.75,
+    "front": 6.9,
+    "width": 6.5,
+    "length": 12.65,
+    "centerX": 0.4,
+    "centerZ": 0.575
+  },
+  "ballDiameter": 0.27,
+  "pivot": [
+    1.35,
+    0.27,
+    5.2
+  ],
+  "batLength": 1.14,
+  "laneMain": {
+    "dividerStart": [
+      1.9,
+      0.22,
+      3
+    ],
+    "dividerEnd": [
+      1.35,
+      0.22,
+      4.65
+    ],
+    "normalAxisOffset": 0.43,
+    "railRadius": 0.02,
+    "length": 1.7392527130926085,
+    "tangentDegrees": 18.434948822922014,
+    "straightSolidGap": 0.39,
+    "receiverAndTail": "NOT FIXED"
+  },
+  "upperConnector": {
+    "innerStart": [
+      2.75,
+      0.23,
+      0.5
+    ],
+    "innerEnd": [
+      2.35,
+      0.23,
+      -3.1
+    ],
+    "shift": 0.4,
+    "run": 3.6,
+    "innerAxisRadius": 8.2,
+    "normalAxisOffset": 0.455,
+    "innerRadius": 0.045,
+    "outerRadius": 0.06,
+    "nominalSolidGap": 0.35,
+    "roofJoin": "UNRESOLVED"
+  },
+  "shooter": {
+    "x": 2.93,
+    "restZ": 4.6,
+    "ballZ": 4.425,
+    "pullTravel": 0.32,
+    "proposedRearSeat": 6.14,
+    "guideStart": 6.164,
+    "guideEnd": 6.344,
+    "knobOriginRest": 6.45,
+    "knobRestEnd": 6.63,
+    "knobPulledEnd": 6.95,
+    "springFront": 4.72,
+    "springLengthRest": 1.42,
+    "caution": "Longer spring/rod installation is geometric concept; current input/force contract unchanged. Actual front mounting/cutout and ball swept clearance not verified."
+  },
+  "leftSupport": {
+    "postColumnX": -2.75,
+    "shaftRadius": 0.037,
+    "footRadius": 0.085,
+    "footEdgeToBoard": 0.015,
+    "crossHeads": "Must reconnect actual wire, not yet specified"
+  },
+  "unknowns": [
+    "Receiver rail normal and whole bat body sweep",
+    "OUT tail + finite earned-save positioning",
+    "Wire full-height arrival",
+    "Outer reachable region including rail supports and upper joint",
+    "Actual shooter extension/front cutout/cabinet contact",
+    "Reference composition and mobile readability",
+    "Natural6power/weak/IN36/continuousaim/naturalwire/full202/natural54"
+  ]
+}

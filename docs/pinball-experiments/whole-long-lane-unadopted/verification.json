@@ -1,0 +1,510 @@
+{
+  "status": "verified",
+  "variants": [
+    {
+      "variant": "final",
+      "verifyOnly": {
+        "status": "verified",
+        "adopted": false,
+        "variant": "final",
+        "sourceSetSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+        "originalBuildBytesUnchanged": true,
+        "originalArtifactWrites": 0,
+        "generatedHashes": {
+          "sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+          "manifest.json": "c8a743abcc18ab4c400bbbac0514984f216023d77e796fc61f42bf471a5b1181"
+        },
+        "restoredHashes": {
+          "sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+          "build-generated-manifest.json": "c8a743abcc18ab4c400bbbac0514984f216023d77e796fc61f42bf471a5b1181",
+          "build.mjs": "be1f6f3fc07dedb96f61060a66e0a18f34a887a2cddb46dcd357495c9ade70eb",
+          "geometry.mjs": "882884dad71d759f3d5e1f11f475d9bb612fb0917ae75b40f5d3feaa98d09ab5",
+          "helper.mjs": "322dfdbcf836a38ced4e2a43f2df80a0b88977f89be82b0fa37642aa36c8f0e1",
+          "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+          "manifest.json": "dd00260cdf9eb92707e7d4edf2b7bb9644b77076e3727750b954260780b6d016",
+          "dependencies.json": "a02c8f338561657c16060078c9438375b75c7fab8a6142fa4fea194c4541c240"
+        },
+        "suppressedBuildMessages": 1
+      },
+      "fresh": {
+        "status": "restored",
+        "adopted": false,
+        "variant": "final",
+        "sourceSetSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+        "originalBuildBytesUnchanged": true,
+        "originalArtifactWrites": 0,
+        "generatedHashes": {
+          "sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+          "manifest.json": "c8a743abcc18ab4c400bbbac0514984f216023d77e796fc61f42bf471a5b1181"
+        },
+        "restoredHashes": {
+          "sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+          "build-generated-manifest.json": "c8a743abcc18ab4c400bbbac0514984f216023d77e796fc61f42bf471a5b1181",
+          "build.mjs": "be1f6f3fc07dedb96f61060a66e0a18f34a887a2cddb46dcd357495c9ade70eb",
+          "geometry.mjs": "882884dad71d759f3d5e1f11f475d9bb612fb0917ae75b40f5d3feaa98d09ab5",
+          "helper.mjs": "322dfdbcf836a38ced4e2a43f2df80a0b88977f89be82b0fa37642aa36c8f0e1",
+          "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+          "manifest.json": "dd00260cdf9eb92707e7d4edf2b7bb9644b77076e3727750b954260780b6d016",
+          "dependencies.json": "a02c8f338561657c16060078c9438375b75c7fab8a6142fa4fea194c4541c240"
+        },
+        "suppressedBuildMessages": 1,
+        "output": "artifacts/pinball/whole-recovery-verify-final-20261115-085125",
+        "written": 10,
+        "reused": 0,
+        "fileCount": 10
+      },
+      "idempotence": {
+        "written": 0,
+        "reused": 10
+      },
+      "all10ActualHashesMatch": true,
+      "assembly": {
+        "status": "assembled",
+        "worldSteps": 0,
+        "colliders": 1581,
+        "attachments": 59,
+        "camVertices": 10,
+        "pivot": [
+          1.9,
+          0.27,
+          4.45
+        ],
+        "shooterX": 2.93,
+        "width": 6.88,
+        "lowerSegments": [
+          [
+            {
+              "role": "divider",
+              "count": 52,
+              "radius": 0.02
+            },
+            {
+              "role": "inner",
+              "count": 11,
+              "radius": 0.02
+            },
+            {
+              "role": "outer",
+              "count": 37,
+              "radius": 0.02
+            }
+          ],
+          [
+            {
+              "role": "divider",
+              "count": 52,
+              "radius": 0.02
+            },
+            {
+              "role": "inner",
+              "count": 11,
+              "radius": 0.02
+            },
+            {
+              "role": "outer",
+              "count": 36,
+              "radius": 0.045
+            }
+          ]
+        ],
+        "mounts": [
+          9,
+          8
+        ],
+        "saveFrame": {
+          "center": [
+            -2.144892599058728,
+            0,
+            3.6
+          ],
+          "down": [
+            0.14666894850567888,
+            0,
+            0.9891856345217708
+          ],
+          "cross": [
+            0.9891856345217708,
+            0,
+            -0.14666894850567888
+          ],
+          "halfAcross": 0.19,
+          "halfAlong": 0.135,
+          "maxY": 0.5,
+          "horizontalSpeed": 12,
+          "contactSkin": 0.001
+        }
+      }
+    },
+    {
+      "variant": "d2",
+      "verifyOnly": {
+        "status": "verified",
+        "adopted": false,
+        "variant": "d2",
+        "sourceSetSha256": "d2ae6a0877c7f131ee9638329116c1f69b5b9537f3f8066605f1b0bf140e83a9",
+        "originalBuildBytesUnchanged": true,
+        "originalArtifactWrites": 0,
+        "generatedHashes": {
+          "sources.json": "d2ae6a0877c7f131ee9638329116c1f69b5b9537f3f8066605f1b0bf140e83a9",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "f9627bd3485ad15094c34737438ec0e14ab90aa77bf56748ddfead31d8b06eaa",
+          "manifest.json": "cffbe5392ba70987ecd0e1c48c5cfbe8b586b19350ba4bfcbdf0b3e6cd7d824a"
+        },
+        "restoredHashes": {
+          "sources.json": "d2ae6a0877c7f131ee9638329116c1f69b5b9537f3f8066605f1b0bf140e83a9",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "f9627bd3485ad15094c34737438ec0e14ab90aa77bf56748ddfead31d8b06eaa",
+          "build-generated-manifest.json": "cffbe5392ba70987ecd0e1c48c5cfbe8b586b19350ba4bfcbdf0b3e6cd7d824a",
+          "build.mjs": "07eef640fa87acc4899b5b639f11e0110759ff9a5d0e29e3871390a961d7ea8d",
+          "geometry.mjs": "28c84b4a6729db0668d1f19591f7af49408aec3122fabfe7c17859a42a917c4d",
+          "helper.mjs": "428ba71a007af7d7f862174da82edc1fa1c137c06260818073df769dafdf0854",
+          "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+          "manifest.json": "cffbe5392ba70987ecd0e1c48c5cfbe8b586b19350ba4bfcbdf0b3e6cd7d824a",
+          "dependencies.json": "a02c8f338561657c16060078c9438375b75c7fab8a6142fa4fea194c4541c240"
+        },
+        "suppressedBuildMessages": 1
+      },
+      "fresh": {
+        "status": "restored",
+        "adopted": false,
+        "variant": "d2",
+        "sourceSetSha256": "d2ae6a0877c7f131ee9638329116c1f69b5b9537f3f8066605f1b0bf140e83a9",
+        "originalBuildBytesUnchanged": true,
+        "originalArtifactWrites": 0,
+        "generatedHashes": {
+          "sources.json": "d2ae6a0877c7f131ee9638329116c1f69b5b9537f3f8066605f1b0bf140e83a9",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "f9627bd3485ad15094c34737438ec0e14ab90aa77bf56748ddfead31d8b06eaa",
+          "manifest.json": "cffbe5392ba70987ecd0e1c48c5cfbe8b586b19350ba4bfcbdf0b3e6cd7d824a"
+        },
+        "restoredHashes": {
+          "sources.json": "d2ae6a0877c7f131ee9638329116c1f69b5b9537f3f8066605f1b0bf140e83a9",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "f9627bd3485ad15094c34737438ec0e14ab90aa77bf56748ddfead31d8b06eaa",
+          "build-generated-manifest.json": "cffbe5392ba70987ecd0e1c48c5cfbe8b586b19350ba4bfcbdf0b3e6cd7d824a",
+          "build.mjs": "07eef640fa87acc4899b5b639f11e0110759ff9a5d0e29e3871390a961d7ea8d",
+          "geometry.mjs": "28c84b4a6729db0668d1f19591f7af49408aec3122fabfe7c17859a42a917c4d",
+          "helper.mjs": "428ba71a007af7d7f862174da82edc1fa1c137c06260818073df769dafdf0854",
+          "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+          "manifest.json": "cffbe5392ba70987ecd0e1c48c5cfbe8b586b19350ba4bfcbdf0b3e6cd7d824a",
+          "dependencies.json": "a02c8f338561657c16060078c9438375b75c7fab8a6142fa4fea194c4541c240"
+        },
+        "suppressedBuildMessages": 1,
+        "output": "artifacts/pinball/whole-recovery-verify-d2-20261115-085125",
+        "written": 10,
+        "reused": 0,
+        "fileCount": 10
+      },
+      "idempotence": {
+        "written": 0,
+        "reused": 10
+      },
+      "all10ActualHashesMatch": true,
+      "assembly": {
+        "status": "assembled",
+        "worldSteps": 0,
+        "colliders": 1615,
+        "attachments": 59,
+        "camVertices": 10,
+        "pivot": [
+          1.9,
+          0.27,
+          4.45
+        ],
+        "shooterX": 2.93,
+        "width": 6.88,
+        "lowerSegments": [
+          [
+            {
+              "role": "divider",
+              "count": 52,
+              "radius": 0.02
+            },
+            {
+              "role": "inner",
+              "count": 11,
+              "radius": 0.02
+            },
+            {
+              "role": "outer",
+              "count": 54,
+              "radius": 0.02
+            }
+          ],
+          [
+            {
+              "role": "divider",
+              "count": 52,
+              "radius": 0.02
+            },
+            {
+              "role": "inner",
+              "count": 11,
+              "radius": 0.02
+            },
+            {
+              "role": "outer",
+              "count": 53,
+              "radius": 0.045
+            }
+          ]
+        ],
+        "mounts": [
+          9,
+          8
+        ],
+        "saveFrame": {
+          "parameter": 0.817924215531115,
+          "center": [
+            -2.062830029756212,
+            0,
+            3.5999999999999996
+          ],
+          "down": [
+            0.38783445543938494,
+            0,
+            0.9217290465066379
+          ],
+          "cross": [
+            0.9217290465066379,
+            0,
+            -0.38783445543938494
+          ],
+          "halfAcross": 0.19,
+          "halfAlong": 0.135,
+          "maxY": 0.5,
+          "horizontalSpeed": 12,
+          "contactSkin": 0.001
+        }
+      }
+    },
+    {
+      "variant": "4c",
+      "verifyOnly": {
+        "status": "verified",
+        "adopted": false,
+        "variant": "4c",
+        "sourceSetSha256": "4c586a1b7ff457e12bd6c7cda38a003c2b9ff39dca516af25bf96ea1168f19f4",
+        "originalBuildBytesUnchanged": true,
+        "originalArtifactWrites": 0,
+        "generatedHashes": {
+          "sources.json": "4c586a1b7ff457e12bd6c7cda38a003c2b9ff39dca516af25bf96ea1168f19f4",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+          "manifest.json": "261c3fbbd11e8aaa4396136c814ce801e1a889a6ae56c1c2e1dd9011b05f68f5"
+        },
+        "restoredHashes": {
+          "sources.json": "4c586a1b7ff457e12bd6c7cda38a003c2b9ff39dca516af25bf96ea1168f19f4",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+          "build-generated-manifest.json": "261c3fbbd11e8aaa4396136c814ce801e1a889a6ae56c1c2e1dd9011b05f68f5",
+          "build.mjs": "be1f6f3fc07dedb96f61060a66e0a18f34a887a2cddb46dcd357495c9ade70eb",
+          "geometry.mjs": "13b46d8a4020279c3766cef6aaee4347861413cca75cd53e539dbb949612de09",
+          "helper.mjs": "428ba71a007af7d7f862174da82edc1fa1c137c06260818073df769dafdf0854",
+          "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+          "manifest.json": "261c3fbbd11e8aaa4396136c814ce801e1a889a6ae56c1c2e1dd9011b05f68f5",
+          "dependencies.json": "a02c8f338561657c16060078c9438375b75c7fab8a6142fa4fea194c4541c240"
+        },
+        "suppressedBuildMessages": 1
+      },
+      "fresh": {
+        "status": "restored",
+        "adopted": false,
+        "variant": "4c",
+        "sourceSetSha256": "4c586a1b7ff457e12bd6c7cda38a003c2b9ff39dca516af25bf96ea1168f19f4",
+        "originalBuildBytesUnchanged": true,
+        "originalArtifactWrites": 0,
+        "generatedHashes": {
+          "sources.json": "4c586a1b7ff457e12bd6c7cda38a003c2b9ff39dca516af25bf96ea1168f19f4",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+          "manifest.json": "261c3fbbd11e8aaa4396136c814ce801e1a889a6ae56c1c2e1dd9011b05f68f5"
+        },
+        "restoredHashes": {
+          "sources.json": "4c586a1b7ff457e12bd6c7cda38a003c2b9ff39dca516af25bf96ea1168f19f4",
+          "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+          "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+          "build-generated-manifest.json": "261c3fbbd11e8aaa4396136c814ce801e1a889a6ae56c1c2e1dd9011b05f68f5",
+          "build.mjs": "be1f6f3fc07dedb96f61060a66e0a18f34a887a2cddb46dcd357495c9ade70eb",
+          "geometry.mjs": "13b46d8a4020279c3766cef6aaee4347861413cca75cd53e539dbb949612de09",
+          "helper.mjs": "428ba71a007af7d7f862174da82edc1fa1c137c06260818073df769dafdf0854",
+          "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+          "manifest.json": "261c3fbbd11e8aaa4396136c814ce801e1a889a6ae56c1c2e1dd9011b05f68f5",
+          "dependencies.json": "a02c8f338561657c16060078c9438375b75c7fab8a6142fa4fea194c4541c240"
+        },
+        "suppressedBuildMessages": 1,
+        "output": "artifacts/pinball/whole-recovery-verify-4c-20261115-085125",
+        "written": 10,
+        "reused": 0,
+        "fileCount": 10
+      },
+      "idempotence": {
+        "written": 0,
+        "reused": 10
+      },
+      "all10ActualHashesMatch": true,
+      "assembly": {
+        "status": "assembled",
+        "worldSteps": 0,
+        "colliders": 1615,
+        "attachments": 59,
+        "camVertices": 10,
+        "pivot": [
+          1.9,
+          0.27,
+          4.45
+        ],
+        "shooterX": 2.93,
+        "width": 6.88,
+        "lowerSegments": [
+          [
+            {
+              "role": "divider",
+              "count": 52,
+              "radius": 0.02
+            },
+            {
+              "role": "inner",
+              "count": 11,
+              "radius": 0.02
+            },
+            {
+              "role": "outer",
+              "count": 54,
+              "radius": 0.02
+            }
+          ],
+          [
+            {
+              "role": "divider",
+              "count": 52,
+              "radius": 0.02
+            },
+            {
+              "role": "inner",
+              "count": 11,
+              "radius": 0.02
+            },
+            {
+              "role": "outer",
+              "count": 53,
+              "radius": 0.045
+            }
+          ]
+        ],
+        "mounts": [
+          9,
+          8
+        ],
+        "saveFrame": {
+          "parameter": 0.817924215531115,
+          "center": [
+            -2.062830029756212,
+            0,
+            3.5999999999999996
+          ],
+          "down": [
+            0.38783445543938494,
+            0,
+            0.9217290465066379
+          ],
+          "cross": [
+            0.9217290465066379,
+            0,
+            -0.38783445543938494
+          ],
+          "halfAcross": 0.19,
+          "halfAlong": 0.135,
+          "maxY": 0.5,
+          "horizontalSpeed": 12,
+          "contactSkin": 0.001
+        }
+      }
+    }
+  ],
+  "refusals": [
+    {
+      "case": "existing differing loader",
+      "exit": 1,
+      "unchanged": true
+    },
+    {
+      "case": "original frozen directory",
+      "exit": 1,
+      "reason": "if(out===original)throw Error('Refusing original frozen artifact directory');"
+    },
+    {
+      "case": "wrong depth",
+      "exit": 1,
+      "reason": "if(path.dirname(out)!==allowed)throw Error('Output must be a direct child of artifacts/pinball; loader relies on this depth');"
+    },
+    {
+      "case": "symlink output",
+      "exit": 1
+    },
+    {
+      "case": "nondirectory output",
+      "exit": 1
+    },
+    {
+      "case": "corrupt copied payload",
+      "exit": 1,
+      "canonicalPayloadUntouched": true
+    }
+  ],
+  "originalFreezeAllFilesUnchanged": true,
+  "originalFreezeFileCount": 32,
+  "productionDiff": "",
+  "verificationTemporariesMovedToTrash": [
+    {
+      "from": "artifacts/pinball/whole-recovery-verify-final-20261115-085125",
+      "trash": "/Users/tsaito/.Trash/whole-long-lane-recovery-verification-20261115-085125/whole-recovery-verify-final-20261115-085125",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/whole-recovery-verify-d2-20261115-085125",
+      "trash": "/Users/tsaito/.Trash/whole-long-lane-recovery-verification-20261115-085125/whole-recovery-verify-d2-20261115-085125",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/whole-recovery-verify-4c-20261115-085125",
+      "trash": "/Users/tsaito/.Trash/whole-long-lane-recovery-verification-20261115-085125/whole-recovery-verify-4c-20261115-085125",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/whole-recovery-symlink-20261115-085125",
+      "trash": "/Users/tsaito/.Trash/whole-long-lane-recovery-verification-20261115-085125/whole-recovery-symlink-20261115-085125",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/whole-recovery-file-20261115-085125",
+      "trash": "/Users/tsaito/.Trash/whole-long-lane-recovery-verification-20261115-085125/whole-recovery-file-20261115-085125",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/whole-recovery-packet-test-20261115-085125",
+      "trash": "/Users/tsaito/.Trash/whole-long-lane-recovery-verification-20261115-085125/whole-recovery-packet-test-20261115-085125",
+      "exists": true,
+      "sourceAbsent": true
+    }
+  ],
+  "worldSteps": 0,
+  "excludedPacketRawMovedToTrash": {
+    "path": "/Users/tsaito/.Trash/whole-long-lane-packet-excluded-raw-20261115-085433/high-contact-trace.json",
+    "originalArtifactPreserved": true,
+    "originalTraceHashReferenced": true
+  }
+}
