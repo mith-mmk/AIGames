@@ -110,8 +110,8 @@ export function rampSupportStations(rows=sampleRamp()) {
   if(spanStart>=0){for(let i=stations.length-1;i>=0;i--)if(stations[i]>=spanStart)stations.splice(i,1);stations.push(spanStart,end);}
   return stations.filter(i=>rows[i].p.y>=.46||rows[i].p.x<0).map(i=>{
     const r=rows[i],divider=r.p.x>=-.45&&r.p.z>=-3.7;
-    const x=r.p.x<-.45?-2.90:r.p.z<-3.7?r.p.x:2.35;
-    const z=r.p.x>=-.45&&r.p.z<-3.7?-5.95:r.p.z;
+    const x=r.p.x<-.45?-2.65:r.p.z<-3.7?r.p.x:2.35;
+    const z=r.p.x>=-.45&&r.p.z<-3.7?-5.70:r.p.z;
     const drop=Math.min(.065,Math.max(.025,r.p.y-.38));
     return {i,x,z,drop,y:r.p.y-drop,divider};
   });
@@ -158,10 +158,10 @@ export function buildPhysicalRamp(game) {
   // dead-end against the shooter divider. Its low prism remains below the ramp.
   colliders.push(game.world.createCollider(R.ColliderDesc.convexHull(rampNoseVertices()).setFriction(.02).setRestitution(.1)));
   const baseColliders=colliders.slice(baseColliderStart);
-  // Right columns grow directly from the existing shooter divider footprint,
-  // rather than long arms reaching beyond the cabinet. Airborne balls also
-  // collide with these visible columns and horizontal support arms.
-  for(const m of rampSupportStations(rows))if(m.divider){
+  // Columns sit on the perimeter strip or shooter divider. Rear posts meet
+  // the back wall instead of leaving a ball-sized inaccessible pocket.
+  // Posts, crossheads, collars and feet all have matching visible contacts.
+  for(const m of rampSupportStations(rows)){
     const top=new T.Vector3(m.x,m.y,m.z),bottom=new T.Vector3(m.x,.055,m.z),saddle=rows[m.i].p.clone().add(new T.Vector3(0,-m.drop,0));
     for(const [a,b,radius] of [[bottom,top,.037],[top,saddle,.034]]){
       const delta=b.clone().sub(a),mid=a.clone().add(b).multiplyScalar(.5);
@@ -169,6 +169,7 @@ export function buildPhysicalRamp(game) {
       colliders.push(game.world.createCollider(R.ColliderDesc.cylinder(delta.length()/2,radius).setTranslation(mid.x,mid.y,mid.z).setRotation(q).setFriction(.025).setRestitution(.02)));
     }
     colliders.push(game.world.createCollider(R.ColliderDesc.cylinder(.045/2,.040).setTranslation(m.x,m.y,m.z).setFriction(.025).setRestitution(.02)));
+    colliders.push(game.world.createCollider(R.ColliderDesc.cylinder(.025/2,m.divider?.040:.085).setTranslation(m.x,.055,m.z).setFriction(.025).setRestitution(.02)));
   }
   return {colliders,baseColliders,rows,dispose(){for(const c of colliders)game.world.removeCollider(c,true);}};
 }

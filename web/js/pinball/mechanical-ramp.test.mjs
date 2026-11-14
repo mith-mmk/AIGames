@@ -30,7 +30,7 @@ test('installed ramp has matched sheet walls, true paired rails and visible anti
  } finally {part.dispose();}
 });
 
-test('support columns stay outside table or within the physical shooter divider, and beams clear ground balls',()=>{
+test('support columns stay on the perimeter or shooter divider, and beams clear ground balls',()=>{
  const part=new MechanicalRamp();
  try {
   part.root.updateMatrixWorld(true);
@@ -39,7 +39,7 @@ test('support columns stay outside table or within the physical shooter divider,
    if(!o.geometry)return;
    const b=new T.Box3().setFromObject(o);
    if(/^support-post-/.test(o.name)) {
-    posts++;assert.ok(b.max.x< -2.75 || b.min.x>2.75 || b.max.z< -5.75 || (b.min.x>=2.305&&b.max.x<=2.395),`${o.name} crosses table lane`);
+    posts++;assert.ok(b.max.x< -2.60 || b.max.z< -5.65 || (b.min.x>=2.305&&b.max.x<=2.395),`${o.name} crosses table lane`);
    }
    if(/^cantilever-crosshead-/.test(o.name)) {beams++;assert.ok(b.min.y>.31,`${o.name} blocks ground ball at ${b.min.y}`);}
    assert.ok(!o.name.startsWith('diagonal-knee-brace'));
@@ -77,21 +77,27 @@ test('standalone paired rails support and roll a ball without any plane collider
 });
 
 
-test('divider-mounted ramp supports have matching physical posts and arms',async()=>{
+test('all perimeter ramp supports have matching physical posts, arms, collars and feet',async()=>{
  await R.init();const world=new R.World({x:0,y:-9.81,z:0});
  try{
-  const ramp=buildPhysicalRamp({world}),mounts=rampSupportStations(ramp.rows).filter(m=>m.divider);
-  const supports=ramp.colliders.slice(-mounts.length*3);
+  const ramp=buildPhysicalRamp({world}),mounts=rampSupportStations(ramp.rows);
+  const supports=ramp.colliders.slice(-mounts.length*4);
+  world.step();
   assert.ok(mounts.length>0);
   mounts.forEach((m,i)=>{
-   const post=supports[i*3],arm=supports[i*3+1],collar=supports[i*3+2];
-   assert.ok(Math.abs(post.translation().x-2.35)<1e-6);
+   const post=supports[i*4],arm=supports[i*4+1],collar=supports[i*4+2],foot=supports[i*4+3];
+   assert.ok(Math.abs(post.translation().x-m.x)<1e-6);
    assert.ok(Math.abs(post.shape.radius-.037)<1e-6);
    assert.ok(Math.abs(post.shape.halfHeight-(m.y-.055)/2)<1e-6);
    assert.ok(Math.abs(arm.shape.radius-.034)<1e-6);
    assert.ok(Math.abs(collar.shape.radius-.040)<1e-6);
    assert.ok(Math.abs(collar.shape.halfHeight-.045/2)<1e-6);
    assert.ok(arm.translation().y-arm.shape.radius>.31);
+   assert.ok(Math.abs(foot.shape.radius-(m.divider?.040:.085))<1e-6);
+   assert.ok(Math.abs(foot.shape.halfHeight-.0125)<1e-6);
+   assert.ok(Math.abs(foot.translation().y-.055)<1e-6);
+   const p=post.translation(),hit=world.castRay(new R.Ray({x:p.x+.10,y:p.y,z:p.z},{x:-1,y:0,z:0}),.12,true);
+   assert.equal(hit?.collider.handle,post.handle,'visible post blocks an airborne crossing');
   });
  }finally{world.free();}
 });

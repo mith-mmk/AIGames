@@ -157,23 +157,19 @@ export class MechanicalRamp extends Assembly {
       this.tube(`cantilever-crosshead-${count}`, [top, saddle], .034, 'dark', g);
       // No low diagonal through the ground lane: horizontal beam clearance
       // exceeds the .31 ground-ball envelope; right columns share the divider.
-      if(!mount.divider){
-        const braceTop = top.clone().addScaledVector(UP, .12);
-        this.tube(`external-column-head-${count}`, [top, braceTop], .037, 'brass', g);
-      }
       this.tube(`underfloor-cross-saddle-${count}`, [point(r, 'left', .045, -drop), point(r, 'right', -.045, -drop)], .03, 'dark', g);
       // Short vertical seat pads touch the floor underside, not the ball path.
       for (const side of ['left', 'right']) this.tube(`${side}-floor-seat-${count}`, [point(r, side, side === 'left' ? .045 : -.045, -drop), point(r, side, side === 'left' ? .045 : -.045, -.025)], .034, 'brass', g);
       const foot = this.mesh(`mounting-foot-${count}`, new T.CylinderGeometry(mount.divider?.040:.085, mount.divider?.040:.085, .025, 16), 'dark', g);
       foot.position.copy(base);
       for (const sign of [-1, 1]) this.bolt(`foot-bolt-${count}-${sign}`, base.clone().add(new T.Vector3(0, .022, sign * (mount.divider?.025:.05))), g);
-      const collar = this.mesh(`post-head-collar-${count}`, new T.CylinderGeometry(mount.divider?.040:.057, mount.divider?.040:.057, .045, 12), 'chrome', g);
+      const collar = this.mesh(`post-head-collar-${count}`, new T.CylinderGeometry(.040, .040, .045, 12), 'chrome', g);
       collar.position.copy(top);
       count++;
     }
     const spanLength=spanStart<0?0:this.rows.slice(spanStart+1).reduce((sum,r,j)=>sum+r.p.distanceTo(this.rows[spanStart+j].p),0);
     g.userData = { wireBridge:{start:spanStart<0?null:this.rows[spanStart].p.toArray(),end:this.rows[end].p.toArray(),length:spanLength,loadPath:"four continuous wires with U ties, cabinet-supported clamps at both ends",strengthCertified:false}, subassembly: g.name, postCount: count, continuousBearers: 2,
-      clearance: 'left/rear columns outside playfield; right columns share shooter-divider footprint and exact physical cylinders; crossheads above ground-ball top .31',
+      clearance: 'perimeter columns and shooter-divider columns share exact physical posts/crossheads/collars/feet; crossheads above ground-ball top .31',
       structuralStatus: 'continuous load-path prototype; not strength-certified' };
   }
 }
