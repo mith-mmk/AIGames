@@ -1,0 +1,180 @@
+{
+  "scope": "Provenance references only; large sources, traces and images intentionally omitted. Initial launcher snapshot; later cause replay can be appended separately without changing frozen payload.",
+  "files": [
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/README.md",
+      "bytes": 5844,
+      "sha256": "f2bfa95894d30e8f57487aa98da52c46a3b6e32b27b488b948871fb0c0121c75"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/baseline-sources.json",
+      "bytes": 321239,
+      "sha256": "7a9b9fd4d71d5f33ebcd6311093b568dfde34d87bec07409c84e2a2c6961207d"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/build.mjs",
+      "bytes": 6838,
+      "sha256": "7a4a202f321cdc210b88097fd21335b6c2697ce1c118b8cdfaa4167a0262fe4a"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/changes.json",
+      "bytes": 5658,
+      "sha256": "3014e9d22399e86ddda8f0bb870d8c83759d2d2647ae42051200cf87732329f4"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/dependencies.json",
+      "bytes": 1968,
+      "sha256": "1c8ff6b32d2a14cb22439dbc8c4a37ef861d3d124bcd7e0f585ec2ac76eb4987"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/loader.mjs",
+      "bytes": 948,
+      "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/lower-design.md",
+      "bytes": 4574,
+      "sha256": "b3ccdc9343a3556eb76a3e80776426e35f395ed089c72fe39abbf1ce7a2ae75e"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/manifest.json",
+      "bytes": 10135,
+      "sha256": "6099b363bad1714f9024bd7d45f04b913895acf54a1653a29109d25ea6f58598"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/sources.json",
+      "bytes": 326494,
+      "sha256": "4ee90b4f4622f87a466343b3ed6f7d00f1001ee380beadb78dff8f123a015894"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/static-spine.json",
+      "bytes": 10869,
+      "sha256": "64ce629ab29c00ac49793b05e7f163ef335c475d19d3a353bd598eabfa5a932d"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/static-spine.mjs",
+      "bytes": 2672,
+      "sha256": "9b0f58399af1c0d7a807c5dc1224384cabcb69255d06d98e1728f77e4e39c134"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-return-3989bfe/study-helper.mjs",
+      "bytes": 4611,
+      "sha256": "dabf25246980b1ecc64213eb525b1391e4e8ea21f51711445a9071ae019a9220"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/README.md",
+      "bytes": 3151,
+      "sha256": "88e56ea733db811914b7f683e8f7b186e80abed9de00c1016fdb187266355b2c"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/baseline-loader.mjs",
+      "bytes": 305,
+      "sha256": "96b93abc12873aa194ee2134bbd2a04af967b1a2ab46e2ff253e19339d8a3432"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/baseline.json",
+      "bytes": 1432426,
+      "sha256": "990facd9be7e337a694680ecc0c527f3bfa4eca4a3c4679b9e6e7ee57cfeaacd"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/baseline.txt",
+      "bytes": 6033,
+      "sha256": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/candidate.json",
+      "bytes": 661305,
+      "sha256": "471b8e85131c039bc3bb9a9d1501e018e02a6c0286e3811bdc8637d9511bf72e"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/candidate.txt",
+      "bytes": 5890,
+      "sha256": "926e184907e89af2a2c171331f7619791e4363aab0eadd5a69c93275345fdc93"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/manifest.json",
+      "bytes": 747,
+      "sha256": "32a4d0aeba38bff0b6a22629f867b831c0cac5a81b15603842466c8e2140327b"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/probe.mjs",
+      "bytes": 3126,
+      "sha256": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/reversal-925.json",
+      "bytes": 1131375,
+      "sha256": "073dc9e1d9a770d468538b1e4c247e04b767387bd0c6383580fd76b1095889e2"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/reversal-925.mjs",
+      "bytes": 4151,
+      "sha256": "415b1ebecad2561227bce3c6a5059e7c0c18f7c8151172a3af03b31380621269"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/reversal-925.txt",
+      "bytes": 4121,
+      "sha256": "2882070c713a7a15d5ecf614b4c1f7dae7541bcedcd3d8c7f5b1537a46661861"
+    },
+    {
+      "path": "artifacts/pinball/upper-return-launch-3989bfe/summary.json",
+      "bytes": 16143,
+      "sha256": "485ab911becf97c66c7e99d7f1934ef2708983ba07d69769c9e0015666ed077f"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-independent-3989bfe/README.md",
+      "bytes": 5232,
+      "sha256": "68a3d19b058337caa90c5f3e4eff23bff13af7e9f1fcfe7bafc8f79d3da05bfd"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-independent-3989bfe/visual-final.cjs",
+      "bytes": 4615,
+      "sha256": "d89e45a4e52d0d5735ec33cb531dc937e3b53c95b7b750fe1800fb9c71fbb712"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-independent-3989bfe/visual-final.log",
+      "bytes": 838,
+      "sha256": "0af7df2271ed53ba58695faee75fc9c8feced1064dc3b5e8cf21b0c40e343a8f"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-independent-3989bfe/audit-browser.cjs",
+      "bytes": 4456,
+      "sha256": "677b09902f268ff68196671ab1b9b276c976a0eb779cf0edceee0aaaeaabe944"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-independent-3989bfe/preview-final/actual-mesh-contact.json",
+      "bytes": 5762,
+      "sha256": "d899a2efc5ac038643f6bcdf7f8e0fdf01fbfbcb700e29493f827a46467aa51f"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-independent-3989bfe/preview-final/candidate-inlet-closeup.png",
+      "bytes": 567681,
+      "sha256": "10998627e49c738d3211a2b771d227ebcef379293304b6d3816605d3e8d108d6"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-independent-3989bfe/preview-final/candidate-inlet-underside.png",
+      "bytes": 125353,
+      "sha256": "49d78bac3add8cf69041fa93c81f2187d6fd75ecf2ccbbcc9975d5058812ec4f"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-independent-3989bfe/preview-final/candidate-installed-45.png",
+      "bytes": 755619,
+      "sha256": "e82e9e3dd4cb9ea121368e9d106f7e3231f120857b971d7f74744599bd72e397"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-independent-3989bfe/preview-final/candidate-installed-90.png",
+      "bytes": 631021,
+      "sha256": "e8ae3adb469560147c06681a1e9badb9b94145726e49cb08b9086b02b283d2f8"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-independent-3989bfe/preview-final/candidate-mobile-390.png",
+      "bytes": 258416,
+      "sha256": "cdf4a656fb94d2d15ab2caed08b5b1a3043034f7a27d3ec08f0aea250872cbdd"
+    },
+    {
+      "path": "artifacts/pinball/upper-inlet-independent-3989bfe/preview/evidence.json",
+      "bytes": 937,
+      "sha256": "6bec79618a7e925d9697467a65c0fcf1c042626ee9a0a9d04c925d98ba703abd"
+    }
+  ]
+}

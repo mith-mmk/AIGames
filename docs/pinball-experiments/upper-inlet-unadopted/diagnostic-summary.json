@@ -1,0 +1,280 @@
+{
+  "status": "Rejected; first-launch gate failed. Snapshot before detailed contact-cause replay.",
+  "sourceSha256": "4ee90b4f4622f87a466343b3ed6f7d00f1001ee380beadb78dff8f123a015894",
+  "method": "Ordinary Rapier 0.17.3, served ball, no keys; ordered powers .55/.65/.75/.85/.925/1 then weak .1. No fixture injection, force or solver changes.",
+  "results": {
+    "baseline": [
+      {
+        "power": 0.55,
+        "score": 25,
+        "fieldAccess": true,
+        "minZ": -4.641885757446289,
+        "barContactTicks": 3,
+        "positiveBarTicks": 2,
+        "rollovers": 0,
+        "bumpers": 0,
+        "firstLaunchTerminal": {
+          "tick": 1077,
+          "phase": "ready",
+          "ball": 2,
+          "returnedShooter": false
+        },
+        "weak": null
+      },
+      {
+        "power": 0.65,
+        "score": 25,
+        "fieldAccess": true,
+        "minZ": -5.116170883178711,
+        "barContactTicks": 23,
+        "positiveBarTicks": 9,
+        "rollovers": 0,
+        "bumpers": 0,
+        "firstLaunchTerminal": {
+          "tick": 1029,
+          "phase": "ready",
+          "ball": 2,
+          "returnedShooter": false
+        },
+        "weak": null
+      },
+      {
+        "power": 0.75,
+        "score": 25,
+        "fieldAccess": true,
+        "minZ": -5.125899314880371,
+        "barContactTicks": 65,
+        "positiveBarTicks": 4,
+        "rollovers": 0,
+        "bumpers": 0,
+        "firstLaunchTerminal": {
+          "tick": 999,
+          "phase": "ready",
+          "ball": 2,
+          "returnedShooter": false
+        },
+        "weak": null
+      },
+      {
+        "power": 0.85,
+        "score": 525,
+        "fieldAccess": true,
+        "minZ": -5.279026031494141,
+        "barContactTicks": 4,
+        "positiveBarTicks": 1,
+        "rollovers": 3,
+        "bumpers": 2,
+        "firstLaunchTerminal": {
+          "tick": 1125,
+          "phase": "ready",
+          "ball": 2,
+          "returnedShooter": false
+        },
+        "weak": null
+      },
+      {
+        "power": 0.925,
+        "score": 525,
+        "fieldAccess": true,
+        "minZ": -5.287731647491455,
+        "barContactTicks": 6,
+        "positiveBarTicks": 3,
+        "rollovers": 3,
+        "bumpers": 2,
+        "firstLaunchTerminal": {
+          "tick": 1104,
+          "phase": "ready",
+          "ball": 2,
+          "returnedShooter": false
+        },
+        "weak": null
+      },
+      {
+        "power": 1,
+        "score": 325,
+        "fieldAccess": true,
+        "minZ": -5.171389579772949,
+        "barContactTicks": 5,
+        "positiveBarTicks": 2,
+        "rollovers": 2,
+        "bumpers": 1,
+        "firstLaunchTerminal": {
+          "tick": 960,
+          "phase": "ready",
+          "ball": 2,
+          "returnedShooter": false
+        },
+        "weak": null
+      },
+      {
+        "power": 0.1,
+        "score": 0,
+        "fieldAccess": false,
+        "minZ": 3.1461856365203857,
+        "barContactTicks": 0,
+        "positiveBarTicks": 0,
+        "rollovers": 0,
+        "bumpers": 0,
+        "firstLaunchTerminal": {
+          "tick": 159,
+          "phase": "ready",
+          "ball": 1,
+          "returnedShooter": true
+        },
+        "weak": {
+          "phase": "ready",
+          "ball": 1,
+          "returned": true,
+          "stopErrorZ": 0.0012270927429200995,
+          "p": {
+            "x": 2.5299999713897705,
+            "y": 0.1726202666759491,
+            "z": 4.42622709274292
+          },
+          "relaunch": true,
+          "positionUnchanged": true
+        }
+      }
+    ],
+    "candidate": [
+      {
+        "power": 0.55,
+        "score": 0,
+        "fieldAccess": false,
+        "minZ": -4.081785202026367,
+        "barContactTicks": 0,
+        "positiveBarTicks": 0,
+        "rollovers": 0,
+        "bumpers": 0,
+        "firstLaunchTerminal": {
+          "tick": 430,
+          "phase": "ready",
+          "ball": 1,
+          "returnedShooter": true
+        },
+        "weak": null
+      },
+      {
+        "power": 0.65,
+        "score": 0,
+        "fieldAccess": false,
+        "minZ": -3.9901137351989746,
+        "barContactTicks": 0,
+        "positiveBarTicks": 0,
+        "rollovers": 0,
+        "bumpers": 0,
+        "firstLaunchTerminal": {
+          "tick": 392,
+          "phase": "ready",
+          "ball": 1,
+          "returnedShooter": true
+        },
+        "weak": null
+      },
+      {
+        "power": 0.75,
+        "score": 0,
+        "fieldAccess": false,
+        "minZ": -3.8549275398254395,
+        "barContactTicks": 0,
+        "positiveBarTicks": 0,
+        "rollovers": 0,
+        "bumpers": 0,
+        "firstLaunchTerminal": {
+          "tick": 368,
+          "phase": "ready",
+          "ball": 1,
+          "returnedShooter": true
+        },
+        "weak": null
+      },
+      {
+        "power": 0.85,
+        "score": 25,
+        "fieldAccess": true,
+        "minZ": -4.682278633117676,
+        "barContactTicks": 21,
+        "positiveBarTicks": 3,
+        "rollovers": 0,
+        "bumpers": 0,
+        "firstLaunchTerminal": {
+          "tick": 1028,
+          "phase": "ready",
+          "ball": 2,
+          "returnedShooter": false
+        },
+        "weak": null
+      },
+      {
+        "power": 0.925,
+        "score": 0,
+        "fieldAccess": false,
+        "minZ": -2.9559617042541504,
+        "barContactTicks": 0,
+        "positiveBarTicks": 0,
+        "rollovers": 0,
+        "bumpers": 0,
+        "firstLaunchTerminal": {
+          "tick": 306,
+          "phase": "ready",
+          "ball": 1,
+          "returnedShooter": true
+        },
+        "weak": null
+      },
+      {
+        "power": 1,
+        "score": 0,
+        "fieldAccess": false,
+        "minZ": -3.3604884147644043,
+        "barContactTicks": 0,
+        "positiveBarTicks": 0,
+        "rollovers": 0,
+        "bumpers": 0,
+        "firstLaunchTerminal": {
+          "tick": 329,
+          "phase": "ready",
+          "ball": 1,
+          "returnedShooter": true
+        },
+        "weak": null
+      },
+      {
+        "power": 0.1,
+        "score": 0,
+        "fieldAccess": false,
+        "minZ": 3.1461853981018066,
+        "barContactTicks": 0,
+        "positiveBarTicks": 0,
+        "rollovers": 0,
+        "bumpers": 0,
+        "firstLaunchTerminal": {
+          "tick": 159,
+          "phase": "ready",
+          "ball": 1,
+          "returnedShooter": true
+        },
+        "weak": {
+          "phase": "ready",
+          "ball": 1,
+          "returned": true,
+          "stopErrorZ": 0.0012270927429200995,
+          "p": {
+            "x": 2.930000066757202,
+            "y": 0.17262029647827148,
+            "z": 4.42622709274292
+          },
+          "relaunch": true,
+          "positionUnchanged": true
+        }
+      }
+    ]
+  },
+  "interpretation": [
+    "Only .85 reached the field; the other five requested normal powers returned the same ball to the shooter with score 0 and no rollover bar manifold. Accepted c1 reached the field at all six powers.",
+    "True weak .1 return/stop/relaunch remains intact; this does not excuse five normal-power regressions.",
+    "One same-ball return is not proof of a permanent loop.",
+    "Specific connector/roof collider causes are unresolved in this snapshot; detailed contact replay belongs to a separate follow-up evidence artifact.",
+    "No broader gameplay, full regression, lower IN capture, physical-phone, or production acceptance claim."
+  ]
+}

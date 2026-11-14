@@ -1,0 +1,73 @@
+{
+  "status": "Recovery verified; candidate remains rejected.",
+  "node": "v26.7.0",
+  "originalBuildSha256": "7a4a202f321cdc210b88097fd21335b6c2697ce1c118b8cdfaa4167a0262fe4a",
+  "originalArtifactHashesUnchanged": {
+    "lower-design.md": true,
+    "sources.json": true,
+    "dependencies.json": true,
+    "static-spine.json": true,
+    "README.md": true,
+    "study-helper.mjs": true,
+    "loader.mjs": true,
+    "static-spine.mjs": true,
+    "build.mjs": true,
+    "manifest.json": true,
+    "changes.json": true,
+    "baseline-sources.json": true
+  },
+  "inMemoryReconstruction": {
+    "allGeneratedHashesMatch": {
+      "sources.json": true,
+      "baseline-sources.json": true,
+      "changes.json": true,
+      "manifest.json": true
+    },
+    "originalArtifactWrites": 0
+  },
+  "freshSeparateOutput": {
+    "filesCreated": 12,
+    "allTwelveOriginalFilesByteIdentical": true,
+    "sourceSetSha256": "4ee90b4f4622f87a466343b3ed6f7d00f1001ee380beadb78dff8f123a015894"
+  },
+  "idempotentSecondRun": {
+    "filesCreated": 0,
+    "filesReused": 12
+  },
+  "recoveredLoaderAssembly": {
+    "colliders": 1520,
+    "inletContacts": 75,
+    "shooterX": 2.93,
+    "gameplayNotRerun": true
+  },
+  "differingExistingFileTest": {
+    "exitCode": 1,
+    "preflightRejectedBeforeWrites": true,
+    "sentinelBytesUnchanged": true,
+    "directoryStillContainsOnlySentinel": true
+  },
+  "outsideAllowedOutputTest": {
+    "exitCode": 1,
+    "rejected": true
+  },
+  "originalFrozenOutputTest": {
+    "exitCode": 1,
+    "rejectedEvenThoughMatching": true
+  },
+  "danglingSymlinkOutputTest": {
+    "exitCode": 1,
+    "rejected": true
+  },
+  "payloadMatchesOriginal": {
+    "build.mjs": true,
+    "study-helper.mjs": true,
+    "loader.mjs": true,
+    "manifest.json": true,
+    "dependencies.json": true,
+    "README.md": true,
+    "lower-design.md": true,
+    "static-spine.mjs": true,
+    "static-spine.json": true
+  },
+  "temporaryGeneratedOutputs": "Three temporary restoration/conflict/symlink fixtures moved to Trash. Original artifact retained. No gameplay or browser rerun."
+}
