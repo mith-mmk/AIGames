@@ -1,3 +1,5 @@
+import {appendBoardEdgeFasteners} from './cabinet-fasteners.mjs';
+import {shooterOuterRailGeometry,shooterOuterRailContactVertices} from './shooter-outer-rail.mjs';
 import {cabinetBoundaryBoxes} from './cabinet-boundary.mjs';
 import { targetCarrierParts, targetFaceAngle, targetDimensions, targetContactBoxes, flipperContactVertices, PLUNGER_CONTACT, targetContactId, slingContactPoints, plungerContactVertices } from "./mechanical-contact.mjs";
 import {NudgeMeter} from "./nudge.mjs";
@@ -22,9 +24,15 @@ export class PinballPhysics {
     this.flipperContacts = [0, 0]; this.flipperHandles = new Map(); this.activeFlipperContacts = [0, 0];
     this.flippers = []; this.flipperAngles = [flipperAngle(false, false), flipperAngle(true, false)];
     this.build();
+
     this.ball = this.world.createRigidBody(R.RigidBodyDesc.dynamic().setTranslation(SHOOTER_LAYOUT.x, .175, SHOOTER_LAYOUT.ballZ).setCcdEnabled(true).setLinearDamping(0.12).setAngularDamping(0.15).setCanSleep(false));
     this.ballCollider = this.world.createCollider(R.ColliderDesc.ball(TABLE.ballRadius).setMass(0.08).setRestitution(0.22).setFriction(0.06).setActiveEvents(R.ActiveEvents.COLLISION_EVENTS), this.ball);
     this.resetBall();
+    // Append after the existing ball/reset too, preserving every old handle.
+    const outerRail=shooterOuterRailGeometry();
+    this.shooterOuterRailContact=this.world.createCollider(R.ColliderDesc.convexHull(shooterOuterRailContactVertices(outerRail)).setRestitution(.45).setFriction(.05));
+    outerRail.dispose();
+    this.boardFastenerContacts=appendBoardEdgeFasteners(this.world,R);
   }
   nudge() {
     if(this.state.phase!=="playing") return false;

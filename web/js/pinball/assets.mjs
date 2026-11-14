@@ -1,3 +1,4 @@
+import {shooterOuterRailGeometry} from './shooter-outer-rail.mjs';
 import { MechanicalFlipper } from "./components/flipper.mjs";
 import { MechanicalBumper } from "./components/bumper.mjs";
 import { MechanicalPlunger } from "./components/plunger.mjs";
@@ -205,7 +206,8 @@ export class WorkshopAssets {
     new WorkshopMechanisms(this).build(g);
     // Shooter walls match the physical straight-segment guide layout.
     this.tube(g,[[2.35,.23,SHOOTER_LAYOUT.frontZ],[2.35,.23,-3.9]],.045,"chrome");
-    const roof=[[2.72,.23,4.55+LOWER_LAYOUT.downstreamOffset],[2.72,.23,-4.15],[2.4,.23,-5.2],[1.25,.23,-5.55],[.95,.23,-5.3]];
+    const outerRail=this.mesh(shooterOuterRailGeometry(),"chrome",g);outerRail.name='shooter-outer-rail';
+    const roof=[[2.72,.23,-4.15],[2.4,.23,-5.2],[1.25,.23,-5.55],[.95,.23,-5.3]];
     for(let i=0;i<roof.length-1;i++) this.tube(g,[roof[i],roof[i+1]],.06,"chrome");
     const backingShape=new T.Shape();
     SHOOTER_BACKING.forEach(([x,z],i)=>i?backingShape.lineTo(x,-z):backingShape.moveTo(x,-z));

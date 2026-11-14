@@ -1,5 +1,6 @@
 import * as T from "../../vendor/three-0.180.0/three.module.min.js";
 import { CABINET_BOUNDARY, cabinetBoundaryBoxes, cabinetBoundaryLayers } from '../cabinet-boundary.mjs';
+import {boardEdgeFasteners, cabinetScrewParts} from "../cabinet-fasteners.mjs";
 import { TABLE } from "../layout.mjs";
 import { ReferenceCabinetDress } from "./reference-cabinet.mjs";
 
@@ -63,12 +64,10 @@ export class MechanicalCabinet {
   }
   circle(x,z,r) {return Array.from({length:24},(_,i)=>[x+r*Math.cos(i*Math.PI/12),z+r*Math.sin(i*Math.PI/12)]);}
   screw(name,x,y,z,parent=this.root,shankLength=.10) {
-    const washer=this.mesh(`${name}-washer`,new T.TorusGeometry(.040,.008,6,16),'brass',parent);
-    washer.rotation.x=Math.PI/2;washer.position.set(x,y,z);
-    const head=this.mesh(`${name}-hex-head`,new T.CylinderGeometry(.026,.026,.022,6),'metal',parent);
-    head.position.set(x,y+.012,z);
-    const shaft=this.mesh(`${name}-shank`,new T.CylinderGeometry(.014,.014,shankLength,12),'metal',parent);
-    shaft.position.set(x,y-shankLength/2+.012,z);
+    for(const part of cabinetScrewParts(name,x,y,z,shankLength)) {
+      const mesh=this.mesh(part.name,part.geometry,part.material,parent);
+      mesh.rotation.x=part.rotationX;mesh.position.set(...part.position);
+    }
   }
   flushBoundaryScrew(name,x,y,z) {
     // Countersunk seat and head finish on the cap plane, with the shank inside
@@ -91,6 +90,7 @@ export class MechanicalCabinet {
     for(const dy of [.035,.075,.115]) if(dy<t) for(const side of [-1,1])
       this.profile(`ply-edge-${side}-${dy}`,[[0,0],[.003,0],[.003,.009],[0,.009]],l,'edge',side*W,bottom+dy,-L);
     const glassY=z=>gf+(gr-gf)*(L-z)/l;
+    const boardFasteners=new Map(boardEdgeFasteners({width:w,length:l,centerZ:0,boardTop:top,boardThickness:t}).map(f=>[f.name,f]));
     const rim=.28; // Exterior timber remains low; the inner boundary is separate.
     for(const [key,base] of [['boundary-flush-metal','metal'],['boundary-flush-brass','brass'],['boundary-flush-slot','dark']]) {
       const material=this.materials[base].clone();material.polygonOffset=true;
@@ -115,7 +115,8 @@ export class MechanicalCabinet {
       this.profile(`board-support-angle-${side}`,section,l-.40,'metal',side<0?-W-.025:W-.175,bottom-.025,-L+.20);
       for(const z of [-L+.40,-L/2,0,L/2,L-.40]) {
         this.flushBoundaryScrew(`cap-fastener-${side}-${z}`,side*(W+CABINET_BOUNDARY.sideOffset),CABINET_BOUNDARY.top,z);
-        this.screw(`board-edge-${side}-${z}`,side*(W-.09),top+.008,z,this.root,t+.08);
+        const fastener=boardFasteners.get(`board-edge-${side}-${z}`);
+        this.screw(fastener.name,...fastener.position,this.root,fastener.shankLength);
       }
     }
     this.profile('front-lockbar-timber',[[-W-wt,-1.40],[W+wt,-1.40],[W+wt,rim],[-W-wt,rim]],wt,'wood',0,0,L);
