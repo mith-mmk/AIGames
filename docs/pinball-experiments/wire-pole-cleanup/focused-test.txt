@@ -1,0 +1,17 @@
+using deprecated parameters for the initialization function; pass a single object instead
+✔ all visible wire capsule axes ends and nominal radii match installed contacts in four meshes (93.693625ms)
+✔ compatibility ramp drawing uses the same four capsule-stock rail geometries (20.920333ms)
+✔ wire pole cleanup preserves every installed vertex normal and nondegenerate face (38.029667ms)
+✔ wire retained installed capsule shells stay outward and closed (109.597041ms)
+✔ wire pole cleanup preserves distinct pole fallback and rounded nonpole faces (0.645625ms)
+✔ wire primitive ranges cover empty and mixed concatenated geometry exactly (0.538292ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 324.864375
+npm notice run aicoding@1.0.0 npx
+npm notice run 'eslint' web/js/pinball/wire-stock.mjs web/js/pinball/wire-stock.test.mjs

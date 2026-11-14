@@ -1,0 +1,37 @@
+[
+  {
+    "view": "installed-45",
+    "width": 1440,
+    "height": 1000,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "view": "installed-10",
+    "width": 1440,
+    "height": 1000,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "view": "installed-90",
+    "width": 1440,
+    "height": 1000,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "view": "mobile-390",
+    "width": 390,
+    "height": 844,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "view": "lower-closeup",
+    "width": 1200,
+    "height": 900,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  }
+]

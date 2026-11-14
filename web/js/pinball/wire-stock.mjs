@@ -22,8 +22,17 @@ export function capsuleStockGeometry(parts) {
     const start=positions.length/3,indexStart=indices.length;
     positions.push(...g.attributes.position.array);
     normals.push(...g.attributes.normal.array);
-    indices.push(...Array.from(g.index.array,i=>i+start));
-    ranges.push({vertexStart:start,vertexCount:g.attributes.position.count,indexStart,indexCount:g.index.count});
+    // Only known pole faces may be omitted. Float32 transforms can also
+    // collapse ordinary faces; preserve those and distinct pole samples.
+    const p=g.attributes.position,ix=g.index.array,radial=WIRE_STOCK_MESH.radialSegments,faces=ix.length/3;
+    const equal=(a,b)=>p.getX(a)===p.getX(b)&&p.getY(a)===p.getY(b)&&p.getZ(a)===p.getZ(b);
+    for(let face=0;face<faces;face++){
+      const k=face*3,a=ix[k],b=ix[k+1],c=ix[k+2];
+      const pole=(face<radial*2&&face%2===0)||(face>=faces-radial*2&&face%2===1);
+      if(pole&&(equal(a,b)||equal(b,c)||equal(a,c)))continue;
+      indices.push(a+start,b+start,c+start);
+    }
+    ranges.push({vertexStart:start,vertexCount:p.count,indexStart,indexCount:indices.length-indexStart});
     g.dispose();
   }
   const geometry=new T.BufferGeometry();

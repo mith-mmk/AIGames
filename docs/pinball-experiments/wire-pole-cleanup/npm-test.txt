@@ -1,0 +1,319 @@
+npm notice run aicoding@1.0.0 test
+npm notice run node web/js/cards.logic.test.cjs && node web/js/cat.logic.test.cjs && node web/js/train-defense.logic.test.cjs && node web/js/orbit-salvage.logic.test.cjs && node web/js/civilization.logic.test.cjs && node web/js/humanities-simulator.logic.test.cjs && node web/js/natural-philosophy-network.logic.test.cjs && node web/js/kanbun-turing.logic.test.cjs && node web/js/edo-fire-command.logic.test.cjs && node web/js/karakuri.logic.test.mjs && node web/js/karakuri.contact.test.mjs && node web/js/karakuri.levels.test.mjs && node web/js/karakuri.belt.test.mjs && node web/js/karakuri.campaign-contact.test.mjs && node web/js/rome-320.logic.test.mjs && node --test web/js/mirror-light/*.test.mjs && eslint web/js/karakuri-belt.mjs web/js/karakuri-levels.mjs web/js/karakuri-contact.mjs web/js/karakuri-core.mjs web/js/karakuri-app.js web/css/karakuri.css web/js/cards.js web/js/cat/*.js web/js/train-defense.js web/js/orbit-salvage.js web/js/civilization.js web/js/humanities-simulator.js web/js/natural-philosophy-network.js web/js/natural-philosophy-network-renderer.js web/js/natural-philosophy-network-app.js web/js/natural-philosophy-network-data.js web/js/natural-philosophy-network-evidence.js web/js/natural-philosophy-network-data-build.mjs web/js/kanbun-turing.js web/js/edo-fire-command-data.js web/js/edo-fire-command-core.js web/js/edo-fire-command-renderer.js web/js/edo-fire-command-app.js web/js/rome-320-app.js web/js/rome-320-terrain.js web/js/rome-320-ui.js web/css/orbit-salvage.css web/css/civilization.css web/css/humanities-simulator.css web/css/natural-philosophy-network.css web/css/kanbun-turing.css web/css/edo-fire-command.css web/js/mirror-light/app.mjs web/js/mirror-light/core.mjs web/js/mirror-light/levels.mjs web/js/mirror-light/renderer.mjs web/js/mirror-light/ui.mjs web/js/mirror-light/input.mjs web/js/mirror-light/storage.mjs web/css/mirror-light.css && npm run test:pinball
+Orbit Salvage logic tests passed.
+Chronicle Kingdoms logic tests passed.
+Humanities simulator logic tests passed.
+Natural philosophy network logic and data QA tests passed.
+Kanbun Turing machine tests passed.
+江戸火消し指図 logic tests passed
+Karakuri: success, three failure causes, lock, snap, reset and replay passed.
+Contact regression passed: old bug reproduced; 12002 poses, lift sweep, release, rail/edge flight, failure, return/reset. Minimum gap 0.000718.
+10-stage campaign passed: solutions, failures, resets, next/back, edit lock, progress, odd-cycle stall; 66 discrete configurations checked.
+Belt regression: all 10 two-axis solutions, wrong pairs, distance/obstacles, detach, rotation/cross, reset/edit lock, 30 camera projections, ambiguity and offscreen guards passed.
+Campaign contact regression: 10 stages × success/rail/power failure + 6 closed gates; 39448 finite 5ms samples, minimum gap 0.000718.
+(node:21078) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/tsaito/Projects/AIGames/web/js/rome-320-terrain.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/tsaito/Projects/AIGames/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+rome-320 terrain tests passed
+✔ all eight incoming reflection cases match geometric reflection (0.533417ms)
+✔ walls, board exit and missing checkpoints terminate with explicit outcomes (0.073167ms)
+✔ a closed optical cycle stops by cell AND direction; crossing a cell is legal (1.275334ms)
+✔ 10 authored boards: every configuration terminates; minima also match independent BFS (8.722041ms)
+✔ undo restores a sequence exactly; fixed mirrors and invalid inputs are inert (0.162833ms)
+✔ the introduced checkpoint blocks a deceptive shortcut; later boards permit alternative routes (0.377875ms)
+✔ progressive hints use the current state, reveal only one rotation, and reset after input (0.122708ms)
+✔ bad level data rejected before search (0.071958ms)
+✔ save data is validated, best moves retained, and denied storage does not block play (0.227958ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52.715
+
+/Users/tsaito/Projects/AIGames/web/css/karakuri.css
+  19:22   warning  Property 'outline' is not a widely available baseline feature       css/use-baseline
+  24:9    warning  Property 'outline' is not a widely available baseline feature       css/use-baseline
+  44:136  warning  Property 'accent-color' is not a widely available baseline feature  css/use-baseline
+
+/Users/tsaito/Projects/AIGames/web/css/mirror-light.css
+  18:86  warning  Property 'outline' is not a widely available baseline feature  css/use-baseline
+
+✖ 4 problems (0 errors, 4 warnings)
+
+npm notice run aicoding@1.0.0 test:pinball
+npm notice run node --test web/js/pinball/*.test.mjs && eslint web/js/pinball/*.mjs web/css/pinball.css
+using deprecated parameters for the initialization function; pass a single object instead
+✔ play-facing solid cabinet backing and cap match actual collider bounds (238.103917ms)
+✔ visible side and rear faces and cap agree with solid rays without an invisible upper wall (120.228084ms)
+✔ cabinet cap retains flush seats, hex heads and enclosed shanks (72.81825ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ installed board fasteners retain exact original mesh topology, positions and open washer contacts (160.991666ms)
+✔ four accessible left board mounts physically contact clear incoming balls without resets (578.059375ms)
+✔ physical shooter rail excludes the three historical right fastener starts (34.64225ms)
+✔ MechanicalFlipper: finite standalone geometry, motion and owned-resource cleanup (48.033458ms)
+✔ MechanicalBumper: finite standalone geometry, motion and owned-resource cleanup (8.666416ms)
+✔ MechanicalPlunger: finite standalone geometry, motion and owned-resource cleanup (19.999125ms)
+✔ MechanicalSling: finite standalone geometry, motion and owned-resource cleanup (47.290791ms)
+✔ MechanicalTarget: finite standalone geometry, motion and owned-resource cleanup (16.018083ms)
+✔ MechanicalRamp: finite standalone geometry, motion and owned-resource cleanup (145.677125ms)
+✔ MechanicalWireform: finite standalone geometry, motion and owned-resource cleanup (5.252875ms)
+✔ MechanicalCabinet: finite standalone geometry, motion and owned-resource cleanup (47.07125ms)
+✔ mechanical model invalid scalar dimensions are rejected (0.277792ms)
+✔ cabinet inspection visibility survives production static batching (190.26725ms)
+✔ sling silver cover, gold skirt and corner lamps retain functional rubber/kicker assembly (3.300708ms)
+✔ bumper lens and bounded internal lamp provide warm light without extra shadows (1.551584ms)
+✔ feedback reads accepted events once without changing scores (0.783083ms)
+✔ feedback milestone and held flipper edges are bounded (0.627709ms)
+✔ rigid animation preserves Chappy's detail and stays within 35 meshes (99.13825ms)
+✔ pause freezes, reduced motion suppresses, restart resets, idle is playing-only (22.266042ms)
+✔ room forwards both update contracts and reset aliases (13.512417ms)
+✔ five bounded missions award base points and each completion bonus exactly once (1.369084ms)
+✔ duplicate, invalid, paused and ready events cannot progress missions or score (0.174ms)
+✔ mission progress and deduplication survive drains and shooter return; restart resets everything (0.181375ms)
+✔ lane mission counts new traversals even if a lane was lit before the mission (0.112834ms)
+✔ target mission grants exactly one left save independent of center save (0.190167ms)
+✔ bumper challenge earns x2 after five hits; varied mechanisms earn x3 starting with the next hit (0.200208ms)
+✔ multipliers never multiply mission or lane-set bonuses and saves do not progress challenges (0.119083ms)
+✔ duplicate and paused events cannot advance multiplier and weak returns preserve both challenges (0.119417ms)
+✔ drain, TILT and restart reset multiplier while preserving story progress between balls (0.143833ms)
+✔ straight structural tubes retain endpoints/radius without redundant axial tessellation (4.280333ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ legacy mini bumper pocket is removed for reference standups (2.385ms)
+✔ earned side kickback reverses an outlane descent once, uncharged still drains (1731.847958ms)
+✔ out-of-order or ground ramp contacts never count a complete traversal (29.673166ms)
+✔ complete physical ramp awards exactly once and only after its exit lip (425.188167ms)
+✔ inlane switch scores only a fresh real crossing, not sitting or pausing (41.2605ms)
+✔ side coils are bounded, horizontal and stronger than their former impulse (25.928917ms)
+✔ visual bumper notifications are accepted-contact-only, bounded and restart clears (19.610375ms)
+✔ bumper notification uses earned contact multiplier, not mission bonus (15.645083ms)
+✔ printed IN bands mirror the verified centerline and add no raised route (0.672916ms)
+✔ larger lane labels follow the open passages without printing over rails (37.910583ms)
+✔ archived art ramp control points stay inside table (0.339833ms)
+✔ bumpers have ball clearance from each other (0.057167ms)
+✔ preview initializes, clamps long frames and releases inputs (0.0815ms)
+✔ both flippers rise toward negative-Z playfield when pressed (0.049792ms)
+✔ archived art hardware preserves its original clearance (0.094375ms)
+✔ archived preview curve clears archived sling art (69.504292ms)
+✔ reference triangle retains side passages and asymmetric target banks (1.470458ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ sling rubber clears the root-to-center shot corridor on both sides (5.198417ms)
+✔ both inlanes feed the flippers at three speeds rather than bypass their pivots (5379.840833ms)
+✔ genuine outside lanes still drain without a flipper or invisible rescue (121.181417ms)
+✔ inside heel approach cannot leak sideways past the root cheek (75.707584ms)
+✔ restored lane mouths pass descending balls without live position rescue (2366.710292ms)
+✔ actual outlane entrance has full ball clearance and mirrored shared paths (0.357625ms)
+✔ historical fixed wire drop is now inside the real tail and is not a valid start (20.03975ms)
+✔ side wire exit drops into the real IN guide and held flipper without rescue (678.884292ms)
+✔ five adjacent redesigned bat shots traverse S, capture and refire the same ball (3821.30825ms)
+✔ old IN approach strikes the outward sling then drains or permits a releasable cradle (1380.042666ms)
+✔ IN floor stripe stays clear of the real rails and sling rubber (1.690459ms)
+✔ current outside wire outlet feeds the held left cradle at three speeds (934.655666ms)
+✔ lane edge fixtures distinguish genuine mouths from initial rail penetration (16.010666ms)
+✔ offset slow and fast lane entries and lateral approaches remain physical and releasable (13942.115417ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ tapered contact hull matches rubber height and rounded profile (1.654083ms)
+✔ accepted sling and target hits fan out once without duplicate score (116.873667ms)
+✔ pull retracts actual stop and ball follows gravity without position resets (521.108209ms)
+✔ cancelled full pull cannot strand the ball behind the stop (478.436ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ installed ramp has matched sheet walls, true paired rails and visible anti-trap base (175.800875ms)
+✔ support columns stay on the perimeter or shooter divider, and beams clear ground balls (107.652083ms)
+✔ production return has an actual open gap, not a hidden supporting floor (154.702834ms)
+✔ standalone paired rails support and roll a ball without any plane collider (55.85175ms)
+✔ all perimeter ramp supports have matching physical posts, arms, collars and feet (35.12925ms)
+✔ acrylic offset walls never fold backwards along the centerline (64.201458ms)
+✔ low base drawing ends at the same complete strip as its collider (61.34975ms)
+✔ compact low nose uses one closed shell and matching convex contact vertices (68.240875ms)
+✔ underfloor bearers, saddles and wire ties share nominal visual and contact stock (93.89175ms)
+✔ low base end cap follows its accessible convex boundary (80.99175ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ short supports allow eighty nonpenetrating slow wall approaches (17206.961042ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ nudge warns before tilt, ignores repeats, cools and resets (0.348042ms)
+✔ physical nudge never teleports or scores and paused input is ignored (119.65025ms)
+✔ tilt suppresses coils and scoring then consumes one ball, restart clears (478.328291ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rules enforce three balls, pause and reset (1.115167ms)
+✔ real launch feeds scoring objects, not a scripted path (654.887291ms)
+✔ physical drain serves next ball and ends after third (54.844125ms)
+✔ both kinematic flippers physically drive ball upfield (127.099042ms)
+✔ pause freezes simulation; resume and restart are deterministic (162.030792ms)
+✔ former left ramp wedge clears naturally without ball search (490.313ms)
+✔ ninety varied launches drain without stuck recovery or position jumps (39173.580166ms)
+✔ twelve full three-ball sessions end without rescue (15020.124375ms)
+✔ side-wall approaches enter genuine outlanes and naturally drain when uncharged (85.777792ms)
+✔ beginner play duration remains controllable across thirty-one powers (32371.991917ms)
+✔ rules deduplicate events, complete lanes, and refill one center save (0.12975ms)
+✔ each physical top lane registers center and edge traversals only once (166.665458ms)
+✔ spinner traversal accelerates rotation once; rotation decays without score farming (17.880417ms)
+✔ charged center saver applies impulse without teleport, then allows real drain (30.947541ms)
+✔ natural shooter launch traverses a top rollover lane (68.814708ms)
+✔ outlane widths below entrance exceed ball diameter with margin (0.070791ms)
+✔ center save clears both held and returning flippers without a downstroke collision (73.494208ms)
+✔ held buttons cannot pinch the ball permanently (9778.615083ms)
+✔ twenty seeded incoming balls measure physical contact and controlled return (4036.644125ms)
+✔ both flippers cradle passively without repeated coil fire and release naturally (922.172792ms)
+✔ release timing produces distinct aimed reflip shots on both sides (534.955292ms)
+✔ curved sling and inlane have a full ball-width passage with margin (1.0415ms)
+✔ rising shots gain energy toward the tip without exceeding the world limit (264.004209ms)
+✔ five real cradle-reflip timings traverse the S ramp, cradle again and re-fire (2647.222167ms)
+✔ both flippers can reach upper lanes and bumper routes around reference triangle (29866.663875ms)
+✔ shooter corner backing cannot retain a ball outside the bend (1691.219333ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ hold charges continuously, repeat cannot reset, and release fires once (0.662667ms)
+✔ drag overrides time, can reduce power, and cancellation never fires (0.131333ms)
+✔ low medium high produce distinct physical speeds and weak ball naturally returns (270.193542ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ missing acrylic contacts lie on real visible exterior faces without duplicating top inner or lip faces (1342.51475ms)
+✔ legal ground and rising airborne balls hit the visible acrylic exterior (594.384917ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ low housing is closed with the existing deck and partitioned without internal faces (15.807959ms)
+✔ generic installed rows without tangent preserve the exact housing geometry (4.808834ms)
+✔ every installed housing boundary face matches the physical strip union (142.145084ms)
+✔ low housing never projects above the actual acrylic running surface (24.730916ms)
+✔ historical positive-offset tangent start penetrates the deck; common corrected start is legal (40.488458ms)
+✔ one-strip generic housing renders both endpoint caps exactly once (6.370709ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ right and rear deck repairs preserve every unrelated original triangle and generic rows (10.338916ms)
+✔ repair follows route parameters at alternate sample counts and keeps a closed constant-thickness sheet (11.796417ms)
+✔ three legal zero-speed starts exit the repaired right deck pockets without rescue (956.400959ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ exposed ramp hardware shares exact visible triangle geometry and dimensions (151.023959ms)
+✔ legal airborne approaches contact exposed lips straps and bolts rather than pass through (833.407667ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rear descent preserves endpoint C1 XZ and gravity-ratio datum (12.363292ms)
+✔ real sheet handoff clears the allowed off-center paired-stock support envelope (2.493167ms)
+✔ seven legal former pocket starts exit without rescue under the unchanged solver (3602.340417ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ experimental ramp uses continuous finite mesh and adequate channel width (5.932667ms)
+ramp-boundary {"speed":26,"offset":-0.08,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0.08,"outcome":"normal-rollback-relaunch"}
+✔ floor ball passes below rear elevated deck without being lifted (103.893291ms)
+✔ low ramp skirt blocks lateral entry instead of admitting ball under deck (51.1845ms)
+✔ elevated exit releases ball into left lower lane without teleport (83.454958ms)
+✔ 28-speed tangent approaches all complete with lateral tolerance (1167.627208ms)
+✔ 26-speed boundary shots complete honestly or roll back and relaunch normally (934.715125ms)
+✔ six unassisted launch powers leave the ramp base without permanent stalls (1982.537708ms)
+✔ ground balls approaching low base from high deck side deflect without wedging (1090.251ms)
+✔ five adjacent real flipper timings traverse the forward S and award once without teleport (2635.490334ms)
+✔ measured ground-level flipper approaches at 28/30 traverse with lateral tolerance (1408.502417ms)
+✔ reference cabinet includes supported backbox, speakers, apron and rear tower (84.784125ms)
+✔ score drawing is cached and uses live score plus ball number (47.054334ms)
+✔ formed collection apron preserves central and outlane throats after active drain (34.967209ms)
+✔ short supported cabinet keeps collection apron within its drain opening (32.658209ms)
+✔ inner skyline is a rear-mounted relief outside live board (31.826459ms)
+✔ reference ink registers to board, preserves context and draws reference landmarks (2.265416ms)
+✔ reference ink is deterministic and validates canvas dimensions (2.234667ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ reference banks have three upper wrenches, two middle wrenches and three robots (37.415875ms)
+✔ every installed reference target scores from a real front contact and identifies its moving part (456.702ms)
+✔ target strike boxes follow declared height without raising the ground contact edge (0.234625ms)
+✔ derived contact bounds match the actual three extruded strike meshes (9.823667ms)
+✔ carrier has formed rim, separate rear plate, fixed studs and a continuous rounded mount (1.779041ms)
+✔ both captured carrier pinch positions drain without rescue (554.71ms)
+✔ right rear carrier rail retains ball clearance from the full low support base (28.169292ms)
+✔ nine slow approaches behind the right carrier drain without rescue (2433.932666ms)
+✔ captured right target lower-edge wedge releases with the smooth carrier rail (219.126959ms)
+✔ smooth carrier contacts use the same capsule dimensions and placement as rendering (20.230667ms)
+✔ workshop structures batch within their scenery budget and preserve QA targets (56.751583ms)
+✔ workshop owns and releases its merged geometries and materials exactly once (23.996ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ solid shooter rail preserves every old side vertex and adds only outward flat caps (2.323458ms)
+✔ actual octagonal rail hull matches visible side and flat-end rays without capsule inflation (89.360625ms)
+✔ six nonoverlapping ground lateral approaches contact the real external shooter rail (411.592834ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ initial serve and restart use the visible head contact point (173.220875ms)
+✔ returning ball settles on visible stop without teleport or consuming a ball (271.834584ms)
+✔ weak shot naturally returns to the same stop and full relaunch preserves speed (1060.760292ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ returned shooter ball rolls to plunger and relaunches in place without consuming a ball (198.116584ms)
+✔ normal drains still consume three balls and restart resets returned-shooter state (25.780291ms)
+✔ returned shooter contains lateral speed -3 (246.064042ms)
+✔ returned shooter contains lateral speed -1 (276.818375ms)
+✔ returned shooter contains lateral speed 1 (235.17675ms)
+✔ returned shooter contains lateral speed 3 (261.285ms)
+✔ out-of-bounds returned ball cannot strand the game in ready (21.429375ms)
+✔ no autoplay, allocation or resume without a trusted input gesture (0.536292ms)
+✔ all cabinet events have bounded short effects and unknown events are ignored (0.553292ms)
+✔ repeat rate limits and a hard voice cap prevent audio storms (0.091708ms)
+✔ mute and pause stop active voices; unmute/unpause need a gesture (0.14725ms)
+✔ saved mute and unavailable WebAudio/storage fail silently (0.139166ms)
+✔ pending resume cannot restart sound after pause or disposal (0.147ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ finite surface distance distinguishes faces edges vertices and unresolved containment (1.489916ms)
+✔ closed mesh convex and cuboid interior are invalid even without boundary overlap (2.687833ms)
+✔ finite cylinder cap barrel rim and rigid transforms use independent analytic distances (0.285208ms)
+✔ capsule and ball solids reject deep interior and distinguish rounded ends (0.12275ms)
+✔ malformed closed boundaries and unknown shapes fail rather than certify starts (1.486667ms)
+✔ captured open strip reproduces solid-query false penetration without certifying reachability (26.799542ms)
+✔ captured real pillar and wall overlaps remain rejected by independent geometry (0.261167ms)
+✔ accepted c1 historical tangent overlap and corrected deck clearance remain distinguishable (59.179959ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ right target bank leaves a full ball-width throat beside every main bumper (1.484709ms)
+✔ low-speed balls pass the screenshot throat without rescue or position changes (329.300625ms)
+✔ twenty-one natural launches clear without target-bank stalls or position resets (6388.876833ms)
+✔ ramp crest releases a resting ball without nudge or position rescue (347.042959ms)
+✔ continuous ramp collision meshes share every route row and triangle edge without gaps (23.35575ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ upper rollover volumes stay in the ground lane below the elevated route (88.308583ms)
+✔ legal ground upper-lane center and edge passes award once at low and high speeds (1297.14875ms)
+✔ five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save (2797.7925ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ all visible wire capsule axes ends and nominal radii match installed contacts in four meshes (219.176459ms)
+✔ compatibility ramp drawing uses the same four capsule-stock rail geometries (33.556417ms)
+✔ wire pole cleanup preserves every installed vertex normal and nondegenerate face (74.003ms)
+✔ wire retained installed capsule shells stay outward and closed (209.851541ms)
+✔ wire pole cleanup preserves distinct pole fallback and rounded nonpole faces (1.334708ms)
+✔ wire primitive ranges cover empty and mixed concatenated geometry exactly (1.184917ms)
+{
+  "checks": 0,
+  "best": {
+    "gap": null
+  }
+}
+{
+  "meshChecks": 0,
+  "allParts": {
+    "gap": null
+  },
+  "lowest": []
+}
+{
+  "railSamples": 15867,
+  "meshSamples": 71659,
+  "lateralSamples": 2074,
+  "lateralClearance": 0.0928372039896206
+}
+{
+  "physicalPointGap": 0.09299470556859746,
+  "maxSegment": 0.15373067443021712,
+  "coarseGlobalLowerBound": 0.016129368353488896,
+  "continuousLowerBound": 0.09199999262741226,
+  "certifiedSegments": 464
+}
+✔ wire tail preserves prefix, endpoint, position and unit-tangent continuity (5.869084ms)
+✔ wire tail curvature and every physical offset rail progress without folds (42.308125ms)
+✔ sampled wire rails have no self or same-height pair crossing (13.163416ms)
+✔ every physical wire segment clears all visible sling solids by .025 (3868.649458ms)
+✔ workshop scenery has finite attached geometry and stays independent of physics (73.721291ms)
+ℹ tests 202
+ℹ suites 0
+ℹ pass 202
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 138852.234167
+
+/Users/tsaito/Projects/AIGames/web/css/pinball.css
+  30:190  warning  Property 'user-select' is not a widely available baseline feature   css/use-baseline
+  31:61   warning  Property 'outline' is not a widely available baseline feature       css/use-baseline
+  36:48   warning  Property 'accent-color' is not a widely available baseline feature  css/use-baseline
+
+✖ 3 problems (0 errors, 3 warnings)
+

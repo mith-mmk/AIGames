@@ -1,0 +1,24 @@
+{
+  "sourceFiles": {
+    "web/js/pinball/wire-stock.mjs": "6746f5f3abeea64e98a44b6e07597e164590ed4616532c1329e786b8a2c3825f",
+    "web/js/pinball/wire-stock.test.mjs": "7b293c3fbfa18009656ffe7546e4a92e1ec4411c146caa65efb6d6c16693190c"
+  },
+  "files": {
+    "focused-test.txt": "cf2a986f46470974f2e52668967009de9dcecd033a805ee4a12f49604950b9a6",
+    "image-diff.json": "c9fc4ab8884427586a34a94f3f717843414cfc292c849a76709c8298ea71f9b0",
+    "wire-stock.mjs.txt": "6746f5f3abeea64e98a44b6e07597e164590ed4616532c1329e786b8a2c3825f",
+    "README.md": "a35c89816ef96db1e2903e1266bdde5b93383d384c0c89992a5ad8679107771c",
+    "npm-test.txt": "409274fd06c536e9fb2ae528e6cd5f7f1dd126cb8db7455f687d014a049e2571",
+    "colliders.json": "51e53f21f1062a0ffc8a1f3f7476114e4e13e5581160c9b80c8d983ff70333ad",
+    "wire-stock.test.mjs.txt": "7b293c3fbfa18009656ffe7546e4a92e1ec4411c146caa65efb6d6c16693190c"
+  },
+  "npmExit": 0,
+  "pinballTests": 202,
+  "failed": 0,
+  "skipped": 0,
+  "colliderCount": 1380,
+  "production45": {
+    "triangles": 449612,
+    "calls": 685
+  }
+}
