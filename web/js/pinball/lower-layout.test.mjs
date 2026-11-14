@@ -92,26 +92,40 @@ test('restored lane mouths pass descending balls without live position rescue',a
   }
 });
 
+test('historical fixed wire drop is now inside the real tail and is not a valid start',async()=>{
+ const g=await PinballPhysics.create();
+ try {
+  // Retain the old coordinates as an explicit invalid-fixture regression, not
+  // a simulated success: the new outside tail occupies this sphere.
+  assert.ok(sphereClearance(g,{x:-1.55,y:.575,z:2.70})<-.02);
+ }finally{g.dispose();}
+});
+
 test('side wire exit drops into the real IN guide and held flipper without rescue',async()=>{
+ const r=sampleRamp().at(-1);
  for(const speed of [1,2,3]) {
   const g=await PinballPhysics.create();
   try {
    g.launch();g.state.kickbackCharges=0;g.state.sideSaveCharges=0;
-   // Existing deck outlet .44 above table, ball center at .575. This fixture
-   // tests the drop only, not a claim of full-ramp traversal.
-   g.ball.setTranslation({x:-1.55,y:.575,z:2.70},true);
+   // Follow the physical outlet position but keep the historical +Z velocity.
+   // The separate tangent test below exercises the actual wire release vector.
+   const start={x:r.p.x,y:r.p.y+TABLE.ballRadius,z:r.p.z};
+   assert.ok(sphereClearance(g,start)>=-1e-4,'drop start must clear every solid collider');
+   g.ball.setTranslation(start,true);
    g.ball.setLinvel({x:0,y:0,z:speed},true);
+   let rescueEvents=0;const onEvent=g.state.onEvent.bind(g.state);
+   g.state.onEvent=e=>{const accepted=onEvent(e);if(accepted&&['kickback','side-save'].includes(e.type))rescueEvents++;return accepted;};
    let resets=0;const setTranslation=g.ball.setTranslation.bind(g.ball);
    g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')resets++;return setTranslation(...args);};
    for(let tick=0;tick<600&&g.state.phase==='playing';tick++)g.step(1/120,{left:true});
    assert.equal(g.state.phase,'playing');assert.ok(g.metrics.flipperContacts[0]>0);
    assert.ok(Math.hypot(g.ball.linvel().x,g.ball.linvel().z)<.05);
-   assert.equal(resets,0);
+   assert.equal(resets,0);assert.equal(rescueEvents,0);
   }finally{g.dispose();}
  }
 });
 
-test('five adjacent redesigned bat shots traverse S, capture and refire the same ball',async()=>{for(const release of [80,81,82,83,84]){const g=await PinballPhysics.create();g.launch();g.state.kickbackCharges=0;g.ball.setTranslation({x:-1.6,y:.18,z:2.8},true);g.ball.setLinvel({x:0,y:0,z:2},true);let resets=0;const set=g.ball.setTranslation.bind(g.ball);g.ball.setTranslation=(...a)=>{if(g.state.phase==='playing')resets++;return set(...a);};for(let i=0;i<500;i++)g.step(1/120,{left:true});for(let i=0;i<release;i++)g.step(1/120);for(let i=0;i<1200&&g.state.phase==='playing';i++)g.step(1/120,{left:true});assert.equal(g.rampTraversals,1);assert.equal(g.state.phase,'playing');assert.ok(Math.hypot(g.ball.linvel().x,g.ball.linvel().z)<.05);const count=g.metrics.coilImpulses[0];for(let i=0;i<45;i++)g.step(1/120);let z=9;for(let i=0;i<300&&g.state.phase==='playing';i++){g.step(1/120,{left:true});z=Math.min(z,g.ballPosition.z);}assert.ok(g.metrics.coilImpulses[0]>count);assert.ok(z<-1);assert.equal(resets,0);assert.equal(g.state.ballNumber,1);assert.equal(g.state.phase,'playing');g.dispose();}
+test('five adjacent redesigned bat shots traverse S, capture and refire the same ball',async()=>{for(const release of [80,81,82,83,84]){const g=await PinballPhysics.create();g.launch();g.state.kickbackCharges=0;let rescueEvents=0;const onEvent=g.state.onEvent.bind(g.state);g.state.onEvent=e=>{const accepted=onEvent(e);if(accepted&&['kickback','side-save'].includes(e.type))rescueEvents++;return accepted;};g.ball.setTranslation({x:-1.6,y:.18,z:2.8},true);g.ball.setLinvel({x:0,y:0,z:2},true);let resets=0;const set=g.ball.setTranslation.bind(g.ball);g.ball.setTranslation=(...a)=>{if(g.state.phase==='playing')resets++;return set(...a);};for(let i=0;i<500;i++)g.step(1/120,{left:true});for(let i=0;i<release;i++)g.step(1/120);for(let i=0;i<1200&&g.state.phase==='playing';i++)g.step(1/120,{left:true});assert.equal(g.rampTraversals,1);assert.equal(g.state.phase,'playing');assert.ok(Math.hypot(g.ball.linvel().x,g.ball.linvel().z)<.05);const count=g.metrics.coilImpulses[0];for(let i=0;i<45;i++)g.step(1/120);let z=9;for(let i=0;i<300&&g.state.phase==='playing';i++){g.step(1/120,{left:true});z=Math.min(z,g.ballPosition.z);}assert.ok(g.metrics.coilImpulses[0]>count);assert.ok(z<-1);assert.equal(resets,0);assert.equal(rescueEvents,0,'same-ball return must not depend on rescue');assert.equal(g.state.ballNumber,1);assert.equal(g.state.phase,'playing');g.dispose();}
 });
 
 test('old IN approach strikes the outward sling then drains or permits a releasable cradle',async()=>{
@@ -144,7 +158,7 @@ test('IN floor stripe stays clear of the real rails and sling rubber',()=>{
  }
 });
 
-// The historical drop above remains separate coverage. Exercise the actual
+// The position-synchronized +Z drop above remains separate coverage. Exercise the actual
 // current outlet tangent too, so moving the wire cannot hide a bad handoff.
 test('current outside wire outlet feeds the held left cradle at three speeds',async()=>{
  const r=sampleRamp().at(-1);

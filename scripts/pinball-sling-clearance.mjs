@@ -41,6 +41,29 @@ for(const rail of physicalRails)for(let i=0;i<rail.length;i++){
  physicalPointGap=Math.min(physicalPointGap,(inside?-distance:distance)-WIRE_RADIUS);
  if(i)maxSegment=Math.max(maxSegment,Math.hypot(rail[i].x-rail[i-1].x,rail[i].z-rail[i-1].z));
 }
-const continuousLowerBound=physicalPointGap-maxSegment/2;
-console.log(JSON.stringify({physicalPointGap,maxSegment,continuousLowerBound},null,2));
+// Keep the former coarse global bound in the report. Subtracting half the
+// longest segment anywhere from the closest vertex can be needlessly negative.
+// Instead certify EACH real segment: signed distance is 1-Lipschitz, so half
+// its local sampling step bounds the unsampled interval. The .025 threshold
+// is unchanged, and every segment remains included.
+const coarseGlobalLowerBound=physicalPointGap-maxSegment/2;
+const signedDistance=q=>{
+ let distance=Infinity,inside=true;
+ for(let j=0;j<hull.length;j++){
+  const a=hull[j],b=hull[(j+1)%hull.length],d=b.clone().sub(a);
+  if(cross(a,b,q)<0)inside=false;
+  const t=Math.max(0,Math.min(1,q.clone().sub(a).dot(d)/d.lengthSq()));
+  distance=Math.min(distance,q.distanceTo(a.clone().addScaledVector(d,t)));
+ }
+ return inside?-distance:distance;
+};
+let continuousLowerBound=Infinity,certifiedSegments=0;
+for(const rail of physicalRails)for(let i=1;i<rail.length;i++){
+ const a=rail[i-1],b=rail[i],length=Math.hypot(b.x-a.x,b.z-a.z);
+ const steps=Math.max(1,Math.ceil(length/.002));let local=Infinity;
+ for(let k=0;k<=steps;k++)local=Math.min(local,signedDistance(new T.Vector2(a.x+(b.x-a.x)*k/steps,a.z+(b.z-a.z)*k/steps))-WIRE_RADIUS);
+ continuousLowerBound=Math.min(continuousLowerBound,local-length/steps/2);certifiedSegments++;
+}
+assert.equal(certifiedSegments,physicalRails.length*(physicalRows.length-1-Math.round(240*WIRE_START_FRACTION)));
+console.log(JSON.stringify({physicalPointGap,maxSegment,coarseGlobalLowerBound,continuousLowerBound,certifiedSegments},null,2));
 assert.ok(Number.isFinite(continuousLowerBound)&&continuousLowerBound>=.025);

@@ -36,12 +36,58 @@ export const RAMP_POINTS = Object.freeze([
   [-2.40, 0.45, 1.3],
   [-2.30, 0.44, 2.45],
   [-1.90, 0.44, 2.95],
-  [-1.55, 0.44, 3.15],
+  [-1.72, 0.44, 3.00],
 ]);
+
+// The prefix remains the original centripetal route. The last wire section
+ // needs a specified radius and exit tangent, not another Catmull control point.
+export const WIRE_TAIL = (() => {
+  const firstRadius=.45, exitSlope=.171, startX=-2.40;
+  const [endX,height,endZ]=RAMP_POINTS.at(-1);
+  // Normalize decimal layout subtraction so the derived span stays .68,
+  // rather than its floating subtraction artifact .6799999999999999.
+  const lateralSpan=Number((endX-startX).toPrecision(12));
+  const secondAngle=Math.atan(1/exitSlope);
+  const secondRadius=(lateralSpan-firstRadius)/Math.sin(secondAngle);
+  const startZ=endZ-firstRadius-secondRadius*(1-Math.cos(secondAngle));
+  return Object.freeze({startFraction:.8,bridgeEndFraction:215/240,
+    startX,startZ,endX,endZ,height,firstRadius,secondRadius,secondAngle,exitSlope});
+})();
+
+function rampPose(curve,parameter) {
+  const d=WIRE_TAIL;
+  if(parameter<d.startFraction)return {p:curve.getPoint(parameter),t:curve.getTangent(parameter)};
+  if(parameter<d.bridgeEndFraction) {
+    const u=(parameter-d.startFraction)/(d.bridgeEndFraction-d.startFraction);
+    const a=curve.getPoint(d.startFraction),b=new T.Vector3(d.startX,d.height,d.startZ);
+    // Unit-length Hermite handles preserve the incoming direction and reach
+    // the first circular arc with a +Z tangent. Height descends .45 -> .44.
+    const m0=curve.getTangent(d.startFraction),m1=new T.Vector3(0,0,1);
+    const p=a.clone().multiplyScalar(2*u**3-3*u*u+1)
+      .addScaledVector(m0,u**3-2*u*u+u).addScaledVector(b,-2*u**3+3*u*u).addScaledVector(m1,u**3-u*u);
+    const t=a.clone().multiplyScalar(6*u*u-6*u)
+      .addScaledVector(m0,3*u*u-4*u+1).addScaledVector(b,-6*u*u+6*u).addScaledVector(m1,3*u*u-2*u).normalize();
+    return {p,t};
+  }
+  const u=(parameter-d.bridgeEndFraction)/(1-d.bridgeEndFraction)*2;
+  const centerX=d.startX+d.firstRadius;
+  if(u<=1) {
+    const q=u*Math.PI/2;
+    return {p:new T.Vector3(centerX-d.firstRadius*Math.cos(q),d.height,d.startZ+d.firstRadius*Math.sin(q)),
+      t:new T.Vector3(Math.sin(q),0,Math.cos(q))};
+  }
+  const q=(u-1)*d.secondAngle;
+  return {p:new T.Vector3(centerX+d.secondRadius*Math.sin(q),d.height,d.startZ+d.firstRadius+d.secondRadius*(1-Math.cos(q))),
+    t:new T.Vector3(Math.cos(q),0,Math.sin(q))};
+}
+export function sampleRampPose(parameter) {
+  return rampPose(new T.CatmullRomCurve3(RAMP_POINTS.map(p=>new T.Vector3(...p)),false,'centripetal'),parameter);
+}
+
 export function sampleRamp(count=240) {
   const curve=new T.CatmullRomCurve3(RAMP_POINTS.map(p=>new T.Vector3(...p)),false,'centripetal');
   return Array.from({length:count+1},(_,i)=>{
-    const p=curve.getPoint(i/count), t=curve.getTangent(i/count);
+    const {p,t}=rampPose(curve,i/count);
     const n=new T.Vector3(-t.z,0,t.x).normalize();
     const narrowing=p.x<0?Math.max(0,Math.min(1,(p.z-1.8)/.7)):0;
     const funnel=Math.max(0,Math.min(1,(i/count-(WIRE_START_FRACTION-WIRE_FUNNEL_FRACTION))/WIRE_FUNNEL_FRACTION));

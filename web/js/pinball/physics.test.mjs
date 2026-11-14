@@ -386,7 +386,7 @@ test("rising shots gain energy toward the tip without exceeding the world limit"
 
 test("five real cradle-reflip timings traverse the S ramp, cradle again and re-fire", async () => {
   for (const releaseTicks of [80, 81, 82, 83, 84]) {
-    const g=await PinballPhysics.create();g.launch();g.state.kickbackCharges=0;
+    const g=await PinballPhysics.create();g.launch();g.state.kickbackCharges=0;let rescueEvents=0;const onEvent=g.state.onEvent.bind(g.state);g.state.onEvent=e=>{const accepted=onEvent(e);if(accepted&&['kickback','side-save'].includes(e.type))rescueEvents++;return accepted;};
     const held={left:true};
     for(let i=0;i<30;i++)g.step(1/120,held);
     // Measured consecutive release window after widening and moving the bats.
@@ -426,7 +426,7 @@ test("five real cradle-reflip timings traverse the S ramp, cradle again and re-f
       }
       assert.ok(firedAgain, `return shot ${releaseTicks}`);
       assert.equal(g.coilImpulses[0], 2);
-      assert.equal(positionResets, 0, "same ball must traverse, cradle and re-fire without position resets");
+      assert.equal(positionResets, 0, "same ball must traverse, cradle and re-fire without position resets");assert.equal(rescueEvents,0,"same-ball return must not depend on rescue");
     } finally { g.dispose(); }
   }
 });

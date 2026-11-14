@@ -125,8 +125,8 @@ export class PinballPhysics {
     }
     for (const x of [-1.875, -.625, .625, 1.875]) this.segment([x, .23, -5.0], [x, .23, -4.1], .035);
     for (let lane = 0; lane < 3; lane++) {
-      const c = this.world.createCollider(R.ColliderDesc.cuboid(.35, .30, .08)
-        .setTranslation((lane - 1) * 1.25, .30, -4.55).setSensor(true));
+      const c = this.world.createCollider(R.ColliderDesc.cuboid(.35, .16, .08)
+        .setTranslation((lane - 1) * 1.25, .20, -4.55).setSensor(true));
       this.hitObjects.set(c.handle, { type: "rollover", lane, key: "lane" + lane });
     }
     for(const side of [-1,1]) {
