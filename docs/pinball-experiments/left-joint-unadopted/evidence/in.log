@@ -1,0 +1,179 @@
+using deprecated parameters for the initialization function; pass a single object instead
+[
+  {
+    entry: { x: -1.72, z: 2.8, name: 'old-capture-start' },
+    speed: 0.2,
+    start: { x: -1.72, y: 0.18, z: 2.8 },
+    nearest: { gap: 0.005000000894080703, p: [fA], shape: 1 },
+    initialLegal: true,
+    capture: 317,
+    coilsAtCapture: 0,
+    coilsAfter: 1,
+    minZAfterRepress: -2.64601993560791,
+    phase: 'playing',
+    ball: 1,
+    resets: 0,
+    metrics: {
+      rampTraversals: 0,
+      flipperContacts: [Array],
+      activeFlipperContacts: [Array],
+      coilImpulses: [Array],
+      upfieldReturns: 1
+    },
+    eventTypes: [ 'inlane', 'spinner', 'bumper', 'bumper' ]
+  },
+  {
+    entry: { x: -1.72, z: 2.8, name: 'old-capture-start' },
+    speed: 2,
+    start: { x: -1.72, y: 0.18, z: 2.8 },
+    nearest: { gap: 0.005000000894080703, p: [fA], shape: 1 },
+    initialLegal: true,
+    capture: 304,
+    coilsAtCapture: 0,
+    coilsAfter: 1,
+    minZAfterRepress: -2.6448187828063965,
+    phase: 'playing',
+    ball: 1,
+    resets: 0,
+    metrics: {
+      rampTraversals: 0,
+      flipperContacts: [Array],
+      activeFlipperContacts: [Array],
+      coilImpulses: [Array],
+      upfieldReturns: 1
+    },
+    eventTypes: [ 'inlane', 'spinner', 'bumper', 'bumper' ]
+  },
+  {
+    entry: { x: -1.72, z: 2.8, name: 'old-capture-start' },
+    speed: 4,
+    start: { x: -1.72, y: 0.18, z: 2.8 },
+    nearest: { gap: 0.005000000894080703, p: [fA], shape: 1 },
+    initialLegal: true,
+    capture: 259,
+    coilsAtCapture: 0,
+    coilsAfter: 1,
+    minZAfterRepress: -2.643373966217041,
+    phase: 'playing',
+    ball: 1,
+    resets: 0,
+    metrics: {
+      rampTraversals: 0,
+      flipperContacts: [Array],
+      activeFlipperContacts: [Array],
+      coilImpulses: [Array],
+      upfieldReturns: 1
+    },
+    eventTypes: [ 'inlane', 'spinner', 'bumper', 'bumper' ]
+  },
+  {
+    entry: { x: -1.72, z: 2.8, name: 'old-capture-start' },
+    speed: 8,
+    start: { x: -1.72, y: 0.18, z: 2.8 },
+    nearest: { gap: 0.005000000894080703, p: [fA], shape: 1 },
+    initialLegal: true,
+    capture: 198,
+    coilsAtCapture: 0,
+    coilsAfter: 1,
+    minZAfterRepress: -2.6352689266204834,
+    phase: 'playing',
+    ball: 1,
+    resets: 0,
+    metrics: {
+      rampTraversals: 0,
+      flipperContacts: [Array],
+      activeFlipperContacts: [Array],
+      coilImpulses: [Array],
+      upfieldReturns: 1
+    },
+    eventTypes: [ 'inlane', 'spinner', 'bumper', 'bumper' ]
+  },
+  {
+    entry: { x: -2.12, z: 1.1, name: 'new-in-mouth' },
+    speed: 0.2,
+    start: { x: -2.12, y: 0.18, z: 1.1 },
+    nearest: { gap: 0.00500000089411845, p: [fA], shape: 1 },
+    initialLegal: true,
+    capture: null,
+    coilsAtCapture: null,
+    coilsAfter: 0,
+    minZAfterRepress: null,
+    phase: 'ready',
+    ball: 2,
+    resets: 0,
+    metrics: {
+      rampTraversals: 0,
+      flipperContacts: [Array],
+      activeFlipperContacts: [Array],
+      coilImpulses: [Array],
+      upfieldReturns: 0
+    },
+    eventTypes: [ 'inlane' ]
+  },
+  {
+    entry: { x: -2.12, z: 1.1, name: 'new-in-mouth' },
+    speed: 2,
+    start: { x: -2.12, y: 0.18, z: 1.1 },
+    nearest: { gap: 0.00500000089411845, p: [fA], shape: 1 },
+    initialLegal: true,
+    capture: null,
+    coilsAtCapture: null,
+    coilsAfter: 0,
+    minZAfterRepress: null,
+    phase: 'ready',
+    ball: 2,
+    resets: 0,
+    metrics: {
+      rampTraversals: 0,
+      flipperContacts: [Array],
+      activeFlipperContacts: [Array],
+      coilImpulses: [Array],
+      upfieldReturns: 0
+    },
+    eventTypes: [ 'inlane' ]
+  },
+  {
+    entry: { x: -2.12, z: 1.1, name: 'new-in-mouth' },
+    speed: 4,
+    start: { x: -2.12, y: 0.18, z: 1.1 },
+    nearest: { gap: 0.00500000089411845, p: [fA], shape: 1 },
+    initialLegal: true,
+    capture: null,
+    coilsAtCapture: null,
+    coilsAfter: 0,
+    minZAfterRepress: null,
+    phase: 'ready',
+    ball: 2,
+    resets: 0,
+    metrics: {
+      rampTraversals: 0,
+      flipperContacts: [Array],
+      activeFlipperContacts: [Array],
+      coilImpulses: [Array],
+      upfieldReturns: 0
+    },
+    eventTypes: [ 'inlane' ]
+  },
+  {
+    entry: { x: -2.12, z: 1.1, name: 'new-in-mouth' },
+    speed: 8,
+    start: { x: -2.12, y: 0.18, z: 1.1 },
+    nearest: { gap: 0.00500000089411845, p: [fA], shape: 1 },
+    initialLegal: true,
+    capture: null,
+    coilsAtCapture: null,
+    coilsAfter: 0,
+    minZAfterRepress: null,
+    phase: 'ready',
+    ball: 2,
+    resets: 0,
+    metrics: {
+      rampTraversals: 0,
+      flipperContacts: [Array],
+      activeFlipperContacts: [Array],
+      coilImpulses: [Array],
+      upfieldReturns: 0
+    },
+    eventTypes: [ 'inlane' ]
+  }
+]

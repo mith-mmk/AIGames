@@ -1,0 +1,8 @@
+{
+  "sourceSHA256": "2d9c3a9cae7eba29d21dc755645c752e2b23345d0a64de01b1f4750bdeef611e",
+  "servedMapExactlyMatchesFrozenCandidate": true,
+  "baselineGit": "c87f117a9c5f5cfab33e4817b8b720a790ab8b0e",
+  "correction": "browser-original.json labels adb035e/sling gear/roof scope are stale copied metadata. visual.cjs serves c87f117 baseline via git and the verified candidate map. Original metadata retained unchanged; render figures and images are scoped to verified served code.",
+  "inputSourceSHA256": "2d9c3a9cae7eba29d21dc755645c752e2b23345d0a64de01b1f4750bdeef611e",
+  "scope": "Scripted desktop and emulated CDP touch; not physical phone or human play."
+}

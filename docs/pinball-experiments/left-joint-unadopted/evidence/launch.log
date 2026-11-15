@@ -1,0 +1,242 @@
+using deprecated parameters for the initialization function; pass a single object instead
+[
+  {
+    weak: null,
+    power: 0.55,
+    initial: {
+      x: 2.5299999713897705,
+      y: 0.17499999701976776,
+      z: 4.425000190734863
+    },
+    initialNearest: { gap: -2.479553222745068e-7, position: [fA], type: 9 },
+    shooter: {
+      x: 2.53,
+      restZ: 4.6,
+      ballZ: 4.425,
+      frontZ: 5.9,
+      returnMinZ: 4.25,
+      returnMaxZ: 4.56
+    },
+    barCount: 4,
+    fieldAccessDefinition: 'descriptive p.z in(-4.1,3.5) and x<shooter.x−.5; not a pass threshold',
+    fieldAccess: { tick: 337, p: [Object] },
+    minX: -1.209139108657837,
+    maxX: 2.5299999713897705,
+    minZ: -4.641885757446289,
+    phase: 'ready',
+    ball: 2,
+    returnedShooter: false,
+    score: 25,
+    stopErrorZ: 1.9073486345888568e-7,
+    seconds: 8.966666666666798,
+    barContactTicks: 3,
+    rollovers: 0,
+    bumpers: 0
+  },
+  {
+    weak: null,
+    power: 0.65,
+    initial: {
+      x: 2.5299999713897705,
+      y: 0.17499999701976776,
+      z: 4.425000190734863
+    },
+    initialNearest: { gap: -2.479553222745068e-7, position: [fA], type: 9 },
+    shooter: {
+      x: 2.53,
+      restZ: 4.6,
+      ballZ: 4.425,
+      frontZ: 5.9,
+      returnMinZ: 4.25,
+      returnMaxZ: 4.56
+    },
+    barCount: 4,
+    fieldAccessDefinition: 'descriptive p.z in(-4.1,3.5) and x<shooter.x−.5; not a pass threshold',
+    fieldAccess: { tick: 299, p: [Object] },
+    minX: -1.211601972579956,
+    maxX: 2.5299999713897705,
+    minZ: -5.1098809242248535,
+    phase: 'ready',
+    ball: 2,
+    returnedShooter: false,
+    score: 25,
+    stopErrorZ: 1.9073486345888568e-7,
+    seconds: 8.758333333333477,
+    barContactTicks: 5,
+    rollovers: 0,
+    bumpers: 0
+  },
+  {
+    weak: null,
+    power: 0.75,
+    initial: {
+      x: 2.5299999713897705,
+      y: 0.17499999701976776,
+      z: 4.425000190734863
+    },
+    initialNearest: { gap: -2.479553222745068e-7, position: [fA], type: 9 },
+    shooter: {
+      x: 2.53,
+      restZ: 4.6,
+      ballZ: 4.425,
+      frontZ: 5.9,
+      returnMinZ: 4.25,
+      returnMaxZ: 4.56
+    },
+    barCount: 4,
+    fieldAccessDefinition: 'descriptive p.z in(-4.1,3.5) and x<shooter.x−.5; not a pass threshold',
+    fieldAccess: { tick: 266, p: [Object] },
+    minX: -1.2108752727508545,
+    maxX: 2.5299999713897705,
+    minZ: -5.113943576812744,
+    phase: 'ready',
+    ball: 2,
+    returnedShooter: false,
+    score: 25,
+    stopErrorZ: 1.9073486345888568e-7,
+    seconds: 8.400000000000164,
+    barContactTicks: 60,
+    rollovers: 0,
+    bumpers: 0
+  },
+  {
+    weak: null,
+    power: 0.85,
+    initial: {
+      x: 2.5299999713897705,
+      y: 0.17499999701976776,
+      z: 4.425000190734863
+    },
+    initialNearest: { gap: -2.479553222745068e-7, position: [fA], type: 9 },
+    shooter: {
+      x: 2.53,
+      restZ: 4.6,
+      ballZ: 4.425,
+      frontZ: 5.9,
+      returnMinZ: 4.25,
+      returnMaxZ: 4.56
+    },
+    barCount: 4,
+    fieldAccessDefinition: 'descriptive p.z in(-4.1,3.5) and x<shooter.x−.5; not a pass threshold',
+    fieldAccess: { tick: 196, p: [Object] },
+    minX: -0.999573290348053,
+    maxX: 2.5299999713897705,
+    minZ: -5.237771511077881,
+    phase: 'ready',
+    ball: 2,
+    returnedShooter: false,
+    score: 425,
+    stopErrorZ: 1.9073486345888568e-7,
+    seconds: 9.391666666666774,
+    barContactTicks: 6,
+    rollovers: 3,
+    bumpers: 1
+  },
+  {
+    weak: null,
+    power: 0.925,
+    initial: {
+      x: 2.5299999713897705,
+      y: 0.17499999701976776,
+      z: 4.425000190734863
+    },
+    initialNearest: { gap: -2.479553222745068e-7, position: [fA], type: 9 },
+    shooter: {
+      x: 2.53,
+      restZ: 4.6,
+      ballZ: 4.425,
+      frontZ: 5.9,
+      returnMinZ: 4.25,
+      returnMaxZ: 4.56
+    },
+    barCount: 4,
+    fieldAccessDefinition: 'descriptive p.z in(-4.1,3.5) and x<shooter.x−.5; not a pass threshold',
+    fieldAccess: { tick: 180, p: [Object] },
+    minX: -1.2092580795288086,
+    maxX: 2.5299999713897705,
+    minZ: -5.2530083656311035,
+    phase: 'ready',
+    ball: 2,
+    returnedShooter: false,
+    score: 525,
+    stopErrorZ: 1.9073486345888568e-7,
+    seconds: 9.458333333333437,
+    barContactTicks: 8,
+    rollovers: 3,
+    bumpers: 2
+  },
+  {
+    weak: null,
+    power: 1,
+    initial: {
+      x: 2.5299999713897705,
+      y: 0.17499999701976776,
+      z: 4.425000190734863
+    },
+    initialNearest: { gap: -2.479553222745068e-7, position: [fA], type: 9 },
+    shooter: {
+      x: 2.53,
+      restZ: 4.6,
+      ballZ: 4.425,
+      frontZ: 5.9,
+      returnMinZ: 4.25,
+      returnMaxZ: 4.56
+    },
+    barCount: 4,
+    fieldAccessDefinition: 'descriptive p.z in(-4.1,3.5) and x<shooter.x−.5; not a pass threshold',
+    fieldAccess: { tick: 162, p: [Object] },
+    minX: -1.2054537534713745,
+    maxX: 2.5299999713897705,
+    minZ: -5.168115615844727,
+    phase: 'ready',
+    ball: 2,
+    returnedShooter: false,
+    score: 425,
+    stopErrorZ: 1.9073486345888568e-7,
+    seconds: 9.375000000000108,
+    barContactTicks: 7,
+    rollovers: 3,
+    bumpers: 1
+  },
+  {
+    weak: {
+      phase: 'ready',
+      ball: 1,
+      returned: true,
+      stopErrorZ: 0.0012270927429200995,
+      p: [Object],
+      relaunch: true,
+      positionUnchanged: true
+    },
+    power: 0.1,
+    initial: {
+      x: 2.5299999713897705,
+      y: 0.17499999701976776,
+      z: 4.425000190734863
+    },
+    initialNearest: { gap: -2.479553222745068e-7, position: [fA], type: 9 },
+    shooter: {
+      x: 2.53,
+      restZ: 4.6,
+      ballZ: 4.425,
+      frontZ: 5.9,
+      returnMinZ: 4.25,
+      returnMaxZ: 4.56
+    },
+    barCount: 4,
+    fieldAccessDefinition: 'descriptive p.z in(-4.1,3.5) and x<shooter.x−.5; not a pass threshold',
+    fieldAccess: null,
+    minX: 2.5299999713897705,
+    maxX: 2.5299999713897705,
+    minZ: 3.1461853981018066,
+    phase: 'playing',
+    ball: 1,
+    returnedShooter: false,
+    score: 0,
+    stopErrorZ: 0.0012270927429200995,
+    seconds: 3.333333333333324,
+    barContactTicks: 0,
+    rollovers: 0,
+    bumpers: 0
+  }
+]

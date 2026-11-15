@@ -1,0 +1,9 @@
+
+/Users/tsaito/Projects/AIGames/web/css/pinball.css
+  30:190  warning  Property 'user-select' is not a widely available baseline feature   css/use-baseline
+  31:61   warning  Property 'outline' is not a widely available baseline feature       css/use-baseline
+  36:48   warning  Property 'accent-color' is not a widely available baseline feature  css/use-baseline
+
+✖ 3 problems (0 errors, 3 warnings)
+
+{"sourceSHA256":"2d9c3a9cae7eba29d21dc755645c752e2b23345d0a64de01b1f4750bdeef611e","files":39,"errors":0,"warnings":3}

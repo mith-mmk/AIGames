@@ -1,0 +1,502 @@
+using deprecated parameters for the initialization function; pass a single object instead
+✔ play-facing solid cabinet backing and cap match actual collider bounds (204.627292ms)
+✔ visible side and rear faces and cap agree with solid rays without an invisible upper wall (172.59925ms)
+✔ cabinet cap retains flush seats, hex heads and enclosed shanks (79.451375ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ installed board fasteners retain exact original mesh topology, positions and open washer contacts (197.888792ms)
+✖ four accessible left board mounts physically contact clear incoming balls without resets (506.909583ms)
+✔ physical shooter rail excludes the three historical right fastener starts (72.374042ms)
+✔ MechanicalFlipper: finite standalone geometry, motion and owned-resource cleanup (87.756875ms)
+✔ MechanicalBumper: finite standalone geometry, motion and owned-resource cleanup (5.378917ms)
+✔ MechanicalPlunger: finite standalone geometry, motion and owned-resource cleanup (17.491833ms)
+✔ MechanicalSling: finite standalone geometry, motion and owned-resource cleanup (36.856542ms)
+✔ MechanicalTarget: finite standalone geometry, motion and owned-resource cleanup (23.330667ms)
+✔ MechanicalRamp: finite standalone geometry, motion and owned-resource cleanup (98.113ms)
+✔ MechanicalWireform: finite standalone geometry, motion and owned-resource cleanup (7.486375ms)
+✔ MechanicalCabinet: finite standalone geometry, motion and owned-resource cleanup (130.89175ms)
+✔ mechanical model invalid scalar dimensions are rejected (0.189084ms)
+✔ cabinet inspection visibility survives production static batching (179.3835ms)
+✔ sling silver cover, gold skirt and corner lamps retain functional rubber/kicker assembly (3.105791ms)
+✔ bumper lens and bounded internal lamp provide warm light without extra shadows (1.97725ms)
+✔ feedback reads accepted events once without changing scores (1.586042ms)
+✔ feedback milestone and held flipper edges are bounded (0.207875ms)
+✔ rigid animation preserves Chappy's detail and stays within 35 meshes (118.517333ms)
+✔ pause freezes, reduced motion suppresses, restart resets, idle is playing-only (49.95125ms)
+✔ room forwards both update contracts and reset aliases (16.85925ms)
+✔ five bounded missions award base points and each completion bonus exactly once (1.216ms)
+✔ duplicate, invalid, paused and ready events cannot progress missions or score (0.2275ms)
+✔ mission progress and deduplication survive drains and shooter return; restart resets everything (0.224583ms)
+✔ lane mission counts new traversals even if a lane was lit before the mission (0.159375ms)
+✔ target mission grants exactly one left save independent of center save (0.227208ms)
+✔ bumper challenge earns x2 after five hits; varied mechanisms earn x3 starting with the next hit (0.222708ms)
+✔ multipliers never multiply mission or lane-set bonuses and saves do not progress challenges (0.120209ms)
+✔ duplicate and paused events cannot advance multiplier and weak returns preserve both challenges (0.131583ms)
+✔ drain, TILT and restart reset multiplier while preserving story progress between balls (0.174541ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ straight structural tubes retain endpoints/radius without redundant axial tessellation (9.067041ms)
+✔ installed shooter roof uses three closed capsule stocks on the existing physical axes (810.607375ms)
+✖ installed rollover bars are closed stocks on actual capsule axes and retain eight original mounts (513.493666ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ legacy mini bumper pocket is removed for reference standups (1.091667ms)
+✖ earned side kickback reverses an outlane descent once, uncharged still drains (698.106167ms)
+✔ out-of-order or ground ramp contacts never count a complete traversal (35.892334ms)
+✔ complete physical ramp awards exactly once and only after its exit lip (667.678958ms)
+✔ inlane switch scores only a fresh real crossing, not sitting or pausing (67.600666ms)
+✔ side coils are bounded, horizontal and stronger than their former impulse (49.856959ms)
+✔ visual bumper notifications are accepted-contact-only, bounded and restart clears (39.911042ms)
+✔ bumper notification uses earned contact multiplier, not mission bonus (31.802583ms)
+✔ printed IN bands mirror the verified centerline and add no raised route (0.673542ms)
+✔ larger lane labels follow the open passages without printing over rails (24.7885ms)
+✔ actual left IN canvas arrow maps to the intended table direction (4.475042ms)
+✔ actual left OUT canvas arrow maps to the intended table direction (0.181042ms)
+✔ actual right IN canvas arrow maps to the intended table direction (0.16625ms)
+✔ actual right OUT canvas arrow maps to the intended table direction (0.113459ms)
+✔ archived art ramp control points stay inside table (0.367791ms)
+✔ bumpers have ball clearance from each other (0.057375ms)
+✔ preview initializes, clamps long frames and releases inputs (0.080667ms)
+✔ both flippers rise toward negative-Z playfield when pressed (0.050458ms)
+✔ archived art hardware preserves its original clearance (0.141375ms)
+✔ archived preview curve clears archived sling art (36.293833ms)
+✔ reference triangle retains side passages and asymmetric target banks (0.506209ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ sling rubber clears the root-to-center shot corridor on both sides (4.738542ms)
+✔ both inlanes feed the flippers at three speeds rather than bypass their pivots (7443.139917ms)
+✖ genuine outside lanes still drain without a flipper or invisible rescue (144.835334ms)
+✔ inside heel approach cannot leak sideways past the root cheek (78.06375ms)
+✖ restored lane mouths pass descending balls without live position rescue (1962.250292ms)
+✔ actual outlane entrance has full ball clearance and mirrored shared paths (0.31325ms)
+✔ historical fixed wire drop is now inside the real tail and is not a valid start (22.30175ms)
+✔ side wire exit drops into the real IN guide and held flipper without rescue (746.804666ms)
+✔ five adjacent redesigned bat shots traverse S, capture and refire the same ball (4330.587125ms)
+✔ old IN approach strikes the outward sling then drains or permits a releasable cradle (1672.595208ms)
+✔ IN floor stripe stays clear of the real rails and sling rubber (1.797ms)
+✔ current outside wire outlet feeds the held left cradle at three speeds (1204.665ms)
+✖ lane edge fixtures distinguish genuine mouths from initial rail penetration (17.842833ms)
+✖ offset slow and fast lane entries and lateral approaches remain physical and releasable (848.604ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ tapered contact hull matches rubber height and rounded profile (0.734708ms)
+✔ accepted sling and target hits fan out once without duplicate score (225.678333ms)
+✔ pull retracts actual stop and ball follows gravity without position resets (421.779209ms)
+✔ cancelled full pull cannot strand the ball behind the stop (517.200708ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ installed ramp has matched sheet walls, true paired rails and visible anti-trap base (140.33825ms)
+✔ support columns stay on the perimeter or shooter divider, and beams clear ground balls (129.761458ms)
+✔ production return has an actual open gap, not a hidden supporting floor (120.091083ms)
+✔ standalone paired rails support and roll a ball without any plane collider (75.031916ms)
+✖ all perimeter ramp supports have matching physical posts, arms, collars and feet (51.880333ms)
+✔ acrylic offset walls never fold backwards along the centerline (48.741375ms)
+✔ low base drawing ends at the same complete strip as its collider (113.334ms)
+✔ compact low nose uses one closed shell and matching convex contact vertices (91.963375ms)
+✔ underfloor bearers, saddles and wire ties share nominal visual and contact stock (73.449792ms)
+✔ low base end cap follows its accessible convex boundary (60.10475ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✖ short supports allow eighty nonpenetrating slow wall approaches (20934.180334ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ nudge warns before tilt, ignores repeats, cools and resets (0.644208ms)
+✔ physical nudge never teleports or scores and paused input is ignored (105.592334ms)
+✔ tilt suppresses coils and scoring then consumes one ball, restart clears (444.191917ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rules enforce three balls, pause and reset (1.01075ms)
+✔ real launch feeds scoring objects, not a scripted path (690.256291ms)
+✔ physical drain serves next ball and ends after third (114.768541ms)
+✔ both kinematic flippers physically drive ball upfield (141.898667ms)
+✔ pause freezes simulation; resume and restart are deterministic (182.1765ms)
+✔ former left ramp wedge clears naturally without ball search (646.068166ms)
+✔ ninety varied launches drain without stuck recovery or position jumps (46818.113833ms)
+✔ twelve full three-ball sessions end without rescue (18674.194625ms)
+✖ side-wall approaches enter genuine outlanes and naturally drain when uncharged (67.91275ms)
+✔ beginner play duration remains controllable across thirty-one powers (51084.36825ms)
+✔ rules deduplicate events, complete lanes, and refill one center save (0.143333ms)
+✔ each physical top lane registers center and edge traversals only once (182.179416ms)
+✔ spinner traversal accelerates rotation once; rotation decays without score farming (19.738208ms)
+✔ charged center saver applies impulse without teleport, then allows real drain (35.172334ms)
+✔ natural shooter launch traverses a top rollover lane (78.488959ms)
+✔ outlane widths below entrance exceed ball diameter with margin (0.066167ms)
+✔ center save clears both held and returning flippers without a downstroke collision (84.004834ms)
+✔ held buttons cannot pinch the ball permanently (11309.105084ms)
+✔ twenty seeded incoming balls measure physical contact and controlled return (4413.160792ms)
+✔ both flippers cradle passively without repeated coil fire and release naturally (1073.381458ms)
+✔ release timing produces distinct aimed reflip shots on both sides (644.802958ms)
+✔ curved sling and inlane have a full ball-width passage with margin (1.145583ms)
+✔ rising shots gain energy toward the tip without exceeding the world limit (305.523958ms)
+✖ five real cradle-reflip timings traverse the S ramp, cradle again and re-fire (973.718125ms)
+✔ both flippers can reach upper lanes and bumper routes around reference triangle (35010.282791ms)
+✔ shooter corner backing cannot retain a ball outside the bend (1805.528833ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ hold charges continuously, repeat cannot reset, and release fires once (0.678375ms)
+✔ drag overrides time, can reduce power, and cancellation never fires (0.117666ms)
+✔ low medium high produce distinct physical speeds and weak ball naturally returns (255.578417ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ missing acrylic contacts lie on real visible exterior faces without duplicating top inner or lip faces (1575.798625ms)
+✔ legal ground and rising airborne balls hit the visible acrylic exterior (622.450167ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ low housing is closed with the existing deck and partitioned without internal faces (19.035541ms)
+✔ generic installed rows without tangent preserve the exact housing geometry (2.466417ms)
+✔ every installed housing boundary face matches the physical strip union (172.936416ms)
+✔ low housing never projects above the actual acrylic running surface (83.969709ms)
+✔ historical positive-offset tangent start penetrates the deck; common corrected start is legal (39.996583ms)
+✔ one-strip generic housing renders both endpoint caps exactly once (1.703125ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ right and rear deck repairs preserve every unrelated original triangle and generic rows (12.987084ms)
+✔ repair follows route parameters at alternate sample counts and keeps a closed constant-thickness sheet (19.986916ms)
+✔ three legal zero-speed starts exit the repaired right deck pockets without rescue (1130.731125ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ exposed ramp hardware shares exact visible triangle geometry and dimensions (174.925084ms)
+✔ legal airborne approaches contact exposed lips straps and bolts rather than pass through (953.5485ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rear descent preserves endpoint C1 XZ and gravity-ratio datum (10.2615ms)
+✔ real sheet handoff clears the allowed off-center paired-stock support envelope (2.817792ms)
+✔ seven legal former pocket starts exit without rescue under the unchanged solver (4421.790042ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ experimental ramp uses continuous finite mesh and adequate channel width (5.985916ms)
+ramp-boundary {"speed":26,"offset":-0.08,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0.08,"outcome":"normal-rollback-relaunch"}
+✔ floor ball passes below rear elevated deck without being lifted (102.829708ms)
+✔ low ramp skirt blocks lateral entry instead of admitting ball under deck (66.0015ms)
+✔ elevated exit releases ball into left lower lane without teleport (127.528584ms)
+✔ 28-speed tangent approaches all complete with lateral tolerance (1323.3045ms)
+✔ 26-speed boundary shots complete honestly or roll back and relaunch normally (1136.182167ms)
+✔ six unassisted launch powers leave the ramp base without permanent stalls (2529.584625ms)
+✔ ground balls approaching low base from high deck side deflect without wedging (1203.519958ms)
+✖ five adjacent real flipper timings traverse the forward S and award once without teleport (1144.247709ms)
+✔ measured ground-level flipper approaches at 28/30 traverse with lateral tolerance (1710.375125ms)
+✔ reference cabinet includes supported backbox, speakers, apron and rear tower (69.897833ms)
+✔ score drawing is cached and uses live score plus ball number (54.115875ms)
+✔ formed collection apron preserves central and outlane throats after active drain (43.50125ms)
+✔ short supported cabinet keeps collection apron within its drain opening (37.93525ms)
+✔ inner skyline is a rear-mounted relief outside live board (29.145667ms)
+✔ reference ink registers to board, preserves context and draws reference landmarks (2.702167ms)
+✔ reference ink is deterministic and validates canvas dimensions (1.933458ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ reference banks have three upper wrenches, two middle wrenches and three robots (23.773375ms)
+✔ every installed reference target scores from a real front contact and identifies its moving part (404.766ms)
+✔ target strike boxes follow declared height without raising the ground contact edge (0.170125ms)
+✔ derived contact bounds match the actual three extruded strike meshes (17.744625ms)
+✔ carrier has formed rim, separate rear plate, fixed studs and a continuous rounded mount (3.37525ms)
+✔ both captured carrier pinch positions drain without rescue (656.642583ms)
+✔ right rear carrier rail retains ball clearance from the full low support base (38.006ms)
+✔ nine slow approaches behind the right carrier drain without rescue (3240.962291ms)
+✔ captured right target lower-edge wedge releases with the smooth carrier rail (273.338875ms)
+✔ smooth carrier contacts use the same capsule dimensions and placement as rendering (21.574875ms)
+✔ workshop structures batch within their scenery budget and preserve QA targets (55.477417ms)
+✔ workshop owns and releases its merged geometries and materials exactly once (23.954667ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ solid shooter rail preserves every old side vertex and adds only outward flat caps (3.144834ms)
+✔ actual octagonal rail hull matches visible side and flat-end rays without capsule inflation (93.419583ms)
+✔ six nonoverlapping ground lateral approaches contact the real external shooter rail (395.841417ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ initial serve and restart use the visible head contact point (164.882125ms)
+✔ returning ball settles on visible stop without teleport or consuming a ball (313.719208ms)
+✔ weak shot naturally returns to the same stop and full relaunch preserves speed (1300.656334ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ returned shooter ball rolls to plunger and relaunches in place without consuming a ball (252.480583ms)
+✔ normal drains still consume three balls and restart resets returned-shooter state (49.846542ms)
+✔ returned shooter contains lateral speed -3 (369.7745ms)
+✔ returned shooter contains lateral speed -1 (288.679125ms)
+✔ returned shooter contains lateral speed 1 (300.768666ms)
+✔ returned shooter contains lateral speed 3 (370.90375ms)
+✔ out-of-bounds returned ball cannot strand the game in ready (40.127459ms)
+✔ generic sling remains DOM-free and does not own caller maps (20.87925ms)
+✔ installed left and right print changes only UV/material and remains registered after batching (235.321917ms)
+✔ standalone printed sling disposes only its owned texture exactly once (3.237208ms)
+✔ actual installed asset disposal releases both registered print textures (350.939083ms)
+✔ no autoplay, allocation or resume without a trusted input gesture (0.958791ms)
+✔ all cabinet events have bounded short effects and unknown events are ignored (0.29625ms)
+✔ repeat rate limits and a hard voice cap prevent audio storms (0.14575ms)
+✔ mute and pause stop active voices; unmute/unpause need a gesture (0.247583ms)
+✔ saved mute and unavailable WebAudio/storage fail silently (0.264ms)
+✔ pending resume cannot restart sound after pause or disposal (0.268791ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ finite surface distance distinguishes faces edges vertices and unresolved containment (1.411792ms)
+✔ closed mesh convex and cuboid interior are invalid even without boundary overlap (2.4345ms)
+✔ finite cylinder cap barrel rim and rigid transforms use independent analytic distances (0.233041ms)
+✔ capsule and ball solids reject deep interior and distinguish rounded ends (0.109166ms)
+✔ malformed closed boundaries and unknown shapes fail rather than certify starts (1.418959ms)
+✔ captured open strip reproduces solid-query false penetration without certifying reachability (26.956459ms)
+✔ captured real pillar and wall overlaps remain rejected by independent geometry (0.234083ms)
+✔ accepted c1 historical tangent overlap and corrected deck clearance remain distinguishable (63.219ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ right target bank leaves a full ball-width throat beside every main bumper (0.675958ms)
+✔ low-speed balls pass the screenshot throat without rescue or position changes (324.981ms)
+✔ twenty-one natural launches clear without target-bank stalls or position resets (7358.749084ms)
+✔ ramp crest releases a resting ball without nudge or position rescue (363.652625ms)
+✔ continuous ramp collision meshes share every route row and triangle edge without gaps (23.95525ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ upper rollover volumes stay in the ground lane below the elevated route (92.920917ms)
+✔ legal ground upper-lane center and edge passes award once at low and high speeds (1407.850291ms)
+✖ five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save (1249.430084ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ all visible wire capsule axes ends and nominal radii match installed contacts in four meshes (190.522333ms)
+✔ compatibility ramp drawing uses the same four capsule-stock rail geometries (22.863084ms)
+✔ wire pole cleanup preserves every installed vertex normal and nondegenerate face (63.382834ms)
+✔ wire retained installed capsule shells stay outward and closed (184.977791ms)
+✔ wire pole cleanup preserves distinct pole fallback and rounded nonpole faces (1.620667ms)
+✔ wire primitive ranges cover empty and mixed concatenated geometry exactly (1.255958ms)
+{
+  "checks": 0,
+  "best": {
+    "gap": null
+  }
+}
+{
+  "meshChecks": 0,
+  "allParts": {
+    "gap": null
+  },
+  "lowest": []
+}
+{
+  "railSamples": 15867,
+  "meshSamples": 70751,
+  "lateralSamples": 2074,
+  "lateralClearance": 0.0928372039896206
+}
+{
+  "physicalPointGap": 0.09299470556859746,
+  "maxSegment": 0.15373067443021712,
+  "coarseGlobalLowerBound": 0.016129368353488896,
+  "continuousLowerBound": 0.09199999262741226,
+  "certifiedSegments": 464
+}
+✔ wire tail preserves prefix, endpoint, position and unit-tangent continuity (9.205792ms)
+✔ wire tail curvature and every physical offset rail progress without folds (54.721709ms)
+✔ sampled wire rails have no self or same-height pair crossing (17.011208ms)
+✔ every physical wire segment clears all visible sling solids by .025 (4091.363667ms)
+✔ workshop scenery has finite attached geometry and stays independent of physics (106.160166ms)
+ℹ tests 212
+ℹ suites 0
+ℹ pass 199
+ℹ fail 13
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 175195.650417
+
+✖ failing tests:
+
+test at web/js/pinball/cabinet-fasteners.test.mjs:38:1
+✖ four accessible left board mounts physically contact clear incoming balls without resets (506.909583ms)
+  AssertionError [ERR_ASSERTION]: {"start":{"x":-2.58,"y":0.18,"z":3.625},"initial":-0.09128086978745661}
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-fasteners.test.mjs:46:11)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/geometry-budget.test.mjs:60:1
+✖ installed rollover bars are closed stocks on actual capsule axes and retain eight original mounts (513.493666ms)
+  AssertionError [ERR_ASSERTION]: render-only correction adds no physical mounts
+  
+  1484 !== 1380
+  
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/geometry-budget.test.mjs:68:12)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1484,
+    expected: 1380,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/gimmicks.test.mjs:7:1
+✖ earned side kickback reverses an outlane descent once, uncharged still drains (698.106167ms)
+  AssertionError [ERR_ASSERTION]: physical kick must reverse descent
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/gimmicks.test.mjs:25:12)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/lower-layout.test.mjs:31:1
+✖ genuine outside lanes still drain without a flipper or invisible rescue (144.835334ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   1,
+      0,
+  -   0
+    ]
+  
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:40:50)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 1, 0 ],
+    expected: [ 0, 0 ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/lower-layout.test.mjs:67:1
+✖ restored lane mouths pass descending balls without live position rescue (1962.250292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'playing' !== 'ready'
+  
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:79:17)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'playing',
+    expected: 'ready',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/lower-layout.test.mjs:194:1
+✖ lane edge fixtures distinguish genuine mouths from initial rail penetration (17.842833ms)
+  AssertionError [ERR_ASSERTION]: left edge remains a valid distinct boundary
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:202:10)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/lower-layout.test.mjs:206:1
+✖ offset slow and fast lane entries and lateral approaches remain physical and releasable (848.604ms)
+  AssertionError [ERR_ASSERTION]: OUT must not cross a bat: {"side":-1,"held":false,"lane":"out","x":2.02,"z":2.6,"vx":0,"vz":12}
+  + actual - expected
+  
+    [
+      0,
+  +   2
+  -   0
+    ]
+  
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:240:12)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 0, 2 ],
+    expected: [ 0, 0 ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/mechanical-ramp.test.mjs:83:1
+✖ all perimeter ramp supports have matching physical posts, arms, collars and feet (51.880333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  64 !== 56
+  
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/mechanical-ramp.test.mjs:88:10)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 64,
+    expected: 56,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/mechanical-supports.test.mjs:6:1
+✖ short supports allow eighty nonpenetrating slow wall approaches (20934.180334ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   left: 44,
+  -   left: 46,
+      rear: 34
+    }
+  
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/mechanical-supports.test.mjs:42:9)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { left: 44, rear: 34 },
+    expected: { left: 46, rear: 34 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/physics.test.mjs:137:1
+✖ side-wall approaches enter genuine outlanes and naturally drain when uncharged (67.91275ms)
+  AssertionError [ERR_ASSERTION]: OUT must not be silently routed onto a flipper
+  + actual - expected
+  
+    [
+      0,
+  +   1
+  -   0
+    ]
+  
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:156:14)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 0, 1 ],
+    expected: [ 0, 0 ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/physics.test.mjs:387:1
+✖ five real cradle-reflip timings traverse the S ramp, cradle again and re-fire (973.718125ms)
+  AssertionError [ERR_ASSERTION]: timing 81: crest=false, return=false, floor=false; {"releaseTicks":81,"initialCradle":{"x":-1.0551475286483765,"y":0.17119856178760529,"z":4.058166980743408},"linear":{"x":-0.00022447775700129569,"y":-0.000004527330474957125,"z":0.00009241175575880334},"angular":{"x":0.0003057416470255703,"y":0.0013893943978473544,"z":0.0010770695516839623},"time":4.416666666666676,"shot":{"side":0,"along":0.48794103296179514,"faceAngle":-0.5,"aimAngle":-0.6007056527388723,"angularSpeed":12,"speed":31.710584791083082,"p":{"x":-0.6937472224235535,"y":0.1711055040359497,"z":4.4751667976379395},"vx":17.923606825085898,"vz":-26.15923366943695},"final":{"x":2.5299999713897705,"y":0.17499999701976776,"z":4.425000190734863}}
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:413:14)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/ramp.test.mjs:119:1
+✖ five adjacent real flipper timings traverse the forward S and award once without teleport (1144.247709ms)
+  AssertionError [ERR_ASSERTION]: natural release 81 did not traverse
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:139:14)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/upper-lanes.test.mjs:50:1
+✖ five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save (1249.430084ms)
+  AssertionError [ERR_ASSERTION]: same real ramp traversal remains required at release 81
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/upper-lanes.test.mjs:64:14)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

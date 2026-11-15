@@ -1,0 +1,12 @@
+{
+  "sourceSHA256": "2d9c3a9cae7eba29d21dc755645c752e2b23345d0a64de01b1f4750bdeef611e",
+  "baselineSHA256": "659030bc26bc3098573723a9110cd273b8719b7d3f15e7049daef1449c6bc8bd",
+  "baseGit": "c87f117a9c5f5cfab33e4817b8b720a790ab8b0e",
+  "originalDirectories": [
+    "left-lane-joint-89f477e",
+    "left-joint-qa-89f477e",
+    "left-joint-regression-89f477e",
+    "left-joint-natural-control-89f477e"
+  ],
+  "status": "NOT ADOPTED; 199/212, long IN capture0/4, natural54 ramps27 vs61"
+}

@@ -1,0 +1,110 @@
+{
+  "status": "Static screen only; no dynamic execution",
+  "contacts": 1484,
+  "sharedParts": {
+    "frame": 16,
+    "lane": 38,
+    "actualMeshes": 54
+  },
+  "flipperPivot": [
+    1.25,
+    0.27,
+    4.45
+  ],
+  "oldTail23Exact": true,
+  "groups": {
+    "outStraight": {
+      "count": 181,
+      "invalid": 0,
+      "worst": {
+        "p": {
+          "x": -2.515,
+          "y": 0.175,
+          "z": 1.3
+        },
+        "gap": 0.04099998116496997,
+        "collider": {
+          "handle": 4.763e-321,
+          "shape": 10,
+          "center": {
+            "x": -2.565000057220459,
+            "y": 0.38499999046325684,
+            "z": 1.2999999523162842
+          },
+          "radius": 0.03400000184774399,
+          "halfHeight": 0.16500000655651093
+        },
+        "closest": {
+          "x": -2.515000104904175,
+          "y": 0.35099998116493225,
+          "z": 1.2999999523162842
+        },
+        "inside": false
+      }
+    },
+    "outOffsetArc": {
+      "count": 85,
+      "invalid": 0,
+      "worst": {
+        "p": {
+          "x": -2.509427674197112,
+          "y": 0.175,
+          "z": 3.0001680114835634
+        },
+        "gap": 0.036000073141017136,
+        "collider": {
+          "handle": 4.8e-321,
+          "shape": 10,
+          "center": {
+            "x": -2.2249999046325684,
+            "y": 0.3799999952316284,
+            "z": 3
+          },
+          "radius": 0.03400000184774399,
+          "halfHeight": 0.5049999952316284
+        },
+        "closest": {
+          "x": -2.509427785873413,
+          "y": 0.3460000157356262,
+          "z": 3.000027894973755
+        },
+        "inside": false
+      }
+    },
+    "saveGate": {
+      "count": 9,
+      "invalid": 0,
+      "worst": {
+        "p": {
+          "x": -2.574,
+          "y": 0.175,
+          "z": 2.689
+        },
+        "gap": 0.0073606591998670035,
+        "collider": {
+          "handle": 4e-322,
+          "shape": 2,
+          "center": {
+            "x": -2.7300000190734863,
+            "y": 0.2199999988079071,
+            "z": 2.117079257965088
+          },
+          "radius": 0.019999999552965164,
+          "halfHeight": 0.7670793533325195
+        },
+        "closest": {
+          "x": -2.7107834815979004,
+          "y": 0.21445676684379578,
+          "z": 2.688999891281128
+        },
+        "inside": false
+      }
+    }
+  },
+  "limits": [
+    "Point samples plus analytic frame vertical separation; not complete continuous all-solid path proof",
+    "Trimesh is queried as surface, not a solid inside proof",
+    "Legacy visual save housing intentionally has no new collider",
+    "No natural or charged/uncharged dynamics run"
+  ]
+}

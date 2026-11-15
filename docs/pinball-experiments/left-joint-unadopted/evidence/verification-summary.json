@@ -1,0 +1,252 @@
+{
+  "unchanged": {
+    "rightPaths": true,
+    "rightMounts": true,
+    "LOWER_LAYOUT": true,
+    "oldTail23": true,
+    "retainedLeftMounts": true
+  },
+  "sharedMapping": {
+    "count": 54,
+    "maxCenterError": 2.2163866214518815e-07,
+    "mapping": [
+      {
+        "name": "divider-0-socket",
+        "centerError": 5.3325341136637316e-08
+      },
+      {
+        "name": "divider-0-through-shaft",
+        "centerError": 5.3313889016019866e-08
+      },
+      {
+        "name": "divider-0-board-seat",
+        "centerError": 5.33172207956562e-08
+      },
+      {
+        "name": "divider-0-underside-retainer",
+        "centerError": 5.3325341136637316e-08
+      },
+      {
+        "name": "divider-1-socket",
+        "centerError": 6.74454932553502e-08
+      },
+      {
+        "name": "divider-1-through-shaft",
+        "centerError": 6.743643907511153e-08
+      },
+      {
+        "name": "divider-1-board-seat",
+        "centerError": 6.743907314377548e-08
+      },
+      {
+        "name": "divider-1-underside-retainer",
+        "centerError": 6.74454932553502e-08
+      },
+      {
+        "name": "divider-2-socket",
+        "centerError": 1.198396250657431e-07
+      },
+      {
+        "name": "divider-2-through-shaft",
+        "centerError": 1.1983452962552833e-07
+      },
+      {
+        "name": "divider-2-board-seat",
+        "centerError": 1.198360119577245e-07
+      },
+      {
+        "name": "divider-2-underside-retainer",
+        "centerError": 1.198396250657431e-07
+      },
+      {
+        "name": "divider-3-socket",
+        "centerError": 1.0519019880744146e-07
+      },
+      {
+        "name": "divider-3-through-shaft",
+        "centerError": 1.0518439370849079e-07
+      },
+      {
+        "name": "divider-3-board-seat",
+        "centerError": 1.0518608249755795e-07
+      },
+      {
+        "name": "divider-3-underside-retainer",
+        "centerError": 1.0519019880744146e-07
+      },
+      {
+        "name": "outer-0-socket",
+        "centerError": 1.306962054386547e-07
+      },
+      {
+        "name": "outer-0-through-shaft",
+        "centerError": 1.3069153327869704e-07
+      },
+      {
+        "name": "outer-0-board-seat",
+        "centerError": 1.3069289246970181e-07
+      },
+      {
+        "name": "outer-0-underside-retainer",
+        "centerError": 1.306962054386547e-07
+      },
+      {
+        "name": "outer-1-socket",
+        "centerError": 7.555230616960062e-08
+      },
+      {
+        "name": "outer-1-through-shaft",
+        "centerError": 7.55442236191412e-08
+      },
+      {
+        "name": "outer-1-board-seat",
+        "centerError": 7.554657499568781e-08
+      },
+      {
+        "name": "outer-1-underside-retainer",
+        "centerError": 7.555230616960062e-08
+      },
+      {
+        "name": "outer-2-socket",
+        "centerError": 2.2163866214518815e-07
+      },
+      {
+        "name": "outer-2-through-shaft",
+        "centerError": 2.2163590709129831e-07
+      },
+      {
+        "name": "outer-2-board-seat",
+        "centerError": 2.2163670856503637e-07
+      },
+      {
+        "name": "outer-2-underside-retainer",
+        "centerError": 2.2163866214518815e-07
+      },
+      {
+        "name": "outer-3-socket",
+        "centerError": 1.2398339224626236e-07
+      },
+      {
+        "name": "outer-3-through-shaft",
+        "centerError": 1.2397846711249614e-07
+      },
+      {
+        "name": "outer-3-board-seat",
+        "centerError": 1.239798998988326e-07
+      },
+      {
+        "name": "outer-3-underside-retainer",
+        "centerError": 1.2398339224626236e-07
+      },
+      {
+        "name": "wall-rail-seat-1.35",
+        "centerError": 1.0758597090332411e-07
+      },
+      {
+        "name": "wall-rail-seat-2.3",
+        "centerError": 1.1523907188245505e-07
+      },
+      {
+        "name": "join-welded-stud",
+        "centerError": 5.593323124016776e-08
+      },
+      {
+        "name": "join-flush-bearing",
+        "centerError": 5.5938450807677155e-08
+      },
+      {
+        "name": "join-underside-washer",
+        "centerError": 5.608763004495341e-08
+      },
+      {
+        "name": "join-retaining-nut",
+        "centerError": 5.6115367068950544e-08
+      },
+      {
+        "name": "outer-frame-plate",
+        "centerError": 1.052355412740147e-07
+      },
+      {
+        "name": "frame-top-strap",
+        "centerError": 1.1246181691349379e-08
+      },
+      {
+        "name": "frame-inner-clamp",
+        "centerError": 2.3558844277932682e-08
+      },
+      {
+        "name": "extended-crosshead",
+        "centerError": 9.54865666062856e-08
+      },
+      {
+        "name": "frame-anchor-shank-0.18",
+        "centerError": 1.5146618422016336e-08
+      },
+      {
+        "name": "frame-anchor-head-0.18",
+        "centerError": 1.0895389957991818e-07
+      },
+      {
+        "name": "frame-anchor-shank-0.25",
+        "centerError": 1.3351440841802287e-08
+      },
+      {
+        "name": "frame-anchor-head-0.25",
+        "centerError": 1.0871887212715592e-07
+      },
+      {
+        "name": "outer-frame-plate-row192",
+        "centerError": 1.1528838834275964e-07
+      },
+      {
+        "name": "frame-top-strap-row192",
+        "centerError": 4.979753154114158e-08
+      },
+      {
+        "name": "frame-inner-clamp-row192",
+        "centerError": 5.214994283453905e-08
+      },
+      {
+        "name": "extended-crosshead-row192",
+        "centerError": 7.509239083619167e-08
+      },
+      {
+        "name": "frame-anchor-shank-0.18-row192",
+        "centerError": 4.9575014605305973e-08
+      },
+      {
+        "name": "frame-anchor-head-0.18-row192",
+        "centerError": 1.1874011225009447e-07
+      },
+      {
+        "name": "frame-anchor-shank-0.25-row192",
+        "centerError": 4.9746709426918944e-08
+      },
+      {
+        "name": "frame-anchor-head-0.25-row192",
+        "centerError": 1.1881189874273973e-07
+      }
+    ]
+  },
+  "floorOUT": {
+    "count": 757,
+    "invalid": 0,
+    "worst": {
+      "p": {
+        "x": -1.9669453255849336,
+        "y": 0.175,
+        "z": 3.855
+      },
+      "gap": 0.030464338809677277,
+      "shape": 2,
+      "center": {
+        "x": -1.8726848363876343,
+        "y": 0.2199999988079071,
+        "z": 3.701401710510254
+      }
+    },
+    "maxSampleStep": 0.00886255860873239,
+    "queryLipschitzLowerEstimate": 0.026033059505311082,
+    "scope": "Full proposed OUT equal-Z midpoint, not every lateral center or elevated trajectory. Query error is not independently bounded; numerical clearance evidence, not formal collision guarantee."
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "mode": "candidate",
+  "sourceState": "baseline lower81 tick1122 after",
+  "initialState": {
+    "p": [
+      -1.6946431398391724,
+      0.4180470407009125,
+      3.1771867275238037
+    ],
+    "v": [
+      0.364213764667511,
+      -5.343976974487305,
+      2.905177354812622
+    ],
+    "w": [
+      19.941930770874023,
+      -2.036882162094116,
+      -9.014942169189453
+    ],
+    "phase": "playing",
+    "coil": [
+      0,
+      0
+    ],
+    "contacts": [
+      0,
+      0
+    ],
+    "flipperAngles": [
+      0.48,
+      3.741592653589793
+    ],
+    "flipperRotation": [
+      {
+        "x": 0,
+        "y": 0.2377026230096817,
+        "z": 0,
+        "w": 0.9713379740715027
+      },
+      {
+        "x": 0,
+        "y": 0.9553365111351013,
+        "z": 0,
+        "w": -0.29552021622657776
+      }
+    ],
+    "initialClearance": {
+      "gap": 0.01439327272275262,
+      "id": 972
+    },
+    "time": 9.358333333333333
+  },
+  "disabledCollider": null,
+  "checkpoint": {
+    "p": [
+      -1.0552480220794678,
+      0.17121846973896027,
+      4.05820369720459
+    ],
+    "v": [
+      -2.703301902329258e-07,
+      -2.587035851320252e-06,
+      1.1990773600700777e-06
+    ],
+    "w": [
+      1.7127356841228902e-05,
+      -4.515911132330075e-05,
+      3.8834823499200866e-05
+    ],
+    "phase": "playing",
+    "coil": [
+      0,
+      0
+    ],
+    "contacts": [
+      2,
+      0
+    ]
+  },
+  "final": {
+    "p": [
+      1.4984102249145508,
+      0.17115041613578796,
+      -1.030710220336914
+    ],
+    "v": [
+      1.011100172996521,
+      -4.456951046449831e-06,
+      1.0015088319778442
+    ],
+    "w": [
+      7.525498867034912,
+      -7.257472515106201,
+      -7.59743595123291
+    ],
+    "phase": "playing",
+    "coil": [
+      1,
+      0
+    ],
+    "contacts": [
+      3,
+      0
+    ]
+  },
+  "metrics": {
+    "rampTraversals": 1,
+    "flipperContacts": [
+      3,
+      0
+    ],
+    "activeFlipperContacts": [
+      1,
+      0
+    ],
+    "coilImpulses": [
+      1,
+      0
+    ],
+    "upfieldReturns": 1
+  },
+  "liveResets": 0,
+  "limitations": [
+    "Recreates public ball p/v/spin and held bat pose, not contact caches or full prior world history",
+    "Fresh world and30tick held launch prelude identical for each mode",
+    "Only one candidate join socket disabled; intentional render/contact mismatch for diagnosis, not proposed geometry",
+    "No natural54 generalization"
+  ],
+  "sampledRefireMinZ": -2.3700246810913086
+}

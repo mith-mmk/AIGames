@@ -1,0 +1,42 @@
+{
+  "out": "/Users/tsaito/Projects/AIGames/artifacts/pinball/left-joint-qa-89f477e/preview",
+  "errors": [],
+  "results": [
+    {
+      "mode": "baseline",
+      "view": "installed-45",
+      "triangles": 450844,
+      "calls": 685
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-10",
+      "triangles": 450700,
+      "calls": 673
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-90",
+      "triangles": 444524,
+      "calls": 658
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-45",
+      "triangles": 472764,
+      "calls": 763
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-10",
+      "triangles": 472620,
+      "calls": 751
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-90",
+      "triangles": 466444,
+      "calls": 736
+    }
+  ]
+}

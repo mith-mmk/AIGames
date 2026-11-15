@@ -1,0 +1,17 @@
+{
+  "exactFrozenBytes": {
+    "sources.json": true,
+    "baseline-sources.json": true,
+    "loader.mjs": true,
+    "baseline-loader.mjs": true,
+    "definition.mjs": true
+  },
+  "sourceSHA256": "2d9c3a9cae7eba29d21dc755645c752e2b23345d0a64de01b1f4750bdeef611e",
+  "restoredModulesSyntaxChecked": true,
+  "restoredWorldColliders": 1484,
+  "restoredStaticExactlyMatchesOriginal": true,
+  "restoredVerificationExactlyMatchesOriginal": true,
+  "dynamicExperimentsRerun": false,
+  "temporaryCopy": "Moved to user Trash after validation; no production or expectations edits.",
+  "manifestCheck": "All packet payloads checked by restore --verify-only after final manifest generation."
+}

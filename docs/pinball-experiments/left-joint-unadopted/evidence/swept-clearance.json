@@ -1,0 +1,544 @@
+{
+  "scope": "Static queries of actual added solids against 23 saved capture/return traces, piecewise-linear interpolation at <=.001; not actual substep replay, not all possible return volumes. Existing rails may contact these paths; only four replacement joint solids screened here. Query error not independently bounded.",
+  "parts": [
+    {
+      "name": "join-welded-stud",
+      "type": "cylinder",
+      "radius": 0.012,
+      "height": 0.41000000000000003,
+      "center": [
+        -1.7410209957213656,
+        0.015,
+        3.778770245989578
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "material": "steel"
+    },
+    {
+      "name": "join-flush-bearing",
+      "type": "cylinder",
+      "radius": 0.032,
+      "height": 0.022000000000000002,
+      "center": [
+        -1.7410209957213656,
+        0.028999999999999998,
+        3.778770245989578
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "material": "chrome"
+    },
+    {
+      "name": "join-underside-washer",
+      "type": "cylinder",
+      "radius": 0.032,
+      "height": 0.009999999999999981,
+      "center": [
+        -1.7410209957213656,
+        -0.14500000000000002,
+        3.778770245989578
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "material": "chrome"
+    },
+    {
+      "name": "join-retaining-nut",
+      "type": "cylinder",
+      "radius": 0.022,
+      "height": 0.027999999999999997,
+      "center": [
+        -1.7410209957213656,
+        -0.16399999999999998,
+        3.778770245989578
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "material": "brass"
+    }
+  ],
+  "results": [
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-80.json",
+      "sha256": "af1278953031c6fd11cbcee653f1fb0aed547586afc226b033a997c7bda19ee6",
+      "samples": 8517,
+      "worst": {
+        "gap": 0.02273750987068457,
+        "part": "join-welded-stud",
+        "tick": 43,
+        "p": [
+          -1.600000023841858,
+          0.17072562873363495,
+          3.6843037605285645
+        ]
+      },
+      "maxSampleStep": 0.0009999139015028882,
+      "piecewiseLinearGapLowerEstimate": 0.022237552919933123,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-81.json",
+      "sha256": "da0e66d6002c1ea951fe59871f47667acaeea95cdff6f4a60d4518a7f23495f1",
+      "samples": 9291,
+      "worst": {
+        "gap": 0.01231327324837217,
+        "part": "join-welded-stud",
+        "tick": 1142,
+        "p": [
+          -1.6027660369873047,
+          0.16939130425453186,
+          3.699610471725464
+        ]
+      },
+      "maxSampleStep": 0.0009997166137635162,
+      "piecewiseLinearGapLowerEstimate": 0.011813414941490411,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-82.json",
+      "sha256": "771ac545eb0c83ff66a31823be78de19315504ab926886efddeb65be1cfb1a26",
+      "samples": 9042,
+      "worst": {
+        "gap": 0.02039559753608544,
+        "part": "join-welded-stud",
+        "tick": 1226,
+        "p": [
+          -1.5965056419372559,
+          0.17232754826545715,
+          3.6942920684814453
+        ]
+      },
+      "maxSampleStep": 0.0009997532140676754,
+      "piecewiseLinearGapLowerEstimate": 0.019895720929051605,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-83.json",
+      "sha256": "987d00c786872598cf83272db0e850752c6c7607a64a05a8a8e74b2e3b82efbf",
+      "samples": 9736,
+      "worst": {
+        "gap": 0.010580171714249548,
+        "part": "join-welded-stud",
+        "tick": 1165,
+        "p": [
+          -1.6045031547546387,
+          0.16664190590381622,
+          3.7000656127929688
+        ]
+      },
+      "maxSampleStep": 0.0009999862217612834,
+      "piecewiseLinearGapLowerEstimate": 0.010080178603368906,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-84.json",
+      "sha256": "6b81c00797f5467a8dd54b9101d68cddb3c082e93250ad2786e9c8b4a4c7d647",
+      "samples": 9577,
+      "worst": {
+        "gap": 0.02273750987068457,
+        "part": "join-welded-stud",
+        "tick": 43,
+        "p": [
+          -1.600000023841858,
+          0.17072562873363495,
+          3.6843037605285645
+        ]
+      },
+      "maxSampleStep": 0.0009997634988470024,
+      "piecewiseLinearGapLowerEstimate": 0.02223762812126107,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-80.json",
+      "sha256": "0e1f3987c49819de37c2ab1d982e58a4070b8c0d72d80a9f6dbd5b468c5ac080",
+      "samples": 9069,
+      "worst": {
+        "gap": 0.01829201933512578,
+        "part": "join-welded-stud",
+        "tick": 81,
+        "p": [
+          -1.600000023841858,
+          0.1709991842508316,
+          3.6925466060638428
+        ]
+      },
+      "maxSampleStep": 0.0009999415499387274,
+      "piecewiseLinearGapLowerEstimate": 0.017792048560156416,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-81.json",
+      "sha256": "d2e0c3ddf5de60e1527fcb8d0d3879818379d3f9a3aa3867af860b2cd280410d",
+      "samples": 9090,
+      "worst": {
+        "gap": 0.010541760369262881,
+        "part": "join-welded-stud",
+        "tick": 1109,
+        "p": [
+          -1.6070599555969238,
+          0.1713927984237671,
+          3.695861577987671
+        ]
+      },
+      "maxSampleStep": 0.000999990480323958,
+      "piecewiseLinearGapLowerEstimate": 0.010041765129100903,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-82.json",
+      "sha256": "466d827fd0977cbf67b86709f7ecdc714a0b4c28ddcc8ef9ab527fc3d2f8abd1",
+      "samples": 9171,
+      "worst": {
+        "gap": 0.01565791063192923,
+        "part": "join-welded-stud",
+        "tick": 1192,
+        "p": [
+          -1.6103734970092773,
+          0.16783396899700165,
+          3.6818742752075195
+        ]
+      },
+      "maxSampleStep": 0.0009999415499387274,
+      "piecewiseLinearGapLowerEstimate": 0.015157939856959865,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-83.json",
+      "sha256": "913a52184b07cfddd26d2928f9b8b919682cc2d7048afeb1d005c60c068a3226",
+      "samples": 9193,
+      "worst": {
+        "gap": 0.005008074530853751,
+        "part": "join-welded-stud",
+        "tick": 1193,
+        "p": [
+          -1.6116654872894287,
+          0.17154210805892944,
+          3.6989355087280273
+        ]
+      },
+      "maxSampleStep": 0.0009999856412920775,
+      "piecewiseLinearGapLowerEstimate": 0.004508081710207713,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-84.json",
+      "sha256": "99325207b63898ec455b15e0522daf90915c38f90750bc9a011d1a9de0a8d358",
+      "samples": 9348,
+      "worst": {
+        "gap": 0.01829177059623527,
+        "part": "join-welded-stud",
+        "tick": 81,
+        "p": [
+          -1.600000023841858,
+          0.1709991842508316,
+          3.692547082901001
+        ]
+      },
+      "maxSampleStep": 0.0009999415499387274,
+      "piecewiseLinearGapLowerEstimate": 0.017791799821265903,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/candidate-lower-80.json",
+      "sha256": "f04b1d19cd664c408d750e0d89d3fe4da590aa854910611b324b3e7222439945",
+      "samples": 9306,
+      "worst": {
+        "gap": 0.02273750987068457,
+        "part": "join-welded-stud",
+        "tick": 43,
+        "p": [
+          -1.600000023841858,
+          0.17072562873363495,
+          3.6843037605285645
+        ]
+      },
+      "maxSampleStep": 0.0009999515748482916,
+      "piecewiseLinearGapLowerEstimate": 0.022237534083260423,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/candidate-lower-81.json",
+      "sha256": "d3c9d7b8af1a4939bea95c28f8751e7aeb619f1df5dd696ec7b09da352ac1ffc",
+      "samples": 8533,
+      "worst": {
+        "gap": 0.022529855400606646,
+        "part": "join-welded-stud",
+        "tick": 1176,
+        "p": [
+          -1.6074391603469849,
+          0.17247851192951202,
+          3.6743850708007812
+        ]
+      },
+      "maxSampleStep": 0.0009999155348811137,
+      "piecewiseLinearGapLowerEstimate": 0.02202989763316609,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/candidate-lower-82.json",
+      "sha256": "489f35a6e781874d659bba2bbbd96f47f461fb6f2242cf2452d7ea31a4f15708",
+      "samples": 8627,
+      "worst": {
+        "gap": 0.02273750987068457,
+        "part": "join-welded-stud",
+        "tick": 43,
+        "p": [
+          -1.600000023841858,
+          0.17072562873363495,
+          3.6843037605285645
+        ]
+      },
+      "maxSampleStep": 0.000999950134218266,
+      "piecewiseLinearGapLowerEstimate": 0.022237534803575435,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/candidate-lower-83.json",
+      "sha256": "de5c07a521eca2ec80fd52f393e9ce755897aa5ad766c0318d94cf7bbcc7b23a",
+      "samples": 9693,
+      "worst": {
+        "gap": 0.02273750987068457,
+        "part": "join-welded-stud",
+        "tick": 43,
+        "p": [
+          -1.600000023841858,
+          0.17072562873363495,
+          3.6843037605285645
+        ]
+      },
+      "maxSampleStep": 0.0009999878589328707,
+      "piecewiseLinearGapLowerEstimate": 0.022237515941218134,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/candidate-lower-84.json",
+      "sha256": "a3f1bb7921c26d129b63be1c688f5097b862876b0d3147616e42e1baab51550a",
+      "samples": 6781,
+      "worst": {
+        "gap": 0.02273750987068457,
+        "part": "join-welded-stud",
+        "tick": 43,
+        "p": [
+          -1.600000023841858,
+          0.17072562873363495,
+          3.6843037605285645
+        ]
+      },
+      "maxSampleStep": 0.0009995892359400615,
+      "piecewiseLinearGapLowerEstimate": 0.02223771525271454,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/candidate-physics-80.json",
+      "sha256": "41a1135ba36b663dc094de5006404ff3eb7caac7cdffa28379d908de535a2972",
+      "samples": 9082,
+      "worst": {
+        "gap": 0.017500942978113998,
+        "part": "join-welded-stud",
+        "tick": 1201,
+        "p": [
+          -1.6026252508163452,
+          0.17038661241531372,
+          3.689847946166992
+        ]
+      },
+      "maxSampleStep": 0.0009999415499387274,
+      "piecewiseLinearGapLowerEstimate": 0.017000972203144633,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/candidate-physics-81.json",
+      "sha256": "362cca890cae48015f217db4bdacd5c946fb7908360626a6b8f29dd96d335bee",
+      "samples": 8392,
+      "worst": {
+        "gap": 0.01829201933512578,
+        "part": "join-welded-stud",
+        "tick": 81,
+        "p": [
+          -1.600000023841858,
+          0.1709991842508316,
+          3.6925466060638428
+        ]
+      },
+      "maxSampleStep": 0.0009999854715715272,
+      "piecewiseLinearGapLowerEstimate": 0.017792026599340018,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/candidate-physics-82.json",
+      "sha256": "7d6886040a22da23c86ca882a2af21599ab6a167d9867190476eb684658a948c",
+      "samples": 9099,
+      "worst": {
+        "gap": 0.017646564096735318,
+        "part": "join-welded-stud",
+        "tick": 1158,
+        "p": [
+          -1.5970404148101807,
+          0.17036809027194977,
+          3.6989073753356934
+        ]
+      },
+      "maxSampleStep": 0.0009999415499387274,
+      "piecewiseLinearGapLowerEstimate": 0.017146593321765952,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/candidate-physics-83.json",
+      "sha256": "157c32ba72fb715cf446d99d0d954b1bd6317dff61ca4480ab27215187201c4d",
+      "samples": 9521,
+      "worst": {
+        "gap": 0.01829201933512578,
+        "part": "join-welded-stud",
+        "tick": 81,
+        "p": [
+          -1.600000023841858,
+          0.1709991842508316,
+          3.6925466060638428
+        ]
+      },
+      "maxSampleStep": 0.0009999852761005644,
+      "piecewiseLinearGapLowerEstimate": 0.017792026697075497,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/candidate-physics-84.json",
+      "sha256": "d8a606375db77044829f5f5a0a1fac49bb4b395b71c67f86eb2888273930f477",
+      "samples": 9456,
+      "worst": {
+        "gap": 0.01829201933512578,
+        "part": "join-welded-stud",
+        "tick": 81,
+        "p": [
+          -1.600000023841858,
+          0.1709991842508316,
+          3.6925466060638428
+        ]
+      },
+      "maxSampleStep": 0.0009999415499387274,
+      "piecewiseLinearGapLowerEstimate": 0.017792048560156416,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/same-state-control/baseline.json",
+      "sha256": "59ce2eb5116471d89657ec2f768a0eac206292c4df113f27b3f7bfefcb0beff7",
+      "samples": 4187,
+      "worst": {
+        "gap": 0.012313154782920416,
+        "part": "join-welded-stud",
+        "tick": 19,
+        "p": [
+          -1.6027659177780151,
+          0.16939136385917664,
+          3.699610710144043
+        ]
+      },
+      "maxSampleStep": 0.0009992468445957192,
+      "piecewiseLinearGapLowerEstimate": 0.011813531360622557,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/same-state-control/candidate.json",
+      "sha256": "dfe57adc494af579a775cffdd6e92a505f88547884b92b9ac10aa51362a21926",
+      "samples": 2998,
+      "worst": {
+        "gap": 0.024602734449161084,
+        "part": "join-welded-stud",
+        "tick": 18,
+        "p": [
+          -1.6079922914505005,
+          0.16929002106189728,
+          3.6703689098358154
+        ]
+      },
+      "maxSampleStep": 0.0009992468445957192,
+      "piecewiseLinearGapLowerEstimate": 0.024103111026863223,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/same-state-control/candidate-socket-disabled.json",
+      "sha256": "8f8cafb64ce434d2bb31785ca96a1711bf99dcb15206e3b7713fa387ea9b5c49",
+      "samples": 4187,
+      "worst": {
+        "gap": 0.012313154782920416,
+        "part": "join-welded-stud",
+        "tick": 19,
+        "p": [
+          -1.6027659177780151,
+          0.16939136385917664,
+          3.699610710144043
+        ]
+      },
+      "maxSampleStep": 0.0009992468445957192,
+      "piecewiseLinearGapLowerEstimate": 0.011813531360622557,
+      "sensorIntersectsRecordedCaptureOrReturn": true
+    }
+  ],
+  "outSensor": {
+    "p": {
+      "x": -1.9454495177853444,
+      "y": 0.175,
+      "z": 3.87
+    },
+    "gap": 0.20935448186480338
+  },
+  "recordedNewINSpeed2SensorGap": -0.135,
+  "sensor": {
+    "center": [
+      -1.62,
+      0.2,
+      3.55
+    ],
+    "half": [
+      0.125,
+      0.2,
+      0.04
+    ],
+    "ink": [
+      [
+        2.12,
+        2.65,
+        0.12
+      ],
+      [
+        2.04,
+        3.2,
+        0.12
+      ],
+      [
+        1.75,
+        3.55,
+        0.12
+      ],
+      [
+        1.6,
+        3.65,
+        0.1
+      ]
+    ],
+    "label": [
+      2.12,
+      2.1,
+      0,
+      0.29,
+      0.78
+    ],
+    "semantics": "Existing left inlane key, collision-start, 100 x multiplier, .16 s cooldown, no direction filter; relocation only. New scoring coverage must be independently tested."
+  }
+}

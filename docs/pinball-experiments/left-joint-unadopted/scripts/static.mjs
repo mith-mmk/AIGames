@@ -1,0 +1,20 @@
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+import *as T from '../../../web/js/vendor/three-0.180.0/three.module.min.js';
+import {PinballPhysics} from '../../../web/js/pinball/physics.mjs';
+import {WorkshopAssets} from '../../../web/js/pinball/assets.mjs';
+import {LEFT_LANE,SAVE,FRAME_PARTS,LANE_PARTS} from '../../../web/js/pinball/left-lane-study.mjs';
+import {lowerLanePaths,LOWER_LAYOUT} from '../../../web/js/pinball/layout.mjs';
+const g=await PinballPhysics.create(),cs=[];g.world.forEachCollider(c=>cs.push(c));const R=.135;
+const describe=c=>({handle:c.handle,shape:c.shapeType(),center:c.translation(),radius:c.radius?.(),halfHeight:c.halfHeight?.()});
+function clearance(p){let best={gap:Infinity};for(const c of cs){if(c.isSensor()||c===g.ballCollider)continue;const a=c.translation();if(c.shapeType()===1&&a.y===Math.fround(-.04))continue;const q=c.projectPoint(p,c.shapeType()!==6),dist=Math.hypot(p.x-q.point.x,p.y-q.point.y,p.z-q.point.z)-R;if(dist<best.gap)best={gap:dist,collider:describe(c),closest:q.point,inside:q.isInside};}return{p,...best};}
+const theta=LEFT_LANE.angle,r=LEFT_LANE.radius,z0=LEFT_LANE.startZ,cx=-2.30+r;
+const straight=Array.from({length:181},(_,i)=>({x:SAVE.x,y:.175,z:1.10+i*.01}));
+const arc=Array.from({length:85},(_,i)=>{const t=42*Math.PI/180*i/84;return{x:cx-(r+.215)*Math.cos(t),y:.175,z:z0+(r+.215)*Math.sin(t)};});
+const groups={outStraight:straight.map(clearance),outOffsetArc:arc.map(clearance),saveGate:[-2.574,-2.515,-2.456].flatMap(x=>[2.421,2.55,2.689].map(z=>clearance({x,y:.175,z})))};
+const ctx=new Proxy({}, {get:(_,key)=>key==='measureText'?()=>({width:10}):key.startsWith('create')?()=>({addColorStop(){}}):()=>{}});globalThis.document={createElement:()=>({width:0,height:0,getContext:()=>ctx})};
+const a=new WorkshopAssets();a.batchStaticAssembly=()=>{};a.build();a.root.updateMatrixWorld(true);
+const meshParts=[];a.root.traverse(m=>{if(m.isMesh&&m.name.startsWith('left-study-'))meshParts.push({name:m.name,position:m.position.toArray(),quaternion:m.quaternion.toArray(),parameters:m.geometry.parameters});});
+assert.equal(meshParts.length,FRAME_PARTS.length+LANE_PARTS.length);
+assert.deepEqual(lowerLanePaths(-1)[0].slice(-23),LEFT_LANE.oldTail);
+const summary={status:'Static screen only; no dynamic execution',contacts:cs.length,sharedParts:{frame:FRAME_PARTS.length,lane:LANE_PARTS.length,actualMeshes:meshParts.length},flipperPivot:LOWER_LAYOUT.flipperPivot,oldTail23Exact:true,groups:Object.fromEntries(Object.entries(groups).map(([name,rows])=>[name,{count:rows.length,invalid:rows.filter(r=>r.gap<-.00001).length,worst:rows.reduce((a,b)=>a.gap<b.gap?a:b),firstInvalid:rows.find(r=>r.gap<-.00001)}])),limits:['Point samples plus analytic frame vertical separation; not complete continuous all-solid path proof','Trimesh is queried as surface, not a solid inside proof','Legacy visual save housing intentionally has no new collider','No natural or charged/uncharged dynamics run']};
+fs.writeFileSync(new URL('./static.json',import.meta.url),JSON.stringify({summary,groups,meshParts},null,2));console.log(JSON.stringify(summary,null,2));a.dispose();g.dispose();

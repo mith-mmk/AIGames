@@ -1,0 +1,2 @@
+using deprecated parameters for the initialization function; pass a single object instead
+{"games":54,"finished":54,"stalled":0,"zeroScore":0,"score":178250,"ramps":27,"lanes":300,"bumpers":219,"shots":238,"seconds":3288.425000000219,"liveResets":0,"hardwareContactEvents":78,"hardwareContactTicks":1116}
