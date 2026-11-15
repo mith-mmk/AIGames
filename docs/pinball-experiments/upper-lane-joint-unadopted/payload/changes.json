@@ -1,0 +1,32 @@
+[
+  {
+    "key": "web/js/pinball/upper-lane-geometry.mjs",
+    "added": true,
+    "content": "// One candidate, derived from preserved incoming envelopes. No dynamics or ball control.\nexport const UPPER_BARS=Object.freeze([-1.875,-.625,.625,1.875].map((x,id)=>{const yaw=id===3?-Math.PI/4:0,down=[Math.sin(yaw),0,Math.cos(yaw)],center=[x,.23,id===3?-4.45:-4.55],a=center.map((v,i)=>v-.45*down[i]),b=center.map((v,i)=>v+.45*down[i]);return{id,center,down,a,b,radius:.035,mount:{radius:.055,height:.23,y:.12}};}));\nfunction xAt(bar,z){return bar.a[0]+(z-bar.a[2])*(bar.b[0]-bar.a[0])/(bar.b[2]-bar.a[2]);}\nexport const UPPER_LANES=Object.freeze([0,1,2].map(id=>{const left=UPPER_BARS[id],right=UPPER_BARS[id+1],z=id===2?-4.45:-4.55,slope=((left.b[0]-left.a[0])/(left.b[2]-left.a[2])+(right.b[0]-right.a[0])/(right.b[2]-right.a[2]))/2,yaw=Math.atan(slope),down=[Math.sin(yaw),0,Math.cos(yaw)],center=[(xAt(left,z)+xAt(right,z))/2,.20,z],lamp=center.map((v,i)=>i===1?.055:v+.15*down[i]),label=center.map((v,i)=>i===1?.08:v-(id===2?.25:.40)*down[i]);return{id,leftBar:id,rightBar:id+1,center,yaw,down,half:[.35,.16,.08],lamp,label,commonZ:[Math.max(left.a[2],right.a[2]),Math.min(left.b[2],right.b[2])]};}));\n"
+  },
+  {
+    "key": "web/js/pinball/physics.mjs",
+    "from": "import {installCMechanics",
+    "to": "import {UPPER_BARS,UPPER_LANES} from './upper-lane-geometry.mjs';\nimport {installCMechanics"
+  },
+  {
+    "key": "web/js/pinball/physics.mjs",
+    "from": "    for (const x of [-1.875, -.625, .625, 1.875]) this.segment([x, .23, -5.0], [x, .23, -4.1], .035);\n    for (let lane = 0; lane < 3; lane++) {\n      const c = this.world.createCollider(R.ColliderDesc.cuboid(.35, .16, .08)\n        .setTranslation((lane - 1) * 1.25, .20, -4.55).setSensor(true));\n      this.hitObjects.set(c.handle, { type: \"rollover\", lane, key: \"lane\" + lane });\n    }",
+    "to": "    // Shared physical bars and their existing visible mounts; no bar is removed.\n    for(const bar of UPPER_BARS){\n      this.segment(bar.a,bar.b,bar.radius);\n      for(const end of [bar.a,bar.b])this.world.createCollider(R.ColliderDesc.cylinder(bar.mount.height/2,bar.mount.radius).setTranslation(end[0],bar.mount.y,end[2]).setRestitution(.45).setFriction(.05));\n    }\n    for(const lane of UPPER_LANES){\n      const c=this.world.createCollider(R.ColliderDesc.cuboid(...lane.half).setTranslation(...lane.center).setRotation({x:0,y:Math.sin(lane.yaw/2),z:0,w:Math.cos(lane.yaw/2)}).setSensor(true));\n      this.hitObjects.set(c.handle,{type:\"rollover\",lane:lane.id,key:\"lane\"+lane.id});\n    }"
+  },
+  {
+    "key": "web/js/pinball/playfield-parts.mjs",
+    "from": "import {drawCLanes",
+    "to": "import {UPPER_BARS,UPPER_LANES} from './upper-lane-geometry.mjs';\nimport {railCapsules,capsuleStockGeometry} from './wire-stock.mjs';\nimport {drawCLanes"
+  },
+  {
+    "key": "web/js/pinball/playfield-parts.mjs",
+    "from": "    for (const x of [-1.875,-.625,.625,1.875]) {\n      a.tube(g,[[x,.23,-5.0],[x,.23,-4.1]],.035,\"chrome\");\n      for(const z of [-5.0,-4.1]) a.cylinder(g,.055,.23,x,.12,z,\"brass\");\n    }\n    a.laneLamps=[];\n    for (const [i,x] of [-1.25,0,1.25].entries()) {\n      a.text(g,[\"A\",\"B\",\"C\"][i],x,.08,-4.95,.48,.32);\n      a.ring(g,.23,.018,x,.065,-4.4,\"brass\");\n      a.laneLamps.push(a.cylinder(g,.14,.018,x,.055,-4.4,\"jade\"));\n    }",
+    "to": "    for(const bar of UPPER_BARS){\n      const mesh=a.mesh(capsuleStockGeometry(railCapsules([bar.a,bar.b].map(p=>new T.Vector3(...p)),bar.radius)),\"chrome\",g);mesh.name=\"upper-bar-\"+bar.id;\n      for(const [i,end]of [bar.a,bar.b].entries()){const mount=a.cylinder(g,bar.mount.radius,bar.mount.height,end[0],bar.mount.y,end[2],\"brass\");mount.name=\"upper-bar-mount-\"+bar.id+\"-\"+i;}\n    }\n    a.laneLamps=[];\n    for(const lane of UPPER_LANES){\n      const label=a.text(g,[\"A\",\"B\",\"C\"][lane.id],...lane.label,.48,.32);label.name=\"upper-lane-label-\"+lane.id;label.quaternion.premultiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),lane.yaw));\n      a.ring(g,.23,.018,lane.lamp[0],.065,lane.lamp[2],\"brass\");\n      const lamp=a.cylinder(g,.14,.018,...lane.lamp,\"jade\");lamp.name=\"upper-lane-lamp-\"+lane.id;a.laneLamps.push(lamp);\n    }"
+  },
+  {
+    "key": "web/js/pinball/assets.mjs",
+    "from": "    const roof=UPPER_ROOF;\n    for(let i=0;i<roof.length-1;i++) this.tube(g,[roof[i],roof[i+1]],.06,\"chrome\");",
+    "to": "    const roof=UPPER_ROOF;\n    const roofStock=this.mesh(capsuleStockGeometry(railCapsules(roof.map(p=>new T.Vector3(...p)),.06)),\"chrome\",g);roofStock.name=\"shared-upper-roof-stock\";"
+  }
+]

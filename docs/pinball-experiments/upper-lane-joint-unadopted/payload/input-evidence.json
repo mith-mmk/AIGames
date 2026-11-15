@@ -1,0 +1,18 @@
+{
+  "artifacts/pinball/upper-lane-input-e283fc7/states.json": {
+    "bytes": 58370,
+    "sha256": "57b8434642cd4a6e67fb4d3457c28199ece9d77e7656f3ca830b4cf53395be62"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/candidate.json": {
+    "bytes": 1181444,
+    "sha256": "63cea8690bb946bc5454837c35bd1103031015122636771b6750c5c51e749434"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/max-contact-findings.md": {
+    "bytes": 1827,
+    "sha256": "f0a1f772ba69b51925c08c9ba59688df0ff9e02127160d272d57b805dca50a09"
+  },
+  "artifacts/pinball/neon-reference.png": {
+    "bytes": 3957019,
+    "sha256": "b315fe2280bad0ce86126b808ce7fcc958a722ad0df722ca0f3c98a5bb2ff25c"
+  }
+}

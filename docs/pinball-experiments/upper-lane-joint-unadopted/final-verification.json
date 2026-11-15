@@ -1,0 +1,24 @@
+{
+  "status": "verified",
+  "head": "79d7b91a8a71f6c010722ab65a6200459253c902",
+  "sourceSha256": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+  "parentSha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+  "generatedFileCount": 12,
+  "packetFilesChecked": 56,
+  "packetManifestSha256": "21f12884cf43b74ebe7b11b1ae9c2ee01b3eb73b14cfb229fb0ba1c28b1c0af8",
+  "packetSourceBuildLoaderUnchanged": true,
+  "originalArtifactWrites": 0,
+  "productionDiffEmpty": true,
+  "gitDiffCheck": true,
+  "denseCases": 568,
+  "fullTests": {
+    "total": 207,
+    "pass": 162,
+    "fail": 45,
+    "skip": 0,
+    "cancelled": 0
+  },
+  "recoveryVerification": "verification.json: fresh12, idempotence,9 refusals, no-step assembly, original108 files unchanged",
+  "duplicateRawTapMovedToTrash": "/Users/tsaito/.Trash/joint-upper-lane-recovery-verification-20261115-100942/packet-raw-tap-duplicate/full.tap",
+  "note": "Final verify-only after final diagnostic additions; no further physics tests or source edits."
+}

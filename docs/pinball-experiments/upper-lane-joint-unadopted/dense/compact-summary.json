@@ -1,0 +1,929 @@
+{
+  "cases": 568,
+  "batches": [
+    {
+      "mode": "accepted",
+      "order": "asc",
+      "side": -1,
+      "count": 71,
+      "complete": true,
+      "successCount": 41,
+      "successDelays": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        58,
+        60,
+        73,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        99,
+        100
+      ],
+      "runs": [
+        {
+          "start": 32,
+          "end": 56,
+          "count": 25,
+          "endpointMilliseconds": 200.0
+        },
+        {
+          "start": 58,
+          "end": 58,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 60,
+          "end": 60,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 73,
+          "end": 73,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 76,
+          "end": 86,
+          "count": 11,
+          "endpointMilliseconds": 83.33333333333333
+        },
+        {
+          "start": 99,
+          "end": 100,
+          "count": 2,
+          "endpointMilliseconds": 8.333333333333334
+        }
+      ],
+      "longest": {
+        "start": 32,
+        "end": 56,
+        "count": 25,
+        "endpointMilliseconds": 200.0
+      },
+      "ends": {
+        "held-recapture": 13,
+        "ordinary-drain": 58
+      },
+      "successfulCaseEndpoints": {
+        "ordinary-drain": 32,
+        "held-recapture": 9
+      }
+    },
+    {
+      "mode": "accepted",
+      "order": "asc",
+      "side": 1,
+      "count": 71,
+      "complete": true,
+      "successCount": 41,
+      "successDelays": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        73,
+        86
+      ],
+      "runs": [
+        {
+          "start": 32,
+          "end": 70,
+          "count": 39,
+          "endpointMilliseconds": 316.6666666666667
+        },
+        {
+          "start": 73,
+          "end": 73,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 86,
+          "end": 86,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        }
+      ],
+      "longest": {
+        "start": 32,
+        "end": 70,
+        "count": 39,
+        "endpointMilliseconds": 316.6666666666667
+      },
+      "ends": {
+        "held-recapture": 16,
+        "ordinary-drain": 55
+      },
+      "successfulCaseEndpoints": {
+        "held-recapture": 9,
+        "ordinary-drain": 32
+      }
+    },
+    {
+      "mode": "accepted",
+      "order": "desc",
+      "side": -1,
+      "count": 71,
+      "complete": true,
+      "successCount": 41,
+      "successDelays": [
+        100,
+        99,
+        86,
+        85,
+        84,
+        83,
+        82,
+        81,
+        80,
+        79,
+        78,
+        77,
+        76,
+        73,
+        60,
+        58,
+        56,
+        55,
+        54,
+        53,
+        52,
+        51,
+        50,
+        49,
+        48,
+        47,
+        46,
+        45,
+        44,
+        43,
+        42,
+        41,
+        40,
+        39,
+        38,
+        37,
+        36,
+        35,
+        34,
+        33,
+        32
+      ],
+      "runs": [
+        {
+          "start": 32,
+          "end": 56,
+          "count": 25,
+          "endpointMilliseconds": 200.0
+        },
+        {
+          "start": 58,
+          "end": 58,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 60,
+          "end": 60,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 73,
+          "end": 73,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 76,
+          "end": 86,
+          "count": 11,
+          "endpointMilliseconds": 83.33333333333333
+        },
+        {
+          "start": 99,
+          "end": 100,
+          "count": 2,
+          "endpointMilliseconds": 8.333333333333334
+        }
+      ],
+      "longest": {
+        "start": 32,
+        "end": 56,
+        "count": 25,
+        "endpointMilliseconds": 200.0
+      },
+      "ends": {
+        "held-recapture": 13,
+        "ordinary-drain": 58
+      },
+      "successfulCaseEndpoints": {
+        "ordinary-drain": 32,
+        "held-recapture": 9
+      }
+    },
+    {
+      "mode": "accepted",
+      "order": "desc",
+      "side": 1,
+      "count": 71,
+      "complete": true,
+      "successCount": 41,
+      "successDelays": [
+        86,
+        73,
+        70,
+        69,
+        68,
+        67,
+        66,
+        65,
+        64,
+        63,
+        62,
+        61,
+        60,
+        59,
+        58,
+        57,
+        56,
+        55,
+        54,
+        53,
+        52,
+        51,
+        50,
+        49,
+        48,
+        47,
+        46,
+        45,
+        44,
+        43,
+        42,
+        41,
+        40,
+        39,
+        38,
+        37,
+        36,
+        35,
+        34,
+        33,
+        32
+      ],
+      "runs": [
+        {
+          "start": 32,
+          "end": 70,
+          "count": 39,
+          "endpointMilliseconds": 316.6666666666667
+        },
+        {
+          "start": 73,
+          "end": 73,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 86,
+          "end": 86,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        }
+      ],
+      "longest": {
+        "start": 32,
+        "end": 70,
+        "count": 39,
+        "endpointMilliseconds": 316.6666666666667
+      },
+      "ends": {
+        "held-recapture": 16,
+        "ordinary-drain": 55
+      },
+      "successfulCaseEndpoints": {
+        "held-recapture": 9,
+        "ordinary-drain": 32
+      }
+    },
+    {
+      "mode": "candidate",
+      "order": "asc",
+      "side": -1,
+      "count": 71,
+      "complete": true,
+      "successCount": 21,
+      "successDelays": [
+        64,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        75,
+        80,
+        90,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100
+      ],
+      "runs": [
+        {
+          "start": 64,
+          "end": 64,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 66,
+          "end": 73,
+          "count": 8,
+          "endpointMilliseconds": 58.333333333333336
+        },
+        {
+          "start": 75,
+          "end": 75,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 80,
+          "end": 80,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 90,
+          "end": 90,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 92,
+          "end": 100,
+          "count": 9,
+          "endpointMilliseconds": 66.66666666666667
+        }
+      ],
+      "longest": {
+        "start": 92,
+        "end": 100,
+        "count": 9,
+        "endpointMilliseconds": 66.66666666666667
+      },
+      "ends": {
+        "held-recapture": 27,
+        "ordinary-drain": 43,
+        "sameball-ready-shooter": 1
+      },
+      "successfulCaseEndpoints": {
+        "held-recapture": 9,
+        "ordinary-drain": 11,
+        "sameball-ready-shooter": 1
+      }
+    },
+    {
+      "mode": "candidate",
+      "order": "asc",
+      "side": 1,
+      "count": 71,
+      "complete": true,
+      "successCount": 25,
+      "successDelays": [
+        46,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87
+      ],
+      "runs": [
+        {
+          "start": 46,
+          "end": 46,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 64,
+          "end": 87,
+          "count": 24,
+          "endpointMilliseconds": 191.66666666666666
+        }
+      ],
+      "longest": {
+        "start": 64,
+        "end": 87,
+        "count": 24,
+        "endpointMilliseconds": 191.66666666666666
+      },
+      "ends": {
+        "held-recapture": 21,
+        "ordinary-drain": 49,
+        "sameball-ready-shooter": 1
+      },
+      "successfulCaseEndpoints": {
+        "ordinary-drain": 23,
+        "held-recapture": 1,
+        "sameball-ready-shooter": 1
+      }
+    },
+    {
+      "mode": "candidate",
+      "order": "desc",
+      "side": -1,
+      "count": 71,
+      "complete": true,
+      "successCount": 21,
+      "successDelays": [
+        100,
+        99,
+        98,
+        97,
+        96,
+        95,
+        94,
+        93,
+        92,
+        90,
+        80,
+        75,
+        73,
+        72,
+        71,
+        70,
+        69,
+        68,
+        67,
+        66,
+        64
+      ],
+      "runs": [
+        {
+          "start": 64,
+          "end": 64,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 66,
+          "end": 73,
+          "count": 8,
+          "endpointMilliseconds": 58.333333333333336
+        },
+        {
+          "start": 75,
+          "end": 75,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 80,
+          "end": 80,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 90,
+          "end": 90,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 92,
+          "end": 100,
+          "count": 9,
+          "endpointMilliseconds": 66.66666666666667
+        }
+      ],
+      "longest": {
+        "start": 92,
+        "end": 100,
+        "count": 9,
+        "endpointMilliseconds": 66.66666666666667
+      },
+      "ends": {
+        "held-recapture": 27,
+        "ordinary-drain": 43,
+        "sameball-ready-shooter": 1
+      },
+      "successfulCaseEndpoints": {
+        "held-recapture": 9,
+        "ordinary-drain": 11,
+        "sameball-ready-shooter": 1
+      }
+    },
+    {
+      "mode": "candidate",
+      "order": "desc",
+      "side": 1,
+      "count": 71,
+      "complete": true,
+      "successCount": 25,
+      "successDelays": [
+        87,
+        86,
+        85,
+        84,
+        83,
+        82,
+        81,
+        80,
+        79,
+        78,
+        77,
+        76,
+        75,
+        74,
+        73,
+        72,
+        71,
+        70,
+        69,
+        68,
+        67,
+        66,
+        65,
+        64,
+        46
+      ],
+      "runs": [
+        {
+          "start": 46,
+          "end": 46,
+          "count": 1,
+          "endpointMilliseconds": 0.0
+        },
+        {
+          "start": 64,
+          "end": 87,
+          "count": 24,
+          "endpointMilliseconds": 191.66666666666666
+        }
+      ],
+      "longest": {
+        "start": 64,
+        "end": 87,
+        "count": 24,
+        "endpointMilliseconds": 191.66666666666666
+      },
+      "ends": {
+        "held-recapture": 21,
+        "ordinary-drain": 49,
+        "sameball-ready-shooter": 1
+      },
+      "successfulCaseEndpoints": {
+        "sameball-ready-shooter": 1,
+        "ordinary-drain": 23,
+        "held-recapture": 1
+      }
+    }
+  ],
+  "ranges": [
+    {
+      "mode": "accepted",
+      "side": -1,
+      "alongRange": [
+        0.17337140284086527,
+        0.6861254834292227
+      ],
+      "aimRange": [
+        -0.9178007734867566,
+        -0.0713942445453846
+      ],
+      "worldCoilXRange": [
+        -1.0523566007614136,
+        -0.46781694889068604
+      ],
+      "releaseXRange": [
+        -1.0543931722640991,
+        -1.054337978363037
+      ]
+    },
+    {
+      "mode": "accepted",
+      "side": 1,
+      "alongRange": [
+        0.17342619728623773,
+        0.6860350569089253
+      ],
+      "aimRange": [
+        -0.9176560910542806,
+        -0.07148191565798119
+      ],
+      "worldCoilXRange": [
+        0.4679200351238251,
+        1.052294135093689
+      ],
+      "releaseXRange": [
+        1.0543397665023804,
+        1.0543397665023804
+      ]
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "alongRange": [
+        0.17073473785862775,
+        0.5350449735468084
+      ],
+      "aimRange": [
+        -0.6760719576748935,
+        -0.0071755805738045325
+      ],
+      "worldCoilXRange": [
+        -1.6182876825332642,
+        -1.0171757936477661
+      ],
+      "releaseXRange": [
+        -1.618385672569275,
+        -1.61829674243927
+      ]
+    },
+    {
+      "mode": "candidate",
+      "side": 1,
+      "alongRange": [
+        0.17074983770197083,
+        0.5350109447132457
+      ],
+      "aimRange": [
+        -0.6760175115411933,
+        -0.007199740323154125
+      ],
+      "worldCoilXRange": [
+        1.0172319412231445,
+        1.618262767791748
+      ],
+      "releaseXRange": [
+        1.6183847188949585,
+        1.6183847188949585
+      ]
+    }
+  ],
+  "orderDifferences": [
+    {
+      "mode": "accepted",
+      "side": -1,
+      "delay": 30,
+      "refireSame": true,
+      "endSame": true,
+      "captureSame": false,
+      "traceBytesSame": false,
+      "ascRefire": false,
+      "descRefire": false,
+      "firstPV": {
+        "index": 280,
+        "asc": {
+          "p": {
+            "x": -1.0566998720169067,
+            "y": 0.17086687684059143,
+            "z": 4.059472560882568
+          },
+          "v": {
+            "x": 0.44852080941200256,
+            "y": -0.0005411794409155846,
+            "z": -0.20118671655654907
+          }
+        },
+        "desc": {
+          "p": {
+            "x": -1.0567688941955566,
+            "y": 0.1708899438381195,
+            "z": 4.059487342834473
+          },
+          "v": {
+            "x": 0.45426133275032043,
+            "y": -0.00044308576616458595,
+            "z": -0.20388616621494293
+          }
+        }
+      },
+      "ascTicks": 598,
+      "descTicks": 706
+    },
+    {
+      "mode": "accepted",
+      "side": -1,
+      "delay": 100,
+      "refireSame": true,
+      "endSame": true,
+      "captureSame": false,
+      "traceBytesSame": false,
+      "ascRefire": true,
+      "descRefire": true,
+      "firstPV": {
+        "index": 280,
+        "asc": {
+          "p": {
+            "x": -1.0567688941955566,
+            "y": 0.1708899438381195,
+            "z": 4.059487342834473
+          },
+          "v": {
+            "x": 0.45426133275032043,
+            "y": -0.00044308576616458595,
+            "z": -0.20388616621494293
+          }
+        },
+        "desc": {
+          "p": {
+            "x": -1.0566998720169067,
+            "y": 0.17086687684059143,
+            "z": 4.059472560882568
+          },
+          "v": {
+            "x": 0.44852080941200256,
+            "y": -0.0005411794409155846,
+            "z": -0.20118671655654907
+          }
+        }
+      },
+      "ascTicks": 1009,
+      "descTicks": 1075
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "delay": 30,
+      "refireSame": true,
+      "endSame": true,
+      "captureSame": false,
+      "traceBytesSame": false,
+      "ascRefire": false,
+      "descRefire": false,
+      "firstPV": {
+        "index": 59,
+        "asc": {
+          "p": {
+            "x": -1.8925460577011108,
+            "y": 0.1701740026473999,
+            "z": 3.1749215126037598
+          },
+          "v": {
+            "x": 2.4736955165863037,
+            "y": -2.9664020985364914e-05,
+            "z": 2.82143497467041
+          }
+        },
+        "desc": {
+          "p": {
+            "x": -1.892352819442749,
+            "y": 0.17014950513839722,
+            "z": 3.174980401992798
+          },
+          "v": {
+            "x": 2.4848291873931885,
+            "y": -6.383073196047917e-05,
+            "z": 2.8364622592926025
+          }
+        }
+      },
+      "ascTicks": 1461,
+      "descTicks": 1466
+    },
+    {
+      "mode": "candidate",
+      "side": -1,
+      "delay": 100,
+      "refireSame": true,
+      "endSame": true,
+      "captureSame": false,
+      "traceBytesSame": false,
+      "ascRefire": true,
+      "descRefire": true,
+      "firstPV": {
+        "index": 59,
+        "asc": {
+          "p": {
+            "x": -1.892352819442749,
+            "y": 0.17014950513839722,
+            "z": 3.174980401992798
+          },
+          "v": {
+            "x": 2.4848291873931885,
+            "y": -6.383073196047917e-05,
+            "z": 2.8364622592926025
+          }
+        },
+        "desc": {
+          "p": {
+            "x": -1.8925460577011108,
+            "y": 0.1701740026473999,
+            "z": 3.1749215126037598
+          },
+          "v": {
+            "x": 2.4736955165863037,
+            "y": -2.9664020985364914e-05,
+            "z": 2.82143497467041
+          }
+        }
+      },
+      "ascTicks": 1536,
+      "descTicks": 1531
+    }
+  ],
+  "allCapture": true,
+  "allOneCoil": true,
+  "allResetsZero": true,
+  "qualification": "bounded sampled capture-refire-to-z<-1 only; not natural ramp/wire/fullgame, not sub-tick continuity; unadopted"
+}

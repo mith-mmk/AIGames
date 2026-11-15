@@ -1,0 +1,6 @@
+{
+  "source": "artifacts/pinball/upper-lane-joint-full-e283fc7/full.tap",
+  "bytes": 82219,
+  "sha256": "cf0456bb5c20c3932af930fd51da0e1859f5010f49ed3b678e96c0c7206db1d7",
+  "note": "Complete original207-test output is retained at this artifact path; not copied into the small recovery packet. Every failing TAP block remains in classification.json."
+}

@@ -1,0 +1,679 @@
+{
+  "status": "Preimplementation fixed single proposal, no dynamics",
+  "bars": [
+    {
+      "id": 0,
+      "center": [
+        -1.875,
+        0.23,
+        -4.55
+      ],
+      "down": [
+        0,
+        0,
+        1
+      ],
+      "a": [
+        -1.875,
+        0.23,
+        -5
+      ],
+      "b": [
+        -1.875,
+        0.23,
+        -4.1
+      ],
+      "radius": 0.035,
+      "mount": {
+        "radius": 0.055,
+        "height": 0.23,
+        "y": 0.12
+      }
+    },
+    {
+      "id": 1,
+      "center": [
+        -0.625,
+        0.23,
+        -4.55
+      ],
+      "down": [
+        0,
+        0,
+        1
+      ],
+      "a": [
+        -0.625,
+        0.23,
+        -5
+      ],
+      "b": [
+        -0.625,
+        0.23,
+        -4.1
+      ],
+      "radius": 0.035,
+      "mount": {
+        "radius": 0.055,
+        "height": 0.23,
+        "y": 0.12
+      }
+    },
+    {
+      "id": 2,
+      "center": [
+        0.625,
+        0.23,
+        -4.55
+      ],
+      "down": [
+        0,
+        0,
+        1
+      ],
+      "a": [
+        0.625,
+        0.23,
+        -5
+      ],
+      "b": [
+        0.625,
+        0.23,
+        -4.1
+      ],
+      "radius": 0.035,
+      "mount": {
+        "radius": 0.055,
+        "height": 0.23,
+        "y": 0.12
+      }
+    },
+    {
+      "id": 3,
+      "center": [
+        1.875,
+        0.23,
+        -4.45
+      ],
+      "down": [
+        -0.7071067811865475,
+        0,
+        0.7071067811865476
+      ],
+      "a": [
+        2.193198051533946,
+        0.23,
+        -4.768198051533947
+      ],
+      "b": [
+        1.5568019484660536,
+        0.23,
+        -4.1318019484660535
+      ],
+      "radius": 0.035,
+      "mount": {
+        "radius": 0.055,
+        "height": 0.23,
+        "y": 0.12
+      }
+    }
+  ],
+  "lanes": [
+    {
+      "id": 0,
+      "leftBar": 0,
+      "rightBar": 1,
+      "center": [
+        -1.25,
+        0.2,
+        -4.55
+      ],
+      "yaw": 0,
+      "down": [
+        0,
+        0,
+        1
+      ],
+      "half": [
+        0.35,
+        0.16,
+        0.08
+      ],
+      "lamp": [
+        -1.25,
+        0.055,
+        -4.3999999999999995
+      ],
+      "label": [
+        -1.25,
+        0.08,
+        -4.95
+      ],
+      "commonZ": [
+        -5,
+        -4.1
+      ]
+    },
+    {
+      "id": 1,
+      "leftBar": 1,
+      "rightBar": 2,
+      "center": [
+        0,
+        0.2,
+        -4.55
+      ],
+      "yaw": 0,
+      "down": [
+        0,
+        0,
+        1
+      ],
+      "half": [
+        0.35,
+        0.16,
+        0.08
+      ],
+      "lamp": [
+        0,
+        0.055,
+        -4.3999999999999995
+      ],
+      "label": [
+        0,
+        0.08,
+        -4.95
+      ],
+      "commonZ": [
+        -5,
+        -4.1
+      ]
+    },
+    {
+      "id": 2,
+      "leftBar": 2,
+      "rightBar": 3,
+      "center": [
+        1.25,
+        0.2,
+        -4.45
+      ],
+      "yaw": -0.4636476090008057,
+      "down": [
+        -0.4472135954999576,
+        0,
+        0.8944271909999161
+      ],
+      "half": [
+        0.35,
+        0.16,
+        0.08
+      ],
+      "lamp": [
+        1.1829179606750064,
+        0.055,
+        -4.315835921350013
+      ],
+      "label": [
+        1.3618033988749894,
+        0.08,
+        -4.673606797749979
+      ],
+      "commonZ": [
+        -4.768198051533947,
+        -4.1318019484660535
+      ]
+    }
+  ],
+  "roofNearest": [
+    {
+      "bar": 0,
+      "d": 2.8408845453485085,
+      "p": [
+        0.95,
+        0.23,
+        -5.3
+      ],
+      "q": [
+        -1.875,
+        0.23,
+        -5
+      ],
+      "roofSegment": 23,
+      "surfaceGap": 2.7458845453485083,
+      "sphereGap": 2.4758845453485083
+    },
+    {
+      "bar": 1,
+      "d": 1.6033168744823965,
+      "p": [
+        0.95,
+        0.23,
+        -5.3
+      ],
+      "q": [
+        -0.625,
+        0.23,
+        -5
+      ],
+      "roofSegment": 23,
+      "surfaceGap": 1.5083168744823965,
+      "sphereGap": 1.2383168744823965
+    },
+    {
+      "bar": 2,
+      "d": 0.4422951503238532,
+      "p": [
+        0.95,
+        0.23,
+        -5.3
+      ],
+      "q": [
+        0.625,
+        0.23,
+        -5
+      ],
+      "roofSegment": 23,
+      "surfaceGap": 0.3472951503238532,
+      "sphereGap": 0.0772951503238532
+    },
+    {
+      "bar": 3,
+      "d": 0.4733064350781469,
+      "p": [
+        2.331006717931647,
+        0.23,
+        -5.220997955412107
+      ],
+      "q": [
+        2.193198051533946,
+        0.23,
+        -4.768198051533947
+      ],
+      "roofSegment": 22,
+      "surfaceGap": 0.37830643507814693,
+      "sphereGap": 0.10830643507814691
+    }
+  ],
+  "openings": [
+    {
+      "lane": 0,
+      "d": 1.25,
+      "p": [
+        -0.625,
+        0.23,
+        -5
+      ],
+      "q": [
+        -1.875,
+        0.23,
+        -5
+      ],
+      "barSurfaceGap": 1.18,
+      "fullDiameterReserve": 0.9099999999999999,
+      "conservativeMountReserve": 0.8699999999999999,
+      "frame": {
+        "id": 0,
+        "leftBar": 0,
+        "rightBar": 1,
+        "center": [
+          -1.25,
+          0.2,
+          -4.55
+        ],
+        "yaw": 0,
+        "down": [
+          0,
+          0,
+          1
+        ],
+        "half": [
+          0.35,
+          0.16,
+          0.08
+        ],
+        "lamp": [
+          -1.25,
+          0.055,
+          -4.3999999999999995
+        ],
+        "label": [
+          -1.25,
+          0.08,
+          -4.95
+        ],
+        "commonZ": [
+          -5,
+          -4.1
+        ]
+      }
+    },
+    {
+      "lane": 1,
+      "d": 1.25,
+      "p": [
+        0.625,
+        0.23,
+        -5
+      ],
+      "q": [
+        -0.625,
+        0.23,
+        -5
+      ],
+      "barSurfaceGap": 1.18,
+      "fullDiameterReserve": 0.9099999999999999,
+      "conservativeMountReserve": 0.8699999999999999,
+      "frame": {
+        "id": 1,
+        "leftBar": 1,
+        "rightBar": 2,
+        "center": [
+          0,
+          0.2,
+          -4.55
+        ],
+        "yaw": 0,
+        "down": [
+          0,
+          0,
+          1
+        ],
+        "half": [
+          0.35,
+          0.16,
+          0.08
+        ],
+        "lamp": [
+          0,
+          0.055,
+          -4.3999999999999995
+        ],
+        "label": [
+          0,
+          0.08,
+          -4.95
+        ],
+        "commonZ": [
+          -5,
+          -4.1
+        ]
+      }
+    },
+    {
+      "lane": 2,
+      "d": 0.9318019484660536,
+      "p": [
+        0.625,
+        0.23,
+        -4.1318019484660535
+      ],
+      "q": [
+        1.5568019484660536,
+        0.23,
+        -4.1318019484660535
+      ],
+      "barSurfaceGap": 0.8618019484660535,
+      "fullDiameterReserve": 0.5918019484660535,
+      "conservativeMountReserve": 0.5518019484660536,
+      "frame": {
+        "id": 2,
+        "leftBar": 2,
+        "rightBar": 3,
+        "center": [
+          1.25,
+          0.2,
+          -4.45
+        ],
+        "yaw": -0.4636476090008057,
+        "down": [
+          -0.4472135954999576,
+          0,
+          0.8944271909999161
+        ],
+        "half": [
+          0.35,
+          0.16,
+          0.08
+        ],
+        "lamp": [
+          1.1829179606750064,
+          0.055,
+          -4.315835921350013
+        ],
+        "label": [
+          1.3618033988749894,
+          0.08,
+          -4.673606797749979
+        ],
+        "commonZ": [
+          -4.768198051533947,
+          -4.1318019484660535
+        ]
+      }
+    }
+  ],
+  "incoming": [
+    {
+      "power": 0.55,
+      "oldFirstBarTick": null,
+      "minimumAgainstProposedBarUntilOldFirstContact": {
+        "d": 0.4917695670076905,
+        "p": [
+          2.193198051533946,
+          0.23,
+          -4.768198051533947
+        ],
+        "tick": 195,
+        "ball": {
+          "x": 2.6271555423736572,
+          "y": 0.1711723953485489,
+          "z": -4.54446268081665
+        },
+        "v": {
+          "x": -0.8613865375518799,
+          "y": -3.2563725049783443e-9,
+          "z": 0.020089661702513695
+        },
+        "ballGap": 0.32176956700769044
+      },
+      "frictionlessPlanNormal": [
+        0.7071067811865476,
+        0,
+        0.7071067811865476
+      ],
+      "illustrativeReflectionAtThatState": [
+        -0.25144630256108935,
+        -3.2563725049783443e-9,
+        0.6300298966933042
+      ],
+      "scope": "Saved old trajectory vs proposed finite bar only; not a new trajectory, fixture, 3D impact prediction or guarantee"
+    },
+    {
+      "power": 0.65,
+      "oldFirstBarTick": 142,
+      "minimumAgainstProposedBarUntilOldFirstContact": {
+        "d": 0.2930460715313618,
+        "p": [
+          2.193198051533946,
+          0.23,
+          -4.768198051533947
+        ],
+        "tick": 133,
+        "ball": {
+          "x": 2.2492527961730957,
+          "y": 0.16969119012355804,
+          "z": -5.049439430236816
+        },
+        "v": {
+          "x": -3.5403473377227783,
+          "y": 3.7215686088387656e-9,
+          "z": -0.6949401497840881
+        },
+        "ballGap": 0.12304607153136182
+      },
+      "frictionlessPlanNormal": [
+        0.7071067811865476,
+        0,
+        0.7071067811865476
+      ],
+      "illustrativeReflectionAtThatState": [
+        -0.4697639092803003,
+        3.7215686088387656e-9,
+        2.37564327865839
+      ],
+      "scope": "Saved old trajectory vs proposed finite bar only; not a new trajectory, fixture, 3D impact prediction or guarantee"
+    },
+    {
+      "power": 0.75,
+      "oldFirstBarTick": 105,
+      "minimumAgainstProposedBarUntilOldFirstContact": {
+        "d": 0.06211477368859613,
+        "p": [
+          2.1188153266906737,
+          0.23,
+          -4.693815326690674
+        ],
+        "tick": 102,
+        "ball": {
+          "x": 2.1180419921875,
+          "y": 0.1678948551416397,
+          "z": -4.694588661193848
+        },
+        "v": {
+          "x": -4.469799995422363,
+          "y": -3.7215686088387656e-9,
+          "z": -2.1050398349761963
+        },
+        "ballGap": -0.10788522631140388
+      },
+      "frictionlessPlanNormal": [
+        0.7071067811865476,
+        0,
+        0.7071067811865476
+      ],
+      "illustrativeReflectionAtThatState": [
+        0.2969588816165931,
+        -3.7215686088387656e-9,
+        2.66171904206276
+      ],
+      "scope": "Saved old trajectory vs proposed finite bar only; not a new trajectory, fixture, 3D impact prediction or guarantee"
+    },
+    {
+      "power": 0.85,
+      "oldFirstBarTick": 84,
+      "minimumAgainstProposedBarUntilOldFirstContact": {
+        "d": 0.06918527138469335,
+        "p": [
+          2.193198051533946,
+          0.23,
+          -4.768198051533947
+        ],
+        "tick": 80,
+        "ball": {
+          "x": 2.2154500484466553,
+          "y": 0.16589879989624023,
+          "z": -4.781706809997559
+        },
+        "v": {
+          "x": -6.254326820373535,
+          "y": -0.10142919421195984,
+          "z": -3.9321208000183105
+        },
+        "ballGap": -0.10081472861530666
+      },
+      "frictionlessPlanNormal": [
+        0.7071067811865476,
+        0,
+        0.7071067811865476
+      ],
+      "illustrativeReflectionAtThatState": [
+        1.1308477044105532,
+        -0.10142919421195984,
+        3.4530537247657778
+      ],
+      "scope": "Saved old trajectory vs proposed finite bar only; not a new trajectory, fixture, 3D impact prediction or guarantee"
+    },
+    {
+      "power": 0.925,
+      "oldFirstBarTick": 75,
+      "minimumAgainstProposedBarUntilOldFirstContact": {
+        "d": 0.2855813541777334,
+        "p": [
+          2.193198051533946,
+          0.23,
+          -4.768198051533947
+        ],
+        "tick": 69,
+        "ball": {
+          "x": 2.3409247398376465,
+          "y": 0.16541916131973267,
+          "z": -5.003915786743164
+        },
+        "v": {
+          "x": -8.949941635131836,
+          "y": -0.10142919421195984,
+          "z": -4.835996627807617
+        },
+        "ballGap": 0.11558135417773341
+      },
+      "frictionlessPlanNormal": [
+        0.7071067811865476,
+        0,
+        0.7071067811865476
+      ],
+      "illustrativeReflectionAtThatState": [
+        1.0448636054992697,
+        -0.10142919421195984,
+        5.1588086128234885
+      ],
+      "scope": "Saved old trajectory vs proposed finite bar only; not a new trajectory, fixture, 3D impact prediction or guarantee"
+    },
+    {
+      "power": 1,
+      "oldFirstBarTick": 67,
+      "minimumAgainstProposedBarUntilOldFirstContact": {
+        "d": 0.0621882128160414,
+        "p": [
+          1.9760782361030578,
+          0.23,
+          -4.551078236103058
+        ],
+        "tick": 67,
+        "ball": {
+          "x": 1.9714137315750122,
+          "y": 0.16816264390945435,
+          "z": -4.5557427406311035
+        },
+        "v": {
+          "x": -8.46536636352539,
+          "y": 3.7215686088387656e-9,
+          "z": -1.3026525974273682
+        },
+        "ballGap": -0.10781178718395862
+      },
+      "frictionlessPlanNormal": [
+        0.7071067811865476,
+        0,
+        0.7071067811865476
+      ],
+      "illustrativeReflectionAtThatState": [
+        -1.3835526168346401,
+        3.7215686088387656e-9,
+        5.779161149263382
+      ],
+      "scope": "Saved old trajectory vs proposed finite bar only; not a new trajectory, fixture, 3D impact prediction or guarantee"
+    }
+  ],
+  "observedInputSource": "artifacts/pinball/upper-lane-input-e283fc7/states.json",
+  "notChanged": [
+    "roof path/contact",
+    "board",
+    "lower",
+    "longbat",
+    "force/keys/solver",
+    "scoring/mission IDs",
+    "sensor Y .04...36"
+  ],
+  "plannedRepresentation": "Same capsule stock mesh for all roof and bars, plus real contact for existing visible eight bar mounts. 12-radial inscribed facets remain."
+}

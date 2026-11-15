@@ -1,0 +1,288 @@
+{
+  "status": "final",
+  "rawPolicy": "No raw source maps, PNG images or gzip traces copied. Exact original paths/hashes remain recoverable evidence references.",
+  "files": {
+    "dense/README.md": {
+      "source": "artifacts/pinball/upper-lane-joint-dense-e283fc7/README.md",
+      "bytes": 3499,
+      "sha256": "1e349bfa75cccf594c1b3b35be04e4e3a9f5d2cab827433d667106d39da5f794",
+      "copy": "exact"
+    },
+    "dense/compact-summary.json": {
+      "source": "artifacts/pinball/upper-lane-joint-dense-e283fc7/compact-summary.json",
+      "bytes": 17795,
+      "sha256": "08184c9e1743cfc529cae180263be095d73a18a5a646d010619aaa56de4b46bd",
+      "copy": "exact"
+    },
+    "dense/order-differences.json": {
+      "source": "artifacts/pinball/upper-lane-joint-dense-e283fc7/order-differences.json",
+      "bytes": 3522,
+      "sha256": "28d569a6f52e4430d654b6aa5d6f1ae42bd75e879a2e6a2f6c35e37f42a71d2f",
+      "copy": "exact"
+    },
+    "dense/manifest.json": {
+      "source": "artifacts/pinball/upper-lane-joint-dense-e283fc7/manifest.json",
+      "bytes": 60154,
+      "sha256": "b131e9051624f749a43a6a665e3c11dc7d25a74b34ce2fb8f60a1bd37763c615",
+      "copy": "exact"
+    },
+    "dense/run.mjs": {
+      "source": "artifacts/pinball/upper-lane-joint-dense-e283fc7/run.mjs",
+      "bytes": 6125,
+      "sha256": "85cb02213ee744b5898581e489f0d4e8347b7edda0c7c0138c3fa52864677fa9",
+      "copy": "exact"
+    },
+    "dense/summarize.py": {
+      "source": "artifacts/pinball/upper-lane-joint-dense-e283fc7/summarize.py",
+      "bytes": 2606,
+      "sha256": "a431d3d2a4b9d0fe2e1e73bfc117473210527837be1ebc49a4250b0c1bc02a75",
+      "copy": "exact"
+    },
+    "dense/finalize.py": {
+      "source": "artifacts/pinball/upper-lane-joint-dense-e283fc7/finalize.py",
+      "bytes": 5462,
+      "sha256": "811ca0352c43dda92c54441fc6ef08a6015ea66e434e5cd5ffe24603e7b3fc5c",
+      "copy": "exact"
+    },
+    "dense/start-sections.json": {
+      "source": "artifacts/pinball/upper-lane-joint-dense-e283fc7/start-sections.json",
+      "bytes": 7025,
+      "sha256": "3ed581940f78a57867e37d60152baf3039baec636cb77e0cc39d3999068b68ae",
+      "copy": "exact"
+    },
+    "dense/cases.jsonl": {
+      "source": "artifacts/pinball/upper-lane-joint-dense-e283fc7/summary.json",
+      "bytes": 506348,
+      "sha256": "2b6b7524d9b5b0c89a2fffb843d39fe8228814a6ffb2928b374dfd70e75e319a",
+      "copy": "derived: all 568 rows, values retained; compact JSON Lines; batch/order summaries separately preserved"
+    },
+    "independent/README.md": {
+      "source": "artifacts/pinball/upper-lane-joint-independent-d971a4/README.md",
+      "bytes": 3344,
+      "sha256": "bbc7e34aa5c92ea5c8fc44ae57028c4046b5c29afe8784c833b9827a7174abf8",
+      "copy": "technical content retained; final internal coordination sentence omitted from this user-facing copy"
+    },
+    "payload/baseline-loader.mjs": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/baseline-loader.mjs",
+      "bytes": 957,
+      "sha256": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38",
+      "copy": "exact"
+    },
+    "payload/dependencies.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/dependencies.json",
+      "bytes": 2196,
+      "sha256": "e24184dafdd36596048bd8ce9dd8158af675d2c147df7ca314570d6b39c597f2",
+      "copy": "exact"
+    },
+    "payload/freeze-files.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/freeze-files.json",
+      "bytes": 1547,
+      "sha256": "f715f453459649815a3273fd08a97ad99e6aa870f60fa543b490f5a001b9db0e",
+      "copy": "exact"
+    },
+    "payload/plan.mjs": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/plan.mjs",
+      "bytes": 1110,
+      "sha256": "c7acbdbe141954190a4fdc09a9b10520a970b8d872894f57b865e3431df9b00a",
+      "copy": "exact"
+    },
+    "payload/upper-lane-geometry.mjs": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/upper-lane-geometry.mjs",
+      "bytes": 1110,
+      "sha256": "c7acbdbe141954190a4fdc09a9b10520a970b8d872894f57b865e3431df9b00a",
+      "copy": "exact"
+    },
+    "payload/README.md": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/README.md",
+      "bytes": 5589,
+      "sha256": "f434fb394b55e644eba72b881dea2a2744f6618f4a11176a195567c52657c859",
+      "copy": "exact"
+    },
+    "payload/loader.mjs": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/loader.mjs",
+      "bytes": 948,
+      "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+      "copy": "exact"
+    },
+    "payload/input-evidence.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/input-evidence.json",
+      "bytes": 697,
+      "sha256": "432e49306335bff4437b16902b0a223f850b5bda535c37b86738c98d4613a23d",
+      "copy": "exact"
+    },
+    "payload/build.mjs": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/build.mjs",
+      "bytes": 6037,
+      "sha256": "732585cb2cdd6ee6543d00d4ccf61c4092295868020f892ef0e225c417848dae",
+      "copy": "exact"
+    },
+    "payload/manifest.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/manifest.json",
+      "bytes": 11702,
+      "sha256": "7f88d2656e075d70343253ea2c3b2c1b77ef83c2f4764804885480d76930287e",
+      "copy": "exact"
+    },
+    "payload/changes.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/changes.json",
+      "bytes": 4648,
+      "sha256": "2fe1ff3399010e6fb88cadeb81841ddadaf51612dad27c9253a45ceb2253c34e",
+      "copy": "exact"
+    },
+    "payload/accepted-loader.mjs": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/accepted-loader.mjs",
+      "bytes": 957,
+      "sha256": "4b81eb805e887773e943d17d94941eb902ee5b2b49b37e839e90f4919a1cf722",
+      "copy": "exact"
+    },
+    "static/check-static.mjs": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/check-static.mjs",
+      "bytes": 4930,
+      "sha256": "7b9b07badb8b5e9e7929fd92286fc154d0a8149d985344baf4c57d4a8daa19ed",
+      "copy": "exact"
+    },
+    "static/static.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/static.json",
+      "bytes": 11104,
+      "sha256": "34535d85249d24c9013b35065c1e0153c6f6837f1dbbe2f2ab83998156781165",
+      "copy": "exact"
+    },
+    "static/check-shoulder.mjs": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/check-shoulder.mjs",
+      "bytes": 4919,
+      "sha256": "e7c590af09c0ebc1d6dceab48d56a690649053e10261e24841fe3a5c3a060369",
+      "copy": "exact"
+    },
+    "static/shoulder-supplement.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/shoulder-supplement.json",
+      "bytes": 8592,
+      "sha256": "7feaea429f2071183c565a8fdfea0a981ce902a1012e35cf9127ab5f89dd0a5b",
+      "copy": "exact"
+    },
+    "design/plan-check.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/plan-check.json",
+      "bytes": 13627,
+      "sha256": "d6c8f31ac3312ae3fc395045e607bd41693f28b207a99dca95c823735a247773",
+      "copy": "exact"
+    },
+    "design/rejected-fixed-center-plan.mjs": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/rejected-fixed-center-plan.mjs",
+      "bytes": 1084,
+      "sha256": "c1ee4dc41bf57d3713b16e3c56d7204088ff3cf32e7af7c8b1350fbd3a07aa20",
+      "copy": "exact"
+    },
+    "design/rejected-fixed-center-plan-check.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/rejected-fixed-center-plan-check.json",
+      "bytes": 13633,
+      "sha256": "12280afa1b11fba06eec2a8aeff17ca9437733e51ecebc6258955f100b0c4c24",
+      "copy": "exact"
+    },
+    "design/check-plan.mjs": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/check-plan.mjs",
+      "bytes": 3060,
+      "sha256": "784e6f61998e42a55fb53696441bfe00c0a11b65e0ba895737e79832dc85f396",
+      "copy": "exact"
+    },
+    "local/summary.json": {
+      "source": "artifacts/pinball/upper-lane-joint-local-e283fc7/summary.json",
+      "bytes": 19273,
+      "sha256": "f12ebf971ddbf2c71461d7905e9d1a222cf3889a2080e5495a40320b2257d7a8",
+      "copy": "exact"
+    },
+    "local/README.md": {
+      "source": "artifacts/pinball/upper-lane-joint-local-e283fc7/README.md",
+      "bytes": 2779,
+      "sha256": "dcacffca2130514a184e4f1f7757d3e0ca657e337a4aa938f343454581c073a1",
+      "copy": "exact"
+    },
+    "local/manifest.json": {
+      "source": "artifacts/pinball/upper-lane-joint-local-e283fc7/manifest.json",
+      "bytes": 2068,
+      "sha256": "e34398f9f9cf0efde2af61d911b8ad3fc341f3c25e15f5e89094875d7f294c12",
+      "copy": "exact"
+    },
+    "full/run.py": {
+      "source": "artifacts/pinball/upper-lane-joint-full-e283fc7/run.py",
+      "bytes": 2466,
+      "sha256": "23bd54cf101fff2411ac2156344b84a1224122717e76afe041fc0a40ad6cef44",
+      "copy": "exact"
+    },
+    "full/result.json": {
+      "source": "artifacts/pinball/upper-lane-joint-full-e283fc7/result.json",
+      "bytes": 6400,
+      "sha256": "ae8246039fd3164dcf3d839e62e2de78b6ef8f1766d1d7057e388be13cc4df48",
+      "copy": "exact"
+    },
+    "full/classify.py": {
+      "source": "artifacts/pinball/upper-lane-joint-full-e283fc7/classify.py",
+      "bytes": 15090,
+      "sha256": "fe7fbc225db8a9175b07fea1c07d371dfa678f306a28a9d9cb536f80cc34bee5",
+      "copy": "exact"
+    },
+    "full/README.md": {
+      "source": "artifacts/pinball/upper-lane-joint-full-e283fc7/README.md",
+      "bytes": 4287,
+      "sha256": "87f7c2a2ca9e4f92a5d975620fe2be2777dc6728b65ae1f51ee9cb252499a041",
+      "copy": "technical content retained; packet copy adds raw TAP external-reference note"
+    },
+    "full/manifest.json": {
+      "source": "artifacts/pinball/upper-lane-joint-full-e283fc7/manifest.json",
+      "bytes": 877,
+      "sha256": "d1165af1bc68880afd9505a723f35298e4973024c20ad31be61e0c367c619c4c",
+      "copy": "exact"
+    },
+    "full/classification.json": {
+      "source": "artifacts/pinball/upper-lane-joint-full-e283fc7/classification.json",
+      "bytes": 88330,
+      "sha256": "2ae463a26a5dc8878e6b3d061495fe1185c8fa4ad32c75c99c4ce970aa7352ab",
+      "copy": "exact"
+    },
+    "full/invocation.json": {
+      "source": "artifacts/pinball/upper-lane-joint-full-e283fc7/invocation.json",
+      "bytes": 11355,
+      "sha256": "2affa37e47cb44334f23bdb0f1ce161ba8e7feea11a33db6c4f1b4ca5af3bd58",
+      "copy": "exact"
+    },
+    "reference:artifacts/pinball/upper-lane-joint-e283fc7/sources.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/sources.json",
+      "bytes": 341388,
+      "sha256": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+      "copy": "large source/maps/images/traces not copied; manifest points to original evidence"
+    },
+    "reference:artifacts/pinball/upper-lane-joint-e283fc7/baseline-sources.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/baseline-sources.json",
+      "bytes": 339222,
+      "sha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "copy": "large source/maps/images/traces not copied; manifest points to original evidence"
+    },
+    "reference:artifacts/pinball/upper-lane-joint-e283fc7/accepted-sources.json": {
+      "source": "artifacts/pinball/upper-lane-joint-e283fc7/accepted-sources.json",
+      "bytes": 329885,
+      "sha256": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "copy": "large source/maps/images/traces not copied; manifest points to original evidence"
+    },
+    "reference:artifacts/pinball/upper-lane-joint-independent-d971a4/manifest.json": {
+      "source": "artifacts/pinball/upper-lane-joint-independent-d971a4/manifest.json",
+      "bytes": 4250,
+      "sha256": "adc207d1c4b6b5375576b8569db00341cf417049502e64ffaa191534216f9f1c",
+      "copy": "large source/maps/images/traces not copied; manifest points to original evidence"
+    },
+    "reference:artifacts/pinball/upper-lane-joint-local-e283fc7/manifest.json": {
+      "source": "artifacts/pinball/upper-lane-joint-local-e283fc7/manifest.json",
+      "bytes": 2068,
+      "sha256": "e34398f9f9cf0efde2af61d911b8ad3fc341f3c25e15f5e89094875d7f294c12",
+      "copy": "large source/maps/images/traces not copied; manifest points to original evidence"
+    },
+    "reference:artifacts/pinball/upper-lane-joint-dense-e283fc7/manifest.json": {
+      "source": "artifacts/pinball/upper-lane-joint-dense-e283fc7/manifest.json",
+      "bytes": 60154,
+      "sha256": "b131e9051624f749a43a6a665e3c11dc7d25a74b34ce2fb8f60a1bd37763c615",
+      "copy": "large source/maps/images/traces not copied; manifest points to original evidence"
+    },
+    "reference:full/full.tap": {
+      "source": "artifacts/pinball/upper-lane-joint-full-e283fc7/full.tap",
+      "bytes": 82219,
+      "sha256": "cf0456bb5c20c3932af930fd51da0e1859f5010f49ed3b678e96c0c7206db1d7",
+      "copy": "not copied; failed TAP blocks retained in classification.json"
+    }
+  }
+}

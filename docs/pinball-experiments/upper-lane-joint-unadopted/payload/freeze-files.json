@@ -1,0 +1,50 @@
+{
+  "build.mjs": {
+    "bytes": 6037,
+    "sha256": "732585cb2cdd6ee6543d00d4ccf61c4092295868020f892ef0e225c417848dae"
+  },
+  "plan.mjs": {
+    "bytes": 1110,
+    "sha256": "c7acbdbe141954190a4fdc09a9b10520a970b8d872894f57b865e3431df9b00a"
+  },
+  "upper-lane-geometry.mjs": {
+    "bytes": 1110,
+    "sha256": "c7acbdbe141954190a4fdc09a9b10520a970b8d872894f57b865e3431df9b00a"
+  },
+  "sources.json": {
+    "bytes": 341388,
+    "sha256": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac"
+  },
+  "baseline-sources.json": {
+    "bytes": 339222,
+    "sha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa"
+  },
+  "accepted-sources.json": {
+    "bytes": 329885,
+    "sha256": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199"
+  },
+  "loader.mjs": {
+    "bytes": 948,
+    "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+  },
+  "baseline-loader.mjs": {
+    "bytes": 957,
+    "sha256": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+  },
+  "accepted-loader.mjs": {
+    "bytes": 957,
+    "sha256": "4b81eb805e887773e943d17d94941eb902ee5b2b49b37e839e90f4919a1cf722"
+  },
+  "manifest.json": {
+    "bytes": 11702,
+    "sha256": "7f88d2656e075d70343253ea2c3b2c1b77ef83c2f4764804885480d76930287e"
+  },
+  "changes.json": {
+    "bytes": 4648,
+    "sha256": "2fe1ff3399010e6fb88cadeb81841ddadaf51612dad27c9253a45ceb2253c34e"
+  },
+  "dependencies.json": {
+    "bytes": 2196,
+    "sha256": "e24184dafdd36596048bd8ce9dd8158af675d2c147df7ca314570d6b39c597f2"
+  }
+}

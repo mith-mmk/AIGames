@@ -1,0 +1,161 @@
+{
+  "exitCode": 1,
+  "durationSeconds": 118.59432933409698,
+  "testFilesUnchanged": true,
+  "testFilesAfter": {
+    "web/js/pinball/cabinet-boundary.test.mjs": {
+      "bytes": 3662,
+      "sha256": "2013173efe4da3a50c3833c3caa3e6ec1f50a53606425dd9111c80ca434c0637"
+    },
+    "web/js/pinball/cabinet-fasteners.test.mjs": {
+      "bytes": 4831,
+      "sha256": "fa5e2136c5806535bd3fd73d8c10de09d26658d4811911401bc22a93eaf5e748"
+    },
+    "web/js/pinball/components.test.mjs": {
+      "bytes": 4004,
+      "sha256": "31b0f081a32931881d55e0c04c9c4a091aed5aab2f0c8ebff1580b8bbc069243"
+    },
+    "web/js/pinball/feedback.test.mjs": {
+      "bytes": 1234,
+      "sha256": "2ac6f763458a83bf3455b5ec661c6a1389638fd335086f91f8395e9e8f653f5e"
+    },
+    "web/js/pinball/friend-animation.test.mjs": {
+      "bytes": 3653,
+      "sha256": "3eeae83b3d395f703c88480f81656300c5ab664416fd2dd489bab0bcf70a39eb"
+    },
+    "web/js/pinball/game-state.test.mjs": {
+      "bytes": 8603,
+      "sha256": "10b0d05318385e03e2853c5c5e85c0d70410628c1ad527dd67bd65f0f84e2afb"
+    },
+    "web/js/pinball/geometry-budget.test.mjs": {
+      "bytes": 3593,
+      "sha256": "d6f6393e76c428606e6e502cec15ffd3cd735449ef9f9463398bc009308be6be"
+    },
+    "web/js/pinball/gimmicks.test.mjs": {
+      "bytes": 5167,
+      "sha256": "5a711388131f149496323fec706924cdb2579774b250a671b4991c77ff1da8f6"
+    },
+    "web/js/pinball/lane-ink.test.mjs": {
+      "bytes": 4573,
+      "sha256": "445e66d2c3401478c96d12acc483c8e2ff592709fbbc87b7b0d58d3e2bcde301"
+    },
+    "web/js/pinball/layout.test.mjs": {
+      "bytes": 3137,
+      "sha256": "e53e0371efe5bfb6764951307e71d25b8d1e7f4ccb9acdd75ae7c1270fb648e3"
+    },
+    "web/js/pinball/lower-layout.test.mjs": {
+      "bytes": 14990,
+      "sha256": "09ae69b291fea8a6209b61e0deffeacdd5bc6d8c96ac54a30f88e75d08eb6f98"
+    },
+    "web/js/pinball/mechanical-contact.test.mjs": {
+      "bytes": 3280,
+      "sha256": "fd5cf6327327f96e5f0a51ead8286c442e4445fdb7c553761676e1650864c657"
+    },
+    "web/js/pinball/mechanical-ramp.test.mjs": {
+      "bytes": 10911,
+      "sha256": "81e2882593a747b39b9ea53c8dfdfd12ce24621cd77630e40935548818aa301b"
+    },
+    "web/js/pinball/mechanical-supports.test.mjs": {
+      "bytes": 2504,
+      "sha256": "0580dcc929ba2cf122564563785543a5cfa14d2d6340415723725fc158a6e841"
+    },
+    "web/js/pinball/nudge.test.mjs": {
+      "bytes": 1844,
+      "sha256": "b089ed5e1d6c70b871e0c5ccdc583ca24a6d0f8c2d0c6098fa118cda98e9665e"
+    },
+    "web/js/pinball/physics.test.mjs": {
+      "bytes": 23658,
+      "sha256": "616e9b18a51008b3314900c68d5694a4bd504fe814397189841cad7152e3618a"
+    },
+    "web/js/pinball/plunger.test.mjs": {
+      "bytes": 1785,
+      "sha256": "93f32fda8d04cffcdefcb08dd4392f45edab9c3366f29edbf303f99b7ea75329"
+    },
+    "web/js/pinball/ramp-acrylic.test.mjs": {
+      "bytes": 6557,
+      "sha256": "9b3b740eecdc5af04220f023f855cf022518104ec200c49ff1ba7c324d64ac64"
+    },
+    "web/js/pinball/ramp-base.test.mjs": {
+      "bytes": 6262,
+      "sha256": "a04d09c490f8610a2e2a5786a5968d4caad3e605294dabc4b12a76ff5630364b"
+    },
+    "web/js/pinball/ramp-deck.test.mjs": {
+      "bytes": 4415,
+      "sha256": "ccbdaf983980f3fbf0ac34db781964eb1a7e5056092c101307a2c67fdfc68c85"
+    },
+    "web/js/pinball/ramp-hardware.test.mjs": {
+      "bytes": 4741,
+      "sha256": "8c210e283e296b04cfd824bbfe5e5e6b063e679bb8f7631949e34d46192f1799"
+    },
+    "web/js/pinball/ramp-profile.test.mjs": {
+      "bytes": 4021,
+      "sha256": "c885646e8825a74a4a09ff7277ecacfaee4d32c2a7a9cb7091eef69744ee8745"
+    },
+    "web/js/pinball/ramp.test.mjs": {
+      "bytes": 9451,
+      "sha256": "a8e9e17adc848e1142cc0bd25c99ab2cba48a1c5987f49dea1c84ba125098566"
+    },
+    "web/js/pinball/reference-cabinet.test.mjs": {
+      "bytes": 4415,
+      "sha256": "7ba22b3bd4adb166a942d8afd493161d14a39cbca0264bc1c1acb0037b963508"
+    },
+    "web/js/pinball/reference-playfield.test.mjs": {
+      "bytes": 1783,
+      "sha256": "ceb72c1f9f1be31435ebff962c72d964aeba585dd01f4e8a7e69d960b0d7126d"
+    },
+    "web/js/pinball/reference-targets.test.mjs": {
+      "bytes": 8061,
+      "sha256": "b85485d08694653dd8da588967dc79b1e08630d25c06d964c387beb290b94ad2"
+    },
+    "web/js/pinball/scenery.test.mjs": {
+      "bytes": 2482,
+      "sha256": "f8a4db225e07d2c0a0d1c5cace9554a38bbb3668f57992cdf26468567d1f1093"
+    },
+    "web/js/pinball/shooter-outer-rail.test.mjs": {
+      "bytes": 4664,
+      "sha256": "7779f70b1f25959e4f37a4e2df050dd9c12d7f593b6f14d2d7606037eea35e65"
+    },
+    "web/js/pinball/shooter-position.test.mjs": {
+      "bytes": 2113,
+      "sha256": "349330d1d5388b4b2b2d290bf664863766bb01a4f04f8b385c0b1b7361e97429"
+    },
+    "web/js/pinball/shooter-return.test.mjs": {
+      "bytes": 3614,
+      "sha256": "3cb6b35724c99cb0c15c7aa25d00d8851bbbb3321c140b56d29350009bb01a95"
+    },
+    "web/js/pinball/sound.test.mjs": {
+      "bytes": 5781,
+      "sha256": "bc21b842987548face1beb3b0a9fc3f4b09ccba542957dcf2205375987e8a29b"
+    },
+    "web/js/pinball/sphere-clearance.test.mjs": {
+      "bytes": 9349,
+      "sha256": "90d44f38f851bbe0bef139d65cfbc05f47e47705e572769dd21c1aca63c27cbf"
+    },
+    "web/js/pinball/trap-regression.test.mjs": {
+      "bytes": 7918,
+      "sha256": "d163319bef77acceb2c10d7a130df872abbf7f55b938869c6d4f89f1f42c6562"
+    },
+    "web/js/pinball/upper-lanes.test.mjs": {
+      "bytes": 3536,
+      "sha256": "084999a8a24f711bef63f6b5d86f8293431c0c08eaff210b9b4cba792c313aac"
+    },
+    "web/js/pinball/wire-stock.test.mjs": {
+      "bytes": 8579,
+      "sha256": "7b293c3fbfa18009656ffe7546e4a92e1ec4411c146caa65efb6d6c16693190c"
+    },
+    "web/js/pinball/wire-tail.test.mjs": {
+      "bytes": 3272,
+      "sha256": "e6433be08464a9cc3c6c96ee3d41d41508491ecd5e762c79b3752c1b51f71c6a"
+    },
+    "web/js/pinball/workshop.test.mjs": {
+      "bytes": 1956,
+      "sha256": "47cc1eb73809954ded2f310ab70f19dee82118a35f2d65db2e4824a03aba4099"
+    }
+  },
+  "headAfter": "79d7b91a8a71f6c010722ab65a6200459253c902",
+  "sourceUnchanged": true,
+  "sourceSha256": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+  "tapSha256": "cf0456bb5c20c3932af930fd51da0e1859f5010f49ed3b678e96c0c7206db1d7",
+  "productionStatusAfter": "",
+  "note": "Nonzero remains failure. No assertion or fixture edits, no retries or selected-only pass substitution. Standard npm test:pinball would stop before eslint on this unit-test exit."
+}

@@ -1,0 +1,12 @@
+from pathlib import Path
+import subprocess,json,hashlib,datetime,time
+root=Path.cwd(); out=root/'artifacts/pinball/upper-lane-joint-full-e283fc7'; candidate=root/'artifacts/pinball/upper-lane-joint-e283fc7';sha=lambda b:hashlib.sha256(b).hexdigest()
+tests=sorted(root.glob('web/js/pinball/*.test.mjs'));before={str(p.relative_to(root)):{'bytes':p.stat().st_size,'sha256':sha(p.read_bytes())} for p in tests}
+source=candidate/'sources.json';expected='d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac';assert sha(source.read_bytes())==expected
+cmd=['node','--import',str(candidate/'loader.mjs'),'--test','--test-reporter=tap']+[str(p.relative_to(root)) for p in tests]
+meta={'startedUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'sourceSha256':expected,'loaderSha256':sha((candidate/'loader.mjs').read_bytes()),'command':cmd,'testFilesBefore':before,'testFileCount':len(tests),'productionStatusBefore':subprocess.check_output(['git','status','--short'],text=True),'newStableTestDiff':subprocess.check_output(['git','diff','--','web/js/pinball/geometry-budget.test.mjs'],text=True),'scope':'All existing pinball test files, single frozen candidate loader, no expectations modified. Concurrent stable tests may affect duration; not a benchmark.'};(out/'invocation.json').write_text(json.dumps(meta,indent=2)+'\n')
+t=time.monotonic()
+with (out/'full.tap').open('w') as log:
+ process=subprocess.Popen(cmd,cwd=root,stdout=log,stderr=subprocess.STDOUT);code=process.wait()
+after={str(p.relative_to(root)):{'bytes':p.stat().st_size,'sha256':sha(p.read_bytes())} for p in tests}
+result={'exitCode':code,'durationSeconds':time.monotonic()-t,'testFilesUnchanged':before==after,'testFilesAfter':after,'headAfter':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'sourceUnchanged':sha(source.read_bytes())==expected,'sourceSha256':expected,'tapSha256':sha((out/'full.tap').read_bytes()),'productionStatusAfter':subprocess.check_output(['git','status','--short'],text=True),'note':'Nonzero remains failure. No assertion or fixture edits, no retries or selected-only pass substitution. Standard npm test:pinball would stop before eslint on this unit-test exit.'};(out/'result.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:result[k] for k in ['exitCode','durationSeconds','testFilesUnchanged','sourceUnchanged','tapSha256']}))

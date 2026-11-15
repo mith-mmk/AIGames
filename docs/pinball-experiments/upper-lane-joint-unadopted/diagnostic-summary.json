@@ -1,0 +1,538 @@
+{
+  "status": "unadopted",
+  "sourceSha256": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+  "sourceBase": "884960985a413986d57aff0c2280e59a7be79dcf",
+  "parentSourceSha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+  "stableSeparate": "79d7b91a8a71f6c010722ab65a6200459253c902; includes prior 0b75 OUT-arrow correction and separate stable-only roof rendering/test; not mixed into d971",
+  "fullRegression": {
+    "total": 207,
+    "passed": 162,
+    "failed": 45,
+    "cancelled": 0,
+    "skipped": 0,
+    "classificationCounts": {
+      "layout_contract": 28,
+      "functional_gameplay": 9,
+      "visible_direction": 2,
+      "geometry_margin": 3,
+      "mixed_route_contract": 3
+    },
+    "countsAreNotAdjustedByClassification": true,
+    "testFileCount": 37,
+    "testFilesUnchanged": true,
+    "headAtStart": "e283fc7439c6d8d1395247462bd357987efb54d1",
+    "headAtEnd": "79d7b91a8a71f6c010722ab65a6200459253c902",
+    "newTest": "installed shooter roof uses three closed capsule stocks on the existing physical axes",
+    "newTestFileSha256": "d6f6393e76c428606e6e502cec15ffd3cd735449ef9f9463398bc009308be6be",
+    "lint": "Not run. Equivalent existing test:pinball pipeline stops before eslint when the node test phase fails. No lint pass claimed.",
+    "causality": "One whole-candidate run against unchanged current tests. No 5891 full-suite rerun; cannot attribute inherited lower/longbat failures specifically to new upper-bar change."
+  },
+  "local": {
+    "naturalPowers": [
+      0.55,
+      0.65,
+      0.75,
+      0.85,
+      0.925,
+      1
+    ],
+    "allSixFieldThenOrdinaryDrain": true,
+    "weakReturnAndRelaunch": true,
+    "actualFrameLegalGroundStarts": 24,
+    "actualFrameLegalAwards": 24,
+    "invalidCPlus043StartsNotRun": 3,
+    "invalidStartBarGap": -0.01691673,
+    "elevatedFiveRouteFalseAwardQualification": false,
+    "finiteSensorBottomTopY": [
+      0.04,
+      0.36
+    ],
+    "outLimited": "uncharged both drain; charged left fires once then drains; full earned upfield-return gate fails",
+    "fixedHighStart": "one fixed legal start drains at111 ticks; not all high trajectories"
+  },
+  "dense": {
+    "cases": 568,
+    "fixedDomain": {
+      "delays": [
+        30,
+        100
+      ],
+      "step": 1,
+      "sides": [
+        -1,
+        1
+      ],
+      "orders": [
+        "asc",
+        "desc"
+      ]
+    },
+    "allLegal": true,
+    "allCapture": true,
+    "allOneCoil": true,
+    "allResetsZero": true,
+    "perOrder": [
+      {
+        "mode": "accepted",
+        "order": "asc",
+        "side": -1,
+        "count": 71,
+        "complete": true,
+        "successCount": 41,
+        "successDelays": [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          58,
+          60,
+          73,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          99,
+          100
+        ],
+        "runs": [
+          {
+            "start": 32,
+            "end": 56,
+            "count": 25,
+            "endpointMilliseconds": 200.0
+          },
+          {
+            "start": 58,
+            "end": 58,
+            "count": 1,
+            "endpointMilliseconds": 0.0
+          },
+          {
+            "start": 60,
+            "end": 60,
+            "count": 1,
+            "endpointMilliseconds": 0.0
+          },
+          {
+            "start": 73,
+            "end": 73,
+            "count": 1,
+            "endpointMilliseconds": 0.0
+          },
+          {
+            "start": 76,
+            "end": 86,
+            "count": 11,
+            "endpointMilliseconds": 83.33333333333333
+          },
+          {
+            "start": 99,
+            "end": 100,
+            "count": 2,
+            "endpointMilliseconds": 8.333333333333334
+          }
+        ],
+        "longest": {
+          "start": 32,
+          "end": 56,
+          "count": 25,
+          "endpointMilliseconds": 200.0
+        },
+        "ends": {
+          "held-recapture": 13,
+          "ordinary-drain": 58
+        },
+        "successfulCaseEndpoints": {
+          "ordinary-drain": 32,
+          "held-recapture": 9
+        }
+      },
+      {
+        "mode": "accepted",
+        "order": "asc",
+        "side": 1,
+        "count": 71,
+        "complete": true,
+        "successCount": 41,
+        "successDelays": [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          73,
+          86
+        ],
+        "runs": [
+          {
+            "start": 32,
+            "end": 70,
+            "count": 39,
+            "endpointMilliseconds": 316.6666666666667
+          },
+          {
+            "start": 73,
+            "end": 73,
+            "count": 1,
+            "endpointMilliseconds": 0.0
+          },
+          {
+            "start": 86,
+            "end": 86,
+            "count": 1,
+            "endpointMilliseconds": 0.0
+          }
+        ],
+        "longest": {
+          "start": 32,
+          "end": 70,
+          "count": 39,
+          "endpointMilliseconds": 316.6666666666667
+        },
+        "ends": {
+          "held-recapture": 16,
+          "ordinary-drain": 55
+        },
+        "successfulCaseEndpoints": {
+          "held-recapture": 9,
+          "ordinary-drain": 32
+        }
+      },
+      {
+        "mode": "candidate",
+        "order": "asc",
+        "side": -1,
+        "count": 71,
+        "complete": true,
+        "successCount": 21,
+        "successDelays": [
+          64,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          75,
+          80,
+          90,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100
+        ],
+        "runs": [
+          {
+            "start": 64,
+            "end": 64,
+            "count": 1,
+            "endpointMilliseconds": 0.0
+          },
+          {
+            "start": 66,
+            "end": 73,
+            "count": 8,
+            "endpointMilliseconds": 58.333333333333336
+          },
+          {
+            "start": 75,
+            "end": 75,
+            "count": 1,
+            "endpointMilliseconds": 0.0
+          },
+          {
+            "start": 80,
+            "end": 80,
+            "count": 1,
+            "endpointMilliseconds": 0.0
+          },
+          {
+            "start": 90,
+            "end": 90,
+            "count": 1,
+            "endpointMilliseconds": 0.0
+          },
+          {
+            "start": 92,
+            "end": 100,
+            "count": 9,
+            "endpointMilliseconds": 66.66666666666667
+          }
+        ],
+        "longest": {
+          "start": 92,
+          "end": 100,
+          "count": 9,
+          "endpointMilliseconds": 66.66666666666667
+        },
+        "ends": {
+          "held-recapture": 27,
+          "ordinary-drain": 43,
+          "sameball-ready-shooter": 1
+        },
+        "successfulCaseEndpoints": {
+          "held-recapture": 9,
+          "ordinary-drain": 11,
+          "sameball-ready-shooter": 1
+        }
+      },
+      {
+        "mode": "candidate",
+        "order": "asc",
+        "side": 1,
+        "count": 71,
+        "complete": true,
+        "successCount": 25,
+        "successDelays": [
+          46,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87
+        ],
+        "runs": [
+          {
+            "start": 46,
+            "end": 46,
+            "count": 1,
+            "endpointMilliseconds": 0.0
+          },
+          {
+            "start": 64,
+            "end": 87,
+            "count": 24,
+            "endpointMilliseconds": 191.66666666666666
+          }
+        ],
+        "longest": {
+          "start": 64,
+          "end": 87,
+          "count": 24,
+          "endpointMilliseconds": 191.66666666666666
+        },
+        "ends": {
+          "held-recapture": 21,
+          "ordinary-drain": 49,
+          "sameball-ready-shooter": 1
+        },
+        "successfulCaseEndpoints": {
+          "ordinary-drain": 23,
+          "held-recapture": 1,
+          "sameball-ready-shooter": 1
+        }
+      }
+    ],
+    "ranges": [
+      {
+        "mode": "accepted",
+        "side": -1,
+        "alongRange": [
+          0.17337140284086527,
+          0.6861254834292227
+        ],
+        "aimRange": [
+          -0.9178007734867566,
+          -0.0713942445453846
+        ],
+        "worldCoilXRange": [
+          -1.0523566007614136,
+          -0.46781694889068604
+        ],
+        "releaseXRange": [
+          -1.0543931722640991,
+          -1.054337978363037
+        ]
+      },
+      {
+        "mode": "accepted",
+        "side": 1,
+        "alongRange": [
+          0.17342619728623773,
+          0.6860350569089253
+        ],
+        "aimRange": [
+          -0.9176560910542806,
+          -0.07148191565798119
+        ],
+        "worldCoilXRange": [
+          0.4679200351238251,
+          1.052294135093689
+        ],
+        "releaseXRange": [
+          1.0543397665023804,
+          1.0543397665023804
+        ]
+      },
+      {
+        "mode": "candidate",
+        "side": -1,
+        "alongRange": [
+          0.17073473785862775,
+          0.5350449735468084
+        ],
+        "aimRange": [
+          -0.6760719576748935,
+          -0.0071755805738045325
+        ],
+        "worldCoilXRange": [
+          -1.6182876825332642,
+          -1.0171757936477661
+        ],
+        "releaseXRange": [
+          -1.618385672569275,
+          -1.61829674243927
+        ]
+      },
+      {
+        "mode": "candidate",
+        "side": 1,
+        "alongRange": [
+          0.17074983770197083,
+          0.5350109447132457
+        ],
+        "aimRange": [
+          -0.6760175115411933,
+          -0.007199740323154125
+        ],
+        "worldCoilXRange": [
+          1.0172319412231445,
+          1.618262767791748
+        ],
+        "releaseXRange": [
+          1.6183847188949585,
+          1.6183847188949585
+        ]
+      }
+    ],
+    "allSuccessAndEndpointClassificationsAgreeAcrossOrders": true,
+    "nonidenticalTracesPerGeometry": 2,
+    "leftCandidateLongestTouchesUpperEndpoint": true,
+    "candidateSameBallReadyCases": [
+      {
+        "side": -1,
+        "delay": 69
+      },
+      {
+        "side": 1,
+        "delay": 87
+      }
+    ],
+    "qualifier": "bounded sampled capture-refire-to-z<-1 only; not natural ramp/wire/fullgame, not sub-tick continuity; unadopted"
+  },
+  "visual": {
+    "triangles45": 490204,
+    "drawCalls45": 567,
+    "limit": 500000,
+    "pageErrors": 0,
+    "localVisibleContactBlockerFound": false,
+    "wholeReferenceMet": false,
+    "remaining": [
+      "long exposed crossheads",
+      "left wire/label occlusion",
+      "large bats",
+      "blank margins",
+      "incomplete static save",
+      "inherited wrong OUT arrow direction"
+    ],
+    "roofChordKinkDegrees": 16.316735,
+    "facetedSurfaceNotAnalyticIdentity": true
+  },
+  "notQualified": [
+    "sub-tick continuous aim or all possible input domain",
+    "full natural54 controllers",
+    "five completed elevated traversals without false awards",
+    "whole no-stall",
+    "reference/mobile/physical-phone/human-play acceptance",
+    "adoption"
+  ],
+  "countsNote": "All45 original test failures remain failures; sampled dense results do not relabel them or prove entire control-domain narrowing."
+}

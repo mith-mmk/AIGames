@@ -1,0 +1,30 @@
+{
+  "run.py": {
+    "bytes": 2466,
+    "sha256": "23bd54cf101fff2411ac2156344b84a1224122717e76afe041fc0a40ad6cef44"
+  },
+  "result.json": {
+    "bytes": 6400,
+    "sha256": "ae8246039fd3164dcf3d839e62e2de78b6ef8f1766d1d7057e388be13cc4df48"
+  },
+  "classify.py": {
+    "bytes": 15090,
+    "sha256": "fe7fbc225db8a9175b07fea1c07d371dfa678f306a28a9d9cb536f80cc34bee5"
+  },
+  "README.md": {
+    "bytes": 4287,
+    "sha256": "87f7c2a2ca9e4f92a5d975620fe2be2777dc6728b65ae1f51ee9cb252499a041"
+  },
+  "classification.json": {
+    "bytes": 88330,
+    "sha256": "2ae463a26a5dc8878e6b3d061495fe1185c8fa4ad32c75c99c4ce970aa7352ab"
+  },
+  "invocation.json": {
+    "bytes": 11355,
+    "sha256": "2affa37e47cb44334f23bdb0f1ce161ba8e7feea11a33db6c4f1b4ca5af3bd58"
+  },
+  "full.tap": {
+    "bytes": 82219,
+    "sha256": "cf0456bb5c20c3932af930fd51da0e1859f5010f49ed3b678e96c0c7206db1d7"
+  }
+}

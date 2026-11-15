@@ -1,0 +1,333 @@
+{
+  "status": "verified",
+  "verifyOnly": {
+    "status": "verified",
+    "adopted": false,
+    "sourceSetSha256": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+    "parentSourceSha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+    "originalParentAndChildBuildBytesUnchanged": true,
+    "originalArtifactWrites": 0,
+    "parentGeneratedHashes": {
+      "sources.json": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "baseline-sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "geometry.mjs": "5a981fe37b250bb44c7584e5d870162a0abde0168db36dab155df6c75cf52423",
+      "manifest.json": "b1829ebb1b26a5d6c1fc114758ab62c415fe6f7e8b32efcb80650f89549813c4",
+      "changes.json": "e6c45486fec46a65f9a317a83fb3f5379ff3c4f20ba4401641682379f2d75ce1"
+    },
+    "generatedHashes": {
+      "sources.json": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+      "baseline-sources.json": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "upper-lane-geometry.mjs": "c7acbdbe141954190a4fdc09a9b10520a970b8d872894f57b865e3431df9b00a",
+      "manifest.json": "7f88d2656e075d70343253ea2c3b2c1b77ef83c2f4764804885480d76930287e",
+      "changes.json": "2fe1ff3399010e6fb88cadeb81841ddadaf51612dad27c9253a45ceb2253c34e"
+    },
+    "restoredHashes": {
+      "sources.json": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+      "baseline-sources.json": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "upper-lane-geometry.mjs": "c7acbdbe141954190a4fdc09a9b10520a970b8d872894f57b865e3431df9b00a",
+      "manifest.json": "7f88d2656e075d70343253ea2c3b2c1b77ef83c2f4764804885480d76930287e",
+      "changes.json": "2fe1ff3399010e6fb88cadeb81841ddadaf51612dad27c9253a45ceb2253c34e",
+      "build.mjs": "732585cb2cdd6ee6543d00d4ccf61c4092295868020f892ef0e225c417848dae",
+      "plan.mjs": "c7acbdbe141954190a4fdc09a9b10520a970b8d872894f57b865e3431df9b00a",
+      "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+      "baseline-loader.mjs": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38",
+      "accepted-loader.mjs": "4b81eb805e887773e943d17d94941eb902ee5b2b49b37e839e90f4919a1cf722",
+      "dependencies.json": "e24184dafdd36596048bd8ce9dd8158af675d2c147df7ca314570d6b39c597f2"
+    },
+    "suppressedBuildMessages": 3
+  },
+  "fresh": {
+    "status": "restored",
+    "adopted": false,
+    "sourceSetSha256": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+    "parentSourceSha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+    "originalParentAndChildBuildBytesUnchanged": true,
+    "originalArtifactWrites": 0,
+    "parentGeneratedHashes": {
+      "sources.json": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "baseline-sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "geometry.mjs": "5a981fe37b250bb44c7584e5d870162a0abde0168db36dab155df6c75cf52423",
+      "manifest.json": "b1829ebb1b26a5d6c1fc114758ab62c415fe6f7e8b32efcb80650f89549813c4",
+      "changes.json": "e6c45486fec46a65f9a317a83fb3f5379ff3c4f20ba4401641682379f2d75ce1"
+    },
+    "generatedHashes": {
+      "sources.json": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+      "baseline-sources.json": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "upper-lane-geometry.mjs": "c7acbdbe141954190a4fdc09a9b10520a970b8d872894f57b865e3431df9b00a",
+      "manifest.json": "7f88d2656e075d70343253ea2c3b2c1b77ef83c2f4764804885480d76930287e",
+      "changes.json": "2fe1ff3399010e6fb88cadeb81841ddadaf51612dad27c9253a45ceb2253c34e"
+    },
+    "restoredHashes": {
+      "sources.json": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+      "baseline-sources.json": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "upper-lane-geometry.mjs": "c7acbdbe141954190a4fdc09a9b10520a970b8d872894f57b865e3431df9b00a",
+      "manifest.json": "7f88d2656e075d70343253ea2c3b2c1b77ef83c2f4764804885480d76930287e",
+      "changes.json": "2fe1ff3399010e6fb88cadeb81841ddadaf51612dad27c9253a45ceb2253c34e",
+      "build.mjs": "732585cb2cdd6ee6543d00d4ccf61c4092295868020f892ef0e225c417848dae",
+      "plan.mjs": "c7acbdbe141954190a4fdc09a9b10520a970b8d872894f57b865e3431df9b00a",
+      "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+      "baseline-loader.mjs": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38",
+      "accepted-loader.mjs": "4b81eb805e887773e943d17d94941eb902ee5b2b49b37e839e90f4919a1cf722",
+      "dependencies.json": "e24184dafdd36596048bd8ce9dd8158af675d2c147df7ca314570d6b39c597f2"
+    },
+    "suppressedBuildMessages": 3,
+    "output": "artifacts/pinball/joint-upper-recovery-verify-20261115-100942",
+    "written": 12,
+    "reused": 0,
+    "fileCount": 12
+  },
+  "idempotence": {
+    "written": 0,
+    "reused": 12
+  },
+  "all12ActualHashesMatch": true,
+  "assembly": {
+    "status": "assembled",
+    "worldSteps": 0,
+    "colliders": 1588,
+    "attachments": 59,
+    "bars": [
+      {
+        "id": 0,
+        "center": [
+          -1.875,
+          0.23,
+          -4.55
+        ],
+        "down": [
+          0,
+          0,
+          1
+        ],
+        "a": [
+          -1.875,
+          0.23,
+          -5
+        ],
+        "b": [
+          -1.875,
+          0.23,
+          -4.1
+        ],
+        "radius": 0.035,
+        "mount": {
+          "radius": 0.055,
+          "height": 0.23,
+          "y": 0.12
+        }
+      },
+      {
+        "id": 1,
+        "center": [
+          -0.625,
+          0.23,
+          -4.55
+        ],
+        "down": [
+          0,
+          0,
+          1
+        ],
+        "a": [
+          -0.625,
+          0.23,
+          -5
+        ],
+        "b": [
+          -0.625,
+          0.23,
+          -4.1
+        ],
+        "radius": 0.035,
+        "mount": {
+          "radius": 0.055,
+          "height": 0.23,
+          "y": 0.12
+        }
+      },
+      {
+        "id": 2,
+        "center": [
+          0.625,
+          0.23,
+          -4.55
+        ],
+        "down": [
+          0,
+          0,
+          1
+        ],
+        "a": [
+          0.625,
+          0.23,
+          -5
+        ],
+        "b": [
+          0.625,
+          0.23,
+          -4.1
+        ],
+        "radius": 0.035,
+        "mount": {
+          "radius": 0.055,
+          "height": 0.23,
+          "y": 0.12
+        }
+      },
+      {
+        "id": 3,
+        "center": [
+          1.875,
+          0.23,
+          -4.45
+        ],
+        "down": [
+          -0.7071067811865475,
+          0,
+          0.7071067811865476
+        ],
+        "a": [
+          2.193198051533946,
+          0.23,
+          -4.768198051533947
+        ],
+        "b": [
+          1.5568019484660536,
+          0.23,
+          -4.1318019484660535
+        ],
+        "radius": 0.035,
+        "mount": {
+          "radius": 0.055,
+          "height": 0.23,
+          "y": 0.12
+        }
+      }
+    ],
+    "sensors": [
+      {
+        "id": 0,
+        "p": {
+          "x": -1.25,
+          "y": 0.20000000298023224,
+          "z": -4.550000190734863
+        },
+        "half": {
+          "x": 0.3499999940395355,
+          "y": 0.1599999964237213,
+          "z": 0.07999999821186066
+        },
+        "bottomY": 0.040000006556510925,
+        "topY": 0.35999999940395355
+      },
+      {
+        "id": 1,
+        "p": {
+          "x": 0,
+          "y": 0.20000000298023224,
+          "z": -4.550000190734863
+        },
+        "half": {
+          "x": 0.3499999940395355,
+          "y": 0.1599999964237213,
+          "z": 0.07999999821186066
+        },
+        "bottomY": 0.040000006556510925,
+        "topY": 0.35999999940395355
+      },
+      {
+        "id": 2,
+        "p": {
+          "x": 1.25,
+          "y": 0.20000000298023224,
+          "z": -4.449999809265137
+        },
+        "half": {
+          "x": 0.3499999940395355,
+          "y": 0.1599999964237213,
+          "z": 0.07999999821186066
+        },
+        "bottomY": 0.040000006556510925,
+        "topY": 0.35999999940395355
+      }
+    ]
+  },
+  "refusals": [
+    {
+      "case": "existing differing loader",
+      "exit": 1,
+      "nothingWritten": true
+    },
+    {
+      "case": "original freeze upper-lane-joint-e283fc7",
+      "exit": 1
+    },
+    {
+      "case": "original freeze straight-shooter-roof-dfe19ba",
+      "exit": 1
+    },
+    {
+      "case": "original freeze whole-long-lane-891ae62",
+      "exit": 1
+    },
+    {
+      "case": "original freeze upper-connector-long-4f4170a",
+      "exit": 1
+    },
+    {
+      "case": "wrong depth",
+      "exit": 1
+    },
+    {
+      "case": "symlink output",
+      "exit": 1
+    },
+    {
+      "case": "nondirectory output",
+      "exit": 1
+    },
+    {
+      "case": "corrupt copied candidate payload",
+      "exit": 1,
+      "canonicalPacketUntouched": true
+    }
+  ],
+  "allOriginalFreezesAllFilesUnchanged": true,
+  "originalFreezeFileCount": 108,
+  "worldSteps": 0,
+  "productionDiffBeforeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "productionDiffAfterSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "productionNote": "Production diff remained empty; packet commands only wrote dedicated docs/artifacts/Trash paths.",
+  "verificationTemporariesMovedToTrash": [
+    {
+      "from": "artifacts/pinball/joint-upper-recovery-verify-20261115-100942",
+      "trash": "/Users/tsaito/.Trash/joint-upper-lane-recovery-verification-20261115-100942/joint-upper-recovery-verify-20261115-100942",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/joint-upper-recovery-link-20261115-100942",
+      "trash": "/Users/tsaito/.Trash/joint-upper-lane-recovery-verification-20261115-100942/joint-upper-recovery-link-20261115-100942",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/joint-upper-recovery-file-20261115-100942",
+      "trash": "/Users/tsaito/.Trash/joint-upper-lane-recovery-verification-20261115-100942/joint-upper-recovery-file-20261115-100942",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/joint-upper-recovery-packet-20261115-100942",
+      "trash": "/Users/tsaito/.Trash/joint-upper-lane-recovery-verification-20261115-100942/joint-upper-recovery-packet-20261115-100942",
+      "exists": true,
+      "sourceAbsent": true
+    }
+  ]
+}

@@ -1,0 +1,1043 @@
+{
+  "status": "FAILED",
+  "total": 207,
+  "passed": 162,
+  "failed": 45,
+  "cancelled": 0,
+  "skipped": 0,
+  "countsAreNotAdjustedByClassification": true,
+  "classificationCounts": {
+    "layout_contract": 28,
+    "functional_gameplay": 9,
+    "visible_direction": 2,
+    "geometry_margin": 3,
+    "mixed_route_contract": 3
+  },
+  "sourceSha256": "d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+  "testFileCount": 37,
+  "testFilesUnchanged": true,
+  "headAtStart": "e283fc7439c6d8d1395247462bd357987efb54d1",
+  "headAtEnd": "79d7b91a8a71f6c010722ab65a6200459253c902",
+  "newTest": "installed shooter roof uses three closed capsule stocks on the existing physical axes",
+  "newTestFileSha256": "d6f6393e76c428606e6e502cec15ffd3cd735449ef9f9463398bc009308be6be",
+  "failures": [
+    {
+      "number": 1,
+      "name": "play-facing solid cabinet backing and cap match actual collider bounds",
+      "category": "layout_contract",
+      "interpretation": "Standalone cabinet fixture sets only centerZ, not new centerX+.21, then asserts old \u00b12.73 edges. The .21 discrepancy is consistent with omitted new placement; does not independently certify installed geometry.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-boundary.test.mjs:11:1",
+      "verbatimTAP": "# Subtest: play-facing solid cabinet backing and cap match actual collider bounds\nnot ok 1 - play-facing solid cabinet backing and cap match actual collider bounds\n  ---\n  duration_ms: 236.39075\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-boundary.test.mjs:11:1'\n  failureType: 'testCodeFailure'\n  error: '-3.560000000298023 != -3.3499999716877937'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    close (file:///Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-boundary.test.mjs:9:27)\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-boundary.test.mjs:19:37)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)\n  ..."
+    },
+    {
+      "number": 2,
+      "name": "visible side and rear faces and cap agree with solid rays without an invisible upper wall",
+      "category": "layout_contract",
+      "interpretation": "Same standalone cabinet fixture omits centerX+.21; ray/mesh comparison fails by .21. Real installed ray agreement must be checked separately.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-boundary.test.mjs:33:1",
+      "verbatimTAP": "# Subtest: visible side and rear faces and cap agree with solid rays without an invisible upper wall\nnot ok 2 - visible side and rear faces and cap agree with solid rays without an invisible upper wall\n  ---\n  duration_ms: 80.312042\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-boundary.test.mjs:33:1'\n  failureType: 'testCodeFailure'\n  error: '1.4199999997019765 != 1.209999918937683'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    close (file:///Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-boundary.test.mjs:9:27)\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-boundary.test.mjs:47:59)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 4,
+      "name": "installed board fasteners retain exact original mesh topology, positions and open washer contacts",
+      "category": "layout_contract",
+      "interpretation": "Explicit old fastener positions/topology expected; widened board places old -2.66 mount at -3.35.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-fasteners.test.mjs:11:1",
+      "verbatimTAP": "# Subtest: installed board fasteners retain exact original mesh topology, positions and open washer contacts\nnot ok 4 - installed board fasteners retain exact original mesh topology, positions and open washer contacts\n  ---\n  duration_ms: 149.774084\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-fasteners.test.mjs:11:1'\n  failureType: 'testCodeFailure'\n  error: '-3.35 != -2.66'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    close (file:///Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-fasteners.test.mjs:8:27)\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-fasteners.test.mjs:25:4)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)\n  ..."
+    },
+    {
+      "number": 5,
+      "name": "four accessible left board mounts physically contact clear incoming balls without resets",
+      "category": "layout_contract",
+      "interpretation": "Historical absolute incoming x-2.58 does not reach moved left fasteners; no touch. Does not qualify the new outer route.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-fasteners.test.mjs:38:1",
+      "verbatimTAP": "# Subtest: four accessible left board mounts physically contact clear incoming balls without resets\nnot ok 5 - four accessible left board mounts physically contact clear incoming balls without resets\n  ---\n  duration_ms: 213.193375\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-fasteners.test.mjs:38:1'\n  failureType: 'testCodeFailure'\n  error: '{\"start\":{\"x\":-2.58,\"y\":0.18,\"z\":-4.8999999999999995},\"touched\":[]}'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-fasteners.test.mjs:52:11)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 6,
+      "name": "physical shooter rail excludes the three historical right fastener starts",
+      "category": "layout_contract",
+      "interpretation": "Test treats shooterOuterRailContact as one collider; prototype exposes an array. TypeError prevents the intended contact check.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-fasteners.test.mjs:61:1",
+      "verbatimTAP": "# Subtest: physical shooter rail excludes the three historical right fastener starts\nnot ok 6 - physical shooter rail excludes the three historical right fastener starts\n  ---\n  duration_ms: 51.679917\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-fasteners.test.mjs:61:1'\n  failureType: 'testCodeFailure'\n  error: 'g.shooterOuterRailContact.projectPoint is not a function'\n  code: 'ERR_TEST_FAILURE'\n  name: 'TypeError'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/cabinet-fasteners.test.mjs:66:67)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 34,
+      "name": "installed shooter roof uses three closed capsule stocks on the existing physical axes",
+      "category": "layout_contract",
+      "interpretation": "New stable-only test seeks mesh name shooter-roof-capsule-stock, three old axes and576tri. Candidate uses shared-upper-roof-stock with24capsules. Failure occurs at mesh-name lookup, not a measured500k budget exceedance.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/geometry-budget.test.mjs:23:1",
+      "verbatimTAP": "# Subtest: installed shooter roof uses three closed capsule stocks on the existing physical axes\nnot ok 34 - installed shooter roof uses three closed capsule stocks on the existing physical axes\n  ---\n  duration_ms: 707.775667\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/geometry-budget.test.mjs:23:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(roof?.isMesh)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/geometry-budget.test.mjs:31:12)\n    Test.runInAsyncScope (node:async_hooks:226:14)\n    Test.run (node:internal/test_runner/test:1397:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:969:18)\n    Test.postRun (node:internal/test_runner/test:1537:19)\n    Test.run (node:internal/test_runner/test:1462:12)\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)\n  ...\n# using deprecated parameters for the initialization function; pass a single object instead"
+    },
+    {
+      "number": 36,
+      "name": "earned side kickback reverses an outlane descent once, uncharged still drains",
+      "category": "functional_gameplay",
+      "interpretation": "Saved ball fires and passes vz<-10 assertion, but does not reach upfield before drain. This is stronger than local charge1/fires1/drain evidence and remains an unmet functionality gate.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/gimmicks.test.mjs:7:1",
+      "verbatimTAP": "# Subtest: earned side kickback reverses an outlane descent once, uncharged still drains\nnot ok 36 - earned side kickback reverses an outlane descent once, uncharged still drains\n  ---\n  duration_ms: 692.080792\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/gimmicks.test.mjs:7:1'\n  failureType: 'testCodeFailure'\n  error: 'the saved ball must clear OUT and return upfield before draining'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/gimmicks.test.mjs:26:12)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 39,
+      "name": "inlane switch scores only a fresh real crossing, not sitting or pausing",
+      "category": "layout_contract",
+      "interpretation": "Hard-coded x1.60/z2.65 crossing is no longer new inlane sensor location. Missing award here does not test the moved lane switch, which needs its own semantic crossing coverage.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/gimmicks.test.mjs:40:1",
+      "verbatimTAP": "# Subtest: inlane switch scores only a fresh real crossing, not sitting or pausing\nnot ok 39 - inlane switch scores only a fresh real crossing, not sitting or pausing\n  ---\n  duration_ms: 57.034375\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/gimmicks.test.mjs:40:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(g.state.score>=100)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/gimmicks.test.mjs:41:185)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 44,
+      "name": "larger lane labels follow the open passages without printing over rails",
+      "category": "layout_contract",
+      "interpretation": "Test computes legacy LOWER_LAYOUT.laneInserts against new rails, whereas installed prototype uses cLaneLabel. Literal label/rail assertion fails; installed print/reference approval is not established by this classification.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lane-ink.test.mjs:26:1",
+      "verbatimTAP": "# Subtest: larger lane labels follow the open passages without printing over rails\nnot ok 44 - larger lane labels follow the open passages without printing over rails\n  ---\n  duration_ms: 8.103917\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lane-ink.test.mjs:26:1'\n  failureType: 'testCodeFailure'\n  error: 'in label crosses a rail at 1.5209377596670304,3.1888917467552487'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lane-ink.test.mjs:34:12)\n    Test.runInAsyncScope (node:async_hooks:226:14)\n    Test.run (node:internal/test_runner/test:1397:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:969:18)\n    Test.postRun (node:internal/test_runner/test:1537:19)\n    Test.run (node:internal/test_runner/test:1462:12)\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)\n  ..."
+    },
+    {
+      "number": 46,
+      "name": "actual left OUT canvas arrow maps to the intended table direction",
+      "category": "visible_direction",
+      "interpretation": "Actual laneInsert canvas direction remains upstream for OUT. Prototype source does not contain stable0b75 arrow correction. A visible-direction regression, not a scoring or budget issue.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lane-ink.test.mjs:41:58",
+      "verbatimTAP": "# Subtest: actual left OUT canvas arrow maps to the intended table direction\nnot ok 46 - actual left OUT canvas arrow maps to the intended table direction\n  ---\n  duration_ms: 0.164375\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lane-ink.test.mjs:41:58'\n  failureType: 'testCodeFailure'\n  error: 'OUT table Z direction -0.24951020869649598'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lane-ink.test.mjs:70:10)\n    Test.runInAsyncScope (node:async_hooks:226:14)\n    Test.run (node:internal/test_runner/test:1397:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:969:18)\n    Test.postRun (node:internal/test_runner/test:1537:19)\n    Test.run (node:internal/test_runner/test:1462:12)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 48,
+      "name": "actual right OUT canvas arrow maps to the intended table direction",
+      "category": "visible_direction",
+      "interpretation": "Same inherited OUT canvas arrow direction failure on the right.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lane-ink.test.mjs:41:58",
+      "verbatimTAP": "# Subtest: actual right OUT canvas arrow maps to the intended table direction\nnot ok 48 - actual right OUT canvas arrow maps to the intended table direction\n  ---\n  duration_ms: 0.10725\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lane-ink.test.mjs:41:58'\n  failureType: 'testCodeFailure'\n  error: 'OUT table Z direction -0.24951020869649598'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lane-ink.test.mjs:70:10)\n    Test.runInAsyncScope (node:async_hooks:226:14)\n    Test.run (node:internal/test_runner/test:1397:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:969:18)\n    Test.postRun (node:internal/test_runner/test:1537:19)\n    Test.run (node:internal/test_runner/test:1462:12)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 56,
+      "name": "sling rubber clears the root-to-center shot corridor on both sides",
+      "category": "geometry_margin",
+      "interpretation": "Current pivot-derived root-to-center nominal ray fails existing sling envelope margin. Not a universal actual-shot blockage proof; required corridor margin is unmet.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:9:1",
+      "verbatimTAP": "# Subtest: sling rubber clears the root-to-center shot corridor on both sides\nnot ok 56 - sling rubber clears the root-to-center shot corridor on both sides\n  ---\n  duration_ms: 10.293708\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:9:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(p.distanceTo(a.clone().addScaledVector(d,t))>TABLE.ballRadius+.07+.02)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:15:14)\n    Test.runInAsyncScope (node:async_hooks:226:14)\n    Test.run (node:internal/test_runner/test:1397:25)\n    Test.start (node:internal/test_runner/test:1257:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n  ..."
+    },
+    {
+      "number": 58,
+      "name": "genuine outside lanes still drain without a flipper or invisible rescue",
+      "category": "mixed_route_contract",
+      "interpretation": "Old legal x\u00b12.12/z2.6 fixture fails drain with held flippers. Channel meaning changed in widened lanes; cannot call it new true OUT or dismiss the observed playing outcome. New semantic OUT proof is separate.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:31:1",
+      "verbatimTAP": "# Subtest: genuine outside lanes still drain without a flipper or invisible rescue\nnot ok 58 - genuine outside lanes still drain without a flipper or invisible rescue\n  ---\n  duration_ms: 415.116458\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:31:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    \n    'playing' !== 'ready'\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 'ready'\n  actual: 'playing'\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:40:14)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 60,
+      "name": "restored lane mouths pass descending balls without live position rescue",
+      "category": "mixed_route_contract",
+      "interpretation": "Historical IN/OUT mouth coordinates fail expected OUT drain. Absolute locations and channel identities changed; observed outcome retained and new corresponding mouth behavior must be qualified.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:67:1",
+      "verbatimTAP": "# Subtest: restored lane mouths pass descending balls without live position rescue\nnot ok 60 - restored lane mouths pass descending balls without live position rescue\n  ---\n  duration_ms: 1677.401459\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:67:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    \n    'playing' !== 'ready'\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 'ready'\n  actual: 'playing'\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:79:17)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 61,
+      "name": "actual outlane entrance has full ball clearance and mirrored shared paths",
+      "category": "layout_contract",
+      "interpretation": "New right OUT starts at shared shooter fork Z2.45 while divider starts1.35, contradicting old array-order entrance assumption. Does not establish or refute full actual entrance clearance.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:84:2",
+      "verbatimTAP": "# Subtest: actual outlane entrance has full ball clearance and mirrored shared paths\nnot ok 61 - actual outlane entrance has full ball clearance and mirrored shared paths\n  ---\n  duration_ms: 0.478083\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:84:2'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(divider[0][2]>=outer[0][2])\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:87:12)\n    Test.runInAsyncScope (node:async_hooks:226:14)\n    Test.run (node:internal/test_runner/test:1397:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:969:18)\n    Test.postRun (node:internal/test_runner/test:1537:19)\n    Test.run (node:internal/test_runner/test:1462:12)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 62,
+      "name": "historical fixed wire drop is now inside the real tail and is not a valid start",
+      "category": "layout_contract",
+      "interpretation": "Old wire-drop point -1.55/.575/2.70 is no longer inside relocated tail, so its historic-invalid assertion no longer holds.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:95:1",
+      "verbatimTAP": "# Subtest: historical fixed wire drop is now inside the real tail and is not a valid start\nnot ok 62 - historical fixed wire drop is now inside the real tail and is not a valid start\n  ---\n  duration_ms: 15.620792\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:95:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(sphereClearance(g,{x:-1.55,y:.575,z:2.70})<-.02)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:100:10)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 64,
+      "name": "five adjacent redesigned bat shots traverse S, capture and refire the same ball",
+      "category": "functional_gameplay",
+      "interpretation": "Five natural capture/release/ramp/wire/refire sequence fails first required ramp traversal0 vs1. Existing operation/result gate is unmet; different future timings are untested, not automatically equivalent.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:128:1",
+      "verbatimTAP": "# Subtest: five adjacent redesigned bat shots traverse S, capture and refire the same ball\nnot ok 64 - five adjacent redesigned bat shots traverse S, capture and refire the same ball\n  ---\n  duration_ms: 347.012583\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:128:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    \n    0 !== 1\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 1\n  actual: 0\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:128:812)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 67,
+      "name": "current outside wire outlet feeds the held left cradle at three speeds",
+      "category": "layout_contract",
+      "interpretation": "Actual wire-end approach reaches test quiet phase, but asserts old pivot-.195 cradle X. Longer bat receiver location differs; location contract fails and full new capture/refire quality remains to qualify.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:163:1",
+      "verbatimTAP": "# Subtest: current outside wire outlet feeds the held left cradle at three speeds\nnot ok 67 - current outside wire outlet feeds the held left cradle at three speeds\n  ---\n  duration_ms: 358.807375\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:163:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(Math.abs(g.ballPosition.x+(LOWER_LAYOUT.flipperPivot[0]-.195))<.03)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:176:11)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 68,
+      "name": "lane edge fixtures distinguish genuine mouths from initial rail penetration",
+      "category": "layout_contract",
+      "interpretation": "Fixed old left boundary point no longer has the specified legal-edge status.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:194:1",
+      "verbatimTAP": "# Subtest: lane edge fixtures distinguish genuine mouths from initial rail penetration\nnot ok 68 - lane edge fixtures distinguish genuine mouths from initial rail penetration\n  ---\n  duration_ms: 15.547917\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:194:1'\n  failureType: 'testCodeFailure'\n  error: 'left edge remains a valid distinct boundary'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:202:10)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 69,
+      "name": "offset slow and fast lane entries and lateral approaches remain physical and releasable",
+      "category": "layout_contract",
+      "interpretation": "Explicit start legality assertion rejects old IN x1.72/z2.8. This case never executes its dynamic route.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:206:1",
+      "verbatimTAP": "# Subtest: offset slow and fast lane entries and lateral approaches remain physical and releasable\nnot ok 69 - offset slow and fast lane entries and lateral approaches remain physical and releasable\n  ---\n  duration_ms: 118.964833\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:206:1'\n  failureType: 'testCodeFailure'\n  error: 'invalid starting sphere: {\"side\":-1,\"held\":false,\"lane\":\"in\",\"x\":1.72,\"z\":2.8,\"vx\":0,\"vz\":0.25}'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/lower-layout.test.mjs:223:11)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ...\n# using deprecated parameters for the initialization function; pass a single object instead"
+    },
+    {
+      "number": 75,
+      "name": "support columns stay on the perimeter or shooter divider, and beams clear ground balls",
+      "category": "layout_contract",
+      "interpretation": "Right support assertion only accepts X2.305..2.395; shared new posts areX2.75. Ground beam height and whole installed clearance need separate proof.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/mechanical-ramp.test.mjs:36:1",
+      "verbatimTAP": "# Subtest: support columns stay on the perimeter or shooter divider, and beams clear ground balls\nnot ok 75 - support columns stay on the perimeter or shooter divider, and beams clear ground balls\n  ---\n  duration_ms: 133.996458\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/mechanical-ramp.test.mjs:36:1'\n  failureType: 'testCodeFailure'\n  error: 'support-post-0 crosses table lane'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    file:///Users/tsaito/Projects/AIGames/web/js/pinball/mechanical-ramp.test.mjs:45:20\n    Dn.traverse (file:///Users/tsaito/Projects/AIGames/web/js/vendor/three-0.180.0/three.core.min.js:6:72576)\n    ra.traverse (file:///Users/tsaito/Projects/AIGames/web/js/vendor/three-0.180.0/three.core.min.js:6:72642)\n    ra.traverse (file:///Users/tsaito/Projects/AIGames/web/js/vendor/three-0.180.0/three.core.min.js:6:72642)\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/mechanical-ramp.test.mjs:41:13)\n    Test.runInAsyncScope (node:async_hooks:226:14)\n    Test.run (node:internal/test_runner/test:1397:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:969:18)\n    Test.postRun (node:internal/test_runner/test:1537:19)\n    Test.run (node:internal/test_runner/test:1462:12)\n  ..."
+    },
+    {
+      "number": 84,
+      "name": "short supports allow eighty nonpenetrating slow wall approaches",
+      "category": "layout_contract",
+      "interpretation": "Support search requires exact old leftX-2.65/rearZ-5.70; empty station list aborts before80 approaches.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/mechanical-supports.test.mjs:6:1",
+      "verbatimTAP": "# Subtest: short supports allow eighty nonpenetrating slow wall approaches\nnot ok 84 - short supports allow eighty nonpenetrating slow wall approaches\n  ---\n  duration_ms: 11.752458\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/mechanical-supports.test.mjs:6:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(vals.length>0)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/mechanical-supports.test.mjs:10:10)\n    Test.runInAsyncScope (node:async_hooks:226:14)\n    Test.run (node:internal/test_runner/test:1397:25)\n    Test.start (node:internal/test_runner/test:1257:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n  ...\n# using deprecated parameters for the initialization function; pass a single object instead"
+    },
+    {
+      "number": 91,
+      "name": "both kinematic flippers physically drive ball upfield",
+      "category": "functional_gameplay",
+      "interpretation": "The65%-length fixture derives from the shared1.65 profile, not a mismatched legacy profile. It records no coil-driven drive while final contact velocity is upfield. The required physical-drive/coil contract fails; exact cause and initial all-solid legality were not recorded, so do not infer all flippers cannot drive.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:43:1",
+      "verbatimTAP": "# Subtest: both kinematic flippers physically drive ball upfield\nnot ok 91 - both kinematic flippers physically drive ball upfield\n  ---\n  duration_ms: 78.169333\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:43:1'\n  failureType: 'testCodeFailure'\n  error: '{\"drive\":null,\"final\":{\"x\":6.786067962646484,\"y\":-2.6050980039826754e-8,\"z\":-18.650413513183594}}'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: ~\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:64:14)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 96,
+      "name": "side-wall approaches enter genuine outlanes and naturally drain when uncharged",
+      "category": "mixed_route_contract",
+      "interpretation": "Old side-wall absolute approaches reach a flipper (2 contacts) instead of expected OUT0. Repositioned side region/channel identity is material; distinct IN/OUT behavior still requires semantic qualification.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:137:1",
+      "verbatimTAP": "# Subtest: side-wall approaches enter genuine outlanes and naturally drain when uncharged\nnot ok 96 - side-wall approaches enter genuine outlanes and naturally drain when uncharged\n  ---\n  duration_ms: 56.002291\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:137:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    OUT must not be silently routed onto a flipper\n    + actual - expected\n    \n      [\n    +   2,\n        0,\n    -   0\n      ]\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected:\n    0: 0\n    1: 0\n  actual:\n    0: 2\n    1: 0\n  operator: 'deepStrictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:156:14)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 97,
+      "name": "beginner play duration remains controllable across thirty-one powers",
+      "category": "functional_gameplay",
+      "interpretation": "Real natural31-power progression fails minimum duration with2.7seconds (<3). No fixture-relocation explanation can turn this into a pass; remaining duration/reactive comparisons stop at this assertion.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:162:1",
+      "verbatimTAP": "# Subtest: beginner play duration remains controllable across thirty-one powers\nnot ok 97 - beginner play duration remains controllable across thirty-one powers\n  ---\n  duration_ms: 9171.156125\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:162:1'\n  failureType: 'testCodeFailure'\n  error: 'instant drain: 2.7'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:181:12)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 106,
+      "name": "twenty seeded incoming balls measure physical contact and controlled return",
+      "category": "functional_gameplay",
+      "interpretation": "Fixed20 central incoming-ball distribution has only4 physical contacts vsrequired16. This is a difficulty/capture-coverage regression under the existing distribution, not proof every aim input is narrower.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:283:1",
+      "verbatimTAP": "# Subtest: twenty seeded incoming balls measure physical contact and controlled return\nnot ok 106 - twenty seeded incoming balls measure physical contact and controlled return\n  ---\n  duration_ms: 680.881166\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:283:1'\n  failureType: 'testCodeFailure'\n  error: 'too few physical contacts: 4'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:302:12)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 108,
+      "name": "release timing produces distinct aimed reflip shots on both sides",
+      "category": "functional_gameplay",
+      "interpretation": "After captured release, side-1 delay.5 produces no required upfield crossing. Existing two-timing distinction gate is unmet; normalized timing may differ but was not substituted.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:334:1",
+      "verbatimTAP": "# Subtest: release timing produces distinct aimed reflip shots on both sides\nnot ok 108 - release timing produces distinct aimed reflip shots on both sides\n  ---\n  duration_ms: 199.525834\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:334:1'\n  failureType: 'testCodeFailure'\n  error: 'side -1, delay 0.5'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:346:16)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 109,
+      "name": "curved sling and inlane have a full ball-width passage with margin",
+      "category": "geometry_margin",
+      "interpretation": "Computed sling/rail conservative passage margin .257024 falls below required .320. Uses existing .07 envelope subtraction; not by itself proof actual sphere is physically pinched.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:358:1",
+      "verbatimTAP": "# Subtest: curved sling and inlane have a full ball-width passage with margin\nnot ok 109 - curved sling and inlane have a full ball-width passage with margin\n  ---\n  duration_ms: 1.251416\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:358:1'\n  failureType: 'testCodeFailure'\n  error: 'inlane clearance 0.2570242581567415'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:369:10)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 111,
+      "name": "five real cradle-reflip timings traverse the S ramp, cradle again and re-fire",
+      "category": "functional_gameplay",
+      "interpretation": "Natural release80 records real coil shot but crest/return/floor flags allfalse. Same-ball ramp\u2192wire\u2192capture/refire is not qualified.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:387:1",
+      "verbatimTAP": "# Subtest: five real cradle-reflip timings traverse the S ramp, cradle again and re-fire\nnot ok 111 - five real cradle-reflip timings traverse the S ramp, cradle again and re-fire\n  ---\n  duration_ms: 316.093209\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:387:1'\n  failureType: 'testCodeFailure'\n  error: 'timing 80: crest=false, return=false, floor=false; {\"releaseTicks\":80,\"initialCradle\":{\"x\":-1.6192302703857422,\"y\":0.1711999475955963,\"z\":4.011784076690674},\"linear\":{\"x\":-0.000004678006462199846,\"y\":3.245273205720878e-7,\"z\":2.0748531426306727e-7},\"angular\":{\"x\":0.000022940324925002642,\"y\":-0.00000721987953511416,\"z\":-0.000008468916348647326},\"time\":4.416666666666676,\"shot\":{\"side\":0,\"along\":0.38570997931740497,\"faceAngle\":-0.5,\"aimAngle\":-0.437135966907848,\"angularSpeed\":12,\"speed\":29.25703950361772,\"p\":{\"x\":-1.2635785341262817,\"y\":0.17108328640460968,\"z\":4.514101028442383},\"vx\":12.385864776331417,\"vz\":-26.505937339748627},\"final\":{\"x\":2.930000066757202,\"y\":0.17499999701976776,\"z\":4.425000190734863}}'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:413:14)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 137,
+      "name": "28-speed tangent approaches all complete with lateral tolerance",
+      "category": "layout_contract",
+      "interpretation": "Uses old RAMP_POINTS terminal as completion region though sampleRamp now has new wire endpoint. Raw world steps later fall belowY-.5 without reaching old target; new endpoint traversal must be examined separately, not counted as a pass.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:34:1",
+      "verbatimTAP": "# Subtest: 28-speed tangent approaches all complete with lateral tolerance\nnot ok 137 - 28-speed tangent approaches all complete with lateral tolerance\n  ---\n  duration_ms: 587.201375\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:34:1'\n  failureType: 'testCodeFailure'\n  error: 'strong shot cannot drain or escape before completing'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:57:12)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 138,
+      "name": "26-speed boundary shots complete honestly or roll back and relaunch normally",
+      "category": "layout_contract",
+      "interpretation": "Actual rampTraversals becomes nonzero, then old RAMP_POINTS exit X/Z assertion fails. Terminal-datum contract is inconsistent with new tail; exact new award placement still needs verification.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:65:1",
+      "verbatimTAP": "# Subtest: 26-speed boundary shots complete honestly or roll back and relaunch normally\nnot ok 138 - 26-speed boundary shots complete honestly or roll back and relaunch normally\n  ---\n  duration_ms: 521.506583\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:65:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(entry&&rear&&Math.abs(p.x-exit[0])<.3&&p.z>exit[2])\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:78:33)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 141,
+      "name": "five adjacent real flipper timings traverse the forward S and award once without teleport",
+      "category": "functional_gameplay",
+      "interpretation": "Natural adjacent flipper timing80 does not complete actual rampTraversal. Not merely the old geometric endpoint assertion.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:119:1",
+      "verbatimTAP": "# Subtest: five adjacent real flipper timings traverse the forward S and award once without teleport\nnot ok 141 - five adjacent real flipper timings traverse the forward S and award once without teleport\n  ---\n  duration_ms: 421.6155\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:119:1'\n  failureType: 'testCodeFailure'\n  error: 'natural release 80 did not traverse'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:139:14)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 142,
+      "name": "measured ground-level flipper approaches at 28/30 traverse with lateral tolerance",
+      "category": "layout_contract",
+      "interpretation": "Measured mouth approach tests completion at old RAMP_POINTS exit; new tail differs. Escaped-before-old-target failure remains, not evidence of completed new traversal.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:147:1",
+      "verbatimTAP": "# Subtest: measured ground-level flipper approaches at 28/30 traverse with lateral tolerance\nnot ok 142 - measured ground-level flipper approaches at 28/30 traverse with lateral tolerance\n  ---\n  duration_ms: 327.293834\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:147:1'\n  failureType: 'testCodeFailure'\n  error: 'measured approach 28/-0.05 escaped before return'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:161:16)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 148,
+      "name": "reference ink registers to board, preserves context and draws reference landmarks",
+      "category": "layout_contract",
+      "interpretation": "Ink test expects scale1024/5.50, candidate uses1024/6.88. Explicit board width registration contract differs.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/reference-playfield.test.mjs:13:1",
+      "verbatimTAP": "# Subtest: reference ink registers to board, preserves context and draws reference landmarks\nnot ok 148 - reference ink registers to board, preserves context and draws reference landmarks\n  ---\n  duration_ms: 3.195667\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/reference-playfield.test.mjs:13:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly deep-equal:\n    + actual - expected\n    \n      [\n        'scale',\n    +   148.8372093023256,\n    -   186.1818181818182,\n        178.08695652173913\n      ]\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected:\n    0: 'scale'\n    1: 186.1818181818182\n    2: 178.08695652173913\n  actual:\n    0: 'scale'\n    1: 148.8372093023256\n    2: 178.08695652173913\n  operator: 'deepStrictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/reference-playfield.test.mjs:16:46)\n    Test.runInAsyncScope (node:async_hooks:226:14)\n    Test.run (node:internal/test_runner/test:1397:25)\n    Test.start (node:internal/test_runner/test:1257:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n  ..."
+    },
+    {
+      "number": 162,
+      "name": "solid shooter rail preserves every old side vertex and adds only outward flat caps",
+      "category": "layout_contract",
+      "interpretation": "Old exact8-gon outer rail vertices/flatcaps expected; candidate has relocated capsule stock. Topology contract changed, not500k exceedance.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-outer-rail.test.mjs:9:1",
+      "verbatimTAP": "# Subtest: solid shooter rail preserves every old side vertex and adds only outward flat caps\nnot ok 162 - solid shooter rail preserves every old side vertex and adds only outward flat caps\n  ---\n  duration_ms: 5.821625\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-outer-rail.test.mjs:9:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly deep-equal:\n    + actual - expected\n    \n      Float32Array(54) [\n    +   3.2049999237060547,\n    -   2.7200000286102295,\n    -   0.28999999165534973,\n    -   4.949999809265137,\n    -   2.6775736808776855,\n    -   0.27242639660835266,\n    -   4.949999809265137,\n    -   2.6600000858306885,\n        0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    -   4.949999809265137,\n    -   2.6775736808776855,\n    -   0.1875735968351364,\n    -   4.949999809265137,\n    -   2.7200000286102295,\n    -   0.17000000178813934,\n    -   4.949999809265137,\n    -   2.7624263763427734,\n    -   0.1875735968351364,\n    -   4.949999809265137,\n    -   2.7799999713897705,\n        0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    -   4.949999809265137,\n    -   2.7624263763427734,\n    -   0.27242639660835266,\n    -   4.949999809265137,\n    -   2.7200000286102295,\n    -   0.28999999165534973,\n    -   4.949999809265137,\n    -   2.7200000286102295,\n    -   0.28999999165534973,\n    -   -4.150000095367432,\n    -   2.6775736808776855,\n    -   0.27242639660835266,\n    -   -4.150000095367432,\n    -   2.6600000858306885,\n        0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    -   -4.150000095367432,\n    -   2.6775736808776855,\n    -   0.1875735968351364,\n    -   -4.150000095367432,\n    -   2.7200000286102295,\n    -   0.17000000178813934,\n    -   -4.150000095367432,\n    -   2.7624263763427734,\n    -   0.1875735968351364,\n    -   -4.150000095367432,\n    -   2.7799999713897705,\n        0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    +   0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    +   0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    +   0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    +   0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    +   0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    +   0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    +   0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    +   0.23000000417232513,\n    +   5.009999752044678,\n    +   3.2049999237060547,\n    +   0.23000000417232513,\n    +   5.009999752044678,\n    +   3.1820390224456787,\n    +   0.23000000417232513,\n    +   5.005432605743408,\n    +   3.185115098953247,\n    +   0.2414804995059967,\n    +   5.005432605743408,\n    +   3.1935195922851562,\n    +   0.24988481402397156,\n    +   5.005432605743408,\n    +   3.2049999237060547,\n    +   0.25296100974082947,\n    +   5.005432605743408,\n    +   3.2164804935455322,\n    +   0.24988481402397156,\n    +   5.005432605743408\n    -   -4.150000095367432,\n    -   2.7624263763427734,\n    -   0.27242639660835266,\n    -   -4.150000095367432,\n    -   2.7200000286102295,\n    -   0.28999999165534973,\n    -   -4.150000095367432\n      ]\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected:\n    0: 2.7200000286102295\n    1: 0.28999999165534973\n    2: 4.949999809265137\n    3: 2.6775736808776855\n    4: 0.27242639660835266\n    5: 4.949999809265137\n    6: 2.6600000858306885\n    7: 0.23000000417232513\n    8: 4.949999809265137\n    9: 2.6775736808776855\n    10: 0.1875735968351364\n    11: 4.949999809265137\n    12: 2.7200000286102295\n    13: 0.17000000178813934\n    14: 4.949999809265137\n    15: 2.7624263763427734\n    16: 0.1875735968351364\n    17: 4.949999809265137\n    18: 2.7799999713897705\n    19: 0.23000000417232513\n    20: 4.949999809265137\n    21: 2.7624263763427734\n    22: 0.27242639660835266\n    23: 4.949999809265137\n    24: 2.7200000286102295\n    25: 0.28999999165534973\n    26: 4.949999809265137\n    27: 2.7200000286102295\n    28: 0.28999999165534973\n    29: -4.150000095367432\n    30: 2.6775736808776855\n    31: 0.27242639660835266\n    32: -4.150000095367432\n    33: 2.6600000858306885\n    34: 0.23000000417232513\n    35: -4.150000095367432\n    36: 2.6775736808776855\n    37: 0.1875735968351364\n    38: -4.150000095367432\n    39: 2.7200000286102295\n    40: 0.17000000178813934\n    41: -4.150000095367432\n    42: 2.7624263763427734\n    43: 0.1875735968351364\n    44: -4.150000095367432\n    45: 2.7799999713897705\n    46: 0.23000000417232513\n    47: -4.150000095367432\n    48: 2.7624263763427734\n    49: 0.27242639660835266\n    50: -4.150000095367432\n    51: 2.7200000286102295\n    52: 0.28999999165534973\n    53: -4.150000095367432\n  actual:\n    0: 3.2049999237060547\n    1: 0.23000000417232513\n    2: 5.009999752044678\n    3: 3.2049999237060547\n    4: 0.23000000417232513\n    5: 5.009999752044678\n    6: 3.2049999237060547\n    7: 0.23000000417232513\n    8: 5.009999752044678\n    9: 3.2049999237060547\n    10: 0.23000000417232513\n    11: 5.009999752044678\n    12: 3.2049999237060547\n    13: 0.23000000417232513\n    14: 5.009999752044678\n    15: 3.2049999237060547\n    16: 0.23000000417232513\n    17: 5.009999752044678\n    18: 3.2049999237060547\n    19: 0.23000000417232513\n    20: 5.009999752044678\n    21: 3.2049999237060547\n    22: 0.23000000417232513\n    23: 5.009999752044678\n    24: 3.2049999237060547\n    25: 0.23000000417232513\n    26: 5.009999752044678\n    27: 3.2049999237060547\n    28: 0.23000000417232513\n    29: 5.009999752044678\n    30: 3.2049999237060547\n    31: 0.23000000417232513\n    32: 5.009999752044678\n    33: 3.2049999237060547\n    34: 0.23000000417232513\n    35: 5.009999752044678\n    36: 3.2049999237060547\n    37: 0.23000000417232513\n    38: 5.009999752044678\n    39: 3.1820390224456787\n    40: 0.23000000417232513\n    41: 5.005432605743408\n    42: 3.185115098953247\n    43: 0.2414804995059967\n    44: 5.005432605743408\n    45: 3.1935195922851562\n    46: 0.24988481402397156\n    47: 5.005432605743408\n    48: 3.2049999237060547\n    49: 0.25296100974082947\n    50: 5.005432605743408\n    51: 3.2164804935455322\n    52: 0.24988481402397156\n    53: 5.005432605743408\n  operator: 'deepStrictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/shooter-outer-rail.test.mjs:12:10)\n    Test.runInAsyncScope (node:async_hooks:226:14)\n    Test.run (node:internal/test_runner/test:1397:25)\n    Test.start (node:internal/test_runner/test:1257:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n  ..."
+    },
+    {
+      "number": 163,
+      "name": "actual octagonal rail hull matches visible side and flat-end rays without capsule inflation",
+      "category": "layout_contract",
+      "interpretation": "Single outer collider API expected but array supplied; TypeError prevents old octagon ray comparison.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-outer-rail.test.mjs:25:1",
+      "verbatimTAP": "# Subtest: actual octagonal rail hull matches visible side and flat-end rays without capsule inflation\nnot ok 163 - actual octagonal rail hull matches visible side and flat-end rays without capsule inflation\n  ---\n  duration_ms: 94.68825\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-outer-rail.test.mjs:25:1'\n  failureType: 'testCodeFailure'\n  error: 'c.translation is not a function'\n  code: 'ERR_TEST_FAILURE'\n  name: 'TypeError'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/shooter-outer-rail.test.mjs:29:26)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 164,
+      "name": "six nonoverlapping ground lateral approaches contact the real external shooter rail",
+      "category": "layout_contract",
+      "interpretation": "Absolute old exterior approaches do not hit newly relocated rail. New route contacts need independent corresponding fixtures.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-outer-rail.test.mjs:56:1",
+      "verbatimTAP": "# Subtest: six nonoverlapping ground lateral approaches contact the real external shooter rail\nnot ok 164 - six nonoverlapping ground lateral approaches contact the real external shooter rail\n  ---\n  duration_ms: 78.867083\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-outer-rail.test.mjs:56:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(contacts>0)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/shooter-outer-rail.test.mjs:69:11)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ...\n# using deprecated parameters for the initialization function; pass a single object instead"
+    },
+    {
+      "number": 170,
+      "name": "returned shooter contains lateral speed -3",
+      "category": "layout_contract",
+      "interpretation": "Earlier return phase/ball assertions pass; terminal oldX2.45..2.70 check fails with new shooterX2.93.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:45:34",
+      "verbatimTAP": "# Subtest: returned shooter contains lateral speed -3\nnot ok 170 - returned shooter contains lateral speed -3\n  ---\n  duration_ms: 377.947959\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:45:34'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(g.ballPosition.x>2.45 && g.ballPosition.x<2.7)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:53:12)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 171,
+      "name": "returned shooter contains lateral speed -1",
+      "category": "layout_contract",
+      "interpretation": "Same old absolute shooter return X interval mismatch for lateral-1.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:45:34",
+      "verbatimTAP": "# Subtest: returned shooter contains lateral speed -1\nnot ok 171 - returned shooter contains lateral speed -1\n  ---\n  duration_ms: 306.575959\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:45:34'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(g.ballPosition.x>2.45 && g.ballPosition.x<2.7)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:53:12)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 172,
+      "name": "returned shooter contains lateral speed 1",
+      "category": "layout_contract",
+      "interpretation": "Same old absolute shooter return X interval mismatch for lateral+1.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:45:34",
+      "verbatimTAP": "# Subtest: returned shooter contains lateral speed 1\nnot ok 172 - returned shooter contains lateral speed 1\n  ---\n  duration_ms: 310.294958\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:45:34'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(g.ballPosition.x>2.45 && g.ballPosition.x<2.7)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:53:12)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 173,
+      "name": "returned shooter contains lateral speed 3",
+      "category": "layout_contract",
+      "interpretation": "Same old absolute shooter return X interval mismatch for lateral+3.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:45:34",
+      "verbatimTAP": "# Subtest: returned shooter contains lateral speed 3\nnot ok 173 - returned shooter contains lateral speed 3\n  ---\n  duration_ms: 324.566625\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:45:34'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(g.ballPosition.x>2.45 && g.ballPosition.x<2.7)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/shooter-return.test.mjs:53:12)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 194,
+      "name": "upper rollover volumes stay in the ground lane below the elevated route",
+      "category": "layout_contract",
+      "interpretation": "Sensor floorY.04/topY.36 checks precede and pass; C sensorZ-4.45 fails old allZ-4.55 assertion. High-route false-award behavior is not established by vertical bounds alone.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/upper-lanes.test.mjs:15:1",
+      "verbatimTAP": "# Subtest: upper rollover volumes stay in the ground lane below the elevated route\nnot ok 194 - upper rollover volumes stay in the ground lane below the elevated route\n  ---\n  duration_ms: 100.296583\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/upper-lanes.test.mjs:15:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(Math.abs(p.z+4.55)<1e-6)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/upper-lanes.test.mjs:25:14)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)\n  ..."
+    },
+    {
+      "number": 196,
+      "name": "five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save",
+      "category": "functional_gameplay",
+      "interpretation": "First natural elevated release80 has rampTraversals0; no-award assertions for completed traversal are not reached. Cannot claim five elevated no-false-award routes passed.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/upper-lanes.test.mjs:50:1",
+      "verbatimTAP": "# Subtest: five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save\nnot ok 196 - five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save\n  ---\n  duration_ms: 556.223667\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/upper-lanes.test.mjs:50:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    same real ramp traversal remains required at release 80\n    \n    0 !== 1\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 1\n  actual: 0\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/upper-lanes.test.mjs:64:14)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ...\n# using deprecated parameters for the initialization function; pass a single object instead"
+    },
+    {
+      "number": 203,
+      "name": "wire tail preserves prefix, endpoint, position and unit-tangent continuity",
+      "category": "layout_contract",
+      "interpretation": "Actual sampleRamp tail no longer equals legacy RAMP_POINTS final datum; explicit endpoint contract fails.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/wire-tail.test.mjs:7:1",
+      "verbatimTAP": "# Subtest: wire tail preserves prefix, endpoint, position and unit-tangent continuity\nnot ok 203 - wire tail preserves prefix, endpoint, position and unit-tangent continuity\n  ---\n  duration_ms: 9.442375\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/wire-tail.test.mjs:7:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(end.p.distanceTo(new T.Vector3(...RAMP_POINTS.at(-1)))<1e-12)\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/wire-tail.test.mjs:23:9)\n    Test.runInAsyncScope (node:async_hooks:226:14)\n    Test.run (node:internal/test_runner/test:1397:25)\n    Test.start (node:internal/test_runner/test:1257:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n  ..."
+    },
+    {
+      "number": 206,
+      "name": "every physical wire segment clears all visible sling solids by .025",
+      "category": "geometry_margin",
+      "interpretation": "Wire/full-sling projected lateral clearance .001319677 fails .025 requirement. Earlier vertical envelope assertions passed. This is inadequate lateral reserve, not demonstrated3D penetration.",
+      "location": "/Users/tsaito/Projects/AIGames/web/js/pinball/wire-tail.test.mjs:57:1",
+      "verbatimTAP": "# Subtest: every physical wire segment clears all visible sling solids by .025\nnot ok 206 - every physical wire segment clears all visible sling solids by .025\n  ---\n  duration_ms: 6587.067333\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/wire-tail.test.mjs:57:1'\n  failureType: 'testCodeFailure'\n  error: 'outside return must clear full sling footprint'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    file:///Users/tsaito/Projects/AIGames/scripts/pinball-sling-clearance.mjs:30:39\n  ..."
+    }
+  ],
+  "passedTests": [
+    {
+      "number": 3,
+      "name": "cabinet cap retains flush seats, hex heads and enclosed shanks"
+    },
+    {
+      "number": 7,
+      "name": "MechanicalFlipper: finite standalone geometry, motion and owned-resource cleanup"
+    },
+    {
+      "number": 8,
+      "name": "MechanicalBumper: finite standalone geometry, motion and owned-resource cleanup"
+    },
+    {
+      "number": 9,
+      "name": "MechanicalPlunger: finite standalone geometry, motion and owned-resource cleanup"
+    },
+    {
+      "number": 10,
+      "name": "MechanicalSling: finite standalone geometry, motion and owned-resource cleanup"
+    },
+    {
+      "number": 11,
+      "name": "MechanicalTarget: finite standalone geometry, motion and owned-resource cleanup"
+    },
+    {
+      "number": 12,
+      "name": "MechanicalRamp: finite standalone geometry, motion and owned-resource cleanup"
+    },
+    {
+      "number": 13,
+      "name": "MechanicalWireform: finite standalone geometry, motion and owned-resource cleanup"
+    },
+    {
+      "number": 14,
+      "name": "MechanicalCabinet: finite standalone geometry, motion and owned-resource cleanup"
+    },
+    {
+      "number": 15,
+      "name": "mechanical model invalid scalar dimensions are rejected"
+    },
+    {
+      "number": 16,
+      "name": "cabinet inspection visibility survives production static batching"
+    },
+    {
+      "number": 17,
+      "name": "sling silver cover, gold skirt and corner lamps retain functional rubber/kicker assembly"
+    },
+    {
+      "number": 18,
+      "name": "bumper lens and bounded internal lamp provide warm light without extra shadows"
+    },
+    {
+      "number": 19,
+      "name": "feedback reads accepted events once without changing scores"
+    },
+    {
+      "number": 20,
+      "name": "feedback milestone and held flipper edges are bounded"
+    },
+    {
+      "number": 21,
+      "name": "rigid animation preserves Chappy's detail and stays within 35 meshes"
+    },
+    {
+      "number": 22,
+      "name": "pause freezes, reduced motion suppresses, restart resets, idle is playing-only"
+    },
+    {
+      "number": 23,
+      "name": "room forwards both update contracts and reset aliases"
+    },
+    {
+      "number": 24,
+      "name": "five bounded missions award base points and each completion bonus exactly once"
+    },
+    {
+      "number": 25,
+      "name": "duplicate, invalid, paused and ready events cannot progress missions or score"
+    },
+    {
+      "number": 26,
+      "name": "mission progress and deduplication survive drains and shooter return; restart resets everything"
+    },
+    {
+      "number": 27,
+      "name": "lane mission counts new traversals even if a lane was lit before the mission"
+    },
+    {
+      "number": 28,
+      "name": "target mission grants exactly one left save independent of center save"
+    },
+    {
+      "number": 29,
+      "name": "bumper challenge earns x2 after five hits; varied mechanisms earn x3 starting with the next hit"
+    },
+    {
+      "number": 30,
+      "name": "multipliers never multiply mission or lane-set bonuses and saves do not progress challenges"
+    },
+    {
+      "number": 31,
+      "name": "duplicate and paused events cannot advance multiplier and weak returns preserve both challenges"
+    },
+    {
+      "number": 32,
+      "name": "drain, TILT and restart reset multiplier while preserving story progress between balls"
+    },
+    {
+      "number": 33,
+      "name": "straight structural tubes retain endpoints/radius without redundant axial tessellation"
+    },
+    {
+      "number": 35,
+      "name": "legacy mini bumper pocket is removed for reference standups"
+    },
+    {
+      "number": 37,
+      "name": "out-of-order or ground ramp contacts never count a complete traversal"
+    },
+    {
+      "number": 38,
+      "name": "complete physical ramp awards exactly once and only after its exit lip"
+    },
+    {
+      "number": 40,
+      "name": "side coils are bounded, horizontal and stronger than their former impulse"
+    },
+    {
+      "number": 41,
+      "name": "visual bumper notifications are accepted-contact-only, bounded and restart clears"
+    },
+    {
+      "number": 42,
+      "name": "bumper notification uses earned contact multiplier, not mission bonus"
+    },
+    {
+      "number": 43,
+      "name": "printed IN bands mirror the verified centerline and add no raised route"
+    },
+    {
+      "number": 45,
+      "name": "actual left IN canvas arrow maps to the intended table direction"
+    },
+    {
+      "number": 47,
+      "name": "actual right IN canvas arrow maps to the intended table direction"
+    },
+    {
+      "number": 49,
+      "name": "archived art ramp control points stay inside table"
+    },
+    {
+      "number": 50,
+      "name": "bumpers have ball clearance from each other"
+    },
+    {
+      "number": 51,
+      "name": "preview initializes, clamps long frames and releases inputs"
+    },
+    {
+      "number": 52,
+      "name": "both flippers rise toward negative-Z playfield when pressed"
+    },
+    {
+      "number": 53,
+      "name": "archived art hardware preserves its original clearance"
+    },
+    {
+      "number": 54,
+      "name": "archived preview curve clears archived sling art"
+    },
+    {
+      "number": 55,
+      "name": "reference triangle retains side passages and asymmetric target banks"
+    },
+    {
+      "number": 57,
+      "name": "both inlanes feed the flippers at three speeds rather than bypass their pivots"
+    },
+    {
+      "number": 59,
+      "name": "inside heel approach cannot leak sideways past the root cheek"
+    },
+    {
+      "number": 63,
+      "name": "side wire exit drops into the real IN guide and held flipper without rescue"
+    },
+    {
+      "number": 65,
+      "name": "old IN approach strikes the outward sling then drains or permits a releasable cradle"
+    },
+    {
+      "number": 66,
+      "name": "IN floor stripe stays clear of the real rails and sling rubber"
+    },
+    {
+      "number": 70,
+      "name": "tapered contact hull matches rubber height and rounded profile"
+    },
+    {
+      "number": 71,
+      "name": "accepted sling and target hits fan out once without duplicate score"
+    },
+    {
+      "number": 72,
+      "name": "pull retracts actual stop and ball follows gravity without position resets"
+    },
+    {
+      "number": 73,
+      "name": "cancelled full pull cannot strand the ball behind the stop"
+    },
+    {
+      "number": 74,
+      "name": "installed ramp has matched sheet walls, true paired rails and visible anti-trap base"
+    },
+    {
+      "number": 76,
+      "name": "production return has an actual open gap, not a hidden supporting floor"
+    },
+    {
+      "number": 77,
+      "name": "standalone paired rails support and roll a ball without any plane collider"
+    },
+    {
+      "number": 78,
+      "name": "all perimeter ramp supports have matching physical posts, arms, collars and feet"
+    },
+    {
+      "number": 79,
+      "name": "acrylic offset walls never fold backwards along the centerline"
+    },
+    {
+      "number": 80,
+      "name": "low base drawing ends at the same complete strip as its collider"
+    },
+    {
+      "number": 81,
+      "name": "compact low nose uses one closed shell and matching convex contact vertices"
+    },
+    {
+      "number": 82,
+      "name": "underfloor bearers, saddles and wire ties share nominal visual and contact stock"
+    },
+    {
+      "number": 83,
+      "name": "low base end cap follows its accessible convex boundary"
+    },
+    {
+      "number": 85,
+      "name": "nudge warns before tilt, ignores repeats, cools and resets"
+    },
+    {
+      "number": 86,
+      "name": "physical nudge never teleports or scores and paused input is ignored"
+    },
+    {
+      "number": 87,
+      "name": "tilt suppresses coils and scoring then consumes one ball, restart clears"
+    },
+    {
+      "number": 88,
+      "name": "rules enforce three balls, pause and reset"
+    },
+    {
+      "number": 89,
+      "name": "real launch feeds scoring objects, not a scripted path"
+    },
+    {
+      "number": 90,
+      "name": "physical drain serves next ball and ends after third"
+    },
+    {
+      "number": 92,
+      "name": "pause freezes simulation; resume and restart are deterministic"
+    },
+    {
+      "number": 93,
+      "name": "former left ramp wedge clears naturally without ball search"
+    },
+    {
+      "number": 94,
+      "name": "ninety varied launches drain without stuck recovery or position jumps"
+    },
+    {
+      "number": 95,
+      "name": "twelve full three-ball sessions end without rescue"
+    },
+    {
+      "number": 98,
+      "name": "rules deduplicate events, complete lanes, and refill one center save"
+    },
+    {
+      "number": 99,
+      "name": "each physical top lane registers center and edge traversals only once"
+    },
+    {
+      "number": 100,
+      "name": "spinner traversal accelerates rotation once; rotation decays without score farming"
+    },
+    {
+      "number": 101,
+      "name": "charged center saver applies impulse without teleport, then allows real drain"
+    },
+    {
+      "number": 102,
+      "name": "natural shooter launch traverses a top rollover lane"
+    },
+    {
+      "number": 103,
+      "name": "outlane widths below entrance exceed ball diameter with margin"
+    },
+    {
+      "number": 104,
+      "name": "center save clears both held and returning flippers without a downstroke collision"
+    },
+    {
+      "number": 105,
+      "name": "held buttons cannot pinch the ball permanently"
+    },
+    {
+      "number": 107,
+      "name": "both flippers cradle passively without repeated coil fire and release naturally"
+    },
+    {
+      "number": 110,
+      "name": "rising shots gain energy toward the tip without exceeding the world limit"
+    },
+    {
+      "number": 112,
+      "name": "both flippers can reach upper lanes and bumper routes around reference triangle"
+    },
+    {
+      "number": 113,
+      "name": "shooter corner backing cannot retain a ball outside the bend"
+    },
+    {
+      "number": 114,
+      "name": "hold charges continuously, repeat cannot reset, and release fires once"
+    },
+    {
+      "number": 115,
+      "name": "drag overrides time, can reduce power, and cancellation never fires"
+    },
+    {
+      "number": 116,
+      "name": "low medium high produce distinct physical speeds and weak ball naturally returns"
+    },
+    {
+      "number": 117,
+      "name": "missing acrylic contacts lie on real visible exterior faces without duplicating top inner or lip faces"
+    },
+    {
+      "number": 118,
+      "name": "legal ground and rising airborne balls hit the visible acrylic exterior"
+    },
+    {
+      "number": 119,
+      "name": "low housing is closed with the existing deck and partitioned without internal faces"
+    },
+    {
+      "number": 120,
+      "name": "generic installed rows without tangent preserve the exact housing geometry"
+    },
+    {
+      "number": 121,
+      "name": "every installed housing boundary face matches the physical strip union"
+    },
+    {
+      "number": 122,
+      "name": "low housing never projects above the actual acrylic running surface"
+    },
+    {
+      "number": 123,
+      "name": "historical positive-offset tangent start penetrates the deck; common corrected start is legal"
+    },
+    {
+      "number": 124,
+      "name": "one-strip generic housing renders both endpoint caps exactly once"
+    },
+    {
+      "number": 125,
+      "name": "right and rear deck repairs preserve every unrelated original triangle and generic rows"
+    },
+    {
+      "number": 126,
+      "name": "repair follows route parameters at alternate sample counts and keeps a closed constant-thickness sheet"
+    },
+    {
+      "number": 127,
+      "name": "three legal zero-speed starts exit the repaired right deck pockets without rescue"
+    },
+    {
+      "number": 128,
+      "name": "exposed ramp hardware shares exact visible triangle geometry and dimensions"
+    },
+    {
+      "number": 129,
+      "name": "legal airborne approaches contact exposed lips straps and bolts rather than pass through"
+    },
+    {
+      "number": 130,
+      "name": "rear descent preserves endpoint C1 XZ and gravity-ratio datum"
+    },
+    {
+      "number": 131,
+      "name": "real sheet handoff clears the allowed off-center paired-stock support envelope"
+    },
+    {
+      "number": 132,
+      "name": "seven legal former pocket starts exit without rescue under the unchanged solver"
+    },
+    {
+      "number": 133,
+      "name": "experimental ramp uses continuous finite mesh and adequate channel width"
+    },
+    {
+      "number": 134,
+      "name": "floor ball passes below rear elevated deck without being lifted"
+    },
+    {
+      "number": 135,
+      "name": "low ramp skirt blocks lateral entry instead of admitting ball under deck"
+    },
+    {
+      "number": 136,
+      "name": "elevated exit releases ball into left lower lane without teleport"
+    },
+    {
+      "number": 139,
+      "name": "six unassisted launch powers leave the ramp base without permanent stalls"
+    },
+    {
+      "number": 140,
+      "name": "ground balls approaching low base from high deck side deflect without wedging"
+    },
+    {
+      "number": 143,
+      "name": "reference cabinet includes supported backbox, speakers, apron and rear tower"
+    },
+    {
+      "number": 144,
+      "name": "score drawing is cached and uses live score plus ball number"
+    },
+    {
+      "number": 145,
+      "name": "formed collection apron preserves central and outlane throats after active drain"
+    },
+    {
+      "number": 146,
+      "name": "short supported cabinet keeps collection apron within its drain opening"
+    },
+    {
+      "number": 147,
+      "name": "inner skyline is a rear-mounted relief outside live board"
+    },
+    {
+      "number": 149,
+      "name": "reference ink is deterministic and validates canvas dimensions"
+    },
+    {
+      "number": 150,
+      "name": "reference banks have three upper wrenches, two middle wrenches and three robots"
+    },
+    {
+      "number": 151,
+      "name": "every installed reference target scores from a real front contact and identifies its moving part"
+    },
+    {
+      "number": 152,
+      "name": "target strike boxes follow declared height without raising the ground contact edge"
+    },
+    {
+      "number": 153,
+      "name": "derived contact bounds match the actual three extruded strike meshes"
+    },
+    {
+      "number": 154,
+      "name": "carrier has formed rim, separate rear plate, fixed studs and a continuous rounded mount"
+    },
+    {
+      "number": 155,
+      "name": "both captured carrier pinch positions drain without rescue"
+    },
+    {
+      "number": 156,
+      "name": "right rear carrier rail retains ball clearance from the full low support base"
+    },
+    {
+      "number": 157,
+      "name": "nine slow approaches behind the right carrier drain without rescue"
+    },
+    {
+      "number": 158,
+      "name": "captured right target lower-edge wedge releases with the smooth carrier rail"
+    },
+    {
+      "number": 159,
+      "name": "smooth carrier contacts use the same capsule dimensions and placement as rendering"
+    },
+    {
+      "number": 160,
+      "name": "workshop structures batch within their scenery budget and preserve QA targets"
+    },
+    {
+      "number": 161,
+      "name": "workshop owns and releases its merged geometries and materials exactly once"
+    },
+    {
+      "number": 165,
+      "name": "initial serve and restart use the visible head contact point"
+    },
+    {
+      "number": 166,
+      "name": "returning ball settles on visible stop without teleport or consuming a ball"
+    },
+    {
+      "number": 167,
+      "name": "weak shot naturally returns to the same stop and full relaunch preserves speed"
+    },
+    {
+      "number": 168,
+      "name": "returned shooter ball rolls to plunger and relaunches in place without consuming a ball"
+    },
+    {
+      "number": 169,
+      "name": "normal drains still consume three balls and restart resets returned-shooter state"
+    },
+    {
+      "number": 174,
+      "name": "out-of-bounds returned ball cannot strand the game in ready"
+    },
+    {
+      "number": 175,
+      "name": "no autoplay, allocation or resume without a trusted input gesture"
+    },
+    {
+      "number": 176,
+      "name": "all cabinet events have bounded short effects and unknown events are ignored"
+    },
+    {
+      "number": 177,
+      "name": "repeat rate limits and a hard voice cap prevent audio storms"
+    },
+    {
+      "number": 178,
+      "name": "mute and pause stop active voices; unmute/unpause need a gesture"
+    },
+    {
+      "number": 179,
+      "name": "saved mute and unavailable WebAudio/storage fail silently"
+    },
+    {
+      "number": 180,
+      "name": "pending resume cannot restart sound after pause or disposal"
+    },
+    {
+      "number": 181,
+      "name": "finite surface distance distinguishes faces edges vertices and unresolved containment"
+    },
+    {
+      "number": 182,
+      "name": "closed mesh convex and cuboid interior are invalid even without boundary overlap"
+    },
+    {
+      "number": 183,
+      "name": "finite cylinder cap barrel rim and rigid transforms use independent analytic distances"
+    },
+    {
+      "number": 184,
+      "name": "capsule and ball solids reject deep interior and distinguish rounded ends"
+    },
+    {
+      "number": 185,
+      "name": "malformed closed boundaries and unknown shapes fail rather than certify starts"
+    },
+    {
+      "number": 186,
+      "name": "captured open strip reproduces solid-query false penetration without certifying reachability"
+    },
+    {
+      "number": 187,
+      "name": "captured real pillar and wall overlaps remain rejected by independent geometry"
+    },
+    {
+      "number": 188,
+      "name": "accepted c1 historical tangent overlap and corrected deck clearance remain distinguishable"
+    },
+    {
+      "number": 189,
+      "name": "right target bank leaves a full ball-width throat beside every main bumper"
+    },
+    {
+      "number": 190,
+      "name": "low-speed balls pass the screenshot throat without rescue or position changes"
+    },
+    {
+      "number": 191,
+      "name": "twenty-one natural launches clear without target-bank stalls or position resets"
+    },
+    {
+      "number": 192,
+      "name": "ramp crest releases a resting ball without nudge or position rescue"
+    },
+    {
+      "number": 193,
+      "name": "continuous ramp collision meshes share every route row and triangle edge without gaps"
+    },
+    {
+      "number": 195,
+      "name": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "number": 197,
+      "name": "all visible wire capsule axes ends and nominal radii match installed contacts in four meshes"
+    },
+    {
+      "number": 198,
+      "name": "compatibility ramp drawing uses the same four capsule-stock rail geometries"
+    },
+    {
+      "number": 199,
+      "name": "wire pole cleanup preserves every installed vertex normal and nondegenerate face"
+    },
+    {
+      "number": 200,
+      "name": "wire retained installed capsule shells stay outward and closed"
+    },
+    {
+      "number": 201,
+      "name": "wire pole cleanup preserves distinct pole fallback and rounded nonpole faces"
+    },
+    {
+      "number": 202,
+      "name": "wire primitive ranges cover empty and mixed concatenated geometry exactly"
+    },
+    {
+      "number": 204,
+      "name": "wire tail curvature and every physical offset rail progress without folds"
+    },
+    {
+      "number": 205,
+      "name": "sampled wire rails have no self or same-height pair crossing"
+    },
+    {
+      "number": 207,
+      "name": "workshop scenery has finite attached geometry and stays independent of physics"
+    }
+  ],
+  "lint": "Not run. Equivalent existing test:pinball pipeline stops before eslint when the node test phase fails. No lint pass claimed.",
+  "causality": "One whole-candidate run against unchanged current tests. No 5891 full-suite rerun; cannot attribute inherited lower/longbat failures specifically to new upper-bar change.",
+  "limitations": [
+    "Classification does not convert any failure into a pass",
+    "Natural six-power local pass is narrower than this full corpus",
+    "No new simulations, changed fixtures or expectations used to classify failures",
+    "Concurrent stable run means duration is not a performance benchmark"
+  ]
+}

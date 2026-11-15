@@ -1,0 +1,44 @@
+{
+  "baseline": "prototype 5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+  "candidate": "prototype d971a4257f41512487cdf88ac9bfd9fc3f5208fd1223bf7e052a13edade98fac",
+  "results": [
+    {
+      "mode": "baseline",
+      "view": "installed-45",
+      "triangles": 485276,
+      "calls": 590
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-10",
+      "triangles": 485132,
+      "calls": 578
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-90",
+      "triangles": 478956,
+      "calls": 563
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-45",
+      "triangles": 490204,
+      "calls": 567
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-10",
+      "triangles": 490060,
+      "calls": 555
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-90",
+      "triangles": 483884,
+      "calls": 540
+    }
+  ],
+  "errors": [],
+  "scope": "Independent upper-lane joint prototype; installed and isolated component views are distinct; not yet accepted."
+}
