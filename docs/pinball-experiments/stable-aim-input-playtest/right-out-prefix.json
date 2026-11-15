@@ -1,0 +1,219 @@
+[
+  {
+    "ordinal": 0,
+    "power": 0.55,
+    "delay": 44,
+    "actual": {
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 61.366666666663825,
+      "score": 2775,
+      "ramps": 1,
+      "kickbackUses": 1,
+      "sideSaveUses": 0,
+      "physicsMetrics": {
+        "rampTraversals": 1,
+        "flipperContacts": [
+          13,
+          16
+        ],
+        "activeFlipperContacts": [
+          9,
+          10
+        ],
+        "coilImpulses": [
+          9,
+          10
+        ],
+        "upfieldReturns": 16
+      }
+    },
+    "mismatches": []
+  },
+  {
+    "ordinal": 1,
+    "power": 0.55,
+    "delay": 49,
+    "actual": {
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 47.724999999997934,
+      "score": 2825,
+      "ramps": 0,
+      "kickbackUses": 0,
+      "sideSaveUses": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          3,
+          9
+        ],
+        "activeFlipperContacts": [
+          3,
+          8
+        ],
+        "coilImpulses": [
+          3,
+          8
+        ],
+        "upfieldReturns": 11
+      }
+    },
+    "mismatches": []
+  },
+  {
+    "ordinal": 2,
+    "power": 0.55,
+    "delay": 60,
+    "actual": {
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 56.50833333333077,
+      "score": 1300,
+      "ramps": 0,
+      "kickbackUses": 0,
+      "sideSaveUses": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          6,
+          11
+        ],
+        "activeFlipperContacts": [
+          5,
+          8
+        ],
+        "coilImpulses": [
+          5,
+          8
+        ],
+        "upfieldReturns": 13
+      }
+    },
+    "mismatches": []
+  },
+  {
+    "ordinal": 3,
+    "power": 0.55,
+    "delay": 66,
+    "actual": {
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 131.30000000004492,
+      "score": 3300,
+      "ramps": 0,
+      "kickbackUses": 1,
+      "sideSaveUses": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          78,
+          10
+        ],
+        "activeFlipperContacts": [
+          29,
+          9
+        ],
+        "coilImpulses": [
+          29,
+          9
+        ],
+        "upfieldReturns": 38
+      }
+    },
+    "mismatches": []
+  },
+  {
+    "ordinal": 4,
+    "power": 0.55,
+    "delay": 68,
+    "actual": {
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 43.649999999998165,
+      "score": 725,
+      "ramps": 0,
+      "kickbackUses": 0,
+      "sideSaveUses": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          6,
+          11
+        ],
+        "activeFlipperContacts": [
+          4,
+          8
+        ],
+        "coilImpulses": [
+          4,
+          8
+        ],
+        "upfieldReturns": 11
+      }
+    },
+    "mismatches": []
+  },
+  {
+    "ordinal": 5,
+    "power": 0.55,
+    "delay": 69,
+    "actual": {
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 62.43333333333043,
+      "score": 2300,
+      "ramps": 0,
+      "kickbackUses": 0,
+      "sideSaveUses": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          5,
+          14
+        ],
+        "activeFlipperContacts": [
+          4,
+          10
+        ],
+        "coilImpulses": [
+          4,
+          10
+        ],
+        "upfieldReturns": 14
+      }
+    },
+    "mismatches": []
+  },
+  {
+    "ordinal": 6,
+    "power": 0.55,
+    "delay": 80,
+    "actual": {
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 149.900000000028,
+      "score": 6425,
+      "ramps": 4,
+      "kickbackUses": 1,
+      "sideSaveUses": 0,
+      "physicsMetrics": {
+        "rampTraversals": 4,
+        "flipperContacts": [
+          31,
+          52
+        ],
+        "activeFlipperContacts": [
+          18,
+          25
+        ],
+        "coilImpulses": [
+          18,
+          25
+        ],
+        "upfieldReturns": 42
+      }
+    },
+    "mismatches": []
+  }
+]

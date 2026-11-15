@@ -1,0 +1,198 @@
+{
+  "packetFiles": [
+    {
+      "path": "README.md",
+      "sha256": "324ee087db2d49d31befd86cdb15af9d6e4e0020d51fd061b0e5fd6b45425de2",
+      "bytes": 8231
+    },
+    {
+      "path": "attempt1-replay.cjs",
+      "sha256": "56f398368045e5c8bb50a2204e6c430fc35e82a9aed8535e0e20b6c9280fa963",
+      "bytes": 5890
+    },
+    {
+      "path": "attempt1-results.json",
+      "sha256": "e36755ba89c6989dfbf2396b5e089f868e58e31be2f103a1f27daaf06836d4ee",
+      "bytes": 75945
+    },
+    {
+      "path": "attempt1-samples.json.gz",
+      "sha256": "b85fb498855ed666dddabc3154caa46080f37f3be4cb318c71519e34f3afe2d8",
+      "bytes": 317532
+    },
+    {
+      "path": "attempt2-replay.cjs",
+      "sha256": "0f74bc037581ace769804ff8347f6cc93c1bbf7aa1d5d58a4e4974bf470a85b5",
+      "bytes": 5907
+    },
+    {
+      "path": "attempt2-results.json",
+      "sha256": "99feed9050c4a524a09809c97ee24c1cd2370525b2e5acbf5ef61162399c435a",
+      "bytes": 161639
+    },
+    {
+      "path": "attempt2-samples.json.gz",
+      "sha256": "41a7530cebcf335c828d8c5ee16fb47d77879922a781787afbff2502578da03f",
+      "bytes": 560285
+    },
+    {
+      "path": "browser-first-ramp-return.json",
+      "sha256": "ef027d29dc9e24197badddc97af076326fd34a98ed98acd0dd6e3c4657a0e860",
+      "bytes": 420702
+    },
+    {
+      "path": "browser-ramp-completed.png",
+      "sha256": "4c3535848f85620de1c45b2988501334f6dff8efeccc9ea4559ab811ff295af5",
+      "bytes": 593911
+    },
+    {
+      "path": "browser-ramp-stage-1.png",
+      "sha256": "4d8ecd130099dad4f6884d5f18ff4e77fe738899c2590c8cd0d18a3f95ae0119",
+      "bytes": 593517
+    },
+    {
+      "path": "browser-ramp-stage-2.png",
+      "sha256": "2b7dda5a8c3acaf778a056abb17a6cc25d1c636ee681efefc5d60b926d4c7ae8",
+      "bytes": 593391
+    },
+    {
+      "path": "classify-right-out.mjs",
+      "sha256": "7f456cc5943bb1d95849f740394c3aaa7b6d8ef7763acb128bbed834d3a54b6d",
+      "bytes": 1588
+    },
+    {
+      "path": "prior-legal-right-in-window.json",
+      "sha256": "c5d2eaf6c9fe6bd97a76408241298271c62a780613420efff57dffba4e8dd16d",
+      "bytes": 57964
+    },
+    {
+      "path": "right-out-classification.json",
+      "sha256": "8f0380605e9bb2ff6fc5eac494cb8f6a09396b25449d790290261ec5dafcdfc1",
+      "bytes": 36568
+    },
+    {
+      "path": "right-out-observer.mjs",
+      "sha256": "53c58f2851bab2756763c30758430e51bfd29b4961e8a49f77b34af95f644933",
+      "bytes": 3257
+    },
+    {
+      "path": "right-out-prefix.json",
+      "sha256": "65be75366e9b367583579533799f54c32a01809962ba1b8e6697d577241497e1",
+      "bytes": 3985
+    },
+    {
+      "path": "right-out-summary.json",
+      "sha256": "db9b8838c8c56525dc2b268276345e467eb072fb7578e6a7304fcc64b3c2b5c7",
+      "bytes": 275
+    },
+    {
+      "path": "right-out-window.json",
+      "sha256": "3462b729402f8fdfae4de277355b6ce3ca1ecdbc6b224d2d7e50d4dad1d005c0",
+      "bytes": 151179
+    },
+    {
+      "path": "timing-and-launch-analysis.json",
+      "sha256": "d5e564c5b51afbedcdf30fde59d39243f163175a4c8c5894b9399704d8705e84",
+      "bytes": 60593
+    }
+  ],
+  "originalEvidence": [
+    {
+      "path": "artifacts/pinball/aim-input-20261115T090150/play.cjs",
+      "sha256": "c0f14459119fae9641668a13bec9599f93bf99fdec90c64c149e3ce849022f69",
+      "bytes": 5711
+    },
+    {
+      "path": "artifacts/pinball/aim-input-20261115T090150/results.json",
+      "sha256": "e36755ba89c6989dfbf2396b5e089f868e58e31be2f103a1f27daaf06836d4ee",
+      "bytes": 75945
+    },
+    {
+      "path": "artifacts/pinball/aim-input-20261115T090150/run.log",
+      "sha256": "1028ba1fde5d189d2af37ca9fb20aa1383d43fbe2e390dc761bef49075ac8043",
+      "bytes": 1538
+    },
+    {
+      "path": "artifacts/pinball/aim-input-20261115T090408/play.cjs",
+      "sha256": "b1477a5b878a742cd8bdddbc9b65dc12f318dc8a4359c8100c2f0cae98597441",
+      "bytes": 5727
+    },
+    {
+      "path": "artifacts/pinball/aim-input-20261115T090408/results.json",
+      "sha256": "99feed9050c4a524a09809c97ee24c1cd2370525b2e5acbf5ef61162399c435a",
+      "bytes": 161639
+    },
+    {
+      "path": "artifacts/pinball/aim-input-20261115T090408/run.log",
+      "sha256": "133d1d4244f2122ce300e29de93c3f9490e875e9227a6406e1ce600d1f15dcc2",
+      "bytes": 4033
+    },
+    {
+      "path": "artifacts/pinball/right-out-observe-20261115T0907/observe.mjs",
+      "sha256": "e2bae3562a4f2e8d22038a6e71a2c2bf63ac001cea17250adfc088b06fc3164a",
+      "bytes": 3125
+    },
+    {
+      "path": "artifacts/pinball/right-out-observe-20261115T0907/classify.mjs",
+      "sha256": "860c78a31ab90e7d607195855942714b813a1e6de8c8f7600d97b98220942c6b",
+      "bytes": 1720
+    },
+    {
+      "path": "artifacts/pinball/right-out-observe-20261115T0907/prefix.json",
+      "sha256": "65be75366e9b367583579533799f54c32a01809962ba1b8e6697d577241497e1",
+      "bytes": 3985
+    },
+    {
+      "path": "artifacts/pinball/right-out-observe-20261115T0907/right-out-window.json",
+      "sha256": "3462b729402f8fdfae4de277355b6ce3ca1ecdbc6b224d2d7e50d4dad1d005c0",
+      "bytes": 151179
+    },
+    {
+      "path": "artifacts/pinball/right-out-observe-20261115T0907/classification.json",
+      "sha256": "8f0380605e9bb2ff6fc5eac494cb8f6a09396b25449d790290261ec5dafcdfc1",
+      "bytes": 36568
+    },
+    {
+      "path": "artifacts/pinball/right-out-observe-20261115T0907/summary.json",
+      "sha256": "db9b8838c8c56525dc2b268276345e467eb072fb7578e6a7304fcc64b3c2b5c7",
+      "bytes": 275
+    },
+    {
+      "path": "artifacts/pinball/right-out-observe-20261115T0907/run.log",
+      "sha256": "aef4874089221d1566842fa866445b520080a2cafe3377ecb46b879baa192ba3",
+      "bytes": 280
+    }
+  ],
+  "sourceReferences": [
+    {
+      "path": "docs/pinball-experiments/stable-route-playtest/controller-full-samples.json.gz",
+      "sha256": "2ecf6302673ff5697ce3e7bfc0165b0d91572d45b8445d3c1f9d421fcc168488",
+      "bytes": 648697
+    },
+    {
+      "path": "docs/pinball-experiments/save-pocket-preflight/natural/natural54.json",
+      "sha256": "c4c5469ea2ec8270e71dd2398e73ccee16793df2c488f8fdedf1c7093c181370",
+      "bytes": 39049
+    },
+    {
+      "path": "scripts/pinball-playability-audit.mjs",
+      "sha256": "76bb52baf38951264480d9b40e1436b6ff363de30107c781f7b6e1a48e4f1389",
+      "bytes": 4490
+    },
+    {
+      "path": "web/js/pinball/physics.mjs",
+      "sha256": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92",
+      "bytes": 23710
+    },
+    {
+      "path": "web/js/pinball/layout.mjs",
+      "sha256": "1c9860b284831e46af2ddde75476c9563e064b29c38d84bb5df812f7366de609",
+      "bytes": 5728
+    },
+    {
+      "path": "web/js/pinball/ramp-geometry.mjs",
+      "sha256": "3a9dd4e4ad8bd3cf7418a395435e23a5552e11c2f15ab20d86065e7fff5670cd",
+      "bytes": 17803
+    }
+  ]
+}
