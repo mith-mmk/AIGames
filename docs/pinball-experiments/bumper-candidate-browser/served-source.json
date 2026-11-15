@@ -1,0 +1,7 @@
+{
+  "scope": "Only physics.mjs routed candidate. Production unchanged.",
+  "baselineHash": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92",
+  "candidateHash": "17a6aac7cb9e38c7518cfd7d624fca3ffe9316b5eac708e16aca63266055687c",
+  "old": "const impulse = Math.max(0, (h.strength??6) - outward) * this.ball.mass();",
+  "replacement": "const coefficient=(this.world.getCollider(other).restitution()+this.ballCollider.restitution())/2; const targetOutward=Math.max(h.strength??6,-outward*coefficient); const impulse = Math.max(0,targetOutward-outward) * this.ball.mass();"
+}

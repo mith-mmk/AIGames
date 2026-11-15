@@ -1,0 +1,16 @@
+--- a/web/js/pinball/physics.mjs
++++ b/web/js/pinball/physics.mjs
+@@ -247,7 +247,12 @@
+       if (h.type === "sling") this.ball.applyImpulse({ x: dx / len * .18, y: 0, z: dz / len * .18 }, true);
+       else {
+         const outward = (v.x * dx + v.z * dz) / len;
+-        const impulse = Math.max(0, (h.strength??6) - outward) * this.ball.mass();
++        // CCD can report the new contact before passive restitution resolves.
++        // Preserve that incoming rebound energy instead of clamping every
++        // inbound hit to the powered bumper's minimum outward speed.
++        const coefficient = (this.world.getCollider(other).restitution() + this.ballCollider.restitution()) / 2;
++        const targetOutward = Math.max(h.strength ?? 6, -outward * coefficient);
++        const impulse = Math.max(0, targetOutward - outward) * this.ball.mass();
+         this.ball.applyImpulse({ x: dx / len * impulse, y: 0, z: dz / len * impulse }, true);
+       }
+     }

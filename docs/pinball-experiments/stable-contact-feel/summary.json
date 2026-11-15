@@ -1,0 +1,167 @@
+[
+  {
+    "power": 0.75,
+    "strategy": "adaptive catches with LEFT80/RIGHT44 nominal release ticks",
+    "wallSeconds": 60.205,
+    "physicsElapsed": 60.19999999999721,
+    "observedFrames": 3527,
+    "callbackCounts": {
+      "static": 432,
+      "flipper": 27,
+      "sling": 78,
+      "ramp-gate": 9,
+      "inlane": 4,
+      "bank": 7,
+      "spinner": 1,
+      "bumper": 2,
+      "rollover": 2
+    },
+    "scoringCallbackCounts": {
+      "sling": 18,
+      "ramp-gate": 1,
+      "inlane": 4,
+      "bank": 5,
+      "spinner": 1,
+      "bumper": 2,
+      "rollover": 2
+    },
+    "bumperOutwardSamples": [
+      {
+        "time": 52.916666666664305,
+        "key": "b2",
+        "outwardBefore": -13.830448002915212,
+        "outwardAfter": 5.999998592039811,
+        "scoreDelta": 100,
+        "visualDelta": 1
+      },
+      {
+        "time": 54.724999999997536,
+        "key": "b1",
+        "outwardBefore": -2.867222280412662,
+        "outwardAfter": 6.000000203631877,
+        "scoreDelta": 100,
+        "visualDelta": 1
+      }
+    ],
+    "final": {
+      "time": 60.39166666666388,
+      "p": {
+        "x": 1.0459142923355103,
+        "y": 0.1712125688791275,
+        "z": 4.126794338226318
+      },
+      "v": {
+        "x": -0.05193623527884483,
+        "y": -4.186764712699187e-09,
+        "z": 0.8547407984733582
+      },
+      "phase": "playing",
+      "ball": 3,
+      "score": 2075,
+      "event": "SLING +25",
+      "sideCharge": 0,
+      "sideUses": 0,
+      "centerUses": 1,
+      "ramp": 1,
+      "rampStage": 0,
+      "spin": {
+        "x": 6.419870376586914,
+        "y": -3.890594959259033,
+        "z": 0.39008772373199463
+      },
+      "plunger": 0,
+      "angles": [
+        -0.6,
+        3.2215926535897954
+      ],
+      "coil": [
+        8,
+        9
+      ],
+      "lastShot": {
+        "side": 1,
+        "along": 0.33178057586937615,
+        "faceAngle": -0.09999999999999964,
+        "aimAngle": -0.27084892139100175,
+        "angularSpeed": 12,
+        "speed": 27.962733820865026,
+        "p": {
+          "x": 0.8717701435089111,
+          "y": 0.16743625700473785,
+          "z": 4.3118767738342285
+        },
+        "vx": -7.4814156260030265,
+        "vz": -26.943327614968915
+      },
+      "left": false,
+      "right": false
+    },
+    "pageErrors": []
+  },
+  {
+    "power": 1,
+    "strategy": "hold both continuously",
+    "wallSeconds": 35.028,
+    "physicsElapsed": 35.02499999999865,
+    "observedFrames": 2102,
+    "callbackCounts": {
+      "static": 17,
+      "rollover": 3,
+      "bumper": 1,
+      "flipper": 2
+    },
+    "scoringCallbackCounts": {
+      "rollover": 3,
+      "bumper": 1
+    },
+    "bumperOutwardSamples": [
+      {
+        "time": 1.8999999999999957,
+        "key": "b1",
+        "outwardBefore": -3.78172293979775,
+        "outwardAfter": 5.999999724216684,
+        "scoreDelta": 100,
+        "visualDelta": 1
+      }
+    ],
+    "final": {
+      "time": 35.17499999999865,
+      "p": {
+        "x": 1.05520498752594,
+        "y": 0.17121441662311554,
+        "z": 4.058962821960449
+      },
+      "v": {
+        "x": -0.004838242661207914,
+        "y": 1.6901369235711172e-05,
+        "z": 0.0844472125172615
+      },
+      "phase": "playing",
+      "ball": 1,
+      "score": 400,
+      "event": "LANE 3 +100",
+      "sideCharge": 0,
+      "sideUses": 0,
+      "centerUses": 0,
+      "ramp": 0,
+      "rampStage": 0,
+      "spin": {
+        "x": 0.6342257261276245,
+        "y": 0.0074584269896149635,
+        "z": 0.036346614360809326
+      },
+      "plunger": 0,
+      "angles": [
+        0.4099999999999999,
+        2.7315926535897934
+      ],
+      "coil": [
+        0,
+        0
+      ],
+      "left": false,
+      "right": false
+    },
+    "pageErrors": []
+  }
+]

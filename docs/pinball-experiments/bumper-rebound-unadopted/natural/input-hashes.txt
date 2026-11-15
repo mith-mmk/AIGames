@@ -1,0 +1,3 @@
+e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92  web/js/pinball/physics.mjs
+76bb52baf38951264480d9b40e1436b6ff363de30107c781f7b6e1a48e4f1389  scripts/pinball-playability-audit.mjs
+da3a0ed75804908f2719fee586f8d2445778dfbf2dc6736efe80134e8fb6a5fe  artifacts/pinball/contact-strength-a1fb6bd/bumper-loader.mjs

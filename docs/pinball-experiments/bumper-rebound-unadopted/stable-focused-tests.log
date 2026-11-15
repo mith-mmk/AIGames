@@ -1,0 +1,48 @@
+✔ feedback reads accepted events once without changing scores (1.881916ms)
+✔ feedback milestone and held flipper edges are bounded (0.691917ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ tapered contact hull matches rubber height and rounded profile (1.061458ms)
+✔ accepted sling and target hits fan out once without duplicate score (65.610166ms)
+✔ pull retracts actual stop and ball follows gravity without position resets (172.815916ms)
+✔ cancelled full pull cannot strand the ball behind the stop (214.574291ms)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rules enforce three balls, pause and reset (0.556417ms)
+✔ real launch feeds scoring objects, not a scripted path (333.880542ms)
+✔ physical drain serves next ball and ends after third (29.761ms)
+✔ both kinematic flippers physically drive ball upfield (47.488875ms)
+✔ pause freezes simulation; resume and restart are deterministic (62.133541ms)
+✔ former left ramp wedge clears naturally without ball search (262.761042ms)
+✔ ninety varied launches drain without stuck recovery or position jumps (38467.247292ms)
+✔ twelve full three-ball sessions end without rescue (15179.82275ms)
+✔ side-wall approaches enter genuine outlanes and naturally drain when uncharged (89.455334ms)
+✔ beginner play duration remains controllable across thirty-one powers (33051.614833ms)
+✔ rules deduplicate events, complete lanes, and refill one center save (0.133708ms)
+✔ each physical top lane registers center and edge traversals only once (164.0435ms)
+✔ spinner traversal accelerates rotation once; rotation decays without score farming (18.099167ms)
+✔ charged center saver applies impulse without teleport, then allows real drain (30.903792ms)
+✔ natural shooter launch traverses a top rollover lane (68.98275ms)
+✔ outlane widths below entrance exceed ball diameter with margin (0.05925ms)
+✔ center save clears both held and returning flippers without a downstroke collision (73.479167ms)
+✔ held buttons cannot pinch the ball permanently (9812.230375ms)
+✔ twenty seeded incoming balls measure physical contact and controlled return (4057.766334ms)
+✔ both flippers cradle passively without repeated coil fire and release naturally (924.625958ms)
+✔ release timing produces distinct aimed reflip shots on both sides (536.330625ms)
+✔ curved sling and inlane have a full ball-width passage with margin (1.064667ms)
+✔ rising shots gain energy toward the tip without exceeding the world limit (264.752833ms)
+✔ five real cradle-reflip timings traverse the S ramp, cradle again and re-fire (2662.665708ms)
+✔ both flippers can reach upper lanes and bumper routes around reference triangle (29918.102292ms)
+✔ shooter corner backing cannot retain a ball outside the bend (1690.302083ms)
+✔ no autoplay, allocation or resume without a trusted input gesture (0.573209ms)
+✔ all cabinet events have bounded short effects and unknown events are ignored (0.616542ms)
+✔ repeat rate limits and a hard voice cap prevent audio storms (0.099709ms)
+✔ mute and pause stop active voices; unmute/unpause need a gesture (0.149833ms)
+✔ saved mute and unavailable WebAudio/storage fail silently (0.159084ms)
+✔ pending resume cannot restart sound after pause or disposal (0.161958ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 137828.925042

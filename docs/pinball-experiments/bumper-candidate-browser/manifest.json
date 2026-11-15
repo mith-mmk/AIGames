@@ -1,0 +1,108 @@
+{
+  "packetFiles": [
+    {
+      "path": "README.md",
+      "sha256": "9234b671e5cb2de8d36f9de5577a4611a809a2ab77d6c48499a1c72b10a28fca",
+      "bytes": 4622
+    },
+    {
+      "path": "comparison.json",
+      "sha256": "c6fb951fc9c690eb15604227d94dc3d939326293f8d8c102e8240e51713fb66a",
+      "bytes": 24832
+    },
+    {
+      "path": "p0.75-d44-contact-bumper.png",
+      "sha256": "527a99968ab85f5b86ae2486536aff4916d2c9ffd35d378b28f000cc1c2c3c93",
+      "bytes": 595592
+    },
+    {
+      "path": "p0.75-d44-contacts.json.gz",
+      "sha256": "0088dea93e92a158ecb5060e77fd898a4ac1869876fa782ce7504ab372a3c2e0",
+      "bytes": 33879
+    },
+    {
+      "path": "p0.75-d44-samples.json.gz",
+      "sha256": "ad471412f42b8a40f58636f7d7848e974332d84de4b8f6c0a897d7c98a907809",
+      "bytes": 263763
+    },
+    {
+      "path": "p1-d0-contact-flipper.png",
+      "sha256": "c7a28a71c42be7990f164ad54fb311e3a4fb952ede4c940e12354819cfe29825",
+      "bytes": 592820
+    },
+    {
+      "path": "p1-d0-contacts.json.gz",
+      "sha256": "c20909cc6e6da6058a96c08c998ee885ecba8b0295397735e09caf65d1d201d5",
+      "bytes": 4942
+    },
+    {
+      "path": "p1-d0-samples.json.gz",
+      "sha256": "536969e11b79cf6c022a01b9fb183759c62137a3ea6213b74927a58693757732",
+      "bytes": 168721
+    },
+    {
+      "path": "replay.cjs",
+      "sha256": "809d46e9beaa5e122792493980cd681c60d511c1c7b96fcb333985531bc07d64",
+      "bytes": 8224
+    },
+    {
+      "path": "results.json",
+      "sha256": "00fd0ca5ad630775fe0495e73a0122120f00c9f7b08f31c81b0ee4c0095cb683",
+      "bytes": 102030
+    },
+    {
+      "path": "served-source.json",
+      "sha256": "57e5e38b681c49240bec85f6afd6581db57b013cd5865462be5a2d9adce93278",
+      "bytes": 588
+    }
+  ],
+  "originalEvidence": [
+    {
+      "path": "artifacts/pinball/contact-feel-candidate-20261115T231542/play.cjs",
+      "sha256": "86e706cf98f523320df34503d993b93e7918e2a5156bd74541ac5f70fa923e0f",
+      "bytes": 8038
+    },
+    {
+      "path": "artifacts/pinball/contact-feel-candidate-20261115T231542/results.json",
+      "sha256": "00fd0ca5ad630775fe0495e73a0122120f00c9f7b08f31c81b0ee4c0095cb683",
+      "bytes": 102030
+    },
+    {
+      "path": "artifacts/pinball/contact-feel-candidate-20261115T231542/run.log",
+      "sha256": "e2f74b0e0bdf4581954f45112302af281bd8787810f26996cae10142e40e9024",
+      "bytes": 6353
+    },
+    {
+      "path": "artifacts/pinball/contact-feel-candidate-20261115T231542/served-source.json",
+      "sha256": "57e5e38b681c49240bec85f6afd6581db57b013cd5865462be5a2d9adce93278",
+      "bytes": 588
+    }
+  ],
+  "baselineEvidence": [
+    {
+      "path": "artifacts/pinball/contact-feel-20261115T231114/play.cjs",
+      "sha256": "7943a5f1ab9f7e4974f67b2cb3a8ce541535014e651a91aa951905cf6c7b952a",
+      "bytes": 7121
+    },
+    {
+      "path": "artifacts/pinball/contact-feel-20261115T231114/results.json",
+      "sha256": "d39856d81b3cd3ff8574b34ee49bd791141548bd8d4a299c1f281f4af26aba0a",
+      "bytes": 128651
+    },
+    {
+      "path": "artifacts/pinball/contact-feel-20261115T231114/p0.75-d44-contacts.json.gz",
+      "sha256": "847f264fd28619903d13dfe5b86a30e3ff7187b9856d0f6d671fa29f83c7036c",
+      "bytes": 86901
+    },
+    {
+      "path": "artifacts/pinball/contact-feel-20261115T231114/p1-d0-contacts.json.gz",
+      "sha256": "d5fc56f2dabadfd6faea7876c88170dc97e9177cdac08a7009f67fd1ac749499",
+      "bytes": 4648
+    }
+  ],
+  "candidateLoader": {
+    "path": "artifacts/pinball/contact-strength-a1fb6bd/bumper-loader.mjs",
+    "sha256": "da3a0ed75804908f2719fee586f8d2445778dfbf2dc6736efe80134e8fb6a5fe",
+    "bytes": 667
+  }
+}
