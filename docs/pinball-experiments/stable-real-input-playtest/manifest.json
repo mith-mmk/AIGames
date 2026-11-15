@@ -1,0 +1,82 @@
+{
+  "algorithm": "SHA-256",
+  "packetFiles": [
+    {
+      "path": "README.md",
+      "sha256": "a04b9b4c68d071bef6bf6864ded7c8d1e703e12cc798d368f58c6d135c616d5e",
+      "bytes": 4914
+    },
+    {
+      "path": "desktop-ready.png",
+      "sha256": "6447d38fe25a18c654f0ed9bdf1e0798d48aa05cfd94c043e5bf55e4de4517d3",
+      "bytes": 742725
+    },
+    {
+      "path": "extra.json",
+      "sha256": "48e4e50e8ee9c145e376f69768333e9271f7658229d874bdd2a99247a47c7714",
+      "bytes": 831
+    },
+    {
+      "path": "mobile-playing.png",
+      "sha256": "248cc60faef2c7ce03bc4d8d56ab9b686386026d13f2f1f9a024c080a785b1c0",
+      "bytes": 253384
+    },
+    {
+      "path": "mobile-ready-settled.png",
+      "sha256": "19501591794aaade8554b057680c5c353ccc3a70b53fd1aab8c3e9c5f8f358d4",
+      "bytes": 252670
+    },
+    {
+      "path": "play.cjs",
+      "sha256": "f8604885ea91b39cdb6f08a445e668bb9efcd1d5f5bfacbc6b8d85c5a86f1c74",
+      "bytes": 5326
+    },
+    {
+      "path": "repeated-flippers-gameover.png",
+      "sha256": "230a5bacaad2b09a25279bbde4008b32c31cd419f08413b60721ebf3258ce825",
+      "bytes": 697628
+    },
+    {
+      "path": "summary.json",
+      "sha256": "376ee78edcc95c8daa70193a871d068f7c56ef77d0297bad052eef3e8c076393",
+      "bytes": 6143
+    }
+  ],
+  "originalEvidence": [
+    {
+      "path": "artifacts/pinball/realinput-c92c4ad/play.cjs",
+      "sha256": "d41e932592b046d2d6e813919c2fcf9adfc1a823d67cac6bcf1a288ab319e5b9",
+      "bytes": 5109
+    },
+    {
+      "path": "artifacts/pinball/realinput-c92c4ad/report.json",
+      "sha256": "940267e1e06e5bb1552836c610069486c5a2c89ff5edfea7979ad9799f788cdb",
+      "bytes": 50847
+    },
+    {
+      "path": "artifacts/pinball/realinput-c92c4ad/run.log",
+      "sha256": "fe8618a1303cbafbdcd0e9b6309ea9385afb4e27a9bda84003c990244a002270",
+      "bytes": 33553
+    },
+    {
+      "path": "artifacts/pinball/realinput-c92c4ad/extra.cjs",
+      "sha256": "75295c5c869e355c21171c076b2d9a25e303e6cc82bd00f0d4e39ccb01be046b",
+      "bytes": 1875
+    },
+    {
+      "path": "artifacts/pinball/realinput-c92c4ad/extra.json",
+      "sha256": "48e4e50e8ee9c145e376f69768333e9271f7658229d874bdd2a99247a47c7714",
+      "bytes": 831
+    }
+  ],
+  "adaptation": {
+    "originalScript": "artifacts/pinball/realinput-c92c4ad/play.cjs",
+    "archivedScript": "play.cjs",
+    "changes": [
+      "Source web root resolves from process.cwd() instead of original output directory relative path.",
+      "Output directory is a timestamped ignored artifacts/pinball/stable-input-replay-<timestamp> directory, created without recursive/reuse for the leaf; existing leaf raises an error.",
+      "Print output destination. No input sequence changes."
+    ],
+    "verification": "Syntax check only; no extra gameplay rerun."
+  }
+}

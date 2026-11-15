@@ -1,0 +1,312 @@
+[
+  {
+    "test": "pause-frozen",
+    "before": {
+      "phase": "paused",
+      "ball": 1,
+      "score": 0,
+      "event": "BALL 1",
+      "pos": {
+        "x": 2.5299999713897705,
+        "y": 0.17102906107902527,
+        "z": 0.4781118929386139
+      },
+      "velocity": {
+        "x": 1.4885919163987182e-9,
+        "y": 0.0000014662980447610607,
+        "z": -19.68151092529297
+      },
+      "returned": false,
+      "save": 0,
+      "sideSave": 0,
+      "events": [],
+      "left": "true",
+      "right": "true"
+    },
+    "after": {
+      "phase": "paused",
+      "ball": 1,
+      "score": 0,
+      "event": "BALL 1",
+      "pos": {
+        "x": 2.5299999713897705,
+        "y": 0.17102906107902527,
+        "z": 0.4781118929386139
+      },
+      "velocity": {
+        "x": 1.4885919163987182e-9,
+        "y": 0.0000014662980447610607,
+        "z": -19.68151092529297
+      },
+      "returned": false,
+      "save": 0,
+      "sideSave": 0,
+      "events": [],
+      "left": "true",
+      "right": "true"
+    }
+  },
+  {
+    "test": "resume-released",
+    "phase": "playing",
+    "ball": 1,
+    "score": 0,
+    "event": "BALL 1",
+    "pos": {
+      "x": 2.5299999713897705,
+      "y": 0.1687336415052414,
+      "z": -3.1329598426818848
+    },
+    "velocity": {
+      "x": 5.198534491768214e-9,
+      "y": -0.10142919421195984,
+      "z": -16.448772430419922
+    },
+    "returned": false,
+    "save": 0,
+    "sideSave": 0,
+    "events": [],
+    "left": "false",
+    "right": "false"
+  },
+  {
+    "test": "no-flippers",
+    "done": true,
+    "seconds": 28.844,
+    "launches": 3,
+    "phase": "gameover",
+    "ball": 3,
+    "score": 1725,
+    "event": "GAME OVER",
+    "pos": {
+      "x": 2.5299999713897705,
+      "y": 0.17499999701976776,
+      "z": 4.425000190734863
+    },
+    "velocity": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "returned": false,
+    "save": 1,
+    "sideSave": 0,
+    "events": [
+      "contact-6",
+      "contact-7",
+      "contact-8",
+      "contact-9",
+      "save-10",
+      "contact-11",
+      "contact-12",
+      "contact-13",
+      "contact-14",
+      "contact-15",
+      "contact-16",
+      "contact-17",
+      "contact-18",
+      "contact-19"
+    ],
+    "left": "false",
+    "right": "false"
+  },
+  {
+    "test": "repeated-flippers",
+    "done": true,
+    "seconds": 40.19,
+    "launches": 3,
+    "phase": "gameover",
+    "ball": 3,
+    "score": 2450,
+    "event": "GAME OVER",
+    "pos": {
+      "x": 2.5299999713897705,
+      "y": 0.17499999701976776,
+      "z": 4.425000190734863
+    },
+    "velocity": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "returned": false,
+    "save": 1,
+    "sideSave": 0,
+    "events": [
+      "contact-20",
+      "contact-21",
+      "contact-22",
+      "contact-23",
+      "contact-24",
+      "contact-25",
+      "contact-26",
+      "contact-27",
+      "contact-28",
+      "contact-29",
+      "contact-30",
+      "contact-31",
+      "contact-32",
+      "contact-33",
+      "contact-34",
+      "contact-35",
+      "contact-36",
+      "contact-37",
+      "save-38",
+      "contact-39",
+      "contact-40",
+      "contact-41",
+      "contact-42",
+      "contact-43",
+      "contact-44",
+      "contact-45"
+    ],
+    "left": "false",
+    "right": "false"
+  },
+  {
+    "test": "restart",
+    "phase": "ready",
+    "ball": 1,
+    "score": 0,
+    "event": "発射してスタート",
+    "pos": {
+      "x": 2.5299999713897705,
+      "y": 0.17499999701976776,
+      "z": 4.425000190734863
+    },
+    "velocity": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "returned": false,
+    "save": 0,
+    "sideSave": 0,
+    "events": [],
+    "left": "false",
+    "right": "false"
+  },
+  {
+    "test": "mobile-layout",
+    "layout": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "controls": [
+        {
+          "id": "left",
+          "rect": {
+            "x": 8,
+            "y": 793,
+            "width": 107.890625,
+            "height": 47,
+            "top": 793,
+            "right": 115.890625,
+            "bottom": 840,
+            "left": 8
+          }
+        },
+        {
+          "id": "launch",
+          "rect": {
+            "x": 121.890625,
+            "y": 793,
+            "width": 146.234375,
+            "height": 47,
+            "top": 793,
+            "right": 268.125,
+            "bottom": 840,
+            "left": 121.890625
+          }
+        },
+        {
+          "id": "right",
+          "rect": {
+            "x": 274.125,
+            "y": 793,
+            "width": 107.875,
+            "height": 47,
+            "top": 793,
+            "right": 382,
+            "bottom": 840,
+            "left": 274.125
+          }
+        }
+      ]
+    }
+  },
+  {
+    "test": "touch-launch",
+    "phase": "playing",
+    "ball": 1,
+    "score": 0,
+    "event": "BALL 1",
+    "pos": {
+      "x": 2.5299999713897705,
+      "y": 0.17262572050094604,
+      "z": 4.745177268981934
+    },
+    "velocity": {
+      "x": 0,
+      "y": 0,
+      "z": -23
+    },
+    "returned": false,
+    "save": 0,
+    "sideSave": 0,
+    "events": [],
+    "left": "false",
+    "right": "false"
+  },
+  {
+    "test": "multi-touch-held",
+    "phase": "playing",
+    "ball": 1,
+    "score": 0,
+    "event": "BALL 1",
+    "pos": {
+      "x": 2.5299999713897705,
+      "y": 0.171085387468338,
+      "z": 0.6426959037780762
+    },
+    "velocity": {
+      "x": -5.258768975835437e-10,
+      "y": -3.7215686088387656e-9,
+      "z": -19.818199157714844
+    },
+    "returned": false,
+    "save": 0,
+    "sideSave": 0,
+    "events": [],
+    "left": "true",
+    "right": "true"
+  },
+  {
+    "test": "multi-touch-released",
+    "phase": "playing",
+    "ball": 1,
+    "score": 400,
+    "event": "CENTER SAVE",
+    "pos": {
+      "x": 0.9134752154350281,
+      "y": 0.17004968225955963,
+      "z": 4.104840278625488
+    },
+    "velocity": {
+      "x": 0.44796597957611084,
+      "y": 4.186764712699187e-9,
+      "z": 4.440186977386475
+    },
+    "returned": false,
+    "save": 1,
+    "sideSave": 0,
+    "events": [
+      "contact-46",
+      "contact-47",
+      "contact-48",
+      "contact-49",
+      "save-50"
+    ],
+    "left": "false",
+    "right": "false"
+  }
+]
