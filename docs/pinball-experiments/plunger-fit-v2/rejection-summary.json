@@ -1,0 +1,94 @@
+{
+  "status": "REJECTED; do not adopt",
+  "fullTests": {
+    "tests": 224,
+    "passed": 220,
+    "failed": 4,
+    "inventoryContractFailures": 1,
+    "functionalRampRelease83Failures": 3
+  },
+  "baselineNatural54": {
+    "games": 54,
+    "finished": 54,
+    "stalled": 0,
+    "zeroScore": 0,
+    "score": 169700,
+    "ramps": 61,
+    "lanes": 301,
+    "bumpers": 235,
+    "shots": 284,
+    "seconds": 3460.891666666845,
+    "liveResets": 0,
+    "hardwareContactEvents": 87,
+    "hardwareContactTicks": 643
+  },
+  "candidateNatural54": {
+    "games": 54,
+    "finished": 53,
+    "stalled": 0,
+    "zeroScore": 0,
+    "score": 152400,
+    "ramps": 48,
+    "lanes": 291,
+    "bumpers": 217,
+    "shots": 218,
+    "seconds": 2995.4500000000435,
+    "liveResets": 0,
+    "hardwareContactEvents": 76,
+    "hardwareContactTicks": 499
+  },
+  "correctedElevatedY048": {
+    "cases": 20,
+    "baseline": {
+      "initialLegal": 20,
+      "stalledBehindTip": 20,
+      "returned": 0,
+      "drained": 0
+    },
+    "candidate": {
+      "initialLegal": 20,
+      "stalledBehindTip": 18,
+      "returned": 0,
+      "drained": 2
+    }
+  },
+  "invalidImportRuns": "Excluded: --import did not register loader hooks, so these did not exercise candidate",
+  "lint": "One unused T import in mapped helper; map intentionally unchanged",
+  "phoneVerified": false,
+  "unfinishedSession": {
+    "power": 0.65,
+    "delay": 82,
+    "phase": "playing",
+    "ball": 2,
+    "seconds": 180.00000000000063,
+    "score": 8075,
+    "lanes": 0,
+    "bumpers": 1,
+    "ramps": 15,
+    "shots": 22,
+    "launches": 2,
+    "liveResets": 0,
+    "stalled": false,
+    "hardwareContactTicks": 3,
+    "hardwareContactEvents": 3,
+    "physicsMetrics": {
+      "rampTraversals": 15,
+      "flipperContacts": [
+        44,
+        18
+      ],
+      "activeFlipperContacts": [
+        21,
+        10
+      ],
+      "coilImpulses": [
+        21,
+        10
+      ],
+      "upfieldReturns": 30
+    },
+    "kickbackUses": 1,
+    "sideSaveUses": 0
+  },
+  "unfinishedInterpretation": "Active at180s,15 ramps,22 controller release-stage entries; not stalled. Completion-count difference alone is not classified as a failure."
+}

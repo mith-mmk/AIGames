@@ -1,0 +1,676 @@
+[
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 4.9,
+      "vx": 0,
+      "vy": -2,
+      "vz": -2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.525651216506958,
+        "y": 0.171451598405838,
+        "z": 5.256157875061035
+      },
+      "v": {
+        "x": 0.0004993104375898838,
+        "y": 0.000023195272660814226,
+        "z": 0.000024702361770323478
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.241666666666666,
+    "stalledBehindTip": true,
+    "contacts": [
+      "bored-mount-foot",
+      "fixed-spring-seat"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 4.9,
+      "vx": 0,
+      "vy": -2,
+      "vz": 2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.547919988632202,
+        "y": 0.17143286764621735,
+        "z": 5.256150722503662
+      },
+      "v": {
+        "x": -0.0002228613884653896,
+        "y": 0.000017020964151015505,
+        "z": 0.000012841303941968363
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 6.525,
+    "stalledBehindTip": true,
+    "contacts": [
+      "fixed-spring-seat",
+      "bored-mount-foot"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 4.9,
+      "vx": -1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.5217292308807373,
+        "y": 0.17145073413848877,
+        "z": 5.256158828735352
+      },
+      "v": {
+        "x": 0.00014199604629538953,
+        "y": 0.000016571431842749007,
+        "z": 0.000018872839063988067
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.583333333333333,
+    "stalledBehindTip": true,
+    "contacts": [
+      "fixed-spring-seat",
+      "bored-mount-foot"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 4.9,
+      "vx": 1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.5471463203430176,
+        "y": 0.17144222557544708,
+        "z": 5.256175518035889
+      },
+      "v": {
+        "x": 0.0020621935836970806,
+        "y": -0.000011594842362683266,
+        "z": -0.00000929718680708902
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.525,
+    "stalledBehindTip": true,
+    "contacts": [
+      "bored-mount-foot",
+      "fixed-spring-seat"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.15,
+      "vx": 0,
+      "vy": -2,
+      "vz": -2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.594634771347046,
+        "y": 0.17140017449855804,
+        "z": 5.256049633026123
+      },
+      "v": {
+        "x": 0.0006289223092608154,
+        "y": -5.306175125951995e-7,
+        "z": -0.0000029384543722699163
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.675,
+    "stalledBehindTip": true,
+    "contacts": [
+      "fixed-spring-seat",
+      "bored-mount-foot"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.15,
+      "vx": 0,
+      "vy": -2,
+      "vz": 2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.580287456512451,
+        "y": 0.1712881475687027,
+        "z": 5.255740642547607
+      },
+      "v": {
+        "x": 0.0006883283494971693,
+        "y": 0.000024811626644805074,
+        "z": 0.00006851248326711357
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.216666666666667,
+    "stalledBehindTip": true,
+    "contacts": [
+      "fixed-spring-seat",
+      "bored-mount-foot"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.15,
+      "vx": -1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.521615743637085,
+        "y": 0.17147251963615417,
+        "z": 5.256185054779053
+      },
+      "v": {
+        "x": 0.00009382563439430669,
+        "y": -0.00003275970811955631,
+        "z": -0.000020901114112348296
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.775,
+    "stalledBehindTip": true,
+    "contacts": [
+      "fixed-spring-seat",
+      "bored-mount-foot"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.15,
+      "vx": 1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.5386431217193604,
+        "y": 0.17144249379634857,
+        "z": 5.256152629852295
+      },
+      "v": {
+        "x": 0.0014333260478451848,
+        "y": 0.00002392353599134367,
+        "z": 0.000021354124328354374
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.558333333333334,
+    "stalledBehindTip": true,
+    "contacts": [
+      "fixed-spring-seat",
+      "bored-mount-foot"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.4,
+      "vx": 0,
+      "vy": -2,
+      "vz": -2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.521089553833008,
+        "y": 0.17147371172904968,
+        "z": 5.2561821937561035
+      },
+      "v": {
+        "x": 0.00010430608381284401,
+        "y": -0.00004195100336801261,
+        "z": 0.000029170292691560462
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.391666666666667,
+    "stalledBehindTip": true,
+    "contacts": [
+      "fixed-spring-seat",
+      "bored-mount-foot"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.4,
+      "vx": 0,
+      "vy": -2,
+      "vz": 2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.5696017742156982,
+        "y": 0.1712699979543686,
+        "z": 6.016180515289307
+      },
+      "v": {
+        "x": -0.0001308587525272742,
+        "y": -0.000018357226508669555,
+        "z": -0.00006325716094579548
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.516666666666667,
+    "stalledBehindTip": true,
+    "contacts": [
+      "mounting-boss",
+      "hollow-guide-tube"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.4,
+      "vx": -1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 9,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0.008333333333333333,
+    "stalledBehindTip": false,
+    "contacts": [
+      "fixed-spring-seat",
+      "mounting-boss"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.4,
+      "vx": 1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.5950000286102295,
+        "y": 0.1713748276233673,
+        "z": 5.255995273590088
+      },
+      "v": {
+        "x": 0.0000011251049727434292,
+        "y": 0.0000019794633772107773,
+        "z": 0.000008862223694450222
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 6.991666666666666,
+    "stalledBehindTip": true,
+    "contacts": [
+      "fixed-spring-seat",
+      "mounting-boss",
+      "bored-mount-foot"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.65,
+      "vx": 0,
+      "vy": -2,
+      "vz": -2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.5947937965393066,
+        "y": 0.17126984894275665,
+        "z": 6.016180515289307
+      },
+      "v": {
+        "x": -0.00002363106432312634,
+        "y": -0.000018717357306741178,
+        "z": -0.00006448281783377752
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.641666666666667,
+    "stalledBehindTip": true,
+    "contacts": [
+      "mounting-boss",
+      "hollow-guide-tube",
+      "front-folded-cross-rail"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.65,
+      "vx": 0,
+      "vy": -2,
+      "vz": 2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.5223469734191895,
+        "y": 0.17126984894275665,
+        "z": 6.016183376312256
+      },
+      "v": {
+        "x": 0.000040535112930228934,
+        "y": 0.000004378772700874833,
+        "z": 0.00002063355532300193
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.708333333333333,
+    "stalledBehindTip": true,
+    "contacts": [
+      "formed-apron-wing-1",
+      "apron-folded-front-1"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.65,
+      "vx": -1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.588524341583252,
+        "y": 0.17126987874507904,
+        "z": 6.016180515289307
+      },
+      "v": {
+        "x": -0.00053483119700104,
+        "y": -0.00001853488720371388,
+        "z": -0.00006385552114807069
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.683333333333334,
+    "stalledBehindTip": true,
+    "contacts": [
+      "hollow-guide-tube",
+      "mounting-boss",
+      "front-folded-cross-rail"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.48,
+      "z": 5.65,
+      "vx": 1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.52245831489563,
+        "y": 0.17126968502998352,
+        "z": 6.016186237335205
+      },
+      "v": {
+        "x": 0.000045331453293329105,
+        "y": 0.0000038728844629076775,
+        "z": 0.000013335949915926903
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.066666666666666,
+    "stalledBehindTip": true,
+    "contacts": [
+      "hollow-guide-tube",
+      "mounting-boss",
+      "front-folded-cross-rail",
+      "formed-apron-wing-1",
+      "apron-folded-front-1"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.46,
+      "y": 0.48,
+      "z": 5.35,
+      "vx": 0,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.566084861755371,
+        "y": 0.17131337523460388,
+        "z": 5.25583553314209
+      },
+      "v": {
+        "x": 1.6897099897050794e-7,
+        "y": -0.0000015127935739656095,
+        "z": -0.000003839898909063777
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.325,
+    "stalledBehindTip": true,
+    "contacts": [
+      "fixed-spring-seat",
+      "hollow-guide-tube",
+      "mounting-boss",
+      "bored-mount-foot"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.46,
+      "y": 0.48,
+      "z": 5.35,
+      "vx": 0,
+      "vy": -2,
+      "vz": 3
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 3,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0.008333333333333333,
+    "stalledBehindTip": false,
+    "contacts": [
+      "fixed-spring-seat",
+      "mounting-boss"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.6,
+      "y": 0.48,
+      "z": 5.35,
+      "vx": 0,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.5795814990997314,
+        "y": 0.17129240930080414,
+        "z": 5.255623817443848
+      },
+      "v": {
+        "x": 0.0007815336575731635,
+        "y": 0.00001829357643146068,
+        "z": 0.0000423180426878389
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 6.883333333333334,
+    "stalledBehindTip": true,
+    "contacts": [
+      "fixed-spring-seat",
+      "hollow-guide-tube",
+      "mounting-boss",
+      "bored-mount-foot"
+    ]
+  },
+  {
+    "spec": {
+      "x": 2.6,
+      "y": 0.48,
+      "z": 5.35,
+      "vx": 0,
+      "vy": -2,
+      "vz": 3
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.5222301483154297,
+        "y": 0.17126984894275665,
+        "z": 6.016180515289307
+      },
+      "v": {
+        "x": 0.000034153028536820784,
+        "y": -0.000018211567294201814,
+        "z": -0.00006272975588217378
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.491666666666666,
+    "stalledBehindTip": true,
+    "contacts": [
+      "fixed-spring-seat",
+      "mounting-boss",
+      "hollow-guide-tube",
+      "front-folded-cross-rail",
+      "formed-apron-wing-1",
+      "apron-folded-front-1"
+    ]
+  }
+]

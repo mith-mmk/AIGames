@@ -1,0 +1,1 @@
+Full identical replay PASS. Preflight later destination conflict prevents ALL earlier file/directory writes; existing evidence unchanged PASS. New and byte-identical repeated restoration PASS. Exclusive create prevents clobber under concurrent creation.

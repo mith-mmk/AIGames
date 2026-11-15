@@ -1,0 +1,474 @@
+(node:39016) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ bumper common mounting plate is below the full-size board and connects the coil bracket (28.44575ms)
+✔ bumper plate has real through holes and separate bearing washers and seated screw heads (42.663541ms)
+✔ bumper switch stem and leaf clear the mounting slot throughout directional skirt motion (2030.830333ms)
+✔ bumper moving yokes stay separated from plate and fixed mounts through full stroke (3.457291ms)
+✔ bumper bracket fillet welds intersect both fixed plate and bracket (6.166375ms)
+(node:39017) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ play-facing solid cabinet backing and cap match actual collider bounds (330.905333ms)
+✔ visible side and rear faces and cap agree with solid rays without an invisible upper wall (204.737667ms)
+✔ cabinet cap retains flush seats, hex heads and enclosed shanks (44.419459ms)
+(node:39018) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ installed board fasteners retain exact original mesh topology, positions and open washer contacts (205.017209ms)
+✔ four accessible left board mounts physically contact clear incoming balls without resets (847.91325ms)
+✔ physical shooter rail excludes the three historical right fastener starts (139.214583ms)
+(node:39019) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ MechanicalFlipper: finite standalone geometry, motion and owned-resource cleanup (88.370458ms)
+✔ MechanicalBumper: finite standalone geometry, motion and owned-resource cleanup (6.910833ms)
+✔ MechanicalPlunger: finite standalone geometry, motion and owned-resource cleanup (24.819208ms)
+✔ MechanicalSling: finite standalone geometry, motion and owned-resource cleanup (60.441542ms)
+✔ MechanicalTarget: finite standalone geometry, motion and owned-resource cleanup (8.4615ms)
+✔ MechanicalRamp: finite standalone geometry, motion and owned-resource cleanup (73.791667ms)
+✔ MechanicalWireform: finite standalone geometry, motion and owned-resource cleanup (13.429292ms)
+✔ MechanicalCabinet: finite standalone geometry, motion and owned-resource cleanup (72.708ms)
+✔ mechanical model invalid scalar dimensions are rejected (0.151334ms)
+✔ cabinet inspection visibility survives production static batching (185.739125ms)
+✔ sling silver cover, gold skirt and corner lamps retain functional rubber/kicker assembly (5.747791ms)
+✔ bumper lens and bounded internal lamp provide warm light without extra shadows (7.830125ms)
+(node:39020) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ feedback reads accepted events once without changing scores (1.563958ms)
+✔ feedback milestone and held flipper edges are bounded (0.207959ms)
+(node:39021) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ flipper entire fixed actuator now clears the board and has four connected mounting stacks (123.919875ms)
+✔ flipper spacers avoid fixed coil hardware and complete crank-link stroke (34.979083ms)
+✔ flipper board holes and mounting bolts are coaxial with real clearance (29.657917ms)
+✔ flipper mounting frame clears installed cabinet solid bounds (156.416125ms)
+✔ flipper lowered actuator keeps owned moving meshes live after production batching (119.743959ms)
+(node:39022) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ rigid animation preserves Chappy's detail and stays within 35 meshes (81.693208ms)
+✔ pause freezes, reduced motion suppresses, restart resets, idle is playing-only (48.665292ms)
+✔ room forwards both update contracts and reset aliases (14.795834ms)
+(node:39023) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ five bounded missions award base points and each completion bonus exactly once (0.602083ms)
+✔ duplicate, invalid, paused and ready events cannot progress missions or score (0.08125ms)
+✔ mission progress and deduplication survive drains and shooter return; restart resets everything (0.075709ms)
+✔ lane mission counts new traversals even if a lane was lit before the mission (0.051333ms)
+✔ target mission grants exactly one left save independent of center save (0.065709ms)
+✔ bumper challenge earns x2 after five hits; varied mechanisms earn x3 starting with the next hit (0.101625ms)
+✔ multipliers never multiply mission or lane-set bonuses and saves do not progress challenges (0.056875ms)
+✔ duplicate and paused events cannot advance multiplier and weak returns preserve both challenges (0.057292ms)
+✔ drain, TILT and restart reset multiplier while preserving story progress between balls (0.5195ms)
+(node:39024) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ straight structural tubes retain endpoints/radius without redundant axial tessellation (13.182875ms)
+✔ installed shooter roof uses three closed capsule stocks on the existing physical axes (756.100625ms)
+✖ installed rollover bars are closed stocks on actual capsule axes and retain eight original mounts (607.822042ms)
+(node:39025) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ legacy mini bumper pocket is removed for reference standups (0.5455ms)
+✔ earned side kickback reverses an outlane descent once, uncharged still drains (2180.193875ms)
+✔ out-of-order or ground ramp contacts never count a complete traversal (124.318375ms)
+✔ complete physical ramp awards exactly once and only after its exit lip (798.29075ms)
+✔ inlane switch scores only a fresh real crossing, not sitting or pausing (70.941375ms)
+✔ side coils are bounded, horizontal and stronger than their former impulse (68.421917ms)
+✔ visual bumper notifications are accepted-contact-only, bounded and restart clears (53.371ms)
+✔ bumper notification uses earned contact multiplier, not mission bonus (48.398375ms)
+(node:39026) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ printed IN bands mirror the verified centerline and add no raised route (0.711875ms)
+✔ larger lane labels follow the open passages without printing over rails (16.217ms)
+✔ actual left IN canvas arrow maps to the intended table direction (1.953709ms)
+✔ actual left OUT canvas arrow maps to the intended table direction (0.219041ms)
+✔ actual right IN canvas arrow maps to the intended table direction (0.1645ms)
+✔ actual right OUT canvas arrow maps to the intended table direction (0.102875ms)
+(node:39027) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ archived art ramp control points stay inside table (0.643917ms)
+✔ bumpers have ball clearance from each other (0.130833ms)
+✔ preview initializes, clamps long frames and releases inputs (0.13275ms)
+✔ both flippers rise toward negative-Z playfield when pressed (0.111667ms)
+✔ archived art hardware preserves its original clearance (0.42475ms)
+✔ archived preview curve clears archived sling art (18.3515ms)
+✔ reference triangle retains side passages and asymmetric target banks (1.017375ms)
+(node:39028) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ sling rubber clears the root-to-center shot corridor on both sides (2.418083ms)
+✔ both inlanes feed the flippers at three speeds rather than bypass their pivots (7048.45825ms)
+✔ genuine outside lanes still drain without a flipper or invisible rescue (246.450166ms)
+✔ inside heel approach cannot leak sideways past the root cheek (148.105333ms)
+✔ restored lane mouths pass descending balls without live position rescue (2978.410709ms)
+✔ actual outlane entrance has full ball clearance and mirrored shared paths (0.347917ms)
+✔ historical fixed wire drop is now inside the real tail and is not a valid start (42.196667ms)
+✔ side wire exit drops into the real IN guide and held flipper without rescue (852.518875ms)
+✔ five adjacent redesigned bat shots traverse S, capture and refire the same ball (4303.655459ms)
+✔ old IN approach strikes the outward sling then drains or permits a releasable cradle (1669.066583ms)
+✔ IN floor stripe stays clear of the real rails and sling rubber (1.780292ms)
+✔ current outside wire outlet feeds the held left cradle at three speeds (1122.2715ms)
+✔ lane edge fixtures distinguish genuine mouths from initial rail penetration (34.779125ms)
+✔ offset slow and fast lane entries and lateral approaches remain physical and releasable (17623.43475ms)
+(node:39029) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ lower rails merge six paths with all existing support geometry retained (35.648125ms)
+✔ each lower stock primitive is closed and matches its actual installed collider (433.898417ms)
+(node:39030) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ tapered contact hull matches rubber height and rounded profile (1.222458ms)
+✔ accepted sling and target hits fan out once without duplicate score (260.386875ms)
+✔ pull retracts actual stop and ball follows gravity without position resets (455.001417ms)
+✔ cancelled full pull cannot strand the ball behind the stop (568.2065ms)
+(node:39031) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ installed ramp has matched sheet walls, true paired rails and visible anti-trap base (82.320375ms)
+✔ support columns stay on the perimeter or shooter divider, and beams clear ground balls (114.568541ms)
+✔ production return has an actual open gap, not a hidden supporting floor (102.864458ms)
+✔ standalone paired rails support and roll a ball without any plane collider (77.789375ms)
+✔ all perimeter ramp supports have matching physical posts, arms, collars and feet (36.890208ms)
+✔ acrylic offset walls never fold backwards along the centerline (74.875125ms)
+✔ low base drawing ends at the same complete strip as its collider (70.02775ms)
+✔ compact low nose uses one closed shell and matching convex contact vertices (77.807958ms)
+✔ underfloor bearers, saddles and wire ties share nominal visual and contact stock (60.841959ms)
+✔ low base end cap follows its accessible convex boundary (70.605959ms)
+(node:39032) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ short supports allow eighty nonpenetrating slow wall approaches (21420.9835ms)
+(node:39033) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ nudge warns before tilt, ignores repeats, cools and resets (0.641292ms)
+✔ physical nudge never teleports or scores and paused input is ignored (177.076666ms)
+✔ tilt suppresses coils and scoring then consumes one ball, restart clears (392.634292ms)
+(node:39034) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rules enforce three balls, pause and reset (1.008333ms)
+✔ real launch feeds scoring objects, not a scripted path (748.407667ms)
+✔ physical drain serves next ball and ends after third (98.858791ms)
+✔ both kinematic flippers physically drive ball upfield (249.55125ms)
+✔ pause freezes simulation; resume and restart are deterministic (252.871292ms)
+✔ former left ramp wedge clears naturally without ball search (623.889708ms)
+✔ ninety varied launches drain without stuck recovery or position jumps (47627.05275ms)
+✔ twelve full three-ball sessions end without rescue (15980.823ms)
+✔ side-wall approaches enter genuine outlanes and naturally drain when uncharged (130.029458ms)
+✔ beginner play duration remains controllable across thirty-one powers (36344.558084ms)
+✔ rules deduplicate events, complete lanes, and refill one center save (0.393333ms)
+✔ each physical top lane registers center and edge traversals only once (323.45975ms)
+✔ spinner traversal accelerates rotation once; rotation decays without score farming (35.885958ms)
+✔ charged center saver applies impulse without teleport, then allows real drain (50.22525ms)
+✔ natural shooter launch traverses a top rollover lane (95.434417ms)
+✔ outlane widths below entrance exceed ball diameter with margin (0.082583ms)
+✔ center save clears both held and returning flippers without a downstroke collision (112.940542ms)
+✔ held buttons cannot pinch the ball permanently (11281.6075ms)
+✔ twenty seeded incoming balls measure physical contact and controlled return (4773.563625ms)
+✔ both flippers cradle passively without repeated coil fire and release naturally (1077.999083ms)
+✔ release timing produces distinct aimed reflip shots on both sides (672.172ms)
+✔ curved sling and inlane have a full ball-width passage with margin (1.609167ms)
+✔ rising shots gain energy toward the tip without exceeding the world limit (331.528625ms)
+✖ five real cradle-reflip timings traverse the S ramp, cradle again and re-fire (2263.776833ms)
+✔ both flippers can reach upper lanes and bumper routes around reference triangle (35875.974ms)
+✔ shooter corner backing cannot retain a ball outside the bend (1750.384208ms)
+(node:39035) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ hold charges continuously, repeat cannot reset, and release fires once (0.689ms)
+✔ drag overrides time, can reduce power, and cancellation never fires (0.123542ms)
+✔ low medium high produce distinct physical speeds and weak ball naturally returns (372.420958ms)
+(node:39036) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ missing acrylic contacts lie on real visible exterior faces without duplicating top inner or lip faces (1713.796834ms)
+✔ legal ground and rising airborne balls hit the visible acrylic exterior (899.590208ms)
+(node:39037) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ low housing is closed with the existing deck and partitioned without internal faces (14.313542ms)
+✔ generic installed rows without tangent preserve the exact housing geometry (4.8535ms)
+✔ every installed housing boundary face matches the physical strip union (154.958542ms)
+✔ low housing never projects above the actual acrylic running surface (51.638292ms)
+✔ historical positive-offset tangent start penetrates the deck; common corrected start is legal (306.528417ms)
+✔ one-strip generic housing renders both endpoint caps exactly once (6.945041ms)
+(node:39038) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ right and rear deck repairs preserve every unrelated original triangle and generic rows (13.247917ms)
+✔ repair follows route parameters at alternate sample counts and keeps a closed constant-thickness sheet (16.66625ms)
+✔ three legal zero-speed starts exit the repaired right deck pockets without rescue (1244.807917ms)
+(node:39039) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ exposed ramp hardware shares exact visible triangle geometry and dimensions (320.327292ms)
+✔ legal airborne approaches contact exposed lips straps and bolts rather than pass through (1291.585708ms)
+(node:39040) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rear descent preserves endpoint C1 XZ and gravity-ratio datum (9.808583ms)
+✔ real sheet handoff clears the allowed off-center paired-stock support envelope (2.54125ms)
+✔ seven legal former pocket starts exit without rescue under the unchanged solver (4419.586292ms)
+(node:39041) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ experimental ramp uses continuous finite mesh and adequate channel width (7.199625ms)
+ramp-boundary {"speed":26,"offset":-0.08,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0.08,"outcome":"normal-rollback-relaunch"}
+✔ floor ball passes below rear elevated deck without being lifted (145.364625ms)
+✔ low ramp skirt blocks lateral entry instead of admitting ball under deck (101.562417ms)
+✔ elevated exit releases ball into left lower lane without teleport (106.554208ms)
+✔ 28-speed tangent approaches all complete with lateral tolerance (1477.574833ms)
+✔ 26-speed boundary shots complete honestly or roll back and relaunch normally (1188.768875ms)
+✔ six unassisted launch powers leave the ramp base without permanent stalls (2576.574709ms)
+✔ ground balls approaching low base from high deck side deflect without wedging (1322.643084ms)
+✖ five adjacent real flipper timings traverse the forward S and award once without teleport (2404.338542ms)
+✔ measured ground-level flipper approaches at 28/30 traverse with lateral tolerance (1655.483292ms)
+(node:39042) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ reference cabinet includes supported backbox, speakers, apron and rear tower (68.282125ms)
+✔ score drawing is cached and uses live score plus ball number (42.699958ms)
+✔ formed collection apron preserves central and outlane throats after active drain (33.68025ms)
+✔ short supported cabinet keeps collection apron within its drain opening (28.377459ms)
+✔ inner skyline is a rear-mounted relief outside live board (19.054375ms)
+(node:39043) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ reference ink registers to board, preserves context and draws reference landmarks (3.538167ms)
+✔ reference ink is deterministic and validates canvas dimensions (2.579208ms)
+(node:39044) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ reference banks have three upper wrenches, two middle wrenches and three robots (24.84075ms)
+✔ every installed reference target scores from a real front contact and identifies its moving part (829.469458ms)
+✔ target strike boxes follow declared height without raising the ground contact edge (0.1635ms)
+✔ derived contact bounds match the actual three extruded strike meshes (5.064708ms)
+✔ carrier has formed rim, separate rear plate, fixed studs and a continuous rounded mount (4.108959ms)
+✔ both captured carrier pinch positions drain without rescue (678.60325ms)
+✔ right rear carrier rail retains ball clearance from the full low support base (54.51125ms)
+✔ nine slow approaches behind the right carrier drain without rescue (3087.782458ms)
+✔ captured right target lower-edge wedge releases with the smooth carrier rail (291.543917ms)
+✔ smooth carrier contacts use the same capsule dimensions and placement as rendering (47.703333ms)
+(node:39045) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ workshop structures batch within their scenery budget and preserve QA targets (71.039584ms)
+✔ workshop owns and releases its merged geometries and materials exactly once (30.486ms)
+(node:39046) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ solid shooter rail preserves every old side vertex and adds only outward flat caps (4.113375ms)
+✔ actual octagonal rail hull matches visible side and flat-end rays without capsule inflation (156.843833ms)
+✔ six nonoverlapping ground lateral approaches contact the real external shooter rail (601.887875ms)
+(node:39047) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ initial serve and restart use the visible head contact point (275.790541ms)
+✔ returning ball settles on visible stop without teleport or consuming a ball (354.000416ms)
+✔ weak shot naturally returns to the same stop and full relaunch preserves speed (1157.697041ms)
+(node:39048) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ returned shooter ball rolls to plunger and relaunches in place without consuming a ball (290.014666ms)
+✔ normal drains still consume three balls and restart resets returned-shooter state (81.452042ms)
+✔ returned shooter contains lateral speed -3 (339.084625ms)
+✔ returned shooter contains lateral speed -1 (326.009667ms)
+✔ returned shooter contains lateral speed 1 (300.264625ms)
+✔ returned shooter contains lateral speed 3 (339.952417ms)
+✔ out-of-bounds returned ball cannot strand the game in ready (65.900334ms)
+(node:39049) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ generic sling remains DOM-free and does not own caller maps (20.667792ms)
+✔ installed left and right print changes only UV/material and remains registered after batching (309.502292ms)
+✔ standalone printed sling disposes only its owned texture exactly once (4.292125ms)
+✔ actual installed asset disposal releases both registered print textures (341.038834ms)
+(node:39051) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ no autoplay, allocation or resume without a trusted input gesture (0.662916ms)
+✔ all cabinet events have bounded short effects and unknown events are ignored (0.196333ms)
+✔ repeat rate limits and a hard voice cap prevent audio storms (0.095917ms)
+✔ mute and pause stop active voices; unmute/unpause need a gesture (0.163042ms)
+✔ saved mute and unavailable WebAudio/storage fail silently (0.1735ms)
+✔ pending resume cannot restart sound after pause or disposal (0.177833ms)
+(node:39052) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ finite surface distance distinguishes faces edges vertices and unresolved containment (1.393334ms)
+✔ closed mesh convex and cuboid interior are invalid even without boundary overlap (2.714875ms)
+✔ finite cylinder cap barrel rim and rigid transforms use independent analytic distances (0.242875ms)
+✔ capsule and ball solids reject deep interior and distinguish rounded ends (0.115333ms)
+✔ malformed closed boundaries and unknown shapes fail rather than certify starts (1.949125ms)
+✔ captured open strip reproduces solid-query false penetration without certifying reachability (32.083708ms)
+✔ captured real pillar and wall overlaps remain rejected by independent geometry (0.266875ms)
+✔ accepted c1 historical tangent overlap and corrected deck clearance remain distinguishable (137.987791ms)
+(node:39053) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ right target bank leaves a full ball-width throat beside every main bumper (0.680542ms)
+✔ low-speed balls pass the screenshot throat without rescue or position changes (559.471833ms)
+✔ twenty-one natural launches clear without target-bank stalls or position resets (7510.762292ms)
+✔ ramp crest releases a resting ball without nudge or position rescue (348.060375ms)
+✔ continuous ramp collision meshes share every route row and triangle edge without gaps (35.951916ms)
+(node:39054) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ upper rollover volumes stay in the ground lane below the elevated route (165.339459ms)
+✔ legal ground upper-lane center and edge passes award once at low and high speeds (2174.715958ms)
+✖ five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save (2637.511875ms)
+(node:39055) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ all visible wire capsule axes ends and nominal radii match installed contacts in four meshes (262.016708ms)
+✔ compatibility ramp drawing uses the same four capsule-stock rail geometries (53.911375ms)
+✔ wire pole cleanup preserves every installed vertex normal and nondegenerate face (65.237ms)
+✔ wire retained installed capsule shells stay outward and closed (229.8395ms)
+✔ wire pole cleanup preserves distinct pole fallback and rounded nonpole faces (1.796667ms)
+✔ wire primitive ranges cover empty and mixed concatenated geometry exactly (1.823417ms)
+(node:39056) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "checks": 0,
+  "best": {
+    "gap": null
+  }
+}
+{
+  "meshChecks": 0,
+  "allParts": {
+    "gap": null
+  },
+  "lowest": []
+}
+{
+  "railSamples": 15867,
+  "meshSamples": 71659,
+  "lateralSamples": 2074,
+  "lateralClearance": 0.0928372039896206
+}
+{
+  "physicalPointGap": 0.09299470556859746,
+  "maxSegment": 0.15373067443021712,
+  "coarseGlobalLowerBound": 0.016129368353488896,
+  "continuousLowerBound": 0.09199999262741226,
+  "certifiedSegments": 464
+}
+✔ wire tail preserves prefix, endpoint, position and unit-tangent continuity (6.174875ms)
+✔ wire tail curvature and every physical offset rail progress without folds (45.070417ms)
+✔ sampled wire rails have no self or same-height pair crossing (16.867709ms)
+✔ every physical wire segment clears all visible sling solids by .025 (4297.363416ms)
+(node:39057) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-fit-v2-71245b2/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ workshop scenery has finite attached geometry and stays independent of physics (83.764125ms)
+ℹ tests 224
+ℹ suites 0
+ℹ pass 220
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 162189.178791
+
+✖ failing tests:
+
+test at web/js/pinball/geometry-budget.test.mjs:60:1
+✖ installed rollover bars are closed stocks on actual capsule axes and retain eight original mounts (607.822042ms)
+  AssertionError [ERR_ASSERTION]: render-only correction adds no physical mounts
+  
+  1406 !== 1380
+  
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/geometry-budget.test.mjs:68:12)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1406,
+    expected: 1380,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/physics.test.mjs:387:1
+✖ five real cradle-reflip timings traverse the S ramp, cradle again and re-fire (2263.776833ms)
+  AssertionError [ERR_ASSERTION]: timing 83: crest=false, return=false, floor=false; {"releaseTicks":83,"initialCradle":{"x":-1.055145025253296,"y":0.17120076715946198,"z":4.058163642883301},"linear":{"x":-0.00024242731160484254,"y":-0.000006284006758505711,"z":0.00010629303142195567},"angular":{"x":0.00032089860178530216,"y":0.0015032356604933739,"z":0.0011694766581058502},"time":4.416666666666676,"shot":{"side":0,"along":0.5072361544558875,"faceAngle":-0.5,"aimAngle":-0.6315778471294202,"angularSpeed":12,"speed":32,"p":{"x":-0.6717507839202881,"y":0.17108972370624542,"z":4.489047050476074},"vx":18.89340697376103,"vz":-25.827101519989384},"final":{"x":2.5299999713897705,"y":0.17499999701976776,"z":4.425000190734863}}
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:413:14)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/ramp.test.mjs:119:1
+✖ five adjacent real flipper timings traverse the forward S and award once without teleport (2404.338542ms)
+  AssertionError [ERR_ASSERTION]: natural release 83 did not traverse
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:139:14)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web/js/pinball/upper-lanes.test.mjs:50:1
+✖ five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save (2637.511875ms)
+  AssertionError [ERR_ASSERTION]: same real ramp traversal remains required at release 83
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/upper-lanes.test.mjs:64:14)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

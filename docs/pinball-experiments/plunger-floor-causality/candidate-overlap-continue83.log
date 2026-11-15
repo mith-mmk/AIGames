@@ -1,0 +1,42 @@
+(node:39669) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-floor-causality/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-floor-causality/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ experimental ramp uses continuous finite mesh and adequate channel width (3.0995ms)
+ramp-boundary {"speed":26,"offset":-0.08,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0.08,"outcome":"normal-rollback-relaunch"}
+OBSERVED FAILURE83, CONTINUING84
+✔ floor ball passes below rear elevated deck without being lifted (69.303208ms)
+✔ low ramp skirt blocks lateral entry instead of admitting ball under deck (30.076708ms)
+✔ elevated exit releases ball into left lower lane without teleport (35.006667ms)
+✔ 28-speed tangent approaches all complete with lateral tolerance (647.341583ms)
+✔ 26-speed boundary shots complete honestly or roll back and relaunch normally (556.881042ms)
+✔ six unassisted launch powers leave the ramp base without permanent stalls (1302.630291ms)
+✔ ground balls approaching low base from high deck side deflect without wedging (747.703791ms)
+✖ five adjacent real flipper timings traverse the forward S and award once without teleport (1985.881375ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5460.37775
+
+✖ failing tests:
+
+test at artifacts/pinball/plunger-floor-causality/observe.mjs:9:88
+✖ five adjacent real flipper timings traverse the forward S and award once without teleport (1985.881375ms)
+  AssertionError [ERR_ASSERTION]: natural release 84 did not traverse
+      at file:///Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:139:106
+      at async TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/artifacts/pinball/plunger-floor-causality/observe.mjs:9:125)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,89 @@
+{
+  "status": "Sampled static gates passed; gameplay and missing moving contacts remain open",
+  "sourceMapSha256": "022605fdccd86d5514c6d34820e3edda1d3d1980c577ae0f05eccff85cb92690",
+  "strokeSamples": 101,
+  "springTriangleTests": 89824,
+  "springSupportExemptions": [
+    "Long spring against its original fixed spring seat",
+    "Short spring against original guide end"
+  ],
+  "newFixedContacts": 26,
+  "subsets": [
+    {
+      "name": "formed-apron-wing-1",
+      "min": [
+        2.315,
+        0.15110553025586448,
+        5.89987901392068
+      ],
+      "max": [
+        2.38700008392334,
+        0.24059997498989105,
+        6.0920000076293945
+      ],
+      "triangles": 48,
+      "scope": "Original surface triangles clipped to X >= 2.315; no new closure faces"
+    },
+    {
+      "name": "apron-folded-front-1",
+      "min": [
+        2.315,
+        0.014999997802078724,
+        6.022500038146973
+      ],
+      "max": [
+        2.38700008392334,
+        0.24500000476837158,
+        6.097499847412109
+      ],
+      "triangles": 252,
+      "scope": "Original surface triangles clipped to X >= 2.315; no new closure faces"
+    },
+    {
+      "name": "front-hazard-apron",
+      "min": [
+        2.315,
+        0.20499999821186066,
+        5.815000057220459
+      ],
+      "max": [
+        2.3869998455047607,
+        0.29500001668930054,
+        6.184999942779541
+      ],
+      "triangles": 252,
+      "scope": "Original surface triangles clipped to X >= 2.315; no new closure faces"
+    },
+    {
+      "name": "front-folded-cross-rail",
+      "min": [
+        2.315,
+        0.17000000178813934,
+        6.105000019073486
+      ],
+      "max": [
+        2.950000047683716,
+        0.32499998807907104,
+        6.255000114440918
+      ],
+      "triangles": 20,
+      "scope": "Original surface triangles clipped to X >= 2.315; no new closure faces"
+    }
+  ],
+  "originalHandlesPreserved": true,
+  "controlAndLaunchMethodsByteIdentical": true,
+  "shaftLengthUnchanged": true,
+  "missingMovingBallContacts": [
+    "knob",
+    "shaft",
+    "ferrule",
+    "moving spring seat",
+    "springs"
+  ],
+  "limitations": [
+    "101 discrete poses are not continuous collision proof",
+    "Original moving tip collider is excluded from self-interference tests",
+    "No full regressions/natural54/high-entry diagnostics run by this worker",
+    "No physical phone verification"
+  ]
+}

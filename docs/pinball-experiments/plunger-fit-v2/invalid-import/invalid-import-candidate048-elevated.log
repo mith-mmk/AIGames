@@ -1,0 +1,2 @@
+using deprecated parameters for the initialization function; pass a single object instead
+{"mode":"candidate048","cases":20,"initialLegal":20,"stalledBehindTip":20,"returned":0,"drained":0}

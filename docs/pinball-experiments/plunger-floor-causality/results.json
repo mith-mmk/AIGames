@@ -1,0 +1,1004 @@
+{
+  "baseline-overlap": {
+    "order": [
+      {
+        "world": 0,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 1,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 2,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 3,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 4,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 5,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 6,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 7,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 8,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 9,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 10,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 11,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 12,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 13,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 14,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 15,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 16,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 17,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 18,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 19,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      }
+    ],
+    "results": [
+      {
+        "delay": 80,
+        "ticks": 1211,
+        "last": {
+          "p": [
+            -1.7108838558197021,
+            0.5631636381149292,
+            3.0563127994537354
+          ],
+          "v": [
+            0.25380632281303406,
+            -1.2559715509414673,
+            2.5091054439544678
+          ],
+          "w": [
+            19.64883804321289,
+            -1.7880403995513916,
+            -9.449295997619629
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 81,
+        "ticks": 1087,
+        "last": {
+          "p": [
+            -1.7110644578933716,
+            0.5634074211120605,
+            3.058046817779541
+          ],
+          "v": [
+            0.3464649021625519,
+            -1.2693063020706177,
+            2.9065301418304443
+          ],
+          "w": [
+            22.46240997314453,
+            -1.1838431358337402,
+            -11.273207664489746
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 82,
+        "ticks": 1169,
+        "last": {
+          "p": [
+            -1.7097347974777222,
+            0.5613166689872742,
+            3.061087131500244
+          ],
+          "v": [
+            0.3131675720214844,
+            -1.3966716527938843,
+            2.6925859451293945
+          ],
+          "w": [
+            20.956350326538086,
+            -1.6881091594696045,
+            -10.182613372802734
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 83,
+        "ticks": 1167,
+        "last": {
+          "p": [
+            -1.7096792459487915,
+            0.5594170093536377,
+            3.0609283447265625
+          ],
+          "v": [
+            0.35102808475494385,
+            -1.046181559562683,
+            2.337627649307251
+          ],
+          "w": [
+            16.38103485107422,
+            -0.7579034566879272,
+            -6.2662553787231445
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 84,
+        "ticks": 1185,
+        "last": {
+          "p": [
+            -1.7119359970092773,
+            0.5651630759239197,
+            3.0522468090057373
+          ],
+          "v": [
+            0.3002316653728485,
+            -1.119612216949463,
+            2.628274440765381
+          ],
+          "w": [
+            20.069318771362305,
+            -1.1852185726165771,
+            -10.240516662597656
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      }
+    ]
+  },
+  "candidate-overlap": {
+    "order": [
+      {
+        "world": 0,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 1,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 2,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 3,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 4,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 5,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 6,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 7,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 8,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 9,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 10,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 11,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 12,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 13,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 14,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 15,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 16,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 17,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 18,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      }
+    ],
+    "results": [
+      {
+        "delay": 80,
+        "ticks": 1167,
+        "last": {
+          "p": [
+            -1.7122139930725098,
+            0.5652457475662231,
+            3.049726724624634
+          ],
+          "v": [
+            0.3994253873825073,
+            -0.9323689937591553,
+            2.283689260482788
+          ],
+          "w": [
+            17.293418884277344,
+            -1.0956882238388062,
+            -7.447067737579346
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 81,
+        "ticks": 1146,
+        "last": {
+          "p": [
+            -1.7112425565719604,
+            0.5643571615219116,
+            3.0555357933044434
+          ],
+          "v": [
+            0.3814758062362671,
+            -1.1965675354003906,
+            2.838894844055176
+          ],
+          "w": [
+            22.742271423339844,
+            -1.9386229515075684,
+            -10.53725528717041
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 82,
+        "ticks": 1167,
+        "last": {
+          "p": [
+            -1.7124557495117188,
+            0.5666379928588867,
+            3.0456581115722656
+          ],
+          "v": [
+            0.44889771938323975,
+            -0.8069625496864319,
+            2.1237170696258545
+          ],
+          "w": [
+            15.600201606750488,
+            -0.5712195038795471,
+            -6.656704902648926
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 83,
+        "ticks": 1114,
+        "last": {
+          "p": [
+            2.5299999713897705,
+            0.17499999701976776,
+            4.425000190734863
+          ],
+          "v": [
+            0,
+            0,
+            0
+          ],
+          "w": [
+            0,
+            0,
+            0
+          ],
+          "phase": "ready",
+          "stage": 0,
+          "ramps": 0
+        }
+      }
+    ]
+  },
+  "baseline-trim": {
+    "order": [
+      {
+        "world": 0,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 1,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 2,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 3,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 4,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 5,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 6,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 7,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 8,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 9,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 10,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 11,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 12,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 13,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 14,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 15,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 16,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 17,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 18,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 19,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      }
+    ],
+    "results": [
+      {
+        "delay": 80,
+        "ticks": 1136,
+        "last": {
+          "p": [
+            -1.7068045139312744,
+            0.5573797821998596,
+            3.068145513534546
+          ],
+          "v": [
+            0.5316861271858215,
+            -1.6917322874069214,
+            2.913809299468994
+          ],
+          "w": [
+            23.240921020507812,
+            -1.1502561569213867,
+            -12.191509246826172
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 81,
+        "ticks": 1118,
+        "last": {
+          "p": [
+            -1.7118300199508667,
+            0.5655760765075684,
+            3.051497220993042
+          ],
+          "v": [
+            0.33076655864715576,
+            -1.0846400260925293,
+            2.605164051055908
+          ],
+          "w": [
+            20.123306274414062,
+            -1.1911205053329468,
+            -9.773863792419434
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 82,
+        "ticks": 1173,
+        "last": {
+          "p": [
+            -1.7117748260498047,
+            0.5602487325668335,
+            3.0626461505889893
+          ],
+          "v": [
+            0.2724441587924957,
+            -1.3869880437850952,
+            2.881441831588745
+          ],
+          "w": [
+            21.95616340637207,
+            -1.4810513257980347,
+            -10.767545700073242
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 83,
+        "ticks": 1153,
+        "last": {
+          "p": [
+            -1.7095471620559692,
+            0.5621483325958252,
+            3.059779167175293
+          ],
+          "v": [
+            0.3149382472038269,
+            -1.3548134565353394,
+            2.69818115234375
+          ],
+          "w": [
+            21.41349220275879,
+            -1.63386070728302,
+            -10.298280715942383
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 84,
+        "ticks": 1137,
+        "last": {
+          "p": [
+            -1.712683081626892,
+            0.5657141804695129,
+            3.0494155883789062
+          ],
+          "v": [
+            0.259045273065567,
+            -1.101385474205017,
+            2.546504497528076
+          ],
+          "w": [
+            20.011554718017578,
+            -1.8515371084213257,
+            -9.858094215393066
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      }
+    ]
+  },
+  "candidate-trim": {
+    "order": [
+      {
+        "world": 0,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 1,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 2,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 3,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 4,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 5,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 6,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 7,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 8,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 9,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 10,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 11,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 12,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 13,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 14,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 15,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 16,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 17,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 18,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 19,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      }
+    ],
+    "results": [
+      {
+        "delay": 80,
+        "ticks": 1145,
+        "last": {
+          "p": [
+            -1.706766963005066,
+            0.5587300062179565,
+            3.068161725997925
+          ],
+          "v": [
+            0.49877098202705383,
+            -1.5979812145233154,
+            2.952416181564331
+          ],
+          "w": [
+            23.22113609313965,
+            -1.686017632484436,
+            -11.87687873840332
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 81,
+        "ticks": 1195,
+        "last": {
+          "p": [
+            -1.7124353647232056,
+            0.5660456418991089,
+            3.0475594997406006
+          ],
+          "v": [
+            0.40797922015190125,
+            -0.8805335164070129,
+            2.2412869930267334
+          ],
+          "w": [
+            16.618810653686523,
+            -0.8243496417999268,
+            -7.934371471405029
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 82,
+        "ticks": 1241,
+        "last": {
+          "p": [
+            -1.7104086875915527,
+            0.5616225600242615,
+            3.0567519664764404
+          ],
+          "v": [
+            0.31410661339759827,
+            -0.9417970776557922,
+            2.24778151512146
+          ],
+          "w": [
+            15.59633731842041,
+            -0.4804232120513916,
+            -5.959559917449951
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 83,
+        "ticks": 1132,
+        "last": {
+          "p": [
+            -1.7125945091247559,
+            0.566672682762146,
+            3.0459229946136475
+          ],
+          "v": [
+            0.4178633987903595,
+            -0.8281053304672241,
+            2.259967803955078
+          ],
+          "w": [
+            17.205684661865234,
+            -0.7833022475242615,
+            -6.791723728179932
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 84,
+        "ticks": 1814,
+        "last": {
+          "p": [
+            -1.0552315711975098,
+            0.17126832902431488,
+            4.058121681213379
+          ],
+          "v": [
+            1.9776958652073517e-05,
+            3.762386086236802e-06,
+            1.7270878743147478e-05
+          ],
+          "w": [
+            7.275536336237565e-05,
+            -0.00015625380910933018,
+            7.473668665625155e-05
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 0
+        }
+      }
+    ]
+  },
+  "candidate-overlap-continue83": {
+    "order": [
+      {
+        "world": 0,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 1,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 2,
+        "test": "28-speed tangent approaches all complete with lateral tolerance"
+      },
+      {
+        "world": 3,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 4,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 5,
+        "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+      },
+      {
+        "world": 6,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 7,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 8,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 9,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 10,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 11,
+        "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+      },
+      {
+        "world": 12,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 13,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 14,
+        "test": "ground balls approaching low base from high deck side deflect without wedging"
+      },
+      {
+        "world": 15,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 16,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 17,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 18,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      },
+      {
+        "world": 19,
+        "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+      }
+    ],
+    "results": [
+      {
+        "delay": 80,
+        "ticks": 1167,
+        "last": {
+          "p": [
+            -1.7122139930725098,
+            0.5652457475662231,
+            3.049726724624634
+          ],
+          "v": [
+            0.3994253873825073,
+            -0.9323689937591553,
+            2.283689260482788
+          ],
+          "w": [
+            17.293418884277344,
+            -1.0956882238388062,
+            -7.447067737579346
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 81,
+        "ticks": 1146,
+        "last": {
+          "p": [
+            -1.7112425565719604,
+            0.5643571615219116,
+            3.0555357933044434
+          ],
+          "v": [
+            0.3814758062362671,
+            -1.1965675354003906,
+            2.838894844055176
+          ],
+          "w": [
+            22.742271423339844,
+            -1.9386229515075684,
+            -10.53725528717041
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 82,
+        "ticks": 1167,
+        "last": {
+          "p": [
+            -1.7124557495117188,
+            0.5666379928588867,
+            3.0456581115722656
+          ],
+          "v": [
+            0.44889771938323975,
+            -0.8069625496864319,
+            2.1237170696258545
+          ],
+          "w": [
+            15.600201606750488,
+            -0.5712195038795471,
+            -6.656704902648926
+          ],
+          "phase": "playing",
+          "stage": 0,
+          "ramps": 1
+        }
+      },
+      {
+        "delay": 83,
+        "ticks": 1114,
+        "last": {
+          "p": [
+            2.5299999713897705,
+            0.17499999701976776,
+            4.425000190734863
+          ],
+          "v": [
+            0,
+            0,
+            0
+          ],
+          "w": [
+            0,
+            0,
+            0
+          ],
+          "phase": "ready",
+          "stage": 0,
+          "ramps": 0
+        }
+      },
+      {
+        "delay": 84,
+        "ticks": 902,
+        "last": {
+          "p": [
+            2.5299999713897705,
+            0.17499999701976776,
+            4.425000190734863
+          ],
+          "v": [
+            0,
+            0,
+            0
+          ],
+          "w": [
+            0,
+            0,
+            0
+          ],
+          "phase": "ready",
+          "stage": 0,
+          "ramps": 0
+        }
+      }
+    ]
+  }
+}

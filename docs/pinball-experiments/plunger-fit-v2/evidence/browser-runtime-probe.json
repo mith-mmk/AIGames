@@ -1,0 +1,6 @@
+{
+  "contacts": 26,
+  "activeCandidate": true,
+  "sourceMapSha256": "022605fdccd86d5514c6d34820e3edda1d3d1980c577ae0f05eccff85cb92690",
+  "meaning": "Browser route substitutes candidate physics as well as geometry. Production files are unchanged. Original render.json reused stale v1 wording; this probe corrects that provenance. No gameplay success implied."
+}

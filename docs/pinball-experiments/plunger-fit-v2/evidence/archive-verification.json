@@ -1,0 +1,12 @@
+{
+  "status": "Exact payload restoration and static/narrowphase replay verified",
+  "byteIdentical": {
+    "runtime-source-map.json": "022605fdccd86d5514c6d34820e3edda1d3d1980c577ae0f05eccff85cb92690",
+    "validation.json": "d49af68be0c0790d0246792695bdaa5d660eee51e332aadcff15e3526bfc5085",
+    "narrowphase.json": "3a35b444906c8c491ede84ae8950a4682b1a2e3d63a3c846f50db6ddb55f899c"
+  },
+  "archiveLoaderPreflight": "Passed: active candidate with26 contacts; no extra world created by preflight",
+  "existingTargetSafeguard": "Verified refusal before extraction",
+  "longFunctionalSuites": "Not rerun during archive preparation; original corrected parent results preserved",
+  "disposableReplay": "Moved to user Trash after verification"
+}

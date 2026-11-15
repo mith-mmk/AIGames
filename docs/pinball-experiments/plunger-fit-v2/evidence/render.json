@@ -1,0 +1,8 @@
+{
+  "render": {
+    "triangles": 486180,
+    "calls": 600
+  },
+  "errors": [],
+  "status": "Prototype substituted in browser memory only. Production physics remained unchanged; screenshots are static-fit evidence, not contact or gameplay validation."
+}

@@ -1,0 +1,602 @@
+[
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 4.9,
+      "vx": 0,
+      "vy": -2,
+      "vz": -2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.531360626220703,
+        "y": 0.17126984894275665,
+        "z": 5.686180591583252
+      },
+      "v": {
+        "x": 0.0010230476036667824,
+        "y": 0.000001882706101241638,
+        "z": 0.000006474601832451299
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.175,
+    "stalledBehindTip": true,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 4.9,
+      "vx": 0,
+      "vy": -2,
+      "vz": 2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17126958072185516,
+        "z": 5.686180591583252
+      },
+      "v": {
+        "x": 0,
+        "y": -0.00001824136052164249,
+        "z": -0.00006285330891842023
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.508333333333334,
+    "stalledBehindTip": true,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 4.9,
+      "vx": -1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.5597352981567383,
+        "y": 0.17126984894275665,
+        "z": 5.686180591583252
+      },
+      "v": {
+        "x": -0.00030646726372651756,
+        "y": -0.00001825323488446884,
+        "z": -0.00006289788871072233
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 6.9,
+    "stalledBehindTip": true,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 4.9,
+      "vx": 1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 959,
+      "p": {
+        "x": 2.554136037826538,
+        "y": 0.17126986384391785,
+        "z": 5.686180591583252
+      },
+      "v": {
+        "x": 0.0022797612473368645,
+        "y": 0.000006451671197282849,
+        "z": 0.00003067535362788476
+      },
+      "phase": "playing",
+      "ball": 1
+    },
+    "settledFor": 7.291666666666667,
+    "stalledBehindTip": true,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.15,
+      "vx": 0,
+      "vy": -2,
+      "vz": -2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.15,
+      "vx": 0,
+      "vy": -2,
+      "vz": 2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.15,
+      "vx": -1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.15,
+      "vx": 1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.4,
+      "vx": 0,
+      "vy": -2,
+      "vz": -2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.4,
+      "vx": 0,
+      "vy": -2,
+      "vz": 2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.4,
+      "vx": -1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.4,
+      "vx": 1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.65,
+      "vx": 0,
+      "vy": -2,
+      "vz": -2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.65,
+      "vx": 0,
+      "vy": -2,
+      "vz": 2
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.65,
+      "vx": -1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.53,
+      "y": 0.55,
+      "z": 5.65,
+      "vx": 1,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.46,
+      "y": 0.55,
+      "z": 5.35,
+      "vx": 0,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.46,
+      "y": 0.55,
+      "z": 5.35,
+      "vx": 0,
+      "vy": -2,
+      "vz": 3
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.6,
+      "y": 0.55,
+      "z": 5.35,
+      "vx": 0,
+      "vy": -2,
+      "vz": 0
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  },
+  {
+    "spec": {
+      "x": 2.6,
+      "y": 0.55,
+      "z": 5.35,
+      "vx": 0,
+      "vy": -2,
+      "vz": 3
+    },
+    "initialOverlaps": [],
+    "initialLegal": true,
+    "final": {
+      "tick": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "ready",
+      "ball": 2
+    },
+    "settledFor": 0,
+    "stalledBehindTip": false,
+    "contacts": []
+  }
+]
