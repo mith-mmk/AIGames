@@ -1,0 +1,25 @@
+{
+  "movedToTrash": [
+    {
+      "file": "candidate-physics-syntax-error.log",
+      "sha256": "809ad9ee2ea58550f5cce6eaa8e0b57381dfc64ff3eadb7b0d76897ea89d05b1",
+      "reason": "Failed parser before any physics world execution; not physical evidence"
+    },
+    {
+      "file": "candidate-lower-syntax-error.log",
+      "sha256": "809ad9ee2ea58550f5cce6eaa8e0b57381dfc64ff3eadb7b0d76897ea89d05b1",
+      "reason": "Failed parser before any physics world execution; not physical evidence"
+    },
+    {
+      "file": "baseline-physics-syntax-error.log",
+      "sha256": "809ad9ee2ea58550f5cce6eaa8e0b57381dfc64ff3eadb7b0d76897ea89d05b1",
+      "reason": "Failed parser before any physics world execution; not physical evidence"
+    },
+    {
+      "file": "baseline-lower-syntax-error.log",
+      "sha256": "809ad9ee2ea58550f5cce6eaa8e0b57381dfc64ff3eadb7b0d76897ea89d05b1",
+      "reason": "Failed parser before any physics world execution; not physical evidence"
+    }
+  ],
+  "originalManifest": "manifest.json is retained as original pre-cleanup inventory; only these parser logs were removed from evidence directory. All simulation traces unchanged."
+}

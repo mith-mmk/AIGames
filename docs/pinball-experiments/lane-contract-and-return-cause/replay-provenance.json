@@ -1,0 +1,12 @@
+{
+  "originalScriptSHA256": "d8411f8a4dc8174c105aa50ea12f7ae6641a5983de948d4dd407f4b44a045a81",
+  "stateSource": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-81.json",
+  "stateSourceSHA256": "da0e66d6002c1ea951fe59871f47667acaeea95cdff6f4a60d4518a7f23495f1",
+  "stateSelector": "rows[1122].after",
+  "changes": [
+    "Three-level repository import path",
+    "Read saved identical initial-state.json instead of full original trace",
+    "Require a fresh artifact output directory and refuse existing output files"
+  ],
+  "physicsChanges": false
+}
