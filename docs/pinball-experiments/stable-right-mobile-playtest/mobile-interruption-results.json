@@ -1,0 +1,337 @@
+[
+  {
+    "test": "real-tab-blur-unverified",
+    "reason": "Dedicated headless and visible Chrome automation produced no blur/visibility events; no synthetic pass claimed."
+  },
+  {
+    "test": "restart-with-charge-and-flippers",
+    "before": {
+      "phase": "ready",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.1726248562335968,
+        "z": 4.575079917907715
+      },
+      "owner": "p2",
+      "power": 0.4985000000001552,
+      "pull": 0.4975,
+      "left": true,
+      "right": true,
+      "ariaLeft": "true",
+      "ariaRight": "true",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    },
+    "after": {
+      "phase": "ready",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    }
+  },
+  {
+    "test": "landscape-resize-release",
+    "layout": {
+      "width": 844,
+      "height": 390,
+      "scrollWidth": 844,
+      "buttons": [
+        {
+          "id": "left",
+          "rect": {
+            "x": 602,
+            "y": 288,
+            "width": 64.859375,
+            "height": 71,
+            "top": 288,
+            "right": 666.859375,
+            "bottom": 359,
+            "left": 602
+          }
+        },
+        {
+          "id": "launch",
+          "rect": {
+            "x": 671.859375,
+            "y": 288,
+            "width": 88.28125,
+            "height": 71,
+            "top": 288,
+            "right": 760.140625,
+            "bottom": 359,
+            "left": 671.859375
+          }
+        },
+        {
+          "id": "right",
+          "rect": {
+            "x": 765.140625,
+            "y": 288,
+            "width": 64.859375,
+            "height": 71,
+            "top": 288,
+            "right": 830,
+            "bottom": 359,
+            "left": 765.140625
+          }
+        }
+      ]
+    },
+    "state": {
+      "phase": "ready",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    }
+  },
+  {
+    "test": "portrait-return",
+    "state": {
+      "phase": "ready",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    }
+  },
+  {
+    "test": "fresh-touch-launch-after-cancellations",
+    "state": {
+      "phase": "playing",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17173579335212708,
+        "z": 2.5286781787872314
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0.2753623188405798,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    }
+  },
+  {
+    "test": "pause-multitouch-release-resume",
+    "before": {
+      "phase": "playing",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17079436779022217,
+        "z": -0.1688259094953537
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": true,
+      "right": true,
+      "ariaLeft": "true",
+      "ariaRight": "true",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    },
+    "paused": {
+      "phase": "paused",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17079436779022217,
+        "z": -0.1688259094953537
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": true,
+      "right": true,
+      "ariaLeft": "true",
+      "ariaRight": "true",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    },
+    "frozen": {
+      "phase": "paused",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17079436779022217,
+        "z": -0.1688259094953537
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    },
+    "after": {
+      "phase": "playing",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.1697164922952652,
+        "z": -2.0011491775512695
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    }
+  },
+  {
+    "test": "pause-after-natural-center-save",
+    "before": {
+      "phase": "playing",
+      "ball": 1,
+      "score": 400,
+      "p": {
+        "x": -0.01308923214673996,
+        "y": 0.5919094085693359,
+        "z": 4.514341354370117
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 0,
+      "centerUses": 1,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    },
+    "after": {
+      "phase": "playing",
+      "ball": 1,
+      "score": 400,
+      "p": {
+        "x": -0.4324827194213867,
+        "y": 0.7292176485061646,
+        "z": 3.8524727821350098
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 0,
+      "centerUses": 1,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    }
+  },
+  {
+    "complete": true,
+    "state": {
+      "phase": "playing",
+      "ball": 1,
+      "score": 400,
+      "p": {
+        "x": -0.8097689747810364,
+        "y": 0.1457277089357376,
+        "z": 3.309417247772217
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 0,
+      "centerUses": 1,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    }
+  }
+]

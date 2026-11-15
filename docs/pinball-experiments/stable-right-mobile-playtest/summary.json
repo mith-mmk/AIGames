@@ -1,0 +1,131 @@
+{
+  "browserGames": [
+    {
+      "power": 0.55,
+      "nominalReleaseTicks": 80,
+      "final": {
+        "time": 43.0249999999982,
+        "p": {
+          "x": 2.5299999713897705,
+          "y": 0.17499999701976776,
+          "z": 4.425000190734863
+        },
+        "v": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "phase": "gameover",
+        "ball": 3,
+        "score": 1700,
+        "event": "GAME OVER",
+        "sideCharge": 0,
+        "sideUses": 0,
+        "centerUses": 1,
+        "ramp": 0,
+        "rampStage": 0,
+        "spin": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "plunger": 0,
+        "angles": [
+          -0.6,
+          3.741592653589793
+        ],
+        "coil": [
+          5,
+          6
+        ],
+        "lastShot": {
+          "side": 1,
+          "along": 0.2514965701521488,
+          "faceAngle": 0.3000000000000007,
+          "aimAngle": -0.062394512243438005,
+          "angularSpeed": 12,
+          "speed": 26.035917683651572,
+          "p": {
+            "x": 0.9632939100265503,
+            "y": 0.1683548092842102,
+            "z": 4.152658939361572
+          },
+          "vx": -1.6234445407863718,
+          "vz": -25.98525423106096
+        },
+        "left": false,
+        "right": false
+      },
+      "launches": 3,
+      "seconds": 42.859,
+      "pageErrors": [],
+      "qualifyingRightFloorSamples": 0,
+      "stopReason": "natural-gameover"
+    },
+    {
+      "power": 0.85,
+      "nominalReleaseTicks": 80,
+      "final": {
+        "time": 72.5916666666705,
+        "p": {
+          "x": 2.5299999713897705,
+          "y": 0.17499999701976776,
+          "z": 4.425000190734863
+        },
+        "v": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "phase": "gameover",
+        "ball": 3,
+        "score": 5050,
+        "event": "GAME OVER",
+        "sideCharge": 1,
+        "sideUses": 0,
+        "centerUses": 1,
+        "ramp": 0,
+        "rampStage": 0,
+        "spin": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "plunger": 0,
+        "angles": [
+          0.48,
+          2.661592653589793
+        ],
+        "coil": [
+          8,
+          12
+        ],
+        "lastShot": {
+          "side": 0,
+          "along": 1,
+          "faceAngle": -2.7755575615628914e-17,
+          "aimAngle": -1.32,
+          "angularSpeed": 12,
+          "speed": 32,
+          "p": {
+            "x": -0.051121603697538376,
+            "y": 0.17063963413238525,
+            "z": 4.442336082458496
+          },
+          "vx": 30.998883203784487,
+          "vz": -7.941614452875933
+        },
+        "left": true,
+        "right": true
+      },
+      "launches": 3,
+      "seconds": 72.467,
+      "pageErrors": [],
+      "qualifyingRightFloorSamples": 0,
+      "stopReason": "natural-gameover"
+    }
+  ],
+  "mobileScope": "390x844 touch emulation plus keyboard shortcuts/mouse UI clicks for pause/reset; not a physical phone. Resize844x390 then390x844.",
+  "focusLimitation": "No actual blur/visibilitychange events in either dedicated headless or visible Playwright browser. Assertions failed; not a production bug or real-blur pass.",
+  "productionChanges": false
+}

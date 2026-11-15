@@ -1,0 +1,178 @@
+{
+  "packetFiles": [
+    {
+      "path": "README.md",
+      "sha256": "2051dcd8a6905668a40e6d81314980c6497784badf9efce50d1b303f63747be1",
+      "bytes": 6386
+    },
+    {
+      "path": "browser-p0.55-d80-samples.json.gz",
+      "sha256": "8b40b8e9006b3c0633bc1c8e93a3d3a59da23ffeb11fd0c80e0c8489b6f6df81",
+      "bytes": 250610
+    },
+    {
+      "path": "browser-p0.85-d80-samples.json.gz",
+      "sha256": "5dc97402c392839638421c3b44c2cac077bbde9e0019cae95c86cb2d3f680016",
+      "bytes": 439511
+    },
+    {
+      "path": "browser-replay.cjs",
+      "sha256": "ffe72e9e8b0285645ca66536148f1ba8201fc8031d6d50f3b208bb4b8cc3c747",
+      "bytes": 6045
+    },
+    {
+      "path": "browser-results.json",
+      "sha256": "00589e872b76f3c793bca1a472d75c71753d0817a1909bf984d11d9af4da02d9",
+      "bytes": 153301
+    },
+    {
+      "path": "focus-probe.cjs",
+      "sha256": "4ad0276521d28e20a18c988a8ef1def96e5235d1ee1795d6438bc1fc617340e7",
+      "bytes": 5760
+    },
+    {
+      "path": "headless-focus-results.json",
+      "sha256": "8f888329a55ed867fd64466eb6e5eb2993328ca978a0d08dcf19a92fcb95287a",
+      "bytes": 4327
+    },
+    {
+      "path": "landscape.png",
+      "sha256": "350f28d39dac5fe135285a3bbfdde34e322b1d2a342f7a588c96da806317063c",
+      "bytes": 220706
+    },
+    {
+      "path": "lint.log",
+      "sha256": "1c1dc82ae0c73fa9a28f61b4417ba98b6f184d3f2f2ccbc5a60c2aca41db12f8",
+      "bytes": 404
+    },
+    {
+      "path": "mobile-final.png",
+      "sha256": "0a1bb1a59f0a3a277ac84fdbff0603d5fac97d2f56446334fa18ec2c67025386",
+      "bytes": 253535
+    },
+    {
+      "path": "mobile-interruption-results.json",
+      "sha256": "d8a91dc8536d765440bed7c64f85911c4aac1a9f9e03f8e17fc8e3d8ed281cf1",
+      "bytes": 7237
+    },
+    {
+      "path": "mobile-replay.cjs",
+      "sha256": "4f55d6647048661ca354e8eab256559d6fcfe677633e023bf9e6e481ce17b22b",
+      "bytes": 5621
+    },
+    {
+      "path": "mobile-resumed.png",
+      "sha256": "ca2a7ed014ad553ff2daa0d738b08dc307a60fa62df82e2c085e2df63cca65d5",
+      "bytes": 251370
+    },
+    {
+      "path": "portrait-return.png",
+      "sha256": "967d4ff5828dd72bf0a393e3d072dbdee8c4a676bc6134a4ce6ac9214d466e17",
+      "bytes": 253868
+    },
+    {
+      "path": "regression.json",
+      "sha256": "27498592f23d56b85d42399fa73c822ce7f2e061af432699b50e973361a98ae9",
+      "bytes": 605
+    },
+    {
+      "path": "summary.json",
+      "sha256": "a7ca6341568e2774f4a765cbc5c5fad133424894d071bd405e37a2d6f352bbe4",
+      "bytes": 3231
+    },
+    {
+      "path": "tests.log",
+      "sha256": "926634f17c0c59485b51157c5a9ada852bcb34ac9275b09249cdea70198e73e8",
+      "bytes": 23618
+    },
+    {
+      "path": "visible-focus-results.json",
+      "sha256": "c8af16675e8a967bfda5d7fb17140118431421229b7e8716bb8378cb4807699d",
+      "bytes": 4324
+    }
+  ],
+  "originalEvidence": [
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/play.cjs",
+      "sha256": "68031ab4e09cd5444edc6771e5829966a3f5bf3a53098e5a9a151c0dbac2c466",
+      "bytes": 5862
+    },
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/results.json",
+      "sha256": "00589e872b76f3c793bca1a472d75c71753d0817a1909bf984d11d9af4da02d9",
+      "bytes": 153301
+    },
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/run.log",
+      "sha256": "379f9749ddc85b8868bd836f26731820ffd04da139c72078a92adce1c2407a4d",
+      "bytes": 3770
+    },
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/mobile.cjs",
+      "sha256": "f60ac7f60a8ab5ce67ed5cff482d1bec3331e58506f099481a7d27107a3b30ed",
+      "bytes": 5573
+    },
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/mobile.log",
+      "sha256": "321bb69035cff55d84b6f92fd18f00e875a5b3cf65fdfa761c75dd030f9d4d6d",
+      "bytes": 2863
+    },
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/mobile-results.json",
+      "sha256": "8f888329a55ed867fd64466eb6e5eb2993328ca978a0d08dcf19a92fcb95287a",
+      "bytes": 4327
+    },
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/mobile-headful/mobile.cjs",
+      "sha256": "5d3dd977cf98fe4056e94f8f74863bc3fc0da9fbc0e6e8740c98f889cc077cb4",
+      "bytes": 6378
+    },
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/mobile-headful/mobile.log",
+      "sha256": "2e2762f3829b76b8c2030db9c12cad42d67aab102f4699d009299d450f89bf68",
+      "bytes": 2860
+    },
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/mobile-headful/mobile-results.json",
+      "sha256": "c8af16675e8a967bfda5d7fb17140118431421229b7e8716bb8378cb4807699d",
+      "bytes": 4324
+    },
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/mobile-remainder/mobile.cjs",
+      "sha256": "a7ceeee04883ad9d4b5be751de6bb04d23e9183cec5936f808349dad79312423",
+      "bytes": 5436
+    },
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/mobile-remainder/mobile.log",
+      "sha256": "dd80faaf3e64fbd266b44023b936d31972834d3348e633d288cd781c437ddc9e",
+      "bytes": 4476
+    },
+    {
+      "path": "artifacts/pinball/right-mobile-20261115T220224/mobile-remainder/mobile-results.json",
+      "sha256": "d8a91dc8536d765440bed7c64f85911c4aac1a9f9e03f8e17fc8e3d8ed281cf1",
+      "bytes": 7237
+    }
+  ],
+  "runtimeSources": [
+    {
+      "path": "web/js/pinball/app.mjs",
+      "sha256": "6014a1c8384ae9fd1d1b693bc0e959040a0f17b00e077ddce64307be3857b1e5",
+      "bytes": 20269
+    },
+    {
+      "path": "web/js/pinball/plunger.mjs",
+      "sha256": "a7dcbcab59905f2a27f885c81d21b40b6e4e23f90ef8be29dd60d74df896e153",
+      "bytes": 2577
+    },
+    {
+      "path": "web/js/pinball/physics.mjs",
+      "sha256": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92",
+      "bytes": 23710
+    },
+    {
+      "path": "web/css/pinball.css",
+      "sha256": "7430a0d8ec4f32543e811e3b58f039ec0b4e73c022e1a9ffaa957f472b465088",
+      "bytes": 9530
+    }
+  ]
+}

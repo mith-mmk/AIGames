@@ -1,0 +1,17 @@
+{
+  "sourceCommit": "5330d0782f292d2736c8af77807eade5320fe63b",
+  "testSummary": {
+    "tests": 224,
+    "passed": 224,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 140868.311583
+  },
+  "lint": {
+    "exitCode": 0,
+    "errors": 0,
+    "existingCssWarnings": 3
+  },
+  "harnessNote": "Node test runner completed and printed the preserved final summary. The surrounding zsh command then failed assigning its reserved status variable. Its final shell exit was 1; the Node exit code was not separately captured. This is not a failing test or a claimed successful shell command."
+}

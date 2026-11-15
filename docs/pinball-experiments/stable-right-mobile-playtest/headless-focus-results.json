@@ -1,0 +1,191 @@
+[
+  {
+    "test": "touchcancel-charge",
+    "before": {
+      "phase": "ready",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.1726171374320984,
+        "z": 4.581560134887695
+      },
+      "owner": "p2",
+      "power": 0.5040000000002328,
+      "pull": 0.5027500000002328,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    },
+    "after": {
+      "phase": "ready",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17260991036891937,
+        "z": 4.384699821472168
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    }
+  },
+  {
+    "test": "pause-charge-release-resume",
+    "before": {
+      "phase": "ready",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.1726205199956894,
+        "z": 4.580082893371582
+      },
+      "owner": "p3",
+      "power": 0.4990000000002328,
+      "pull": 0.4976666666668219,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    },
+    "paused": {
+      "phase": "paused",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.1726205199956894,
+        "z": 4.580082893371582
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0.4976666666668219,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    },
+    "after": {
+      "phase": "ready",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17259357869625092,
+        "z": 4.34108829498291
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    }
+  },
+  {
+    "test": "real-tab-blur-charge",
+    "before": {
+      "phase": "ready",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17261885106563568,
+        "z": 4.582726955413818
+      },
+      "owner": "p4",
+      "power": 0.49933333333348856,
+      "pull": 0.49783333333364377,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    },
+    "away": {
+      "phase": "ready",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17261236906051636,
+        "z": 4.672485828399658
+      },
+      "owner": "p4",
+      "power": 0.7748333333335662,
+      "pull": 0.7735833333335662,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    },
+    "returned": {
+      "phase": "playing",
+      "ball": 1,
+      "score": 0,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17183059453964233,
+        "z": 2.9754464626312256
+      },
+      "owner": null,
+      "power": 0,
+      "pull": 0.16374275362326607,
+      "left": false,
+      "right": false,
+      "ariaLeft": "false",
+      "ariaRight": "false",
+      "centerCharges": 1,
+      "centerUses": 0,
+      "sideCharges": 0,
+      "sideUses": 0,
+      "hidden": false
+    },
+    "events": []
+  },
+  {
+    "fatal": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'ready' !== 'paused'\n\n    at /Users/tsaito/Projects/AIGames/artifacts/pinball/right-mobile-20261115T220224/mobile.cjs:6:398"
+  }
+]
