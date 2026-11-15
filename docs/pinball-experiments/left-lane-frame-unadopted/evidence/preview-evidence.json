@@ -1,0 +1,44 @@
+{
+  "baseline": "stable adb035e",
+  "candidate": "sling gear print isolated candidate",
+  "results": [
+    {
+      "mode": "baseline",
+      "view": "installed-45",
+      "triangles": 450844,
+      "calls": 685
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-10",
+      "triangles": 450700,
+      "calls": 673
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-90",
+      "triangles": 444524,
+      "calls": 658
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-45",
+      "triangles": 472536,
+      "calls": 763
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-10",
+      "triangles": 472392,
+      "calls": 751
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-90",
+      "triangles": 466216,
+      "calls": 736
+    }
+  ],
+  "errors": [],
+  "scope": "Stable roof render-only artifact; installed and isolated component views are distinct; not yet accepted."
+}

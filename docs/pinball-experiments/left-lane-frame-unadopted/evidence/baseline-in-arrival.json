@@ -1,0 +1,485 @@
+{
+  "method": "No rescue, identical old capture and proposed long-IN mouth starts; held left until quiet30 with bat contact, release45 and repress300. Fixture not natural play. Invalid starts retained, no relocation to obtain pass.",
+  "results": [
+    {
+      "entry": {
+        "x": -1.72,
+        "z": 2.8,
+        "name": "old-capture-start"
+      },
+      "speed": 0.2,
+      "start": {
+        "x": -1.72,
+        "y": 0.18,
+        "z": 2.8
+      },
+      "nearest": {
+        "gap": 0.005000000894080703,
+        "p": {
+          "x": 0,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "shape": 1
+      },
+      "initialLegal": true,
+      "events": [
+        {
+          "type": "inlane",
+          "id": "contact-0",
+          "time": 0.15,
+          "p": {
+            "x": -1.7200000286102295,
+            "y": 0.17198564112186432,
+            "z": 2.879750967025757
+          }
+        },
+        {
+          "type": "spinner",
+          "id": "contact-1",
+          "time": 3.5833333333333233,
+          "p": {
+            "x": 0.13435252010822296,
+            "y": 0.1707007884979248,
+            "z": -1.283745288848877
+          }
+        },
+        {
+          "type": "bumper",
+          "id": "contact-2",
+          "time": 3.608333333333323,
+          "p": {
+            "x": 0.24459658563137054,
+            "y": 0.17054548859596252,
+            "z": -1.8050693273544312
+          }
+        },
+        {
+          "type": "bumper",
+          "id": "contact-3",
+          "time": 4.0333333333333234,
+          "p": {
+            "x": 0.926021933555603,
+            "y": 0.1705837994813919,
+            "z": -2.6460421085357666
+          }
+        }
+      ],
+      "capture": 354,
+      "coilsAtCapture": 0,
+      "coilsAfter": 1,
+      "minZAfterRepress": -2.6460421085357666,
+      "phase": "playing",
+      "ball": 1,
+      "resets": 0,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          5,
+          0
+        ],
+        "activeFlipperContacts": [
+          1,
+          0
+        ],
+        "coilImpulses": [
+          1,
+          0
+        ],
+        "upfieldReturns": 1
+      }
+    },
+    {
+      "entry": {
+        "x": -1.72,
+        "z": 2.8,
+        "name": "old-capture-start"
+      },
+      "speed": 2,
+      "start": {
+        "x": -1.72,
+        "y": 0.18,
+        "z": 2.8
+      },
+      "nearest": {
+        "gap": 0.005000000894080703,
+        "p": {
+          "x": 0,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "shape": 1
+      },
+      "initialLegal": true,
+      "events": [
+        {
+          "type": "inlane",
+          "id": "contact-0",
+          "time": 0.041666666666666664,
+          "p": {
+            "x": -1.7200000286102295,
+            "y": 0.17414754629135132,
+            "z": 2.8839173316955566
+          }
+        },
+        {
+          "type": "spinner",
+          "id": "contact-1",
+          "time": 3.383333333333324,
+          "p": {
+            "x": 0.13403360545635223,
+            "y": 0.170700803399086,
+            "z": -1.2836508750915527
+          }
+        },
+        {
+          "type": "bumper",
+          "id": "contact-2",
+          "time": 3.408333333333324,
+          "p": {
+            "x": 0.24424941837787628,
+            "y": 0.17054550349712372,
+            "z": -1.804964303970337
+          }
+        },
+        {
+          "type": "bumper",
+          "id": "contact-3",
+          "time": 3.8333333333333224,
+          "p": {
+            "x": 0.9260545969009399,
+            "y": 0.1705838292837143,
+            "z": -2.643139362335205
+          }
+        }
+      ],
+      "capture": 330,
+      "coilsAtCapture": 0,
+      "coilsAfter": 1,
+      "minZAfterRepress": -2.643139362335205,
+      "phase": "playing",
+      "ball": 1,
+      "resets": 0,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          5,
+          0
+        ],
+        "activeFlipperContacts": [
+          1,
+          0
+        ],
+        "coilImpulses": [
+          1,
+          0
+        ],
+        "upfieldReturns": 1
+      }
+    },
+    {
+      "entry": {
+        "x": -1.72,
+        "z": 2.8,
+        "name": "old-capture-start"
+      },
+      "speed": 4,
+      "start": {
+        "x": -1.72,
+        "y": 0.18,
+        "z": 2.8
+      },
+      "nearest": {
+        "gap": 0.005000000894080703,
+        "p": {
+          "x": 0,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "shape": 1
+      },
+      "initialLegal": true,
+      "events": [
+        {
+          "type": "inlane",
+          "id": "contact-0",
+          "time": 0.025,
+          "p": {
+            "x": -1.7200000286102295,
+            "y": 0.1747111678123474,
+            "z": 2.9003865718841553
+          }
+        }
+      ],
+      "capture": null,
+      "coilsAtCapture": null,
+      "coilsAfter": 0,
+      "minZAfterRepress": null,
+      "phase": "ready",
+      "ball": 2,
+      "resets": 0,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          1
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    {
+      "entry": {
+        "x": -1.72,
+        "z": 2.8,
+        "name": "old-capture-start"
+      },
+      "speed": 8,
+      "start": {
+        "x": -1.72,
+        "y": 0.18,
+        "z": 2.8
+      },
+      "nearest": {
+        "gap": 0.005000000894080703,
+        "p": {
+          "x": 0,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "shape": 1
+      },
+      "initialLegal": true,
+      "events": [
+        {
+          "type": "inlane",
+          "id": "contact-0",
+          "time": 0.016666666666666666,
+          "p": {
+            "x": -1.7200000286102295,
+            "y": 0.1751747876405716,
+            "z": 2.9336459636688232
+          }
+        }
+      ],
+      "capture": null,
+      "coilsAtCapture": null,
+      "coilsAfter": 0,
+      "minZAfterRepress": null,
+      "phase": "ready",
+      "ball": 2,
+      "resets": 0,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          2,
+          1
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    {
+      "entry": {
+        "x": -2.12,
+        "z": 1.1,
+        "name": "new-in-mouth"
+      },
+      "speed": 0.2,
+      "start": {
+        "x": -2.12,
+        "y": 0.18,
+        "z": 1.1
+      },
+      "nearest": {
+        "gap": 0.00500000089411845,
+        "p": {
+          "x": 0,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "shape": 1
+      },
+      "initialLegal": true,
+      "events": [],
+      "capture": null,
+      "coilsAtCapture": null,
+      "coilsAfter": 0,
+      "minZAfterRepress": null,
+      "phase": "ready",
+      "ball": 2,
+      "resets": 0,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    {
+      "entry": {
+        "x": -2.12,
+        "z": 1.1,
+        "name": "new-in-mouth"
+      },
+      "speed": 2,
+      "start": {
+        "x": -2.12,
+        "y": 0.18,
+        "z": 1.1
+      },
+      "nearest": {
+        "gap": 0.00500000089411845,
+        "p": {
+          "x": 0,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "shape": 1
+      },
+      "initialLegal": true,
+      "events": [],
+      "capture": null,
+      "coilsAtCapture": null,
+      "coilsAfter": 0,
+      "minZAfterRepress": null,
+      "phase": "ready",
+      "ball": 2,
+      "resets": 0,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    {
+      "entry": {
+        "x": -2.12,
+        "z": 1.1,
+        "name": "new-in-mouth"
+      },
+      "speed": 4,
+      "start": {
+        "x": -2.12,
+        "y": 0.18,
+        "z": 1.1
+      },
+      "nearest": {
+        "gap": 0.00500000089411845,
+        "p": {
+          "x": 0,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "shape": 1
+      },
+      "initialLegal": true,
+      "events": [],
+      "capture": null,
+      "coilsAtCapture": null,
+      "coilsAfter": 0,
+      "minZAfterRepress": null,
+      "phase": "ready",
+      "ball": 2,
+      "resets": 0,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    {
+      "entry": {
+        "x": -2.12,
+        "z": 1.1,
+        "name": "new-in-mouth"
+      },
+      "speed": 8,
+      "start": {
+        "x": -2.12,
+        "y": 0.18,
+        "z": 1.1
+      },
+      "nearest": {
+        "gap": 0.00500000089411845,
+        "p": {
+          "x": 0,
+          "y": -0.03999999910593033,
+          "z": -0.3499999940395355
+        },
+        "shape": 1
+      },
+      "initialLegal": true,
+      "events": [],
+      "capture": null,
+      "coilsAtCapture": null,
+      "coilsAfter": 0,
+      "minZAfterRepress": null,
+      "phase": "ready",
+      "ball": 2,
+      "resets": 0,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "checks": [
+    {
+      "args": [
+        "--variant",
+        "v1",
+        "--verify-only"
+      ],
+      "result": {
+        "status": "verified",
+        "adopted": false,
+        "variant": "v1",
+        "sourceSha256": "b016fbb1dfe6a09ad06787548d224c6909deddadd179019579bdf343b37ba576",
+        "files": 5,
+        "writes": 0
+      }
+    },
+    {
+      "args": [
+        "--variant",
+        "v2",
+        "--verify-only"
+      ],
+      "result": {
+        "status": "verified",
+        "adopted": false,
+        "variant": "v2",
+        "sourceSha256": "07a6cbc5fc9d4dce4ea1d40d859340c6b56c63e52a16d09fc9dc9380da9d9607",
+        "files": 5,
+        "writes": 0
+      }
+    },
+    {
+      "args": [
+        "--variant",
+        "v1",
+        "--output",
+        "artifacts/pinball/left-lane-restore-check-v1"
+      ],
+      "result": {
+        "status": "restored",
+        "adopted": false,
+        "variant": "v1",
+        "sourceSha256": "b016fbb1dfe6a09ad06787548d224c6909deddadd179019579bdf343b37ba576",
+        "files": 5,
+        "writes": 0,
+        "reused": 5,
+        "output": "artifacts/pinball/left-lane-restore-check-v1"
+      }
+    },
+    {
+      "args": [
+        "--variant",
+        "v2",
+        "--output",
+        "artifacts/pinball/left-lane-restore-check-v2"
+      ],
+      "result": {
+        "status": "restored",
+        "adopted": false,
+        "variant": "v2",
+        "sourceSha256": "07a6cbc5fc9d4dce4ea1d40d859340c6b56c63e52a16d09fc9dc9380da9d9607",
+        "files": 5,
+        "writes": 0,
+        "reused": 5,
+        "output": "artifacts/pinball/left-lane-restore-check-v2"
+      }
+    },
+    {
+      "args": [
+        "--variant",
+        "nope"
+      ],
+      "refused": true,
+      "reason": "Error: Unknown variant"
+    },
+    {
+      "args": [
+        "--unknown"
+      ],
+      "refused": true,
+      "reason": "Error: Unknown option --unknown"
+    },
+    {
+      "args": [
+        "--output"
+      ],
+      "refused": true,
+      "reason": "Error: Missing option value"
+    },
+    {
+      "args": [
+        "--output",
+        "web/js/pinball"
+      ],
+      "refused": true,
+      "reason": "Error: Output must have artifacts/pinball/name depth"
+    },
+    {
+      "args": [
+        "--output",
+        "artifacts/pinball/left-lane-prototype-c87f117"
+      ],
+      "refused": true,
+      "reason": "Error: Original frozen destination refused"
+    },
+    {
+      "args": [
+        "--verify-only",
+        "--output",
+        "artifacts/pinball/x"
+      ],
+      "refused": true,
+      "reason": "Error: verify-only cannot have output"
+    }
+  ],
+  "v2RestoredActualColliderCount": 1484,
+  "runtimeChanges": false
+}

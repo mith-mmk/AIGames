@@ -1,0 +1,298 @@
+import {railCapsules,capsuleStockGeometry} from './wire-stock.mjs';
+import {descentPose,handoffLift} from './ramp-profile.mjs';
+import {rampDeckGeometry} from './ramp-deck.mjs';
+import {baseShellStrips,baseShellVisualParts} from './ramp-base.mjs';
+import {rampAcrylicParts,rampAcrylicContactParts} from './ramp-acrylic.mjs';
+import {rampHardwareParts,rampHardwareMesh} from './ramp-hardware.mjs';
+import {appendLeftParts} from './left-lane-study.mjs';
+import * as T from '../vendor/three-0.180.0/three.module.min.js';
+import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
+
+// Shared physical route; traversal and same-ball recapture are regression tested.
+export const RAMP_WIDTH = 0.68;
+export const RAMP_WALL_HEIGHT = 0.45;
+// Upper-center handoff: the leftward rear sweep is actual open wire, not acrylic.
+export const WIRE_START_FRACTION = 124/240;
+export const WIRE_FUNNEL_FRACTION = 24/240;
+export const WIRE_RADIUS = .018;
+export const WIRE_HALF_SPACING = .09;
+export const WIRE_GUARD_SPACING = .175;
+export const WIRE_GUARD_HEIGHT = .16;
+export const WIRE_HEIGHT_OFFSET = .135-Math.sqrt((.135+WIRE_RADIUS)**2-WIRE_HALF_SPACING**2);
+function rampWireRailsBase(rows) {
+  return [-1,1].flatMap(sign=>[false,true].map(guard=>rows.map(r=>{
+    const n=r.right.clone().sub(r.left).normalize();
+    return r.p.clone().addScaledVector(n,sign*(guard?WIRE_GUARD_SPACING:WIRE_HALF_SPACING)).add(new T.Vector3(0,WIRE_HEIGHT_OFFSET+(guard?WIRE_GUARD_HEIGHT:0),0));
+  })));
+}
+export const RAMP_POINTS = Object.freeze([
+  [1.5, 0.04, 1.1],
+  [1.9, 0.24, 0.25],
+  [1.85, 0.5, -0.6333],
+  [1.55, 0.73, -1.4],
+  [1.30, 0.87, -2.1666666666666665],
+  [1.65, 0.86, -2.933333333333333],
+  [1.80, 0.78, -3.7],
+  [1.2, 0.6, -4.45],
+  [0, 0.56, -4.65],
+  [-1.4, 0.48, -4.05],
+  [-2.35, 0.47, -2.7],
+  [-2.45, 0.46, -1],
+  [-2.40, 0.45, 1.3],
+  [-2.30, 0.44, 2.45],
+  [-1.90, 0.44, 2.95],
+  [-1.72, 0.44, 3.00],
+]);
+
+// The prefix remains the original centripetal route. The last wire section
+ // needs a specified radius and exit tangent, not another Catmull control point.
+export const WIRE_TAIL = (() => {
+  const firstRadius=.45, exitSlope=.171, startX=-2.40;
+  const [endX,height,endZ]=RAMP_POINTS.at(-1);
+  // Normalize decimal layout subtraction so the derived span stays .68,
+  // rather than its floating subtraction artifact .6799999999999999.
+  const lateralSpan=Number((endX-startX).toPrecision(12));
+  const secondAngle=Math.atan(1/exitSlope);
+  const secondRadius=(lateralSpan-firstRadius)/Math.sin(secondAngle);
+  const startZ=endZ-firstRadius-secondRadius*(1-Math.cos(secondAngle));
+  return Object.freeze({startFraction:.8,bridgeEndFraction:215/240,
+    startX,startZ,endX,endZ,height,firstRadius,secondRadius,secondAngle,exitSlope});
+})();
+
+function rampPose(curve,parameter) {
+  const d=WIRE_TAIL;
+  if(parameter<d.startFraction) {
+    const r=descentPose(curve,parameter),lift=handoffLift(parameter);
+    r.p.y+=lift.height;
+    if(lift.derivative) {
+      const lo=Math.max(0,parameter-.0001),hi=Math.min(1,parameter+.0001);
+      const v=descentPose(curve,hi).p.sub(descentPose(curve,lo).p).multiplyScalar(1/(hi-lo));
+      v.y+=lift.derivative;r.t=v.normalize();
+    }
+    return r;
+  }
+  if(parameter<d.bridgeEndFraction) {
+    const u=(parameter-d.startFraction)/(d.bridgeEndFraction-d.startFraction);
+    const a=curve.getPoint(d.startFraction),b=new T.Vector3(d.startX,d.height,d.startZ);
+    // Unit-length Hermite handles preserve the incoming direction and reach
+    // the first circular arc with a +Z tangent. Height descends .45 -> .44.
+    const m0=curve.getTangent(d.startFraction),m1=new T.Vector3(0,0,1);
+    const p=a.clone().multiplyScalar(2*u**3-3*u*u+1)
+      .addScaledVector(m0,u**3-2*u*u+u).addScaledVector(b,-2*u**3+3*u*u).addScaledVector(m1,u**3-u*u);
+    const t=a.clone().multiplyScalar(6*u*u-6*u)
+      .addScaledVector(m0,3*u*u-4*u+1).addScaledVector(b,-6*u*u+6*u).addScaledVector(m1,3*u*u-2*u).normalize();
+    return {p,t};
+  }
+  const u=(parameter-d.bridgeEndFraction)/(1-d.bridgeEndFraction)*2;
+  const centerX=d.startX+d.firstRadius;
+  if(u<=1) {
+    const q=u*Math.PI/2;
+    return {p:new T.Vector3(centerX-d.firstRadius*Math.cos(q),d.height,d.startZ+d.firstRadius*Math.sin(q)),
+      t:new T.Vector3(Math.sin(q),0,Math.cos(q))};
+  }
+  const q=(u-1)*d.secondAngle;
+  return {p:new T.Vector3(centerX+d.secondRadius*Math.sin(q),d.height,d.startZ+d.firstRadius+d.secondRadius*(1-Math.cos(q))),
+    t:new T.Vector3(Math.cos(q),0,Math.sin(q))};
+}
+export function sampleRampPose(parameter) {
+  return rampPose(new T.CatmullRomCurve3(RAMP_POINTS.map(p=>new T.Vector3(...p)),false,'centripetal'),parameter);
+}
+
+export function sampleRamp(count=240) {
+  const curve=new T.CatmullRomCurve3(RAMP_POINTS.map(p=>new T.Vector3(...p)),false,'centripetal');
+  return Array.from({length:count+1},(_,i)=>{
+    const {p,t}=rampPose(curve,i/count);
+    const n=new T.Vector3(-t.z,0,t.x).normalize();
+    const narrowing=p.x<0?Math.max(0,Math.min(1,(p.z-1.8)/.7)):0;
+    const funnel=Math.max(0,Math.min(1,(i/count-(WIRE_START_FRACTION-WIRE_FUNNEL_FRACTION))/WIRE_FUNNEL_FRACTION));
+    const width=RAMP_WIDTH-.36*Math.max(narrowing*narrowing*(3-2*narrowing),funnel*funnel*(3-2*funnel));
+    return {parameter:i/count,p,t,left:p.clone().addScaledVector(n,-width/2),right:p.clone().addScaledVector(n,width/2)};
+  });
+}
+// Sensors follow the actual route, including its direction at each crossing.
+export function rampSensorGates(rows=sampleRamp()) {
+  const rear=rows.reduce((best,r,i)=>r.p.z<rows[best].p.z?i:best,0);
+  return [Math.round((rows.length-1)*.10),rear,rows.length-1].map((i,index)=>{
+    const row=rows[i], direction=row.t.clone(); direction.y=0; direction.normalize();
+    const halfHeight=index===2?.20:(RAMP_WALL_HEIGHT+.22)/2;
+    const position=row.p.clone().add(new T.Vector3(0,index===2?.14:halfHeight+.04,0));
+    if(index===2)position.addScaledVector(direction,.28);
+    return {position,direction,halfWidth:row.left.distanceTo(row.right)/2+.035,halfHeight,halfDepth:.10};
+  });
+}
+function surface(rows, kind) {
+  if(kind==='deck'){
+    const g=rampDeckGeometry(rows,'top');
+    const data={positions:g.attributes.position.array,indices:new Uint32Array(g.index.array)};
+    g.dispose();
+    return data;
+  }
+  const positions=[], indices=[];
+  for(const row of rows) {
+    let a,b;
+    if(kind==='deck') {a=row.left.clone();b=row.right.clone();}
+    else {a=row[kind].clone();b=a.clone();b.y+=RAMP_WALL_HEIGHT;}
+    positions.push(...a.toArray(),...b.toArray());
+  }
+  for(let i=0;i<rows.length-1;i++){const k=i*2;indices.push(k,k+1,k+2,k+1,k+3,k+2);}
+  // The two channel walls face opposite directions. Edge correction needs
+  // both normals to face into the ball channel, not identical winding.
+  if(kind!=='deck')for(let i=0;i<indices.length;i+=3){
+    const row=Math.floor(i/6),at=index=>new T.Vector3(...positions.slice(index*3,index*3+3));
+    const a=at(indices[i]),b=at(indices[i+1]),c=at(indices[i+2]);
+    const normal=b.clone().sub(a).cross(c.clone().sub(a));
+    const inward=rows[row].p.clone().add(rows[row+1].p).multiplyScalar(.5).sub(a.clone().add(b).add(c).multiplyScalar(1/3));
+    inward.y=0;
+    if(normal.dot(inward)<0)[indices[i+1],indices[i+2]]=[indices[i+2],indices[i+1]];
+  }
+  return {positions:new Float32Array(positions),indices:new Uint32Array(indices)};
+}
+// Select complete strips, including the first endpoint above the low threshold.
+// Render and collision must terminate at the same section of the ramp.
+export function lowRampSegments(rows=sampleRamp()) {
+  const segments=[];
+  for(let i=0;i<rows.length-1;i++)if(rows[i].p.x>=0&&Math.min(rows[i].p.y,rows[i+1].p.y)<.46)segments.push({a:rows[i],b:rows[i+1],index:i});
+  return segments;
+}
+function geometry(data) {const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(data.positions,3));g.setIndex(new T.BufferAttribute(data.indices,1));g.computeVertexNormals();return g;}
+// Mount stations are shared by visible columns and their collision bodies.
+export function rampSupportStations(rows=sampleRamp()) {
+  const spanStart=rows.findIndex(r=>r.p.x<0&&r.p.z>=1.30), stations=[];
+  let distance=0;
+  for(let i=1;i<rows.length;i++){
+    distance+=rows[i].p.distanceTo(rows[i-1].p);
+    if(distance>=1.05){stations.push(i);distance=0;}
+  }
+  const end=rows.length-1;
+  if(distance>=.8||!stations.length)stations.push(end);else stations[stations.length-1]=end;
+  if(spanStart>=0){for(let i=stations.length-1;i>=0;i--)if(stations[i]>=spanStart)stations.splice(i,1);stations.push(spanStart,end);}
+  return stations.filter(i=>rows[i].p.y>=.46||rows[i].p.x<0).map(i=>{
+    const r=rows[i],divider=r.p.x>=-.45&&r.p.z>=-3.7;
+    const x=r.p.x<-.45?-2.65:r.p.z<-3.7?r.p.x:2.35;
+    const z=r.p.x>=-.45&&r.p.z<-3.7?-5.70:r.p.z;
+    const drop=Math.min(.065,Math.max(.025,r.p.y-.38));
+    return {i,x,z,drop,y:r.p.y-drop,divider};
+  });
+}
+// Nominal round stock centerlines shared by rendering and underside contacts.
+// Tube rendering uses eight radial sides; collision uses ideal round cylinders.
+export function rampUndersideParts(rows=sampleRamp()) {
+  const parts=[],up=new T.Vector3(0,1,0);
+  const n=r=>r.right.clone().sub(r.left).normalize();
+  const point=(r,side,across,height)=>r[side].clone().addScaledVector(n(r),across).addScaledVector(up,height);
+  const add=(name,group,points,radius,material)=>parts.push({name,group,points,radius,material});
+  const spanStart=rows.findIndex(r=>r.p.x<0&&r.p.z>=1.30);
+  const elevated=rows.filter((r,i)=>(r.p.y>=.46||r.p.x<0)&&(spanStart<0||i<=spanStart));
+  for(const side of ['left','right'])add(`${side}-continuous-underfloor-bearer`,'underframe',elevated.map(r=>point(r,side,side==='left'?.045:-.045,-Math.min(.065,Math.max(.025,r.p.y-.38)))),.028,'dark');
+  rampSupportStations(rows).forEach((m,count)=>{
+    const r=rows[m.i];
+    add(`underfloor-cross-saddle-${count}`,'underframe',[point(r,'left',.045,-m.drop),point(r,'right',-.045,-m.drop)],.03,'dark');
+    for(const side of ['left','right'])add(`${side}-floor-seat-${count}`,'underframe',[point(r,side,side==='left'?.045:-.045,-m.drop),point(r,side,side==='left'?.045:-.045,-.025)],.034,'brass');
+  });
+  const wire=rows.slice(Math.round((rows.length-1)*WIRE_START_FRACTION)).map(r=>({...r,p:r.p.clone().add(new T.Vector3(0,-handoffLift(r.parameter??-1).height,0))}));
+  for(let i=0;i<wire.length;i+=8){
+    const r=wire[i],at=(x,y)=>r.p.clone().addScaledVector(n(r),x).addScaledVector(up,y+WIRE_HEIGHT_OFFSET);
+    add(`underslung-wire-tie-${i}`,'wire',[at(-WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT),at(-WIRE_GUARD_SPACING,-.028),at(WIRE_GUARD_SPACING,-.028),at(WIRE_GUARD_SPACING,WIRE_GUARD_HEIGHT)],.012,'brass');
+    for(const sign of [-1,1])add(`wire-seat-${i}-${sign}`,'wire',[at(sign*.09,-.028),at(sign*.09,-.012)],.02,'chrome');
+  }
+  return parts;
+}
+// Compact formed nose, shared by its visible shell and convex contact.
+export function rampNoseVertices() {
+  const vertices=[];
+  for(const [x,z] of [[1.55,-1.25],[2.35,-1.25],[2.35,-1.65]])for(const y of [.035,.32])vertices.push(x,y,z);
+  return new Float32Array(vertices);
+}
+export function buildPhysicalRamp(game) {
+  const rows=sampleRamp(), colliders=[];
+  const wireStart=Math.round((rows.length-1)*WIRE_START_FRACTION);
+  // One continuous deck removes seam ridges that trapped slow returning balls.
+  // Correct the deck and left S-bend internal edges after orienting the left
+  // face into the channel. Keep the right wall's established contact response:
+  // correcting it too loses required natural 82/83-tick ramp shots.
+  for(const kind of ['deck','left','right']) {
+    for (const [start,end,flags] of [[0,wireStart,kind==='right'?undefined:R.TriMeshFlags.FIX_INTERNAL_EDGES]]) {
+      const data=surface(rows.slice(start,end+1),kind);
+      colliders.push(game.world.createCollider(R.ColliderDesc.trimesh(data.positions,data.indices,flags).setFriction(0.025).setRestitution(.02)));
+    }
+  }
+  for(const rail of rampWireRails(rows.slice(wireStart)))for(const part of railCapsules(rail,WIRE_RADIUS)) {
+    colliders.push(game.world.createCollider(R.ColliderDesc.capsule(part.halfHeight,part.radius)
+      .setTranslation(part.center.x,part.center.y,part.center.z).setRotation(part.rotation)
+      .setFriction(.025).setRestitution(.02)));
+  }
+  const baseColliderStart=colliders.length;
+  // Match the actual closed housing boundary without convexifying its
+  // outside fill above the deck. Keep one real mesh per existing strip.
+  for(const shell of baseShellStrips(lowRampSegments(rows))) {
+    colliders.push(game.world.createCollider(R.ColliderDesc.trimesh(
+      shell.attributes.position.array,new Uint32Array(shell.index.array),
+      R.TriMeshFlags.FIX_INTERNAL_EDGES).setFriction(.025).setRestitution(.02)));
+    shell.dispose();
+  }
+  // A chamfered nose closes the base upstream without a perpendicular
+  // dead-end against the shooter divider. Its low prism remains below the ramp.
+  colliders.push(game.world.createCollider(R.ColliderDesc.convexHull(rampNoseVertices()).setFriction(.02).setRestitution(.1)));
+  const baseColliders=colliders.slice(baseColliderStart);
+  // Columns sit on the perimeter strip or shooter divider. Rear posts meet
+  // the back wall instead of leaving a ball-sized inaccessible pocket.
+  // Posts, crossheads, collars and feet all have matching visible contacts.
+  const supportColliderStart=colliders.length;
+  for(const m of rampSupportStations(rows)){
+    if(m.i===240&&m.x<0){colliders.push(...appendLeftParts(game.world,R,true));continue;}
+    const top=new T.Vector3(m.x,m.y,m.z),bottom=new T.Vector3(m.x,.055,m.z),saddle=rows[m.i].p.clone().add(new T.Vector3(0,-m.drop,0));
+    for(const [a,b,radius] of [[bottom,top,.037],[top,saddle,.034]]){
+      const delta=b.clone().sub(a),mid=a.clone().add(b).multiplyScalar(.5);
+      const q=new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),delta.clone().normalize());
+      colliders.push(game.world.createCollider(R.ColliderDesc.cylinder(delta.length()/2,radius).setTranslation(mid.x,mid.y,mid.z).setRotation(q).setFriction(.025).setRestitution(.02)));
+    }
+    colliders.push(game.world.createCollider(R.ColliderDesc.cylinder(.045/2,.040).setTranslation(m.x,m.y,m.z).setFriction(.025).setRestitution(.02)));
+    colliders.push(game.world.createCollider(R.ColliderDesc.cylinder(.025/2,m.divider?.040:.085).setTranslation(m.x,.055,m.z).setFriction(.025).setRestitution(.02)));
+  }
+  const supportColliders=colliders.slice(supportColliderStart),undersideContacts=[];
+  // Append after existing supports to preserve the validated contact ordering.
+  for(const part of rampUndersideParts(rows))for(let i=1;i<part.points.length;i++){
+    const a=part.points[i-1],b=part.points[i],delta=b.clone().sub(a),mid=a.clone().add(b).multiplyScalar(.5);
+    const q=new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),delta.clone().normalize());
+    const collider=game.world.createCollider(R.ColliderDesc.cylinder(delta.length()/2,part.radius).setTranslation(mid.x,mid.y,mid.z).setRotation(q).setFriction(.025).setRestitution(.02));
+    colliders.push(collider);undersideContacts.push({name:part.name,segment:i-1,collider});
+  }
+  const hardwareParts=rampHardwareParts(rows.slice(0,wireStart+1),RAMP_WALL_HEIGHT);
+  const acrylicParts=rampAcrylicParts(rows.slice(0,wireStart+1),RAMP_WALL_HEIGHT);
+  const acrylicFirstOpenRow=(lowRampSegments(rows).at(-1)?.index??-1)+1;
+  const acrylicFaces=rampAcrylicContactParts(acrylicParts,RAMP_WALL_HEIGHT,acrylicFirstOpenRow);
+  const hardwareMesh=rampHardwareMesh([...hardwareParts,...acrylicFaces]);
+  const hardwareCollider=game.world.createCollider(R.ColliderDesc.trimesh(hardwareMesh.vertices,hardwareMesh.indices,R.TriMeshFlags.FIX_INTERNAL_EDGES).setFriction(.025).setRestitution(.02));
+  colliders.push(hardwareCollider);
+  const ranges=hardwareMesh.ranges.map(range=>({...range,collider:hardwareCollider}));
+  const hardwareContacts=ranges.slice(0,hardwareParts.length),acrylicContacts=ranges.slice(hardwareParts.length);
+  for(const part of [...hardwareParts,...acrylicParts,...acrylicFaces])part.geometry.dispose();
+  return {colliders,baseColliders,supportColliders,undersideContacts,hardwareContacts,acrylicContacts,acrylicFirstOpenRow,rows,dispose(){for(const c of colliders)game.world.removeCollider(c,true);}};
+}
+export function buildVisualRamp(assets) {
+  const rows=sampleRamp(),root=new T.Group();root.name='physical-s-ramp';assets.root.add(root);
+  const split=Math.round((rows.length-1)*WIRE_START_FRACTION), sheet=rows.slice(0,split+1);
+  const acrylic=new T.MeshStandardMaterial({color:0x85b2a8,metalness:.08,roughness:.22,transparent:true,opacity:.4,depthWrite:false,side:T.DoubleSide});
+  for(const kind of ['deck','left','right'])assets.mesh(geometry(surface(sheet,kind)),acrylic,root);
+  for(const rail of rampWireRails(rows.slice(split)))assets.mesh(capsuleStockGeometry(railCapsules(rail,WIRE_RADIUS)),'chrome',root);
+  for(const side of ['left','right'])assets.tube(root,sheet.map(r=>[r[side].x,r[side].y+RAMP_WALL_HEIGHT,r[side].z]),.022,'chrome');
+  root.add(buildRampBaseVisual(rows,assets.materials.dark));
+  return root;
+}
+
+// Opaque visible counterparts of the gameplay-critical low base and nose.
+export function buildRampBaseVisual(rows=sampleRamp(),material) {
+  const root=new T.Group(); root.name='solid-anti-trap-ramp-base';
+  const add=(name,g)=>{const m=new T.Mesh(g,material);m.name=name;m.castShadow=true;m.receiveShadow=true;root.add(m);return m;};
+  const noseTop={positions:rampNoseVertices(),indices:new Uint32Array([1,3,5,0,4,2,0,2,1,2,3,1,2,4,3,4,5,3,4,0,5,0,1,5])};
+  add('chamfered-anti-trap-nose',geometry(noseTop));
+  for(const part of baseShellVisualParts(lowRampSegments(rows)))add(part.name,part.geometry);
+  return root;
+}
+
+export function rampWireRails(rows) {
+  return rampWireRailsBase(rows.map(r=> {
+    const h=handoffLift(r.parameter??-1).height;
+    return h?{...r,p:r.p.clone().add(new T.Vector3(0,-h,0))}:r;
+  }));
+}

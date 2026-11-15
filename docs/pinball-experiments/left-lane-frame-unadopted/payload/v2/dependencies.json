@@ -1,0 +1,5 @@
+{
+  "web/js/vendor/three-0.180.0/three.module.min.js": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6",
+  "web/js/vendor/three-0.180.0/three.core.min.js": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de",
+  "web/js/vendor/rapier3d-0.17.3/rapier.mjs": "e0f7783dae9d3d175ec62c0cafdad84261d8c64c5f7da6ae5b24e858cf9ab759"
+}

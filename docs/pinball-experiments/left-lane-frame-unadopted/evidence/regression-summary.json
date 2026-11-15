@@ -1,0 +1,106 @@
+{
+  "sourceSHA256": "07a6cbc5fc9d4dce4ea1d40d859340c6b56c63e52a16d09fc9dc9380da9d9607",
+  "command": "node --import ./artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/loader.mjs --test web/js/pinball/*.test.mjs",
+  "tests": 212,
+  "pass": 200,
+  "fail": 12,
+  "cancelled": 0,
+  "skipped": 0,
+  "exit": 1,
+  "duration_ms": 175153.85825,
+  "lint": {
+    "candidateModulesAndCSS": 39,
+    "errors": 0,
+    "warnings": 3,
+    "baselineModulesAndCSS": 38,
+    "baselineErrors": 0,
+    "baselineWarnings": 3
+  },
+  "categories": {
+    "oldStructuralCount": 2,
+    "oldFixtureInvalid": 4,
+    "oldLaneClassification": 4,
+    "functionalRegressionUnresolved": 2
+  },
+  "failures": [
+    {
+      "source": "cabinet-fasteners.test.mjs:38",
+      "test": "four accessible left board mounts physically contact clear incoming balls without resets",
+      "classification": "old fixture invalid",
+      "finding": "Fourth start (−2.58,.18,3.625) now overlaps the new outer capsule by .09128087. First three remain clear by .005. Fails initial legality, not a lost demonstrated screw contact from a legal approach."
+    },
+    {
+      "source": "geometry-budget.test.mjs:60",
+      "test": "installed rollover bars are closed stocks on actual capsule axes and retain eight original mounts",
+      "classification": "old structural count",
+      "finding": "1484 !=1380 at the global collider-count assertion. It does not reach its upper-bar mesh checks. New shared-part correspondence was independently checked in v2 verification.json, not substituted into this test."
+    },
+    {
+      "source": "gimmicks.test.mjs:7",
+      "test": "earned side kickback reverses an outlane descent once, uncharged still drains",
+      "classification": "old fixture invalid",
+      "finding": "Old charged start yields no kick. All original X−2.10/−2.14/−2.17,Y.18,Z3.40 starts overlap new socket/shaft: −.11258196/−.13499986/−.12580314. Trigger moved deliberately. This test cannot establish new charged or uncharged ability."
+    },
+    {
+      "source": "lower-layout.test.mjs:31",
+      "test": "genuine outside lanes still drain without a flipper or invisible rescue",
+      "classification": "old lane classification",
+      "finding": "Old left OUT start X−2.12,Y.18,Z2.6 remains legal (+.005), but is now inside the divider: new IN region. After held-bat input it remains playing rather than ready. Reclassifying the coordinate is not evidence that the new OUT drains."
+    },
+    {
+      "source": "lower-layout.test.mjs:67",
+      "test": "restored lane mouths pass descending balls without live position rescue",
+      "classification": "old lane classification",
+      "finding": "At the old OUT coordinate now in IN, expected ready but actual playing. No reset assertion failed. The test sequence stops here; later cases are not established."
+    },
+    {
+      "source": "lower-layout.test.mjs:128",
+      "test": "five adjacent redesigned bat shots traverse S, capture and refire the same ball",
+      "classification": "functional regression unresolved",
+      "finding": "Legitimate original IN start(−1.6,.18,2.8), initial clearance+.005. rampTraversals==1 assertion passes, then phase ready !=playing. This is loss of required same-ball return/capture after a real ramp traversal, not a geometric-count mismatch or missing initial ramp award. Exact failing delay is absent from raw failure detail; no guess or fresh reordered replay was used."
+    },
+    {
+      "source": "lower-layout.test.mjs:194",
+      "test": "lane edge fixtures distinguish genuine mouths from initial rail penetration",
+      "classification": "old fixture invalid",
+      "finding": "The specifically expected legal left edgeX−2.18,Y.18,Z2.6 now overlaps divider by .02850887. Its old validity assertion fails; old invalid probesX−2.20/−2.24 remain invalid."
+    },
+    {
+      "source": "lower-layout.test.mjs:206",
+      "test": "offset slow and fast lane entries and lateral approaches remain physical and releasable",
+      "classification": "old lane classification",
+      "finding": "First reported failure side−1/heldfalse/oldOUTX2.02,Z2.6,vz.25: actual batcontacts[1,0], expected[0,0]. Start remains legal (+.00321598), but now lies in IN. Later72-fixture coverage is not complete because the test aborts."
+    },
+    {
+      "source": "mechanical-ramp.test.mjs:83",
+      "test": "all perimeter ramp supports have matching physical posts, arms, collars and feet",
+      "classification": "old structural count",
+      "finding": "64 !=56 support colliders. Two original4-part supports replaced with8-part frame assemblies. Stops at count before old indexed post/arm/collar/foot checks; new54-part mesh/contact verification is separate."
+    },
+    {
+      "source": "mechanical-supports.test.mjs:6",
+      "test": "short supports allow eighty nonpenetrating slow wall approaches",
+      "classification": "old fixture invalid",
+      "finding": "End count left44 !=46, rear34 unchanged. Two directions from(−2.53,.175,3.25) now overlap new outer rail by .001736608, so leftskip2 replaces0. All78 executed valid fixtures reached the unchanged drain/no-persistent-stop/no-reset assertions before the final count failed. This does not authorize weakening the fixed coverage count."
+    },
+    {
+      "source": "physics.test.mjs:137",
+      "test": "side-wall approaches enter genuine outlanes and naturally drain when uncharged",
+      "classification": "old lane classification",
+      "finding": "Old left start(−2.12,.18,1.1) legal+.005 is the new upstream IN. Actual flippercontacts[0,1] versus[0,0]; natural ready-phase assertion passes. Its touching the opposite bat remains observed behavior, not a new OUT success."
+    },
+    {
+      "source": "physics.test.mjs:387",
+      "test": "five real cradle-reflip timings traverse the S ramp, cradle again and re-fire",
+      "classification": "functional regression unresolved",
+      "finding": "Initial original(−1.6,.18,2.8) legal+.005. Crest, traversal, return-lane and floor assertions pass. After another5 seconds held-left, phase ready !=playing atline416. Same-ball recapture is not maintained. Exact failing delay not logged. This is separate test history from lower-layout and must not be dismissed solely by a successful alternate timing sweep."
+    }
+  ],
+  "limitations": [
+    "No permanent expectations or frozen sources edited",
+    "Static initial-clearance diagnostics only; no added dynamic replay",
+    "No claim of all212 passing after reclassification",
+    "Old tests aborting early do not establish remaining fixture coverage",
+    "Parent local save/IN/natural/visual evidence is separate and not merged into this raw regression pass count"
+  ]
+}

@@ -1,0 +1,1745 @@
+{
+  "method": "Paired old-coordinate and proposed-coordinate mouth fixtures in identical world creation order. Synthetic earned charge is a local mechanism fixture, NOT natural earning. Invalid initial solids are retained and excluded from success interpretation. Inputs/bat keys unused, 20 second cap. Upstream .5 is descriptive, not an adoption threshold. Full trace sampled every .1 second. Actual-phone/human play untested.",
+  "summary": {
+    "cases": 20,
+    "validStarts": 20,
+    "saves": 4,
+    "returnsHalf": 4,
+    "liveResets": 0,
+    "stalled": 0
+  },
+  "results": [
+    {
+      "spec": {
+        "name": "mouth--2.12-0.2-false",
+        "x": -2.12,
+        "z": 1.1,
+        "speed": 0.2,
+        "charged": false,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941202500611922e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.08637091689191306,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8786855936050415,
+            "y": 0.2199999988079071,
+            "z": 1.1227881908416748
+          }
+        },
+        {
+          "gap": 0.08637724815898246,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8775207996368408,
+            "y": 0.2199999988079071,
+            "z": 1.1052219867706299
+          }
+        },
+        {
+          "gap": 0.08713931028047514,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8799619674682617,
+            "y": 0.2199999988079071,
+            "z": 1.1472632884979248
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 2.3833333333333275,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.1753477305173874,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          2
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.12-0.2-true",
+        "x": -2.12,
+        "z": 1.1,
+        "speed": 0.2,
+        "charged": true,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941202500611922e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.08637091689191306,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8786855936050415,
+            "y": 0.2199999988079071,
+            "z": 1.1227881908416748
+          }
+        },
+        {
+          "gap": 0.08637724815898246,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8775207996368408,
+            "y": 0.2199999988079071,
+            "z": 1.1052219867706299
+          }
+        },
+        {
+          "gap": 0.08713931028047514,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8799619674682617,
+            "y": 0.2199999988079071,
+            "z": 1.1472632884979248
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.8416666666666626,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 1,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.17504116892814636,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          2
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.12-2-false",
+        "x": -2.12,
+        "z": 1.1,
+        "speed": 2,
+        "charged": false,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941202500611922e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.08637091689191306,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8786855936050415,
+            "y": 0.2199999988079071,
+            "z": 1.1227881908416748
+          }
+        },
+        {
+          "gap": 0.08637724815898246,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8775207996368408,
+            "y": 0.2199999988079071,
+            "z": 1.1052219867706299
+          }
+        },
+        {
+          "gap": 0.08713931028047514,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8799619674682617,
+            "y": 0.2199999988079071,
+            "z": 1.1472632884979248
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.5083333333333304,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.175,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.12-2-true",
+        "x": -2.12,
+        "z": 1.1,
+        "speed": 2,
+        "charged": true,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941202500611922e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.08637091689191306,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8786855936050415,
+            "y": 0.2199999988079071,
+            "z": 1.1227881908416748
+          }
+        },
+        {
+          "gap": 0.08637724815898246,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8775207996368408,
+            "y": 0.2199999988079071,
+            "z": 1.1052219867706299
+          }
+        },
+        {
+          "gap": 0.08713931028047514,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8799619674682617,
+            "y": 0.2199999988079071,
+            "z": 1.1472632884979248
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.5083333333333304,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 1,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.175,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.12-4-false",
+        "x": -2.12,
+        "z": 1.1,
+        "speed": 4,
+        "charged": false,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941202500611922e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.08637091689191306,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8786855936050415,
+            "y": 0.2199999988079071,
+            "z": 1.1227881908416748
+          }
+        },
+        {
+          "gap": 0.08637724815898246,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8775207996368408,
+            "y": 0.2199999988079071,
+            "z": 1.1052219867706299
+          }
+        },
+        {
+          "gap": 0.08713931028047514,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8799619674682617,
+            "y": 0.2199999988079071,
+            "z": 1.1472632884979248
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.2916666666666645,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.175,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.12-4-true",
+        "x": -2.12,
+        "z": 1.1,
+        "speed": 4,
+        "charged": true,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941202500611922e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.08637091689191306,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8786855936050415,
+            "y": 0.2199999988079071,
+            "z": 1.1227881908416748
+          }
+        },
+        {
+          "gap": 0.08637724815898246,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8775207996368408,
+            "y": 0.2199999988079071,
+            "z": 1.1052219867706299
+          }
+        },
+        {
+          "gap": 0.08713931028047514,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8799619674682617,
+            "y": 0.2199999988079071,
+            "z": 1.1472632884979248
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.2916666666666645,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 1,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.175,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.12-8-false",
+        "x": -2.12,
+        "z": 1.1,
+        "speed": 8,
+        "charged": false,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941202500611922e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.08637091689191306,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8786855936050415,
+            "y": 0.2199999988079071,
+            "z": 1.1227881908416748
+          }
+        },
+        {
+          "gap": 0.08637724815898246,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8775207996368408,
+            "y": 0.2199999988079071,
+            "z": 1.1052219867706299
+          }
+        },
+        {
+          "gap": 0.08713931028047514,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8799619674682617,
+            "y": 0.2199999988079071,
+            "z": 1.1472632884979248
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.083333333333332,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.175,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          2
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.12-8-true",
+        "x": -2.12,
+        "z": 1.1,
+        "speed": 8,
+        "charged": true,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941202500611922e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.08637091689191306,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8786855936050415,
+            "y": 0.2199999988079071,
+            "z": 1.1227881908416748
+          }
+        },
+        {
+          "gap": 0.08637724815898246,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8775207996368408,
+            "y": 0.2199999988079071,
+            "z": 1.1052219867706299
+          }
+        },
+        {
+          "gap": 0.08713931028047514,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8799619674682617,
+            "y": 0.2199999988079071,
+            "z": 1.1472632884979248
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.083333333333332,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 1,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.175,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          2
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.515-0.2-false",
+        "x": -2.515,
+        "z": 1.1,
+        "speed": 0.2,
+        "charged": false,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941125062555955e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.04845234152469563,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.5243492126464844,
+            "y": 0.38611143827438354,
+            "z": 1.1181985139846802
+          }
+        },
+        {
+          "gap": 0.05469845884476662,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.6500000953674316,
+            "y": 0.054999999701976776,
+            "z": 1.2999999523162842
+          }
+        },
+        {
+          "gap": 0.05472698597563924,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.530444383621216,
+            "y": 0.3868085443973541,
+            "z": 0.985467255115509
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.6249999999999967,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.17991924285888672,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.515-0.2-true",
+        "x": -2.515,
+        "z": 1.1,
+        "speed": 0.2,
+        "charged": true,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941125062555955e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.04845234152469563,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.5243492126464844,
+            "y": 0.38611143827438354,
+            "z": 1.1181985139846802
+          }
+        },
+        {
+          "gap": 0.05469845884476662,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.6500000953674316,
+            "y": 0.054999999701976776,
+            "z": 1.2999999523162842
+          }
+        },
+        {
+          "gap": 0.05472698597563924,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.530444383621216,
+            "y": 0.3868085443973541,
+            "z": 0.985467255115509
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 2.9083333333333257,
+      "firstSave": {
+        "t": 0.7999999999999996,
+        "p": {
+          "x": -2.5672316551208496,
+          "y": 0.17055943608283997,
+          "z": 2.437638759613037
+        }
+      },
+      "minZAfterSave": 0.9361509084701538,
+      "upstreamOfSaveByHalf": true,
+      "sideSaveUses": 1,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.178136944770813,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": [
+        {
+          "type": "side-save",
+          "id": "side-save-0",
+          "t": 0.7999999999999996,
+          "p": {
+            "x": -2.5672316551208496,
+            "y": 0.17055943608283997,
+            "z": 2.437638759613037
+          }
+        }
+      ]
+    },
+    {
+      "spec": {
+        "name": "mouth--2.515-2-false",
+        "x": -2.515,
+        "z": 1.1,
+        "speed": 2,
+        "charged": false,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941125062555955e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.04845234152469563,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.5243492126464844,
+            "y": 0.38611143827438354,
+            "z": 1.1181985139846802
+          }
+        },
+        {
+          "gap": 0.05469845884476662,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.6500000953674316,
+            "y": 0.054999999701976776,
+            "z": 1.2999999523162842
+          }
+        },
+        {
+          "gap": 0.05472698597563924,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.530444383621216,
+            "y": 0.3868085443973541,
+            "z": 0.985467255115509
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.4333333333333307,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.17932263016700745,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.515-2-true",
+        "x": -2.515,
+        "z": 1.1,
+        "speed": 2,
+        "charged": true,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941125062555955e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.04845234152469563,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.5243492126464844,
+            "y": 0.38611143827438354,
+            "z": 1.1181985139846802
+          }
+        },
+        {
+          "gap": 0.05469845884476662,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.6500000953674316,
+            "y": 0.054999999701976776,
+            "z": 1.2999999523162842
+          }
+        },
+        {
+          "gap": 0.05472698597563924,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.530444383621216,
+            "y": 0.3868085443973541,
+            "z": 0.985467255115509
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 2.749999999999993,
+      "firstSave": {
+        "t": 0.6416666666666668,
+        "p": {
+          "x": -2.5728697776794434,
+          "y": 0.17055387794971466,
+          "z": 2.4377634525299072
+        }
+      },
+      "minZAfterSave": 1.0367107391357422,
+      "upstreamOfSaveByHalf": true,
+      "sideSaveUses": 1,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.1767619252204895,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": [
+        {
+          "type": "side-save",
+          "id": "side-save-0",
+          "t": 0.6416666666666668,
+          "p": {
+            "x": -2.5728697776794434,
+            "y": 0.17055387794971466,
+            "z": 2.4377634525299072
+          }
+        }
+      ]
+    },
+    {
+      "spec": {
+        "name": "mouth--2.515-4-false",
+        "x": -2.515,
+        "z": 1.1,
+        "speed": 4,
+        "charged": false,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941125062555955e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.04845234152469563,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.5243492126464844,
+            "y": 0.38611143827438354,
+            "z": 1.1181985139846802
+          }
+        },
+        {
+          "gap": 0.05469845884476662,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.6500000953674316,
+            "y": 0.054999999701976776,
+            "z": 1.2999999523162842
+          }
+        },
+        {
+          "gap": 0.05472698597563924,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.530444383621216,
+            "y": 0.3868085443973541,
+            "z": 0.985467255115509
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.3416666666666643,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.17807455360889435,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.515-4-true",
+        "x": -2.515,
+        "z": 1.1,
+        "speed": 4,
+        "charged": true,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941125062555955e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.04845234152469563,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.5243492126464844,
+            "y": 0.38611143827438354,
+            "z": 1.1181985139846802
+          }
+        },
+        {
+          "gap": 0.05469845884476662,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.6500000953674316,
+            "y": 0.054999999701976776,
+            "z": 1.2999999523162842
+          }
+        },
+        {
+          "gap": 0.05472698597563924,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.530444383621216,
+            "y": 0.3868085443973541,
+            "z": 0.985467255115509
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 3.8333333333333224,
+      "firstSave": {
+        "t": 0.591666666666667,
+        "p": {
+          "x": -2.5585715770721436,
+          "y": 0.1705750823020935,
+          "z": 2.4204084873199463
+        }
+      },
+      "minZAfterSave": -0.0232672318816185,
+      "upstreamOfSaveByHalf": true,
+      "sideSaveUses": 1,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.175,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": [
+        {
+          "type": "side-save",
+          "id": "side-save-0",
+          "t": 0.591666666666667,
+          "p": {
+            "x": -2.5585715770721436,
+            "y": 0.1705750823020935,
+            "z": 2.4204084873199463
+          }
+        },
+        {
+          "type": "bank",
+          "id": "contact-1",
+          "t": 1.2833333333333312,
+          "p": {
+            "x": -2.1083126068115234,
+            "y": 0.17118659615516663,
+            "z": -0.01708165742456913
+          }
+        },
+        {
+          "type": "sling",
+          "id": "contact-2",
+          "t": 2.1416666666666617,
+          "p": {
+            "x": -2.0395524501800537,
+            "y": 0.17055363953113556,
+            "z": 1.40545654296875
+          }
+        }
+      ]
+    },
+    {
+      "spec": {
+        "name": "mouth--2.515-8-false",
+        "x": -2.515,
+        "z": 1.1,
+        "speed": 8,
+        "charged": false,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941125062555955e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.04845234152469563,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.5243492126464844,
+            "y": 0.38611143827438354,
+            "z": 1.1181985139846802
+          }
+        },
+        {
+          "gap": 0.05469845884476662,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.6500000953674316,
+            "y": 0.054999999701976776,
+            "z": 1.2999999523162842
+          }
+        },
+        {
+          "gap": 0.05472698597563924,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.530444383621216,
+            "y": 0.3868085443973541,
+            "z": 0.985467255115509
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 0.7916666666666663,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.17560352385044098,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "mouth--2.515-8-true",
+        "x": -2.515,
+        "z": 1.1,
+        "speed": 8,
+        "charged": true,
+        "tilted": false
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941125062555955e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.04845234152469563,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.5243492126464844,
+            "y": 0.38611143827438354,
+            "z": 1.1181985139846802
+          }
+        },
+        {
+          "gap": 0.05469845884476662,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.6500000953674316,
+            "y": 0.054999999701976776,
+            "z": 1.2999999523162842
+          }
+        },
+        {
+          "gap": 0.05472698597563924,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.530444383621216,
+            "y": 0.3868085443973541,
+            "z": 0.985467255115509
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.799999999999996,
+      "firstSave": {
+        "t": 0.24999999999999997,
+        "p": {
+          "x": -2.564607620239258,
+          "y": 0.17082276940345764,
+          "z": 2.4588370323181152
+        }
+      },
+      "minZAfterSave": 1.3383108377456665,
+      "upstreamOfSaveByHalf": true,
+      "sideSaveUses": 1,
+      "remainingCharge": 0,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.17560352385044098,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": [
+        {
+          "type": "side-save",
+          "id": "side-save-0",
+          "t": 0.24999999999999997,
+          "p": {
+            "x": -2.564607620239258,
+            "y": 0.17082276940345764,
+            "z": 2.4588370323181152
+          }
+        }
+      ]
+    },
+    {
+      "spec": {
+        "name": "tilt--2.12--2",
+        "x": -2.12,
+        "z": 1.1,
+        "speed": -2,
+        "charged": true,
+        "tilted": true
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941202500611922e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.08637091689191306,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8786855936050415,
+            "y": 0.2199999988079071,
+            "z": 1.1227881908416748
+          }
+        },
+        {
+          "gap": 0.08637724815898246,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8775207996368408,
+            "y": 0.2199999988079071,
+            "z": 1.1052219867706299
+          }
+        },
+        {
+          "gap": 0.08713931028047514,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8799619674682617,
+            "y": 0.2199999988079071,
+            "z": 1.1472632884979248
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 2.699999999999993,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 1,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.175,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "tilt--2.12-2",
+        "x": -2.12,
+        "z": 1.1,
+        "speed": 2,
+        "charged": true,
+        "tilted": true
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941202500611922e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.08637091689191306,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8786855936050415,
+            "y": 0.2199999988079071,
+            "z": 1.1227881908416748
+          }
+        },
+        {
+          "gap": 0.08637724815898246,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8775207996368408,
+            "y": 0.2199999988079071,
+            "z": 1.1052219867706299
+          }
+        },
+        {
+          "gap": 0.08713931028047514,
+          "inside": false,
+          "type": 2,
+          "p": {
+            "x": -1.8799619674682617,
+            "y": 0.2199999988079071,
+            "z": 1.1472632884979248
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.5083333333333304,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 1,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.175,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "tilt--2.515--2",
+        "x": -2.515,
+        "z": 1.1,
+        "speed": -2,
+        "charged": true,
+        "tilted": true
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941125062555955e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.04845234152469563,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.5243492126464844,
+            "y": 0.38611143827438354,
+            "z": 1.1181985139846802
+          }
+        },
+        {
+          "gap": 0.05469845884476662,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.6500000953674316,
+            "y": 0.054999999701976776,
+            "z": 1.2999999523162842
+          }
+        },
+        {
+          "gap": 0.05472698597563924,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.530444383621216,
+            "y": 0.3868085443973541,
+            "z": 0.985467255115509
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.8416666666666626,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 1,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.17760397493839264,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    },
+    {
+      "spec": {
+        "name": "tilt--2.515-2",
+        "x": -2.515,
+        "z": 1.1,
+        "speed": 2,
+        "charged": true,
+        "tilted": true
+      },
+      "initialNearest": [
+        {
+          "gap": 8.941125062555955e-10,
+          "inside": false,
+          "type": 1,
+          "p": {
+            "x": 0,
+            "y": -0.03999999910593033,
+            "z": -0.3499999940395355
+          }
+        },
+        {
+          "gap": 0.04845234152469563,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.5243492126464844,
+            "y": 0.38611143827438354,
+            "z": 1.1181985139846802
+          }
+        },
+        {
+          "gap": 0.05469845884476662,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.6500000953674316,
+            "y": 0.054999999701976776,
+            "z": 1.2999999523162842
+          }
+        },
+        {
+          "gap": 0.05472698597563924,
+          "inside": false,
+          "type": 10,
+          "p": {
+            "x": -2.530444383621216,
+            "y": 0.3868085443973541,
+            "z": 0.985467255115509
+          }
+        }
+      ],
+      "initialLegal": true,
+      "phase": "ready",
+      "returnedShooter": false,
+      "ball": 2,
+      "seconds": 1.4333333333333307,
+      "firstSave": null,
+      "minZAfterSave": null,
+      "upstreamOfSaveByHalf": null,
+      "sideSaveUses": 0,
+      "remainingCharge": 1,
+      "resets": 0,
+      "stalled": false,
+      "maxY": 0.17932263016700745,
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      },
+      "events": []
+    }
+  ]
+}

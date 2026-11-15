@@ -1,0 +1,862 @@
+{
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/30--1.json.gz": {
+    "bytes": 110314,
+    "sha256": "9fda632e6859dde67e985b39a18ec7149b8cf6f88cd53e3ab6d2c6e44e90bcca"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/30-1.json.gz": {
+    "bytes": 106067,
+    "sha256": "6766f1444493beded76d7401cf6d08ff27cfb62c4361d70874c4c26b52c36225"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/35--1.json.gz": {
+    "bytes": 116124,
+    "sha256": "c7070020b4053d69ade5ce769a377a867cef1d24960f77009038e7674df12bde"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/35-1.json.gz": {
+    "bytes": 112396,
+    "sha256": "8c2a06b0ecd734d6bb68afc123d196a25033f01376828393a5fe3dbabebfea6a"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/40--1.json.gz": {
+    "bytes": 96284,
+    "sha256": "abbea7a4ade7991eaef1cb8b68a3d795917c7ea763798d2be73e9cebcee08c1a"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/40-1.json.gz": {
+    "bytes": 96045,
+    "sha256": "f7bd5c82a2bb805885d268b1426e3e8882533c540ea82613483d047c5cb36126"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/45--1.json.gz": {
+    "bytes": 343219,
+    "sha256": "6196d8167eb746942d289206391fdf84657fa3d93edc4069aa60e053e02ca0c9"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/45-1.json.gz": {
+    "bytes": 126489,
+    "sha256": "dbdcd96176c76c76d9d432507230158488a0601f18ac7e5ae87cf1ef95fee316"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/50--1.json.gz": {
+    "bytes": 177197,
+    "sha256": "ddc4db6e7068f80c0f086f0a27df417776a6cd46b0808b1979a6322a7dec0b47"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/50-1.json.gz": {
+    "bytes": 180697,
+    "sha256": "83c7342f9c58017c0670222ef1a2ada316e93f3c0445f9a22bb8649295e0ec50"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/55--1.json.gz": {
+    "bytes": 126963,
+    "sha256": "77ca909253e9ab244b659c88c1b5ed3225caf5c6b96bce171e2ceb1fba110486"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/55-1.json.gz": {
+    "bytes": 318491,
+    "sha256": "3e1a71a3730df07cbc198d5cdbab328024e54a9940117484e00228a499522e30"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/60--1.json.gz": {
+    "bytes": 141587,
+    "sha256": "aa270299779531d1ef08c5ed5d4981cad40b03ec9d139ba3487695fadc1cc65b"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/60-1.json.gz": {
+    "bytes": 134249,
+    "sha256": "0271a07120735ab2d047208d751cada4a4dbac784154572cdc3b4745a6cdaaa9"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/65--1.json.gz": {
+    "bytes": 346426,
+    "sha256": "f988f7f926233bcaae2a999b8dfc1c507f8005fbd0b3655f1a2c82f70b9e569c"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/65-1.json.gz": {
+    "bytes": 95011,
+    "sha256": "9241df14d14bb3a818b700ff2686077334fd93d8dfde0930abd14c474b631588"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/70--1.json.gz": {
+    "bytes": 156199,
+    "sha256": "062cf1a2f1b233914c6f817b543c84f486348ad3ae223745c07c88bf6cd12895"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/70-1.json.gz": {
+    "bytes": 127734,
+    "sha256": "7df4428547d9eba2801f308f78d7195484da4a6950891dd011d4a4b7c3b9cd54"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/80--1.json.gz": {
+    "bytes": 385787,
+    "sha256": "5b05542275573908a58539562c0e70063f52ee7e07603e6719925d3be8a49a5b"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/80-1.json.gz": {
+    "bytes": 129860,
+    "sha256": "0d190c25f8bbd99ed45bbe90ee41462d048d5123ec5bf022e51ecadc12c6b74d"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/81--1.json.gz": {
+    "bytes": 385020,
+    "sha256": "87b2d385785982e9f5689ac292b87b2a25011c6a103467e740a5e0b119fb4d69"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/81-1.json.gz": {
+    "bytes": 356626,
+    "sha256": "c628750134f53bb36cc513940d73c503077ad6da8ca3ad8eaa577205f1a8e517"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/82--1.json.gz": {
+    "bytes": 143912,
+    "sha256": "24ef9279cfa7a786670178e9f72ceecaa0a6ee92fbf67a84e25800010b52fe47"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/82-1.json.gz": {
+    "bytes": 331118,
+    "sha256": "321e8c76b102f74c55c2ae33be9bb115622caf557c6646fb4df1b785267faa8c"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/83--1.json.gz": {
+    "bytes": 396226,
+    "sha256": "55bdecac1b11450c1672dbbbb218133a26600663535f439ceb5bf83c4db08b4e"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/83-1.json.gz": {
+    "bytes": 114039,
+    "sha256": "e2fdcabc36b8150f451a801f03c9cbc62c84aa2e8b183b12f02774a0b8ad6c08"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/84--1.json.gz": {
+    "bytes": 132521,
+    "sha256": "36c34a762ee86433f235626cfebdb91335d9fc6e860c53e8d6249fc2bd58319e"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc/84-1.json.gz": {
+    "bytes": 124439,
+    "sha256": "8b0b3bb10164432850df0f927d5d14cfb7551a305185db2d71bffcdcfa499172"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-asc.json": {
+    "bytes": 274594,
+    "sha256": "f1bd92084c49fefd3a6fa8d9e6d14d68e142e6e6f6b44f2ae89ccd6872aee231"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-in-arrival.json": {
+    "bytes": 84869,
+    "sha256": "67876782fbd9fe39510bd2f98efce555794dd3922f4393fb513585a473e43026"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-in-arrival.log": {
+    "bytes": 4528,
+    "sha256": "4c5129e4956024516c4676ce7325f820482e501c7d9d054861a46c7797047c79"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-launch.json": {
+    "bytes": 1432426,
+    "sha256": "990facd9be7e337a694680ecc0c527f3bfa4eca4a3c4679b9e6e7ee57cfeaacd"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-launch.log": {
+    "bytes": 6033,
+    "sha256": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-natural54.json": {
+    "bytes": 39049,
+    "sha256": "c4c5469ea2ec8270e71dd2398e73ccee16793df2c488f8fdedf1c7093c181370"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-natural54.log": {
+    "bytes": 304,
+    "sha256": "961e8ea25356e98f37ac04a64ada60bd8534b3c1743aa446a16173bf206f180e"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-out.json": {
+    "bytes": 203012,
+    "sha256": "cb1b005ee230d3c1e2ee7793d02c2a6da25360456ae831b03e63f8ad62df52cf"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-regression.log": {
+    "bytes": 22939,
+    "sha256": "bb4de0da998561ae8dab1f0d9fa0796eb84a2ad9d0a5ecd97503699778fc5b0d"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-save-sweep.json": {
+    "bytes": 561227,
+    "sha256": "5bff7d79707d6f614f9274e08f1c55ee89b489e09e6b95c92db0940befb866d8"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-save-sweep.log": {
+    "bytes": 175,
+    "sha256": "41f0cc0b580df9f1cfeec305effd4b8769254e1ededb53c890e79bb6550d895b"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/baseline-shots.log": {
+    "bytes": 3333,
+    "sha256": "4e3f295818a93005a9fc6579abc52a3fa04e28572e97b04ca12e9ef8da3931cd"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/30--1.json.gz": {
+    "bytes": 325281,
+    "sha256": "9ae00c8a4278f55d371649765fa552ccae9d2aacb66c9b740c6bf7c56dc836af"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/30-1.json.gz": {
+    "bytes": 322739,
+    "sha256": "c2799999c9a93369f14494662aeba61405fa0ce5a59c1f698b8f99b9c38b6465"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/35--1.json.gz": {
+    "bytes": 150593,
+    "sha256": "9fa387efd9bc5d430e86382f86f1cceaaa87a51681079606019fbf251d6cb4f8"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/35-1.json.gz": {
+    "bytes": 112741,
+    "sha256": "8e96214811f54dc512985373a2541167fe0156dfb4ee45ab1fe5b48e6c1a86c0"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/40--1.json.gz": {
+    "bytes": 89497,
+    "sha256": "15687e3cacb7c18f8ed62cc11a31412fb6b57c61f00f336fbc04e61628eadf03"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/40-1.json.gz": {
+    "bytes": 95503,
+    "sha256": "7fc4e399dbc91a780c82a6ee0baf5b50d70a912dc6f54e4976212703d68f6c94"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/45--1.json.gz": {
+    "bytes": 335897,
+    "sha256": "72412e4e1b4468bb1d081788623c9e7e45b6bf1aa35e7b8e09da7d0a25585c2a"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/45-1.json.gz": {
+    "bytes": 121774,
+    "sha256": "54034b93c72100a1ee7b7e91c477baf661c962bc7420825a9964212781daaa15"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/50--1.json.gz": {
+    "bytes": 170400,
+    "sha256": "534ec41f4192137e89ae3a6ae2a773c9f128e00b0a7f39203fb125a8111227f2"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/50-1.json.gz": {
+    "bytes": 202344,
+    "sha256": "9cb61c8acbf01294e1712e638bca5a6d79864063ad1c8bb5db9690baf5f60fed"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/55--1.json.gz": {
+    "bytes": 160988,
+    "sha256": "defcdbf9c0eb2774f01a712b50b2eeb6b95bf6b10b58afcc403e5c4598c315b6"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/55-1.json.gz": {
+    "bytes": 321264,
+    "sha256": "06921ec686198359c92854d37a1d884bc92800f72b0f1d325238068d76c3fed0"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/60--1.json.gz": {
+    "bytes": 130755,
+    "sha256": "8b41cc6a7c376607db54b52170e7a4ab2839855b30474c9266bb3d2e21a25c1a"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/60-1.json.gz": {
+    "bytes": 122961,
+    "sha256": "28d0e15ae12e74428797f41d6a53a5ead89eab6457474f244ccd175dc574caa4"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/65--1.json.gz": {
+    "bytes": 340402,
+    "sha256": "185a58ec8997f9a447490a5e524eddf307d43c7105d13182f06429deab39b03b"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/65-1.json.gz": {
+    "bytes": 117716,
+    "sha256": "67c02241795696b57f816ee284bb2618963d87eb6f25c37ee7296b69d203a19b"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/70--1.json.gz": {
+    "bytes": 148979,
+    "sha256": "d063abdbfae05adc43ec42841472238f47503d311c134a59c7b50169079c42fe"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/70-1.json.gz": {
+    "bytes": 133407,
+    "sha256": "22e88aaa9ce9660792a172dda9c71518d531efa921101da33b5792ab3b0279a0"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/80--1.json.gz": {
+    "bytes": 260009,
+    "sha256": "8adb1d972bef4423b6cf50e29fda729fd652d4a63e535bb38d4d27151ca1fabc"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/80-1.json.gz": {
+    "bytes": 87946,
+    "sha256": "f9e937bf8c9e9c0eb29f1d3178e94905b2e8ff39332c0b797a3d2548488b7492"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/81--1.json.gz": {
+    "bytes": 351658,
+    "sha256": "e255a7fe70993b13dbc568a5087b4281e8c3ba7dfe11133a570625904d350905"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/81-1.json.gz": {
+    "bytes": 354226,
+    "sha256": "c6ce03d28c9a4d097bc216e4c1a0d5b5fbe73bbca1a76e4eca66ce903a0584f5"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/82--1.json.gz": {
+    "bytes": 350009,
+    "sha256": "f3b8012be74c1bb041a783c3166f167173a65c8259b8a72b0d8d6d33c1e48ac0"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/82-1.json.gz": {
+    "bytes": 151540,
+    "sha256": "8d579bfef32bad7b083c8765efd24b9d0ace9ffa4cdf13181da89b40b708d75a"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/83--1.json.gz": {
+    "bytes": 381488,
+    "sha256": "eca86f37f03370dc9727e2ed88d75bd48157776fcb6949ac7ced1abca96d4f1c"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/83-1.json.gz": {
+    "bytes": 323965,
+    "sha256": "9a6440747d226213b9698313b08578e4bb4fa8ac90c33fd2ae77de41129b41db"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/84--1.json.gz": {
+    "bytes": 333650,
+    "sha256": "d64e6c675b15d00a1ca3de1bc51054170f126ce7bf85001fafdfd633c01ba55e"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc/84-1.json.gz": {
+    "bytes": 119222,
+    "sha256": "ac1ce9a979e3a40b5c9edbece21c93e2fcf2e667f5d3219dd795b6accdd2bed6"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-asc.json": {
+    "bytes": 279358,
+    "sha256": "56546bfa1bfa71fbf5fec50a6c8e28600f5a64a831a8dd591075140dc6a52c25"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-shots.log": {
+    "bytes": 3361,
+    "sha256": "0da1b1d3c16e9c6f956ba5fdfa5eeec1cead5f2424b8321a18b01492f101d373"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v1-in-arrival.json": {
+    "bytes": 142368,
+    "sha256": "28dd75b9c0ce7f7a3f29f9ab6d7d30093480e78204c528451165503c7b81e4fb"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v1-in-arrival.log": {
+    "bytes": 4688,
+    "sha256": "8700efcd3f2fb3ad8793c8dd4355cb69031556f6916c2d8b963072d9545a01b1"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v1-launch.json": {
+    "bytes": 1484031,
+    "sha256": "19c2b42f4b7902d3eb08fedbbad49b5fe5c58bf052b2d1c82e22198489f3f044"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v1-launch.log": {
+    "bytes": 6035,
+    "sha256": "0aedda31bfd90608cdf49aea83898f952a8a41b764d3629bb2f09f1ae6db6f9b"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v1-out.json": {
+    "bytes": 170215,
+    "sha256": "1760828269f579d4a023ee9e1ef83a521f1ae0f144be8f8d72fe8f0b88da3054"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v1-out.log": {
+    "bytes": 173,
+    "sha256": "301635abf2828beafde85c46da5412a0f504212eb4643bc2fca9a65eb30c22ee"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/30--1.json.gz": {
+    "bytes": 334993,
+    "sha256": "bb9e4d7a3dde4f46fdcfd5d9a71c477144d69d7a6bb56bd3f44d695d3b631062"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/30-1.json.gz": {
+    "bytes": 322751,
+    "sha256": "675822650a118467b73561ffc327056e46487ed57b318796338f8c463df39cd4"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/35--1.json.gz": {
+    "bytes": 150588,
+    "sha256": "c8c90dd2f677ee47b9877fa62730faa26c136e92b7deb6032bc905e33e46b7ed"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/35-1.json.gz": {
+    "bytes": 112742,
+    "sha256": "1a14b6c37ebb994611a94505345ec58b5a50e279e38c9d12b281d85df5b5b1d2"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/40--1.json.gz": {
+    "bytes": 89495,
+    "sha256": "6890aa7cc09bdb5b28f8a9adda4792019eab2727db68af9883bb5576a8d11229"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/40-1.json.gz": {
+    "bytes": 95505,
+    "sha256": "58751d988aa6b14dbcf950ef6bf95e9c6485272711a40a5c5e5cbf99f799401e"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/45--1.json.gz": {
+    "bytes": 335895,
+    "sha256": "766b627964bb1ab3366fdf8fe388b2f9993d3803565df8c59ef6654ef11e21bc"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/45-1.json.gz": {
+    "bytes": 113167,
+    "sha256": "64f3697bec6ef91a0437edfb38c498dbe15520924d094d6adf516ba3f5eda2ca"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/50--1.json.gz": {
+    "bytes": 170398,
+    "sha256": "cdd1ce52eb7e2f1cf07045d9e52718138a34742dd2f7cb4a76b607fe702168a4"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/50-1.json.gz": {
+    "bytes": 202513,
+    "sha256": "eac195c7d869c55a0d0fdb8cf92807fda52032b8d10a1e9dddc5b09e42cc5c61"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/55--1.json.gz": {
+    "bytes": 160986,
+    "sha256": "ea6dd4770f2acfd2d1bbf978b2bbf36b6d35bd37070d3bf0e74deb7b10fd4660"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/55-1.json.gz": {
+    "bytes": 321301,
+    "sha256": "e314ac5525861020b15e3a17054423f8112ab54ae6d1e92ff181cd4b9194dfc4"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/60--1.json.gz": {
+    "bytes": 131188,
+    "sha256": "b61d9ff2ac2f9cccacb0ac3b65182864a3fb4527a288410f9819b9ca4c560f34"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/60-1.json.gz": {
+    "bytes": 122967,
+    "sha256": "80d7c02f014b5020949454c6290708768bc29885a1221d808470a9adc5a15edd"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/65--1.json.gz": {
+    "bytes": 340409,
+    "sha256": "1eeac6a28e2ff91385552c7d3695232484bdbc93d07768267bdcb76243057579"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/65-1.json.gz": {
+    "bytes": 108126,
+    "sha256": "15523c114bc2aaf545d187585d969278da82ed6263123653cee7ea6a433089da"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/70--1.json.gz": {
+    "bytes": 148975,
+    "sha256": "abec3810e3b50af2e94272b62f9b885be02c1dfe25956ea467f8dd0e2a8f2c1a"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/70-1.json.gz": {
+    "bytes": 133415,
+    "sha256": "6cb76fd45798535e150d5172435b58fee68205d7ad87cfb3751a11a7c31a3007"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/80--1.json.gz": {
+    "bytes": 380313,
+    "sha256": "d149b056e9d6aa05e17c5310dc44db10c48edac61a5123f7c6d6cb8dc5cc218e"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/80-1.json.gz": {
+    "bytes": 87947,
+    "sha256": "eba378a7b50e97defcb2088750dab9ebb0709be281b6138d3c1815c8cef78bee"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/81--1.json.gz": {
+    "bytes": 135311,
+    "sha256": "18b0cf7a249845b1f8a65020786a17f036abe99854da17e166a045ee3470aaa0"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/81-1.json.gz": {
+    "bytes": 120335,
+    "sha256": "a4fbb7eb91e4b8cb08561075c1e8aad767aa82261e296a0cb5ddca513b96f99a"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/82--1.json.gz": {
+    "bytes": 134521,
+    "sha256": "a34630ce13f52514e1689c0e8bdeaeb892063a5a55a3c40150d451e039d0c711"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/82-1.json.gz": {
+    "bytes": 151545,
+    "sha256": "21d35d899326166ca99407fc1212a8ede7ff44be34d0c6c181646ed379ed8e59"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/83--1.json.gz": {
+    "bytes": 251963,
+    "sha256": "beea84294aa2657d8b0d6f0c756cbda4ae9241abd0ed60be92512be3864f69d9"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/83-1.json.gz": {
+    "bytes": 324009,
+    "sha256": "b1a3ea9804afc645d71cd397e72af09e311efdb9cdcb383f98ed63a35bafdacb"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/84--1.json.gz": {
+    "bytes": 333650,
+    "sha256": "0af315b6e700318309d8c6d818749f4bc95168ff9d5d9591d2142933a550f6c1"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc/84-1.json.gz": {
+    "bytes": 119226,
+    "sha256": "e9c37b2890238871dff456cd98d541ce89187361f326de2ff59dd4f753bd85c6"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-asc.json": {
+    "bytes": 275121,
+    "sha256": "e81623fff75f943322c7cffad5eb14be740249f464b71e13a49a2977dcb1b034"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-in-arrival.json": {
+    "bytes": 142986,
+    "sha256": "77342ab838b587c599cc6cc128d8076347b4dacaf8966848edec777f0d8a2ee5"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-in-arrival.log": {
+    "bytes": 4676,
+    "sha256": "b25035bdd3a48bc37c169e145c0228a23cdf3f44bfcbf5e10e4c591c8a88bf80"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-launch.json": {
+    "bytes": 1478450,
+    "sha256": "96e1593556539aa3e745ff7a207f7056e2f444b16e726d4a2096584097ef10ae"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-launch.log": {
+    "bytes": 6034,
+    "sha256": "ff13c5699e396a557219c6c0ed4443a79ea4b5c9f51c45052383166f0a1cbd20"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-natural54.json": {
+    "bytes": 39044,
+    "sha256": "1a7c1b0fcbe9a33b1dfa4aa063421e690a386cffd6ea5bb4aacbfad3ee14cba5"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-natural54.log": {
+    "bytes": 304,
+    "sha256": "aadc257fb244cb4ba4731b83aa4cd197752ffc5b42029bd8106b20871cb5126c"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-out.json": {
+    "bytes": 166368,
+    "sha256": "282bcadd0bfde28e955d61188d421b227eaf1c6635f03b2b72b8aae589e9c8ef"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-out.log": {
+    "bytes": 173,
+    "sha256": "301635abf2828beafde85c46da5412a0f504212eb4643bc2fca9a65eb30c22ee"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-save-sweep.json": {
+    "bytes": 451424,
+    "sha256": "d96c8f2a501d96810f015db9a7f2be974deaae6207cc35740db48d57368274d9"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-save-sweep.log": {
+    "bytes": 175,
+    "sha256": "41f0cc0b580df9f1cfeec305effd4b8769254e1ededb53c890e79bb6550d895b"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/candidate-v2-shots.log": {
+    "bytes": 3445,
+    "sha256": "7855e810cb801a452828bbabcfe77d1655458640f5c6b9c8a815ead68278123f"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/in-arrival.mjs": {
+    "bytes": 2755,
+    "sha256": "90bc2212746e31c5925af568dcf35950035613517ea1a2e52a8b6a5b4cf42e50"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/input-v2/desktop-active-key-flippers.png": {
+    "bytes": 741138,
+    "sha256": "405faf83486727325e34030edc6b2f32566bb5166d6d15c99c455e9efb63672d"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/input-v2/desktop-active-resumed.png": {
+    "bytes": 745437,
+    "sha256": "2bb144cb50cd7291e8e600003f68fb0d3ab5dfe2814362f2edabcd1035fac696"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/input-v2/mobile-active-resumed.png": {
+    "bytes": 254607,
+    "sha256": "163747cc4f9e4ce10b2b6d451ebd79944455f12bde05f0a3dc208d6eda0cd7b7"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/input-v2/mobile-active-touch-flippers.png": {
+    "bytes": 252883,
+    "sha256": "5626df054f4d3ef4c97cdbe00915423f426276ac5454a0ff907a1da3d8581b84"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/input-v2/mobile-touch-pull.png": {
+    "bytes": 254931,
+    "sha256": "ca4b1ed6f913b396bfb95d0afe44116d4c19ffa5768793e71369a76711f676ca"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/input-v2/results.json": {
+    "bytes": 9245,
+    "sha256": "ed0c708b9c4f829b2fa49bd07408055bb76e37de9e2baf83605b4e0141fb5322"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/input-v2/served-production-file-hashes.json": {
+    "bytes": 4044,
+    "sha256": "a19975da92a6b53ced03eac03c1ecd32b22485b2bda3c480d17e277271221a5f"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/input-v2.cjs": {
+    "bytes": 5833,
+    "sha256": "c93270c77113c86928dc72424909020ee87430b0e35f31c4d825fd9fe45984c0"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/input-v2.log": {
+    "bytes": 70,
+    "sha256": "faa74cbe1d1d236eaa932f1e52b9483422805e25f9908d73ff0e3a06f5e8660a"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/launch.mjs": {
+    "bytes": 3126,
+    "sha256": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/out-compare.mjs": {
+    "bytes": 3526,
+    "sha256": "39be11ab7edd637109ed80363070511352dcec3d68a1710a7c69b4d3a1f3fef9"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/baseline-installed-10.png": {
+    "bytes": 430611,
+    "sha256": "aea3dda1a90890bb049ad0978ee492979c5516dfeb3681c8273ecb1b6b99d750"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/baseline-installed-45.png": {
+    "bytes": 742440,
+    "sha256": "8dbb292d529a568642a538765220de0e022359932536a4b465d4b8379c3f2246"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/baseline-installed-90.png": {
+    "bytes": 618098,
+    "sha256": "a2509b5a77a81427c3f9a0fe4be3e1b76becb087f84973fd289e2c575ea62d39"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/baseline-lower-closeup.png": {
+    "bytes": 796986,
+    "sha256": "832833f75a39cc26f9c654dec1edd62771e56adbd83436515c7742561054dc95"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/baseline-lower-side.png": {
+    "bytes": 113297,
+    "sha256": "28339ec3fd71e37f2f19ced198d9dfbb3b00c827d4ccbef7a18a2a7f27618360"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/baseline-lower-underside.png": {
+    "bytes": 114483,
+    "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/baseline-mobile-390.png": {
+    "bytes": 253694,
+    "sha256": "6ad79b7208452d8a39950008febc241c553a3ca925d4d3098e302566ab29d020"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/candidate-installed-10.png": {
+    "bytes": 433677,
+    "sha256": "8b56186b62a60c721220b04af6948188aa08902836c824f5374572b15fe7a8d6"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/candidate-installed-45.png": {
+    "bytes": 744350,
+    "sha256": "4423e4b912a80436212c5df781989aa5206cffb5347ccce3d62d4791a5f3cd01"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/candidate-installed-90.png": {
+    "bytes": 619955,
+    "sha256": "a9dc731932b3000d2f23f3d7dc70ac76edc9b771970cef8d00f3e79fed994fff"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/candidate-lower-closeup.png": {
+    "bytes": 801506,
+    "sha256": "88c9ee21cda121694077fce51082e7f90a0c65975eecc79d41d940e936542702"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/candidate-lower-side.png": {
+    "bytes": 116433,
+    "sha256": "cd5b87bb89e0226b793f9c85d2c261d48d738b7270aeb9583066386c5156f4bd"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/candidate-lower-underside.png": {
+    "bytes": 115239,
+    "sha256": "269e0743f9284c1269e2caf1261785a36341f34f649d70fc0514c12c0b785021"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/candidate-mobile-390.png": {
+    "bytes": 254639,
+    "sha256": "5aecb3b949357b93f4fa4d95194c0689f4d173dfae81339a0f003a8df5158ce7"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/evidence.json": {
+    "bytes": 935,
+    "sha256": "4dbcc91eaf4e56b095ad7e244b67215ae7839de5c3f65a61c2bc8470a0c0b260"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview/served-candidate-sources.json": {
+    "bytes": 330819,
+    "sha256": "b016fbb1dfe6a09ad06787548d224c6909deddadd179019579bdf343b37ba576"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/baseline-installed-10.png": {
+    "bytes": 430611,
+    "sha256": "aea3dda1a90890bb049ad0978ee492979c5516dfeb3681c8273ecb1b6b99d750"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/baseline-installed-45.png": {
+    "bytes": 742440,
+    "sha256": "8dbb292d529a568642a538765220de0e022359932536a4b465d4b8379c3f2246"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/baseline-installed-90.png": {
+    "bytes": 618098,
+    "sha256": "a2509b5a77a81427c3f9a0fe4be3e1b76becb087f84973fd289e2c575ea62d39"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/baseline-lower-closeup.png": {
+    "bytes": 796986,
+    "sha256": "832833f75a39cc26f9c654dec1edd62771e56adbd83436515c7742561054dc95"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/baseline-lower-side.png": {
+    "bytes": 113297,
+    "sha256": "28339ec3fd71e37f2f19ced198d9dfbb3b00c827d4ccbef7a18a2a7f27618360"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/baseline-lower-underside.png": {
+    "bytes": 114483,
+    "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/baseline-mobile-390.png": {
+    "bytes": 253694,
+    "sha256": "6ad79b7208452d8a39950008febc241c553a3ca925d4d3098e302566ab29d020"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/candidate-installed-10.png": {
+    "bytes": 433709,
+    "sha256": "017c598886e00d311bfc36f9b4ebc2ea72d61d6126e53458a9960f1ba0529e80"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/candidate-installed-45.png": {
+    "bytes": 744295,
+    "sha256": "114d2cc2bd2b835c47a594af1125650da302af474431616d78696a51bb22e565"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/candidate-installed-90.png": {
+    "bytes": 619973,
+    "sha256": "7edf8127575c58ba48fb6ade873687530a38a33ae70b2892b466d4dd9c789e02"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/candidate-lower-closeup.png": {
+    "bytes": 801289,
+    "sha256": "f983910b8ed5c2cc8dfd5fb89f01b383d9230dcb17b67fce7b60d73b8d8e4d85"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/candidate-lower-side.png": {
+    "bytes": 116433,
+    "sha256": "cd5b87bb89e0226b793f9c85d2c261d48d738b7270aeb9583066386c5156f4bd"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/candidate-lower-underside.png": {
+    "bytes": 115239,
+    "sha256": "269e0743f9284c1269e2caf1261785a36341f34f649d70fc0514c12c0b785021"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/candidate-mobile-390.png": {
+    "bytes": 254704,
+    "sha256": "eeb6ba626fd772adf4329b475ea561eda742e78046817ec13a20daede44daedb"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/evidence.json": {
+    "bytes": 935,
+    "sha256": "92af62827ccf55a79750417715e64ad9d8397a24bc9fb0349eefb9c63b81b7c0"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/preview-v2/served-candidate-sources.json": {
+    "bytes": 331252,
+    "sha256": "07a6cbc5fc9d4dce4ea1d40d859340c6b56c63e52a16d09fc9dc9380da9d9607"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/save-sweep.mjs": {
+    "bytes": 3609,
+    "sha256": "5668a7f3bff6353afebcf5fce73820693a6bc89a6ce58e9e35edc672c21d15c8"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/shots-v2.mjs": {
+    "bytes": 5987,
+    "sha256": "b01b4eb1613b5fd55b9dd4ec4f01302e32a60823b40cae00e31d98f30972860d"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/shots.mjs": {
+    "bytes": 6019,
+    "sha256": "9626ec9df1eaea247b218d90209ed0d6aa8245df6756129112309cc0724f134f"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/visual-v2.cjs": {
+    "bytes": 4630,
+    "sha256": "38740b74127536fc71551fcaa740986830317a809a875656d56cb22ac1925352"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/visual-v2.log": {
+    "bytes": 827,
+    "sha256": "58a5a640235d56178f888f11dd728059946b7d401a7e966ae41e2df8f6c8cd8b"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/visual.cjs": {
+    "bytes": 4611,
+    "sha256": "f34d5b324579666e1a94ff2a53f6e5ae7a5655717ad1993a6d8ea8cc9e5d2ae7"
+  },
+  "artifacts/pinball/left-lane-local-c87f117/visual.log": {
+    "bytes": 824,
+    "sha256": "2979b59b3ee0a0328b5cd952168f19e7ee965a0453812f580db187689b967d1c"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/README.md": {
+    "bytes": 3042,
+    "sha256": "4b60ba8be821679118229e5a18a136bc465b123e67b7c1d6a8d6838d5452d098"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/baseline-loader.mjs": {
+    "bytes": 957,
+    "sha256": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/baseline-sources.json": {
+    "bytes": 324949,
+    "sha256": "659030bc26bc3098573723a9110cd273b8719b7d3f15e7049daef1449c6bc8bd"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/build.mjs": {
+    "bytes": 4670,
+    "sha256": "0959286853cb8c8d27e367dd594ff086ee4f9885c2392553abfb56cf4aefe0b0"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/changes.json": {
+    "bytes": 3907,
+    "sha256": "bc41b12c2b3be68aa51d6bb58d47acab4224ea622fce90c3e7477dba97671600"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/definition.mjs": {
+    "bytes": 4772,
+    "sha256": "8da7b2a8a88f789bb4499d9fccdf28afb26ccb03e1e1a494490e19be716266c8"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/loader.mjs": {
+    "bytes": 948,
+    "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/manifest.json": {
+    "bytes": 5032,
+    "sha256": "e2c50f0f88c1aa0090dce073c419b8fbc972ee6bd9d1065b1d80a7fda52a0b6b"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/paths.json": {
+    "bytes": 11441,
+    "sha256": "90beb02ff46a356f476d5f5873f90be935ab8384c6f9f10286eee7fa25fe7a41"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/preservation.json": {
+    "bytes": 551,
+    "sha256": "4ee31d8ce1bc7bcb18b69664dbb014d859bf9835f09d92fc31d014c48829e91b"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/sources.json": {
+    "bytes": 330819,
+    "sha256": "b016fbb1dfe6a09ad06787548d224c6909deddadd179019579bdf343b37ba576"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/static.json": {
+    "bytes": 198353,
+    "sha256": "10ef81c442c0b3b7c9a86af3ebd0684805c17afdfa51e9ec6c5077f57aa64b44"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/static.log": {
+    "bytes": 3321,
+    "sha256": "2baef1a22abb28e18a02f12ed82c604757fdd4c15290acf1faf1d3f27001fc43"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/static.mjs": {
+    "bytes": 3189,
+    "sha256": "97a75591a9f1e12c664b9bf9ebc20f67fe26549a26769fdfeb280bca9f1fea2c"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/support-scan.json": {
+    "bytes": 18900,
+    "sha256": "1f2714cdbcee7907a8e3691f4925f8588645229cfd9e5cbe4c6e9c2b34684212"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/support-scan.mjs": {
+    "bytes": 1978,
+    "sha256": "f92ca1bbeedf87c8ec69aa528fbba95a92f4e9da248c9cd343944bff694f704a"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/README.md": {
+    "bytes": 3085,
+    "sha256": "0c7d8eff21bfde1bf8f2ca30f83a4b6e81baf35a11663df6fecafcf7f8c8dc89"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/baseline-loader.mjs": {
+    "bytes": 960,
+    "sha256": "ffdd542042f34962bba59a0d4b42315d7f30736d33603baf8413841b1fcc03a1"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/baseline-sources.json": {
+    "bytes": 324949,
+    "sha256": "659030bc26bc3098573723a9110cd273b8719b7d3f15e7049daef1449c6bc8bd"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/build.mjs": {
+    "bytes": 4716,
+    "sha256": "a96197760fbc1521b10ce3253b6b81d6adbb1a48c7abe43e463b5d5ab42129ba"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/changes.json": {
+    "bytes": 3937,
+    "sha256": "6667d50c3285fffaf08236f120d248a2c923c5d652dac4ea72d0397b79a79233"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/definition.mjs": {
+    "bytes": 5171,
+    "sha256": "279d2eb32ab8ba02efc1418f49c2eab838f3717c03a3128aad40fe9f93dbf081"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/evidence-hashes.json": {
+    "bytes": 1216,
+    "sha256": "50e2b9bd26ea62809003df837b967cbca5f0202ec9df1f2cd9fe31842045a5e2"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/loader.mjs": {
+    "bytes": 951,
+    "sha256": "3165f72f88b89dbf43fd9df4d5821845ce172bb90ff86150c205c70b347aff75"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/manifest.json": {
+    "bytes": 5216,
+    "sha256": "7f14c6327adf863593e76fc8d265908fa7461447d05690d79f7a433f8aee2080"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/sources.json": {
+    "bytes": 331252,
+    "sha256": "07a6cbc5fc9d4dce4ea1d40d859340c6b56c63e52a16d09fc9dc9380da9d9607"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/static.json": {
+    "bytes": 201477,
+    "sha256": "888d42298cabd750d0d9c6b0d90489c1da551be3da262e4892a29341a17ca4aa"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/static.log": {
+    "bytes": 2661,
+    "sha256": "46d4ae2f14b4e470bcb3f69e6679fe1d9fbca555b0d92327dab4eb770228eb7c"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/static.mjs": {
+    "bytes": 3204,
+    "sha256": "061e5deb86f61c9574f1599971bf5302f29b5334f8f579a8340b2f40186f9fbf"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/verification.json": {
+    "bytes": 221711,
+    "sha256": "760e4ce4090fba44f296e2097c9c6701a7df20b52e4043d6780b6fc1a6a42573"
+  },
+  "artifacts/pinball/left-lane-prototype-c87f117/v2-frame192-240/verify.mjs": {
+    "bytes": 3740,
+    "sha256": "d416461be5d321d64d6a26ba1d2b3d83c244566e81b0b1102d5c6e2d10221792"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/README.md": {
+    "bytes": 6178,
+    "sha256": "6fb243cb3956fe70784b21ccadfe59c2917d21eb239d63dc6bdc4bd7a4fa3d2b"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/baseline-lint-summary.json": {
+    "bytes": 164,
+    "sha256": "65654747c0a16d760909d59deb81d9c383e26984ab4439a8d5fb4315cfdf4a43"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/baseline-lint.json": {
+    "bytes": 22091,
+    "sha256": "929335e9fccd93ced95497b34aa13013a5c3111ebc985050fbe0d9b86a2203bc"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/baseline-lint.txt": {
+    "bytes": 403,
+    "sha256": "b24a4c8457a1b68b385782d7c578870f65e3ce8c7c7f0bc5ac638228d4889a6f"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/candidate-lint-summary.json": {
+    "bytes": 165,
+    "sha256": "5886f9db1298164705e20ae7dd9b109bd34d1764c757d0a63d31c7481ce98462"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/candidate-lint.json": {
+    "bytes": 22393,
+    "sha256": "8caaf99b22b3d3b00718e20b8f604095a0c02018f61698c02df12ac4f9c0e167"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/candidate-lint.txt": {
+    "bytes": 403,
+    "sha256": "b24a4c8457a1b68b385782d7c578870f65e3ce8c7c7f0bc5ac638228d4889a6f"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/initial-clearance.json": {
+    "bytes": 39607,
+    "sha256": "e407f0a06c6b422cfe4735d84c8ef72de3b7e1e4ddae7dcc348bd56fbd0f0f06"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/initial-clearance.log": {
+    "bytes": 5487,
+    "sha256": "38e26b13ea25d5857e9a617cf1b616fa5e20ad9e39a442c3bca44969d791994a"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/initial-clearance.mjs": {
+    "bytes": 1857,
+    "sha256": "9a12c449500ad060027893da2edd94f298be90aafaa20f2ecd8f298db0c58744"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/lint.log": {
+    "bytes": 311,
+    "sha256": "ff209908142f57544f7ea413e3f8f5831a95d4d002cb1158b83ddb7e8e354316"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/lint.mjs": {
+    "bytes": 1174,
+    "sha256": "f927ce0e767d7b7a8872872a93d7cc29215516519f499f7f60cedcf55ef231fb"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/manifest.json": {
+    "bytes": 1441,
+    "sha256": "111fb7c701d64b4bf201ea7470f339f41b5cfb4851d3ab41ef622c637d36eafc"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/report.py": {
+    "bytes": 7744,
+    "sha256": "35227d9a3bb9007fa6c246fb6be92c3425082545845d45600bd3bc71bc14908d"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/summary.json": {
+    "bytes": 6745,
+    "sha256": "0ab7b65a4b947c36d43bcb47d9efb1596fc5c00a2512cef8e852b9ced7d8a42f"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/tests.exit": {
+    "bytes": 2,
+    "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+  },
+  "artifacts/pinball/left-lane-v2-regression-c87f117/tests.log": {
+    "bytes": 30577,
+    "sha256": "305a72e046d64b921572c067ed8a0e579a3a747b81247c09ec15f294c8f39379"
+  }
+}

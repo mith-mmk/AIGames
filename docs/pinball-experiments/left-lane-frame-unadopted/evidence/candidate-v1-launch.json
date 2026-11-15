@@ -1,0 +1,699 @@
+{
+  "method": "Natural launch from each geometry real shooter position. No keys/ball injection. Six requested powers followed by existing weak.1, independent worlds in same order,20s cap. Existing auto returns/saves recorded, no new success threshold.",
+  "results": [
+    {
+      "weak": null,
+      "power": 0.55,
+      "initial": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "initialNearest": {
+        "gap": -2.479553222745068e-07,
+        "position": {
+          "x": 2.5299999713897705,
+          "y": 0.17499999701976776,
+          "z": 4.599999904632568
+        },
+        "type": 9
+      },
+      "shooter": {
+        "x": 2.53,
+        "restZ": 4.6,
+        "ballZ": 4.425,
+        "frontZ": 5.9,
+        "returnMinZ": 4.25,
+        "returnMaxZ": 4.56
+      },
+      "barCount": 4,
+      "fieldAccessDefinition": "descriptive p.z in(-4.1,3.5) and x<shooter.x\u2212.5; not a pass threshold",
+      "fieldAccess": {
+        "tick": 337,
+        "p": {
+          "x": 2.022972345352173,
+          "y": 0.16953502595424652,
+          "z": -1.6478217840194702
+        }
+      },
+      "minX": -1.2090880870819092,
+      "maxX": 2.5299999713897705,
+      "minZ": -4.641886234283447,
+      "phase": "ready",
+      "ball": 2,
+      "returnedShooter": false,
+      "score": 25,
+      "stopErrorZ": 1.9073486345888568e-07,
+      "seconds": 8.966666666666798,
+      "events": [
+        {
+          "type": "kickback",
+          "id": "save-0",
+          "t": 7.550000000000165,
+          "p": {
+            "x": 0.20806212723255157,
+            "y": 0.16967898607254028,
+            "z": 4.902625560760498
+          }
+        },
+        {
+          "type": "sling",
+          "id": "contact-1",
+          "t": 7.875000000000181,
+          "p": {
+            "x": -1.1582183837890625,
+            "y": 0.17288532853126526,
+            "z": 2.8400003910064697
+          }
+        }
+      ],
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          1
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    {
+      "weak": null,
+      "power": 0.65,
+      "initial": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "initialNearest": {
+        "gap": -2.479553222745068e-07,
+        "position": {
+          "x": 2.5299999713897705,
+          "y": 0.17499999701976776,
+          "z": 4.599999904632568
+        },
+        "type": 9
+      },
+      "shooter": {
+        "x": 2.53,
+        "restZ": 4.6,
+        "ballZ": 4.425,
+        "frontZ": 5.9,
+        "returnMinZ": 4.25,
+        "returnMaxZ": 4.56
+      },
+      "barCount": 4,
+      "fieldAccessDefinition": "descriptive p.z in(-4.1,3.5) and x<shooter.x\u2212.5; not a pass threshold",
+      "fieldAccess": {
+        "tick": 303,
+        "p": {
+          "x": 2.0251479148864746,
+          "y": 0.16891717910766602,
+          "z": -1.6669849157333374
+        }
+      },
+      "minX": -1.2022265195846558,
+      "maxX": 2.5299999713897705,
+      "minZ": -5.116126537322998,
+      "phase": "ready",
+      "ball": 2,
+      "returnedShooter": false,
+      "score": 25,
+      "stopErrorZ": 1.9073486345888568e-07,
+      "seconds": 8.900000000000135,
+      "events": [
+        {
+          "type": "kickback",
+          "id": "save-0",
+          "t": 7.158333333333479,
+          "p": {
+            "x": 0.21846428513526917,
+            "y": 0.16970814764499664,
+            "z": 4.907169818878174
+          }
+        },
+        {
+          "type": "sling",
+          "id": "contact-1",
+          "t": 7.483333333333495,
+          "p": {
+            "x": -1.1528053283691406,
+            "y": 0.17286470532417297,
+            "z": 2.844376802444458
+          }
+        }
+      ],
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          1
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    {
+      "weak": null,
+      "power": 0.75,
+      "initial": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "initialNearest": {
+        "gap": -2.479553222745068e-07,
+        "position": {
+          "x": 2.5299999713897705,
+          "y": 0.17499999701976776,
+          "z": 4.599999904632568
+        },
+        "type": 9
+      },
+      "shooter": {
+        "x": 2.53,
+        "restZ": 4.6,
+        "ballZ": 4.425,
+        "frontZ": 5.9,
+        "returnMinZ": 4.25,
+        "returnMaxZ": 4.56
+      },
+      "barCount": 4,
+      "fieldAccessDefinition": "descriptive p.z in(-4.1,3.5) and x<shooter.x\u2212.5; not a pass threshold",
+      "fieldAccess": {
+        "tick": 266,
+        "p": {
+          "x": 2.0170228481292725,
+          "y": 0.16893820464611053,
+          "z": -1.6191352605819702
+        }
+      },
+      "minX": -1.2108752727508545,
+      "maxX": 2.5299999713897705,
+      "minZ": -5.113943576812744,
+      "phase": "ready",
+      "ball": 2,
+      "returnedShooter": false,
+      "score": 25,
+      "stopErrorZ": 1.9073486345888568e-07,
+      "seconds": 8.400000000000164,
+      "events": [
+        {
+          "type": "kickback",
+          "id": "save-0",
+          "t": 6.900000000000133,
+          "p": {
+            "x": 0.18310067057609558,
+            "y": 0.16952994465827942,
+            "z": 4.911102294921875
+          }
+        },
+        {
+          "type": "sling",
+          "id": "contact-1",
+          "t": 7.233333333333483,
+          "p": {
+            "x": -1.1788049936294556,
+            "y": 0.17280222475528717,
+            "z": 2.8162121772766113
+          }
+        }
+      ],
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          1
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    {
+      "weak": null,
+      "power": 0.85,
+      "initial": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "initialNearest": {
+        "gap": -2.479553222745068e-07,
+        "position": {
+          "x": 2.5299999713897705,
+          "y": 0.17499999701976776,
+          "z": 4.599999904632568
+        },
+        "type": 9
+      },
+      "shooter": {
+        "x": 2.53,
+        "restZ": 4.6,
+        "ballZ": 4.425,
+        "frontZ": 5.9,
+        "returnMinZ": 4.25,
+        "returnMaxZ": 4.56
+      },
+      "barCount": 4,
+      "fieldAccessDefinition": "descriptive p.z in(-4.1,3.5) and x<shooter.x\u2212.5; not a pass threshold",
+      "fieldAccess": {
+        "tick": 196,
+        "p": {
+          "x": 0.8024806976318359,
+          "y": 0.1705804467201233,
+          "z": -4.085119724273682
+        }
+      },
+      "minX": -0.999573290348053,
+      "maxX": 2.5299999713897705,
+      "minZ": -5.237771511077881,
+      "phase": "ready",
+      "ball": 2,
+      "returnedShooter": false,
+      "score": 425,
+      "stopErrorZ": 1.9073486345888568e-07,
+      "seconds": 9.391666666666774,
+      "events": [
+        {
+          "type": "rollover",
+          "lane": 2,
+          "id": "contact-0",
+          "t": 1.4249999999999974,
+          "p": {
+            "x": 0.7908085584640503,
+            "y": 0.17077207565307617,
+            "z": -4.7075724601745605
+          }
+        },
+        {
+          "type": "bumper",
+          "id": "contact-1",
+          "t": 1.7583333333333295,
+          "p": {
+            "x": 0.8058215379714966,
+            "y": 0.17032867670059204,
+            "z": -3.6598286628723145
+          }
+        },
+        {
+          "type": "rollover",
+          "lane": 2,
+          "id": "contact-2",
+          "t": 1.8999999999999957,
+          "p": {
+            "x": 0.8773435354232788,
+            "y": 0.17072351276874542,
+            "z": -4.3591790199279785
+          }
+        },
+        {
+          "type": "rollover",
+          "lane": 2,
+          "id": "contact-3",
+          "t": 2.6583333333333266,
+          "p": {
+            "x": 1.1624020338058472,
+            "y": 0.17113417387008667,
+            "z": -4.7524309158325195
+          }
+        },
+        {
+          "type": "kickback",
+          "id": "save-4",
+          "t": 7.616666666666835,
+          "p": {
+            "x": 0.2369937002658844,
+            "y": 0.16728463768959045,
+            "z": 4.919881343841553
+          }
+        },
+        {
+          "type": "sling",
+          "id": "contact-5",
+          "t": 8.47500000000016,
+          "p": {
+            "x": -0.999573290348053,
+            "y": 0.17110209167003632,
+            "z": 2.4047205448150635
+          }
+        }
+      ],
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          2,
+          1
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    {
+      "weak": null,
+      "power": 0.925,
+      "initial": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "initialNearest": {
+        "gap": -2.479553222745068e-07,
+        "position": {
+          "x": 2.5299999713897705,
+          "y": 0.17499999701976776,
+          "z": 4.599999904632568
+        },
+        "type": 9
+      },
+      "shooter": {
+        "x": 2.53,
+        "restZ": 4.6,
+        "ballZ": 4.425,
+        "frontZ": 5.9,
+        "returnMinZ": 4.25,
+        "returnMaxZ": 4.56
+      },
+      "barCount": 4,
+      "fieldAccessDefinition": "descriptive p.z in(-4.1,3.5) and x<shooter.x\u2212.5; not a pass threshold",
+      "fieldAccess": {
+        "tick": 186,
+        "p": {
+          "x": 0.8031505346298218,
+          "y": 0.17057837545871735,
+          "z": -4.095694065093994
+        }
+      },
+      "minX": -1.0047712326049805,
+      "maxX": 2.5299999713897705,
+      "minZ": -5.2724504470825195,
+      "phase": "ready",
+      "ball": 2,
+      "returnedShooter": false,
+      "score": 425,
+      "stopErrorZ": 1.9073486345888568e-07,
+      "seconds": 9.40833333333344,
+      "events": [
+        {
+          "type": "rollover",
+          "lane": 2,
+          "id": "contact-0",
+          "t": 1.3499999999999976,
+          "p": {
+            "x": 0.792512059211731,
+            "y": 0.17075315117835999,
+            "z": -4.698307991027832
+          }
+        },
+        {
+          "type": "bumper",
+          "id": "contact-1",
+          "t": 1.6749999999999965,
+          "p": {
+            "x": 0.8068865537643433,
+            "y": 0.17032818496227264,
+            "z": -3.6702959537506104
+          }
+        },
+        {
+          "type": "rollover",
+          "lane": 2,
+          "id": "contact-2",
+          "t": 1.8166666666666627,
+          "p": {
+            "x": 0.8802568316459656,
+            "y": 0.17072314023971558,
+            "z": -4.369518280029297
+          }
+        },
+        {
+          "type": "rollover",
+          "lane": 2,
+          "id": "contact-3",
+          "t": 2.5749999999999935,
+          "p": {
+            "x": 1.1731042861938477,
+            "y": 0.17113357782363892,
+            "z": -4.761927127838135
+          }
+        },
+        {
+          "type": "kickback",
+          "id": "save-4",
+          "t": 7.6333333333335025,
+          "p": {
+            "x": 0.2409193068742752,
+            "y": 0.16728569567203522,
+            "z": 4.916694641113281
+          }
+        },
+        {
+          "type": "sling",
+          "id": "contact-5",
+          "t": 8.491666666666825,
+          "p": {
+            "x": -1.0047712326049805,
+            "y": 0.17110060155391693,
+            "z": 2.401341199874878
+          }
+        }
+      ],
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          1
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    {
+      "weak": null,
+      "power": 1,
+      "initial": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "initialNearest": {
+        "gap": -2.479553222745068e-07,
+        "position": {
+          "x": 2.5299999713897705,
+          "y": 0.17499999701976776,
+          "z": 4.599999904632568
+        },
+        "type": 9
+      },
+      "shooter": {
+        "x": 2.53,
+        "restZ": 4.6,
+        "ballZ": 4.425,
+        "frontZ": 5.9,
+        "returnMinZ": 4.25,
+        "returnMaxZ": 4.56
+      },
+      "barCount": 4,
+      "fieldAccessDefinition": "descriptive p.z in(-4.1,3.5) and x<shooter.x\u2212.5; not a pass threshold",
+      "fieldAccess": {
+        "tick": 162,
+        "p": {
+          "x": 0.8866540193557739,
+          "y": 0.17071060836315155,
+          "z": -4.085850715637207
+        }
+      },
+      "minX": -1.2054537534713745,
+      "maxX": 2.5299999713897705,
+      "minZ": -5.168115615844727,
+      "phase": "ready",
+      "ball": 2,
+      "returnedShooter": false,
+      "score": 425,
+      "stopErrorZ": 1.9073486345888568e-07,
+      "seconds": 9.375000000000108,
+      "events": [
+        {
+          "type": "rollover",
+          "lane": 2,
+          "id": "contact-0",
+          "t": 1.083333333333332,
+          "p": {
+            "x": 0.8533865213394165,
+            "y": 0.17094287276268005,
+            "z": -4.752302169799805
+          }
+        },
+        {
+          "type": "bumper",
+          "id": "contact-1",
+          "t": 1.4833333333333305,
+          "p": {
+            "x": 0.9013641476631165,
+            "y": 0.1704576015472412,
+            "z": -3.664470672607422
+          }
+        },
+        {
+          "type": "rollover",
+          "lane": 2,
+          "id": "contact-2",
+          "t": 1.63333333333333,
+          "p": {
+            "x": 1.226549506187439,
+            "y": 0.17082177102565765,
+            "z": -4.344305992126465
+          }
+        },
+        {
+          "type": "rollover",
+          "lane": 2,
+          "id": "contact-3",
+          "t": 2.2666666666666613,
+          "p": {
+            "x": 1.6762738227844238,
+            "y": 0.17120397090911865,
+            "z": -4.740710258483887
+          }
+        },
+        {
+          "type": "kickback",
+          "id": "save-4",
+          "t": 7.758333333333509,
+          "p": {
+            "x": 0.20455621182918549,
+            "y": 0.17009468376636505,
+            "z": 4.903792858123779
+          }
+        },
+        {
+          "type": "sling",
+          "id": "contact-5",
+          "t": 8.091666666666848,
+          "p": {
+            "x": -1.1962460279464722,
+            "y": 0.17255806922912598,
+            "z": 2.8112380504608154
+          }
+        }
+      ],
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          1,
+          1
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    },
+    {
+      "weak": {
+        "phase": "ready",
+        "ball": 1,
+        "returned": true,
+        "stopErrorZ": 0.0012270927429200995,
+        "p": {
+          "x": 2.5299999713897705,
+          "y": 0.17262029647827148,
+          "z": 4.42622709274292
+        },
+        "relaunch": true,
+        "positionUnchanged": true
+      },
+      "power": 0.1,
+      "initial": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "initialNearest": {
+        "gap": -2.479553222745068e-07,
+        "position": {
+          "x": 2.5299999713897705,
+          "y": 0.17499999701976776,
+          "z": 4.599999904632568
+        },
+        "type": 9
+      },
+      "shooter": {
+        "x": 2.53,
+        "restZ": 4.6,
+        "ballZ": 4.425,
+        "frontZ": 5.9,
+        "returnMinZ": 4.25,
+        "returnMaxZ": 4.56
+      },
+      "barCount": 4,
+      "fieldAccessDefinition": "descriptive p.z in(-4.1,3.5) and x<shooter.x\u2212.5; not a pass threshold",
+      "fieldAccess": null,
+      "minX": 2.5299999713897705,
+      "maxX": 2.5299999713897705,
+      "minZ": 3.1461853981018066,
+      "phase": "playing",
+      "ball": 1,
+      "returnedShooter": false,
+      "score": 0,
+      "stopErrorZ": 0.0012270927429200995,
+      "seconds": 3.333333333333324,
+      "events": [],
+      "metrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          0
+        ],
+        "activeFlipperContacts": [
+          0,
+          0
+        ],
+        "coilImpulses": [
+          0,
+          0
+        ],
+        "upfieldReturns": 0
+      }
+    }
+  ]
+}

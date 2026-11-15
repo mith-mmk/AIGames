@@ -1,0 +1,98 @@
+{
+  "v1": {
+    "base": "c87f117a9c5f5cfab33e4817b8b720a790ab8b0e",
+    "originalDirectory": "left-lane-prototype-c87f117",
+    "modules": {
+      "web/js/pinball/components/ramp-wire.mjs": {
+        "path": "payload/v1/web/js/pinball/components/ramp-wire.mjs",
+        "sha256": "887b1febf05827160923f748c5bd28320eb88d9663a591069fd3b8c399bdd179"
+      },
+      "web/js/pinball/layout.mjs": {
+        "path": "payload/v1/web/js/pinball/layout.mjs",
+        "sha256": "07d9c407c2ed77666d66f1aec2b4ec295a3153730447d7ef16cb0beb4abc58ff"
+      },
+      "web/js/pinball/physics.mjs": {
+        "path": "payload/v1/web/js/pinball/physics.mjs",
+        "sha256": "cbc2fff133e5a61a124b210a48f9dbfc6678d235d7ed6b46f95f22287e5783f3"
+      },
+      "web/js/pinball/playfield-parts.mjs": {
+        "path": "payload/v1/web/js/pinball/playfield-parts.mjs",
+        "sha256": "913157c72ca5d3f916120cb27b88d29a82f9ab09bf369abbee8b563a55e77851"
+      },
+      "web/js/pinball/ramp-geometry.mjs": {
+        "path": "payload/v1/web/js/pinball/ramp-geometry.mjs",
+        "sha256": "a1bb7df1990b7d18eaa42898cefc7eac114147bd7a9cd9210e5912dac3cedc30"
+      },
+      "web/js/pinball/left-lane-study.mjs": {
+        "path": "payload/v1/web/js/pinball/left-lane-study.mjs",
+        "sha256": "8da7b2a8a88f789bb4499d9fccdf28afb26ccb03e1e1a494490e19be716266c8"
+      }
+    },
+    "files": {
+      "loader.mjs": {
+        "path": "payload/v1/loader.mjs",
+        "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+      },
+      "baseline-loader.mjs": {
+        "path": "payload/v1/baseline-loader.mjs",
+        "sha256": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+      },
+      "dependencies.json": {
+        "path": "payload/v1/dependencies.json",
+        "sha256": "f5800c997afbc76b63511626e767001ace77b147863ea609dbc33c9825be339e"
+      }
+    },
+    "mapHashes": {
+      "sources.json": "b016fbb1dfe6a09ad06787548d224c6909deddadd179019579bdf343b37ba576",
+      "baseline-sources.json": "659030bc26bc3098573723a9110cd273b8719b7d3f15e7049daef1449c6bc8bd"
+    }
+  },
+  "v2": {
+    "base": "c87f117a9c5f5cfab33e4817b8b720a790ab8b0e",
+    "originalDirectory": "left-lane-prototype-c87f117",
+    "modules": {
+      "web/js/pinball/components/ramp-wire.mjs": {
+        "path": "payload/v2/web/js/pinball/components/ramp-wire.mjs",
+        "sha256": "c2c6684305608dae58d4b5510a7635e924e4bcacedb22cb694c143800418d7d1"
+      },
+      "web/js/pinball/layout.mjs": {
+        "path": "payload/v2/web/js/pinball/layout.mjs",
+        "sha256": "07d9c407c2ed77666d66f1aec2b4ec295a3153730447d7ef16cb0beb4abc58ff"
+      },
+      "web/js/pinball/physics.mjs": {
+        "path": "payload/v2/web/js/pinball/physics.mjs",
+        "sha256": "cbc2fff133e5a61a124b210a48f9dbfc6678d235d7ed6b46f95f22287e5783f3"
+      },
+      "web/js/pinball/playfield-parts.mjs": {
+        "path": "payload/v2/web/js/pinball/playfield-parts.mjs",
+        "sha256": "913157c72ca5d3f916120cb27b88d29a82f9ab09bf369abbee8b563a55e77851"
+      },
+      "web/js/pinball/ramp-geometry.mjs": {
+        "path": "payload/v2/web/js/pinball/ramp-geometry.mjs",
+        "sha256": "764bc0f3fb59e37ad8a7ae7b178e10ce9b8867352bef433883ddd0f648301860"
+      },
+      "web/js/pinball/left-lane-study.mjs": {
+        "path": "payload/v2/web/js/pinball/left-lane-study.mjs",
+        "sha256": "279d2eb32ab8ba02efc1418f49c2eab838f3717c03a3128aad40fe9f93dbf081"
+      }
+    },
+    "files": {
+      "loader.mjs": {
+        "path": "payload/v2/loader.mjs",
+        "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+      },
+      "baseline-loader.mjs": {
+        "path": "payload/v2/baseline-loader.mjs",
+        "sha256": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+      },
+      "dependencies.json": {
+        "path": "payload/v2/dependencies.json",
+        "sha256": "f5800c997afbc76b63511626e767001ace77b147863ea609dbc33c9825be339e"
+      }
+    },
+    "mapHashes": {
+      "sources.json": "07a6cbc5fc9d4dce4ea1d40d859340c6b56c63e52a16d09fc9dc9380da9d9607",
+      "baseline-sources.json": "659030bc26bc3098573723a9110cd273b8719b7d3f15e7049daef1449c6bc8bd"
+    }
+  }
+}
