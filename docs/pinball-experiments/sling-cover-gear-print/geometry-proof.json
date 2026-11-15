@@ -1,0 +1,22 @@
+[
+  {
+    "side": -1,
+    "preBatchPositionIndexNormalHash": "c8c962529ee97d916acfc8c02a76f71e4589aa3c4c92186236980e5ba614805d",
+    "postBatchCanonicalHash": "1cd777fe69b1648add9683fa174932c7013b56a519c1884eb8eaccf9c6c2b75a",
+    "mapped": [
+      0.001390296411856215,
+      0.029999999329447746,
+      0.13100133119198634
+    ]
+  },
+  {
+    "side": 1,
+    "preBatchPositionIndexNormalHash": "a06a8c8e4b09a123233907e2903d3dea651a85d9c377302c6a71990a7290438a",
+    "postBatchCanonicalHash": "e9e3a970f5568c80292add9cef227596f680444ccee2bcd62801f810dac41143",
+    "mapped": [
+      -0.0013902946269931243,
+      0.029999999329447746,
+      0.13100133572723363
+    ]
+  }
+]

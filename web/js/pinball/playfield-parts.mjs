@@ -116,7 +116,7 @@ export class PlayfieldParts {
   sling(side) {
     const a=this.a,center=[side*LOWER_LAYOUT.slingCenter[0],LOWER_LAYOUT.slingCenter[1]];
     const points=LOWER_LAYOUT.slingVertices.map(([x,z])=>[side*x-center[0],z-center[1]]);
-    const part=new MechanicalSling({materials:{...a.materials,jade:a.materials.chrome,rubber:a.materials.flipperRubber},points,rubberHeight:.22,coverHeight:LOWER_LAYOUT.slingCoverHeight});
+    const part=new MechanicalSling({materials:{...a.materials,jade:a.materials.chrome,rubber:a.materials.flipperRubber},points,rubberHeight:.22,coverHeight:LOWER_LAYOUT.slingCoverHeight,coverPrint:true});
     part.root.position.set(center[0],0,center[1]);part.root.userData.hitKey=`s${side}`;
     a.root.add(part.root);a.mechanical.slings.set(`s${side}`,part);
   }

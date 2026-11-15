@@ -1,3 +1,4 @@
+import {slingCoverPrint} from '../sling-cover-print.mjs';
 import { slingRubberLoop } from "../mechanical-contact.mjs";
 import * as T from '../../vendor/three-0.180.0/three.module.min.js';
 
@@ -38,7 +39,7 @@ class Mechanism {
   pulse(dt){this.time+=Math.max(0,Math.min(Number.isFinite(dt)?dt:0,.1));return this.strength*Math.exp(-this.time*8)*Math.sin(Math.min(this.time/.22,1)*Math.PI);}
 }
 export class MechanicalSling extends Mechanism {
-  constructor({materials={},points=[[-.11,-.36],[.11,.24],[-.11,.44]],rubberHeight=.22,coverHeight=.43}={}){
+  constructor({materials={},points=[[-.11,-.36],[.11,.24],[-.11,.44]],rubberHeight=.22,coverHeight=.43,coverPrint=false}={}){
     super();this.root.name='mechanical-sling-prototype';
     if(points.length!==3||points.some(p=>p.length!==2||p.some(v=>!Number.isFinite(v))))throw new Error('Sling needs three finite [x,z] post centres');
     const p=points.map(q=>[...q]);const area=p.reduce((s,a,i)=>{const b=p[(i+1)%3];return s+a[0]*b[1]-b[0]*a[1];},0);if(Math.abs(area)<.0001)throw new Error('Collinear sling posts');if(area<0)p.reverse();
@@ -70,7 +71,9 @@ export class MechanicalSling extends Mechanism {
     add(g,skirt,brass,'formed-gold-perimeter-skirt',0,coverHeight-.115,0);
     // Separate recessed navy insert and silver rim, with visible moulded depth.
     const insert=extrude(outline(p.map(([x,z])=>[cx+(x-cx)*.78,cz+(z-cz)*.78])),.024,.006);insert.rotateX(-Math.PI/2);
-    add(g,insert,dark,'recessed-plastic-cover-insert',0,coverHeight+.005,0);
+    let insertMaterial=dark;
+    if(coverPrint){const print=slingCoverPrint(insert,p,dark);insertMaterial=print.material;this.coverPrintTexture=print.texture;g.userData.ownedTextures=[print.texture];g.userData.coverPrint=print.registration;}
+    add(g,insert,insertMaterial,'recessed-plastic-cover-insert',0,coverHeight+.005,0);
     for(const [x,z] of p) {
       const lx=cx+(x-cx)*.78,lz=cz+(z-cz)*.78;
       turn(g,[[0,0],[.071,0],[.071,.013],[.059,.025],[0,.025]],metal,'corner-lens-chrome-bezel',lx,coverHeight+.033,lz);
@@ -100,6 +103,7 @@ export class MechanicalSling extends Mechanism {
     for(const side of [-1,1])for(const offset of [0,.009]){const leaf=add(mechanism,extrude(shape([[-.011,0],[.011,0],[.011,.2],[-.011,.2]]),.003,0),metal,'paired-leaf-switch',side*.075,-.02,-.033+offset);leaf.rotation.x=-.08;}
     pipe(mechanism,coilPoints([0,-.09,0],[0,.005,0],.022,5),.004,metal,'plunger-return-spring');
   }
+  dispose(){if(this.disposed)return;this.coverPrintTexture?.dispose();super.dispose();}
   update(dt){if(this.disposed)return;const pulse=this.pulse(dt);this.kicker.rotation.x=-pulse*.25;this.plunger.position.y=-.12-pulse*.025;
     const pts=this.restLoop.map(p=>[...p]),mid=this.edge*12+11;pts[mid][0]+=this.normal.x*pulse*.035;pts[mid][2]+=this.normal.z*pulse*.035;
     if(pulse>1e-5||this.wasMoving){const geo=pipeGeometry(pts,.025,true);this.rubber.geometry.dispose();this.rubber.geometry=geo;}this.wasMoving=pulse>1e-5;this.lampMaterial.emissiveIntensity=this.lampBase+pulse*2;

@@ -1,0 +1,32 @@
+{
+  "physicsSourceSHA256": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92",
+  "physicsSourceByteIdentical": true,
+  "colliderCount": 1380,
+  "publicColliderSHA256": "92de221466b0281dc4c8293eda57f84b49591cf8d8d5a9ad6fd527dbe3f86418",
+  "positionIndexNormalUnbatchedHash": "4329da5b26efe0b09137827740a9165befcb80f2dc3deda0c7c16eb481e2a383",
+  "postBatchTransformedTriangleNormalHash": "9e0ed8e5cb53645bda463f718be4179e5468be3dc0fea266b065fd62d9959c3f",
+  "budget45": {
+    "triangles": 450844,
+    "calls": 685
+  },
+  "postIntegrationPNGsEqual": true,
+  "inputSmoke": "PASS scripted keyboard+CDP touch; no physicalphone/human",
+  "newQA": 4,
+  "originalTests": 208,
+  "finalProductionSuite": {
+    "pass": 212,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 142432.573083,
+    "processExit": 0,
+    "lintErrors": 0,
+    "preexistingCSSWarnings": 3
+  },
+  "textures": {
+    "count": 2,
+    "width": 512,
+    "height": 512,
+    "ownership": "per-component owned; standalone and WorkshopAssets disposal tested"
+  },
+  "fresh54Run": false
+}

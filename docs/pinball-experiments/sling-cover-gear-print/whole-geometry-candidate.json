@@ -1,0 +1,14 @@
+[
+  {
+    "batch": false,
+    "meshes": 1595,
+    "triangles": 0,
+    "hash": "4329da5b26efe0b09137827740a9165befcb80f2dc3deda0c7c16eb481e2a383"
+  },
+  {
+    "batch": true,
+    "meshes": 656,
+    "triangles": 468048,
+    "hash": "9e0ed8e5cb53645bda463f718be4179e5468be3dc0fea266b065fd62d9959c3f"
+  }
+]
