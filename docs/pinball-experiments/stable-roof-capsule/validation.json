@@ -1,0 +1,37 @@
+{
+  "sourceScopeChanged": [
+    "web/js/pinball/assets.mjs"
+  ],
+  "assetsSHA256": "a7f093ffdc6afc9bfb695f11e53fcf2b85f1ac7caaa94d8614aca48ec2a1def0",
+  "sourceMapSHA256": "b41e4eb77884169e4bf0331634d1bd26e5f03d0cb6261b06c7dbb280b71e7404",
+  "colliderCount": 1380,
+  "colliderPublicSHA256": "92de221466b0281dc4c8293eda57f84b49591cf8d8d5a9ad6fd527dbe3f86418",
+  "tests": {
+    "pass": 206,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 139361.606625,
+    "artifactLintExit": 0
+  },
+  "budget45": {
+    "baselineTriangles": 449612,
+    "candidateTriangles": 450140,
+    "baselineCalls": 685,
+    "candidateCalls": 683
+  },
+  "productionChanged": true,
+  "productionFiles": [
+    "web/js/pinball/assets.mjs",
+    "web/js/pinball/geometry-budget.test.mjs"
+  ],
+  "productionTest": {
+    "pass": 207,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 140623.068208,
+    "exit": 0,
+    "lintErrors": 0,
+    "existingCSSWarnings": 3
+  },
+  "productionRerenderImagesByteIdenticalToArtifact": true
+}

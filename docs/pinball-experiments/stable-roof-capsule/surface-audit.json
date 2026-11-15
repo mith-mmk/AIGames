@@ -1,0 +1,84 @@
+{
+  "roof": [
+    [
+      2.72,
+      0.23,
+      -4.15
+    ],
+    [
+      2.4,
+      0.23,
+      -5.2
+    ],
+    [
+      1.25,
+      0.23,
+      -5.55
+    ],
+    [
+      0.95,
+      0.23,
+      -5.3
+    ]
+  ],
+  "parts": [
+    {
+      "range": {
+        "vertexStart": 0,
+        "vertexCount": 130,
+        "indexStart": 0,
+        "indexCount": 576
+      },
+      "center": {
+        "x": 2.56,
+        "y": 0.23,
+        "z": -4.675000000000001
+      },
+      "halfHeight": 0.5488396851540529,
+      "maxVertexError": 2.415132771202422e-7,
+      "maxCapFacetInset": 0.003085538897442966,
+      "capFaces": 168
+    },
+    {
+      "range": {
+        "vertexStart": 130,
+        "vertexCount": 130,
+        "indexStart": 576,
+        "indexCount": 576
+      },
+      "center": {
+        "x": 1.825,
+        "y": 0.23,
+        "z": -5.375
+      },
+      "halfHeight": 0.6010407640085653,
+      "maxVertexError": 1.989649349790068e-7,
+      "maxCapFacetInset": 0.0030855907038365993,
+      "capFaces": 168
+    },
+    {
+      "range": {
+        "vertexStart": 260,
+        "vertexCount": 130,
+        "indexStart": 1152,
+        "indexCount": 576
+      },
+      "center": {
+        "x": 1.1,
+        "y": 0.23,
+        "z": -5.425
+      },
+      "halfHeight": 0.19525624189766638,
+      "maxVertexError": 2.204468153021999e-7,
+      "maxCapFacetInset": 0.0030855128897973247,
+      "capFaces": 168
+    }
+  ],
+  "triangles": 576,
+  "oldTriangles": 48,
+  "newMeshes": 1,
+  "oldMeshes": 3,
+  "analyticCylinderRadialInset12": 0.0020444504226559013,
+  "oldInset8": 0.004567228049322795,
+  "scope": "Actual transformed mesh vertices and cap-triangle closest-point depression relative to their corresponding analytic endpoint sphere. Side facet bound is analytic12gon. Neighbor capsule overlap can conceal some faces; no claim exact analytic equality."
+}
