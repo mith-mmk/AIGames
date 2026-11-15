@@ -1,0 +1,12 @@
+using deprecated parameters for the initialization function; pass a single object instead
+✔ upper rollover volumes stay in the ground lane below the elevated route (61.864375ms)
+✔ legal ground upper-lane center and edge passes award once at low and high speeds (858.539792ms)
+✔ five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save (2303.622667ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3313.548042

@@ -1,0 +1,50 @@
+{
+  "scope": "Cross-section screen of same one candidate; no geometry change, no ball motion. Offsets.150..190 in.002 increments at81 sections and two observed floor heights. Positive samples do not prove continuous navigation or dynamic capture.",
+  "sections": 162,
+  "blockedSections": 0,
+  "worstBest": {
+    "y": 0.175,
+    "i": 39,
+    "best": {
+      "offset": 0.16,
+      "p": [
+        -2.010250228034515,
+        0.175,
+        2.6171981317513926
+      ],
+      "gap": 0.010972886940321558,
+      "shape": 2,
+      "center": {
+        "x": -1.9060968160629272,
+        "y": 0.2199999988079071,
+        "z": 2.4889590740203857
+      }
+    },
+    "legalOffsetRange": [
+      0.15,
+      0.16999999999999998
+    ]
+  },
+  "constantOffsets": [
+    {
+      "offset": 0.15,
+      "minimum": 0.0015827097582833127,
+      "invalid": 0
+    },
+    {
+      "offset": 0.16,
+      "minimum": 0.010972886940321558,
+      "invalid": 0
+    },
+    {
+      "offset": 0.17,
+      "minimum": 0.0013469245376098726,
+      "invalid": 0
+    },
+    {
+      "offset": 0.18,
+      "minimum": -0.008230556507131198,
+      "invalid": 32
+    }
+  ]
+}

@@ -1,0 +1,883 @@
+{
+  "scope": "Static only, no world steps. Committed696c646 baseline, one earlyS candidate. Actual full-sphere collider queries on intended center routes; shared support meshes/contacts; saved original-capture and return sweeps. Route following/capture not assumed.",
+  "colliders": 1596,
+  "sharedParts": [
+    "outer-frame-plate-row192",
+    "frame-top-strap-row192",
+    "frame-inner-clamp-row192",
+    "extended-crosshead-row192",
+    "frame-anchor-shank-0.18-row192",
+    "frame-anchor-head-0.18-row192",
+    "frame-anchor-shank-0.25-row192",
+    "frame-anchor-head-0.25-row192",
+    "early-stud-0",
+    "early-flush-bearing-0",
+    "early-washer-0",
+    "early-nut-0",
+    "early-stud-1",
+    "early-flush-bearing-1",
+    "early-washer-1",
+    "early-nut-1",
+    "early-stud-2",
+    "early-flush-bearing-2",
+    "early-washer-2",
+    "early-nut-2",
+    "early-stud-3",
+    "early-flush-bearing-3",
+    "early-washer-3",
+    "early-nut-3",
+    "early-wall-seat-1.35",
+    "early-wall-seat-2.35"
+  ],
+  "rightPathsExact": true,
+  "LOWER_LAYOUTExact": true,
+  "receiverTailExact": true,
+  "arc": {
+    "radius": 0.5,
+    "outerOffset": 0.43,
+    "tightestRadius": 0.07,
+    "joinZ": 3.15
+  },
+  "routes": {
+    "IN": {
+      "count": 899,
+      "invalid": 79,
+      "worst": {
+        "p": [
+          -1.9993367157857775,
+          0.175,
+          2.600329530299044
+        ],
+        "gap": -0.008232062685988528,
+        "shape": 2,
+        "center": {
+          "x": -1.9060968160629272,
+          "y": 0.2199999988079071,
+          "z": 2.4889590740203857
+        }
+      }
+    },
+    "OUT": {
+      "count": 899,
+      "invalid": 0,
+      "worst": {
+        "p": [
+          -2.1579854200500304,
+          0.175,
+          2.9994877310926453
+        ],
+        "gap": 0.03600063924620045,
+        "shape": 10,
+        "center": {
+          "x": -2.184999942779541,
+          "y": 0.3799999952316284,
+          "z": 3
+        }
+      }
+    }
+  },
+  "sweeps": [
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-80.json",
+      "count": 1010,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.239624261856079,
+          0.17078523337841034,
+          3.7429726123809814
+        ],
+        "gap": 1.1347843951379986,
+        "shape": 10,
+        "center": {
+          "x": -2.3580000400543213,
+          "y": 0.028999999165534973,
+          "z": 3.0940001010894775
+        },
+        "tick": 1099
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-81.json",
+      "count": 1148,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.682521939277649,
+          0.18443620204925537,
+          3.277998924255371
+        ],
+        "gap": 0.5241253185860298,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.028999999165534973,
+          "z": 2.75
+        },
+        "tick": 1127
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-82.json",
+      "count": 1122,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.6804121732711792,
+          0.22333024442195892,
+          3.2811334133148193
+        ],
+        "gap": 0.5318810061281629,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.014999999664723873,
+          "z": 2.75
+        },
+        "tick": 1213
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-83.json",
+      "count": 1199,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.6855733394622803,
+          0.24703001976013184,
+          3.2746615409851074
+        ],
+        "gap": 0.5241493017966906,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.014999999664723873,
+          "z": 2.75
+        },
+        "tick": 1151
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-84.json",
+      "count": 1049,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.67264723777771,
+          0.15085197985172272,
+          3.292236804962158
+        ],
+        "gap": 0.5346381632605789,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.028999999165534973,
+          "z": 2.75
+        },
+        "tick": 1134
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-80.json",
+      "count": 1046,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.6715939044952393,
+          0.14396941661834717,
+          3.2965087890625
+        ],
+        "gap": 0.5374943298351971,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.028999999165534973,
+          "z": 2.75
+        },
+        "tick": 1204
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-81.json",
+      "count": 1120,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.685186505317688,
+          0.19150550663471222,
+          3.295661687850952
+        ],
+        "gap": 0.5377144538328673,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.028999999165534973,
+          "z": 2.75
+        },
+        "tick": 1096
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-82.json",
+      "count": 1134,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.686344027519226,
+          0.17990168929100037,
+          3.282722234725952
+        ],
+        "gap": 0.5244761438170181,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.028999999165534973,
+          "z": 2.75
+        },
+        "tick": 1178
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-83.json",
+      "count": 1094,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.680559754371643,
+          0.13112744688987732,
+          3.280125141143799
+        ],
+        "gap": 0.5173859299382247,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.028999999165534973,
+          "z": 2.75
+        },
+        "tick": 1177
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-84.json",
+      "count": 1050,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.6756722927093506,
+          0.14373409748077393,
+          3.299110174179077
+        ],
+        "gap": 0.5370113726718616,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.028999999165534973,
+          "z": 2.75
+        },
+        "tick": 1195
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/same-state-control/baseline.json",
+      "count": 1148,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.682521939277649,
+          0.18443620204925537,
+          3.277998924255371
+        ],
+        "gap": 0.5241253185860298,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.028999999165534973,
+          "z": 2.75
+        },
+        "tick": 4
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-joint-qa-89f477e/candidate.json",
+      "count": 1148,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.682521939277649,
+          0.18443620204925537,
+          3.277998924255371
+        ],
+        "gap": 0.5241253185860298,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.028999999165534973,
+          "z": 2.75
+        },
+        "tick": 4
+      }
+    },
+    {
+      "file": "original-capture-81",
+      "count": 2956,
+      "worst": {
+        "extraPenetration": 0
+      },
+      "support": {
+        "p": [
+          -1.600000023841858,
+          0.18000000715255737,
+          2.799999952316284
+        ],
+        "gap": 0.35749364192159017,
+        "shape": 10,
+        "center": {
+          "x": -2.0999999046325684,
+          "y": 0.014999999664723873,
+          "z": 2.75
+        },
+        "tick": 30
+      }
+    }
+  ],
+  "measuredSections": [
+    {
+      "z": 2.35,
+      "wire": null,
+      "oldCapture": null,
+      "entries": [
+        {
+          "speed": 0.2,
+          "p": [
+            -2.119999885559082,
+            0.17054855463751956,
+            2.35
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 2,
+          "p": [
+            -2.119999885559082,
+            0.17045966012018637,
+            2.35
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 4,
+          "p": [
+            -2.119999885559082,
+            0.17037041098934816,
+            2.35
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 8,
+          "p": [
+            -2.119999885559082,
+            0.17174294059444573,
+            2.35
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        }
+      ]
+    },
+    {
+      "z": 2.45,
+      "wire": null,
+      "oldCapture": null,
+      "entries": [
+        {
+          "speed": 0.2,
+          "p": [
+            -2.119999885559082,
+            0.17048670287066678,
+            2.45
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 2,
+          "p": [
+            -2.119999885559082,
+            0.17039380413684962,
+            2.45
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 4,
+          "p": [
+            -2.119999885559082,
+            0.17024991933357925,
+            2.45
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 8,
+          "p": [
+            -2.119999885559082,
+            0.17159580657205498,
+            2.45
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        }
+      ]
+    },
+    {
+      "z": 2.65,
+      "wire": null,
+      "oldCapture": null,
+      "entries": [
+        {
+          "speed": 0.2,
+          "p": [
+            -2.119999885559082,
+            0.1703631543480708,
+            2.65
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 2,
+          "p": [
+            -2.119999885559082,
+            0.1702654898142904,
+            2.65
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 4,
+          "p": [
+            -2.119999885559082,
+            0.1700584865633847,
+            2.65
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 8,
+          "p": [
+            -2.119999885559082,
+            0.17132651260721682,
+            2.65
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        }
+      ]
+    },
+    {
+      "z": 2.85,
+      "wire": null,
+      "oldCapture": [
+        -1.6,
+        0.171,
+        2.85
+      ],
+      "entries": [
+        {
+          "speed": 0.2,
+          "p": [
+            -2.119999885559082,
+            0.1702397257721478,
+            2.85
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 2,
+          "p": [
+            -2.119999885559082,
+            0.1701396798724107,
+            2.85
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 4,
+          "p": [
+            -2.119999885559082,
+            0.1699078951999728,
+            2.85
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 8,
+          "p": [
+            -2.119999885559082,
+            0.1710780901865143,
+            2.85
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        }
+      ]
+    },
+    {
+      "z": 3.05,
+      "wire": null,
+      "oldCapture": [
+        -1.6,
+        0.171,
+        3.05
+      ],
+      "entries": [
+        {
+          "speed": 0.2,
+          "p": [
+            -2.119999885559082,
+            0.1701163989758551,
+            3.05
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 2,
+          "p": [
+            -2.119999885559082,
+            0.1700153117156482,
+            3.05
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 4,
+          "p": [
+            -2.119999885559082,
+            0.1697809402490811,
+            3.05
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        },
+        {
+          "speed": 8,
+          "p": [
+            -2.119999885559082,
+            0.17083903528402256,
+            3.05
+          ],
+          "wireSeparation": null,
+          "roomForRadius020Separator": null
+        }
+      ]
+    },
+    {
+      "z": 3.15,
+      "wire": [
+        -1.6980909032897014,
+        0.4643641700554784,
+        3.15
+      ],
+      "oldCapture": [
+        -1.6,
+        0.171,
+        3.15
+      ],
+      "entries": [
+        {
+          "speed": 0.2,
+          "p": [
+            -2.114245742298346,
+            0.17000631478179,
+            3.15
+          ],
+          "wireSeparation": 0.5097365956958912,
+          "roomForRadius020Separator": 0.19973659569589125
+        },
+        {
+          "speed": 2,
+          "p": [
+            -2.118760510636405,
+            0.16994525805686192,
+            3.15
+          ],
+          "wireSeparation": 0.5134641314519244,
+          "roomForRadius020Separator": 0.20346413145192438
+        },
+        {
+          "speed": 4,
+          "p": [
+            -2.1092637423909353,
+            0.169693670744879,
+            3.15
+          ],
+          "wireSeparation": 0.505859473350581,
+          "roomForRadius020Separator": 0.19585947335058101
+        },
+        {
+          "speed": 8,
+          "p": [
+            -2.119383681603354,
+            0.17071800321059624,
+            3.15
+          ],
+          "wireSeparation": 0.5135325465459117,
+          "roomForRadius020Separator": 0.20353254654591174
+        }
+      ]
+    },
+    {
+      "z": 3.25,
+      "wire": [
+        -1.6857958287415395,
+        0.25795490382327846,
+        3.25
+      ],
+      "oldCapture": [
+        -1.6,
+        0.171,
+        3.25
+      ],
+      "entries": [
+        {
+          "speed": 0.2,
+          "p": [
+            -2.038286754549903,
+            0.1699342072361479,
+            3.25
+          ],
+          "wireSeparation": 0.3633145961903,
+          "roomForRadius020Separator": 0.05331459619029999
+        },
+        {
+          "speed": 2,
+          "p": [
+            -2.003759892540816,
+            0.16984386206241345,
+            3.25
+          ],
+          "wireSeparation": 0.32994651316226276,
+          "roomForRadius020Separator": 0.019946513162262758
+        },
+        {
+          "speed": 4,
+          "p": [
+            -2.070133592436796,
+            0.16967458957043685,
+            3.25
+          ],
+          "wireSeparation": 0.3943462063807019,
+          "roomForRadius020Separator": 0.0843462063807019
+        },
+        {
+          "speed": 8,
+          "p": [
+            -1.9931263560161234,
+            0.1703405457055481,
+            3.25
+          ],
+          "wireSeparation": 0.31957523174247354,
+          "roomForRadius020Separator": 0.009575231742473544
+        }
+      ]
+    },
+    {
+      "z": 3.45,
+      "wire": [
+        -1.649605193931552,
+        0.16788383050116215,
+        3.45
+      ],
+      "oldCapture": [
+        -1.6,
+        0.171,
+        3.45
+      ],
+      "entries": [
+        {
+          "speed": 0.2,
+          "p": [
+            -1.920393430648455,
+            0.17003822082089035,
+            3.45
+          ],
+          "wireSeparation": 0.27079680674243417,
+          "roomForRadius020Separator": -0.03920319325756583
+        },
+        {
+          "speed": 2,
+          "p": [
+            -1.8346164384056987,
+            0.1700428537203356,
+            3.45
+          ],
+          "wireSeparation": 0.18502384160732754,
+          "roomForRadius020Separator": -0.12497615839267245
+        },
+        {
+          "speed": 4,
+          "p": [
+            -1.7757054335816518,
+            0.1699063714173544,
+            3.45
+          ],
+          "wireSeparation": 0.1261164585277048,
+          "roomForRadius020Separator": -0.1838835414722952
+        },
+        {
+          "speed": 8,
+          "p": [
+            -1.7659884027223198,
+            0.17021949799763497,
+            3.45
+          ],
+          "wireSeparation": 0.11640664341475343,
+          "roomForRadius020Separator": -0.19359335658524657
+        }
+      ]
+    },
+    {
+      "z": 3.65,
+      "wire": [
+        -1.6116770642045206,
+        0.16920938593880133,
+        3.65
+      ],
+      "oldCapture": [
+        -1.6,
+        0.171,
+        3.65
+      ],
+      "entries": [
+        {
+          "speed": 0.2,
+          "p": [
+            -1.5281640165976198,
+            0.17034840731872117,
+            3.65
+          ],
+          "wireSeparation": 0.08352081471283906,
+          "roomForRadius020Separator": -0.22647918528716093
+        },
+        {
+          "speed": 2,
+          "p": [
+            -1.5457479311095748,
+            0.17008490167575038,
+            3.65
+          ],
+          "wireSeparation": 0.06593494610945497,
+          "roomForRadius020Separator": -0.24406505389054503
+        },
+        {
+          "speed": 4,
+          "p": [
+            -1.5816981853309835,
+            0.17001290957427254,
+            3.65
+          ],
+          "wireSeparation": 0.029989645358806282,
+          "roomForRadius020Separator": -0.2800103546411937
+        },
+        {
+          "speed": 8,
+          "p": [
+            -1.5714658866878504,
+            0.17006325362474128,
+            3.65
+          ],
+          "wireSeparation": 0.04022024225812494,
+          "roomForRadius020Separator": -0.26977975774187507
+        }
+      ]
+    },
+    {
+      "z": 3.85,
+      "wire": [
+        -1.257620273535106,
+        0.1706762963314584,
+        3.85
+      ],
+      "oldCapture": null,
+      "entries": [
+        {
+          "speed": 0.2,
+          "p": [
+            -1.26387168587272,
+            0.1704012098000549,
+            3.85
+          ],
+          "wireSeparation": 0.006257461850832979,
+          "roomForRadius020Separator": -0.303742538149167
+        },
+        {
+          "speed": 2,
+          "p": [
+            -1.1335035850232458,
+            0.17036545367164563,
+            3.85
+          ],
+          "wireSeparation": 0.12411707775447066,
+          "roomForRadius020Separator": -0.18588292224552933
+        },
+        {
+          "speed": 4,
+          "p": [
+            -1.2472718633419877,
+            0.17004560210120304,
+            3.85
+          ],
+          "wireSeparation": 0.010367611525183314,
+          "roomForRadius020Separator": -0.29963238847481666
+        },
+        {
+          "speed": 8,
+          "p": [
+            -1.2274581632646917,
+            0.16969345914633177,
+            3.85
+          ],
+          "wireSeparation": 0.030178118975461413,
+          "roomForRadius020Separator": -0.2798218810245386
+        }
+      ]
+    }
+  ]
+}

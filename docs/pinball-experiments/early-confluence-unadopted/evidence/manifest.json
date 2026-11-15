@@ -1,0 +1,17 @@
+{
+  "base": "696c646c5843f7b5db3179c170347e57a9c85e73",
+  "sourceSHA256": "523bce979d5a3adc53ec0531a7ad8766650f3b6004a63512dbd86480cc6412e8",
+  "baselineSHA256": "ad77ee2048258420be753421a54bfdef22cae2d386e893864d8aea67a59bcd85",
+  "changed": [
+    "web/js/pinball/components/ramp-wire.mjs",
+    "web/js/pinball/layout.mjs",
+    "web/js/pinball/physics.mjs",
+    "web/js/pinball/playfield-parts.mjs",
+    "web/js/pinball/ramp-geometry.mjs",
+    "web/js/pinball/early-lane-study.mjs"
+  ],
+  "untouchedPhysicsLaw": true,
+  "flipperSourceSHA256": "f4ffced4c38dadb629478de0e18ca339972b2fca63389448308d67862c9bc64c",
+  "bumperSourceSHA256": "01e1e4a0cbf9c9c2293c5d0d8fbe099e53e2f9ba24af523fd7b772ab8e483c45",
+  "status": "ONE candidate; static screen pending; production unchanged"
+}

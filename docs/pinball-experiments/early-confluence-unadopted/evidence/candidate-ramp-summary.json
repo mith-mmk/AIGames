@@ -1,0 +1,911 @@
+{
+  "mode": "candidate",
+  "family": "ramp",
+  "sourceSHA256": "523bce979d5a3adc53ec0531a7ad8766650f3b6004a63512dbd86480cc6412e8",
+  "testSourceSHA256": "a8e9e17adc848e1142cc0bd25c99ab2cba48a1c5987f49dea1c84ba125098566",
+  "method": "Original preceding tests and target body executed by node:test. Only import of test is redirected to observation wrapper; tests after target not scheduled. Assertions unchanged and original aborts preserved. Counts are PinballPhysics worlds; ramp standalone fixture worlds execute unchanged but are not counted.",
+  "worlds": 18,
+  "order": [
+    {
+      "ordinal": 0,
+      "test": "28-speed tangent approaches all complete with lateral tolerance"
+    },
+    {
+      "ordinal": 1,
+      "test": "28-speed tangent approaches all complete with lateral tolerance"
+    },
+    {
+      "ordinal": 2,
+      "test": "28-speed tangent approaches all complete with lateral tolerance"
+    },
+    {
+      "ordinal": 3,
+      "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+    },
+    {
+      "ordinal": 4,
+      "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+    },
+    {
+      "ordinal": 5,
+      "test": "26-speed boundary shots complete honestly or roll back and relaunch normally"
+    },
+    {
+      "ordinal": 6,
+      "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+    },
+    {
+      "ordinal": 7,
+      "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+    },
+    {
+      "ordinal": 8,
+      "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+    },
+    {
+      "ordinal": 9,
+      "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+    },
+    {
+      "ordinal": 10,
+      "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+    },
+    {
+      "ordinal": 11,
+      "test": "six unassisted launch powers leave the ramp base without permanent stalls"
+    },
+    {
+      "ordinal": 12,
+      "test": "ground balls approaching low base from high deck side deflect without wedging"
+    },
+    {
+      "ordinal": 13,
+      "test": "ground balls approaching low base from high deck side deflect without wedging"
+    },
+    {
+      "ordinal": 14,
+      "test": "ground balls approaching low base from high deck side deflect without wedging"
+    },
+    {
+      "ordinal": 15,
+      "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+    },
+    {
+      "ordinal": 16,
+      "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+    },
+    {
+      "ordinal": 17,
+      "test": "five adjacent real flipper timings traverse the forward S and award once without teleport"
+    }
+  ],
+  "tests": [
+    {
+      "name": "experimental ramp uses continuous finite mesh and adequate channel width",
+      "status": "pass",
+      "startGameWorld": 0,
+      "endGameWorld": 0
+    },
+    {
+      "name": "floor ball passes below rear elevated deck without being lifted",
+      "status": "pass",
+      "startGameWorld": 0,
+      "endGameWorld": 0
+    },
+    {
+      "name": "low ramp skirt blocks lateral entry instead of admitting ball under deck",
+      "status": "pass",
+      "startGameWorld": 0,
+      "endGameWorld": 0
+    },
+    {
+      "name": "elevated exit releases ball into left lower lane without teleport",
+      "status": "pass",
+      "startGameWorld": 0,
+      "endGameWorld": 0
+    },
+    {
+      "name": "28-speed tangent approaches all complete with lateral tolerance",
+      "status": "pass",
+      "startGameWorld": 0,
+      "endGameWorld": 3
+    },
+    {
+      "name": "26-speed boundary shots complete honestly or roll back and relaunch normally",
+      "status": "pass",
+      "startGameWorld": 3,
+      "endGameWorld": 6
+    },
+    {
+      "name": "six unassisted launch powers leave the ramp base without permanent stalls",
+      "status": "pass",
+      "startGameWorld": 6,
+      "endGameWorld": 12
+    },
+    {
+      "name": "ground balls approaching low base from high deck side deflect without wedging",
+      "status": "pass",
+      "startGameWorld": 12,
+      "endGameWorld": 15
+    },
+    {
+      "name": "five adjacent real flipper timings traverse the forward S and award once without teleport",
+      "status": "fail",
+      "startGameWorld": 15,
+      "endGameWorld": 18,
+      "error": "natural release 82 did not traverse"
+    }
+  ],
+  "results": [
+    {
+      "ordinal": 15,
+      "delay": 80,
+      "steps": 1192,
+      "shots": [
+        {
+          "tick": 610,
+          "side": 0,
+          "before": {
+            "p": [
+              -0.7041459083557129,
+              0.17110984027385712,
+              4.46860408782959
+            ],
+            "v": [
+              3.8727190494537354,
+              -0.00020395478350110352,
+              -3.5836286544799805
+            ],
+            "w": [
+              6.038166046142578,
+              -21.3005313873291,
+              -8.854799270629883
+            ],
+            "coil": [
+              0,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "after": {
+            "p": [
+              -0.7041459083557129,
+              0.17110984027385712,
+              4.46860408782959
+            ],
+            "v": [
+              17.41883659362793,
+              -0.00020395478350110352,
+              -26.235645294189453
+            ],
+            "w": [
+              6.038166046142578,
+              -21.3005313873291,
+              -8.854799270629883
+            ],
+            "coil": [
+              1,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "shot": {
+            "side": 0,
+            "along": 0.4788193786353395,
+            "faceAngle": -0.5,
+            "aimAngle": -0.5861110058165433,
+            "angularSpeed": 12,
+            "speed": 31.491665087248148,
+            "p": {
+              "x": -0.7041459083557129,
+              "y": 0.17110984027385712,
+              "z": 4.46860408782959
+            },
+            "vx": 17.418836708874014,
+            "vz": -26.235645554797905
+          }
+        }
+      ],
+      "events": [
+        {
+          "tick": 64,
+          "event": {
+            "type": "inlane",
+            "id": "contact-0"
+          },
+          "p": [
+            -1.600000023841858,
+            0.17123648524284363,
+            3.390763759613037
+          ]
+        },
+        {
+          "tick": 634,
+          "event": {
+            "type": "sling",
+            "id": "contact-1"
+          },
+          "p": [
+            1.644712209701538,
+            0.20717395842075348,
+            1.0088177919387817
+          ]
+        },
+        {
+          "tick": 1191,
+          "event": {
+            "type": "ramp",
+            "id": "ramp-2"
+          },
+          "p": [
+            -1.7093837261199951,
+            0.5583908557891846,
+            3.0629525184631348
+          ]
+        }
+      ],
+      "injections": [
+        {
+          "tick": 30,
+          "p": [
+            -1.6,
+            0.18,
+            2.8
+          ]
+        }
+      ],
+      "boot": {
+        "p": [
+          2.5299999713897705,
+          0.17076809704303741,
+          -0.8058730959892273
+        ],
+        "v": [
+          0,
+          -3.7215686088387656e-9,
+          -18.864259719848633
+        ],
+        "w": [
+          -30.683820724487305,
+          0,
+          0
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "cradle": {
+        "p": [
+          -1.0551451444625854,
+          0.1711997240781784,
+          4.058165550231934
+        ],
+        "v": [
+          -0.00023631057410966605,
+          -0.00000914880456548417,
+          0.00007622150587849319
+        ],
+        "w": [
+          0.0001364733325317502,
+          0.0013813066761940718,
+          0.0008339399355463684
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "release": {
+        "p": [
+          -0.7353008389472961,
+          0.17113250494003296,
+          4.497225284576416
+        ],
+        "v": [
+          1.1450636386871338,
+          -0.0000804993906058371,
+          0.8757266998291016
+        ],
+        "w": [
+          6.579395771026611,
+          -10.129870414733887,
+          -8.602943420410156
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          -0.6,
+          3.741592653589793
+        ]
+      },
+      "final": {
+        "p": [
+          -1.7093837261199951,
+          0.5583908557891846,
+          3.0629525184631348
+        ],
+        "v": [
+          0.24300453066825867,
+          -1.37993586063385,
+          2.6907103061676025
+        ],
+        "w": [
+          20.284900665283203,
+          -1.6300568580627441,
+          -9.968006134033203
+        ],
+        "coil": [
+          1,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 1,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "rawTrace": "candidate-ramp-80.json.gz",
+      "rawSHA256": "514917f8405dba8ccf35933e1e07e36449a71eca30ac5485d3e2a97b4aa7e75e"
+    },
+    {
+      "ordinal": 16,
+      "delay": 81,
+      "steps": 1130,
+      "shots": [
+        {
+          "tick": 611,
+          "side": 0,
+          "before": {
+            "p": [
+              -0.6937322616577148,
+              0.17110547423362732,
+              4.475176811218262
+            ],
+            "v": [
+              3.9762635231018066,
+              -0.0001373652194160968,
+              -3.6869993209838867
+            ],
+            "w": [
+              6.120197772979736,
+              -21.44124984741211,
+              -8.961145401000977
+            ],
+            "coil": [
+              0,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "after": {
+            "p": [
+              -0.6937322616577148,
+              0.17110547423362732,
+              4.475176811218262
+            ],
+            "v": [
+              17.924333572387695,
+              -0.0001373652194160968,
+              -26.15911865234375
+            ],
+            "w": [
+              6.120197772979736,
+              -21.44124984741211,
+              -8.961145401000977
+            ],
+            "coil": [
+              1,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "shot": {
+            "side": 0,
+            "along": 0.487954156440601,
+            "faceAngle": -0.5,
+            "aimAngle": -0.6007266503049615,
+            "angularSpeed": 12,
+            "speed": 31.710899754574424,
+            "p": {
+              "x": -0.6937322616577148,
+              "y": 0.17110547423362732,
+              "z": 4.475176811218262
+            },
+            "vx": 17.92433413198342,
+            "vz": -26.15911713284075
+          }
+        }
+      ],
+      "events": [
+        {
+          "tick": 64,
+          "event": {
+            "type": "inlane",
+            "id": "contact-0"
+          },
+          "p": [
+            -1.600000023841858,
+            0.17123648524284363,
+            3.390763759613037
+          ]
+        },
+        {
+          "tick": 626,
+          "event": {
+            "type": "sling",
+            "id": "contact-1"
+          },
+          "p": [
+            1.4938877820968628,
+            0.17100583016872406,
+            1.3424313068389893
+          ]
+        },
+        {
+          "tick": 1129,
+          "event": {
+            "type": "ramp",
+            "id": "ramp-2"
+          },
+          "p": [
+            -1.7101731300354004,
+            0.5604314804077148,
+            3.065256118774414
+          ]
+        }
+      ],
+      "injections": [
+        {
+          "tick": 30,
+          "p": [
+            -1.6,
+            0.18,
+            2.8
+          ]
+        }
+      ],
+      "boot": {
+        "p": [
+          2.5299999713897705,
+          0.17076809704303741,
+          -0.8058730959892273
+        ],
+        "v": [
+          0,
+          -3.7215686088387656e-9,
+          -18.864259719848633
+        ],
+        "w": [
+          -30.683820724487305,
+          0,
+          0
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "cradle": {
+        "p": [
+          -1.0551451444625854,
+          0.1711997240781784,
+          4.058165550231934
+        ],
+        "v": [
+          -0.00023631057410966605,
+          -0.00000914880456548417,
+          0.00007622150587849319
+        ],
+        "w": [
+          0.0001364733325317502,
+          0.0013813066761940718,
+          0.0008339399355463684
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "release": {
+        "p": [
+          -0.7257218956947327,
+          0.17112861573696136,
+          4.504624843597412
+        ],
+        "v": [
+          1.1588404178619385,
+          -0.00009734773630043492,
+          0.8863925933837891
+        ],
+        "w": [
+          6.659624099731445,
+          -10.300106048583984,
+          -8.706573486328125
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          -0.6,
+          3.741592653589793
+        ]
+      },
+      "final": {
+        "p": [
+          -1.7101731300354004,
+          0.5604314804077148,
+          3.065256118774414
+        ],
+        "v": [
+          0.35605278611183167,
+          -1.445419430732727,
+          3.115849256515503
+        ],
+        "w": [
+          24.821088790893555,
+          -2.0824904441833496,
+          -11.66100025177002
+        ],
+        "coil": [
+          1,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 1,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "rawTrace": "candidate-ramp-81.json.gz",
+      "rawSHA256": "476adfbd88f372aada9ea67fbc5e4ae20ac389fbefd1f440e858168677abe39b"
+    },
+    {
+      "ordinal": 17,
+      "delay": 82,
+      "steps": 1116,
+      "shots": [
+        {
+          "tick": 612,
+          "side": 0,
+          "before": {
+            "p": [
+              -0.6831952333450317,
+              0.17110101878643036,
+              4.481828212738037
+            ],
+            "v": [
+              4.080857753753662,
+              -0.00007083396485541016,
+              -3.7917535305023193
+            ],
+            "w": [
+              6.202127456665039,
+              -21.5819091796875,
+              -9.067294120788574
+            ],
+            "coil": [
+              0,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "after": {
+            "p": [
+              -0.6831952333450317,
+              0.17110101878643036,
+              4.481828212738037
+            ],
+            "v": [
+              18.437301635742188,
+              -0.00007083396485541016,
+              -26.072307586669922
+            ],
+            "w": [
+              6.202127456665039,
+              -21.5819091796875,
+              -9.067294120788574
+            ],
+            "coil": [
+              1,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "shot": {
+            "side": 0,
+            "along": 0.4971971637324282,
+            "faceAngle": -0.5,
+            "aimAngle": -0.6155154619718852,
+            "angularSpeed": 12,
+            "speed": 31.932731929578278,
+            "p": {
+              "x": -0.6831952333450317,
+              "y": 0.17110101878643036,
+              "z": 4.481828212738037
+            },
+            "vx": 18.437303558348464,
+            "vz": -26.0723072623736
+          }
+        }
+      ],
+      "events": [
+        {
+          "tick": 64,
+          "event": {
+            "type": "inlane",
+            "id": "contact-0"
+          },
+          "p": [
+            -1.600000023841858,
+            0.17123648524284363,
+            3.390763759613037
+          ]
+        },
+        {
+          "tick": 626,
+          "event": {
+            "type": "sling",
+            "id": "contact-1"
+          },
+          "p": [
+            1.3438141345977783,
+            0.17102544009685516,
+            1.6639461517333984
+          ]
+        },
+        {
+          "tick": 1008,
+          "event": {
+            "type": "sling",
+            "id": "contact-2"
+          },
+          "p": [
+            1.8174020051956177,
+            0.23819208145141602,
+            0.9132545590400696
+          ]
+        },
+        {
+          "tick": 1060,
+          "event": {
+            "type": "sling",
+            "id": "contact-3"
+          },
+          "p": [
+            1.0980714559555054,
+            0.16981852054595947,
+            2.191056489944458
+          ]
+        }
+      ],
+      "injections": [
+        {
+          "tick": 30,
+          "p": [
+            -1.6,
+            0.18,
+            2.8
+          ]
+        },
+        {
+          "tick": 1115,
+          "p": [
+            2.53,
+            0.175,
+            4.425
+          ]
+        }
+      ],
+      "boot": {
+        "p": [
+          2.5299999713897705,
+          0.17076809704303741,
+          -0.8058730959892273
+        ],
+        "v": [
+          0,
+          -3.7215686088387656e-9,
+          -18.864259719848633
+        ],
+        "w": [
+          -30.683820724487305,
+          0,
+          0
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "cradle": {
+        "p": [
+          -1.0551451444625854,
+          0.1711997240781784,
+          4.058165550231934
+        ],
+        "v": [
+          -0.00023631057410966605,
+          -0.00000914880456548417,
+          0.00007622150587849319
+        ],
+        "w": [
+          0.0001364733325317502,
+          0.0013813066761940718,
+          0.0008339399355463684
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "release": {
+        "p": [
+          -0.7160280346870422,
+          0.171124666929245,
+          4.512113571166992
+        ],
+        "v": [
+          1.1726062297821045,
+          -0.00011620793520705774,
+          0.8970553278923035
+        ],
+        "w": [
+          6.739833354949951,
+          -10.469905853271484,
+          -8.810127258300781
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          -0.6,
+          3.741592653589793
+        ]
+      },
+      "final": {
+        "p": [
+          2.5299999713897705,
+          0.17499999701976776,
+          4.425000190734863
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "w": [
+          0,
+          0,
+          0
+        ],
+        "coil": [
+          1,
+          0
+        ],
+        "phase": "ready",
+        "ball": 2,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "rawTrace": "candidate-ramp-82.json.gz",
+      "rawSHA256": "e4f2bb8406583ee55bc2dcf4507c820c837309a3201f9ffc567c3c460260698f"
+    }
+  ]
+}

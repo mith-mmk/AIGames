@@ -1,0 +1,42 @@
+{
+  "out": "/Users/tsaito/Projects/AIGames/artifacts/pinball/early-confluence-696c646/preview",
+  "errors": [],
+  "results": [
+    {
+      "mode": "baseline",
+      "view": "installed-45",
+      "triangles": 454132,
+      "calls": 688
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-10",
+      "triangles": 453988,
+      "calls": 676
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-90",
+      "triangles": 447812,
+      "calls": 661
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-45",
+      "triangles": 501936,
+      "calls": 897
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-10",
+      "triangles": 501792,
+      "calls": 885
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-90",
+      "triangles": 495616,
+      "calls": 870
+    }
+  ]
+}

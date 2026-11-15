@@ -1,0 +1,18 @@
+using deprecated parameters for the initialization function; pass a single object instead
+{"mode":"baseline","delay":75,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"baseline","delay":76,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8393558859825134,"resets":0}
+{"mode":"baseline","delay":77,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8393775820732117,"resets":0}
+{"mode":"baseline","delay":78,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8392581939697266,"resets":0}
+{"mode":"baseline","delay":79,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"baseline","delay":80,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8392578959465027,"resets":0}
+{"mode":"baseline","delay":81,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8392339944839478,"resets":0}
+{"mode":"baseline","delay":82,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8392148613929749,"resets":0}
+{"mode":"baseline","delay":83,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8392558693885803,"resets":0}
+{"mode":"baseline","delay":84,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8391140699386597,"resets":0}
+{"mode":"baseline","delay":85,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"baseline","delay":86,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"baseline","delay":87,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"baseline","delay":88,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"baseline","delay":89,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"baseline","delay":90,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"baseline","rampIntervals":[[76,78],[80,84]],"captureIntervals":[[76,78],[80,84]],"refireIntervals":[[76,78],[80,84]],"holes":[75,79,85,86,87,88,89,90]}

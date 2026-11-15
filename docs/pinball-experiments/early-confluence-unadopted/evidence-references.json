@@ -1,0 +1,692 @@
+[
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-common.log",
+    "bytes": 1269,
+    "sha256": "d651f8cc303e16d0631d8a432e48ee9b649689ca52743f98e53210c4677ac21a"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-75.json.gz",
+    "bytes": 74843,
+    "sha256": "3cf46ec9fe3e954922fd3c25f0342f2a23f2bfb71dc6af59031402dd71a3d0fc"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-76.json.gz",
+    "bytes": 181092,
+    "sha256": "9655646d127552374c2adb42260845f3ae720b70fab5ea70c099550ab11c7075"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-77.json.gz",
+    "bytes": 180895,
+    "sha256": "f17def3da8fb1cb8a6b6f983c57a980ade8c93ea26e94fb5e6e86e58ab9fbac4"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-78.json.gz",
+    "bytes": 176202,
+    "sha256": "f9bf07e0d023138350bf17f8747517cdcda23a376df8268b64228e54664d6f4f"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-79.json.gz",
+    "bytes": 75038,
+    "sha256": "6b01f961dd1f9026e219c740b564ce2c1049886b00b6bcdddf21d481aed7951a"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-80.json.gz",
+    "bytes": 185814,
+    "sha256": "605dec9bac6e10444f876512720ba0fd8b6f7ef1599d30ecca631bd0403e7300"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-81.json.gz",
+    "bytes": 173358,
+    "sha256": "1440d9aa2aa45e89bbc5bdc68eca064ae51f46bcbb5bd0bee9dfae72d7b76e70"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-82.json.gz",
+    "bytes": 180335,
+    "sha256": "351c8f74489c5f81d775769c6b8b85da047e58ae29459ae82bd5121a546e4ddb"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-83.json.gz",
+    "bytes": 181036,
+    "sha256": "218412ae2a86882230ba73e4fbf484dc813725a8585544a02ff2d80246dfeccd"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-84.json.gz",
+    "bytes": 183869,
+    "sha256": "50a6e52a52df34f2e048bc041ace3102aac83f2551a7e094fe5df7721932a138"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-85.json.gz",
+    "bytes": 74200,
+    "sha256": "bcce4108c3046075d4bb9b16469fe1f46f487c08787d8b6a868696ac66387c37"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-86.json.gz",
+    "bytes": 82664,
+    "sha256": "62c0ad0e849f986979df6cb2f344b73c895bfb8cc7cf07f1beb1d16df1d6b56a"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-87.json.gz",
+    "bytes": 65743,
+    "sha256": "6a28ca378fbe5db773024bd9cc3df3f757919d0845ec128767c911a302ac64ca"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-88.json.gz",
+    "bytes": 185700,
+    "sha256": "400e94944a9726c7f1461cb9040704fd8b7fcd75415c90828ad7456fd9e79101"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-89.json.gz",
+    "bytes": 75630,
+    "sha256": "58e2c0f99147fd82a81f779ba4eb6b31c652620a6f4eff9375613f4bf52dd50e"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-90.json.gz",
+    "bytes": 55870,
+    "sha256": "3a689e629aa124c4ffda81b79ab43deea2692a652f69a42c4fc7fb85d6b55d0b"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense-timing.json",
+    "bytes": 90191,
+    "sha256": "79977d9e934ab5e271fff21d76eb053d061bcd017e900e6c0b70e4f6ba62b0d0"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-dense.log",
+    "bytes": 2443,
+    "sha256": "76c0eeca0446139e572c1252ef32a4d68465808f534bd2d5f3638a5f6809f9c9"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-in-arrival.json",
+    "bytes": 89860,
+    "sha256": "336a585afdb761476dd61dd6e67429b3489929b7d52bd340c69da83740af36e7"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-in-new-in-mouth-0.2.json.gz",
+    "bytes": 11116,
+    "sha256": "db31fc7ecadae6e67693b0d7a0b02e8126b6da8afa502f0feb51cce8da2f6526"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-in-new-in-mouth-2.json.gz",
+    "bytes": 9618,
+    "sha256": "c5a51b32d6e170b70242691632a98cca8e6aed0db7951b5ee9e2508c5f6e0866"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-in-new-in-mouth-4.json.gz",
+    "bytes": 7874,
+    "sha256": "2fef5317ac291609cd54a69f444af2417700bb2da2d4a7663705daa2e082ebc2"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-in-new-in-mouth-8.json.gz",
+    "bytes": 5037,
+    "sha256": "92f2bd00d056f616e59edec64719d0e05ce03366412a41aad420ebafc1280fe1"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-in-old-capture-start-0.2.json.gz",
+    "bytes": 91216,
+    "sha256": "7937636e3c8d435814a2412f32f6fd262ebbbf2b52f3f7e026ef8f60867b5920"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-in-old-capture-start-2.json.gz",
+    "bytes": 90898,
+    "sha256": "2c744fc5682c86716bdd89450c896ca2aa0dd554f46abfd41814ff37a898659d"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-in-old-capture-start-4.json.gz",
+    "bytes": 30632,
+    "sha256": "00fd8d6e5517325c874b3a6bb13dd5cd2a66adf68fecf35bfee5bf40d6ad1db8"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-in-old-capture-start-8.json.gz",
+    "bytes": 30479,
+    "sha256": "2cef201c0a518842672fcb533f1dfaaa00a8d415458b8234efec0b47c409d2d5"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-in.log",
+    "bytes": 5772,
+    "sha256": "56d6be75c7ca1b39a4cdbc0b9dd4717c30146ab7f5db3b94380427b73571eff8"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-loader.mjs",
+    "bytes": 957,
+    "sha256": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-out.json",
+    "bytes": 203012,
+    "sha256": "cb1b005ee230d3c1e2ee7793d02c2a6da25360456ae831b03e63f8ad62df52cf"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-out.log",
+    "bytes": 173,
+    "sha256": "6098039cfdb8081e4d434cb9434caf47a9706ce9a95b8975397f53f86f396b7f"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-ramp-80.json.gz",
+    "bytes": 291410,
+    "sha256": "bb877af8948fb2ee5b1a4a04d34010811c99f40b93b541febc7bf2855c3348da"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-ramp-81.json.gz",
+    "bytes": 264905,
+    "sha256": "fa2071910da609b770be6c97f1da022158082a9c749564fd8522f9ce689bf005"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-ramp-82.json.gz",
+    "bytes": 283544,
+    "sha256": "20969e43fc11ae3626532358dd6fc5f90eeaad2811a3a047a89dcd66624fdc42"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-ramp-83.json.gz",
+    "bytes": 282014,
+    "sha256": "2b7d10f4b70482dd8da9592d19dfd87bcccaae3797ea016141ce1c517860fb48"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-ramp-84.json.gz",
+    "bytes": 282984,
+    "sha256": "5243130b4712dc5df5b4489432115b23578232044a85aa203473b2cbcf99a43e"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-ramp-summary.json",
+    "bytes": 32082,
+    "sha256": "74db40f101811f311e0d754ea7c3e1fec554cf37d8b016e2dc728ed540a067b4"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-ramp.log",
+    "bytes": 1229,
+    "sha256": "caca9d2144b99d99dd178b8cb6de25f581ed4d67d98720ca8370d083a3832d8a"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-save-sweep.json",
+    "bytes": 561227,
+    "sha256": "5bff7d79707d6f614f9274e08f1c55ee89b489e09e6b95c92db0940befb866d8"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-save.log",
+    "bytes": 175,
+    "sha256": "41f0cc0b580df9f1cfeec305effd4b8769254e1ededb53c890e79bb6550d895b"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-sources.json",
+    "bytes": 327034,
+    "sha256": "ad77ee2048258420be753421a54bfdef22cae2d386e893864d8aea67a59bcd85"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes-80.json.gz",
+    "bytes": 291422,
+    "sha256": "27e0829c1a611290b2a49c74a0da8a98db0feceef0a4ee76ae37d062eac20076"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes-81.json.gz",
+    "bytes": 264919,
+    "sha256": "3749813c365f2127c5b84ec393189ab00fc3c41da4e6b6f9e07ec6101e2dfa27"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes-82.json.gz",
+    "bytes": 283553,
+    "sha256": "0f8b592365c0886baeaa6076a5bbd83b4ceaf5dba4c163167aa9d5da4ffbdd25"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes-83.json.gz",
+    "bytes": 282025,
+    "sha256": "c1bd0d24531eac742623f399096a00a2630d7df114cc917a23cbd3cd86ae09ba"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes-84.json.gz",
+    "bytes": 282994,
+    "sha256": "fdf910af6ae700e938d1887fc75bb595f2f0f6b144931cb86f6085d41ddb841e"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes-summary.json",
+    "bytes": 32926,
+    "sha256": "12a533d0d877be1017731c43c393f7b3f8454549bb6a8a1b68a6c2bfa9e62999"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes.log",
+    "bytes": 513,
+    "sha256": "9189f8e65f1f8bc887a4c786d2b1e571e5c70d034c9571409e3f0316eca12150"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/baseline.json",
+    "bytes": 1572020,
+    "sha256": "59ce2eb5116471d89657ec2f768a0eac206292c4df113f27b3f7bfefcb0beff7"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/build.mjs",
+    "bytes": 7128,
+    "sha256": "04356f10237864eed27f6619350ae78ee6b3cb4229a402b49a0e1c258a736b06"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-common.log",
+    "bytes": 1271,
+    "sha256": "a905a3ee2d304599306c816e5b53ae1a2fb14000ece43ec1913f0bcd578d3d8f"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-75.json.gz",
+    "bytes": 70886,
+    "sha256": "cb7fb9bb82f4bff93eec3dfef6f1b649b4f4a0d7778cd604d8e4536ddea09761"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-76.json.gz",
+    "bytes": 177855,
+    "sha256": "983feb8b90b9ab775049863349612d199dfd10f9314aec0200d365b805d16465"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-77.json.gz",
+    "bytes": 177423,
+    "sha256": "cfb6989736cc8a038fa94477639aaba336f35261549050886a3f146fb833eebd"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-78.json.gz",
+    "bytes": 179897,
+    "sha256": "259f2569bc0d122b0c9e185e6314d2462ff2a6956ba5d6e4478edd8acd1d7f7b"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-79.json.gz",
+    "bytes": 190742,
+    "sha256": "ae178ec8d67fd7e729bbbcd508896f6edc16033a196a99ceabe0070bfe1f0b13"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-80.json.gz",
+    "bytes": 182225,
+    "sha256": "a052cdd361747743a4b483ec0d72f789603ff3a6fa4990adbb7a045bd5e87607"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-81.json.gz",
+    "bytes": 176290,
+    "sha256": "c315cb37119897c0c43b11bddba9b1044645ef9dea9c94e1ad569bfe0ba58df8"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-82.json.gz",
+    "bytes": 96257,
+    "sha256": "8df4d4e2b13af6fdf6721d19fb3fb7c384fb898de0195383bdbbe9c193499403"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-83.json.gz",
+    "bytes": 186456,
+    "sha256": "d136b0f01239e4ec8676d31263b69f17e6c540734e91ffb4da1036df8d44286a"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-84.json.gz",
+    "bytes": 180930,
+    "sha256": "0cbc4e94b6fde8f3496269a121b0b091eb39e194bc3b45be3b8e9213c4a761e6"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-85.json.gz",
+    "bytes": 75012,
+    "sha256": "a9585772a045ce5bfbe9e3d3ec9712432653a3269d4aeb61dbd2d212857f463d"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-86.json.gz",
+    "bytes": 86549,
+    "sha256": "52a13107e10d1946ed62b817a7513e80bf6e771d7a43011ba76b8a7d0d643dbb"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-87.json.gz",
+    "bytes": 77816,
+    "sha256": "df70a60ed0bfd57f787462ffbb9116cbd24c56d3fffcf4eb3f6e386a550dbbf7"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-88.json.gz",
+    "bytes": 81182,
+    "sha256": "082d212fb7f9863d8c6017b1765ff94145e85b56d422dbaedde6b11cac9c385d"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-89.json.gz",
+    "bytes": 182790,
+    "sha256": "169367115dab2a44955eec7e033a38e39c59e288d6595aa0abe7cc8fbd3b8e16"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-90.json.gz",
+    "bytes": 56004,
+    "sha256": "63e4e24bb332422f277a94e2a08e08d6761703495e580d42d1ed245c08731b7a"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense-timing.json",
+    "bytes": 86806,
+    "sha256": "d90822e22f0525b8cc72ccdf6ca569a597064989930d83299273060e3dc30b8f"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-dense.log",
+    "bytes": 2477,
+    "sha256": "fe3f0c84194489f2052dc26185490bd8106788de9b207758b352d08459db060e"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-in-arrival.json",
+    "bytes": 180068,
+    "sha256": "2eabc71f8ddecf89c0407bdd1f3f6bbce25547d3990c05cc003b28dd1eeb7a9d"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-in-new-in-mouth-0.2.json.gz",
+    "bytes": 91895,
+    "sha256": "e570d10884cc73784ab9137bad979a59c6bdcda2c2fc9e455a0767d9f86acbaa"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-in-new-in-mouth-2.json.gz",
+    "bytes": 95216,
+    "sha256": "946a2dc6caf683f840b643fee2b32c7987f3b7cca7f924c0c0c521b524d8ca74"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-in-new-in-mouth-4.json.gz",
+    "bytes": 85384,
+    "sha256": "34913b4da6d1ae4252fe40263869eebfcd42bf755f52c05bb5f74f6f146c6399"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-in-new-in-mouth-8.json.gz",
+    "bytes": 97095,
+    "sha256": "bcaba24e4425f13cffc8bf3947dc081fe1242e3587aec2bb16007274bc97a5e1"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-in-old-capture-start-0.2.json.gz",
+    "bytes": 90116,
+    "sha256": "85cda97ee67dea7348b188f63062e796ab2f5bf85cd6db2aee48fbc640ee1340"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-in-old-capture-start-2.json.gz",
+    "bytes": 89818,
+    "sha256": "de1ec68e2751f7a11a7f64c628569008543549ef019d308b4a4f180078f8d344"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-in-old-capture-start-4.json.gz",
+    "bytes": 30632,
+    "sha256": "00fd8d6e5517325c874b3a6bb13dd5cd2a66adf68fecf35bfee5bf40d6ad1db8"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-in-old-capture-start-8.json.gz",
+    "bytes": 30479,
+    "sha256": "2cef201c0a518842672fcb533f1dfaaa00a8d415458b8234efec0b47c409d2d5"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-in.log",
+    "bytes": 6071,
+    "sha256": "70faa6bd110b8edbfdacd38614580e21e62bffc51136b34d30a30a9d9584e530"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-out.json",
+    "bytes": 167540,
+    "sha256": "0358cb525b84e9493ccad5e32185540a70c42bbb4fff2945a05aa3c53d7f6169"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-out.log",
+    "bytes": 173,
+    "sha256": "7b70f4e156bfc4a8ed33da9ba1ab06574fcf3d6d970bff63b851ced23cdb2db2"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-ramp-80.json.gz",
+    "bytes": 290537,
+    "sha256": "514917f8405dba8ccf35933e1e07e36449a71eca30ac5485d3e2a97b4aa7e75e"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-ramp-81.json.gz",
+    "bytes": 280448,
+    "sha256": "476adfbd88f372aada9ea67fbc5e4ae20ac389fbefd1f440e858168677abe39b"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-ramp-82.json.gz",
+    "bytes": 253345,
+    "sha256": "e4f2bb8406583ee55bc2dcf4507c820c837309a3201f9ffc567c3c460260698f"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-ramp-summary.json",
+    "bytes": 21235,
+    "sha256": "f2b1d203cba63ee683f57e0a307f4003033f8a64f9befbd6ae5e1b45f10a1bdc"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-ramp.log",
+    "bytes": 2017,
+    "sha256": "9865c4a550131817f23f22221ea06417bf1f0e24be2eacdec26f14a03c395352"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-save-sweep-detailed.json",
+    "bytes": 3094091,
+    "sha256": "6f8b80fe8718b391d2537f2874603f52b8997740b2a163dec9d226e49d538efb"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-save-sweep-detailed.log",
+    "bytes": 175,
+    "sha256": "8b0ee3b6292c4efc28cd0adf54b99403bafeda18dffd5abddd606c04f62969ba"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-save-sweep.json",
+    "bytes": 354166,
+    "sha256": "acb6f96fd3313094ab0be8f2cadc983f421d6d49892e6784adc9f3c9fe4416ed"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-save.log",
+    "bytes": 175,
+    "sha256": "8b0ee3b6292c4efc28cd0adf54b99403bafeda18dffd5abddd606c04f62969ba"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-upper-lanes-80.json.gz",
+    "bytes": 290548,
+    "sha256": "35442b0538998a6520831ac8285b381ccf5f38a5af541acc54d5fca4789f3c1f"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-upper-lanes-81.json.gz",
+    "bytes": 280459,
+    "sha256": "e35e2acc9891ff0579dcedbf10ac34b408d8374c12d54c9a0d20f1d7908779fd"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-upper-lanes-82.json.gz",
+    "bytes": 253352,
+    "sha256": "9f497e35ed9c5820474d6d43afbf9ff88ad2d637f2733b5f9bf3b40a7b133c09"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-upper-lanes-summary.json",
+    "bytes": 22084,
+    "sha256": "0a664235878b3d2d23c733da923b90ac02d1ae2e390e301a281b9600517ef07d"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate-upper-lanes.log",
+    "bytes": 1349,
+    "sha256": "fec3b2629dcd036220e51a8d485b3fce43bc0ab44c6af46f1fa5953d4470e359"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/candidate.json",
+    "bytes": 1610483,
+    "sha256": "ef121ccbf911dad778af6b5a754247838fa00fbfe6a71761da028c1d8d5573c9"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/changes.json",
+    "bytes": 2906,
+    "sha256": "d1f8dc87577158847a27d04874faae77b1e24bdd50652206aeed2b56266b48cd"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/classify-save.py",
+    "bytes": 2362,
+    "sha256": "ace2e1b55fc65ffb9fb1d9f36cddc17627f2e6aac3cd1ff440c105935d803a06"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/corridor.json",
+    "bytes": 1332316,
+    "sha256": "f1f9ce576f4f46a071ba966965cddb804f2e8a9b1f1c4c5f89ece7c87d129d0e"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/corridor.log",
+    "bytes": 1130,
+    "sha256": "ef56ae3e49d5b99de543c0853b4edaf3e43a5d28f8ffd261443bab68a2ad142c"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/corridor.mjs",
+    "bytes": 1936,
+    "sha256": "fead554244d6d45aa7d3bd07e540d4cb417a0c0a54e3b657f7c784deb36dd543"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/definition.mjs",
+    "bytes": 45862,
+    "sha256": "26f17af49065f73ec8e5d4434819925134a90e3be6e8ead76e22f5c980d880b8"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/dense-timing.mjs",
+    "bytes": 4389,
+    "sha256": "32feb6639d57312a719b9859e03469e8d7547a6b4ef1bfb5b3c62548345cc5d7"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/diagnostic-loader.mjs",
+    "bytes": 1237,
+    "sha256": "9458d86660ae96babe713ec19383853d8cdb21af5719f7ee754919611229d411"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/in-control.mjs",
+    "bytes": 3972,
+    "sha256": "f78ac4eb63d5722779a5eb13f09ba7ee6c713b397b4cf88effb23613a5e624d0"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/initial-state.json",
+    "bytes": 370,
+    "sha256": "88ea057255d132cdf431a09426c50f816763bc7856356d4743977522c756a4b0"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/instrument.mjs",
+    "bytes": 4270,
+    "sha256": "277229d4e30a891dc85065045d0dc31a77747ab7d4bda8b5551ca1d001b71842"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/loader.mjs",
+    "bytes": 948,
+    "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/manifest.json",
+    "bytes": 778,
+    "sha256": "ecabf4f5299967e211d1cd7b8df5339890dcecea8023a4feda1d5a6d377a243b"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/out-compare.mjs",
+    "bytes": 3526,
+    "sha256": "39be11ab7edd637109ed80363070511352dcec3d68a1710a7c69b4d3a1f3fef9"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/baseline-installed-10.png",
+    "bytes": 430611,
+    "sha256": "aea3dda1a90890bb049ad0978ee492979c5516dfeb3681c8273ecb1b6b99d750"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/baseline-installed-45.png",
+    "bytes": 742440,
+    "sha256": "8dbb292d529a568642a538765220de0e022359932536a4b465d4b8379c3f2246"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/baseline-installed-90.png",
+    "bytes": 618098,
+    "sha256": "a2509b5a77a81427c3f9a0fe4be3e1b76becb087f84973fd289e2c575ea62d39"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/baseline-lower-closeup.png",
+    "bytes": 796986,
+    "sha256": "832833f75a39cc26f9c654dec1edd62771e56adbd83436515c7742561054dc95"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/baseline-lower-side.png",
+    "bytes": 113297,
+    "sha256": "28339ec3fd71e37f2f19ced198d9dfbb3b00c827d4ccbef7a18a2a7f27618360"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/baseline-lower-underside.png",
+    "bytes": 114483,
+    "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/baseline-mobile-390.png",
+    "bytes": 253694,
+    "sha256": "6ad79b7208452d8a39950008febc241c553a3ca925d4d3098e302566ab29d020"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/candidate-installed-10.png",
+    "bytes": 431973,
+    "sha256": "b485ce4762bf557ca4a2141a9f2a5b9e3b37361356ea22a55dc48260c7375d0a"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/candidate-installed-45.png",
+    "bytes": 743875,
+    "sha256": "35293165331ad09bbab2a1f596034d54d0ed559af48b985ca0ff28a532d9d1cc"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/candidate-installed-90.png",
+    "bytes": 619114,
+    "sha256": "b01cfdaa6521d26feb1e4c07faac6dc9b70af46fe84ad637a93523851b7645e4"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/candidate-lower-closeup.png",
+    "bytes": 798865,
+    "sha256": "143b160d6006f88c0449d691547e5b94bc6528de582e42c0206ed39460f11d3c"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/candidate-lower-side.png",
+    "bytes": 113297,
+    "sha256": "28339ec3fd71e37f2f19ced198d9dfbb3b00c827d4ccbef7a18a2a7f27618360"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/candidate-lower-underside.png",
+    "bytes": 114483,
+    "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/candidate-mobile-390.png",
+    "bytes": 254304,
+    "sha256": "883cdda08be9c3643ad2d5fefd111e6d139143805871cdca3f6613767da20ca5"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/evidence.json",
+    "bytes": 969,
+    "sha256": "9e2402c2fdb67b33e6b179c8f005dbdd4064be82fc4846d10e37ec9e89a5dc84"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/preview/served-candidate-sources.json",
+    "bytes": 374127,
+    "sha256": "523bce979d5a3adc53ec0531a7ad8766650f3b6004a63512dbd86480cc6412e8"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/replay-control.mjs",
+    "bytes": 4120,
+    "sha256": "c2565eda36ab4d1783c3a66304bdf60e6507cd60bff3c1ab979f6056772e2137"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/save-classification.json",
+    "bytes": 96974,
+    "sha256": "9ab5ff0ea3ede59d27892f123538376cf3d7ef197544d1b9e16536eced535910"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/save-sweep-detailed.mjs",
+    "bytes": 3610,
+    "sha256": "7c2d3d0a094c8b1f7b7c06b78b775d52035ce1a71e50993c48007163c337e23f"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/save-sweep.mjs",
+    "bytes": 3609,
+    "sha256": "5668a7f3bff6353afebcf5fce73820693a6bc89a6ce58e9e35edc672c21d15c8"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/sources.json",
+    "bytes": 374127,
+    "sha256": "523bce979d5a3adc53ec0531a7ad8766650f3b6004a63512dbd86480cc6412e8"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/static.json",
+    "bytes": 613570,
+    "sha256": "3d0f781c246dcd2a54d84f2cfd91bf8c02ab24595c60d8c7122c92d5ac733eac"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/static.log",
+    "bytes": 20284,
+    "sha256": "6d53e2bf978f654a2e5766bd658f4dfcb74b6315d16f6872220273abee552e38"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/static.mjs",
+    "bytes": 5840,
+    "sha256": "6eb027e59463dc56c76db24838ad5169f9aad7c66b57113e3e8ff8c010962fd1"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/test-sources.json",
+    "bytes": 13311,
+    "sha256": "091843319ff345d987986c5d4c6937145ee1621405df2fa55f2087dc145e7067"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/visual.cjs",
+    "bytes": 4643,
+    "sha256": "85eede5569bd514ff8b1b2c2b702e570d4a971bae0d9bb49764f031adeb72197"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-696c646/visual.log",
+    "bytes": 825,
+    "sha256": "db1ac839dad442a5aff544f2af9d7b5e928d9a1360190bc515c03fe8414c1af7"
+  }
+]
