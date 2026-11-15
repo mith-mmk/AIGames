@@ -1,0 +1,44 @@
+{
+  "baseline": "3568d1b stable",
+  "candidate": "bumper underboard continuous mount",
+  "results": [
+    {
+      "mode": "baseline",
+      "view": "installed-45",
+      "triangles": 450844,
+      "calls": 685
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-10",
+      "triangles": 450700,
+      "calls": 673
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-90",
+      "triangles": 444524,
+      "calls": 658
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-45",
+      "triangles": 454132,
+      "calls": 688
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-10",
+      "triangles": 453988,
+      "calls": 676
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-90",
+      "triangles": 447812,
+      "calls": 661
+    }
+  ],
+  "errors": [],
+  "scope": "Installed views; cabinet cutaway hides inspection panels only, board retained; additional hemisphere ground fill is inspection-only. Desktop/mobile emulation, not physical phone or strength certification."
+}

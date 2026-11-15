@@ -158,19 +158,44 @@ export class MechanicalBumper {
     // here are clearance estimates; cabinet/playfield installation must be
     // reviewed separately. No collision body is created by this component.
     this.underboard = this.group("fixed-underboard-solenoid", this.fixed);
-    this.root.userData.underboardClearance = { minY: d.bracketBottomY-.003, radius: .29, verified: false };
+    this.root.userData.underboardClearance = { minY: d.bracketBottomY-.003, radius: .35, verified: false };
     const bracketShape = new T.Shape();
     // Bent sheet section in (z,y), extruded across x, with top/bottom flanges.
-    [[.09,-.035],[.19,-.035],[.19,d.bracketBottomY],[-.145,d.bracketBottomY],
-      [-.145,-.805],[.163,-.805],[.163,-.06],[.09,-.06]].forEach(([x,y],i)=> i ? bracketShape.lineTo(x,y) : bracketShape.moveTo(x,y));
+    [[.09,-.159],[.19,-.159],[.19,d.bracketBottomY],[-.145,d.bracketBottomY],
+      [-.145,-.805],[.163,-.805],[.163,-.184],[.09,-.184]].forEach(([x,y],i)=> i ? bracketShape.lineTo(x,y) : bracketShape.moveTo(x,y));
     bracketShape.closePath();
     const bracketGeo = new T.ExtrudeGeometry(bracketShape,{depth:.12,bevelEnabled:true,bevelSize:.003,bevelThickness:.003,bevelSegments:1,steps:1});
     bracketGeo.translate(0,0,-.06); bracketGeo.rotateY(-Math.PI/2);
     this.mesh("folded-solenoid-bracket", bracketGeo,"chrome",this.underboard);
-    this.repeated("underboard-mount-feet",new T.BoxGeometry(.11,.025,.15),"chrome",2,
-      (o,i,a)=>o.position.set(Math.cos(a)*.235,-.043,.115),this.underboard);
-    this.repeated("underboard-mount-screws",new T.CylinderGeometry(.018,.018,.06,6),"chrome",2,
-      (o,i,a)=>o.position.set(Math.cos(a)*.235,-.03,.14),this.underboard);
+    // Full-size installation: board underside is Y=-.14. A single folded
+    // assembly needs a continuous load path from both board screws to the coil
+    // bracket, not detached feet embedded in the plywood. This plate is wholly
+    // below the deck, with explicit fillet welds to the folded bracket; ball colliders and all moving stroke dimensions stay put.
+    // Mini models are scaled standalone estimates, not a certified installation.
+    const mount = new T.Shape();
+    [[-.28,-.08],[.28,-.08],[.30,-.06],[.30,.16],[.28,.18],[-.28,.18],[-.30,.16],[-.30,-.06]]
+      .forEach(([x,z],i)=>i?mount.lineTo(x,-z):mount.moveTo(x,-z));
+    mount.closePath();
+    for(const [x,z,r] of [[-.254,0,.020],[.254,0,.020],[-.235,.14,.014],[.235,.14,.014]]) {
+      const hole=new T.Path();hole.absarc(x,-z,r,0,Math.PI*2,true);mount.holes.push(hole);
+    }
+    // Through-slot clears the independently tilting switch stem and its leaf,
+    // not just the two straight ring rods. Keep their original timing and pose.
+    const relief=new T.Path();
+    relief.moveTo(-.035,.06);relief.lineTo(.035,.06);relief.lineTo(.035,-.10);relief.lineTo(-.035,-.10);relief.closePath();mount.holes.push(relief);
+    const mountGeo=new T.ExtrudeGeometry(mount,{depth:.016,bevelEnabled:false,steps:1,curveSegments:16});
+    mountGeo.rotateX(-Math.PI/2);
+    this.mesh("underboard-continuous-mount-plate",mountGeo,"chrome",this.underboard).position.y=-.156;
+    this.repeated("bracket-to-plate-fillet-welds",new T.CylinderGeometry(.004,.004,.08,8),"chrome",2,
+      (o,i,a)=>{o.position.set(Math.cos(a)*.062,-.157,.13);o.rotation.x=Math.PI/2;},this.underboard);
+    this.repeated("underboard-mount-screw-shanks",new T.CylinderGeometry(.012,.012,.12,12),"chrome",2,
+      (o,i,a)=>o.position.set(Math.cos(a)*.235,-.109,.14),this.underboard);
+    for(const x of [-.235,.235]) {
+      const washer=this.turned("underboard-mount-washer",[[.013,-.164],[.031,-.164],[.031,-.156],[.013,-.156],[.013,-.164]],"chrome",this.underboard,24);washer.position.set(x,0,.14);
+    }
+    this.repeated("underboard-mount-screws",new T.CylinderGeometry(.022,.022,.012,6),"chrome",2,
+      (o,i,a)=>o.position.set(Math.cos(a)*.235,-.170,.14),this.underboard);
+    this.root.userData.underboardMount={boardBottom:-.14,plateBottom:-.156,rodHoleRadius:.020,dimensionStatus:"full-size fit estimate; not strength certified"};
     this.turned("solenoid-coil-bobbin",[[.037,d.coilBottomY],[.123,d.coilBottomY],[.123,-.765],[.106,-.765],[.106,-.515],[.123,-.515],[.123,d.coilTopY],[.037,d.coilTopY],[.037,d.coilBottomY]],"dark",this.underboard,32);
     this.turned("copper-solenoid-winding",[[.104,-.76],[.115,-.755],[.115,-.525],[.104,-.52],[.104,-.76]],"brass",this.underboard,32);
     this.turned("nylon-plunger-sleeve",[[.029,-.79],[.037,-.79],[.037,-.48],[.029,-.48],[.029,-.79]],"plastic",this.underboard,24);

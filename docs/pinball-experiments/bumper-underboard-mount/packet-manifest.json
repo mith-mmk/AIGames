@@ -1,0 +1,86 @@
+{
+  "README.md": {
+    "bytes": 4892,
+    "sha256": "944e0f2c555a2c9cf63dd1a2911fa4a973b108ff901710bae718e75bbec46878"
+  },
+  "evidence/browser.json": {
+    "bytes": 1034,
+    "sha256": "c39fe61cae15c1babf05d07ebac4a6139e29960ca85929a38e8624ba26c203f0"
+  },
+  "evidence/component.log": {
+    "bytes": 4692,
+    "sha256": "877cdb998cf3506085ac9b9af0cf0ef82e17291cce1e14efb9ea62020d36a6a5"
+  },
+  "evidence/full-tests-final.log": {
+    "bytes": 23453,
+    "sha256": "58bfef8dc93688fab43b92e2ddc2d57fb50d337fea0b5d636a90df91c15cddd3"
+  },
+  "evidence/input.json": {
+    "bytes": 9314,
+    "sha256": "4f3e63cf0e5cd7b652f1004de06672dacade6e51daee5238be7a36fe70780409"
+  },
+  "evidence/input.log": {
+    "bytes": 70,
+    "sha256": "faa74cbe1d1d236eaa932f1e52b9483422805e25f9908d73ff0e3a06f5e8660a"
+  },
+  "evidence/installed-clearance.json": {
+    "bytes": 2637,
+    "sha256": "81c837d291acf1039cad48778d07b5b78858f12408e91acd639d2239a7087a96"
+  },
+  "evidence/natural54.json": {
+    "bytes": 39049,
+    "sha256": "c4c5469ea2ec8270e71dd2398e73ccee16793df2c488f8fdedf1c7093c181370"
+  },
+  "evidence/natural54.log": {
+    "bytes": 304,
+    "sha256": "961e8ea25356e98f37ac04a64ada60bd8534b3c1743aa446a16173bf206f180e"
+  },
+  "evidence/source-and-game-comparison.json": {
+    "bytes": 8641,
+    "sha256": "866c4fe44b2520e63593c295e687a0f1cede167cd35bbb2b99419c662ecf7e9d"
+  },
+  "images/baseline-bumper-cutaway.png": {
+    "bytes": 131798,
+    "sha256": "9e735a4dd4150d812623fc3fda940f1947632b840d95832a1128d670baa11436"
+  },
+  "images/bumper-moving.png": {
+    "bytes": 150263,
+    "sha256": "fa77d30629381ce184acbefeb99800bb48776f3da3388e27560ba0b08afe679b"
+  },
+  "images/bumper-side.png": {
+    "bytes": 65753,
+    "sha256": "b4371961275ebf0dd8912fa523f9cf61d7174cb53f13730c50af66a51b6a01d7"
+  },
+  "images/bumper-underside.png": {
+    "bytes": 116732,
+    "sha256": "9ef521812fee8a18e62279d9236dc240897c690c2d4992a8bcfebee7b1c8562b"
+  },
+  "images/candidate-bumper-cutaway.png": {
+    "bytes": 146917,
+    "sha256": "30d35aa2cca32f527522fa8a5ebcbef1c43bebb223b2128232495387d0ec9179"
+  },
+  "images/candidate-installed-45.png": {
+    "bytes": 742440,
+    "sha256": "8dbb292d529a568642a538765220de0e022359932536a4b465d4b8379c3f2246"
+  },
+  "images/candidate-mobile-390.png": {
+    "bytes": 253694,
+    "sha256": "6ad79b7208452d8a39950008febc241c553a3ca925d4d3098e302566ab29d020"
+  },
+  "payload/sources.json": {
+    "bytes": 328426,
+    "sha256": "56f34fc614614135a0552a679afbdebff77a46941ba5b456d5a6fbf113a85a9b"
+  },
+  "scripts/input.cjs": {
+    "bytes": 5826,
+    "sha256": "cc7e472710b7af8ba4739d1e8769eccd5452abc0b586379a009a965eeb95b0f3"
+  },
+  "scripts/installed-clearance.mjs": {
+    "bytes": 1935,
+    "sha256": "2892b6335f0c30ae6578acc5d1f93c678985f7cdd0075574d6d3cc7bbf66b43c"
+  },
+  "scripts/visual.cjs": {
+    "bytes": 4989,
+    "sha256": "8ab0ac2c36bfd6ded126f8eca4374c2424534c0d62b48edd365762321740d848"
+  }
+}

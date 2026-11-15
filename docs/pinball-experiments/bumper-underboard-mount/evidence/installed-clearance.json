@@ -1,0 +1,125 @@
+{
+  "method": "All installed three full-size plate/weld bounding boxes against every cabinet mesh; positive overlaps over1e-6 rejected. Touching board face allowed. Conservative AABB screen, not all game components or swept triangle certification.",
+  "rows": [
+    {
+      "position": {
+        "x": -0.78,
+        "z": -3.15
+      },
+      "name": "underboard-continuous-mount-plate",
+      "bounds": [
+        [
+          -1.080000011920929,
+          -0.156,
+          -3.2299999982118606
+        ],
+        [
+          -0.47999998807907107,
+          -0.13999999924004078,
+          -2.9699999928474425
+        ]
+      ],
+      "overlaps": []
+    },
+    {
+      "position": {
+        "x": -0.78,
+        "z": -3.15
+      },
+      "name": "bracket-to-plate-fillet-welds",
+      "bounds": [
+        [
+          -0.8459999991767109,
+          -0.16100000543519855,
+          -3.060000003874302
+        ],
+        [
+          -0.7140000008232892,
+          -0.15300000505521894,
+          -2.980000005662441
+        ]
+      ],
+      "overlaps": []
+    },
+    {
+      "position": {
+        "x": 0.78,
+        "z": -3.15
+      },
+      "name": "underboard-continuous-mount-plate",
+      "bounds": [
+        [
+          0.47999998807907107,
+          -0.156,
+          -3.2299999982118606
+        ],
+        [
+          1.080000011920929,
+          -0.13999999924004078,
+          -2.9699999928474425
+        ]
+      ],
+      "overlaps": []
+    },
+    {
+      "position": {
+        "x": 0.78,
+        "z": -3.15
+      },
+      "name": "bracket-to-plate-fillet-welds",
+      "bounds": [
+        [
+          0.7140000008232892,
+          -0.16100000543519855,
+          -3.060000003874302
+        ],
+        [
+          0.8459999991767109,
+          -0.15300000505521894,
+          -2.980000005662441
+        ]
+      ],
+      "overlaps": []
+    },
+    {
+      "position": {
+        "x": 0,
+        "z": -2.15
+      },
+      "name": "underboard-continuous-mount-plate",
+      "bounds": [
+        [
+          -0.30000001192092896,
+          -0.156,
+          -2.2299999982118606
+        ],
+        [
+          0.30000001192092896,
+          -0.13999999924004078,
+          -1.9699999928474425
+        ]
+      ],
+      "overlaps": []
+    },
+    {
+      "position": {
+        "x": 0,
+        "z": -2.15
+      },
+      "name": "bracket-to-plate-fillet-welds",
+      "bounds": [
+        [
+          -0.06599999917671084,
+          -0.16100000543519855,
+          -2.060000003874302
+        ],
+        [
+          0.06599999917671084,
+          -0.15300000505521894,
+          -1.9800000056624412
+        ]
+      ],
+      "overlaps": []
+    }
+  ]
+}
