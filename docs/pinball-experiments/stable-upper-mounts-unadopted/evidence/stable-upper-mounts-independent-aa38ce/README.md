@@ -1,0 +1,13 @@
+# Stable-only upper hardware independent review
+
+Frozen aa38cedbfaf11e098385708956e264691a65e63c594b38f4be134aa651d3a534. No production edits. Separate from rejected whole-layout/joint-bar prototypes. Stable roof79d remains unchanged.
+
+Local render/contact mapping and budget pass. Actual initialized1388 collider records preserve the old1380 prefix byte-for-byte, SHA92de221466b0281dc4c8293eda57f84b49591cf8d8d5a9ad6fd527dbe3f86418. Eight appended cylinders correspond to actual visible brass meshes: center/radius/height error <=9.55e-8. Four actual closed bar meshes each192tri match the existing capsule axes/radius with maximum vertex radial error1.53e-7.
+
+Measured45 budget450844tri/683calls (79d450140/683), +704tri, no call increase.10°450700/671, top444524/656. Browsererrors0. Paired installed45/10/top/mobile390/lower closeup/side/underside preserved; actual installed45/10/top/mobile and isolated bar top/side inspected. Local bar side image intentionally crops outer bars, top shows allfour/eight mounts. Unrelated parts hidden only in explicitly isolated diagnostics. Closed rounded ends improve contact representation but differences at whole/mobile scale are subtle. No whole-layout proportion change, no reference-completion claim. Reference metal rail/post treatment remains compatible; no perspective-derived CAD dimensions used.
+
+Exact old16 static sphere-center approach paths reused unchanged. Candidate minimum actual surface gap is approximately−.010 at each endpoint, matching the previously unrepresented visible cylinder overlap; nearest collider type10. Baseline same paths were positive+.018215(min), continuous lower bound+.017715. These are static geometry witnesses, not proof of natural arrival or dynamic response. Negative candidate lowerbound−.010500 includes .0005 sampling bound, not actual penetration beyond−.010. No new trajectory or full gameplay tests run by this reviewer.
+
+Finite rendering remains approximate:12-gon bar side inset .035*(1-cos(pi/12))=.00119260; cap triangular facets also inscribed.32-gon mount radial inset .055*(1-cos(pi/32))=.00026484. Vertex/parameter agreement is not exact analytic surface equality. Existing mount bottomY.005/topY.235 provides visible board/bar intersection; unmodeled underside fixation/holes are not newly validated. Material names in JSON are empty because Three materials are unnamed, not because material changed.
+
+Evidence: summary.json, physics/*public.json, bar-review/bar-mesh-contact.json, witness-candidate.json, preview/, bar-review/. Source/image/log hashes in manifest.json. Full gameplay/scoring/continuous aim/safety gates are other workers' scope. Physical phone and human play remain untested.

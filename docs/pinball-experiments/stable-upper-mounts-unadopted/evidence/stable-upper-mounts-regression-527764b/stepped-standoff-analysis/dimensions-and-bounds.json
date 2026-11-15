@@ -1,0 +1,79 @@
+{
+  "status": "analytic proposal only; no new source, assembly or simulation",
+  "units": "table-local units; no CAD/manufacturing strength certification",
+  "fixed": {
+    "ballRadius": 0.135,
+    "barRadius": 0.035,
+    "barAxisY": 0.23,
+    "mountXYStations": "four original X \u00d7 two original Z endpoints",
+    "barPositionsAnglesLength": "unchanged",
+    "floorSurfaceY": 0.04
+  },
+  "proposedSolid": {
+    "lowFlange": {
+      "radius": 0.055,
+      "bottomY": 0.005,
+      "topY": 0.06,
+      "height": 0.055,
+      "centerY": 0.0325
+    },
+    "stem": {
+      "radius": 0.02,
+      "bottomY": 0.06,
+      "topY": 0.235,
+      "height": 0.175,
+      "centerY": 0.1475
+    },
+    "topCollar": null,
+    "loadPath": "Flange intersects the existing board and directly meets stem atY.06; stem continues into the bar end volume atY.195..235. No missing or floating support. This is a fixed joint model, not a bore/fastener/strength-certified assembly."
+  },
+  "sections": [
+    {
+      "ballCenterY": 0.17,
+      "oldExpandedBarEndpointRadius": 0.1590597372058687,
+      "stemExpandedRadius": 0.155,
+      "stemReserve": 0.004059737205868691,
+      "flangeExpandedRadius": 0.13326237921249262,
+      "flangeReserve": 0.02579735799337607
+    },
+    {
+      "ballCenterY": 0.171,
+      "oldExpandedBarEndpointRadius": 0.15943337166352597,
+      "stemExpandedRadius": 0.155,
+      "stemReserve": 0.004433371663525976,
+      "flangeExpandedRadius": 0.13183749084919416,
+      "flangeReserve": 0.027595880814331814
+    },
+    {
+      "ballCenterY": 0.175,
+      "oldExpandedBarEndpointRadius": 0.16085707942145414,
+      "stemExpandedRadius": 0.155,
+      "stemReserve": 0.005857079421454137,
+      "flangeExpandedRadius": 0.12571067811865477,
+      "flangeReserve": 0.03514640130279936
+    }
+  ],
+  "derivation": {
+    "oldEndpoint": "sqrt((R+barRadius)^2-(y-barAxisY)^2)",
+    "finiteCylinder": "radius+sqrt(R^2-distance(y,[bottomY,topY])^2), when vertical distance<=R; otherwise empty",
+    "stemFrom170To235": "R+r constant; old radius minimum atY.170, reserve.0040597372",
+    "stemAbove235CriticalY": 0.25428571428571417,
+    "stemAbove235MinimumReserve": 0.014641016151377553,
+    "stemAbove370": "no added excluded centers above topY+R=.370; old bar extends throughY.400",
+    "flange170To195": "new exclusion decreases while old endpoint radius increases; minimum reserve atY.170",
+    "allYAtLeast170MinimumReserve": 0.004059737205868691,
+    "hypothesisRadius025At175Reserve": 0.0008570794214541322,
+    "hypothesisRadius025At170Reserve": -0.0009402627941313135,
+    "radiusMaximumAt170": 0.02405973720586868,
+    "chosenRadius020Reason": "Retain a real phi.040 continuous stem and positive.004059737 clearance reserve over the specified.170..175 numerical ground band. No trial search; radius derived from the old expanded support envelope."
+  },
+  "proofScope": "For each support endpoint, the sphere-expanded stepped cylinders lie strictly inside the sphere-expanded old bar endpoint ball for every centerY>=.170. The finite bar body adds more excluded space, so endpoint comparison is sufficient in XZ. These are ideal analytic primitives, not solver/contact-order or dynamics equivalence. Balls below.170 and penetration deeper than reserve are not guaranteed. Visible facets must be inscribed/shared with corresponding actual contacts.",
+  "mustVerifyBeforeAdoption": [
+    "Actual installed geometry/continuous joint and both fixed surfaces",
+    "Old1380collider prefix plus exact new contacts",
+    "Old launch.925 scoring and same-ball relaunch,6powers/weak/31",
+    "207 unchanged regressions,27ground scores/elevated false-award routes",
+    "Entry120/ramp-wire/capture/refire and no new stops",
+    "Actual budget/reference/phone limits"
+  ]
+}

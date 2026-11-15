@@ -1,0 +1,9 @@
+# Stable .925 mount-contact regression
+
+This is a bounded same-condition causal replay, no new shape or power. Each source replays the original natural6 sequence. The .925 world follows .55/.65/.75/.85; this is not the fresh-world existing physics.test assertion. Baseline/candidate replay p/v match their original local histories at every tick. Render-only control matches baseline entirely. Candidate first differs at tick71, not before mount contact.
+
+At tick70 sphere p=(2.020477,.164477,−5.090050), v=(−7.175075,≈0,+.880896), new back-right mount center=(1.875,.12,−5), radius.055/height.23/handle6.85e−321 is in contact. Tick71 mount normal=(−.784030,≈0,+.620723), flipped=false, normal impulse=.704555. Candidate velocity becomes(+.501904,+.000710,−3.361809), whereas baseline/render retain(−7.133933,≈0,+.894589). This reverses the leftward upper-field flow. Candidate later contacts the roof and mount again, eventually enters the field and drains, but never awards an upper lane. Baseline/render award lane2 at1.25s, then bumpers. This is a functional upper rollover regression, not merely a lower score.
+
+Tick70 manifold distance−.0189076 is a solver contact snapshot, not independently certified final visible penetration. Zero impulse at that first snapshot is not no-contact evidence. Tick71 has actual positive normal load. Observed control equality and loaded contact support the new mount as the first local causal change; no claim about all engine internals is needed.
+
+A previously started max-power observational replay also identifies the same rear-right mount at ticks63/65/66, but .925 is the requested principal contrast. Both traces are retained. No new geometry, input adjustment or success-start selection. Natural31 is part of designer's full207, so it is not duplicated here. Do not proceed to54 based on these local results: existing .925 upper-lane function is lost. Production unchanged.

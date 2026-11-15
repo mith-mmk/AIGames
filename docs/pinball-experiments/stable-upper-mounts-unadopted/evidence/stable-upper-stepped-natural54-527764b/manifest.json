@@ -1,0 +1,21 @@
+{
+  "head": "527764b7df493cc8b817a98ec77f6a9dc64ba939",
+  "originalRunnerSha256": "76bb52baf38951264480d9b40e1436b6ff363de30107c781f7b6e1a48e4f1389",
+  "frozenInputs": {
+    "sources.json": "61e4f76a0594d56ca1b3b614e4ef70f2e202637f7e968a637e58565cda38f63f",
+    "baseline-sources.json": "800733cdda0c52ee1fa5adb2f5901248c713d60418f31a7492de8ef8bed5bc41",
+    "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+    "baseline-loader.mjs": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+  },
+  "files": {
+    "non-upfield-routes.json": "1f11b6120c37938ad72b1ca6a27fcec7b5c27fe2581f2dfaf36dcf5df2b92933",
+    "run.mjs": "1380de24d6f2526bbfc6a29bffefc509574ee6a3792e18dfe573e3aab73b35f8",
+    "candidate.json": "124f1b604386bd72b35134acc1a463da65a69d0a3e8a0ea197cf72b994ae4b85",
+    "candidate.log": "b77d9ff6ab44a4b45f92c58386404cac4f7684fd584365e0b2abbd95c97a006f",
+    "summarize.py": "0e3bc7d70af09cd6ce4256ede986f2c23530dd1a9ce2c46d84cfee54b28b6e3a",
+    "comparison.json": "85c32e9d2016df2bf2354f4da22e7eb8b6bbe06de49131d36507fcf45ae6830a",
+    "README.md": "83a1f40b8392553d540edbfaa89af0b65c320c4f0e86c136d11710f88cba25fb",
+    "baseline.log": "d3871c3484e6135355554fc9d419999062069137fad80cf88ff1fa11955de670",
+    "baseline.json": "565ee368599cd449a11ee555c48e0a48bc25350b7737931c27cdd1c4ce43b1ef"
+  }
+}

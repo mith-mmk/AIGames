@@ -1,0 +1,116 @@
+{
+  "baseline": {
+    "complete": true,
+    "games": 54,
+    "finished": 54,
+    "caps": 0,
+    "stalls": 0,
+    "zeroScore": 0,
+    "liveResets": 0,
+    "ramps": 61,
+    "postRampCaptures": 60,
+    "postRampActualCoils": 60,
+    "postRampRefiresZminus1": 54,
+    "coils": [
+      397,
+      418
+    ],
+    "scores": 169700,
+    "powerBatches": [
+      {
+        "power": 0.55,
+        "count": 9,
+        "finished": 9,
+        "ramps": 13
+      },
+      {
+        "power": 0.65,
+        "count": 9,
+        "finished": 9,
+        "ramps": 7
+      },
+      {
+        "power": 0.75,
+        "count": 9,
+        "finished": 9,
+        "ramps": 4
+      },
+      {
+        "power": 0.85,
+        "count": 9,
+        "finished": 9,
+        "ramps": 14
+      },
+      {
+        "power": 0.925,
+        "count": 9,
+        "finished": 9,
+        "ramps": 18
+      },
+      {
+        "power": 1,
+        "count": 9,
+        "finished": 9,
+        "ramps": 5
+      }
+    ],
+    "failed": []
+  },
+  "candidate": {
+    "complete": true,
+    "games": 54,
+    "finished": 54,
+    "caps": 0,
+    "stalls": 0,
+    "zeroScore": 0,
+    "liveResets": 0,
+    "ramps": 45,
+    "postRampCaptures": 45,
+    "postRampActualCoils": 45,
+    "postRampRefiresZminus1": 43,
+    "coils": [
+      350,
+      402
+    ],
+    "scores": 174000,
+    "powerBatches": [
+      {
+        "power": 0.55,
+        "count": 9,
+        "finished": 9,
+        "ramps": 13
+      },
+      {
+        "power": 0.65,
+        "count": 9,
+        "finished": 9,
+        "ramps": 11
+      },
+      {
+        "power": 0.75,
+        "count": 9,
+        "finished": 9,
+        "ramps": 7
+      },
+      {
+        "power": 0.85,
+        "count": 9,
+        "finished": 9,
+        "ramps": 9
+      },
+      {
+        "power": 0.925,
+        "count": 9,
+        "finished": 9,
+        "ramps": 5
+      },
+      {
+        "power": 1,
+        "count": 9,
+        "finished": 9,
+        "ramps": 0
+      }
+    ],
+    "failed": []
+  }
+}

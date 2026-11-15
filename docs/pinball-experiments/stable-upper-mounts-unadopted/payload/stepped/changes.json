@@ -1,0 +1,27 @@
+[
+  {
+    "key": "web/js/pinball/playfield-parts.mjs",
+    "from": "import {targetCarrierParts",
+    "to": "import {UPPER_ROLLOVER_BARS} from './upper-bar-definition.mjs';\nimport {railCapsules,capsuleStockGeometry} from './wire-stock.mjs';\nimport {targetCarrierParts"
+  },
+  {
+    "key": "web/js/pinball/playfield-parts.mjs",
+    "from": "    for (const x of [-1.875,-.625,.625,1.875]) {\n      a.tube(g,[[x,.23,-5.0],[x,.23,-4.1]],.035,\"chrome\");\n      for(const z of [-5.0,-4.1]) a.cylinder(g,.055,.23,x,.12,z,\"brass\");\n    }",
+    "to": "    for(const bar of UPPER_ROLLOVER_BARS) {\n      const stock=a.mesh(capsuleStockGeometry(railCapsules([bar.a,bar.b].map(p=>new T.Vector3(...p)),bar.radius)),\"chrome\",g);\n      stock.name=\"upper-rollover-bar-\"+bar.id;\n      for(const [i,end]of [bar.a,bar.b].entries())for(const part of bar.mountParts) {\n        const mount=a.cylinder(g,part.radius,part.height,end[0],part.y,end[2],\"brass\");\n        mount.name=\"upper-rollover-mount-\"+bar.id+\"-\"+i+\"-\"+part.name;\n      }\n    }"
+  },
+  {
+    "key": "web/js/pinball/physics.mjs",
+    "from": "import {appendBoardEdgeFasteners}",
+    "to": "import {UPPER_ROLLOVER_BARS} from './upper-bar-definition.mjs';\nimport {appendBoardEdgeFasteners}"
+  },
+  {
+    "key": "web/js/pinball/physics.mjs",
+    "from": "    this.boardFastenerContacts=appendBoardEdgeFasteners(this.world,R);",
+    "to": "    this.boardFastenerContacts=appendBoardEdgeFasteners(this.world,R);\n    // Real flange+stem supports, after all existing handles; no hidden contacts.\n    this.upperBarMountContacts=UPPER_ROLLOVER_BARS.flatMap(bar=>[bar.a,bar.b].flatMap(end=>\n      bar.mountParts.map(part=>this.world.createCollider(R.ColliderDesc.cylinder(part.height/2,part.radius)\n        .setTranslation(end[0],part.y,end[2]).setRestitution(.45).setFriction(.05)))));"
+  },
+  {
+    "key": "web/js/pinball/physics.mjs",
+    "from": "    for (const x of [-1.875, -.625, .625, 1.875]) this.segment([x, .23, -5.0], [x, .23, -4.1], .035);",
+    "to": "    for(const bar of UPPER_ROLLOVER_BARS) this.segment(bar.a,bar.b,bar.radius);"
+  }
+]

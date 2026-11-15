@@ -1,0 +1,49 @@
+{
+  "sourceSHA256": "61e4f76a0594d56ca1b3b614e4ef70f2e202637f7e968a637e58565cda38f63f",
+  "baseline": "stable79d7b91",
+  "colliderCount": 1396,
+  "old1380PrefixExactlyEqual": true,
+  "oldPrefixSHA256": "92de221466b0281dc4c8293eda57f84b49591cf8d8d5a9ad6fd527dbe3f86418",
+  "mountMeshes": 16,
+  "mountParameterError": 9.559254477382426e-08,
+  "budget": [
+    {
+      "mode": "baseline",
+      "view": "installed-45",
+      "triangles": 450140,
+      "calls": 683
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-10",
+      "triangles": 449996,
+      "calls": 671
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-90",
+      "triangles": 443820,
+      "calls": 656
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-45",
+      "triangles": 451868,
+      "calls": 691
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-10",
+      "triangles": 451724,
+      "calls": 679
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-90",
+      "triangles": 445548,
+      "calls": 664
+    }
+  ],
+  "errors": [],
+  "scope": "Independent static/render only, no dynamics or production edit"
+}

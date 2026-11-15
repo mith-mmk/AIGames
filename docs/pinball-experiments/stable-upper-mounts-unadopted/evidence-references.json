@@ -1,0 +1,871 @@
+[
+  {
+    "source": "artifacts/pinball/stable-upper-contracts-527764b/README.md",
+    "bytes": 5288,
+    "sha256": "ff8509a08dc20106fbe76c2eeafc2b55771a7260af04b0baa738c2c0a1be99a1",
+    "preserved": "evidence/stable-upper-contracts-527764b/README.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-contracts-527764b/manifest.json",
+    "bytes": 181,
+    "sha256": "3a5bd37c5707660996a277785297b152136b57d2f25470470c14b56429eca0e8",
+    "preserved": "evidence/stable-upper-contracts-527764b/manifest.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-contracts-527764b/source-comparison.json",
+    "bytes": 9641,
+    "sha256": "2cc7947e7d5f0b23c91e2f3da934aba3c75091dd1c14cbe94c7f0b2eb397decb",
+    "preserved": "evidence/stable-upper-contracts-527764b/source-comparison.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mount-reachability-79d7b91/README.md",
+    "bytes": 2130,
+    "sha256": "d2aa9a9b6128fc2bed14516b32412f96df75f98086eb51022bce5ff01410e5e1",
+    "preserved": "evidence/stable-upper-mount-reachability-79d7b91/README.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mount-reachability-79d7b91/audit.log",
+    "bytes": 839,
+    "sha256": "85f31e1b7d8b29c1819dfb1a20a02fc6e891d88e1ccd6f97b3486c1ccc584e1e"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mount-reachability-79d7b91/audit.mjs",
+    "bytes": 2093,
+    "sha256": "9e1e47c0827b8ba52a9776315f32e2ad4df2b657cf42a5c4055855d22410a356"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mount-reachability-79d7b91/results.json",
+    "bytes": 16126,
+    "sha256": "5ff259bf77df435d34db10063d91fa278c2d02b04ff4750d9b186027814f84d0"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/README.md",
+    "bytes": 2109,
+    "sha256": "bcc8df9c4f0ce77ae5252998dc33109c11450159deabfea1272690304de9d06b",
+    "preserved": "evidence/stable-upper-mounts-regression-527764b/README.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/entry-wrapper.mjs",
+    "bytes": 1209,
+    "sha256": "f52699f5ab7719ab970a1453854743203905c9db72624f67265253d05765f096"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/entry120.json",
+    "bytes": 1949188,
+    "sha256": "e99cb72656ad3a4cd2300fd551ce23334f0228d7d407a8ddc864abbab24b4f24"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/entry120.log",
+    "bytes": 28919,
+    "sha256": "5f3e8db1749f204a59b68e920fff9af40071fdd7f4f5e568e016879e40e20739"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/full.tap",
+    "bytes": 50310,
+    "sha256": "139ddc79b46dd2b4c4c7e43882c6290efb1d3836172ddd76af8293054c26bec0"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/invocation.json",
+    "bytes": 8168,
+    "sha256": "3106ac523c1e04c0f26464a2a6f3c14d9f96417fdfc8d915056fef34b6412a42",
+    "preserved": "evidence/stable-upper-mounts-regression-527764b/invocation.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/manifest.json",
+    "bytes": 1632,
+    "sha256": "8d5bd6837064c6536d4fa696df07888c1dbe86d52d952847a1b7cefbf61eb117",
+    "preserved": "evidence/stable-upper-mounts-regression-527764b/manifest.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/result.json",
+    "bytes": 6399,
+    "sha256": "a1d53074ce49f61987069ffeef5aeaa2928563bd2872d18a1530bc1041fb97c3",
+    "preserved": "evidence/stable-upper-mounts-regression-527764b/result.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/run.py",
+    "bytes": 2478,
+    "sha256": "2f5102dd62fa73683cc978cfaa051c9991bfd63ae13b57f61d843dee9e1fab22"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/stepped-standoff-analysis/README.md",
+    "bytes": 2210,
+    "sha256": "9e494cbe37d6719d924c9fe105068694f86631a9e4ad72fede9f7376004add7c",
+    "preserved": "evidence/stable-upper-mounts-regression-527764b/stepped-standoff-analysis/README.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/stepped-standoff-analysis/dimensions-and-bounds.json",
+    "bytes": 3768,
+    "sha256": "dfccde3ecd68ae5f11167481175195154f81f278963008d173af8958dc4d5d42",
+    "preserved": "evidence/stable-upper-mounts-regression-527764b/stepped-standoff-analysis/dimensions-and-bounds.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-regression-527764b/summary.json",
+    "bytes": 5204,
+    "sha256": "a9f44e334dc8c7ae4a8fe3b458ee16659c33ec5455b62677e652929d0c9c87d9",
+    "preserved": "evidence/stable-upper-mounts-regression-527764b/summary.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/README.md",
+    "bytes": 1747,
+    "sha256": "28aa81184f54e9d14ea8afb4b41127c700709ce3127dc66c391b1d9cc1930c78",
+    "preserved": "evidence/stable-upper-mounts-local-527764b/README.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/baseline-contact925.json",
+    "bytes": 1548577,
+    "sha256": "d17f75d81bee5639b3802b0d39d688d2078e52e07036623eefa31b8aeb304e2a"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/baseline-contact925.log",
+    "bytes": 6033,
+    "sha256": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/baseline-upper.log",
+    "bytes": 509,
+    "sha256": "1a23b5d0d411a939f3922b012edb032eddb3bbb167a07aaaed488a847b50ba64"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/baseline.json",
+    "bytes": 1432426,
+    "sha256": "990facd9be7e337a694680ecc0c527f3bfa4eca4a3c4679b9e6e7ee57cfeaacd"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/baseline.log",
+    "bytes": 6033,
+    "sha256": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/candidate-contact.json",
+    "bytes": 1440116,
+    "sha256": "71730686f5da73492c0da131757632dc13a7789f30662bc504dd33832217d761"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/candidate-contact.log",
+    "bytes": 6026,
+    "sha256": "11174bc8ec873567ba5146b1955130071885a042d919e0a97bbe15605f08554b"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/candidate-contact925.json",
+    "bytes": 1459350,
+    "sha256": "c6a96c7590212ced5f921a84e3f86e3cc5006635f32c9a9be72ed13b48dca641"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/candidate-contact925.log",
+    "bytes": 6026,
+    "sha256": "11174bc8ec873567ba5146b1955130071885a042d919e0a97bbe15605f08554b"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/candidate-upper.log",
+    "bytes": 511,
+    "sha256": "9cbd5df2f7e03bbff0126682a6ac38d456d1410b29d9881655200dafce58aaea"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/candidate.json",
+    "bytes": 1337652,
+    "sha256": "30f6cd8f9b643aaecd8402313f0820bdc013f04aa53544c70e1a48e31ded8825"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/candidate.log",
+    "bytes": 6026,
+    "sha256": "11174bc8ec873567ba5146b1955130071885a042d919e0a97bbe15605f08554b"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/launch.mjs",
+    "bytes": 3126,
+    "sha256": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/manifest.json",
+    "bytes": 2377,
+    "sha256": "8a9a356b77dba8df1034ec740af254fe3be85c6cefbf080c45d93592f865c9b6",
+    "preserved": "evidence/stable-upper-mounts-local-527764b/manifest.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/mount-observe.mjs",
+    "bytes": 3579,
+    "sha256": "3f1888bb2f741e73709fab589aab6d4e84271d3fd714a177396e3d12593cc7fb"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/mount925-findings.md",
+    "bytes": 1942,
+    "sha256": "b56e1e8a1b05f524ba8412968f0a94a1af118dfb539324510d11dfe8d25893d3",
+    "preserved": "evidence/stable-upper-mounts-local-527764b/mount925-findings.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/mount925-summary.json",
+    "bytes": 37308,
+    "sha256": "1665ecbba91e0254e24dbe38e91235a5d81072e3a75bf4d7b274b9b19a19cf52",
+    "preserved": "evidence/stable-upper-mounts-local-527764b/mount925-summary.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/mount925.mjs",
+    "bytes": 3582,
+    "sha256": "a10eb4d256ac32fc636cc20fd15d85ca0d25fbd8b46f29f8d6aae17bb710ae30"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/render-contact925.json",
+    "bytes": 1548577,
+    "sha256": "d17f75d81bee5639b3802b0d39d688d2078e52e07036623eefa31b8aeb304e2a"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/render-contact925.log",
+    "bytes": 6033,
+    "sha256": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-local-527764b/summary.json",
+    "bytes": 10593,
+    "sha256": "94e83a6c4d56aa2b50ea692ced93855ef7674be5bf5014a4b0be4acb07654274",
+    "preserved": "evidence/stable-upper-mounts-local-527764b/summary.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/README.md",
+    "bytes": 2706,
+    "sha256": "a7c960ef1413668095c4bf51d6008d398caad02d1543843b90f11e34a81612f2",
+    "preserved": "evidence/stable-upper-mounts-independent-aa38ce/README.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/bar-review/bar-mesh-contact.json",
+    "bytes": 5306,
+    "sha256": "af7e808c787a00db52f8205d3492a0931467ccbaf933c9512cc1bc7d085bcfdf"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/bar-review/evidence.json",
+    "bytes": 322,
+    "sha256": "0edd1073b0c17d6a8928c20530141485d26a329b074b37c978b7172f2fba0d9b"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/bar-review/roof-closeup.png",
+    "bytes": 71402,
+    "sha256": "988bfd88584d7e650579b0f6d4b05f9898c4ea3b8e1e242af1f36a33b3e5bd15"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/bar-review/roof-side.png",
+    "bytes": 86210,
+    "sha256": "5c05278b80b50e5adff1bf0d6a6bc01e0bd632f082794dd3425a891505c67e50"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/bar-review/served-candidate-sources.json",
+    "bytes": 331373,
+    "sha256": "aa38cedbfaf11e098385708956e264691a65e63c594b38f4be134aa651d3a534"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/bar-review.cjs",
+    "bytes": 5717,
+    "sha256": "4673448ab6760d092bac7e6dff4542ee282857cc356e0336201e6e3d0eb87f52"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/bar-review.log",
+    "bytes": 147,
+    "sha256": "d638be9e79f8cccb164059dccdf453f4bdd813babca218a227cfe62b0048b5a5"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/manifest.json",
+    "bytes": 3613,
+    "sha256": "ecbc05d984af23ffad4c9af575329fd24c4b681b6627efe4d9149a0634ec05af",
+    "preserved": "evidence/stable-upper-mounts-independent-aa38ce/manifest.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/physics/baseline-physics-public.json",
+    "bytes": 2239528,
+    "sha256": "92de221466b0281dc4c8293eda57f84b49591cf8d8d5a9ad6fd527dbe3f86418"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/physics/candidate-physics-public.json",
+    "bytes": 2241456,
+    "sha256": "a001137d9f8721ab7c69e67083d22caafd3a7298092719a3ade34ca29f51776b"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/physics/evidence.json",
+    "bytes": 322,
+    "sha256": "0edd1073b0c17d6a8928c20530141485d26a329b074b37c978b7172f2fba0d9b"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/physics/served-candidate-sources.json",
+    "bytes": 331373,
+    "sha256": "aa38cedbfaf11e098385708956e264691a65e63c594b38f4be134aa651d3a534"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/physics-check.cjs",
+    "bytes": 3427,
+    "sha256": "753c49f079d67ce36013d647d3b20c1f4abc55c26cc4adaf5dff154b20b56987"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/physics.log",
+    "bytes": 144,
+    "sha256": "bda9bd500f18d0edad3330f626ec35e8d06cc6cea02417a95de5c261a5efc705"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/baseline-installed-10.png",
+    "bytes": 429297,
+    "sha256": "e96742f5f132860ab5fbea41bdd4bbb9f80724fb108623dc44d84005cc11c8a6"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/baseline-installed-45.png",
+    "bytes": 739825,
+    "sha256": "2ea97f87880cdbd8472e786fd2d6e1d7019feb0592c4a37c40e3443c22deaeda"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/baseline-installed-90.png",
+    "bytes": 615968,
+    "sha256": "413d3e060cc302578ca91c9a47f38b4c5c12b02c67acc7cf6949678c584aab9c"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/baseline-lower-closeup.png",
+    "bytes": 792767,
+    "sha256": "e40a8da7cb9dcc440c752e252bf0925324d99d4deba3624fd1b876f4d0529e76"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/baseline-lower-side.png",
+    "bytes": 113297,
+    "sha256": "28339ec3fd71e37f2f19ced198d9dfbb3b00c827d4ccbef7a18a2a7f27618360"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/baseline-lower-underside.png",
+    "bytes": 114483,
+    "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/baseline-mobile-390.png",
+    "bytes": 252510,
+    "sha256": "eafb055570ed416338439e917359b229fa594e4a35dda80db6a852f1e69ac51e"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/candidate-installed-10.png",
+    "bytes": 429309,
+    "sha256": "6f8757fc9b1493df1894c2e541a34b81413d3180fc8c8d39d8da7fb7b840aede"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/candidate-installed-45.png",
+    "bytes": 739876,
+    "sha256": "40fe998c1f653ccef5f5000e841e1464661f007861890d1fa32942b147feceed"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/candidate-installed-90.png",
+    "bytes": 616102,
+    "sha256": "f9a0d5009531c287ad3d6b44c59d501b02ddb648f4859bdb5949bbeabe544ec5"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/candidate-lower-closeup.png",
+    "bytes": 792767,
+    "sha256": "e40a8da7cb9dcc440c752e252bf0925324d99d4deba3624fd1b876f4d0529e76"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/candidate-lower-side.png",
+    "bytes": 113297,
+    "sha256": "28339ec3fd71e37f2f19ced198d9dfbb3b00c827d4ccbef7a18a2a7f27618360"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/candidate-lower-underside.png",
+    "bytes": 114483,
+    "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/candidate-mobile-390.png",
+    "bytes": 252473,
+    "sha256": "f9c1649831e4e8722911854b3b320c80eb9326fa1678521e7352933197e451fc"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/evidence.json",
+    "bytes": 1017,
+    "sha256": "bc5a5e6590a66b33c6d308b466aaf6b17bc7b8cff48466bc7df0501808724af6"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/preview/served-candidate-sources.json",
+    "bytes": 331373,
+    "sha256": "aa38cedbfaf11e098385708956e264691a65e63c594b38f4be134aa651d3a534"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/summary.json",
+    "bytes": 478,
+    "sha256": "df15724af0a02b900c33ed806f6004fd1af56331a3c2ca47e102f5306f2f495c",
+    "preserved": "evidence/stable-upper-mounts-independent-aa38ce/summary.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/visual.cjs",
+    "bytes": 4777,
+    "sha256": "3812e44f59029ac179ddc42e976a3866c1f99b8981efcbaeb54a2ba1e0af065b"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/visual.log",
+    "bytes": 839,
+    "sha256": "999f1f9de3e0cc052f41ad9630f8570cb27b182a45da230be0c48b121570ba0c"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/witness-candidate.json",
+    "bytes": 16064,
+    "sha256": "155b529888a6e5a096b41482d0489a814d92d6ccac7405143c2c3231d8d8ab46"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/witness.log",
+    "bytes": 873,
+    "sha256": "15dabed41a6faf1dd39b443273c4c06ff5e5f15f9f3e33f9aeb41cc213a497df"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-mounts-independent-aa38ce/witness.mjs",
+    "bytes": 2102,
+    "sha256": "c6b8cd37903fdf600c310f98aeb70b9740190bc6ad886b9d44ebb08d4e49750c"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-regression-527764b/README.md",
+    "bytes": 1113,
+    "sha256": "fe248682d275214417f9a346a86bcb7b5b9dd486a6a12f40c071c93f4e4bc054",
+    "preserved": "evidence/stable-upper-stepped-regression-527764b/README.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-regression-527764b/entry-wrapper.mjs",
+    "bytes": 1218,
+    "sha256": "d99f8c961bbb98149a2363f74ba6908178c9cc2bf5e339dd567e565b8a3977ba"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-regression-527764b/entry120.json",
+    "bytes": 1949188,
+    "sha256": "fb40f92717f671526bdd1c871187ac110cacc525405aee39ec52ded73e8b7d5f"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-regression-527764b/entry120.log",
+    "bytes": 28919,
+    "sha256": "8b8631ae2674b45bfb3fd032b0fc2d94a480b59ad95252dd2b7a6eee9d6d2def"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-regression-527764b/full.tap",
+    "bytes": 48173,
+    "sha256": "d7faef214300a997fd56352c6001241788ca33a9a207586f1dafd0cd303ebe53"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-regression-527764b/invocation.json",
+    "bytes": 8176,
+    "sha256": "4cb6299a6714544dd007724bce8f27d9b82404deb7a89a2be4bbb0528293f757",
+    "preserved": "evidence/stable-upper-stepped-regression-527764b/invocation.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-regression-527764b/manifest.json",
+    "bytes": 1302,
+    "sha256": "8943e4216c09d4aaf0b3312f5f6c96d2269a1aa317008797d57c76d0e82410cd",
+    "preserved": "evidence/stable-upper-stepped-regression-527764b/manifest.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-regression-527764b/result.json",
+    "bytes": 6400,
+    "sha256": "2318bd2257ee87f78ec61888017d815f3ca9c191bfebd40f2abe431aa75da3f8",
+    "preserved": "evidence/stable-upper-stepped-regression-527764b/result.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-regression-527764b/run.py",
+    "bytes": 2487,
+    "sha256": "9d3283fb5b74f43d6cf2c202c550bc2b7bcc1c051ebff5a8bcbfb362872804b7"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-regression-527764b/summary.json",
+    "bytes": 794,
+    "sha256": "81560db8b71e09ef15515b175c3950e822a55fd25f7e47ed84924db2e8b4a999",
+    "preserved": "evidence/stable-upper-stepped-regression-527764b/summary.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/README.md",
+    "bytes": 1659,
+    "sha256": "42d5075548c15a3f95c9dda02fa246feb12ff1dbb51fd7c3aa1dd87d9a7764ca",
+    "preserved": "evidence/stable-upper-stepped-local-527764b/README.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/baseline-contact925.json",
+    "bytes": 1548577,
+    "sha256": "d17f75d81bee5639b3802b0d39d688d2078e52e07036623eefa31b8aeb304e2a"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/baseline-contact925.log",
+    "bytes": 6033,
+    "sha256": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/baseline-upper.log",
+    "bytes": 513,
+    "sha256": "bf78d3debfe2921c9d0123dac2999a17259819bb6fb42bd10980eacb5783b81d"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/baseline.json",
+    "bytes": 1432426,
+    "sha256": "990facd9be7e337a694680ecc0c527f3bfa4eca4a3c4679b9e6e7ee57cfeaacd"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/baseline.log",
+    "bytes": 6033,
+    "sha256": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/candidate-contact925.json",
+    "bytes": 1610178,
+    "sha256": "9bb85d35ca631259d76bd43d9256875b7ff36b6eac2a325edae0811f84152632"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/candidate-contact925.log",
+    "bytes": 6037,
+    "sha256": "a3c433e580d9d7747640a1b7030ec5862201a53d5514783747e40a8b26249927"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/candidate-upper.log",
+    "bytes": 514,
+    "sha256": "8ba6234abdb5678416c411f713242f74662ed49528f92c5ec8d0da9bef893a19"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/candidate.json",
+    "bytes": 1484475,
+    "sha256": "fb2f95b7a6b1412bae459723f23bf034fb41dac0287d2631042370da29cc755d"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/candidate.log",
+    "bytes": 6037,
+    "sha256": "a3c433e580d9d7747640a1b7030ec5862201a53d5514783747e40a8b26249927"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/launch.mjs",
+    "bytes": 3126,
+    "sha256": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/manifest.json",
+    "bytes": 2087,
+    "sha256": "76bc3c9878943da7454d2ab59dc9e3ee18aa97c2895b15d7f9fc6d4bef83ab2d",
+    "preserved": "evidence/stable-upper-stepped-local-527764b/manifest.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/mount925-cause.json",
+    "bytes": 27763,
+    "sha256": "7f12779cfdefc6c63544b68e48860091061ada189dac5c0fe2888fb7a3ae5761"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/mount925-findings.md",
+    "bytes": 2766,
+    "sha256": "2f7fa36e09b651fa48a1b479b71505119c24fd8d5fa8f3a9dbabe7da817e884b",
+    "preserved": "evidence/stable-upper-stepped-local-527764b/mount925-findings.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/mount925.mjs",
+    "bytes": 3582,
+    "sha256": "a10eb4d256ac32fc636cc20fd15d85ca0d25fbd8b46f29f8d6aae17bb710ae30"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/render-contact925.json",
+    "bytes": 1548577,
+    "sha256": "d17f75d81bee5639b3802b0d39d688d2078e52e07036623eefa31b8aeb304e2a"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/render-contact925.log",
+    "bytes": 6033,
+    "sha256": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-local-527764b/summary.json",
+    "bytes": 11525,
+    "sha256": "bd175fcfe6df3fc39f1a4183fe92e03c6953f248a6eed564f914c341ca584657",
+    "preserved": "evidence/stable-upper-stepped-local-527764b/summary.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-natural54-527764b/README.md",
+    "bytes": 2629,
+    "sha256": "83a1f40b8392553d540edbfaa89af0b65c320c4f0e86c136d11710f88cba25fb",
+    "preserved": "evidence/stable-upper-stepped-natural54-527764b/README.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-natural54-527764b/baseline.json",
+    "bytes": 336879,
+    "sha256": "565ee368599cd449a11ee555c48e0a48bc25350b7737931c27cdd1c4ce43b1ef"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-natural54-527764b/baseline.log",
+    "bytes": 5750,
+    "sha256": "d3871c3484e6135355554fc9d419999062069137fad80cf88ff1fa11955de670"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-natural54-527764b/candidate.json",
+    "bytes": 300521,
+    "sha256": "124f1b604386bd72b35134acc1a463da65a69d0a3e8a0ea197cf72b994ae4b85"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-natural54-527764b/candidate.log",
+    "bytes": 5747,
+    "sha256": "b77d9ff6ab44a4b45f92c58386404cac4f7684fd584365e0b2abbd95c97a006f"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-natural54-527764b/comparison.json",
+    "bytes": 1974,
+    "sha256": "85c32e9d2016df2bf2354f4da22e7eb8b6bbe06de49131d36507fcf45ae6830a",
+    "preserved": "evidence/stable-upper-stepped-natural54-527764b/comparison.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-natural54-527764b/manifest.json",
+    "bytes": 1359,
+    "sha256": "26d1bd599cbc0560130c59102d8b5c839944aa9a4afc39ae99537a3dfbdd9a3c",
+    "preserved": "evidence/stable-upper-stepped-natural54-527764b/manifest.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-natural54-527764b/non-upfield-routes.json",
+    "bytes": 5687,
+    "sha256": "1f11b6120c37938ad72b1ca6a27fcec7b5c27fe2581f2dfaf36dcf5df2b92933"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-natural54-527764b/run.mjs",
+    "bytes": 6002,
+    "sha256": "1380de24d6f2526bbfc6a29bffefc509574ee6a3792e18dfe573e3aab73b35f8"
+  },
+  {
+    "source": "artifacts/pinball/stable-upper-stepped-natural54-527764b/summarize.py",
+    "bytes": 1435,
+    "sha256": "0e3bc7d70af09cd6ce4256ede986f2c23530dd1a9ce2c46d84cfee54b28b6e3a"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/README.md",
+    "bytes": 2797,
+    "sha256": "675a93b2c33bcf9fbaaef769b1d8ad511a5eda8e79dd3941d19ca9320c1b3692",
+    "preserved": "evidence/stable-stepped-mount-independent/README.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/analytic-review.md",
+    "bytes": 2682,
+    "sha256": "6936c0fd8e5ddf328cf1883d1720f072c3dbd9c8ba218fe16e028cda6d1728c3",
+    "preserved": "evidence/stable-stepped-mount-independent/analytic-review.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/bar-review/bar-mesh-contact.json",
+    "bytes": 9802,
+    "sha256": "e98b331b4e61db144fd2888ec3cc7138d4dd37ddaf92c08ddd3300ef550fdaea"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/bar-review/evidence.json",
+    "bytes": 316,
+    "sha256": "d33ed4964cdf077b86085c214ca94f421f14e6d35c5ccbce4dacd5f20024469a"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/bar-review/roof-closeup.png",
+    "bytes": 70851,
+    "sha256": "c5c53a66a67f508d647fb0607b86e9f590da547e2b1ff9260285d544fa6a6fc1"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/bar-review/roof-side.png",
+    "bytes": 85117,
+    "sha256": "f659223218fabd86a7c1de2ec7828eeb78af2a11fbdc0736a4928d597e0aceb3"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/bar-review/served-candidate-sources.json",
+    "bytes": 331606,
+    "sha256": "61e4f76a0594d56ca1b3b614e4ef70f2e202637f7e968a637e58565cda38f63f"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/bar-review.cjs",
+    "bytes": 5789,
+    "sha256": "396a674726409f92a17641738485dd0615a974b1eee196f13a41f86b7f937ebb"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/bar-review.log",
+    "bytes": 141,
+    "sha256": "232cb9311a698d616dc7e8a50ca12a202493da391f21add8115e0de125e16cc6"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/manifest.json",
+    "bytes": 3663,
+    "sha256": "3e378ae3b9a93cba797e873adac63aebba10f3d9316804fc8a001d0a5f078d82",
+    "preserved": "evidence/stable-stepped-mount-independent/manifest.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/physics/baseline-physics-public.json",
+    "bytes": 2239528,
+    "sha256": "92de221466b0281dc4c8293eda57f84b49591cf8d8d5a9ad6fd527dbe3f86418"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/physics/candidate-physics-public.json",
+    "bytes": 2243400,
+    "sha256": "d4ceac4f127b763ff1de9e6c0fe5fedda56f2872769b460346b74a6964d147cc"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/physics/evidence.json",
+    "bytes": 316,
+    "sha256": "d33ed4964cdf077b86085c214ca94f421f14e6d35c5ccbce4dacd5f20024469a"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/physics/served-candidate-sources.json",
+    "bytes": 331606,
+    "sha256": "61e4f76a0594d56ca1b3b614e4ef70f2e202637f7e968a637e58565cda38f63f"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/physics-check.cjs",
+    "bytes": 3437,
+    "sha256": "e063ef1735a76e84b5c0b02e3cdb9adf87307d9bb9aba260de3b39da644586c1"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/physics.log",
+    "bytes": 138,
+    "sha256": "7ccf9cd9593c8edfb6c4452cdeb4bd75e0aebd49bf0010d988f6e5f3b39a28e6"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/post-observation-height-supplement.json",
+    "bytes": 6497,
+    "sha256": "b8bb029e6a361974ca845a48aba76c8bed3bbb226b63483c93e5de86af9a77a8",
+    "preserved": "evidence/stable-stepped-mount-independent/post-observation-height-supplement.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/post-observation-height-supplement.md",
+    "bytes": 1807,
+    "sha256": "b247ccd80be5d8255b3c9549e4436d416533f0a7a679d57263995a35e88b8546",
+    "preserved": "evidence/stable-stepped-mount-independent/post-observation-height-supplement.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/baseline-installed-10.png",
+    "bytes": 429297,
+    "sha256": "e96742f5f132860ab5fbea41bdd4bbb9f80724fb108623dc44d84005cc11c8a6"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/baseline-installed-45.png",
+    "bytes": 739825,
+    "sha256": "2ea97f87880cdbd8472e786fd2d6e1d7019feb0592c4a37c40e3443c22deaeda"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/baseline-installed-90.png",
+    "bytes": 615968,
+    "sha256": "413d3e060cc302578ca91c9a47f38b4c5c12b02c67acc7cf6949678c584aab9c"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/baseline-lower-closeup.png",
+    "bytes": 792767,
+    "sha256": "e40a8da7cb9dcc440c752e252bf0925324d99d4deba3624fd1b876f4d0529e76"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/baseline-lower-side.png",
+    "bytes": 113297,
+    "sha256": "28339ec3fd71e37f2f19ced198d9dfbb3b00c827d4ccbef7a18a2a7f27618360"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/baseline-lower-underside.png",
+    "bytes": 114483,
+    "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/baseline-mobile-390.png",
+    "bytes": 252510,
+    "sha256": "eafb055570ed416338439e917359b229fa594e4a35dda80db6a852f1e69ac51e"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/candidate-installed-10.png",
+    "bytes": 429332,
+    "sha256": "cdcb14fce3194998893d6f57ac720685d285213649b0f3b9a1caa092aec805c6"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/candidate-installed-45.png",
+    "bytes": 739729,
+    "sha256": "b66df5db783de75c5dde604b2b50ef26142ca0ca5b85303aa494fc6e50662f55"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/candidate-installed-90.png",
+    "bytes": 615711,
+    "sha256": "ec4a5149a248a28c8a69431bf8add2cb2c81038b40727be17827282cf2456577"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/candidate-lower-closeup.png",
+    "bytes": 792767,
+    "sha256": "e40a8da7cb9dcc440c752e252bf0925324d99d4deba3624fd1b876f4d0529e76"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/candidate-lower-side.png",
+    "bytes": 113297,
+    "sha256": "28339ec3fd71e37f2f19ced198d9dfbb3b00c827d4ccbef7a18a2a7f27618360"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/candidate-lower-underside.png",
+    "bytes": 114483,
+    "sha256": "359460f001a2844aa6f6b3cf965045b0cbc9eb43f97d9641cd8f99f756d274ef"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/candidate-mobile-390.png",
+    "bytes": 252381,
+    "sha256": "532ea760a0b0473fbfe1d513a9ea1da855af235d8b2dc28c2052df86d1d85006"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/evidence.json",
+    "bytes": 1011,
+    "sha256": "524a5484db509a07c2d6ffebb4b3a153f7f2323959fa2ce7d0c306c13135aa18"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/preview/served-candidate-sources.json",
+    "bytes": 331606,
+    "sha256": "61e4f76a0594d56ca1b3b614e4ef70f2e202637f7e968a637e58565cda38f63f"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/summary.json",
+    "bytes": 1144,
+    "sha256": "77adfce99f31a9f77b6320152149b598f3214e8568461fddf3a44a2de454fc54",
+    "preserved": "evidence/stable-stepped-mount-independent/summary.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/visual.cjs",
+    "bytes": 4787,
+    "sha256": "b348fbd22248d8424fcf162a1c3fc4995eb15847f31b22c7a4fccc2bb3dd3191"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-mount-independent/visual.log",
+    "bytes": 833,
+    "sha256": "389460674e12a9102ca0d8f125d615c3f3f08ecc6b1c3fd5a209caeda89b4817"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/README.md",
+    "bytes": 2239,
+    "sha256": "8b0469e9963daca28193eaf2c7bde55f550191f1a4b6af55c33b516a94626f5c",
+    "preserved": "evidence/stable-stepped-browser-input-61e4/README.md"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/desktop-active-key-flippers.png",
+    "bytes": 736505,
+    "sha256": "1eaf7460bd57e3bd97182cd37cbfbad32babb48eb2941ee98951b3804529b149"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/desktop-active-resumed.png",
+    "bytes": 740930,
+    "sha256": "fd05e720453f8ef51fafc9287a7b034a79fb0892a7064b10998902b31fb87698"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/initial-metric-field-error.log",
+    "bytes": 333,
+    "sha256": "159ee2a9cb4e8fed448c066b380ae44b113037750061b8f3bcb6c213ca25eba4"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/manifest.json",
+    "bytes": 945,
+    "sha256": "ca4186a4c4d271864f9aed366378dfed931045ee84531b30ae3a1212b877a678",
+    "preserved": "evidence/stable-stepped-browser-input-61e4/manifest.json"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/mobile-active-resumed.png",
+    "bytes": 250715,
+    "sha256": "5a80fde57bfc27854c5e569dcf85767825406d7c971097850b1030b10b64a8a0"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/mobile-active-touch-flippers.png",
+    "bytes": 250738,
+    "sha256": "7c627d027b169ddb98fca590d7c75e12e39ac3bc8e509760582d322da7f3921f"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/mobile-touch-pull.png",
+    "bytes": 252693,
+    "sha256": "b08fabda7ebf61554b144167d09c3011f5a878c81e03f881d54c8161bcb7f3b7"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/production-smoke-prepared.cjs",
+    "bytes": 5848,
+    "sha256": "82c219a6eb7db8cbde076f80e9880b3487e55f0332f56862517f806142d511e8"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/results.json",
+    "bytes": 9205,
+    "sha256": "c152c4f0adb42060b2311cf3b763764cb5f2b9ebae8bdef576b505c06d025bd7"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/run.log",
+    "bytes": 70,
+    "sha256": "faa74cbe1d1d236eaa932f1e52b9483422805e25f9908d73ff0e3a06f5e8660a"
+  },
+  {
+    "source": "artifacts/pinball/stable-stepped-browser-input-61e4/smoke.cjs",
+    "bytes": 5491,
+    "sha256": "1c389d1012f80732516ccf1068d46b95a081e28b08382fa02ee15b67abff99be"
+  }
+]

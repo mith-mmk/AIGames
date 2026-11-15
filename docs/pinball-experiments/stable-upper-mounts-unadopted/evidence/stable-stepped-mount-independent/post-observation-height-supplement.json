@@ -1,0 +1,231 @@
+{
+  "scope": "Post-observation analytic supplement using preserved actual collider dump; no simulations, search or shape edits. Normalize serialized quaternion for rigid axis reconstruction. Not the original Y>=.170 certificate.",
+  "nominalThreshold": 0.1601787997811553,
+  "worstActualThreshold": 0.16017943909149263,
+  "rows": [
+    {
+      "mountCenter": {
+        "x": -1.875,
+        "y": 0.14749999344348907,
+        "z": -5
+      },
+      "oldEndpoint": {
+        "x": -1.875,
+        "y": 0.23000000417232502,
+        "z": -5.0000001907348635
+      },
+      "xzOffset": 1.9073486345888568e-07,
+      "thresholdY": 0.16017922737805015,
+      "atObservedHeights": [
+        {
+          "y": 0.16742174327373505,
+          "stemReserve": 0.003062965196264311,
+          "flangeReserve": 0.02129763748385087
+        },
+        {
+          "y": 0.16895440220832825,
+          "stemReserve": 0.003661192345120051,
+          "flangeReserve": 0.023949599840276073
+        }
+      ],
+      "flangeReserveAtThreshold": 0.00950623135767284,
+      "jointRoundingGap": -5.364418020903372e-09
+    },
+    {
+      "mountCenter": {
+        "x": -1.875,
+        "y": 0.14749999344348907,
+        "z": -4.099999904632568
+      },
+      "oldEndpoint": {
+        "x": -1.875,
+        "y": 0.23000000417232525,
+        "z": -4.100000190734863
+      },
+      "xzOffset": 2.861022947442393e-07,
+      "thresholdY": 0.16017943909149263,
+      "atObservedHeights": [
+        {
+          "y": 0.16742174327373505,
+          "stemReserve": 0.0030628698288329426,
+          "flangeReserve": 0.0212975421164195
+        },
+        {
+          "y": 0.16895440220832825,
+          "stemReserve": 0.0036610969776886826,
+          "flangeReserve": 0.023949504472844704
+        }
+      ],
+      "flangeReserveAtThreshold": 0.009506465731150035,
+      "jointRoundingGap": -5.364418020903372e-09
+    },
+    {
+      "mountCenter": {
+        "x": -0.625,
+        "y": 0.14749999344348907,
+        "z": -5
+      },
+      "oldEndpoint": {
+        "x": -0.625,
+        "y": 0.23000000417232502,
+        "z": -5.0000001907348635
+      },
+      "xzOffset": 1.9073486345888568e-07,
+      "thresholdY": 0.16017922737805015,
+      "atObservedHeights": [
+        {
+          "y": 0.16742174327373505,
+          "stemReserve": 0.003062965196264311,
+          "flangeReserve": 0.02129763748385087
+        },
+        {
+          "y": 0.16895440220832825,
+          "stemReserve": 0.003661192345120051,
+          "flangeReserve": 0.023949599840276073
+        }
+      ],
+      "flangeReserveAtThreshold": 0.00950623135767284,
+      "jointRoundingGap": -5.364418020903372e-09
+    },
+    {
+      "mountCenter": {
+        "x": -0.625,
+        "y": 0.14749999344348907,
+        "z": -4.099999904632568
+      },
+      "oldEndpoint": {
+        "x": -0.625,
+        "y": 0.23000000417232525,
+        "z": -4.100000190734863
+      },
+      "xzOffset": 2.861022947442393e-07,
+      "thresholdY": 0.16017943909149263,
+      "atObservedHeights": [
+        {
+          "y": 0.16742174327373505,
+          "stemReserve": 0.0030628698288329426,
+          "flangeReserve": 0.0212975421164195
+        },
+        {
+          "y": 0.16895440220832825,
+          "stemReserve": 0.0036610969776886826,
+          "flangeReserve": 0.023949504472844704
+        }
+      ],
+      "flangeReserveAtThreshold": 0.009506465731150035,
+      "jointRoundingGap": -5.364418020903372e-09
+    },
+    {
+      "mountCenter": {
+        "x": 0.625,
+        "y": 0.14749999344348907,
+        "z": -5
+      },
+      "oldEndpoint": {
+        "x": 0.625,
+        "y": 0.23000000417232502,
+        "z": -5.0000001907348635
+      },
+      "xzOffset": 1.9073486345888568e-07,
+      "thresholdY": 0.16017922737805015,
+      "atObservedHeights": [
+        {
+          "y": 0.16742174327373505,
+          "stemReserve": 0.003062965196264311,
+          "flangeReserve": 0.02129763748385087
+        },
+        {
+          "y": 0.16895440220832825,
+          "stemReserve": 0.003661192345120051,
+          "flangeReserve": 0.023949599840276073
+        }
+      ],
+      "flangeReserveAtThreshold": 0.00950623135767284,
+      "jointRoundingGap": -5.364418020903372e-09
+    },
+    {
+      "mountCenter": {
+        "x": 0.625,
+        "y": 0.14749999344348907,
+        "z": -4.099999904632568
+      },
+      "oldEndpoint": {
+        "x": 0.625,
+        "y": 0.23000000417232525,
+        "z": -4.100000190734863
+      },
+      "xzOffset": 2.861022947442393e-07,
+      "thresholdY": 0.16017943909149263,
+      "atObservedHeights": [
+        {
+          "y": 0.16742174327373505,
+          "stemReserve": 0.0030628698288329426,
+          "flangeReserve": 0.0212975421164195
+        },
+        {
+          "y": 0.16895440220832825,
+          "stemReserve": 0.0036610969776886826,
+          "flangeReserve": 0.023949504472844704
+        }
+      ],
+      "flangeReserveAtThreshold": 0.009506465731150035,
+      "jointRoundingGap": -5.364418020903372e-09
+    },
+    {
+      "mountCenter": {
+        "x": 1.875,
+        "y": 0.14749999344348907,
+        "z": -5
+      },
+      "oldEndpoint": {
+        "x": 1.875,
+        "y": 0.23000000417232502,
+        "z": -5.0000001907348635
+      },
+      "xzOffset": 1.9073486345888568e-07,
+      "thresholdY": 0.16017922737805015,
+      "atObservedHeights": [
+        {
+          "y": 0.16742174327373505,
+          "stemReserve": 0.003062965196264311,
+          "flangeReserve": 0.02129763748385087
+        },
+        {
+          "y": 0.16895440220832825,
+          "stemReserve": 0.003661192345120051,
+          "flangeReserve": 0.023949599840276073
+        }
+      ],
+      "flangeReserveAtThreshold": 0.00950623135767284,
+      "jointRoundingGap": -5.364418020903372e-09
+    },
+    {
+      "mountCenter": {
+        "x": 1.875,
+        "y": 0.14749999344348907,
+        "z": -4.099999904632568
+      },
+      "oldEndpoint": {
+        "x": 1.875,
+        "y": 0.23000000417232525,
+        "z": -4.100000190734863
+      },
+      "xzOffset": 2.861022947442393e-07,
+      "thresholdY": 0.16017943909149263,
+      "atObservedHeights": [
+        {
+          "y": 0.16742174327373505,
+          "stemReserve": 0.0030628698288329426,
+          "flangeReserve": 0.0212975421164195
+        },
+        {
+          "y": 0.16895440220832825,
+          "stemReserve": 0.0036610969776886826,
+          "flangeReserve": 0.023949504472844704
+        }
+      ],
+      "flangeReserveAtThreshold": 0.009506465731150035,
+      "jointRoundingGap": -5.364418020903372e-09
+    }
+  ]
+}

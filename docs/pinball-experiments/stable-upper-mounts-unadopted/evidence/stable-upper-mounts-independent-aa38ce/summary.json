@@ -1,0 +1,15 @@
+{
+  "sourceSHA256": "aa38cedbfaf11e098385708956e264691a65e63c594b38f4be134aa651d3a534",
+  "baselineColliders": 1380,
+  "candidateColliders": 1388,
+  "exactOldPrefixEqual": true,
+  "prefixSHA256": "92de221466b0281dc4c8293eda57f84b49591cf8d8d5a9ad6fd527dbe3f86418",
+  "budget45": {
+    "triangles": 450844,
+    "calls": 683
+  },
+  "mountParameterMaxError": 9.540514150576899e-08,
+  "barVertexRadialMaxError": 1.525878903785305e-07,
+  "staticWitnessCount": 16,
+  "worldSteps": 0
+}

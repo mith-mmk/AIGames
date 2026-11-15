@@ -1,0 +1,25 @@
+{
+  "status": "207 unchanged tests and entry120 pass; not adoption",
+  "sourceSha256": "61e4f76a0594d56ca1b3b614e4ef70f2e202637f7e968a637e58565cda38f63f",
+  "tests": {
+    "total": 207,
+    "pass": 207,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "testFiles": 37,
+    "filesUnchanged": true,
+    "exit": 0,
+    "durationSeconds": 151.08779949997552,
+    "notBenchmark": true
+  },
+  "entry": {
+    "cases": 120,
+    "independentConditions": 6,
+    "freshWorldBatches": 20,
+    "complete": 120,
+    "sourceHashesMatch": true
+  },
+  "extraQA": "../stable-upper-stepped-integration-527764b/qa.tap:1/1 actual-assembly test; not part of original207 count",
+  "lint": "four integration runtime/test files checked separately through stdin,0errors; full production pipeline not run here"
+}

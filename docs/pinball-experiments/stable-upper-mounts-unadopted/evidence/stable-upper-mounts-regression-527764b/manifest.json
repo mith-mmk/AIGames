@@ -1,0 +1,49 @@
+{
+  "sourceSha256": "aa38cedbfaf11e098385708956e264691a65e63c594b38f4be134aa651d3a534",
+  "files": {
+    "README.md": {
+      "bytes": 2109,
+      "sha256": "bcc8df9c4f0ce77ae5252998dc33109c11450159deabfea1272690304de9d06b"
+    },
+    "entry-wrapper.mjs": {
+      "bytes": 1209,
+      "sha256": "f52699f5ab7719ab970a1453854743203905c9db72624f67265253d05765f096"
+    },
+    "entry120.json": {
+      "bytes": 1949188,
+      "sha256": "e99cb72656ad3a4cd2300fd551ce23334f0228d7d407a8ddc864abbab24b4f24"
+    },
+    "entry120.log": {
+      "bytes": 28919,
+      "sha256": "5f3e8db1749f204a59b68e920fff9af40071fdd7f4f5e568e016879e40e20739"
+    },
+    "full.tap": {
+      "bytes": 50310,
+      "sha256": "139ddc79b46dd2b4c4c7e43882c6290efb1d3836172ddd76af8293054c26bec0"
+    },
+    "invocation.json": {
+      "bytes": 8168,
+      "sha256": "3106ac523c1e04c0f26464a2a6f3c14d9f96417fdfc8d915056fef34b6412a42"
+    },
+    "result.json": {
+      "bytes": 6399,
+      "sha256": "a1d53074ce49f61987069ffeef5aeaa2928563bd2872d18a1530bc1041fb97c3"
+    },
+    "run.py": {
+      "bytes": 2478,
+      "sha256": "2f5102dd62fa73683cc978cfaa051c9991bfd63ae13b57f61d843dee9e1fab22"
+    },
+    "stepped-standoff-analysis/README.md": {
+      "bytes": 2210,
+      "sha256": "9e494cbe37d6719d924c9fe105068694f86631a9e4ad72fede9f7376004add7c"
+    },
+    "stepped-standoff-analysis/dimensions-and-bounds.json": {
+      "bytes": 3768,
+      "sha256": "dfccde3ecd68ae5f11167481175195154f81f278963008d173af8958dc4d5d42"
+    },
+    "summary.json": {
+      "bytes": 5204,
+      "sha256": "a9f44e334dc8c7ae4a8fe3b458ee16659c33ec5455b62677e652929d0c9c87d9"
+    }
+  }
+}

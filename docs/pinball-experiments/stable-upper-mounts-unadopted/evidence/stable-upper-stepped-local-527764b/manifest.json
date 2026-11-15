@@ -1,0 +1,28 @@
+{
+  "sourceHashes": {
+    "sources.json": "61e4f76a0594d56ca1b3b614e4ef70f2e202637f7e968a637e58565cda38f63f",
+    "baseline-sources.json": "800733cdda0c52ee1fa5adb2f5901248c713d60418f31a7492de8ef8bed5bc41",
+    "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+    "baseline-loader.mjs": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+  },
+  "files": {
+    "summary.json": "bd175fcfe6df3fc39f1a4183fe92e03c6953f248a6eed564f914c341ca584657",
+    "baseline-contact925.log": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb",
+    "baseline-contact925.json": "d17f75d81bee5639b3802b0d39d688d2078e52e07036623eefa31b8aeb304e2a",
+    "candidate-contact925.json": "9bb85d35ca631259d76bd43d9256875b7ff36b6eac2a325edae0811f84152632",
+    "candidate.json": "fb2f95b7a6b1412bae459723f23bf034fb41dac0287d2631042370da29cc755d",
+    "candidate.log": "a3c433e580d9d7747640a1b7030ec5862201a53d5514783747e40a8b26249927",
+    "candidate-upper.log": "8ba6234abdb5678416c411f713242f74662ed49528f92c5ec8d0da9bef893a19",
+    "launch.mjs": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6",
+    "README.md": "42d5075548c15a3f95c9dda02fa246feb12ff1dbb51fd7c3aa1dd87d9a7764ca",
+    "baseline.log": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb",
+    "baseline.json": "990facd9be7e337a694680ecc0c527f3bfa4eca4a3c4679b9e6e7ee57cfeaacd",
+    "render-contact925.json": "d17f75d81bee5639b3802b0d39d688d2078e52e07036623eefa31b8aeb304e2a",
+    "mount925-cause.json": "7f12779cfdefc6c63544b68e48860091061ada189dac5c0fe2888fb7a3ae5761",
+    "render-contact925.log": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb",
+    "mount925.mjs": "a10eb4d256ac32fc636cc20fd15d85ca0d25fbd8b46f29f8d6aae17bb710ae30",
+    "baseline-upper.log": "bf78d3debfe2921c9d0123dac2999a17259819bb6fb42bd10980eacb5783b81d",
+    "candidate-contact925.log": "a3c433e580d9d7747640a1b7030ec5862201a53d5514783747e40a8b26249927",
+    "mount925-findings.md": "2f7fa36e09b651fa48a1b479b71505119c24fd8d5fa8f3a9dbabe7da817e884b"
+  }
+}

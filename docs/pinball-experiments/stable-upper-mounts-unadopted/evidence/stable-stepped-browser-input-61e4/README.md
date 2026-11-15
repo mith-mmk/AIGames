@@ -1,0 +1,11 @@
+# Frozen61e4 browser input smoke
+
+PASS desktop1440x1000 and mobile viewport390x844, using real Playwright keyboard and Chrome DevTools touch events with the actual running game. No injected ball, simulation speed override, input-state write, altered forces or production edit. Frozen candidate sources served from stable-upper-stepped-mounts-527764b/sources.json SHA61e4f76a0594d56ca1b3b614e4ef70f2e202637f7e968a637e58565cda38f63f. Reuses repository keyboard/plunger/control event workflows without their separate injected fixtures.
+
+Desktop Space hold/release launched atvz−23. Mobile CDP95px upward pull/release launched atvz−22. Keyboard Z/Slash and simultaneous mobile left/right touches each changed actual flipper angles from[-.60,3.74159265] to[.48,2.66159265], input states/visible pressed buttons agree. Releasing cleared both inputs. Pause held ball position exactly over350ms; resume advanced game time. Restart restored ready/score0/ball1/zero velocity/releasedinputs. Mobile page had no horizontal overflow. Pageerrors0. Active desktop/mobile screenshots inspected; actual ball and held bats visible. Server and browser closed normally.
+
+Desktop naturally scored100 before pause and200 after resume; this incidental short observation is not a scoring qualification. Mobile was still in the upper launch area at the short smoke endpoint; no complete-game or route-finish claim. BallY snapshots .1674217 desktop and.1689544 mobile fall below the analyticY>=.170 support-containment domain. Thus that bound is not a universal guarantee for these live trajectories; regression/contact checks remain necessary.
+
+Initial harness attempt referenced a nonexistent metrics.launches field and failed its observation before proceeding. initial-metric-field-error.log retained. Corrected harness observes actual ready→playing phase and launch velocity/displacement; did not alter game or relax a valid game assertion. Final run.log/results.json are successful.
+
+This is scripted browser input on desktop Chrome, not a physical phone or human playtest. Full game,54fixed controller and long-session qualification are separate workers' evidence. No videos/tempserver left. Images and result/source-script hashes are in manifest.json.

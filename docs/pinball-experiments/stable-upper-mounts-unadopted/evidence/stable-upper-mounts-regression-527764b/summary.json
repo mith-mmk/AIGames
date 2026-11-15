@@ -1,0 +1,58 @@
+{
+  "status": "candidate rejected; do not integrate",
+  "sourceSha256": "aa38cedbfaf11e098385708956e264691a65e63c594b38f4be134aa651d3a534",
+  "tests": {
+    "total": 207,
+    "passed": 203,
+    "failed": 4,
+    "skipped": 0,
+    "cancelled": 0,
+    "files": 37,
+    "unchanged": true,
+    "exit": 1,
+    "durationSeconds": 93.00397908408195,
+    "durationNotBenchmark": true
+  },
+  "failures": [
+    {
+      "number": 89,
+      "name": "real launch feeds scoring objects, not a scripted path",
+      "classification": "observed gameplay regression",
+      "interpretation": "Fresh .925 launch has score0 after5 seconds; later x/finite assertions not reached.",
+      "verbatimTAP": "not ok 89 - real launch feeds scoring objects, not a scripted path\n  ---\n  duration_ms: 565.449291\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:22:1'\n  failureType: 'testCodeFailure'\n  error: 'score=0'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:26:12)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 94,
+      "name": "ninety varied launches drain without stuck recovery or position jumps",
+      "classification": "observed gameplay regression",
+      "interpretation": "Varied launch family aborts at shot20 after repeated .925 same-ball shooter returns fail to yield a real drain; later shots21..89 unexecuted in this test.",
+      "verbatimTAP": "not ok 94 - ninety varied launches drain without stuck recovery or position jumps\n  ---\n  duration_ms: 12436.774708\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:89:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    shot 20: repeated shooter returns never reached a real drain\n    \n    true !== false\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: false\n  actual: true\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:115:14)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 97,
+      "name": "beginner play duration remains controllable across thirty-one powers",
+      "classification": "observed gameplay regression",
+      "interpretation": "First passive31-power duration family reaches minimum2.475 seconds, below required3. Median/reactive family and final advantage assertions not reached.",
+      "verbatimTAP": "not ok 97 - beginner play duration remains controllable across thirty-one powers\n  ---\n  duration_ms: 9761.238542\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:162:1'\n  failureType: 'testCodeFailure'\n  error: 'instant drain: 2.475'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:181:12)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    },
+    {
+      "number": 102,
+      "name": "natural shooter launch traverses a top rollover lane",
+      "classification": "observed gameplay regression",
+      "interpretation": "Fresh .925 launch does not set lane2 after1.5 seconds. This is an unchanged scoring/progression requirement, not a coordinate-contract exemption.",
+      "verbatimTAP": "not ok 102 - natural shooter launch traverses a top rollover lane\n  ---\n  duration_ms: 77.193416\n  type: 'test'\n  location: '/Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:241:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:245:12)\n    async Test.run (node:internal/test_runner/test:1404:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)\n  ..."
+    }
+  ],
+  "entry": {
+    "cases": 120,
+    "independentConditions": 6,
+    "freshWorldBatches": 20,
+    "completed": 120,
+    "all": true,
+    "originalScript": "scripts/pinball-ramp-entry-audit.mjs",
+    "originalScriptSha256": "ca5d95b5fa4601e22a7c0c1308ff5e684f010f1a721c7fe9f7de2896f6645136",
+    "wrapper": "entry-wrapper.mjs; only evidence destination and pinned source-hash reads redirected; physics/fixture/criterion unchanged"
+  },
+  "lint": "not run: equivalent pipeline stops on Node-test failure",
+  "noAdoption": "No source/test expectation changes; no integration diff prepared for failed geometry. Local6 field/drain and entry120 do not override4 regression failures."
+}

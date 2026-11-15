@@ -1,0 +1,10 @@
+{
+  "web/js/vendor/rapier3d-0.17.3/LICENSE": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519",
+  "web/js/vendor/rapier3d-0.17.3/NOTICE": "2d2673e951a4b20b2c06b561412b23a2731b5c0006031f66931234b7ec21161a",
+  "web/js/vendor/rapier3d-0.17.3/rapier.mjs": "e0f7783dae9d3d175ec62c0cafdad84261d8c64c5f7da6ae5b24e858cf9ab759",
+  "web/js/vendor/three-0.180.0/LICENSE": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+  "web/js/vendor/three-0.180.0/controls/OrbitControls.js": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c",
+  "web/js/vendor/three-0.180.0/package.json": "0cc47147be8fcf7c0325e3d81ff01f11ad848d6251faf9d58bc60f7483854f55",
+  "web/js/vendor/three-0.180.0/three.core.min.js": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de",
+  "web/js/vendor/three-0.180.0/three.module.min.js": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6"
+}

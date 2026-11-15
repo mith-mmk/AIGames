@@ -1,0 +1,13 @@
+# 61e4 .925 first-divergence diagnosis
+
+One fixed original natural sequence per source: baseline79d, render-only, stepped61e4. .925 follows the same four preceding worlds .55/.65/.75/.85. No newpower/start/shape/force/solver setting, no second54. Replays match the corresponding original local p/v throughout; render-only matches baseline throughout. This context differs from a fresh-world standalone .925 regression.
+
+First candidate p/v difference is tick72. At tick71 all sources share center(1.960867405,.164825559,−5.082660675), v(−7.133933,≈0,.894589). Existing right rear bar is already penetrated. Independent finite analytical sphere gaps at that actual poststep position: old radius.035 capsule−.03415558; new radius.020 stem−.03581108; low radius.055 flange−.01208289; floor−.01017444. New shapes at(1.875,−5) have stemY.060..235 and flangeY.005..060. These gaps are calculated from stored positions and finite surfaces, not inferred from manifold residuals. Baseline new-part gaps are counterfactual geometry evaluations, not actual baseline contacts.
+
+At tick72 candidate stem handle6.88e−321 carries normal impulse.14233869 with manifold normal(−.538478,0,.842639), flange6.877e−321 carries.21489312 with normal(−.344298,−.768881,.538777); both flipped=false. Oldbar impulse is.40610877 and floor.10204712, versus baseline oldbar.69313061/floor.41915613. Candidate v=(−1.377503,.005054,−4.214139), baseline(−1.439293,.024068,−4.291341). This is direct additional-contact participation, not solely an unexplained far-away allocation/order difference. Zero new impulses at tick71 do not prove no impact; actual positive loads are observed nexttick.
+
+MinimumY in inspected50..150 window is.164099276 in all3sources, below the designer's .170 containment precondition. The guarantee applies only to nonpenetrating approaches within that height domain, not this deeply overlapping oldbar state. At tick72 candidate finite gaps improve to oldbar−.01377285/stem−.01325149/flange+.00067350; at73 all these are positive. Thus this local divergence is not evidence of a new persistent trap, nor evidence of universal safety.
+
+Both baseline and candidate still award lane2 at1.25s. The event changes later trajectory/scoring. It provides one concrete mechanism for changed natural distribution, but does not individually explain every54-controller difference (61→45ramps, power1 5→0). Do not infer global difficulty or accept/reject solely from total score. Whole54 has no observedcaps/stalls/zero/resets, while deeper contact uncertainty remains for adoption judgment.
+
+Files: mount925.mjs, {baseline,render,candidate}-contact925.json/log, mount925-cause.json. Source61e4 unchanged; no further tests or variants added.

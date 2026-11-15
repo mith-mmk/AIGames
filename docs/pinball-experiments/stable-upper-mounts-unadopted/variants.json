@@ -1,0 +1,118 @@
+{
+  "full": {
+    "originalDirectory": "stable-upper-mounts-527764b",
+    "base": "79d7b91a8a71f6c010722ab65a6200459253c902",
+    "modules": {
+      "web/js/pinball/physics.mjs": {
+        "path": "payload/full/modules/physics.mjs",
+        "sha256": "33c8e0e0697cb5a349dfb97d628139c66b4e1678b798fc7aefe0a81a425cb786"
+      },
+      "web/js/pinball/playfield-parts.mjs": {
+        "path": "payload/full/modules/playfield-parts.mjs",
+        "sha256": "e1d25da91f393104574afa65e6d18ae83e808b6c5a0ec7654c86e433cbc7f910"
+      },
+      "web/js/pinball/upper-bar-definition.mjs": {
+        "path": "payload/full/modules/upper-bar-definition.mjs",
+        "sha256": "3a17e5daddbe52cb2e5eaca3b4b24fb2889a89aaa1a64082e57f5c82893af97e"
+      }
+    },
+    "files": {
+      "loader.mjs": {
+        "path": "payload/full/loader.mjs",
+        "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+      },
+      "baseline-loader.mjs": {
+        "path": "payload/full/baseline-loader.mjs",
+        "sha256": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+      },
+      "render-loader.mjs": {
+        "path": "payload/full/render-loader.mjs",
+        "sha256": "5d9cc3181816d55aef5955675ae189ca94ce93bc7811e75ee3c44592b95c4e59"
+      },
+      "upper-bar-definition.mjs": {
+        "path": "payload/full/upper-bar-definition.mjs",
+        "sha256": "3a17e5daddbe52cb2e5eaca3b4b24fb2889a89aaa1a64082e57f5c82893af97e"
+      },
+      "build.mjs": {
+        "path": "payload/full/build.mjs",
+        "sha256": "3f355d3e40d8fd76c658270a03fd49214fe34a7eb11e226f99dc16d094474f9a"
+      },
+      "manifest.json": {
+        "path": "payload/full/manifest.json",
+        "sha256": "abcc6c73604633f6da278441cb444d22feb68f60805fb0eb75f8b1d56e47db53"
+      },
+      "changes.json": {
+        "path": "payload/full/changes.json",
+        "sha256": "846cdcb2c2cca95e7ee3f0ab6a4b7bdc3af64547d2d15366856e534f2703352c"
+      },
+      "dependencies.json": {
+        "path": "payload/full/dependencies.json",
+        "sha256": "333db30d72618cbea54ca428e9eeb5ad0e765da945aea75afd0b0fb96b5c83df"
+      }
+    },
+    "mapHashes": {
+      "sources.json": "aa38cedbfaf11e098385708956e264691a65e63c594b38f4be134aa651d3a534",
+      "baseline-sources.json": "800733cdda0c52ee1fa5adb2f5901248c713d60418f31a7492de8ef8bed5bc41",
+      "render-sources.json": "75abe36df5e051a28fbf4a8d37a6163d8a7886412135de550626f19b8a5c6b82"
+    },
+    "expectedColliders": 1388
+  },
+  "stepped": {
+    "originalDirectory": "stable-upper-stepped-mounts-527764b",
+    "base": "79d7b91a8a71f6c010722ab65a6200459253c902",
+    "modules": {
+      "web/js/pinball/physics.mjs": {
+        "path": "payload/stepped/modules/physics.mjs",
+        "sha256": "86bc9e4a4d48e49144c595754cf412aa910dac2016623437e7d89e76fd9c6479"
+      },
+      "web/js/pinball/playfield-parts.mjs": {
+        "path": "payload/stepped/modules/playfield-parts.mjs",
+        "sha256": "f648726bdc709a19df13eef677a98420374f31d029684fd9346b04f2ff709679"
+      },
+      "web/js/pinball/upper-bar-definition.mjs": {
+        "path": "payload/stepped/modules/upper-bar-definition.mjs",
+        "sha256": "785dcedadefc35dd1b95068f1b0ba503f2acbcb0e9d48e27f131c68ca21c9bad"
+      }
+    },
+    "files": {
+      "loader.mjs": {
+        "path": "payload/stepped/loader.mjs",
+        "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+      },
+      "baseline-loader.mjs": {
+        "path": "payload/stepped/baseline-loader.mjs",
+        "sha256": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+      },
+      "render-loader.mjs": {
+        "path": "payload/stepped/render-loader.mjs",
+        "sha256": "5d9cc3181816d55aef5955675ae189ca94ce93bc7811e75ee3c44592b95c4e59"
+      },
+      "upper-bar-definition.mjs": {
+        "path": "payload/stepped/upper-bar-definition.mjs",
+        "sha256": "785dcedadefc35dd1b95068f1b0ba503f2acbcb0e9d48e27f131c68ca21c9bad"
+      },
+      "build.mjs": {
+        "path": "payload/stepped/build.mjs",
+        "sha256": "e02a6bc229a6259481563fd3135f4125ca31540de328587bf395f474794af5cf"
+      },
+      "manifest.json": {
+        "path": "payload/stepped/manifest.json",
+        "sha256": "6e7b463bbd2aecaf5e9d3f100f60238f8037578541a6c738ce275d03c6f5893f"
+      },
+      "changes.json": {
+        "path": "payload/stepped/changes.json",
+        "sha256": "b303ed634ecf545f99e7fb3dc9ccc6af02c70c71fe085fd287809d488688a3fc"
+      },
+      "dependencies.json": {
+        "path": "payload/stepped/dependencies.json",
+        "sha256": "333db30d72618cbea54ca428e9eeb5ad0e765da945aea75afd0b0fb96b5c83df"
+      }
+    },
+    "mapHashes": {
+      "sources.json": "61e4f76a0594d56ca1b3b614e4ef70f2e202637f7e968a637e58565cda38f63f",
+      "baseline-sources.json": "800733cdda0c52ee1fa5adb2f5901248c713d60418f31a7492de8ef8bed5bc41",
+      "render-sources.json": "b5697e928b287b2146592328cca230ec37eae1c4b5874d8058e4d3884f437394"
+    },
+    "expectedColliders": 1396
+  }
+}
