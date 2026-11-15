@@ -1,0 +1,72 @@
+[
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/app45-parked.png",
+    "bytes": 765878,
+    "sha256": "be588cc6f78b0a869fc55dc9d0eacd114042e60985f30e5d6552fec37f337679"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/close-deployed.png",
+    "bytes": 571416,
+    "sha256": "0b60020deddc5f7828902ec5cb2fe6231a27feb9031a99df7320a5ddfdc2012c"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/close-parked.png",
+    "bytes": 567310,
+    "sha256": "6653a3cf34909ba6df60ccf054637a242e19f61fb17501909068bd81911af34e"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/full-parked.png",
+    "bytes": 504157,
+    "sha256": "93d44827eb82c8645ddb1dfd0bb94a7bf4c9bae76f9bbc50385a7954719694c0"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/geometry.mjs",
+    "bytes": 2734,
+    "sha256": "1f4d01cee28f47229911e8f360d571500a9f1c23070ef1998d43daf216f8e195"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/inner-side-parked.png",
+    "bytes": 314047,
+    "sha256": "0804d0746bbc58d35483d2eed40a8726b84ec29033a400cfe0669a2bc28dd8bf"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/loader.mjs",
+    "bytes": 948,
+    "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/result.json",
+    "bytes": 75518,
+    "sha256": "12a58daa57fc615e5da537cf31fae946adadce9854cfc5bbb54fd967caa6e7f9"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/sources.json",
+    "bytes": 330296,
+    "sha256": "0784870d99f265ec51bfae644cf591e30dfcd3321b9134dbee06da5f4401bb11"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/study.log",
+    "bytes": 330,
+    "sha256": "20a13fbe5feb139ac3aa945289103b7ebd7c53462c2ba9c64578de852d8bcb37"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/study.mjs",
+    "bytes": 9173,
+    "sha256": "d458f9413ed206cc76899d79eb4f0c048f876347cd6e197683ef5474bba770e8"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/visual-evidence.json",
+    "bytes": 1469,
+    "sha256": "c7bbc448e91925ecdafa92f656c5414ca9d9de48186e60f982ad41e0bd0106d8"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/visual.cjs",
+    "bytes": 5962,
+    "sha256": "5c833499f44f34266f4ad230fd3c9363c5ee0081d0ec96fd5b3796d534b4c056"
+  },
+  {
+    "path": "artifacts/pinball/save-vertical-fork-71245b2/visual.log",
+    "bytes": 523,
+    "sha256": "3e550421f788f83162e290ccdf678019a0ccf78f5abb5741838fcdef739c7c32"
+  }
+]

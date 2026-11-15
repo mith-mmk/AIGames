@@ -1,0 +1,25 @@
+{
+  "status": "isolated prototype, not production",
+  "source": "web/js/pinball/components/plunger.mjs",
+  "sha256": "a6172825ea28300500d1bf08b3b10c134999a639ef813b83298b9e96bcba1f54",
+  "replacedSourceLines": {
+    "mount": [
+      135,
+      146
+    ],
+    "knob": [
+      149,
+      158
+    ]
+  },
+  "unchanged": [
+    "tip",
+    "rod",
+    "spring geometry and motion",
+    "pull .32",
+    "knob front seat -.055",
+    "release duration",
+    "production controls and force"
+  ],
+  "contactChange": "All fixed prototype surfaces exported as exact triangle meshes. These add new contacts; gameplay not invariant or verified."
+}

@@ -1,0 +1,86 @@
+{
+  "status": "Rejected isolated prototype; no production integration",
+  "baselineCommit": "71245b26bbc4d72c364d395b21b58b933bba4675",
+  "baselineSource": "web/js/pinball/components/plunger.mjs",
+  "baselineSha256": "a6172825ea28300500d1bf08b3b10c134999a639ef813b83298b9e96bcba1f54",
+  "omittedRegeneratable": {
+    "fixed-contact-surfaces.json": {
+      "bytes": 238835,
+      "sha256": "3a78d18f29d12153446875226a3e0b6f7155830156b3658c4cfd416e1959c891"
+    }
+  },
+  "files": {
+    "README.md": {
+      "bytes": 5779,
+      "sha256": "06600c8a929e26bc3fc9da5b969fca81c6c74c6f195bc469566d4cb6737d8996"
+    },
+    "baseline-original.txt": {
+      "bytes": 11599,
+      "sha256": "a6172825ea28300500d1bf08b3b10c134999a639ef813b83298b9e96bcba1f54"
+    },
+    "baseline-plunger.mjs": {
+      "bytes": 11630,
+      "sha256": "1ab3291679b150bc14a20ce1a5dd68164bb9bfcf41aaeb16331a1edc16ef819a"
+    },
+    "capture.cjs": {
+      "bytes": 3176,
+      "sha256": "0165fcb9772e2e6e9bd1f33d9587ab958a9ef6aee0964b948a5ff067f5e3be39"
+    },
+    "full-pull-top.png": {
+      "bytes": 388458,
+      "sha256": "483bf76b89e469be6766a2cd9da3ba555fafeca9154eaa6028091a7b12ab1286"
+    },
+    "generate.py": {
+      "bytes": 4059,
+      "sha256": "558aec8322cc0f7ad2530f896b989a5af4074f915bc14cbce4a9193c896920f2"
+    },
+    "installed-audit.json": {
+      "bytes": 2924,
+      "sha256": "28ce5ea250b4f81a5832ec4dd856470314165b49a89f0d64cda1075451ca7bd0"
+    },
+    "installed-audit.mjs": {
+      "bytes": 1984,
+      "sha256": "96b7b6c44607d7e33c5172ad291116e583c0719edd0d2334f562cfef75ae0273"
+    },
+    "installed-full-45.png": {
+      "bytes": 809021,
+      "sha256": "f6b670949dec17c7d144440d1c699a8fc085a64b64d8703b0ec411240cb7fbd1"
+    },
+    "narrowphase.json": {
+      "bytes": 2196,
+      "sha256": "da02c698144724f25227781859842260e19c32dd3453913116c8eee9074deb7c"
+    },
+    "narrowphase.mjs": {
+      "bytes": 3428,
+      "sha256": "914a244f6a989a1595e1b59096a926a04c28fb0f7ea23d0b6384ab9971276e95"
+    },
+    "plunger-prototype.mjs": {
+      "bytes": 12882,
+      "sha256": "96ba5ab268d1da32356df8454903008dbc49e0778daf3f56b1238fbd2a01413a"
+    },
+    "render.json": {
+      "bytes": 253,
+      "sha256": "6818672f95617975b01eda22b8fcf6b4e15ec19ce48079e21fe85129c8888a71"
+    },
+    "replay-verification.json": {
+      "bytes": 1173,
+      "sha256": "76808d3613e4fb53ceaac6bd41dbc81c7ac1c6f5ba3fbb199271d65348999224"
+    },
+    "rest-oblique.png": {
+      "bytes": 645062,
+      "sha256": "74d09bf4e5b33af1161891f9521035720875702f7f1316c6e8e54749e0721361"
+    },
+    "source-map.json": {
+      "bytes": 631,
+      "sha256": "1dc075a6a6e95e501b01aa1be89ab7b4360069c02d2e136318a7da4e2251b570"
+    },
+    "validate.mjs": {
+      "bytes": 3820,
+      "sha256": "48766fb6b2a1bc568f38ee9fdb2d6f2dc6eb1e07951d91220eee76919190f1f4"
+    },
+    "validation.json": {
+      "bytes": 953,
+      "sha256": "f790ad0f952f2fa01671e917ceec3dbd63a59b87095db65494d52d81bc6d8606"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "status": "static prototype checks passed; gameplay and render acceptance pending",
+  "strokeSamples": 101,
+  "clearance": {
+    "board": 0.01250000005587934,
+    "leftRail": 0.01650000005587904,
+    "rightRail": 0.011500000055879589,
+    "frontTimber": 0.010000002682209796
+  },
+  "triangles": 15428,
+  "baselineTriangles": 13396,
+  "projected45DegreeTriangles": 486180,
+  "baseline45DegreeTriangles": 484148,
+  "contactSurfaces": 22,
+  "unchangedGeometryAndMotion": [
+    "tip",
+    "ferrule",
+    "shaft",
+    "moving spring seat",
+    "long spring",
+    "short spring"
+  ],
+  "limitations": [
+    "Fixed contact triangle payload is exported but not integrated into Rapier gameplay.",
+    "No high-ball or returned-ball gameplay proof.",
+    "Fastener shanks represent wood engagement; board is not re-drilled.",
+    "Triangle projection assumes same visibility as supplied baseline; actual renderer must be checked.",
+    "No phone test."
+  ]
+}

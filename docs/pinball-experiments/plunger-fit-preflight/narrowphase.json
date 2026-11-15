@@ -1,0 +1,77 @@
+{
+  "method": "Rapier exact installed cabinet trimeshes versus convex frustum decomposition of existing lathe cap/rod, separate annular sectors for band, convex individual knurl boxes. No whole-knob convexification.",
+  "strokeSamples": 101,
+  "queries": 5468,
+  "convexParts": 99,
+  "witnesses": [
+    {
+      "obstacle": "front-hazard-apron",
+      "movingPart": "knob-waist-and-domed-cap/frustum7",
+      "pull": 0.37,
+      "penetration": 0.02833676151931286,
+      "movingPoint": {
+        "x": 2.4251925945281982,
+        "y": 0.22192643582820892,
+        "z": 5.893400192260742
+      },
+      "obstaclePoint": {
+        "x": 2.4506070613861084,
+        "y": 0.20939339697360992,
+        "z": 5.893400192260742
+      }
+    },
+    {
+      "obstacle": "formed-apron-wing-1",
+      "movingPart": "knob-waist-and-domed-cap/frustum6",
+      "pull": 0.68,
+      "penetration": 0.04700016975402832,
+      "movingPoint": {
+        "x": 2.4149997234344482,
+        "y": 0.17499999701976776,
+        "z": 5.992599964141846
+      },
+      "obstaclePoint": {
+        "x": 2.4619998931884766,
+        "y": 0.17499999701976776,
+        "z": 5.992599964141846
+      }
+    },
+    {
+      "obstacle": "apron-folded-front-1",
+      "movingPart": "knob-waist-and-domed-cap/frustum7",
+      "pull": 0.86,
+      "penetration": 0.029359929263591766,
+      "movingPoint": {
+        "x": 2.417587995529175,
+        "y": 0.18979933857917786,
+        "z": 6.054591178894043
+      },
+      "obstaclePoint": {
+        "x": 2.444999933242798,
+        "y": 0.18703226745128632,
+        "z": 6.044445514678955
+      }
+    },
+    {
+      "obstacle": "front-folded-cross-rail",
+      "movingPart": "knob-waist-and-domed-cap/frustum7",
+      "pull": 1,
+      "penetration": 0.005926709156483412,
+      "movingPoint": {
+        "x": 2.5299999713897705,
+        "y": 0.28556108474731445,
+        "z": 6.107048988342285
+      },
+      "obstaclePoint": {
+        "x": 2.5299999713897705,
+        "y": 0.2800000011920929,
+        "z": 6.104999542236328
+      }
+    }
+  ],
+  "noWitness": [
+    "board-edge-1-5.55-hex-head",
+    "board-edge-1-5.55-shank"
+  ],
+  "status": "Confirmed actual geometry interference; rejected as-is"
+}

@@ -1,0 +1,62 @@
+{
+  "base": "71245b26bbc4d72c364d395b21b58b933bba4675",
+  "views": [
+    {
+      "name": "full-parked",
+      "baseline": {
+        "triangles": 510540,
+        "calls": 576
+      },
+      "withPrototype": {
+        "triangles": 510936,
+        "calls": 609
+      }
+    },
+    {
+      "name": "close-parked",
+      "baseline": {
+        "triangles": 170180,
+        "calls": 86
+      },
+      "withPrototype": {
+        "triangles": 170576,
+        "calls": 119
+      }
+    },
+    {
+      "name": "close-deployed",
+      "baseline": {
+        "triangles": 170180,
+        "calls": 86
+      },
+      "withPrototype": {
+        "triangles": 170576,
+        "calls": 119
+      }
+    },
+    {
+      "name": "inner-side-parked",
+      "baseline": {
+        "triangles": 188794,
+        "calls": 106
+      },
+      "withPrototype": {
+        "triangles": 189190,
+        "calls": 139
+      }
+    },
+    {
+      "name": "app45-parked",
+      "baseline": {
+        "triangles": 484148,
+        "calls": 600
+      },
+      "withPrototype": {
+        "triangles": 484544,
+        "calls": 633
+      }
+    }
+  ],
+  "errors": [],
+  "scope": "Shared static prototype boxes. First four views are standalone WorkshopAssets assembly, NOT the app composition. app45-parked uses actual frozen app scene/board, normal45 camera and lighting. No existing geometry hidden beyond app normal setup. Camera-specific counts, not device performance. Tall gantry is a major reference departure."
+}

@@ -1,0 +1,12 @@
+using deprecated parameters for the initialization function; pass a single object instead
+{
+  "parts": 33,
+  "triangles": 396,
+  "installedIntersections": 6,
+  "hardNonSuperseded": [],
+  "selfIntersections": [],
+  "selfSweepIntersections": [],
+  "parkedLinearCastHitCases": 0,
+  "parkedBallHits": [],
+  "deploymentHitCases": 19
+}

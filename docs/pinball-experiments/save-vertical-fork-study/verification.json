@@ -1,0 +1,38 @@
+{
+  "runtimeBase": "71245b26bbc4d72c364d395b21b58b933bba4675",
+  "runtimeMapSHA256": "0784870d99f265ec51bfae644cf591e30dfcd3321b9134dbee06da5f4401bb11",
+  "geometrySHA256": "1f4d01cee28f47229911e8f360d571500a9f1c23070ef1998d43daf216f8e195",
+  "resultSHA256": "12a58daa57fc615e5da537cf31fae946adadce9854cfc5bbb54fd967caa6e7f9",
+  "portableChange": "study load function only redirects to byte-identical existing compressed inputs or exact position-only extracts; geometry/query/replay algorithm unchanged. visual output path becomes restored directory.",
+  "reusedInputs": {
+    "artifacts/pinball/early-confluence-696c646/baseline-save-sweep.json": {
+      "path": "docs/pinball-experiments/early-confluence-unadopted/evidence/baseline-save-sweep.json.gz",
+      "unwrap": true,
+      "originalSHA256": "5bff7d79707d6f614f9274e08f1c55ee89b489e09e6b95c92db0940befb866d8"
+    },
+    "artifacts/pinball/natural-save-71245b2/observations.json": {
+      "path": "docs/pinball-experiments/save-pocket-preflight/natural/observations.json.gz",
+      "unwrap": true,
+      "originalSHA256": "19a0091f016b9ac4c03783c9934326b090ffb88339887e224808b193a5d66591"
+    },
+    "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes-82.json.gz": {
+      "path": "docs/pinball-experiments/early-confluence-unadopted/evidence/baseline-upper-lanes-82.json.gz",
+      "unwrap": false,
+      "originalSHA256": "0f8b592365c0886baeaa6076a5bbd83b4ceaf5dba4c163167aa9d5da4ffbdd25"
+    },
+    "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes-80.json.gz": {
+      "compact": true
+    },
+    "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes-81.json.gz": {
+      "compact": true
+    },
+    "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes-83.json.gz": {
+      "compact": true
+    },
+    "artifacts/pinball/early-confluence-696c646/baseline-upper-lanes-84.json.gz": {
+      "compact": true
+    }
+  },
+  "status": "Independent restored replay result is byte-identical; exact runtime and geometry restored; temporary copy moved to Trash",
+  "allRuntimeModulesEqualPinnedCommit": 37
+}

@@ -1,0 +1,30 @@
+{
+  errors: [],
+  views: [
+    {
+      name: 'full-parked',
+      baseline: [Object],
+      withPrototype: [Object]
+    },
+    {
+      name: 'close-parked',
+      baseline: [Object],
+      withPrototype: [Object]
+    },
+    {
+      name: 'close-deployed',
+      baseline: [Object],
+      withPrototype: [Object]
+    },
+    {
+      name: 'inner-side-parked',
+      baseline: [Object],
+      withPrototype: [Object]
+    },
+    {
+      name: 'app45-parked',
+      baseline: [Object],
+      withPrototype: [Object]
+    }
+  ]
+}

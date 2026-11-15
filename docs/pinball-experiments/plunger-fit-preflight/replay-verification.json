@@ -1,0 +1,29 @@
+{
+  "status": "Archived portable static and narrow-phase scripts reproduced original results byte-for-byte",
+  "checks": {
+    "plunger-prototype.mjs": {
+      "byteIdenticalToOriginal": true,
+      "sha256": "96ba5ab268d1da32356df8454903008dbc49e0778daf3f56b1238fbd2a01413a"
+    },
+    "validation.json": {
+      "byteIdenticalToOriginal": true,
+      "sha256": "f790ad0f952f2fa01671e917ceec3dbd63a59b87095db65494d52d81bc6d8606"
+    },
+    "installed-audit.json": {
+      "byteIdenticalToOriginal": true,
+      "sha256": "28ce5ea250b4f81a5832ec4dd856470314165b49a89f0d64cda1075451ca7bd0"
+    },
+    "narrowphase.json": {
+      "byteIdenticalToOriginal": true,
+      "sha256": "da02c698144724f25227781859842260e19c32dd3453913116c8eee9074deb7c"
+    },
+    "fixed-contact-surfaces.json": {
+      "byteIdenticalToOriginal": true,
+      "sha256": "3a78d18f29d12153446875226a3e0b6f7155830156b3658c4cfd416e1959c891"
+    }
+  },
+  "renderReplay": "Not rerun during archive preparation; original actual rendered evidence retained",
+  "productionChanges": false,
+  "commitOrPush": false,
+  "replayOutputs": "Disposable regenerated directory moved to user Trash after verification"
+}

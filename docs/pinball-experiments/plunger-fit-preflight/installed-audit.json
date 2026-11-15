@@ -1,0 +1,125 @@
+{
+  "status": "BLOCKED: not accepted for integration",
+  "samples": 101,
+  "cabinetBroadPhaseCandidates": [
+    {
+      "name": "board-edge-1-5.55-hex-head",
+      "firstPull": 0,
+      "lastPull": 0.4,
+      "bounds": {
+        "min": [
+          2.6374833396077157,
+          0.04900000005960464,
+          5.723999999463558
+        ],
+        "max": [
+          2.6825166603922845,
+          0.07099999994039535,
+          5.776000000536442
+        ]
+      }
+    },
+    {
+      "name": "board-edge-1-5.55-shank",
+      "firstPull": 0,
+      "lastPull": 0.37,
+      "bounds": {
+        "min": [
+          2.6459999995678665,
+          -0.19999999523162842,
+          5.735999999567866
+        ],
+        "max": [
+          2.674000000432134,
+          0.05999999523162841,
+          5.764000000432134
+        ]
+      }
+    },
+    {
+      "name": "formed-apron-wing-1",
+      "firstPull": 0,
+      "lastPull": 1,
+      "bounds": {
+        "min": [
+          0.328000009059906,
+          0.012999966740608215,
+          5.086478614807129
+        ],
+        "max": [
+          2.4619998931884766,
+          0.24059997498989105,
+          6.091999912261963
+        ]
+      }
+    },
+    {
+      "name": "front-hazard-apron",
+      "firstPull": 0,
+      "lastPull": 1,
+      "bounds": {
+        "min": [
+          -2.695000047683716,
+          0.2050000019371509,
+          5.814999997615814
+        ],
+        "max": [
+          2.4550000476837157,
+          0.2950000017881394,
+          6.185000002384186
+        ]
+      }
+    },
+    {
+      "name": "apron-folded-front-1",
+      "firstPull": 0.64,
+      "lastPull": 1,
+      "bounds": {
+        "min": [
+          0.3350000524520873,
+          0.014999997913837437,
+          6.022499998509884
+        ],
+        "max": [
+          2.4449999475479123,
+          0.24500000208616257,
+          6.097499997764826
+        ]
+      }
+    },
+    {
+      "name": "front-folded-cross-rail",
+      "firstPull": 0.9,
+      "lastPull": 1,
+      "bounds": {
+        "min": [
+          -2.95,
+          0.17000000059604647,
+          6.104999994039536
+        ],
+        "max": [
+          2.9500000953674315,
+          0.32500000178813937,
+          6.255000000000002
+        ]
+      }
+    }
+  ],
+  "physicsFrontStop": {
+    "bounds": {
+      "min": [
+        2.26,
+        -0.1,
+        5.82
+      ],
+      "max": [
+        2.8,
+        0.7,
+        5.98
+      ]
+    },
+    "overlappingSamples": 100
+  },
+  "interpretation": "Cabinet candidates are positive AABB overlaps, not all confirmed mesh intersections. The existing box physics stop is a real contact-model conflict. Initial board/rails/timber checks omit apron and cross-rail solids and are NOT whole-installation clearance evidence.",
+  "requiredNextStep": "Reconcile knob/rod profile, real apron/cross-rail solids, and shooter front-stop contact before integration. Do not remove obstacles merely to clear the prototype."
+}
