@@ -56,3 +56,39 @@ test('installed shooter roof uses three closed capsule stocks on the existing ph
     if(saved)Object.defineProperty(globalThis,'document',saved);else delete globalThis.document;
   }
 });
+
+test('installed rollover bars are closed stocks on actual capsule axes and retain eight original mounts',async()=>{
+  const {PinballPhysics}=await import('./physics.mjs'),game=await PinballPhysics.create();
+  const saved=Object.getOwnPropertyDescriptor(globalThis,'document');
+  const ctx=new Proxy({}, {get:(_,key)=>key==='measureText'?()=>({width:10}):key.startsWith('create')?()=>({addColorStop(){}}):()=>{}});
+  Object.defineProperty(globalThis,'document',{configurable:true,value:{createElement:()=>({width:0,height:0,getContext:()=>ctx})}});
+  const assets=new WorkshopAssets();
+  try {
+    const root=assets.build(),colliders=[];game.world.forEachCollider(c=>colliders.push(c));
+    assert.equal(colliders.length,1380,'render-only correction adds no physical mounts');
+    for(const x of[-1.875,-.625,.625,1.875]){
+      const bar=root.getObjectByName('upper-rollover-bar-'+x);
+      assert.ok(bar?.isMesh);assert.equal(bar.material,assets.materials.chrome);
+      const matches=colliders.filter(c=>c.shape.type===2&&Math.abs(c.translation().x-x)<1e-6&&Math.abs(c.translation().z+4.55)<1e-6&&Math.abs(c.shape.radius-.035)<1e-9);
+      assert.equal(matches.length,1);const c=matches[0],t=c.translation(),q=c.rotation();
+      assert.ok(Math.abs(c.shape.halfHeight-.45)<1e-12);assert.ok(Math.abs(t.y-.23)<1e-6);
+      const axis=new T.Vector3(0,1,0).applyQuaternion(new T.Quaternion(q.x,q.y,q.z,q.w).normalize()),center=new T.Vector3(t.x,t.y,t.z);
+      const line=new T.Line3(center.clone().addScaledVector(axis,-c.shape.halfHeight),center.clone().addScaledVector(axis,c.shape.halfHeight));
+      const g=bar.geometry,p=g.attributes.position,vertices=new Map(),edges=new Map();
+      assert.equal(g.userData.primitiveRanges.length,1);assert.equal(g.index.count/3,192); // Old open bar16tri; four bars add704.
+      const weld=v=>{const key=v.toArray().map(n=>n.toFixed(6)).join(',');if(!vertices.has(key))vertices.set(key,vertices.size);return vertices.get(key);};
+      for(let k=0;k<g.index.count;k+=3){
+        const vs=[0,1,2].map(j=>new T.Vector3().fromBufferAttribute(p,g.index.getX(k+j)));
+        for(const v of vs)assert.ok(Math.abs(v.distanceTo(line.closestPointToPoint(v,true,new T.Vector3()))-c.shape.radius)<5e-7);
+        const normal=vs[1].clone().sub(vs[0]).cross(vs[2].clone().sub(vs[0])),mid=vs[0].clone().add(vs[1]).add(vs[2]).multiplyScalar(1/3);
+        assert.ok(normal.dot(mid.clone().sub(line.closestPointToPoint(mid,true,new T.Vector3())))>0);
+        const ids=vs.map(weld);for(let j=0;j<3;j++){const a=ids[j],b=ids[(j+1)%3],key=[Math.min(a,b),Math.max(a,b)].join(',');if(!edges.has(key))edges.set(key,[]);edges.get(key).push(a<b?1:-1);}
+      }
+      assert.equal(vertices.size-edges.size+g.index.count/3,2);for(const pair of edges.values()){assert.equal(pair.length,2);assert.equal(pair[0]+pair[1],0);}
+      for(const z of[-5,-4.1]){const mounts=[];root.traverse(m=>{const p=m.geometry?.parameters;if(m.isMesh&&m.geometry.type==='CylinderGeometry'&&p.radiusTop===.055&&p.radiusBottom===.055&&p.height===.23&&m.position.distanceTo(new T.Vector3(x,.12,z))<1e-9)mounts.push(m);});assert.equal(mounts.length,1);assert.equal(mounts[0].material,assets.materials.brass);}
+    }
+  }finally{
+    assets.root.traverse(o=>o.geometry?.dispose());for(const m of Object.values(assets.materials))m.dispose();game.dispose();
+    if(saved)Object.defineProperty(globalThis,'document',saved);else delete globalThis.document;
+  }
+});

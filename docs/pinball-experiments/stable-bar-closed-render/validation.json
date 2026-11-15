@@ -1,0 +1,32 @@
+{
+  "changedRuntimeSource": [
+    "web/js/pinball/playfield-parts.mjs"
+  ],
+  "sourceMapSHA256": "5e7e8d89d8f93752038af8b6ddb404f239849511cdf75ab941e91769f2a08adb",
+  "colliders": 1380,
+  "publicColliderSHA256": "92de221466b0281dc4c8293eda57f84b49591cf8d8d5a9ad6fd527dbe3f86418",
+  "postIntegrationPNGsEqual": {
+    "candidate-lower-side.png": true,
+    "candidate-lower-underside.png": true,
+    "candidate-lower-closeup.png": true,
+    "candidate-installed-90.png": true,
+    "candidate-installed-45.png": true,
+    "candidate-mobile-390.png": true,
+    "candidate-installed-10.png": true
+  },
+  "budget45": {
+    "triangles": 450844,
+    "calls": 683
+  },
+  "mountContactStatus": "Existing8fullheightmountvisuals unchanged, still no independentcolliders",
+  "testStatus": {
+    "fullNpmExit": 0,
+    "pinballPass": 208,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 141798.450916,
+    "lintErrors": 0,
+    "preexistingCSSWarnings": 3,
+    "focusedPass": 3
+  }
+}

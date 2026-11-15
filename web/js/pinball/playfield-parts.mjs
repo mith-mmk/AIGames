@@ -1,3 +1,4 @@
+import {railCapsules,capsuleStockGeometry} from './wire-stock.mjs';
 import {targetCarrierParts,targetDimensions,targetFaceAngle} from "./mechanical-contact.mjs";
 import { MechanicalSling, MechanicalTarget } from "./components/sling-target.mjs";
 import { LOWER_LAYOUT, TARGET_BANKS, lowerLanePaths, lowerLaneMounts } from "./layout.mjs";
@@ -48,7 +49,8 @@ export class PlayfieldParts {
     a.box(spinner, 0.23, 0.17, 0.025, 0, 0, .045, "dark");
     a.ring(spinner, 0.055, 0.012, 0, 0, .065, "cream").rotation.x = 0;
     for (const x of [-1.875,-.625,.625,1.875]) {
-      a.tube(g,[[x,.23,-5.0],[x,.23,-4.1]],.035,"chrome");
+      const bar=a.mesh(capsuleStockGeometry(railCapsules([new T.Vector3(x,.23,-5.0),new T.Vector3(x,.23,-4.1)],.035)),"chrome",g);
+      bar.name="upper-rollover-bar-"+x;
       for(const z of [-5.0,-4.1]) a.cylinder(g,.055,.23,x,.12,z,"brass");
     }
     a.laneLamps=[];
