@@ -1,0 +1,138 @@
+{
+  "packetFiles": [
+    {
+      "path": "README.md",
+      "sha256": "69ee6854b46de50a121792b8afbacae10b21d64926e6b493c40404d1abde6480",
+      "bytes": 6826
+    },
+    {
+      "path": "browser-replay.cjs",
+      "sha256": "c949cf3b76fcb47fc74417677f6177b854908f6a66f55ae595b6532de048c1aa",
+      "bytes": 4944
+    },
+    {
+      "path": "controller-full-samples.json.gz",
+      "sha256": "2ecf6302673ff5697ce3e7bfc0165b0d91572d45b8445d3c1f9d421fcc168488",
+      "bytes": 648697
+    },
+    {
+      "path": "controller-launch-through-return.json.gz",
+      "sha256": "3cc44baf5c8407ebcb9a598f5b1b41a2ddea6e54877447586e4e4b3d032ffd5e",
+      "bytes": 139782
+    },
+    {
+      "path": "controller-replay.mjs",
+      "sha256": "c16e95a370bbb50beaf8e1d3def65b1ad4030f4c7338667010dbf1d901eda161",
+      "bytes": 4508
+    },
+    {
+      "path": "controller-result.json",
+      "sha256": "076dda4eeeb2182c44cfc2f5bf2bb901c52291622919bfa3c874c8fa7ead5cb6",
+      "bytes": 1295
+    },
+    {
+      "path": "p0.75-d44-in-approach-left.png",
+      "sha256": "7e708ecce86a884d4bad5ca9b48adebf4fd4d29b6faa357f0816d097dffb3b54",
+      "bytes": 594281
+    },
+    {
+      "path": "p0.75-d44-leftsave-earned.png",
+      "sha256": "c4827c7ec1a4fbc072b1248192232faa5fd37125318c1d20b33bb27533480cc0",
+      "bytes": 598312
+    },
+    {
+      "path": "p0.75-d44-leftsave-used.png",
+      "sha256": "ce0d6dc5afaa1df91f0c57075b89c5c7bd6baf4a0cb2e00455fd490fa7773c75",
+      "bytes": 594386
+    },
+    {
+      "path": "p0.75-d44-out-approach-left.png",
+      "sha256": "3de1b73d521a9d5fad26b2c6a97c2446ad8ba773be458abe5582815a51cfa52f",
+      "bytes": 596984
+    },
+    {
+      "path": "p0.75-d44-samples.json.gz",
+      "sha256": "e70954ae9cd262ef013556de58f5f230a3ebf5df3f1e09e5a68b3c327c00d3f4",
+      "bytes": 244642
+    },
+    {
+      "path": "p0.85-d82-samples.json.gz",
+      "sha256": "aed941b8d4fc9c73b2faf26706dd3ef7129164101691a578d7522720cc98e86b",
+      "bytes": 126259
+    },
+    {
+      "path": "p0.925-d60-samples.json.gz",
+      "sha256": "b3e8368f1beeba11cb549a57163f44c1a30d2e84ebd5ef0238a318b65dea1dc9",
+      "bytes": 175442
+    },
+    {
+      "path": "results.json",
+      "sha256": "5e22d293c91c7c88ef4e5d662046beb3867697c6a12ede04a6f05308a36358c2",
+      "bytes": 12276
+    },
+    {
+      "path": "route-windows.json",
+      "sha256": "7770072525c4f6df62206837fd3aa6dcd88c5799cd86cce348dd17466830b3b0",
+      "bytes": 149062
+    }
+  ],
+  "originalEvidence": [
+    {
+      "path": "artifacts/pinball/routes-realinput-f0c5f62/play.cjs",
+      "sha256": "e50306c14e739faba7ab45e032f4f1fc6a338c87bd6b45a2b0941d9856345ff9",
+      "bytes": 4763
+    },
+    {
+      "path": "artifacts/pinball/routes-realinput-f0c5f62/controller.mjs",
+      "sha256": "3c3becad83e1d9b27bca082741f2ad5b2984cb7c2e4f77ddcc48104c879dabb7",
+      "bytes": 4824
+    },
+    {
+      "path": "artifacts/pinball/routes-realinput-f0c5f62/controller-result.json",
+      "sha256": "beac07af784b8f7385217c2a430d21952f36ab7484a22b824b985ef13b47598b",
+      "bytes": 1654
+    },
+    {
+      "path": "artifacts/pinball/routes-realinput-f0c5f62/controller-samples.json",
+      "sha256": "6bf23e1a5dfb63622bfc0da776ec775111c1adc6fe70d0a41c7ee450e3a64926",
+      "bytes": 3074317
+    },
+    {
+      "path": "artifacts/pinball/routes-realinput-f0c5f62/results.json",
+      "sha256": "5e22d293c91c7c88ef4e5d662046beb3867697c6a12ede04a6f05308a36358c2",
+      "bytes": 12276
+    },
+    {
+      "path": "artifacts/pinball/routes-realinput-f0c5f62/run.log",
+      "sha256": "9a3695df88e6bee0ff25ee30cf3ed386faa64b70730df434c3277ca779691a0b",
+      "bytes": 3027
+    },
+    {
+      "path": "artifacts/pinball/routes-realinput-f0c5f62/controller.log",
+      "sha256": "645bded194bf0af1c31fe76ccf9257b65bff7fd12fc620bf9373619b62673cb0",
+      "bytes": 291
+    }
+  ],
+  "runtimeSources": [
+    {
+      "path": "web/js/pinball/physics.mjs",
+      "sha256": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92",
+      "bytes": 23710
+    },
+    {
+      "path": "web/js/pinball/layout.mjs",
+      "sha256": "1c9860b284831e46af2ddde75476c9563e064b29c38d84bb5df812f7366de609",
+      "bytes": 5728
+    },
+    {
+      "path": "web/js/pinball/ramp-geometry.mjs",
+      "sha256": "3a9dd4e4ad8bd3cf7418a395435e23a5552e11c2f15ab20d86065e7fff5670cd",
+      "bytes": 17803
+    },
+    {
+      "path": "scripts/pinball-playability-audit.mjs",
+      "sha256": "76bb52baf38951264480d9b40e1436b6ff363de30107c781f7b6e1a48e4f1389",
+      "bytes": 4490
+    }
+  ]
+}

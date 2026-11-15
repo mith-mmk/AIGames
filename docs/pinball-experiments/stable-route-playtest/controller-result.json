@@ -1,0 +1,55 @@
+{
+  "method": "One fresh-world legal physics-controller run, power .85, release delay82 at120Hz. Derived from natural54 controller, but not its world-creation history. Direct legal launch/step input, no fixtures or live position reset. Not browser input or human play.",
+  "summary": {
+    "games": 1,
+    "finished": 1,
+    "stalled": 0,
+    "zeroScore": 0,
+    "score": 5175,
+    "ramps": 2,
+    "lanes": 9,
+    "bumpers": 5,
+    "shots": 5,
+    "seconds": 82.78333333334528,
+    "liveResets": 0,
+    "hardwareContactEvents": 4,
+    "hardwareContactTicks": 34
+  },
+  "results": [
+    {
+      "power": 0.85,
+      "delay": 82,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 82.78333333334528,
+      "score": 5175,
+      "lanes": 9,
+      "bumpers": 5,
+      "ramps": 2,
+      "shots": 5,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 34,
+      "hardwareContactEvents": 4,
+      "physicsMetrics": {
+        "rampTraversals": 2,
+        "flipperContacts": [
+          18,
+          16
+        ],
+        "activeFlipperContacts": [
+          11,
+          9
+        ],
+        "coilImpulses": [
+          11,
+          9
+        ],
+        "upfieldReturns": 20
+      },
+      "kickbackUses": 0,
+      "sideSaveUses": 1
+    }
+  ]
+}

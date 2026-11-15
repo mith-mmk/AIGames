@@ -1,0 +1,630 @@
+[
+  {
+    "power": 0.75,
+    "delay": 44,
+    "errors": [],
+    "screenshots": [
+      {
+        "name": "p0.75-d44-in-approach-left.png",
+        "snapshot": {
+          "time": 21.79166666666607,
+          "p": {
+            "x": -1.6492112874984741,
+            "y": 0.16694198548793793,
+            "z": 3.230379581451416
+          },
+          "v": {
+            "x": 1.5370467901229858,
+            "y": 4.651960594515003e-9,
+            "z": -16.109088897705078
+          },
+          "phase": "playing",
+          "ball": 1,
+          "score": 1000,
+          "event": "BANK +75",
+          "sideCharge": 0,
+          "sideUses": 0,
+          "centerUses": 1,
+          "ramp": 0,
+          "rampStage": 0,
+          "left": false,
+          "right": true
+        }
+      },
+      {
+        "name": "p0.75-d44-out-approach-left.png",
+        "snapshot": {
+          "time": 31.64166666666551,
+          "p": {
+            "x": -2.1717405319213867,
+            "y": 0.170192688703537,
+            "z": 3.354261636734009
+          },
+          "v": {
+            "x": 0.8806483149528503,
+            "y": -3.7215686088387656e-9,
+            "z": 4.018731117248535
+          },
+          "phase": "playing",
+          "ball": 1,
+          "score": 3500,
+          "event": "SLING +75",
+          "sideCharge": 0,
+          "sideUses": 0,
+          "centerUses": 1,
+          "ramp": 0,
+          "rampStage": 0,
+          "left": false,
+          "right": false
+        }
+      },
+      {
+        "name": "p0.75-d44-leftsave-earned.png",
+        "snapshot": {
+          "time": 58.72499999999731,
+          "p": {
+            "x": 1.410391926765442,
+            "y": 0.17062446475028992,
+            "z": -0.6154744029045105
+          },
+          "v": {
+            "x": 3.8594987392425537,
+            "y": 0.012732045724987984,
+            "z": 0.20359408855438232
+          },
+          "phase": "playing",
+          "ball": 3,
+          "score": 5175,
+          "event": "MISSION CLEAR · サイドを点検 · LEFT SAVE READY +750",
+          "sideCharge": 1,
+          "sideUses": 0,
+          "centerUses": 1,
+          "ramp": 0,
+          "rampStage": 0,
+          "left": false,
+          "right": true
+        }
+      },
+      {
+        "name": "p0.75-d44-leftsave-used.png",
+        "snapshot": {
+          "time": 61.774999999997135,
+          "p": {
+            "x": -2.0888450145721436,
+            "y": 0.16960571706295013,
+            "z": 3.4931423664093018
+          },
+          "v": {
+            "x": -0.0030450550839304924,
+            "y": -5.582352802235846e-9,
+            "z": -11.871200561523438
+          },
+          "phase": "playing",
+          "ball": 3,
+          "score": 5300,
+          "event": "LEFT SAVE",
+          "sideCharge": 0,
+          "sideUses": 1,
+          "centerUses": 1,
+          "ramp": 0,
+          "rampStage": 0,
+          "left": false,
+          "right": true
+        }
+      }
+    ],
+    "inputActions": [
+      {
+        "wall": 115,
+        "launchPower": "75%"
+      },
+      {
+        "wall": 6783,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 6984,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 9049,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 10583,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 10964,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 14034,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 14414,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 15967,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 17822,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 18030,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 18100,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 20131,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 21449,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 21897,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 23516,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 24283,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 24666,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 26681,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 31928,
+        "launchPower": "75%"
+      },
+      {
+        "wall": 38598,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 38797,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 40664,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 41866,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 42249,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 44265,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 46330,
+        "launchPower": "75%"
+      },
+      {
+        "wall": 52998,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 53199,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 55065,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 55264,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 58030,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 60099,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 61199,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 63230,
+        "side": "right",
+        "down": false
+      }
+    ],
+    "final": {
+      "time": 64.9583333333311,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "gameover",
+      "ball": 3,
+      "score": 5325,
+      "event": "GAME OVER",
+      "sideCharge": 0,
+      "sideUses": 1,
+      "centerUses": 1,
+      "ramp": 0,
+      "rampStage": 0,
+      "left": false,
+      "right": false
+    },
+    "seconds": 64.765,
+    "launches": 3,
+    "samplesFile": "p0.75-d44-samples.json.gz"
+  },
+  {
+    "power": 0.925,
+    "delay": 60,
+    "errors": [],
+    "screenshots": [
+      {
+        "name": "p0.925-d60-out-approach-left.png",
+        "snapshot": {
+          "time": 11.008333333333349,
+          "p": {
+            "x": -2.149461269378662,
+            "y": 0.16969257593154907,
+            "z": 3.3445968627929688
+          },
+          "v": {
+            "x": -0.13969489932060242,
+            "y": -3.7215686088387656e-9,
+            "z": 5.041511535644531
+          },
+          "phase": "playing",
+          "ball": 1,
+          "score": 600,
+          "event": "SLING +25",
+          "sideCharge": 0,
+          "sideUses": 0,
+          "centerUses": 0,
+          "ramp": 0,
+          "rampStage": 0,
+          "left": false,
+          "right": true
+        }
+      }
+    ],
+    "inputActions": [
+      {
+        "wall": 129,
+        "launchPower": "93%"
+      },
+      {
+        "wall": 7514,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 8930,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 9446,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 11195,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 11309,
+        "launchPower": "93%"
+      },
+      {
+        "wall": 17846,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 18812,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 19914,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 20311,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 20828,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 22847,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 23180,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 24882,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 25395,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 27413,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 28394,
+        "launchPower": "93%"
+      },
+      {
+        "wall": 34929,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 36679,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 36995,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 38761,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 45361,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 46328,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 46477,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 46477,
+        "side": "right",
+        "down": false
+      }
+    ],
+    "final": {
+      "time": 46.60833333333133,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "gameover",
+      "ball": 3,
+      "score": 3850,
+      "event": "GAME OVER",
+      "sideCharge": 0,
+      "sideUses": 0,
+      "centerUses": 0,
+      "ramp": 0,
+      "rampStage": 0,
+      "left": true,
+      "right": true
+    },
+    "seconds": 46.478,
+    "launches": 3,
+    "samplesFile": "p0.925-d60-samples.json.gz"
+  },
+  {
+    "power": 0.85,
+    "delay": 82,
+    "errors": [],
+    "screenshots": [],
+    "inputActions": [
+      {
+        "wall": 128,
+        "launchPower": "85%"
+      },
+      {
+        "wall": 7629,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 10281,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 10980,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 12730,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 12996,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 15012,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 16047,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 16047,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 16160,
+        "launchPower": "85%"
+      },
+      {
+        "wall": 23747,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 24062,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 24277,
+        "side": "left",
+        "down": false
+      },
+      {
+        "wall": 24277,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 24395,
+        "launchPower": "85%"
+      },
+      {
+        "wall": 31439,
+        "side": "right",
+        "down": true
+      },
+      {
+        "wall": 33179,
+        "side": "left",
+        "down": true
+      },
+      {
+        "wall": 33496,
+        "side": "right",
+        "down": false
+      },
+      {
+        "wall": 33661,
+        "side": "left",
+        "down": false
+      }
+    ],
+    "final": {
+      "time": 33.80833333333206,
+      "p": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "phase": "gameover",
+      "ball": 3,
+      "score": 2300,
+      "event": "GAME OVER",
+      "sideCharge": 0,
+      "sideUses": 0,
+      "centerUses": 1,
+      "ramp": 0,
+      "rampStage": 0,
+      "left": true,
+      "right": false
+    },
+    "seconds": 33.662,
+    "launches": 3,
+    "samplesFile": "p0.85-d82-samples.json.gz"
+  }
+]
