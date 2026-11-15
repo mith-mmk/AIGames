@@ -1,0 +1,125 @@
+{
+  "runtimeModuleSHA256": "152cada74a6582e720ec79da15da255d0bfbc57bb57065db52cb6fbfa710b463",
+  "directionTestSHA256": "445e66d2c3401478c96d12acc483c8e2ff592709fbbc87b7b0d58d3e2bcde301",
+  "npmTestExit": 0,
+  "pinball": {
+    "tests": 206,
+    "pass": 206,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 143566.421666
+  },
+  "negativeControl": {
+    "pass": 4,
+    "fail": 2,
+    "failed": "left OUT and right OUT only"
+  },
+  "physicsColliderCount": 1380,
+  "physicsPublicStateSHA256": "92de221466b0281dc4c8293eda57f84b49591cf8d8d5a9ad6fd527dbe3f86418",
+  "render": {
+    "baseline": "accepted8849609",
+    "candidate": "stable OUT-arrow-only playfield-parts SHA256 152cada74a6582e720ec79da15da255d0bfbc57bb57065db52cb6fbfa710b463",
+    "results": [
+      {
+        "mode": "baseline",
+        "view": "installed-45",
+        "triangles": 449612,
+        "calls": 685
+      },
+      {
+        "mode": "baseline",
+        "view": "installed-10",
+        "triangles": 449468,
+        "calls": 673
+      },
+      {
+        "mode": "baseline",
+        "view": "installed-90",
+        "triangles": 443292,
+        "calls": 658
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-45",
+        "triangles": 449612,
+        "calls": 685
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-10",
+        "triangles": 449468,
+        "calls": 673
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-90",
+        "triangles": 443292,
+        "calls": 658
+      }
+    ],
+    "errors": [],
+    "scope": "Integrated geometry artifact; installed and isolated component views are distinct; not accepted."
+  },
+  "pixelDiff": [
+    {
+      "view": "baseline-installed-10.png",
+      "count": 234,
+      "bbox": [
+        293,
+        604,
+        910,
+        614
+      ]
+    },
+    {
+      "view": "baseline-installed-45.png",
+      "count": 456,
+      "bbox": [
+        392,
+        722,
+        791,
+        746
+      ]
+    },
+    {
+      "view": "baseline-installed-90.png",
+      "count": 379,
+      "bbox": [
+        452,
+        764,
+        768,
+        788
+      ]
+    },
+    {
+      "view": "baseline-lower-closeup.png",
+      "count": 809,
+      "bbox": [
+        252,
+        422,
+        344,
+        494
+      ]
+    },
+    {
+      "view": "baseline-lower-side.png",
+      "count": 0,
+      "bbox": null
+    },
+    {
+      "view": "baseline-lower-underside.png",
+      "count": 0,
+      "bbox": null
+    },
+    {
+      "view": "baseline-mobile-390.png",
+      "count": 266,
+      "bbox": [
+        77,
+        613,
+        312,
+        630
+      ]
+    }
+  ]
+}

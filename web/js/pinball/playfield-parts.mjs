@@ -104,7 +104,9 @@ export class PlayfieldParts {
     ctx.strokeStyle=ink;ctx.lineWidth=9;ctx.strokeRect(5,5,246,630);
     ctx.fillStyle=ink;ctx.textAlign="center";ctx.font="bold 100px sans-serif";
     ctx.fillText(label,128,325);ctx.font="bold 75px sans-serif";ctx.fillText("LANE",128,425);
-    ctx.beginPath();ctx.moveTo(128,100);ctx.lineTo(55,195);ctx.lineTo(128,160);ctx.lineTo(201,195);ctx.closePath();ctx.fill();
+    // OUT points toward the drain; reflect only the arrow within its existing ink bounds.
+    const arrowY=y=>label==="OUT"?295-y:y;
+    ctx.beginPath();ctx.moveTo(128,arrowY(100));ctx.lineTo(55,arrowY(195));ctx.lineTo(128,arrowY(160));ctx.lineTo(201,arrowY(195));ctx.closePath();ctx.fill();
     const texture=new T.CanvasTexture(c);texture.colorSpace=T.SRGBColorSpace;
     const mesh=new T.Mesh(new T.PlaneGeometry(width,height),new T.MeshBasicMaterial({map:texture}));
     mesh.name=`${label.toLowerCase()}-lane-printed-insert`;mesh.rotation.x=-Math.PI/2;mesh.rotation.z=angle;mesh.position.set(x,.048,z);this.a.root.add(mesh);
