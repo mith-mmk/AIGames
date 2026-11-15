@@ -1,0 +1,38 @@
+{
+  "rodAxisX": -2.1,
+  "railCrossesRodPlanAtZ": 3.482615025409083,
+  "railBottom": 0.2,
+  "rodTop": 0.19,
+  "solidVerticalGap": 0.01,
+  "firstFloorSphereContactZ": 3.7060016820305024,
+  "legalFixedAxisTriggerInterval": [
+    3.7060016820305024,
+    3.72
+  ],
+  "allowedUpstreamStraightSaveAxisX": [
+    -2.595,
+    -2.4483239697419132
+  ],
+  "contactNormalXZ": [
+    -0.6954408296708724,
+    0.7185833649804932
+  ],
+  "incomingVelocityXZ": [
+    0,
+    -12
+  ],
+  "tangentProjectionVelocityXZ": [
+    -5.996786538356659,
+    -5.803655370879735
+  ],
+  "floorSlingToCapCenterGap": 0.023461100671334084,
+  "clampToOldArmAxialGap": 0.06,
+  "newArmRequiredEndpointX": -2.73,
+  "armLengthOld": 0.93,
+  "armLengthProposed": 1.01,
+  "limits": [
+    "Contact projection is not a Rapier outcome or restitution model",
+    "Free upstream line blocked does not prove passive curved return impossible",
+    "No candidate geometry or dynamics"
+  ]
+}

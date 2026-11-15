@@ -1,0 +1,33 @@
+{
+  "normalOffset": 0.43,
+  "departureAngle": 42,
+  "start": [
+    -2.3638850890028675,
+    3.8379206722956454
+  ],
+  "end": [
+    -2.1561437908496734,
+    4.3
+  ],
+  "tangentStart": [
+    0.6691306063588582,
+    0.7431448254773942
+  ],
+  "tangentEnd": [
+    0.18001685440777968,
+    0.9836635258710817
+  ],
+  "forwardTangentIntersectionDistance": 0.23104628174565675,
+  "backwardDistance": 0.29520102285192834,
+  "quadraticControl": [
+    -2.2092849504014365,
+    4.009621521020723
+  ],
+  "quadraticChordError": 5.956097869827939e-7,
+  "pointSampleDistanceToDividerAndFirstTail": 0.39000000242282606,
+  "pointSampleWorst": [
+    0,
+    671
+  ],
+  "warning": "Static unique tangent-intersection quadratic, not installed source. Point-sampled clearance is not continuous all-solids certificate; no caps or earned save return qualification."
+}

@@ -1,0 +1,102 @@
+{
+  "join": [
+    -1.7410209957213656,
+    0.22,
+    3.778770245989578
+  ],
+  "next": [
+    -1.2293162114557363,
+    0.22,
+    4.028382335875251
+  ],
+  "tangent": [
+    0.8987684456438995,
+    0,
+    0.4384236320214149
+  ],
+  "radius": 0.9953748700122477,
+  "startZ": 2.8841587212356714,
+  "angleDegrees": 63.99665415548853,
+  "joinError": 0,
+  "analyticTangentDot": 1,
+  "arcChordError": 0.0000023685679878334094,
+  "oldTailPointsUnchanged": 23,
+  "newPortionVsSling": {
+    "min": 0.32803220281296175,
+    "indices": [
+      0,
+      37
+    ]
+  },
+  "newPortionVsWire": [
+    {
+      "min": 0.19327045623619235,
+      "indices": [
+        0,
+        92
+      ]
+    },
+    {
+      "min": 0.36039373730428803,
+      "indices": [
+        0,
+        90
+      ]
+    },
+    {
+      "min": 0.19327045623619235,
+      "indices": [
+        0,
+        97
+      ]
+    },
+    {
+      "min": 0.35327045623619235,
+      "indices": [
+        0,
+        98
+      ]
+    }
+  ],
+  "lastSupport": {
+    "i": 240,
+    "x": -2.65,
+    "z": 3,
+    "drop": 0.06,
+    "y": 0.38,
+    "divider": false
+  },
+  "atSupportZ": {
+    "x": -2.2932362415913716,
+    "bareRailToPostSurface": 0.2997637584086283
+  },
+  "frame": {
+    "wallX": [
+      -2.87,
+      -2.73
+    ],
+    "wallY": [
+      -0.05,
+      0.385
+    ],
+    "timberX": [
+      -2.91,
+      -2.75
+    ],
+    "timberTop": 0.28,
+    "proposedFootAtMinus285": [
+      -2.935,
+      -2.765
+    ]
+  },
+  "straightOutBareSurfaceWidth": 0.41000000000000014,
+  "straightOutFloorCenterWidth": 0.1466760302580865,
+  "straightOutWithCapFloorCenterWidth": 0.09897042318621319,
+  "crossheadGroundVerticalGap": 0.035999999999999976,
+  "limits": [
+    "Arc is feasibility mathematics, not installed candidate",
+    "No clamp or wall bracket design generated",
+    "No dynamic or whole-world sphere-path proof",
+    "Sling/wire distances cover proposed new divider only, not unchanged tail defects"
+  ]
+}

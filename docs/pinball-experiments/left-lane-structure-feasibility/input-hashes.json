@@ -1,0 +1,10 @@
+{
+  "artifacts/pinball/neon-reference.png": "b315fe2280bad0ce86126b808ce7fcc958a722ad0df722ca0f3c98a5bb2ff25c",
+  "artifacts/pinball/sling-gear-print-5b798d3/production-preview/candidate-installed-45.png": "8dbb292d529a568642a538765220de0e022359932536a4b465d4b8379c3f2246",
+  "artifacts/pinball/sling-gear-print-5b798d3/production-preview/candidate-lower-closeup.png": "832833f75a39cc26f9c654dec1edd62771e56adbd83436515c7742561054dc95",
+  "artifacts/pinball/sling-gear-print-5b798d3/production-preview/candidate-lower-side.png": "28339ec3fd71e37f2f19ced198d9dfbb3b00c827d4ccbef7a18a2a7f27618360",
+  "web/js/pinball/layout.mjs": "1c9860b284831e46af2ddde75476c9563e064b29c38d84bb5df812f7366de609",
+  "web/js/pinball/playfield-parts.mjs": "d6463cdda67b9e0cc40f4280704b5e5361ec66424ba5238767a8adee8270e69c",
+  "web/js/pinball/physics.mjs": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92",
+  "web/js/pinball/assets.mjs": "a7f093ffdc6afc9bfb695f11e53fcf2b85f1ac7caaa94d8614aca48ec2a1def0"
+}
