@@ -1,0 +1,6 @@
+{
+  "allStaticCasesExactlyEqual": true,
+  "allInnerCoreCasesExactlyEqual": true,
+  "allNaturalClassificationsExactlyEqual": true,
+  "originalResultSHA256": "6248f5bae1e13a73ab87250cd2416f2e4617078613e965867b68968ca6d69a5e"
+}

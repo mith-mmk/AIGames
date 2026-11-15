@@ -1,0 +1,16 @@
+{
+  "base": "71245b26bbc4d72c364d395b21b58b933bba4675",
+  "views": [
+    "top",
+    "oblique",
+    "side"
+  ],
+  "errors": [],
+  "witness": {
+    "x": -2.502410650253296,
+    "y": 0.1708223968744278,
+    "z": 3.575540542602539
+  },
+  "sideView": "Inner-table-side camera; no geometry hidden",
+  "scope": "Installed stable assets plus one unrounded red static cuboid and recorded marker spheres. No rendered bridge/carriage/actuator; stopped after first primitive gate failed. Not runtime gameplay or performance test."
+}

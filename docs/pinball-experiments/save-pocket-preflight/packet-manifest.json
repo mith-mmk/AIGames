@@ -1,0 +1,89 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6087,
+      "sha256": "d8e97bd1ef723b3e4aeae6fdb356b573ab86e128521ac77e65a0d6edb1efd555"
+    },
+    {
+      "path": "images/stable-oblique.png",
+      "bytes": 453321,
+      "sha256": "0091858f37e449cf0093a3ea1edf724f74e10d2c66f01c85ef19ae8bdc607807"
+    },
+    {
+      "path": "images/stable-side.png",
+      "bytes": 320775,
+      "sha256": "9b74a8afb3f3b003bd5039b23aaa09b138bbe2b293da24c80fc7c098950be557"
+    },
+    {
+      "path": "images/stable-top.png",
+      "bytes": 357924,
+      "sha256": "34991790d3b4c74e7ab96cc121dde9b412a19f832a21308de0488cbc54bedfbc"
+    },
+    {
+      "path": "natural/comparison.json",
+      "bytes": 561,
+      "sha256": "516c7e36c4ea23fcea09690d42f97a810c3f79d6dcf97b32ee897c4478b3a1e7"
+    },
+    {
+      "path": "natural/natural54.json",
+      "bytes": 39049,
+      "sha256": "c4c5469ea2ec8270e71dd2398e73ccee16793df2c488f8fdedf1c7093c181370"
+    },
+    {
+      "path": "natural/observations.json.gz",
+      "bytes": 74136,
+      "sha256": "317bc51d421e238bce9cfd33f88cfdbae52cff6e7762424dbf6b4dd02f53ed41"
+    },
+    {
+      "path": "natural/observe.mjs",
+      "bytes": 2144,
+      "sha256": "2dbc58f6ee05a3b404668d7eb1f199a85aba5b776f76e230230f7157e96bd00e"
+    },
+    {
+      "path": "natural/run.log",
+      "bytes": 331,
+      "sha256": "9716d6c7b3382af37be7fb67b18ace04587770ec3f0c95426e2740c7d30f44d8"
+    },
+    {
+      "path": "scripts/parked-shoe-gate.mjs",
+      "bytes": 6717,
+      "sha256": "5609c2db6f5891637f4f56ea07f1674ecfbf84a23f2144e0beb8e83c78c83023"
+    },
+    {
+      "path": "scripts/visual.cjs",
+      "bytes": 4067,
+      "sha256": "049ccdda8b28ec02461ea6d38ba0fedfd188a95566ec6d06249bc651ca72364f"
+    },
+    {
+      "path": "static/parked-shoe-gate.log",
+      "bytes": 512,
+      "sha256": "b31e61c7dcbfe7e1d979579c0d23369fae941550f02a38267ebbca553ddcd44c"
+    },
+    {
+      "path": "static/parked-shoe-geometry.json",
+      "bytes": 2574,
+      "sha256": "557a75de5bab30732030f1b9ad8125b2bfd8d2e64288696e165e7b61fbecc798"
+    },
+    {
+      "path": "static/parked-shoe-result.json",
+      "bytes": 82138,
+      "sha256": "6248f5bae1e13a73ab87250cd2416f2e4617078613e965867b68968ca6d69a5e"
+    },
+    {
+      "path": "static/replay-comparison.json",
+      "bytes": 224,
+      "sha256": "a909aa28f24666ad4fa82ab3631a7ca233794ae47da805736600a2272aedcbaa"
+    },
+    {
+      "path": "static/visual-evidence.json",
+      "bytes": 520,
+      "sha256": "db9ce1bfadd167e40f8e54bf1b91976ee8d5aa36d021f334be0ae4dd1a93694e"
+    },
+    {
+      "path": "static/visual.log",
+      "bytes": 102,
+      "sha256": "8d233bcef9f73fb5261b6bdc01f0e15e5f18ede7b084cedad9e2d2d562274734"
+    }
+  ]
+}

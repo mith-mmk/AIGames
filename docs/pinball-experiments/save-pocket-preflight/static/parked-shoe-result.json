@@ -1,0 +1,3000 @@
+{
+  "roundingQualification": "Constructed primitive is unrounded cuboid, not completed rounded shoe. Conservative inner cuboid shrinks each boundary by.01; it is contained in any edge treatment confined to that boundary shell. Its overlap witnesses reject that bounded rounding too, not every lateral pocket.",
+  "core": {
+    "size": [
+      0.28,
+      0.15,
+      0.02
+    ],
+    "cases": [
+      {
+        "spec": {
+          "name": "mouth--2.57-0.2-false",
+          "x": -2.57,
+          "z": 1.1,
+          "speed": 0.2,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 0,
+        "worst": null
+      },
+      {
+        "spec": {
+          "name": "mouth--2.57-2-false",
+          "x": -2.57,
+          "z": 1.1,
+          "speed": 2,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 132,
+          "p": {
+            "x": -2.521916151046753,
+            "y": 0.17048990726470947,
+            "z": 3.4251108169555664
+          },
+          "contact": {
+            "distance": -0.010110877454280853,
+            "point1": {
+              "x": -2.521916151046753,
+              "y": 0.17048990726470947,
+              "z": 3.549999952316284
+            },
+            "point2": {
+              "x": -2.521916151046753,
+              "y": 0.17048990726470947,
+              "z": 3.5601108074188232
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.57-4-false",
+          "x": -2.57,
+          "z": 1.1,
+          "speed": 4,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 0,
+        "worst": null
+      },
+      {
+        "spec": {
+          "name": "mouth--2.57-8-false",
+          "x": -2.57,
+          "z": 1.1,
+          "speed": 8,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 0,
+        "worst": null
+      },
+      {
+        "spec": {
+          "name": "mouth--2.545-0.2-false",
+          "x": -2.545,
+          "z": 1.1,
+          "speed": 0.2,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 0,
+        "worst": null
+      },
+      {
+        "spec": {
+          "name": "mouth--2.545-2-false",
+          "x": -2.545,
+          "z": 1.1,
+          "speed": 2,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 0,
+        "worst": null
+      },
+      {
+        "spec": {
+          "name": "mouth--2.545-4-false",
+          "x": -2.545,
+          "z": 1.1,
+          "speed": 4,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 168,
+          "p": {
+            "x": -2.5066323280334473,
+            "y": 0.17089587450027466,
+            "z": 3.4793896675109863
+          },
+          "contact": {
+            "distance": -0.06438972800970078,
+            "point1": {
+              "x": -2.5066323280334473,
+              "y": 0.17089587450027466,
+              "z": 3.549999952316284
+            },
+            "point2": {
+              "x": -2.5066323280334473,
+              "y": 0.17089587450027466,
+              "z": 3.614389657974243
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.545-8-false",
+          "x": -2.545,
+          "z": 1.1,
+          "speed": 8,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 204,
+          "p": {
+            "x": -2.492504119873047,
+            "y": 0.17081297934055328,
+            "z": 3.468367576599121
+          },
+          "contact": {
+            "distance": -0.05336763709783554,
+            "point1": {
+              "x": -2.492504119873047,
+              "y": 0.17081297934055328,
+              "z": 3.549999952316284
+            },
+            "point2": {
+              "x": -2.492504119873047,
+              "y": 0.17081297934055328,
+              "z": 3.603367567062378
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.515-0.2-false",
+          "x": -2.515,
+          "z": 1.1,
+          "speed": 0.2,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 132,
+          "p": {
+            "x": -2.4868764877319336,
+            "y": 0.17021842300891876,
+            "z": 3.5096449851989746
+          },
+          "contact": {
+            "distance": -0.09464504569768906,
+            "point1": {
+              "x": -2.4868764877319336,
+              "y": 0.17021842300891876,
+              "z": 3.549999952316284
+            },
+            "point2": {
+              "x": -2.4868764877319336,
+              "y": 0.17021842300891876,
+              "z": 3.6446449756622314
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.515-2-false",
+          "x": -2.515,
+          "z": 1.1,
+          "speed": 2,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 120,
+          "p": {
+            "x": -2.5024349689483643,
+            "y": 0.17069724202156067,
+            "z": 3.4564194679260254
+          },
+          "contact": {
+            "distance": -0.04141952842473984,
+            "point1": {
+              "x": -2.5024349689483643,
+              "y": 0.17069724202156067,
+              "z": 3.549999952316284
+            },
+            "point2": {
+              "x": -2.5024349689483643,
+              "y": 0.17069724202156067,
+              "z": 3.5914194583892822
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.515-4-false",
+          "x": -2.515,
+          "z": 1.1,
+          "speed": 4,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 144,
+          "p": {
+            "x": -2.4966886043548584,
+            "y": 0.1708553582429886,
+            "z": 3.5181071758270264
+          },
+          "contact": {
+            "distance": -0.10310723632574081,
+            "point1": {
+              "x": -2.4966886043548584,
+              "y": 0.1708553582429886,
+              "z": 3.549999952316284
+            },
+            "point2": {
+              "x": -2.4966886043548584,
+              "y": 0.1708553582429886,
+              "z": 3.653107166290283
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.515-8-false",
+          "x": -2.515,
+          "z": 1.1,
+          "speed": 8,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 0,
+        "worst": null
+      },
+      {
+        "spec": {
+          "name": "mouth--2.485-0.2-false",
+          "x": -2.485,
+          "z": 1.1,
+          "speed": 0.2,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 156,
+          "p": {
+            "x": -2.5162298679351807,
+            "y": 0.1708092838525772,
+            "z": 3.6098122596740723
+          },
+          "contact": {
+            "distance": -0.09518768638372421,
+            "point1": {
+              "x": -2.5162298679351807,
+              "y": 0.1708092838525772,
+              "z": 3.569999933242798
+            },
+            "point2": {
+              "x": -2.5162298679351807,
+              "y": 0.1708092838525772,
+              "z": 3.4748122692108154
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.485-2-false",
+          "x": -2.485,
+          "z": 1.1,
+          "speed": 2,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 120,
+          "p": {
+            "x": -2.4837634563446045,
+            "y": 0.17094001173973083,
+            "z": 3.4235143661499023
+          },
+          "contact": {
+            "distance": -0.008514434099197388,
+            "point1": {
+              "x": -2.4837634563446045,
+              "y": 0.17094001173973083,
+              "z": 3.549999952316284
+            },
+            "point2": {
+              "x": -2.4837634563446045,
+              "y": 0.17094001173973083,
+              "z": 3.558514356613159
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.485-4-false",
+          "x": -2.485,
+          "z": 1.1,
+          "speed": 4,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 108,
+          "p": {
+            "x": -2.4929280281066895,
+            "y": 0.17074473202228546,
+            "z": 3.6692726612091064
+          },
+          "contact": {
+            "distance": -0.03572728484869003,
+            "point1": {
+              "x": -2.4929280281066895,
+              "y": 0.17074473202228546,
+              "z": 3.569999933242798
+            },
+            "point2": {
+              "x": -2.4929280281066895,
+              "y": 0.17074473202228546,
+              "z": 3.5342726707458496
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.485-8-false",
+          "x": -2.485,
+          "z": 1.1,
+          "speed": 8,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 36,
+          "p": {
+            "x": -2.513537883758545,
+            "y": 0.1702510416507721,
+            "z": 3.4691641330718994
+          },
+          "contact": {
+            "distance": -0.05416419357061386,
+            "point1": {
+              "x": -2.513537883758545,
+              "y": 0.1702510416507721,
+              "z": 3.549999952316284
+            },
+            "point2": {
+              "x": -2.513537883758545,
+              "y": 0.1702510416507721,
+              "z": 3.6041641235351562
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.46-0.2-false",
+          "x": -2.46,
+          "z": 1.1,
+          "speed": 0.2,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 144,
+          "p": {
+            "x": -2.527941942214966,
+            "y": 0.17078189551830292,
+            "z": 3.5915262699127197
+          },
+          "contact": {
+            "distance": -0.11347367614507675,
+            "point1": {
+              "x": -2.527941942214966,
+              "y": 0.17078189551830292,
+              "z": 3.569999933242798
+            },
+            "point2": {
+              "x": -2.527941942214966,
+              "y": 0.17078189551830292,
+              "z": 3.456526279449463
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.46-2-false",
+          "x": -2.46,
+          "z": 1.1,
+          "speed": 2,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 0,
+        "worst": null
+      },
+      {
+        "spec": {
+          "name": "mouth--2.46-4-false",
+          "x": -2.46,
+          "z": 1.1,
+          "speed": 4,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 1,
+        "worst": {
+          "tick": 108,
+          "p": {
+            "x": -2.502410650253296,
+            "y": 0.1708223968744278,
+            "z": 3.575540542602539
+          },
+          "contact": {
+            "distance": -0.129459410905838,
+            "point1": {
+              "x": -2.502410650253296,
+              "y": 0.1708223968744278,
+              "z": 3.569999933242798
+            },
+            "point2": {
+              "x": -2.502410650253296,
+              "y": 0.1708223968744278,
+              "z": 3.4405405521392822
+            },
+            "normal1": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            },
+            "normal2": {
+              "x": 0,
+              "y": 0,
+              "z": -1
+            }
+          }
+        }
+      },
+      {
+        "spec": {
+          "name": "mouth--2.46-8-false",
+          "x": -2.46,
+          "z": 1.1,
+          "speed": 8,
+          "charged": false,
+          "tilted": false
+        },
+        "intersections": 0,
+        "worst": null
+      }
+    ],
+    "intersectingCases": 12
+  },
+  "natural": {
+    "path": "artifacts/pinball/natural-save-71245b2/observations.json",
+    "sha256": "19a0091f016b9ac4c03783c9934326b090ffb88339887e224808b193a5d66591",
+    "cases": [
+      {
+        "ordinal": 18,
+        "event": {
+          "tick": 7110,
+          "event": {
+            "type": "side-save",
+            "id": "side-save-22"
+          },
+          "before": {
+            "p": {
+              "x": -2.160506010055542,
+              "y": 0.16959786415100098,
+              "z": 3.4583773612976074
+            },
+            "v": {
+              "x": 0.7152095437049866,
+              "y": -3.7215686088387656e-9,
+              "z": 5.10946798324585
+            },
+            "w": {
+              "x": 38.60857009887695,
+              "y": -37.42198181152344,
+              "z": -5.404322624206543
+            },
+            "ball": 3,
+            "charge": 1,
+            "phase": "playing",
+            "ramps": 0
+          }
+        },
+        "outerRailX": -2.3094074608849433,
+        "dividerRailX": -1.9,
+        "classification": "between outer rail and IN divider",
+        "samples": 30,
+        "parkedIntersections": 0,
+        "worst": {
+          "tick": 7110,
+          "p": {
+            "x": -2.160506010055542,
+            "y": 0.16959786415100098,
+            "z": 3.4583773612976074
+          },
+          "v": {
+            "x": 0,
+            "y": -3.7215686088387656e-9,
+            "z": -11.999998092651367
+          },
+          "phase": "playing",
+          "intersects": false,
+          "contact": null,
+          "centerInside": false,
+          "renderSurfaceGap": 0.11329354350526924,
+          "relativeToSave": "at-or-after-original-save"
+        }
+      },
+      {
+        "ordinal": 38,
+        "event": {
+          "tick": 7766,
+          "event": {
+            "type": "side-save",
+            "id": "side-save-48"
+          },
+          "before": {
+            "p": {
+              "x": -2.150988817214966,
+              "y": 0.16993743181228638,
+              "z": 3.472837209701538
+            },
+            "v": {
+              "x": 0.733906626701355,
+              "y": -3.7215686088387656e-9,
+              "z": 4.484277248382568
+            },
+            "w": {
+              "x": 33.522987365722656,
+              "y": -39.284942626953125,
+              "z": -5.001905918121338
+            },
+            "ball": 3,
+            "charge": 1,
+            "phase": "playing",
+            "ramps": 1
+          }
+        },
+        "outerRailX": -2.3069850872042434,
+        "dividerRailX": -1.897537208343825,
+        "classification": "between outer rail and IN divider",
+        "samples": 36,
+        "parkedIntersections": 0,
+        "worst": {
+          "tick": 7766,
+          "p": {
+            "x": -2.150988817214966,
+            "y": 0.16993743181228638,
+            "z": 3.472837209701538
+          },
+          "v": {
+            "x": 5.960464477539063e-8,
+            "y": -3.7215686088387656e-9,
+            "z": -12
+          },
+          "phase": "playing",
+          "intersects": false,
+          "contact": null,
+          "centerInside": false,
+          "renderSurfaceGap": 0.1180855485325758,
+          "relativeToSave": "at-or-after-original-save"
+        }
+      },
+      {
+        "ordinal": 44,
+        "event": {
+          "tick": 12640,
+          "event": {
+            "type": "side-save",
+            "id": "side-save-89"
+          },
+          "before": {
+            "p": {
+              "x": -2.132035493850708,
+              "y": 0.17000053822994232,
+              "z": 3.4767351150512695
+            },
+            "v": {
+              "x": 0.04595573619008064,
+              "y": 3.7215686088387656e-9,
+              "z": 4.493050575256348
+            },
+            "w": {
+              "x": 33.898406982421875,
+              "y": 6.934243202209473,
+              "z": -0.34671902656555176
+            },
+            "ball": 3,
+            "charge": 1,
+            "phase": "playing",
+            "ramps": 1
+          }
+        },
+        "outerRailX": -2.3063320939594125,
+        "dividerRailX": -1.8954596971848734,
+        "classification": "between outer rail and IN divider",
+        "samples": 36,
+        "parkedIntersections": 0,
+        "worst": {
+          "tick": 12640,
+          "p": {
+            "x": -2.132035493850708,
+            "y": 0.17000053822994232,
+            "z": 3.4767351150512695
+          },
+          "v": {
+            "x": 3.725290298461914e-9,
+            "y": 3.7215686088387656e-9,
+            "z": -12.000000953674316
+          },
+          "phase": "playing",
+          "intersects": false,
+          "contact": null,
+          "centerInside": false,
+          "renderSurfaceGap": 0.13546769508334844,
+          "relativeToSave": "at-or-after-original-save"
+        }
+      }
+    ],
+    "limitation": "Original observed trajectories include original direct save impulse; not simulation with proposed hardware and not counterfactual success."
+  },
+  "scope": "STOP-GATE only. Static exact Rapier sphere/box contact plus actual rendered-triangle surface distance. Recorded uncharged trajectories were not rerun against proposed hardware. No live world step, drive, geometry adoption or production edits. Stable sphere interference rejects this parked location before completing bridge/carriage/actuator.",
+  "spec": {
+    "name": "parked-strike-face",
+    "center": [
+      -2.545,
+      0.175,
+      3.56
+    ],
+    "size": [
+      0.3,
+      0.17,
+      0.04
+    ],
+    "bounds": [
+      [
+        -2.695,
+        0.09,
+        3.54
+      ],
+      [
+        -2.395,
+        0.26,
+        3.58
+      ]
+    ],
+    "state": "parked",
+    "intendedDeployment": 0.42,
+    "intendedUpstreamStroke": 0.12
+  },
+  "renderBounds": [
+    [
+      -2.6950000059604644,
+      0.08999999910593032,
+      3.540000000447035
+    ],
+    [
+      -2.3949999940395355,
+      0.26000000089406966,
+      3.579999999552965
+    ]
+  ],
+  "renderTriangles": 12,
+  "sourceProof": [
+    {
+      "path": "web/js/pinball/physics.mjs",
+      "sha256": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92",
+      "exact696c646to71245b2": true
+    },
+    {
+      "path": "web/js/pinball/layout.mjs",
+      "sha256": "1c9860b284831e46af2ddde75476c9563e064b29c38d84bb5df812f7366de609",
+      "exact696c646to71245b2": true
+    },
+    {
+      "path": "web/js/pinball/ramp-geometry.mjs",
+      "sha256": "3a9dd4e4ad8bd3cf7418a395435e23a5552e11c2f15ab20d86065e7fff5670cd",
+      "exact696c646to71245b2": true
+    }
+  ],
+  "results": [
+    {
+      "context": "stable71245b2",
+      "path": "artifacts/pinball/early-confluence-696c646/baseline-save-sweep.json",
+      "sha256": "5bff7d79707d6f614f9274e08f1c55ee89b489e09e6b95c92db0940befb866d8",
+      "sampling": ".1s original recorded positions, no interpolated collision claim",
+      "cases": [
+        {
+          "spec": {
+            "name": "mouth--2.57-0.2-false",
+            "x": -2.57,
+            "z": 1.1,
+            "speed": 0.2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 3,
+          "intersections": 1,
+          "first": {
+            "tick": 156,
+            "p": {
+              "x": -2.4757885932922363,
+              "y": 0.1704220473766327,
+              "z": 3.711226463317871
+            },
+            "v": {
+              "x": 0.015001097694039345,
+              "y": 0.000006797910373279592,
+              "z": 3.7748050689697266
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.0037734806537628174,
+              "point1": {
+                "x": -2.4757885932922363,
+                "y": 0.1704220473766327,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.4757885932922363,
+                "y": 0.1704220473766327,
+                "z": 3.5762264728546143
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.0037735362350941326
+          },
+          "worst": {
+            "tick": 156,
+            "p": {
+              "x": -2.4757885932922363,
+              "y": 0.1704220473766327,
+              "z": 3.711226463317871
+            },
+            "v": {
+              "x": 0.015001097694039345,
+              "y": 0.000006797910373279592,
+              "z": 3.7748050689697266
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.0037734806537628174,
+              "point1": {
+                "x": -2.4757885932922363,
+                "y": 0.1704220473766327,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.4757885932922363,
+                "y": 0.1704220473766327,
+                "z": 3.5762264728546143
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.0037735362350941326
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.57-2-false",
+            "x": -2.57,
+            "z": 1.1,
+            "speed": 2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 3,
+          "intersections": 1,
+          "first": {
+            "tick": 132,
+            "p": {
+              "x": -2.521916151046753,
+              "y": 0.17048990726470947,
+              "z": 3.4251108169555664
+            },
+            "v": {
+              "x": -0.38618937134742737,
+              "y": 3.7215686088387656e-9,
+              "z": 3.6240644454956055
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.020110875368118286,
+              "point1": {
+                "x": -2.521916151046753,
+                "y": 0.17048990726470947,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.521916151046753,
+                "y": 0.17048990726470947,
+                "z": 3.5601108074188232
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.020110816508531526
+          },
+          "worst": {
+            "tick": 132,
+            "p": {
+              "x": -2.521916151046753,
+              "y": 0.17048990726470947,
+              "z": 3.4251108169555664
+            },
+            "v": {
+              "x": -0.38618937134742737,
+              "y": 3.7215686088387656e-9,
+              "z": 3.6240644454956055
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.020110875368118286,
+              "point1": {
+                "x": -2.521916151046753,
+                "y": 0.17048990726470947,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.521916151046753,
+                "y": 0.17048990726470947,
+                "z": 3.5601108074188232
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.020110816508531526
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.57-4-false",
+            "x": -2.57,
+            "z": 1.1,
+            "speed": 4,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 3,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 204,
+            "p": {
+              "x": -2.1240687370300293,
+              "y": 0.1700836718082428,
+              "z": 3.641751527786255
+            },
+            "v": {
+              "x": 0.4994222819805145,
+              "y": -3.7215686088387656e-9,
+              "z": 4.310816764831543
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.14287946535125234
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.57-8-false",
+            "x": -2.57,
+            "z": 1.1,
+            "speed": 8,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 3,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 300,
+            "p": {
+              "x": -2.1376993656158447,
+              "y": 0.17010942101478577,
+              "z": 3.544530153274536
+            },
+            "v": {
+              "x": 0.6198343634605408,
+              "y": 4.186764712699187e-9,
+              "z": 4.239923477172852
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.12230062842369072
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.545-0.2-false",
+            "x": -2.545,
+            "z": 1.1,
+            "speed": 0.2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 2,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 144,
+            "p": {
+              "x": -2.517066717147827,
+              "y": 0.1702488660812378,
+              "z": 3.723686456680298
+            },
+            "v": {
+              "x": -0.24297496676445007,
+              "y": -3.7215686088387656e-9,
+              "z": 4.362155914306641
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.008686457127332625
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.545-2-false",
+            "x": -2.545,
+            "z": 1.1,
+            "speed": 2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 2,
+          "intersections": 1,
+          "first": {
+            "tick": 132,
+            "p": {
+              "x": -2.4939119815826416,
+              "y": 0.16993102431297302,
+              "z": 3.709810972213745
+            },
+            "v": {
+              "x": -0.09798649698495865,
+              "y": 0.000008340035492437892,
+              "z": 4.629819393157959
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.005188971757888794,
+              "point1": {
+                "x": -2.4939119815826416,
+                "y": 0.16993102431297302,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.4939119815826416,
+                "y": 0.16993102431297302,
+                "z": 3.5748109817504883
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.005189027339220109
+          },
+          "worst": {
+            "tick": 132,
+            "p": {
+              "x": -2.4939119815826416,
+              "y": 0.16993102431297302,
+              "z": 3.709810972213745
+            },
+            "v": {
+              "x": -0.09798649698495865,
+              "y": 0.000008340035492437892,
+              "z": 4.629819393157959
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.005188971757888794,
+              "point1": {
+                "x": -2.4939119815826416,
+                "y": 0.16993102431297302,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.4939119815826416,
+                "y": 0.16993102431297302,
+                "z": 3.5748109817504883
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.005189027339220109
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.545-4-false",
+            "x": -2.545,
+            "z": 1.1,
+            "speed": 4,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 5,
+          "intersections": 1,
+          "first": {
+            "tick": 168,
+            "p": {
+              "x": -2.5066323280334473,
+              "y": 0.17089587450027466,
+              "z": 3.4793896675109863
+            },
+            "v": {
+              "x": -0.2234356552362442,
+              "y": 3.7215686088387656e-9,
+              "z": 2.6181588172912598
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.07438972592353821,
+              "point1": {
+                "x": -2.5066323280334473,
+                "y": 0.17089587450027466,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.5066323280334473,
+                "y": 0.17089587450027466,
+                "z": 3.614389657974243
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.07438966706395145
+          },
+          "worst": {
+            "tick": 168,
+            "p": {
+              "x": -2.5066323280334473,
+              "y": 0.17089587450027466,
+              "z": 3.4793896675109863
+            },
+            "v": {
+              "x": -0.2234356552362442,
+              "y": 3.7215686088387656e-9,
+              "z": 2.6181588172912598
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.07438972592353821,
+              "point1": {
+                "x": -2.5066323280334473,
+                "y": 0.17089587450027466,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.5066323280334473,
+                "y": 0.17089587450027466,
+                "z": 3.614389657974243
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.07438966706395145
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.545-8-false",
+            "x": -2.545,
+            "z": 1.1,
+            "speed": 8,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 3,
+          "intersections": 1,
+          "first": {
+            "tick": 204,
+            "p": {
+              "x": -2.492504119873047,
+              "y": 0.17081297934055328,
+              "z": 3.468367576599121
+            },
+            "v": {
+              "x": -0.13887593150138855,
+              "y": 3.7215686088387656e-9,
+              "z": 2.9367241859436035
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.06336763501167297,
+              "point1": {
+                "x": -2.492504119873047,
+                "y": 0.17081297934055328,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.492504119873047,
+                "y": 0.17081297934055328,
+                "z": 3.603367567062378
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.06336757615208621
+          },
+          "worst": {
+            "tick": 204,
+            "p": {
+              "x": -2.492504119873047,
+              "y": 0.17081297934055328,
+              "z": 3.468367576599121
+            },
+            "v": {
+              "x": -0.13887593150138855,
+              "y": 3.7215686088387656e-9,
+              "z": 2.9367241859436035
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.06336763501167297,
+              "point1": {
+                "x": -2.492504119873047,
+                "y": 0.17081297934055328,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.492504119873047,
+                "y": 0.17081297934055328,
+                "z": 3.603367567062378
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.06336757615208621
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.515-0.2-false",
+            "x": -2.515,
+            "z": 1.1,
+            "speed": 0.2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 3,
+          "intersections": 1,
+          "first": {
+            "tick": 132,
+            "p": {
+              "x": -2.4868764877319336,
+              "y": 0.17021842300891876,
+              "z": 3.5096449851989746
+            },
+            "v": {
+              "x": -0.06860074400901794,
+              "y": 4.186764712699187e-9,
+              "z": 4.2624125480651855
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.10464504361152649,
+              "point1": {
+                "x": -2.4868764877319336,
+                "y": 0.17021842300891876,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.4868764877319336,
+                "y": 0.17021842300891876,
+                "z": 3.6446449756622314
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.10464498475193973
+          },
+          "worst": {
+            "tick": 132,
+            "p": {
+              "x": -2.4868764877319336,
+              "y": 0.17021842300891876,
+              "z": 3.5096449851989746
+            },
+            "v": {
+              "x": -0.06860074400901794,
+              "y": 4.186764712699187e-9,
+              "z": 4.2624125480651855
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.10464504361152649,
+              "point1": {
+                "x": -2.4868764877319336,
+                "y": 0.17021842300891876,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.4868764877319336,
+                "y": 0.17021842300891876,
+                "z": 3.6446449756622314
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.10464498475193973
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.515-2-false",
+            "x": -2.515,
+            "z": 1.1,
+            "speed": 2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 3,
+          "intersections": 1,
+          "first": {
+            "tick": 120,
+            "p": {
+              "x": -2.5024349689483643,
+              "y": 0.17069724202156067,
+              "z": 3.4564194679260254
+            },
+            "v": {
+              "x": -0.2791743576526642,
+              "y": -3.7215686088387656e-9,
+              "z": 3.2873425483703613
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.05141952633857727,
+              "point1": {
+                "x": -2.5024349689483643,
+                "y": 0.17069724202156067,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.5024349689483643,
+                "y": 0.17069724202156067,
+                "z": 3.5914194583892822
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.05141946747899051
+          },
+          "worst": {
+            "tick": 120,
+            "p": {
+              "x": -2.5024349689483643,
+              "y": 0.17069724202156067,
+              "z": 3.4564194679260254
+            },
+            "v": {
+              "x": -0.2791743576526642,
+              "y": -3.7215686088387656e-9,
+              "z": 3.2873425483703613
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.05141952633857727,
+              "point1": {
+                "x": -2.5024349689483643,
+                "y": 0.17069724202156067,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.5024349689483643,
+                "y": 0.17069724202156067,
+                "z": 3.5914194583892822
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.05141946747899051
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.515-4-false",
+            "x": -2.515,
+            "z": 1.1,
+            "speed": 4,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 4,
+          "intersections": 1,
+          "first": {
+            "tick": 144,
+            "p": {
+              "x": -2.4966886043548584,
+              "y": 0.1708553582429886,
+              "z": 3.5181071758270264
+            },
+            "v": {
+              "x": -0.1418805718421936,
+              "y": 3.7215686088387656e-9,
+              "z": 2.720275640487671
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.11310723423957825,
+              "point1": {
+                "x": -2.4966886043548584,
+                "y": 0.1708553582429886,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.4966886043548584,
+                "y": 0.1708553582429886,
+                "z": 3.653107166290283
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.11310717537999149
+          },
+          "worst": {
+            "tick": 144,
+            "p": {
+              "x": -2.4966886043548584,
+              "y": 0.1708553582429886,
+              "z": 3.5181071758270264
+            },
+            "v": {
+              "x": -0.1418805718421936,
+              "y": 3.7215686088387656e-9,
+              "z": 2.720275640487671
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.11310723423957825,
+              "point1": {
+                "x": -2.4966886043548584,
+                "y": 0.1708553582429886,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.4966886043548584,
+                "y": 0.1708553582429886,
+                "z": 3.653107166290283
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.11310717537999149
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.515-8-false",
+            "x": -2.515,
+            "z": 1.1,
+            "speed": 8,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 3,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 72,
+            "p": {
+              "x": -2.5034046173095703,
+              "y": 0.17028962075710297,
+              "z": 3.724618434906006
+            },
+            "v": {
+              "x": -0.17753510177135468,
+              "y": 0.000007130525318643777,
+              "z": 3.9623074531555176
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.009618435353040633
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.485-0.2-false",
+            "x": -2.485,
+            "z": 1.1,
+            "speed": 0.2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 4,
+          "intersections": 1,
+          "first": {
+            "tick": 156,
+            "p": {
+              "x": -2.5162298679351807,
+              "y": 0.1708092838525772,
+              "z": 3.6098122596740723
+            },
+            "v": {
+              "x": -0.2161959856748581,
+              "y": 2.791176401117923e-9,
+              "z": 2.8212757110595703
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.10518768429756165,
+              "point1": {
+                "x": -2.5162298679351807,
+                "y": 0.1708092838525772,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.5162298679351807,
+                "y": 0.1708092838525772,
+                "z": 3.4748122692108154
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.10518773987889296
+          },
+          "worst": {
+            "tick": 156,
+            "p": {
+              "x": -2.5162298679351807,
+              "y": 0.1708092838525772,
+              "z": 3.6098122596740723
+            },
+            "v": {
+              "x": -0.2161959856748581,
+              "y": 2.791176401117923e-9,
+              "z": 2.8212757110595703
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.10518768429756165,
+              "point1": {
+                "x": -2.5162298679351807,
+                "y": 0.1708092838525772,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.5162298679351807,
+                "y": 0.1708092838525772,
+                "z": 3.4748122692108154
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.10518773987889296
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.485-2-false",
+            "x": -2.485,
+            "z": 1.1,
+            "speed": 2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 5,
+          "intersections": 2,
+          "first": {
+            "tick": 120,
+            "p": {
+              "x": -2.4837634563446045,
+              "y": 0.17094001173973083,
+              "z": 3.4235143661499023
+            },
+            "v": {
+              "x": -0.05689762160181999,
+              "y": -3.7215686088387656e-9,
+              "z": 2.585482358932495
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.018514424562454224,
+              "point1": {
+                "x": -2.4837634563446045,
+                "y": 0.17094001173973083,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.4837634563446045,
+                "y": 0.17094001173973083,
+                "z": 3.558514356613159
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.018514365702867464
+          },
+          "worst": {
+            "tick": 120,
+            "p": {
+              "x": -2.4837634563446045,
+              "y": 0.17094001173973083,
+              "z": 3.4235143661499023
+            },
+            "v": {
+              "x": -0.05689762160181999,
+              "y": -3.7215686088387656e-9,
+              "z": 2.585482358932495
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.018514424562454224,
+              "point1": {
+                "x": -2.4837634563446045,
+                "y": 0.17094001173973083,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.4837634563446045,
+                "y": 0.17094001173973083,
+                "z": 3.558514356613159
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.018514365702867464
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.485-4-false",
+            "x": -2.485,
+            "z": 1.1,
+            "speed": 4,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 4,
+          "intersections": 1,
+          "first": {
+            "tick": 108,
+            "p": {
+              "x": -2.4929280281066895,
+              "y": 0.17074473202228546,
+              "z": 3.6692726612091064
+            },
+            "v": {
+              "x": -0.08382967114448547,
+              "y": -3.7215686088387656e-9,
+              "z": 2.9911725521087646
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.045727282762527466,
+              "point1": {
+                "x": -2.4929280281066895,
+                "y": 0.17074473202228546,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.4929280281066895,
+                "y": 0.17074473202228546,
+                "z": 3.5342726707458496
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.04572733834385878
+          },
+          "worst": {
+            "tick": 108,
+            "p": {
+              "x": -2.4929280281066895,
+              "y": 0.17074473202228546,
+              "z": 3.6692726612091064
+            },
+            "v": {
+              "x": -0.08382967114448547,
+              "y": -3.7215686088387656e-9,
+              "z": 2.9911725521087646
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.045727282762527466,
+              "point1": {
+                "x": -2.4929280281066895,
+                "y": 0.17074473202228546,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.4929280281066895,
+                "y": 0.17074473202228546,
+                "z": 3.5342726707458496
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.04572733834385878
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.485-8-false",
+            "x": -2.485,
+            "z": 1.1,
+            "speed": 8,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 1,
+          "intersections": 1,
+          "first": {
+            "tick": 36,
+            "p": {
+              "x": -2.513537883758545,
+              "y": 0.1702510416507721,
+              "z": 3.4691641330718994
+            },
+            "v": {
+              "x": -0.6608624458312988,
+              "y": -0.10142919421195984,
+              "z": 6.850653171539307
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.0641641914844513,
+              "point1": {
+                "x": -2.513537883758545,
+                "y": 0.1702510416507721,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.513537883758545,
+                "y": 0.1702510416507721,
+                "z": 3.6041641235351562
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.06416413262486453
+          },
+          "worst": {
+            "tick": 36,
+            "p": {
+              "x": -2.513537883758545,
+              "y": 0.1702510416507721,
+              "z": 3.4691641330718994
+            },
+            "v": {
+              "x": -0.6608624458312988,
+              "y": -0.10142919421195984,
+              "z": 6.850653171539307
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.0641641914844513,
+              "point1": {
+                "x": -2.513537883758545,
+                "y": 0.1702510416507721,
+                "z": 3.5399999618530273
+              },
+              "point2": {
+                "x": -2.513537883758545,
+                "y": 0.1702510416507721,
+                "z": 3.6041641235351562
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.06416413262486453
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.46-0.2-false",
+            "x": -2.46,
+            "z": 1.1,
+            "speed": 0.2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 4,
+          "intersections": 1,
+          "first": {
+            "tick": 144,
+            "p": {
+              "x": -2.527941942214966,
+              "y": 0.17078189551830292,
+              "z": 3.5915262699127197
+            },
+            "v": {
+              "x": -0.3100203275680542,
+              "y": 3.7215686088387656e-9,
+              "z": 2.939880847930908
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.12347367405891418,
+              "point1": {
+                "x": -2.527941942214966,
+                "y": 0.17078189551830292,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.527941942214966,
+                "y": 0.17078189551830292,
+                "z": 3.456526279449463
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.1234737296402455
+          },
+          "worst": {
+            "tick": 144,
+            "p": {
+              "x": -2.527941942214966,
+              "y": 0.17078189551830292,
+              "z": 3.5915262699127197
+            },
+            "v": {
+              "x": -0.3100203275680542,
+              "y": 3.7215686088387656e-9,
+              "z": 2.939880847930908
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.12347367405891418,
+              "point1": {
+                "x": -2.527941942214966,
+                "y": 0.17078189551830292,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.527941942214966,
+                "y": 0.17078189551830292,
+                "z": 3.456526279449463
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": false,
+            "renderSurfaceGap": -0.1234737296402455
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.46-2-false",
+            "x": -2.46,
+            "z": 1.1,
+            "speed": 2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 3,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 108,
+            "p": {
+              "x": -2.5560309886932373,
+              "y": 0.1702558994293213,
+              "z": 3.7220914363861084
+            },
+            "v": {
+              "x": -0.41237616539001465,
+              "y": 0.000007268223271239549,
+              "z": 4.036849498748779
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.007091436833143172
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.46-4-false",
+            "x": -2.46,
+            "z": 1.1,
+            "speed": 4,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 4,
+          "intersections": 1,
+          "first": {
+            "tick": 108,
+            "p": {
+              "x": -2.502410650253296,
+              "y": 0.1708223968744278,
+              "z": 3.575540542602539
+            },
+            "v": {
+              "x": -0.1539815068244934,
+              "y": -2.791176401117923e-9,
+              "z": 2.7770206928253174
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.13945940136909485,
+              "point1": {
+                "x": -2.502410650253296,
+                "y": 0.1708223968744278,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.502410650253296,
+                "y": 0.1708223968744278,
+                "z": 3.4405405521392822
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": true,
+            "renderSurfaceGap": -0.13054054304957385
+          },
+          "worst": {
+            "tick": 108,
+            "p": {
+              "x": -2.502410650253296,
+              "y": 0.1708223968744278,
+              "z": 3.575540542602539
+            },
+            "v": {
+              "x": -0.1539815068244934,
+              "y": -2.791176401117923e-9,
+              "z": 2.7770206928253174
+            },
+            "phase": "playing",
+            "intersects": true,
+            "contact": {
+              "distance": -0.13945940136909485,
+              "point1": {
+                "x": -2.502410650253296,
+                "y": 0.1708223968744278,
+                "z": 3.5799999237060547
+              },
+              "point2": {
+                "x": -2.502410650253296,
+                "y": 0.1708223968744278,
+                "z": 3.4405405521392822
+              },
+              "normal1": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "normal2": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+              }
+            },
+            "centerInside": true,
+            "renderSurfaceGap": -0.13054054304957385
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.46-8-false",
+            "x": -2.46,
+            "z": 1.1,
+            "speed": 8,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 3,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 48,
+            "p": {
+              "x": -2.4791927337646484,
+              "y": 0.17092165350914001,
+              "z": 3.3697283267974854
+            },
+            "v": {
+              "x": -0.040971387177705765,
+              "y": -1.8607843044193828e-9,
+              "z": 3.742845058441162
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.03527167364954953
+          }
+        }
+      ],
+      "intersectingCases": 14,
+      "totalCases": 20
+    },
+    {
+      "context": "rejectedEarly523bce",
+      "path": "artifacts/pinball/early-confluence-696c646/candidate-save-sweep-detailed.json",
+      "sha256": "6f8b80fe8718b391d2537f2874603f52b8997740b2a163dec9d226e49d538efb",
+      "sampling": "1/120s original recorded positions",
+      "cases": [
+        {
+          "spec": {
+            "name": "mouth--2.57-0.2-false",
+            "x": -2.57,
+            "z": 1.1,
+            "speed": 0.2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 42,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 131,
+            "p": {
+              "x": -2.0960693359375,
+              "y": 0.17046183347702026,
+              "z": 3.5949084758758545
+            },
+            "v": {
+              "x": -0.10810022801160812,
+              "y": -3.7215686088387656e-9,
+              "z": 3.3458352088928223
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.16430219013496405
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.57-2-false",
+            "x": -2.57,
+            "z": 1.1,
+            "speed": 2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 40,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 103,
+            "p": {
+              "x": -2.115054130554199,
+              "y": 0.1704121232032776,
+              "z": 3.584686517715454
+            },
+            "v": {
+              "x": -0.1834297925233841,
+              "y": 3.7215686088387656e-9,
+              "z": 3.5211501121520996
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.1449850887726663
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.57-4-false",
+            "x": -2.57,
+            "z": 1.1,
+            "speed": 4,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 37,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 79,
+            "p": {
+              "x": -2.1203434467315674,
+              "y": 0.17024189233779907,
+              "z": 3.6153316497802734
+            },
+            "v": {
+              "x": -0.26073896884918213,
+              "y": -3.7215686088387656e-9,
+              "z": 3.8267993927001953
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.14191974376508248
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.57-8-false",
+            "x": -2.57,
+            "z": 1.1,
+            "speed": 8,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 55,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 62,
+            "p": {
+              "x": -2.110321283340454,
+              "y": 0.17075622081756592,
+              "z": 3.485013484954834
+            },
+            "v": {
+              "x": 0.5225030183792114,
+              "y": 3.7215686088387656e-9,
+              "z": 2.349301815032959
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.15494048563673424
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.545-0.2-false",
+            "x": -2.545,
+            "z": 1.1,
+            "speed": 0.2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 43,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 133,
+            "p": {
+              "x": -2.0854930877685547,
+              "y": 0.1704874187707901,
+              "z": 3.570542573928833
+            },
+            "v": {
+              "x": -0.024650858715176582,
+              "y": -4.651960594515003e-9,
+              "z": 3.215895414352417
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.17450690627098076
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.545-2-false",
+            "x": -2.545,
+            "z": 1.1,
+            "speed": 2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 35,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 102,
+            "p": {
+              "x": -2.070460796356201,
+              "y": 0.1702221930027008,
+              "z": 3.6022579669952393
+            },
+            "v": {
+              "x": -0.21048104763031006,
+              "y": 4.186764712699187e-9,
+              "z": 3.8828048706054688
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.19030156462520076
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.545-4-false",
+            "x": -2.545,
+            "z": 1.1,
+            "speed": 4,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 39,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 82,
+            "p": {
+              "x": -2.057810068130493,
+              "y": 0.17038054764270782,
+              "z": 3.590670585632324
+            },
+            "v": {
+              "x": -0.161195307970047,
+              "y": 3.7215686088387656e-9,
+              "z": 3.5273656845092773
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.20235872234436508
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.545-8-false",
+            "x": -2.545,
+            "z": 1.1,
+            "speed": 8,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 26,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 48,
+            "p": {
+              "x": -2.055388927459717,
+              "y": 0.17003852128982544,
+              "z": 3.5781118869781494
+            },
+            "v": {
+              "x": -0.012002243660390377,
+              "y": 3.7215686088387656e-9,
+              "z": 5.03950309753418
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.20461106657981865
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.515-0.2-false",
+            "x": -2.515,
+            "z": 1.1,
+            "speed": 0.2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 40,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 134,
+            "p": {
+              "x": -2.078685760498047,
+              "y": 0.17051006853580475,
+              "z": 3.58648681640625
+            },
+            "v": {
+              "x": -0.012580742128193378,
+              "y": 1.8607843044193828e-9,
+              "z": 3.374781608581543
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.18138074077577387
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.515-2-false",
+            "x": -2.515,
+            "z": 1.1,
+            "speed": 2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 44,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 106,
+            "p": {
+              "x": -2.0938966274261475,
+              "y": 0.17049887776374817,
+              "z": 3.5723824501037598
+            },
+            "v": {
+              "x": -0.06102951988577843,
+              "y": 2.791176401117923e-9,
+              "z": 3.142641544342041
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.16610336661338798
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.515-4-false",
+            "x": -2.515,
+            "z": 1.1,
+            "speed": 4,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 39,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 80,
+            "p": {
+              "x": -2.1064155101776123,
+              "y": 0.17035196721553802,
+              "z": 3.596618413925171
+            },
+            "v": {
+              "x": -0.14648331701755524,
+              "y": 3.7215686088387656e-9,
+              "z": 3.635056972503662
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.1540625814976731
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.515-8-false",
+            "x": -2.515,
+            "z": 1.1,
+            "speed": 8,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 29,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 49,
+            "p": {
+              "x": -2.1302430629730225,
+              "y": 0.17016708850860596,
+              "z": 3.532257318496704
+            },
+            "v": {
+              "x": 0.020593032240867615,
+              "y": 3.7215686088387656e-9,
+              "z": 4.495156288146973
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.12987012227041062
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.485-0.2-false",
+            "x": -2.485,
+            "z": 1.1,
+            "speed": 0.2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 45,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 132,
+            "p": {
+              "x": -2.0880484580993652,
+              "y": 0.1705123782157898,
+              "z": 3.584059000015259
+            },
+            "v": {
+              "x": -0.036624059081077576,
+              "y": -2.791176401117923e-9,
+              "z": 3.123141288757324
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.17197837204073918
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.485-2-false",
+            "x": -2.485,
+            "z": 1.1,
+            "speed": 2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 48,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 110,
+            "p": {
+              "x": -2.149982213973999,
+              "y": 0.170716792345047,
+              "z": 3.5009257793426514
+            },
+            "v": {
+              "x": 0.5115252137184143,
+              "y": 4.651960594515003e-9,
+              "z": 2.6350326538085938
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.11311389985883061
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.485-4-false",
+            "x": -2.485,
+            "z": 1.1,
+            "speed": 4,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 36,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 84,
+            "p": {
+              "x": -2.0490059852600098,
+              "y": 0.17037972807884216,
+              "z": 3.578949213027954
+            },
+            "v": {
+              "x": -0.059702396392822266,
+              "y": 1.8607843044193828e-9,
+              "z": 3.6382226943969727
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.21099400877952568
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.485-8-false",
+            "x": -2.485,
+            "z": 1.1,
+            "speed": 8,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 34,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 52,
+            "p": {
+              "x": -2.0701940059661865,
+              "y": 0.17024894058704376,
+              "z": 3.460319757461548
+            },
+            "v": {
+              "x": 1.095518946647644,
+              "y": -3.7215686088387656e-9,
+              "z": 3.7437033653259277
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.1994366472301305
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.46-0.2-false",
+            "x": -2.46,
+            "z": 1.1,
+            "speed": 0.2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 51,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 138,
+            "p": {
+              "x": -2.1513826847076416,
+              "y": 0.1707472801208496,
+              "z": 3.5043046474456787
+            },
+            "v": {
+              "x": 0.5770545601844788,
+              "y": -3.7215686088387656e-9,
+              "z": 2.467930555343628
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.11121850383755294
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.46-2-false",
+            "x": -2.46,
+            "z": 1.1,
+            "speed": 2,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 41,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 106,
+            "p": {
+              "x": -2.077636957168579,
+              "y": 0.1704358607530594,
+              "z": 3.566579580307007
+            },
+            "v": {
+              "x": -0.01640188694000244,
+              "y": 3.7215686088387656e-9,
+              "z": 3.3440568447113037
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.18236303687095634
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.46-4-false",
+            "x": -2.46,
+            "z": 1.1,
+            "speed": 4,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 38,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 87,
+            "p": {
+              "x": -2.0683441162109375,
+              "y": 0.17042666673660278,
+              "z": 3.6113126277923584
+            },
+            "v": {
+              "x": -0.42429766058921814,
+              "y": 3.7215686088387656e-9,
+              "z": 3.546847343444824
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.1931532312917707
+          }
+        },
+        {
+          "spec": {
+            "name": "mouth--2.46-8-false",
+            "x": -2.46,
+            "z": 1.1,
+            "speed": 8,
+            "charged": false,
+            "tilted": false
+          },
+          "initialLegal": true,
+          "samples": 59,
+          "intersections": 0,
+          "first": null,
+          "worst": {
+            "tick": 90,
+            "p": {
+              "x": -2.052478790283203,
+              "y": 0.17088091373443604,
+              "z": 3.571612596511841
+            },
+            "v": {
+              "x": -0.0038041381631046534,
+              "y": 2.791176401117923e-9,
+              "z": 2.54649019241333
+            },
+            "phase": "playing",
+            "intersects": false,
+            "contact": null,
+            "centerInside": false,
+            "renderSurfaceGap": 0.20752120375633232
+          }
+        }
+      ],
+      "intersectingCases": 0,
+      "totalCases": 20
+    }
+  ]
+}

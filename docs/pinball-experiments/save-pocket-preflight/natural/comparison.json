@@ -1,0 +1,23 @@
+{
+  "complete54RecordsExactlyEqual": true,
+  "baselineCommit": "71245b26bbc4d72c364d395b21b58b933bba4675",
+  "baselineEvidence": "../lower-rail-closed-stock/evidence/natural54-resumed.json",
+  "naturalSaveCases": [
+    {
+      "power": 0.75,
+      "delay": 44,
+      "ordinal": 18
+    },
+    {
+      "power": 0.925,
+      "delay": 60,
+      "ordinal": 38
+    },
+    {
+      "power": 0.925,
+      "delay": 84,
+      "ordinal": 44
+    }
+  ],
+  "windowMeaning": "120 prior steps plus trigger step and119following; snapshots are discrete and not swept-path proof"
+}

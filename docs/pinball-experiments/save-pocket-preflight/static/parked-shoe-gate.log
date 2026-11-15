@@ -1,0 +1,24 @@
+using deprecated parameters for the initialization function; pass a single object instead
+[
+  {
+    context: 'stable71245b2',
+    intersectingCases: 14,
+    totalCases: 20,
+    witness: {
+      tick: 156,
+      p: [Object],
+      v: [Object],
+      phase: 'playing',
+      intersects: true,
+      contact: [jI],
+      centerInside: false,
+      renderSurfaceGap: -0.0037735362350941326
+    }
+  },
+  {
+    context: 'rejectedEarly523bce',
+    intersectingCases: 0,
+    totalCases: 20,
+    witness: undefined
+  }
+]
