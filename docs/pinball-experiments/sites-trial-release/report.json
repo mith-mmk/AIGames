@@ -1,0 +1,337 @@
+{
+  "servedDirectory": "/Users/tsaito/Projects/chappy-workshop-site/dist",
+  "requests": [
+    {
+      "url": "http://127.0.0.1:50358/index.html?test=1",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/css/pinball.css",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/app.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/bumper-effects.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/plunger.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/feedback.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/sound.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/workshop.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/assets.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/layout.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/physics.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/vendor/three-0.180.0/three.module.min.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/wire-stock.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/shooter-outer-rail.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/components/workshop-friend.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/components/flipper.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/components/bumper.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/components/plunger.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/components/cabinet.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/components/ramp-wire.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/playfield-parts.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/reference-playfield.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/cabinet-fasteners.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/mechanisms.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/cabinet-boundary.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/nudge.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/mechanical-contact.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/ramp-geometry.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/game-state.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/components/reference-cabinet.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/ramp-acrylic.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/ramp-hardware.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/ramp-profile.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/components/sling-target.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/ramp-base.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/ramp-deck.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/missions.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/pinball/sling-cover-print.mjs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/vendor/three-0.180.0/three.core.min.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:50358/js/vendor/rapier3d-0.17.3/rapier.mjs",
+      "status": 200
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:50358/favicon.ico"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:50358/favicon.ico"
+    }
+  ],
+  "checks": [
+    {
+      "name": "boot",
+      "state": {
+        "phase": "ready",
+        "ball": 1,
+        "score": 0,
+        "pos": {
+          "x": 2.5299999713897705,
+          "y": 0.17499999701976776,
+          "z": 4.425000190734863
+        },
+        "left": false,
+        "right": false,
+        "owner": null
+      }
+    },
+    {
+      "name": "desktop-launch-flippers-pause",
+      "held": {
+        "phase": "playing",
+        "ball": 1,
+        "score": 0,
+        "pos": {
+          "x": 2.5299999713897705,
+          "y": 0.17125257849693298,
+          "z": 1.143270492553711
+        },
+        "left": true,
+        "right": true,
+        "owner": null
+      },
+      "paused": {
+        "phase": "paused",
+        "ball": 1,
+        "score": 0,
+        "pos": {
+          "x": 2.5299999713897705,
+          "y": 0.17125257849693298,
+          "z": 1.143270492553711
+        },
+        "left": false,
+        "right": false,
+        "owner": null
+      },
+      "resumed": {
+        "phase": "playing",
+        "ball": 1,
+        "score": 0,
+        "pos": {
+          "x": 2.5299999713897705,
+          "y": 0.17125257849693298,
+          "z": 1.143270492553711
+        },
+        "left": false,
+        "right": false,
+        "owner": null
+      }
+    },
+    {
+      "name": "restart",
+      "state": {
+        "phase": "ready",
+        "ball": 1,
+        "score": 0,
+        "pos": {
+          "x": 2.5299999713897705,
+          "y": 0.17499999701976776,
+          "z": 4.425000190734863
+        },
+        "left": false,
+        "right": false,
+        "owner": null
+      }
+    },
+    {
+      "name": "mobile-layout-launch-multitouch",
+      "layout": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "buttons": [
+          {
+            "id": "left",
+            "rect": {
+              "x": 8,
+              "y": 793,
+              "width": 107.890625,
+              "height": 47,
+              "top": 793,
+              "right": 115.890625,
+              "bottom": 840,
+              "left": 8
+            }
+          },
+          {
+            "id": "launch",
+            "rect": {
+              "x": 121.890625,
+              "y": 793,
+              "width": 146.234375,
+              "height": 47,
+              "top": 793,
+              "right": 268.125,
+              "bottom": 840,
+              "left": 121.890625
+            }
+          },
+          {
+            "id": "right",
+            "rect": {
+              "x": 274.125,
+              "y": 793,
+              "width": 107.875,
+              "height": 47,
+              "top": 793,
+              "right": 382,
+              "bottom": 840,
+              "left": 274.125
+            }
+          }
+        ]
+      },
+      "touchHeld": {
+        "phase": "playing",
+        "ball": 1,
+        "score": 0,
+        "pos": {
+          "x": 2.5299999713897705,
+          "y": 0.17130766808986664,
+          "z": 1.3135368824005127
+        },
+        "left": true,
+        "right": true,
+        "owner": null
+      },
+      "touchReleased": {
+        "phase": "playing",
+        "ball": 1,
+        "score": 0,
+        "pos": {
+          "x": 2.5299999713897705,
+          "y": 0.16986507177352905,
+          "z": -1.8535932302474976
+        },
+        "left": false,
+        "right": false,
+        "owner": null
+      }
+    }
+  ],
+  "links": [
+    {
+      "text": "← AI Games",
+      "href": "https://github.com/mith-mmk/AIGames"
+    }
+  ],
+  "disclaimer": "操作・この版について試遊版。スマホ実機と人間の操作評価、機械構造・参考画像との一致には未確認／調整中の部分があります。Z / 左Shift：左フリッパー/ / 右Shift：右フリッパーSPACE：長押しで強度をため、離して発射。発射ボタンも長押し、または上へ100px引いて強度を調整し、離して発射。弱い球は発射レーンに戻り同じ球を再発射できます。P / Escでキャンセル。倍率：バンパー5回で×2、その後3種類の機構で得点すると×3。接触・通過点に適用し、達成ボーナスは固定。失球・TILT・やり直しで×1。同じ球の弱打再発射では維持。N / 揺らす：中央向きのナッジ。短時間の連打は警告、さらに連打するとTILTでフリッパー・加点が止まり1.5秒後にその球を終了。効果音：最初の操作後に鳴ります。「音 ON/OFF」で切り替え。画面を離れると停止します。P / Esc：一時停止、R：やり直す、C：視点視点スライダーで横に近い10°から真上90°まで動かせます。低い角度は筐体観察向けです。左右ボタンを押したまま球を受けると保持できます。短く離してから押し直すと打ち出し、離す時間で狙いを変えられます。根元寄りはバンパーの脇を通るレーン、タイミングを変えるとバンパー群や高架ランプを狙います。スマホは左右ボタンを同時に長押しできます。画面を離れると一時停止します。Rapier物理で球・機構を検証する初期プレイ版。衝突は簡略形状です。細いレーンガイドと小型スリングを配置し、上昇動作中のフリッパーに実接触した球だけ打ち返しを補助します。上げ切った状態では自動打撃せず、接触と摩擦で球を保持します。中央セーブは1回分から開始し、トップレーンABC達成で1回分へ補充します。消費後は中央落球で失球します。右の発射レーンへ戻った球は失球にせず、同じ球を再発射できます。右入口から奥を回り左へ返す高架ランプを復帰しました。左返却部は二本の金属レールで球を支えるワイヤーレーンです。装飾機構はすべてが動作するものではありません。",
+  "failedAssets": [],
+  "pass": true,
+  "ownedBrowserAndServerClosed": true
+}

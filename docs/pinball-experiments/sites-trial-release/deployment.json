@@ -1,0 +1,12 @@
+{
+  "url": "https://chappy-workshop-pinball.mi-si.chatgpt.site",
+  "audience": "owner only; unchanged",
+  "gameSourceCommit": "5eceb9116ae4ee6f0004bd6253f20234eb542702",
+  "siteSourceCommit": "cafdffc878485d241a1f4330a9938cb1db5360b8",
+  "projectId": "appgprj_6af53d7b95d08191be47f75227f4dbb1",
+  "versionId": "appgprj_6af53d7b95d08191be47f75227f4dbb1~appgver_f704ebd8aa1c8191adb3f38a2c0611f2",
+  "deploymentId": "appgdep_6afa3ad80c2081919e010c0297cd6d79",
+  "status": "succeeded",
+  "verifiedBy": "Sites native save_version_and_deploy_private terminal response",
+  "updatedAt": "2026-11-15T23:06:06.226059+00:00"
+}

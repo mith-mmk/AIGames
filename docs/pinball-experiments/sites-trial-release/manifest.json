@@ -1,0 +1,26 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "b3e94eb57222e52bb40a66b0c7e72c0d8b0d7b7fd606ce191fba0fa122f132f3"
+  },
+  {
+    "path": "deployment.json",
+    "sha256": "0c450a293944a27452e0f21b0e428389e7d5793f28551cdf57c933966c366142"
+  },
+  {
+    "path": "desktop-ready.png",
+    "sha256": "a3cdb8fdec80b3e63dcd2df158b84f9c3c1b5ab023de8b7c007b1a8901d02b27"
+  },
+  {
+    "path": "mobile-playing.png",
+    "sha256": "ecc08e7bf7d5fd2e762f856fcc46f30477779ed42a104d76c508e983c03fb6ce"
+  },
+  {
+    "path": "mobile-ready.png",
+    "sha256": "967d4ff5828dd72bf0a393e3d072dbdee8c4a676bc6134a4ce6ac9214d466e17"
+  },
+  {
+    "path": "report.json",
+    "sha256": "f9d75cffe62ff7df455c60187277649a53349a916f16c3beae976a08bdbdbb33"
+  }
+]
