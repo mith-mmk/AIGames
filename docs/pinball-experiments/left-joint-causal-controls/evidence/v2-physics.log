@@ -1,0 +1,76 @@
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rules enforce three balls, pause and reset (1.164583ms)
+✔ real launch feeds scoring objects, not a scripted path (535.774375ms)
+✔ physical drain serves next ball and ends after third (38.980458ms)
+✔ both kinematic flippers physically drive ball upfield (71.557833ms)
+✔ pause freezes simulation; resume and restart are deterministic (91.345208ms)
+✔ former left ramp wedge clears naturally without ball search (396.453041ms)
+✔ ninety varied launches drain without stuck recovery or position jumps (60762.084ms)
+✔ twelve full three-ball sessions end without rescue (26284.584583ms)
+✖ side-wall approaches enter genuine outlanes and naturally drain when uncharged (92.023167ms)
+✔ beginner play duration remains controllable across thirty-one powers (76529.289959ms)
+✔ rules deduplicate events, complete lanes, and refill one center save (0.498167ms)
+✔ each physical top lane registers center and edge traversals only once (227.811458ms)
+✔ spinner traversal accelerates rotation once; rotation decays without score farming (25.266208ms)
+✔ charged center saver applies impulse without teleport, then allows real drain (43.954958ms)
+✔ natural shooter launch traverses a top rollover lane (96.919958ms)
+✔ outlane widths below entrance exceed ball diameter with margin (0.376292ms)
+✔ center save clears both held and returning flippers without a downstroke collision (103.965125ms)
+✔ held buttons cannot pinch the ball permanently (14006.267084ms)
+✔ twenty seeded incoming balls measure physical contact and controlled return (5572.626625ms)
+✔ both flippers cradle passively without repeated coil fire and release naturally (1325.497875ms)
+✔ release timing produces distinct aimed reflip shots on both sides (760.876583ms)
+✔ curved sling and inlane have a full ball-width passage with margin (1.541584ms)
+✔ rising shots gain energy toward the tip without exceeding the world limit (326.928542ms)
+✖ five real cradle-reflip timings traverse the S ramp, cradle again and re-fire (672.797334ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 22
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 188049.11275
+
+✖ failing tests:
+
+test at artifacts/pinball/left-joint-controls-fd3567f/instrument.mjs:3:131
+✖ side-wall approaches enter genuine outlanes and naturally drain when uncharged (92.023167ms)
+  AssertionError [ERR_ASSERTION]: OUT must not be silently routed onto a flipper
+  + actual - expected
+  
+    [
+      0,
+  +   1
+  -   0
+    ]
+  
+      at file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:156:14
+      at async TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/artifacts/pinball/left-joint-controls-fd3567f/instrument.mjs:3:188)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 0, 1 ],
+    expected: [ 0, 0 ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at artifacts/pinball/left-joint-controls-fd3567f/instrument.mjs:3:131
+✖ five real cradle-reflip timings traverse the S ramp, cradle again and re-fire (672.797334ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'ready' !== 'playing'
+  
+      at file:///Users/tsaito/Projects/AIGames/web/js/pinball/physics.test.mjs:416:14
+      at async TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/artifacts/pinball/left-joint-controls-fd3567f/instrument.mjs:3:188)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'ready',
+    expected: 'playing',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,33 @@
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rules enforce three balls, pause and reset (1.809708ms)
+✔ real launch feeds scoring objects, not a scripted path (478.1905ms)
+✔ physical drain serves next ball and ends after third (29.168084ms)
+✔ both kinematic flippers physically drive ball upfield (57.060584ms)
+✔ pause freezes simulation; resume and restart are deterministic (73.896458ms)
+✔ former left ramp wedge clears naturally without ball search (333.833167ms)
+✔ ninety varied launches drain without stuck recovery or position jumps (56651.005541ms)
+✔ twelve full three-ball sessions end without rescue (22637.209292ms)
+✔ side-wall approaches enter genuine outlanes and naturally drain when uncharged (127.671708ms)
+✔ beginner play duration remains controllable across thirty-one powers (47817.290792ms)
+✔ rules deduplicate events, complete lanes, and refill one center save (0.481625ms)
+✔ each physical top lane registers center and edge traversals only once (254.63175ms)
+✔ spinner traversal accelerates rotation once; rotation decays without score farming (24.750833ms)
+✔ charged center saver applies impulse without teleport, then allows real drain (50.869042ms)
+✔ natural shooter launch traverses a top rollover lane (113.80825ms)
+✔ outlane widths below entrance exceed ball diameter with margin (0.525708ms)
+✔ center save clears both held and returning flippers without a downstroke collision (111.860292ms)
+✔ held buttons cannot pinch the ball permanently (18162.017292ms)
+✔ twenty seeded incoming balls measure physical contact and controlled return (6492.911791ms)
+✔ both flippers cradle passively without repeated coil fire and release naturally (1405.65ms)
+✔ release timing produces distinct aimed reflip shots on both sides (819.320958ms)
+✔ curved sling and inlane have a full ball-width passage with margin (1.814791ms)
+✔ rising shots gain energy toward the tip without exceeding the world limit (409.104792ms)
+✔ five real cradle-reflip timings traverse the S ramp, cradle again and re-fire (4349.663ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 160502.061459

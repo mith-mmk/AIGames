@@ -1,0 +1,21 @@
+using deprecated parameters for the initialization function; pass a single object instead
+✔ experimental ramp uses continuous finite mesh and adequate channel width (3.464625ms)
+ramp-boundary {"speed":26,"offset":-0.08,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0.08,"outcome":"normal-rollback-relaunch"}
+✔ floor ball passes below rear elevated deck without being lifted (66.174292ms)
+✔ low ramp skirt blocks lateral entry instead of admitting ball under deck (25.312708ms)
+✔ elevated exit releases ball into left lower lane without teleport (36.010334ms)
+✔ 28-speed tangent approaches all complete with lateral tolerance (579.850333ms)
+✔ 26-speed boundary shots complete honestly or roll back and relaunch normally (508.778084ms)
+✔ six unassisted launch powers leave the ramp base without permanent stalls (1164.850375ms)
+✔ ground balls approaching low base from high deck side deflect without wedging (697.521958ms)
+✔ five adjacent real flipper timings traverse the forward S and award once without teleport (1965.46975ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5115.068791

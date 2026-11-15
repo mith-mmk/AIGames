@@ -1,0 +1,38 @@
+using deprecated parameters for the initialization function; pass a single object instead
+✔ experimental ramp uses continuous finite mesh and adequate channel width (3.358083ms)
+ramp-boundary {"speed":26,"offset":-0.08,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0.08,"outcome":"normal-rollback-relaunch"}
+✔ floor ball passes below rear elevated deck without being lifted (66.286208ms)
+✔ low ramp skirt blocks lateral entry instead of admitting ball under deck (26.929916ms)
+✔ elevated exit releases ball into left lower lane without teleport (36.765667ms)
+✔ 28-speed tangent approaches all complete with lateral tolerance (602.797375ms)
+✔ 26-speed boundary shots complete honestly or roll back and relaunch normally (531.470958ms)
+✔ six unassisted launch powers leave the ramp base without permanent stalls (1295.835333ms)
+✔ ground balls approaching low base from high deck side deflect without wedging (1156.030791ms)
+✖ five adjacent real flipper timings traverse the forward S and award once without teleport (1075.52ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4868.453333
+
+✖ failing tests:
+
+test at artifacts/pinball/left-joint-controls-fd3567f/instrument.mjs:3:131
+✖ five adjacent real flipper timings traverse the forward S and award once without teleport (1075.52ms)
+  AssertionError [ERR_ASSERTION]: natural release 81 did not traverse
+      at file:///Users/tsaito/Projects/AIGames/web/js/pinball/ramp.test.mjs:139:14
+      at async TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/artifacts/pinball/left-joint-controls-fd3567f/instrument.mjs:3:188)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

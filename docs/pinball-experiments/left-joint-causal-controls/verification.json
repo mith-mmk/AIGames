@@ -1,0 +1,17 @@
+{
+  "sourceMapsByteIdentical": {
+    "stable": true,
+    "v2": true,
+    "stud": true,
+    "sensor": true,
+    "both": true
+  },
+  "archivedTestHashesMatchAll15ExecutedHistories": true,
+  "restoredObserverScriptsSyntaxChecked": true,
+  "pairedPhysicalStateHistories": 33,
+  "exactlyMatchingPairs": 33,
+  "dynamicExperimentsRepeatedForPacket": false,
+  "sourceAndExpectationsUnchanged": true,
+  "temporaryRestoration": "Moved to Trash after verification",
+  "scope": "Hash/exact-byte/syntax validation of restoration; observed diagnostic results already retained. No additional broad experiments."
+}

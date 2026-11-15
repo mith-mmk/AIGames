@@ -1,0 +1,594 @@
+{
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-upper-lanes-84.json.gz": {
+    "bytes": 273358,
+    "sha256": "6ecd8be174d5b52bf316532b39ef7e12f6d8991c996ac8242cfa60218eda0aa6"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-in-new-in-mouth-8.json.gz": {
+    "bytes": 5037,
+    "sha256": "92f2bd00d056f616e59edec64719d0e05ce03366412a41aad420ebafc1280fe1"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-ramp-summary.json": {
+    "bytes": 15620,
+    "sha256": "9e2626040e38b257a6d0bea3e32b2e22e9c189f2006ac6c8ce28db790ffd6786"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-ramp.log": {
+    "bytes": 1232,
+    "sha256": "fd280a514cfc31f5b344457b18fb9934da7489f3c25cd101e20b3b2d4da0d375"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-upper-lanes-84.json.gz": {
+    "bytes": 273346,
+    "sha256": "9204e130a421cd587f149b3b34afc306806c0468761ec63bbebdc4d04c628cd8"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-upper-lanes.log": {
+    "bytes": 513,
+    "sha256": "7760a3d6b44fb7314410106791fd7016e4de2cee876405ac350c42dd1db48891"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-upper-lanes.log": {
+    "bytes": 512,
+    "sha256": "f7e626e8b61aba09cbb61cf4043e37606a16460d9efbc31ba10dd2a0f578c08e"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-ramp.log": {
+    "bytes": 2017,
+    "sha256": "b1b413ead08b05f3e409e59d5b74b341363b74ee93bc563f7f9b7c4c5387377e"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-sources.json": {
+    "bytes": 331283,
+    "sha256": "fd42c836d035aa53bf7e53f7f3edc4dc4f122a5ae63500ab5a47ac6a57b2295d"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-upper-lanes-80.json.gz": {
+    "bytes": 291418,
+    "sha256": "6307f9f46cdb63a10f85f6738324ae65f58a0a79c6671a3697a02d048ad4513c"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-in-arrival.json": {
+    "bytes": 89844,
+    "sha256": "6f25f0fd0b2883f57fe4862816b19c073dae2262d54d48c29e589db40c5b7c91"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-in-old-capture-start-4.json.gz": {
+    "bytes": 81650,
+    "sha256": "a10aef91c05960732a966a68f6b75655c47569bda465156777acd493f8aea178"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-physics.log": {
+    "bytes": 2237,
+    "sha256": "bdc7d8c953ab3d8ffa3bbe9fb3d2763885d709e6eafd08cfe5115a18dd510baf"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-in.log": {
+    "bytes": 5974,
+    "sha256": "411904bee71843f2786ed3b7710ae92e15acfaed2d08ac9d9b964cb0fc643c47"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-in-old-capture-start-2.json.gz": {
+    "bytes": 89628,
+    "sha256": "22cfc02865bb1fd24f71a145e1b25b329ad5cc9b00557e77a7c0d6d01dff5c14"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-ramp-84.json.gz": {
+    "bytes": 273339,
+    "sha256": "8f48e14e70066d56866834eb2da8b9344fe8dd6fdcbce9e16020583e745c5471"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-in-new-in-mouth-0.2.json.gz": {
+    "bytes": 11116,
+    "sha256": "db31fc7ecadae6e67693b0d7a0b02e8126b6da8afa502f0feb51cce8da2f6526"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-ramp-84.json.gz": {
+    "bytes": 273351,
+    "sha256": "883ad62102dcfcd26a49d1062f780e798b623be918aca843a9587b3aff48e362"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-in.log": {
+    "bytes": 5846,
+    "sha256": "e49235354628d2a8f076ff2b1a9dc34d801fb3e0281dcd85d9a7179cdb7c7375"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-physics-summary.json": {
+    "bytes": 73064,
+    "sha256": "bc27391b46cd265efba725cdddd9d894bbc9fb2742ed7118313d9843e358b79e"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-ramp-summary.json": {
+    "bytes": 32070,
+    "sha256": "40215a28f705f0460f98c90a171144bc9f28e364dc3841bbaca0f901945d97ff"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-in.log": {
+    "bytes": 5902,
+    "sha256": "f68efd66357c36e1c886acfd0e1666a2719ac81f78bc7a4ac83f0322a20f46de"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-in-old-capture-start-2.json.gz": {
+    "bytes": 85685,
+    "sha256": "a7ad342ce45cc6ca98c3d97fac33bff7be24c0aa5dd84bbcd18cfbdae04c50a3"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-in-new-in-mouth-8.json.gz": {
+    "bytes": 33174,
+    "sha256": "ebcf8cca1561f48b5daab952c9af58d553404d1df49e6ce2feefb410fb450059"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-in-old-capture-start-8.json.gz": {
+    "bytes": 30479,
+    "sha256": "2cef201c0a518842672fcb533f1dfaaa00a8d415458b8234efec0b47c409d2d5"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-ramp.log": {
+    "bytes": 1232,
+    "sha256": "f3f88374bb14dbeb67eeb6580513a346ea87728b70a08ee3d75a8b55eab43f5e"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-physics-84.json.gz": {
+    "bytes": 427083,
+    "sha256": "2fc47e946263cdd341a8b5462afe6ac9cba3aa54739d168506bd8d7a85c988fd"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-upper-lanes-81.json.gz": {
+    "bytes": 264915,
+    "sha256": "49ea3e3eb0c80ecd711aaa8b430f9bd7bffa581ad317817721192ba7c16b38be"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-upper-lanes.log": {
+    "bytes": 1353,
+    "sha256": "1c63fe7db98559b48720e0c4079d42599a5d03997374981a03c4e702db8dd397"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-in-new-in-mouth-0.2.json.gz": {
+    "bytes": 34435,
+    "sha256": "d60330982149967910549bd42392611d62c2f3ae62714399a3c835d3b7c9539b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-in-new-in-mouth-2.json.gz": {
+    "bytes": 9618,
+    "sha256": "c5a51b32d6e170b70242691632a98cca8e6aed0db7951b5ee9e2508c5f6e0866"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-in-new-in-mouth-0.2.json.gz": {
+    "bytes": 34435,
+    "sha256": "d60330982149967910549bd42392611d62c2f3ae62714399a3c835d3b7c9539b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-upper-lanes.log": {
+    "bytes": 513,
+    "sha256": "c0e0a43cd8904e18274552596920c98c5e0323831cfee940ed9c59ea5dd91128"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-sources.json": {
+    "bytes": 332182,
+    "sha256": "2d9c3a9cae7eba29d21dc755645c752e2b23345d0a64de01b1f4750bdeef611e"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-in-new-in-mouth-4.json.gz": {
+    "bytes": 30599,
+    "sha256": "c713ec43295975b8c8b78148339d89f1820caf2ef47d1a2b8e708fd873ccfe2b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-ramp-80.json.gz": {
+    "bytes": 289757,
+    "sha256": "102f71d34f2abefcbbd80986eb0a3133b3755084b7edf79328d3d967bc7b2745"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/instrument.mjs": {
+    "bytes": 4174,
+    "sha256": "dcd4cc4b241de23ee7210a9d68e3a553d36a19bd751f189d29a5528535312d03"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-sources.json": {
+    "bytes": 324949,
+    "sha256": "659030bc26bc3098573723a9110cd273b8719b7d3f15e7049daef1449c6bc8bd"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-physics-80.json.gz": {
+    "bytes": 432999,
+    "sha256": "ab2f01d183df2f4823cdd2863cdd3e24914fa8359cc1dca70e7351efc2b6cc30"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-in-new-in-mouth-4.json.gz": {
+    "bytes": 30599,
+    "sha256": "c713ec43295975b8c8b78148339d89f1820caf2ef47d1a2b8e708fd873ccfe2b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-in-arrival.json": {
+    "bytes": 154527,
+    "sha256": "67b7dc300a5b53f31616a1d4ac022e1c37d28987688b4b4795bf575710ab5563"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-upper-lanes-83.json.gz": {
+    "bytes": 282021,
+    "sha256": "0b56a0a70ef2a50821c6ebeaa09bf08693c1cdf3e342aaf24a1d4dba6c89e892"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-in.log": {
+    "bytes": 5886,
+    "sha256": "fad2dd4cbb02341c4a50eba808855cdabed8ef12407eebbd21a3b06c84ccc4d4"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-in-arrival.json": {
+    "bytes": 153459,
+    "sha256": "e43588d1b7419afdb90154e0282b5b6d07f72c5f49a2589cb978a7e3153c39e7"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-in-new-in-mouth-4.json.gz": {
+    "bytes": 30599,
+    "sha256": "c713ec43295975b8c8b78148339d89f1820caf2ef47d1a2b8e708fd873ccfe2b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-in-old-capture-start-8.json.gz": {
+    "bytes": 60500,
+    "sha256": "86c80ce12b5a748bc80bda053e93663eee5bc674291d308232b2c47af337574e"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-in-old-capture-start-0.2.json.gz": {
+    "bytes": 89277,
+    "sha256": "8c00b4056069ef8817f8af49a7e6b777a781c408010e3e2695cdc012a9c36ea9"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-physics-81.json.gz": {
+    "bytes": 211846,
+    "sha256": "240a1ba3631ab905694725b18b510260e084d6f3aacf81f43321c93604662049"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-in-arrival.json": {
+    "bytes": 139199,
+    "sha256": "aed897a804fbdcee3dddd505dc370a84d45f85cbee44b7fca18001536947b66a"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-physics.log": {
+    "bytes": 4557,
+    "sha256": "e2dffa4f811179f20627b2528117fa0262e0a6dad65b8cad0db86b3d84dfe3a7"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-upper-lanes-82.json.gz": {
+    "bytes": 283549,
+    "sha256": "71f7542dd82ce3f74c27b06e8abf2eccc88efa405bc14bc2a63c9b2ae782e1fc"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-physics-summary.json": {
+    "bytes": 48486,
+    "sha256": "792b707ede259e55b6c788ee44c6bd61e3a3b6418ff9449d9ed9f25e21a72d0c"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-ramp-summary.json": {
+    "bytes": 15618,
+    "sha256": "f8fd752c52aae089aea8cd7968b09ba1d8c82b79a801f6b0e8b70bd17a663fe5"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-ramp-84.json.gz": {
+    "bytes": 282981,
+    "sha256": "be24328fba8416594535eea216f4f3b85be656ee9e370bd4fe5932eadfa3257d"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-sources.json": {
+    "bytes": 331252,
+    "sha256": "07a6cbc5fc9d4dce4ea1d40d859340c6b56c63e52a16d09fc9dc9380da9d9607"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-in-old-capture-start-4.json.gz": {
+    "bytes": 85244,
+    "sha256": "82d9f93ff4e7264201ba9a3f4b758cb86c0ed809fa688900dc08be6777b477c4"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-in-old-capture-start-8.json.gz": {
+    "bytes": 75652,
+    "sha256": "f792abb3977e654eba1fa478179625c3ab77071c616b7ab2969a5c5e53da0011"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-in-old-capture-start-2.json.gz": {
+    "bytes": 90898,
+    "sha256": "2c744fc5682c86716bdd89450c896ca2aa0dd554f46abfd41814ff37a898659d"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-in-new-in-mouth-2.json.gz": {
+    "bytes": 89323,
+    "sha256": "896f2488e7cf603697a460881ed6d28114b722915eaa61ebd1448b815d60f234"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-ramp-81.json.gz": {
+    "bytes": 211845,
+    "sha256": "91ac02290ff2b024466b3051a871b82f316e35670c56c44c9926dd226dc985c4"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-upper-lanes-summary.json": {
+    "bytes": 16455,
+    "sha256": "3f86fc8b9e97f6c9f2f1e9a72911caba379a058f4f587947675aad0c71f573f8"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-upper-lanes-summary.json": {
+    "bytes": 16453,
+    "sha256": "78b5fb467b07d38c6046b8efa4c913a0ae581d8310b4f566c7655f16adc5933f"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/in-control.mjs": {
+    "bytes": 3972,
+    "sha256": "f78ac4eb63d5722779a5eb13f09ba7ee6c713b397b4cf88effb23613a5e624d0"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-physics-summary.json": {
+    "bytes": 82659,
+    "sha256": "818215d506eef654006acb8c404a6f46a69194596d302e59c63b1417d6aa3fc6"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-ramp-82.json.gz": {
+    "bytes": 273795,
+    "sha256": "a147306d7844b36f12a3e1cf9ea74888d837dc8a59d7500afc0edca00a882706"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-sources.json": {
+    "bytes": 331839,
+    "sha256": "39b0dc49f47bc0a56fc00f061b1bb441e8508840fa7023f813a873b59565c49d"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-physics.log": {
+    "bytes": 3926,
+    "sha256": "fc8f21f1b02d8cf063397cb6a499dd853d197059a60bf1933f1ac35ba46a1d8b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-physics-80.json.gz": {
+    "bytes": 433008,
+    "sha256": "608362115b95ec2ff41c78a16d62dff75440abb3d8921a869659199e707938c4"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-ramp-82.json.gz": {
+    "bytes": 273785,
+    "sha256": "9bb1bcfea5566ec310d8085a1060298b9691ebf6ea1594d20588c36b23ab91ef"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-upper-lanes-80.json.gz": {
+    "bytes": 289757,
+    "sha256": "d433abdfc796a8071430aa15a45c80c66f7798c2f8a66a7e335ec353442aa580"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-physics-82.json.gz": {
+    "bytes": 426700,
+    "sha256": "5eac57df1d239d008b7a825be0b3dd4635b0ce67edb98c15b09c147e07d15c87"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/findings.json": {
+    "bytes": 739935,
+    "sha256": "ab0c6cc1dd38e93db806b420b1e3364f801b5208bf0f2a26c071f99a315e3a9f"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-ramp-81.json.gz": {
+    "bytes": 264903,
+    "sha256": "1cf4a24cbbe43ba925dadb3142c67da6fd8eb311edbd2d86115fc03d9db3cb3d"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-physics-80.json.gz": {
+    "bytes": 329439,
+    "sha256": "40b07e3d368b165d0eef3475dcfb91219eb33f14cf0394985abd4b700b251f3a"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-in-new-in-mouth-0.2.json.gz": {
+    "bytes": 34435,
+    "sha256": "d60330982149967910549bd42392611d62c2f3ae62714399a3c835d3b7c9539b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-upper-lanes-83.json.gz": {
+    "bytes": 285950,
+    "sha256": "7c0b0742f91299f979277e9d6be068d83075c1ac62f6fac2dc8ca0d66123b078"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-in-old-capture-start-8.json.gz": {
+    "bytes": 60500,
+    "sha256": "86c80ce12b5a748bc80bda053e93663eee5bc674291d308232b2c47af337574e"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/loader.mjs": {
+    "bytes": 1177,
+    "sha256": "5b8931d1145cf81be7e1031f47fed7ed3044cc3317a473f0073a2426736b4a3e"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-physics.log": {
+    "bytes": 4554,
+    "sha256": "2f6cc4a283f2a4bf3500cd6d83c4dac73b292cdfb88c4061ca20c4f10c49cc93"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-upper-lanes-summary.json": {
+    "bytes": 32945,
+    "sha256": "877c70ca0c2eef891da3a310998a7b40c9a501b9eefa8830c38529669bd49667"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-in-old-capture-start-4.json.gz": {
+    "bytes": 81650,
+    "sha256": "a10aef91c05960732a966a68f6b75655c47569bda465156777acd493f8aea178"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-upper-lanes-80.json.gz": {
+    "bytes": 289767,
+    "sha256": "5eb7e99cbb3f5edee7a4c2a035ebaca1d0d35abf7257a369cb6e50e401ca8ccd"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-upper-lanes-83.json.gz": {
+    "bytes": 285963,
+    "sha256": "474553e89ab008327ab59ff06a634e4da5df40933435f2cce32fcc402cbcea00"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-physics-83.json.gz": {
+    "bytes": 427255,
+    "sha256": "f52beb73bea80cb5f306d857e2e02995879fbc6026f9291f480f78b8b878ba2c"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-upper-lanes-81.json.gz": {
+    "bytes": 211846,
+    "sha256": "1a3ccb7dfb68394a8a7384a63e14a8a7032f8903059ed8716f424e1103327260"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-ramp-80.json.gz": {
+    "bytes": 291407,
+    "sha256": "07a5da6371194f65be8ed847a492b3e1373b1f322fbff235fd5dcb9b1d86e1c2"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-upper-lanes.log": {
+    "bytes": 1353,
+    "sha256": "50dc3356746a57a3b4af9054495e46b9404ef589837778c0b360c3c44f636155"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-in-new-in-mouth-8.json.gz": {
+    "bytes": 33174,
+    "sha256": "ebcf8cca1561f48b5daab952c9af58d553404d1df49e6ce2feefb410fb450059"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-upper-lanes-summary.json": {
+    "bytes": 32916,
+    "sha256": "bd6f3b50b224e1e75bf58cc6bd84c2d559d80fd11ef5de10adc229d6f876e5e8"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-upper-lanes-82.json.gz": {
+    "bytes": 273790,
+    "sha256": "3e9691a5826308fe18c5723b14bc23c212b4914d6fb64da833fc49e5d7eddd9b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-upper-lanes-82.json.gz": {
+    "bytes": 273801,
+    "sha256": "b24ebbe1da1c6215a266251cd347b251c4f586540205512091cbe4818738b2d0"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-upper-lanes-81.json.gz": {
+    "bytes": 211854,
+    "sha256": "981c7f98819f900d9d7684d9ed5df7d70f1d8a01c09a71286206e3b6536a66e8"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-in-new-in-mouth-8.json.gz": {
+    "bytes": 33174,
+    "sha256": "ebcf8cca1561f48b5daab952c9af58d553404d1df49e6ce2feefb410fb450059"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-in-old-capture-start-4.json.gz": {
+    "bytes": 85244,
+    "sha256": "82d9f93ff4e7264201ba9a3f4b758cb86c0ed809fa688900dc08be6777b477c4"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-ramp-83.json.gz": {
+    "bytes": 285958,
+    "sha256": "89b812d5a0683c9971b83cc98378b995e50a63488acfbf64e57960798123d4ee"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-in-old-capture-start-0.2.json.gz": {
+    "bytes": 85659,
+    "sha256": "40c363cd7084639d4f66fb054a919c38755f5c3ef4a4df4538b0a80499f8618e"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-physics-81.json.gz": {
+    "bytes": 211854,
+    "sha256": "165048f70a7fb353c2dc062d44fa517239bf64b7a6610a6b5e5751a42a78b17a"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-in-new-in-mouth-8.json.gz": {
+    "bytes": 33174,
+    "sha256": "ebcf8cca1561f48b5daab952c9af58d553404d1df49e6ce2feefb410fb450059"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-in-old-capture-start-2.json.gz": {
+    "bytes": 85685,
+    "sha256": "a7ad342ce45cc6ca98c3d97fac33bff7be24c0aa5dd84bbcd18cfbdae04c50a3"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-ramp-83.json.gz": {
+    "bytes": 285943,
+    "sha256": "f7a66ce9a8c661e76541b03f3f84e086d4ddc6df6554bb3b500915624c5d3217"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-ramp-82.json.gz": {
+    "bytes": 283543,
+    "sha256": "8787cbddfba6fb91571e9321545ca428c590fbe30731921493b90007831e08de"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-ramp.log": {
+    "bytes": 1231,
+    "sha256": "23ba8a45700186ffe47ab0ac41bd7191bbb921ab6f1ec5581314b94e1641e9bb"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-physics-81.json.gz": {
+    "bytes": 406517,
+    "sha256": "bc2003cbb45c2ff3088cfb91eab0294d1bf44c197d00eb7cf79335558172ff99"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-upper-lanes-84.json.gz": {
+    "bytes": 282990,
+    "sha256": "15a2c558e600ea5ebcdfdbb4234255edeb3a9188cf02194bc9a584bf14003207"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-in-old-capture-start-0.2.json.gz": {
+    "bytes": 89277,
+    "sha256": "8c00b4056069ef8817f8af49a7e6b777a781c408010e3e2695cdc012a9c36ea9"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/variants.json": {
+    "bytes": 1075,
+    "sha256": "1c1dfc74a6abe903d751c004b86b8a69abcffde8fee6a40549a254f947199303"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-ramp-summary.json": {
+    "bytes": 32072,
+    "sha256": "e284f576417203b146d670d2bd3c5afe1795a2af37a75dc8c6becccf2141f1e1"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-upper-lanes-80.json.gz": {
+    "bytes": 285092,
+    "sha256": "97314c98194e277dd8499bfc6c46f149bb2b06d3a189fd6831c5145ef567c7b6"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-in-old-capture-start-0.2.json.gz": {
+    "bytes": 85659,
+    "sha256": "40c363cd7084639d4f66fb054a919c38755f5c3ef4a4df4538b0a80499f8618e"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-upper-lanes-80.json.gz": {
+    "bytes": 285079,
+    "sha256": "ccad9857cb7a1c82244c9eb2d7be94fc33642e3e108b1b82d1fb5ff946617820"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-in-new-in-mouth-0.2.json.gz": {
+    "bytes": 34435,
+    "sha256": "d60330982149967910549bd42392611d62c2f3ae62714399a3c835d3b7c9539b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-ramp-81.json.gz": {
+    "bytes": 282894,
+    "sha256": "9d70e6624f3d4fb4fad62fb9ff571f5d4c4431e2bec39df83b39986eb5587944"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-in-new-in-mouth-4.json.gz": {
+    "bytes": 30599,
+    "sha256": "c713ec43295975b8c8b78148339d89f1820caf2ef47d1a2b8e708fd873ccfe2b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-in-old-capture-start-4.json.gz": {
+    "bytes": 30632,
+    "sha256": "00fd8d6e5517325c874b3a6bb13dd5cd2a66adf68fecf35bfee5bf40d6ad1db8"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-physics-80.json.gz": {
+    "bytes": 329453,
+    "sha256": "f1ddf71cf1eb584b6cfc6e29562145932748a1ca2db44f8a498b98eeeb3c4d43"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-in-old-capture-start-2.json.gz": {
+    "bytes": 89628,
+    "sha256": "22cfc02865bb1fd24f71a145e1b25b329ad5cc9b00557e77a7c0d6d01dff5c14"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-ramp-81.json.gz": {
+    "bytes": 282879,
+    "sha256": "5df7be3b33a00b50c77214cf89ae2e4de3e411076c808e559d58834d5df07b0a"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-ramp-80.json.gz": {
+    "bytes": 289746,
+    "sha256": "094ed8133b4f49f286d4847f67ab242397495a04c597e1727dcb048a93b40530"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-in.log": {
+    "bytes": 5756,
+    "sha256": "32e5f93367886de7f69638d875990fbef2de1fe39f8358d0bf32f27b982d22ac"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-in-old-capture-start-0.2.json.gz": {
+    "bytes": 91216,
+    "sha256": "7937636e3c8d435814a2412f32f6fd262ebbbf2b52f3f7e026ef8f60867b5920"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-ramp-80.json.gz": {
+    "bytes": 285082,
+    "sha256": "afb055daebf27151c04374bf6c7ab8d96eb14c4b4b38d4126f880052ecf91894"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-ramp-80.json.gz": {
+    "bytes": 285069,
+    "sha256": "070e7dbfd0861ab6d648624182e9a5e031acfd0f015a8c1f5d352f7d97b22600"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-physics.log": {
+    "bytes": 3924,
+    "sha256": "20c3232f5b1a3f77a00b4f04cab57312a910d45888e63e86d15ecc4fa9b61e5b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-in-new-in-mouth-2.json.gz": {
+    "bytes": 89323,
+    "sha256": "896f2488e7cf603697a460881ed6d28114b722915eaa61ebd1448b815d60f234"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-ramp.log": {
+    "bytes": 2022,
+    "sha256": "a6ca1528e659837378b40af86bba30f94517d548e12c424ef90953f7fb580c35"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-ramp-summary.json": {
+    "bytes": 32101,
+    "sha256": "fc1ac2ba3e688c71e0a894bf3f2ccdca57524d24aa455a40b62d48036708f35b"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-physics-summary.json": {
+    "bytes": 48484,
+    "sha256": "9bfdddf567ee39d5dbd7bce97c301a04de10784ce25265187407e80d3931c0ba"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-in-new-in-mouth-4.json.gz": {
+    "bytes": 7874,
+    "sha256": "2fef5317ac291609cd54a69f444af2417700bb2da2d4a7663705daa2e082ebc2"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-ramp-81.json.gz": {
+    "bytes": 211837,
+    "sha256": "b60565e4d50646cdb2a47dccb7cd7b2155f8d67947158dd4fea689ee1c60d170"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-in-new-in-mouth-2.json.gz": {
+    "bytes": 36529,
+    "sha256": "d7fb3005142d3327461ca20b7be55ec749d9c7ec500e45677940373e8191ebf6"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/analyze.py": {
+    "bytes": 4826,
+    "sha256": "793bd466a7b70a283ff3333416eacb6f6be7872f3dc1b660ca16758d40990b83"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-upper-lanes-summary.json": {
+    "bytes": 32914,
+    "sha256": "6dfe566e4148582d36437e2c848509d3fa1bbd4778e418eeab0a389f90d6ec38"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-ramp-83.json.gz": {
+    "bytes": 282011,
+    "sha256": "d7b7d34362965c4636fdc198f6092defc716e1ce120e35bc57fe6b739ac7966a"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stable-physics-80.json.gz": {
+    "bytes": 434393,
+    "sha256": "8b57bd121b764bf31e2178b18250c975fe230ab55d7691aca7e854e09a41a4f4"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-upper-lanes-81.json.gz": {
+    "bytes": 282902,
+    "sha256": "65b091e18a1c87f9faecb3c5b584885b4cd891b7f2217a2e2a83a31a95e3bdae"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/sensor-physics-summary.json": {
+    "bytes": 82671,
+    "sha256": "af1e1cebece2028375916fd5ce3a9d858d7058364fac5969e18766a4e65da65a"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-in-old-capture-start-8.json.gz": {
+    "bytes": 75652,
+    "sha256": "f792abb3977e654eba1fa478179625c3ab77071c616b7ab2969a5c5e53da0011"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/stud-in-new-in-mouth-2.json.gz": {
+    "bytes": 36529,
+    "sha256": "d7fb3005142d3327461ca20b7be55ec749d9c7ec500e45677940373e8191ebf6"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/v2-upper-lanes-81.json.gz": {
+    "bytes": 282888,
+    "sha256": "6acf54be9f1a33dc0e2b59deec49a42312b15a40154b7c34c1fe4ff11f60760f"
+  },
+  "artifacts/pinball/left-joint-controls-fd3567f/both-in-arrival.json": {
+    "bytes": 140241,
+    "sha256": "174bca93f9ff4430d5d14e407eff05ac392cae28db7a888f26ed2e3f2b5d2804"
+  },
+  "web/js/pinball/physics.test.mjs": {
+    "bytes": 23658,
+    "sha256": "616e9b18a51008b3314900c68d5694a4bd504fe814397189841cad7152e3618a"
+  },
+  "web/js/pinball/ramp.test.mjs": {
+    "bytes": 9451,
+    "sha256": "a8e9e17adc848e1142cc0bd25c99ab2cba48a1c5987f49dea1c84ba125098566"
+  },
+  "web/js/pinball/upper-lanes.test.mjs": {
+    "bytes": 3536,
+    "sha256": "084999a8a24f711bef63f6b5d86f8293431c0c08eaff210b9b4cba792c313aac"
+  },
+  "web/js/pinball/components/bumper.mjs": {
+    "bytes": 15067,
+    "sha256": "2839bb9fe5e8387e2e6acbfb496969e2182084025672a8ceee0970787d3d7a7b"
+  },
+  "web/js/pinball/components/cabinet.mjs": {
+    "bytes": 13955,
+    "sha256": "fe754a5680421fa40e4ec4f0c7b24796a9de27ff2a90399818d42583eb80d4b2"
+  },
+  "web/js/pinball/assets.mjs": {
+    "bytes": 18026,
+    "sha256": "a7f093ffdc6afc9bfb695f11e53fcf2b85f1ac7caaa94d8614aca48ec2a1def0"
+  },
+  "web/js/pinball/physics.mjs": {
+    "bytes": 23710,
+    "sha256": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92"
+  },
+  "web/js/pinball/layout.mjs": {
+    "bytes": 5728,
+    "sha256": "1c9860b284831e46af2ddde75476c9563e064b29c38d84bb5df812f7366de609"
+  }
+}
