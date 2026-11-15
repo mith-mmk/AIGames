@@ -1,0 +1,38 @@
+{
+  "scope": "Geometric/friction-cone preflight of prior design-only low shoe, not simulation, approved actuator, selected friction or a no-go theorem. A single convex contact at or below crest .060 touching a floor ball centeredY.175 gives these normal bounds. Ignores simultaneous contacts, finite-duration gravity, damping, spin/friction variation, changing contact state and other impulses. Friction.055 is an illustrative average of existing ball.06 and rail.05, not an implemented actuator material. Does not claim actual outgoing velocity.",
+  "ballRadius": 0.135,
+  "centerY": 0.175,
+  "maximumShoeY": 0.06,
+  "minimumNormalY": 0.8518518518518517,
+  "maximumHorizontalNormalMagnitude": 0.5237828008789243,
+  "gravityMagnitudeY": 97.46939904187322,
+  "cases": [
+    {
+      "assumedEffectiveFriction": 0,
+      "minimumUpwardToUpstreamImpulseRatio": 1.6263455967290585,
+      "illustrativeIncomingVz": 8,
+      "legacyTargetVz": -12,
+      "requiredDeltaVz": 20,
+      "conditionalDeltaVyLowerBound": 32.52691193458117,
+      "gravityOnlyApexFromThatDeltaVy": 5.427344430150217
+    },
+    {
+      "assumedEffectiveFriction": 0.055,
+      "minimumUpwardToUpstreamImpulseRatio": 1.442330559255084,
+      "illustrativeIncomingVz": 8,
+      "legacyTargetVz": -12,
+      "requiredDeltaVz": 20,
+      "conditionalDeltaVyLowerBound": 28.84661118510168,
+      "gravityOnlyApexFromThatDeltaVy": 4.268657573783483
+    },
+    {
+      "assumedEffectiveFriction": 0.3,
+      "minimumUpwardToUpstreamImpulseRatio": 0.8914189913179006,
+      "illustrativeIncomingVz": 8,
+      "legacyTargetVz": -12,
+      "requiredDeltaVz": 20,
+      "conditionalDeltaVyLowerBound": 17.828379826358013,
+      "gravityOnlyApexFromThatDeltaVy": 1.6305175283595386
+    }
+  ]
+}

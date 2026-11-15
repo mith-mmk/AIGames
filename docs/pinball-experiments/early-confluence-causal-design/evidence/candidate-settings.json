@@ -1,0 +1,56 @@
+{
+  "mode": "candidate",
+  "scope": "Fresh world explicit getter audit; supplements matched-history configs, not another gameplay test.",
+  "integration": {
+    "dt": 0.008333333767950535,
+    "contact_erp": 0.135755255818367,
+    "lengthUnit": 1,
+    "normalizedAllowedLinearError": 0.0010000000474974513,
+    "normalizedPredictionDistance": 0.0020000000949949026,
+    "numSolverIterations": 8,
+    "numAdditionalFrictionIterations": 0,
+    "numInternalPgsIterations": 1,
+    "minIslandSize": 128,
+    "maxCcdSubsteps": 1
+  },
+  "body": {
+    "softCcdPrediction": 0,
+    "effectiveInvMass": {
+      "x": 12.5,
+      "y": 12.5,
+      "z": 12.5
+    },
+    "invPrincipalInertiaSqrt": {
+      "x": 41.40866470336914,
+      "y": 41.40866470336914,
+      "z": 41.40866470336914
+    },
+    "principalInertiaLocalFrame": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "effectiveWorldInvInertiaSqrt": {
+      "elements": {
+        "0": 41.40866470336914,
+        "1": 0,
+        "2": 0,
+        "3": 41.40866470336914,
+        "4": 0,
+        "5": 41.40866470336914
+      }
+    },
+    "effectiveAngularInertia": {
+      "elements": {
+        "0": 0.0005831999587826431,
+        "1": 0,
+        "2": 0,
+        "3": 0.0005831999587826431,
+        "4": 0,
+        "5": 0.0005831999587826431
+      }
+    }
+  },
+  "launchDefault": "launch(power = 1) {\n    power = Number.isFinite(power) ? power : 1;\n    if (!this.state.launch()) return false;\n    this.ball.setGravityScale(1, true);\n    this.ball.setLinvel({ x: 0, y: 0, z: -(3 + Math.max(0, Math.min(1, power)) * 20) }, true);\n    return true;\n  }"
+}

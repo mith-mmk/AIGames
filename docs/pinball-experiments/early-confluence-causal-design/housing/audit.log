@@ -1,0 +1,184 @@
+{
+  "meshes": [
+    {
+      "name": "existing-save-housing",
+      "bounds": [
+        [
+          -2.225,
+          0.0350000023841858,
+          3.5699999916553495
+        ],
+        [
+          -1.975,
+          0.16499999761581421,
+          3.989999993443489
+        ]
+      ],
+      "vertexHash": "2176112d7d0240e632732ae01b26f3c908ad07cb14187f67c88fca56b8fa0404",
+      "triangleCount": 444
+    },
+    {
+      "name": "existing-save-rod",
+      "bounds": [
+        [
+          -2.1600000858306885,
+          0.07000000029802322,
+          3.5
+        ],
+        [
+          -2.0399999618530273,
+          0.1899999976158142,
+          3.799999952316284
+        ]
+      ],
+      "vertexHash": "a33016f7f469e460ae469b74ddd5229050ad4f4ecf4aecc89a1f5ce829cadd61",
+      "triangleCount": 16
+    }
+  ],
+  "cases": [
+    {
+      "name": "mouth--2.545-2-true",
+      "windowTicks": 8,
+      "parts": [
+        {
+          "name": "existing-save-housing",
+          "intersectingSamples": 8,
+          "minGap": -0.12977395415306092
+        },
+        {
+          "name": "existing-save-rod",
+          "intersectingSamples": 8,
+          "minGap": -0.13078119035833308
+        }
+      ]
+    },
+    {
+      "name": "mouth--2.545-4-true",
+      "windowTicks": 9,
+      "parts": [
+        {
+          "name": "existing-save-housing",
+          "intersectingSamples": 9,
+          "minGap": -0.12963006854057313
+        },
+        {
+          "name": "existing-save-rod",
+          "intersectingSamples": 9,
+          "minGap": -0.13460726856389907
+        }
+      ]
+    },
+    {
+      "name": "mouth--2.545-8-true",
+      "windowTicks": 7,
+      "parts": [
+        {
+          "name": "existing-save-housing",
+          "intersectingSamples": 7,
+          "minGap": -0.13006455659866334
+        },
+        {
+          "name": "existing-save-rod",
+          "intersectingSamples": 7,
+          "minGap": -0.1338954682834888
+        }
+      ]
+    },
+    {
+      "name": "mouth--2.515-0.2-true",
+      "windowTicks": 9,
+      "parts": [
+        {
+          "name": "existing-save-housing",
+          "intersectingSamples": 9,
+          "minGap": -0.12953416466712953
+        },
+        {
+          "name": "existing-save-rod",
+          "intersectingSamples": 9,
+          "minGap": -0.12530709913385057
+        }
+      ]
+    },
+    {
+      "name": "mouth--2.485-4-true",
+      "windowTicks": 9,
+      "parts": [
+        {
+          "name": "existing-save-housing",
+          "intersectingSamples": 9,
+          "minGap": -0.1296674704551697
+        },
+        {
+          "name": "existing-save-rod",
+          "intersectingSamples": 9,
+          "minGap": -0.12976589461899976
+        }
+      ]
+    },
+    {
+      "name": "mouth--2.485-8-true",
+      "windowTicks": 8,
+      "parts": [
+        {
+          "name": "existing-save-housing",
+          "intersectingSamples": 8,
+          "minGap": -0.12981780827045442
+        },
+        {
+          "name": "existing-save-rod",
+          "intersectingSamples": 8,
+          "minGap": -0.13072610689685663
+        }
+      ]
+    },
+    {
+      "name": "mouth--2.46-2-true",
+      "windowTicks": 10,
+      "parts": [
+        {
+          "name": "existing-save-housing",
+          "intersectingSamples": 10,
+          "minGap": -0.12958526074886323
+        },
+        {
+          "name": "existing-save-rod",
+          "intersectingSamples": 10,
+          "minGap": -0.12559587738059946
+        }
+      ]
+    },
+    {
+      "name": "mouth--2.46-4-true",
+      "windowTicks": 9,
+      "parts": [
+        {
+          "name": "existing-save-housing",
+          "intersectingSamples": 9,
+          "minGap": -0.12961020529270173
+        },
+        {
+          "name": "existing-save-rod",
+          "intersectingSamples": 9,
+          "minGap": -0.1341145366139721
+        }
+      ]
+    },
+    {
+      "name": "mouth--2.46-8-true",
+      "windowTicks": 12,
+      "parts": [
+        {
+          "name": "existing-save-housing",
+          "intersectingSamples": 12,
+          "minGap": -0.1291878616809845
+        },
+        {
+          "name": "existing-save-rod",
+          "intersectingSamples": 12,
+          "minGap": -0.1313077315125552
+        }
+      ]
+    }
+  ]
+}

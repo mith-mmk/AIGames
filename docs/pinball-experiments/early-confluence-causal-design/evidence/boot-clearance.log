@@ -1,0 +1,36 @@
+using deprecated parameters for the initialization function; pass a single object instead
+[
+  {
+    tick: 0,
+    min: 4.342146548765058,
+    bound: 4.341646548765058,
+    shape: gg { type: 2, halfHeight: 0.15549306090567017, radius: 0.02 },
+    p: fA {
+      x: -1.899999976158142,
+      y: 0.2199999988079071,
+      z: 3.305493116378784
+    }
+  },
+  {
+    tick: 1,
+    min: 4.313423185508406,
+    bound: 4.3129231855084065,
+    shape: gg { type: 2, halfHeight: 0.15549306090567017, radius: 0.02 },
+    p: fA {
+      x: -1.899999976158142,
+      y: 0.2199999988079071,
+      z: 3.305493116378784
+    }
+  },
+  {
+    tick: 2,
+    min: 4.292736951187945,
+    bound: 4.292236951187945,
+    shape: gg { type: 2, halfHeight: 0.15549306090567017, radius: 0.02 },
+    p: fA {
+      x: -1.899999976158142,
+      y: 0.2199999988079071,
+      z: 3.305493116378784
+    }
+  }
+]

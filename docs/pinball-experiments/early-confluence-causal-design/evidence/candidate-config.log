@@ -1,0 +1,31 @@
+using deprecated parameters for the initialization function; pass a single object instead
+✔ upper rollover volumes stay in the ground lane below the elevated route (77.267334ms)
+✔ legal ground upper-lane center and edge passes award once at low and high speeds (1349.552208ms)
+✖ five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save (1651.557833ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3169.799041
+
+✖ failing tests:
+
+test at web/js/pinball/upper-lanes.test.mjs:50:1
+✖ five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save (1651.557833ms)
+  AssertionError [ERR_ASSERTION]: same real ramp traversal remains required at release 82
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/upper-lanes.test.mjs:64:14)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

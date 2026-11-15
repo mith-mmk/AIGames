@@ -1,0 +1,903 @@
+{
+  "mode": "candidate",
+  "family": "upper-lanes",
+  "sourceSHA256": "67fa19af22c9e92c24311cdc475a2574b5795be341fd176324a64e4e9c2bab12",
+  "testSourceSHA256": "084999a8a24f711bef63f6b5d86f8293431c0c08eaff210b9b4cba792c313aac",
+  "method": "Original preceding tests and target body executed by node:test. Only import of test is redirected to observation wrapper; tests after target not scheduled. Assertions unchanged and original aborts preserved. Counts are PinballPhysics worlds; ramp standalone fixture worlds execute unchanged but are not counted.",
+  "worlds": 31,
+  "order": [
+    {
+      "ordinal": 0,
+      "test": "upper rollover volumes stay in the ground lane below the elevated route"
+    },
+    {
+      "ordinal": 1,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 2,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 3,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 4,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 5,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 6,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 7,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 8,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 9,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 10,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 11,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 12,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 13,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 14,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 15,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 16,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 17,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 18,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 19,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 20,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 21,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 22,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 23,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 24,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 25,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 26,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 27,
+      "test": "legal ground upper-lane center and edge passes award once at low and high speeds"
+    },
+    {
+      "ordinal": 28,
+      "test": "five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save"
+    },
+    {
+      "ordinal": 29,
+      "test": "five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save"
+    },
+    {
+      "ordinal": 30,
+      "test": "five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save"
+    }
+  ],
+  "tests": [
+    {
+      "name": "upper rollover volumes stay in the ground lane below the elevated route",
+      "status": "pass",
+      "startGameWorld": 0,
+      "endGameWorld": 1
+    },
+    {
+      "name": "legal ground upper-lane center and edge passes award once at low and high speeds",
+      "status": "pass",
+      "startGameWorld": 1,
+      "endGameWorld": 28
+    },
+    {
+      "name": "five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save",
+      "status": "fail",
+      "startGameWorld": 28,
+      "endGameWorld": 31,
+      "error": "same real ramp traversal remains required at release 82\n\n0 !== 1\n"
+    }
+  ],
+  "results": [
+    {
+      "ordinal": 28,
+      "delay": 80,
+      "steps": 1164,
+      "shots": [
+        {
+          "tick": 610,
+          "side": 0,
+          "before": {
+            "p": [
+              -0.7034599781036377,
+              0.17110325396060944,
+              4.469030380249023
+            ],
+            "v": [
+              3.877711534500122,
+              -0.00019716736278496683,
+              -3.5921108722686768
+            ],
+            "w": [
+              6.079137802124023,
+              -21.294260025024414,
+              -8.861530303955078
+            ],
+            "coil": [
+              0,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "after": {
+            "p": [
+              -0.7034599781036377,
+              0.17110325396060944,
+              4.469030380249023
+            ],
+            "v": [
+              17.452085494995117,
+              -0.00019716736278496683,
+              -26.230886459350586
+            ],
+            "w": [
+              6.079137802124023,
+              -21.294260025024414,
+              -8.861530303955078
+            ],
+            "coil": [
+              1,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "shot": {
+            "side": 0,
+            "along": 0.47942107183891425,
+            "faceAngle": -0.5,
+            "aimAngle": -0.5870737149422629,
+            "angularSpeed": 12,
+            "speed": 31.506105724133942,
+            "p": {
+              "x": -0.7034599781036377,
+              "y": 0.17110325396060944,
+              "z": 4.469030380249023
+            },
+            "vx": 17.452084988153004,
+            "vz": -26.23088689820819
+          }
+        }
+      ],
+      "events": [
+        {
+          "tick": 64,
+          "event": {
+            "type": "inlane",
+            "id": "contact-0"
+          },
+          "p": [
+            -1.600000023841858,
+            0.17123648524284363,
+            3.390763759613037
+          ]
+        },
+        {
+          "tick": 632,
+          "event": {
+            "type": "sling",
+            "id": "contact-1"
+          },
+          "p": [
+            1.6330534219741821,
+            0.20130154490470886,
+            1.0329710245132446
+          ]
+        },
+        {
+          "tick": 1163,
+          "event": {
+            "type": "ramp",
+            "id": "ramp-2"
+          },
+          "p": [
+            -1.711735725402832,
+            0.5614757537841797,
+            3.059403896331787
+          ]
+        }
+      ],
+      "injections": [
+        {
+          "tick": 30,
+          "p": [
+            -1.6,
+            0.18,
+            2.8
+          ]
+        }
+      ],
+      "boot": {
+        "p": [
+          2.5299999713897705,
+          0.17076809704303741,
+          -0.8058730959892273
+        ],
+        "v": [
+          0,
+          -3.7215686088387656e-9,
+          -18.864259719848633
+        ],
+        "w": [
+          -30.683820724487305,
+          0,
+          0
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "cradle": {
+        "p": [
+          -1.0551451444625854,
+          0.1711997240781784,
+          4.058165550231934
+        ],
+        "v": [
+          -0.00023631057410966605,
+          -0.00000914880456548417,
+          0.00007622150587849319
+        ],
+        "w": [
+          0.0001364733325317502,
+          0.0013813066761940718,
+          0.0008339399355463684
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "release": {
+        "p": [
+          -0.734654426574707,
+          0.1711282730102539,
+          4.497720241546631
+        ],
+        "v": [
+          1.1478179693222046,
+          0.00010579259105725214,
+          0.8774588108062744
+        ],
+        "w": [
+          6.595040321350098,
+          -10.04041862487793,
+          -8.630234718322754
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          -0.6,
+          3.741592653589793
+        ]
+      },
+      "final": {
+        "p": [
+          -1.711735725402832,
+          0.5614757537841797,
+          3.059403896331787
+        ],
+        "v": [
+          0.3206768333911896,
+          -1.2955541610717773,
+          2.77951717376709
+        ],
+        "w": [
+          20.842208862304688,
+          -1.393723964691162,
+          -11.192808151245117
+        ],
+        "coil": [
+          1,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 1,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "rawTrace": "candidate-upper-lanes-80.json.gz",
+      "rawSHA256": "83a52fbc3c0c88bcf631b462d34758cdaddeb76e2a2b1f3565577b9b62208777"
+    },
+    {
+      "ordinal": 29,
+      "delay": 81,
+      "steps": 1210,
+      "shots": [
+        {
+          "tick": 611,
+          "side": 0,
+          "before": {
+            "p": [
+              -0.6930217146873474,
+              0.17109879851341248,
+              4.475619792938232
+            ],
+            "v": [
+              3.981459379196167,
+              -0.0001304230245295912,
+              -3.6957602500915527
+            ],
+            "w": [
+              6.161340713500977,
+              -21.434951782226562,
+              -8.968247413635254
+            ],
+            "coil": [
+              0,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "after": {
+            "p": [
+              -0.6930217146873474,
+              0.17109879851341248,
+              4.475619792938232
+            ],
+            "v": [
+              17.958879470825195,
+              -0.0001304230245295912,
+              -26.153560638427734
+            ],
+            "w": [
+              6.161340713500977,
+              -21.434951782226562,
+              -8.968247413635254
+            ],
+            "coil": [
+              1,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "shot": {
+            "side": 0,
+            "along": 0.48857744325671276,
+            "faceAngle": -0.5,
+            "aimAngle": -0.6017239092107405,
+            "angularSpeed": 12,
+            "speed": 31.725858638161107,
+            "p": {
+              "x": -0.6930217146873474,
+              "y": 0.17109879851341248,
+              "z": 4.475619792938232
+            },
+            "vx": 17.9588803191067,
+            "vz": -26.153560446191328
+          }
+        }
+      ],
+      "events": [
+        {
+          "tick": 64,
+          "event": {
+            "type": "inlane",
+            "id": "contact-0"
+          },
+          "p": [
+            -1.600000023841858,
+            0.17123648524284363,
+            3.390763759613037
+          ]
+        },
+        {
+          "tick": 626,
+          "event": {
+            "type": "sling",
+            "id": "contact-1"
+          },
+          "p": [
+            1.4830448627471924,
+            0.17100611329078674,
+            1.3656750917434692
+          ]
+        },
+        {
+          "tick": 1209,
+          "event": {
+            "type": "ramp",
+            "id": "ramp-2"
+          },
+          "p": [
+            -1.7097141742706299,
+            0.5612063407897949,
+            3.065885543823242
+          ]
+        }
+      ],
+      "injections": [
+        {
+          "tick": 30,
+          "p": [
+            -1.6,
+            0.18,
+            2.8
+          ]
+        }
+      ],
+      "boot": {
+        "p": [
+          2.5299999713897705,
+          0.17076809704303741,
+          -0.8058730959892273
+        ],
+        "v": [
+          0,
+          -3.7215686088387656e-9,
+          -18.864259719848633
+        ],
+        "w": [
+          -30.683820724487305,
+          0,
+          0
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "cradle": {
+        "p": [
+          -1.0551451444625854,
+          0.1711997240781784,
+          4.058165550231934
+        ],
+        "v": [
+          -0.00023631057410966605,
+          -0.00000914880456548417,
+          0.00007622150587849319
+        ],
+        "w": [
+          0.0001364733325317502,
+          0.0013813066761940718,
+          0.0008339399355463684
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "release": {
+        "p": [
+          -0.7250522971153259,
+          0.17112429440021515,
+          4.505137920379639
+        ],
+        "v": [
+          1.1616363525390625,
+          0.00009955644782166928,
+          0.8881232142448425
+        ],
+        "w": [
+          6.675460338592529,
+          -10.209653854370117,
+          -8.73425006866455
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          -0.6,
+          3.741592653589793
+        ]
+      },
+      "final": {
+        "p": [
+          -1.7097141742706299,
+          0.5612063407897949,
+          3.065885543823242
+        ],
+        "v": [
+          0.41492214798927307,
+          -1.3799729347229004,
+          3.235292911529541
+        ],
+        "w": [
+          25.28845977783203,
+          -1.4081319570541382,
+          -12.354766845703125
+        ],
+        "coil": [
+          1,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 1,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "rawTrace": "candidate-upper-lanes-81.json.gz",
+      "rawSHA256": "b40d9d119eda93b23d458066ab97f1b3c9d4cc4eb4143a81b56a70fbea100f40"
+    },
+    {
+      "ordinal": 30,
+      "delay": 82,
+      "steps": 937,
+      "shots": [
+        {
+          "tick": 612,
+          "side": 0,
+          "before": {
+            "p": [
+              -0.6824597716331482,
+              0.17109425365924835,
+              4.482287883758545
+            ],
+            "v": [
+              4.086262226104736,
+              -0.00006141263293102384,
+              -3.8008127212524414
+            ],
+            "w": [
+              6.243375301361084,
+              -21.575450897216797,
+              -9.074682235717773
+            ],
+            "coil": [
+              0,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "after": {
+            "p": [
+              -0.6824597716331482,
+              0.17109425365924835,
+              4.482287883758545
+            ],
+            "v": [
+              18.473159790039062,
+              -0.00006141263293102384,
+              -26.065895080566406
+            ],
+            "w": [
+              6.243375301361084,
+              -21.575450897216797,
+              -9.074682235717773
+            ],
+            "coil": [
+              1,
+              0
+            ],
+            "phase": "playing",
+            "ball": 1,
+            "ramp": 0,
+            "stage": 0,
+            "angles": [
+              -0.5,
+              3.741592653589793
+            ]
+          },
+          "shot": {
+            "side": 0,
+            "along": 0.4978423055849577,
+            "faceAngle": -0.5,
+            "aimAngle": -0.6165476889359323,
+            "angularSpeed": 12,
+            "speed": 31.948215334038984,
+            "p": {
+              "x": -0.6824597716331482,
+              "y": 0.17109425365924835,
+              "z": 4.482287883758545
+            },
+            "vx": 18.47315911393298,
+            "vz": -26.06589448650168
+          }
+        }
+      ],
+      "events": [
+        {
+          "tick": 64,
+          "event": {
+            "type": "inlane",
+            "id": "contact-0"
+          },
+          "p": [
+            -1.600000023841858,
+            0.17123648524284363,
+            3.390763759613037
+          ]
+        },
+        {
+          "tick": 626,
+          "event": {
+            "type": "sling",
+            "id": "contact-1"
+          },
+          "p": [
+            1.3341248035430908,
+            0.17102497816085815,
+            1.684686541557312
+          ]
+        }
+      ],
+      "injections": [
+        {
+          "tick": 30,
+          "p": [
+            -1.6,
+            0.18,
+            2.8
+          ]
+        },
+        {
+          "tick": 936,
+          "p": [
+            2.53,
+            0.175,
+            4.425
+          ]
+        }
+      ],
+      "boot": {
+        "p": [
+          2.5299999713897705,
+          0.17076809704303741,
+          -0.8058730959892273
+        ],
+        "v": [
+          0,
+          -3.7215686088387656e-9,
+          -18.864259719848633
+        ],
+        "w": [
+          -30.683820724487305,
+          0,
+          0
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "cradle": {
+        "p": [
+          -1.0551451444625854,
+          0.1711997240781784,
+          4.058165550231934
+        ],
+        "v": [
+          -0.00023631057410966605,
+          -0.00000914880456548417,
+          0.00007622150587849319
+        ],
+        "w": [
+          0.0001364733325317502,
+          0.0013813066761940718,
+          0.0008339399355463684
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "release": {
+        "p": [
+          -0.7153351306915283,
+          0.17112025618553162,
+          4.512645244598389
+        ],
+        "v": [
+          1.1754347085952759,
+          0.00009213655721396208,
+          0.8987777829170227
+        ],
+        "w": [
+          6.755805015563965,
+          -10.378763198852539,
+          -8.838099479675293
+        ],
+        "coil": [
+          0,
+          0
+        ],
+        "phase": "playing",
+        "ball": 1,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          -0.6,
+          3.741592653589793
+        ]
+      },
+      "final": {
+        "p": [
+          2.5299999713897705,
+          0.17499999701976776,
+          4.425000190734863
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "w": [
+          0,
+          0,
+          0
+        ],
+        "coil": [
+          1,
+          0
+        ],
+        "phase": "ready",
+        "ball": 2,
+        "ramp": 0,
+        "stage": 0,
+        "angles": [
+          0.48,
+          3.741592653589793
+        ]
+      },
+      "rawTrace": "candidate-upper-lanes-82.json.gz",
+      "rawSHA256": "e988dd36dac23689f2250d3044aa89d60c8245cb9e024247a376875b4715d032"
+    }
+  ]
+}

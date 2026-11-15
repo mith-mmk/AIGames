@@ -1,0 +1,9 @@
+{
+  "meaning": "candidate mode here means baseline construction followed by final early-confluence collider reconciliation, never source adoption",
+  "retained": 1373,
+  "added": 223,
+  "removed": 7,
+  "sourceSHA256": "67fa19af22c9e92c24311cdc475a2574b5795be341fd176324a64e4e9c2bab12",
+  "targetSourceSHA256": "523bce979d5a3adc53ec0531a7ad8766650f3b6004a63512dbd86480cc6412e8",
+  "limitations": "Same final collider multiset and body state, different insertion/removal lifecycle and handles; renderer stays baseline in this diagnostic and must not be adopted."
+}

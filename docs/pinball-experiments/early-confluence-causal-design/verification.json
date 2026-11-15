@@ -1,0 +1,30 @@
+{
+  "payloads": {
+    "baseline-sources.json": "ad77ee2048258420be753421a54bfdef22cae2d386e893864d8aea67a59bcd85",
+    "test-sources.json": "091843319ff345d987986c5d4c6937145ee1621405df2fa55f2087dc145e7067",
+    "original-sources.json": "523bce979d5a3adc53ec0531a7ad8766650f3b6004a63512dbd86480cc6412e8",
+    "ordered-sources.json": "67fa19af22c9e92c24311cdc475a2574b5795be341fd176324a64e4e9c2bab12"
+  },
+  "testBodies": [
+    {
+      "path": "web/js/pinball/ramp.test.mjs",
+      "archivedAndObservedSHA256": "a8e9e17adc848e1142cc0bd25c99ab2cba48a1c5987f49dea1c84ba125098566"
+    },
+    {
+      "path": "web/js/pinball/upper-lanes.test.mjs",
+      "archivedAndObservedSHA256": "084999a8a24f711bef63f6b5d86f8293431c0c08eaff210b9b4cba792c313aac"
+    }
+  ],
+  "productionStatus": "Only new docs packet; no production source edits",
+  "orderedWorldFinalInventory": "Checked by assertion in every ordered diagnostic world",
+  "independentRestoreExecuted": {
+    "orderedSourceExact": true,
+    "originalSourceExact": true,
+    "archivedLoaderSyntaxPassed": true,
+    "configHookSyntaxPassed": true,
+    "orderedFinalColliderInventoryAssertionPassed": true,
+    "bothFreshSettingsExactlyMatchRecorded": true,
+    "temporaryCopies": "Moved to Trash after verification",
+    "originalTestBodiesDoNotCallLowerLanePathsOrRampSupportStations": true
+  }
+}

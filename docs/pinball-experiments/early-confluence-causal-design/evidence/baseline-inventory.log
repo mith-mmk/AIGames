@@ -1,0 +1,2 @@
+using deprecated parameters for the initialization function; pass a single object instead
+{ mode: 'baseline', colliders: 1380, meshes: 1607, triangles: 471132 }

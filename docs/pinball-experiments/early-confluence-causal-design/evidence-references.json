@@ -1,0 +1,317 @@
+[
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/analyze-contracts.py",
+    "bytes": 5305,
+    "sha256": "e31f14189bcb1086d9cbbe661e45e4fc3fe63698f93fdbf2cc66bb20d08d44d0"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/baseline-config.json",
+    "bytes": 609468,
+    "sha256": "1687e66c6110b597d5c618851288135cdb6df680348a49f71e70c007d9af7db3"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/baseline-config.log",
+    "bytes": 514,
+    "sha256": "7c8ee5dcd7038ee900b4c980cf4ac75e241e3b8f00128b9ee3379579986a097f"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/baseline-inventory.json",
+    "bytes": 4400696,
+    "sha256": "34d40f3d2b088cf647a90d9c7786154f743b2b7e76cf7e85324adfbbdaec0228"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/baseline-inventory.log",
+    "bytes": 161,
+    "sha256": "5e53b60878c40ba802c86cceaeac6c920823289fe2dc3d7cab12c5a350149d43"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/baseline-settings.json",
+    "bytes": 1616,
+    "sha256": "8c455e33d325d9af0d052d8897e4583f1ab44e44edec396f0430b6d5c963e5bf"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/baseline-sources.json",
+    "bytes": 327034,
+    "sha256": "ad77ee2048258420be753421a54bfdef22cae2d386e893864d8aea67a59bcd85"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/boot-clearance.json",
+    "bytes": 19864,
+    "sha256": "4c21ec9a96981d856e84c9533f285e9c6c6cacbde668e89f5bc9d9974e777aab"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/boot-clearance.log",
+    "bytes": 865,
+    "sha256": "6c9112285bd1b8182e63745ba475cf7d07c09fabe08d5a7ea6e1ec380f9530a1"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/boot-clearance.mjs",
+    "bytes": 2681,
+    "sha256": "38b90229f4f624cb4a60a3426684c32532c44ceaf0902262db269b9c67e92b05"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/build-order-control.py",
+    "bytes": 3931,
+    "sha256": "f5007095f518df94654420a79762598e7ded3a88d17fdca39162110b55c02fa4"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-config.json",
+    "bytes": 571101,
+    "sha256": "a5ba29c619a8c32fac5d6be1294c2f54ef9a6c377c79578eeef8058acec4885d"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-config.log",
+    "bytes": 1210,
+    "sha256": "bb0efe4fe867e17d2f16a65d6679fdd1348430dbee6996653ddedd1434f5e157"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-75.json.gz",
+    "bytes": 74950,
+    "sha256": "be3850bde6e5c6eb656d40ee92135957134c7ae9a59270ff461e0ce6783382be"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-76.json.gz",
+    "bytes": 183499,
+    "sha256": "1a9ae8c2824b6e74208ee2417d9c0dde38321653e88cd56db0f6c15c144c3f70"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-77.json.gz",
+    "bytes": 177486,
+    "sha256": "d00a49e77ec208f0c2baec3adc186b1fc79617d43a79d7761a607f16a34429fd"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-78.json.gz",
+    "bytes": 176920,
+    "sha256": "ab71b6b5cd4af387961c445dad991b40ec9c1574d26fcdd751ebc9d1457d73c4"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-79.json.gz",
+    "bytes": 80359,
+    "sha256": "f19dd5ab989ba89a831a6ee91d0f762b181b9db6778f8917769b9df3cb1ff2a8"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-80.json.gz",
+    "bytes": 178497,
+    "sha256": "0c9a8920c9f84918d6e8c284ba367ca37376f360f6a9a249a4059baec0a48718"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-81.json.gz",
+    "bytes": 184181,
+    "sha256": "f888a811f6ef469101cd352ae296c29a8225b60c0201f586fd4f43a0f290c948"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-82.json.gz",
+    "bytes": 80432,
+    "sha256": "2a74f9d2f5d58490436fccff0455626251986ee6be138d7c7323af8073294542"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-83.json.gz",
+    "bytes": 181656,
+    "sha256": "60814b5a1974c3707624cd2cc54d820f45eecd1339c54dba6190fefbb00ae27c"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-84.json.gz",
+    "bytes": 186788,
+    "sha256": "7ae6706d396c6d576883231f46be5a49034eae6a34df0555430ce286aa4925f5"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-85.json.gz",
+    "bytes": 193877,
+    "sha256": "d9c752608355f5d76226e176686e7264b1d0880cb04aa5d65bded5085e27826d"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-86.json.gz",
+    "bytes": 128433,
+    "sha256": "eb5f6d51e03ed457d1088836dc13b1f29a756975e7278515ae36b32f5ff26557"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-87.json.gz",
+    "bytes": 189105,
+    "sha256": "76e052a7b216b58b83d5b8377a6a8df050000f02882395aac48bec1610c1322c"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-88.json.gz",
+    "bytes": 80952,
+    "sha256": "42e1fd0a0db97c1dfd9ad528d59c24f85ba2775e615aa753e176b6f64ba64f86"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-89.json.gz",
+    "bytes": 73325,
+    "sha256": "87e364ade1054c095b3a524f7088832d773c5c9d7dc6af9111a26a27fa860848"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-90.json.gz",
+    "bytes": 56428,
+    "sha256": "e085711dc0d19ddf89b07541941ca50501103c6163352c4befef5e98ac9ae7ae"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense-timing.json",
+    "bytes": 87386,
+    "sha256": "0f84f4cc7e0921d07e470e3b5d5637cb50202f40e03e64f03e961b2dfa7939bc"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-dense.log",
+    "bytes": 2470,
+    "sha256": "299eca56fea9bbac10c8e6e0a3e8cfacfe3add031ccefc376a221cfaac2a7d51"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-inventory.json",
+    "bytes": 4618702,
+    "sha256": "2009abaa5c2b78eea44cbee685242cad9296be5fad1d7d5480c3a5ea9804c201"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-inventory.log",
+    "bytes": 162,
+    "sha256": "8b378433471927d15b1a8c9c73391c753df32418d15f16bfe59a1acbfde752b1"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-ramp-80.json.gz",
+    "bytes": 283734,
+    "sha256": "ba6cee98821d1ff6c31cf46adb46188640c6f37ecbc07d1c1b771ff66f774977"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-ramp-81.json.gz",
+    "bytes": 292611,
+    "sha256": "c22721bf293c8faea9cdd438dafb6ca27ba0d75cc721b7ab343e88c57f407c57"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-ramp-82.json.gz",
+    "bytes": 213978,
+    "sha256": "2b20fd8e73aa027dc73071e82df82b5bf09c394bf2e65598fcfa67c076f67b43"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-ramp-summary.json",
+    "bytes": 20715,
+    "sha256": "395f312b3e1033e575b80e1150ab29c0f9c888e8a24c657d8cc7fec6f8766134"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-ramp.log",
+    "bytes": 2033,
+    "sha256": "707bc8ecaeed806b5bd54e6fb9a5a33836d24f9f232cb2b00da17a4c5de38092"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-settings.json",
+    "bytes": 1617,
+    "sha256": "64663ad22f2c9fdd76867955bd7f1c33e955462eb1e01d762c416ae2f0fb200a"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-upper-lanes-80.json.gz",
+    "bytes": 283746,
+    "sha256": "83a52fbc3c0c88bcf631b462d34758cdaddeb76e2a2b1f3565577b9b62208777"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-upper-lanes-81.json.gz",
+    "bytes": 292625,
+    "sha256": "b40d9d119eda93b23d458066ab97f1b3c9d4cc4eb4143a81b56a70fbea100f40"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-upper-lanes-82.json.gz",
+    "bytes": 213988,
+    "sha256": "e988dd36dac23689f2250d3044aa89d60c8245cb9e024247a376875b4715d032"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-upper-lanes-summary.json",
+    "bytes": 21564,
+    "sha256": "65888f449772ec5b7504e71c2ed31ad803c639aa089266e2af4996b3589f4690"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/candidate-upper-lanes.log",
+    "bytes": 1365,
+    "sha256": "b9be94952112ab407104bdf10308a7e7a2537708797e336b707a50a67e5b6848"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/config-hook.mjs",
+    "bytes": 2047,
+    "sha256": "85587a8957d8e1404765a20c83e1cfe8c10266f2016d981d234f50b05911926a"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/config-loader.mjs",
+    "bytes": 1008,
+    "sha256": "9e00e1ae6eebeea8eecb6176fcf79b06196a800b98a1b2148cba65e1b6aadcc6"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/contract-analysis.json",
+    "bytes": 135378,
+    "sha256": "6f692de932d00f80c3e5df348208ba27ce20dc2598f87e9af74cf4126b56547f"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/dense-timing.mjs",
+    "bytes": 4389,
+    "sha256": "32feb6639d57312a719b9859e03469e8d7547a6b4ef1bfb5b3c62548345cc5d7"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/diagnostic-loader.mjs",
+    "bytes": 1237,
+    "sha256": "9458d86660ae96babe713ec19383853d8cdb21af5719f7ee754919611229d411"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/instrument.mjs",
+    "bytes": 4270,
+    "sha256": "277229d4e30a891dc85065045d0dc31a77747ab7d4bda8b5551ca1d001b71842"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/inventory.mjs",
+    "bytes": 1437,
+    "sha256": "982ac42f2e4745839200eb75f56950f8f3f24ece6905a8121db886c63480305e"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/loader.mjs",
+    "bytes": 948,
+    "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/order-control-manifest.json",
+    "bytes": 562,
+    "sha256": "ca31117cb6b16921bf03abcd5918c1ad19d9cc6e3d6488f173c350f022e6970e"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/ordered-config.json",
+    "bytes": 571099,
+    "sha256": "7dc5c3a3c1e5564d1c2c426b6f1673c6abc79e6d8eceac01bcfa505ce0c4bea2"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/ordered-config.log",
+    "bytes": 1211,
+    "sha256": "7723113721ec362cecdbbc22b51b5efd9e5f666b7b070b65787c6660d3d4b726"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/ordered-settings.json",
+    "bytes": 1615,
+    "sha256": "6fa457291d6e08b22388141808df6f70e3f8549b2bad1bd3d59c12492b71d883"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/settings.mjs",
+    "bytes": 989,
+    "sha256": "4f5523a8f387e61464125fc29cb814d89a798436564ac12905f6f3d96926f0fb"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/sources.json",
+    "bytes": 2988446,
+    "sha256": "67fa19af22c9e92c24311cdc475a2574b5795be341fd176324a64e4e9c2bab12"
+  },
+  {
+    "path": "artifacts/pinball/early-confluence-causes-68766c6/test-sources.json",
+    "bytes": 13311,
+    "sha256": "091843319ff345d987986c5d4c6937145ee1621405df2fa55f2087dc145e7067"
+  },
+  {
+    "path": "artifacts/pinball/save-housing-audit-68766c6/audit.json",
+    "bytes": 52004,
+    "sha256": "d52a7203e7aad0dfde52b3a763bc1b7d9a19f532b07b98b8dec5b14ccbb0a1a5"
+  },
+  {
+    "path": "artifacts/pinball/save-housing-audit-68766c6/audit.log",
+    "bytes": 4206,
+    "sha256": "7cad065ab2f5072b74ba63b709e958e4bcafba6ec9789b86664833bf8a5abebb"
+  },
+  {
+    "path": "artifacts/pinball/save-housing-audit-68766c6/audit.mjs",
+    "bytes": 2719,
+    "sha256": "e54d2744bd1c10559835a8dbde9858f1f692704e890db37e6ea46c6e41276cc4"
+  },
+  {
+    "path": "artifacts/pinball/save-housing-audit-68766c6/low-shoe-preflight.json",
+    "bytes": 1749,
+    "sha256": "4dcf3f957a1d888cccab41eecb68fbf6bfece5338b00a6e8354debb8354bbd78"
+  }
+]

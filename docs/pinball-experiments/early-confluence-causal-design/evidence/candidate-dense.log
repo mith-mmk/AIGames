@@ -1,0 +1,18 @@
+using deprecated parameters for the initialization function; pass a single object instead
+{"mode":"candidate","delay":75,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"candidate","delay":76,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8393554091453552,"resets":0}
+{"mode":"candidate","delay":77,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8392784595489502,"resets":0}
+{"mode":"candidate","delay":78,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8393757343292236,"resets":0}
+{"mode":"candidate","delay":79,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"candidate","delay":80,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8392565250396729,"resets":0}
+{"mode":"candidate","delay":81,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8392585515975952,"resets":0}
+{"mode":"candidate","delay":82,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"candidate","delay":83,"crest":true,"returnLane":true,"floor":true,"capture":true,"refire":true,"minZ":-0.8393774032592773,"resets":0}
+{"mode":"candidate","delay":84,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"candidate","delay":85,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"candidate","delay":86,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"candidate","delay":87,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"candidate","delay":88,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"candidate","delay":89,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"candidate","delay":90,"crest":false,"returnLane":false,"floor":false,"capture":false,"refire":false,"minZ":null,"resets":0}
+{"mode":"candidate","rampIntervals":[[76,78],[80,81],[83,83]],"captureIntervals":[[76,78],[80,81],[83,83]],"refireIntervals":[[76,78],[80,81],[83,83]],"holes":[75,79,82,84,85,86,87,88,89,90]}

@@ -1,0 +1,2 @@
+using deprecated parameters for the initialization function; pass a single object instead
+{ mode: 'candidate', colliders: 1596, meshes: 1818, triangles: 518936 }
