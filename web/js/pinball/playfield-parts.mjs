@@ -74,10 +74,11 @@ export class PlayfieldParts {
     const a=this.a,g=a.root;
     const paths=lowerLanePaths(side);
     for(const path of paths) {
-      for(let i=0;i<path.length-1;i++) {
-        const tube=a.tube(g,[path[i],path[i+1]],LOWER_LAYOUT.guideRadius,"chrome");
-        tube.name="shared-lower-lane-contact-rail";
-      }
+      // Render the existing physical capsules, including their closed rounded
+      // ends. Merge each path without changing its axes, radius or supports.
+      const stock=railCapsules(path.map(p=>new T.Vector3(...p)),LOWER_LAYOUT.guideRadius);
+      const tube=a.mesh(capsuleStockGeometry(stock),"chrome",g);
+      tube.name="shared-lower-lane-contact-rail";
     }
     for(const [x,y,z] of lowerLaneMounts(side)) {
         a.cylinder(g,.055,.025,x,.062,z,"chrome");

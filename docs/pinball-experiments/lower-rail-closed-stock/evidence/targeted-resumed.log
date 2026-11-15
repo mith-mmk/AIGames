@@ -1,0 +1,11 @@
+using deprecated parameters for the initialization function; pass a single object instead
+✔ lower rails merge six paths with all existing support geometry retained (16.5585ms)
+✔ each lower stock primitive is closed and matches its actual installed collider (110.640416ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 200.903375

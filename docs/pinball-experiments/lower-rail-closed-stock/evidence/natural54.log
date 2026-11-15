@@ -1,0 +1,15 @@
+using deprecated parameters for the initialization function; pass a single object instead
+node:fs:2914
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, open 'artifacts/pinball/lower-rail-stock-172b821/natural54.json'
+    at Object.writeFileSync (node:fs:2914:20)
+    at file:///Users/tsaito/Projects/AIGames/scripts/pinball-playability-audit.mjs:50:129 {
+  errno: -28,
+  code: 'ENOSPC',
+  syscall: 'open',
+  path: 'artifacts/pinball/lower-rail-stock-172b821/natural54.json'
+}
+
+Node.js v26.7.0

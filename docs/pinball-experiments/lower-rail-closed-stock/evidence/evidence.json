@@ -1,0 +1,44 @@
+{
+  "baseline": "172b821 stable",
+  "candidate": "closed lower rail capsule stock",
+  "results": [
+    {
+      "mode": "baseline",
+      "view": "installed-45",
+      "triangles": 465844,
+      "calls": 698
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-10",
+      "triangles": 465700,
+      "calls": 686
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-90",
+      "triangles": 459524,
+      "calls": 671
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-45",
+      "triangles": 484148,
+      "calls": 600
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-10",
+      "triangles": 484004,
+      "calls": 588
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-90",
+      "triangles": 477828,
+      "calls": 573
+    }
+  ],
+  "errors": [],
+  "scope": "Installed views and closeups; no geometry hidden or inspection lighting added. Desktop/mobile emulation, not physical phone or strength certification."
+}

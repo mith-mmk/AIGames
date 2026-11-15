@@ -1,0 +1,8 @@
+{
+  "baseline": "172b8219202e3bbb2c1751df24b5f5cead83960a",
+  "sourceMapSHA256": "82471d0b5280ad7b08246e17fff57a82966a12fe48a80107b156f034cd1a7fc2",
+  "changedRuntimeModules": [
+    "web/js/pinball/playfield-parts.mjs"
+  ],
+  "physicsLayoutRulesInputUnchanged": true
+}

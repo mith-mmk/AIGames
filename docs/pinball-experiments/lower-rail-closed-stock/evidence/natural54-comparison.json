@@ -1,0 +1,20 @@
+{
+  "allCompleteRecordsExactlyEqual": true,
+  "baseline": "6b44fe2 adopted flipper runtime; identical runtime to172b821",
+  "cases": 54,
+  "summary": {
+    "games": 54,
+    "finished": 54,
+    "stalled": 0,
+    "zeroScore": 0,
+    "score": 169700,
+    "ramps": 61,
+    "lanes": 301,
+    "bumpers": 235,
+    "shots": 284,
+    "seconds": 3460.891666666845,
+    "liveResets": 0,
+    "hardwareContactEvents": 87,
+    "hardwareContactTicks": 643
+  }
+}
