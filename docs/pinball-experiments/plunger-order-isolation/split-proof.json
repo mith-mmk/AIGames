@@ -1,0 +1,178 @@
+{
+  "baseline-1:additions-only-1:80": {
+    "rowsEqual": true,
+    "commonShapesEqual": true
+  },
+  "v2-1:front-only-1:80": {
+    "rowsEqual": true,
+    "commonShapesEqual": true
+  },
+  "baseline-1:additions-only-1:81": {
+    "rowsEqual": true,
+    "commonShapesEqual": true
+  },
+  "v2-1:front-only-1:81": {
+    "rowsEqual": true,
+    "commonShapesEqual": true
+  },
+  "baseline-1:additions-only-1:82": {
+    "rowsEqual": true,
+    "commonShapesEqual": true
+  },
+  "v2-1:front-only-1:82": {
+    "rowsEqual": true,
+    "commonShapesEqual": true
+  },
+  "baseline-1:additions-only-1:83": {
+    "rowsEqual": true,
+    "commonShapesEqual": true
+  },
+  "v2-1:front-only-1:83": {
+    "rowsEqual": true,
+    "commonShapesEqual": true
+  },
+  "baseline-1:additions-only-1:84": {
+    "rowsEqual": true,
+    "commonShapesEqual": true
+  },
+  "baseline-1": {
+    "frontStop": {
+      "handle": 2.5e-323,
+      "p": [
+        2.5299999713897705,
+        0.30000001192092896,
+        5.900000095367432
+      ],
+      "type": 1,
+      "half": {
+        "x": 0.27000001072883606,
+        "y": 0.4000000059604645,
+        "z": 0.07999999821186066
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "friction": 0.07999999821186066,
+      "restitution": 0.3499999940395355
+    },
+    "minimumEndpointSphereGapThrough564": [
+      1.2599999064207077,
+      0,
+      "before",
+      [
+        2.5299999713897705,
+        0.17499999701976776,
+        4.425000190734863
+      ]
+    ],
+    "nonemptyFrontContactsThrough564": []
+  },
+  "v2-1": {
+    "frontStop": {
+      "handle": 2.5e-323,
+      "p": [
+        2.5299999713897705,
+        -0.5600000023841858,
+        6.230000019073486
+      ],
+      "type": 1,
+      "half": {
+        "x": 0.27000001072883606,
+        "y": 0.8399999737739563,
+        "z": 0.07999999821186066
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "friction": 0.07999999821186066,
+      "restitution": 0.3499999940395355
+    },
+    "minimumEndpointSphereGapThrough564": [
+      1.5899998301267624,
+      0,
+      "before",
+      [
+        2.5299999713897705,
+        0.17499999701976776,
+        4.425000190734863
+      ]
+    ],
+    "nonemptyFrontContactsThrough564": []
+  },
+  "front-only-1": {
+    "frontStop": {
+      "handle": 2.5e-323,
+      "p": [
+        2.5299999713897705,
+        -0.5600000023841858,
+        6.230000019073486
+      ],
+      "type": 1,
+      "half": {
+        "x": 0.27000001072883606,
+        "y": 0.8399999737739563,
+        "z": 0.07999999821186066
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "friction": 0.07999999821186066,
+      "restitution": 0.3499999940395355
+    },
+    "minimumEndpointSphereGapThrough564": [
+      1.5899998301267624,
+      0,
+      "before",
+      [
+        2.5299999713897705,
+        0.17499999701976776,
+        4.425000190734863
+      ]
+    ],
+    "nonemptyFrontContactsThrough564": []
+  },
+  "additions-only-1": {
+    "frontStop": {
+      "handle": 2.5e-323,
+      "p": [
+        2.5299999713897705,
+        0.30000001192092896,
+        5.900000095367432
+      ],
+      "type": 1,
+      "half": {
+        "x": 0.27000001072883606,
+        "y": 0.4000000059604645,
+        "z": 0.07999999821186066
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "friction": 0.07999999821186066,
+      "restitution": 0.3499999940395355
+    },
+    "minimumEndpointSphereGapThrough564": [
+      1.2599999064207077,
+      0,
+      "before",
+      [
+        2.5299999713897705,
+        0.17499999701976776,
+        4.425000190734863
+      ]
+    ],
+    "nonemptyFrontContactsThrough564": []
+  }
+}

@@ -1,0 +1,24 @@
+(node:40109) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/plunger-order-isolation/loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/plunger-order-isolation/loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ experimental ramp uses continuous finite mesh and adequate channel width (3.11775ms)
+ramp-boundary {"speed":26,"offset":-0.08,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0.08,"outcome":"normal-rollback-relaunch"}
+✔ floor ball passes below rear elevated deck without being lifted (72.339459ms)
+✔ low ramp skirt blocks lateral entry instead of admitting ball under deck (24.721459ms)
+✔ elevated exit releases ball into left lower lane without teleport (35.441583ms)
+✔ 28-speed tangent approaches all complete with lateral tolerance (655.705084ms)
+✔ 26-speed boundary shots complete honestly or roll back and relaunch normally (566.042208ms)
+✔ six unassisted launch powers leave the ramp base without permanent stalls (1282.472208ms)
+✔ ground balls approaching low base from high deck side deflect without wedging (760.890792ms)
+✔ five adjacent real flipper timings traverse the forward S and award once without teleport (2122.484708ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5599.027875
