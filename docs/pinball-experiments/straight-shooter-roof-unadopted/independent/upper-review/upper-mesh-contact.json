@@ -1,0 +1,425 @@
+{
+  "rails": [
+    {
+      "name": "inner",
+      "segments": 4,
+      "physical": [
+        {
+          "error": 4.7865906806770146e-8,
+          "handle": 3.5e-323
+        },
+        {
+          "error": 1.3004842732291457e-7,
+          "handle": 4e-323
+        },
+        {
+          "error": 1.1574857425132885e-7,
+          "handle": 4.4e-323
+        },
+        {
+          "error": 9.1775415089146e-8,
+          "handle": 5e-323
+        }
+      ],
+      "matchingMeshes": [
+        {
+          "name": "",
+          "type": "BufferGeometry",
+          "vertices": 520,
+          "maxVertexRadialError": 3.224015973357641e-7
+        }
+      ]
+    },
+    {
+      "name": "outer",
+      "segments": 1,
+      "physical": [
+        {
+          "error": 8.004129298995875e-8,
+          "handle": 7.406e-321
+        }
+      ],
+      "matchingMeshes": [
+        {
+          "name": "shooter-outer-rail",
+          "type": "BufferGeometry",
+          "vertices": 130,
+          "maxVertexRadialError": 2.479552737924551e-7
+        }
+      ]
+    },
+    {
+      "name": "roof",
+      "segments": 24,
+      "physical": [
+        {
+          "error": 1.0623712165617706e-7,
+          "handle": 5.4e-323
+        },
+        {
+          "error": 1.1321778463329822e-7,
+          "handle": 6e-323
+        },
+        {
+          "error": 4.7916526841017524e-8,
+          "handle": 6.4e-323
+        },
+        {
+          "error": 8.78740544392569e-8,
+          "handle": 7e-323
+        },
+        {
+          "error": 2.263698813276247e-7,
+          "handle": 7.4e-323
+        },
+        {
+          "error": 1.1062692475691247e-7,
+          "handle": 8e-323
+        },
+        {
+          "error": 1.5200732543988952e-7,
+          "handle": 8.4e-323
+        },
+        {
+          "error": 1.1303268416525435e-7,
+          "handle": 9e-323
+        },
+        {
+          "error": 8.387860673169855e-9,
+          "handle": 9.4e-323
+        },
+        {
+          "error": 2.16083575261852e-7,
+          "handle": 1e-322
+        },
+        {
+          "error": 8.860817918507656e-9,
+          "handle": 1.04e-322
+        },
+        {
+          "error": 1.6396296382568117e-7,
+          "handle": 1.1e-322
+        },
+        {
+          "error": 1.6683741861261735e-7,
+          "handle": 1.14e-322
+        },
+        {
+          "error": 5.763483634314685e-8,
+          "handle": 1.2e-322
+        },
+        {
+          "error": 1.230505581979859e-7,
+          "handle": 1.24e-322
+        },
+        {
+          "error": 1.5860123064788398e-7,
+          "handle": 1.3e-322
+        },
+        {
+          "error": 2.351103218647755e-7,
+          "handle": 1.33e-322
+        },
+        {
+          "error": 1.870040440614069e-7,
+          "handle": 1.4e-322
+        },
+        {
+          "error": 1.6419974607090574e-7,
+          "handle": 1.43e-322
+        },
+        {
+          "error": 1.1082681810999483e-7,
+          "handle": 1.5e-322
+        },
+        {
+          "error": 5.7461689443625207e-8,
+          "handle": 1.53e-322
+        },
+        {
+          "error": 8.393391161542949e-8,
+          "handle": 1.6e-322
+        },
+        {
+          "error": 4.7865907027969584e-8,
+          "handle": 1.63e-322
+        },
+        {
+          "error": 1.9226448091104977e-7,
+          "handle": 1.7e-322
+        }
+      ],
+      "matchingMeshes": [
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 7.333843325685319e-8
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 4.2147766061984004e-8
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 7.43734945504726e-8
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 8.750591923289974e-8
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.5182890983345132e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.3665720826477878e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.23845756434815e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.6846722742519527e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 5.534686114971876e-8
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.8849414688826283e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 8.98513458358341e-8
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.1342008648940194e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.6767926295374602e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.2921966727197365e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.7244405750571623e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.4006889211687357e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.4690913045095622e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 2.4144494785438564e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.35317940505586e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.393413025310708e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.1561497617607053e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.8750802041611614e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.2281969431759965e-7
+        },
+        {
+          "name": "",
+          "type": "TubeGeometry",
+          "vertices": 18,
+          "maxVertexRadialError": 1.1918849118774943e-7
+        }
+      ]
+    }
+  ],
+  "seam": {
+    "outerEnd": [
+      3.205,
+      0.23,
+      -3.75
+    ],
+    "roofStart": [
+      3.205,
+      0.23,
+      -3.75
+    ],
+    "gap": 0,
+    "lastChordToFirstRoofDegrees": 1.3199012008577613,
+    "idealArcEndDegrees": 58.075652837758724,
+    "arcToOldRoofDegrees": 16.316735298952615
+  },
+  "backing": {
+    "visible": "ExtrudeGeometry",
+    "outline": [
+      [
+        3.215,
+        -3.75
+      ],
+      [
+        3.2131764605053723,
+        -3.829144282826454
+      ],
+      [
+        3.2077097122438905,
+        -3.908120592336635
+      ],
+      [
+        3.1986113576687183,
+        -3.986761311715508
+      ],
+      [
+        3.1859007068391056,
+        -4.064899536393894
+      ],
+      [
+        3.1696047364373285,
+        -4.142369428281431
+      ],
+      [
+        3.149758032514237,
+        -4.219006567736081
+      ],
+      [
+        3.126402717084916,
+        -4.2946483025231625
+      ],
+      [
+        3.099588358730255,
+        -4.369134093023298
+      ],
+      [
+        3.0693718673941666,
+        -4.44230585295661
+      ],
+      [
+        3.035817373599722,
+        -4.514008284900031
+      ],
+      [
+        2.998996092340568,
+        -4.584089209885626
+      ],
+      [
+        2.958986171936477,
+        -4.65239989038041
+      ],
+      [
+        2.9158725281738347,
+        -4.718795345962176
+      ],
+      [
+        2.869746664083067,
+        -4.783134661021339
+      ],
+      [
+        2.8207064757355074,
+        -4.845281283835762
+      ],
+      [
+        2.7688560444718826,
+        -4.9051033163838
+      ],
+      [
+        2.7143054160033753,
+        -4.962473794280477
+      ],
+      [
+        2.6571703668540927,
+        -5.017270956242674
+      ],
+      [
+        2.597572158640646,
+        -5.069378502511415
+      ],
+      [
+        2.53563728071034,
+        -5.118685841682783
+      ],
+      [
+        2.471497181684191,
+        -5.165088325423614
+      ],
+      [
+        2.405287990474546,
+        -5.208487470573799
+      ],
+      [
+        1.25,
+        -5.55
+      ],
+      [
+        1.25,
+        -5.73
+      ],
+      [
+        3.215,
+        -5.73
+      ]
+    ]
+  }
+}

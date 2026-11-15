@@ -1,0 +1,14 @@
+// Straight housing passage and a single upper turn, shared by visible and physical stock.
+// The open inner end retains Z -3.90. No rail follows or observes a ball.
+export const TOP_TURN=Object.freeze({startZ:-3.75,innerX:2.75,outerX:3.205,endX:2.40,endZ:-5.20,axisWidth:.455,innerOpenZ:-3.90,backingOffset:.010});
+const td=TOP_TURN.outerX-TOP_TURN.endX,tz=TOP_TURN.startZ-TOP_TURN.endZ;
+export const TOP_RADIUS=(td*td+tz*tz)/(2*td),TOP_ANGLE=2*Math.atan(td/tz);
+const tc=TOP_TURN.outerX-TOP_RADIUS;
+const topAt=(r,a)=>[tc+r*Math.cos(a),.23,TOP_TURN.startZ-r*Math.sin(a)];
+const topCount=Math.ceil(TOP_ANGLE/(2*Math.acos(1-WHOLE.chordTolerance/(TOP_RADIUS+TOP_TURN.backingOffset))));
+const topFrames=Array.from({length:topCount+1},(_,i)=>topAt(TOP_RADIUS,TOP_ANGLE*i/topCount));
+const innerR=TOP_RADIUS-TOP_TURN.axisWidth,innerAngle=Math.asin((TOP_TURN.startZ-TOP_TURN.innerOpenZ)/innerR),innerCount=Math.ceil(innerAngle/(2*Math.acos(1-WHOLE.chordTolerance/innerR)));
+export const SHOOTER_INNER=[[TOP_TURN.innerX,.23,5.90],...Array.from({length:innerCount+1},(_,i)=>topAt(innerR,innerAngle*i/innerCount))];
+export const SHOOTER_OUTER=[[TOP_TURN.outerX,.23,4.95],topFrames[0]];
+export const UPPER_ROOF=[...topFrames,[1.25,.23,-5.55],[.95,.23,-5.30]];
+export const UPPER_BACKING=[...Array.from({length:topCount+1},(_,i)=>{const p=topAt(TOP_RADIUS+TOP_TURN.backingOffset,TOP_ANGLE*i/topCount);return[p[0],p[2]];}),[1.25,-5.55],[1.25,-5.73],[TOP_TURN.outerX+TOP_TURN.backingOffset,-5.73]];

@@ -1,0 +1,293 @@
+{
+  "baseline": {
+    "roofSegments": 3,
+    "joins": [
+      {
+        "p": [
+          2.805,
+          0.23,
+          -4.15
+        ],
+        "angleDegrees": 21.092339505827564,
+        "idealSphereLuneArea": 0.0026505415535411857,
+        "idealRingGapAtOuterBisector": 0.011028339372329563
+      },
+      {
+        "p": [
+          2.4,
+          0.23,
+          -5.2
+        ],
+        "angleDegrees": 51.98014743002547,
+        "idealSphereLuneArea": 0.0065320179719472946,
+        "idealRingGapAtOuterBisector": 0.02698399805624118
+      },
+      {
+        "p": [
+          1.25,
+          0.23,
+          -5.55
+        ],
+        "angleDegrees": 56.73308415641222,
+        "idealSphereLuneArea": 0.007129289616051044,
+        "idealRingGapAtOuterBisector": 0.029402918542344593
+      }
+    ],
+    "roofTubeVerticesPerSegment": 18,
+    "octagonMaxRadialInset": 0.004567228049322795,
+    "terminalCapsuleAxialExtension": 0.06,
+    "terminalHemisphereArea": 0.02261946710584651,
+    "sumIdealLuneArea": 0.016311849141539526
+  },
+  "candidate": {
+    "roofSegments": 24,
+    "joins": [
+      {
+        "p": [
+          3.205,
+          0.23,
+          -3.75
+        ],
+        "angleDegrees": 1.3199012008583138,
+        "idealSphereLuneArea": 0.00016586367664323296,
+        "idealRingGapAtOuterBisector": 0.0006910948323079369
+      },
+      {
+        "p": [
+          3.203187072346827,
+          0.23,
+          -3.828683713376852
+        ],
+        "angleDegrees": 2.63980240171657,
+        "idealSphereLuneArea": 0.00033172735328645877,
+        "idealRingGapAtOuterBisector": 0.0013821667425346976
+      },
+      {
+        "p": [
+          3.197752137087472,
+          0.23,
+          -3.907200430935426
+        ],
+        "angleDegrees": 2.639802401716156,
+        "idealSphereLuneArea": 0.0003317273532864067,
+        "idealRingGapAtOuterBisector": 0.0013821667425344807
+      },
+      {
+        "p": [
+          3.1887067291561926,
+          0.23,
+          -3.985383511284073
+        ],
+        "angleDegrees": 2.639802401716156,
+        "idealSphereLuneArea": 0.0003317273532864067,
+        "idealRingGapAtOuterBisector": 0.0013821667425344807
+      },
+      {
+        "p": [
+          3.1760700462399605,
+          0.23,
+          -4.06306702113218
+        ],
+        "angleDegrees": 2.6398024017167088,
+        "idealSphereLuneArea": 0.00033172735328647617,
+        "idealRingGapAtOuterBisector": 0.00138216674253477
+      },
+      {
+        "p": [
+          3.159868908033898,
+          0.23,
+          -4.140086087461721
+        ],
+        "angleDegrees": 2.6398024017162944,
+        "idealSphereLuneArea": 0.0003317273532864241,
+        "idealRingGapAtOuterBisector": 0.0013821667425345532
+      },
+      {
+        "p": [
+          3.14013769932001,
+          0.23,
+          -4.216277247448528
+        ],
+        "angleDegrees": 2.6398024017167088,
+        "idealSphereLuneArea": 0.00033172735328647617,
+        "idealRingGapAtOuterBisector": 0.00138216674253477
+      },
+      {
+        "p": [
+          3.1169182969900104,
+          0.23,
+          -4.291478795390601
+        ],
+        "angleDegrees": 2.639802401715604,
+        "idealSphereLuneArea": 0.00033172735328633734,
+        "idealRingGapAtOuterBisector": 0.001382166742534192
+      },
+      {
+        "p": [
+          3.0902599811671387,
+          0.23,
+          -4.365531125907164
+        ],
+        "angleDegrees": 2.63980240171657,
+        "idealSphereLuneArea": 0.00033172735328645877,
+        "idealRingGapAtOuterBisector": 0.0013821667425346976
+      },
+      {
+        "p": [
+          3.060219330615584,
+          0.23,
+          -4.438277072680064
+        ],
+        "angleDegrees": 2.6398024017167088,
+        "idealSphereLuneArea": 0.00033172735328647617,
+        "idealRingGapAtOuterBisector": 0.00138216674253477
+      },
+      {
+        "p": [
+          3.026860102659513,
+          0.23,
+          -4.509562242018582
+        ],
+        "angleDegrees": 2.6398024017162944,
+        "idealSphereLuneArea": 0.0003317273532864241,
+        "idealRingGapAtOuterBisector": 0.0013821667425345532
+      },
+      {
+        "p": [
+          2.9902530978665487,
+          0.23,
+          -4.579235340539705
+        ],
+        "angleDegrees": 2.639802401716156,
+        "idealSphereLuneArea": 0.0003317273532864067,
+        "idealRingGapAtOuterBisector": 0.0013821667425344807
+      },
+      {
+        "p": [
+          2.9504760097828866,
+          0.23,
+          -4.6471484962684055
+        ],
+        "angleDegrees": 2.639802401716156,
+        "idealSphereLuneArea": 0.0003317273532864067,
+        "idealRingGapAtOuterBisector": 0.0013821667425344807
+      },
+      {
+        "p": [
+          2.907613260038978,
+          0.23,
+          -4.713157572476434
+        ],
+        "angleDegrees": 2.63980240171588,
+        "idealSphereLuneArea": 0.000331727353286372,
+        "idealRingGapAtOuterBisector": 0.0013821667425343363
+      },
+      {
+        "p": [
+          2.8617558191757384,
+          0.23,
+          -4.777122473593537
+        ],
+        "angleDegrees": 2.63980240171657,
+        "idealSphereLuneArea": 0.00033172735328645877,
+        "idealRingGapAtOuterBisector": 0.0013821667425346976
+      },
+      {
+        "p": [
+          2.813001013571556,
+          0.23,
+          -4.838907442541855
+        ],
+        "angleDegrees": 2.639802401716156,
+        "idealSphereLuneArea": 0.0003317273532864067,
+        "idealRingGapAtOuterBisector": 0.0013821667425344807
+      },
+      {
+        "p": [
+          2.761452318879872,
+          0.23,
+          -4.898381348862441
+        ],
+        "angleDegrees": 2.63980240171657,
+        "idealSphereLuneArea": 0.00033172735328645877,
+        "idealRingGapAtOuterBisector": 0.0013821667425346976
+      },
+      {
+        "p": [
+          2.7072191404157353,
+          0.23,
+          -4.955417967022386
+        ],
+        "angleDegrees": 2.6398024017162944,
+        "idealSphereLuneArea": 0.0003317273532864241,
+        "idealRingGapAtOuterBisector": 0.0013821667425345532
+      },
+      {
+        "p": [
+          2.6504165809574314,
+          0.23,
+          -5.00989624431189
+        ],
+        "angleDegrees": 2.639802401716156,
+        "idealSphereLuneArea": 0.0003317273532864067,
+        "idealRingGapAtOuterBisector": 0.0013821667425344807
+      },
+      {
+        "p": [
+          2.591165196455994,
+          0.23,
+          -5.061700557762693
+        ],
+        "angleDegrees": 2.639802401716985,
+        "idealSphereLuneArea": 0.00033172735328651086,
+        "idealRingGapAtOuterBisector": 0.0013821667425349148
+      },
+      {
+        "p": [
+          2.529590740171077,
+          0.23,
+          -5.110720959542596
+        ],
+        "angleDegrees": 2.6398024017154658,
+        "idealSphereLuneArea": 0.00033172735328631993,
+        "idealRingGapAtOuterBisector": 0.0013821667425341195
+      },
+      {
+        "p": [
+          2.4658238957762286,
+          0.23,
+          -5.156853410305258
+        ],
+        "angleDegrees": 2.63980240171588,
+        "idealSphereLuneArea": 0.000331727353286372,
+        "idealRingGapAtOuterBisector": 0.0013821667425343363
+      },
+      {
+        "p": [
+          2.4,
+          0.23,
+          -5.2
+        ],
+        "angleDegrees": 16.316735298952615,
+        "idealSphereLuneArea": 0.0020504214298303516,
+        "idealRingGapAtOuterBisector": 0.00853620703406568
+      },
+      {
+        "p": [
+          1.25,
+          0.23,
+          -5.55
+        ],
+        "angleDegrees": 56.73308415641222,
+        "idealSphereLuneArea": 0.007129289616051044,
+        "idealRingGapAtOuterBisector": 0.029402918542344593
+      }
+    ],
+    "roofTubeVerticesPerSegment": 18,
+    "octagonMaxRadialInset": 0.004567228049322795,
+    "terminalCapsuleAxialExtension": 0.06,
+    "terminalHemisphereArea": 0.02261946710584651,
+    "sumIdealLuneArea": 0.016311849141539516
+  },
+  "scope": "Analytic nominal r.06 sphere/circular open-tube comparison at turns. Not actual reachable exposed contact area: backing, adjacent stock, polygon facets and occlusion alter exposure. Arc roof has open8-sided tubes, not visible hemispheres. Finite segments presumed sufficiently long for local comparison."
+}

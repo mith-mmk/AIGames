@@ -1,0 +1,253 @@
+{
+  "sourceSha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+  "worldSteps": 0,
+  "dimensions": {
+    "startZ": -3.75,
+    "innerX": 2.75,
+    "outerX": 3.205,
+    "endX": 2.4,
+    "endZ": -5.2,
+    "axisWidth": 0.455,
+    "innerOpenZ": -3.9,
+    "backingOffset": 0.01,
+    "radius": 1.7084006211180125,
+    "angleDegrees": 58.075652837758724,
+    "innerRadius": 1.2534006211180124,
+    "segments": {
+      "inner": 4,
+      "outer": 1,
+      "roof": 24
+    },
+    "innerOpen": [
+      2.740992048829468,
+      0.23,
+      -3.9
+    ],
+    "bareHousingRailSurfaceGap": 0.355,
+    "bareHousingGroundCenterInterval": [
+      2.4850000000000003,
+      2.578608634989974
+    ],
+    "barAndSensors": "Source unchanged, old world datums",
+    "rightSupports": [
+      {
+        "i": 37,
+        "x": 2.75,
+        "z": -0.8783915945153522,
+        "drop": 0.065,
+        "y": 0.5112978266217261,
+        "divider": true
+      },
+      {
+        "i": 57,
+        "x": 2.75,
+        "z": -1.8311413172237554,
+        "drop": 0.065,
+        "y": 0.7585748683183864,
+        "divider": true
+      },
+      {
+        "i": 78,
+        "x": 2.75,
+        "z": -2.836234172436161,
+        "drop": 0.065,
+        "y": 0.8008462257706004,
+        "divider": true
+      }
+    ]
+  },
+  "roofJoins": {
+    "straightToIdealArcTangentDegrees": 0,
+    "straightToFirstPhysicalChordDegrees": 1.319901200858153,
+    "arcToRetainedIdealKinkDegrees": 14.996834098094226,
+    "arcToRetainedPhysicalChordKinkDegrees": 16.316735298952615,
+    "backingFrontSeamOffset": 0.01,
+    "backingArcSampledMinRadius": 1.7179446757560817,
+    "backingArcRailRadius": 1.7084006211180125,
+    "backingAnchor": [
+      3.215,
+      -5.73
+    ],
+    "backingFan": "Actual fan uses final vertex. Arc boundary stays outside radiusR; numerical triangle fan/render review remains separate."
+  },
+  "heightSheet": {
+    "x": 2.97,
+    "height": [
+      0.175,
+      1.2
+    ],
+    "z": [
+      -3.9,
+      4.425
+    ],
+    "samples": 85799,
+    "minimum": {
+      "gap": 0.03264494384030164,
+      "p": [
+        2.97,
+        0.22973300970873783,
+        -3.89500300120048
+      ],
+      "center": {
+        "x": 3.1932294368743896,
+        "y": 0.23000000417232513,
+        "z": -3.946291923522949
+      },
+      "handle": 6.4e-323,
+      "type": 2,
+      "inside": false
+    },
+    "continuousSheetLowerBound": 0.025593144943690676,
+    "scope": "Different geometric existence witness from real start X2.93; not a ball command, trajectory or every reachable point. Includes all actual fixed nonfloor colliders."
+  },
+  "queryCrosscheck": [
+    {
+      "p": [
+        2.97,
+        0.23,
+        -0.8783915945
+      ],
+      "brute": {
+        "gap": 0.03999992370625924,
+        "handle": 3.5e-323
+      },
+      "fast": {
+        "gap": 0.03999998092658019,
+        "p": [
+          2.97,
+          0.23,
+          -0.8783915945
+        ],
+        "center": {
+          "x": 3.2049999237060547,
+          "y": 0.23000000417232513,
+          "z": 0.6000000238418579
+        },
+        "handle": 7.406e-321,
+        "type": 2,
+        "inside": false
+      },
+      "delta": 5.722032095367702e-8
+    },
+    {
+      "p": [
+        2.53,
+        0.175,
+        -0.68153548
+      ],
+      "brute": {
+        "gap": 0.04677090460679434,
+        "handle": 3.5e-323
+      },
+      "fast": {
+        "gap": 0.04677090460679434,
+        "p": [
+          2.53,
+          0.175,
+          -0.68153548
+        ],
+        "center": {
+          "x": 2.75,
+          "y": 0.23000000417232513,
+          "z": 1.0750000476837158
+        },
+        "handle": 3.5e-323,
+        "type": 2,
+        "inside": false
+      },
+      "delta": 0
+    },
+    {
+      "p": [
+        2.93,
+        0.175,
+        -1.83114132
+      ],
+      "brute": {
+        "gap": 0.008000059127811515,
+        "handle": 4.936e-321
+      },
+      "fast": {
+        "gap": 0.008000059127811515,
+        "p": [
+          2.93,
+          0.175,
+          -1.83114132
+        ],
+        "center": {
+          "x": 2.75,
+          "y": 0.4067874252796173,
+          "z": -1.8311413526535034
+        },
+        "handle": 4.936e-321,
+        "type": 10,
+        "inside": false
+      },
+      "delta": 0
+    },
+    {
+      "p": [
+        2.53,
+        0.5,
+        -0.9105
+      ],
+      "brute": {
+        "gap": -0.13496194858287858,
+        "handle": 4.92e-321
+      },
+      "fast": {
+        "gap": -0.13496194858287858,
+        "p": [
+          2.53,
+          0.5,
+          -0.9105
+        ],
+        "center": {
+          "x": 2.2614939212799072,
+          "y": 0.5112978219985962,
+          "z": -0.8783916234970093
+        },
+        "handle": 4.92e-321,
+        "type": 10,
+        "inside": false
+      },
+      "delta": 0
+    },
+    {
+      "p": [
+        2.93,
+        0.175,
+        -4.15
+      ],
+      "brute": {
+        "gap": 0.031812121407209404,
+        "handle": 8e-323
+      },
+      "fast": {
+        "gap": 0.031812121407209404,
+        "p": [
+          2.93,
+          0.175,
+          -4.15
+        ],
+        "center": {
+          "x": 3.15000319480896,
+          "y": 0.23000000417232513,
+          "z": -4.1781816482543945
+        },
+        "handle": 8e-323,
+        "type": 2,
+        "inside": false
+      },
+      "delta": 0
+    }
+  ],
+  "derivedUnchangedHash": "859f6422388269e08837792f4062f22da1eebf423cbb84bb9b150f0900301928",
+  "limits": [
+    "Floor sphere tangent is intentional; other fixed contacts included",
+    "Field high sheet is obstructed by actual ramp crossheads and cannot be declared free",
+    "Whole natural route/stability not established",
+    "Arc-to-old-roof kink retained; entire roof is not globally tangent-continuous",
+    "No source changes, no world step or control changes"
+  ]
+}

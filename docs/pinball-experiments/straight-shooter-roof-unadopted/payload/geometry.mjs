@@ -1,0 +1,43 @@
+// One shared structural definition. No ball-state reads, trajectory correction or runtime tests.
+export const WHOLE=Object.freeze({left:-3.23,right:3.65,width:6.88,centerX:.21,rear:-5.75,front:6.15,length:11.90,pivot:[1.90,.27,4.45],batLength:1.65,leftColumnX:-3.12,shooterX:2.93,railRadius:.020,neck:[1.7652264233903296,.22,4.009302854537964],outOffset:.430,chordTolerance:.0005,wireEnd:[-2.06,.44,2.75]});
+const shift=2.30-WHOLE.neck[0],run=WHOLE.neck[2]-2.45;
+export const RAD=(run*run+shift*shift)/(4*shift),ANGLE=2*Math.atan(shift/run),LOWER_C=Object.freeze({radius:RAD,angle:ANGLE,outOffset:.430});
+export function bendFrame(t){const q=2*t,a=q<=1?q*ANGLE:(2-q)*ANGLE;return{p:q<=1?[2.30-RAD*(1-Math.cos(a)),.22,2.45+RAD*Math.sin(a)]:[2.30-RAD*(1-Math.cos(ANGLE))-RAD*(Math.cos(a)-Math.cos(ANGLE)),.22,2.45+RAD*Math.sin(ANGLE)+RAD*(Math.sin(ANGLE)-Math.sin(a))],t:[-Math.sin(a),0,Math.cos(a)],n:[Math.cos(a),0,Math.sin(a)]};}
+const arcLength=2*RAD*ANGLE,totalLength=1.10+arcLength;
+export function lowerCFrame(t){const s=Math.max(0,Math.min(1,t))*totalLength;if(s<=1.10)return{p:[2.30,.22,1.35+s],t:[0,0,1],n:[1,0,0]};return bendFrame((s-1.10)/arcLength);}
+const dist=(p,a,b)=>{const d=b.map((v,i)=>v-a[i]),l=d.reduce((s,v)=>s+v*v,0),t=l?Math.max(0,Math.min(1,p.reduce((s,v,i)=>s+(v-a[i])*d[i],0)/l)):0;return Math.hypot(...p.map((v,i)=>v-a[i]-t*d[i]));};const mid=(a,b)=>a.map((v,i)=>(v+b[i])/2);
+export function bezier(c){const out=[c[0]];function add(c,depth=0){if(Math.max(dist(c[1],c[0],c[3]),dist(c[2],c[0],c[3]))<=WHOLE.chordTolerance){out.push(c[3]);return;}if(depth>16)throw Error('Unresolved Bezier');const a=mid(c[0],c[1]),b=mid(c[1],c[2]),d=mid(c[2],c[3]),e=mid(a,b),f=mid(b,d),m=mid(e,f);add([c[0],a,e,m],depth+1);add([m,f,d,c[3]],depth+1);}add(c);return out;}
+const steps=Math.ceil(ANGLE/(2*Math.acos(1-WHOLE.chordTolerance/(RAD+.45))));
+export const bendFrames=Array.from({length:steps*2+1},(_,i)=>bendFrame(i/(steps*2)));
+const neck=WHOLE.neck,tail=bezier([neck,[neck[0],.22,neck[2]+.11],[2.07,.22,4.25],[2.07,.22,4.40]]);
+export const divider=[[2.30,.22,1.35],...bendFrames.map(f=>f.p),...tail.slice(1),[2.07,.22,4.85]];
+// The sling is the upper IN boundary. Begin a new inner only after its lower end.
+const offset=(f,o,y=.22)=>[f.p[0]+o*f.n[0],y,f.p[2]+o*f.n[2]];
+const innerAtZ=z=>{let lo=0,hi=1;for(let i=0;i<60;i++){let t=(lo+hi)/2;if(offset(bendFrame(t),-.43)[2]<z)lo=t;else hi=t;}return offset(bendFrame((lo+hi)/2),-.43);};
+export const inner=[innerAtZ(2.75),...bendFrames.map(f=>offset(f,-.43)).filter(p=>p[2]>2.75&&p[2]<3.20),innerAtZ(3.20)];
+export const OUT_TAIL=Object.freeze({departure:.40,handle:.25,endX:2.57,endZ:4.85});
+function outer(side){const o=side<0?.43:.45,y=side<0?.22:.23,f=bendFrame(OUT_TAIL.departure),p=offset(f,o,y),controls=[p,p.map((v,i)=>v+OUT_TAIL.handle*f.t[i]),[OUT_TAIL.endX,y,4.30],[OUT_TAIL.endX,y,OUT_TAIL.endZ]],prefix=[...(side<0?[[2.73,.22,1.35]]:[]),...bendFrames.filter((_,i)=>i/(bendFrames.length-1)<OUT_TAIL.departure).map(f=>offset(f,o,y))];return [...prefix,...bezier(controls)];}
+function pointAtZ(points,z){for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i];if(z>=Math.min(a[2],b[2])&&z<=Math.max(a[2],b[2])){const t=(z-a[2])/(b[2]-a[2]);return a.map((v,k)=>v+t*(b[k]-v));}}throw Error('Z out of shared path '+z);}
+// Fixed mounted save frame follows actual OUT median at its installation station.
+export const WHOLE_SAVE_FRAME=(()=>{const z=3.60,e=.001,out=outer(-1),x=t=>(pointAtZ(divider,t)[0]+pointAtZ(out,t)[0])/2,down=[-(x(z+e)-x(z-e)),0,2*e],length=Math.hypot(...down),d=down.map(v=>v/length);return Object.freeze({center:[-x(z),0,z],down:d,cross:[d[2],0,-d[0]]});})();
+export function lowerSections(side){return[{role:'divider',radius:.020,points:divider},{role:'inner',radius:.020,points:inner},{role:'outer',radius:side<0?.020:.045,points:outer(side)}].map(s=>({...s,points:s.points.map(([x,y,z])=>[side*x,y,z])}));}
+export function lowerLanePaths(side){return lowerSections(side).map(s=>s.points);}
+export function lowerLaneMounts(side){const arcMid=bendFrame(.35).p,y=side<0?.22:.23,outerDeparture=offset(bendFrame(OUT_TAIL.departure),side<0?.43:.45,y),p=[[2.30,.22,1.35],[2.30,.22,2.45],arcMid,[2.07,.22,4.70],inner[0],innerAtZ(3.0),...(side<0?[[2.73,.22,1.35]]:[]),outerDeparture,pointAtZ(outer(side),4.70)];return p.map(([x,y,z])=>[side*x,y,z]);}
+// Straight housing passage and a single upper turn, shared by visible and physical stock.
+// The open inner end retains Z -3.90. No rail follows or observes a ball.
+export const TOP_TURN=Object.freeze({startZ:-3.75,innerX:2.75,outerX:3.205,endX:2.40,endZ:-5.20,axisWidth:.455,innerOpenZ:-3.90,backingOffset:.010});
+const td=TOP_TURN.outerX-TOP_TURN.endX,tz=TOP_TURN.startZ-TOP_TURN.endZ;
+export const TOP_RADIUS=(td*td+tz*tz)/(2*td),TOP_ANGLE=2*Math.atan(td/tz);
+const tc=TOP_TURN.outerX-TOP_RADIUS;
+const topAt=(r,a)=>[tc+r*Math.cos(a),.23,TOP_TURN.startZ-r*Math.sin(a)];
+const topCount=Math.ceil(TOP_ANGLE/(2*Math.acos(1-WHOLE.chordTolerance/(TOP_RADIUS+TOP_TURN.backingOffset))));
+const topFrames=Array.from({length:topCount+1},(_,i)=>topAt(TOP_RADIUS,TOP_ANGLE*i/topCount));
+const innerR=TOP_RADIUS-TOP_TURN.axisWidth,innerAngle=Math.asin((TOP_TURN.startZ-TOP_TURN.innerOpenZ)/innerR),innerCount=Math.ceil(innerAngle/(2*Math.acos(1-WHOLE.chordTolerance/innerR)));
+export const SHOOTER_INNER=[[TOP_TURN.innerX,.23,5.90],...Array.from({length:innerCount+1},(_,i)=>topAt(innerR,innerAngle*i/innerCount))];
+export const SHOOTER_OUTER=[[TOP_TURN.outerX,.23,4.95],topFrames[0]];
+export const UPPER_ROOF=[...topFrames,[1.25,.23,-5.55],[.95,.23,-5.30]];
+export const UPPER_BACKING=[...Array.from({length:topCount+1},(_,i)=>{const p=topAt(TOP_RADIUS+TOP_TURN.backingOffset,TOP_ANGLE*i/topCount);return[p[0],p[2]];}),[1.25,-5.55],[1.25,-5.73],[TOP_TURN.outerX+TOP_TURN.backingOffset,-5.73]];
+// Arrow indicates a geometric tangent, not an intended ball-state velocity.
+export const WIRE_EXIT_TANGENT=(()=>{let lo=0,hi=1;for(let i=0;i<60;i++){const t=(lo+hi)/2,f=bendFrame(t);if(f.p[2]-.215*f.n[2]<2.75)lo=t;else hi=t;}const f=bendFrame((lo+hi)/2);return[-f.t[0],0,f.t[2]];})();
+
+export function shooterInnerXAtZ(z){for(let i=1;i<SHOOTER_INNER.length;i++){const a=SHOOTER_INNER[i-1],b=SHOOTER_INNER[i];if(z<=Math.max(a[2],b[2])&&z>=Math.min(a[2],b[2]))return a[0]+(b[0]-a[0])*(z-a[2])/(b[2]-a[2]);}throw Error("Support outside shooter inner range "+z);}

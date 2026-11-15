@@ -1,0 +1,230 @@
+{
+  "status": "verified",
+  "verifyOnly": {
+    "status": "verified",
+    "adopted": false,
+    "sourceSetSha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+    "parentSourceSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+    "originalParentAndChildBuildBytesUnchanged": true,
+    "originalArtifactWrites": 0,
+    "parentGeneratedHashes": {
+      "sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+      "manifest.json": "c8a743abcc18ab4c400bbbac0514984f216023d77e796fc61f42bf471a5b1181"
+    },
+    "generatedHashes": {
+      "sources.json": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "baseline-sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "geometry.mjs": "5a981fe37b250bb44c7584e5d870162a0abde0168db36dab155df6c75cf52423",
+      "manifest.json": "b1829ebb1b26a5d6c1fc114758ab62c415fe6f7e8b32efcb80650f89549813c4",
+      "changes.json": "e6c45486fec46a65f9a317a83fb3f5379ff3c4f20ba4401641682379f2d75ce1"
+    },
+    "restoredHashes": {
+      "sources.json": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "baseline-sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "geometry.mjs": "5a981fe37b250bb44c7584e5d870162a0abde0168db36dab155df6c75cf52423",
+      "manifest.json": "b1829ebb1b26a5d6c1fc114758ab62c415fe6f7e8b32efcb80650f89549813c4",
+      "changes.json": "e6c45486fec46a65f9a317a83fb3f5379ff3c4f20ba4401641682379f2d75ce1",
+      "build.mjs": "152880be320451a16c8dc3d196691c1f828b28154256bff4c3b8152cb20f0ab3",
+      "upper-definition.mjs.txt": "0e5c23c4e3a27fb4fe18bea479c0628c230cece3dccb7a05322aae7fc1900515",
+      "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+      "baseline-loader.mjs": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38",
+      "accepted-loader.mjs": "4b81eb805e887773e943d17d94941eb902ee5b2b49b37e839e90f4919a1cf722",
+      "dependencies.json": "9433b2194118e511f6926b50fee2bf2efe5c5988c2e8d22a70a3e2afc0f42b40"
+    },
+    "suppressedBuildMessages": 2
+  },
+  "fresh": {
+    "status": "restored",
+    "adopted": false,
+    "sourceSetSha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+    "parentSourceSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+    "originalParentAndChildBuildBytesUnchanged": true,
+    "originalArtifactWrites": 0,
+    "parentGeneratedHashes": {
+      "sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+      "manifest.json": "c8a743abcc18ab4c400bbbac0514984f216023d77e796fc61f42bf471a5b1181"
+    },
+    "generatedHashes": {
+      "sources.json": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "baseline-sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "geometry.mjs": "5a981fe37b250bb44c7584e5d870162a0abde0168db36dab155df6c75cf52423",
+      "manifest.json": "b1829ebb1b26a5d6c1fc114758ab62c415fe6f7e8b32efcb80650f89549813c4",
+      "changes.json": "e6c45486fec46a65f9a317a83fb3f5379ff3c4f20ba4401641682379f2d75ce1"
+    },
+    "restoredHashes": {
+      "sources.json": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "baseline-sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "geometry.mjs": "5a981fe37b250bb44c7584e5d870162a0abde0168db36dab155df6c75cf52423",
+      "manifest.json": "b1829ebb1b26a5d6c1fc114758ab62c415fe6f7e8b32efcb80650f89549813c4",
+      "changes.json": "e6c45486fec46a65f9a317a83fb3f5379ff3c4f20ba4401641682379f2d75ce1",
+      "build.mjs": "152880be320451a16c8dc3d196691c1f828b28154256bff4c3b8152cb20f0ab3",
+      "upper-definition.mjs.txt": "0e5c23c4e3a27fb4fe18bea479c0628c230cece3dccb7a05322aae7fc1900515",
+      "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+      "baseline-loader.mjs": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38",
+      "accepted-loader.mjs": "4b81eb805e887773e943d17d94941eb902ee5b2b49b37e839e90f4919a1cf722",
+      "dependencies.json": "9433b2194118e511f6926b50fee2bf2efe5c5988c2e8d22a70a3e2afc0f42b40"
+    },
+    "suppressedBuildMessages": 2,
+    "output": "artifacts/pinball/straight-roof-recovery-verify-20261115-094711",
+    "written": 12,
+    "reused": 0,
+    "fileCount": 12
+  },
+  "idempotence": {
+    "written": 0,
+    "reused": 12
+  },
+  "all12ActualHashesMatch": true,
+  "assembly": {
+    "status": "assembled",
+    "worldSteps": 0,
+    "colliders": 1580,
+    "attachments": 59,
+    "camVertices": 10,
+    "pivot": [
+      1.9,
+      0.27,
+      4.45
+    ],
+    "shooterX": 2.93,
+    "width": 6.88,
+    "lowerSegments": [
+      [
+        {
+          "role": "divider",
+          "count": 52,
+          "radius": 0.02
+        },
+        {
+          "role": "inner",
+          "count": 11,
+          "radius": 0.02
+        },
+        {
+          "role": "outer",
+          "count": 37,
+          "radius": 0.02
+        }
+      ],
+      [
+        {
+          "role": "divider",
+          "count": 52,
+          "radius": 0.02
+        },
+        {
+          "role": "inner",
+          "count": 11,
+          "radius": 0.02
+        },
+        {
+          "role": "outer",
+          "count": 36,
+          "radius": 0.045
+        }
+      ]
+    ],
+    "mounts": [
+      9,
+      8
+    ],
+    "saveFrame": {
+      "center": [
+        -2.144892599058728,
+        0,
+        3.6
+      ],
+      "down": [
+        0.14666894850567888,
+        0,
+        0.9891856345217708
+      ],
+      "cross": [
+        0.9891856345217708,
+        0,
+        -0.14666894850567888
+      ],
+      "halfAcross": 0.19,
+      "halfAlong": 0.135,
+      "maxY": 0.5,
+      "horizontalSpeed": 12,
+      "contactSkin": 0.001
+    }
+  },
+  "refusals": [
+    {
+      "case": "existing differing loader",
+      "exit": 1,
+      "nothingWritten": true
+    },
+    {
+      "case": "original freeze straight-shooter-roof-dfe19ba",
+      "exit": 1
+    },
+    {
+      "case": "original freeze whole-long-lane-891ae62",
+      "exit": 1
+    },
+    {
+      "case": "original freeze upper-connector-long-4f4170a",
+      "exit": 1
+    },
+    {
+      "case": "wrong depth",
+      "exit": 1
+    },
+    {
+      "case": "symlink output",
+      "exit": 1
+    },
+    {
+      "case": "nondirectory output",
+      "exit": 1
+    },
+    {
+      "case": "corrupt copied candidate payload",
+      "exit": 1,
+      "canonicalPacketUntouched": true
+    }
+  ],
+  "allOriginalFreezesAllFilesUnchanged": true,
+  "originalFreezeFileCount": 80,
+  "worldSteps": 0,
+  "productionDiffBeforeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "productionDiffAfterSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "productionNote": "Production diff remained empty; packet commands only wrote dedicated docs/artifacts/Trash paths.",
+  "verificationTemporariesMovedToTrash": [
+    {
+      "from": "artifacts/pinball/straight-roof-recovery-verify-20261115-094711",
+      "trash": "/Users/tsaito/.Trash/straight-shooter-roof-recovery-verification-20261115-094711/straight-roof-recovery-verify-20261115-094711",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/straight-roof-recovery-link-20261115-094711",
+      "trash": "/Users/tsaito/.Trash/straight-shooter-roof-recovery-verification-20261115-094711/straight-roof-recovery-link-20261115-094711",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/straight-roof-recovery-file-20261115-094711",
+      "trash": "/Users/tsaito/.Trash/straight-shooter-roof-recovery-verification-20261115-094711/straight-roof-recovery-file-20261115-094711",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/straight-roof-recovery-packet-20261115-094711",
+      "trash": "/Users/tsaito/.Trash/straight-shooter-roof-recovery-verification-20261115-094711/straight-roof-recovery-packet-20261115-094711",
+      "exists": true,
+      "sourceAbsent": true
+    }
+  ]
+}

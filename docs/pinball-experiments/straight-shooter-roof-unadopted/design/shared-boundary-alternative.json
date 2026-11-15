@@ -1,0 +1,46 @@
+{
+  "scope": "Prebuild structural alternative, not a frozen runtime candidate",
+  "currentHousingOuterX": 2.35,
+  "proposedSharedInnerX": 2.75,
+  "unchangedLastRampRightXYZ": [
+    2.2057956926,
+    0.4680963863,
+    -0.5914165594
+  ],
+  "endpointOptions": [
+    {
+      "name": "literal expansion",
+      "rampRightEndpointXZ": [
+        2.2057956926,
+        -0.5914165594
+      ],
+      "housingOuterEndpointXZ": [
+        2.75,
+        -0.5267877088
+      ],
+      "upstreamFacingUnitNormalXZ": [
+        0.11792972953606658,
+        -0.9930219428046644
+      ],
+      "status": "not implemented or qualified"
+    },
+    {
+      "name": "formed upstream endpoint",
+      "rampRightEndpointXZ": [
+        2.2057956926,
+        -0.5914165594
+      ],
+      "housingOuterEndpointXZ": [
+        2.75,
+        -1.1
+      ],
+      "upstreamFacingUnitNormalXZ": [
+        -0.6827912461935111,
+        -0.7306135189835403
+      ],
+      "status": "not implemented or qualified"
+    }
+  ],
+  "reasonHeld": "Literal expansion leaves the upstream endcap pointing toward the inner rail. Two opposed contacts can still admit a gravity-balanced pocket. A genuinely formed endpoint needs continuous top/bottom/end/skirt geometry and full ramp entry/field return clearance; extending its outer endpoint to Z-1.10 is a dimensioned concept only, not proved or simulated.",
+  "sourceNone": true
+}

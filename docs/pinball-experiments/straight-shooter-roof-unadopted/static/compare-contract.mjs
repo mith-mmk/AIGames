@@ -1,0 +1,2 @@
+import fs from'node:fs';import crypto from'node:crypto';import {sampleRamp}from'../../../web/js/pinball/ramp-geometry.mjs';import {lowerSections,lowerLaneMounts,WHOLE_SAVE_FRAME}from'../../../web/js/pinball/whole-layout-geometry.mjs';
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');const rows=sampleRamp();const derived={ramp:rows.map(r=>({p:r.p.toArray(),left:r.left.toArray(),right:r.right.toArray()})),lower:[-1,1].map(side=>({sections:lowerSections(side),mounts:lowerLaneMounts(side)})),save:WHOLE_SAVE_FRAME};console.log(sha(JSON.stringify(derived)));

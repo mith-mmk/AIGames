@@ -1,0 +1,427 @@
+{
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/check-static.mjs": {
+    "bytes": 7014,
+    "sha256": "5c167762cbfdafc9d0e9fae799df4a07534265210718bf7b494d79d6ed0e89a8"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/baseline-loader.mjs": {
+    "bytes": 957,
+    "sha256": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/static-supplement.log": {
+    "bytes": 5776,
+    "sha256": "8fce9f71a3b55b3f33d3e1cb9cf4280c629a4100743fed52937b40d2bb7a1650"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/sources.json": {
+    "bytes": 339222,
+    "sha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/dependencies.json": {
+    "bytes": 2215,
+    "sha256": "9433b2194118e511f6926b50fee2bf2efe5c5988c2e8d22a70a3e2afc0f42b40"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/compare-contract.mjs": {
+    "bytes": 575,
+    "sha256": "6f52d5bf8034a3f651a2c974e243fef4366bc05bf6de3bd1ff763a18b71c8f78"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/shared-boundary-alternative.json": {
+    "bytes": 1382,
+    "sha256": "24fc87583e14c5b20008581a5056bff4c918b50aea4e8a4838ea1a773f60e5ab"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/candidate-static.log": {
+    "bytes": 8984,
+    "sha256": "c28528962edea6e86c215cd93ac322a21c550ce3c552daa43bd07abc8c786b11"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/contract-check.json": {
+    "bytes": 2254,
+    "sha256": "19263e0a68ef941c2c15e593392254a57fafec2dfed7de2887a3994ee573cdd3"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/freeze-files.json": {
+    "bytes": 1684,
+    "sha256": "6e48748b3d40abaa03e45dca6d12f8d9716bfc823b75084c54c68d366345126f"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/geometry.mjs": {
+    "bytes": 6399,
+    "sha256": "5a981fe37b250bb44c7584e5d870162a0abde0168db36dab155df6c75cf52423"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/upper-definition.mjs.txt": {
+    "bytes": 1487,
+    "sha256": "0e5c23c4e3a27fb4fe18bea479c0628c230cece3dccb7a05322aae7fc1900515"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/loader.mjs": {
+    "bytes": 948,
+    "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/accepted-sources.json": {
+    "bytes": 329885,
+    "sha256": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/build.mjs": {
+    "bytes": 3190,
+    "sha256": "152880be320451a16c8dc3d196691c1f828b28154256bff4c3b8152cb20f0ab3"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/manifest.json": {
+    "bytes": 11617,
+    "sha256": "b1829ebb1b26a5d6c1fc114758ab62c415fe6f7e8b32efcb80650f89549813c4"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/candidate-static.json": {
+    "bytes": 28224,
+    "sha256": "8fc5d5415294c127e6b21d7c5356adbe949b79f5c020f151795d4c7977dfde83"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/changes.json": {
+    "bytes": 2540,
+    "sha256": "e6c45486fec46a65f9a317a83fb3f5379ff3c4f20ba4401641682379f2d75ce1"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/check-supplement.mjs": {
+    "bytes": 4865,
+    "sha256": "3196cb35506cb73a35e314a5416addddedda8ef6df444fefe1dd99ba34211ece"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/accepted-loader.mjs": {
+    "bytes": 957,
+    "sha256": "4b81eb805e887773e943d17d94941eb902ee5b2b49b37e839e90f4919a1cf722"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/recovery-verify-only.json": {
+    "bytes": 2440,
+    "sha256": "cffe1f3321facebcb3a8b668e8a98a2417167dcc52ce19bc9c53cf877d95478c"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/static-supplement.json": {
+    "bytes": 5776,
+    "sha256": "8fce9f71a3b55b3f33d3e1cb9cf4280c629a4100743fed52937b40d2bb7a1650"
+  },
+  "artifacts/pinball/straight-shooter-roof-dfe19ba/baseline-sources.json": {
+    "bytes": 338664,
+    "sha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/max-contact-summary.json": {
+    "bytes": 16898,
+    "sha256": "7e9a6f1f2cc64215105a440dfd75731268721250e29c57b07b9909f40b0ab8ca"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/summary.json": {
+    "bytes": 137285,
+    "sha256": "1eb27649f56f7c0831aa8792512de58fffbd18066ae37d5113b443303d5a9348"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/accepted.json": {
+    "bytes": 1432426,
+    "sha256": "990facd9be7e337a694680ecc0c527f3bfa4eca4a3c4679b9e6e7ee57cfeaacd"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/accepted.log": {
+    "bytes": 6033,
+    "sha256": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/candidate-max-contacts.json": {
+    "bytes": 3442842,
+    "sha256": "4877fa436bc3c53af7b8a5a3254b3b775c38bcfd526ef09b8ec9c44f5908e08e"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/max-contact-manifest.json": {
+    "bytes": 394,
+    "sha256": "670c670dbd8ccff5bcedcd440360e4e9d68da22c5e57ec7d137c200f65be32fd"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/candidate.json": {
+    "bytes": 1181444,
+    "sha256": "63cea8690bb946bc5454837c35bd1103031015122636771b6750c5c51e749434"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/max-contacts.mjs": {
+    "bytes": 3629,
+    "sha256": "adf3a0f737ac19ccec2cba87dc56072e73d766c62a1f168bcbb9b696a80b1486"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/candidate.log": {
+    "bytes": 5991,
+    "sha256": "4a8a8e7ac6d5bf43d825052b31442095b9aea7fe5bbf86ab122d9a6f2c98e24d"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/launch.mjs": {
+    "bytes": 3126,
+    "sha256": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/max-contact-findings.md": {
+    "bytes": 1827,
+    "sha256": "f0a1f772ba69b51925c08c9ba59688df0ff9e02127160d272d57b805dca50a09"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/README.md": {
+    "bytes": 2416,
+    "sha256": "8086e61341b71a8b80b8497c8f032666031587ba84ac4790aa55423858a56fbb"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/baseline.log": {
+    "bytes": 5993,
+    "sha256": "02addbbe13ff520363009dcdb7798ca827ee6b50223759470086525accf9a6d7"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/baseline.json": {
+    "bytes": 1329731,
+    "sha256": "79a34bbc047a2d8c9b5345be12e973398d80162fd94ea976272aa83459b0d917"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/manifest.json": {
+    "bytes": 812,
+    "sha256": "e60d5ca3d53b07fc8ee95bf9661140a9d9dd41765687b88af9e5b25d3f11c480"
+  },
+  "artifacts/pinball/straight-shooter-roof-local-dfe19ba/candidate-max-contacts.log": {
+    "bytes": 5016,
+    "sha256": "9a3aeb65e18eda24f36e371b0b6e149a0ba3add45299f676aa72fac884d393f7"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/sources.json": {
+    "bytes": 339222,
+    "sha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/visual.cjs": {
+    "bytes": 4792,
+    "sha256": "eb2602e73a6bd097aed7f9b2fd25db1e1be6db4cddce13d10bf2db6a31ee6920"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review-final.log": {
+    "bytes": 146,
+    "sha256": "9e4c0c67d0d0d0a249b7201899a7b6a111306f39e0332bb2a7a740cc28a50910"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/visual.log": {
+    "bytes": 842,
+    "sha256": "36644990ffb6671d2ed36772be5a835fbec43c216ce1b41c4e2bd6ee8fc83330"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/seam-metrics.json": {
+    "bytes": 8180,
+    "sha256": "56771e8ec667e2c8017765a4686793fc398bbcb66b28db275caed6d9030f7e60"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/geometry.mjs": {
+    "bytes": 6399,
+    "sha256": "5a981fe37b250bb44c7584e5d870162a0abde0168db36dab155df6c75cf52423"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/README.md": {
+    "bytes": 4979,
+    "sha256": "bbcb431ad01d9c3d010e20b05f156815e97fa7957a949ff44bb8eda3ee36ff36"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review.log": {
+    "bytes": 146,
+    "sha256": "9e4c0c67d0d0d0a249b7201899a7b6a111306f39e0332bb2a7a740cc28a50910"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/baseline-geometry.mjs": {
+    "bytes": 5848,
+    "sha256": "882884dad71d759f3d5e1f11f475d9bb612fb0917ae75b40f5d3feaa98d09ab5"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/manifest.json": {
+    "bytes": 11617,
+    "sha256": "b1829ebb1b26a5d6c1fc114758ab62c415fe6f7e8b32efcb80650f89549813c4"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/seam-metrics.mjs": {
+    "bytes": 1405,
+    "sha256": "52d37782455ce46cad7b9503c2399685b75990acaf2f408c57b4be7e1fdfc6bd"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/designer-support-reference.json": {
+    "bytes": 9789,
+    "sha256": "266285376e957ef34050b656be3acd7e89d9096705b524c90ae70e2ebd9d209f"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/review-manifest.json": {
+    "bytes": 6751,
+    "sha256": "6e95e1cc309ec37691ab0b4b6a0d879951d47e996b4088298a93485d91be2c2f"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review.cjs": {
+    "bytes": 6304,
+    "sha256": "a8ef717205378e90f2794b17c96797a806916eece86c3576459c9eb3b982d420"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/baseline-sources.json": {
+    "bytes": 338664,
+    "sha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/baseline-lower-underside.png": {
+    "bytes": 86219,
+    "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/evidence.json": {
+    "bytes": 996,
+    "sha256": "0969f4e8e568474f908148dcae0622ca8525fd6e0e7c326a5d6c14a7aa9de51a"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/candidate-lower-side.png": {
+    "bytes": 110023,
+    "sha256": "d7483518d0a3f4ef13ce27f5445f5e40e6808d13d32dcf72820114f38cd00c06"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/candidate-lower-underside.png": {
+    "bytes": 86219,
+    "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/candidate-lower-closeup.png": {
+    "bytes": 800685,
+    "sha256": "9a47b0f27c000d7d5392fe5eea1d6b8ce5bbef2d55d8e1b2416497bfba15912c"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/candidate-installed-90.png": {
+    "bytes": 648717,
+    "sha256": "f1e1facdbea00d0af2caaed0ede968a94f45172a771e7feb2b6c5919ac2e0002"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/candidate-installed-45.png": {
+    "bytes": 776290,
+    "sha256": "3da7aede4528c9b076a30191528247eb6a40291284e32c925b104f033f207d59"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/candidate-mobile-390.png": {
+    "bytes": 264269,
+    "sha256": "db89dbe1568c16cfef15207399394d94ffdc3ddb7666111dac5720788dbec520"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/baseline-installed-10.png": {
+    "bytes": 432043,
+    "sha256": "6a6317eba53267363a64e715d8d49ee2721a804fc06387904db816bfe8c21fd8"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/candidate-installed-10.png": {
+    "bytes": 432894,
+    "sha256": "6358b46a8d18f88b00d5733b96de4787d3a229dfc76f12db15a654e6ea8362ea"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/baseline-mobile-390.png": {
+    "bytes": 264092,
+    "sha256": "6bcb50efd83820422e141a89761fb9dbe8853f72f7114d86a9a4864a4ab03ca6"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/served-candidate-sources.json": {
+    "bytes": 339222,
+    "sha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/baseline-lower-side.png": {
+    "bytes": 110012,
+    "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/baseline-installed-45.png": {
+    "bytes": 776546,
+    "sha256": "2fbf962a5fd60126ee92d62784deb7f8d3ca174eab5ba6b8770b22e2fc499dac"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/baseline-installed-90.png": {
+    "bytes": 655724,
+    "sha256": "31fc23861c47bbacba49993b0fe36fba0a8c7ad874a491e840de277ec16c5647"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/preview-final/baseline-lower-closeup.png": {
+    "bytes": 800685,
+    "sha256": "9a47b0f27c000d7d5392fe5eea1d6b8ce5bbef2d55d8e1b2416497bfba15912c"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review-initial/evidence.json": {
+    "bytes": 301,
+    "sha256": "2a991c1981455b5ca6bb48e6f656bf079cdea20a62e6bc750f197031be858c3d"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review-initial/upper-mesh-contact.json": {
+    "bytes": 5391,
+    "sha256": "283da71eaf7ae9e60af71e558487a3a9dcffa636aab14dd644823c4e485c4086"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review-initial/roof-closeup.png": {
+    "bytes": 51734,
+    "sha256": "c814b2e4302b473e7edbaee8f3b902f1d3674e112b4afe0e0320e81853ebd130"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review-initial/roof-side.png": {
+    "bytes": 323440,
+    "sha256": "25108a468bdb09f35ac1e1d1874086e53eebc22fb887df46ef328b9ab4eb42c6"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review-initial/served-candidate-sources.json": {
+    "bytes": 339222,
+    "sha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review/evidence.json": {
+    "bytes": 301,
+    "sha256": "2a991c1981455b5ca6bb48e6f656bf079cdea20a62e6bc750f197031be858c3d"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review/upper-mesh-contact.json": {
+    "bytes": 9294,
+    "sha256": "e351f06eb78ee8137481097d7aed5040a383c30d386e517c9af3887026c2f3c1"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review/roof-closeup.png": {
+    "bytes": 113419,
+    "sha256": "b570dea64c64b6fa7b5289d493f0e5c84339536c11cfd74f61e037c90eb1bc61"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review/roof-side.png": {
+    "bytes": 162789,
+    "sha256": "371982ad3e3a04fd0fb5b1d55af8a77cf76da18ee4dea29e10592dc27a450ba8"
+  },
+  "artifacts/pinball/straight-shooter-independent-5891d9/upper-review/served-candidate-sources.json": {
+    "bytes": 339222,
+    "sha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa"
+  },
+  "artifacts/pinball/field-return-constraints-dfe19ba/static.json": {
+    "bytes": 5481,
+    "sha256": "bd39b78cab628e26098134a727708b79781b2c2f98be68017fe779ff74825d4a"
+  },
+  "artifacts/pinball/field-return-constraints-dfe19ba/README.md": {
+    "bytes": 4977,
+    "sha256": "f4d2c735fdfb864311065e9f6d7a8def239a6425fae0da236578ab7cfae5a7ce"
+  },
+  "artifacts/pinball/field-return-constraints-dfe19ba/static.mjs": {
+    "bytes": 2745,
+    "sha256": "c33ae2434bcded466f11b04de2c47b1f7381515eb9787f63b54c8288280a312a"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/sources.json": {
+    "bytes": 338665,
+    "sha256": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/visual.cjs": {
+    "bytes": 4783,
+    "sha256": "b06e9ee071cd5c4282f70c8856b94d530d73399a565b97be5fd11187138f49aa"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/visual.log": {
+    "bytes": 839,
+    "sha256": "efc0f96aeb0941f3457d54eb28cea908bfebbda3b31cafc1916c0af2452e6e2f"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/README.md": {
+    "bytes": 3135,
+    "sha256": "4e0645c83c7d2d5899e35198142fbe57d85529098aac4689c9852ad7e9067789"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/review-manifest.json": {
+    "bytes": 3571,
+    "sha256": "e079c2e6574980d4adb4badee920d5fcd03011e796041c226c5299679b5cabd7"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/baseline-sources.json": {
+    "bytes": 338664,
+    "sha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/baseline-lower-underside.png": {
+    "bytes": 86219,
+    "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/evidence.json": {
+    "bytes": 1045,
+    "sha256": "1d096c6c4ac94dda65ab16a45375181eb810c800ccc959ed34a5915c52d3e738"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/candidate-lower-side.png": {
+    "bytes": 110034,
+    "sha256": "d0360b173d16849b1bb8fc713a9ee8f434003ec36ce8de2a1ce7b50598097509"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/candidate-lower-underside.png": {
+    "bytes": 86219,
+    "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/candidate-lower-closeup.png": {
+    "bytes": 800685,
+    "sha256": "9a47b0f27c000d7d5392fe5eea1d6b8ce5bbef2d55d8e1b2416497bfba15912c"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/candidate-installed-90.png": {
+    "bytes": 658486,
+    "sha256": "f0f66ab051ce4597d8d14ba59b3f3e0f244f78d3529ae58a6bfa819195fe4c99"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/candidate-installed-45.png": {
+    "bytes": 776351,
+    "sha256": "8cd450d47bee9577453a14692680676bbc4f3452526755e7fdea9207af462781"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/candidate-mobile-390.png": {
+    "bytes": 264023,
+    "sha256": "a768d60a946a62e9f2a10a411708946de1851410747c8fc788c903d363051304"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/baseline-installed-10.png": {
+    "bytes": 432043,
+    "sha256": "6a6317eba53267363a64e715d8d49ee2721a804fc06387904db816bfe8c21fd8"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/candidate-installed-10.png": {
+    "bytes": 432217,
+    "sha256": "280f1056e669406f429efbd3bb9c1b44f8be47b48293bfab74781efb455e9ce6"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/baseline-mobile-390.png": {
+    "bytes": 264092,
+    "sha256": "6bcb50efd83820422e141a89761fb9dbe8853f72f7114d86a9a4864a4ab03ca6"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/served-candidate-sources.json": {
+    "bytes": 338665,
+    "sha256": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/baseline-lower-side.png": {
+    "bytes": 110012,
+    "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/baseline-installed-45.png": {
+    "bytes": 776546,
+    "sha256": "2fbf962a5fd60126ee92d62784deb7f8d3ca174eab5ba6b8770b22e2fc499dac"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/baseline-installed-90.png": {
+    "bytes": 655724,
+    "sha256": "31fc23861c47bbacba49993b0fe36fba0a8c7ad874a491e840de277ec16c5647"
+  },
+  "artifacts/pinball/trap-alternatives-visual-dfe19ba/preview-final/baseline-lower-closeup.png": {
+    "bytes": 800685,
+    "sha256": "9a47b0f27c000d7d5392fe5eea1d6b8ce5bbef2d55d8e1b2416497bfba15912c"
+  },
+  "artifacts/pinball/trap-alternatives-baseline-dfe19ba/npm-test.log": {
+    "bytes": 27156,
+    "sha256": "6f460b2ee61250c5eea030764f56d7f7d7904bca5c44b22468fed236a111cf51",
+    "scope": "Fresh stable baseline npm test,206 passed; not candidate qualification"
+  }
+}

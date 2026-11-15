@@ -1,0 +1,399 @@
+{
+  "status": "unadopted, local natural gate failed at maximum power",
+  "natural": {
+    "accepted": [
+      {
+        "power": 0.55,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 337,
+          "p": {
+            "x": 2.022972822189331,
+            "y": 0.16953504085540771,
+            "z": -1.6478215456008911
+          }
+        },
+        "minZ": -4.641885757446289,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25,
+        "seconds": 8.983333333333464
+      },
+      {
+        "power": 0.65,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 301,
+          "p": {
+            "x": 2.0297579765319824,
+            "y": 0.16909022629261017,
+            "z": -1.7616115808486938
+          }
+        },
+        "minZ": -5.116170883178711,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25,
+        "seconds": 8.583333333333487
+      },
+      {
+        "power": 0.75,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 267,
+          "p": {
+            "x": 2.019087553024292,
+            "y": 0.168918639421463,
+            "z": -1.635311245918274
+          }
+        },
+        "minZ": -5.125899314880371,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25,
+        "seconds": 8.333333333333501
+      },
+      {
+        "power": 0.85,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 196,
+          "p": {
+            "x": 0.798864483833313,
+            "y": 0.1705608367919922,
+            "z": -4.095780849456787
+          }
+        },
+        "minZ": -5.279026031494141,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 525,
+        "seconds": 9.383333333333441
+      },
+      {
+        "power": 0.925,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 175,
+          "p": {
+            "x": 0.7971894145011902,
+            "y": 0.17053447663784027,
+            "z": -4.0891523361206055
+          }
+        },
+        "minZ": -5.287731647491455,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 525,
+        "seconds": 9.208333333333451
+      },
+      {
+        "power": 1,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 175,
+          "p": {
+            "x": 0.9423328042030334,
+            "y": 0.1707238107919693,
+            "z": -4.075916767120361
+          }
+        },
+        "minZ": -5.171389579772949,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 325,
+        "seconds": 8.00833333333352
+      },
+      {
+        "power": 0.1,
+        "weak": {
+          "phase": "ready",
+          "ball": 1,
+          "returned": true,
+          "stopErrorZ": 0.0012270927429200995,
+          "p": {
+            "x": 2.5299999713897705,
+            "y": 0.1726202666759491,
+            "z": 4.42622709274292
+          },
+          "relaunch": true,
+          "positionUnchanged": true
+        },
+        "fieldAccess": null,
+        "minZ": 3.1461856365203857,
+        "phase": "playing",
+        "ball": 1,
+        "returnedShooter": false,
+        "score": 0,
+        "seconds": 3.333333333333324
+      }
+    ],
+    "baseline": [
+      {
+        "power": 0.55,
+        "weak": null,
+        "fieldAccess": null,
+        "minZ": -4.177123069763184,
+        "phase": "ready",
+        "ball": 1,
+        "returnedShooter": true,
+        "score": 0,
+        "seconds": 3.57499999999999
+      },
+      {
+        "power": 0.65,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 255,
+          "p": {
+            "x": 2.1496734619140625,
+            "y": 0.17069250345230103,
+            "z": -4.084994792938232
+          }
+        },
+        "minZ": -5.110593318939209,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25,
+        "seconds": 8.975000000000131
+      },
+      {
+        "power": 0.75,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 214,
+          "p": {
+            "x": 2.118907928466797,
+            "y": 0.17070543766021729,
+            "z": -4.086297988891602
+          }
+        },
+        "minZ": -5.118596076965332,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25,
+        "seconds": 8.841666666666805
+      },
+      {
+        "power": 0.85,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 202,
+          "p": {
+            "x": 1.3274641036987305,
+            "y": 0.17061389982700348,
+            "z": -4.090003490447998
+          }
+        },
+        "minZ": -5.169918060302734,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 225,
+        "seconds": 8.558333333333488
+      },
+      {
+        "power": 0.925,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 175,
+          "p": {
+            "x": 0.8702464699745178,
+            "y": 0.17072169482707977,
+            "z": -4.075328826904297
+          }
+        },
+        "minZ": -5.170113563537598,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 425,
+        "seconds": 9.483333333333436
+      },
+      {
+        "power": 1,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 199,
+          "p": {
+            "x": 0.9206346869468689,
+            "y": 0.17054259777069092,
+            "z": -4.083751201629639
+          }
+        },
+        "minZ": -5.201443195343018,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 325,
+        "seconds": 9.150000000000121
+      },
+      {
+        "power": 0.1,
+        "weak": {
+          "phase": "ready",
+          "ball": 1,
+          "returned": true,
+          "stopErrorZ": 0.0012270927429200995,
+          "p": {
+            "x": 2.930000066757202,
+            "y": 0.17262029647827148,
+            "z": 4.42622709274292
+          },
+          "relaunch": true,
+          "positionUnchanged": true
+        },
+        "fieldAccess": null,
+        "minZ": 3.1461853981018066,
+        "phase": "playing",
+        "ball": 1,
+        "returnedShooter": false,
+        "score": 0,
+        "seconds": 3.333333333333324
+      }
+    ],
+    "candidate": [
+      {
+        "power": 0.55,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 245,
+          "p": {
+            "x": 2.277172803878784,
+            "y": 0.17098450660705566,
+            "z": -4.099793910980225
+          }
+        },
+        "minZ": -4.5444655418396,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25,
+        "seconds": 8.641666666666817
+      },
+      {
+        "power": 0.65,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 235,
+          "p": {
+            "x": 1.3276997804641724,
+            "y": 0.17061454057693481,
+            "z": -4.093698501586914
+          }
+        },
+        "minZ": -5.160916805267334,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 225,
+        "seconds": 9.433333333333438
+      },
+      {
+        "power": 0.75,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 205,
+          "p": {
+            "x": 2.269681930541992,
+            "y": 0.1707245111465454,
+            "z": -4.075291156768799
+          }
+        },
+        "minZ": -5.067884922027588,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25,
+        "seconds": 8.76666666666681
+      },
+      {
+        "power": 0.85,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 162,
+          "p": {
+            "x": 2.129833459854126,
+            "y": 0.1708601713180542,
+            "z": -4.083746910095215
+          }
+        },
+        "minZ": -5.1059956550598145,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 25,
+        "seconds": 8.325000000000168
+      },
+      {
+        "power": 0.925,
+        "weak": null,
+        "fieldAccess": {
+          "tick": 113,
+          "p": {
+            "x": 0.8121723532676697,
+            "y": 0.17022840678691864,
+            "z": -4.075514793395996
+          }
+        },
+        "minZ": -5.2971882820129395,
+        "phase": "ready",
+        "ball": 2,
+        "returnedShooter": false,
+        "score": 400,
+        "seconds": 5.500000000000063
+      },
+      {
+        "power": 1,
+        "weak": null,
+        "fieldAccess": null,
+        "minZ": -4.68804931640625,
+        "phase": "ready",
+        "ball": 1,
+        "returnedShooter": true,
+        "score": 0,
+        "seconds": 2.858333333333326
+      },
+      {
+        "power": 0.1,
+        "weak": {
+          "phase": "ready",
+          "ball": 1,
+          "returned": true,
+          "stopErrorZ": 0.0012270927429200995,
+          "p": {
+            "x": 2.930000066757202,
+            "y": 0.1726202666759491,
+            "z": 4.42622709274292
+          },
+          "relaunch": true,
+          "positionUnchanged": true
+        },
+        "fieldAccess": null,
+        "minZ": 3.1461856365203857,
+        "phase": "playing",
+        "ball": 1,
+        "returnedShooter": false,
+        "score": 0,
+        "seconds": 3.333333333333324
+      }
+    ]
+  },
+  "maxCause": "343 p/v identical replay: early curved roof turns ball strongly left, rightmost real rollover bar reverses vx toward shooter. No retained-roof kink/inner-end/post contact before that reversal.",
+  "notRun": [
+    "full206",
+    "natural54",
+    "dense568",
+    "new natural wire qualification",
+    "human/physical mobile"
+  ],
+  "stableBaselineLogSha256": "6f460b2ee61250c5eea030764f56d7f7d7904bca5c44b22468fed236a111cf51"
+}

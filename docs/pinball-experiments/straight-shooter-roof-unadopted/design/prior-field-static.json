@@ -1,0 +1,208 @@
+{
+  "scope": "No-step frozen a038 geometry; finite strip29 triangles and one actual inner capsule, not all-world path certificate",
+  "rows": [
+    {
+      "p": [
+        2.3318264484405518,
+        0.17123785614967346,
+        -0.6815354824066162
+      ],
+      "base": {
+        "triangle": 13,
+        "distance": 0.1337814764588641,
+        "q": [
+          2.277112493689316,
+          0.17123785614967346,
+          -0.5594540890700667
+        ],
+        "towardBall": [
+          0.4089800486546403,
+          0,
+          -0.9125433248906312
+        ]
+      },
+      "railAxisDistance": 0.1789111029592142,
+      "railAxisPoint": [
+        2.4995090087328555,
+        0.23000000411840743,
+        -0.7024818830998394
+      ],
+      "baseBallGap": -0.001218523541135913,
+      "railBallGap": -0.0010888970407857967
+    },
+    {
+      "p": [
+        2.3318264484405518,
+        0.175,
+        -0.6815354824066162
+      ],
+      "base": {
+        "triangle": 13,
+        "distance": 0.1337814764588641,
+        "q": [
+          2.277112493689316,
+          0.175,
+          -0.5594540890700667
+        ],
+        "towardBall": [
+          0.4089800486546403,
+          0,
+          -0.9125433248906312
+        ]
+      },
+      "railAxisDistance": 0.17771098216263387,
+      "railAxisPoint": [
+        2.499509008754998,
+        0.23000000411840743,
+        -0.702481882922583
+      ],
+      "baseBallGap": -0.001218523541135913,
+      "railBallGap": -0.002289017837366125
+    },
+    {
+      "p": [
+        2.3318264484405518,
+        0.18,
+        -0.6815354824066162
+      ],
+      "base": {
+        "triangle": 13,
+        "distance": 0.1337814764588641,
+        "q": [
+          2.277112493689316,
+          0.18000000000000005,
+          -0.5594540890700667
+        ],
+        "towardBall": [
+          0.4089800486546403,
+          -4.149389938025293e-16,
+          -0.9125433248906312
+        ]
+      },
+      "railAxisDistance": 0.17622767416051266,
+      "railAxisPoint": [
+        2.4995090087844254,
+        0.23000000411840746,
+        -0.7024818826870041
+      ],
+      "baseBallGap": -0.001218523541135913,
+      "railBallGap": -0.003772325839487334
+    }
+  ],
+  "section": [
+    {
+      "z": -0.75,
+      "margin": 0,
+      "baseLimit": 2.3,
+      "railLimit": 2.32084978404756,
+      "centerIntervalWidth": 0.020849784047560327,
+      "baseResidual": 0.0482419325488424,
+      "railResidual": 2.7755575615628914e-16,
+      "validRootPair": false
+    },
+    {
+      "z": -0.75,
+      "margin": 0.015,
+      "baseLimit": 2.3,
+      "railLimit": 2.305036326494611,
+      "centerIntervalWidth": 0.005036326494611387,
+      "baseResidual": 0.03324193254884239,
+      "railResidual": -1.1102230246251565e-16,
+      "validRootPair": false
+    },
+    {
+      "z": -0.7,
+      "margin": 0,
+      "baseLimit": 2.3,
+      "railLimit": 2.327095633478697,
+      "centerIntervalWidth": 0.027095633478697145,
+      "baseResidual": 0.0026147663043106506,
+      "railResidual": -3.3306690738754696e-16,
+      "validRootPair": false
+    },
+    {
+      "z": -0.7,
+      "margin": 0.015,
+      "baseLimit": 2.330283222216905,
+      "railLimit": 2.3112821758608497,
+      "centerIntervalWidth": -0.019001046356055262,
+      "baseResidual": 0,
+      "railResidual": -1.6653345369377348e-16,
+      "validRootPair": true
+    },
+    {
+      "z": -0.6815354824066162,
+      "margin": 0,
+      "baseLimit": 2.334805868940755,
+      "railLimit": 2.3294021654128327,
+      "centerIntervalWidth": -0.00540370352792241,
+      "baseResidual": -1.3877787807814457e-16,
+      "railResidual": 2.7755575615628914e-16,
+      "validRootPair": true
+    },
+    {
+      "z": -0.6815354824066162,
+      "margin": 0.015,
+      "baseLimit": 2.3714824746806764,
+      "railLimit": 2.3135887077710198,
+      "centerIntervalWidth": -0.05789376690965664,
+      "baseResidual": 0,
+      "railResidual": 2.7755575615628914e-16,
+      "validRootPair": true
+    },
+    {
+      "z": -0.65,
+      "margin": 0,
+      "baseLimit": 2.4051699223023526,
+      "railLimit": 2.333341482909832,
+      "centerIntervalWidth": -0.0718284393925206,
+      "baseResidual": 1.6653345369377348e-16,
+      "railResidual": 3.3306690738754696e-16,
+      "validRootPair": true
+    },
+    {
+      "z": -0.65,
+      "margin": 0.015,
+      "baseLimit": 2.435549473317174,
+      "railLimit": 2.3175280252270873,
+      "centerIntervalWidth": -0.11802144809008652,
+      "baseResidual": 1.1102230246251565e-16,
+      "railResidual": 2.7755575615628914e-16,
+      "validRootPair": true
+    },
+    {
+      "z": -0.6,
+      "margin": 0,
+      "baseLimit": 2.45,
+      "railLimit": 2.339587332340968,
+      "centerIntervalWidth": -0.11041266765903224,
+      "baseResidual": -0.011064290060279688,
+      "railResidual": 2.220446049250313e-16,
+      "validRootPair": false
+    },
+    {
+      "z": -0.6,
+      "margin": 0.015,
+      "baseLimit": 2.45,
+      "railLimit": 2.323773874593326,
+      "centerIntervalWidth": -0.12622612540667433,
+      "baseResidual": -0.026064290060279702,
+      "railResidual": 2.220446049250313e-16,
+      "validRootPair": false
+    }
+  ],
+  "rail": {
+    "a": [
+      2.5153387964857536,
+      0.23000001018220356,
+      -0.5757594101324337
+    ],
+    "b": [
+      2.483960729728846,
+      0.2299999981624467,
+      -0.8269507892236454
+    ],
+    "r": 0.045
+  },
+  "formula": "parallel rail sphere center interval width = axis separation - sqrt((R+rInner+margin)^2-dyInner^2) - sqrt((R+rOuter+margin)^2-dyOuter^2)"
+}

@@ -1,0 +1,13 @@
+{
+  "sourceSHA256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+  "files": {
+    "summary.json": "1eb27649f56f7c0831aa8792512de58fffbd18066ae37d5113b443303d5a9348",
+    "accepted.json": "990facd9be7e337a694680ecc0c527f3bfa4eca4a3c4679b9e6e7ee57cfeaacd",
+    "accepted.log": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb",
+    "candidate.json": "63cea8690bb946bc5454837c35bd1103031015122636771b6750c5c51e749434",
+    "candidate.log": "4a8a8e7ac6d5bf43d825052b31442095b9aea7fe5bbf86ab122d9a6f2c98e24d",
+    "launch.mjs": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6",
+    "baseline.log": "02addbbe13ff520363009dcdb7798ca827ee6b50223759470086525accf9a6d7",
+    "baseline.json": "79a34bbc047a2d8c9b5345be12e973398d80162fd94ea976272aa83459b0d917"
+  }
+}

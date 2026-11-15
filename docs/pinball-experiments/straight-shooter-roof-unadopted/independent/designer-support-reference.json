@@ -1,0 +1,381 @@
+{
+  "sourceHash": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+  "supportChecks": [
+    {
+      "row": 37,
+      "name": "support-post-0",
+      "a": [
+        2.75,
+        0.055,
+        -0.8783915945153522
+      ],
+      "b": [
+        2.75,
+        0.5112978266217261,
+        -0.8783915945153522
+      ],
+      "radius": 0.037,
+      "colliderCenter": {
+        "x": 2.75,
+        "y": 0.2831489145755768,
+        "z": -0.8783916234970093
+      },
+      "colliderRadius": 0.037,
+      "colliderHalfHeight": 0.22814891331086304,
+      "visibleRadiusMax": 0.03700002945849423,
+      "visibleNonzeroRadiusMin": 0.03699993801077143,
+      "visibleAxialRange": [
+        -2.980232241545089e-10,
+        0.4562978219985962
+      ],
+      "centerError": 2.9009239003590585e-08,
+      "lengthError": 4.623129878922327e-09,
+      "radiusError": 2.9458494234246846e-08
+    },
+    {
+      "row": 37,
+      "name": "cantilever-crosshead-0",
+      "a": [
+        2.75,
+        0.5112978266217261,
+        -0.8783915945153522
+      ],
+      "b": [
+        1.7729877905136118,
+        0.5112978266217261,
+        -0.8783915945153522
+      ],
+      "radius": 0.034,
+      "colliderCenter": {
+        "x": 2.2614939212799072,
+        "y": 0.5112978219985962,
+        "z": -0.8783916234970093
+      },
+      "colliderRadius": 0.034,
+      "colliderHalfHeight": 0.4885061047431941,
+      "visibleRadiusMax": 0.034000013921466815,
+      "visibleNonzeroRadiusMin": 0.03399997487288467,
+      "visibleAxialRange": [
+        0,
+        0.9770121574401855
+      ],
+      "centerError": 3.92238650033326e-08,
+      "lengthError": 5.204620268095539e-08,
+      "radiusError": 1.3921466812671923e-08
+    },
+    {
+      "row": 37,
+      "name": "post-head-collar-0",
+      "a": [
+        2.75,
+        0.48879782662172605,
+        -0.8783915945153522
+      ],
+      "b": [
+        2.75,
+        0.533797826621726,
+        -0.8783915945153522
+      ],
+      "radius": 0.04,
+      "colliderCenter": {
+        "x": 2.75,
+        "y": 0.5112978219985962,
+        "z": -0.8783916234970093
+      },
+      "colliderRadius": 0.04,
+      "colliderHalfHeight": 0.0225,
+      "visibleRadiusMax": 0.03999999988327485,
+      "visibleNonzeroRadiusMin": 0.03999999910593033,
+      "visibleAxialRange": [
+        -8.940696516468449e-10,
+        0.04500000089406969
+      ],
+      "centerError": 2.9348079607439366e-08,
+      "lengthError": 8.940697071579962e-10,
+      "radiusError": 1.1672515037863818e-10
+    },
+    {
+      "row": 37,
+      "name": "mounting-foot-0",
+      "a": [
+        2.75,
+        0.0425,
+        -0.8783915945153522
+      ],
+      "b": [
+        2.75,
+        0.0675,
+        -0.8783915945153522
+      ],
+      "radius": 0.04,
+      "colliderCenter": {
+        "x": 2.75,
+        "y": 0.054999999701976776,
+        "z": -0.8783916234970093
+      },
+      "colliderRadius": 0.04,
+      "colliderHalfHeight": 0.0125,
+      "visibleRadiusMax": 0.040000000097647634,
+      "visibleNonzeroRadiusMin": 0.039999998683226436,
+      "visibleAxialRange": [
+        -1.8626451769865326e-10,
+        0.025000000186264505
+      ],
+      "centerError": 2.898318934509253e-08,
+      "lengthError": 1.8626451769865326e-10,
+      "radiusError": 9.76476330349918e-11
+    },
+    {
+      "row": 57,
+      "name": "support-post-1",
+      "a": [
+        2.75,
+        0.055,
+        -1.8311413172237554
+      ],
+      "b": [
+        2.75,
+        0.7585748683183864,
+        -1.8311413172237554
+      ],
+      "radius": 0.037,
+      "colliderCenter": {
+        "x": 2.75,
+        "y": 0.4067874252796173,
+        "z": -1.8311413526535034
+      },
+      "colliderRadius": 0.037,
+      "colliderHalfHeight": 0.35178743415919317,
+      "visibleRadiusMax": 0.03700002465173391,
+      "visibleNonzeroRadiusMin": 0.03699990042336722,
+      "visibleAxialRange": [
+        -2.980232241545089e-10,
+        0.7035748434066772
+      ],
+      "centerError": 3.652552413543675e-08,
+      "lengthError": 2.4911709139985305e-08,
+      "radiusError": 2.4651733911140727e-08
+    },
+    {
+      "row": 57,
+      "name": "cantilever-crosshead-1",
+      "a": [
+        2.75,
+        0.7585748683183864,
+        -1.8311413172237554
+      ],
+      "b": [
+        1.3661828088755832,
+        0.7585748683183864,
+        -1.8311413172237554
+      ],
+      "radius": 0.034,
+      "colliderCenter": {
+        "x": 2.058091402053833,
+        "y": 0.7585748434066772,
+        "z": -1.8311413526535034
+      },
+      "colliderRadius": 0.034,
+      "colliderHalfHeight": 0.6919085955622084,
+      "visibleRadiusMax": 0.03400003871853565,
+      "visibleNonzeroRadiusMin": 0.03399995532111457,
+      "visibleAxialRange": [
+        0,
+        1.383817195892334
+      ],
+      "centerError": 4.337676286836592e-08,
+      "lengthError": 4.767917172188163e-09,
+      "radiusError": 3.871853564846317e-08
+    },
+    {
+      "row": 57,
+      "name": "post-head-collar-1",
+      "a": [
+        2.75,
+        0.7360748683183864,
+        -1.8311413172237554
+      ],
+      "b": [
+        2.75,
+        0.7810748683183864,
+        -1.8311413172237554
+      ],
+      "radius": 0.04,
+      "colliderCenter": {
+        "x": 2.75,
+        "y": 0.7585748434066772,
+        "z": -1.8311413526535034
+      },
+      "colliderRadius": 0.04,
+      "colliderHalfHeight": 0.0225,
+      "visibleRadiusMax": 0.03999999988327485,
+      "visibleNonzeroRadiusMin": 0.03999999910593033,
+      "visibleAxialRange": [
+        -8.940697071579962e-10,
+        0.045000000894069636
+      ],
+      "centerError": 4.3311202908018454e-08,
+      "lengthError": 8.940697071579962e-10,
+      "radiusError": 1.1672515037863818e-10
+    },
+    {
+      "row": 57,
+      "name": "mounting-foot-1",
+      "a": [
+        2.75,
+        0.0425,
+        -1.8311413172237554
+      ],
+      "b": [
+        2.75,
+        0.0675,
+        -1.8311413172237554
+      ],
+      "radius": 0.04,
+      "colliderCenter": {
+        "x": 2.75,
+        "y": 0.054999999701976776,
+        "z": -1.8311413526535034
+      },
+      "colliderRadius": 0.04,
+      "colliderHalfHeight": 0.0125,
+      "visibleRadiusMax": 0.040000000097647634,
+      "visibleNonzeroRadiusMin": 0.039999998683226436,
+      "visibleAxialRange": [
+        -1.8626451769865326e-10,
+        0.025000000186264505
+      ],
+      "centerError": 3.543100143815569e-08,
+      "lengthError": 1.8626451769865326e-10,
+      "radiusError": 9.76476330349918e-11
+    },
+    {
+      "row": 78,
+      "name": "support-post-2",
+      "a": [
+        2.75,
+        0.055,
+        -2.836234172436161
+      ],
+      "b": [
+        2.75,
+        0.8008462257706004,
+        -2.836234172436161
+      ],
+      "radius": 0.037,
+      "colliderCenter": {
+        "x": 2.75,
+        "y": 0.4279231131076813,
+        "z": -2.8362340927124023
+      },
+      "colliderRadius": 0.037,
+      "colliderHalfHeight": 0.37292311288530017,
+      "visibleRadiusMax": 0.03700009956701278,
+      "visibleNonzeroRadiusMin": 0.036999931743996996,
+      "visibleAxialRange": [
+        -2.980232241545089e-10,
+        0.7458462190628051
+      ],
+      "centerError": 7.972406885950446e-08,
+      "lengthError": 6.707795208171774e-09,
+      "radiusError": 9.956701278041047e-08
+    },
+    {
+      "row": 78,
+      "name": "cantilever-crosshead-2",
+      "a": [
+        2.75,
+        0.8008462257706004,
+        -2.836234172436161
+      ],
+      "b": [
+        1.6115694697641985,
+        0.8008462257706004,
+        -2.836234172436161
+      ],
+      "radius": 0.034,
+      "colliderCenter": {
+        "x": 2.1807847023010254,
+        "y": 0.8008462190628052,
+        "z": -2.8362340927124023
+      },
+      "colliderRadius": 0.034,
+      "colliderHalfHeight": 0.5692152651179008,
+      "visibleRadiusMax": 0.03400009239750934,
+      "visibleNonzeroRadiusMin": 0.03399997016483358,
+      "visibleAxialRange": [
+        0,
+        1.1384304761886597
+      ],
+      "centerError": 8.638517576082003e-08,
+      "lengthError": 5.404714187307036e-08,
+      "radiusError": 9.239750933809354e-08
+    },
+    {
+      "row": 78,
+      "name": "post-head-collar-2",
+      "a": [
+        2.75,
+        0.7783462257706004,
+        -2.836234172436161
+      ],
+      "b": [
+        2.75,
+        0.8233462257706003,
+        -2.836234172436161
+      ],
+      "radius": 0.04,
+      "colliderCenter": {
+        "x": 2.75,
+        "y": 0.8008462190628052,
+        "z": -2.8362340927124023
+      },
+      "colliderRadius": 0.04,
+      "colliderHalfHeight": 0.0225,
+      "visibleRadiusMax": 0.03999999988327485,
+      "visibleNonzeroRadiusMin": 0.03999999910593033,
+      "visibleAxialRange": [
+        -8.940697071579962e-10,
+        0.045000000894069636
+      ],
+      "centerError": 8.00054511813715e-08,
+      "lengthError": 8.940697071579962e-10,
+      "radiusError": 1.1672515037863818e-10
+    },
+    {
+      "row": 78,
+      "name": "mounting-foot-2",
+      "a": [
+        2.75,
+        0.0425,
+        -2.836234172436161
+      ],
+      "b": [
+        2.75,
+        0.0675,
+        -2.836234172436161
+      ],
+      "radius": 0.04,
+      "colliderCenter": {
+        "x": 2.75,
+        "y": 0.054999999701976776,
+        "z": -2.8362340927124023
+      },
+      "colliderRadius": 0.04,
+      "colliderHalfHeight": 0.0125,
+      "visibleRadiusMax": 0.040000000097647634,
+      "visibleNonzeroRadiusMin": 0.039999998683226436,
+      "visibleAxialRange": [
+        -1.8626451769865326e-10,
+        0.025000000186264505
+      ],
+      "centerError": 7.972431573884042e-08,
+      "lengthError": 1.8626451769865326e-10,
+      "radiusError": 9.76476330349918e-11
+    }
+  ],
+  "maxCenterError": 8.638517576082003e-08,
+  "maxLengthError": 5.404714187307036e-08,
+  "maxRadiusError": 9.956701278041047e-08,
+  "provenance": "Designer static measurements, not independently repeated support tests"
+}

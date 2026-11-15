@@ -1,0 +1,205 @@
+{
+  "sourceSHA256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "bbcb431ad01d9c3d010e20b05f156815e97fa7957a949ff44bb8eda3ee36ff36",
+      "bytes": 4979
+    },
+    {
+      "path": "baseline-geometry.mjs",
+      "sha256": "882884dad71d759f3d5e1f11f475d9bb612fb0917ae75b40f5d3feaa98d09ab5",
+      "bytes": 5848
+    },
+    {
+      "path": "baseline-sources.json",
+      "sha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "bytes": 338664
+    },
+    {
+      "path": "designer-support-reference.json",
+      "sha256": "266285376e957ef34050b656be3acd7e89d9096705b524c90ae70e2ebd9d209f",
+      "bytes": 9789
+    },
+    {
+      "path": "geometry.mjs",
+      "sha256": "5a981fe37b250bb44c7584e5d870162a0abde0168db36dab155df6c75cf52423",
+      "bytes": 6399
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "b1829ebb1b26a5d6c1fc114758ab62c415fe6f7e8b32efcb80650f89549813c4",
+      "bytes": 11617
+    },
+    {
+      "path": "preview-final/baseline-installed-10.png",
+      "sha256": "6a6317eba53267363a64e715d8d49ee2721a804fc06387904db816bfe8c21fd8",
+      "bytes": 432043
+    },
+    {
+      "path": "preview-final/baseline-installed-45.png",
+      "sha256": "2fbf962a5fd60126ee92d62784deb7f8d3ca174eab5ba6b8770b22e2fc499dac",
+      "bytes": 776546
+    },
+    {
+      "path": "preview-final/baseline-installed-90.png",
+      "sha256": "31fc23861c47bbacba49993b0fe36fba0a8c7ad874a491e840de277ec16c5647",
+      "bytes": 655724
+    },
+    {
+      "path": "preview-final/baseline-lower-closeup.png",
+      "sha256": "9a47b0f27c000d7d5392fe5eea1d6b8ce5bbef2d55d8e1b2416497bfba15912c",
+      "bytes": 800685
+    },
+    {
+      "path": "preview-final/baseline-lower-side.png",
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e",
+      "bytes": 110012
+    },
+    {
+      "path": "preview-final/baseline-lower-underside.png",
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49",
+      "bytes": 86219
+    },
+    {
+      "path": "preview-final/baseline-mobile-390.png",
+      "sha256": "6bcb50efd83820422e141a89761fb9dbe8853f72f7114d86a9a4864a4ab03ca6",
+      "bytes": 264092
+    },
+    {
+      "path": "preview-final/candidate-installed-10.png",
+      "sha256": "6358b46a8d18f88b00d5733b96de4787d3a229dfc76f12db15a654e6ea8362ea",
+      "bytes": 432894
+    },
+    {
+      "path": "preview-final/candidate-installed-45.png",
+      "sha256": "3da7aede4528c9b076a30191528247eb6a40291284e32c925b104f033f207d59",
+      "bytes": 776290
+    },
+    {
+      "path": "preview-final/candidate-installed-90.png",
+      "sha256": "f1e1facdbea00d0af2caaed0ede968a94f45172a771e7feb2b6c5919ac2e0002",
+      "bytes": 648717
+    },
+    {
+      "path": "preview-final/candidate-lower-closeup.png",
+      "sha256": "9a47b0f27c000d7d5392fe5eea1d6b8ce5bbef2d55d8e1b2416497bfba15912c",
+      "bytes": 800685
+    },
+    {
+      "path": "preview-final/candidate-lower-side.png",
+      "sha256": "d7483518d0a3f4ef13ce27f5445f5e40e6808d13d32dcf72820114f38cd00c06",
+      "bytes": 110023
+    },
+    {
+      "path": "preview-final/candidate-lower-underside.png",
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49",
+      "bytes": 86219
+    },
+    {
+      "path": "preview-final/candidate-mobile-390.png",
+      "sha256": "db89dbe1568c16cfef15207399394d94ffdc3ddb7666111dac5720788dbec520",
+      "bytes": 264269
+    },
+    {
+      "path": "preview-final/evidence.json",
+      "sha256": "0969f4e8e568474f908148dcae0622ca8525fd6e0e7c326a5d6c14a7aa9de51a",
+      "bytes": 996
+    },
+    {
+      "path": "preview-final/served-candidate-sources.json",
+      "sha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "bytes": 339222
+    },
+    {
+      "path": "seam-metrics.json",
+      "sha256": "56771e8ec667e2c8017765a4686793fc398bbcb66b28db275caed6d9030f7e60",
+      "bytes": 8180
+    },
+    {
+      "path": "seam-metrics.mjs",
+      "sha256": "52d37782455ce46cad7b9503c2399685b75990acaf2f408c57b4be7e1fdfc6bd",
+      "bytes": 1405
+    },
+    {
+      "path": "sources.json",
+      "sha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "bytes": 339222
+    },
+    {
+      "path": "upper-review/evidence.json",
+      "sha256": "2a991c1981455b5ca6bb48e6f656bf079cdea20a62e6bc750f197031be858c3d",
+      "bytes": 301
+    },
+    {
+      "path": "upper-review/roof-closeup.png",
+      "sha256": "b570dea64c64b6fa7b5289d493f0e5c84339536c11cfd74f61e037c90eb1bc61",
+      "bytes": 113419
+    },
+    {
+      "path": "upper-review/roof-side.png",
+      "sha256": "371982ad3e3a04fd0fb5b1d55af8a77cf76da18ee4dea29e10592dc27a450ba8",
+      "bytes": 162789
+    },
+    {
+      "path": "upper-review/served-candidate-sources.json",
+      "sha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "bytes": 339222
+    },
+    {
+      "path": "upper-review/upper-mesh-contact.json",
+      "sha256": "e351f06eb78ee8137481097d7aed5040a383c30d386e517c9af3887026c2f3c1",
+      "bytes": 9294
+    },
+    {
+      "path": "upper-review-final.log",
+      "sha256": "9e4c0c67d0d0d0a249b7201899a7b6a111306f39e0332bb2a7a740cc28a50910",
+      "bytes": 146
+    },
+    {
+      "path": "upper-review-initial/evidence.json",
+      "sha256": "2a991c1981455b5ca6bb48e6f656bf079cdea20a62e6bc750f197031be858c3d",
+      "bytes": 301
+    },
+    {
+      "path": "upper-review-initial/roof-closeup.png",
+      "sha256": "c814b2e4302b473e7edbaee8f3b902f1d3674e112b4afe0e0320e81853ebd130",
+      "bytes": 51734
+    },
+    {
+      "path": "upper-review-initial/roof-side.png",
+      "sha256": "25108a468bdb09f35ac1e1d1874086e53eebc22fb887df46ef328b9ab4eb42c6",
+      "bytes": 323440
+    },
+    {
+      "path": "upper-review-initial/served-candidate-sources.json",
+      "sha256": "5891d92eeed8fb333bfefc493a09d72a89c03a10d615beb9203b0d7b0f7edbfa",
+      "bytes": 339222
+    },
+    {
+      "path": "upper-review-initial/upper-mesh-contact.json",
+      "sha256": "283da71eaf7ae9e60af71e558487a3a9dcffa636aab14dd644823c4e485c4086",
+      "bytes": 5391
+    },
+    {
+      "path": "upper-review.cjs",
+      "sha256": "a8ef717205378e90f2794b17c96797a806916eece86c3576459c9eb3b982d420",
+      "bytes": 6304
+    },
+    {
+      "path": "upper-review.log",
+      "sha256": "9e4c0c67d0d0d0a249b7201899a7b6a111306f39e0332bb2a7a740cc28a50910",
+      "bytes": 146
+    },
+    {
+      "path": "visual.cjs",
+      "sha256": "eb2602e73a6bd097aed7f9b2fd25db1e1be6db4cddce13d10bf2db6a31ee6920",
+      "bytes": 4792
+    },
+    {
+      "path": "visual.log",
+      "sha256": "36644990ffb6671d2ed36772be5a835fbec43c216ce1b41c4e2bd6ee8fc83330",
+      "bytes": 842
+    }
+  ]
+}
