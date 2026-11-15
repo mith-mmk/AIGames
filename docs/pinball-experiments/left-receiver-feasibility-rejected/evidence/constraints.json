@@ -1,0 +1,42 @@
+{
+  "J": [
+    -1.7377524825092543,
+    0.22,
+    3.7674426062837822
+  ],
+  "tangentSlope": 0.28854737751442805,
+  "angle": 0.280916967875842,
+  "stockRadius": 0.02,
+  "samples": 13268,
+  "minJoin": {
+    "gap": 0.005321284040034235,
+    "p": [
+      -1.615018137863704,
+      0.17164032374109542,
+      3.676335326262883
+    ],
+    "tick": 1193,
+    "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-83.json"
+  },
+  "firstForbiddenStraightTangentDistance": {
+    "length": 0.009545270652120352,
+    "p": [
+      -1.615018137863704,
+      0.17164032374109542,
+      3.676335326262883
+    ],
+    "tick": 1193,
+    "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-83.json"
+  },
+  "conservativeWholeCircleMaximumRadius": {
+    "maxRadius": 0.03264381958805443,
+    "p": [
+      -1.615018137863704,
+      0.17164032374109542,
+      3.676335326262883
+    ],
+    "tick": 1193,
+    "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-83.json"
+  },
+  "scope": "Single derived contact target. For each measured return center, a straight outgoing tangent intersects its allowed-distance sphere (min of .135+.020 and nearest old-guide centerline distance), preserving existing old-guide penetration rather than treating it as new conflict after stated distance. A circle turning toward+Z with initial tangent theta has |Q-(J+R*N)|-R >= effective planar allowed-distance radius only if R <= bound. Whole-circle bound is conservative for a finite arc, not proof no general spline exists. No additional candidate or dynamics tried."
+}

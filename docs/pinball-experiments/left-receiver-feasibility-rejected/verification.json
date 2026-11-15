@@ -1,0 +1,12 @@
+{
+  "geometryReportExactReproduction": true,
+  "dimensionalReportExactReproduction": true,
+  "histories": 12,
+  "samples": 13268,
+  "runtimeCandidateCreated": false,
+  "physicsWorldsCreated": 0,
+  "newDynamicsRun": false,
+  "frozenInputSourceSHA256": "2d9c3a9cae7eba29d21dc755645c752e2b23345d0a64de01b1f4750bdeef611e",
+  "workingTreeBumperImported": false,
+  "temporaryBuilder": "Moved to Trash after packet verification"
+}

@@ -1,0 +1,86 @@
+{
+  "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-80.json": {
+    "bytes": 3294880,
+    "sha256": "af1278953031c6fd11cbcee653f1fb0aed547586afc226b033a997c7bda19ee6"
+  },
+  "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-81.json": {
+    "bytes": 3229724,
+    "sha256": "da0e66d6002c1ea951fe59871f47667acaeea95cdff6f4a60d4518a7f23495f1"
+  },
+  "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-82.json": {
+    "bytes": 3185914,
+    "sha256": "771ac545eb0c83ff66a31823be78de19315504ab926886efddeb65be1cfb1a26"
+  },
+  "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-83.json": {
+    "bytes": 3209669,
+    "sha256": "987d00c786872598cf83272db0e850752c6c7607a64a05a8a8e74b2e3b82efbf"
+  },
+  "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-84.json": {
+    "bytes": 3248346,
+    "sha256": "6b81c00797f5467a8dd54b9101d68cddb3c082e93250ad2786e9c8b4a4c7d647"
+  },
+  "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-80.json": {
+    "bytes": 2953528,
+    "sha256": "0e1f3987c49819de37c2ab1d982e58a4070b8c0d72d80a9f6dbd5b468c5ac080"
+  },
+  "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-81.json": {
+    "bytes": 2842568,
+    "sha256": "d2e0c3ddf5de60e1527fcb8d0d3879818379d3f9a3aa3867af860b2cd280410d"
+  },
+  "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-82.json": {
+    "bytes": 2930113,
+    "sha256": "466d827fd0977cbf67b86709f7ecdc714a0b4c28ddcc8ef9ab527fc3d2f8abd1"
+  },
+  "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-83.json": {
+    "bytes": 2939590,
+    "sha256": "913a52184b07cfddd26d2928f9b8b919682cc2d7048afeb1d005c60c068a3226"
+  },
+  "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-84.json": {
+    "bytes": 2938595,
+    "sha256": "99325207b63898ec455b15e0522daf90915c38f90750bc9a011d1a9de0a8d358"
+  },
+  "artifacts/pinball/left-lane-cause-dc4d13b/same-state-control/baseline.json": {
+    "bytes": 1572020,
+    "sha256": "59ce2eb5116471d89657ec2f768a0eac206292c4df113f27b3f7bfefcb0beff7"
+  },
+  "artifacts/pinball/left-joint-qa-89f477e/candidate.json": {
+    "bytes": 1589059,
+    "sha256": "41ecb47cefaa815d1fc066877516af8c2d071573b5592d91af88f32164ebbe21"
+  },
+  "artifacts/pinball/left-receiver-3568d1b/derive.log": {
+    "bytes": 6923,
+    "sha256": "7cb6b216bbe8707a067feb749c29cf96414e584b16bf058746e079f362897799"
+  },
+  "artifacts/pinball/left-receiver-3568d1b/derive.mjs": {
+    "bytes": 3642,
+    "sha256": "94947a01af4e32d6141b4432c3730b633c796fe938316d7abd4905c40cc44388"
+  },
+  "artifacts/pinball/left-receiver-3568d1b/feasibility.json": {
+    "bytes": 27945,
+    "sha256": "51a6ec6ea3897938c07d02dd98422a53d113dbf8f7ce669db45df17ee016c1e2"
+  },
+  "artifacts/pinball/left-receiver-3568d1b/layout-input.json": {
+    "bytes": 4867,
+    "sha256": "363cb68cd44c119eeb88c51c49f6b66d486a72c1fde32ef9909b525260b649e4"
+  },
+  "artifacts/pinball/left-receiver-3568d1b/constraints.mjs": {
+    "bytes": 2622,
+    "sha256": "c904d11c105c1e16fafdabd06d9d4ba8eb19a1dfac7fd9ca28509205b72dfcff"
+  },
+  "artifacts/pinball/left-receiver-3568d1b/constraints.json": {
+    "bytes": 1573,
+    "sha256": "f973761a211f878cbd5741c3483ce38c5acef0ef5401c75b8acdc8f427f5b033"
+  },
+  "artifacts/pinball/left-lane-joint-89f477e/sources.json": {
+    "bytes": 332182,
+    "sha256": "2d9c3a9cae7eba29d21dc755645c752e2b23345d0a64de01b1f4750bdeef611e"
+  },
+  "artifacts/pinball/left-lane-joint-89f477e/definition.mjs": {
+    "bytes": 5930,
+    "sha256": "17c33fd95a064ab05857202133820e80adb9deff1c1266dbd04529ac2c3681c3"
+  },
+  "docs/pinball-experiments/left-joint-causal-controls/findings.json": {
+    "bytes": 739935,
+    "sha256": "ab0c6cc1dd38e93db806b420b1e3364f801b5208bf0f2a26c071f99a315e3a9f"
+  }
+}

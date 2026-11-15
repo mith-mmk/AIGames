@@ -1,0 +1,230 @@
+{
+  "bounds": {
+    "left": [
+      -1.9497816970604522,
+      0.22,
+      3.6421456180979246
+    ],
+    "join": [
+      -1.7377524825092543,
+      0.22,
+      3.7674426062837822
+    ],
+    "right": [
+      -1.58,
+      0.22,
+      3.857317073170732
+    ],
+    "leftSlope": 0.8511447489968187,
+    "joinSlope": 0.28854737751442805,
+    "rightSlope": 0.487804878048781,
+    "stockRadius": 0.02,
+    "ballRadius": 0.135
+  },
+  "summaries": [
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-80.json",
+      "sha256": "af1278953031c6fd11cbcee653f1fb0aed547586afc226b033a997c7bda19ee6",
+      "count": 1010,
+      "minimum": -0.03742855124396398,
+      "worst": {
+        "additionalPenetration": 5.551115123125783e-17,
+        "oldGap": -0.02542511791428224,
+        "newGap": -0.025425117914282296,
+        "p": [
+          -1.201399261301214,
+          0.16612746769731696,
+          3.9108822562477807
+        ],
+        "tick": 1066
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-81.json",
+      "sha256": "da0e66d6002c1ea951fe59871f47667acaeea95cdff6f4a60d4518a7f23495f1",
+      "count": 1148,
+      "minimum": -0.023092022189057215,
+      "worst": {
+        "additionalPenetration": 0.010529428306605693,
+        "oldGap": -0.0003113153339557133,
+        "newGap": -0.010840743640561406,
+        "p": [
+          -1.6059018611907958,
+          0.16933053433895112,
+          3.6820653915405273
+        ],
+        "tick": 1142
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-82.json",
+      "sha256": "771ac545eb0c83ff66a31823be78de19315504ab926886efddeb65be1cfb1a26",
+      "count": 1122,
+      "minimum": -0.016833606700135378,
+      "worst": {
+        "additionalPenetration": 0.009807125316624365,
+        "oldGap": -0.00041621022722266796,
+        "newGap": -0.010223335543847033,
+        "p": [
+          -1.5983849944490376,
+          0.1724243967822104,
+          3.684701934005275
+        ],
+        "tick": 1226
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-83.json",
+      "sha256": "987d00c786872598cf83272db0e850752c6c7607a64a05a8a8e74b2e3b82efbf",
+      "count": 1199,
+      "minimum": -0.023220311456507752,
+      "worst": {
+        "additionalPenetration": 0.010594265147851556,
+        "oldGap": -0.0005162594449481077,
+        "newGap": -0.011110524592799664,
+        "p": [
+          -1.6078754290938377,
+          0.1664256528019905,
+          3.682502508163452
+        ],
+        "tick": 1165
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-lower-84.json",
+      "sha256": "6b81c00797f5467a8dd54b9101d68cddb3c082e93250ad2786e9c8b4a4c7d647",
+      "count": 1049,
+      "minimum": -0.021656944587332954,
+      "worst": {
+        "additionalPenetration": 0.008545297584666267,
+        "oldGap": -0.0005527409841758028,
+        "newGap": -0.00909803856884207,
+        "p": [
+          -1.5884310853096746,
+          0.1721260437080937,
+          3.6898250195287887
+        ],
+        "tick": 1148
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-80.json",
+      "sha256": "0e1f3987c49819de37c2ab1d982e58a4070b8c0d72d80a9f6dbd5b468c5ac080",
+      "count": 1046,
+      "minimum": -0.00779246933625936,
+      "worst": {
+        "additionalPenetration": 0.00779246933625936,
+        "oldGap": 0.0004605958872548506,
+        "newGap": -0.00779246933625936,
+        "p": [
+          -1.585685133934021,
+          0.17206242680549622,
+          3.690001964569092
+        ],
+        "tick": 1217
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-81.json",
+      "sha256": "d2e0c3ddf5de60e1527fcb8d0d3879818379d3f9a3aa3867af860b2cd280410d",
+      "count": 1120,
+      "minimum": -0.023057910502288014,
+      "worst": {
+        "additionalPenetration": 0.011059567171267382,
+        "oldGap": -0.00041637892125052575,
+        "newGap": -0.011475946092517907,
+        "p": [
+          -1.6102082133293152,
+          0.17145954817533493,
+          3.679285854101181
+        ],
+        "tick": 1109
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-82.json",
+      "sha256": "466d827fd0977cbf67b86709f7ecdc714a0b4c28ddcc8ef9ab527fc3d2f8abd1",
+      "count": 1134,
+      "minimum": -0.01234810225236475,
+      "worst": {
+        "additionalPenetration": 0.010954902722113063,
+        "oldGap": 0.000020946967213126416,
+        "newGap": -0.010954902722113063,
+        "p": [
+          -1.6107330799102784,
+          0.16781606872876484,
+          3.6799100399017335
+        ],
+        "tick": 1192
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-83.json",
+      "sha256": "913a52184b07cfddd26d2928f9b8b919682cc2d7048afeb1d005c60c068a3226",
+      "count": 1094,
+      "minimum": -0.02780546000236615,
+      "worst": {
+        "additionalPenetration": 0.011510706589391583,
+        "oldGap": 0.00004282285440650527,
+        "newGap": -0.011510706589391583,
+        "p": [
+          -1.615018137863704,
+          0.17164032374109542,
+          3.676335326262883
+        ],
+        "tick": 1193
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/baseline-physics-84.json",
+      "sha256": "99325207b63898ec455b15e0522daf90915c38f90750bc9a011d1a9de0a8d358",
+      "count": 1050,
+      "minimum": -0.02773050633878794,
+      "worst": {
+        "additionalPenetration": 0.00911556942120878,
+        "oldGap": -0.00010781957187281851,
+        "newGap": -0.009223388993081599,
+        "p": [
+          -1.592684595815597,
+          0.17200704255411703,
+          3.687272625584756
+        ],
+        "tick": 1209
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-lane-cause-dc4d13b/same-state-control/baseline.json",
+      "sha256": "59ce2eb5116471d89657ec2f768a0eac206292c4df113f27b3f7bfefcb0beff7",
+      "count": 1148,
+      "minimum": -0.023092170528601668,
+      "worst": {
+        "additionalPenetration": 0.010529405837181566,
+        "oldGap": -0.0003114762240703055,
+        "newGap": -0.010840882061251871,
+        "p": [
+          -1.6059017419815063,
+          0.16933055818080903,
+          3.6820656299591064
+        ],
+        "tick": 19
+      }
+    },
+    {
+      "file": "artifacts/pinball/left-joint-qa-89f477e/candidate.json",
+      "sha256": "41ecb47cefaa815d1fc066877516af8c2d071573b5592d91af88f32164ebbe21",
+      "count": 1148,
+      "minimum": -0.023092170528601668,
+      "worst": {
+        "additionalPenetration": 0.010529405837181566,
+        "oldGap": -0.0003114762240703055,
+        "newGap": -0.010840882061251871,
+        "p": [
+          -1.6059017419815063,
+          0.16933055818080903,
+          3.6820656299591064
+        ],
+        "tick": 19
+      }
+    }
+  ]
+}
