@@ -1,0 +1,90 @@
+{
+  "README.md": {
+    "bytes": 5271,
+    "sha256": "46902bd13f52837e4ae89d32607a54dce99915baa6d9e9de81833333abf497c0"
+  },
+  "evidence/browser.json": {
+    "bytes": 1038,
+    "sha256": "8172ed9a52f93edb50beeed638ab1a6c6bf648a88179dd9a344f8eda2aa49084"
+  },
+  "evidence/component.log": {
+    "bytes": 4178,
+    "sha256": "9ad107aa7aa803c660e6ae667faddf9a5a07ef169308b724ed3a011aa982955f"
+  },
+  "evidence/full-tests.log": {
+    "bytes": 23900,
+    "sha256": "b10e7ae7b3bb9e55278f3fab11015083c5303e5640a0c79e967efe73b75cea6c"
+  },
+  "evidence/input.json": {
+    "bytes": 9250,
+    "sha256": "bcc26a83f3c03544458d910ec0eaf21d2c46716688cc7966df45a0ef9cd5f06c"
+  },
+  "evidence/input.log": {
+    "bytes": 70,
+    "sha256": "faa74cbe1d1d236eaa932f1e52b9483422805e25f9908d73ff0e3a06f5e8660a"
+  },
+  "evidence/mount-tests-final.log": {
+    "bytes": 577,
+    "sha256": "34476a552928b7e993a32972aec5beeaa58d03bf7c824e26fb52a0e5e0682df4"
+  },
+  "evidence/mount-tests.log": {
+    "bytes": 1873,
+    "sha256": "56877e9b827f6536c4a658e08b8797bdb83346652f83e9d0a0ace8ddd0e33821"
+  },
+  "evidence/natural54.json": {
+    "bytes": 39049,
+    "sha256": "c4c5469ea2ec8270e71dd2398e73ccee16793df2c488f8fdedf1c7093c181370"
+  },
+  "evidence/natural54.log": {
+    "bytes": 304,
+    "sha256": "961e8ea25356e98f37ac04a64ada60bd8534b3c1743aa446a16173bf206f180e"
+  },
+  "evidence/source-and-game-comparison.json": {
+    "bytes": 8804,
+    "sha256": "162405228f517006508e57e1ed9607703d8bad0c446baef6f8e0efeb89055993"
+  },
+  "images/baseline-flipper-side.png": {
+    "bytes": 200314,
+    "sha256": "60996e39c5947b0b9b9bf181e6ded307706caf19e596a62635ee22e1f7bbd370"
+  },
+  "images/candidate-flipper-right-active.png": {
+    "bytes": 88593,
+    "sha256": "ed0fbe708f96676e09176d390a05f61221c8a214f3c442c8ce0a371b4c3e382e"
+  },
+  "images/candidate-flipper-side.png": {
+    "bytes": 246531,
+    "sha256": "cf872f03fbeb56559193a3daa3e3756469c867b1c1da4a024b6feafe924254ee"
+  },
+  "images/candidate-installed-45.png": {
+    "bytes": 742620,
+    "sha256": "93ec6bfb279a749960e67816d365783e33e846688a25624911eddc23fb1a838c"
+  },
+  "images/candidate-mobile-390.png": {
+    "bytes": 253817,
+    "sha256": "89644bda330f1c19da5cea8bc98bdc81043ec58ff727ccc41993a03d395205cd"
+  },
+  "images/flipper-moving.png": {
+    "bytes": 70072,
+    "sha256": "44da7c5913db2cead1794b889706be2f3a85749a9cb5e1d30f4aa4acf446fa1a"
+  },
+  "images/flipper-side.png": {
+    "bytes": 52880,
+    "sha256": "e93baacfe42cbd96ac64ff00f1f3506be575794650c99fed1f71b4c6b85b3a17"
+  },
+  "images/flipper-underside.png": {
+    "bytes": 36873,
+    "sha256": "b4faacd0e0ace47c78858f4aeb47ba0b778d4b868415fd055530554477a85e40"
+  },
+  "payload/sources.json": {
+    "bytes": 330117,
+    "sha256": "7438eee5cf08e1b3aa3f0e261b261403d3709ca24031b81cf2c2a032496f4fcb"
+  },
+  "scripts/input.cjs": {
+    "bytes": 5828,
+    "sha256": "4293f7193d1165aa8a7e93b6b7c9cc4fb574420b44b14cb846c9033d394edb70"
+  },
+  "scripts/visual.cjs": {
+    "bytes": 5150,
+    "sha256": "f11ff35a60188ef9f15f7cfb44c1aa2558c49a9921e93a6d53555a21bc62cd8f"
+  }
+}

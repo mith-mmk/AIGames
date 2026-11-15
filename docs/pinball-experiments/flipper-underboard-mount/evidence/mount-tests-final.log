@@ -1,0 +1,13 @@
+✔ flipper entire fixed actuator now clears the board and has four connected mounting stacks (34.671125ms)
+✔ flipper spacers avoid fixed coil hardware and complete crank-link stroke (19.973ms)
+✔ flipper board holes and mounting bolts are coaxial with real clearance (17.142541ms)
+✔ flipper mounting frame clears installed cabinet solid bounds (33.724584ms)
+✔ flipper lowered actuator keeps owned moving meshes live after production batching (34.2235ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 208.125458

@@ -150,7 +150,7 @@ export class MechanicalFlipper {
     this.mesh("engraved-sculpted-top-cap", this.extrude(cap,.080,.016,0), "body");
     // Heel is tied to a real coaxial shaft. Stationary flange remains still
     // while the shaft, bat, upper washer and retaining screw move together.
-    this.turn("pivot-shaft", [[0,-.47],[.039,-.47],[.041,-.45],[.041,.105],[0,.105]], "metal", this.moving);
+    this.turn("pivot-shaft", [[0,-.63],[.039,-.63],[.041,-.61],[.041,.105],[0,.105]], "metal", this.moving);
     this.turn("rotating-heel-hub", [[.041,-.15],[.065,-.15],[.074,-.135],
       [.074,-.105],[.064,-.09],[.041,-.09],[.041,-.15]], "inset", this.moving);
     this.turn("top-retaining-washer", [[.026,.095],[.049,.095],[.057,.100],
@@ -172,24 +172,40 @@ export class MechanicalFlipper {
   // constant-length pinned link. Geometry follows the supplied shaft angle;
   // it does NOT simulate coil force, switch timing, spring force or collisions.
   buildActuation() {
-    const plate = this.polygon([[-.15,-.98],[.31,-.98],[.34,-.90],[.34,.15],
-      [.25,.20],[-.15,.20],[-.20,.12],[-.20,-.90]].map(([x,z])=>[x,-z]));
-    for (const [x,z] of [[-.13,-.90],[.27,-.90],[-.13,.11],[.27,.11]]) {
-      const hole = new T.Path(); hole.absarc(x*this.sx,-z*this.sz,.022*this.sz,0,Math.PI*2);
+    // Lower the entire actuator as one frame. At the installed pivotY=.27,
+    // its highest bracket now clears the real board undersideY=-.14.
+    // Bat/contact dimensions and slider/crank kinematics are unchanged.
+    this.actuationFixed=new T.Group();this.actuationFixed.name="fixed-underboard-actuator-frame";
+    this.actuationFixed.position.y=-.16*this.sy;this.root.add(this.actuationFixed);
+    this.actuationMoving=new T.Group();this.actuationMoving.name="rotating-underboard-crank-frame";
+    this.actuationMoving.position.y=-.16*this.sy;this.moving.add(this.actuationMoving);
+    const plate = this.polygon([[-.23,-1.04],[.39,-1.04],[.42,-1.01],[.42,.24],
+      [.39,.27],[-.23,.27],[-.26,.24],[-.26,-1.01]].map(([x,z])=>[x,-z]));
+    for (const [x,z] of [[-.22,-.98],[.38,-.98],[-.22,.21],[.38,.21]]) {
+      const hole = new T.Path(); hole.absarc(x*this.sx,-z*this.sz,.016*this.sz,0,Math.PI*2);
       plate.holes.push(hole);
     }
-    this.mesh("underboard-stamped-baseplate",this.extrude(plate,-.56,.018,.005),"metal",this.root);
+    this.mesh("underboard-stamped-baseplate",this.extrude(plate,-.56,.018,.005),"metal",this.actuationFixed);
+    // Mounting corners sit outside the coil brackets and complete crank sweep.
+    // Long screws pass through bored stand-offs into the board; no floating feet.
+    for(const [i,[x,z]] of [[-.22,-.98],[.38,-.98],[-.22,.21],[.38,.21]].entries()) {
+      this.turn(`board-mount-spacer-${i}`,[[.013,-.537],[.036,-.537],[.036,-.527],[.027,-.517],[.027,-.27],[.036,-.26],[.036,-.25],[.013,-.25],[.013,-.537]],"metal",this.actuationFixed,x,z);
+      this.turn(`board-mount-shank-${i}`,[[0,-.59],[.012,-.59],[.012,-.16],[0,-.16]],"metal",this.actuationFixed,x,z);
+      this.turn(`board-mount-washer-${i}`,[[.013,-.573],[.031,-.573],[.031,-.565],[.013,-.565],[.013,-.573]],"metal",this.actuationFixed,x,z);
+      const head=new T.CylinderGeometry(.023*this.sz,.023*this.sz,.018*this.sy,6);
+      this.mesh(`board-mount-hex-head-${i}`,head,"metal",this.actuationFixed).position.set(x*this.sx,-.582*this.sy,z*this.sz);
+    }
     const crank = this.polygon([[-.057,-.050],[.02,-.057],[.175,-.036],
       [.194,0],[.175,.036],[.02,.057],[-.057,.050]]);
-    this.mesh("shaft-clamped-crank",this.extrude(crank,-.465,.035,.006),"inset",this.moving);
+    this.mesh("shaft-clamped-crank",this.extrude(crank,-.465,.035,.006),"inset",this.actuationMoving);
     this.turn("crank-shaft-clamp",[[.041,-.475],[.062,-.475],[.068,-.465],
-      [.068,-.411],[.058,-.401],[.041,-.401],[.041,-.475]],"metal",this.moving);
+      [.068,-.411],[.058,-.401],[.041,-.401],[.041,-.475]],"metal",this.actuationMoving);
     this.turn("crank-link-pin",[[0,-.455],[.020,-.455],[.020,-.377],[.026,-.377],
-      [.026,-.365],[0,-.365]],"bearing",this.moving,.16,0);
+      [.026,-.365],[0,-.365]],"bearing",this.actuationMoving,.16,0);
     // Turned bobbin rotates onto Z; its central bore accepts the sliding core.
     const coil = new T.Group(); coil.name="stationary-solenoid";
     coil.position.set(.16*this.sx,-.40*this.sy,-.77*this.sz);
-    coil.rotation.x=Math.PI/2;this.root.add(coil);
+    coil.rotation.x=Math.PI/2;this.actuationFixed.add(coil);
     this.turn("solenoid-bobbin",[[.027,-.16],[.104,-.16],[.112,-.15],
       [.112,-.127],[.083,-.127],[.083,.127],[.112,.127],[.112,.15],
       [.104,.16],[.027,.16],[.027,-.16]],"engraving",coil);
@@ -207,24 +223,24 @@ export class MechanicalFlipper {
       shape.lineTo(-.14,-.125);shape.closePath();
       const g=new T.ExtrudeGeometry(shape,{depth:.035,bevelEnabled:true,bevelSize:.003,bevelThickness:.003,bevelSegments:2});
       g.scale(this.sx,this.sy,this.sz);g.translate(.16*this.sx,-.40*this.sy,z*this.sz);
-      this.mesh(`folded-solenoid-bracket-${z}`,g,"metal",this.root);
+      this.mesh(`folded-solenoid-bracket-${z}`,g,"metal",this.actuationFixed);
     }
     const rodGeometry = new T.LatheGeometry([new T.Vector2(0,0),new T.Vector2(.019,0),
       new T.Vector2(.019,1),new T.Vector2(0,1)],24);
-    this.sliderRod=this.mesh("sliding-solenoid-plunger",rodGeometry,"metal",this.root);
+    this.sliderRod=this.mesh("sliding-solenoid-plunger",rodGeometry,"metal",this.actuationFixed);
     const linkShape=this.polygon([[-.027,0],[.027,0],[.027,1],[-.027,1]]);
     // Link is authored along local Y in geometry for endpoint orientation below.
     const linkGeometry=new T.ExtrudeGeometry(linkShape,{depth:.016,bevelEnabled:true,bevelSize:.005,bevelThickness:.003,bevelSegments:2});
     // Normalize the long axis independent of table-width scaling.
     linkGeometry.scale(1,1/this.sz,1);linkGeometry.translate(0,0,-.008);
-    this.actuatorLink=this.mesh("pinned-plunger-crank-link",linkGeometry,"inset",this.root);
-    this.sliderPin=this.turn("slider-clevis-pin",[[0,-.424],[.023,-.424],[.023,-.374],[0,-.374]],"bearing",this.root);
+    this.actuatorLink=this.mesh("pinned-plunger-crank-link",linkGeometry,"inset",this.actuationFixed);
+    this.sliderPin=this.turn("slider-clevis-pin",[[0,-.424],[.023,-.424],[.023,-.374],[0,-.374]],"bearing",this.actuationFixed);
     const springPoints=[];
     for(let i=0;i<=320;i++){const t=i/320,theta=t*Math.PI*2*16;
       const radius=(t<.04||t>.96)?.004:.016;
       springPoints.push(new T.Vector3(Math.cos(theta)*radius,t,Math.sin(theta)*radius));}
-    this.returnSpring=this.mesh("extension-return-spring",new T.TubeGeometry(new T.CatmullRomCurve3(springPoints),320,.003,5,false),"metal",this.root);
-    this.turn("return-spring-fixed-anchor",[[0,-.54],[.019,-.54],[.019,-.385],[0,-.385]],"bearing",this.root,-.12,-.42);
+    this.returnSpring=this.mesh("extension-return-spring",new T.TubeGeometry(new T.CatmullRomCurve3(springPoints),320,.003,5,false),"metal",this.actuationFixed);
+    this.turn("return-spring-fixed-anchor",[[0,-.54],[.019,-.54],[.019,-.385],[0,-.385]],"bearing",this.actuationFixed,-.12,-.42);
     this.actuation = { crankRadius:.16*this.sx, linkLength:.42*Math.max(this.sx,this.sz),
       sliderX:.16*this.sx, planeY:-.397*this.sy, springAnchor:new T.Vector3(-.12*this.sx,-.397*this.sy,-.42*this.sz) };
   }
@@ -246,7 +262,7 @@ export class MechanicalFlipper {
     this.sliderPin.position.x=slider.x;this.sliderPin.position.z=slider.z;
     this.orientBetween(this.returnSpring,a.springAnchor,pin);
     this.root.userData.actuation = { visualizationOnly:true, crankPin:pin.toArray(),
-      sliderPin:slider.toArray(), linkLength:a.linkLength, measuredLinkLength:pin.distanceTo(slider) };
+      sliderPin:slider.toArray(), frameOffsetY:this.actuationFixed.position.y, linkLength:a.linkLength, measuredLinkLength:pin.distanceTo(slider) };
   }
 
   setAngle(angle) {

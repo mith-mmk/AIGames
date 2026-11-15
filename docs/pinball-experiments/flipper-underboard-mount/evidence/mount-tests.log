@@ -1,0 +1,39 @@
+✔ flipper entire fixed actuator now clears the board and has four connected mounting stacks (27.965542ms)
+✖ flipper spacers avoid fixed coil hardware and complete crank-link stroke (16.848875ms)
+✔ flipper board holes and mounting bolts are coaxial with real clearance (16.275959ms)
+✔ flipper mounting frame clears installed cabinet solid bounds (30.709375ms)
+✔ flipper lowered actuator keeps owned moving meshes live after production batching (29.621959ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 183.481708
+
+✖ failing tests:
+
+test at web/js/pinball/flipper-mount.test.mjs:17:1
+✖ flipper spacers avoid fixed coil hardware and complete crank-link stroke (16.848875ms)
+  AssertionError [ERR_ASSERTION]: 2 versus shaft-clamped-crank at 0
+  
+  true !== false
+  
+      at file:///Users/tsaito/Projects/AIGames/web/js/pinball/flipper-mount.test.mjs:19:263
+      at Dn.traverse (file:///Users/tsaito/Projects/AIGames/web/js/vendor/three-0.180.0/three.core.min.js:6:72576)
+      at ra.traverse (file:///Users/tsaito/Projects/AIGames/web/js/vendor/three-0.180.0/three.core.min.js:6:72642)
+      at file:///Users/tsaito/Projects/AIGames/web/js/pinball/flipper-mount.test.mjs:19:147
+      at fixture (file:///Users/tsaito/Projects/AIGames/web/js/pinball/flipper-mount.test.mjs:10:277)
+      at TestContext.<anonymous> (file:///Users/tsaito/Projects/AIGames/web/js/pinball/flipper-mount.test.mjs:17:85)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

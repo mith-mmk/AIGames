@@ -1,0 +1,44 @@
+{
+  "baseline": "696c646 stable",
+  "candidate": "flipper lowered and supported actuator",
+  "results": [
+    {
+      "mode": "baseline",
+      "view": "installed-45",
+      "triangles": 454132,
+      "calls": 688
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-10",
+      "triangles": 453988,
+      "calls": 676
+    },
+    {
+      "mode": "baseline",
+      "view": "installed-90",
+      "triangles": 447812,
+      "calls": 661
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-45",
+      "triangles": 465844,
+      "calls": 698
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-10",
+      "triangles": 465700,
+      "calls": 686
+    },
+    {
+      "mode": "candidate",
+      "view": "installed-90",
+      "triangles": 459524,
+      "calls": 671
+    }
+  ],
+  "errors": [],
+  "scope": "Installed views; cabinet cutaway hides inspection panels only, board retained; additional hemisphere ground fill is inspection-only. Desktop/mobile emulation, not physical phone or strength certification."
+}
