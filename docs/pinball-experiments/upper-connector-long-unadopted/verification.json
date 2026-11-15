@@ -1,0 +1,227 @@
+{
+  "status": "verified",
+  "verifyOnly": {
+    "status": "verified",
+    "adopted": false,
+    "sourceSetSha256": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76",
+    "parentSourceSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+    "originalParentAndChildBuildBytesUnchanged": true,
+    "originalArtifactWrites": 0,
+    "parentGeneratedHashes": {
+      "sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+      "manifest.json": "c8a743abcc18ab4c400bbbac0514984f216023d77e796fc61f42bf471a5b1181"
+    },
+    "generatedHashes": {
+      "sources.json": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76",
+      "baseline-sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "geometry.mjs": "d81db225529d638116874076069eb2419bc6c0e0447e702ea4ce6c0e32685bf3",
+      "manifest.json": "f4246fa852e40c83b32adbb17de1ab78691644411816cfa2a315aad205283d30",
+      "changes.json": "6235064a3558d03f1a55ea9e98181f9fd575a954cf6dfd0aa359b866f7219f83"
+    },
+    "restoredHashes": {
+      "sources.json": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76",
+      "baseline-sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "geometry.mjs": "d81db225529d638116874076069eb2419bc6c0e0447e702ea4ce6c0e32685bf3",
+      "manifest.json": "f4246fa852e40c83b32adbb17de1ab78691644411816cfa2a315aad205283d30",
+      "changes.json": "6235064a3558d03f1a55ea9e98181f9fd575a954cf6dfd0aa359b866f7219f83",
+      "build.mjs": "f9546b1dd98c6a2b6e16ceadea70e6bfa3b6ef7bdac453524b2fb2e6fcf507fd",
+      "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+      "baseline-loader.mjs": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38",
+      "accepted-loader.mjs": "4b81eb805e887773e943d17d94941eb902ee5b2b49b37e839e90f4919a1cf722",
+      "dependencies.json": "2c93ec0c0ad15974cc15bc883397699b099d43247a567aa2d475b6b8f754e16a"
+    },
+    "suppressedBuildMessages": 2
+  },
+  "fresh": {
+    "status": "restored",
+    "adopted": false,
+    "sourceSetSha256": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76",
+    "parentSourceSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+    "originalParentAndChildBuildBytesUnchanged": true,
+    "originalArtifactWrites": 0,
+    "parentGeneratedHashes": {
+      "sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "baseline-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "changes.json": "b1babbbe7416797098e09e262d3948b5daf86ac54ac213343aa49e23c4b560c9",
+      "manifest.json": "c8a743abcc18ab4c400bbbac0514984f216023d77e796fc61f42bf471a5b1181"
+    },
+    "generatedHashes": {
+      "sources.json": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76",
+      "baseline-sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "geometry.mjs": "d81db225529d638116874076069eb2419bc6c0e0447e702ea4ce6c0e32685bf3",
+      "manifest.json": "f4246fa852e40c83b32adbb17de1ab78691644411816cfa2a315aad205283d30",
+      "changes.json": "6235064a3558d03f1a55ea9e98181f9fd575a954cf6dfd0aa359b866f7219f83"
+    },
+    "restoredHashes": {
+      "sources.json": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76",
+      "baseline-sources.json": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+      "accepted-sources.json": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199",
+      "geometry.mjs": "d81db225529d638116874076069eb2419bc6c0e0447e702ea4ce6c0e32685bf3",
+      "manifest.json": "f4246fa852e40c83b32adbb17de1ab78691644411816cfa2a315aad205283d30",
+      "changes.json": "6235064a3558d03f1a55ea9e98181f9fd575a954cf6dfd0aa359b866f7219f83",
+      "build.mjs": "f9546b1dd98c6a2b6e16ceadea70e6bfa3b6ef7bdac453524b2fb2e6fcf507fd",
+      "loader.mjs": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4",
+      "baseline-loader.mjs": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38",
+      "accepted-loader.mjs": "4b81eb805e887773e943d17d94941eb902ee5b2b49b37e839e90f4919a1cf722",
+      "dependencies.json": "2c93ec0c0ad15974cc15bc883397699b099d43247a567aa2d475b6b8f754e16a"
+    },
+    "suppressedBuildMessages": 2,
+    "output": "artifacts/pinball/upper-connector-recovery-verify-20261115-091820",
+    "written": 11,
+    "reused": 0,
+    "fileCount": 11
+  },
+  "idempotence": {
+    "written": 0,
+    "reused": 11
+  },
+  "all11ActualHashesMatch": true,
+  "assembly": {
+    "status": "assembled",
+    "worldSteps": 0,
+    "colliders": 1581,
+    "attachments": 59,
+    "camVertices": 10,
+    "pivot": [
+      1.9,
+      0.27,
+      4.45
+    ],
+    "shooterX": 2.93,
+    "width": 6.88,
+    "lowerSegments": [
+      [
+        {
+          "role": "divider",
+          "count": 52,
+          "radius": 0.02
+        },
+        {
+          "role": "inner",
+          "count": 11,
+          "radius": 0.02
+        },
+        {
+          "role": "outer",
+          "count": 37,
+          "radius": 0.02
+        }
+      ],
+      [
+        {
+          "role": "divider",
+          "count": 52,
+          "radius": 0.02
+        },
+        {
+          "role": "inner",
+          "count": 11,
+          "radius": 0.02
+        },
+        {
+          "role": "outer",
+          "count": 36,
+          "radius": 0.045
+        }
+      ]
+    ],
+    "mounts": [
+      9,
+      8
+    ],
+    "saveFrame": {
+      "center": [
+        -2.144892599058728,
+        0,
+        3.6
+      ],
+      "down": [
+        0.14666894850567888,
+        0,
+        0.9891856345217708
+      ],
+      "cross": [
+        0.9891856345217708,
+        0,
+        -0.14666894850567888
+      ],
+      "halfAcross": 0.19,
+      "halfAlong": 0.135,
+      "maxY": 0.5,
+      "horizontalSpeed": 12,
+      "contactSkin": 0.001
+    }
+  },
+  "refusals": [
+    {
+      "case": "existing differing loader",
+      "exit": 1,
+      "nothingWritten": true
+    },
+    {
+      "case": "original freeze upper-connector-long-4f4170a",
+      "exit": 1
+    },
+    {
+      "case": "original freeze whole-long-lane-891ae62",
+      "exit": 1
+    },
+    {
+      "case": "wrong depth",
+      "exit": 1
+    },
+    {
+      "case": "symlink output",
+      "exit": 1
+    },
+    {
+      "case": "nondirectory output",
+      "exit": 1
+    },
+    {
+      "case": "corrupt copied parent payload",
+      "exit": 1,
+      "canonicalPacketUntouched": true
+    }
+  ],
+  "bothOriginalFreezesAllFilesUnchanged": true,
+  "originalFreezeFileCount": 55,
+  "worldSteps": 0,
+  "productionNote": "Other authorized work may edit stable arrow rendering/tests concurrently. Packet commands write only dedicated docs/artifacts/Trash paths.",
+  "verificationTemporariesMovedToTrash": [
+    {
+      "from": "artifacts/pinball/upper-connector-recovery-verify-20261115-091820",
+      "trash": "/Users/tsaito/.Trash/upper-connector-long-recovery-verification-20261115-091820/upper-connector-recovery-verify-20261115-091820",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/upper-connector-recovery-link-20261115-091820",
+      "trash": "/Users/tsaito/.Trash/upper-connector-long-recovery-verification-20261115-091820/upper-connector-recovery-link-20261115-091820",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/upper-connector-recovery-file-20261115-091820",
+      "trash": "/Users/tsaito/.Trash/upper-connector-long-recovery-verification-20261115-091820/upper-connector-recovery-file-20261115-091820",
+      "exists": true,
+      "sourceAbsent": true
+    },
+    {
+      "from": "artifacts/pinball/upper-connector-recovery-packet-20261115-091820",
+      "trash": "/Users/tsaito/.Trash/upper-connector-long-recovery-verification-20261115-091820/upper-connector-recovery-packet-20261115-091820",
+      "exists": true,
+      "sourceAbsent": true
+    }
+  ],
+  "productionDiffHashesOnly": {
+    "beforeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "afterSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "note": "Unrelated stable arrow changes are intentionally not copied into this packet."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "sourceSHA256": "ea806409896104d6f6a3ce75956c8b343bd7376a7da98cb877f854a693ab7cb1",
+  "changedModules": [
+    "web/js/pinball/playfield-parts.mjs"
+  ],
+  "exactChange": "Only four OUT arrow canvas vertical offsets reverse; IN and all geometry unchanged",
+  "publicColliderSHA256": "4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2",
+  "colliders": 1581,
+  "budget": {
+    "baseline": "ribbon8b3e8f5625cb124ac63f2ed873cee017603f3e76717cb16f1975b638c901b3fa",
+    "candidate": "OUT-arrow-correction ea806409896104d6f6a3ce75956c8b343bd7376a7da98cb877f854a693ab7cb1",
+    "results": [
+      {
+        "mode": "baseline",
+        "view": "installed-45",
+        "triangles": 493232,
+        "calls": 563
+      },
+      {
+        "mode": "baseline",
+        "view": "installed-10",
+        "triangles": 493088,
+        "calls": 551
+      },
+      {
+        "mode": "baseline",
+        "view": "installed-90",
+        "triangles": 486912,
+        "calls": 536
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-45",
+        "triangles": 493232,
+        "calls": 563
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-10",
+        "triangles": 493088,
+        "calls": 551
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-90",
+        "triangles": 486912,
+        "calls": 536
+      }
+    ],
+    "errors": [],
+    "scope": "Integrated geometry artifact; installed and isolated component views are distinct; not accepted."
+  }
+}

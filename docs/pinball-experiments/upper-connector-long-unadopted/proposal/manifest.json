@@ -1,0 +1,34 @@
+{
+  "artifacts/pinball/upper-connector-review-4f4170a/measure.log": {
+    "bytes": 6334,
+    "sha256": "37f2ea57f3fd9f412a36637683373c8bd3f5753813e3277742766a6a0995e7a8"
+  },
+  "artifacts/pinball/upper-connector-review-4f4170a/measure.mjs": {
+    "bytes": 5508,
+    "sha256": "3f6c3d7412beb955d8b640f4dedebb2e39f070a9d0058103e0263084dd056022"
+  },
+  "artifacts/pinball/upper-connector-review-4f4170a/README.md": {
+    "bytes": 5419,
+    "sha256": "5e1a414e5e1ec43000a01420b9af9001a48a567e08a8c530dd6d49a92feba227"
+  },
+  "artifacts/pinball/upper-connector-review-4f4170a/dimensions.json": {
+    "bytes": 10496,
+    "sha256": "538dbeb80552a6acb386f9f187ca973b6c05eef2587e6acdbf0c24a7c4d04aab"
+  },
+  "artifacts/pinball/whole-long-lane-891ae62/sources.json": {
+    "bytes": 338664,
+    "sha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03"
+  },
+  "artifacts/pinball/whole-long-lane-local-891ae62/launch55-findings.md": {
+    "bytes": 3851,
+    "sha256": "8bf370dfd6f4940905f16d7f0f9c8d4309955c64ba22103d0fa32e17cdc562e3"
+  },
+  "artifacts/pinball/whole-long-lane-local-891ae62/launch55-contact-summary.json": {
+    "bytes": 46186,
+    "sha256": "1cbff67003514661eb1ea8d947ec47031629a13e9e1ada0967c98674c60d5dcf"
+  },
+  "artifacts/pinball/whole-long-lane-local-891ae62/launch55-contact-manifest.json": {
+    "bytes": 625,
+    "sha256": "18509b51dca78ecb7ce03e48b9ed461d303b1ad316b5cca5f0530ec66a7ee799"
+  }
+}

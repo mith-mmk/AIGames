@@ -1,0 +1,11 @@
+# Ribbon OUT arrow correction
+
+Source SHA256 ea806409896104d6f6a3ce75956c8b343bd7376a7da98cb877f854a693ab7cb1. Previous ribbon8b3e8f56 is preserved unchanged in whole-long-lane-ribbon-94ea51. Only the OUT arrow texture vertices change. An exact string replacement assertion confirms no other source changes from that ribbon, including its render geometry and mechanics.
+
+The prior arrow was genuinely wrong, not a projection illusion: canvas tip y−45 and wings y+35 were shared by IN/OUT. UV v=1−row maps increasing canvasY onto increasing tableZ, so both pointed upstream. Corrected OUT uses tip y+45, wings y−35, center-notch y−2; IN remains unchanged. Along the actual ribbon, increasingZ follows its downstream local tangent. Both left/right OUT now point toward the drain; IN points upstream. This is directional print, not a force or a guarantee of ball motion.
+
+All paired images regenerated in preview-final (45°,10°,top,mobile390,closeup,side,underside); 45/10/top/mobile/closeup were visually inspected. Top and closeup visibly distinguish opposing IN/OUT directions. Low-angle physical occlusion and small mobile text remain. No mesh hiding, depth override, or camouflage of structural defects.
+
+Budget unchanged from previous ribbon:45°493232tri/563calls;10°493088/551;top486912/536. Pageerrors0. Initialized1581collider public states byte-identical to previous ribbon and94ea: SHA256 4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2. All physics/geometry/force source modules unchanged. No natural trial, production edit, full regression, commit or adoption. Prior ribbon boundary-audit remains applicable because every printed geometry vertex/UV is unchanged; only OUT canvas arrow fill vertices reverse.
+
+Baseline images here are the previous ribbon, not accepted8849609. Compare original94ea using whole-long-lane-independent-94ea51/preview-final. Previous ribbon construction limits remain: IN after3.20 has no inner guide; print-edge bounds are not ball clearance. Large bats, crossheads, board proportions, static-save mechanism and unqualified gameplay are unchanged. Browser/server exited normally. Manifest preserves hashes of source/scripts/data and14 images. Runner evidence labels are inherited; this README and saved evidence.json identify the exact versions.

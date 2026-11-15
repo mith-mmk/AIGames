@@ -1,0 +1,9 @@
+{
+  "sourceSHA256": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76",
+  "hashes": {
+    "stop75.mjs": "34407d11146f8cebd0e2fefb66228027ade5fae46c714c2f45e956220dba5bd3",
+    "stop75-summary.py": "84ec519d11e8843107d1fbbd6c0ade23abb329e51fe9e37540726d22fed520c2",
+    "stop75-summary.json": "b5676115289158f0f55bcbf57b726f1984bc5c5effdf1f451a6f6ae3fce8f244",
+    "candidate-stop75-contacts.json": "b7eb2a2d5f3df821e24ba23670ff18d4b5a61a3df1e04a49ecd39b14ca1ccefc"
+  }
+}

@@ -1,0 +1,7 @@
+[
+  {
+    "key": "web/js/pinball/whole-layout-geometry.mjs",
+    "from": "const U={startX:2.75,startZ:.50,shift:.40,run:3.60};",
+    "to": "const U={startX:2.75,startZ:2.45,shift:.40,run:5.55};"
+  }
+]

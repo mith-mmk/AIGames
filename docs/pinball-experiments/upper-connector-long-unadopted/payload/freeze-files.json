@@ -1,0 +1,86 @@
+{
+  "README.md": {
+    "bytes": 4666,
+    "sha256": "655b1588dfb4fdb2a63f49933e5957a4d9441ae78127be93a37f414dc9572436"
+  },
+  "accepted-loader.mjs": {
+    "bytes": 957,
+    "sha256": "4b81eb805e887773e943d17d94941eb902ee5b2b49b37e839e90f4919a1cf722"
+  },
+  "accepted-sources.json": {
+    "bytes": 329885,
+    "sha256": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199"
+  },
+  "baseline-loader.mjs": {
+    "bytes": 957,
+    "sha256": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+  },
+  "baseline-sources.json": {
+    "bytes": 338664,
+    "sha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03"
+  },
+  "baseline-static.json": {
+    "bytes": 23768,
+    "sha256": "260d53f7a27de7eb7db451bcc914a87f8b944a222ccc8d95c58579b9d552088f"
+  },
+  "baseline-static.log": {
+    "bytes": 4062,
+    "sha256": "6bd2dc255dda93983d1c1ad4e7e933ec12551f126ee4f82547580513bf7a0192"
+  },
+  "build.mjs": {
+    "bytes": 2727,
+    "sha256": "f9546b1dd98c6a2b6e16ceadea70e6bfa3b6ef7bdac453524b2fb2e6fcf507fd"
+  },
+  "candidate-static.json": {
+    "bytes": 23762,
+    "sha256": "f7b5178bc52def8eaf4bd42a82caebb5a86e9039f9752ad7642494a65bc9c4f5"
+  },
+  "candidate-static.log": {
+    "bytes": 4067,
+    "sha256": "7da73a6deb238f80943e2566cfe4422e55998940522ee46772151adb2efba667"
+  },
+  "changes.json": {
+    "bytes": 201,
+    "sha256": "6235064a3558d03f1a55ea9e98181f9fd575a954cf6dfd0aa359b866f7219f83"
+  },
+  "check-exterior-refined.mjs": {
+    "bytes": 1591,
+    "sha256": "a24d4d7761034e2603d318099ced6e4078a4410d679609870b37ddbb23e2eb02"
+  },
+  "check-static.mjs": {
+    "bytes": 6610,
+    "sha256": "72e817d5ed15c11a37dd7815ebbbf6755080507000a693190e64d8cc75b63779"
+  },
+  "contract-check.json": {
+    "bytes": 7132,
+    "sha256": "efe0de1166f5a195189666933af7a27346097470728d09d035cf9e638d416569"
+  },
+  "dependencies.json": {
+    "bytes": 1955,
+    "sha256": "2c93ec0c0ad15974cc15bc883397699b099d43247a567aa2d475b6b8f754e16a"
+  },
+  "exterior-refined.json": {
+    "bytes": 854,
+    "sha256": "8e4bf9f26cfc2fdf439143fd0328767a5d1f57f4155b94c25646dfee740480ac"
+  },
+  "exterior-refined.log": {
+    "bytes": 854,
+    "sha256": "8e4bf9f26cfc2fdf439143fd0328767a5d1f57f4155b94c25646dfee740480ac"
+  },
+  "geometry.mjs": {
+    "bytes": 5849,
+    "sha256": "d81db225529d638116874076069eb2419bc6c0e0447e702ea4ce6c0e32685bf3"
+  },
+  "loader.mjs": {
+    "bytes": 948,
+    "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+  },
+  "manifest.json": {
+    "bytes": 11425,
+    "sha256": "f4246fa852e40c83b32adbb17de1ab78691644411816cfa2a315aad205283d30"
+  },
+  "sources.json": {
+    "bytes": 338665,
+    "sha256": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76"
+  }
+}

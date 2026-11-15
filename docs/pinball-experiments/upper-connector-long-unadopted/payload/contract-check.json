@@ -1,0 +1,69 @@
+{
+  "sourceSha256": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76",
+  "parentSourceSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+  "changedKeys": [
+    "web/js/pinball/whole-layout-geometry.mjs"
+  ],
+  "unchangedKeys": [
+    "web/js/pinball/app.mjs",
+    "web/js/pinball/assets.mjs",
+    "web/js/pinball/bumper-effects.mjs",
+    "web/js/pinball/cabinet-boundary.mjs",
+    "web/js/pinball/cabinet-fasteners.mjs",
+    "web/js/pinball/components/bumper.mjs",
+    "web/js/pinball/components/cabinet.mjs",
+    "web/js/pinball/components/flipper.mjs",
+    "web/js/pinball/components/plunger.mjs",
+    "web/js/pinball/components/ramp-wire.mjs",
+    "web/js/pinball/components/reference-cabinet.mjs",
+    "web/js/pinball/components/sling-target.mjs",
+    "web/js/pinball/components/workshop-friend.mjs",
+    "web/js/pinball/feedback.mjs",
+    "web/js/pinball/game-state.mjs",
+    "web/js/pinball/layout.mjs",
+    "web/js/pinball/mechanical-contact.mjs",
+    "web/js/pinball/mechanisms.mjs",
+    "web/js/pinball/missions.mjs",
+    "web/js/pinball/nudge.mjs",
+    "web/js/pinball/parts-detail.mjs",
+    "web/js/pinball/physics.mjs",
+    "web/js/pinball/playfield-parts.mjs",
+    "web/js/pinball/plunger.mjs",
+    "web/js/pinball/ramp-acrylic.mjs",
+    "web/js/pinball/ramp-base.mjs",
+    "web/js/pinball/ramp-deck.mjs",
+    "web/js/pinball/ramp-geometry.mjs",
+    "web/js/pinball/ramp-hardware.mjs",
+    "web/js/pinball/ramp-profile.mjs",
+    "web/js/pinball/reference-playfield.mjs",
+    "web/js/pinball/scenery-components.mjs",
+    "web/js/pinball/shooter-outer-rail.mjs",
+    "web/js/pinball/sound.mjs",
+    "web/js/pinball/sphere-clearance.test.helper.mjs",
+    "web/js/pinball/wire-stock.mjs",
+    "web/js/pinball/workshop.mjs",
+    "web/js/pinball/lower-c-study.mjs"
+  ],
+  "exactTwoDatumReplacement": true,
+  "derivedUnchangedContractHash": {
+    "candidate": "3b47cd5282d3e27e6619e392f5d01f9bc84bfd43c96c4e861051d66f3d40d4d8",
+    "parent94ea": "3b47cd5282d3e27e6619e392f5d01f9bc84bfd43c96c4e861051d66f3d40d4d8"
+  },
+  "derivedUnchangedScope": "ramp/wire all sampled rows, ramp sensors, left/right lower sections/mounts, fixed save frame, roof/backing",
+  "allUpperSegmentCounts": {
+    "candidate": [
+      24,
+      24
+    ],
+    "parent": [
+      24,
+      24
+    ]
+  },
+  "supportMeshMaxErrors": {
+    "maxCenterError": 1.0324319007200638e-07,
+    "maxLengthError": 9.898407205000126e-08,
+    "maxRadiusError": 1.201296471325941e-07
+  },
+  "productionDiff": "diff --git a/web/js/pinball/lane-ink.test.mjs b/web/js/pinball/lane-ink.test.mjs\nindex 8d6d263..7951361 100644\n--- a/web/js/pinball/lane-ink.test.mjs\n+++ b/web/js/pinball/lane-ink.test.mjs\n@@ -1,6 +1,6 @@\n import test from 'node:test';\n import assert from 'node:assert/strict';\n-import {laneInkStrip} from './playfield-parts.mjs';\n+import {laneInkStrip,PlayfieldParts} from './playfield-parts.mjs';\n import {LOWER_LAYOUT,lowerLanePaths} from './layout.mjs';\n import {slingContactPoints} from './mechanical-contact.mjs';\n import * as T from '../vendor/three-0.180.0/three.module.min.js';\n@@ -36,3 +36,41 @@ test('larger lane labels follow the open passages without printing over rails',(\n   }\n  }\n });\n+\n+\n+for(const side of [-1,1])for(const label of ['IN','OUT'])test(`actual ${side<0?'left':'right'} ${label} canvas arrow maps to the intended table direction`,()=>{\n+ const saved=Object.getOwnPropertyDescriptor(globalThis,'document'),paths=[];let current=[];\n+ const ctx={fillRect(){},strokeRect(){},fillText(){},beginPath(){current=[];},moveTo(x,y){current.push([x,y]);},lineTo(x,y){current.push([x,y]);},closePath(){},fill(){paths.push(current);}};\n+ const canvas={width:0,height:0,getContext:()=>ctx};\n+ Object.defineProperty(globalThis,'document',{configurable:true,value:{createElement(name){assert.equal(name,'canvas');return canvas;}}});\n+ const root=new T.Group();\n+ try{\n+  const [x,z,angle,width,height]=LOWER_LAYOUT.laneInserts[label.toLowerCase()];\n+  new PlayfieldParts({root}).laneInsert(side*x,z,label,0xffffff,side*angle,width,height);\n+  const mesh=root.children[0];root.updateMatrixWorld(true);\n+  assert.equal(paths.length,1);const arrow=paths[0];assert.equal(arrow.length,4);\n+  assert.deepEqual(arrow.map(p=>p[0]),[128,55,128,201]);\n+  assert.equal(Math.min(...arrow.map(p=>p[1])),100);assert.equal(Math.max(...arrow.map(p=>p[1])),195);\n+  // Locate the actual drawn canvas points on actual mesh UV triangles, then\n+  // transform those interpolated vertices. Do not duplicate the production reflection.\n+  function point([cx,cy]){\n+   const uvPoint=new T.Vector3(cx/canvas.width,1-cy/canvas.height,0),g=mesh.geometry;\n+   for(let i=0;i<g.index.count;i+=3){\n+    const ids=[0,1,2].map(j=>g.index.getX(i+j));\n+    const uv=ids.map(j=>new T.Vector3(g.attributes.uv.getX(j),g.attributes.uv.getY(j),0));\n+    const weights=new T.Vector3();T.Triangle.getBarycoord(uvPoint,...uv,weights);\n+    if(Math.min(weights.x,weights.y,weights.z)<-1e-7)continue;\n+    const p=new T.Vector3();ids.forEach((j,k)=>p.addScaledVector(new T.Vector3().fromBufferAttribute(g.attributes.position,j),weights.getComponent(k)));\n+    return mesh.localToWorld(p);\n+   }\n+   assert.fail('drawn arrow point is outside actual mesh UVs');\n+  }\n+  const tip=point(arrow[0]),wings=point(arrow[1]).add(point(arrow[3])).multiplyScalar(.5),direction=tip.sub(wings);\n+  assert.ok(Math.abs(direction.y)<1e-7);\n+  assert.ok(label==='OUT'?direction.z>0:direction.z<0,`${label} table Z direction ${direction.z}`);\n+  assert.equal(mesh.name,`${label.toLowerCase()}-lane-printed-insert`);\n+ }finally{\n+  root.traverse(o=>{o.geometry?.dispose();o.material?.map?.dispose();o.material?.dispose();});\n+  if(saved)Object.defineProperty(globalThis,'document',saved);else delete globalThis.document;\n+ }\n+});\ndiff --git a/web/js/pinball/playfield-parts.mjs b/web/js/pinball/playfield-parts.mjs\nindex ce3098b..b09803a 100644\n--- a/web/js/pinball/playfield-parts.mjs\n+++ b/web/js/pinball/playfield-parts.mjs\n@@ -104,7 +104,9 @@ export class PlayfieldParts {\n     ctx.strokeStyle=ink;ctx.lineWidth=9;ctx.strokeRect(5,5,246,630);\n     ctx.fillStyle=ink;ctx.textAlign=\"center\";ctx.font=\"bold 100px sans-serif\";\n     ctx.fillText(label,128,325);ctx.font=\"bold 75px sans-serif\";ctx.fillText(\"LANE\",128,425);\n-    ctx.beginPath();ctx.moveTo(128,100);ctx.lineTo(55,195);ctx.lineTo(128,160);ctx.lineTo(201,195);ctx.closePath();ctx.fill();\n+    // OUT points toward the drain; reflect only the arrow within its existing ink bounds.\n+    const arrowY=y=>label===\"OUT\"?295-y:y;\n+    ctx.beginPath();ctx.moveTo(128,arrowY(100));ctx.lineTo(55,arrowY(195));ctx.lineTo(128,arrowY(160));ctx.lineTo(201,arrowY(195));ctx.closePath();ctx.fill();\n     const texture=new T.CanvasTexture(c);texture.colorSpace=T.SRGBColorSpace;\n     const mesh=new T.Mesh(new T.PlaneGeometry(width,height),new T.MeshBasicMaterial({map:texture}));\n     mesh.name=`${label.toLowerCase()}-lane-printed-insert`;mesh.rotation.x=-Math.PI/2;mesh.rotation.z=angle;mesh.position.set(x,.048,z);this.a.root.add(mesh);\n"
+}

@@ -1,0 +1,481 @@
+{
+  "status": "ONE dimensional proposal only. No new runtime source map, collider world or dynamics.",
+  "sourceSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+  "baseline": "884960985a413986d57aff0c2280e59a7be79dcf",
+  "head": "4f4170ab1f155e3a202b56733e609d8f62d2aff6",
+  "proposal": {
+    "U": {
+      "startX": 2.75,
+      "startZ": 2.45,
+      "shift": 0.4,
+      "run": 5.55
+    },
+    "R": 19.351562499999996,
+    "idealMaxTangentDegrees": 8.244595623567285,
+    "idealCurveLength": 5.569199297140541,
+    "curveExtraOverZ": 0.019199297140541027,
+    "chordTolerance": 0.0005,
+    "segmentCounts": {
+      "inner": 24,
+      "outer": 24
+    },
+    "inner": [
+      [
+        2.75,
+        0.23,
+        5.9
+      ],
+      [
+        2.75,
+        0.23,
+        2.45
+      ],
+      [
+        2.7483442760460863,
+        0.23,
+        2.196861797169941
+      ],
+      [
+        2.743377387512555,
+        0.23,
+        1.9437669114607685
+      ],
+      [
+        2.735100184335565,
+        0.23,
+        1.6907586525809237
+      ],
+      [
+        2.7235140829137734,
+        0.23,
+        1.4378803154152273
+      ],
+      [
+        2.708621065865963,
+        0.23,
+        1.1851751726162385
+      ],
+      [
+        2.6904236816917764,
+        0.23,
+        0.9326864671994206
+      ],
+      [
+        2.668925044335621,
+        0.23,
+        0.6804574051433754
+      ],
+      [
+        2.644128832653799,
+        0.23,
+        0.42853114799642
+      ],
+      [
+        2.616039289784987,
+        0.23,
+        0.17695080549076048
+      ],
+      [
+        2.5846612224241463,
+        0.23,
+        -0.07424057183446209
+      ],
+      [
+        2.55,
+        0.23,
+        -0.3249999999999993
+      ],
+      [
+        2.5153387775758533,
+        0.23,
+        -0.5757594281655367
+      ],
+      [
+        2.4839607102150127,
+        0.23,
+        -0.8269508054907596
+      ],
+      [
+        2.4558711673462006,
+        0.23,
+        -1.0785311479964186
+      ],
+      [
+        2.4310749556643785,
+        0.23,
+        -1.330457405143374
+      ],
+      [
+        2.4095763183082233,
+        0.23,
+        -1.5826864671994192
+      ],
+      [
+        2.391378934134037,
+        0.23,
+        -1.835175172616237
+      ],
+      [
+        2.3764859170862263,
+        0.23,
+        -2.0878803154152266
+      ],
+      [
+        2.3648998156644345,
+        0.23,
+        -2.3407586525809223
+      ],
+      [
+        2.3566226124874445,
+        0.23,
+        -2.5937669114607673
+      ],
+      [
+        2.3516557239539133,
+        0.23,
+        -2.84686179716994
+      ],
+      [
+        2.3499999999999996,
+        0.23,
+        -3.0999999999999988
+      ],
+      [
+        2.35,
+        0.23,
+        -3.9
+      ]
+    ],
+    "outer": [
+      [
+        3.205,
+        0.23,
+        4.95
+      ],
+      [
+        3.205,
+        0.23,
+        2.45
+      ],
+      [
+        3.2033053461457732,
+        0.23,
+        2.1909099324413086
+      ],
+      [
+        3.198221674573004,
+        0.23,
+        1.9318642004892204
+      ],
+      [
+        3.189749855201816,
+        0.23,
+        1.6729071321636095
+      ],
+      [
+        3.177891337733676,
+        0.23,
+        1.4140830403121925
+      ],
+      [
+        3.16264815140332,
+        0.23,
+        1.1554362150276918
+      ],
+      [
+        3.1440229046315133,
+        0.23,
+        0.8970109160688975
+      ],
+      [
+        3.1220187845787,
+        0.23,
+        0.638851365286916
+      ],
+      [
+        3.0966395565996034,
+        0.23,
+        0.3810017390579103
+      ],
+      [
+        3.067889563598906,
+        0.23,
+        0.12350616072361548
+      ],
+      [
+        3.0357737252880876,
+        0.23,
+        -0.13359130695906407
+      ],
+      [
+        3.0002975373435605,
+        0.23,
+        -0.39024666935809377
+      ],
+      [
+        2.9664512804397947,
+        0.23,
+        -0.6351101632901387
+      ],
+      [
+        2.9358109840289317,
+        0.23,
+        -0.8803954502579046
+      ],
+      [
+        2.908381891292005,
+        0.23,
+        -1.1260605569349282
+      ],
+      [
+        2.8841686959074573,
+        0.23,
+        -1.3720634449998332
+      ],
+      [
+        2.8631755412479603,
+        0.23,
+        -1.6183620183299423
+      ],
+      [
+        2.845406019671394,
+        0.23,
+        -1.8649141302047838
+      ],
+      [
+        2.830863171906129,
+        0.23,
+        -2.111677590518261
+      ],
+      [
+        2.8195494865306854,
+        0.23,
+        -2.3586101729982363
+      ],
+      [
+        2.8114668995478933,
+        0.23,
+        -2.6056696224323157
+      ],
+      [
+        2.8066167940536,
+        0.23,
+        -2.852813661898572
+      ],
+      [
+        2.8049999999999997,
+        0.23,
+        -3.0999999999999988
+      ],
+      [
+        2.805,
+        0.23,
+        -4.15
+      ]
+    ]
+  },
+  "old": {
+    "startZ": 0.5,
+    "run": 3.6,
+    "R": 8.2,
+    "idealMaxTangentDegrees": 12.68038349181982,
+    "idealCurveLength": 3.629556854503777
+  },
+  "bareUpper": {
+    "old": {
+      "distance": 0.4549769775314595,
+      "p": [
+        2.6159348052629965,
+        0.23,
+        -0.9767178868175819
+      ],
+      "q": [
+        3.064274769332572,
+        0.23,
+        -1.054147381855028
+      ],
+      "i": 10,
+      "j": 10,
+      "solidGap": 0.3499769775314595,
+      "spareBeyondDiameter": 0.07997697753145949
+    },
+    "proposed": {
+      "distance": 0.45499026742083,
+      "p": [
+        2.6904236816917764,
+        0.23,
+        0.9326864671994206
+      ],
+      "q": [
+        3.144236835930323,
+        0.23,
+        0.8999792128398827
+      ],
+      "i": 7,
+      "j": 7,
+      "solidGap": 0.34999026742083,
+      "spareBeyondDiameter": 0.07999026742082999
+    },
+    "centerSpaceAtY": [
+      {
+        "y": 0.175,
+        "space": 0.0965160330721068
+      },
+      {
+        "y": 0.195,
+        "space": 0.08659257065822545
+      },
+      {
+        "y": 0.23,
+        "space": 0.07999026742082999
+      },
+      {
+        "y": 0.35,
+        "space": 0.16712192728144856
+      }
+    ]
+  },
+  "rightOUT": {
+    "sections": [
+      {
+        "z": 1.35,
+        "oldInnerX": 2.75,
+        "proposedInnerX": 2.7183349123549574,
+        "horizontalBareOUTgap": 0.35333491235495756
+      },
+      {
+        "z": 1.55,
+        "oldInnerX": 2.75,
+        "proposedInnerX": 2.7286510592619186,
+        "horizontalBareOUTgap": 0.3636510592619188
+      },
+      {
+        "z": 2,
+        "oldInnerX": 2.75,
+        "proposedInnerX": 2.7444809399683385,
+        "horizontalBareOUTgap": 0.3794809399683387
+      },
+      {
+        "z": 2.45,
+        "oldInnerX": 2.75,
+        "proposedInnerX": 2.75,
+        "horizontalBareOUTgap": 0.3850000000000002
+      }
+    ],
+    "exactDividerVsProposedInner": {
+      "distance": 0.4177300182337081,
+      "p": [
+        2.3,
+        0.22,
+        1.35
+      ],
+      "q": [
+        2.7168869558406756,
+        0.23,
+        1.3254310321049396
+      ],
+      "i": 1,
+      "j": 6,
+      "solidGap": 0.3527300182337081,
+      "spareBeyondDiameter": 0.08273001823370807
+    },
+    "sharedJoin": {
+      "p": [
+        2.75,
+        0.23,
+        2.45
+      ],
+      "distanceToUnchangedOUTStart": 0
+    },
+    "warning": "The right OUT upstream boundary bows inward, so strict old straight width is not preserved. Downstream fork and elevated start Z3.317645 are geometrically unchanged."
+  },
+  "supports": [
+    {
+      "row": 37,
+      "z": -0.8783915945153522,
+      "oldX": 2.6329160154427886,
+      "proposedX": 2.478217223923037,
+      "shiftX": -0.15469879151975174,
+      "yTop": 0.5112978266217261,
+      "saddle": [
+        1.7729877905136118,
+        0.576297826621726,
+        -0.8783915945153522
+      ],
+      "columnR": 0.037,
+      "capAndFootR": 0.04,
+      "crossheadR": 0.034,
+      "note": "Existing shared generator relocates these exact three columns/caps/feet and their real crossheads. No part removed. Full installed assembly clearance remains a gate."
+    },
+    {
+      "row": 57,
+      "z": -1.8311413172237554,
+      "oldX": 2.449102602077198,
+      "proposedX": 2.391669662450612,
+      "shiftX": -0.057432939626586244,
+      "yTop": 0.7585748683183864,
+      "saddle": [
+        1.3661828088755832,
+        0.8235748683183863,
+        -1.8311413172237554
+      ],
+      "columnR": 0.037,
+      "capAndFootR": 0.04,
+      "crossheadR": 0.034,
+      "note": "Existing shared generator relocates these exact three columns/caps/feet and their real crossheads. No part removed. Full installed assembly clearance remains a gate."
+    },
+    {
+      "row": 78,
+      "z": -2.836234172436161,
+      "oldX": 2.3546421268645856,
+      "proposedX": 2.351864286949096,
+      "shiftX": -0.0027778399154896327,
+      "yTop": 0.8008462257706004,
+      "saddle": [
+        1.6115694697641985,
+        0.8658462257706003,
+        -2.836234172436161
+      ],
+      "columnR": 0.037,
+      "capAndFootR": 0.04,
+      "crossheadR": 0.034,
+      "note": "Existing shared generator relocates these exact three columns/caps/feet and their real crossheads. No part removed. Full installed assembly clearance remains a gate."
+    }
+  ],
+  "idealFirstOuterContact": {
+    "old": {
+      "center": [
+        2.93,
+        0.175,
+        -0.7170540381376478
+      ],
+      "normalAngleDegrees": 8.263471841981536,
+      "scope": "Ideal circular surface, horizontal straight ray, fixed Y.175. Not a simulation, velocity or dissipation prediction."
+    },
+    "proposal": {
+      "center": [
+        2.93,
+        0.175,
+        0.5947244715332567
+      ],
+      "normalAngleDegrees": 5.426164443591605,
+      "scope": "Ideal circular surface, horizontal straight ray, fixed Y.175. Not a simulation, velocity or dissipation prediction."
+    }
+  },
+  "unchanged": [
+    "board/pivot/bat/receiver/wire/sling/targets",
+    "inner open end(2.35,.23,-3.9)",
+    "outer/roof junction(2.805,.23,-4.15), roof remainder and backing",
+    "all rollover bars/sensors/field exit datums",
+    "shooter plunger axis/rest/start and bottom straight rail fromZ2.45",
+    "keys, launch/strike functions, force, restitution, friction, solver",
+    "OUT lower curve/save position and finite earned contract"
+  ],
+  "unproved": [
+    "full mesh/contact assembly with relocated crossheads",
+    "no upper/floor/wire/airborne interference",
+    "weaker initial normal deflection actually reduces losses",
+    "natural .55 recovery and no regression at other powers",
+    "continuous aiming and reference acceptance"
+  ]
+}

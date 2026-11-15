@@ -1,0 +1,77 @@
+[
+  {
+    "key": "web/js/pinball/layout.mjs",
+    "from": "flipperPivot: [1.25, .27, 4.45]",
+    "to": "flipperPivot: [1.40, .27, 4.45]"
+  },
+  {
+    "key": "web/js/pinball/layout.mjs",
+    "from": "  guide: [\n    [1.90,.22,3.47], [1.88,.22,3.50], [1.80,.22,3.75], [1.185,.22,4.05],\n    // Straight heel-side guide avoids a concave pocket against the rounded bat.\n    [1.285,.22,4.22], [1.285,.22,4.45], [1.285,.22,4.85],\n  ],\n",
+    "to": "  // Endpoint datums only; actual paths come from lowerCFrame below.\n  guide: [[1.90,.22,3.00],[1.485,.22,4.10],[1.485,.22,4.85]],\n"
+  },
+  {
+    "key": "web/js/pinball/layout.mjs",
+    "from": "outlaneOuter: [[2.33,.22,1.35],[2.33,.22,3.35],[2.05,.22,4.88]]",
+    "to": "outlaneOuter: [[2.33,.22,1.35],[2.33,.22,3.00],[1.915,.22,4.10],[1.915,.22,4.85]]"
+  },
+  {
+    "key": "web/js/pinball/layout.mjs",
+    "from": "export function lowerLanePaths(side) {\n  const entry=LOWER_LAYOUT.guideEntry[side<0?'left':'right'];\n  // Small manufactured bends replace abrupt capsule junctions. Both render\n  // and contact rails consume these exact sampled points.\n  const bend=path=>{\n    const out=[path[0]];\n    for(let i=1;i<path.length-1;i++) {\n      const a=path[i-1],p=path[i],b=path[i+1];\n      const la=Math.hypot(...a.map((v,k)=>v-p[k])),lb=Math.hypot(...b.map((v,k)=>v-p[k]));\n      const trim=Math.min(p[2]<3.5?.16:.08,la*.25,lb*.25);\n      const u=p.map((v,k)=>v+(a[k]-v)*trim/la),w=p.map((v,k)=>v+(b[k]-v)*trim/lb);\n      out.push(u);\n      for(let j=1;j<=6;j++){const t=j/6;out.push(p.map((v,k)=>(1-t)**2*u[k]+2*(1-t)*t*v+t*t*w[k]));}\n    }\n    out.push(path.at(-1));return out;\n  };\n  return [[entry,...LOWER_LAYOUT.guide],LOWER_LAYOUT.inlaneInner,LOWER_LAYOUT.outlaneOuter]\n    .map(bend).map(path=>path.map(([x,y,z])=>[side*x,y,z]));\n}\n\n// Supports stay at design stations, independent of curve tessellation.\nexport function lowerLaneMounts(side) {\n  const entry=LOWER_LAYOUT.guideEntry[side<0?'left':'right'];\n  const points=[entry,...LOWER_LAYOUT.guide,...LOWER_LAYOUT.inlaneInner,...LOWER_LAYOUT.outlaneOuter];\n  return points.filter((p,i)=>points.findIndex(q=>q.every((v,k)=>v===p[k]))===i)\n    .map(([x,y,z])=>[side*x,y,z]);\n}\n\n",
+    "to": "export const LOWER_C=Object.freeze({startX:1.90,startZ:3.00,endX:1.485,endZ:4.10,shift:.415,run:1.10,outOffset:.430,stepsPerArc:24,heelEndZ:4.85,\n radius:(1.10**2+.415**2)/(4*.415),angle:2*Math.atan(.415/1.10)});\nexport function lowerCFrame(parameter){\n const d=LOWER_C,q=Math.max(0,Math.min(1,parameter))*2,R=d.radius,A=d.angle;let x,z,a;\n if(q<=1){a=q*A;x=d.startX-R*(1-Math.cos(a));z=d.startZ+R*Math.sin(a);}\n else{a=(2-q)*A;x=d.startX-R*(1-Math.cos(A))-R*(Math.cos(a)-Math.cos(A));z=d.startZ+R*Math.sin(A)+R*(Math.sin(A)-Math.sin(a));}\n return {p:[x,.22,z],t:[-Math.sin(a),0,Math.cos(a)],n:[Math.cos(a),0,Math.sin(a)]};\n}\nexport function lowerLanePaths(side){\n const d=LOWER_C,rows=Array.from({length:d.stepsPerArc*2+1},(_,i)=>lowerCFrame(i/(d.stepsPerArc*2)));\n const divider=[...rows.map(f=>f.p),[d.endX,.22,d.heelEndZ]];\n const inner=LOWER_LAYOUT.inlaneInner.map(p=>[...p]);\n const outer=[[2.33,.22,1.35],...rows.map(f=>[f.p[0]+d.outOffset*f.n[0],.22,f.p[2]+d.outOffset*f.n[2]]),[d.endX+d.outOffset,.22,d.heelEndZ]];\n return [divider,inner,outer].map(p=>p.map(([x,y,z])=>[side*x,y,z]));\n}\nexport function lowerLaneMounts(side){\n const d=LOWER_C,paths=lowerLanePaths(1),points=[paths[0][0],paths[0][24],paths[0][48],paths[0].at(-1),...paths[1],paths[2][0],paths[2][1],paths[2][25],paths[2][49],paths[2].at(-1)];\n return points.filter((p,i)=>points.findIndex(q=>q.every((v,k)=>Math.abs(v-p[k])<1e-9))===i).map(([x,y,z])=>[side*x,y,z]);\n}\n\n"
+  },
+  {
+    "key": "web/js/pinball/physics.mjs",
+    "from": "import {appendBoardEdgeFasteners}",
+    "to": "import {installCMechanics,cSaveReady,applyCSave} from './lower-c-study.mjs';\nimport {appendBoardEdgeFasteners}"
+  },
+  {
+    "key": "web/js/pinball/physics.mjs",
+    "from": "this.boardFastenerContacts=appendBoardEdgeFasteners(this.world,R);",
+    "to": "this.boardFastenerContacts=appendBoardEdgeFasteners(this.world,R);\n    this.cMechanics=installCMechanics(this,R);"
+  },
+  {
+    "key": "web/js/pinball/physics.mjs",
+    "from": "if(p.x < -2.08 && p.x > -2.62 && p.z>3.45 && p.z<3.72 && p.y<.5 && v.z>0 &&",
+    "to": "if(cSaveReady(this,p,v) &&"
+  },
+  {
+    "key": "web/js/pinball/physics.mjs",
+    "from": "this.ball.applyImpulse({x:-v.x*this.ball.mass(),y:0,z:(-12-v.z)*this.ball.mass()},true);",
+    "to": "applyCSave(this,v);"
+  },
+  {
+    "key": "web/js/pinball/playfield-parts.mjs",
+    "from": "import {targetCarrierParts",
+    "to": "import {drawCLanes,drawCSave,cLaneInkPath,cLaneLabel} from \"./lower-c-study.mjs\";\nimport {targetCarrierParts"
+  },
+  {
+    "key": "web/js/pinball/physics.mjs",
+    "from": "// Append after the existing ball/reset too, preserving every old handle.",
+    "to": "// New attachments remain appended, but lower curve topology changes old handle counts."
+  },
+  {
+    "key": "web/js/pinball/playfield-parts.mjs",
+    "from": "    a.roundedBox(g,.22,.10,.42,-2.10,.10,3.78,\"steel\",.035);\n    a.tube(g,[[-2.10,.13,3.80],[-2.10,.13,3.50]],.06,\"chrome\");\n    a.sideSaveLamp=a.cylinder(g,.09,.018,-2.10,.055,3.32,\"dark\");\n    a.text(g,\"SAVE\",-2.10,.06,3.08,.34,.13);\n",
+    "to": "    drawCSave(a);\n"
+  },
+  {
+    "key": "web/js/pinball/playfield-parts.mjs",
+    "from": "    const paths=lowerLanePaths(side);\n    for(const path of paths) {\n      for(let i=0;i<path.length-1;i++) {\n        const tube=a.tube(g,[path[i],path[i+1]],LOWER_LAYOUT.guideRadius,\"chrome\");\n        tube.name=\"shared-lower-lane-contact-rail\";\n      }\n    }\n    for(const [x,y,z] of lowerLaneMounts(side)) {\n        a.cylinder(g,.055,.025,x,.062,z,\"chrome\");\n        a.cylinder(g,.027,y-.07,x,(y+.07)/2,z,\"steel\");\n        a.cylinder(g,.065,.025,x,y,z,\"brass\");\n    }\n",
+    "to": "    drawCLanes(a,side);\n"
+  },
+  {
+    "key": "web/js/pinball/playfield-parts.mjs",
+    "from": "const geometry=laneInkStrip(LOWER_LAYOUT.inlaneInkPath,side,scale);",
+    "to": "const geometry=laneInkStrip(cLaneInkPath(\"IN\"),side,scale);"
+  },
+  {
+    "key": "web/js/pinball/playfield-parts.mjs",
+    "from": "const [x,z,angle,width,height]=LOWER_LAYOUT.laneInserts[key];",
+    "to": "const [x,z,angle,width,height]=cLaneLabel(label);"
+  },
+  {
+    "key": "web/js/pinball/playfield-parts.mjs",
+    "from": "    const [sx,,sz]=LOWER_LAYOUT.inlaneSensor;",
+    "to": "    const outInk=new T.Mesh(laneInkStrip(cLaneInkPath(\"OUT\"),side),new T.MeshBasicMaterial({color:0x5a4518,side:T.DoubleSide}));outInk.name=\"C-outlane-physical-path-print\";outInk.userData.collision=false;g.add(outInk);\n    const [sx,,sz]=LOWER_LAYOUT.inlaneSensor;"
+  }
+]

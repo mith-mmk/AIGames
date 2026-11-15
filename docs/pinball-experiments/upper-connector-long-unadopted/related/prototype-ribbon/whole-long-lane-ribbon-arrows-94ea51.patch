@@ -1,0 +1,11 @@
+--- prior/web/js/pinball/playfield-parts.mjs
++++ whole-long-lane-ribbon-arrows-94ea51/web/js/pinball/playfield-parts.mjs
+@@ -84,7 +84,7 @@
+       // Text occupies a short downstream segment; the strip itself remains long.
+       const zLabel=kind==='IN'?3.58:4.10;
+       const y=2048*((zLabel-1.35)/(zEnd-1.35));ctx.fillStyle=color;ctx.textAlign='center';ctx.font='bold 88px sans-serif';ctx.fillText(kind,128,y);ctx.font='bold 66px sans-serif';ctx.fillText('LANE',128,y+84);
+-      for(const z of [1.65,2.15,2.70]){const y=2048*((z-1.35)/(zEnd-1.35));ctx.beginPath();ctx.moveTo(128,y-45);ctx.lineTo(60,y+35);ctx.lineTo(128,y+2);ctx.lineTo(196,y+35);ctx.closePath();ctx.fill();}
++      for(const z of [1.65,2.15,2.70]){const y=2048*((z-1.35)/(zEnd-1.35));ctx.beginPath();const dir=kind==='OUT'?-1:1;ctx.moveTo(128,y-45*dir);ctx.lineTo(60,y+35*dir);ctx.lineTo(128,y+2*dir);ctx.lineTo(196,y+35*dir);ctx.closePath();ctx.fill();}
+       const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(positions,3));geo.setAttribute('uv',new T.Float32BufferAttribute(uv,2));geo.setIndex(indices);geo.computeVertexNormals();const tex=new T.CanvasTexture(c);tex.colorSpace=T.SRGBColorSpace;
+       const mesh=new T.Mesh(geo,new T.MeshBasicMaterial({map:tex,side:T.DoubleSide}));mesh.name=kind+'-boundary-derived-floor-print';mesh.userData.collision=false;g.add(mesh);
+     }

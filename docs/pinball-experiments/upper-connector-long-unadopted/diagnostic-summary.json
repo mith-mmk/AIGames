@@ -1,0 +1,25 @@
+{
+  "status": "UNADOPTED",
+  "sourceSha256": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76",
+  "parentSha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+  "recoveryBase": "884960985a413986d57aff0c2280e59a7be79dcf",
+  "currentStableSeparate": "0b75d19770428cb6daf48f2cb7776ba109860d79",
+  "currentStableSuite206DoesNotQualifyTrial": true,
+  "trialFull206Run": false,
+  "trialHistoricalFull202Run": false,
+  "natural54Run": false,
+  "mainFailures": [
+    ".55 same-ball shooter return remains",
+    "natural.75 and1 quiet stop at20s",
+    "replayed.75 actual inner capsule + ramp base shell + floor loaded constraint; no pillar claim"
+  ],
+  "finalStop75": {
+    "status": "completed; no further runs",
+    "findings": "stop75-findings.md",
+    "summary": "stop75-summary.json",
+    "manifest": "stop75-manifest.json",
+    "all2400PVExact": true,
+    "loadedPair": "shooter inner capsule and low housing shell strip29, plus floor"
+  },
+  "ribbonScope": "Separate94ea prototype-only patch history; neither automatically applied to a038 nor stable arrow patch included."
+}

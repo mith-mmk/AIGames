@@ -1,0 +1,27 @@
+{
+  "sourceSha256": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76",
+  "scope": "Same predeclared X3.45/Y.175/Z[-4.1,5] line; resolution refined from.002 to.0005 only. No route/shape/force change. Floor contact excluded, all other fixed colliders included.",
+  "samples": 18200,
+  "intervalHalf": 0.00025,
+  "minimum": {
+    "gap": 0.0009018487045619195,
+    "p": {
+      "x": 3.45,
+      "y": 0.175,
+      "z": -2.7812499999999996
+    },
+    "center": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "type": 9,
+    "handle": 7.48e-321
+  },
+  "continuousPolylineLowerBound": 0.0006518487045619195,
+  "limits": [
+    "Very small positive reserve; not robustness/all-speed proof",
+    "Query error separate",
+    "Earlier coarse negative lower bound retained in candidate-static.json, not reclassified as actual penetration"
+  ]
+}

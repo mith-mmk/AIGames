@@ -1,0 +1,713 @@
+{
+  "scope": "Exact original source/data/image references. Large source maps and raw traces/images not copied. Stable arrow correction files are intentionally absent.",
+  "files": {
+    "artifacts/pinball/upper-connector-long-4f4170a/README.md": {
+      "bytes": 4666,
+      "sha256": "655b1588dfb4fdb2a63f49933e5957a4d9441ae78127be93a37f414dc9572436"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/accepted-loader.mjs": {
+      "bytes": 957,
+      "sha256": "4b81eb805e887773e943d17d94941eb902ee5b2b49b37e839e90f4919a1cf722"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/accepted-sources.json": {
+      "bytes": 329885,
+      "sha256": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/baseline-loader.mjs": {
+      "bytes": 957,
+      "sha256": "d8ffe67ab3c4afda067c6bfdd53db35674005fba061018015ca9baaf29f7cf38"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/baseline-sources.json": {
+      "bytes": 338664,
+      "sha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/baseline-static.json": {
+      "bytes": 23768,
+      "sha256": "260d53f7a27de7eb7db451bcc914a87f8b944a222ccc8d95c58579b9d552088f"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/baseline-static.log": {
+      "bytes": 4062,
+      "sha256": "6bd2dc255dda93983d1c1ad4e7e933ec12551f126ee4f82547580513bf7a0192"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/build.mjs": {
+      "bytes": 2727,
+      "sha256": "f9546b1dd98c6a2b6e16ceadea70e6bfa3b6ef7bdac453524b2fb2e6fcf507fd"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/candidate-static.json": {
+      "bytes": 23762,
+      "sha256": "f7b5178bc52def8eaf4bd42a82caebb5a86e9039f9752ad7642494a65bc9c4f5"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/candidate-static.log": {
+      "bytes": 4067,
+      "sha256": "7da73a6deb238f80943e2566cfe4422e55998940522ee46772151adb2efba667"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/changes.json": {
+      "bytes": 201,
+      "sha256": "6235064a3558d03f1a55ea9e98181f9fd575a954cf6dfd0aa359b866f7219f83"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/check-exterior-refined.mjs": {
+      "bytes": 1591,
+      "sha256": "a24d4d7761034e2603d318099ced6e4078a4410d679609870b37ddbb23e2eb02"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/check-static.mjs": {
+      "bytes": 6610,
+      "sha256": "72e817d5ed15c11a37dd7815ebbbf6755080507000a693190e64d8cc75b63779"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/contract-check.json": {
+      "bytes": 7132,
+      "sha256": "efe0de1166f5a195189666933af7a27346097470728d09d035cf9e638d416569"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/dependencies.json": {
+      "bytes": 1955,
+      "sha256": "2c93ec0c0ad15974cc15bc883397699b099d43247a567aa2d475b6b8f754e16a"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/exterior-refined.json": {
+      "bytes": 854,
+      "sha256": "8e4bf9f26cfc2fdf439143fd0328767a5d1f57f4155b94c25646dfee740480ac"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/exterior-refined.log": {
+      "bytes": 854,
+      "sha256": "8e4bf9f26cfc2fdf439143fd0328767a5d1f57f4155b94c25646dfee740480ac"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/freeze-files.json": {
+      "bytes": 2735,
+      "sha256": "938d6c9f58d643f0bf563013a77a72f562023638cc31c0253e1c304e1cf1dbb1"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/geometry.mjs": {
+      "bytes": 5849,
+      "sha256": "d81db225529d638116874076069eb2419bc6c0e0447e702ea4ce6c0e32685bf3"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/loader.mjs": {
+      "bytes": 948,
+      "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/manifest.json": {
+      "bytes": 11425,
+      "sha256": "f4246fa852e40c83b32adbb17de1ab78691644411816cfa2a315aad205283d30"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/sources.json": {
+      "bytes": 338665,
+      "sha256": "a03806a4f8e23b4ad7cee33fbea423118ef885e353fa917c11906c275758be76"
+    },
+    "artifacts/pinball/upper-connector-long-4f4170a/verify-recovery-packet.py": {
+      "bytes": 4465,
+      "sha256": "49ec16069d24f38a08b6666f422b8c789da5accf4581ebeae288331b73d44f1a"
+    },
+    "artifacts/pinball/upper-connector-review-4f4170a/README.md": {
+      "bytes": 5419,
+      "sha256": "5e1a414e5e1ec43000a01420b9af9001a48a567e08a8c530dd6d49a92feba227"
+    },
+    "artifacts/pinball/upper-connector-review-4f4170a/dimensions.json": {
+      "bytes": 10496,
+      "sha256": "538dbeb80552a6acb386f9f187ca973b6c05eef2587e6acdbf0c24a7c4d04aab"
+    },
+    "artifacts/pinball/upper-connector-review-4f4170a/manifest.json": {
+      "bytes": 1429,
+      "sha256": "1ffc1df26d0c656ba02b5651d51b211fb1db4c2fdd2fc9abba0a7442592dda18"
+    },
+    "artifacts/pinball/upper-connector-review-4f4170a/measure.log": {
+      "bytes": 6334,
+      "sha256": "37f2ea57f3fd9f412a36637683373c8bd3f5753813e3277742766a6a0995e7a8"
+    },
+    "artifacts/pinball/upper-connector-review-4f4170a/measure.mjs": {
+      "bytes": 5508,
+      "sha256": "3f6c3d7412beb955d8b640f4dedebb2e39f070a9d0058103e0263084dd056022"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/README.md": {
+      "bytes": 3159,
+      "sha256": "8d789e1552991aac831e67d5a3282ff0d8f2792c4de018e8abf5f8c7151ec3c5"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/accepted-launch.log": {
+      "bytes": 6033,
+      "sha256": "926c9c6b3588ad94d1525890631b74c9a88d9967cb31320c1bcfec740cdfdbfb"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/accepted-launch55-contacts.json": {
+      "bytes": 697218,
+      "sha256": "a2890a485fc6af3d5eaab69dd8eede84ccc9e0f70152393c6ec8bb71f66b38b5"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/accepted-launch55.log": {
+      "bytes": 920,
+      "sha256": "026347a686d59fdea5e163f4c0d1e94c2adedd5bbac03c70f962c8c74489ece4"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/accepted-out.json": {
+      "bytes": 100826,
+      "sha256": "82f5a3d0202190930ce4c626bb7807d2befc30e34c2c3b69099f5f8d91357807"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/accepted-out.log": {
+      "bytes": 1098,
+      "sha256": "3a0f6147c570980505d066a36702385ef7f7b3154a914577d0f0787fb1b031ad"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/accepted.json": {
+      "bytes": 1432426,
+      "sha256": "990facd9be7e337a694680ecc0c527f3bfa4eca4a3c4679b9e6e7ee57cfeaacd"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/baseline-launch.log": {
+      "bytes": 5993,
+      "sha256": "02addbbe13ff520363009dcdb7798ca827ee6b50223759470086525accf9a6d7"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/baseline-launch55-contacts.json": {
+      "bytes": 262346,
+      "sha256": "6b680962a2116f25a582f27b38d47a1592a41e59415f1c54e368c01680cbf21a"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/baseline-launch55.log": {
+      "bytes": 889,
+      "sha256": "0710356f8702f9b1cfd3f63c20ebf801ab50be959baad059a19361ab12ba5f57"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/baseline-out.json": {
+      "bytes": 170732,
+      "sha256": "0e2b500c3d286ee067df5274659c33449354c5dc6d9438099b9c89b9922164ae"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/baseline-out.log": {
+      "bytes": 1124,
+      "sha256": "97d7da3aeb38e623a42bfef2e8b6497a91627e135294403dd3b7b8f97dbc1fa7"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/baseline.json": {
+      "bytes": 1329731,
+      "sha256": "79a34bbc047a2d8c9b5345be12e973398d80162fd94ea976272aa83459b0d917"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/candidate-launch.log": {
+      "bytes": 5988,
+      "sha256": "6b58f0f0077b1253da04e4fb613a083932bec45a389f917df43f84358516b14a"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/candidate-launch55-contacts.json": {
+      "bytes": 282922,
+      "sha256": "9a8a18754f9e60449090d87e30b1d5cb4c2fbc4478606644b3551d419dedfe3d"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/candidate-launch55.log": {
+      "bytes": 893,
+      "sha256": "716f407901ffb507b2e673bbdccf45c5fd5d4f3b0ea6e88af6669a10dfec85fb"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/candidate-out.json": {
+      "bytes": 170732,
+      "sha256": "0e2b500c3d286ee067df5274659c33449354c5dc6d9438099b9c89b9922164ae"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/candidate-out.log": {
+      "bytes": 1124,
+      "sha256": "97d7da3aeb38e623a42bfef2e8b6497a91627e135294403dd3b7b8f97dbc1fa7"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/candidate-stop75-contacts.json": {
+      "bytes": 3810095,
+      "sha256": "b7eb2a2d5f3df821e24ba23670ff18d4b5a61a3df1e04a49ecd39b14ca1ccefc"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/candidate-stop75.log": {
+      "bytes": 2538,
+      "sha256": "988153a46d9ac4b713d17dca6fbcf03ee02a953f017fed5fc032b745e52c8f50"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/candidate.json": {
+      "bytes": 1987053,
+      "sha256": "9c7f7741a6224a2f7c137321a0da3725de477f1fe3c322e82e48886043f4e0e4"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/final-manifest.json": {
+      "bytes": 803,
+      "sha256": "774f0afc12b832b158bc9f664588cd14b39b914934cc3a82658ff1baf315d34d"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/launch.mjs": {
+      "bytes": 3126,
+      "sha256": "a7de1f59b501b7e7c49b5bae7f51c70d3505cd97e5d1fd8246dcbdd3fa20cff6"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/launch55.mjs": {
+      "bytes": 3615,
+      "sha256": "47a2edc50c770675445d0d4b7de2fb5e18c1f2e63adb667192025396cdfee540"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/manifest.json": {
+      "bytes": 2358,
+      "sha256": "d03e49649fb9d27611fc6a95fe79deec0963c75e6baaf4d7b9eb35f37759444d"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/out.mjs": {
+      "bytes": 4796,
+      "sha256": "0b2165a73860676930ac0286750be34d3e9d28819f5de54718038a7f68ae5d9c"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/start-sections.json": {
+      "bytes": 7025,
+      "sha256": "3ed581940f78a57867e37d60152baf3039baec636cb77e0cc39d3999068b68ae"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/stop75-findings.md": {
+      "bytes": 1764,
+      "sha256": "701c1c772b27d93c13c602b20d4c9e8c27b134e83fd25896e90be7ecd3c842fb"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/stop75-manifest.json": {
+      "bytes": 486,
+      "sha256": "366138d08895c5e138b5ae3e2642874c76d4ad7af3f2b202c58b8f731de15f25"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/stop75-summary.json": {
+      "bytes": 222130,
+      "sha256": "b5676115289158f0f55bcbf57b726f1984bc5c5effdf1f451a6f6ae3fce8f244"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/stop75-summary.py": {
+      "bytes": 1424,
+      "sha256": "84ec519d11e8843107d1fbbd6c0ade23abb329e51fe9e37540726d22fed520c2"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/stop75.mjs": {
+      "bytes": 3621,
+      "sha256": "34407d11146f8cebd0e2fefb66228027ade5fae46c714c2f45e956220dba5bd3"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/summarize.py": {
+      "bytes": 1390,
+      "sha256": "4762f02dcd4bef744aa28d952781b35e57ab5a5c4d013cff63ac8ec1431a5748"
+    },
+    "artifacts/pinball/upper-connector-long-local-4f4170a/summary.json": {
+      "bytes": 57670,
+      "sha256": "df0ba2d52d0ce8dbf590bbe0846fb1a451630bdf2584750a673688a1959d1a1c"
+    },
+    "artifacts/pinball/prototype-ribbon-small-packet/README.md": {
+      "bytes": 483,
+      "sha256": "22dee5e73e9e16020114c51ff0e3fddbc962a98207e88a2581fb0013044d7beb"
+    },
+    "artifacts/pinball/prototype-ribbon-small-packet/manifest.json": {
+      "bytes": 1369,
+      "sha256": "68edef5db0b5cb0440f67ef941eaa4c0b5de6b33045cfbc7da6196dd89590948"
+    },
+    "artifacts/pinball/prototype-ribbon-small-packet/whole-long-lane-ink-94ea51.patch": {
+      "bytes": 5434,
+      "sha256": "b85ce48abe4a009e8030b6d4c8d8d21688e35772f542f329607fee1318e49d70"
+    },
+    "artifacts/pinball/prototype-ribbon-small-packet/whole-long-lane-ribbon-94ea51.patch": {
+      "bytes": 3264,
+      "sha256": "206464e13281ca74632d1a40f3f38b2e7c93edd9119bbdb53db218fa85eaa4e0"
+    },
+    "artifacts/pinball/prototype-ribbon-small-packet/whole-long-lane-ribbon-arrows-94ea51.patch": {
+      "bytes": 1394,
+      "sha256": "f5250aeaeed503fd5a3124d9d983654dbc1f96fbaf97d8ce37db4884aea47256"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/README.md": {
+      "bytes": 3192,
+      "sha256": "4c65b5396df13500acd715cdf6405c4452f1fc10bd2e777fd879c8306339928f"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/baseline-sources.json": {
+      "bytes": 340133,
+      "sha256": "3219ab759676c748a9d5d42493a11114acf25787770e7aa9d264475348e1d591"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/build-initial.py": {
+      "bytes": 3307,
+      "sha256": "b5063d4123497414267252f590b70834de45aa584b0b63379fb644755a7b2b8c"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/initial-uv-sources.json": {
+      "bytes": 340568,
+      "sha256": "974758d9ccbf288da3254a6572508d415f7752ac2a3d99da94d3b4f735b6c656"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/physics-check/baseline-physics-public.json": {
+      "bytes": 2300360,
+      "sha256": "4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/physics-check/candidate-physics-public.json": {
+      "bytes": 2300360,
+      "sha256": "4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/physics-check/evidence.json": {
+      "bytes": 280,
+      "sha256": "cdb2b574adfcdba7dd3bc33b3d4c7fa252dd4fdeb30fd676438b979e43ef0730"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/physics-check/served-candidate-sources.json": {
+      "bytes": 339117,
+      "sha256": "00aa2bb0594136e6eed9bd980aa0a24b9946ffb0bddd96934350b2441e8d0fec"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/physics-check.cjs": {
+      "bytes": 3419,
+      "sha256": "4fb68a1ad6a30b1b320fabc2c73f1cc52416f283999f81a5f34e70835314e7d2"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/physics-check.log": {
+      "bytes": 138,
+      "sha256": "a9a0aa29c87406af749a218074408613513c6e745d2fc69089bc4d4d6e66b7d3"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/baseline-installed-10.png": {
+      "bytes": 432043,
+      "sha256": "6a6317eba53267363a64e715d8d49ee2721a804fc06387904db816bfe8c21fd8"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/baseline-installed-45.png": {
+      "bytes": 776546,
+      "sha256": "2fbf962a5fd60126ee92d62784deb7f8d3ca174eab5ba6b8770b22e2fc499dac"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/baseline-installed-90.png": {
+      "bytes": 655724,
+      "sha256": "31fc23861c47bbacba49993b0fe36fba0a8c7ad874a491e840de277ec16c5647"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/baseline-lower-closeup.png": {
+      "bytes": 800685,
+      "sha256": "9a47b0f27c000d7d5392fe5eea1d6b8ce5bbef2d55d8e1b2416497bfba15912c"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/baseline-lower-side.png": {
+      "bytes": 110012,
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/baseline-lower-underside.png": {
+      "bytes": 86219,
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/baseline-mobile-390.png": {
+      "bytes": 264092,
+      "sha256": "6bcb50efd83820422e141a89761fb9dbe8853f72f7114d86a9a4864a4ab03ca6"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/candidate-installed-10.png": {
+      "bytes": 433143,
+      "sha256": "5ebb31da428f9efb3cdf09a7b5492f0b4b82466956b858f13a48edea52a0327e"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/candidate-installed-45.png": {
+      "bytes": 777182,
+      "sha256": "30f207bf26a1468f542b52dd9522fa6e8845de31bf8b263d9b27dc24800d3221"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/candidate-installed-90.png": {
+      "bytes": 654672,
+      "sha256": "6f18441698aefe2c309ce7abef894e80b9ff344f9e16f59ae8bc41552984fd34"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/candidate-lower-closeup.png": {
+      "bytes": 814044,
+      "sha256": "caf782f1bd7b95fbb3610e84c92801c82f7c279691b6a2398ed22230690d2ba0"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/candidate-lower-side.png": {
+      "bytes": 110012,
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/candidate-lower-underside.png": {
+      "bytes": 86219,
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/candidate-mobile-390.png": {
+      "bytes": 263738,
+      "sha256": "cdec07ceb14855a1dff702a42ee36b17949913e9db5da8c3828541443e930a1e"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/evidence.json": {
+      "bytes": 975,
+      "sha256": "1b956ed21f7539370c4e3aa3c6ebfbaa61a9f921c65f47a915e20dc733e82df5"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-final/served-candidate-sources.json": {
+      "bytes": 339117,
+      "sha256": "00aa2bb0594136e6eed9bd980aa0a24b9946ffb0bddd96934350b2441e8d0fec"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/baseline-installed-10.png": {
+      "bytes": 432043,
+      "sha256": "6a6317eba53267363a64e715d8d49ee2721a804fc06387904db816bfe8c21fd8"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/baseline-installed-45.png": {
+      "bytes": 776546,
+      "sha256": "2fbf962a5fd60126ee92d62784deb7f8d3ca174eab5ba6b8770b22e2fc499dac"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/baseline-installed-90.png": {
+      "bytes": 655724,
+      "sha256": "29990cadab7a10f03ebda13ecab553b1cab2428bb9d7d48cdc45833d42bd1d9d"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/baseline-lower-closeup.png": {
+      "bytes": 800685,
+      "sha256": "9a47b0f27c000d7d5392fe5eea1d6b8ce5bbef2d55d8e1b2416497bfba15912c"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/baseline-lower-side.png": {
+      "bytes": 110012,
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/baseline-lower-underside.png": {
+      "bytes": 86219,
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/baseline-mobile-390.png": {
+      "bytes": 264092,
+      "sha256": "6bcb50efd83820422e141a89761fb9dbe8853f72f7114d86a9a4864a4ab03ca6"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/candidate-installed-10.png": {
+      "bytes": 433114,
+      "sha256": "b07efdca9a7c185180d138bbe8641523e248f168c20c6278dad56c9be18deadd"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/candidate-installed-45.png": {
+      "bytes": 777154,
+      "sha256": "48302810929f98a8f57494c957408f8fd6717fda42eae8cd4b5ee7d08e58a638"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/candidate-installed-90.png": {
+      "bytes": 654587,
+      "sha256": "8bc5f98701d55417811274c22c5cf8cc5fdb1cae61cd7b988ada8928859d5c3b"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/candidate-lower-closeup.png": {
+      "bytes": 813171,
+      "sha256": "6102842fd122960309b589f777171884742d77ec5c49ad9a88547ba450897ea5"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/candidate-lower-side.png": {
+      "bytes": 110012,
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/candidate-lower-underside.png": {
+      "bytes": 86219,
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/candidate-mobile-390.png": {
+      "bytes": 263676,
+      "sha256": "279b5342f5637d52ae1fc818bcf632600a03ef58f3528103237e2454395e88c9"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/evidence.json": {
+      "bytes": 975,
+      "sha256": "1b956ed21f7539370c4e3aa3c6ebfbaa61a9f921c65f47a915e20dc733e82df5"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/preview-initial-uv/served-candidate-sources.json": {
+      "bytes": 339099,
+      "sha256": "1cf1982c7649b5e1332dca496f77d753d9666ec0962e12f8b7d87d3b0460f147"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/review-manifest.json": {
+      "bytes": 8080,
+      "sha256": "cbb2959a67220048ffe09d1040b4cd8580622bcdddd41fe5fe22d20732de6045"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/review-summary.json": {
+      "bytes": 1585,
+      "sha256": "267fb38cb09baaf9f0597f83d86ddfa027469c6520109e7de77a47fa7578e53b"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/sources.json": {
+      "bytes": 340586,
+      "sha256": "7bc02bd0d716ceadc0152991dfc70ce03aedef56768dbb2a7ca301793c66a665"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/visual-final.log": {
+      "bytes": 833,
+      "sha256": "4e600b1b44cf2e2c995c73da56c23c5e2436e63dee4a07e0a3db9dfb4e346fac"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/visual.cjs": {
+      "bytes": 4761,
+      "sha256": "edd16896a2dddd03d6b1eec741d38caf31b09343f689eb6e762205a227bd9054"
+    },
+    "artifacts/pinball/whole-long-lane-ink-94ea51/visual.log": {
+      "bytes": 833,
+      "sha256": "4e600b1b44cf2e2c995c73da56c23c5e2436e63dee4a07e0a3db9dfb4e346fac"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/README.md": {
+      "bytes": 3552,
+      "sha256": "616f6b352b26adcadf5ee1c2521a8d65347a2c35a303edea9ac0d245d250ea53"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/baseline-sources.json": {
+      "bytes": 340133,
+      "sha256": "3219ab759676c748a9d5d42493a11114acf25787770e7aa9d264475348e1d591"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/boundary-audit.json": {
+      "bytes": 2054,
+      "sha256": "de087647961e9927ab7fcc828421a02ab840de5a0778f287cf355529f70d6eea"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/boundary-audit.mjs": {
+      "bytes": 2080,
+      "sha256": "e62311ef7c6e9fdbcdf04a096d33e277d40b1a72cde4450158b600da5de260fe"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/physics-check/baseline-physics-public.json": {
+      "bytes": 2300360,
+      "sha256": "4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/physics-check/candidate-physics-public.json": {
+      "bytes": 2300360,
+      "sha256": "4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/physics-check/evidence.json": {
+      "bytes": 282,
+      "sha256": "6b268a31d129bdd5c72c667971a984dbdf23b8ea55f7cf750daaa7581ec82dd7"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/physics-check/served-candidate-sources.json": {
+      "bytes": 339485,
+      "sha256": "21e22b0d0ea04c2954224133b9b3784f96ccfda078daa478557605178c68c7b0"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/physics-check.cjs": {
+      "bytes": 3428,
+      "sha256": "712e0c92e12c53dfe17a33c63b4a72b80820a574b1f235014c65c41d1bcc6072"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/physics-check.log": {
+      "bytes": 141,
+      "sha256": "12066e0f9a428b48606788bcdda445aec583b7e032f7c28d2f6071f0fe9b0be9"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/baseline-installed-10.png": {
+      "bytes": 432043,
+      "sha256": "6a6317eba53267363a64e715d8d49ee2721a804fc06387904db816bfe8c21fd8"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/baseline-installed-45.png": {
+      "bytes": 776546,
+      "sha256": "2fbf962a5fd60126ee92d62784deb7f8d3ca174eab5ba6b8770b22e2fc499dac"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/baseline-installed-90.png": {
+      "bytes": 655724,
+      "sha256": "29990cadab7a10f03ebda13ecab553b1cab2428bb9d7d48cdc45833d42bd1d9d"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/baseline-lower-closeup.png": {
+      "bytes": 800685,
+      "sha256": "9a47b0f27c000d7d5392fe5eea1d6b8ce5bbef2d55d8e1b2416497bfba15912c"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/baseline-lower-side.png": {
+      "bytes": 110012,
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/baseline-lower-underside.png": {
+      "bytes": 86219,
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/baseline-mobile-390.png": {
+      "bytes": 264092,
+      "sha256": "6bcb50efd83820422e141a89761fb9dbe8853f72f7114d86a9a4864a4ab03ca6"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/candidate-installed-10.png": {
+      "bytes": 434653,
+      "sha256": "277310a936a8359ca81c3eae1cc8584e30bd62aa38cb0df18767803189facd53"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/candidate-installed-45.png": {
+      "bytes": 783651,
+      "sha256": "ddf869049fbbb502d9783d383f86adb9e3e31cf478da472879e7d11a290e5f42"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/candidate-installed-90.png": {
+      "bytes": 660978,
+      "sha256": "be0b4eb8df86a6f2efa51aea15f774b9c8f3e1f6f7eac3e6ee62739ab5d60351"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/candidate-lower-closeup.png": {
+      "bytes": 822162,
+      "sha256": "46537e1ebedb2401620fa7156ef0efff46e5e4f659e4968898a1f1a8298a9030"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/candidate-lower-side.png": {
+      "bytes": 110012,
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/candidate-lower-underside.png": {
+      "bytes": 86219,
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/candidate-mobile-390.png": {
+      "bytes": 266667,
+      "sha256": "3f40f7c29a93694996a4e535c5ef3f601984d73a1bca68bbcfc6f893bac5f323"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/evidence.json": {
+      "bytes": 977,
+      "sha256": "0122eac32a191a9c9e2bc338532f741240bf0bc7d037c157e76a15727ca2a823"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/preview-final/served-candidate-sources.json": {
+      "bytes": 339485,
+      "sha256": "21e22b0d0ea04c2954224133b9b3784f96ccfda078daa478557605178c68c7b0"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/review-manifest.json": {
+      "bytes": 5122,
+      "sha256": "03d6ea1cfb6a10298c93d8c378e0cc759b87544b0b292670955a423e6aaf893c"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/review-summary.json": {
+      "bytes": 3548,
+      "sha256": "7eb2d884938e35dfe3fe5d2e3e4a3bc13a5deb8df43ea2de1dcfd0be10c0545e"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/sources.json": {
+      "bytes": 340954,
+      "sha256": "8b3e8f5625cb124ac63f2ed873cee017603f3e76717cb16f1975b638c901b3fa"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/visual.cjs": {
+      "bytes": 4770,
+      "sha256": "c152d52a822b97072787006a0daba604d071d5440de12a458e8b36638801dde4"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-94ea51/visual.log": {
+      "bytes": 836,
+      "sha256": "98be2b38dfd5a1eed0bd060f2333b3e8faaeca8bc46b8c670f280b407f3ebc8e"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/README.md": {
+      "bytes": 2314,
+      "sha256": "189f79589a889d41c8f8f8e52c6ecd84085aac75e4899d1514162969b1562438"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/baseline-sources.json": {
+      "bytes": 340954,
+      "sha256": "8b3e8f5625cb124ac63f2ed873cee017603f3e76717cb16f1975b638c901b3fa"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/physics-check/baseline-physics-public.json": {
+      "bytes": 2300360,
+      "sha256": "4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/physics-check/candidate-physics-public.json": {
+      "bytes": 2300360,
+      "sha256": "4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/physics-check/evidence.json": {
+      "bytes": 339,
+      "sha256": "2547e3bbec5765746af3fcbba533bb7c4003041bd8f7f978cb8457d5651ecf49"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/physics-check/served-candidate-sources.json": {
+      "bytes": 339529,
+      "sha256": "6b7b49e92d76c64989e6b777c3fbbee4e9f1f34d386c3f994e7981cea381eef7"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/physics-check.cjs": {
+      "bytes": 3449,
+      "sha256": "375b8dea0945f8b372237b5cb97c8f658cf9a987606e791b312441a8506ad867"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/physics-check.log": {
+      "bytes": 148,
+      "sha256": "911bcf3f27e92176704235201f43a136fe2f8e3abe10f46361c8300dcdbb1f8f"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/baseline-installed-10.png": {
+      "bytes": 434653,
+      "sha256": "277310a936a8359ca81c3eae1cc8584e30bd62aa38cb0df18767803189facd53"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/baseline-installed-45.png": {
+      "bytes": 783651,
+      "sha256": "ddf869049fbbb502d9783d383f86adb9e3e31cf478da472879e7d11a290e5f42"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/baseline-installed-90.png": {
+      "bytes": 660978,
+      "sha256": "3487e82cd587703e809f562e7db7202ab6cb0707277aa896cfd211a465a6eb75"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/baseline-lower-closeup.png": {
+      "bytes": 822162,
+      "sha256": "46537e1ebedb2401620fa7156ef0efff46e5e4f659e4968898a1f1a8298a9030"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/baseline-lower-side.png": {
+      "bytes": 110012,
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/baseline-lower-underside.png": {
+      "bytes": 86219,
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/baseline-mobile-390.png": {
+      "bytes": 266667,
+      "sha256": "3f40f7c29a93694996a4e535c5ef3f601984d73a1bca68bbcfc6f893bac5f323"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/candidate-installed-10.png": {
+      "bytes": 434703,
+      "sha256": "2a698734de4921af096d08cbe218f6fa580af2b788efdb1c87229e3d661d3727"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/candidate-installed-45.png": {
+      "bytes": 783616,
+      "sha256": "f755f791ffebfe8576c0752c9b87b07a1b7e5a1ae9c75c26a1ffb54438ad3d50"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/candidate-installed-90.png": {
+      "bytes": 660955,
+      "sha256": "a1f1b6704bd8aaf976285841a071e296e3f4390b1d6cbefc194114ee6cb72d03"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/candidate-lower-closeup.png": {
+      "bytes": 822382,
+      "sha256": "274659a3a6d1dee20c174eb15571677c0c8a7055aa7d6cbccdb5531f863fc7d7"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/candidate-lower-side.png": {
+      "bytes": 110012,
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/candidate-lower-underside.png": {
+      "bytes": 86219,
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/candidate-mobile-390.png": {
+      "bytes": 266682,
+      "sha256": "7f5934d6aae93a673bd53d10a61783d7f9a56b0698b7d721afd3ba7f72a090aa"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/evidence.json": {
+      "bytes": 1034,
+      "sha256": "73c8bbfaa312f95b805008ca0a495d2918bd261290904a5b2565bb7b2463963c"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/preview-final/served-candidate-sources.json": {
+      "bytes": 339529,
+      "sha256": "6b7b49e92d76c64989e6b777c3fbbee4e9f1f34d386c3f994e7981cea381eef7"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/review-manifest.json": {
+      "bytes": 4816,
+      "sha256": "f6e73468246c6b73c164bae89087ee9e93674eee12eaeaa592d600d6d8c98311"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/review-summary.json": {
+      "bytes": 1508,
+      "sha256": "82d04d58801f9ba59186ae5ff229650f97883f3eaaf08bc1da2b294fc1bef4c8"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/sources.json": {
+      "bytes": 340998,
+      "sha256": "ea806409896104d6f6a3ce75956c8b343bd7376a7da98cb877f854a693ab7cb1"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/visual.cjs": {
+      "bytes": 4791,
+      "sha256": "56aa4a6017173c48727919fec4e050b64a4061357a0567385565e78687477cec"
+    },
+    "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/visual.log": {
+      "bytes": 843,
+      "sha256": "3ca68d58d21a1198114b7e80c404956aa456236768042803c7389a3f51506d87"
+    },
+    "artifacts/pinball/whole-long-lane-891ae62/sources.json": {
+      "bytes": 338664,
+      "sha256": "94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03"
+    },
+    "artifacts/pinball/whole-long-lane-891ae62/baseline-sources.json": {
+      "bytes": 329885,
+      "sha256": "2b7d62fa4930d9c988615e52076a062ccf9333c529d17a5f4064667c2fb32199"
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "sourceSHA256": "8b3e8f5625cb124ac63f2ed873cee017603f3e76717cb16f1975b638c901b3fa",
+  "changedModules": [
+    "web/js/pinball/playfield-parts.mjs"
+  ],
+  "physicsPublicStateSHA256": "4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2",
+  "colliders": 1581,
+  "budget": {
+    "baseline": "whole94ea51",
+    "candidate": "ink-only ribbon source 8b3e8f5625cb124ac63f2ed873cee017603f3e76717cb16f1975b638c901b3fa",
+    "results": [
+      {
+        "mode": "baseline",
+        "view": "installed-45",
+        "triangles": 493112,
+        "calls": 569
+      },
+      {
+        "mode": "baseline",
+        "view": "installed-10",
+        "triangles": 492968,
+        "calls": 557
+      },
+      {
+        "mode": "baseline",
+        "view": "installed-90",
+        "triangles": 486792,
+        "calls": 542
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-45",
+        "triangles": 493232,
+        "calls": 563
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-10",
+        "triangles": 493088,
+        "calls": 551
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-90",
+        "triangles": 486912,
+        "calls": 536
+      }
+    ],
+    "errors": [],
+    "scope": "Integrated geometry artifact; installed and isolated component views are distinct; not accepted."
+  },
+  "boundary": [
+    {
+      "side": -1,
+      "kind": "IN",
+      "edgePlanSurfaceMinimum": 0.04689249887677249,
+      "maxSamplingStep": 0.00025271212876965454,
+      "edgeLowerBound": 0.046639786748002836,
+      "near": {
+        "p": [
+          1.9988604988767724,
+          2.6497968750000003
+        ],
+        "kind": "conservative sling X envelope"
+      },
+      "scope": "Plan-projected print edge versus specified neighboring rails and conservative upper sling envelope; not ball clearance. Open IN after inner endpoint remains open, no virtual boundary."
+    },
+    {
+      "side": -1,
+      "kind": "OUT",
+      "edgePlanSurfaceMinimum": 0.11453754275197063,
+      "maxSamplingStep": 0.00029720025314054034,
+      "edgeLowerBound": 0.1142403424988301,
+      "near": {
+        "p": [
+          2.432937270681611,
+          2.517
+        ],
+        "index": 0,
+        "k": 2
+      },
+      "scope": "Plan-projected print edge versus specified neighboring rails and conservative upper sling envelope; not ball clearance. Open IN after inner endpoint remains open, no virtual boundary."
+    },
+    {
+      "side": 1,
+      "kind": "IN",
+      "edgePlanSurfaceMinimum": 0.04689249887677249,
+      "maxSamplingStep": 0.00025271212876965454,
+      "edgeLowerBound": 0.046639786748002836,
+      "near": {
+        "p": [
+          1.9988604988767724,
+          2.6497968750000003
+        ],
+        "kind": "conservative sling X envelope"
+      },
+      "scope": "Plan-projected print edge versus specified neighboring rails and conservative upper sling envelope; not ball clearance. Open IN after inner endpoint remains open, no virtual boundary."
+    },
+    {
+      "side": 1,
+      "kind": "OUT",
+      "edgePlanSurfaceMinimum": 0.11204834733545542,
+      "maxSamplingStep": 0.0002963450065712895,
+      "edgeLowerBound": 0.11175200232888413,
+      "near": {
+        "p": [
+          2.430457727405794,
+          2.51675
+        ],
+        "index": 0,
+        "k": 2
+      },
+      "scope": "Plan-projected print edge versus specified neighboring rails and conservative upper sling envelope; not ball clearance. Open IN after inner endpoint remains open, no virtual boundary."
+    }
+  ]
+}

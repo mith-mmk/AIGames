@@ -1,0 +1,54 @@
+{
+  "changedModules": [
+    "web/js/pinball/playfield-parts.mjs"
+  ],
+  "sourceSHA256": "7bc02bd0d716ceadc0152991dfc70ce03aedef56768dbb2a7ca301793c66a665",
+  "frozenPhysicsModuleSHA256": "87a2f64b04c51a0b445e626f9e97ea2ff673222e45da9c842e10155c476274a9",
+  "publicColliderStateSHA256": "4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2",
+  "colliderCount": 1581,
+  "recommendation": "Do not adopt this print revision: improved exposed lettering, but kinked IN strip and weak mobile benefit.",
+  "budget": {
+    "baseline": "whole94ea51",
+    "candidate": "whole layout snapshot 94ea51ffb02ae7d030f79ade9f05d02eeeaf73da088ea83b8d518253624d0c03",
+    "results": [
+      {
+        "mode": "baseline",
+        "view": "installed-45",
+        "triangles": 493112,
+        "calls": 569
+      },
+      {
+        "mode": "baseline",
+        "view": "installed-10",
+        "triangles": 492968,
+        "calls": 557
+      },
+      {
+        "mode": "baseline",
+        "view": "installed-90",
+        "triangles": 486792,
+        "calls": 542
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-45",
+        "triangles": 493232,
+        "calls": 563
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-10",
+        "triangles": 493088,
+        "calls": 551
+      },
+      {
+        "mode": "candidate",
+        "view": "installed-90",
+        "triangles": 486912,
+        "calls": 536
+      }
+    ],
+    "errors": [],
+    "scope": "Integrated geometry artifact; installed and isolated component views are distinct; not accepted."
+  }
+}

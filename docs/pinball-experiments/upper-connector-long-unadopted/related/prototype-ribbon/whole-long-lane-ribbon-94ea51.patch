@@ -1,0 +1,22 @@
+--- prior/web/js/pinball/playfield-parts.mjs
++++ whole-long-lane-ribbon-94ea51/web/js/pinball/playfield-parts.mjs
+@@ -76,15 +76,15 @@
+     const at=(p,z)=>{for(let i=1;i<p.length;i++){const a=p[i-1],b=p[i];if(z>=Math.min(a[1],b[1])&&z<=Math.max(a[1],b[1])&&b[1]!==a[1])return a[0]+(b[0]-a[0])*(z-a[1])/(b[1]-a[1]);}return null;};
+     const bounds=(kind,z)=>{const divider=at(paths[0],z);let lo,hi;if(kind==='IN'){const inner=at(paths[1],z);lo=inner===null?1.951968:inner+.020;hi=divider-.020;}else{lo=divider+.020;const x=at(paths[2],z);hi=(x===null?2.75:x)-(side<0?.020:.045);}return [lo+.035,hi-.035];};
+     for(const kind of ['IN','OUT']){
+-      const zEnd=kind==='IN'?3.18:side<0?3.04:3.40;
++      const zEnd=kind==='IN'?3.95:4.55;
+       const positions=[],uv=[],indices=[],N=64;
+-      for(let i=0;i<=N;i++){const z=1.35+(zEnd-1.35)*i/N,[lo,hi]=bounds(kind,z);if(!(hi>lo))throw Error('Invalid ink boundary');positions.push(side*lo,.047,z,side*hi,.047,z);uv.push(side<0?1:0,1-i/N,side<0?0:1,1-i/N);if(i<N){let k=i*2;indices.push(k,k+1,k+2,k+1,k+3,k+2);}}
++      for(let i=0;i<=N;i++){const z=1.35+(zEnd-1.35)*i/N; const div=at(paths[0],z); const outer=at(paths[2],z); const center=kind==='IN'?div-.205:(div+.020+(outer===null?2.75:outer)-(side<0?.020:.045))/2; const lo=center-.080,hi=center+.080; const inner=at(paths[1],z);const legalLo=kind==='OUT'?div+.020:inner!==null?inner+.020:z<=2.65?1.951968:-Infinity;const legalHi=kind==='IN'?div-.020:(outer===null?2.75:outer)-(side<0?.020:.045);if(lo<legalLo+.015||hi>legalHi-.015)throw Error('Ribbon exceeds physical boundary');positions.push(side*lo,.047,z,side*hi,.047,z);uv.push(side<0?1:0,1-i/N,side<0?0:1,1-i/N);if(i<N){let k=i*2;indices.push(k,k+1,k+2,k+1,k+3,k+2);}}
+       const c=document.createElement('canvas');c.width=256;c.height=2048;const ctx=c.getContext('2d'),color=kind==='IN'?'#72eaff':'#ffc93d';
+       ctx.fillStyle='#071b25';ctx.fillRect(0,0,256,2048);ctx.strokeStyle=color;ctx.lineWidth=8;ctx.strokeRect(6,5,244,2038);
+       // Text occupies a short downstream segment; the strip itself remains long.
+-      const zLabel=kind==='IN'?3.00:side<0?2.88:3.05;
++      const zLabel=kind==='IN'?3.58:4.10;
+       const y=2048*((zLabel-1.35)/(zEnd-1.35));ctx.fillStyle=color;ctx.textAlign='center';ctx.font='bold 88px sans-serif';ctx.fillText(kind,128,y);ctx.font='bold 66px sans-serif';ctx.fillText('LANE',128,y+84);
+-      for(const z of [1.65,2.15,2.55]){const y=2048*((z-1.35)/(zEnd-1.35));ctx.beginPath();ctx.moveTo(128,y-45);ctx.lineTo(60,y+35);ctx.lineTo(128,y+2);ctx.lineTo(196,y+35);ctx.closePath();ctx.fill();}
++      for(const z of [1.65,2.15,2.70]){const y=2048*((z-1.35)/(zEnd-1.35));ctx.beginPath();ctx.moveTo(128,y-45);ctx.lineTo(60,y+35);ctx.lineTo(128,y+2);ctx.lineTo(196,y+35);ctx.closePath();ctx.fill();}
+       const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(positions,3));geo.setAttribute('uv',new T.Float32BufferAttribute(uv,2));geo.setIndex(indices);geo.computeVertexNormals();const tex=new T.CanvasTexture(c);tex.colorSpace=T.SRGBColorSpace;
+       const mesh=new T.Mesh(geo,new T.MeshBasicMaterial({map:tex,side:T.DoubleSide}));mesh.name=kind+'-boundary-derived-floor-print';mesh.userData.collision=false;g.add(mesh);
+     }

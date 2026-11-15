@@ -1,0 +1,13 @@
+{
+  "status": "final diagnostic complete",
+  "files": {
+    "README.md": "8d789e1552991aac831e67d5a3282ff0d8f2792c4de018e8abf5f8c7151ec3c5",
+    "summary.json": "df0ba2d52d0ce8dbf590bbe0846fb1a451630bdf2584750a673688a1959d1a1c",
+    "stop75-findings.md": "701c1c772b27d93c13c602b20d4c9e8c27b134e83fd25896e90be7ecd3c842fb",
+    "stop75-summary.json": "b5676115289158f0f55bcbf57b726f1984bc5c5effdf1f451a6f6ae3fce8f244",
+    "stop75-manifest.json": "366138d08895c5e138b5ae3e2642874c76d4ad7af3f2b202c58b8f731de15f25",
+    "stop75.mjs": "34407d11146f8cebd0e2fefb66228027ade5fae46c714c2f45e956220dba5bd3",
+    "stop75-summary.py": "84ec519d11e8843107d1fbbd6c0ade23abb329e51fe9e37540726d22fed520c2",
+    "candidate-stop75-contacts.json": "b7eb2a2d5f3df821e24ba23670ff18d4b5a61a3df1e04a49ecd39b14ca1ccefc"
+  }
+}

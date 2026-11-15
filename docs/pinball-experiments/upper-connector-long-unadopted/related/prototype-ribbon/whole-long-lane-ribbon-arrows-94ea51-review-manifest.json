@@ -1,0 +1,145 @@
+{
+  "sourceSHA256": "ea806409896104d6f6a3ce75956c8b343bd7376a7da98cb877f854a693ab7cb1",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "189f79589a889d41c8f8f8e52c6ecd84085aac75e4899d1514162969b1562438",
+      "bytes": 2314
+    },
+    {
+      "path": "baseline-sources.json",
+      "sha256": "8b3e8f5625cb124ac63f2ed873cee017603f3e76717cb16f1975b638c901b3fa",
+      "bytes": 340954
+    },
+    {
+      "path": "physics-check/baseline-physics-public.json",
+      "sha256": "4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2",
+      "bytes": 2300360
+    },
+    {
+      "path": "physics-check/candidate-physics-public.json",
+      "sha256": "4b7dc43b898f4e1848ba2e81fb8e95aca55efd6377609bf90cd00c625fde59f2",
+      "bytes": 2300360
+    },
+    {
+      "path": "physics-check/evidence.json",
+      "sha256": "2547e3bbec5765746af3fcbba533bb7c4003041bd8f7f978cb8457d5651ecf49",
+      "bytes": 339
+    },
+    {
+      "path": "physics-check/served-candidate-sources.json",
+      "sha256": "6b7b49e92d76c64989e6b777c3fbbee4e9f1f34d386c3f994e7981cea381eef7",
+      "bytes": 339529
+    },
+    {
+      "path": "physics-check.cjs",
+      "sha256": "375b8dea0945f8b372237b5cb97c8f658cf9a987606e791b312441a8506ad867",
+      "bytes": 3449
+    },
+    {
+      "path": "physics-check.log",
+      "sha256": "911bcf3f27e92176704235201f43a136fe2f8e3abe10f46361c8300dcdbb1f8f",
+      "bytes": 148
+    },
+    {
+      "path": "preview-final/baseline-installed-10.png",
+      "sha256": "277310a936a8359ca81c3eae1cc8584e30bd62aa38cb0df18767803189facd53",
+      "bytes": 434653
+    },
+    {
+      "path": "preview-final/baseline-installed-45.png",
+      "sha256": "ddf869049fbbb502d9783d383f86adb9e3e31cf478da472879e7d11a290e5f42",
+      "bytes": 783651
+    },
+    {
+      "path": "preview-final/baseline-installed-90.png",
+      "sha256": "3487e82cd587703e809f562e7db7202ab6cb0707277aa896cfd211a465a6eb75",
+      "bytes": 660978
+    },
+    {
+      "path": "preview-final/baseline-lower-closeup.png",
+      "sha256": "46537e1ebedb2401620fa7156ef0efff46e5e4f659e4968898a1f1a8298a9030",
+      "bytes": 822162
+    },
+    {
+      "path": "preview-final/baseline-lower-side.png",
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e",
+      "bytes": 110012
+    },
+    {
+      "path": "preview-final/baseline-lower-underside.png",
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49",
+      "bytes": 86219
+    },
+    {
+      "path": "preview-final/baseline-mobile-390.png",
+      "sha256": "3f40f7c29a93694996a4e535c5ef3f601984d73a1bca68bbcfc6f893bac5f323",
+      "bytes": 266667
+    },
+    {
+      "path": "preview-final/candidate-installed-10.png",
+      "sha256": "2a698734de4921af096d08cbe218f6fa580af2b788efdb1c87229e3d661d3727",
+      "bytes": 434703
+    },
+    {
+      "path": "preview-final/candidate-installed-45.png",
+      "sha256": "f755f791ffebfe8576c0752c9b87b07a1b7e5a1ae9c75c26a1ffb54438ad3d50",
+      "bytes": 783616
+    },
+    {
+      "path": "preview-final/candidate-installed-90.png",
+      "sha256": "a1f1b6704bd8aaf976285841a071e296e3f4390b1d6cbefc194114ee6cb72d03",
+      "bytes": 660955
+    },
+    {
+      "path": "preview-final/candidate-lower-closeup.png",
+      "sha256": "274659a3a6d1dee20c174eb15571677c0c8a7055aa7d6cbccdb5531f863fc7d7",
+      "bytes": 822382
+    },
+    {
+      "path": "preview-final/candidate-lower-side.png",
+      "sha256": "97102b16cccddda7f37c43bdff69565d93c9162fde1bdcc8f2492e89c8b7d85e",
+      "bytes": 110012
+    },
+    {
+      "path": "preview-final/candidate-lower-underside.png",
+      "sha256": "e2dcfed124fcfc81dce3cdb0229dbe69233c6bcc994465a9dfabc4c9e517cb49",
+      "bytes": 86219
+    },
+    {
+      "path": "preview-final/candidate-mobile-390.png",
+      "sha256": "7f5934d6aae93a673bd53d10a61783d7f9a56b0698b7d721afd3ba7f72a090aa",
+      "bytes": 266682
+    },
+    {
+      "path": "preview-final/evidence.json",
+      "sha256": "73c8bbfaa312f95b805008ca0a495d2918bd261290904a5b2565bb7b2463963c",
+      "bytes": 1034
+    },
+    {
+      "path": "preview-final/served-candidate-sources.json",
+      "sha256": "6b7b49e92d76c64989e6b777c3fbbee4e9f1f34d386c3f994e7981cea381eef7",
+      "bytes": 339529
+    },
+    {
+      "path": "review-summary.json",
+      "sha256": "82d04d58801f9ba59186ae5ff229650f97883f3eaaf08bc1da2b294fc1bef4c8",
+      "bytes": 1508
+    },
+    {
+      "path": "sources.json",
+      "sha256": "ea806409896104d6f6a3ce75956c8b343bd7376a7da98cb877f854a693ab7cb1",
+      "bytes": 340998
+    },
+    {
+      "path": "visual.cjs",
+      "sha256": "56aa4a6017173c48727919fec4e050b64a4061357a0567385565e78687477cec",
+      "bytes": 4791
+    },
+    {
+      "path": "visual.log",
+      "sha256": "3ca68d58d21a1198114b7e80c404956aa456236768042803c7389a3f51506d87",
+      "bytes": 843
+    }
+  ]
+}

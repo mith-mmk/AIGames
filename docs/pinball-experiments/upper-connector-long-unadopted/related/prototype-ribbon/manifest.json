@@ -1,0 +1,26 @@
+[
+  {
+    "stage": "whole-long-lane-ink-94ea51",
+    "sourceSHA256": "7bc02bd0d716ceadc0152991dfc70ce03aedef56768dbb2a7ca301793c66a665",
+    "patch": "whole-long-lane-ink-94ea51.patch",
+    "patchSHA256": "b85ce48abe4a009e8030b6d4c8d8d21688e35772f542f329607fee1318e49d70",
+    "review": "artifacts/pinball/whole-long-lane-ink-94ea51/README.md",
+    "imagesManifest": "artifacts/pinball/whole-long-lane-ink-94ea51/review-manifest.json"
+  },
+  {
+    "stage": "whole-long-lane-ribbon-94ea51",
+    "sourceSHA256": "8b3e8f5625cb124ac63f2ed873cee017603f3e76717cb16f1975b638c901b3fa",
+    "patch": "whole-long-lane-ribbon-94ea51.patch",
+    "patchSHA256": "206464e13281ca74632d1a40f3f38b2e7c93edd9119bbdb53db218fa85eaa4e0",
+    "review": "artifacts/pinball/whole-long-lane-ribbon-94ea51/README.md",
+    "imagesManifest": "artifacts/pinball/whole-long-lane-ribbon-94ea51/review-manifest.json"
+  },
+  {
+    "stage": "whole-long-lane-ribbon-arrows-94ea51",
+    "sourceSHA256": "ea806409896104d6f6a3ce75956c8b343bd7376a7da98cb877f854a693ab7cb1",
+    "patch": "whole-long-lane-ribbon-arrows-94ea51.patch",
+    "patchSHA256": "f5250aeaeed503fd5a3124d9d983654dbc1f96fbaf97d8ce37db4884aea47256",
+    "review": "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/README.md",
+    "imagesManifest": "artifacts/pinball/whole-long-lane-ribbon-arrows-94ea51/review-manifest.json"
+  }
+]
