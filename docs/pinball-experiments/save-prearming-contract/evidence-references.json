@@ -1,0 +1,57 @@
+[
+  {
+    "path": "artifacts/pinball/save-safety-contract-8e73a0a/README.md",
+    "bytes": 8593,
+    "sha256": "fd16df3f5cfe2151d9183de596d0a4ad678a309c3ddcb305b92be91a2a40af07"
+  },
+  {
+    "path": "artifacts/pinball/save-safety-contract-8e73a0a/analyze.log",
+    "bytes": 359,
+    "sha256": "2e04f4a4dfde8ebdcd89b3c4287edb69a3d1ab7e32269e1665732d148544350c"
+  },
+  {
+    "path": "artifacts/pinball/save-safety-contract-8e73a0a/analyze.py",
+    "bytes": 5815,
+    "sha256": "4fa65e2eb8d6b046dac3b1ae8db4d4a92f06c74e3ac9df5ade0f4ff5f44afbde"
+  },
+  {
+    "path": "artifacts/pinball/save-safety-contract-8e73a0a/earning-observations.json",
+    "bytes": 758792,
+    "sha256": "e12b5ddfcdd20025a5781854f122797a9e38aee7b20763f893c402de20d2b38f"
+  },
+  {
+    "path": "artifacts/pinball/save-safety-contract-8e73a0a/loader.mjs",
+    "bytes": 948,
+    "sha256": "f9d2ffb9ae7ddf7024f05e5b6d24c6714f37ab10cd5ab021c04bb45b31736eb4"
+  },
+  {
+    "path": "artifacts/pinball/save-safety-contract-8e73a0a/natural-comparison.json",
+    "bytes": 278,
+    "sha256": "69a29d123b145f164f5f483ab550c3fd10aa435a369f1c7cf2b8b272d067f924"
+  },
+  {
+    "path": "artifacts/pinball/save-safety-contract-8e73a0a/natural54.json",
+    "bytes": 39049,
+    "sha256": "c4c5469ea2ec8270e71dd2398e73ccee16793df2c488f8fdedf1c7093c181370"
+  },
+  {
+    "path": "artifacts/pinball/save-safety-contract-8e73a0a/observe-earning.mjs",
+    "bytes": 2871,
+    "sha256": "d97aa9134bbd88af16c483a50add8e4e9da6eed612b8f6fe1bfb6b81374d829c"
+  },
+  {
+    "path": "artifacts/pinball/save-safety-contract-8e73a0a/observe.log",
+    "bytes": 340,
+    "sha256": "da464b521d054cc3270e9cd94d1fa51f2e611d5259f840f6492b3adf662155ef"
+  },
+  {
+    "path": "artifacts/pinball/save-safety-contract-8e73a0a/sources.json",
+    "bytes": 334879,
+    "sha256": "fe4e453fc1da2cd775ba4908e98a42fce29e7e787a8a22a2ae7087918b623fdd"
+  },
+  {
+    "path": "artifacts/pinball/save-safety-contract-8e73a0a/timing-and-source-evidence.json",
+    "bytes": 38598,
+    "sha256": "639b8152dcbe4433e4172e113b3e018f432b8b9d62bcb3df92be8a4e4ce84461"
+  }
+]

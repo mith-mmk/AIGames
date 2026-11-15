@@ -1,0 +1,24 @@
+{
+  "sourceMapSHA256": "fe4e453fc1da2cd775ba4908e98a42fce29e7e787a8a22a2ae7087918b623fdd",
+  "observationSHA256": "e12b5ddfcdd20025a5781854f122797a9e38aee7b20763f893c402de20d2b38f",
+  "evidenceSHA256": "639b8152dcbe4433e4172e113b3e018f432b8b9d62bcb3df92be8a4e4ce84461",
+  "externalInputs": [
+    {
+      "path": "docs/pinball-experiments/save-vertical-fork-study/payload/sources.json.gz",
+      "sha256": "68ad2f837042246f18006b5dabec0f2f3628e16379a8290f20ed8745e2978ff7"
+    },
+    {
+      "path": "docs/pinball-experiments/save-vertical-fork-study/evidence/result.json",
+      "sha256": "12a58daa57fc615e5da537cf31fae946adadce9854cfc5bbb54fd967caa6e7f9"
+    },
+    {
+      "path": "docs/pinball-experiments/save-pocket-preflight/natural/observations.json.gz",
+      "sha256": "317bc51d421e238bce9cfd33f88cfdbae52cff6e7762424dbf6b4dd02f53ed41"
+    },
+    {
+      "path": "docs/pinball-experiments/save-pocket-preflight/natural/natural54.json",
+      "sha256": "c4c5469ea2ec8270e71dd2398e73ccee16793df2c488f8fdedf1c7093c181370"
+    }
+  ],
+  "status": "Exact source/observation restoration and byte-identical offline evidence reproduction passed; observer syntax checked. Natural54 was not rerun during restore validation."
+}

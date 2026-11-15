@@ -1,0 +1,1204 @@
+{
+  "scope": "Offline source/window analysis only. No geometry changes, gameplay runs, actuator or power tests. Linear within-step crossing estimates are not safe actuation deadlines. Endpoint-empty intervals do not prove continuously safe finite-time deployment.",
+  "cases": [
+    {
+      "ordinal": 18,
+      "saveTick": 7110,
+      "firstRecordedTick": 6990,
+      "chargeValuesBeforeSave": [
+        1
+      ],
+      "ballNumbersBeforeSave": [
+        3
+      ],
+      "earningTime": "Not located by the short window alone; exact independent observation is included in actualEarningObservation.",
+      "chargePresentAtLeastSecondsBeforeSave": 1.0,
+      "firstSampledDeploymentSweepOccupancy": {
+        "tick": 7109,
+        "stage": "after",
+        "snapshot": {
+          "p": {
+            "x": -2.1664466857910156,
+            "y": 0.16961441934108734,
+            "z": 3.415893077850342
+          },
+          "v": {
+            "x": 0.7330240607261658,
+            "y": -3.7215686088387656e-09,
+            "z": 5.075311183929443
+          },
+          "w": {
+            "x": 38.27774429321289,
+            "y": -37.4687614440918,
+            "z": -5.100742816925049
+          },
+          "ball": 3,
+          "charge": 1,
+          "phase": "playing",
+          "ramps": 0
+        },
+        "occupiedPart": "inner-strike-pad"
+      },
+      "observedPrefixUntilFirstOccupiedSeconds": 0.9916666666666667,
+      "z3_32Crossing": {
+        "tick": 7107,
+        "withinStepFraction": 0.7304413234621406,
+        "interpolatedTimeTicks": 7107.730441323462,
+        "p": {
+          "x": -2.178096222484655,
+          "y": 0.16964890322870316,
+          "z": 3.32
+        },
+        "v": {
+          "x": 0.3549238957633551,
+          "y": 3.7215686088387656e-09,
+          "z": 5.073449909021755
+        }
+      },
+      "faceSphereFrontContactPlaneCrossing": {
+        "tick": 7109,
+        "withinStepFraction": 0.7425819064843514,
+        "interpolatedTimeTicks": 7109.742581906485,
+        "p": {
+          "x": -2.167895033261508,
+          "y": 0.16961812475142385,
+          "z": 3.4050000000000002
+        },
+        "v": {
+          "x": 0.7015664464943191,
+          "y": -1.8055704164888464e-09,
+          "z": 5.075817636038707
+        }
+      },
+      "interpolatedLeadFromZ3_32ToFaceSeconds": 0.01676783819185251,
+      "saveBeforeImpulse": {
+        "p": {
+          "x": -2.160506010055542,
+          "y": 0.16959786415100098,
+          "z": 3.4583773612976074
+        },
+        "v": {
+          "x": 0.7152095437049866,
+          "y": -3.7215686088387656e-09,
+          "z": 5.10946798324585
+        },
+        "w": {
+          "x": 38.60857009887695,
+          "y": -37.42198181152344,
+          "z": -5.404322624206543
+        },
+        "ball": 3,
+        "charge": 1,
+        "phase": "playing",
+        "ramps": 0
+      }
+    },
+    {
+      "ordinal": 38,
+      "saveTick": 7766,
+      "firstRecordedTick": 7646,
+      "chargeValuesBeforeSave": [
+        1
+      ],
+      "ballNumbersBeforeSave": [
+        3
+      ],
+      "earningTime": "Not located by the short window alone; exact independent observation is included in actualEarningObservation.",
+      "chargePresentAtLeastSecondsBeforeSave": 1.0,
+      "firstSampledDeploymentSweepOccupancy": {
+        "tick": 7765,
+        "stage": "after",
+        "snapshot": {
+          "p": {
+            "x": -2.1572952270507812,
+            "y": 0.1699511706829071,
+            "z": 3.435556173324585
+          },
+          "v": {
+            "x": 0.7875193953514099,
+            "y": 3.7215686088387656e-09,
+            "z": 4.4487104415893555
+          },
+          "w": {
+            "x": 33.19956588745117,
+            "y": -39.33404541015625,
+            "z": -4.047231197357178
+          },
+          "ball": 3,
+          "charge": 1,
+          "phase": "playing",
+          "ramps": 1
+        },
+        "occupiedPart": "inner-strike-pad"
+      },
+      "observedPrefixUntilFirstOccupiedSeconds": 0.9916666666666667,
+      "z3_32Crossing": {
+        "tick": 7762,
+        "withinStepFraction": 0.8359661605261598,
+        "interpolatedTimeTicks": 7762.835966160526,
+        "p": {
+          "x": -2.178770699150805,
+          "y": 0.1700185809066522,
+          "z": 3.32
+        },
+        "v": {
+          "x": 0.011370701139342625,
+          "y": -2.500642233292484e-09,
+          "z": 4.474780504401492
+        }
+      },
+      "faceSphereFrontContactPlaneCrossing": {
+        "tick": 7765,
+        "withinStepFraction": 0.17235355277008893,
+        "interpolatedTimeTicks": 7765.17235355277,
+        "p": {
+          "x": -2.1629014642744657,
+          "y": 0.1699616906407399,
+          "z": 3.4050000000000002
+        },
+        "v": {
+          "x": 0.834872870444589,
+          "y": 3.7215686088387656e-09,
+          "z": 4.407889946640597
+        }
+      },
+      "interpolatedLeadFromZ3_32ToFaceSeconds": 0.019469894935362695,
+      "saveBeforeImpulse": {
+        "p": {
+          "x": -2.150988817214966,
+          "y": 0.16993743181228638,
+          "z": 3.472837209701538
+        },
+        "v": {
+          "x": 0.733906626701355,
+          "y": -3.7215686088387656e-09,
+          "z": 4.484277248382568
+        },
+        "w": {
+          "x": 33.522987365722656,
+          "y": -39.284942626953125,
+          "z": -5.001905918121338
+        },
+        "ball": 3,
+        "charge": 1,
+        "phase": "playing",
+        "ramps": 1
+      }
+    },
+    {
+      "ordinal": 44,
+      "saveTick": 12640,
+      "firstRecordedTick": 12520,
+      "chargeValuesBeforeSave": [
+        1
+      ],
+      "ballNumbersBeforeSave": [
+        3
+      ],
+      "earningTime": "Not located by the short window alone; exact independent observation is included in actualEarningObservation.",
+      "chargePresentAtLeastSecondsBeforeSave": 1.0,
+      "firstSampledDeploymentSweepOccupancy": {
+        "tick": 12639,
+        "stage": "after",
+        "snapshot": {
+          "p": {
+            "x": -2.1324615478515625,
+            "y": 0.17002300918102264,
+            "z": 3.4394164085388184
+          },
+          "v": {
+            "x": 0.0460062175989151,
+            "y": 4.186764712699187e-09,
+            "z": 4.455475330352783
+          },
+          "w": {
+            "x": 33.612030029296875,
+            "y": 6.942911148071289,
+            "z": -0.3470701277256012
+          },
+          "ball": 3,
+          "charge": 1,
+          "phase": "playing",
+          "ramps": 1
+        },
+        "occupiedPart": "inner-strike-pad"
+      },
+      "observedPrefixUntilFirstOccupiedSeconds": 0.9916666666666667,
+      "z3_32Crossing": {
+        "tick": 12636,
+        "withinStepFraction": 0.7409793667898489,
+        "interpolatedTimeTicks": 12636.74097936679,
+        "p": {
+          "x": -2.1338539602892985,
+          "y": 0.1700963512757562,
+          "z": 3.32
+        },
+        "v": {
+          "x": 0.0461710651950251,
+          "y": 4.186764712699187e-09,
+          "z": 4.332704810813357
+        }
+      },
+      "faceSphereFrontContactPlaneCrossing": {
+        "tick": 12639,
+        "withinStepFraction": 0.06996913918293599,
+        "interpolatedTimeTicks": 12639.069969139184,
+        "p": {
+          "x": -2.132858456430641,
+          "y": 0.1700441295956356,
+          "z": 3.4050000000000002
+        },
+        "v": {
+          "x": 0.046053211907282926,
+          "y": -3.1682293339590262e-09,
+          "z": 4.420487949975347
+        }
+      },
+      "interpolatedLeadFromZ3_32ToFaceSeconds": 0.019408248103278916,
+      "saveBeforeImpulse": {
+        "p": {
+          "x": -2.132035493850708,
+          "y": 0.17000053822994232,
+          "z": 3.4767351150512695
+        },
+        "v": {
+          "x": 0.04595573619008064,
+          "y": 3.7215686088387656e-09,
+          "z": 4.493050575256348
+        },
+        "w": {
+          "x": 33.898406982421875,
+          "y": 6.934243202209473,
+          "z": -0.34671902656555176
+        },
+        "ball": 3,
+        "charge": 1,
+        "phase": "playing",
+        "ramps": 1
+      }
+    }
+  ],
+  "sourceHashes": {
+    "web/js/pinball/game-state.mjs": "faa5abf14a28219a69d3242571d10f028d7137fd53ed2ea419b8e396dfc2f626",
+    "web/js/pinball/missions.mjs": "a0502cc8db92e639b7bf626ae128e6c33abe52a1e598e79e97cbc758accb7e99",
+    "web/js/pinball/physics.mjs": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92"
+  },
+  "inputs": [
+    {
+      "path": "docs/pinball-experiments/save-pocket-preflight/natural/observations.json.gz",
+      "sha256": "317bc51d421e238bce9cfd33f88cfdbae52cff6e7762424dbf6b4dd02f53ed41"
+    },
+    {
+      "path": "docs/pinball-experiments/save-vertical-fork-study/evidence/result.json",
+      "sha256": "12a58daa57fc615e5da537cf31fae946adadce9854cfc5bbb54fd967caa6e7f9"
+    },
+    {
+      "path": "docs/pinball-experiments/save-vertical-fork-study/payload/sources.json.gz",
+      "sha256": "68ad2f837042246f18006b5dabec0f2f3628e16379a8290f20ed8745e2978ff7"
+    }
+  ],
+  "energyIllustration": {
+    "movingMassAssumedOnly": 0.08,
+    "lift": 0.27,
+    "gravityY": 97.46939904187322,
+    "raisedGravitationalEnergy": 2.1053390193044614,
+    "meaning": "Illustration only: real moving assembly mass is unassigned. Lowering can release this energy even before firing, so deployment/holding/retraction must be in the energy ledger."
+  },
+  "actualEarningObservation": {
+    "auditRecordsIdentical": {
+      "bytesEqual": true,
+      "completeJSONEqual": true,
+      "all54RecordsEqual": true,
+      "summaryEqual": true,
+      "newSHA256": "c4c5469ea2ec8270e71dd2398e73ccee16793df2c488f8fdedf1c7093c181370",
+      "baselineSHA256": "c4c5469ea2ec8270e71dd2398e73ccee16793df2c488f8fdedf1c7093c181370"
+    },
+    "earns": 8,
+    "saves": 3,
+    "tiltTransitionsObserved": 0,
+    "resetBallCallsObserved": 162,
+    "cases": [
+      {
+        "ordinal": 6,
+        "earns": [
+          {
+            "tick": 13063,
+            "event": {
+              "type": "bank",
+              "id": "contact-57"
+            },
+            "before": {
+              "p": {
+                "x": -1.5262430906295776,
+                "y": 0.17069712281227112,
+                "z": -1.818412184715271
+              },
+              "v": {
+                "x": -4.299273490905762,
+                "y": 3.2563725049783443e-09,
+                "z": -15.877320289611816
+              },
+              "w": {
+                "x": 5.4601287841796875,
+                "y": 52.90708923339844,
+                "z": 10.97668743133545
+              },
+              "ball": 3,
+              "charge": 0,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "workshop",
+                "title": "\u30b5\u30a4\u30c9\u3092\u70b9\u691c",
+                "description": "\u5de6\u53f3\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u30fb\u30d0\u30f3\u30af\u306b\u5408\u8a084\u56de\u5f53\u3066\u308b \u2192 \u5de6\u30a2\u30a6\u30c8\u30ec\u30fc\u30f3\u6551\u6e081\u56de",
+                "target": 4,
+                "bonus": 750,
+                "progress": 3,
+                "index": 2,
+                "total": 5,
+                "completed": 1,
+                "allComplete": false
+              },
+              "time": 108.86666666669937
+            },
+            "after": {
+              "p": {
+                "x": -1.5262430906295776,
+                "y": 0.17069712281227112,
+                "z": -1.818412184715271
+              },
+              "v": {
+                "x": -4.299273490905762,
+                "y": 3.2563725049783443e-09,
+                "z": -15.877320289611816
+              },
+              "w": {
+                "x": 5.4601287841796875,
+                "y": 52.90708923339844,
+                "z": 10.97668743133545
+              },
+              "ball": 3,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 0,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 108.86666666669937
+            },
+            "deploymentSweepOccupiedAtEarn": null
+          }
+        ],
+        "saves": [],
+        "carriedAcrossDrain": [],
+        "finalCharge": 1
+      },
+      {
+        "ordinal": 16,
+        "earns": [
+          {
+            "tick": 10060,
+            "event": {
+              "type": "bank",
+              "id": "contact-38"
+            },
+            "before": {
+              "p": {
+                "x": -1.5366181135177612,
+                "y": 0.17100931704044342,
+                "z": 0.570884644985199
+              },
+              "v": {
+                "x": -5.437357425689697,
+                "y": -2.791176401117923e-09,
+                "z": -27.59927749633789
+              },
+              "w": {
+                "x": -12.256372451782227,
+                "y": 32.43891906738281,
+                "z": 16.070072174072266
+              },
+              "ball": 3,
+              "charge": 0,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "workshop",
+                "title": "\u30b5\u30a4\u30c9\u3092\u70b9\u691c",
+                "description": "\u5de6\u53f3\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u30fb\u30d0\u30f3\u30af\u306b\u5408\u8a084\u56de\u5f53\u3066\u308b \u2192 \u5de6\u30a2\u30a6\u30c8\u30ec\u30fc\u30f3\u6551\u6e081\u56de",
+                "target": 4,
+                "bonus": 750,
+                "progress": 3,
+                "index": 2,
+                "total": 5,
+                "completed": 1,
+                "allComplete": false
+              },
+              "time": 83.84166666667946
+            },
+            "after": {
+              "p": {
+                "x": -1.5366181135177612,
+                "y": 0.17100931704044342,
+                "z": 0.570884644985199
+              },
+              "v": {
+                "x": -5.437357425689697,
+                "y": -2.791176401117923e-09,
+                "z": -27.59927749633789
+              },
+              "w": {
+                "x": -12.256372451782227,
+                "y": 32.43891906738281,
+                "z": 16.070072174072266
+              },
+              "ball": 3,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 0,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 83.84166666667946
+            },
+            "deploymentSweepOccupiedAtEarn": null
+          }
+        ],
+        "saves": [],
+        "carriedAcrossDrain": [],
+        "finalCharge": 1
+      },
+      {
+        "ordinal": 18,
+        "earns": [
+          {
+            "tick": 6842,
+            "event": {
+              "type": "bank",
+              "id": "contact-20"
+            },
+            "before": {
+              "p": {
+                "x": 0.948858380317688,
+                "y": 0.17010867595672607,
+                "z": -0.8514955043792725
+              },
+              "v": {
+                "x": 8.540550231933594,
+                "y": -4.186764712699187e-09,
+                "z": -23.763010025024414
+              },
+              "w": {
+                "x": 18.398048400878906,
+                "y": -38.39394760131836,
+                "z": -1.8693242073059082
+              },
+              "ball": 3,
+              "charge": 0,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "workshop",
+                "title": "\u30b5\u30a4\u30c9\u3092\u70b9\u691c",
+                "description": "\u5de6\u53f3\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u30fb\u30d0\u30f3\u30af\u306b\u5408\u8a084\u56de\u5f53\u3066\u308b \u2192 \u5de6\u30a2\u30a6\u30c8\u30ec\u30fc\u30f3\u6551\u6e081\u56de",
+                "target": 4,
+                "bonus": 750,
+                "progress": 3,
+                "index": 2,
+                "total": 5,
+                "completed": 1,
+                "allComplete": false
+              },
+              "time": 57.024999999997405
+            },
+            "after": {
+              "p": {
+                "x": 0.948858380317688,
+                "y": 0.17010867595672607,
+                "z": -0.8514955043792725
+              },
+              "v": {
+                "x": 8.540550231933594,
+                "y": -4.186764712699187e-09,
+                "z": -23.763010025024414
+              },
+              "w": {
+                "x": 18.398048400878906,
+                "y": -38.39394760131836,
+                "z": -1.8693242073059082
+              },
+              "ball": 3,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 0,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 57.024999999997405
+            },
+            "deploymentSweepOccupiedAtEarn": null
+          }
+        ],
+        "saves": [
+          {
+            "saveTick": 7110,
+            "earnTick": 6842,
+            "earnBall": 3,
+            "saveBall": 3,
+            "lagSeconds": 2.2333333333333334,
+            "beforeOriginalImpulse": {
+              "p": {
+                "x": -2.160506010055542,
+                "y": 0.16959786415100098,
+                "z": 3.4583773612976074
+              },
+              "v": {
+                "x": 0.7152095437049866,
+                "y": -3.7215686088387656e-09,
+                "z": 5.10946798324585
+              },
+              "w": {
+                "x": 38.60857009887695,
+                "y": -37.42198181152344,
+                "z": -5.404322624206543
+              },
+              "ball": 3,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 0,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 59.25833333333061
+            },
+            "legacyHorizontalEnergyBefore": 1.0647275105288443,
+            "legacyTargetHorizontalEnergy": 5.76,
+            "legacyInstantaneousHorizontalEnergyChange": 4.695272489471156
+          }
+        ],
+        "carriedAcrossDrain": [],
+        "finalCharge": 0
+      },
+      {
+        "ordinal": 23,
+        "earns": [
+          {
+            "tick": 7690,
+            "event": {
+              "type": "bank",
+              "id": "contact-30"
+            },
+            "before": {
+              "p": {
+                "x": -1.645415186882019,
+                "y": 0.16866463422775269,
+                "z": 0.6895395517349243
+              },
+              "v": {
+                "x": -8.273101806640625,
+                "y": -1.8752053847492789e-06,
+                "z": -28.38010597229004
+              },
+              "w": {
+                "x": 31.51948356628418,
+                "y": 14.103799819946289,
+                "z": 9.924055099487305
+              },
+              "ball": 3,
+              "charge": 0,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "workshop",
+                "title": "\u30b5\u30a4\u30c9\u3092\u70b9\u691c",
+                "description": "\u5de6\u53f3\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u30fb\u30d0\u30f3\u30af\u306b\u5408\u8a084\u56de\u5f53\u3066\u308b \u2192 \u5de6\u30a2\u30a6\u30c8\u30ec\u30fc\u30f3\u6551\u6e081\u56de",
+                "target": 4,
+                "bonus": 750,
+                "progress": 3,
+                "index": 2,
+                "total": 5,
+                "completed": 1,
+                "allComplete": false
+              },
+              "time": 64.09166666666374
+            },
+            "after": {
+              "p": {
+                "x": -1.645415186882019,
+                "y": 0.16866463422775269,
+                "z": 0.6895395517349243
+              },
+              "v": {
+                "x": -8.273101806640625,
+                "y": -1.8752053847492789e-06,
+                "z": -28.38010597229004
+              },
+              "w": {
+                "x": 31.51948356628418,
+                "y": 14.103799819946289,
+                "z": 9.924055099487305
+              },
+              "ball": 3,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 0,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 64.09166666666374
+            },
+            "deploymentSweepOccupiedAtEarn": null
+          }
+        ],
+        "saves": [],
+        "carriedAcrossDrain": [],
+        "finalCharge": 1
+      },
+      {
+        "ordinal": 38,
+        "earns": [
+          {
+            "tick": 5836,
+            "event": {
+              "type": "bank",
+              "id": "contact-36"
+            },
+            "before": {
+              "p": {
+                "x": -1.3561391830444336,
+                "y": 0.17056745290756226,
+                "z": -1.8373968601226807
+              },
+              "v": {
+                "x": -8.285499572753906,
+                "y": 4.186764712699187e-09,
+                "z": -21.892576217651367
+              },
+              "w": {
+                "x": -25.97603988647461,
+                "y": 16.530607223510742,
+                "z": 16.1900577545166
+              },
+              "ball": 3,
+              "charge": 0,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "workshop",
+                "title": "\u30b5\u30a4\u30c9\u3092\u70b9\u691c",
+                "description": "\u5de6\u53f3\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u30fb\u30d0\u30f3\u30af\u306b\u5408\u8a084\u56de\u5f53\u3066\u308b \u2192 \u5de6\u30a2\u30a6\u30c8\u30ec\u30fc\u30f3\u6551\u6e081\u56de",
+                "target": 4,
+                "bonus": 750,
+                "progress": 3,
+                "index": 2,
+                "total": 5,
+                "completed": 1,
+                "allComplete": false
+              },
+              "time": 48.64166666666455
+            },
+            "after": {
+              "p": {
+                "x": -1.3561391830444336,
+                "y": 0.17056745290756226,
+                "z": -1.8373968601226807
+              },
+              "v": {
+                "x": -8.285499572753906,
+                "y": 4.186764712699187e-09,
+                "z": -21.892576217651367
+              },
+              "w": {
+                "x": -25.97603988647461,
+                "y": 16.530607223510742,
+                "z": 16.1900577545166
+              },
+              "ball": 3,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 0,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 48.64166666666455
+            },
+            "deploymentSweepOccupiedAtEarn": null
+          }
+        ],
+        "saves": [
+          {
+            "saveTick": 7766,
+            "earnTick": 5836,
+            "earnBall": 3,
+            "saveBall": 3,
+            "lagSeconds": 16.083333333333332,
+            "beforeOriginalImpulse": {
+              "p": {
+                "x": -2.150988817214966,
+                "y": 0.16993743181228638,
+                "z": 3.472837209701538
+              },
+              "v": {
+                "x": 0.733906626701355,
+                "y": -3.7215686088387656e-09,
+                "z": 4.484277248382568
+              },
+              "w": {
+                "x": 33.522987365722656,
+                "y": -39.284942626953125,
+                "z": -5.001905918121338
+              },
+              "ball": 3,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 1,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 64.72499999999758
+            },
+            "legacyHorizontalEnergyBefore": 0.825894455083108,
+            "legacyTargetHorizontalEnergy": 5.76,
+            "legacyInstantaneousHorizontalEnergyChange": 4.934105544916893
+          }
+        ],
+        "carriedAcrossDrain": [],
+        "finalCharge": 0
+      },
+      {
+        "ordinal": 42,
+        "earns": [
+          {
+            "tick": 7874,
+            "event": {
+              "type": "bank",
+              "id": "contact-44"
+            },
+            "before": {
+              "p": {
+                "x": -1.7058172225952148,
+                "y": 0.17096371948719025,
+                "z": 0.7451950311660767
+              },
+              "v": {
+                "x": -15.970931053161621,
+                "y": 6.028940902069735e-07,
+                "z": -23.903932571411133
+              },
+              "w": {
+                "x": -10.139849662780762,
+                "y": 20.076223373413086,
+                "z": 17.798934936523438
+              },
+              "ball": 3,
+              "charge": 0,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "workshop",
+                "title": "\u30b5\u30a4\u30c9\u3092\u70b9\u691c",
+                "description": "\u5de6\u53f3\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u30fb\u30d0\u30f3\u30af\u306b\u5408\u8a084\u56de\u5f53\u3066\u308b \u2192 \u5de6\u30a2\u30a6\u30c8\u30ec\u30fc\u30f3\u6551\u6e081\u56de",
+                "target": 4,
+                "bonus": 750,
+                "progress": 3,
+                "index": 2,
+                "total": 5,
+                "completed": 1,
+                "allComplete": false
+              },
+              "time": 65.6249999999983
+            },
+            "after": {
+              "p": {
+                "x": -1.7058172225952148,
+                "y": 0.17096371948719025,
+                "z": 0.7451950311660767
+              },
+              "v": {
+                "x": -15.970931053161621,
+                "y": 6.028940902069735e-07,
+                "z": -23.903932571411133
+              },
+              "w": {
+                "x": -10.139849662780762,
+                "y": 20.076223373413086,
+                "z": 17.798934936523438
+              },
+              "ball": 3,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 0,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 65.6249999999983
+            },
+            "deploymentSweepOccupiedAtEarn": null
+          }
+        ],
+        "saves": [],
+        "carriedAcrossDrain": [],
+        "finalCharge": 1
+      },
+      {
+        "ordinal": 43,
+        "earns": [
+          {
+            "tick": 12583,
+            "event": {
+              "type": "bank",
+              "id": "contact-63"
+            },
+            "before": {
+              "p": {
+                "x": -1.511039137840271,
+                "y": 0.17101453244686127,
+                "z": 0.5559269189834595
+              },
+              "v": {
+                "x": -4.771978855133057,
+                "y": 7.294274269042944e-07,
+                "z": -27.534343719482422
+              },
+              "w": {
+                "x": -12.31861400604248,
+                "y": 33.10620880126953,
+                "z": 15.833430290222168
+              },
+              "ball": 2,
+              "charge": 0,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "workshop",
+                "title": "\u30b5\u30a4\u30c9\u3092\u70b9\u691c",
+                "description": "\u5de6\u53f3\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u30fb\u30d0\u30f3\u30af\u306b\u5408\u8a084\u56de\u5f53\u3066\u308b \u2192 \u5de6\u30a2\u30a6\u30c8\u30ec\u30fc\u30f3\u6551\u6e081\u56de",
+                "target": 4,
+                "bonus": 750,
+                "progress": 3,
+                "index": 2,
+                "total": 5,
+                "completed": 1,
+                "allComplete": false
+              },
+              "time": 104.86666666669619
+            },
+            "after": {
+              "p": {
+                "x": -1.511039137840271,
+                "y": 0.17101453244686127,
+                "z": 0.5559269189834595
+              },
+              "v": {
+                "x": -4.771978855133057,
+                "y": 7.294274269042944e-07,
+                "z": -27.534343719482422
+              },
+              "w": {
+                "x": -12.31861400604248,
+                "y": 33.10620880126953,
+                "z": 15.833430290222168
+              },
+              "ball": 2,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 0,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 104.86666666669619
+            },
+            "deploymentSweepOccupiedAtEarn": null
+          }
+        ],
+        "saves": [],
+        "carriedAcrossDrain": [
+          {
+            "tick": 18678,
+            "result": true,
+            "before": {
+              "p": {
+                "x": 0.6583729386329651,
+                "y": 0.16155940294265747,
+                "z": 5.093175888061523
+              },
+              "v": {
+                "x": 4.320483207702637,
+                "y": -1.0140892267227173,
+                "z": 6.428317546844482
+              },
+              "w": {
+                "x": 45.3397216796875,
+                "y": 37.5941047668457,
+                "z": -32.0888557434082
+              },
+              "ball": 2,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 0,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 155.6583333333561
+            },
+            "after": {
+              "p": {
+                "x": 0.6583729386329651,
+                "y": 0.16155940294265747,
+                "z": 5.093175888061523
+              },
+              "v": {
+                "x": 4.320483207702637,
+                "y": -1.0140892267227173,
+                "z": 6.428317546844482
+              },
+              "w": {
+                "x": 45.3397216796875,
+                "y": 37.5941047668457,
+                "z": -32.0888557434082
+              },
+              "ball": 3,
+              "charge": 1,
+              "tilted": false,
+              "phase": "ready",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 0,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 155.6583333333561
+            }
+          }
+        ],
+        "finalCharge": 1
+      },
+      {
+        "ordinal": 44,
+        "earns": [
+          {
+            "tick": 9904,
+            "event": {
+              "type": "bank",
+              "id": "contact-61"
+            },
+            "before": {
+              "p": {
+                "x": -1.6435891389846802,
+                "y": 0.1709536910057068,
+                "z": 0.6884570717811584
+              },
+              "v": {
+                "x": -9.283448219299316,
+                "y": -3.7215686088387656e-09,
+                "z": -24.828481674194336
+              },
+              "w": {
+                "x": -11.69270133972168,
+                "y": 29.160980224609375,
+                "z": 17.393205642700195
+              },
+              "ball": 3,
+              "charge": 0,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "workshop",
+                "title": "\u30b5\u30a4\u30c9\u3092\u70b9\u691c",
+                "description": "\u5de6\u53f3\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u30fb\u30d0\u30f3\u30af\u306b\u5408\u8a084\u56de\u5f53\u3066\u308b \u2192 \u5de6\u30a2\u30a6\u30c8\u30ec\u30fc\u30f3\u6551\u6e081\u56de",
+                "target": 4,
+                "bonus": 750,
+                "progress": 3,
+                "index": 2,
+                "total": 5,
+                "completed": 1,
+                "allComplete": false
+              },
+              "time": 82.54166666667842
+            },
+            "after": {
+              "p": {
+                "x": -1.6435891389846802,
+                "y": 0.1709536910057068,
+                "z": 0.6884570717811584
+              },
+              "v": {
+                "x": -9.283448219299316,
+                "y": -3.7215686088387656e-09,
+                "z": -24.828481674194336
+              },
+              "w": {
+                "x": -11.69270133972168,
+                "y": 29.160980224609375,
+                "z": 17.393205642700195
+              },
+              "ball": 3,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 0,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 82.54166666667842
+            },
+            "deploymentSweepOccupiedAtEarn": null
+          }
+        ],
+        "saves": [
+          {
+            "saveTick": 12640,
+            "earnTick": 9904,
+            "earnBall": 3,
+            "saveBall": 3,
+            "lagSeconds": 22.8,
+            "beforeOriginalImpulse": {
+              "p": {
+                "x": -2.132035493850708,
+                "y": 0.17000053822994232,
+                "z": 3.4767351150512695
+              },
+              "v": {
+                "x": 0.04595573619008064,
+                "y": 3.7215686088387656e-09,
+                "z": 4.493050575256348
+              },
+              "w": {
+                "x": 33.898406982421875,
+                "y": 6.934243202209473,
+                "z": -0.34671902656555176
+              },
+              "ball": 3,
+              "charge": 1,
+              "tilted": false,
+              "phase": "playing",
+              "mission": {
+                "id": "spin",
+                "title": "\u56de\u8ee2\u6a5f\u3092\u8d77\u52d5",
+                "description": "\u30b9\u30d4\u30ca\u30fc\u30922\u56de\u901a\u3059",
+                "target": 2,
+                "bonus": 1000,
+                "progress": 1,
+                "index": 3,
+                "total": 5,
+                "completed": 2,
+                "allComplete": false
+              },
+              "time": 105.34166666669657
+            },
+            "legacyHorizontalEnergyBefore": 0.8075846160600069,
+            "legacyTargetHorizontalEnergy": 5.76,
+            "legacyInstantaneousHorizontalEnergyChange": 4.952415383939994
+          }
+        ],
+        "carriedAcrossDrain": [],
+        "finalCharge": 0
+      }
+    ],
+    "observationSHA256": "e12b5ddfcdd20025a5781854f122797a9e38aee7b20763f893c402de20d2b38f"
+  }
+}

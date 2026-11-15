@@ -1,0 +1,3 @@
+from pathlib import Path
+import json,hashlib
+p=Path(__file__).resolve().parent;root=p.parents[2];a=p/'natural54.json';b=root/'docs/pinball-experiments/save-pocket-preflight/natural/natural54.json';new=json.loads(a.read_text());old=json.loads(b.read_text());result={'bytesEqual':a.read_bytes()==b.read_bytes(),'completeJSONEqual':new==old,'all54RecordsEqual':new['results']==old['results'],'summaryEqual':new['summary']==old['summary'],'newSHA256':hashlib.sha256(a.read_bytes()).hexdigest(),'baselineSHA256':hashlib.sha256(b.read_bytes()).hexdigest()};assert len(new['results'])==54;assert all(result[k]for k in ['bytesEqual','completeJSONEqual','all54RecordsEqual','summaryEqual']),result;(p/'natural-comparison.json').write_text(json.dumps(result,indent=2)+'\n');print(result)

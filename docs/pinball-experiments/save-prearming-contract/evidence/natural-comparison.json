@@ -1,0 +1,8 @@
+{
+  "bytesEqual": true,
+  "completeJSONEqual": true,
+  "all54RecordsEqual": true,
+  "summaryEqual": true,
+  "newSHA256": "c4c5469ea2ec8270e71dd2398e73ccee16793df2c488f8fdedf1c7093c181370",
+  "baselineSHA256": "c4c5469ea2ec8270e71dd2398e73ccee16793df2c488f8fdedf1c7093c181370"
+}
