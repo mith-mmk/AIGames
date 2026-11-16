@@ -1,0 +1,8 @@
+Render budget { drawCalls: 600, triangles: 484148 }
+Unassisted continuous game {
+  phase: 'gameover',
+  ballNumber: 3,
+  launches: 3,
+  seconds: 24.891666666666666
+}
+PASS: actual physics launch, input, pause, restart, mobile, blur, context restoration, reload
