@@ -1,3 +1,4 @@
+import { pinballFrameDelta } from "./frame-time.mjs";
 import { PinballSound } from "./sound.mjs";
 import { PinballFeedback } from "./feedback.mjs";
 import { BumperEffects } from "./bumper-effects.mjs";
@@ -244,11 +245,12 @@ export class PinballTablePreview {
     this.canvas.dataset.ball = state.ballNumber;
   }
   frame(time) {
-    const dt = this.last ? Math.min((time - this.last) / 1000, 0.05) : 0;
+    const simulationDt = pinballFrameDelta(time, this.last);
+    const dt = Math.min(simulationDt, .05); // Keep short presentation effects visible.
     this.last = time;
     if (this.game) {
       if(this.game.state.phase === "ready") this.game.setPlungerPull(this.plunger.update(performance.now()));
-      this.game.step(dt, { left: this.state.left, right: this.state.right });
+      this.game.step(simulationDt, { left: this.state.left, right: this.state.right });
       const p = this.game.ballPosition;
       this.ball.position.set(p.x, p.y, p.z);
       const hits=this.game.takeVisualHits();
