@@ -1,0 +1,23 @@
+{
+  "originalScript": "artifacts/pinball/swept-bumper-browser-04a4939/play.cjs",
+  "originalScriptSha256": "2ca4e4741d4ed1214a6ad30f09ccdce0cfa592235b79623a42f10a7bed9dfd98",
+  "loaderSource": "artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs",
+  "files": {
+    "served-source.json": "53dd70c02919316e2e2d8b95f5c94e4a423486a0fd553b2b1f979ef308567fc9",
+    "candidate-physics.mjs": "5b349af3c7ea61b273b1b0b3dacc02002ad2e14974cc91d16b052ef946fb9b6b",
+    "bumper-summary.json": "929336aebe5b7a7072eb38971704fb18e587224ba9ac6fadb8bcfde0f45e4c61",
+    "mobile-restarted.png": "9f2cc23817badb85ee8567a50f9fd0f923e37a3a5d84a1a07db75985ce09cbcd",
+    "p1-d44-contacts.json.gz": "da7d484f4778f36a62289eb15358e2b171a6966b8b94109f841a7352caee3808",
+    "swept-loader.mjs": "98e48c273174603c0716e764b329e79cacc3500566c882b493198924f849b900",
+    "mobile-playing.png": "216d6edcac36b1d19b12d76dcff8c0925caba952b06bf353e154f9b930fcfbd0",
+    "results.json": "2704a0fb25f2c96ec5c97b30665bd8fa49ef97ed780f55123b4dc4481397346c",
+    "mobile.json": "5de1ab01a7711c135c2d5afbd70136d7b5c6d194ae37716e664da0b60d9d7149",
+    "replay.cjs": "240cf7ec3ae2504962ed1dd1dc8c0ff99d942ea62e06a8ceea769cfb91c9357d",
+    "README.md": "ee9726d27e47959a736f86c01c4af4e0dc83eb3fdc5b2c8a7899933b77e4e0fc",
+    "p1-d44-contact-bumper.png": "75377dae67b2478b1cb709ba82c9705c53bad0c204dcb297881cf2867ab38829",
+    "p0.75-d44-contact-bumper.png": "4067cac691f203ec321bf535fc86d2907f9321f1f50646d6a451d33c23192210",
+    "p0.75-d44-contacts.json.gz": "33396cb792b3887ee299bd48f9ce44506f8f3426d7c102d02646ee4d56b11240",
+    "p0.75-d44-samples.json.gz": "b62f1253bf44b733794bd60c9580353ee3a183c2d67c9a9560e5c76293a3feaf",
+    "p1-d44-samples.json.gz": "d0b4738a37f6ceb4bc081ff65b1c32cc2375407176a7462e520d035ef5713d90"
+  }
+}

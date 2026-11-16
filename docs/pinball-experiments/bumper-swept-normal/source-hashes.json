@@ -1,0 +1,7 @@
+{
+  "web/js/pinball/physics.mjs": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92",
+  "web/js/pinball/layout.mjs": "1c9860b284831e46af2ddde75476c9563e064b29c38d84bb5df812f7366de609",
+  "artifacts/pinball/bumper-refire-cause-20261116/loader.mjs": "da3a0ed75804908f2719fee586f8d2445778dfbf2dc6736efe80134e8fb6a5fe",
+  "artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs": "98e48c273174603c0716e764b329e79cacc3500566c882b493198924f849b900",
+  "artifacts/pinball/bumper-refire-cause-20261116/diagnostic.mjs": "be3b298f74b705d119ccc8bbf9e670e085630e170a7da04c2de0e19599e2234b"
+}

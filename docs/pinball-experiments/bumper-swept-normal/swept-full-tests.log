@@ -1,0 +1,410 @@
+(node:15325) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ bumper common mounting plate is below the full-size board and connects the coil bracket (20.142791ms)
+✔ bumper plate has real through holes and separate bearing washers and seated screw heads (7.793792ms)
+✔ bumper switch stem and leaf clear the mounting slot throughout directional skirt motion (1692.832209ms)
+✔ bumper moving yokes stay separated from plate and fixed mounts through full stroke (8.576333ms)
+✔ bumper bracket fillet welds intersect both fixed plate and bracket (13.4805ms)
+(node:15326) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ play-facing solid cabinet backing and cap match actual collider bounds (186.823542ms)
+✔ visible side and rear faces and cap agree with solid rays without an invisible upper wall (107.349667ms)
+✔ cabinet cap retains flush seats, hex heads and enclosed shanks (56.91725ms)
+(node:15327) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ installed board fasteners retain exact original mesh topology, positions and open washer contacts (146.690958ms)
+✔ four accessible left board mounts physically contact clear incoming balls without resets (461.102583ms)
+✔ physical shooter rail excludes the three historical right fastener starts (28.062667ms)
+(node:15328) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ MechanicalFlipper: finite standalone geometry, motion and owned-resource cleanup (76.206375ms)
+✔ MechanicalBumper: finite standalone geometry, motion and owned-resource cleanup (4.682709ms)
+✔ MechanicalPlunger: finite standalone geometry, motion and owned-resource cleanup (39.277542ms)
+✔ MechanicalSling: finite standalone geometry, motion and owned-resource cleanup (22.917917ms)
+✔ MechanicalTarget: finite standalone geometry, motion and owned-resource cleanup (6.85175ms)
+✔ MechanicalRamp: finite standalone geometry, motion and owned-resource cleanup (83.900625ms)
+✔ MechanicalWireform: finite standalone geometry, motion and owned-resource cleanup (44.134834ms)
+✔ MechanicalCabinet: finite standalone geometry, motion and owned-resource cleanup (75.660125ms)
+✔ mechanical model invalid scalar dimensions are rejected (0.293459ms)
+✔ cabinet inspection visibility survives production static batching (133.56975ms)
+✔ sling silver cover, gold skirt and corner lamps retain functional rubber/kicker assembly (26.666541ms)
+✔ bumper lens and bounded internal lamp provide warm light without extra shadows (8.680542ms)
+(node:15329) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ feedback reads accepted events once without changing scores (0.802417ms)
+✔ feedback milestone and held flipper edges are bounded (0.104458ms)
+(node:15330) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ flipper entire fixed actuator now clears the board and has four connected mounting stacks (74.476667ms)
+✔ flipper spacers avoid fixed coil hardware and complete crank-link stroke (53.248458ms)
+✔ flipper board holes and mounting bolts are coaxial with real clearance (61.067917ms)
+✔ flipper mounting frame clears installed cabinet solid bounds (92.0825ms)
+✔ flipper lowered actuator keeps owned moving meshes live after production batching (121.688208ms)
+(node:15331) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ rigid animation preserves Chappy's detail and stays within 35 meshes (53.000333ms)
+✔ pause freezes, reduced motion suppresses, restart resets, idle is playing-only (36.88175ms)
+✔ room forwards both update contracts and reset aliases (14.797083ms)
+(node:15332) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ five bounded missions award base points and each completion bonus exactly once (0.606791ms)
+✔ duplicate, invalid, paused and ready events cannot progress missions or score (0.078042ms)
+✔ mission progress and deduplication survive drains and shooter return; restart resets everything (0.073958ms)
+✔ lane mission counts new traversals even if a lane was lit before the mission (0.054208ms)
+✔ target mission grants exactly one left save independent of center save (0.09125ms)
+✔ bumper challenge earns x2 after five hits; varied mechanisms earn x3 starting with the next hit (0.095625ms)
+✔ multipliers never multiply mission or lane-set bonuses and saves do not progress challenges (0.051375ms)
+✔ duplicate and paused events cannot advance multiplier and weak returns preserve both challenges (0.056542ms)
+✔ drain, TILT and restart reset multiplier while preserving story progress between balls (0.069542ms)
+(node:15333) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ straight structural tubes retain endpoints/radius without redundant axial tessellation (3.544459ms)
+✔ installed shooter roof uses three closed capsule stocks on the existing physical axes (602.983041ms)
+✔ installed rollover bars are closed stocks on actual capsule axes and retain eight original mounts (564.624083ms)
+(node:15334) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ legacy mini bumper pocket is removed for reference standups (0.944083ms)
+✔ earned side kickback reverses an outlane descent once, uncharged still drains (1589.034417ms)
+✔ out-of-order or ground ramp contacts never count a complete traversal (29.463583ms)
+✔ complete physical ramp awards exactly once and only after its exit lip (540.341458ms)
+✔ inlane switch scores only a fresh real crossing, not sitting or pausing (46.697875ms)
+✔ side coils are bounded, horizontal and stronger than their former impulse (28.550541ms)
+✔ visual bumper notifications are accepted-contact-only, bounded and restart clears (21.593833ms)
+✔ bumper notification uses earned contact multiplier, not mission bonus (17.945791ms)
+(node:15335) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ printed IN bands mirror the verified centerline and add no raised route (0.969416ms)
+✔ larger lane labels follow the open passages without printing over rails (30.001125ms)
+✔ actual left IN canvas arrow maps to the intended table direction (1.086208ms)
+✔ actual left OUT canvas arrow maps to the intended table direction (0.166334ms)
+✔ actual right IN canvas arrow maps to the intended table direction (0.155708ms)
+✔ actual right OUT canvas arrow maps to the intended table direction (0.103916ms)
+(node:15336) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ archived art ramp control points stay inside table (0.722583ms)
+✔ bumpers have ball clearance from each other (0.111291ms)
+✔ preview initializes, clamps long frames and releases inputs (0.150708ms)
+✔ both flippers rise toward negative-Z playfield when pressed (0.096208ms)
+✔ archived art hardware preserves its original clearance (2.593875ms)
+✔ archived preview curve clears archived sling art (37.365708ms)
+✔ reference triangle retains side passages and asymmetric target banks (1.932708ms)
+(node:15337) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ sling rubber clears the root-to-center shot corridor on both sides (2.736708ms)
+✔ both inlanes feed the flippers at three speeds rather than bypass their pivots (5524.070792ms)
+✔ genuine outside lanes still drain without a flipper or invisible rescue (108.796292ms)
+✔ inside heel approach cannot leak sideways past the root cheek (121.154333ms)
+✔ restored lane mouths pass descending balls without live position rescue (2411.082541ms)
+✔ actual outlane entrance has full ball clearance and mirrored shared paths (0.201375ms)
+✔ historical fixed wire drop is now inside the real tail and is not a valid start (22.064083ms)
+✔ side wire exit drops into the real IN guide and held flipper without rescue (703.175292ms)
+✔ five adjacent redesigned bat shots traverse S, capture and refire the same ball (3815.372ms)
+✔ old IN approach strikes the outward sling then drains or permits a releasable cradle (1402.480042ms)
+✔ IN floor stripe stays clear of the real rails and sling rubber (1.608791ms)
+✔ current outside wire outlet feeds the held left cradle at three speeds (958.051833ms)
+✔ lane edge fixtures distinguish genuine mouths from initial rail penetration (15.048167ms)
+✔ offset slow and fast lane entries and lateral approaches remain physical and releasable (14004.452375ms)
+(node:15338) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ lower rails merge six paths with all existing support geometry retained (36.805167ms)
+✔ each lower stock primitive is closed and matches its actual installed collider (238.916458ms)
+(node:15339) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ tapered contact hull matches rubber height and rounded profile (1.993084ms)
+✔ accepted sling and target hits fan out once without duplicate score (109.681917ms)
+✔ pull retracts actual stop and ball follows gravity without position resets (365.298708ms)
+✔ cancelled full pull cannot strand the ball behind the stop (353.96425ms)
+(node:15340) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ installed ramp has matched sheet walls, true paired rails and visible anti-trap base (93.909583ms)
+✔ support columns stay on the perimeter or shooter divider, and beams clear ground balls (57.418625ms)
+✔ production return has an actual open gap, not a hidden supporting floor (83.896709ms)
+✔ standalone paired rails support and roll a ball without any plane collider (82.349084ms)
+✔ all perimeter ramp supports have matching physical posts, arms, collars and feet (42.289666ms)
+✔ acrylic offset walls never fold backwards along the centerline (54.449458ms)
+✔ low base drawing ends at the same complete strip as its collider (77.364416ms)
+✔ compact low nose uses one closed shell and matching convex contact vertices (60.793542ms)
+✔ underfloor bearers, saddles and wire ties share nominal visual and contact stock (49.652042ms)
+✔ low base end cap follows its accessible convex boundary (73.937541ms)
+(node:15341) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ short supports allow eighty nonpenetrating slow wall approaches (16954.795417ms)
+(node:15342) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ nudge warns before tilt, ignores repeats, cools and resets (0.34825ms)
+✔ physical nudge never teleports or scores and paused input is ignored (98.352666ms)
+✔ tilt suppresses coils and scoring then consumes one ball, restart clears (300.091ms)
+(node:15343) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rules enforce three balls, pause and reset (1.053583ms)
+✔ real launch feeds scoring objects, not a scripted path (493.986708ms)
+✔ physical drain serves next ball and ends after third (51.879583ms)
+✔ both kinematic flippers physically drive ball upfield (160.64ms)
+✔ pause freezes simulation; resume and restart are deterministic (133.742875ms)
+✔ former left ramp wedge clears naturally without ball search (590.4645ms)
+✔ ninety varied launches drain without stuck recovery or position jumps (40115.769459ms)
+✔ twelve full three-ball sessions end without rescue (14743.509167ms)
+✔ side-wall approaches enter genuine outlanes and naturally drain when uncharged (87.496542ms)
+✔ beginner play duration remains controllable across thirty-one powers (34822.484792ms)
+✔ rules deduplicate events, complete lanes, and refill one center save (0.119209ms)
+✔ each physical top lane registers center and edge traversals only once (168.880416ms)
+✔ spinner traversal accelerates rotation once; rotation decays without score farming (18.099459ms)
+✔ charged center saver applies impulse without teleport, then allows real drain (37.121416ms)
+✔ natural shooter launch traverses a top rollover lane (72.592542ms)
+✔ outlane widths below entrance exceed ball diameter with margin (0.066083ms)
+✔ center save clears both held and returning flippers without a downstroke collision (76.02375ms)
+✔ held buttons cannot pinch the ball permanently (11019.235375ms)
+✔ twenty seeded incoming balls measure physical contact and controlled return (4852.022291ms)
+✔ both flippers cradle passively without repeated coil fire and release naturally (1103.481125ms)
+✔ release timing produces distinct aimed reflip shots on both sides (639.947625ms)
+✔ curved sling and inlane have a full ball-width passage with margin (1.388625ms)
+✔ rising shots gain energy toward the tip without exceeding the world limit (318.603125ms)
+✔ five real cradle-reflip timings traverse the S ramp, cradle again and re-fire (3231.268833ms)
+✔ both flippers can reach upper lanes and bumper routes around reference triangle (37420.038333ms)
+✔ shooter corner backing cannot retain a ball outside the bend (2031.695625ms)
+(node:15344) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ hold charges continuously, repeat cannot reset, and release fires once (0.634541ms)
+✔ drag overrides time, can reduce power, and cancellation never fires (0.11825ms)
+✔ low medium high produce distinct physical speeds and weak ball naturally returns (169.946416ms)
+(node:15345) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ missing acrylic contacts lie on real visible exterior faces without duplicating top inner or lip faces (1355.748958ms)
+✔ legal ground and rising airborne balls hit the visible acrylic exterior (578.5405ms)
+(node:15346) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ low housing is closed with the existing deck and partitioned without internal faces (14.777083ms)
+✔ generic installed rows without tangent preserve the exact housing geometry (2.665584ms)
+✔ every installed housing boundary face matches the physical strip union (139.313791ms)
+✔ low housing never projects above the actual acrylic running surface (23.345333ms)
+✔ historical positive-offset tangent start penetrates the deck; common corrected start is legal (39.935333ms)
+✔ one-strip generic housing renders both endpoint caps exactly once (1.78375ms)
+(node:15347) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ right and rear deck repairs preserve every unrelated original triangle and generic rows (12.78275ms)
+✔ repair follows route parameters at alternate sample counts and keeps a closed constant-thickness sheet (15.128583ms)
+✔ three legal zero-speed starts exit the repaired right deck pockets without rescue (958.2565ms)
+(node:15348) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ exposed ramp hardware shares exact visible triangle geometry and dimensions (161.477792ms)
+✔ legal airborne approaches contact exposed lips straps and bolts rather than pass through (843.064791ms)
+(node:15349) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rear descent preserves endpoint C1 XZ and gravity-ratio datum (14.209375ms)
+✔ real sheet handoff clears the allowed off-center paired-stock support envelope (2.667667ms)
+✔ seven legal former pocket starts exit without rescue under the unchanged solver (3548.603ms)
+(node:15350) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ experimental ramp uses continuous finite mesh and adequate channel width (6.793792ms)
+ramp-boundary {"speed":26,"offset":-0.08,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0.08,"outcome":"normal-rollback-relaunch"}
+✔ floor ball passes below rear elevated deck without being lifted (106.280917ms)
+✔ low ramp skirt blocks lateral entry instead of admitting ball under deck (39.974875ms)
+✔ elevated exit releases ball into left lower lane without teleport (76.499292ms)
+✔ 28-speed tangent approaches all complete with lateral tolerance (1159.51675ms)
+✔ 26-speed boundary shots complete honestly or roll back and relaunch normally (953.836083ms)
+✔ six unassisted launch powers leave the ramp base without permanent stalls (1982.533167ms)
+✔ ground balls approaching low base from high deck side deflect without wedging (1082.126792ms)
+✔ five adjacent real flipper timings traverse the forward S and award once without teleport (2663.742375ms)
+✔ measured ground-level flipper approaches at 28/30 traverse with lateral tolerance (1396.452542ms)
+(node:15351) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ reference cabinet includes supported backbox, speakers, apron and rear tower (70.756208ms)
+✔ score drawing is cached and uses live score plus ball number (47.323ms)
+✔ formed collection apron preserves central and outlane throats after active drain (29.649666ms)
+✔ short supported cabinet keeps collection apron within its drain opening (24.474958ms)
+✔ inner skyline is a rear-mounted relief outside live board (22.945584ms)
+(node:15352) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ reference ink registers to board, preserves context and draws reference landmarks (3.81775ms)
+✔ reference ink is deterministic and validates canvas dimensions (1.935333ms)
+(node:15353) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ reference banks have three upper wrenches, two middle wrenches and three robots (24.32925ms)
+✔ every installed reference target scores from a real front contact and identifies its moving part (448.35925ms)
+✔ target strike boxes follow declared height without raising the ground contact edge (0.228542ms)
+✔ derived contact bounds match the actual three extruded strike meshes (11.174917ms)
+✔ carrier has formed rim, separate rear plate, fixed studs and a continuous rounded mount (3.357542ms)
+✔ both captured carrier pinch positions drain without rescue (505.604583ms)
+✔ right rear carrier rail retains ball clearance from the full low support base (41.417917ms)
+✔ nine slow approaches behind the right carrier drain without rescue (2331.201792ms)
+✔ captured right target lower-edge wedge releases with the smooth carrier rail (229.706166ms)
+✔ smooth carrier contacts use the same capsule dimensions and placement as rendering (21.112583ms)
+(node:15354) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ workshop structures batch within their scenery budget and preserve QA targets (65.115ms)
+✔ workshop owns and releases its merged geometries and materials exactly once (22.870916ms)
+(node:15355) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ solid shooter rail preserves every old side vertex and adds only outward flat caps (3.721416ms)
+✔ actual octagonal rail hull matches visible side and flat-end rays without capsule inflation (98.438208ms)
+✔ six nonoverlapping ground lateral approaches contact the real external shooter rail (392.049916ms)
+(node:15356) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ initial serve and restart use the visible head contact point (184.129916ms)
+✔ returning ball settles on visible stop without teleport or consuming a ball (275.730583ms)
+✔ weak shot naturally returns to the same stop and full relaunch preserves speed (1071.961917ms)
+(node:15357) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ returned shooter ball rolls to plunger and relaunches in place without consuming a ball (207.206292ms)
+✔ normal drains still consume three balls and restart resets returned-shooter state (47.510083ms)
+✔ returned shooter contains lateral speed -3 (252.732792ms)
+✔ returned shooter contains lateral speed -1 (256.619083ms)
+✔ returned shooter contains lateral speed 1 (230.054334ms)
+✔ returned shooter contains lateral speed 3 (259.252375ms)
+✔ out-of-bounds returned ball cannot strand the game in ready (20.663709ms)
+(node:15358) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ generic sling remains DOM-free and does not own caller maps (22.669583ms)
+✔ installed left and right print changes only UV/material and remains registered after batching (302.638417ms)
+✔ standalone printed sling disposes only its owned texture exactly once (6.149458ms)
+✔ actual installed asset disposal releases both registered print textures (351.1495ms)
+(node:15368) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ no autoplay, allocation or resume without a trusted input gesture (0.994167ms)
+✔ all cabinet events have bounded short effects and unknown events are ignored (0.310875ms)
+✔ repeat rate limits and a hard voice cap prevent audio storms (0.148708ms)
+✔ mute and pause stop active voices; unmute/unpause need a gesture (0.2625ms)
+✔ saved mute and unavailable WebAudio/storage fail silently (0.282333ms)
+✔ pending resume cannot restart sound after pause or disposal (0.279583ms)
+(node:15369) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ finite surface distance distinguishes faces edges vertices and unresolved containment (2.181625ms)
+✔ closed mesh convex and cuboid interior are invalid even without boundary overlap (2.570542ms)
+✔ finite cylinder cap barrel rim and rigid transforms use independent analytic distances (0.165834ms)
+✔ capsule and ball solids reject deep interior and distinguish rounded ends (0.074333ms)
+✔ malformed closed boundaries and unknown shapes fail rather than certify starts (0.891667ms)
+✔ captured open strip reproduces solid-query false penetration without certifying reachability (36.887542ms)
+✔ captured real pillar and wall overlaps remain rejected by independent geometry (0.238542ms)
+✔ accepted c1 historical tangent overlap and corrected deck clearance remain distinguishable (68.679667ms)
+(node:15370) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ right target bank leaves a full ball-width throat beside every main bumper (0.774667ms)
+✔ low-speed balls pass the screenshot throat without rescue or position changes (411.38925ms)
+✔ twenty-one natural launches clear without target-bank stalls or position resets (6225.588125ms)
+✔ ramp crest releases a resting ball without nudge or position rescue (301.13825ms)
+✔ continuous ramp collision meshes share every route row and triangle edge without gaps (17.475958ms)
+(node:15371) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ upper rollover volumes stay in the ground lane below the elevated route (103.43725ms)
+✔ legal ground upper-lane center and edge passes award once at low and high speeds (1248.999583ms)
+✔ five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save (2836.006792ms)
+(node:15372) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ all visible wire capsule axes ends and nominal radii match installed contacts in four meshes (206.545916ms)
+✔ compatibility ramp drawing uses the same four capsule-stock rail geometries (43.1415ms)
+✔ wire pole cleanup preserves every installed vertex normal and nondegenerate face (70.172458ms)
+✔ wire retained installed capsule shells stay outward and closed (210.497958ms)
+✔ wire pole cleanup preserves distinct pole fallback and rounded nonpole faces (1.323667ms)
+✔ wire primitive ranges cover empty and mixed concatenated geometry exactly (1.122916ms)
+(node:15373) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "checks": 0,
+  "best": {
+    "gap": null
+  }
+}
+{
+  "meshChecks": 0,
+  "allParts": {
+    "gap": null
+  },
+  "lowest": []
+}
+{
+  "railSamples": 15867,
+  "meshSamples": 71659,
+  "lateralSamples": 2074,
+  "lateralClearance": 0.0928372039896206
+}
+{
+  "physicalPointGap": 0.09299470556859746,
+  "maxSegment": 0.15373067443021712,
+  "coarseGlobalLowerBound": 0.016129368353488896,
+  "continuousLowerBound": 0.09199999262741226,
+  "certifiedSegments": 464
+}
+✔ wire tail preserves prefix, endpoint, position and unit-tangent continuity (6.300792ms)
+✔ wire tail curvature and every physical offset rail progress without folds (41.283667ms)
+✔ sampled wire rails have no self or same-height pair crossing (15.639458ms)
+✔ every physical wire segment clears all visible sling solids by .025 (3980.719375ms)
+(node:15374) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ workshop scenery has finite attached geometry and stays independent of physics (71.440667ms)
+ℹ tests 224
+ℹ suites 0
+ℹ pass 224
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 153125.6995

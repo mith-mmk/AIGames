@@ -1,0 +1,5 @@
+(node:15693) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/bumper-refire-cause-20261116/swept-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+{"games":54,"finished":53,"stalled":0,"zeroScore":0,"score":188200,"ramps":48,"lanes":325,"bumpers":301,"shots":252,"seconds":3434.383333333521,"liveResets":0,"hardwareContactEvents":64,"hardwareContactTicks":660}

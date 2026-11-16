@@ -1,0 +1,18 @@
+{
+  "sourceScript": "artifacts/pinball/flipper-guard-04a4939/play.cjs",
+  "sourceScriptSha256": "86afe0fe60c1f49972b2b9f3d7376e4fba7f1dc4a187be1d79db41ec6b79a670",
+  "files": {
+    "summary.json": "4bf18c0ead30864550cfe5c64502722d2dc8d938d21dba5f2d2fcc6fe9cc477b",
+    "p1-d44-contact-flipper.png": "b32ec97c23a6d3120b790ab77b092ecb6c787b4a1b95945f82cfd4f01518223f",
+    "p1-d44-contacts.json.gz": "6d0ec22e666b292b7a5f09dc5a934c1ab64f13f863a9e795b10d0ab208c8af75",
+    "results.json": "2a01126958c9ad7feaa71cfc4eea0f85440a374c71aeeb800d66904220450cba",
+    "p1-d44-strikes.json.gz": "d96ab1a31e8e283c27093d2184f1d33684227ee1b95472c95b3744570008c7bb",
+    "replay.cjs": "86afe0fe60c1f49972b2b9f3d7376e4fba7f1dc4a187be1d79db41ec6b79a670",
+    "README.md": "1d1bcefc92975280f0970936f566e7f416042b0f07adb223fc73e6edde91e58c",
+    "p0.75-d44-strikes.json.gz": "4fa558fe553e5e9bdeeef306d4ede1871e32f6916f561522deab087a7a6834af",
+    "p0.75-d44-contact-flipper.png": "98326b784b3d93c3a866d93faecee088c8e688d2d9b198d8b8358989ac478007",
+    "p0.75-d44-contacts.json.gz": "28e0ed697b712df76f0f80540b4dc1d0dd5945a7f81b3b1b3d3c57842437097e",
+    "p0.75-d44-samples.json.gz": "e7ec22d26542261a207642790bb6aba4c5670214196f4819ae1bb714478bcb01",
+    "p1-d44-samples.json.gz": "663772101efa3c242902568e02a40d6b01a10a97f8dc4083727280cbd61d7408"
+  }
+}

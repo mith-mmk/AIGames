@@ -1,0 +1,1910 @@
+{
+  "method": "54 fixed-input three-ball sessions (repeatability depends on world creation order): six natural launch powers by nine fixed release delays; only legal launch/flipper input; catch regions relative to each layout. 180-second cap. hardwareContact fields count the shared metal/acrylic exterior collider, not individual material contacts. shots counts controller release-stage entries, not physical flipper contacts; physicsMetrics separately records actual contact/coil events. Existing target-earned saves are counted separately from prohibited live position resets. Not physical-phone or human difficulty evidence.",
+  "summary": {
+    "games": 54,
+    "finished": 53,
+    "stalled": 0,
+    "zeroScore": 0,
+    "score": 169750,
+    "ramps": 51,
+    "lanes": 299,
+    "bumpers": 287,
+    "shots": 255,
+    "seconds": 3268.6000000001663,
+    "liveResets": 0,
+    "hardwareContactEvents": 63,
+    "hardwareContactTicks": 669
+  },
+  "results": [
+    {
+      "power": 0.55,
+      "delay": 44,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 82.82500000001198,
+      "score": 6900,
+      "lanes": 0,
+      "bumpers": 9,
+      "ramps": 3,
+      "shots": 5,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 75,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 3,
+        "flipperContacts": [
+          17,
+          12
+        ],
+        "activeFlipperContacts": [
+          12,
+          10
+        ],
+        "coilImpulses": [
+          12,
+          10
+        ],
+        "upfieldReturns": 22
+      },
+      "kickbackUses": 0,
+      "sideSaveUses": 1
+    },
+    {
+      "power": 0.55,
+      "delay": 49,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 54.77499999999753,
+      "score": 2375,
+      "lanes": 4,
+      "bumpers": 3,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 6,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          8,
+          14
+        ],
+        "activeFlipperContacts": [
+          6,
+          9
+        ],
+        "coilImpulses": [
+          6,
+          9
+        ],
+        "upfieldReturns": 14
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.55,
+      "delay": 60,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 50.77499999999776,
+      "score": 1150,
+      "lanes": 2,
+      "bumpers": 1,
+      "ramps": 0,
+      "shots": 1,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 6,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          9,
+          12
+        ],
+        "activeFlipperContacts": [
+          6,
+          7
+        ],
+        "coilImpulses": [
+          6,
+          7
+        ],
+        "upfieldReturns": 12
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.55,
+      "delay": 66,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 59.824999999997246,
+      "score": 1200,
+      "lanes": 2,
+      "bumpers": 1,
+      "ramps": 0,
+      "shots": 4,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 1,
+      "hardwareContactEvents": 1,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          18,
+          12
+        ],
+        "activeFlipperContacts": [
+          9,
+          8
+        ],
+        "coilImpulses": [
+          9,
+          8
+        ],
+        "upfieldReturns": 16
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.55,
+      "delay": 68,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 49.59999999999783,
+      "score": 875,
+      "lanes": 2,
+      "bumpers": 1,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 1,
+      "hardwareContactEvents": 1,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          8,
+          14
+        ],
+        "activeFlipperContacts": [
+          6,
+          8
+        ],
+        "coilImpulses": [
+          6,
+          8
+        ],
+        "upfieldReturns": 13
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.55,
+      "delay": 69,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 56.28333333333078,
+      "score": 1350,
+      "lanes": 2,
+      "bumpers": 1,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 16,
+      "hardwareContactEvents": 4,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          11,
+          15
+        ],
+        "activeFlipperContacts": [
+          7,
+          10
+        ],
+        "coilImpulses": [
+          7,
+          10
+        ],
+        "upfieldReturns": 16
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.55,
+      "delay": 80,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 109.08333333336621,
+      "score": 3400,
+      "lanes": 2,
+      "bumpers": 1,
+      "ramps": 5,
+      "shots": 9,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 2,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 5,
+        "flipperContacts": [
+          33,
+          14
+        ],
+        "activeFlipperContacts": [
+          16,
+          9
+        ],
+        "coilImpulses": [
+          16,
+          9
+        ],
+        "upfieldReturns": 23
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.55,
+      "delay": 82,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 82.33333333334492,
+      "score": 2600,
+      "lanes": 2,
+      "bumpers": 1,
+      "ramps": 4,
+      "shots": 5,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 11,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 4,
+        "flipperContacts": [
+          18,
+          11
+        ],
+        "activeFlipperContacts": [
+          10,
+          7
+        ],
+        "coilImpulses": [
+          10,
+          7
+        ],
+        "upfieldReturns": 16
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.55,
+      "delay": 84,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 48.89999999999787,
+      "score": 950,
+      "lanes": 2,
+      "bumpers": 1,
+      "ramps": 0,
+      "shots": 1,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 6,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          9,
+          12
+        ],
+        "activeFlipperContacts": [
+          7,
+          7
+        ],
+        "coilImpulses": [
+          7,
+          7
+        ],
+        "upfieldReturns": 13
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.65,
+      "delay": 44,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 38.75833333333178,
+      "score": 1625,
+      "lanes": 0,
+      "bumpers": 4,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          3,
+          11
+        ],
+        "activeFlipperContacts": [
+          2,
+          6
+        ],
+        "coilImpulses": [
+          2,
+          6
+        ],
+        "upfieldReturns": 8
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.65,
+      "delay": 49,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 43.46666666666484,
+      "score": 2600,
+      "lanes": 3,
+      "bumpers": 7,
+      "ramps": 0,
+      "shots": 1,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          4,
+          8
+        ],
+        "activeFlipperContacts": [
+          3,
+          5
+        ],
+        "coilImpulses": [
+          3,
+          5
+        ],
+        "upfieldReturns": 8
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.65,
+      "delay": 60,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 38.01666666666515,
+      "score": 825,
+      "lanes": 0,
+      "bumpers": 2,
+      "ramps": 0,
+      "shots": 1,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 22,
+      "hardwareContactEvents": 1,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          5,
+          9
+        ],
+        "activeFlipperContacts": [
+          4,
+          5
+        ],
+        "coilImpulses": [
+          4,
+          5
+        ],
+        "upfieldReturns": 8
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.65,
+      "delay": 66,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 47.79999999999793,
+      "score": 2075,
+      "lanes": 2,
+      "bumpers": 5,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 19,
+      "hardwareContactEvents": 1,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          5,
+          12
+        ],
+        "activeFlipperContacts": [
+          4,
+          7
+        ],
+        "coilImpulses": [
+          4,
+          7
+        ],
+        "upfieldReturns": 11
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.65,
+      "delay": 68,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 39.18333333333175,
+      "score": 675,
+      "lanes": 0,
+      "bumpers": 2,
+      "ramps": 0,
+      "shots": 3,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          7,
+          11
+        ],
+        "activeFlipperContacts": [
+          4,
+          7
+        ],
+        "coilImpulses": [
+          4,
+          7
+        ],
+        "upfieldReturns": 10
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.65,
+      "delay": 69,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 45.14999999999808,
+      "score": 1025,
+      "lanes": 4,
+      "bumpers": 2,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          4,
+          11
+        ],
+        "activeFlipperContacts": [
+          3,
+          6
+        ],
+        "coilImpulses": [
+          3,
+          6
+        ],
+        "upfieldReturns": 9
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.65,
+      "delay": 80,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 63.26666666666372,
+      "score": 1875,
+      "lanes": 0,
+      "bumpers": 2,
+      "ramps": 2,
+      "shots": 5,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 2,
+        "flipperContacts": [
+          12,
+          17
+        ],
+        "activeFlipperContacts": [
+          8,
+          7
+        ],
+        "coilImpulses": [
+          8,
+          7
+        ],
+        "upfieldReturns": 14
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.65,
+      "delay": 82,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 52.05833333333102,
+      "score": 1250,
+      "lanes": 0,
+      "bumpers": 2,
+      "ramps": 0,
+      "shots": 4,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 2,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          4,
+          17
+        ],
+        "activeFlipperContacts": [
+          3,
+          9
+        ],
+        "coilImpulses": [
+          3,
+          9
+        ],
+        "upfieldReturns": 12
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.65,
+      "delay": 84,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 37.1916666666652,
+      "score": 875,
+      "lanes": 0,
+      "bumpers": 2,
+      "ramps": 0,
+      "shots": 1,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 18,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          3,
+          12
+        ],
+        "activeFlipperContacts": [
+          2,
+          6
+        ],
+        "coilImpulses": [
+          2,
+          6
+        ],
+        "upfieldReturns": 8
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.75,
+      "delay": 44,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 49.99166666666447,
+      "score": 2400,
+      "lanes": 0,
+      "bumpers": 7,
+      "ramps": 0,
+      "shots": 3,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          9,
+          10
+        ],
+        "activeFlipperContacts": [
+          6,
+          6
+        ],
+        "coilImpulses": [
+          6,
+          6
+        ],
+        "upfieldReturns": 12
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.75,
+      "delay": 49,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 47.549999999997944,
+      "score": 2300,
+      "lanes": 0,
+      "bumpers": 4,
+      "ramps": 0,
+      "shots": 1,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 18,
+      "hardwareContactEvents": 1,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          13,
+          13
+        ],
+        "activeFlipperContacts": [
+          10,
+          8
+        ],
+        "coilImpulses": [
+          10,
+          8
+        ],
+        "upfieldReturns": 17
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.75,
+      "delay": 60,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 45.49166666666473,
+      "score": 1675,
+      "lanes": 0,
+      "bumpers": 4,
+      "ramps": 0,
+      "shots": 1,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          11,
+          8
+        ],
+        "activeFlipperContacts": [
+          6,
+          6
+        ],
+        "coilImpulses": [
+          6,
+          6
+        ],
+        "upfieldReturns": 11
+      },
+      "kickbackUses": 0,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.75,
+      "delay": 66,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 146.2750000000313,
+      "score": 3525,
+      "lanes": 0,
+      "bumpers": 2,
+      "ramps": 0,
+      "shots": 35,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          108,
+          7
+        ],
+        "activeFlipperContacts": [
+          39,
+          6
+        ],
+        "coilImpulses": [
+          39,
+          6
+        ],
+        "upfieldReturns": 44
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.75,
+      "delay": 68,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 48.59166666666455,
+      "score": 1775,
+      "lanes": 0,
+      "bumpers": 4,
+      "ramps": 0,
+      "shots": 3,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          12,
+          6
+        ],
+        "activeFlipperContacts": [
+          7,
+          5
+        ],
+        "coilImpulses": [
+          7,
+          5
+        ],
+        "upfieldReturns": 12
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.75,
+      "delay": 69,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 55.133333333330846,
+      "score": 1625,
+      "lanes": 2,
+      "bumpers": 3,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          10,
+          13
+        ],
+        "activeFlipperContacts": [
+          6,
+          9
+        ],
+        "coilImpulses": [
+          6,
+          9
+        ],
+        "upfieldReturns": 14
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.75,
+      "delay": 80,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 121.91666666670976,
+      "score": 5300,
+      "lanes": 0,
+      "bumpers": 3,
+      "ramps": 7,
+      "shots": 13,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 3,
+      "hardwareContactEvents": 1,
+      "physicsMetrics": {
+        "rampTraversals": 7,
+        "flipperContacts": [
+          38,
+          12
+        ],
+        "activeFlipperContacts": [
+          18,
+          10
+        ],
+        "coilImpulses": [
+          18,
+          10
+        ],
+        "upfieldReturns": 27
+      },
+      "kickbackUses": 0,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.75,
+      "delay": 82,
+      "phase": "playing",
+      "ball": 3,
+      "seconds": 180.00000000000063,
+      "score": 6650,
+      "lanes": 0,
+      "bumpers": 1,
+      "ramps": 10,
+      "shots": 20,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 38,
+      "hardwareContactEvents": 4,
+      "physicsMetrics": {
+        "rampTraversals": 10,
+        "flipperContacts": [
+          52,
+          20
+        ],
+        "activeFlipperContacts": [
+          26,
+          14
+        ],
+        "coilImpulses": [
+          26,
+          14
+        ],
+        "upfieldReturns": 39
+      },
+      "kickbackUses": 0,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.75,
+      "delay": 84,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 41.01666666666498,
+      "score": 825,
+      "lanes": 0,
+      "bumpers": 2,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          10,
+          7
+        ],
+        "activeFlipperContacts": [
+          6,
+          5
+        ],
+        "coilImpulses": [
+          6,
+          5
+        ],
+        "upfieldReturns": 10
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.85,
+      "delay": 44,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 32.73333333333212,
+      "score": 2575,
+      "lanes": 9,
+      "bumpers": 7,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          2,
+          12
+        ],
+        "activeFlipperContacts": [
+          2,
+          5
+        ],
+        "coilImpulses": [
+          2,
+          5
+        ],
+        "upfieldReturns": 7
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.85,
+      "delay": 49,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 56.849999999997415,
+      "score": 7325,
+      "lanes": 13,
+      "bumpers": 26,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 21,
+      "hardwareContactEvents": 1,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          5,
+          14
+        ],
+        "activeFlipperContacts": [
+          4,
+          7
+        ],
+        "coilImpulses": [
+          4,
+          7
+        ],
+        "upfieldReturns": 11
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.85,
+      "delay": 60,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 46.93333333333131,
+      "score": 3775,
+      "lanes": 9,
+      "bumpers": 7,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 29,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          7,
+          10
+        ],
+        "activeFlipperContacts": [
+          4,
+          5
+        ],
+        "coilImpulses": [
+          4,
+          5
+        ],
+        "upfieldReturns": 8
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 1
+    },
+    {
+      "power": 0.85,
+      "delay": 66,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 31.78333333333217,
+      "score": 2125,
+      "lanes": 9,
+      "bumpers": 4,
+      "ramps": 0,
+      "shots": 1,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 45,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          2,
+          8
+        ],
+        "activeFlipperContacts": [
+          2,
+          4
+        ],
+        "coilImpulses": [
+          2,
+          4
+        ],
+        "upfieldReturns": 5
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.85,
+      "delay": 68,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 30.6499999999989,
+      "score": 2025,
+      "lanes": 9,
+      "bumpers": 5,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          0,
+          9
+        ],
+        "activeFlipperContacts": [
+          0,
+          5
+        ],
+        "coilImpulses": [
+          0,
+          5
+        ],
+        "upfieldReturns": 5
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.85,
+      "delay": 69,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 41.199999999998305,
+      "score": 2975,
+      "lanes": 11,
+      "bumpers": 7,
+      "ramps": 0,
+      "shots": 1,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          5,
+          12
+        ],
+        "activeFlipperContacts": [
+          3,
+          6
+        ],
+        "coilImpulses": [
+          3,
+          6
+        ],
+        "upfieldReturns": 8
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.85,
+      "delay": 80,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 92.71666666668652,
+      "score": 5525,
+      "lanes": 9,
+      "bumpers": 7,
+      "ramps": 2,
+      "shots": 12,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 42,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 2,
+        "flipperContacts": [
+          20,
+          24
+        ],
+        "activeFlipperContacts": [
+          12,
+          12
+        ],
+        "coilImpulses": [
+          12,
+          12
+        ],
+        "upfieldReturns": 24
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 1
+    },
+    {
+      "power": 0.85,
+      "delay": 82,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 101.9916666666939,
+      "score": 5725,
+      "lanes": 9,
+      "bumpers": 5,
+      "ramps": 6,
+      "shots": 11,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 12,
+      "hardwareContactEvents": 3,
+      "physicsMetrics": {
+        "rampTraversals": 6,
+        "flipperContacts": [
+          26,
+          19
+        ],
+        "activeFlipperContacts": [
+          11,
+          9
+        ],
+        "coilImpulses": [
+          11,
+          9
+        ],
+        "upfieldReturns": 19
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.85,
+      "delay": 84,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 33.99166666666538,
+      "score": 2275,
+      "lanes": 9,
+      "bumpers": 4,
+      "ramps": 0,
+      "shots": 1,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 23,
+      "hardwareContactEvents": 1,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          4,
+          9
+        ],
+        "activeFlipperContacts": [
+          2,
+          5
+        ],
+        "coilImpulses": [
+          2,
+          5
+        ],
+        "upfieldReturns": 6
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.925,
+      "delay": 44,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 49.49999999999783,
+      "score": 4700,
+      "lanes": 9,
+      "bumpers": 10,
+      "ramps": 0,
+      "shots": 3,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 1,
+      "hardwareContactEvents": 1,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          8,
+          11
+        ],
+        "activeFlipperContacts": [
+          5,
+          6
+        ],
+        "coilImpulses": [
+          5,
+          6
+        ],
+        "upfieldReturns": 11
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 1
+    },
+    {
+      "power": 0.925,
+      "delay": 49,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 68.90833333333424,
+      "score": 8600,
+      "lanes": 14,
+      "bumpers": 20,
+      "ramps": 0,
+      "shots": 3,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 16,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          9,
+          15
+        ],
+        "activeFlipperContacts": [
+          5,
+          9
+        ],
+        "coilImpulses": [
+          5,
+          9
+        ],
+        "upfieldReturns": 14
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 1
+    },
+    {
+      "power": 0.925,
+      "delay": 60,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 45.774999999998045,
+      "score": 4225,
+      "lanes": 9,
+      "bumpers": 8,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 39,
+      "hardwareContactEvents": 3,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          13,
+          12
+        ],
+        "activeFlipperContacts": [
+          7,
+          8
+        ],
+        "coilImpulses": [
+          7,
+          8
+        ],
+        "upfieldReturns": 13
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.925,
+      "delay": 66,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 34.991666666665324,
+      "score": 2850,
+      "lanes": 13,
+      "bumpers": 7,
+      "ramps": 0,
+      "shots": 1,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 6,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          3,
+          7
+        ],
+        "activeFlipperContacts": [
+          2,
+          4
+        ],
+        "coilImpulses": [
+          2,
+          4
+        ],
+        "upfieldReturns": 6
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.925,
+      "delay": 68,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 40.65833333333167,
+      "score": 3325,
+      "lanes": 9,
+      "bumpers": 6,
+      "ramps": 0,
+      "shots": 3,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 36,
+      "hardwareContactEvents": 3,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          8,
+          7
+        ],
+        "activeFlipperContacts": [
+          5,
+          5
+        ],
+        "coilImpulses": [
+          5,
+          5
+        ],
+        "upfieldReturns": 10
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.925,
+      "delay": 69,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 44.991666666664756,
+      "score": 3025,
+      "lanes": 13,
+      "bumpers": 8,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 16,
+      "hardwareContactEvents": 1,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          4,
+          10
+        ],
+        "activeFlipperContacts": [
+          3,
+          6
+        ],
+        "coilImpulses": [
+          3,
+          6
+        ],
+        "upfieldReturns": 8
+      },
+      "kickbackUses": 0,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.925,
+      "delay": 80,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 124.35000000004503,
+      "score": 5925,
+      "lanes": 9,
+      "bumpers": 6,
+      "ramps": 7,
+      "shots": 15,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 7,
+        "flipperContacts": [
+          37,
+          20
+        ],
+        "activeFlipperContacts": [
+          20,
+          8
+        ],
+        "coilImpulses": [
+          20,
+          8
+        ],
+        "upfieldReturns": 28
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.925,
+      "delay": 82,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 52.66666666666432,
+      "score": 4975,
+      "lanes": 11,
+      "bumpers": 15,
+      "ramps": 0,
+      "shots": 3,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          6,
+          13
+        ],
+        "activeFlipperContacts": [
+          4,
+          7
+        ],
+        "coilImpulses": [
+          4,
+          7
+        ],
+        "upfieldReturns": 11
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 0.925,
+      "delay": 84,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 64.24166666666386,
+      "score": 4475,
+      "lanes": 9,
+      "bumpers": 7,
+      "ramps": 0,
+      "shots": 5,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 1,
+      "hardwareContactEvents": 1,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          11,
+          18
+        ],
+        "activeFlipperContacts": [
+          8,
+          9
+        ],
+        "coilImpulses": [
+          8,
+          9
+        ],
+        "upfieldReturns": 16
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 1
+    },
+    {
+      "power": 1,
+      "delay": 44,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 44.13333333333147,
+      "score": 3375,
+      "lanes": 8,
+      "bumpers": 7,
+      "ramps": 0,
+      "shots": 4,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          4,
+          12
+        ],
+        "activeFlipperContacts": [
+          3,
+          7
+        ],
+        "coilImpulses": [
+          3,
+          7
+        ],
+        "upfieldReturns": 10
+      },
+      "kickbackUses": 0,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 1,
+      "delay": 49,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 56.616666666664095,
+      "score": 7550,
+      "lanes": 12,
+      "bumpers": 15,
+      "ramps": 1,
+      "shots": 4,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 1,
+        "flipperContacts": [
+          11,
+          13
+        ],
+        "activeFlipperContacts": [
+          5,
+          7
+        ],
+        "coilImpulses": [
+          5,
+          7
+        ],
+        "upfieldReturns": 12
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 1,
+      "delay": 60,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 70.47500000000215,
+      "score": 3925,
+      "lanes": 8,
+      "bumpers": 4,
+      "ramps": 0,
+      "shots": 7,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 136,
+      "hardwareContactEvents": 7,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          12,
+          22
+        ],
+        "activeFlipperContacts": [
+          8,
+          11
+        ],
+        "coilImpulses": [
+          8,
+          11
+        ],
+        "upfieldReturns": 17
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 1,
+      "delay": 66,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 70.00833333333512,
+      "score": 3475,
+      "lanes": 14,
+      "bumpers": 5,
+      "ramps": 0,
+      "shots": 11,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          29,
+          10
+        ],
+        "activeFlipperContacts": [
+          9,
+          6
+        ],
+        "coilImpulses": [
+          9,
+          6
+        ],
+        "upfieldReturns": 15
+      },
+      "kickbackUses": 0,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 1,
+      "delay": 68,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 37.56666666666518,
+      "score": 2050,
+      "lanes": 7,
+      "bumpers": 4,
+      "ramps": 0,
+      "shots": 3,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          6,
+          9
+        ],
+        "activeFlipperContacts": [
+          3,
+          5
+        ],
+        "coilImpulses": [
+          3,
+          5
+        ],
+        "upfieldReturns": 7
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 1,
+      "delay": 69,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 67.28333333333295,
+      "score": 3325,
+      "lanes": 14,
+      "bumpers": 3,
+      "ramps": 0,
+      "shots": 6,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          8,
+          15
+        ],
+        "activeFlipperContacts": [
+          5,
+          9
+        ],
+        "coilImpulses": [
+          5,
+          9
+        ],
+        "upfieldReturns": 14
+      },
+      "kickbackUses": 0,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 1,
+      "delay": 80,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 37.66666666666517,
+      "score": 1975,
+      "lanes": 8,
+      "bumpers": 3,
+      "ramps": 0,
+      "shots": 2,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 0,
+        "flipperContacts": [
+          7,
+          16
+        ],
+        "activeFlipperContacts": [
+          5,
+          5
+        ],
+        "coilImpulses": [
+          5,
+          5
+        ],
+        "upfieldReturns": 7
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 1,
+      "delay": 82,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 82.9333333333454,
+      "score": 3850,
+      "lanes": 8,
+      "bumpers": 3,
+      "ramps": 3,
+      "shots": 8,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 2,
+      "hardwareContactEvents": 2,
+      "physicsMetrics": {
+        "rampTraversals": 3,
+        "flipperContacts": [
+          17,
+          16
+        ],
+        "activeFlipperContacts": [
+          8,
+          8
+        ],
+        "coilImpulses": [
+          8,
+          8
+        ],
+        "upfieldReturns": 16
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    },
+    {
+      "power": 1,
+      "delay": 84,
+      "phase": "gameover",
+      "ball": 3,
+      "seconds": 71.72500000000315,
+      "score": 4100,
+      "lanes": 8,
+      "bumpers": 7,
+      "ramps": 1,
+      "shots": 7,
+      "launches": 3,
+      "liveResets": 0,
+      "stalled": false,
+      "hardwareContactTicks": 0,
+      "hardwareContactEvents": 0,
+      "physicsMetrics": {
+        "rampTraversals": 1,
+        "flipperContacts": [
+          17,
+          19
+        ],
+        "activeFlipperContacts": [
+          10,
+          10
+        ],
+        "coilImpulses": [
+          10,
+          10
+        ],
+        "upfieldReturns": 19
+      },
+      "kickbackUses": 1,
+      "sideSaveUses": 0
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+✔ observed side entry uses first expanded-cylinder chord intersection (0.614917ms)
+✔ prior overlap and stationary chord retain endpoint direction (0.059583ms)
+✔ missing prior sample and cap-height entry retain endpoint direction (0.294666ms)
+✔ unentered and tangent paths do not invent an impact direction (0.067416ms)
+✔ zero radial fallback is finite without inventing a direction (0.043375ms)
+✔ powered minimum and high-speed passive reflection remain distinct (0.052625ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 43.666708
