@@ -1,3 +1,4 @@
+import { FlipperInputTimeline } from "./flipper-input.mjs";
 import { pinballFrameDelta } from "./frame-time.mjs";
 import { PinballSound } from "./sound.mjs";
 import { PinballFeedback } from "./feedback.mjs";
@@ -12,6 +13,7 @@ export class PinballTablePreview {
   constructor(canvas) {
     this.canvas = canvas;
     this.state = new TablePreviewState();
+    this.flipperInput = new FlipperInputTimeline();
     this.game = null;
     this.plunger = new Plunger();
     this.sound=new PinballSound();this.feedback=new PinballFeedback();
@@ -185,12 +187,13 @@ export class PinballTablePreview {
     if (this.game && this.game.state.phase !== "gameover")
       this.game.setPaused(this.game.state.phase !== "paused");
     this.sound.setPaused(this.game?.state.phase==="paused");
+    this.flipperInput.reset(this.state); this.last = 0;
     if(!this.sound.paused&&event)void this.sound.unlock(event);
   }
   restart() {
     if (!this.game) return;
     this.plunger.cancel();
-    this.state.release(); this.game.restart(); this.bumperEffects.reset(); this.assets.resetMechanics?.(); this.last = 0;this.feedback.reset();this.feedback.update(this.game.state,this.state);this.room.reset();this.sound.stop();
+    this.state.release(); this.flipperInput.reset(this.state); this.game.restart(); this.bumperEffects.reset(); this.assets.resetMechanics?.(); this.last = 0;this.feedback.reset();this.feedback.update(this.game.state,this.state);this.room.reset();this.sound.stop();
     document.querySelectorAll("#left,#right").forEach(b => b.setAttribute("aria-pressed", "false"));
   }
   updateHUD() {
@@ -245,12 +248,18 @@ export class PinballTablePreview {
     this.canvas.dataset.ball = state.ballNumber;
   }
   frame(time) {
-    const simulationDt = pinballFrameDelta(time, this.last);
+    const previous = this.last;
+    const simulationDt = pinballFrameDelta(time, previous);
     const dt = Math.min(simulationDt, .05); // Keep short presentation effects visible.
     this.last = time;
     if (this.game) {
       if(this.game.state.phase === "ready") this.game.setPlungerPull(this.plunger.update(performance.now()));
-      this.game.step(simulationDt, { left: this.state.left, right: this.state.right });
+      if (previous === 0) this.flipperInput.reset(this.state);
+      // Keep only the bounded catch-up window; stale transitions establish its
+      // initial state, not delayed kicks. Do not stretch taps to a whole frame.
+      for (const segment of this.flipperInput.consume(Math.max(previous, time - 100), time)) {
+        if (previous !== 0) this.game.step(segment.dt, segment.input);
+      }
       const p = this.game.ballPosition;
       this.ball.position.set(p.x, p.y, p.z);
       const hits=this.game.takeVisualHits();
@@ -274,6 +283,7 @@ export class PinballTablePreview {
     this.plunger.cancel();
     if (this.game && this.game.state.phase !== "gameover") this.game.setPaused(true);
     this.state.release();
+    this.flipperInput.reset(this.state);
     this.sound.setPaused(true);
     this.last = 0;
   }
@@ -285,8 +295,13 @@ function bindInput(game) {
   for(const type of ["pointerdown","keydown","touchend"])window.addEventListener(type,e=>{if(e.isTrusted)void game.sound.unlock(e);},{capture:true,passive:true});
   soundButton.addEventListener("click",e=>{game.sound.toggleMuted();soundLabel();if(!game.sound.muted)void game.sound.unlock(e);});
   const held = { left: new Set(), right: new Set() };
-  const sync = (side) => {
+  const sync = (side, event) => {
     game.state.setFlipper(side, held[side].size > 0);
+    // DOM event timestamps preserve time spent queued behind a busy renderer.
+    const now = performance.now();
+    const stamp = event?.timeStamp;
+    const time = Number.isFinite(stamp) && stamp >= 0 && stamp <= now ? stamp : now;
+    game.flipperInput.set(side, held[side].size > 0, time);
     document
       .getElementById(side)
       .setAttribute("aria-pressed", String(held[side].size > 0));
@@ -299,30 +314,30 @@ function bindInput(game) {
         e.preventDefault();
         e.stopPropagation();
         held[side].add(e.code);
-        sync(side);
+        sync(side, e);
       }
     });
     b.addEventListener("keyup", (e) => {
       if (e.code === "Space" || e.code === "Enter") {
         e.preventDefault();
         held[side].delete(e.code);
-        sync(side);
+        sync(side, e);
       }
     });
-    b.addEventListener("blur", () => {
+    b.addEventListener("blur", (e) => {
       held[side].delete("Space");
       held[side].delete("Enter");
-      sync(side);
+      sync(side, e);
     });
     b.addEventListener("pointerdown", (e) => {
       b.setPointerCapture(e.pointerId);
       held[side].add(`p${e.pointerId}`);
-      sync(side);
+      sync(side, e);
     });
     for (const event of ["pointerup", "pointercancel", "lostpointercapture"])
       b.addEventListener(event, (e) => {
         held[side].delete(`p${e.pointerId}`);
-        sync(side);
+        sync(side, e);
       });
   }
   const sideFor = (code) =>
@@ -337,7 +352,7 @@ function bindInput(game) {
     if (side) {
       e.preventDefault();
       held[side].add(e.code);
-      sync(side);
+      sync(side, e);
     }
     if ((e.code === "KeyP" || e.code === "Escape") && !e.repeat) game.togglePause(e);
     if(e.code==="KeyN"&&!e.repeat){e.preventDefault();game.game?.nudge();}
@@ -351,7 +366,7 @@ function bindInput(game) {
     const side = sideFor(e.code);
     if (side) {
       held[side].delete(e.code);
-      sync(side);
+      sync(side, e);
     }
   });
   const release = () => {

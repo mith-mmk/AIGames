@@ -1,0 +1,11 @@
+{
+  "baselineCommit": "649b9d41efa394d973fd3ce8c0f665411484e086",
+  "sha256": {
+    "web/js/pinball/app.mjs": "abaff3bbfaf6ca1d62404e06eac04cbfa6eb61f8e20be5c3a0dc658cdea8836a",
+    "web/js/pinball/flipper-input.mjs": "c14a85ce32347e479553815a8d1f020b5ecbfc3453ab10823655801eab11ca54",
+    "web/js/pinball/flipper-input.test.mjs": "f51468678f740b166e76358d4d5fb52a5e4f288c55126024a6311ffb4f6a2696",
+    "web/js/pinball/physics.mjs": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92",
+    "scripts/pinball-short-input-browser.cjs": "e8452d220d4757a4e6d65b934be67c490986fc5332d4ec70fd6ee914afeece14",
+    "scripts/pinball-busy-input-browser.cjs": "8321db6cbe8c04f74240109ded916b20677a83d4e3b121e8fe31b886a9840420"
+  }
+}
