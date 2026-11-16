@@ -95,3 +95,9 @@ node scripts/pinball-control-browser.cjs
 The diagnostic scripts write under ignored `artifacts/pinball/`; copy retained
 outputs before rerunning. Browser timing is nondeterministic: compare actual
 event/step records rather than assuming identical tap placement on every run.
+
+## Final aggregate
+
+Final runtime and all seven new tests: `npm run test:pinball` passed 235/235,
+zero failures/skips, lint zero errors and three existing CSS warnings.
+Repository-wide `npm test` was not run. No Site deployment.
