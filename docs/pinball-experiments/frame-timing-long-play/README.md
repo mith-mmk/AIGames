@@ -55,3 +55,12 @@ unverified. Existing bounded browser results are in `../frame-timing/README.md`.
 runtime/script hashes. A preliminary diagnostic used a frame-count-based hold
 threshold; it was discarded and is deliberately NOT used in this comparison.
 The two archived runs use the corrected simulation-time hold threshold.
+
+## Final checks
+
+`npm run test:pinball` on the final runtime: 228/228 pass, zero failures or
+skips; full pinball ESLint zero errors and three existing CSS compatibility
+warnings. `node --check scripts/pinball-low-fps-audit.mjs` passed. Read-only
+independent methodology review found no blocker for the bounded claims above;
+its nominal-time and per-condition-regression caveats are included here.
+Repository-wide `npm test` and new browser testing were not run in this pass.
