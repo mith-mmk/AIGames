@@ -1,0 +1,429 @@
+(node:12) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ bumper common mounting plate is below the full-size board and connects the coil bracket (71.553493ms)
+✔ bumper plate has real through holes and separate bearing washers and seated screw heads (43.973106ms)
+✔ bumper switch stem and leaf clear the mounting slot throughout directional skirt motion (2823.378327ms)
+✔ bumper moving yokes stay separated from plate and fixed mounts through full stroke (14.576594ms)
+✔ bumper bracket fillet welds intersect both fixed plate and bracket (7.75547ms)
+(node:13) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ play-facing solid cabinet backing and cap match actual collider bounds (428.704777ms)
+✔ visible side and rear faces and cap agree with solid rays without an invisible upper wall (303.781145ms)
+✔ cabinet cap retains flush seats, hex heads and enclosed shanks (80.828768ms)
+(node:14) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ installed board fasteners retain exact original mesh topology, positions and open washer contacts (299.447915ms)
+✔ four accessible left board mounts physically contact clear incoming balls without resets (788.654604ms)
+✔ physical shooter rail excludes the three historical right fastener starts (54.203908ms)
+(node:20) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ MechanicalFlipper: finite standalone geometry, motion and owned-resource cleanup (144.150082ms)
+✔ MechanicalBumper: finite standalone geometry, motion and owned-resource cleanup (11.627682ms)
+✔ MechanicalPlunger: finite standalone geometry, motion and owned-resource cleanup (50.766114ms)
+✔ MechanicalSling: finite standalone geometry, motion and owned-resource cleanup (35.934995ms)
+✔ MechanicalTarget: finite standalone geometry, motion and owned-resource cleanup (24.295165ms)
+✔ MechanicalRamp: finite standalone geometry, motion and owned-resource cleanup (228.458454ms)
+✔ MechanicalWireform: finite standalone geometry, motion and owned-resource cleanup (24.595002ms)
+✔ MechanicalCabinet: finite standalone geometry, motion and owned-resource cleanup (270.796909ms)
+✔ mechanical model invalid scalar dimensions are rejected (8.054451ms)
+✔ cabinet inspection visibility survives production static batching (284.168685ms)
+✔ sling silver cover, gold skirt and corner lamps retain functional rubber/kicker assembly (16.30936ms)
+✔ bumper lens and bounded internal lamp provide warm light without extra shadows (5.415515ms)
+(node:21) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ feedback reads accepted events once without changing scores (2.039183ms)
+✔ feedback milestone and held flipper edges are bounded (0.286842ms)
+(node:32) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ flipper entire fixed actuator now clears the board and has four connected mounting stacks (198.793611ms)
+✔ flipper spacers avoid fixed coil hardware and complete crank-link stroke (191.092589ms)
+✔ flipper board holes and mounting bolts are coaxial with real clearance (101.148645ms)
+✔ flipper mounting frame clears installed cabinet solid bounds (185.615186ms)
+✔ flipper lowered actuator keeps owned moving meshes live after production batching (164.078241ms)
+(node:33) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ rigid animation preserves Chappy's detail and stays within 35 meshes (247.545272ms)
+✔ pause freezes, reduced motion suppresses, restart resets, idle is playing-only (46.757868ms)
+✔ room forwards both update contracts and reset aliases (65.731688ms)
+(node:49) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ five bounded missions award base points and each completion bonus exactly once (2.058261ms)
+✔ duplicate, invalid, paused and ready events cannot progress missions or score (0.259182ms)
+✔ mission progress and deduplication survive drains and shooter return; restart resets everything (0.268855ms)
+✔ lane mission counts new traversals even if a lane was lit before the mission (0.212142ms)
+✔ target mission grants exactly one left save independent of center save (6.162654ms)
+✔ bumper challenge earns x2 after five hits; varied mechanisms earn x3 starting with the next hit (0.538714ms)
+✔ multipliers never multiply mission or lane-set bonuses and saves do not progress challenges (0.272821ms)
+✔ duplicate and paused events cannot advance multiplier and weak returns preserve both challenges (0.171933ms)
+✔ drain, TILT and restart reset multiplier while preserving story progress between balls (0.253062ms)
+(node:84) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ straight structural tubes retain endpoints/radius without redundant axial tessellation (15.250096ms)
+✔ installed shooter roof uses three closed capsule stocks on the existing physical axes (1542.477649ms)
+✔ installed rollover bars are closed stocks on actual capsule axes and retain eight original mounts (1108.682734ms)
+(node:92) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ legacy mini bumper pocket is removed for reference standups (1.846259ms)
+✔ earned side kickback reverses an outlane descent once, uncharged still drains (3928.531044ms)
+✔ out-of-order or ground ramp contacts never count a complete traversal (85.490048ms)
+✔ complete physical ramp awards exactly once and only after its exit lip (639.401177ms)
+✔ inlane switch scores only a fresh real crossing, not sitting or pausing (76.263752ms)
+✖ side coils are bounded, horizontal and stronger than their former impulse (81.198272ms)
+✔ visual bumper notifications are accepted-contact-only, bounded and restart clears (30.141275ms)
+✔ bumper notification uses earned contact multiplier, not mission bonus (37.998705ms)
+(node:102) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ printed IN bands mirror the verified centerline and add no raised route (6.976018ms)
+✔ larger lane labels follow the open passages without printing over rails (76.764589ms)
+✔ actual left IN canvas arrow maps to the intended table direction (3.523418ms)
+✔ actual left OUT canvas arrow maps to the intended table direction (0.45515ms)
+✔ actual right IN canvas arrow maps to the intended table direction (0.540836ms)
+✔ actual right OUT canvas arrow maps to the intended table direction (0.314553ms)
+(node:111) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ archived art ramp control points stay inside table (1.24267ms)
+✔ bumpers have ball clearance from each other (1.340754ms)
+✔ preview initializes, clamps long frames and releases inputs (0.324778ms)
+✔ both flippers rise toward negative-Z playfield when pressed (0.368683ms)
+✔ archived art hardware preserves its original clearance (0.952943ms)
+✔ archived preview curve clears archived sling art (73.547131ms)
+✔ reference triangle retains side passages and asymmetric target banks (1.991162ms)
+(node:112) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ sling rubber clears the root-to-center shot corridor on both sides (6.567792ms)
+✔ both inlanes feed the flippers at three speeds rather than bypass their pivots (10251.077985ms)
+✔ genuine outside lanes still drain without a flipper or invisible rescue (210.610743ms)
+✔ inside heel approach cannot leak sideways past the root cheek (191.548507ms)
+✔ restored lane mouths pass descending balls without live position rescue (5366.199007ms)
+✔ actual outlane entrance has full ball clearance and mirrored shared paths (0.642976ms)
+✔ historical fixed wire drop is now inside the real tail and is not a valid start (37.345016ms)
+✔ side wire exit drops into the real IN guide and held flipper without rescue (1248.574107ms)
+✔ five adjacent redesigned bat shots traverse S, capture and refire the same ball (7782.238842ms)
+✔ old IN approach strikes the outward sling then drains or permits a releasable cradle (3167.511701ms)
+✔ IN floor stripe stays clear of the real rails and sling rubber (3.252959ms)
+✔ current outside wire outlet feeds the held left cradle at three speeds (2207.154577ms)
+✔ lane edge fixtures distinguish genuine mouths from initial rail penetration (41.755979ms)
+✔ offset slow and fast lane entries and lateral approaches remain physical and releasable (33422.317618ms)
+(node:128) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ lower rails merge six paths with all existing support geometry retained (89.344853ms)
+✔ each lower stock primitive is closed and matches its actual installed collider (424.515074ms)
+(node:135) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ tapered contact hull matches rubber height and rounded profile (1.947438ms)
+✔ accepted sling and target hits fan out once without duplicate score (200.05986ms)
+✔ pull retracts actual stop and ball follows gravity without position resets (811.189409ms)
+✔ cancelled full pull cannot strand the ball behind the stop (672.059694ms)
+(node:142) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ installed ramp has matched sheet walls, true paired rails and visible anti-trap base (405.246791ms)
+✔ support columns stay on the perimeter or shooter divider, and beams clear ground balls (243.598779ms)
+✔ production return has an actual open gap, not a hidden supporting floor (104.749989ms)
+✔ standalone paired rails support and roll a ball without any plane collider (86.488668ms)
+✔ all perimeter ramp supports have matching physical posts, arms, collars and feet (113.574613ms)
+✔ acrylic offset walls never fold backwards along the centerline (121.262014ms)
+✔ low base drawing ends at the same complete strip as its collider (165.441799ms)
+✔ compact low nose uses one closed shell and matching convex contact vertices (142.977811ms)
+✔ underfloor bearers, saddles and wire ties share nominal visual and contact stock (131.612123ms)
+✔ low base end cap follows its accessible convex boundary (156.157087ms)
+(node:153) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ short supports allow eighty nonpenetrating slow wall approaches (38796.354271ms)
+(node:165) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ nudge warns before tilt, ignores repeats, cools and resets (0.714542ms)
+✔ physical nudge never teleports or scores and paused input is ignored (185.093036ms)
+✔ tilt suppresses coils and scoring then consumes one ball, restart clears (444.544429ms)
+(node:174) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rules enforce three balls, pause and reset (3.031925ms)
+✔ real launch feeds scoring objects, not a scripted path (1273.519337ms)
+✔ physical drain serves next ball and ends after third (61.826262ms)
+✔ both kinematic flippers physically drive ball upfield (112.248941ms)
+✔ pause freezes simulation; resume and restart are deterministic (213.557191ms)
+✔ former left ramp wedge clears naturally without ball search (891.751414ms)
+✔ ninety varied launches drain without stuck recovery or position jumps (91155.719365ms)
+✔ twelve full three-ball sessions end without rescue (35668.521867ms)
+✔ side-wall approaches enter genuine outlanes and naturally drain when uncharged (301.016015ms)
+✔ beginner play duration remains controllable across thirty-one powers (83348.636136ms)
+✔ rules deduplicate events, complete lanes, and refill one center save (0.38712ms)
+✔ each physical top lane registers center and edge traversals only once (428.320835ms)
+✔ spinner traversal accelerates rotation once; rotation decays without score farming (44.153505ms)
+✔ charged center saver applies impulse without teleport, then allows real drain (70.495803ms)
+✔ natural shooter launch traverses a top rollover lane (229.07927ms)
+✔ outlane widths below entrance exceed ball diameter with margin (2.265633ms)
+✔ center save clears both held and returning flippers without a downstroke collision (199.715967ms)
+✔ held buttons cannot pinch the ball permanently (23724.562292ms)
+✔ twenty seeded incoming balls measure physical contact and controlled return (9964.106422ms)
+✔ both flippers cradle passively without repeated coil fire and release naturally (1969.442252ms)
+✔ release timing produces distinct aimed reflip shots on both sides (1236.269023ms)
+✔ curved sling and inlane have a full ball-width passage with margin (7.167447ms)
+✔ rising shots gain energy toward the tip without exceeding the world limit (598.56558ms)
+✔ five real cradle-reflip timings traverse the S ramp, cradle again and re-fire (6352.05767ms)
+✔ both flippers can reach upper lanes and bumper routes around reference triangle (77627.950644ms)
+✔ shooter corner backing cannot retain a ball outside the bend (4107.893207ms)
+(node:183) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ hold charges continuously, repeat cannot reset, and release fires once (1.227788ms)
+✔ drag overrides time, can reduce power, and cancellation never fires (0.233734ms)
+✔ low medium high produce distinct physical speeds and weak ball naturally returns (765.289023ms)
+(node:192) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ missing acrylic contacts lie on real visible exterior faces without duplicating top inner or lip faces (3009.90278ms)
+✔ legal ground and rising airborne balls hit the visible acrylic exterior (1460.59295ms)
+(node:193) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ low housing is closed with the existing deck and partitioned without internal faces (62.624072ms)
+✔ generic installed rows without tangent preserve the exact housing geometry (5.698811ms)
+✔ every installed housing boundary face matches the physical strip union (445.016038ms)
+✔ low housing never projects above the actual acrylic running surface (85.682381ms)
+✔ historical positive-offset tangent start penetrates the deck; common corrected start is legal (128.450239ms)
+✔ one-strip generic housing renders both endpoint caps exactly once (8.938451ms)
+(node:206) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ right and rear deck repairs preserve every unrelated original triangle and generic rows (30.535845ms)
+✔ repair follows route parameters at alternate sample counts and keeps a closed constant-thickness sheet (33.473435ms)
+✔ three legal zero-speed starts exit the repaired right deck pockets without rescue (1824.926706ms)
+(node:219) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ exposed ramp hardware shares exact visible triangle geometry and dimensions (541.742041ms)
+✔ legal airborne approaches contact exposed lips straps and bolts rather than pass through (2106.827005ms)
+(node:227) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ rear descent preserves endpoint C1 XZ and gravity-ratio datum (35.043713ms)
+✔ real sheet handoff clears the allowed off-center paired-stock support envelope (9.112619ms)
+✔ seven legal former pocket starts exit without rescue under the unchanged solver (6875.61197ms)
+(node:237) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ experimental ramp uses continuous finite mesh and adequate channel width (11.925901ms)
+ramp-boundary {"speed":26,"offset":-0.08,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0,"outcome":"complete"}
+ramp-boundary {"speed":26,"offset":0.08,"outcome":"normal-rollback-relaunch"}
+✔ floor ball passes below rear elevated deck without being lifted (218.476816ms)
+✔ low ramp skirt blocks lateral entry instead of admitting ball under deck (97.086474ms)
+✔ elevated exit releases ball into left lower lane without teleport (118.531212ms)
+✔ 28-speed tangent approaches all complete with lateral tolerance (1835.398957ms)
+✔ 26-speed boundary shots complete honestly or roll back and relaunch normally (1828.08153ms)
+✔ six unassisted launch powers leave the ramp base without permanent stalls (3637.12985ms)
+✔ ground balls approaching low base from high deck side deflect without wedging (2533.426301ms)
+✔ five adjacent real flipper timings traverse the forward S and award once without teleport (4866.997028ms)
+✔ measured ground-level flipper approaches at 28/30 traverse with lateral tolerance (2784.649708ms)
+(node:245) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ reference cabinet includes supported backbox, speakers, apron and rear tower (265.07913ms)
+✔ score drawing is cached and uses live score plus ball number (188.205729ms)
+✔ formed collection apron preserves central and outlane throats after active drain (204.434449ms)
+✔ short supported cabinet keeps collection apron within its drain opening (93.808952ms)
+✔ inner skyline is a rear-mounted relief outside live board (67.479295ms)
+(node:255) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ reference ink registers to board, preserves context and draws reference landmarks (7.155647ms)
+✔ reference ink is deterministic and validates canvas dimensions (4.00067ms)
+(node:264) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ reference banks have three upper wrenches, two middle wrenches and three robots (57.288359ms)
+✔ every installed reference target scores from a real front contact and identifies its moving part (919.573121ms)
+✔ target strike boxes follow declared height without raising the ground contact edge (0.363806ms)
+✔ derived contact bounds match the actual three extruded strike meshes (35.316424ms)
+✔ carrier has formed rim, separate rear plate, fixed studs and a continuous rounded mount (8.243637ms)
+✔ both captured carrier pinch positions drain without rescue (1435.365437ms)
+✔ right rear carrier rail retains ball clearance from the full low support base (72.21453ms)
+✔ nine slow approaches behind the right carrier drain without rescue (4586.112894ms)
+✔ captured right target lower-edge wedge releases with the smooth carrier rail (523.155541ms)
+✔ smooth carrier contacts use the same capsule dimensions and placement as rendering (69.146638ms)
+(node:273) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ workshop structures batch within their scenery budget and preserve QA targets (201.461661ms)
+✔ workshop owns and releases its merged geometries and materials exactly once (114.68625ms)
+(node:282) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ solid shooter rail preserves every old side vertex and adds only outward flat caps (7.835446ms)
+✔ actual octagonal rail hull matches visible side and flat-end rays without capsule inflation (236.883001ms)
+✔ six nonoverlapping ground lateral approaches contact the real external shooter rail (909.596323ms)
+(node:290) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ initial serve and restart use the visible head contact point (390.786621ms)
+✔ returning ball settles on visible stop without teleport or consuming a ball (515.586336ms)
+✔ weak shot naturally returns to the same stop and full relaunch preserves speed (2347.076374ms)
+(node:300) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ returned shooter ball rolls to plunger and relaunches in place without consuming a ball (811.572929ms)
+✔ normal drains still consume three balls and restart resets returned-shooter state (79.175525ms)
+✔ returned shooter contains lateral speed -3 (500.015169ms)
+✔ returned shooter contains lateral speed -1 (540.17235ms)
+✔ returned shooter contains lateral speed 1 (428.577288ms)
+✔ returned shooter contains lateral speed 3 (423.903657ms)
+✔ out-of-bounds returned ball cannot strand the game in ready (36.636141ms)
+(node:309) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ generic sling remains DOM-free and does not own caller maps (37.886272ms)
+✔ installed left and right print changes only UV/material and remains registered after batching (1065.328181ms)
+✔ standalone printed sling disposes only its owned texture exactly once (6.916734ms)
+✔ actual installed asset disposal releases both registered print textures (1250.871587ms)
+(node:318) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ no autoplay, allocation or resume without a trusted input gesture (5.349726ms)
+✔ all cabinet events have bounded short effects and unknown events are ignored (0.463713ms)
+✔ repeat rate limits and a hard voice cap prevent audio storms (0.211612ms)
+✔ mute and pause stop active voices; unmute/unpause need a gesture (0.309906ms)
+✔ saved mute and unavailable WebAudio/storage fail silently (0.387541ms)
+✔ pending resume cannot restart sound after pause or disposal (0.405677ms)
+(node:327) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ finite surface distance distinguishes faces edges vertices and unresolved containment (1.496413ms)
+✔ closed mesh convex and cuboid interior are invalid even without boundary overlap (5.857164ms)
+✔ finite cylinder cap barrel rim and rigid transforms use independent analytic distances (0.316607ms)
+✔ capsule and ball solids reject deep interior and distinguish rounded ends (0.147988ms)
+✔ malformed closed boundaries and unknown shapes fail rather than certify starts (7.948182ms)
+✔ captured open strip reproduces solid-query false penetration without certifying reachability (43.229089ms)
+✔ captured real pillar and wall overlaps remain rejected by independent geometry (0.443503ms)
+✔ accepted c1 historical tangent overlap and corrected deck clearance remain distinguishable (197.41864ms)
+(node:336) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ right target bank leaves a full ball-width throat beside every main bumper (0.968526ms)
+✔ low-speed balls pass the screenshot throat without rescue or position changes (701.031257ms)
+✔ twenty-one natural launches clear without target-bank stalls or position resets (11302.617357ms)
+✔ ramp crest releases a resting ball without nudge or position rescue (509.680501ms)
+✔ continuous ramp collision meshes share every route row and triangle edge without gaps (38.525314ms)
+(node:345) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ upper rollover volumes stay in the ground lane below the elevated route (403.728031ms)
+✔ legal ground upper-lane center and edge passes award once at low and high speeds (2533.029733ms)
+✔ five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save (4724.084383ms)
+(node:354) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+using deprecated parameters for the initialization function; pass a single object instead
+✔ all visible wire capsule axes ends and nominal radii match installed contacts in four meshes (391.572608ms)
+✔ compatibility ramp drawing uses the same four capsule-stock rail geometries (88.114737ms)
+✔ wire pole cleanup preserves every installed vertex normal and nondegenerate face (201.461702ms)
+✔ wire retained installed capsule shells stay outward and closed (319.340694ms)
+✔ wire pole cleanup preserves distinct pole fallback and rounded nonpole faces (3.663524ms)
+✔ wire primitive ranges cover empty and mixed concatenated geometry exactly (1.838607ms)
+(node:363) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "checks": 0,
+  "best": {
+    "gap": null
+  }
+}
+{
+  "meshChecks": 0,
+  "allParts": {
+    "gap": null
+  },
+  "lowest": []
+}
+{
+  "railSamples": 15867,
+  "meshSamples": 71659,
+  "lateralSamples": 2074,
+  "lateralClearance": 0.0928372039896206
+}
+{
+  "physicalPointGap": 0.09299470556859746,
+  "maxSegment": 0.15373067443021712,
+  "coarseGlobalLowerBound": 0.016129368353488896,
+  "continuousLowerBound": 0.09199999262741226,
+  "certifiedSegments": 464
+}
+✔ wire tail preserves prefix, endpoint, position and unit-tangent continuity (18.210882ms)
+✔ wire tail curvature and every physical offset rail progress without folds (100.496096ms)
+✔ sampled wire rails have no self or same-height pair crossing (39.015544ms)
+✔ every physical wire segment clears all visible sling solids by .025 (5245.073023ms)
+(node:372) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./")); register("./artifacts/pinball/contact-force/force-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ workshop scenery has finite attached geometry and stays independent of physics (193.927325ms)
+ℹ tests 224
+ℹ suites 0
+ℹ pass 223
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 343358.613338
+
+✖ failing tests:
+
+test at web/js/pinball/gimmicks.test.mjs:43:1
+✖ side coils are bounded, horizontal and stronger than their former impulse (81.198272ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(v.x>(type==='sling'?2:4))
+  
+      at TestContext.<anonymous> (file:///tmp/pinball-continue/web/js/pinball/gimmicks.test.mjs:44:321)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

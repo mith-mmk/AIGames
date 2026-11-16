@@ -1,0 +1,101 @@
+using deprecated parameters for the initialization function; pass a single object instead
+{
+  "method": "Synthetic isolated 6-unit/s impact, zero gravity, no damping; both collider creation orders. Demonstrates force-event lifetime/sign only, not gameplay quality.",
+  "passed": 2,
+  "results": [
+    {
+      "reversed": false,
+      "ballHandle": 5e-324,
+      "bumperHandle": 0,
+      "collisions": [
+        {
+          "tick": 0,
+          "a": 0,
+          "b": 5e-324,
+          "started": true
+        },
+        {
+          "tick": 1,
+          "a": 0,
+          "b": 5e-324,
+          "started": false
+        }
+      ],
+      "forces": [
+        {
+          "tick": 1,
+          "a": 0,
+          "b": 5e-324,
+          "totalForce": {
+            "x": 0,
+            "y": 0,
+            "z": 89.85600280761719
+          },
+          "rawNormal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ballNormal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "magnitude": 89.85600280761719,
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 3.3600006103515625
+          }
+        }
+      ]
+    },
+    {
+      "reversed": true,
+      "ballHandle": 0,
+      "bumperHandle": 5e-324,
+      "collisions": [
+        {
+          "tick": 0,
+          "a": 0,
+          "b": 5e-324,
+          "started": true
+        },
+        {
+          "tick": 1,
+          "a": 0,
+          "b": 5e-324,
+          "started": false
+        }
+      ],
+      "forces": [
+        {
+          "tick": 1,
+          "a": 0,
+          "b": 5e-324,
+          "totalForce": {
+            "x": 0,
+            "y": 0,
+            "z": -89.85600280761719
+          },
+          "rawNormal": {
+            "x": 0,
+            "y": 0,
+            "z": -1
+          },
+          "ballNormal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "magnitude": 89.85600280761719,
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 3.3600006103515625
+          }
+        }
+      ]
+    }
+  ]
+}

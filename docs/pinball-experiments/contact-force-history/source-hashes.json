@@ -1,0 +1,5 @@
+{
+  "web/js/pinball/physics.mjs": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92",
+  "scripts/pinball-playability-audit.mjs": "76bb52baf38951264480d9b40e1436b6ff363de30107c781f7b6e1a48e4f1389",
+  "web/js/vendor/rapier3d-0.17.3/rapier.mjs": "e0f7783dae9d3d175ec62c0cafdad84261d8c64c5f7da6ae5b24e858cf9ab759"
+}
