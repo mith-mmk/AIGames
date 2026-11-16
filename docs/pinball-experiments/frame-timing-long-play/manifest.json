@@ -1,0 +1,10 @@
+{
+  "runtimeBase": "167c918",
+  "sha256": {
+    "scripts/pinball-low-fps-audit.mjs": "86761bc9fac78ec2ed4e7354263690901b2520ec5ab2f776cb91f8db83dba55d",
+    "web/js/pinball/frame-time.mjs": "d5be46b807aafa612e8f9bfbea8aea4a5bb4f5a07de6b7d64c1f0b3527da0a96",
+    "web/js/pinball/physics.mjs": "e4fcfba635d2877265c2146f3acb2283786786b7d8f5984052a1946cf20aad92",
+    "web/js/pinball/app.mjs": "e87e9c2c5614c45789cb851493a65c4c32578d1757a853b644c033cd0a62fc46",
+    "web/js/vendor/rapier3d-0.17.3/rapier.mjs": "e0f7783dae9d3d175ec62c0cafdad84261d8c64c5f7da6ae5b24e858cf9ab759"
+  }
+}
