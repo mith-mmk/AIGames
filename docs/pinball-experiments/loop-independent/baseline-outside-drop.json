@@ -1,0 +1,58 @@
+{
+  "source": {
+    "physics.mjs": "143ab6712cc53d8d8915a983535e1fe75beb4772e6489bfc352c73b1fa358164",
+    "layout.mjs": "1c9860b284831e46af2ddde75476c9563e064b29c38d84bb5df812f7366de609",
+    "scoop.mjs": "4727cbec954cc5503e987be3ddaf01ac1571e85d19482c30361df61e11fccc34",
+    "game-state.mjs": "a83a78217cbd0a3a2cb0f56075804f86134ebf8012b437fadd4b3d43b163ef72",
+    "missions.mjs": "78aa577a19f59bd882b28fe5870af2cd9ed45fc4bce5de74027487142db2139f"
+  },
+  "method": "Injected drop/slow fixtures, not natural play. Initial overlaps skipped; trap=3 seconds speed<.08 without scoop hold.",
+  "rows": [
+    {
+      "name": "baseline-outside-drop",
+      "p": {
+        "x": -2.57,
+        "y": 1.7,
+        "z": -2.7
+      },
+      "v": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 0.3583333333333336,
+          "info": {
+            "reason": "out-of-bounds"
+          },
+          "position": {
+            "x": -3.201728105545044,
+            "y": -0.11572819948196411,
+            "z": -2.6853291988372803
+          },
+          "velocity": {
+            "x": -2.524846315383911,
+            "y": -11.046014785766602,
+            "z": 0.6062223315238953
+          }
+        }
+      ],
+      "events": [],
+      "phase": "ready",
+      "seconds": 0.3583333333333336,
+      "trap": null,
+      "maxStill": 0,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  ]
+}

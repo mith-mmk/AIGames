@@ -1,0 +1,1569 @@
+{
+  "source": {
+    "app.mjs": "635317d3dfd0dd171715734b0eeb332d8be5ab32edffedc725654c36d69bbcfb",
+    "assets.mjs": "9a0d0103c54b9e9d3488042aab49f871e5ef6f1a65b785146efab181c577cf0c",
+    "bumper-effects.mjs": "3698f9a01385d8e45d31755d5d3d83c1bb0914cb7630dd8abff76429d5d996ae",
+    "cabinet-boundary.mjs": "717da449d1ab1a7a916efaabc0ffc6d578ee5317d7c26bbad4a7b1e3eed59f24",
+    "cabinet-fasteners.mjs": "adb7aa9e14b87960727ad477e6fb68de23f1e9a93b007b3557c6ee7a40e62423",
+    "feedback.mjs": "5637a16155f896ac76cb78a230fcf79a46d9910fceb0b988182844a6556e9299",
+    "flipper-input.mjs": "c14a85ce32347e479553815a8d1f020b5ecbfc3453ab10823655801eab11ca54",
+    "frame-time.mjs": "d5be46b807aafa612e8f9bfbea8aea4a5bb4f5a07de6b7d64c1f0b3527da0a96",
+    "game-state.mjs": "42584a13005056920f09a0c5c8a28c11288f2206a7e877edd9eafe228d3d569b",
+    "layout.mjs": "46bd76a28182268210e968ed21027d62428f5733eba87c14d7645986f9efc2bd",
+    "loop.mjs": "06236496abb5747394ac3becfca54dbb88d35d0d2a3057fef923609b93f3cdb0",
+    "mechanical-contact.mjs": "3d27c9c038b4268ac98bf7086fe4a7e0c1f6bac5a64788f1e4fca5438eec097c",
+    "mechanisms.mjs": "a85e1703824fd17aacc97ca5c82534d1a1ba37cb496fd3bdb01776866b8cf25f",
+    "missions.mjs": "973d48d800b98a23a20011a126d4a0ec114410fcea05f4b1865661863999bad0",
+    "nudge.mjs": "29aa735b334fa3c711edde1cc3678e1448dd562c6b51185f240876ef7ae53a34",
+    "parts-detail.mjs": "5c49ad6097562725e7298955daed87e1669c48dbfa00dcc0d7c4ca2ad789916b",
+    "physics.mjs": "1dc28da7712286d9a6273a97c06788101b745b5c259f7624852fd44ad589ab91",
+    "playfield-parts.mjs": "6d6e457d631dbf60bcabcee00800622436a204909e7ffda5e3761271c30b7662",
+    "plunger.mjs": "a7dcbcab59905f2a27f885c81d21b40b6e4e23f90ef8be29dd60d74df896e153",
+    "ramp-acrylic.mjs": "cbb91fe5a2c1abe09ee60480cb277928b97aa62800c3fa28abf0c2976425a865",
+    "ramp-base.mjs": "66b2ea504cf762935274335605d3b8025bfe4ee7b1693caf7743147bf79aa803",
+    "ramp-deck.mjs": "ee6e020fc16391e982d8120718f112206af448ae14744da7488be8f0324fb637",
+    "ramp-geometry.mjs": "3a9dd4e4ad8bd3cf7418a395435e23a5552e11c2f15ab20d86065e7fff5670cd",
+    "ramp-hardware.mjs": "167091781dd1248f747b8caedfa53835719a261408dc5a35a3058cef4d8f53af",
+    "ramp-profile.mjs": "15cbc28269be0c2046e57c4f613dc1e582e0240556f28452475444fa79d12b98",
+    "reference-playfield.mjs": "9de4cba1248237c8cc6f86d671545fb3a3e7fde42743f9f8cd36a69ac8023724",
+    "scenery-components.mjs": "99ea5e005bcaa97d750637744d8e289922117367a8f5ddd5e75157541134dca6",
+    "scoop.mjs": "4727cbec954cc5503e987be3ddaf01ac1571e85d19482c30361df61e11fccc34",
+    "shooter-outer-rail.mjs": "2c99ea82ea24bbbd55aaad98efe8a1c3071f25a365cfef6c10ed54d5c303a9d6",
+    "sling-cover-print.mjs": "50c4d57a3bbb72b20adbe549a2c9907ed3e025585f07ce552472368d160b4470",
+    "sound.mjs": "2e02629897a07ff0659402978a54c94804655216b3d847ccd6723fe1815947cf",
+    "sphere-clearance.test.helper.mjs": "3b3f81e6c9f4024b22a232be239153af119b5967efd6b787fe97aa8230b51079",
+    "wire-stock.mjs": "6746f5f3abeea64e98a44b6e07597e164590ed4616532c1329e786b8a2c3825f",
+    "workshop.mjs": "e97b8342f87c509d8256689abcb5a81d8ce16a1f7cd2a866f8ddc2652036c956"
+  },
+  "method": "Fresh process creates worlds in listed order; each relaxed game max180s. Only launch and both-flipper pulse. All launches and input transitions recorded, held until next transition. 120Hz. Stop on 5s stationary while playing outside scoop hold.",
+  "rows": [
+    {
+      "world": 1,
+      "power": 0.55,
+      "offset": 0,
+      "seconds": 51.958333333331026,
+      "phase": "gameover",
+      "position": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scoop": {
+        "targets": [
+          false,
+          false,
+          true
+        ],
+        "progress": 1,
+        "target": 3,
+        "lit": false,
+        "captures": 0,
+        "collections": 0,
+        "reward": 1000
+      },
+      "trap": null,
+      "drains": [
+        {
+          "tick": 1722,
+          "info": {
+            "reason": "normal"
+          },
+          "p": {
+            "x": 0.39081713557243347,
+            "y": 0.5841582417488098,
+            "z": 5.059165000915527
+          }
+        },
+        {
+          "tick": 4941,
+          "info": {
+            "reason": "normal"
+          },
+          "p": {
+            "x": -0.3168703615665436,
+            "y": 0.1664859503507614,
+            "z": 5.073455810546875
+          }
+        },
+        {
+          "tick": 6235,
+          "info": {
+            "reason": "normal"
+          },
+          "p": {
+            "x": 0.31480860710144043,
+            "y": 0.16509650647640228,
+            "z": 5.057706356048584
+          }
+        }
+      ],
+      "inputs": [
+        {
+          "tick": 0,
+          "launch": 0.55
+        },
+        {
+          "tick": 0,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 24,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 72,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 96,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 144,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 168,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 216,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 240,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 288,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 312,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 360,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 384,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 432,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 456,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 504,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 528,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 576,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 600,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 648,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 672,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 720,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 744,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 792,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 816,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 864,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 888,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 936,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 960,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1008,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1032,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1080,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1104,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1152,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1176,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1224,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1248,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1296,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1320,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1368,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1392,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1440,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1464,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1512,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1536,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1584,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1608,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1656,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1680,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1722,
+          "launch": 0.55
+        },
+        {
+          "tick": 1728,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1752,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1800,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1824,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1872,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1896,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 1944,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 1968,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2016,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2040,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2088,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2112,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2160,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2184,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2232,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2256,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2304,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2328,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2376,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2400,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2448,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2472,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2520,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2544,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2592,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2616,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2664,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2688,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2736,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2760,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2808,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2832,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2880,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2904,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 2952,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 2976,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3024,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3048,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3096,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3120,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3168,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3192,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3240,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3264,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3312,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3336,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3384,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3408,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3456,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3480,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3528,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3552,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3600,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3624,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3672,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3696,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3744,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3768,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3816,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3840,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3888,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3912,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 3960,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 3984,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4032,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4056,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4104,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4128,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4176,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4200,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4248,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4272,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4320,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4344,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4392,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4416,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4464,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4488,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4536,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4560,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4608,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4632,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4680,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4704,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4752,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4776,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4824,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4848,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4896,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4920,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 4941,
+          "launch": 0.55
+        },
+        {
+          "tick": 4968,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 4992,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5040,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5064,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5112,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5136,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5184,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5208,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5256,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5280,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5328,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5352,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5400,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5424,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5472,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5496,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5544,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5568,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5616,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5640,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5688,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5712,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5760,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5784,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5832,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5856,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5904,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 5928,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 5976,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 6000,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 6048,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 6072,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 6120,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 6144,
+          "left": false,
+          "right": false
+        },
+        {
+          "tick": 6192,
+          "left": true,
+          "right": true
+        },
+        {
+          "tick": 6216,
+          "left": false,
+          "right": false
+        }
+      ],
+      "events": [
+        {
+          "tick": 966,
+          "event": {
+            "type": "spinner",
+            "id": "contact-0"
+          },
+          "before": {
+            "lit": false,
+            "score": 0,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 150
+          },
+          "p": {
+            "x": -0.2539675235748291,
+            "y": 0.17072993516921997,
+            "z": -1.2428522109985352
+          }
+        },
+        {
+          "tick": 969,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          },
+          "before": {
+            "lit": false,
+            "score": 150,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 250
+          },
+          "p": {
+            "x": -0.2107342928647995,
+            "y": 0.17057856917381287,
+            "z": -1.7712398767471313
+          }
+        },
+        {
+          "tick": 1058,
+          "event": {
+            "type": "bank",
+            "targetId": "left-middle:1",
+            "id": "contact-2"
+          },
+          "before": {
+            "lit": false,
+            "score": 250,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 325
+          },
+          "p": {
+            "x": -1.261208415031433,
+            "y": 0.17112718522548676,
+            "z": -1.4853094816207886
+          }
+        },
+        {
+          "tick": 1397,
+          "event": {
+            "type": "spinner",
+            "id": "contact-3"
+          },
+          "before": {
+            "lit": false,
+            "score": 325,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 475
+          },
+          "p": {
+            "x": -0.22844724357128143,
+            "y": 0.1707467883825302,
+            "z": -1.175201416015625
+          }
+        },
+        {
+          "tick": 1400,
+          "event": {
+            "type": "bumper",
+            "id": "contact-4"
+          },
+          "before": {
+            "lit": false,
+            "score": 475,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 575
+          },
+          "p": {
+            "x": -0.1820753961801529,
+            "y": 0.17060105502605438,
+            "z": -1.708398699760437
+          }
+        },
+        {
+          "tick": 1414,
+          "event": {
+            "type": "bank",
+            "targetId": "left-middle:1",
+            "id": "contact-5"
+          },
+          "before": {
+            "lit": false,
+            "score": 575,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 650
+          },
+          "p": {
+            "x": -1.0944856405258179,
+            "y": 0.17042596638202667,
+            "z": -1.3295619487762451
+          }
+        },
+        {
+          "tick": 1438,
+          "event": {
+            "type": "spinner",
+            "id": "contact-6"
+          },
+          "before": {
+            "lit": false,
+            "score": 650,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 800
+          },
+          "p": {
+            "x": -0.46029695868492126,
+            "y": 0.17093950510025024,
+            "z": -1.4456870555877686
+          }
+        },
+        {
+          "tick": 1697,
+          "event": {
+            "type": "kickback",
+            "id": "save-7"
+          },
+          "before": {
+            "lit": false,
+            "score": 800,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 800
+          },
+          "p": {
+            "x": -0.09777948260307312,
+            "y": 0.17027367651462555,
+            "z": 4.936086654663086
+          }
+        },
+        {
+          "tick": 2730,
+          "event": {
+            "type": "bank",
+            "targetId": "right-side:2",
+            "id": "contact-8"
+          },
+          "before": {
+            "lit": false,
+            "score": 800,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 875
+          },
+          "p": {
+            "x": 1.3799257278442383,
+            "y": 0.17081178724765778,
+            "z": -0.5718492865562439
+          }
+        },
+        {
+          "tick": 3200,
+          "event": {
+            "type": "sling",
+            "id": "contact-9"
+          },
+          "before": {
+            "lit": false,
+            "score": 875,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 900
+          },
+          "p": {
+            "x": 1.323085069656372,
+            "y": 0.17087127268314362,
+            "z": 1.718598484992981
+          }
+        },
+        {
+          "tick": 3223,
+          "event": {
+            "type": "sling",
+            "id": "contact-10"
+          },
+          "before": {
+            "lit": false,
+            "score": 900,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 925
+          },
+          "p": {
+            "x": 1.186186671257019,
+            "y": 0.1709807813167572,
+            "z": 1.999196171760559
+          }
+        },
+        {
+          "tick": 3323,
+          "event": {
+            "type": "sling",
+            "id": "contact-11"
+          },
+          "before": {
+            "lit": false,
+            "score": 925,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 950
+          },
+          "p": {
+            "x": 0.9826001524925232,
+            "y": 0.16923728585243225,
+            "z": 2.7977161407470703
+          }
+        },
+        {
+          "tick": 3403,
+          "event": {
+            "type": "sling",
+            "id": "contact-12"
+          },
+          "before": {
+            "lit": false,
+            "score": 950,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 975
+          },
+          "p": {
+            "x": 1.1125611066818237,
+            "y": 0.17111080884933472,
+            "z": 2.8338401317596436
+          }
+        },
+        {
+          "tick": 3542,
+          "event": {
+            "type": "inlane",
+            "id": "contact-13"
+          },
+          "before": {
+            "lit": false,
+            "score": 975,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 1075
+          },
+          "p": {
+            "x": 1.69142484664917,
+            "y": 0.17125338315963745,
+            "z": 3.2149908542633057
+          }
+        },
+        {
+          "tick": 3548,
+          "event": {
+            "type": "sling",
+            "id": "contact-14"
+          },
+          "before": {
+            "lit": false,
+            "score": 1075,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 1100
+          },
+          "p": {
+            "x": 1.5667849779129028,
+            "y": 0.17128269374370575,
+            "z": 2.68454647064209
+          }
+        },
+        {
+          "tick": 3712,
+          "event": {
+            "type": "sling",
+            "id": "contact-15"
+          },
+          "before": {
+            "lit": false,
+            "score": 1100,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 1125
+          },
+          "p": {
+            "x": -0.9803214073181152,
+            "y": 0.1707381159067154,
+            "z": 2.4568443298339844
+          }
+        },
+        {
+          "tick": 3909,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-16"
+          },
+          "before": {
+            "lit": false,
+            "score": 1125,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 1225
+          },
+          "p": {
+            "x": -1.259352684020996,
+            "y": 0.1709284484386444,
+            "z": -4.760928630828857
+          }
+        },
+        {
+          "tick": 3923,
+          "event": {
+            "type": "loop",
+            "id": "loop-17"
+          },
+          "before": {
+            "lit": false,
+            "score": 1225,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 1525
+          },
+          "p": {
+            "x": -1.2656351327896118,
+            "y": 0.17074690759181976,
+            "z": -4.444612503051758
+          }
+        },
+        {
+          "tick": 3959,
+          "event": {
+            "type": "bumper",
+            "id": "contact-18"
+          },
+          "before": {
+            "lit": false,
+            "score": 1525,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 2125
+          },
+          "p": {
+            "x": -1.2814078330993652,
+            "y": 0.17007006704807281,
+            "z": -3.338991403579712
+          }
+        },
+        {
+          "tick": 4067,
+          "event": {
+            "type": "bumper",
+            "id": "contact-19"
+          },
+          "before": {
+            "lit": false,
+            "score": 2125,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 2225
+          },
+          "p": {
+            "x": -0.5047040581703186,
+            "y": 0.2537790834903717,
+            "z": -2.3051161766052246
+          }
+        },
+        {
+          "tick": 4424,
+          "event": {
+            "type": "kickback",
+            "id": "save-20"
+          },
+          "before": {
+            "lit": false,
+            "score": 2225,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 2225
+          },
+          "p": {
+            "x": 0.1335315704345703,
+            "y": 0.16752782464027405,
+            "z": 4.910290241241455
+          }
+        },
+        {
+          "tick": 5877,
+          "event": {
+            "type": "sling",
+            "id": "contact-21"
+          },
+          "before": {
+            "lit": false,
+            "score": 2225,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 2250
+          },
+          "p": {
+            "x": 1.5186721086502075,
+            "y": 0.1704113632440567,
+            "z": 1.3134098052978516
+          }
+        },
+        {
+          "tick": 5921,
+          "event": {
+            "type": "sling",
+            "id": "contact-22"
+          },
+          "before": {
+            "lit": false,
+            "score": 2250,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 2275
+          },
+          "p": {
+            "x": 1.7787562608718872,
+            "y": 0.2339324802160263,
+            "z": 0.9161255955696106
+          }
+        },
+        {
+          "tick": 6046,
+          "event": {
+            "type": "kickback",
+            "id": "save-23"
+          },
+          "before": {
+            "lit": false,
+            "score": 2275,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 2275
+          },
+          "p": {
+            "x": 0.09448288381099701,
+            "y": 0.16767548024654388,
+            "z": 4.9311065673828125
+          }
+        },
+        {
+          "tick": 6121,
+          "event": {
+            "type": "sling",
+            "id": "contact-24"
+          },
+          "before": {
+            "lit": false,
+            "score": 2275,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 2300
+          },
+          "p": {
+            "x": -1.040795922279358,
+            "y": 0.1710471659898758,
+            "z": 2.3049325942993164
+          }
+        },
+        {
+          "tick": 6146,
+          "event": {
+            "type": "sling",
+            "id": "contact-25"
+          },
+          "before": {
+            "lit": false,
+            "score": 2300,
+            "collections": 0
+          },
+          "after": {
+            "lit": false,
+            "collections": 0,
+            "score": 2325
+          },
+          "p": {
+            "x": -0.9755236506462097,
+            "y": 0.17118854820728302,
+            "z": 2.441720962524414
+          }
+        }
+      ]
+    }
+  ]
+}

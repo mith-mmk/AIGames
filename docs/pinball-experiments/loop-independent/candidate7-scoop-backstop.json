@@ -1,0 +1,74 @@
+{
+  "source": {
+    "physics.mjs": "1dc28da7712286d9a6273a97c06788101b745b5c259f7624852fd44ad589ab91",
+    "loop.mjs": "06236496abb5747394ac3becfca54dbb88d35d0d2a3057fef923609b93f3cdb0",
+    "layout.mjs": "46bd76a28182268210e968ed21027d62428f5733eba87c14d7645986f9efc2bd",
+    "scoop.mjs": "4727cbec954cc5503e987be3ddaf01ac1571e85d19482c30361df61e11fccc34",
+    "game-state.mjs": "42584a13005056920f09a0c5c8a28c11288f2206a7e877edd9eafe228d3d569b",
+    "missions.mjs": "973d48d800b98a23a20011a126d4a0ec114410fcea05f4b1865661863999bad0"
+  },
+  "method": "Injected drop/slow fixtures, not natural play. Initial overlaps skipped; trap=3 seconds speed<.08 without scoop hold.",
+  "rows": [
+    {
+      "name": "scoop-support-backstop-drop",
+      "p": {
+        "x": -1,
+        "y": 1.7,
+        "z": 0.01
+      },
+      "v": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 5.325000000000054,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -0.07741082459688187,
+            "y": 0.16307975351810455,
+            "z": 5.055881023406982
+          },
+          "velocity": {
+            "x": 1.9691725969314575,
+            "y": -0.8351812958717346,
+            "z": 2.522895574569702
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 3.7249999999999894,
+          "event": {
+            "type": "kickback",
+            "id": "save-0"
+          }
+        },
+        {
+          "time": 4.09166666666666,
+          "event": {
+            "type": "sling",
+            "id": "contact-1"
+          }
+        }
+      ],
+      "phase": "ready",
+      "seconds": 5.325000000000054,
+      "trap": null,
+      "maxStill": 3,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  ]
+}
