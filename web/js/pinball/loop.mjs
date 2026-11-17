@@ -209,13 +209,15 @@ export class MechanicalLoop {
     for(const part of loopPocketBackings())assets.mesh(part.geometry,'steel',this.root).name=part.name;
     // Flush inserts communicate downhill return without tiny text or a
     // raised guide. Wide chevrons remain readable through the elevated wire.
-    for(const z of[-4.50,-4.28]){
+    const route=[[-1.33,-4.42],[-1.50,-4.13],[-1.64,-3.86],[-1.65,-3.45]];
+    for(let i=0;i<route.length-1;i++){
+      const [x,z]=route[i],[nextX,nextZ]=route[i+1];
       const shape=new T.Shape();[[-.27,-.12],[0,.06],[.27,-.12],[.27,-.01],[0,.17],[-.27,-.01]].forEach(([x,y],i)=>i?shape.lineTo(x,y):shape.moveTo(x,y));shape.closePath();
-      const geometry=new T.ShapeGeometry(shape);geometry.rotateX(-Math.PI/2);geometry.rotateY(Math.PI);
-      assets.mesh(geometry,'brass',this.root,-1.25,.049,z).name='loop-return-chevron-insert';
+      const geometry=new T.ShapeGeometry(shape);geometry.rotateX(-Math.PI/2);geometry.rotateY(Math.PI+Math.atan2(nextX-x,nextZ-z));
+      assets.mesh(geometry,'brass',this.root,x,.049,z).name='loop-return-chevron-insert';
     }
-    const insert=assets.mesh(new T.CircleGeometry(.235,32),'dark',this.root,-1.25,.048,-3.87);insert.rotation.x=-Math.PI/2;insert.name='loop-A-return-insert';
-    assets.text(this.root,'A',-1.25,.051,-3.87,.37,.37,'#f3cf77');
+    const insert=assets.mesh(new T.CircleGeometry(.22,32),'dark',this.root,-1.65,.048,-3.45);insert.rotation.x=-Math.PI/2;insert.name='loop-A-return-insert';
+    assets.text(this.root,'A',-1.65,.051,-3.45,.35,.35,'#f3cf77');
     assets.text(this.root,'LOOP',-1.10,.052,1.75,.34,.11,'#e8bf61');
     assets.batchStaticAssembly(this.root);
   }
