@@ -1,8 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {LOOP,LOOP_EXIT,loopPath,loopWallGeometry,loopPocketBackings,loopRearBackingGeometry,LoopTraversal,MechanicalLoop} from './loop.mjs';
+import {LOOP,LOOP_THROAT,LOOP_EXIT,loopPath,loopWallGeometry,loopPocketBackings,loopRearBackingGeometry,loopHousingProfile,LoopTraversal,MechanicalLoop} from './loop.mjs';
 import {PinballPhysics} from './physics.mjs';
+import {PinballGameState} from './game-state.mjs';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
+import {cabinetBoundaryBoxes,CABINET_BOUNDARY} from './cabinet-boundary.mjs';
 import {WorkshopAssets} from './assets.mjs';
 
 test('loop sheet geometry is finite, closed, thin stock and stays below the elevated wire',()=>{
@@ -35,6 +37,21 @@ test('every loop contact is finite outward closed stock without collapsed triang
  }}finally{geometries.forEach(g=>g.dispose());}
 });
 
+test('rear housing has an elliptical outside silhouette and stays below the shared cabinet top',()=>{
+ const h=loopHousingProfile(),rear=cabinetBoundaryBoxes().find(b=>b.name==='rear'),g=loopRearBackingGeometry();
+ try{
+  const rearFace=rear.center[2]+rear.size[2]/2;
+  assert.ok(Math.abs(LOOP.turnZ-h.rz-h.hem-rearFace)<1e-9);
+  g.computeBoundingBox();assert.ok(g.boundingBox.max.y<CABINET_BOUNDARY.top);
+  assert.ok(g.boundingBox.min.z>=rearFace-1e-5);
+  for(let i=0;i<g.attributes.position.count;i++){
+   const x=g.attributes.position.getX(i)-LOOP.turnX,z=g.attributes.position.getZ(i)-LOOP.turnZ;
+   assert.ok((x/(h.rx+h.hem))**2+(z/(h.rz+h.hem))**2<1.025,'no rectangular rear corners');
+  }
+  assert.equal(g.groups.length,3,'fixed steel / rolled chrome / fastener-head groups');
+ }finally{g.dispose();}
+});
+
 test('upper backing remains outside the live channel and sheds its top toward the open carrier end',()=>{
  const parts=loopPocketBackings();try{
   const upper=parts.find(p=>p.name==='upper-bank-common-support').geometry;
@@ -52,15 +69,31 @@ test('upper backing remains outside the live channel and sheds its top toward th
 
 test('ordered loop switches reject reverse, airborne, shortcut and repeated exit',()=>{
  const p=(x,z,y=.175)=>({x,z,y});
- const enter=t=>t.update(p(-1.20,1.46),p(-1.27,1.34),0);
+ const enter=t=>t.update(p(LOOP_THROAT.x,LOOP_THROAT.z+.06),p(LOOP_THROAT.x,LOOP_THROAT.z-.06),0);
  const turn=t=>t.update(p(LOOP.turnX-.02,LOOP.turnZ-LOOP.radius),p(LOOP.turnX+.02,LOOP.turnZ-LOOP.radius),1);
  const exit=t=>t.update(p(-1.25,-4.5),p(-1.25,-4.4),2);
- const t=new LoopTraversal();assert.ok(t.contains(p(-2.1,.7)),'shared outer funnel is a real route');assert.equal(t.contains(p(-2.4,.7)),false);assert.equal(t.contains(p(-1,.5)),false);assert.equal(exit(t),false);enter(t);turn(t);assert.equal(exit(t),true);assert.equal(exit(t),false);
+ const t=new LoopTraversal();t.update(p(-1.20,1.46),p(-1.27,1.34),0);assert.equal(t.stage,0,'wide mouth alone is not the traversal gate');assert.ok(t.contains(p(-2.1,.7)),'shared outer funnel is a real route');assert.equal(t.contains(p(-2.4,.7)),false);assert.equal(t.contains(p(-1,.5)),false);assert.equal(exit(t),false);enter(t);turn(t);assert.equal(exit(t),true);assert.equal(exit(t),false);
  enter(t);t.update(p(-2.2,-2),p(-2.2,-2,.5),.5);turn(t);assert.equal(exit(t),false);
  enter(t);t.update(p(-2.2,-2),p(-1.4,-2),.5);turn(t);assert.equal(exit(t),false);
+ enter(t);t.update(p(LOOP_THROAT.x,LOOP_THROAT.z-.06),p(LOOP_THROAT.x,LOOP_THROAT.z+.06),.1);turn(t);assert.equal(exit(t),false);
  enter(t);turn(t);t.update(p(LOOP.turnX+.02,LOOP.turnZ-LOOP.radius),p(LOOP.turnX-.02,LOOP.turnZ-LOOP.radius),1.1);assert.equal(exit(t),false);
  enter(t);turn(t);assert.equal(t.update(p(0,-4.5),p(0,-4.4),2),false);
  enter(t);turn(t);assert.equal(t.update(p(-1.25,-4.5),p(-1.25,-4.4),LOOP.timeout+1),false);
+});
+
+test('bat-side and OUT-save-side recognizer paths share the same throat-to-U-to-A 300-point contract',()=>{
+ // Detector/rule fixture, not a claim that a real kickback always has enough
+ // energy to reach the U. Actual weak saved balls must return without points.
+ for(const approach of [[[-1.20,1.46],[-1.27,1.34]],[[-2.10,1.46],[-2.10,1.34]]]){
+  const t=new LoopTraversal(),state=new PinballGameState();state.launch();
+  const p=([x,z])=>({x,y:.175,z});
+  assert.equal(t.update(p(approach[0]),p(approach[1]),0),false);assert.equal(t.stage,0);
+  assert.equal(t.update(p([-2.10,-.64]),p([-2.10,-.76]),.5),false);
+  assert.equal(t.stage,1);assert.equal(state.score,0);
+  assert.equal(t.update(p([LOOP.turnX-.02,LOOP.turnZ-LOOP.radius]),p([LOOP.turnX+.02,LOOP.turnZ-LOOP.radius]),1.5),false);
+  assert.equal(t.update(p([-1.25,-4.50]),p([-1.25,-4.40]),2),true);
+  assert.equal(state.onEvent({type:'loop',id:'real-ordered-passage'}),true);assert.equal(state.score,300);
+ }
 });
 
 test('positioned mouth shots either complete or return to a normal drain without assistance',async()=>{

@@ -1,10 +1,12 @@
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import { TABLE } from './layout.mjs';
+import {cabinetBoundaryBoxes,CABINET_BOUNDARY} from './cabinet-boundary.mjs';
 
 // Ground-level U loop. The upper half-circle returns to existing top lane A.
 // Every visible wall face is also used for contact: no magnetic guide or boost.
 export const LOOP = Object.freeze({width:.36,wall:.018,floor:.04,height:.24,entryZ:1.40,turnZ:-4.90,turnX:-1.675,radius:.425,timeout:8});
 // Existing top lane A rails are at -1.875 and -.625, each radius .035.
+export const LOOP_THROAT = Object.freeze({x:-2.10,z:-.70,halfWidth:LOOP.width/2-TABLE.ballRadius+.012});
 export const LOOP_EXIT = Object.freeze({x:(-1.875-.625)/2,z:-4.45,halfWidth:(1.875-.625)/2-.035-TABLE.ballRadius-.01});
 export function loopPath() {
   const points=[];
@@ -88,16 +90,35 @@ export function loopPocketBackings() {
     {name:'upper-bank-common-support',geometry:upperBackingGeometry()},
   ];
 }
+export function loopHousingProfile() {
+  const rear=cabinetBoundaryBoxes().find(b=>b.name==='rear');
+  const inner=LOOP.radius+LOOP.width/2+LOOP.wall,hem=.009;
+  return {inner,rx:inner+.017,rz:LOOP.turnZ-(rear.center[2]+rear.size[2]/2)-hem,hem,
+    rise:Math.min(.09,CABINET_BOUNDARY.top-(LOOP.floor+LOOP.height)-.015)};
+}
+function housingPoint(angle,t) {
+  const h=loopHousingProfile(),rx=h.inner+(h.rx-h.inner)*t,rz=h.inner+(h.rz-h.inner)*t;
+  return new T.Vector3(LOOP.turnX-rx*Math.cos(angle),LOOP.floor+LOOP.height+h.rise*Math.sin(t*Math.PI/2)*(.6+.4*Math.sin(angle)),LOOP.turnZ-rz*Math.sin(angle));
+}
+function closedRolledStock(arc,radius) {
+  const roll=new T.TubeGeometry(new T.CatmullRomCurve3(arc),40,radius,8,false);
+  const rp=[...roll.attributes.position.array],ri=[...roll.index.array];
+  for(const [row,point,reverse] of [[0,arc[0],true],[40,arc.at(-1),false]]){
+    const center=rp.length/3;rp.push(point.x,point.y,point.z);
+    for(let k=0;k<8;k++)ri.push(center,row*9+(reverse?k+1:k),row*9+(reverse?k:k+1));
+  }
+  roll.setAttribute('position',new T.Float32BufferAttribute(rp,3));roll.setIndex(ri);
+  roll.deleteAttribute('normal');roll.deleteAttribute('uv');roll.computeVertexNormals();return roll;
+}
 export function loopRearBackingGeometry() {
-  // Closed, formed housing. Its low rolled U edge leads into the return;
-  // the convex crown rises toward the cabinet and sheds falling balls forward.
-  const radius=LOOP.radius+LOOP.width/2+LOOP.wall,columns=40,rows=8;
+  // A real horseshoe footprint: neither a straight back nor parallel side
+  // walls remain. The convex outer ellipse sheds balls toward either opening.
+  const profile=loopHousingProfile(),columns=40,rows=8;
   const positions=[],indices=[],stride=columns+1;
   for(let layer=0;layer<2;layer++)for(let j=0;j<=rows;j++)for(let i=0;i<=columns;i++){
-    const a=i/columns*Math.PI,t=j/rows,x=LOOP.turnX-radius*Math.cos(a);
-    const front=LOOP.turnZ-radius*Math.sin(a),z=front+(-5.73-front)*t;
-    const y=layer?LOOP.floor:LOOP.floor+LOOP.height+.12*Math.sin(t*Math.PI/2)*(.6+.4*Math.sin(a));
-    positions.push(x,y,z);
+    const point=housingPoint(i/columns*Math.PI,j/rows);
+    if(layer)point.y=LOOP.floor;
+    positions.push(...point.toArray());
   }
   const count=(rows+1)*stride;
   for(let j=0;j<rows;j++)for(let i=0;i<columns;i++){
@@ -113,23 +134,15 @@ export function loopRearBackingGeometry() {
     const a=edge[i],b=edge[(i+1)%edge.length];indices.push(a,a+count,b,b,a+count,b+count);
   }
   const shell=new T.BufferGeometry();shell.setAttribute('position',new T.Float32BufferAttribute(positions,3));shell.setIndex(indices);shell.computeVertexNormals();
-  const arc=Array.from({length:41},(_,i)=>{const a=i/40*Math.PI;return new T.Vector3(LOOP.turnX-(radius+.003)*Math.cos(a),.282,LOOP.turnZ-(radius+.003)*Math.sin(a));});
-  const roll=new T.TubeGeometry(new T.CatmullRomCurve3(arc),40,.009,8,false);
-  // TubeGeometry has open end rings; cap the rolled lip as actual solid stock.
-  const rp=[...roll.attributes.position.array],ri=[...roll.index.array];
-  for(const [row,point,reverse] of [[0,arc[0],true],[40,arc.at(-1),false]]){
-    const center=rp.length/3;rp.push(point.x,point.y,point.z);
-    for(let k=0;k<8;k++)ri.push(center,row*9+(reverse?k+1:k),row*9+(reverse?k:k+1));
-  }
-  roll.setAttribute('position',new T.Float32BufferAttribute(rp,3));roll.setIndex(ri);
-  // Rebuild all attributes after adding cap centers.
-  roll.deleteAttribute('normal');roll.deleteAttribute('uv');roll.computeVertexNormals();
-  const parts=[{geometry:shell,material:0},{geometry:roll,material:1}];
+  const innerArc=Array.from({length:41},(_,i)=>housingPoint(i/40*Math.PI,0));
+  const outerArc=Array.from({length:41},(_,i)=>housingPoint(i/40*Math.PI,1));
+  const parts=[{geometry:shell,material:0},
+    {geometry:closedRolledStock(innerArc,.007),material:1},
+    {geometry:closedRolledStock(outerArc,profile.hem),material:1}];
   // Low countersunk fixing seats follow the crown. Their complete geometry
   // joins this same collision mesh, rather than decorative floating hardware.
-  for(const i of[8,32]){
-    const a=i/40*Math.PI,t=.72,x=LOOP.turnX-radius*Math.cos(a),front=LOOP.turnZ-radius*Math.sin(a);
-    const z=front+(-5.73-front)*t,y=.28+.12*Math.sin(t*Math.PI/2)*(.6+.4*Math.sin(a));
+  for(const i of[12,28]){
+    const {x,y,z}=housingPoint(i/40*Math.PI,.55);
     const seat=new T.CylinderGeometry(.025,.042,.012,16);seat.translate(x,y+.002,z);parts.push({geometry:seat,material:1});
     const head=new T.CylinderGeometry(.018,.018,.006,12);head.translate(x,y+.009,z);parts.push({geometry:head,material:2});
   }
@@ -175,7 +188,9 @@ export class LoopTraversal {
   update(before,p,time) {
     if(this.stage&&(!this.contains(p)||time-this.started>LOOP.timeout||p.y<.10||p.y>.34||p.x< -2.56||p.x>-.80||p.z< -5.56||p.z>1.75))this.reset();
     if(p.y<.10||p.y>.34)return false;
-    const length=Math.hypot(-.485,-.74),mouth=this.crossing(before,p,[-1.235,1.40],[-.485/length,-.74/length],.32);
+    // Every real funnel entry, including a left OUT save, earns the same
+    // traversal only after reaching the shared narrow throat.
+    const mouth=this.crossing(before,p,[LOOP_THROAT.x,LOOP_THROAT.z],[0,-1],LOOP_THROAT.halfWidth);
     const turn=this.crossing(before,p,[LOOP.turnX,LOOP.turnZ-LOOP.radius],[1,0],.18);
     const exit=this.crossing(before,p,[LOOP_EXIT.x,LOOP_EXIT.z],[0,1],LOOP_EXIT.halfWidth);
     if(mouth===1){this.stage=1;this.started=time;}
@@ -192,7 +207,15 @@ export class MechanicalLoop {
     for(const side of [-1,1])assets.mesh(loopWallGeometry(side),'chrome',this.root).name='loop-folded-guide-'+side;
     assets.mesh(loopRearBackingGeometry(),[assets.materials.steel,assets.materials.chrome,assets.materials.dark],this.root).name='loop-formed-rear-housing';
     for(const part of loopPocketBackings())assets.mesh(part.geometry,'steel',this.root).name=part.name;
-    assets.text(this.root,'↓ A RETURN',-1.25,.052,-4.12,.65,.12,'#e8bf61');
+    // Flush inserts communicate downhill return without tiny text or a
+    // raised guide. Wide chevrons remain readable through the elevated wire.
+    for(const z of[-4.50,-4.28]){
+      const shape=new T.Shape();[[-.27,-.12],[0,.06],[.27,-.12],[.27,-.01],[0,.17],[-.27,-.01]].forEach(([x,y],i)=>i?shape.lineTo(x,y):shape.moveTo(x,y));shape.closePath();
+      const geometry=new T.ShapeGeometry(shape);geometry.rotateX(-Math.PI/2);geometry.rotateY(Math.PI);
+      assets.mesh(geometry,'brass',this.root,-1.25,.049,z).name='loop-return-chevron-insert';
+    }
+    const insert=assets.mesh(new T.CircleGeometry(.235,32),'dark',this.root,-1.25,.048,-3.87);insert.rotation.x=-Math.PI/2;insert.name='loop-A-return-insert';
+    assets.text(this.root,'A',-1.25,.051,-3.87,.37,.37,'#f3cf77');
     assets.text(this.root,'LOOP',-1.10,.052,1.75,.34,.11,'#e8bf61');
     assets.batchStaticAssembly(this.root);
   }
