@@ -31,3 +31,11 @@ There are **four out-of-bounds observations** (two unique deterministic paths, o
 - Repository-wide unrelated game suite not run. No universal human-playability or mechanical/reference completion claim.
 
 Run `npm run test:pinball`, `node scripts/pinball-difficulty-audit.mjs`, `PINBALL_DIFFICULTY=relaxed node scripts/pinball-difficulty-audit.mjs output.json`, `node scripts/pinball-difficulty-browser.cjs`, `PINBALL_RAMP_RELEASE_MS=650 node scripts/pinball-control-browser.cjs`.
+
+## Published verification
+Existing owner-only Site updated successfully: https://chappy-workshop-pinball.mi-si.chatgpt.site . Sharing unchanged.
+Runtime commit: `cb8b9f81fbbf31f41c9defb14ab95b0347e6c717`; normal push and remote exact-SHA match verified.
+Site source: `7edd8d89407da527e26bb4d057b0dc1ea0c0db6f`.
+Deployment: `appgdep_6afbc50aed788191981cb1af72acf78e`, succeeded 2026-11-17T03:08:01Z.
+
+All 49 exported source fingerprints matched the runtime checkout. Actual exported distribution passed the full browser smoke and new difficulty browser checks before packaging. After deployment, source-revision reported the exact runtime commit; four live CSS/JS SHA256 hashes matched provenance. Live 390×844 Chrome rendering, default relaxed, difficulty switching, keyboard launch and flipper input passed with zero page errors. Live mobile screenshot was visually inspected. The final documentation-only commit does not require another runtime publication.
