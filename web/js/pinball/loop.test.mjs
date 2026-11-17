@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {LOOP,LOOP_EXIT,loopPath,loopWallGeometry,loopPocketBackings,LoopTraversal,MechanicalLoop} from './loop.mjs';
+import {LOOP,LOOP_EXIT,loopPath,loopWallGeometry,loopPocketBackings,loopRearBackingGeometry,LoopTraversal,MechanicalLoop} from './loop.mjs';
 import {PinballPhysics} from './physics.mjs';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import {WorkshopAssets} from './assets.mjs';
@@ -18,7 +18,24 @@ test('loop sheet geometry is finite, closed, thin stock and stays below the elev
   }
 });
 
-test('upper backing remains outside the live channel and sheds its top toward the rear',()=>{
+test('every loop contact is finite outward closed stock without collapsed triangles',()=>{
+ const geometries=[loopWallGeometry(-1),loopWallGeometry(1),loopRearBackingGeometry(),...loopPocketBackings().map(p=>p.geometry)];
+ try{for(const [part,g] of geometries.entries()){
+  const p=g.attributes.position,indices=g.index?.array??Array.from({length:p.count},(_,i)=>i),edges=new Map();let volume=0;
+  assert.ok([...p.array].every(Number.isFinite));
+  const key=v=>v.toArray().map(n=>Math.round(n*1e6)).join(',');
+  for(let i=0;i<indices.length;i+=3){
+   const v=[0,1,2].map(j=>new T.Vector3().fromBufferAttribute(p,indices[i+j]));
+   assert.ok(v[1].clone().sub(v[0]).cross(v[2].clone().sub(v[0])).lengthSq()>1e-18,`part ${part} triangle ${i/3} has area`);
+   volume+=v[0].dot(v[1].clone().cross(v[2]))/6;
+   for(let j=0;j<3;j++){const k=[key(v[j]),key(v[(j+1)%3])].sort().join('|');edges.set(k,(edges.get(k)??0)+1);}
+  }
+  assert.ok(volume>0,`part ${part} outward`);
+  for(const [edge,count] of edges)assert.equal(count,2,`part ${part} closed at ${edge}`);
+ }}finally{geometries.forEach(g=>g.dispose());}
+});
+
+test('upper backing remains outside the live channel and sheds its top toward the open carrier end',()=>{
  const parts=loopPocketBackings();try{
   const upper=parts.find(p=>p.name==='upper-bank-common-support').geometry;
   upper.computeBoundingBox();
@@ -26,36 +43,45 @@ test('upper backing remains outside the live channel and sheds its top toward th
   const positions=upper.attributes.position;let lowRear=0,highFront=0;
   for(let i=0;i<positions.count;i++){
    const x=positions.getX(i),y=positions.getY(i),z=positions.getZ(i);
-   if(x< -1.89&&z< -2.7&&y<.041)lowRear++;
+   if(x> -.73&&y>.16&&y<.18)lowRear++;
    if(x< -1.89&&z> -2.05&&y>.27)highFront++;
   }
-  assert.ok(lowRear>0&&highFront>0,'no flat elevated shelf behind the bank');
+  assert.ok(lowRear>0&&highFront>0,'the top descends laterally rather than making an uphill floor valley');
  }finally{for(const p of parts)p.geometry.dispose();}
 });
 
 test('ordered loop switches reject reverse, airborne, shortcut and repeated exit',()=>{
  const p=(x,z,y=.175)=>({x,z,y});
  const enter=t=>t.update(p(-1.20,1.46),p(-1.27,1.34),0);
- const turn=t=>t.update(p(-1.72,-5.35),p(-1.68,-5.35),1);
+ const turn=t=>t.update(p(LOOP.turnX-.02,LOOP.turnZ-LOOP.radius),p(LOOP.turnX+.02,LOOP.turnZ-LOOP.radius),1);
  const exit=t=>t.update(p(-1.25,-4.5),p(-1.25,-4.4),2);
- const t=new LoopTraversal();assert.equal(exit(t),false);enter(t);turn(t);assert.equal(exit(t),true);assert.equal(exit(t),false);
+ const t=new LoopTraversal();assert.ok(t.contains(p(-2.1,.7)),'shared outer funnel is a real route');assert.equal(t.contains(p(-2.4,.7)),false);assert.equal(t.contains(p(-1,.5)),false);assert.equal(exit(t),false);enter(t);turn(t);assert.equal(exit(t),true);assert.equal(exit(t),false);
  enter(t);t.update(p(-2.2,-2),p(-2.2,-2,.5),.5);turn(t);assert.equal(exit(t),false);
  enter(t);t.update(p(-2.2,-2),p(-1.4,-2),.5);turn(t);assert.equal(exit(t),false);
- enter(t);turn(t);t.update(p(-1.68,-5.35),p(-1.72,-5.35),1.1);assert.equal(exit(t),false);
+ enter(t);turn(t);t.update(p(LOOP.turnX+.02,LOOP.turnZ-LOOP.radius),p(LOOP.turnX-.02,LOOP.turnZ-LOOP.radius),1.1);assert.equal(exit(t),false);
  enter(t);turn(t);assert.equal(t.update(p(0,-4.5),p(0,-4.4),2),false);
  enter(t);turn(t);assert.equal(t.update(p(-1.25,-4.5),p(-1.25,-4.4),LOOP.timeout+1),false);
 });
 
-test('positioned mouth fixtures traverse from the angled entrance without assistance',async()=>{
+test('positioned mouth shots either complete or return to a normal drain without assistance',async()=>{
  for(const speed of[18,22,26])for(const offset of[-.025,0,.025]){
   const g=await PinballPhysics.create();try{
    g.launch();g.state.kickbackCharges=0;
    const norm=Math.hypot(.485,.74),tx=-.485/norm,tz=-.74/norm;
    g.ball.setTranslation({x:-1.235-tx*.1-tz*offset,y:.175,z:1.4-tz*.1+tx*offset},true);
    g.ball.setLinvel({x:tx*speed,y:0,z:tz*speed},true);
-   let completed=0;const original=g.state.onEvent.bind(g.state);g.state.onEvent=e=>{if(e.type==='loop')completed++;return original(e);};
-   for(let i=0;i<1600&&g.state.phase==='playing'&&!completed;i++)g.step(1/120);
-   assert.equal(completed,1,JSON.stringify({speed,offset,p:g.ballPosition}));
+   let completed=0,resets=0;const drains=[],original=g.state.onEvent.bind(g.state),drain=g.state.drain.bind(g.state),set=g.ball.setTranslation.bind(g.ball);
+   g.state.onEvent=e=>{if(e.type==='loop')completed++;return original(e);};
+   g.state.drain=info=>{drains.push({info,p:{...g.ballPosition}});return drain(info);};
+   g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')resets++;return set(...args);};
+   for(let i=0;i<7200&&g.state.phase==='playing'&&!completed;i++)g.step(1/120);
+   const expected=speed===26||(speed===22&&offset!==.025)?1:0;
+   assert.equal(completed,expected,JSON.stringify({speed,offset,p:g.ballPosition}));
+   assert.equal(resets,0);
+   if(!expected){
+    assert.equal(g.state.phase,'ready','a failed angled shot cannot remain in a local oscillation');
+    assert.equal(drains.length,1);assert.equal(drains[0].info.reason,'normal');assert.ok(drains[0].p.z>4.6);
+   }
   }finally{g.dispose();}
  }
 });

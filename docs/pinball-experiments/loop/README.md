@@ -79,3 +79,18 @@ The straight channel moved from x=-2.22 to -2.10, with U radius .40. Independent
 The middle standups move a further .10 toward the center to leave a ball-width gap beside the guide. Their ornamental spanning bar has been replaced by individual fittings recessed within the existing strike-box envelopes, so the open inter-target gap has no visual-only brass obstacle. No new contact handles are inserted for these fittings.
 
 Candidate 7 passes the nine positioned mouth shots and five adjacent right-cradle release timings. The previous candidate 6 passed twelve legal drop/slow fixtures without a three-second stop; two historical starts now overlap the deliberate support and are not counted as passes. Candidate 7 requires its own independent audit, additional support-top drops, and natural launch proof. These preliminary numbers do not imply publication readiness.
+
+### Candidate 8: formed housing and legacy-path compatibility (pending final audit)
+
+Candidate 7 did **not** pass the full suite. The subsequent fixes are physical, not weaker legacy assertions:
+
+- U center X=-1.675 and radius=.425 align the outlet at lane A's existing X=-1.25. Its original 27 ground-entry cases are preserved.
+- The rear gap filler is now a closed crowned housing, with a smooth rising upper surface, rolled U lip and countersunk fixing stock. Rendering and contact share the exact geometry, with three material groups. The flush `A RETURN` marker identifies the destination without another raised obstacle.
+- The former strongly curved outer mouth obstructed the left OUT kickback. A straight outer approach with a limited .015 flare preserves that uphill path; the original inner curve still aims right-bat shots. A .07 flare was rejected because it narrowed the gap to the existing wire support at Z=.7725.
+- The traversal corridor is derived from both real wall contours, not a fixed distance from the old symmetric centerline. Ordered mouth/apex/A gates, height checks, reverse and timeout rejection remain.
+- A self-crossing first segment in the scoop support and a zero-thickness rear edge in the upper support were found by new mesh tests. All loop contact pieces must now be finite, outward, closed and free of zero-area triangles.
+- A broad upper backing created a narrow passage beside the bumpers. A short partial backing instead made a gravitational pocket where it joined the oppositely sloped carrier rail. The current solution is a thin continuous case, X=-1.90..-.72, rear edge Z=-2.45..-2.31, with a top descending laterally .28→.17. The original 80 slow support fixtures, including unchanged skip counts, passed this case before the final rear-housing material-group reorder. Re-run them in the final full suite.
+
+The artificial angled mouth fixtures are not all equivalent to actual bat shots. On the current outer approach, speed 18 at offsets -.025/0/.025 and speed 22 at offset +.025 return to a **normal drain**; speed 22 at offsets -.025/0 and speed 26 at all three offsets complete. Both outcomes require no playing-state position reset, no out-of-bounds drain and no local oscillation. This classification changes only the new experimental fixtures. The old kickback, ramp, target, support and beginner tests remain unchanged. Five adjacent actual right-flipper release timings after the explicitly positioned cradle must still complete independently.
+
+Candidate 8 needs its own independent drop, airborne, natural-game and visual results. Candidate 7's successful natural games are historical evidence, not acceptance of the changed geometry.
