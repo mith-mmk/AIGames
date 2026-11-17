@@ -1,0 +1,2380 @@
+{
+  "source": {
+    "physics.mjs": "1dc28da7712286d9a6273a97c06788101b745b5c259f7624852fd44ad589ab91",
+    "loop.mjs": "d1fbc1b00546c7a006a53a54897d84bc9af349803419384f3fe03d9e4da4f68c",
+    "layout.mjs": "46bd76a28182268210e968ed21027d62428f5733eba87c14d7645986f9efc2bd",
+    "scoop.mjs": "4727cbec954cc5503e987be3ddaf01ac1571e85d19482c30361df61e11fccc34",
+    "game-state.mjs": "42584a13005056920f09a0c5c8a28c11288f2206a7e877edd9eafe228d3d569b",
+    "missions.mjs": "973d48d800b98a23a20011a126d4a0ec114410fcea05f4b1865661863999bad0"
+  },
+  "method": "Injected drop/slow fixtures, not natural play. Initial overlaps skipped; trap=3 seconds speed<.08 without scoop hold.",
+  "rows": [
+    {
+      "name": "housing-airdrop--2.4,-5.5",
+      "p": {
+        "x": -2.4,
+        "y": 1.7,
+        "z": -5.5
+      },
+      "v": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 3.1249999999999916,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -2.490750551223755,
+            "y": 0.16598641872406006,
+            "z": 5.0571370124816895
+          },
+          "velocity": {
+            "x": -0.021432969719171524,
+            "y": -0.8114334940910339,
+            "z": 4.909392356872559
+          }
+        }
+      ],
+      "events": [],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 3.1249999999999916,
+      "trap": null,
+      "maxStill": 0,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-airdrop--0.95,-5.5",
+      "p": {
+        "x": -0.95,
+        "y": 1.7,
+        "z": -5.5
+      },
+      "v": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 9.508333333333434,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -0.036769378930330276,
+            "y": 0.16027864813804626,
+            "z": 5.061142921447754
+          },
+          "velocity": {
+            "x": 2.103224515914917,
+            "y": -0.8783161640167236,
+            "z": 2.3194522857666016
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.6000000000000003,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 0.9249999999999992,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 1.0666666666666653,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-2"
+          }
+        },
+        {
+          "time": 1.8333333333333293,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-3"
+          }
+        },
+        {
+          "time": 2.2499999999999947,
+          "event": {
+            "type": "bumper",
+            "id": "contact-4"
+          }
+        },
+        {
+          "time": 2.399999999999994,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-5"
+          }
+        },
+        {
+          "time": 2.808333333333326,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-6"
+          }
+        },
+        {
+          "time": 5.075000000000042,
+          "event": {
+            "type": "bumper",
+            "id": "contact-7"
+          }
+        },
+        {
+          "time": 5.633333333333403,
+          "event": {
+            "type": "bumper",
+            "id": "contact-8"
+          }
+        },
+        {
+          "time": 5.675000000000072,
+          "event": {
+            "type": "bumper",
+            "id": "contact-9"
+          }
+        },
+        {
+          "time": 8.116666666666847,
+          "event": {
+            "type": "kickback",
+            "id": "save-10"
+          }
+        },
+        {
+          "time": 8.458333333333494,
+          "event": {
+            "type": "sling",
+            "id": "contact-11"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 9.508333333333434,
+      "trap": null,
+      "maxStill": 1,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-airdrop--1.675,-5.55",
+      "p": {
+        "x": -1.675,
+        "y": 1.7,
+        "z": -5.55
+      },
+      "v": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 2.6916666666666598,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -1.8636265993118286,
+            "y": 0.15818867087364197,
+            "z": 5.101377964019775
+          },
+          "velocity": {
+            "x": 1.5523593425750732,
+            "y": -1.0140892267227173,
+            "z": 8.735743522644043
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 2.316666666666661,
+          "event": {
+            "type": "sling",
+            "id": "contact-0"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 2.6916666666666598,
+      "trap": null,
+      "maxStill": 0,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-airdrop--2.3,-4.9",
+      "p": {
+        "x": -2.3,
+        "y": 1.7,
+        "z": -4.9
+      },
+      "v": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 2.1333333333333284,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -1.8604270219802856,
+            "y": 0.15814583003520966,
+            "z": 5.115316867828369
+          },
+          "velocity": {
+            "x": 1.5723758935928345,
+            "y": -1.0140892267227173,
+            "z": 8.720220565795898
+          }
+        }
+      ],
+      "events": [],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 2.1333333333333284,
+      "trap": null,
+      "maxStill": 0,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-airdrop--1.05,-4.9",
+      "p": {
+        "x": -1.05,
+        "y": 1.7,
+        "z": -4.9
+      },
+      "v": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 21.241666666666102,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -0.028756745159626007,
+            "y": 0.15701676905155182,
+            "z": 5.068145751953125
+          },
+          "velocity": {
+            "x": 2.0588979721069336,
+            "y": -1.214946985244751,
+            "z": 2.3387691974639893
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.16666666666666666,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 0.3166666666666668,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 1.7666666666666628,
+          "event": {
+            "type": "bumper",
+            "id": "contact-2"
+          }
+        },
+        {
+          "time": 1.8583333333333292,
+          "event": {
+            "type": "bumper",
+            "id": "contact-3"
+          }
+        },
+        {
+          "time": 5.250000000000051,
+          "event": {
+            "type": "bumper",
+            "id": "contact-4"
+          }
+        },
+        {
+          "time": 5.416666666666726,
+          "event": {
+            "type": "bumper",
+            "id": "contact-5"
+          }
+        },
+        {
+          "time": 5.483333333333396,
+          "event": {
+            "type": "bumper",
+            "id": "contact-6"
+          }
+        },
+        {
+          "time": 8.733333333333478,
+          "event": {
+            "type": "bumper",
+            "id": "contact-7"
+          }
+        },
+        {
+          "time": 8.900000000000135,
+          "event": {
+            "type": "bumper",
+            "id": "contact-8"
+          }
+        },
+        {
+          "time": 8.966666666666798,
+          "event": {
+            "type": "bumper",
+            "id": "contact-9"
+          }
+        },
+        {
+          "time": 12.191666666666615,
+          "event": {
+            "type": "bumper",
+            "id": "contact-10"
+          }
+        },
+        {
+          "time": 12.574999999999926,
+          "event": {
+            "type": "bumper",
+            "id": "contact-11"
+          }
+        },
+        {
+          "time": 15.549999999999757,
+          "event": {
+            "type": "bumper",
+            "id": "contact-12"
+          }
+        },
+        {
+          "time": 15.841666666666407,
+          "event": {
+            "type": "bumper",
+            "id": "contact-13"
+          }
+        },
+        {
+          "time": 15.883333333333072,
+          "event": {
+            "type": "bumper",
+            "id": "contact-14"
+          }
+        },
+        {
+          "time": 19.641666666666193,
+          "event": {
+            "type": "kickback",
+            "id": "save-15"
+          }
+        },
+        {
+          "time": 19.98333333333284,
+          "event": {
+            "type": "sling",
+            "id": "contact-16"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 21.241666666666102,
+      "trap": null,
+      "maxStill": 35,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-airdrop--2.25,-5.35",
+      "p": {
+        "x": -2.25,
+        "y": 1.7,
+        "z": -5.35
+      },
+      "v": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 3.8333333333333224,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -2.530856132507324,
+            "y": 0.1661279797554016,
+            "z": 5.057191371917725
+          },
+          "velocity": {
+            "x": -0.09709498286247253,
+            "y": -0.8114334940910339,
+            "z": 4.657569408416748
+          }
+        }
+      ],
+      "events": [],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 3.8333333333333224,
+      "trap": null,
+      "maxStill": 0,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-airdrop--1.1,-5.35",
+      "p": {
+        "x": -1.1,
+        "y": 1.7,
+        "z": -5.35
+      },
+      "v": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 6.975000000000136,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -0.032378848642110825,
+            "y": 0.16228726506233215,
+            "z": 5.057220458984375
+          },
+          "velocity": {
+            "x": 2.422990322113037,
+            "y": -0.9075456261634827,
+            "z": 2.4212260246276855
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.8166666666666662,
+          "event": {
+            "type": "rollover",
+            "lane": 1,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 1.2083333333333315,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 1.416666666666664,
+          "event": {
+            "type": "bumper",
+            "id": "contact-2"
+          }
+        },
+        {
+          "time": 1.5416666666666636,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-3"
+          }
+        },
+        {
+          "time": 2.1333333333333284,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-4"
+          }
+        },
+        {
+          "time": 4.391666666666675,
+          "event": {
+            "type": "bumper",
+            "id": "contact-5"
+          }
+        },
+        {
+          "time": 4.641666666666687,
+          "event": {
+            "type": "bumper",
+            "id": "contact-6"
+          }
+        },
+        {
+          "time": 4.683333333333356,
+          "event": {
+            "type": "bumper",
+            "id": "contact-7"
+          }
+        },
+        {
+          "time": 4.875000000000032,
+          "event": {
+            "type": "spinner",
+            "id": "contact-8"
+          }
+        },
+        {
+          "time": 5.766666666666743,
+          "event": {
+            "type": "kickback",
+            "id": "save-9"
+          }
+        },
+        {
+          "time": 6.091666666666759,
+          "event": {
+            "type": "sling",
+            "id": "contact-10"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 6.975000000000136,
+      "trap": null,
+      "maxStill": 0,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-airdrop--1.675,-5.7",
+      "p": {
+        "x": -1.675,
+        "y": 1.7,
+        "z": -5.7
+      },
+      "v": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 2.3499999999999943,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -1.8616650104522705,
+            "y": 0.15776284039020538,
+            "z": 5.110393047332764
+          },
+          "velocity": {
+            "x": 1.6164878606796265,
+            "y": -1.0140892267227173,
+            "z": 9.004684448242188
+          }
+        }
+      ],
+      "events": [],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 2.3499999999999943,
+      "trap": null,
+      "maxStill": 0,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--2.5,-5.5:0,-0.5",
+      "p": {
+        "x": -2.5,
+        "y": 0.175,
+        "z": -5.5
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": -0.5
+      },
+      "drains": [
+        {
+          "time": 3.324999999999991,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -2.594998359680176,
+            "y": 0.16434213519096375,
+            "z": 5.061328411102295
+          },
+          "velocity": {
+            "x": 0.0006290969322435558,
+            "y": -0.7371006608009338,
+            "z": 5.782116889953613
+          }
+        }
+      ],
+      "events": [],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 3.324999999999991,
+      "trap": null,
+      "maxStill": 4,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--2.5,-5.5:0,0.5",
+      "p": {
+        "x": -2.5,
+        "y": 0.175,
+        "z": -5.5
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0.5
+      },
+      "drains": [
+        {
+          "time": 2.9249999999999923,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -2.5307812690734863,
+            "y": 0.16110533475875854,
+            "z": 5.0898051261901855
+          },
+          "velocity": {
+            "x": -0.17738062143325806,
+            "y": -0.9656808972358704,
+            "z": 7.697479248046875
+          }
+        }
+      ],
+      "events": [],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 2.9249999999999923,
+      "trap": null,
+      "maxStill": 0,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--2.5,-5.5:0.5,0",
+      "p": {
+        "x": -2.5,
+        "y": 0.175,
+        "z": -5.5
+      },
+      "v": {
+        "x": 0.5,
+        "y": 0,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 4.166666666666663,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -2.561580181121826,
+            "y": 0.16613855957984924,
+            "z": 5.057236671447754
+          },
+          "velocity": {
+            "x": -0.14761985838413239,
+            "y": -0.8114334940910339,
+            "z": 4.636721611022949
+          }
+        }
+      ],
+      "events": [],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 4.166666666666663,
+      "trap": null,
+      "maxStill": 0,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--0.85,-5.5:0,-0.5",
+      "p": {
+        "x": -0.85,
+        "y": 0.175,
+        "z": -5.5
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": -0.5
+      },
+      "drains": [
+        {
+          "time": 16.208333333333055,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -0.12971127033233643,
+            "y": 0.1633939892053604,
+            "z": 5.081892967224121
+          },
+          "velocity": {
+            "x": -1.7515759468078613,
+            "y": -0.9127613306045532,
+            "z": 5.873110294342041
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.6250000000000002,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 0.9333333333333325,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 1.0749999999999986,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-2"
+          }
+        },
+        {
+          "time": 1.7499999999999962,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-3"
+          }
+        },
+        {
+          "time": 2.283333333333328,
+          "event": {
+            "type": "bumper",
+            "id": "contact-4"
+          }
+        },
+        {
+          "time": 3.5916666666666566,
+          "event": {
+            "type": "bumper",
+            "id": "contact-5"
+          }
+        },
+        {
+          "time": 3.683333333333323,
+          "event": {
+            "type": "bumper",
+            "id": "contact-6"
+          }
+        },
+        {
+          "time": 7.275000000000151,
+          "event": {
+            "type": "bumper",
+            "id": "contact-7"
+          }
+        },
+        {
+          "time": 7.591666666666834,
+          "event": {
+            "type": "bumper",
+            "id": "contact-8"
+          }
+        },
+        {
+          "time": 10.200000000000061,
+          "event": {
+            "type": "bumper",
+            "id": "contact-9"
+          }
+        },
+        {
+          "time": 10.525000000000043,
+          "event": {
+            "type": "bumper",
+            "id": "contact-10"
+          }
+        },
+        {
+          "time": 10.566666666666707,
+          "event": {
+            "type": "bumper",
+            "id": "contact-11"
+          }
+        },
+        {
+          "time": 10.86666666666669,
+          "event": {
+            "type": "bumper",
+            "id": "contact-12"
+          }
+        },
+        {
+          "time": 11.091666666666677,
+          "event": {
+            "type": "bank",
+            "targetId": "left-upper:2",
+            "id": "contact-13"
+          }
+        },
+        {
+          "time": 12.491666666666598,
+          "event": {
+            "type": "sling",
+            "id": "contact-14"
+          }
+        },
+        {
+          "time": 13.708333333333195,
+          "event": {
+            "type": "kickback",
+            "id": "save-15"
+          }
+        },
+        {
+          "time": 14.399999999999823,
+          "event": {
+            "type": "sling",
+            "id": "contact-16"
+          }
+        },
+        {
+          "time": 14.891666666666461,
+          "event": {
+            "type": "sling",
+            "id": "contact-17"
+          }
+        },
+        {
+          "time": 15.55833333333309,
+          "event": {
+            "type": "sling",
+            "id": "contact-18"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 16.208333333333055,
+      "trap": null,
+      "maxStill": 31,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--0.85,-5.5:0,0.5",
+      "p": {
+        "x": -0.85,
+        "y": 0.175,
+        "z": -5.5
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0.5
+      },
+      "drains": [
+        {
+          "time": 12.658333333333255,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -0.01293287705630064,
+            "y": 0.16588561236858368,
+            "z": 5.062232971191406
+          },
+          "velocity": {
+            "x": -0.062148626893758774,
+            "y": -0.8114334940910339,
+            "z": 5.094189167022705
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.483333333333334,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 0.7916666666666663,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 0.9333333333333325,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-2"
+          }
+        },
+        {
+          "time": 1.6249999999999967,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-3"
+          }
+        },
+        {
+          "time": 2.1416666666666617,
+          "event": {
+            "type": "bumper",
+            "id": "contact-4"
+          }
+        },
+        {
+          "time": 3.54999999999999,
+          "event": {
+            "type": "bumper",
+            "id": "contact-5"
+          }
+        },
+        {
+          "time": 3.6416666666666564,
+          "event": {
+            "type": "bumper",
+            "id": "contact-6"
+          }
+        },
+        {
+          "time": 7.608333333333501,
+          "event": {
+            "type": "bumper",
+            "id": "contact-7"
+          }
+        },
+        {
+          "time": 10.916666666666687,
+          "event": {
+            "type": "kickback",
+            "id": "save-8"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 12.658333333333255,
+      "trap": null,
+      "maxStill": 41,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--0.85,-5.5:-0.5,0",
+      "p": {
+        "x": -0.85,
+        "y": 0.175,
+        "z": -5.5
+      },
+      "v": {
+        "x": -0.5,
+        "y": 0,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 11.366666666666662,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -0.11506685614585876,
+            "y": 0.1654077023267746,
+            "z": 5.071261405944824
+          },
+          "velocity": {
+            "x": 1.0513017177581787,
+            "y": -0.8522181510925293,
+            "z": 5.178910255432129
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.5750000000000004,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 0.8999999999999992,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 1.0416666666666654,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-2"
+          }
+        },
+        {
+          "time": 1.6666666666666632,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-3"
+          }
+        },
+        {
+          "time": 2.1083333333333285,
+          "event": {
+            "type": "bumper",
+            "id": "contact-4"
+          }
+        },
+        {
+          "time": 2.258333333333328,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-5"
+          }
+        },
+        {
+          "time": 3.0666666666666584,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-6"
+          }
+        },
+        {
+          "time": 3.4749999999999903,
+          "event": {
+            "type": "bumper",
+            "id": "contact-7"
+          }
+        },
+        {
+          "time": 3.633333333333323,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-8"
+          }
+        },
+        {
+          "time": 4.166666666666663,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-9"
+          }
+        },
+        {
+          "time": 6.433333333333443,
+          "event": {
+            "type": "bumper",
+            "id": "contact-10"
+          }
+        },
+        {
+          "time": 6.666666666666788,
+          "event": {
+            "type": "bumper",
+            "id": "contact-11"
+          }
+        },
+        {
+          "time": 6.71666666666679,
+          "event": {
+            "type": "bumper",
+            "id": "contact-12"
+          }
+        },
+        {
+          "time": 7.058333333333474,
+          "event": {
+            "type": "bumper",
+            "id": "contact-13"
+          }
+        },
+        {
+          "time": 7.108333333333476,
+          "event": {
+            "type": "bumper",
+            "id": "contact-14"
+          }
+        },
+        {
+          "time": 7.425000000000159,
+          "event": {
+            "type": "bumper",
+            "id": "contact-15"
+          }
+        },
+        {
+          "time": 9.775000000000086,
+          "event": {
+            "type": "kickback",
+            "id": "save-16"
+          }
+        },
+        {
+          "time": 10.158333333333397,
+          "event": {
+            "type": "sling",
+            "id": "contact-17"
+          }
+        },
+        {
+          "time": 10.641666666666703,
+          "event": {
+            "type": "sling",
+            "id": "contact-18"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 11.366666666666662,
+      "trap": null,
+      "maxStill": 2,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--2.4,-5.25:0,-0.5",
+      "p": {
+        "x": -2.4,
+        "y": 0.175,
+        "z": -5.25
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": -0.5
+      },
+      "drains": [
+        {
+          "time": 3.1499999999999915,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -2.525437355041504,
+            "y": 0.16427046060562134,
+            "z": 5.081250190734863
+          },
+          "velocity": {
+            "x": -0.08661506325006485,
+            "y": -0.922760009765625,
+            "z": 4.739317417144775
+          }
+        }
+      ],
+      "events": [],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 3.1499999999999915,
+      "trap": null,
+      "maxStill": 4,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--2.4,-5.25:0,0.5",
+      "p": {
+        "x": -2.4,
+        "y": 0.175,
+        "z": -5.25
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0.5
+      },
+      "drains": [
+        {
+          "time": 3.658333333333323,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -2.512094736099243,
+            "y": 0.16524314880371094,
+            "z": 5.079309940338135
+          },
+          "velocity": {
+            "x": -0.052517183125019073,
+            "y": -0.86357182264328,
+            "z": 4.720057964324951
+          }
+        }
+      ],
+      "events": [],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 3.658333333333323,
+      "trap": null,
+      "maxStill": 0,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--2.4,-5.25:0.5,0",
+      "p": {
+        "x": -2.4,
+        "y": 0.175,
+        "z": -5.25
+      },
+      "v": {
+        "x": 0.5,
+        "y": 0,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 2.3833333333333275,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -2.593205213546753,
+            "y": 0.16447310149669647,
+            "z": 5.0602850914001465
+          },
+          "velocity": {
+            "x": -0.022982584312558174,
+            "y": -0.20285838842391968,
+            "z": 8.409158706665039
+          }
+        }
+      ],
+      "events": [],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 2.3833333333333275,
+      "trap": null,
+      "maxStill": 2,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--0.95,-5.25:0,-0.5",
+      "p": {
+        "x": -0.95,
+        "y": 0.175,
+        "z": -5.25
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": -0.5
+      },
+      "drains": [
+        {
+          "time": 19.86666666666618,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -0.05254659056663513,
+            "y": 0.16394439339637756,
+            "z": 5.052375316619873
+          },
+          "velocity": {
+            "x": 2.1117303371429443,
+            "y": -0.6107972264289856,
+            "z": 2.338897228240967
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.5333333333333339,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 0.8916666666666659,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 3.224999999999991,
+          "event": {
+            "type": "bumper",
+            "id": "contact-2"
+          }
+        },
+        {
+          "time": 3.7833333333333226,
+          "event": {
+            "type": "bumper",
+            "id": "contact-3"
+          }
+        },
+        {
+          "time": 3.8333333333333224,
+          "event": {
+            "type": "bumper",
+            "id": "contact-4"
+          }
+        },
+        {
+          "time": 4.008333333333322,
+          "event": {
+            "type": "bumper",
+            "id": "contact-5"
+          }
+        },
+        {
+          "time": 7.608333333333501,
+          "event": {
+            "type": "bumper",
+            "id": "contact-6"
+          }
+        },
+        {
+          "time": 7.8000000000001775,
+          "event": {
+            "type": "bumper",
+            "id": "contact-7"
+          }
+        },
+        {
+          "time": 7.858333333333514,
+          "event": {
+            "type": "bumper",
+            "id": "contact-8"
+          }
+        },
+        {
+          "time": 11.474999999999989,
+          "event": {
+            "type": "bumper",
+            "id": "contact-9"
+          }
+        },
+        {
+          "time": 11.666666666666645,
+          "event": {
+            "type": "bumper",
+            "id": "contact-10"
+          }
+        },
+        {
+          "time": 11.724999999999975,
+          "event": {
+            "type": "bumper",
+            "id": "contact-11"
+          }
+        },
+        {
+          "time": 15.358333333333102,
+          "event": {
+            "type": "bumper",
+            "id": "contact-12"
+          }
+        },
+        {
+          "time": 15.824999999999742,
+          "event": {
+            "type": "bumper",
+            "id": "contact-13"
+          }
+        },
+        {
+          "time": 18.516666666666257,
+          "event": {
+            "type": "kickback",
+            "id": "save-14"
+          }
+        },
+        {
+          "time": 18.858333333332904,
+          "event": {
+            "type": "sling",
+            "id": "contact-15"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 19.86666666666618,
+      "trap": null,
+      "maxStill": 33,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--0.95,-5.25:0,0.5",
+      "p": {
+        "x": -0.95,
+        "y": 0.175,
+        "z": -5.25
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0.5
+      },
+      "drains": [
+        {
+          "time": 14.633333333333143,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -0.02647325024008751,
+            "y": 0.15644824504852295,
+            "z": 5.068864345550537
+          },
+          "velocity": {
+            "x": 2.182424783706665,
+            "y": -1.3336400985717773,
+            "z": 2.378218650817871
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.4000000000000004,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 0.7499999999999998,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 0.8916666666666659,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-2"
+          }
+        },
+        {
+          "time": 1.3666666666666643,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-3"
+          }
+        },
+        {
+          "time": 1.8666666666666625,
+          "event": {
+            "type": "bumper",
+            "id": "contact-4"
+          }
+        },
+        {
+          "time": 2.016666666666662,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-5"
+          }
+        },
+        {
+          "time": 2.8499999999999925,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-6"
+          }
+        },
+        {
+          "time": 3.241666666666658,
+          "event": {
+            "type": "bumper",
+            "id": "contact-7"
+          }
+        },
+        {
+          "time": 3.383333333333324,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-8"
+          }
+        },
+        {
+          "time": 3.59999999999999,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-9"
+          }
+        },
+        {
+          "time": 6.6083333333334515,
+          "event": {
+            "type": "bumper",
+            "id": "contact-10"
+          }
+        },
+        {
+          "time": 6.825000000000129,
+          "event": {
+            "type": "bumper",
+            "id": "contact-11"
+          }
+        },
+        {
+          "time": 6.8750000000001315,
+          "event": {
+            "type": "bumper",
+            "id": "contact-12"
+          }
+        },
+        {
+          "time": 7.058333333333474,
+          "event": {
+            "type": "bumper",
+            "id": "contact-13"
+          }
+        },
+        {
+          "time": 10.200000000000061,
+          "event": {
+            "type": "bumper",
+            "id": "contact-14"
+          }
+        },
+        {
+          "time": 13.333333333333217,
+          "event": {
+            "type": "kickback",
+            "id": "save-15"
+          }
+        },
+        {
+          "time": 13.674999999999864,
+          "event": {
+            "type": "sling",
+            "id": "contact-16"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 14.633333333333143,
+      "trap": null,
+      "maxStill": 41,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--0.95,-5.25:-0.5,0",
+      "p": {
+        "x": -0.95,
+        "y": 0.175,
+        "z": -5.25
+      },
+      "v": {
+        "x": -0.5,
+        "y": 0,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 23.15833333333266,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -0.04467222839593887,
+            "y": 0.1659642457962036,
+            "z": 5.057084560394287
+          },
+          "velocity": {
+            "x": -0.08290380239486694,
+            "y": -0.7832748889923096,
+            "z": 5.094712257385254
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.47500000000000064,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 0.8333333333333328,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 0.974999999999999,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-2"
+          }
+        },
+        {
+          "time": 1.1833333333333316,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-3"
+          }
+        },
+        {
+          "time": 1.908333333333329,
+          "event": {
+            "type": "bumper",
+            "id": "contact-4"
+          }
+        },
+        {
+          "time": 3.441666666666657,
+          "event": {
+            "type": "bumper",
+            "id": "contact-5"
+          }
+        },
+        {
+          "time": 3.683333333333323,
+          "event": {
+            "type": "bumper",
+            "id": "contact-6"
+          }
+        },
+        {
+          "time": 3.7249999999999894,
+          "event": {
+            "type": "bumper",
+            "id": "contact-7"
+          }
+        },
+        {
+          "time": 6.85000000000013,
+          "event": {
+            "type": "bumper",
+            "id": "contact-8"
+          }
+        },
+        {
+          "time": 7.033333333333473,
+          "event": {
+            "type": "bumper",
+            "id": "contact-9"
+          }
+        },
+        {
+          "time": 7.091666666666809,
+          "event": {
+            "type": "bumper",
+            "id": "contact-10"
+          }
+        },
+        {
+          "time": 10.641666666666703,
+          "event": {
+            "type": "bumper",
+            "id": "contact-11"
+          }
+        },
+        {
+          "time": 10.816666666666693,
+          "event": {
+            "type": "bumper",
+            "id": "contact-12"
+          }
+        },
+        {
+          "time": 10.883333333333356,
+          "event": {
+            "type": "bumper",
+            "id": "contact-13"
+          }
+        },
+        {
+          "time": 14.149999999999837,
+          "event": {
+            "type": "bumper",
+            "id": "contact-14"
+          }
+        },
+        {
+          "time": 14.549999999999814,
+          "event": {
+            "type": "bumper",
+            "id": "contact-15"
+          }
+        },
+        {
+          "time": 14.641666666666476,
+          "event": {
+            "type": "bumper",
+            "id": "contact-16"
+          }
+        },
+        {
+          "time": 18.099999999999614,
+          "event": {
+            "type": "bumper",
+            "id": "contact-17"
+          }
+        },
+        {
+          "time": 21.416666666666092,
+          "event": {
+            "type": "kickback",
+            "id": "save-18"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 23.15833333333266,
+      "trap": null,
+      "maxStill": 41,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--2.3,-4.7:0,-0.5",
+      "p": {
+        "x": -2.3,
+        "y": 0.175,
+        "z": -4.7
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": -0.5
+      },
+      "invalidInitialOverlap": [
+        {
+          "handle": 6.85e-321,
+          "distance": -0.13300015032291412
+        }
+      ]
+    },
+    {
+      "name": "housing-slow--2.3,-4.7:0,0.5",
+      "p": {
+        "x": -2.3,
+        "y": 0.175,
+        "z": -4.7
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0.5
+      },
+      "invalidInitialOverlap": [
+        {
+          "handle": 6.85e-321,
+          "distance": -0.13300015032291412
+        }
+      ]
+    },
+    {
+      "name": "housing-slow--2.3,-4.7:0.5,0",
+      "p": {
+        "x": -2.3,
+        "y": 0.175,
+        "z": -4.7
+      },
+      "v": {
+        "x": 0.5,
+        "y": 0,
+        "z": 0
+      },
+      "invalidInitialOverlap": [
+        {
+          "handle": 6.85e-321,
+          "distance": -0.13300015032291412
+        }
+      ]
+    },
+    {
+      "name": "housing-slow--1.05,-4.7:0,-0.5",
+      "p": {
+        "x": -1.05,
+        "y": 0.175,
+        "z": -4.7
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": -0.5
+      },
+      "drains": [
+        {
+          "time": 6.78333333333346,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": -0.03460085764527321,
+            "y": 0.15986454486846924,
+            "z": 5.062172889709473
+          },
+          "velocity": {
+            "x": 2.0579781532287598,
+            "y": -0.9007728695869446,
+            "z": 2.3280091285705566
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.008333333333333333,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 0.7416666666666665,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 1.5083333333333304,
+          "event": {
+            "type": "bumper",
+            "id": "contact-2"
+          }
+        },
+        {
+          "time": 3.3083333333333242,
+          "event": {
+            "type": "bumper",
+            "id": "contact-3"
+          }
+        },
+        {
+          "time": 3.7499999999999893,
+          "event": {
+            "type": "bumper",
+            "id": "contact-4"
+          }
+        },
+        {
+          "time": 3.791666666666656,
+          "event": {
+            "type": "bumper",
+            "id": "contact-5"
+          }
+        },
+        {
+          "time": 3.9166666666666554,
+          "event": {
+            "type": "bank",
+            "targetId": "left-upper:2",
+            "id": "contact-6"
+          }
+        },
+        {
+          "time": 4.15833333333333,
+          "event": {
+            "type": "spinner",
+            "id": "contact-7"
+          }
+        },
+        {
+          "time": 5.308333333333387,
+          "event": {
+            "type": "kickback",
+            "id": "save-8"
+          }
+        },
+        {
+          "time": 5.641666666666737,
+          "event": {
+            "type": "sling",
+            "id": "contact-9"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 6.78333333333346,
+      "trap": null,
+      "maxStill": 4,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--1.05,-4.7:0,0.5",
+      "p": {
+        "x": -1.05,
+        "y": 0.175,
+        "z": -4.7
+      },
+      "v": {
+        "x": 0,
+        "y": 0,
+        "z": 0.5
+      },
+      "drains": [
+        {
+          "time": 9.725000000000088,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": 0.06508363783359528,
+            "y": 0.15848280489444733,
+            "z": 5.065243244171143
+          },
+          "velocity": {
+            "x": -0.9789972901344299,
+            "y": -0.8366885781288147,
+            "z": 2.173915147781372
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.008333333333333333,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 0.6000000000000003,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 1.4583333333333306,
+          "event": {
+            "type": "bumper",
+            "id": "contact-2"
+          }
+        },
+        {
+          "time": 2.124999999999995,
+          "event": {
+            "type": "bumper",
+            "id": "contact-3"
+          }
+        },
+        {
+          "time": 3.166666666666658,
+          "event": {
+            "type": "bumper",
+            "id": "contact-4"
+          }
+        },
+        {
+          "time": 6.083333333333425,
+          "event": {
+            "type": "bumper",
+            "id": "contact-5"
+          }
+        },
+        {
+          "time": 6.358333333333439,
+          "event": {
+            "type": "bumper",
+            "id": "contact-6"
+          }
+        },
+        {
+          "time": 6.400000000000108,
+          "event": {
+            "type": "bumper",
+            "id": "contact-7"
+          }
+        },
+        {
+          "time": 7.391666666666824,
+          "event": {
+            "type": "sling",
+            "id": "contact-8"
+          }
+        },
+        {
+          "time": 8.00833333333352,
+          "event": {
+            "type": "kickback",
+            "id": "save-9"
+          }
+        },
+        {
+          "time": 8.683333333333481,
+          "event": {
+            "type": "sling",
+            "id": "contact-10"
+          }
+        },
+        {
+          "time": 8.866666666666804,
+          "event": {
+            "type": "sling",
+            "id": "contact-11"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 9.725000000000088,
+      "trap": null,
+      "maxStill": 22,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "name": "housing-slow--1.05,-4.7:-0.5,0",
+      "p": {
+        "x": -1.05,
+        "y": 0.175,
+        "z": -4.7
+      },
+      "v": {
+        "x": -0.5,
+        "y": 0,
+        "z": 0
+      },
+      "drains": [
+        {
+          "time": 7.266666666666818,
+          "info": {
+            "reason": "normal"
+          },
+          "position": {
+            "x": 0.04180220514535904,
+            "y": 0.16590049862861633,
+            "z": 5.057670593261719
+          },
+          "velocity": {
+            "x": -0.027515657246112823,
+            "y": -0.806198000907898,
+            "z": 5.093575477600098
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.008333333333333333,
+          "event": {
+            "type": "rollover",
+            "lane": 0,
+            "id": "contact-0"
+          }
+        },
+        {
+          "time": 2.59166666666666,
+          "event": {
+            "type": "bumper",
+            "id": "contact-1"
+          }
+        },
+        {
+          "time": 5.525000000000064,
+          "event": {
+            "type": "kickback",
+            "id": "save-2"
+          }
+        }
+      ],
+      "envelope": null,
+      "unresolved": false,
+      "phase": "ready",
+      "seconds": 7.266666666666818,
+      "trap": null,
+      "maxStill": 3,
+      "final": {
+        "x": 2.5299999713897705,
+        "y": 0.17499999701976776,
+        "z": 4.425000190734863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  ]
+}
