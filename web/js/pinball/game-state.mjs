@@ -9,7 +9,7 @@ export class PinballGameState {
   }
   restart() {
     this.missions = new PinballMissions();
-    this.scoopChallenge = new PinballScoopChallenge(); this.skillShots = 0;
+    this.scoopChallenge = new PinballScoopChallenge(); this.skillShots = 0; this.loopCompletions = 0;
     this.multiplierChallenge = new PinballMultiplierMission(); this.lastContactAward = null;
     this.rollovers = [false, false, false]; this.rolloverSets = 0;
     this.kickbackCharges = 1; this.kickbackUses = 0; this.eventIds = new Set();
@@ -97,6 +97,7 @@ export class PinballGameState {
     if (event.type === "rollover" && (!Number.isInteger(event.lane) || event.lane < 0 || event.lane > 2)) return false;
     if (event.type === "skill-shot" && !this.skillShotAvailable) return false;
     this.eventIds.add(event.id);
+    if (event.type === "loop") this.loopCompletions++;
     if (event.type === "skill-shot") {
       this.skillShotAvailable = false; this.skillShots++;
       this.award(500, "SKILL SHOT"); return true;

@@ -44,3 +44,12 @@ test('loop completion has a single distinct presentation edge',()=>{
   assert.deepEqual(feedback.update(state),[]);
   assert.equal(state.score,score);
 });
+
+
+test('loop sound survives another contact between rendered frames without replay after reset',()=>{
+ const f=new PinballFeedback(),s=new PinballGameState();f.update(s);s.launch();f.update(s);
+ s.onEvent({id:'loop',type:'loop'});s.onEvent({id:'bumper-after-loop',type:'bumper'});
+ assert.deepEqual(f.update(s),['bumper','loop']);assert.deepEqual(f.update(s),[]);
+ assert.equal(s.loopCompletions,1);s.onEvent({id:'loop',type:'loop'});assert.equal(s.loopCompletions,1);
+ s.restart();f.reset();assert.equal(s.loopCompletions,0);assert.deepEqual(f.update(s),[]);
+});

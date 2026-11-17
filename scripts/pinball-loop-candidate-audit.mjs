@@ -1,5 +1,11 @@
 // Diagnostic only. These are injected entry/cradle fixtures, NOT natural play.
 // No coefficient changes, attractors, or post-launch position correction.
+import {execFileSync} from 'node:child_process';
+const historicalCommit='f590247';
+const head=execFileSync('git',['rev-parse','--short=7','HEAD'],{encoding:'utf8'}).trim();
+if(head!==historicalCommit || execFileSync('git',['diff','--','web/js/pinball/loop.mjs','web/js/pinball/layout.mjs','web/js/pinball/physics.mjs'],{encoding:'utf8'}).trim()) {
+  throw new Error('Historical rejected-candidate audit only. Create a clean worktree at f590247; this script does not evaluate the current layout. See docs/pinball-experiments/loop/README.md.');
+}
 import {PinballPhysics} from '../web/js/pinball/physics.mjs';
 const rows=[];
 for(const speed of[10,14,20]){

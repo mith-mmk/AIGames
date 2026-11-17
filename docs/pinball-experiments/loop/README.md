@@ -1,5 +1,15 @@
 # Left U-loop experiment (not published)
 
+The rejected designs below are historical evidence through commit `f590247`. They are **not** acceptance results for the later relocated-target layout. The old diagnostic imports its checkout’s code and must therefore run in a clean historical worktree, not against the newest experimental geometry.
+
+```sh
+git worktree add --detach ../pinball-loop-rejected f590247
+cd ../pinball-loop-rejected
+node scripts/pinball-loop-candidate-audit.mjs
+```
+
+The updated historical diagnostic refuses other commits or modified physical source. Its expected exit status is failure, because that historical candidate was rejected.
+
 ## Rejected full-length guide
 
 This experiment is isolated from the published pinball. Do not promote it merely because an injected entry fixture completes.
@@ -41,3 +51,31 @@ node scripts/pinball-loop-candidate-audit.mjs
 The script deliberately exits with failure because the candidate is not accepted. It prints individual results and clearly distinguishes injected fixtures from natural gameplay. Do not weaken the acceptance criteria to publish this layout.
 
 **Decision:** preserve the published v24 physical table and ship the independent mission work separately. Pause the loop design rather than adding invisible guidance, teleporting the ball, or claiming unreachable geometry is a game feature. A future attempt needs an explicitly designed shot entrance with adequate physical room, potentially a deliberate layout revision, before detailed modeling or scoring integration.
+
+
+## Relocated-target candidate (current, acceptance pending)
+
+This is a separate layout, not a claim that the rejected designs passed. The mouth is centered at (-1.235, 1.40), inner width .64, with a left/up tangent derived from the measured right-flipper shot bundle. It narrows smoothly into the left loop. The two left-middle standup centers move to (-1.35, -.55) and (-1.35, -1.20), preserving their face angle. Their endpoint definition is a.z=-.225, b.z=-1.525 because the two centers are at one-quarter and three-quarters of that segment.
+
+All folded guide feet share the physical closed mesh. The rear U/cabinet gap has real visible backing. Long exterior-guide gaps, wire support interactions and natural gameplay are independent acceptance checks; entry success does not establish their safety.
+
+The three loop gates use actual crossing segments and tangent-normal sections. The return gate is in existing lane A, not the narrow U itself. Its allowed center half-width is .625 minus rail radius .035 minus ball radius .135 minus safety margin .01 = .445. This wider A region is allowed only after the U apex has been traversed. Airborne, reverse, timeout, neighboring-lane and off-route passages are rejected.
+
+Current focused checks:
+
+```sh
+node --test web/js/pinball/loop.test.mjs
+node --test web/js/pinball/ramp.test.mjs web/js/pinball/lower-layout.test.mjs web/js/pinball/reference-targets.test.mjs
+```
+
+The first group explicitly labels positioned mouth/cradle setups. Five adjacent right-flipper timings must complete using normal flipper motion after the initial fixture setup, with no playing-state position resets. This remains distinct from a full natural-launch game. The existing ramp, return/refire and individual target regression groups passed 34/34 on the relocated layout before the final A-gate dimensional correction. The latter changes scoring detection only, not collision geometry.
+
+Publication remains blocked until the exterior/airborne trap audit, natural launch-to-loop proof, complete regression suite and visual review agree. Do not use the historical rejected-candidate script as this candidate’s acceptance gate.
+
+### Current physical refinement (candidate 7, still pending acceptance)
+
+The straight channel moved from x=-2.22 to -2.10, with U radius .40. Independent geometric bounds show no straight position can leave a ball-width passage on both sides: the wire support side requires center >= -2.127, while the upper carrier side would require center <= -2.378. Thus the carrier-side pocket is deliberately occupied by a visible common support, not represented as an accessible alley. The upper support is one sloping rear service plate; its left edge is outside the guide contact face, at x=-1.90. An earlier coincident edge at -1.92 interrupted otherwise valid loop shots and was rejected. The scoop-side common support has a continuous diagonal rear edge ending at the right rear of the scoop. Airborne drops onto this support remain an independent acceptance check.
+
+The middle standups move a further .10 toward the center to leave a ball-width gap beside the guide. Their ornamental spanning bar has been replaced by individual fittings recessed within the existing strike-box envelopes, so the open inter-target gap has no visual-only brass obstacle. No new contact handles are inserted for these fittings.
+
+Candidate 7 passes the nine positioned mouth shots and five adjacent right-cradle release timings. The previous candidate 6 passed twelve legal drop/slow fixtures without a three-second stop; two historical starts now overlap the deliberate support and are not counted as passes. Candidate 7 requires its own independent audit, additional support-top drops, and natural launch proof. These preliminary numbers do not imply publication readiness.

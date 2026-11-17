@@ -1,3 +1,4 @@
+import {targetFaceAngle, targetDimensions} from "./mechanical-contact.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { SHOOTER_LAYOUT, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS } from "./layout.mjs";
 
@@ -110,6 +111,17 @@ export class WorkshopPartsDetail {
       const dx = spec.b[0]-spec.a[0], dz = spec.b[2]-spec.a[2];
       const length = Math.hypot(dx,dz), angle = -Math.atan2(dz,dx);
       const middleX = (spec.a[0]+spec.b[0])/2, middleZ = (spec.a[2]+spec.b[2])/2;
+      if(spec.count===2) {
+        // Independent standups: fittings are recessed inside each shared
+        // strike-box envelope, never a decorative bar across the open gap.
+        const face=targetFaceAngle(spec),width=targetDimensions(spec).width;
+        for(let i=0;i<spec.count;i++) {
+          const t=(i+.5)/spec.count,x=spec.a[0]+dx*t,z=spec.a[2]+dz*t;
+          this.box(root,"brass",width*.8,.022,.025,x,.19,z,[0,face,0]);
+          this.box(root,"brass",width*.8,.024,.025,x,.451,z,[0,face,0]);
+        }
+        continue;
+      }
       // Brackets remain inside the standing targets' existing .12 depth.
       this.box(root,"brass",length*.96,.022,.095,middleX,.15,middleZ,[0,angle,0]);
       for (let i = 0; i < spec.count; i++) {
