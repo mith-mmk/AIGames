@@ -169,8 +169,8 @@ details p { line-height: 1.7; }
 /* Every desktop height reserves the independent controls rail, not only short
    landscape. Challenges remain available by scrolling the backglass panel. */
 @media (min-width: 701px) and (min-height: 691px) {
- .backglass { max-height: calc(100% - 350px); overflow-y: auto; }
+ .backglass { max-height: calc(100% - 380px); overflow-y: auto; }
 }
 @media (min-width: 701px) and (min-height: 481px) and (max-height: 690px) {
- .backglass { max-height: calc(100% - 282px); overflow-y: auto; }
+ .backglass { max-height: calc(100% - 310px); overflow-y: auto; }
 }
