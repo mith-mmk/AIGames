@@ -16,7 +16,7 @@ export class PinballFeedback {
       const types=new Set(hits.map(h=>h.type==='bank'?'target':h.type||'bumper'));
       if(next.award&&next.award!==p.award){
         const label=next.award.label.toLowerCase();
-        types.add(label==='bank'?'target':['bumper','sling','target'].includes(label)?label:'target');
+        types.add(label==='left loop'?'loop':label==='bank'?'target':['bumper','sling','target'].includes(label)?label:'target');
       }
       events.push(...types);
       // Counters survive render gaps; an award is sounded once, never each frame.

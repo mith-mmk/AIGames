@@ -33,3 +33,14 @@ test('award feedback remains silent across pause, reset and tilt',()=>{
   assert.deepEqual(feedback.update(state),[]);
   state.restart();feedback.reset();assert.deepEqual(feedback.update(state),[]);
 });
+
+
+test('loop completion has a single distinct presentation edge',()=>{
+  const feedback=new PinballFeedback(),state=new PinballGameState();
+  feedback.update(state);state.launch();feedback.update(state);
+  state.onEvent({id:'left-loop-1',type:'loop'});
+  const score=state.score;
+  assert.deepEqual(feedback.update(state),['loop']);
+  assert.deepEqual(feedback.update(state),[]);
+  assert.equal(state.score,score);
+});

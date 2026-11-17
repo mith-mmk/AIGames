@@ -5,6 +5,7 @@ const EFFECTS = {
   bumper: [760, 310, .16, .55, 'sine'],
   sling: [310, 85, .10, .5, 'triangle'],
   target: [1300, 750, .105, .38, 'sine'],
+  loop: [620, 1240, .22, .32, 'sine'],
   scoop: [430, 180, .22, .38, 'triangle'],
   'scoop-reward': [520, 1560, .46, .4, 'sine'],
   'skill-shot': [1040, 2080, .25, .35, 'sine'],

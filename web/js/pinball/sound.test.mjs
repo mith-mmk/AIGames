@@ -48,7 +48,7 @@ test('no autoplay, allocation or resume without a trusted input gesture', async 
 
 test('all cabinet events have bounded short effects and unknown events are ignored', async () => {
   const { sound, context } = setup(); await sound.unlock(gesture);
-  for (const name of ['launch', 'flipper', 'bumper', 'sling', 'target', 'mission', 'multiplier', 'scoop', 'scoop-reward', 'skill-shot', 'tilt', 'drain', 'gameover']) {
+  for (const name of ['launch', 'flipper', 'bumper', 'sling', 'target', 'mission', 'multiplier', 'loop', 'scoop', 'scoop-reward', 'skill-shot', 'tilt', 'drain', 'gameover']) {
     assert.equal(sound.play(name), true, name);
     const source = context.oscillators.at(-1);
     assert.equal(source.stops, 1);

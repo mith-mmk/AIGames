@@ -1,3 +1,4 @@
+import { MechanicalLoop } from "./loop.mjs";
 import { MechanicalScoop } from "./scoop.mjs";
 import {railCapsules,capsuleStockGeometry} from './wire-stock.mjs';
 import {shooterOuterRailGeometry} from './shooter-outer-rail.mjs';
@@ -224,6 +225,7 @@ export class WorkshopAssets {
     new PlayfieldParts(this).build();
     this.mechanical.scoop=new MechanicalScoop(this);
     g.add(this.mechanical.scoop.root);
+    this.mechanical.loop=new MechanicalLoop(this);g.add(this.mechanical.loop.root);
     this.batchStaticAssembly(this.mechanical.cabinet.root,new Set(),this.mechanical.cabinet.geometries);
     this.batchStaticAssembly(this.mechanical.ramp.root,new Set(),this.mechanical.ramp.geometries);
     for(const component of [...this.mechanical.flippers,...this.mechanical.bumpers.values(),

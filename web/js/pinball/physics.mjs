@@ -1,3 +1,4 @@
+import { appendLoopContacts, LoopTraversal } from "./loop.mjs";
 import { SCOOP, scoopContactBoxes } from "./scoop.mjs";
 import {appendBoardEdgeFasteners} from './cabinet-fasteners.mjs';
 import {shooterOuterRailGeometry,shooterOuterRailContactVertices} from './shooter-outer-rail.mjs';
@@ -39,6 +40,8 @@ export class PinballPhysics {
       ...part,collider:this.box(...part.center,...part.size.map(v=>v/2))
     })));
     this.scoopContacts=scoopContactBoxes().map(part=>this.box(...part.center,...part.size.map(v=>v/2),.25));
+    this.loopContacts=appendLoopContacts(this.world,R);
+    this.loopTraversal=new LoopTraversal();
   }
   nudge() {
     if(this.state.phase!=="playing" || this.scoopHeld) return false;
@@ -176,6 +179,7 @@ export class PinballPhysics {
     return this.plungerPull;
   }
   resetBall() {
+    this.loopTraversal?.reset();
     this.scoopHeld = false; this.scoopCooldown = 0; this.skillShotPending = false;
     this.ball.setBodyType(R.RigidBodyType.Dynamic, true);
     this.plungerPull=0; this.plungerTargetPull=0; this.readyPullActive=false;
@@ -335,6 +339,8 @@ export class PinballPhysics {
         continue;
       }
       const p = this.ball.translation(), v = this.ball.linvel();
+      if(this.loopTraversal.update(beforeStep,p,this.time)&&!this.state.tilted)
+        this.state.onEvent({type:"loop",id:"loop-"+this.eventSequence++});
       // Only an actual upfield mouth traversal captures. Rear/side hits and
       // elevated flyovers cannot trigger the below-hood switch.
       const throat = SCOOP.z + .13;

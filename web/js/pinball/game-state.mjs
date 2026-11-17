@@ -92,7 +92,7 @@ export class PinballGameState {
   /** Events are emitted once per physical contact/traversal, never per frame. */
   onEvent(event) {
     if (this.phase !== "playing" || this.tilted || !event || !event.id || this.eventIds.has(event.id)) return false;
-    const points = { bumper: 100, sling: 25, target: 50, bank: 75, spinner: 150, ramp: 300, inlane: 100 };
+    const points = { bumper: 100, sling: 25, target: 50, bank: 75, spinner: 150, ramp: 300, loop: 300, inlane: 100 };
     if (!Object.hasOwn(points, event.type) && !["rollover", "kickback", "side-save", "scoop", "skill-shot"].includes(event.type)) return false;
     if (event.type === "rollover" && (!Number.isInteger(event.lane) || event.lane < 0 || event.lane > 2)) return false;
     if (event.type === "skill-shot" && !this.skillShotAvailable) return false;
@@ -124,7 +124,7 @@ export class PinballGameState {
       }
       this.advanceChallenges(event); return true;
     }
-    this.awardContact(points[event.type], event.type.toUpperCase()); this.advanceChallenges(event);
+    this.awardContact(points[event.type], event.type === "loop" ? "LEFT LOOP" : event.type.toUpperCase()); this.advanceChallenges(event);
     if (this.scoopChallenge.onTarget(event)) this.lastEvent += " · COLLECTOR READY";
     return true;
   }
