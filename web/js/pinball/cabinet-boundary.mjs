@@ -3,7 +3,9 @@ import {TABLE} from './layout.mjs';
 // Play-facing side/rear containment, not a collider model of exterior timber.
 // Solid backing plus a flush cap replace the former hollow channel. Their
 // union is exactly the box used by physics; no invisible upper wall remains.
-export const CABINET_BOUNDARY = Object.freeze({bottom:-.05,top:.385,thickness:.14,capThickness:.022,endOverhang:.10,sideOffset:.05,rearOffset:.05});
+// The .385-high lip let airborne balls climb over its cap. The raised guard
+// retains the same footprint and exposes its full physical height in the art.
+export const CABINET_BOUNDARY = Object.freeze({bottom:-.05,top:.75,thickness:.14,capThickness:.022,endOverhang:.10,sideOffset:.05,rearOffset:.05});
 export function cabinetBoundaryBoxes({width=TABLE.width,length=TABLE.length,centerZ=TABLE.centerZ}={}) {
  const d=CABINET_BOUNDARY,y=(d.bottom+d.top)/2,h=d.top-d.bottom;
  return [

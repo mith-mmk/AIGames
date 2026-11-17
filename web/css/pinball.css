@@ -163,3 +163,6 @@ details p { line-height: 1.7; }
  nav{top:178px;} .camera-control{top:179px;}
  #table{top:216px;height:calc(100% - 284px);}
 }
+
+#scoop-status { grid-column: 1 / -1; font-size: 11px; line-height: 1.3; color: #ffd078; }
+@media (max-width: 520px) { #scoop-status { font-size: 9px; } }

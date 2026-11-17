@@ -1,4 +1,4 @@
-import { PinballMissions, PinballMultiplierMission } from "./missions.mjs";
+import { PinballMissions, PinballMultiplierMission, PinballScoopChallenge } from "./missions.mjs";
 
 /** Rules are independent of renderer and physics engine. */
 export class PinballGameState {
@@ -9,6 +9,7 @@ export class PinballGameState {
   }
   restart() {
     this.missions = new PinballMissions();
+    this.scoopChallenge = new PinballScoopChallenge(); this.skillShots = 0;
     this.multiplierChallenge = new PinballMultiplierMission(); this.lastContactAward = null;
     this.rollovers = [false, false, false]; this.rolloverSets = 0;
     this.kickbackCharges = 1; this.kickbackUses = 0; this.eventIds = new Set();
@@ -20,6 +21,7 @@ export class PinballGameState {
   }
   prepareNumberedBall() {
     this.ballLaunched = false; this.ballSaved = false;
+    this.skillShotAvailable = true;
     this.ballSaveRemaining = 0;
     this.ballSaveAvailable = this.difficulty === "relaxed";
     if (this.difficulty === "relaxed") this.kickbackCharges = 1;
@@ -33,6 +35,7 @@ export class PinballGameState {
       if (this.ballSaveRemaining < 1e-9) this.ballSaveRemaining = 0;
     }
   }
+  get scoop() { return this.scoopChallenge.snapshot; }
   get mission() { return this.missions.snapshot; }
   get multiplier() { return this.multiplierChallenge.multiplier; }
   get multiplierMission() { return this.multiplierChallenge.snapshot; }
@@ -69,6 +72,7 @@ export class PinballGameState {
   }
   returnToShooter() {
     if (this.phase !== "playing") return false;
+    this.skillShotAvailable = false;
     this.returnedShooter = true; this.phase = "ready";
     this.lastEvent = "発射レーンへ戻りました · 同じ球を再発射"; return true;
   }
@@ -80,9 +84,20 @@ export class PinballGameState {
   onEvent(event) {
     if (this.phase !== "playing" || this.tilted || !event || !event.id || this.eventIds.has(event.id)) return false;
     const points = { bumper: 100, sling: 25, target: 50, bank: 75, spinner: 150, ramp: 300, inlane: 100 };
-    if (!Object.hasOwn(points, event.type) && !["rollover", "kickback", "side-save"].includes(event.type)) return false;
+    if (!Object.hasOwn(points, event.type) && !["rollover", "kickback", "side-save", "scoop", "skill-shot"].includes(event.type)) return false;
     if (event.type === "rollover" && (!Number.isInteger(event.lane) || event.lane < 0 || event.lane > 2)) return false;
+    if (event.type === "skill-shot" && !this.skillShotAvailable) return false;
     this.eventIds.add(event.id);
+    if (event.type === "skill-shot") {
+      this.skillShotAvailable = false; this.skillShots++;
+      this.award(500, "SKILL SHOT"); return true;
+    }
+    if (event.type === "scoop") {
+      const result = this.scoopChallenge.capture();
+      if (result.lit) this.sideSaveCharges = 1;
+      this.award(result.points, result.lit ? "COLLECTOR CLEAR · LEFT SAVE READY" : "COLLECTOR");
+      return true;
+    }
     if (event.type === "side-save") {
       if (!this.sideSaveCharges) return false;
       this.sideSaveCharges = 0; this.sideSaveUses++; this.lastEvent = "LEFT SAVE"; return true;
@@ -100,11 +115,13 @@ export class PinballGameState {
       }
       this.advanceChallenges(event); return true;
     }
-    this.awardContact(points[event.type], event.type.toUpperCase()); this.advanceChallenges(event); return true;
+    this.awardContact(points[event.type], event.type.toUpperCase()); this.advanceChallenges(event);
+    if (this.scoopChallenge.onTarget(event)) this.lastEvent += " · COLLECTOR READY";
+    return true;
   }
   drain({ reason = "normal" } = {}) {
     if (this.phase !== "playing") return false;
-    this.ballSaved = false;
+    this.ballSaved = false; this.skillShotAvailable = false;
     // A saved drain still ends the multiplier run; scores and missions remain.
     this.multiplierChallenge.restart();
     this.returnedShooter = false;

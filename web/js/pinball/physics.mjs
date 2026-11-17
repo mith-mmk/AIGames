@@ -1,3 +1,4 @@
+import { SCOOP, scoopContactBoxes } from "./scoop.mjs";
 import {appendBoardEdgeFasteners} from './cabinet-fasteners.mjs';
 import {shooterOuterRailGeometry,shooterOuterRailContactVertices} from './shooter-outer-rail.mjs';
 import {cabinetBoundaryBoxes} from './cabinet-boundary.mjs';
@@ -33,9 +34,10 @@ export class PinballPhysics {
     this.shooterOuterRailContact=this.world.createCollider(R.ColliderDesc.convexHull(shooterOuterRailContactVertices(outerRail)).setRestitution(.45).setFriction(.05));
     outerRail.dispose();
     this.boardFastenerContacts=appendBoardEdgeFasteners(this.world,R);
+    this.scoopContacts=scoopContactBoxes().map(part=>this.box(...part.center,...part.size.map(v=>v/2),.25));
   }
   nudge() {
-    if(this.state.phase!=="playing") return false;
+    if(this.state.phase!=="playing" || this.scoopHeld) return false;
     const result=this.nudgeMeter.push();if(result==="ignored")return false;
     if(result==="tilt") {this.state.tilted=true;this.tiltUntil=this.time+1.5;this.state.lastEvent="TILT · この球を終了";return true;}
     const p=this.ballPosition;
@@ -170,6 +172,8 @@ export class PinballPhysics {
     return this.plungerPull;
   }
   resetBall() {
+    this.scoopHeld = false; this.scoopCooldown = 0; this.skillShotPending = false;
+    this.ball.setBodyType(R.RigidBodyType.Dynamic, true);
     this.plungerPull=0; this.plungerTargetPull=0; this.readyPullActive=false;
     this.plungerBody.setTranslation({x:SHOOTER_LAYOUT.x,y:.175,z:PLUNGER_CONTACT.restZ},true);
     this.plungerBody.setNextKinematicTranslation({x:SHOOTER_LAYOUT.x,y:.175,z:PLUNGER_CONTACT.restZ});
@@ -181,6 +185,7 @@ export class PinballPhysics {
   launch(power = 1) {
     power = Number.isFinite(power) ? power : 1;
     if (!this.state.launch()) return false;
+    this.skillShotPending = true; this.skillShotDeadline = this.time + 5;
     this.ball.setGravityScale(1, true);
     this.ball.setLinvel({ x: 0, y: 0, z: -(3 + Math.max(0, Math.min(1, power)) * 20) }, true);
     return true;
@@ -214,8 +219,9 @@ export class PinballPhysics {
     this.ball.applyImpulse({ x: (lateral - v.x) * this.ball.mass(), y: 0, z: (forward - v.z) * this.ball.mass() }, true);
   }
   hit(other) {
-    if(this.state.tilted)return;
+    if(this.state.tilted || this.scoopHeld)return;
     if (this.flipperHandles.has(other)) {
+      this.skillShotPending = false;
       const side = this.flipperHandles.get(other); this.flipperContacts[side]++;
       this.strikeFlipper(side);
     }
@@ -232,7 +238,11 @@ export class PinballPhysics {
       }
       return;
     }
-    this.cooldowns.set(h.key, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, id: "contact-" + this.eventSequence++ });
+    if (h.type === "rollover" && this.skillShotPending) {
+      this.skillShotPending = false;
+      if (h.lane === 1 && this.time <= this.skillShotDeadline) this.state.onEvent({type:"skill-shot",id:"skill-"+this.eventSequence++});
+    }
+    this.cooldowns.set(h.key, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, targetId:h.targetId, id: "contact-" + this.eventSequence++ });
     if (["bumper", "sling", "bank", "target"].includes(h.type) && accepted) {
       const bank=TARGET_BANKS.find(bank=>bank.key===h.key);
       const targetId=h.targetId ?? (bank ? targetContactId(bank,this.ball.translation()) : undefined);
@@ -289,6 +299,13 @@ export class PinballPhysics {
         this.plungerPull=Math.max(0,this.plungerPull-1/(120*.115));
         this.plungerBody.setNextKinematicTranslation({x:SHOOTER_LAYOUT.x,y:.175,z:PLUNGER_CONTACT.restZ+PLUNGER_CONTACT.pullTravel*this.plungerPull});
       }
+      const beforeStep = this.ball.translation();
+      if (this.scoopHeld && this.time >= this.scoopReleaseAt) {
+        this.scoopHeld = false; this.scoopCooldown = this.time + 1;
+        this.ball.setBodyType(R.RigidBodyType.Dynamic, true);
+        this.ball.setGravityScale(1, true);
+        this.ball.setLinvel({x:-1.2,y:0,z:6},true);
+      }
       this.world.step(this.queue);
       this.queue.drainCollisionEvents((a, b, started) => {
         if (started && this.state.phase === "playing") {
@@ -310,6 +327,19 @@ export class PinballPhysics {
         continue;
       }
       const p = this.ball.translation(), v = this.ball.linvel();
+      // Only an actual upfield mouth traversal captures. Rear/side hits and
+      // elevated flyovers cannot trigger the below-hood switch.
+      const throat = SCOOP.z + .13;
+      if (!this.scoopHeld && !this.state.tilted && this.time >= this.scoopCooldown &&
+          beforeStep.z > throat && p.z <= throat && v.z < -.25 &&
+          Math.abs(p.x-SCOOP.x) < .32-TABLE.ballRadius && p.y > .10 && p.y < .32) {
+        this.scoopHeld = true; this.scoopReleaseAt = this.time + .8;
+        this.skillShotPending = false; this.rampStage = 0;
+        this.ball.setLinvel({x:0,y:0,z:0},true); this.ball.setAngvel({x:0,y:0,z:0},true);
+        this.ball.setBodyType(R.RigidBodyType.Fixed,true);
+        this.state.onEvent({type:"scoop",id:"scoop-"+this.eventSequence++});
+      }
+      if (this.scoopHeld) continue;
       // An ordered elevated run ends on the playfield or after its timeout.
       // Do not use old fixed x/z limits: entrance and exit belong to the route.
       if(this.rampStage && (this.time-this.rampStarted>30 || p.y<.28)) this.rampStage=0;

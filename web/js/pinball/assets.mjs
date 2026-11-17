@@ -1,3 +1,4 @@
+import { MechanicalScoop } from "./scoop.mjs";
 import {railCapsules,capsuleStockGeometry} from './wire-stock.mjs';
 import {shooterOuterRailGeometry} from './shooter-outer-rail.mjs';
 import { MechanicalFlipper } from "./components/flipper.mjs";
@@ -221,6 +222,8 @@ export class WorkshopAssets {
     this.mechanical.plunger.root.position.set(SHOOTER_LAYOUT.x,.175,SHOOTER_LAYOUT.restZ);g.add(this.mechanical.plunger.root);
     this.plungerHead=this.mechanical.plunger.head;this.plungerRod=this.mechanical.plunger.moving;this.plungerKnob=this.mechanical.plunger.knob;
     new PlayfieldParts(this).build();
+    this.mechanical.scoop=new MechanicalScoop(this);
+    g.add(this.mechanical.scoop.root);
     this.batchStaticAssembly(this.mechanical.cabinet.root,new Set(),this.mechanical.cabinet.geometries);
     this.batchStaticAssembly(this.mechanical.ramp.root,new Set(),this.mechanical.ramp.geometries);
     for(const component of [...this.mechanical.flippers,...this.mechanical.bumpers.values(),

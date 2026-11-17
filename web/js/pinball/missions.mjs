@@ -65,3 +65,27 @@ export class PinballMultiplierMission {
     this.multiplier = 3; return true;
   }
 }
+
+/** A repeatable physical target bank arms the workshop collector. */
+export class PinballScoopChallenge {
+  constructor() { this.restart(); }
+  restart() { this.targets = [false, false, false]; this.captures = 0; this.collections = 0; }
+  get snapshot() {
+    const progress = this.targets.filter(Boolean).length;
+    return { targets: [...this.targets], progress, target: 3, lit: progress === 3,
+      captures: this.captures, collections: this.collections, reward: 1000 };
+  }
+  onTarget(event) {
+    if (!["bank", "target"].includes(event.type)) return false;
+    const index = ["right-side:0", "right-side:1", "right-side:2"].indexOf(event.targetId);
+    if (index < 0 || this.targets[index]) return false;
+    this.targets[index] = true;
+    return this.targets.every(Boolean);
+  }
+  capture() {
+    this.captures++;
+    const lit = this.targets.every(Boolean);
+    if (lit) { this.collections++; this.targets.fill(false); }
+    return { lit, points: lit ? 1000 : 150 };
+  }
+}

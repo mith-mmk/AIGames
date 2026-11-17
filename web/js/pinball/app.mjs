@@ -206,6 +206,9 @@ export class PinballTablePreview {
   updateHUD() {
     const state = this.game.state;
     this.assets.mechanical.cabinet.updateSnapshot(state);
+    this.assets.mechanical.scoop?.update(state.scoop);
+    const scoopHUD=document.querySelector("#scoop-status");
+    if(scoopHUD) scoopHUD.textContent=state.scoop?.lit ? "SCOOP 点灯 · 入球で LEFT SAVE" : `右の標的 ${state.scoop?.progress??0}/3 → SCOOP 点灯`;
     if (state.phase !== "ready") this.plunger.cancel();
     const power = this.plunger.update(performance.now());
     const percent = Math.round(power * 100);
