@@ -25,3 +25,10 @@ test('restart while held clears capture and launches normal dynamic ball',async 
  g.restart();assert.equal(g.scoopHeld,false);assert.equal(g.state.scoop.captures,0);g.launch();
  g.step(.1);assert.ok(g.ball.linvel().z<0);
 });
+test('precise legal .95 launch earns right-lane skill shot but full power does not',async t=>{
+ for (const [power,expected] of [[.95,1],[1,0]]) {
+  const g=await PinballPhysics.create();t.after(()=>g.dispose());g.launch(power);
+  for(let i=0;i<240&&g.state.phase==='playing';i++)g.step(1/120);
+  assert.equal(g.state.skillShots,expected);
+ }
+});

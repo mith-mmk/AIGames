@@ -65,7 +65,7 @@ test('installed rollover bars are closed stocks on actual capsule axes and retai
   const assets=new WorkshopAssets();
   try {
     const root=assets.build(),colliders=[];game.world.forEachCollider(c=>colliders.push(c));
-    assert.equal(colliders.length,1380,'render-only correction adds no physical mounts');
+    assert.equal(colliders.length-game.scoopContacts.length-(game.cabinetBoundaryContacts.length-3),1380,'legacy mounts unchanged; explicit scoop and split guard contacts accounted separately');
     for(const x of[-1.875,-.625,.625,1.875]){
       const bar=root.getObjectByName('upper-rollover-bar-'+x);
       assert.ok(bar?.isMesh);assert.equal(bar.material,assets.materials.chrome);

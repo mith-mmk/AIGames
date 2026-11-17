@@ -5,7 +5,7 @@ import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
 import {MechanicalCabinet} from './components/cabinet.mjs';
 import {PinballPhysics} from './physics.mjs';
 import {TABLE} from './layout.mjs';
-import {CABINET_BOUNDARY} from './cabinet-boundary.mjs';
+import {CABINET_BOUNDARY, cabinetBoundaryTop} from './cabinet-boundary.mjs';
 
 const close=(a,b)=>assert.ok(Math.abs(a-b)<2e-6,`${a} != ${b}`);
 
@@ -13,17 +13,17 @@ test('play-facing solid cabinet backing and cap match actual collider bounds',as
  const g=await PinballPhysics.create(),c=new MechanicalCabinet();
  try {
   c.root.position.z=TABLE.centerZ;c.root.updateMatrixWorld(true);
-  assert.equal(g.cabinetBoundaryContacts.length,3);
+  assert.equal(g.cabinetBoundaryContacts.length,5);
   for(const {name,collider} of g.cabinetBoundaryContacts){
    const group=c.root.getObjectByName(`cabinet-boundary-${name}`),b=new T.Box3().setFromObject(group);
    const p=collider.translation(),h=collider.halfExtents();
    for(const axis of ['x','y','z']){close(b.min[axis],p[axis]-h[axis]);close(b.max[axis],p[axis]+h[axis]);}
-   close(b.min.y,-.05);close(b.max.y,CABINET_BOUNDARY.top);
+   close(b.min.y,-.05);close(b.max.y,name.endsWith("lower")?CABINET_BOUNDARY.lowerTop:CABINET_BOUNDARY.top);
    const backing=new T.Box3().setFromObject(group.getObjectByName(`cabinet-boundary-${name}-backing`));
    const cap=new T.Box3().setFromObject(group.getObjectByName(`cabinet-boundary-${name}-cap`));
    close(backing.max.y,cap.min.y);close(cap.max.y-cap.min.y,.022);
-   if(name==='left')close(b.max.x,-2.73);
-   else if(name==='right')close(b.min.x,2.73);
+   if(name.startsWith('left'))close(b.max.x,-2.73);
+   else if(name.startsWith('right'))close(b.min.x,2.73);
    else close(b.max.z,-5.73);
   }
   assert.equal(c.root.getObjectByName('folded-glass-channel--1'),undefined);
@@ -38,21 +38,22 @@ test('visible side and rear faces and cap agree with solid rays without an invis
   let rays=0;
   for(const {name,collider} of g.cabinetBoundaryContacts){
    const group=c.root.getObjectByName(`cabinet-boundary-${name}`);
+   const bounds=new T.Box3().setFromObject(group),top=bounds.max.y;
    for(const u of [-.8,0,.8])for(const y of [.10,.30,.60,.90]){
-    const side=name==='left'?-1:1;
-    const origin=name==='rear'?new T.Vector3(u*2,y,-5):new T.Vector3(side*2,y,u*5);
+    const side=name.startsWith('left')?-1:1;
+    const origin=name==='rear'?new T.Vector3(u*2,y,-5):new T.Vector3(side*2,y,(bounds.min.z+bounds.max.z)/2+u*(bounds.max.z-bounds.min.z)/2);
     const direction=name==='rear'?new T.Vector3(0,0,-1):new T.Vector3(side,0,0);
     const hits=new T.Raycaster(origin,direction,0,2).intersectObject(group,true);
     const distance=collider.castRay(new R.Ray(origin,direction),2,true);
-    if(y>CABINET_BOUNDARY.top){assert.equal(hits.length,0);assert.equal(distance,-1);}
+    if(y>top){assert.equal(hits.length,0);assert.equal(distance,-1);}
     else {assert.ok(hits.length>0);assert.ok(distance>=0);close(hits[0].distance,distance);}
     rays++;
    }
    const p=collider.translation(),origin=new T.Vector3(p.x,1,p.z),direction=new T.Vector3(0,-1,0);
    const hit=new T.Raycaster(origin,direction).intersectObject(group,true)[0];
-   close(hit.point.y,CABINET_BOUNDARY.top);close(hit.distance,collider.castRay(new R.Ray(origin,direction),2,true));
+   close(hit.point.y,top);close(hit.distance,collider.castRay(new R.Ray(origin,direction),2,true));
   }
-  assert.equal(rays,36);
+  assert.equal(rays,60);
  }finally{c.dispose();g.dispose();}
 });
 
@@ -63,9 +64,10 @@ test('cabinet cap retains flush seats, hex heads and enclosed shanks',()=>{
   c.root.traverse(mesh=>{
    if(!mesh.isMesh||!mesh.name.includes('cap-fastener-'))return;
    const b=new T.Box3().setFromObject(mesh);
-   if(mesh.name.endsWith('-hex-head')){heads++;close(b.min.y,CABINET_BOUNDARY.top);close(b.max.y,CABINET_BOUNDARY.top);}
-   if(mesh.name.endsWith('-seat')){seats++;close(b.min.y,CABINET_BOUNDARY.top);close(b.max.y,CABINET_BOUNDARY.top);}
-   if(mesh.name.endsWith('-shank')){shafts++;assert.ok(b.min.y>.28);close(b.max.y,CABINET_BOUNDARY.top);}
+   const top=cabinetBoundaryTop((b.min.z+b.max.z)/2+TABLE.centerZ);
+   if(mesh.name.endsWith('-hex-head')){heads++;close(b.min.y,top);close(b.max.y,top);}
+   if(mesh.name.endsWith('-seat')){seats++;close(b.min.y,top);close(b.max.y,top);}
+   if(mesh.name.endsWith('-shank')){shafts++;assert.ok(b.min.y>.28);close(b.max.y,top);}
   });
   assert.equal(heads,13);assert.equal(seats,13);assert.equal(shafts,13);
  }finally{c.dispose();}

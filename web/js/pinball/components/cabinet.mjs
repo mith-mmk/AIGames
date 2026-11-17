@@ -1,5 +1,5 @@
 import * as T from "../../vendor/three-0.180.0/three.module.min.js";
-import { CABINET_BOUNDARY, cabinetBoundaryBoxes, cabinetBoundaryLayers } from '../cabinet-boundary.mjs';
+import { CABINET_BOUNDARY, cabinetBoundaryTop, cabinetBoundaryBoxes, cabinetBoundaryLayers } from '../cabinet-boundary.mjs';
 import {boardEdgeFasteners, cabinetScrewParts} from "../cabinet-fasteners.mjs";
 import { TABLE } from "../layout.mjs";
 import { ReferenceCabinetDress } from "./reference-cabinet.mjs";
@@ -97,11 +97,11 @@ export class MechanicalCabinet {
       material.polygonOffsetFactor=key.endsWith('slot')?-2:-1;material.polygonOffsetUnits=-1;
       this.materials[key]=material;this.ownedMaterials.add(material);
     }
-    for(const part of cabinetBoundaryBoxes({width:w,length:l,centerZ:0})) {
+    for(const part of cabinetBoundaryBoxes({width:w,length:l,centerZ:TABLE.centerZ})) {
       const assembly=new T.Group();assembly.name=`cabinet-boundary-${part.name}`;this.root.add(assembly);
       for(const layer of cabinetBoundaryLayers(part)) {
         const mesh=this.mesh(`${assembly.name}-${layer.name}`,new T.BoxGeometry(...layer.size),'metal',assembly);
-        mesh.position.set(...layer.center);
+        mesh.position.set(layer.center[0],layer.center[1],layer.center[2]-TABLE.centerZ);
       }
     }
     for(const x of [-W+.25,0,W-.25])this.flushBoundaryScrew(`rear-cap-fastener-${x}`,x,CABINET_BOUNDARY.top,-L-CABINET_BOUNDARY.rearOffset);
@@ -114,7 +114,7 @@ export class MechanicalCabinet {
         [[0,0],[.20,0],[.20,.22],[.175,.22],[.175,.025],[0,.025]];
       this.profile(`board-support-angle-${side}`,section,l-.40,'metal',side<0?-W-.025:W-.175,bottom-.025,-L+.20);
       for(const z of [-L+.40,-L/2,0,L/2,L-.40]) {
-        this.flushBoundaryScrew(`cap-fastener-${side}-${z}`,side*(W+CABINET_BOUNDARY.sideOffset),CABINET_BOUNDARY.top,z);
+        this.flushBoundaryScrew(`cap-fastener-${side}-${z}`,side*(W+CABINET_BOUNDARY.sideOffset),cabinetBoundaryTop(z+TABLE.centerZ),z);
         const fastener=boardFasteners.get(`board-edge-${side}-${z}`);
         this.screw(fastener.name,...fastener.position,this.root,fastener.shankLength);
       }
