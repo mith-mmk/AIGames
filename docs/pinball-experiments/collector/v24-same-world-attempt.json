@@ -1,0 +1,433 @@
+{
+  "method": "Only legal launch and flipper controls; baseline pulse until all three right targets light, then power .55 next launch and launch-relative pulse phase. Initial five games reproduce previous audit ordering. No ball or state injection.",
+  "rows": [
+    {
+      "power": 0.55,
+      "offset": 0,
+      "delay": null,
+      "seconds": 42.05833333333159,
+      "phase": "gameover",
+      "launches": 3,
+      "litAt": null,
+      "scoop": {
+        "targets": [
+          false,
+          false,
+          false
+        ],
+        "progress": 0,
+        "target": 3,
+        "lit": false,
+        "captures": 0,
+        "collections": 0,
+        "reward": 1000
+      },
+      "events": []
+    },
+    {
+      "power": 0.55,
+      "offset": 17,
+      "delay": null,
+      "seconds": 67.73333333336852,
+      "phase": "gameover",
+      "launches": 5,
+      "litAt": null,
+      "scoop": {
+        "targets": [
+          false,
+          false,
+          true
+        ],
+        "progress": 1,
+        "target": 3,
+        "lit": false,
+        "captures": 1,
+        "collections": 0,
+        "reward": 1000
+      },
+      "events": [
+        {
+          "tick": 6207,
+          "t": 51.724999999997706,
+          "type": "scoop",
+          "ball": 1,
+          "lit": false,
+          "collections": 0,
+          "score": 300,
+          "award": 150,
+          "save": 0,
+          "p": {
+            "x": -1.0632010698318481,
+            "y": 0.17064134776592255,
+            "z": 0.5798815488815308
+          }
+        },
+        {
+          "tick": 9866,
+          "t": 82.21666666667817,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "ball": 2,
+          "lit": false,
+          "collections": 0,
+          "score": 1400,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 1.3810012340545654,
+            "y": 0.17090027034282684,
+            "z": -0.5682079792022705
+          }
+        },
+        {
+          "tick": 11055,
+          "t": 92.12500000001938,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "ball": 3,
+          "lit": false,
+          "collections": 0,
+          "score": 1475,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 1.2473608255386353,
+            "y": 0.17076168954372406,
+            "z": -0.5676676034927368
+          }
+        },
+        {
+          "tick": 12659,
+          "t": 105.49166666669669,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "ball": 3,
+          "lit": false,
+          "collections": 0,
+          "score": 1800,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 1.38084876537323,
+            "y": 0.17090892791748047,
+            "z": -0.5676985383033752
+          }
+        }
+      ]
+    },
+    {
+      "power": 0.55,
+      "offset": 41,
+      "delay": null,
+      "seconds": 62.04166666664128,
+      "phase": "gameover",
+      "launches": 4,
+      "litAt": null,
+      "scoop": {
+        "targets": [
+          true,
+          false,
+          true
+        ],
+        "progress": 2,
+        "target": 3,
+        "lit": false,
+        "captures": 0,
+        "collections": 0,
+        "reward": 1000
+      },
+      "events": [
+        {
+          "tick": 14171,
+          "t": 118.09166666670671,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "ball": 1,
+          "lit": false,
+          "collections": 0,
+          "score": 200,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 1.3752650022506714,
+            "y": 0.17038756608963013,
+            "z": -0.5721449851989746
+          }
+        },
+        {
+          "tick": 14626,
+          "t": 121.8833333333764,
+          "type": "bank",
+          "targetId": "right-side:0",
+          "ball": 1,
+          "lit": false,
+          "collections": 0,
+          "score": 275,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 0.8068325519561768,
+            "y": 0.17041325569152832,
+            "z": -1.0040595531463623
+          }
+        },
+        {
+          "tick": 18863,
+          "t": 157.19166666668804,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "ball": 3,
+          "lit": false,
+          "collections": 0,
+          "score": 1300,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 1.3810572624206543,
+            "y": 0.1705748438835144,
+            "z": -0.567819356918335
+          }
+        },
+        {
+          "tick": 20434,
+          "t": 170.2833333333428,
+          "type": "bank",
+          "targetId": "right-side:0",
+          "ball": 3,
+          "lit": false,
+          "collections": 0,
+          "score": 2375,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 0.8156015276908875,
+            "y": 0.17079289257526398,
+            "z": -0.984565794467926
+          }
+        }
+      ]
+    },
+    {
+      "power": 0.75,
+      "offset": 0,
+      "delay": null,
+      "seconds": 65.67499999994027,
+      "phase": "gameover",
+      "launches": 5,
+      "litAt": null,
+      "scoop": {
+        "targets": [
+          false,
+          false,
+          true
+        ],
+        "progress": 1,
+        "target": 3,
+        "lit": false,
+        "captures": 0,
+        "collections": 0,
+        "reward": 1000
+      },
+      "events": [
+        {
+          "tick": 22614,
+          "t": 188.44999999999294,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "ball": 1,
+          "lit": false,
+          "collections": 0,
+          "score": 350,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 1.289893388748169,
+            "y": 0.17077291011810303,
+            "z": -0.5591362714767456
+          }
+        },
+        {
+          "tick": 24116,
+          "t": 200.96666666664822,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "ball": 2,
+          "lit": false,
+          "collections": 0,
+          "score": 975,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 1.3814793825149536,
+            "y": 0.17073576152324677,
+            "z": -0.5680627226829529
+          }
+        },
+        {
+          "tick": 28359,
+          "t": 236.3249999999494,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "ball": 3,
+          "lit": false,
+          "collections": 0,
+          "score": 2175,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 1.3702279329299927,
+            "y": 0.17075850069522858,
+            "z": -0.5661506652832031
+          }
+        }
+      ]
+    },
+    {
+      "power": 0.75,
+      "offset": 17,
+      "delay": null,
+      "seconds": 42.61666666662791,
+      "phase": "gameover",
+      "launches": 4,
+      "litAt": null,
+      "scoop": {
+        "targets": [
+          false,
+          false,
+          false
+        ],
+        "progress": 0,
+        "target": 3,
+        "lit": false,
+        "captures": 1,
+        "collections": 0,
+        "reward": 1000
+      },
+      "events": [
+        {
+          "tick": 30959,
+          "t": 257.99166666659636,
+          "type": "scoop",
+          "ball": 2,
+          "lit": false,
+          "collections": 0,
+          "score": 425,
+          "award": 150,
+          "save": 0,
+          "p": {
+            "x": -0.7972766160964966,
+            "y": 0.17089976370334625,
+            "z": 0.5412911772727966
+          }
+        }
+      ]
+    },
+    {
+      "power": 0.75,
+      "offset": 41,
+      "delay": 8,
+      "seconds": 62.17499999994345,
+      "phase": "gameover",
+      "launches": 4,
+      "litAt": 328.7083333331987,
+      "scoop": {
+        "targets": [
+          true,
+          true,
+          true
+        ],
+        "progress": 3,
+        "target": 3,
+        "lit": true,
+        "captures": 2,
+        "collections": 0,
+        "reward": 1000
+      },
+      "events": [
+        {
+          "tick": 34461,
+          "t": 287.17499999990315,
+          "type": "scoop",
+          "ball": 1,
+          "lit": false,
+          "collections": 0,
+          "score": 150,
+          "award": 150,
+          "save": 0,
+          "p": {
+            "x": -1.0749636888504028,
+            "y": 0.17200830578804016,
+            "z": 0.5683292746543884
+          }
+        },
+        {
+          "tick": 37628,
+          "t": 313.5666666665458,
+          "type": "scoop",
+          "ball": 2,
+          "lit": false,
+          "collections": 0,
+          "score": 1025,
+          "award": 150,
+          "save": 0,
+          "p": {
+            "x": -0.7401185631752014,
+            "y": 0.17092913389205933,
+            "z": 0.45634597539901733
+          }
+        },
+        {
+          "tick": 37860,
+          "t": 315.4999999998774,
+          "type": "bank",
+          "targetId": "right-side:0",
+          "ball": 2,
+          "lit": false,
+          "collections": 0,
+          "score": 1125,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 0.7975085973739624,
+            "y": 0.1710280179977417,
+            "z": -1.0025639533996582
+          }
+        },
+        {
+          "tick": 39164,
+          "t": 326.3666666665342,
+          "type": "bank",
+          "targetId": "right-side:1",
+          "ball": 3,
+          "lit": false,
+          "collections": 0,
+          "score": 1325,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 1.0370014905929565,
+            "y": 0.1692323386669159,
+            "z": -0.7664815187454224
+          }
+        },
+        {
+          "tick": 39445,
+          "t": 328.7083333331987,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "ball": 3,
+          "lit": true,
+          "collections": 0,
+          "score": 1450,
+          "award": 75,
+          "save": 0,
+          "p": {
+            "x": 1.3407667875289917,
+            "y": 0.17079496383666992,
+            "z": -0.6200036406517029
+          }
+        }
+      ]
+    }
+  ]
+}
