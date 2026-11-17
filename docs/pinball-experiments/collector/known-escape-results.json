@@ -1,0 +1,115 @@
+{
+  "method": "Standard mode, two legal-input three-ball sessions; 120 Hz fixed step, 180-second cap. No position/velocity injection or reset interception. Baseline is archived standard-final.json, not a new matched run. Integrated scoop and guard both change trajectories; world creation order also matters.",
+  "baseline": [
+    {
+      "mode": "pulse",
+      "power": 0.55,
+      "offset": 0,
+      "drains": [
+        {
+          "at": 28.424999999999027,
+          "age": 15.516666666665786,
+          "x": -3.2971138954162598,
+          "z": 3.630445957183838,
+          "y": 0.585210382938385,
+          "lane": "left",
+          "score": 825,
+          "reason": "out-of-bounds",
+          "saved": false
+        }
+      ]
+    },
+    {
+      "mode": "reactive",
+      "power": 0.925,
+      "offset": 0,
+      "drains": [
+        {
+          "at": 50.524999999997775,
+          "age": 13.891666666665877,
+          "x": 3.2092297077178955,
+          "z": 2.5099236965179443,
+          "y": 0.1549426019191742,
+          "lane": "right",
+          "score": 4725,
+          "reason": "out-of-bounds",
+          "saved": false
+        }
+      ]
+    }
+  ],
+  "fixed": [
+    {
+      "mode": "pulse",
+      "power": 0.55,
+      "offset": 0,
+      "phase": "gameover",
+      "seconds": 51.491666666664386,
+      "drains": [
+        {
+          "at": 23.47499999999931,
+          "reason": "normal",
+          "position": {
+            "x": 0.2280825972557068,
+            "y": 0.16466116905212402,
+            "z": 5.073965549468994
+          }
+        },
+        {
+          "at": 31.183333333332204,
+          "reason": "normal",
+          "position": {
+            "x": 0.048542823642492294,
+            "y": 0.16314645111560822,
+            "z": 5.055824279785156
+          }
+        },
+        {
+          "at": 51.491666666664386,
+          "reason": "normal",
+          "position": {
+            "x": -0.14393414556980133,
+            "y": 0.1649973839521408,
+            "z": 5.080732345581055
+          }
+        }
+      ]
+    },
+    {
+      "mode": "reactive",
+      "power": 0.925,
+      "offset": 0,
+      "phase": "gameover",
+      "seconds": 60.79166666666386,
+      "drains": [
+        {
+          "at": 21.074999999999445,
+          "reason": "normal",
+          "position": {
+            "x": -1.8611090183258057,
+            "y": 0.16024170815944672,
+            "z": 5.109659671783447
+          }
+        },
+        {
+          "at": 37.991666666665154,
+          "reason": "normal",
+          "position": {
+            "x": -2.5562686920166016,
+            "y": 0.16423331201076508,
+            "z": 5.0814208984375
+          }
+        },
+        {
+          "at": 60.79166666666386,
+          "reason": "normal",
+          "position": {
+            "x": 0.03258970379829407,
+            "y": 0.17031759023666382,
+            "z": 5.110320091247559
+          }
+        }
+      ]
+    }
+  ]
+}
