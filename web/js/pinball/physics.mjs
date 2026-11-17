@@ -185,7 +185,7 @@ export class PinballPhysics {
   launch(power = 1) {
     power = Number.isFinite(power) ? power : 1;
     if (!this.state.launch()) return false;
-    this.skillShotPending = true; this.skillShotDeadline = this.time + 5;
+    this.skillShotPending = this.state.skillShotAvailable; this.skillShotDeadline = this.time + 1;
     this.ball.setGravityScale(1, true);
     this.ball.setLinvel({ x: 0, y: 0, z: -(3 + Math.max(0, Math.min(1, power)) * 20) }, true);
     return true;
@@ -227,7 +227,8 @@ export class PinballPhysics {
     }
 
     const h = this.hitObjects.get(other);
-    if (!h || (this.cooldowns.get(h.key) ?? -99) > this.time) return;
+    const contactKey = h?.targetId ?? h?.key;
+    if (!h || (this.cooldowns.get(contactKey) ?? -99) > this.time) return;
     if (h.type === "ramp-gate") {
       this.cooldowns.set(h.key,this.time+.16);
       const velocity=this.ball.linvel(),forward=velocity.x*h.direction.x+velocity.z*h.direction.z>0;
@@ -240,9 +241,9 @@ export class PinballPhysics {
     }
     if (h.type === "rollover" && this.skillShotPending) {
       this.skillShotPending = false;
-      if (h.lane === 1 && this.time <= this.skillShotDeadline) this.state.onEvent({type:"skill-shot",id:"skill-"+this.eventSequence++});
+      if (h.lane === 2 && this.time <= this.skillShotDeadline) this.state.onEvent({type:"skill-shot",id:"skill-"+this.eventSequence++});
     }
-    this.cooldowns.set(h.key, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, targetId:h.targetId, id: "contact-" + this.eventSequence++ });
+    this.cooldowns.set(contactKey, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, targetId:h.targetId, id: "contact-" + this.eventSequence++ });
     if (["bumper", "sling", "bank", "target"].includes(h.type) && accepted) {
       const bank=TARGET_BANKS.find(bank=>bank.key===h.key);
       const targetId=h.targetId ?? (bank ? targetContactId(bank,this.ball.translation()) : undefined);
