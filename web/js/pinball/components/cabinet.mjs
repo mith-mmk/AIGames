@@ -1,5 +1,5 @@
 import * as T from "../../vendor/three-0.180.0/three.module.min.js";
-import { CABINET_BOUNDARY, cabinetBoundaryTop, cabinetBoundaryBoxes, cabinetBoundaryLayers } from '../cabinet-boundary.mjs';
+import { CABINET_BOUNDARY, cabinetBoundaryTop, cabinetBoundaryExtensions, cabinetBoundaryBoxes, cabinetBoundaryLayers } from '../cabinet-boundary.mjs';
 import {boardEdgeFasteners, cabinetScrewParts} from "../cabinet-fasteners.mjs";
 import { TABLE } from "../layout.mjs";
 import { ReferenceCabinetDress } from "./reference-cabinet.mjs";
@@ -97,7 +97,7 @@ export class MechanicalCabinet {
       material.polygonOffsetFactor=key.endsWith('slot')?-2:-1;material.polygonOffsetUnits=-1;
       this.materials[key]=material;this.ownedMaterials.add(material);
     }
-    for(const part of cabinetBoundaryBoxes({width:w,length:l,centerZ:TABLE.centerZ})) {
+    for(const part of [...cabinetBoundaryBoxes({width:w,length:l,centerZ:TABLE.centerZ}),...cabinetBoundaryExtensions({width:w,length:l,centerZ:TABLE.centerZ})]) {
       const assembly=new T.Group();assembly.name=`cabinet-boundary-${part.name}`;this.root.add(assembly);
       for(const layer of cabinetBoundaryLayers(part)) {
         const mesh=this.mesh(`${assembly.name}-${layer.name}`,new T.BoxGeometry(...layer.size),'metal',assembly);

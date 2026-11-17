@@ -14,11 +14,12 @@ test('play-facing solid cabinet backing and cap match actual collider bounds',as
  try {
   c.root.position.z=TABLE.centerZ;c.root.updateMatrixWorld(true);
   assert.equal(g.cabinetBoundaryContacts.length,5);
+  assert.deepEqual(g.cabinetBoundaryContacts.slice(0,3).map(p=>p.name),["left","right","rear"]);
   for(const {name,collider} of g.cabinetBoundaryContacts){
    const group=c.root.getObjectByName(`cabinet-boundary-${name}`),b=new T.Box3().setFromObject(group);
    const p=collider.translation(),h=collider.halfExtents();
    for(const axis of ['x','y','z']){close(b.min[axis],p[axis]-h[axis]);close(b.max[axis],p[axis]+h[axis]);}
-   close(b.min.y,-.05);close(b.max.y,name.endsWith("lower")?CABINET_BOUNDARY.lowerTop:CABINET_BOUNDARY.top);
+   close(b.min.y,name.endsWith("extension")?CABINET_BOUNDARY.top:-.05);close(b.max.y,name.endsWith("extension")?CABINET_BOUNDARY.lowerTop:CABINET_BOUNDARY.top);
    const backing=new T.Box3().setFromObject(group.getObjectByName(`cabinet-boundary-${name}-backing`));
    const cap=new T.Box3().setFromObject(group.getObjectByName(`cabinet-boundary-${name}-cap`));
    close(backing.max.y,cap.min.y);close(cap.max.y-cap.min.y,.022);
@@ -45,7 +46,7 @@ test('visible side and rear faces and cap agree with solid rays without an invis
     const direction=name==='rear'?new T.Vector3(0,0,-1):new T.Vector3(side,0,0);
     const hits=new T.Raycaster(origin,direction,0,2).intersectObject(group,true);
     const distance=collider.castRay(new R.Ray(origin,direction),2,true);
-    if(y>top){assert.equal(hits.length,0);assert.equal(distance,-1);}
+    if(y>top||y<bounds.min.y){assert.equal(hits.length,0);assert.equal(distance,-1);}
     else {assert.ok(hits.length>0);assert.ok(distance>=0);close(hits[0].distance,distance);}
     rays++;
    }

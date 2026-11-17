@@ -7,17 +7,19 @@ export function cabinetBoundaryTop(z) {
  return z>=CABINET_BOUNDARY.lowerStartZ?CABINET_BOUNDARY.lowerTop:CABINET_BOUNDARY.top;
 }
 export function cabinetBoundaryBoxes({width=TABLE.width,length=TABLE.length,centerZ=TABLE.centerZ}={}) {
- const d=CABINET_BOUNDARY,rear=centerZ-length/2-d.endOverhang,front=centerZ+length/2+d.endOverhang;
- // The lower guard contains the two observed airborne escapes. Upper walls
- // retain their original height, preserving access to the ramp's outer lips.
- const split=Math.max(rear,Math.min(front,d.lowerStartZ));
+ const d=CABINET_BOUNDARY,y=(d.bottom+d.top)/2,h=d.top-d.bottom;
+ // Preserve the original three collider allocations before the ball and bats.
  return [
-  ...[-1,1].flatMap(side=>[
-   {name:(side<0?'left':'right')+'-upper',center:[side*(width/2+d.sideOffset),(d.bottom+d.top)/2,(rear+split)/2],size:[d.thickness,d.top-d.bottom,split-rear]},
-   {name:(side<0?'left':'right')+'-lower',center:[side*(width/2+d.sideOffset),(d.bottom+d.lowerTop)/2,(split+front)/2],size:[d.thickness,d.lowerTop-d.bottom,front-split]},
-  ]),
-  {name:'rear',center:[0,(d.bottom+d.top)/2,centerZ-length/2-d.rearOffset],size:[width+2*d.sideOffset,d.top-d.bottom,d.thickness]}
+  ...[-1,1].map(side=>({name:side<0?'left':'right',center:[side*(width/2+d.sideOffset),y,centerZ],size:[d.thickness,h,length+2*d.endOverhang]})),
+  {name:'rear',center:[0,y,centerZ-length/2-d.rearOffset],size:[width+2*d.sideOffset,h,d.thickness]}
  ];
+}
+export function cabinetBoundaryExtensions({width=TABLE.width,length=TABLE.length,centerZ=TABLE.centerZ}={}) {
+ const d=CABINET_BOUNDARY,front=centerZ+length/2+d.endOverhang;
+ const start=Math.max(centerZ-length/2-d.endOverhang,Math.min(front,d.lowerStartZ));
+ return [-1,1].map(side=>({name:(side<0?'left':'right')+'-lower-extension',
+  center:[side*(width/2+d.sideOffset),(d.top+d.lowerTop)/2,(start+front)/2],
+  size:[d.thickness,d.lowerTop-d.top,front-start]}));
 }
 export function cabinetBoundaryLayers(box) {
  const d=CABINET_BOUNDARY,top=box.center[1]+box.size[1]/2;

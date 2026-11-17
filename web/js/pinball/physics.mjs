@@ -1,7 +1,7 @@
 import { SCOOP, scoopContactBoxes } from "./scoop.mjs";
 import {appendBoardEdgeFasteners} from './cabinet-fasteners.mjs';
 import {shooterOuterRailGeometry,shooterOuterRailContactVertices} from './shooter-outer-rail.mjs';
-import {cabinetBoundaryBoxes} from './cabinet-boundary.mjs';
+import {cabinetBoundaryBoxes, cabinetBoundaryExtensions} from './cabinet-boundary.mjs';
 import { targetCarrierParts, targetFaceAngle, targetDimensions, targetContactBoxes, flipperContactVertices, PLUNGER_CONTACT, targetContactId, slingContactPoints, plungerContactVertices } from "./mechanical-contact.mjs";
 import {NudgeMeter} from "./nudge.mjs";
 import { buildPhysicalRamp, rampSensorGates } from "./ramp-geometry.mjs";
@@ -34,6 +34,10 @@ export class PinballPhysics {
     this.shooterOuterRailContact=this.world.createCollider(R.ColliderDesc.convexHull(shooterOuterRailContactVertices(outerRail)).setRestitution(.45).setFriction(.05));
     outerRail.dispose();
     this.boardFastenerContacts=appendBoardEdgeFasteners(this.world,R);
+    // Append raised lower guards without perturbing original collider handles.
+    this.cabinetBoundaryContacts.push(...cabinetBoundaryExtensions().map(part=>({
+      ...part,collider:this.box(...part.center,...part.size.map(v=>v/2))
+    })));
     this.scoopContacts=scoopContactBoxes().map(part=>this.box(...part.center,...part.size.map(v=>v/2),.25));
   }
   nudge() {
