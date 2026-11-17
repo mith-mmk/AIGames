@@ -209,15 +209,25 @@ export class MechanicalLoop {
     for(const part of loopPocketBackings())assets.mesh(part.geometry,'steel',this.root).name=part.name;
     // Flush inserts communicate downhill return without tiny text or a
     // raised guide. Wide chevrons remain readable through the elevated wire.
-    const route=[[-1.33,-4.42],[-1.50,-4.13],[-1.64,-3.86],[-1.65,-3.45]];
+    const route=[[-1.33,-4.42],[-1.50,-4.13],[-1.64,-3.86],[-1.50,-3.20]];
     for(let i=0;i<route.length-1;i++){
       const [x,z]=route[i],[nextX,nextZ]=route[i+1];
       const shape=new T.Shape();[[-.27,-.12],[0,.06],[.27,-.12],[.27,-.01],[0,.17],[-.27,-.01]].forEach(([x,y],i)=>i?shape.lineTo(x,y):shape.moveTo(x,y));shape.closePath();
       const geometry=new T.ShapeGeometry(shape);geometry.rotateX(-Math.PI/2);geometry.rotateY(Math.PI+Math.atan2(nextX-x,nextZ-z));
       assets.mesh(geometry,'brass',this.root,x,.049,z).name='loop-return-chevron-insert';
     }
-    const insert=assets.mesh(new T.CircleGeometry(.22,32),'dark',this.root,-1.65,.048,-3.45);insert.rotation.x=-Math.PI/2;insert.name='loop-A-return-insert';
-    assets.text(this.root,'A',-1.65,.051,-3.45,.35,.35,'#f3cf77');
+    const insert=assets.mesh(new T.CircleGeometry(.31,40),'dark',this.root,-1.50,.048,-3.20);insert.rotation.x=-Math.PI/2;insert.name='loop-A-return-insert';
+    // A single-letter insert needs a square texture. The generic 512x128
+    // label helper leaves nearly all of a one-letter texture transparent.
+    const canvas=document.createElement('canvas');canvas.width=canvas.height=128;
+    const ctx=canvas.getContext('2d');ctx.fillStyle='#ffdf86';ctx.font='900 116px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('A',64,68);
+    const texture=new T.CanvasTexture(canvas);texture.colorSpace=T.SRGBColorSpace;
+    const letter=assets.mesh(new T.PlaneGeometry(.80,.80),new T.MeshBasicMaterial({map:texture,transparent:true,depthWrite:false}),this.root,-1.50,.051,-3.20);
+    letter.rotation.x=-Math.PI/2;letter.name='loop-A-return-large-letter';
+    const curve=new T.QuadraticBezierCurve3(new T.Vector3(-1.60,0,-3.68),new T.Vector3(-1.61,0,-3.56),new T.Vector3(-1.50,0,-3.51));
+    const sides=[[],[]];for(let i=0;i<=8;i++){const t=i/8,p=curve.getPoint(t),v=curve.getTangent(t),n=new T.Vector3(-v.z,0,v.x);for(let side=0;side<2;side++)sides[side].push(p.clone().addScaledVector(n,(side?1:-1)*.035));}
+    const lead=new T.Shape();[...sides[0],...sides[1].reverse()].forEach((p,i)=>i?lead.lineTo(p.x,-p.z):lead.moveTo(p.x,-p.z));lead.closePath();
+    const leadGeometry=new T.ShapeGeometry(lead);leadGeometry.rotateX(-Math.PI/2);assets.mesh(leadGeometry,'brass',this.root,0,.049,0).name='loop-A-return-leader';
     assets.text(this.root,'LOOP',-1.10,.052,1.75,.34,.11,'#e8bf61');
     assets.batchStaticAssembly(this.root);
   }
