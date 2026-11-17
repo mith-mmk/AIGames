@@ -239,11 +239,13 @@ export class PinballPhysics {
       }
       return;
     }
+    let skillShot = false;
     if (h.type === "rollover" && this.skillShotPending) {
       this.skillShotPending = false;
-      if (h.lane === 2 && this.skillShotArmed && this.time <= this.skillShotDeadline) this.state.onEvent({type:"skill-shot",id:"skill-"+this.eventSequence++});
+      skillShot = h.lane === 2 && this.skillShotArmed && this.time <= this.skillShotDeadline;
     }
     this.cooldowns.set(contactKey, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, targetId:h.targetId, id: "contact-" + this.eventSequence++ });
+    if (accepted && skillShot) this.state.onEvent({type:"skill-shot",id:"skill-"+this.eventSequence++});
     if (["bumper", "sling", "bank", "target"].includes(h.type) && accepted) {
       const bank=TARGET_BANKS.find(bank=>bank.key===h.key);
       const targetId=h.targetId ?? (bank ? targetContactId(bank,this.ball.translation()) : undefined);

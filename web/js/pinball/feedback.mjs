@@ -3,7 +3,7 @@ export class PinballFeedback {
   constructor(){this.reset();}
   reset(){this.previous=null;}
   update(state,held={},hits=[]){
-    const next={phase:state.phase,ball:state.ballNumber,tilted:state.tilted,mission:state.mission.completed,multiplier:state.multiplier,award:state.lastContactAward,left:Boolean(held.left),right:Boolean(held.right)};
+    const next={phase:state.phase,ball:state.ballNumber,tilted:state.tilted,mission:state.mission.completed,multiplier:state.multiplier,award:state.lastContactAward,captures:state.scoop?.captures??0,collections:state.scoop?.collections??0,skillShots:state.skillShots??0,left:Boolean(held.left),right:Boolean(held.right)};
     const p=this.previous;this.previous=next;
     if(!p||state.phase==='paused')return [];
     const events=[];
@@ -19,6 +19,10 @@ export class PinballFeedback {
         types.add(label==='bank'?'target':['bumper','sling','target'].includes(label)?label:'target');
       }
       events.push(...types);
+      // Counters survive render gaps; an award is sounded once, never each frame.
+      if(next.collections>p.collections)events.push('scoop-reward');
+      else if(next.captures>p.captures)events.push('scoop');
+      if(next.skillShots>p.skillShots)events.push('skill-shot');
       if(next.mission>p.mission)events.push('mission');
       if(next.multiplier>p.multiplier)events.push('multiplier');
     }
