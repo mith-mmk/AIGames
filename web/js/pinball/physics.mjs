@@ -10,9 +10,9 @@ import { TABLE, SHOOTER_LAYOUT, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANK
 import { PinballGameState } from "./game-state.mjs";
 
 export class PinballPhysics {
-  static async create() { await R.init(); return new PinballPhysics(); }
-  constructor() {
-    this.nudgeMeter=new NudgeMeter(); this.state = new PinballGameState(); this.visualHits=[]; this.accumulator = 0; this.time = 0; this.eventSequence = 0; this.spinnerAngle = 0; this.spinnerSpeed = 0; this.rampStage = 0; this.rampTraversals=0;
+  static async create(options) { await R.init(); return new PinballPhysics(options); }
+  constructor(options) {
+    this.nudgeMeter=new NudgeMeter(); this.state = new PinballGameState(options); this.visualHits=[]; this.accumulator = 0; this.time = 0; this.eventSequence = 0; this.spinnerAngle = 0; this.spinnerSpeed = 0; this.rampStage = 0; this.rampTraversals=0;
     // Reduced downhill acceleration approximates rolling inertia for beginner play.
     this.world = new R.World({ x: 0, y: -98.1 * Math.cos(TABLE.tilt), z: 63.765 * Math.sin(TABLE.tilt) });
     this.world.timestep = 1 / 120;
@@ -259,7 +259,8 @@ export class PinballPhysics {
     while (this.accumulator >= 1/120) {
       this.accumulator -= 1/120; this.time += 1/120;
       this.nudgeMeter.step(1/120);
-      if(this.state.tilted && this.time>=this.tiltUntil){this.state.drain();this.resetBall();continue;}
+      this.state.advanceTime(1/120);
+      if(this.state.tilted && this.time>=this.tiltUntil){this.state.drain({reason:"tilt"});this.resetBall();continue;}
       for (let i = 0; i < 2; i++) {
         const active=!this.state.tilted && Boolean(i ? input.right : input.left);
         const desired = flipperAngle(Boolean(i), active);
@@ -304,7 +305,7 @@ export class PinballPhysics {
         const resting = this.ball.translation();
         // Returned balls still simulate: never leave a lost ball stranded in ready.
         if (resting.y < -1 || Math.abs(resting.x) > 3.2 || resting.z > TABLE.frontZ+.10 || resting.z < -6.5) {
-          this.state.launch(); this.state.drain(); this.resetBall();
+          this.state.launch(); this.state.drain({reason:"out-of-bounds"}); this.resetBall();
         }
         continue;
       }
@@ -335,7 +336,10 @@ export class PinballPhysics {
         this.state.returnToShooter(); continue;
       }
       if ((!inShooter && p.z > LOWER_LAYOUT.drainZ) || p.y < -1.0 || Math.abs(p.x) > 3.2 || p.z < -6.5) {
-        this.state.drain(); this.resetBall(); continue;
+        // Preserve the original loss boundary, but only an ordinary bottom
+        // drain can earn a relaxed-mode replay. Escapes must not be hidden.
+        const escaped = p.y < -1 || Math.abs(p.x) > 3.2 || p.z < -6.5 || p.z > TABLE.frontZ + .10;
+        this.state.drain({reason: escaped ? "out-of-bounds" : "normal"}); this.resetBall(); continue;
       }
       const currentVelocity = this.ball.linvel();
       const ballSpeed = Math.hypot(currentVelocity.x, currentVelocity.y, currentVelocity.z);

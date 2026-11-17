@@ -126,6 +126,9 @@ const http = require("node:http");
     assert.equal(continuous.phase, "gameover"); assert.equal(continuous.ballNumber,3); assert.ok(continuous.launches>=3); // Returned shooter balls can be re-launched without consuming a ball.
     console.log("Unassisted continuous game", continuous);
     await page.locator("#gameover [data-restart]").click();
+    // Select legacy rules for the three-drain fixture; natural game above uses relaxed.
+    await page.locator("#difficulty").selectOption("standard");
+    assert.equal(await page.evaluate(()=>window.__pinball.game.state.difficulty),"standard");
     // Force physical drains (not state calls) to verify UI transitions for all three balls.
     for (let n = 1; n <= 3; n++) {
       await page.waitForFunction(()=>!document.querySelector("#launch").disabled); await page.locator("#launch").focus(); await page.keyboard.down("Space"); await page.waitForTimeout(1250); await page.keyboard.up("Space");

@@ -174,7 +174,13 @@ export class PinballTablePreview {
       .forEach((b) => b.classList.toggle("selected", b.dataset.view === name));
   }
   async connectPhysics() {
-    this.game = await PinballPhysics.create();
+    this.game = await PinballPhysics.create({difficulty: "relaxed"});
+    document.querySelector("#difficulty").disabled = false;
+    document.querySelector("#difficulty").addEventListener("change", event => {
+      this.game.state.difficulty = event.target.value;
+      this.restart();
+      this.canvas.focus();
+    });
     document.querySelector("#message").textContent = "";
     document.querySelectorAll("button").forEach(b => { b.disabled = false; });
     if (new URLSearchParams(location.search).has("test")) window.__pinball = this;
@@ -195,6 +201,7 @@ export class PinballTablePreview {
     this.plunger.cancel();
     this.state.release(); this.flipperInput.reset(this.state); this.game.restart(); this.bumperEffects.reset(); this.assets.resetMechanics?.(); this.last = 0;this.feedback.reset();this.feedback.update(this.game.state,this.state);this.room.reset();this.sound.stop();
     document.querySelectorAll("#left,#right").forEach(b => b.setAttribute("aria-pressed", "false"));
+    this.canvas.focus();
   }
   updateHUD() {
     const state = this.game.state;
@@ -208,7 +215,7 @@ export class PinballTablePreview {
 
     document.querySelector("#score").textContent = state.score.toLocaleString("ja-JP");
     document.querySelector("#balls").textContent = `${Math.min(state.ballNumber, 3)} / 3`;
-    const labels = { ready: state.returnedShooter ? "戻り球 · 長押し→離して再発射" : "SPACE長押し→離す / ボタンを上に引いて発射", playing: "バンパーとターゲットを狙おう", paused: "一時停止中", gameover: "GAME OVER" };
+    const labels = { ready: state.ballSaved ? "BALL SAVE · 同じ球をもう一度発射" : state.returnedShooter ? "戻り球 · 長押し→離して再発射" : "SPACE長押し→離す / ボタンを上に引いて発射", playing: "左右を長押しで受け、短く離して打つ", paused: "一時停止中", gameover: "GAME OVER" };
     document.querySelector("#phase").textContent = state.tilted?"TILT · 操作と加点停止／この球を終了":this.game.nudgeMeter.heat>=1.7?"警告 · ナッジを控えてください":labels[state.phase];
     document.querySelector("#nudge").disabled=state.phase!=="playing"||state.tilted;
     document.querySelector("#pause").textContent = state.phase === "paused" ? "再開" : "停止";
@@ -216,6 +223,7 @@ export class PinballTablePreview {
     document.querySelector("#gameover").hidden = state.phase !== "gameover";
     document.querySelector("#final-score").textContent = state.score.toLocaleString("ja-JP");
     document.querySelector("#rollovers").textContent = ["A","B","C"].map((label,i)=>`${label} ${state.rollovers?.[i] ? "●" : "○"}`).join("　");
+    document.querySelector("#ball-save").textContent = state.difficulty === "relaxed" ? (state.tilted || state.phase === "gameover" ? "BALL SAVE 終了" : state.ballSaved ? "BALL SAVE · 再発射" : state.ballSaveAvailable && state.ballSaveRemaining > 0 ? `BALL SAVE ${Math.ceil(state.ballSaveRemaining)}秒 · 1回` : state.ballSaveAvailable && !state.ballLaunched && state.phase === "ready" ? "BALL SAVE 発射後10秒" : "BALL SAVE 使用済み / 終了") : "STANDARD · 猶予なし";
     document.querySelector("#kickback").textContent = `CENTER SAVE ${state.kickbackCharges ?? 0} / 1`;
     if(state.lastAward && state.lastAward.score!==this.shownAwardScore) {
       this.shownAwardScore=state.lastAward.score;this.awardShownAt=performance.now();this.shownAward=state.lastAward;

@@ -153,3 +153,13 @@ details p { line-height: 1.7; }
   .camera-control { top: 155px; }
   #table { top: 192px; height: calc(100% - 260px); }
 }
+
+.difficulty-panel {display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;font-size:11px;color:#b8e7ec;}
+.difficulty-panel select {color:#ffe1a1;background:#122230;border:1px solid #75b9cd88;border-radius:4px;padding:4px;font:inherit;}
+#ball-save {color:#ffe1a1;}
+@media(max-width:700px){.difficulty-panel {grid-column:1 / -1;font-size:10px;}.difficulty-panel select{padding:2px;}}
+@media(max-width:700px){
+ .backglass{max-height:148px;}
+ nav{top:178px;} .camera-control{top:179px;}
+ #table{top:216px;height:calc(100% - 284px);}
+}

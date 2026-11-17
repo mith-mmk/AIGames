@@ -2,7 +2,11 @@ import { PinballMissions, PinballMultiplierMission } from "./missions.mjs";
 
 /** Rules are independent of renderer and physics engine. */
 export class PinballGameState {
-  constructor() { this.restart(); }
+  constructor({ difficulty = "standard" } = {}) {
+    if (!["standard", "relaxed"].includes(difficulty)) throw new TypeError("Unknown pinball difficulty");
+    this.difficulty = difficulty;
+    this.restart();
+  }
   restart() {
     this.missions = new PinballMissions();
     this.multiplierChallenge = new PinballMultiplierMission(); this.lastContactAward = null;
@@ -11,6 +15,23 @@ export class PinballGameState {
     this.sideSaveCharges = 0; this.sideSaveUses = 0;
     this.tilted=false;this.score = 0; this.lastAward = null; this.ballNumber = 1; this.phase = "ready"; this.returnedShooter = false;
     this.lastEvent = "発射してスタート"; this.resumePhase = "ready";
+    this.ballSaveUses = 0;
+    this.prepareNumberedBall();
+  }
+  prepareNumberedBall() {
+    this.ballLaunched = false; this.ballSaved = false;
+    this.ballSaveRemaining = 0;
+    this.ballSaveAvailable = this.difficulty === "relaxed";
+    if (this.difficulty === "relaxed") this.kickbackCharges = 1;
+  }
+  get ballSaveActive() {
+    return this.phase === "playing" && !this.tilted && this.ballSaveAvailable && this.ballSaveRemaining > 1e-9;
+  }
+  advanceTime(dt) {
+    if (this.difficulty === "relaxed" && this.phase === "playing" && Number.isFinite(dt) && dt > 0) {
+      this.ballSaveRemaining = Math.max(0, this.ballSaveRemaining - dt);
+      if (this.ballSaveRemaining < 1e-9) this.ballSaveRemaining = 0;
+    }
   }
   get mission() { return this.missions.snapshot; }
   get multiplier() { return this.multiplierChallenge.multiplier; }
@@ -39,6 +60,11 @@ export class PinballGameState {
   }
   launch() {
     if (this.phase !== "ready") return false;
+    this.ballSaved = false;
+    if (!this.ballLaunched) {
+      this.ballLaunched = true;
+      this.ballSaveRemaining = this.difficulty === "relaxed" ? 10 : 0;
+    }
     this.returnedShooter = false; this.phase = "playing"; this.lastEvent = "BALL " + this.ballNumber; return true;
   }
   returnToShooter() {
@@ -76,12 +102,19 @@ export class PinballGameState {
     }
     this.awardContact(points[event.type], event.type.toUpperCase()); this.advanceChallenges(event); return true;
   }
-  drain() {
+  drain({ reason = "normal" } = {}) {
     if (this.phase !== "playing") return false;
+    this.ballSaved = false;
+    // A saved drain still ends the multiplier run; scores and missions remain.
     this.multiplierChallenge.restart();
     this.returnedShooter = false;
+    if (reason === "normal" && this.ballSaveActive) {
+      this.ballSaveAvailable = false; this.ballSaveRemaining = 0; this.ballSaveUses++; this.ballSaved = true;
+      this.phase = "ready"; this.lastEvent = "BALL SAVE · 同じ球を再発射（倍率リセット）";
+      return true;
+    }
     if (this.ballNumber >= 3) { this.phase = "gameover"; this.lastEvent = "GAME OVER"; }
-    else { this.ballNumber++; this.phase = "ready"; this.lastEvent = "次の球を発射"; }
+    else { this.ballNumber++; this.prepareNumberedBall(); this.phase = "ready"; this.lastEvent = "次の球を発射"; }
     return true;
   }
   setPaused(value) {
