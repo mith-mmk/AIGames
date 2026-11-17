@@ -5,172 +5,62 @@
       "mode": "pulse",
       "power": 0.55,
       "offset": 0,
-      "seconds": 56.91666666666408,
+      "seconds": 42.05833333333159,
       "phase": "gameover",
-      "score": 1525,
+      "score": 2125,
       "launches": 3,
       "shots": 0,
-      "targets": [
-        "right-side:2"
-      ],
+      "targets": [],
       "scoop": {
         "targets": [
           false,
           false,
-          true
+          false
         ],
-        "progress": 1,
+        "progress": 0,
         "target": 3,
         "lit": false,
-        "captures": 2,
+        "captures": 0,
         "collections": 0,
         "reward": 1000
       },
       "skills": 0,
-      "events": [
-        {
-          "t": 8.0583,
-          "type": "scoop",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.06398826837539673,
-            "y": 0.1712595820426941,
-            "z": 0.5664802193641663
-          }
-        },
-        {
-          "t": 11.5667,
-          "type": "scoop",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": -0.1639261543750763,
-            "y": 0.17104819416999817,
-            "z": 0.4562322199344635
-          }
-        },
-        {
-          "t": 33.3083,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.1844686269760132,
-            "y": 0.17055511474609375,
-            "z": -0.6157734394073486
-          }
-        },
-        {
-          "t": 46.4583,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.3097705841064453,
-            "y": 0.17137493193149567,
-            "z": -0.5502209663391113
-          }
-        },
-        {
-          "t": 47.6083,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.3831698894500732,
-            "y": 0.17085863649845123,
-            "z": -0.5690340399742126
-          }
-        },
-        {
-          "t": 55.4417,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.3762617111206055,
-            "y": 0.17044280469417572,
-            "z": -0.565217912197113
-          }
-        }
-      ]
+      "events": []
     },
     {
       "mode": "pulse",
       "power": 0.55,
       "offset": 17,
-      "seconds": 40.42499999999835,
+      "seconds": 40.63333333333167,
       "phase": "gameover",
-      "score": 800,
-      "launches": 3,
+      "score": 875,
+      "launches": 4,
       "shots": 0,
-      "targets": [
-        "right-side:2"
-      ],
+      "targets": [],
       "scoop": {
         "targets": [
           false,
           false,
-          true
+          false
         ],
-        "progress": 1,
+        "progress": 0,
         "target": 3,
         "lit": false,
-        "captures": 2,
+        "captures": 1,
         "collections": 0,
         "reward": 1000
       },
       "skills": 0,
       "events": [
         {
-          "t": 9.075,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.3705240488052368,
-            "y": 0.17079025506973267,
-            "z": -0.5622601509094238
-          }
-        },
-        {
-          "t": 18.025,
+          "t": 10.2667,
           "type": "scoop",
           "lit": false,
           "collections": 0,
           "p": {
-            "x": -0.08498568087816238,
-            "y": 0.1711515635251999,
-            "z": 0.49663886427879333
-          }
-        },
-        {
-          "t": 21.125,
-          "type": "scoop",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.011051052249968052,
-            "y": 0.1707908809185028,
-            "z": 0.5434960722923279
-          }
-        },
-        {
-          "t": 36.2417,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.3793611526489258,
-            "y": 0.1709650307893753,
-            "z": -0.5682419538497925
+            "x": -0.8409463763237,
+            "y": 0.1710108518600464,
+            "z": 0.4562191367149353
           }
         }
       ]
@@ -179,19 +69,19 @@
       "mode": "pulse",
       "power": 0.55,
       "offset": 41,
-      "seconds": 51.166666666664405,
+      "seconds": 52.591666666664324,
       "phase": "gameover",
-      "score": 1375,
-      "launches": 4,
+      "score": 1275,
+      "launches": 5,
       "shots": 0,
       "targets": [
-        "right-side:2"
+        "right-side:1"
       ],
       "scoop": {
         "targets": [
           false,
-          false,
-          true
+          true,
+          false
         ],
         "progress": 1,
         "target": 3,
@@ -203,242 +93,182 @@
       "skills": 0,
       "events": [
         {
-          "t": 47.9333,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.1709848642349243,
-            "y": 0.17147499322891235,
-            "z": -0.6289801597595215
-          }
-        }
-      ]
-    },
-    {
-      "mode": "pulse",
-      "power": 0.75,
-      "offset": 0,
-      "seconds": 42.658333333331555,
-      "phase": "gameover",
-      "score": 1800,
-      "launches": 3,
-      "shots": 0,
-      "targets": [
-        "right-side:2"
-      ],
-      "scoop": {
-        "targets": [
-          false,
-          false,
-          true
-        ],
-        "progress": 1,
-        "target": 3,
-        "lit": false,
-        "captures": 2,
-        "collections": 0,
-        "reward": 1000
-      },
-      "skills": 0,
-      "events": [
-        {
-          "t": 25.4917,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.3812636137008667,
-            "y": 0.17114250361919403,
-            "z": -0.5679279565811157
-          }
-        },
-        {
-          "t": 30.2,
-          "type": "scoop",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": -0.03209594637155533,
-            "y": 0.17056512832641602,
-            "z": 0.5191560387611389
-          }
-        },
-        {
-          "t": 40.9667,
-          "type": "scoop",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.05578159540891647,
-            "y": 0.17107954621315002,
-            "z": 0.5452240705490112
-          }
-        }
-      ]
-    },
-    {
-      "mode": "pulse",
-      "power": 0.75,
-      "offset": 17,
-      "seconds": 49.55833333333116,
-      "phase": "gameover",
-      "score": 1100,
-      "launches": 4,
-      "shots": 0,
-      "targets": [
-        "right-side:2"
-      ],
-      "scoop": {
-        "targets": [
-          false,
-          false,
-          true
-        ],
-        "progress": 1,
-        "target": 3,
-        "lit": false,
-        "captures": 1,
-        "collections": 0,
-        "reward": 1000
-      },
-      "skills": 0,
-      "events": [
-        {
-          "t": 8.55,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.200661063194275,
-            "y": 0.17074273526668549,
-            "z": -0.5995355844497681
-          }
-        },
-        {
-          "t": 41.475,
-          "type": "scoop",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": -0.17038309574127197,
-            "y": 0.1706208884716034,
-            "z": 0.5433514714241028
-          }
-        }
-      ]
-    },
-    {
-      "mode": "pulse",
-      "power": 0.75,
-      "offset": 41,
-      "seconds": 81.15833333334399,
-      "phase": "gameover",
-      "score": 2450,
-      "launches": 4,
-      "shots": 0,
-      "targets": [
-        "right-side:2",
-        "right-side:1"
-      ],
-      "scoop": {
-        "targets": [
-          false,
-          true,
-          true
-        ],
-        "progress": 2,
-        "target": 3,
-        "lit": false,
-        "captures": 2,
-        "collections": 0,
-        "reward": 1000
-      },
-      "skills": 0,
-      "events": [
-        {
-          "t": 11.575,
-          "type": "scoop",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": -0.07476608455181122,
-            "y": 0.17096644639968872,
-            "z": 0.5428040623664856
-          }
-        },
-        {
-          "t": 20.2333,
-          "type": "scoop",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.17415682971477509,
-            "y": 0.17116571962833405,
-            "z": 0.42764759063720703
-          }
-        },
-        {
-          "t": 29.9583,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.3808910846710205,
-            "y": 0.17061841487884521,
-            "z": -0.5677158236503601
-          }
-        },
-        {
-          "t": 37.1833,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.380888819694519,
-            "y": 0.17073264718055725,
-            "z": -0.5677139759063721
-          }
-        },
-        {
-          "t": 62.5167,
+          "t": 8.3167,
           "type": "bank",
           "targetId": "right-side:1",
           "lit": false,
           "collections": 0,
           "p": {
-            "x": 1.026110291481018,
-            "y": 0.1693534404039383,
-            "z": -0.868480920791626
+            "x": 0.8792263865470886,
+            "y": 0.17059798538684845,
+            "z": -0.921031653881073
+          }
+        }
+      ]
+    },
+    {
+      "mode": "pulse",
+      "power": 0.75,
+      "offset": 0,
+      "seconds": 59.299999999997276,
+      "phase": "gameover",
+      "score": 2175,
+      "launches": 4,
+      "shots": 0,
+      "targets": [],
+      "scoop": {
+        "targets": [
+          false,
+          false,
+          false
+        ],
+        "progress": 0,
+        "target": 3,
+        "lit": false,
+        "captures": 0,
+        "collections": 0,
+        "reward": 1000
+      },
+      "skills": 0,
+      "events": []
+    },
+    {
+      "mode": "pulse",
+      "power": 0.75,
+      "offset": 17,
+      "seconds": 60.34166666666388,
+      "phase": "gameover",
+      "score": 1500,
+      "launches": 5,
+      "shots": 0,
+      "targets": [],
+      "scoop": {
+        "targets": [
+          false,
+          false,
+          false
+        ],
+        "progress": 0,
+        "target": 3,
+        "lit": false,
+        "captures": 0,
+        "collections": 0,
+        "reward": 1000
+      },
+      "skills": 0,
+      "events": []
+    },
+    {
+      "mode": "pulse",
+      "power": 0.75,
+      "offset": 41,
+      "seconds": 74.65000000000548,
+      "phase": "gameover",
+      "score": 2225,
+      "launches": 4,
+      "shots": 0,
+      "targets": [
+        "right-side:1",
+        "right-side:2",
+        "right-side:0"
+      ],
+      "scoop": {
+        "targets": [
+          true,
+          true,
+          true
+        ],
+        "progress": 3,
+        "target": 3,
+        "lit": true,
+        "captures": 0,
+        "collections": 0,
+        "reward": 1000
+      },
+      "skills": 0,
+      "events": [
+        {
+          "t": 10.2167,
+          "type": "bank",
+          "targetId": "right-side:1",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": 0.9466211795806885,
+            "y": 0.17073284089565277,
+            "z": -0.86356520652771
           }
         },
         {
-          "t": 62.5167,
+          "t": 30.325,
           "type": "bank",
           "targetId": "right-side:2",
           "lit": false,
           "collections": 0,
           "p": {
-            "x": 1.026110291481018,
-            "y": 0.1693534404039383,
-            "z": -0.868480920791626
+            "x": 1.1539995670318604,
+            "y": 0.1694178283214569,
+            "z": -0.6491491198539734
           }
         },
         {
-          "t": 77.5167,
+          "t": 31.8833,
           "type": "bank",
           "targetId": "right-side:2",
           "lit": false,
           "collections": 0,
           "p": {
-            "x": 1.380994439125061,
-            "y": 0.16952462494373322,
-            "z": -0.5677827000617981
+            "x": 1.2938019037246704,
+            "y": 0.1707122027873993,
+            "z": -0.5645422339439392
+          }
+        },
+        {
+          "t": 35.9333,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": 1.3693398237228394,
+            "y": 0.1711442470550537,
+            "z": -0.5631415247917175
+          }
+        },
+        {
+          "t": 38.0333,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": 1.4356813430786133,
+            "y": 0.17088662087917328,
+            "z": -0.637313187122345
+          }
+        },
+        {
+          "t": 57.0667,
+          "type": "bank",
+          "targetId": "right-side:2",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": 1.2113783359527588,
+            "y": 0.1707504242658615,
+            "z": -0.5895708799362183
+          }
+        },
+        {
+          "t": 58.1083,
+          "type": "bank",
+          "targetId": "right-side:0",
+          "lit": true,
+          "collections": 0,
+          "p": {
+            "x": 0.7095611691474915,
+            "y": 0.16896207630634308,
+            "z": -1.0900297164916992
           }
         }
       ]
@@ -447,21 +277,22 @@
       "mode": "pulse",
       "power": 0.95,
       "offset": 0,
-      "seconds": 45.02499999999809,
+      "seconds": 53.324999999997615,
       "phase": "gameover",
-      "score": 5550,
-      "launches": 4,
+      "score": 5300,
+      "launches": 3,
       "shots": 0,
       "targets": [
-        "right-side:2"
+        "right-side:2",
+        "right-side:0"
       ],
       "scoop": {
         "targets": [
-          false,
+          true,
           false,
           true
         ],
-        "progress": 1,
+        "progress": 2,
         "target": 3,
         "lit": false,
         "captures": 1,
@@ -476,148 +307,64 @@
           "lit": false,
           "collections": 0,
           "p": {
-            "x": 0.9089908003807068,
-            "y": 0.1703859567642212,
-            "z": -4.746682643890381
+            "x": 0.9093619585037231,
+            "y": 0.1703363060951233,
+            "z": -4.752358913421631
           }
         },
         {
-          "t": 7.5667,
+          "t": 14.6167,
           "type": "bank",
           "targetId": "right-side:2",
           "lit": false,
           "collections": 0,
           "p": {
-            "x": 1.360658884048462,
-            "y": 0.1710692048072815,
-            "z": -0.5759787559509277
+            "x": 1.136147141456604,
+            "y": 0.17103517055511475,
+            "z": -0.6639478206634521
           }
         },
         {
-          "t": 18.1917,
-          "type": "skill-shot",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.9089896082878113,
-            "y": 0.1703859269618988,
-            "z": -4.746684551239014
-          }
-        },
-        {
-          "t": 33.0333,
-          "type": "skill-shot",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.9089895486831665,
-            "y": 0.1703859567642212,
-            "z": -4.746683597564697
-          }
-        },
-        {
-          "t": 43.3667,
-          "type": "scoop",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.11036814749240875,
-            "y": 0.17105384171009064,
-            "z": 0.49993735551834106
-          }
-        }
-      ]
-    },
-    {
-      "mode": "pulse",
-      "power": 0.95,
-      "offset": 17,
-      "seconds": 58.041666666664014,
-      "phase": "gameover",
-      "score": 4825,
-      "launches": 5,
-      "shots": 0,
-      "targets": [
-        "right-side:2"
-      ],
-      "scoop": {
-        "targets": [
-          false,
-          false,
-          true
-        ],
-        "progress": 1,
-        "target": 3,
-        "lit": false,
-        "captures": 2,
-        "collections": 0,
-        "reward": 1000
-      },
-      "skills": 3,
-      "events": [
-        {
-          "t": 0.8917,
-          "type": "skill-shot",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.9089908003807068,
-            "y": 0.1703859567642212,
-            "z": -4.746682643890381
-          }
-        },
-        {
-          "t": 14.1083,
+          "t": 17.55,
           "type": "bank",
-          "targetId": "right-side:2",
+          "targetId": "right-side:0",
           "lit": false,
           "collections": 0,
           "p": {
-            "x": 1.384243369102478,
-            "y": 0.17069685459136963,
-            "z": -0.5737613439559937
+            "x": 0.7663135528564453,
+            "y": 0.1701352745294571,
+            "z": -1.044870138168335
           }
         },
         {
-          "t": 19.225,
+          "t": 22.9667,
           "type": "scoop",
           "lit": false,
           "collections": 0,
           "p": {
-            "x": -0.08617772907018661,
-            "y": 0.17105625569820404,
-            "z": 0.49638813734054565
+            "x": -0.9760198593139648,
+            "y": 0.1710142344236374,
+            "z": 0.4101767838001251
           }
         },
         {
-          "t": 22.2583,
-          "type": "scoop",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.02608337812125683,
-            "y": 0.17016080021858215,
-            "z": 0.4698818624019623
-          }
-        },
-        {
-          "t": 24.9167,
+          "t": 25.625,
           "type": "skill-shot",
           "lit": false,
           "collections": 0,
           "p": {
-            "x": 0.9089874625205994,
-            "y": 0.1703859567642212,
-            "z": -4.746680736541748
+            "x": 0.9089851379394531,
+            "y": 0.1703859120607376,
+            "z": -4.746685981750488
           }
         },
         {
-          "t": 41.575,
+          "t": 39.8083,
           "type": "skill-shot",
           "lit": false,
           "collections": 0,
           "p": {
-            "x": 0.9089832305908203,
+            "x": 0.908982515335083,
             "y": 0.1703859120607376,
             "z": -4.7466864585876465
           }
@@ -627,150 +374,11 @@
     {
       "mode": "pulse",
       "power": 0.95,
-      "offset": 41,
-      "seconds": 56.19999999999745,
-      "phase": "gameover",
-      "score": 4975,
-      "launches": 5,
-      "shots": 0,
-      "targets": [],
-      "scoop": {
-        "targets": [
-          false,
-          false,
-          false
-        ],
-        "progress": 0,
-        "target": 3,
-        "lit": false,
-        "captures": 0,
-        "collections": 0,
-        "reward": 1000
-      },
-      "skills": 3,
-      "events": [
-        {
-          "t": 0.8917,
-          "type": "skill-shot",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.9089908003807068,
-            "y": 0.1703859567642212,
-            "z": -4.746682643890381
-          }
-        },
-        {
-          "t": 17.25,
-          "type": "skill-shot",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.9089807271957397,
-            "y": 0.17038588225841522,
-            "z": -4.746687889099121
-          }
-        },
-        {
-          "t": 37.6583,
-          "type": "skill-shot",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 0.908985435962677,
-            "y": 0.1703859269618988,
-            "z": -4.746685981750488
-          }
-        }
-      ]
-    },
-    {
-      "mode": "pulse",
-      "power": 1,
-      "offset": 0,
-      "seconds": 51.00833333333108,
-      "phase": "gameover",
-      "score": 4225,
-      "launches": 3,
-      "shots": 0,
-      "targets": [
-        "right-side:2"
-      ],
-      "scoop": {
-        "targets": [
-          false,
-          false,
-          true
-        ],
-        "progress": 1,
-        "target": 3,
-        "lit": false,
-        "captures": 0,
-        "collections": 0,
-        "reward": 1000
-      },
-      "skills": 0,
-      "events": [
-        {
-          "t": 35.6167,
-          "type": "bank",
-          "targetId": "right-side:2",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": 1.212270975112915,
-            "y": 0.17089514434337616,
-            "z": -0.5888001918792725
-          }
-        }
-      ]
-    },
-    {
-      "mode": "pulse",
-      "power": 1,
       "offset": 17,
-      "seconds": 45.366666666664734,
+      "seconds": 43.51666666666484,
       "phase": "gameover",
-      "score": 2725,
+      "score": 5100,
       "launches": 4,
-      "shots": 0,
-      "targets": [],
-      "scoop": {
-        "targets": [
-          false,
-          false,
-          false
-        ],
-        "progress": 0,
-        "target": 3,
-        "lit": false,
-        "captures": 1,
-        "collections": 0,
-        "reward": 1000
-      },
-      "skills": 0,
-      "events": [
-        {
-          "t": 43.8417,
-          "type": "scoop",
-          "lit": false,
-          "collections": 0,
-          "p": {
-            "x": -0.16384978592395782,
-            "y": 0.17124822735786438,
-            "z": 0.558363676071167
-          }
-        }
-      ]
-    },
-    {
-      "mode": "pulse",
-      "power": 1,
-      "offset": 41,
-      "seconds": 47.01666666666464,
-      "phase": "gameover",
-      "score": 2950,
-      "launches": 5,
       "shots": 0,
       "targets": [
         "right-side:0"
@@ -788,21 +396,222 @@
         "collections": 0,
         "reward": 1000
       },
-      "skills": 0,
+      "skills": 3,
       "events": [
         {
-          "t": 18.0083,
+          "t": 0.8917,
+          "type": "skill-shot",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": 0.9089822769165039,
+            "y": 0.17038589715957642,
+            "z": -4.7466864585876465
+          }
+        },
+        {
+          "t": 17.45,
+          "type": "skill-shot",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": 0.9089867472648621,
+            "y": 0.1703859269618988,
+            "z": -4.746683597564697
+          }
+        },
+        {
+          "t": 28.3583,
+          "type": "skill-shot",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": 0.9089834690093994,
+            "y": 0.1703859120607376,
+            "z": -4.7466864585876465
+          }
+        },
+        {
+          "t": 38.1583,
           "type": "bank",
           "targetId": "right-side:0",
           "lit": false,
           "collections": 0,
           "p": {
-            "x": 0.8242080211639404,
-            "y": 0.17065788805484772,
-            "z": -0.9759963750839233
+            "x": 0.7318153381347656,
+            "y": 0.17105786502361298,
+            "z": -1.1132627725601196
+          }
+        }
+      ]
+    },
+    {
+      "mode": "pulse",
+      "power": 0.95,
+      "offset": 41,
+      "seconds": 38.083333333331815,
+      "phase": "gameover",
+      "score": 3975,
+      "launches": 3,
+      "shots": 0,
+      "targets": [],
+      "scoop": {
+        "targets": [
+          false,
+          false,
+          false
+        ],
+        "progress": 0,
+        "target": 3,
+        "lit": false,
+        "captures": 0,
+        "collections": 0,
+        "reward": 1000
+      },
+      "skills": 3,
+      "events": [
+        {
+          "t": 0.8667,
+          "type": "skill-shot",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": 0.9587758183479309,
+            "y": 0.17026551067829132,
+            "z": -4.745274543762207
+          }
+        },
+        {
+          "t": 15.0583,
+          "type": "skill-shot",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": 0.9089822769165039,
+            "y": 0.17038589715957642,
+            "z": -4.746686935424805
+          }
+        },
+        {
+          "t": 28.0333,
+          "type": "skill-shot",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": 0.9089906811714172,
+            "y": 0.1703859269618988,
+            "z": -4.746683597564697
+          }
+        }
+      ]
+    },
+    {
+      "mode": "pulse",
+      "power": 1,
+      "offset": 0,
+      "seconds": 43.849999999998154,
+      "phase": "gameover",
+      "score": 2875,
+      "launches": 4,
+      "shots": 0,
+      "targets": [],
+      "scoop": {
+        "targets": [
+          false,
+          false,
+          false
+        ],
+        "progress": 0,
+        "target": 3,
+        "lit": false,
+        "captures": 0,
+        "collections": 0,
+        "reward": 1000
+      },
+      "skills": 0,
+      "events": []
+    },
+    {
+      "mode": "pulse",
+      "power": 1,
+      "offset": 17,
+      "seconds": 38.516666666665124,
+      "phase": "gameover",
+      "score": 2350,
+      "launches": 4,
+      "shots": 0,
+      "targets": [],
+      "scoop": {
+        "targets": [
+          false,
+          false,
+          false
+        ],
+        "progress": 0,
+        "target": 3,
+        "lit": false,
+        "captures": 1,
+        "collections": 0,
+        "reward": 1000
+      },
+      "skills": 0,
+      "events": [
+        {
+          "t": 36.775,
+          "type": "scoop",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": -0.9834672808647156,
+            "y": 0.1710319221019745,
+            "z": 0.5412872433662415
+          }
+        }
+      ]
+    },
+    {
+      "mode": "pulse",
+      "power": 1,
+      "offset": 41,
+      "seconds": 49.01666666666453,
+      "phase": "gameover",
+      "score": 2900,
+      "launches": 4,
+      "shots": 0,
+      "targets": [],
+      "scoop": {
+        "targets": [
+          false,
+          false,
+          false
+        ],
+        "progress": 0,
+        "target": 3,
+        "lit": false,
+        "captures": 1,
+        "collections": 0,
+        "reward": 1000
+      },
+      "skills": 0,
+      "events": [
+        {
+          "t": 7.0333,
+          "type": "scoop",
+          "lit": false,
+          "collections": 0,
+          "p": {
+            "x": -1.0407320261001587,
+            "y": 0.17108751833438873,
+            "z": 0.41615259647369385
           }
         }
       ]
     }
-  ]
+  ],
+  "runtime_commit": "475390a65d6fa45e6aad3199111c0cd86864c451",
+  "scoop_position": {
+    "x": -0.9,
+    "z": 0.45
+  },
+  "collider_registration": "Original three cabinet walls; lower two extensions appended after original ball and existing appended contacts."
 }
