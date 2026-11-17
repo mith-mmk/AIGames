@@ -174,3 +174,12 @@ details p { line-height: 1.7; }
 @media (min-width: 701px) and (min-height: 481px) and (max-height: 690px) {
  .backglass { max-height: calc(100% - 310px); overflow-y: auto; }
 }
+
+.mission-choice { display: flex; align-items: center; gap: 6px; margin-top: 5px; font-size: 10px; color: #eac57b; }
+#mission-select { min-width: 0; flex: 1; color: #ffe1a1; background: #122230; border: 1px solid #75b9cd88; border-radius: 4px; padding: 4px; font: inherit; }
+#mission-select:disabled { opacity: .65; }
+#mission-choice-help { display: block; font-size: 9px; color: #a9b8c3; margin-top: 3px; }
+@media (max-width: 700px) {
+ .mission-choice { flex: 1; margin-top: 2px; }
+ #mission-choice-help { margin-top: 0; }
+}

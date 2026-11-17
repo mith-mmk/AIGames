@@ -37,6 +37,15 @@ export class PinballGameState {
   }
   get scoop() { return this.scoopChallenge.snapshot; }
   get mission() { return this.missions.snapshot; }
+  get missionOptions() { return this.missions.options; }
+  get canSelectMission() {
+    return this.phase === "ready" && !this.returnedShooter && !this.tilted && !this.mission.allComplete;
+  }
+  selectMission(id) {
+    if (!this.canSelectMission || !this.missions.select(id)) return false;
+    this.lastEvent = "MISSION SELECT · " + this.mission.title;
+    return true;
+  }
   get multiplier() { return this.multiplierChallenge.multiplier; }
   get multiplierMission() { return this.multiplierChallenge.snapshot; }
   get tilted() { return this._tilted; }

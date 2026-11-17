@@ -181,6 +181,11 @@ export class PinballTablePreview {
       this.restart();
       this.canvas.focus();
     });
+    document.querySelector("#mission-select").addEventListener("change", event => {
+      this.game.state.selectMission(event.target.value);
+      this.updateHUD();
+      this.canvas.focus();
+    });
     document.querySelector("#message").textContent = "";
     document.querySelectorAll("button").forEach(b => { b.disabled = false; });
     if (new URLSearchParams(location.search).has("test")) window.__pinball = this;
@@ -246,6 +251,24 @@ export class PinballTablePreview {
     if(mission && document.querySelector("#mission-title")) {
       document.querySelector("#mission-title").textContent=mission.title;
       document.querySelector("#mission-progress").textContent=`${mission.description} · ${mission.progress}/${mission.target}`;
+    }
+    const selector = document.querySelector("#mission-select");
+    if (selector) {
+      // Keep native options stable while focused; patch only labels/state.
+      const choices = state.missionOptions;
+      if (selector.options.length !== choices.length || selector.options[0]?.value !== choices[0]?.id) {
+        selector.replaceChildren(...choices.map(choice => new Option(choice.title, choice.id)));
+      }
+      choices.forEach((choice, i) => {
+        const option = selector.options[i];
+        option.textContent = `${choice.completed ? "✓ " : ""}${choice.title} · ${choice.progress}/${choice.target}`;
+        option.disabled = choice.completed;
+        option.selected = choice.selected;
+      });
+      selector.disabled = !state.canSelectMission;
+      document.querySelector("#mission-choice-help").textContent = mission.allComplete
+        ? "全ミッション達成" : state.canSelectMission
+          ? "発射前に選択 · 進捗は保持" : "次の球の発射前に選択できます";
     }
     for(const [i,lamp] of (this.assets.missionLamps??[]).entries()) {
       const lit=mission && (mission.allComplete || i<Math.floor(this.assets.missionLamps.length*mission.progress/Math.max(1,mission.target)));

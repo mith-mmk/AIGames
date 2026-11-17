@@ -6,10 +6,26 @@ const MISSIONS = Object.freeze([
   { id: "ramp", title: "最終試運転", description: "右ランプを入口から出口まで1回通す", types: ["ramp"], target: 1, bonus: 2000 },
 ]);
 
-/** One bounded mission sequence per game. The game state validates/deduplicates events. */
+/** Selectable missions with per-game progress. The game state owns phase gating. */
 export class PinballMissions {
   constructor() { this.restart(); }
-  restart() { this.index = 0; this.progress = 0; this.lanes = new Set(); }
+  restart() {
+    this.index = 0;
+    this.records = MISSIONS.map(() => ({ progress: 0, completed: false, lanes: new Set() }));
+  }
+  get completed() { return this.records.filter(record => record.completed).length; }
+  get options() {
+    return MISSIONS.map(({ id, title, description, target, bonus }, index) => ({
+      id, title, description, target, bonus, progress: this.records[index].progress,
+      completed: this.records[index].completed, selected: index === this.index,
+    }));
+  }
+  select(id) {
+    const index = MISSIONS.findIndex(mission => mission.id === id);
+    if (index < 0 || this.records[index].completed) return false;
+    this.index = index;
+    return true;
+  }
   get snapshot() {
     const mission = MISSIONS[this.index];
     if (!mission) return {
@@ -18,19 +34,23 @@ export class PinballMissions {
       index: MISSIONS.length, total: MISSIONS.length, completed: MISSIONS.length, allComplete: true,
     };
     const { id, title, description, target, bonus } = mission;
-    return { id, title, description, target, bonus, progress: this.progress,
-      index: this.index + 1, total: MISSIONS.length, completed: this.index, allComplete: false };
+    return { id, title, description, target, bonus, progress: this.records[this.index].progress,
+      index: this.index + 1, total: MISSIONS.length, completed: this.completed, allComplete: false };
   }
   onEvent(event) {
     const mission = MISSIONS[this.index];
     if (!mission || !mission.types.includes(event.type)) return null;
+    const record = this.records[this.index];
+    if (record.completed) return null;
     if (mission.id === "lanes") {
-      if (!Number.isInteger(event.lane) || event.lane < 0 || event.lane > 2 || this.lanes.has(event.lane)) return null;
-      this.lanes.add(event.lane);
+      if (!Number.isInteger(event.lane) || event.lane < 0 || event.lane > 2 || record.lanes.has(event.lane)) return null;
+      record.lanes.add(event.lane);
     }
-    this.progress++;
-    if (this.progress < mission.target) return null;
-    this.index++; this.progress = 0; this.lanes.clear();
+    record.progress++;
+    if (record.progress < mission.target) return null;
+    record.completed = true;
+    const next = this.records.findIndex(item => !item.completed);
+    this.index = next < 0 ? MISSIONS.length : next;
     return { id: mission.id, title: mission.title, bonus: mission.bonus };
   }
 }
