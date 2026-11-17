@@ -2,7 +2,7 @@ import * as T from '../vendor/three-0.180.0/three.module.min.js';
 
 /** Shared installed dimensions. The open mouth faces the flippers (+Z). */
 export const SCOOP = Object.freeze({
-  x: 0, z: .45, width: .64, depth: .65, floorY: .04,
+  x: -.72, z: .45, width: .64, depth: .65, floorY: .04,
   wall: .06, wallHeight: .48, holdSeconds: .8,
   mouthZ: .775, captureZ: .45, captureY: .175,
 });
