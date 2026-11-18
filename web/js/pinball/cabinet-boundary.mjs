@@ -2,7 +2,7 @@ import {TABLE} from './layout.mjs';
 
 // Play-facing solid backing and flush cap. Rendering and contact consume the
 // same sections: no invisible wall and no raised lip along the elevated route.
-export const CABINET_BOUNDARY = Object.freeze({bottom:-.05,top:.385,lowerTop:.75,lowerStartZ:1.2,thickness:.14,capThickness:.022,endOverhang:.10,sideOffset:.05,rearOffset:.05});
+export const CABINET_BOUNDARY = Object.freeze({bottom:-.05,top:.82,rearTop:.385,lowerTop:1.18,lowerStartZ:1.2,thickness:.14,capThickness:.022,endOverhang:.10,sideOffset:.05,rearOffset:.05});
 export function cabinetBoundaryTop(z) {
  return z>=CABINET_BOUNDARY.lowerStartZ?CABINET_BOUNDARY.lowerTop:CABINET_BOUNDARY.top;
 }
@@ -11,7 +11,7 @@ export function cabinetBoundaryBoxes({width=TABLE.width,length=TABLE.length,cent
  // Preserve the original three collider allocations before the ball and bats.
  return [
   ...[-1,1].map(side=>({name:side<0?'left':'right',center:[side*(width/2+d.sideOffset),y,centerZ],size:[d.thickness,h,length+2*d.endOverhang]})),
-  {name:'rear',center:[0,y,centerZ-length/2-d.rearOffset],size:[width+2*d.sideOffset,h,d.thickness]}
+  {name:'rear',center:[0,(d.bottom+d.rearTop)/2,centerZ-length/2-d.rearOffset],size:[width+2*d.sideOffset,d.rearTop-d.bottom,d.thickness]}
  ];
 }
 export function cabinetBoundaryExtensions({width=TABLE.width,length=TABLE.length,centerZ=TABLE.centerZ}={}) {

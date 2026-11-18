@@ -1,3 +1,4 @@
+import { UpperShotChallenge } from "./upper-shots.mjs";
 import { PinballMissions, PinballMultiplierMission, PinballScoopChallenge } from "./missions.mjs";
 
 /** Rules are independent of renderer and physics engine. */
@@ -8,12 +9,12 @@ export class PinballGameState {
     this.restart();
   }
   restart() {
-    this.missions = new PinballMissions();
+    this.missions = new PinballMissions(); this.upperShots = new UpperShotChallenge();
     this.scoopChallenge = new PinballScoopChallenge(); this.skillShots = 0; this.loopCompletions = 0;
     this.multiplierChallenge = new PinballMultiplierMission(); this.lastContactAward = null;
     this.rollovers = [false, false, false]; this.rolloverSets = 0;
     this.kickbackCharges = 1; this.kickbackUses = 0; this.eventIds = new Set();
-    this.sideSaveCharges = 0; this.sideSaveUses = 0;
+    this.sideSaveCharges = 0; this.sideSaveUses = 0; this.easyOutSaveUses = 0;
     this.tilted=false;this.score = 0; this.lastAward = null; this.ballNumber = 1; this.phase = "ready"; this.returnedShooter = false;
     this.lastEvent = "発射してスタート"; this.resumePhase = "ready";
     this.ballSaveUses = 0;
@@ -24,12 +25,14 @@ export class PinballGameState {
     this.skillShotAvailable = true;
     this.ballSaveRemaining = 0;
     this.ballSaveAvailable = this.difficulty === "relaxed";
+    this.easyOutSaveAvailable = this.difficulty === "relaxed";
     if (this.difficulty === "relaxed") this.kickbackCharges = 1;
   }
   get ballSaveActive() {
     return this.phase === "playing" && !this.tilted && this.ballSaveAvailable && this.ballSaveRemaining > 1e-9;
   }
   advanceTime(dt) {
+    if (this.phase === "playing" && Number.isFinite(dt) && dt > 0) this.upperShots.advanceTime(dt);
     if (this.difficulty === "relaxed" && this.phase === "playing" && Number.isFinite(dt) && dt > 0) {
       this.ballSaveRemaining = Math.max(0, this.ballSaveRemaining - dt);
       if (this.ballSaveRemaining < 1e-9) this.ballSaveRemaining = 0;
@@ -92,11 +95,12 @@ export class PinballGameState {
   /** Events are emitted once per physical contact/traversal, never per frame. */
   onEvent(event) {
     if (this.phase !== "playing" || this.tilted || !event || !event.id || this.eventIds.has(event.id)) return false;
-    const points = { bumper: 100, sling: 25, target: 50, bank: 75, spinner: 150, ramp: 300, loop: 300, inlane: 100 };
-    if (!Object.hasOwn(points, event.type) && !["rollover", "kickback", "side-save", "scoop", "skill-shot"].includes(event.type)) return false;
+    const points = { bumper: 100, sling: 25, target: 50, bank: 75, spinner: 150, ramp: 600, loop: 300, inlane: 100 };
+    if (!Object.hasOwn(points, event.type) && !["rollover", "kickback", "side-save", "easy-out-save", "scoop", "skill-shot"].includes(event.type)) return false;
     if (event.type === "rollover" && (!Number.isInteger(event.lane) || event.lane < 0 || event.lane > 2)) return false;
     if (event.type === "skill-shot" && !this.skillShotAvailable) return false;
     this.eventIds.add(event.id);
+    const drive = this.upperShots.onEvent(event);
     if (event.type === "loop") this.loopCompletions++;
     if (event.type === "skill-shot") {
       this.skillShotAvailable = false; this.skillShots++;
@@ -108,6 +112,11 @@ export class PinballGameState {
       this.award(result.points, result.lit ? "COLLECTOR CLEAR · LEFT SAVE READY" : "COLLECTOR");
       return true;
     }
+    if (event.type === "easy-out-save") {
+      if (!this.easyOutSaveAvailable) return false;
+      this.easyOutSaveAvailable = false; this.easyOutSaveUses++;
+      this.lastEvent = (event.side < 0 ? "LEFT" : "RIGHT") + " · OUT SAVE"; return true;
+    }
     if (event.type === "side-save") {
       if (!this.sideSaveCharges) return false;
       this.sideSaveCharges = 0; this.sideSaveUses++; this.lastEvent = "LEFT SAVE"; return true;
@@ -117,13 +126,13 @@ export class PinballGameState {
       this.kickbackCharges = 0; this.kickbackUses++; this.lastEvent = "CENTER SAVE"; return true;
     }
     if (event.type === "rollover") {
-      if (this.rollovers[event.lane]) { this.awardContact(100,"LANE " + (event.lane+1)); this.advanceChallenges(event); return true; }
+      if (this.rollovers[event.lane]) { this.awardContact(100,"LANE " + (event.lane+1)); this.advanceChallenges(event); if(drive) this.award(350,"CENTER DRIVE"); return true; }
       this.rollovers[event.lane] = true; this.awardContact(100, "LANE " + (event.lane + 1));
       if (this.rollovers.every(Boolean)) {
         this.rolloverSets++; this.kickbackCharges = 1; this.rollovers.fill(false);
         this.award(500, "LANES COMPLETE · CENTER SAVE READY");
       }
-      this.advanceChallenges(event); return true;
+      this.advanceChallenges(event); if(drive) this.award(350,"CENTER DRIVE"); return true;
     }
     this.awardContact(points[event.type], event.type === "loop" ? "LEFT LOOP" : event.type.toUpperCase()); this.advanceChallenges(event);
     if (this.scoopChallenge.onTarget(event)) this.lastEvent += " · COLLECTOR READY";
@@ -131,6 +140,7 @@ export class PinballGameState {
   }
   drain({ reason = "normal" } = {}) {
     if (this.phase !== "playing") return false;
+    this.upperShots.resetRun();
     this.ballSaved = false; this.skillShotAvailable = false;
     // A saved drain still ends the multiplier run; scores and missions remain.
     this.multiplierChallenge.restart();

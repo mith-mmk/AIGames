@@ -3,7 +3,7 @@ export class PinballFeedback {
   constructor(){this.reset();}
   reset(){this.previous=null;}
   update(state,held={},hits=[]){
-    const next={phase:state.phase,ball:state.ballNumber,tilted:state.tilted,mission:state.mission.completed,multiplier:state.multiplier,award:state.lastContactAward,captures:state.scoop?.captures??0,collections:state.scoop?.collections??0,skillShots:state.skillShots??0,loops:state.loopCompletions??0,left:Boolean(held.left),right:Boolean(held.right)};
+    const next={phase:state.phase,ball:state.ballNumber,tilted:state.tilted,mission:state.mission.completed,multiplier:state.multiplier,award:state.lastContactAward,captures:state.scoop?.captures??0,collections:state.scoop?.collections??0,skillShots:state.skillShots??0,loops:state.loopCompletions??0,drives:state.upperShots?.completions??0,saves:(state.kickbackUses??0)+(state.easyOutSaveUses??0)+(state.sideSaveUses??0),replays:state.ballSaveUses??0,left:Boolean(held.left),right:Boolean(held.right)};
     const p=this.previous;this.previous=next;
     if(!p||state.phase==='paused')return [];
     const events=[];
@@ -11,6 +11,7 @@ export class PinballFeedback {
     if(!p.tilted&&next.tilted)events.push('tilt');
     if(next.phase==='gameover'&&p.phase!=='gameover')events.push('gameover');
     else if(next.ball>p.ball)events.push('drain');
+    if(next.replays>p.replays)events.push('ball-save');
     if(next.phase==='playing'&&!next.tilted){
       if((next.left&&!p.left)||(next.right&&!p.right))events.push('flipper');
       const types=new Set(hits.map(h=>h.type==='bank'?'target':h.type||'bumper'));
@@ -19,6 +20,8 @@ export class PinballFeedback {
         types.add(label==='left loop'?'loop':label==='bank'?'target':['bumper','sling','target'].includes(label)?label:'target');
       }
       if(next.loops>p.loops)types.add('loop');
+      if(next.drives>p.drives)types.add('drive');
+      if(next.saves>p.saves)types.add('kickback');
       events.push(...types);
       // Counters survive render gaps; an award is sounded once, never each frame.
       if(next.collections>p.collections)events.push('scoop-reward');

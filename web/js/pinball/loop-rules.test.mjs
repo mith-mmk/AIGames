@@ -32,7 +32,7 @@ test("loop and ramp are independent varied shots and scoring uses pre-event mult
   const {state,hit}=fixture();for(let i=0;i<5;i++)hit("bumper");
   assert.equal(state.multiplier,2);
   const before=state.score;hit("ramp");hit("loop");
-  assert.equal(state.score,before+1200);
+  assert.equal(state.score,before+1800);
   assert.deepEqual(state.multiplierMission.mechanisms,["ramp","loop"]);
   hit("loop");assert.equal(state.multiplierMission.progress,2);
   hit("spinner");assert.equal(state.multiplier,3);

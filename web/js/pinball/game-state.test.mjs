@@ -25,10 +25,10 @@ test("five bounded missions award base points and each completion bonus exactly 
   assert.equal(state.mission.id, "ramp");
   hit("ramp");
   assert.equal(state.mission.allComplete, true); assert.equal(state.mission.completed, 5);
-  // Base: spinner warmup 150, bumpers 300, sides 250, spinner 300, lanes 900, ramp 300.
-  assert.equal(state.score, 2200 + 5500);
+  // Base: spinner warmup 150, bumpers 300, sides 250, spinner 300, lanes 900, ramp 600.
+  assert.equal(state.score, 2500 + 5500);
   const score = state.score;
-  hit("ramp"); hit("bumper"); assert.equal(state.score, score + 400);
+  hit("ramp"); hit("bumper"); assert.equal(state.score, score + 700);
   assert.equal(state.mission.allComplete, true);
   const snapshot = state.mission; snapshot.progress = 99;
   assert.equal(state.mission.progress, 5, "HUD snapshot cannot mutate rules");
@@ -99,7 +99,7 @@ test("bumper challenge earns x2 after five hits; varied mechanisms earn x3 start
   hit("spinner"); assert.equal(state.lastContactAward.points, 300);
   assert.equal(state.multiplier, 3); assert.equal(state.multiplierMission.allComplete, true);
   hit("bumper"); assert.equal(state.lastContactAward.points, 300);
-  hit("ramp"); assert.equal(state.lastContactAward.points, 900);
+  hit("ramp"); assert.equal(state.lastContactAward.points, 1800);
   for (let i = 0; i < 10; i++) hit("bumper");
   assert.equal(state.multiplier, 3); assert.equal(state.multiplierMission.progress, 3);
   const snapshot = state.multiplierMission; snapshot.mechanisms.push("fake");

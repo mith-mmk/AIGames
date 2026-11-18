@@ -3,12 +3,12 @@ import { SCOOP, scoopContactBoxes } from "./scoop.mjs";
 import {appendBoardEdgeFasteners} from './cabinet-fasteners.mjs';
 import {shooterOuterRailGeometry,shooterOuterRailContactVertices} from './shooter-outer-rail.mjs';
 import {cabinetBoundaryBoxes, cabinetBoundaryExtensions} from './cabinet-boundary.mjs';
-import { targetCarrierParts, targetFaceAngle, targetDimensions, targetContactBoxes, flipperContactVertices, PLUNGER_CONTACT, targetContactId, slingContactPoints, plungerContactVertices } from "./mechanical-contact.mjs";
+import { targetCarrierParts, targetFaceAngle, targetDimensions, targetContactBoxes, flipperContactVertices, PLUNGER_CONTACT, targetContactId, slingContactPoints, slingBedGeometry, plungerContactVertices } from "./mechanical-contact.mjs";
 import {NudgeMeter} from "./nudge.mjs";
 import { buildPhysicalRamp, rampSensorGates } from "./ramp-geometry.mjs";
 import R from "../vendor/rapier3d-0.17.3/rapier.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import { TABLE, SHOOTER_LAYOUT, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS, SHOOTER_BACKING, lowerLanePaths, flipperAngle } from "./layout.mjs";
+import { TABLE, SHOOTER_LAYOUT, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS, SHOOTER_BACKING, lowerLanePaths, lowerSlingVertices, flipperAngle } from "./layout.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
 export class PinballPhysics {
@@ -24,8 +24,9 @@ export class PinballPhysics {
     this.flipperCoilCooldown = [0, 0];
     this.upfieldReturns = 0; this.lastActiveContactTime = -99; this.returnPending = false;
     this.flipperContacts = [0, 0]; this.flipperHandles = new Map(); this.activeFlipperContacts = [0, 0];
-    this.flippers = []; this.flipperAngles = [flipperAngle(false, false), flipperAngle(true, false)];
+    this.flippers = []; this.flipperAngles = [flipperAngle(false, false, this.state.difficulty), flipperAngle(true, false, this.state.difficulty)];
     this.build();
+    this.applySlope();
 
     this.ball = this.world.createRigidBody(R.RigidBodyDesc.dynamic().setTranslation(SHOOTER_LAYOUT.x, .175, SHOOTER_LAYOUT.ballZ).setCcdEnabled(true).setLinearDamping(0.12).setAngularDamping(0.15).setCanSleep(false));
     this.ballCollider = this.world.createCollider(R.ColliderDesc.ball(TABLE.ballRadius).setMass(0.08).setRestitution(0.22).setFriction(0.06).setActiveEvents(R.ActiveEvents.COLLISION_EVENTS), this.ball);
@@ -42,6 +43,16 @@ export class PinballPhysics {
     this.scoopContacts=scoopContactBoxes().map(part=>this.box(...part.center,...part.size.map(v=>v/2),.25));
     this.loopContacts=appendLoopContacts(this.world,R);
     this.loopTraversal=new LoopTraversal();
+    for (const side of [-1,1]) {
+      const geo=slingBedGeometry(lowerSlingVertices(side));
+      this.world.createCollider(R.ColliderDesc.convexHull(geo.getAttribute("position").array).setRestitution(.24).setFriction(.06));
+      geo.dispose();
+    }
+  }
+  applySlope() {
+    // Adjust only the downhill component, so air height and physical shape
+    // stay consistent. Standard retains the original rolling acceleration.
+    this.world.gravity.z=63.765*Math.sin(TABLE.tilt)*(this.state.difficulty==="relaxed"?.78:1);
   }
   nudge() {
     if(this.state.phase!=="playing" || this.scoopHeld) return false;
@@ -101,7 +112,7 @@ export class PinballPhysics {
       for (const path of lowerLanePaths(side)) {
         for (let k=0;k<path.length-1;k++) this.segment(path[k],path[k+1],LOWER_LAYOUT.guideRadius);
       }
-      const sling = slingContactPoints(LOWER_LAYOUT.slingVertices.map(([x,z])=>[side*x,z]));
+      const sling = slingContactPoints(lowerSlingVertices(side));
       for (let i = 0; i < sling.length - 1; i++) this.segment(sling[i], sling[i + 1], .025, { type: "sling", x: side * LOWER_LAYOUT.slingCenter[0], z: LOWER_LAYOUT.slingCenter[1], points: 25, label: "SLING", key: "s" + side });
     }
     for(const bank of TARGET_BANKS) {
@@ -202,8 +213,8 @@ export class PinballPhysics {
     this.visualHits.length=0; this.lastFlipperShot = null; this.rampTraversals=0;
     this.flipperCoilCooldown.fill(0); this.coilImpulses.fill(0); this.flipperRising.fill(false);
     this.flipperContacts.fill(0); this.activeFlipperContacts.fill(0); this.upfieldReturns = 0; this.returnPending = false;
-    this.state.restart(); this.spinnerAngle = 0; this.spinnerSpeed = 0; this.accumulator = 0; this.cooldowns.clear(); this.resetBall();
-    this.flipperAngles = [flipperAngle(false, false), flipperAngle(true, false)];
+    this.state.restart(); this.applySlope(); this.spinnerAngle = 0; this.spinnerSpeed = 0; this.accumulator = 0; this.cooldowns.clear(); this.resetBall();
+    this.flipperAngles = [flipperAngle(false, false, this.state.difficulty), flipperAngle(true, false, this.state.difficulty)];
     for (let i = 0; i < 2; i++) this.flippers[i].setRotation({ x: 0, y: Math.sin(this.flipperAngles[i]/2), z: 0, w: Math.cos(this.flipperAngles[i]/2) }, true);
   }
   setPaused(value) { this.state.setPaused(value); this.accumulator = 0; }
@@ -265,7 +276,10 @@ export class PinballPhysics {
     if (h.type === "bumper" || h.type === "sling") {
       const p = this.ball.translation(), dx = p.x - h.x, dz = p.z - h.z, len = Math.hypot(dx, dz) || 1;
       const v = this.ball.linvel();
-      if (h.type === "sling") this.ball.applyImpulse({ x: dx / len * .18, y: 0, z: dz / len * .18 }, true);
+      if (h.type === "sling") {
+        const strength=this.state.difficulty==="relaxed"?.12:.18;
+        this.ball.applyImpulse({ x: dx / len * strength, y: 0, z: dz / len * strength }, true);
+      }
       else {
         const outward = (v.x * dx + v.z * dz) / len;
         const impulse = Math.max(0, (h.strength??6) - outward) * this.ball.mass();
@@ -284,7 +298,7 @@ export class PinballPhysics {
       if(this.state.tilted && this.time>=this.tiltUntil){this.state.drain({reason:"tilt"});this.resetBall();continue;}
       for (let i = 0; i < 2; i++) {
         const active=!this.state.tilted && Boolean(i ? input.right : input.left);
-        const desired = flipperAngle(Boolean(i), active);
+        const desired = flipperAngle(Boolean(i), active, this.state.difficulty);
         const difference = desired - this.flipperAngles[i];
         this.flipperRising[i] = active && Math.abs(difference) > .001;
         const rate = active ? .10 : .035;
@@ -360,17 +374,29 @@ export class PinballPhysics {
       if (this.returnPending && p.z < 3.2 && v.z < 0 && this.time - this.lastActiveContactTime < .8) {
         this.upfieldReturns++; this.returnPending = false;
       }
-      // A target-earned left outlane kickback remains a real, single-use return.
-      if(p.x < -2.08 && p.x > -2.62 && p.z>3.45 && p.z<3.72 && p.y<.5 && v.z>0 &&
-          !this.state.tilted && this.state.sideSaveCharges && this.state.onEvent({type:"side-save",id:"side-save-"+this.eventSequence++})) {
-        // The plunger fires along the OUT lane, not sideways into its divider.
-        this.ball.applyImpulse({x:-v.x*this.ball.mass(),y:0,z:(-12-v.z)*this.ball.mass()},true);
+      // One-sided swept switches share stations with the visible kicker plates.
+      // Crossing is measured on the incoming segment, not an end-of-frame box
+      // that a fast ball can jump or an elevated ball can trigger.
+      const crosses = ({x,z,halfWidth}) => {
+        if (beforeStep.z >= z || p.z < z || v.z <= 0) return false;
+        const t=(z-beforeStep.z)/(p.z-beforeStep.z);
+        const height=beforeStep.y+(p.y-beforeStep.y)*t;
+        return height>.09 && height<.34 &&
+          Math.abs(beforeStep.x+(p.x-beforeStep.x)*t-x)<halfWidth;
+      };
+      for(const side of [-1,1]) {
+        const part=LOWER_LAYOUT.outKick;
+        if (!crosses({...part,x:side*part.x}) || this.state.tilted) continue;
+        const type=side<0 && this.state.sideSaveCharges ? "side-save" : "easy-out-save";
+        if (this.state.onEvent({type,side,id:"out-save-"+this.eventSequence++})) {
+          // Return along the outlane, not sideways through the divider.
+          this.ball.applyImpulse({x:-v.x*this.ball.mass(),y:0,z:(-part.speed-v.z)*this.ball.mass()},true);
+        }
       }
-      // A charged, visible center saver launches the descending ball physically.
-      if (Math.abs(p.x) < .6 && p.z > LOWER_LAYOUT.centerSaveZ[0] && p.z < LOWER_LAYOUT.centerSaveZ[1] && v.z > 0 &&
-          !this.state.tilted && this.state.kickbackCharges && this.state.onEvent({ type: "kickback", id: "save-" + this.eventSequence++ })) {
+      if (crosses(LOWER_LAYOUT.centerKick) && !this.state.tilted && this.state.kickbackCharges &&
+          this.state.onEvent({ type: "kickback", id: "save-" + this.eventSequence++ })) {
         this.returnPending = false;
-        this.ball.applyImpulse({ x: -p.x * .3, y: .88, z: (-8 - v.z) * this.ball.mass() }, true);
+        this.ball.applyImpulse({x:-p.x*.20,y:.52,z:(-LOWER_LAYOUT.centerKick.speed-v.z)*this.ball.mass()},true);
       }
       // A returning ball inside the physical shooter channel is not an outlane
       // drain. Keep its position, velocity and ball number; gravity rolls it to

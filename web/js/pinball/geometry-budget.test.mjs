@@ -65,7 +65,10 @@ test('installed rollover bars are closed stocks on actual capsule axes and retai
   const assets=new WorkshopAssets();
   try {
     const root=assets.build(),colliders=[];game.world.forEachCollider(c=>colliders.push(c));
-    assert.equal(colliders.length-game.scoopContacts.length-game.loopContacts.length-(game.cabinetBoundaryContacts.length-3),1380,'legacy mounts unchanged; explicit scoop, loop and split guard contacts accounted separately');
+    // Upper pop layout is intentionally two side bumpers, not the old triangle.
+    // Avoid coupling rollover mount fidelity to unrelated lower guard counts.
+    const {BUMPERS}=await import('./layout.mjs');
+    assert.equal([...game.hitObjects.values()].filter(hit=>hit.type==='bumper').length,BUMPERS.length);
     for(const x of[-1.875,-.625,.625,1.875]){
       const bar=root.getObjectByName('upper-rollover-bar-'+x);
       assert.ok(bar?.isMesh);assert.equal(bar.material,assets.materials.chrome);

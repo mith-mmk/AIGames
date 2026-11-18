@@ -1,7 +1,7 @@
 import {railCapsules,capsuleStockGeometry} from './wire-stock.mjs';
 import {targetCarrierParts,targetDimensions,targetFaceAngle} from "./mechanical-contact.mjs";
 import { MechanicalSling, MechanicalTarget } from "./components/sling-target.mjs";
-import { LOWER_LAYOUT, TARGET_BANKS, lowerLanePaths, lowerLaneMounts } from "./layout.mjs";
+import { LOWER_LAYOUT, TARGET_BANKS, lowerLanePaths, lowerLaneMounts, lowerSlingVertices } from "./layout.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
 
 // Flat, non-colliding ink follows the verified physical IN centerline.
@@ -59,16 +59,22 @@ export class PlayfieldParts {
       a.ring(g,.23,.018,x,.065,-4.4,"brass");
       a.laneLamps.push(a.cylinder(g,.14,.018,x,.055,-4.4,"jade"));
     }
-    // Left outlane hardware is visible even while uncharged; no blocking wall.
-    a.roundedBox(g,.22,.10,.42,-2.10,.10,3.78,"steel",.035);
-    a.tube(g,[[-2.10,.13,3.80],[-2.10,.13,3.50]],.06,"chrome");
-    a.sideSaveLamp=a.cylinder(g,.09,.018,-2.10,.055,3.32,"dark");
-    a.text(g,"SAVE",-2.10,.06,3.08,.34,.13);
+    a.text(g,"DRIVE",0,.052,-.72,.72,.24,"#8ce4e8");
+    a.text(g,"B +350",0,.052,-3.78,.52,.18,"#8ce4e8");
+    a.text(g,"600",1.47,.052,1.18,.40,.17,"#e8bf61");
+    // Flush kickback inserts: lamp state reflects the live, swept switches.
+    a.outSaveLamps=[-1,1].map(side=>this.kickbackPlate(LOWER_LAYOUT.outKick,side,"OUT SAVE",.145,.40));
+    a.centerSaveLamp=this.kickbackPlate(LOWER_LAYOUT.centerKick,1,"CENTER SAVE",.53,.23);
     a.text(g,"RAMP",1.45,.06,.85,.65,.22);
-    const kicker=a.cylinder(g,.17,.1,0,.11,(LOWER_LAYOUT.centerSaveZ[0]+LOWER_LAYOUT.centerSaveZ[1])/2,"brass");
-    kicker.name="center-save-kicker";
-    a.text(g,"SAVE",0,.18,LOWER_LAYOUT.centerSaveZ[0]+.10,.6,.15);
 
+  }
+  kickbackPlate(part,side,label,width,depth) {
+    const a=this.a,g=a.root,x=side*part.x,z=part.z;
+    const mount=a.roundedBox(g,width,.009,depth,x,.048,z,"brass",.012);
+    mount.name=label.toLowerCase().replace(" ","-")+"-switch-plate";
+    a.text(g,label,x,.059,z+depth*.75,part.x?.33:.67,.10,"#e8bf61");
+    const lamp=a.roundedBox(g,width*.75,.004,depth*.62,x,.054,z,"dark",.009);
+    return lamp;
   }
   inlane(side) {
     const a=this.a,g=a.root;
@@ -116,7 +122,7 @@ export class PlayfieldParts {
   }
   sling(side) {
     const a=this.a,center=[side*LOWER_LAYOUT.slingCenter[0],LOWER_LAYOUT.slingCenter[1]];
-    const points=LOWER_LAYOUT.slingVertices.map(([x,z])=>[side*x-center[0],z-center[1]]);
+    const points=lowerSlingVertices(side).map(([x,z])=>[x-center[0],z-center[1]]);
     const part=new MechanicalSling({materials:{...a.materials,jade:a.materials.chrome,rubber:a.materials.flipperRubber},points,rubberHeight:.22,coverHeight:LOWER_LAYOUT.slingCoverHeight,coverPrint:true});
     part.root.position.set(center[0],0,center[1]);part.root.userData.hitKey=`s${side}`;
     a.root.add(part.root);a.mechanical.slings.set(`s${side}`,part);

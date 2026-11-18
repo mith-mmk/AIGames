@@ -71,6 +71,20 @@ export function slingContactPoints(points,height=.22) {
   return out;
 }
 
+// A closed foot under the sling is installed in the visible triangle, not
+// across its live rubber face. It eliminates the concave pocket behind the
+// rubber where a very slow ball could penetrate and remain stuck.
+export function slingBedGeometry(points) {
+  const outline=points.map(p=>[...p]);
+  const area=outline.reduce((sum,[x,z],i)=>{const [u,v]=outline[(i+1)%3];return sum+x*v-z*u;},0);
+  if(area<0)outline.reverse();
+  const geo=new T.BufferGeometry();
+  geo.setAttribute("position",new T.Float32BufferAttribute([.039,.315].flatMap(y=>outline.flatMap(([x,z])=>[x,y,z])),3));
+  geo.setIndex([0,1,2,3,5,4,0,3,4,0,4,1,1,4,5,1,5,2,2,5,3,2,3,0]);
+  geo.computeVertexNormals();
+  return geo;
+}
+
 export function plungerContactVertices() {
   const profile=[[.081,-.04],[.101,-.031],[.108,-.015],[.108,.026],[.09,.04]];
   return new Float32Array(profile.flatMap(([r,z])=>Array.from({length:32},(_,i)=>{

@@ -19,7 +19,7 @@ test('play-facing solid cabinet backing and cap match actual collider bounds',as
    const group=c.root.getObjectByName(`cabinet-boundary-${name}`),b=new T.Box3().setFromObject(group);
    const p=collider.translation(),h=collider.halfExtents();
    for(const axis of ['x','y','z']){close(b.min[axis],p[axis]-h[axis]);close(b.max[axis],p[axis]+h[axis]);}
-   close(b.min.y,name.endsWith("extension")?CABINET_BOUNDARY.top:-.05);close(b.max.y,name.endsWith("extension")?CABINET_BOUNDARY.lowerTop:CABINET_BOUNDARY.top);
+   close(b.min.y,name.endsWith("extension")?CABINET_BOUNDARY.top:-.05);close(b.max.y,name.endsWith("extension")?CABINET_BOUNDARY.lowerTop:name==="rear"?CABINET_BOUNDARY.rearTop:CABINET_BOUNDARY.top);
    const backing=new T.Box3().setFromObject(group.getObjectByName(`cabinet-boundary-${name}-backing`));
    const cap=new T.Box3().setFromObject(group.getObjectByName(`cabinet-boundary-${name}-cap`));
    close(backing.max.y,cap.min.y);close(cap.max.y-cap.min.y,.022);
@@ -50,7 +50,7 @@ test('visible side and rear faces and cap agree with solid rays without an invis
     else {assert.ok(hits.length>0);assert.ok(distance>=0);close(hits[0].distance,distance);}
     rays++;
    }
-   const p=collider.translation(),origin=new T.Vector3(p.x,1,p.z),direction=new T.Vector3(0,-1,0);
+   const p=collider.translation(),origin=new T.Vector3(p.x,top+1,p.z),direction=new T.Vector3(0,-1,0);
    const hit=new T.Raycaster(origin,direction).intersectObject(group,true)[0];
    close(hit.point.y,top);close(hit.distance,collider.castRay(new R.Ray(origin,direction),2,true));
   }

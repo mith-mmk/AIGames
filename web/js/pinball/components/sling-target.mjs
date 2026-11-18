@@ -1,5 +1,5 @@
 import {slingCoverPrint} from '../sling-cover-print.mjs';
-import { slingRubberLoop } from "../mechanical-contact.mjs";
+import { slingBedGeometry, slingRubberLoop } from "../mechanical-contact.mjs";
 import * as T from '../../vendor/three-0.180.0/three.module.min.js';
 
 /** Structural prototypes; Y up, target front +Z, points are local [x,z].
@@ -45,6 +45,7 @@ export class MechanicalSling extends Mechanism {
     const p=points.map(q=>[...q]);const area=p.reduce((s,a,i)=>{const b=p[(i+1)%3];return s+a[0]*b[1]-b[0]*a[1];},0);if(Math.abs(area)<.0001)throw new Error('Collinear sling posts');if(area<0)p.reverse();
     this.parameters={points:p.map(a=>[...a]),rubberHeight,coverHeight,dimensionStatus:'visual estimates, not measured dimensions'};
     const g=this.root,m=materials,metal=mat(m,'chrome',0xc5d4d8,{metalness:.85}),steel=mat(m,'steel',0x344653,{metalness:.7}),rubber=mat(m,'rubber',0x181c20),plastic=mat(m,'jade',0x227b83),brass=mat(m,'brass',0xc69a45,{metalness:.7}),dark=mat(m,'dark',0x12202c);
+    add(g,slingBedGeometry(p),steel,"sealed-sling-foot");
     const cx=p.reduce((s,a)=>s+a[0],0)/3,cz=p.reduce((s,a)=>s+a[1],0)/3;
     this.lampMaterial=mat(m,'amber',0xffc252,{emissive:0xffa324,emissiveIntensity:.6});this.lampBase=this.lampMaterial.emissiveIntensity;
     for(let i=0;i<3;i++){

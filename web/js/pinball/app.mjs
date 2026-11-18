@@ -274,8 +274,13 @@ export class PinballTablePreview {
       const lit=mission && (mission.allComplete || i<Math.floor(this.assets.missionLamps.length*mission.progress/Math.max(1,mission.target)));
       lamp.material=this.assets.materials[lit?"light":"amber"];
     }
-    if(this.assets.sideSaveLamp) this.assets.sideSaveLamp.material=this.assets.materials[state.sideSaveCharges?"light":"dark"];
-    document.querySelector("#kickback").textContent += ` · LEFT SAVE ${state.sideSaveCharges??0}`;
+    const material=on=>this.assets.materials[on?"light":"dark"];
+    if(this.assets.centerSaveLamp) this.assets.centerSaveLamp.material=material(state.kickbackCharges);
+    for(const [i,lamp] of (this.assets.outSaveLamps??[]).entries())
+      lamp.material=material(state.easyOutSaveAvailable || (i===0 && state.sideSaveCharges));
+    const out=state.difficulty==="relaxed" ? ` · OUT SAVE ${Number(state.easyOutSaveAvailable)} / 1` : "";
+    const extra=state.sideSaveCharges ? " · LEFT SAVE 1" : "";
+    document.querySelector("#kickback").textContent += out+extra;
     for(const [i,lamp] of (this.assets.laneLamps || []).entries()) lamp.material = this.assets.materials[state.rollovers?.[i] ? "light" : "jade"];
     this.canvas.dataset.phase = state.phase;
     this.canvas.dataset.score = state.score;

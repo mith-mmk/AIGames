@@ -65,19 +65,39 @@ test('physical countdown stops during pause and ready; restart preserves selecte
   g.restart();assert.equal(g.state.difficulty,'relaxed');assert.equal(g.state.ballSaveRemaining,0);
  }finally{g.dispose();}
 });
-test('explicit standard and relaxed preserve default trajectories before any drain or save',async()=>{
+test('standard preserves default trajectory and Easy changes only the designed handling before saves',async()=>{
  const traces=[];
  for(const options of [undefined,{difficulty:'standard'},{difficulty:'relaxed'}]){
   const g=await PinballPhysics.create(options);
   try{
    g.launch(.75);const trace=[];
-   for(let tick=0;tick<180;tick++){
-    g.step(1/120,{left:tick>=60&&tick<90,right:tick>=100&&tick<150});
+   for(let tick=0;tick<45;tick++){
+    g.step(1/120,{left:tick>=15&&tick<22,right:tick>=27&&tick<38});
     assert.equal(g.state.ballNumber,1);assert.equal(g.state.phase,'playing');assert.equal(g.state.ballSaveUses,0);
     trace.push({p:{...g.ballPosition},v:{...g.ball.linvel()},angles:[...g.flipperAngles],score:g.state.score,metrics:g.metrics});
    }
    traces.push(trace);
   }finally{g.dispose();}
  }
- assert.deepEqual(traces[1],traces[0]);assert.deepEqual(traces[2],traces[0]);
+ for(const [i,a] of traces[0].entries()) {
+  const b=traces[1][i];
+  assert.deepEqual(a.angles,b.angles);
+  assert.deepEqual(a.metrics,b.metrics);
+  assert.equal(a.score,b.score);
+  for(const axis of ["x","y","z"]) {
+   assert.ok(Math.abs(a.p[axis]-b.p[axis])<.001);
+   assert.ok(Math.abs(a.v[axis]-b.v[axis])<.001);
+  }
+ }
+ assert.notDeepEqual(traces[2],traces[0]);
+ assert.ok(Math.abs(traces[2][0].angles[0]) < Math.abs(traces[0][0].angles[0]),'shallower rest angle');
+ const g=await PinballPhysics.create();
+ try {
+  const standardGravity={...g.world.gravity};
+  g.state.difficulty='relaxed';g.restart();
+  assert.equal(g.world.gravity.y,standardGravity.y);
+  assert.equal(g.world.gravity.z,standardGravity.z*.78);
+  g.state.difficulty='standard';g.restart();
+  assert.deepEqual({...g.world.gravity},standardGravity);
+ } finally {g.dispose();}
 });
