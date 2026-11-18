@@ -4,6 +4,7 @@ import { PinballPhysics } from "./physics.mjs";
 import { LOWER_LAYOUT, TABLE, SHOOTER_LAYOUT, flipperAngle, lowerLanePaths } from "./layout.mjs";
 import { flipperProfile, slingContactPoints } from "./mechanical-contact.mjs";
 import { PinballGameState } from "./game-state.mjs";
+import {UPPER_LANES} from "./upper-lanes.mjs";
 
 function run(g, seconds, input = {}) { for (let i = 0; i < seconds * 120; i++) g.step(1 / 120, input); }
 
@@ -22,7 +23,7 @@ test("rules enforce three balls, pause and reset", () => {
 test("real launch feeds scoring objects, not a scripted path", async () => {
   const g = await PinballPhysics.create();
   try {
-    assert.equal(g.launch(.925), true); run(g, 5);
+    assert.equal(g.launch(.94), true); run(g, 5);
     assert.ok(g.state.score > 0, `score=${g.state.score}`);
     assert.ok(g.ballPosition.x < 2.3); assert.ok(Number.isFinite(g.ballPosition.y));
   } finally { g.dispose(); }
@@ -107,7 +108,7 @@ test("ninety varied launches drain without stuck recovery or position jumps", as
       let shooterReturns = 0;
       while (g.state.returnedShooter && shooterReturns < 5) {
         assert.equal(g.state.ballNumber, 1, "shooter return must not consume a ball");
-        assert.ok(g.ballPosition.x > 2.35, "returned ball must physically be inside shooter channel");
+        assert.ok(g.ballPosition.x>SHOOTER_LAYOUT.innerX, "returned ball must physically be inside shooter channel");
         g.launch(.925); shooterReturns++;
         for (let tick=0;tick<14400 && g.state.phase === "playing";tick++) g.step(1/120);
       }
@@ -135,13 +136,12 @@ test("twelve full three-ball sessions end without rescue", async () => {
 });
 
 test("side-wall approaches enter genuine outlanes and naturally drain when uncharged", async () => {
-  // x=2.12 is between divider x=1.94 and outer wall x=2.33 at the
-  // z=1.35 mouth. It is an OUT route, not an IN return or shooter lane.
+  // Follow the genuine OUT channel, not an IN return or shooter launch.
   for (const side of [-1, 1]) {
     const g = await PinballPhysics.create();
     try {
       g.launch(); g.state.kickbackCharges=0; g.state.sideSaveCharges=0;
-      g.ball.setTranslation({ x: side * 2.12, y: .18, z: 1.1 }, true);
+      g.ball.setTranslation({x:side*LOWER_LAYOUT.outKick.x,y:.18,z:2.45},true);
       g.ball.setLinvel({ x: 0, y: 0, z: 4 }, true);
       let crossedOutlane=false,liveResets=0;
       const setTranslation=g.ball.setTranslation.bind(g.ball);
@@ -149,7 +149,7 @@ test("side-wall approaches enter genuine outlanes and naturally drain when uncha
       for (let tick = 0; tick < 1200 && g.state.phase === "playing"; tick++) {
         g.step(1 / 120);
         const p=g.ballPosition;
-        if(p.z>2&&p.z<3&&Math.abs(p.x)>1.94&&Math.abs(p.x)<2.33)crossedOutlane=true;
+        if(p.z>2.7&&p.z<3.4&&Math.abs(p.x)>LOWER_LAYOUT.guideEntry.right[0]&&Math.abs(p.x)<LOWER_LAYOUT.outlaneOuter[0][0])crossedOutlane=true;
       }
       assert.ok(crossedOutlane, `side ${side} must physically enter OUT`);
       assert.equal(g.state.phase,'ready', `side ${side} must drain without trapping`);
@@ -204,7 +204,7 @@ test("each physical top lane registers center and edge traversals only once", as
   for (let lane = 0; lane < 3; lane++) for (const offset of [-.43, 0, .43]) {
     const g = await PinballPhysics.create();
     try {
-      g.launch(); g.ball.setTranslation({ x: (lane - 1) * 1.25 + offset, y: .18, z: -4.9 }, true);
+      g.launch(); g.ball.setTranslation({x:UPPER_LANES.centers[lane]+offset,y:.18,z:UPPER_LANES.rearZ+.1},true);
       g.ball.setLinvel({ x: 0, y: 0, z: 3 }, true); run(g, .15);
       assert.equal(g.state.rollovers[lane], true, `lane ${lane} offset ${offset}`);
       assert.equal(g.state.score, 100); run(g, .03); assert.equal(g.state.score, 100);
@@ -241,7 +241,7 @@ test("charged center saver applies impulse without teleport, then allows real dr
 test("natural shooter launch traverses a top rollover lane", async () => {
   const g = await PinballPhysics.create();
   try {
-    g.launch(.925); run(g, 1.5);
+    g.launch(.94); run(g, 1.5);
     assert.equal(g.state.rollovers[2], true); assert.ok(g.state.score >= 100);
   } finally { g.dispose(); }
 });
@@ -249,7 +249,7 @@ test("natural shooter launch traverses a top rollover lane", async () => {
 test("outlane widths below entrance exceed ball diameter with margin", () => {
   for (const x of LOWER_LAYOUT.guide.slice(0, 2).map(p => p[0])) {
     // The right boundary is the shooter's inside divider surface.
-    assert.ok(2.35 - .045 - x - LOWER_LAYOUT.guideRadius > TABLE.ballRadius * 2 + .05);
+    assert.ok(SHOOTER_LAYOUT.innerX-.045-x-LOWER_LAYOUT.guideRadius>TABLE.ballRadius*2+.05);
   }
 });
 

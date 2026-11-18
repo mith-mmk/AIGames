@@ -94,7 +94,8 @@ export const LOWER_LAYOUT = Object.freeze({
   inlaneSensor: [1.81,.20,3.19],
   // Floor ink follows the open IN approach and the actual curved return; [x,z,width].
   inlaneInkPath: [[1.81,3.13,.11],[1.75,3.42,.11],[1.57,3.70,.12],[1.32,3.84,.10]],
-  laneInserts: {in: [1.80,3.08,-.10,.20,.86], out: [2.29,3.68,-.13,.23,1.55]},
+  // Put the IN lettering just below the left wire's exit, not under the steel.
+  laneInserts: {in: [1.735,3.40,-.36,.20,.57], out: [2.29,3.68,-.13,.23,1.55]},
   slingVertices: [[1.55,2.32],[1.54,3.33],[1.18,3.53]],
   slingCoverHeight: .33,
   slingCenter: [1.43,3.06],

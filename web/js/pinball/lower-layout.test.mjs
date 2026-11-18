@@ -16,13 +16,15 @@ test('sling rubber clears the root-to-center shot corridor on both sides',()=>{
     }
   }
 });
-// Former z2.1 fixture intersects the outward sling; actual IN begins below it at z2.8.
+// Starts in the visible IN corridor beside the lowered sling.
 test('both inlanes feed the flippers at three speeds rather than bypass their pivots',async()=>{
-  for(const side of [-1,1])for(const x of [1.72,1.75])for(const speed of [1,3,6]) {
+  for(const side of [-1,1])for(const x of [1.75,1.81,1.87])for(const speed of [1,3,6]) {
     const g=await PinballPhysics.create();
     try {
       g.launch();g.state.kickbackCharges=0;
-      g.ball.setTranslation({x:side*x,y:.18,z:2.8},true);g.ball.setLinvel({x:0,y:0,z:speed},true);
+      const start={x:side*x,y:.18,z:3.05};
+      assert.ok(sphereClearance(g,start)>=-1e-4,'IN fixture must not overlap stock');
+      g.ball.setTranslation(start,true);g.ball.setLinvel({x:0,y:0,z:speed},true);
       for(let i=0;i<1200&&g.state.phase==='playing';i++)g.step(1/120,{left:side<0,right:side>0});
       assert.ok(g.metrics.flipperContacts[side<0?0:1]>0,`side ${side}, x ${x}, speed ${speed}`);
     }finally{g.dispose();}
@@ -33,7 +35,7 @@ test('genuine outside lanes still drain without a flipper or invisible rescue',a
     const g=await PinballPhysics.create();
     try {
       g.launch();g.state.kickbackCharges=0;
-      const start={x:side*2.12,y:.18,z:2.6};
+      const start={x:side*LOWER_LAYOUT.outKick.x,y:.18,z:2.6};
       assert.ok(sphereClearance(g,start)>=-1e-4,'OUT fixture must not overlap a rail');
       g.ball.setTranslation(start,true);g.ball.setLinvel({x:0,y:0,z:3},true);
       for(let i=0;i<1200&&g.state.phase==='playing';i++)g.step(1/120,{left:true,right:true});
@@ -69,7 +71,7 @@ test('restored lane mouths pass descending balls without live position rescue',a
   const g=await PinballPhysics.create();
   try {
    g.launch();g.state.kickbackCharges=0;g.state.sideSaveCharges=0;
-   g.ball.setTranslation({x:side*(lane==='in'?1.75:2.12),y:.18,z:lane==='in'?2.80:2.60},true);
+   g.ball.setTranslation({x:side*(lane==='in'?1.81:LOWER_LAYOUT.outKick.x),y:.18,z:lane==='in'?3.05:2.60},true);
    g.ball.setLinvel({x:0,y:0,z:speed},true);
    let liveResets=0; const reset=g.ball.setTranslation.bind(g.ball);
    g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')liveResets++;return reset(...args);};
@@ -129,17 +131,17 @@ test('multiple standard IN returns traverse S, capture and refire the same ball'
  // Contacts can change the exact successful tick after the new sling face.
  // A bounded scan independently tests the physical lower return (no warm-up).
  const successful=[];
- for(const release of [76,77,78,80,81,82,85,86]){
+ for(const release of [76,77,78,79,80,81,82,83]){
   const g=await PinballPhysics.create();
   try {
    g.launch();g.state.kickbackCharges=0;let rescueEvents=0,resets=0;
    const onEvent=g.state.onEvent.bind(g.state);
    g.state.onEvent=e=>{const ok=onEvent(e);if(ok&&['kickback','side-save'].includes(e.type))rescueEvents++;return ok;};
-   g.ball.setTranslation({x:-1.6,y:.18,z:2.8},true);
+   g.ball.setTranslation({x:-1.81,y:.18,z:3.05},true);
    g.ball.setLinvel({x:0,y:0,z:2},true);
    const set=g.ball.setTranslation.bind(g.ball);
    g.ball.setTranslation=(...a)=>{if(g.state.phase==='playing')resets++;return set(...a);};
-   for(let i=0;i<500;i++)g.step(1/120,{left:true});
+   for(let i=0;i<550;i++)g.step(1/120,{left:true});
    for(let i=0;i<release;i++)g.step(1/120);
    let still=0;
    for(let i=0;i<1680&&g.state.phase==='playing';i++){
@@ -230,24 +232,24 @@ function sphereClearance(g,p) {
 test('lane edge fixtures distinguish genuine mouths from initial rail penetration',async()=>{
  const g=await PinballPhysics.create();
  try {
-  // These are intentionally invalid probes, never silently skipped game routes:
-  // ±2.20/±2.24 penetrate the outer rail; +2.18 penetrates the shooter divider.
-  const invalid=[-2.20,2.20,-2.24,2.24,2.18];
-  for(const x of invalid)assert.ok(sphereClearance(g,{x,y:.18,z:2.6})<-.002,JSON.stringify({x}));
-  assert.equal(invalid.length,5);
-  assert.ok(sphereClearance(g,{x:-2.18,y:.18,z:2.6})>=-1e-4,'left edge remains a valid distinct boundary');
+  // Directly challenge both real rails; these are deliberately invalid starts.
+  for(const side of [-1,1]){
+   for(const x of [2.04,2.60])
+    assert.ok(sphereClearance(g,{x:side*x,y:.18,z:3.25})<-.002,JSON.stringify({side,x}));
+   assert.ok(sphereClearance(g,{x:side*LOWER_LAYOUT.outKick.x,y:.18,z:3.25})>=-1e-4,'OUT center remains a valid distinct crossing');
+  }
  }finally{g.dispose();}
 });
 
 test('offset slow and fast lane entries and lateral approaches remain physical and releasable',async()=>{
  const fixtures=[];
  for(const side of [-1,1])for(const held of [false,true]){
-  for(const x of [1.60,1.72,1.82])for(const speed of [.25,12])
-   fixtures.push({side,held,lane:'in',x,z:2.8,vx:0,vz:speed});
-  for(const x of [2.02,2.12])for(const speed of [.25,12])
+  for(const x of [1.75,1.81,1.87])for(const speed of [.25,12])
+   fixtures.push({side,held,lane:'in',x,z:3.05,vx:0,vz:speed});
+  for(const x of [2.26,2.37])for(const speed of [.25,12])
    fixtures.push({side,held,lane:'out',x,z:2.6,vx:0,vz:speed});
   for(const z of [2.85,3.2,3.6,4.0])for(const vx of [-3,3])
-   fixtures.push({side,held,lane:'lateral',x:1.65,z,vx:side*vx,vz:.25});
+   fixtures.push({side,held,lane:'lateral',x:z<3.5?1.82:1.66,z,vx:side*vx,vz:.25});
  }
  assert.equal(fixtures.length,72);
  let executed=0;

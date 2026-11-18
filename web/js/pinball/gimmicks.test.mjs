@@ -1,22 +1,25 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {PinballPhysics} from './physics.mjs';
-import {MINI_BUMPERS} from './layout.mjs';
+import {LOWER_LAYOUT,MINI_BUMPERS} from './layout.mjs';
 const run=(g,n)=>{for(let i=0;i<n;i++)g.step(1/120);};
 test('legacy mini bumper pocket is removed for reference standups',()=>{assert.deepEqual(MINI_BUMPERS,[]);});
 test('earned side kickback reverses an outlane descent once, uncharged still drains',async()=>{
- for(const x of [-2.10,-2.14,-2.17])for(const charged of [false,true]) {
+ const out=LOWER_LAYOUT.outKick;
+ for(const x of [out.x-.03,out.x,out.x+.025].map(x=>-x))for(const charged of [false,true]) {
   const g=await PinballPhysics.create();
   try {
    g.launch();g.state.kickbackCharges=0;g.state.sideSaveCharges=Number(charged);
-   g.ball.setTranslation({x,y:.18,z:3.40},true);g.ball.setLinvel({x:0,y:0,z:3},true);
+   g.ball.setTranslation({x,y:.18,z:out.z-.23},true);g.ball.setLinvel({x:0,y:0,z:3},true);
    const number=g.state.ballNumber,setTranslation=g.ball.setTranslation.bind(g.ball);
    let resets=0,launchVelocity=null,reachedUpfield=false;
    g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')resets++;return setTranslation(...args);};
    for(let tick=0;tick<600&&g.state.phase==='playing';tick++) {
     const before=g.state.sideSaveUses;g.step(1/120);
     if(g.state.sideSaveUses>before)launchVelocity={...g.ball.linvel()};
-    if(g.ballPosition.z< -1&&g.state.phase==='playing') {
+    // The loop mouth moved; verify the earned save clears the real upper end
+    // of OUT by a meaningful margin rather than requiring an old coordinate.
+    if(g.ballPosition.z<LOWER_LAYOUT.outlaneOuter[0][2]-.7&&g.state.phase==='playing') {
      reachedUpfield=true;assert.equal(g.state.ballNumber,number);
     }
    }
@@ -38,7 +41,13 @@ test('complete physical ramp awards exactly once and only after its exit lip',as
  for(const speed of [28]){const g=await PinballPhysics.create();try{g.launch();const r=sampleRamp()[0];g.ball.setTranslation({x:r.p.x,y:r.p.y+.14,z:r.p.z},true);g.ball.setLinvel({x:r.t.x*speed,y:r.t.y*speed,z:r.t.z*speed},true);let awarded=false;for(let i=0;i<1200;i++){g.step(1/120,{left:true});if(g.rampTraversals){const last=sampleRamp().at(-1),p=g.ballPosition;assert.ok((p.x-last.p.x)*last.t.x+(p.z-last.p.z)*last.t.z>0,'must leave the shared exit lip before reward');awarded=true;break;}}assert.ok(awarded);run(g,120);assert.equal(g.rampTraversals,1);}finally{g.dispose();}}
 });
 test('inlane switch scores only a fresh real crossing, not sitting or pausing',async()=>{
- const g=await PinballPhysics.create();try{g.launch();g.state.kickbackCharges=0;g.ball.setTranslation({x:1.60,y:.18,z:2.65},true);g.ball.setLinvel({x:0,y:0,z:2},true);run(g,15);assert.ok(g.state.score>=100);assert.equal(g.state.lastAward.label,'INLANE');const score=g.state.score;g.setPaused(true);run(g,120);assert.equal(g.state.score,score);g.setPaused(false);}finally{g.dispose();}
+ const g=await PinballPhysics.create();try{
+  g.launch();g.state.kickbackCharges=0;
+  const [x,,z]=LOWER_LAYOUT.inlaneSensor;
+  g.ball.setTranslation({x,y:.18,z:z-.19},true);g.ball.setLinvel({x:0,y:0,z:2},true);
+  run(g,15);assert.ok(g.state.score>=100);assert.equal(g.state.lastAward.label,'INLANE');
+  const score=g.state.score;g.setPaused(true);run(g,120);assert.equal(g.state.score,score);g.setPaused(false);
+ }finally{g.dispose();}
 });
 test('side coils are bounded, horizontal and stronger than their former impulse',async()=>{
  const g=await PinballPhysics.create();try{g.launch();for(const type of ['sling','bumper']){const [h,spec]=[...g.hitObjects].find(([,v])=>v.type===type&&(type!=='bumper'||v.key==='b0'));g.ball.setTranslation({x:spec.x+.3,y:.18,z:spec.z},true);g.ball.setLinvel({x:0,y:0,z:0},true);g.hit(h);const v=g.ball.linvel();assert.ok(v.x>(type==='sling'?2:4));assert.ok(v.x<7);assert.equal(v.y,0);}}finally{g.dispose();}

@@ -1,3 +1,4 @@
+import {SHOOTER_LAYOUT, PLAYFIELD_SIDE_EXTENSION} from './layout.mjs';
 import {handoffLift} from './ramp-profile.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -42,7 +43,7 @@ test('support columns stay on the perimeter or shooter divider, and beams clear 
    if(!o.geometry)return;
    const b=new T.Box3().setFromObject(o);
    if(/^support-post-/.test(o.name)) {
-    posts++;assert.ok(b.max.x< -2.60 || b.max.z< -5.65 || (b.min.x>=2.305&&b.max.x<=2.395),`${o.name} crosses table lane`);
+    posts++;assert.ok(b.max.x< -2.60-PLAYFIELD_SIDE_EXTENSION || b.max.z< -5.65 || (b.min.x>=SHOOTER_LAYOUT.innerX-.045&&b.max.x<=SHOOTER_LAYOUT.innerX+.045),`${o.name} crosses table lane`);
    }
    if(/^cantilever-crosshead-/.test(o.name)) {beams++;assert.ok(b.min.y>.31,`${o.name} blocks ground ball at ${b.min.y}`);}
    assert.ok(!o.name.startsWith('diagonal-knee-brace'));
@@ -127,7 +128,7 @@ test('low base drawing ends at the same complete strip as its collider',()=>{
  const part=new MechanicalRamp();
  try{
   const cap=part.root.getObjectByName('low-base-end-cap').geometry.attributes.position;
-  const expected=[[last.left.x,.035,last.left.z],[last.left.x,last.left.y,last.left.z],[last.right.x,.035,last.right.z],[last.right.x,last.right.y,last.right.z],[2.35,.035,last.p.z],[2.35,last.p.y,last.p.z]];
+  const expected=[[last.left.x,.035,last.left.z],[last.left.x,last.left.y,last.left.z],[last.right.x,.035,last.right.z],[last.right.x,last.right.y,last.right.z],[SHOOTER_LAYOUT.innerX,.035,last.p.z],[SHOOTER_LAYOUT.innerX,last.p.y,last.p.z]];
   assert.equal(cap.count,expected.length);
   for(let i=0;i<cap.count;i++)assert.ok(new T.Vector3().fromBufferAttribute(cap,i).distanceTo(new T.Vector3(...expected[i]))<1e-6);
  }finally{part.dispose();}
@@ -139,7 +140,7 @@ test('compact low nose uses one closed shell and matching convex contact vertice
   const visible=part.root.getObjectByName('chamfered-anti-trap-nose').geometry;
   assert.deepEqual(Array.from(visible.attributes.position.array),Array.from(rampNoseVertices()));
   assert.equal(visible.index.count,24);
-  const contact=physical.baseColliders.at(-1),vertices=contact.vertices();
+  const contact=physical.baseColliders.at(-2),vertices=contact.vertices();
   for(let i=0;i<visible.attributes.position.count;i++){
    const p=new T.Vector3().fromBufferAttribute(visible.attributes.position,i);let closest=Infinity;
    for(let j=0;j<vertices.length;j+=3)closest=Math.min(closest,p.distanceTo(new T.Vector3(vertices[j],vertices[j+1],vertices[j+2])));
@@ -177,14 +178,14 @@ test('underfloor bearers, saddles and wire ties share nominal visual and contact
 });
 
 
-test('low base end cap follows its accessible convex boundary',async()=>{
+test('low base end cap and divider fairing match their combined visible boundary',async()=>{
  await R.init();const world=new R.World({x:0,y:-9.81,z:0}),physical=buildPhysicalRamp({world}),part=new MechanicalRamp();
  try{
-  part.root.updateMatrixWorld(true);const cap=part.root.getObjectByName('low-base-end-cap');let checked=0;
+  part.root.updateMatrixWorld(true);const cap=part.root.getObjectByName('low-base-end-cap'),fairing=part.root.getObjectByName('widened-divider-anti-trap-fairing');assert.ok(fairing);let checked=0;
   for(const x of [1.6,1.8,2.0,2.1,2.2,2.3])for(const y of [.08,.18,.30,.42]){
    const origin={x,y,z:-.9},direction={x:0,y:0,z:1};
-   const distances=physical.baseColliders.map(c=>c.castRay(new R.Ray(origin,direction),2,true)).filter(t=>t>=0).sort((a,b)=>a-b);
-   const visible=new T.Raycaster(new T.Vector3(x,y,-.9),new T.Vector3(0,0,1),0,2).intersectObject(cap)[0];
+   const distances=physical.baseColliders.map(c=>c.castRay(new R.Ray(origin,direction),2,true)).filter(t=>t!==null&&t>=0).sort((a,b)=>a-b);
+   const visible=new T.Raycaster(new T.Vector3(x,y,-.9),new T.Vector3(0,0,1),0,2).intersectObjects([cap,fairing])[0];
    assert.ok(distances.length,`missing physical boundary ${x},${y}`);assert.ok(visible,`missing visible cap ${x},${y}`);
    assert.ok(Math.abs(distances[0]-visible.distance)<1e-5,`cap mismatch ${x},${y}`);checked++;
   }

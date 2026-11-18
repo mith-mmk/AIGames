@@ -52,14 +52,14 @@ test('every installed housing boundary face matches the physical strip union',as
   try{
     const root=installed.root.getObjectByName('solid-anti-trap-ramp-base');
     root.updateMatrixWorld(true);
-    assert.equal(physical.baseColliders.length,31,'thirty real strips then the unchanged nose');
+    assert.equal(physical.baseColliders.length,32,'thirty real strips, nose and widened-divider fairing');
     const a=shell.attributes.position,ix=shell.index.array;
     let checked=0;
     for(let i=0;i<ix.length;i+=3){
       const tri=new T.Triangle(...[0,1,2].map(j=>new T.Vector3().fromBufferAttribute(a,ix[i+j])));
       const normal=tri.getNormal(new T.Vector3()),origin=tri.getMidpoint(new T.Vector3()).addScaledVector(normal,.01);
       const direction=normal.clone().negate();
-      const times=physical.baseColliders.slice(0,-1).map(c=>c.castRay(new R.Ray(origin,direction),.03,true)).filter(t=>t!==null&&t>=0);
+      const times=physical.baseColliders.slice(0,-2).map(c=>c.castRay(new R.Ray(origin,direction),.03,true)).filter(t=>t!==null&&t>=0);
       const visible=new T.Raycaster(origin,direction,0,.03).intersectObject(root,true)[0];
       assert.ok(times.length,`missing physical face ${i/3}`);assert.ok(visible,`missing installed face ${i/3}`);
       assert.ok(Math.abs(Math.min(...times)-visible.distance)<1e-6,`face ${i/3} mismatch`);checked++;

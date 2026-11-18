@@ -234,6 +234,7 @@ export class PinballPhysics {
     if (v.z <= -8) return;
     this.flipperCoilCooldown[side] = this.time + .18; this.coilImpulses[side]++;
     this.activeFlipperContacts[side]++; this.lastActiveContactTime = this.time; this.returnPending = true;
+    this.state.upperShots.armBat();
     const along = Math.max(0, Math.min(1, (LOWER_LAYOUT.flipperPivot[0] - Math.abs(this.ball.translation().x)) / (LOWER_LAYOUT.flipperCenter + LOWER_LAYOUT.flipperHalfLength)));
     const faceAngle = side ? Math.PI - this.flipperAngles[side] : this.flipperAngles[side];
     // Continuous contact-local spread for the current tapered bat. Heel-to-tip

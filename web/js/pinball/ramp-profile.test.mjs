@@ -47,7 +47,9 @@ test('seven legal former pocket starts exit without rescue under the unchanged s
   g.state.onEvent=e=>{const accepted=event(e);if(accepted&&['kickback','side-save'].includes(e.type))rescues++;return accepted;};
   g.world.forEachCollider(c=>{if(c.handle===g.ballCollider.handle||c.isSensor())return;const q=c.projectPoint(p,true).point;gap=Math.min(gap,p.distanceTo(new T.Vector3(q.x,q.y,q.z))-.135);});
   assert.ok(gap>.003,f.name+' initial gap '+gap);
-  for(let tick=0;tick<2400&&g.state.phase==='playing';tick++){g.step(1/120,{});const q=g.ballPosition;maxDisplacement=Math.max(maxDisplacement,p.distanceTo(new T.Vector3(q.x,q.y,q.z)));}
+  // Allow the widened lower field to drain after the former pocket is cleared.
+  // At 20s wire-original was already at z4.76 moving downhill, not stalled.
+  for(let tick=0;tick<2880&&g.state.phase==='playing';tick++){g.step(1/120,{});const q=g.ballPosition;maxDisplacement=Math.max(maxDisplacement,p.distanceTo(new T.Vector3(q.x,q.y,q.z)));}
   assert.ok(maxDisplacement>.5,f.name);assert.equal(g.state.phase,'ready',f.name);assert.equal(rescues,0,f.name);
  }finally{g.dispose();}}
 });

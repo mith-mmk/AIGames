@@ -129,13 +129,13 @@ export class PinballGameState {
       this.kickbackCharges = 0; this.kickbackUses++; this.lastEvent = "CENTER SAVE"; return true;
     }
     if (event.type === "rollover") {
-      if (this.rollovers[event.lane]) { this.awardContact(100,"LANE " + (event.lane+1)); this.advanceChallenges(event); if(drive==="drive")this.award(350,"CENTER DRIVE"); return true; }
+      if (this.rollovers[event.lane]) { this.awardContact(100,"LANE " + (event.lane+1)); this.advanceChallenges(event); if(drive==="drive")this.award(350,"DEEP B"); return true; }
       this.rollovers[event.lane] = true; this.awardContact(100, "LANE " + (event.lane + 1));
       if (this.rollovers.every(Boolean)) {
         this.rolloverSets++; this.kickbackCharges = 1; this.rollovers.fill(false);
         this.award(500, "LANES COMPLETE · CENTER SAVE READY");
       }
-      this.advanceChallenges(event); if(drive==="drive")this.award(350,"CENTER DRIVE"); return true;
+      this.advanceChallenges(event); if(drive==="drive")this.award(350,"DEEP B"); return true;
     }
     this.awardContact(points[event.type], event.type === "loop" ? "LEFT LOOP" : event.type.toUpperCase()); this.advanceChallenges(event);
     if (this.scoopChallenge.onTarget(event)) this.lastEvent += " · COLLECTOR READY";

@@ -77,3 +77,15 @@ test("three upper pops follow the reference triangle and retain asymmetric targe
   for(const b of TARGET_BANKS)for(const p of [b.a,b.b])assert.ok(Math.abs(p[0])+.07<TABLE.width/2);
   assert.ok(LOWER_LAYOUT.guide.at(-1)[2]>3.3);
 });
+
+test('the latest user layout widens one ball per side and lowers both slings beside IN',async()=>{
+  const {LOWER_LAYOUT,PLAYFIELD_SIDE_EXTENSION,SHOOTER_LAYOUT,TARGET_BANKS,lowerSlingVertices}=await import('./layout.mjs');
+  assert.equal(PLAYFIELD_SIDE_EXTENSION,TABLE.ballRadius*2);
+  assert.equal(TABLE.width,5.5+TABLE.ballRadius*4);
+  assert.ok(Math.abs(SHOOTER_LAYOUT.outerX-SHOOTER_LAYOUT.innerX-.37)<1e-9,'launch channel width is preserved');
+  const [ix,,iz]=LOWER_LAYOUT.inlaneSensor;
+  const [sx,sz]=LOWER_LAYOUT.slingCenter;
+  assert.ok(sz>3 && Math.abs(sz-iz)<.2 && sx<ix,'each sling is alongside, not above, its IN lane');
+  assert.deepEqual(lowerSlingVertices(-1),lowerSlingVertices(1).map(([x,z])=>[-x,z]));
+  assert.deepEqual(TARGET_BANKS.filter(b=>b.color==='yellow').map(b=>[b.key,b.count]),[['left-middle',3]]);
+});

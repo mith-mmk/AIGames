@@ -1,10 +1,12 @@
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 
 /** Shared installed dimensions. The open mouth faces the flippers (+Z). */
+const scoopZ=.19;
 export const SCOOP = Object.freeze({
-  x: -.81, z: .05, width: .48, depth: .44, floorY: .04,
+  x: -.81, z: scoopZ, width: .48, depth: .44, floorY: .04,
   wall: .06, wallHeight: .36, roofThickness: .035, holdSeconds: .8,
-  mouthZ: .30, captureZ: .10, captureY: .175,
+  // Leave the full ball clearance between the upstream rear and yellow targets.
+  mouthZ: scoopZ+.25, captureZ: scoopZ+.05, captureY: .175,
 });
 
 /** All exposed chamber panels are built from the same solids as contact. */

@@ -8,8 +8,8 @@ for(const difficulty of ['standard','relaxed']){
  const g=await PinballPhysics.create({difficulty});
  try{for(const side of ['left','right'])for(let release=0;release<=120;release+=2){
   g.restart();g.launch();g.state.kickbackCharges=0;g.state.sideSaveCharges=0;g.state.ballSaveAvailable=false;g.state.easyOutSaveAvailable=false;
-  g.ball.setTranslation({x:side==='left'?-1.6:1.6,y:.18,z:2.8},true);g.ball.setLinvel({x:0,y:0,z:2},true);
-  const input={[side]:true};for(let i=0;i<500&&g.state.phase==='playing';i++)g.step(1/120,input);
+  g.ball.setTranslation({x:side==='left'?-1.81:1.81,y:.18,z:3.05},true);g.ball.setLinvel({x:0,y:0,z:2},true);
+  const input={[side]:true};for(let i=0;i<550&&g.state.phase==='playing';i++)g.step(1/120,input);
   const cradle={...g.ballPosition},cradleSpeed=Math.hypot(g.ball.linvel().x,g.ball.linvel().z);
   const events=[];const original=g.state.onEvent.bind(g.state);g.state.onEvent=e=>{const accepted=original(e);if(accepted)events.push({type:e.type,lane:e.lane,target:e.targetId});return accepted;};
   for(let i=0;i<release&&g.state.phase==='playing';i++)g.step(1/120);
