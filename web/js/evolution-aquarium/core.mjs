@@ -2,6 +2,9 @@
 export const BOUNDS = Object.freeze({ x: 16, height: 10, z: 7 });
 export const STEP = 0.1;
 export const MAX_FISH = 200;
+export const HISTORY_INTERVAL = 2;
+export const HISTORY_LIMIT = 150;
+export const TRAIT_BINS = 10;
 export const TRAITS = Object.freeze({
     size: "体の大きさ", speed: "遊泳力", vision: "索餌範囲", metabolism: "代謝の強さ",
     temp: "適温", depth: "好む水深", hue: "体色", pattern: "模様の強さ",
@@ -60,6 +63,18 @@ export function inherit(a, b, chance, random) {
         genes[key] = key === "hue" ? hueWrap(value) : clamp(value);
     }
     return { genes, mutations };
+}
+
+export function traitBin(value) {
+    return clamp(Math.floor(value * TRAIT_BINS), 0, TRAIT_BINS - 1);
+}
+
+export function traitHistograms(fish) {
+    const histograms = Object.fromEntries(keys.map(key => [key, new Uint16Array(TRAIT_BINS)]));
+    for (const { traits } of fish) {
+        for (const key of keys) histograms[key][traitBin(traits[key])] += 1;
+    }
+    return histograms;
 }
 
 export function energyCost(fish, surface) {
@@ -270,11 +285,15 @@ export class AquariumSimulation {
     }
 
     sample() {
-        this.history.push({ time: this.time, count: this.fish.length, generation: this.generation });
-        if (this.history.length > 150) this.history.shift();
+        this.history.push({
+            time: this.time, count: this.fish.length, generation: this.generation,
+            histograms: traitHistograms(this.fish),
+        });
+        if (this.history.length > HISTORY_LIMIT) this.history.shift();
     }
 
     step() {
+        if (!this.fish.length) return;
         this.ticks += 1;
         this.time = this.ticks * STEP;
         this.foodDebt = Math.min(this.options.foodRate * 2, this.foodDebt + this.options.foodRate * STEP);
@@ -299,6 +318,6 @@ export class AquariumSimulation {
             for (const cause of dead.values()) this.deaths[cause] += 1;
         }
         if (this.ticks % 10 === 0) this.reproduce();
-        if (this.ticks % 20 === 0) this.sample();
+        if (this.ticks % Math.round(HISTORY_INTERVAL / STEP) === 0 || !this.fish.length) this.sample();
     }
 }

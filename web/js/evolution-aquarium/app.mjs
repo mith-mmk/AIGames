@@ -1,5 +1,6 @@
-import { AquariumSimulation, BOUNDS, PRESETS, STEP, TRAITS, floorY, preferredTemperature, zone } from "./core.mjs";
+import { AquariumSimulation, BOUNDS, PRESETS, STEP, TRAITS, TRAIT_BINS, floorY, traitBin, preferredTemperature, zone } from "./core.mjs";
 import { AquariumRenderer } from "./renderer.mjs";
+import { TraitTimeline } from "./timeline.mjs";
 
 const DEFAULT_SEED = 20261118;
 const byId = id => document.getElementById(id);
@@ -156,6 +157,13 @@ class AquariumApp {
         this.lastUI = -Infinity;
         this.view = this.createView();
         this.chartContext = this.ui["population-chart"].getContext("2d");
+        this.timeline = new TraitTimeline({
+            canvas: byId("trait-timeline"), axis: byId("timeline-axis"), scrub: byId("timeline-time"),
+            latest: byId("timeline-latest"), detail: byId("timeline-sample"), values: byId("timeline-values"),
+            sizeCanvas,
+        });
+        this.timelineSelect = byId("timeline-trait");
+        this.timelineSelect.replaceChildren(...Array.from(this.ui["trait-chart"].options, option => option.cloneNode(true)));
         this.init();
     }
 
@@ -184,7 +192,9 @@ class AquariumApp {
 
     init(options = PRESETS.balanced) {
         this.sim = new AquariumSimulation(this.seed, options);
-        this.baseline = this.sim.fish.map(fish => fish.traits);
+        this.baseline = this.sim.history[0].histograms;
+        this.baselineCount = this.sim.fish.length;
+        this.timeline.reset();
         this.selected = null;
         this.selectedSnapshot = null;
         this.lostSelection = false;
@@ -296,6 +306,7 @@ class AquariumApp {
         this.renderLineages();
         this.renderPopulation();
         this.renderDistribution();
+        this.timeline.render(this.sim.history, this.timelineSelect.value);
     }
 
     renderInspector() {
@@ -376,23 +387,22 @@ class AquariumApp {
     renderDistribution() {
         const key = this.ui["trait-chart"].value;
         if (!Object.hasOwn(TRAITS, key)) return;
-        const current = Array(10).fill(0);
-        const baseline = Array(10).fill(0);
-        for (const fish of this.sim.fish) current[Math.min(9, Math.floor(fish.traits[key] * 10))] += 1;
-        for (const traits of this.baseline) baseline[Math.min(9, Math.floor(traits[key] * 10))] += 1;
+        const current = Array(TRAIT_BINS).fill(0);
+        const baseline = Array.from(this.baseline[key]);
+        for (const fish of this.sim.fish) current[traitBin(fish.traits[key])] += 1;
         const ratio = (count, total) => total ? count / total : 0;
         const chart = el("div", "histogram");
         chart.setAttribute("role", "img");
         chart.setAttribute("aria-label", TRAITS[key] + "の分布。左から現在の割合 " +
             current.map(n => pct(ratio(n, this.sim.fish.length))).join("、"));
-        const peak = Math.max(0.25, ...current.map(n => ratio(n, this.sim.fish.length)), ...baseline.map(n => ratio(n, this.baseline.length)));
-        for (let i = 0; i < 10; i += 1) {
+        const peak = Math.max(0.25, ...current.map(n => ratio(n, this.sim.fish.length)), ...baseline.map(n => ratio(n, this.baselineCount)));
+        for (let i = 0; i < TRAIT_BINS; i += 1) {
             const bin = el("div", "hist-bin");
-            bin.title = traitValue(key, i / 10) + " 〜 " + traitValue(key, (i + 1) / 10) +
+            bin.title = traitValue(key, i / TRAIT_BINS) + " 〜 " + traitValue(key, (i + 1) / TRAIT_BINS) +
                 "：現在 " + current[i] + " 匹 / 初期 " + baseline[i] + " 匹";
             bin.style.setProperty("--current", pct(ratio(current[i], this.sim.fish.length) / peak));
-            bin.style.setProperty("--initial", pct(ratio(baseline[i], this.baseline.length) / peak));
-            bin.style.setProperty("--bar", key === "hue" ? tone((i + 0.5) / 10) : "#59e7cf");
+            bin.style.setProperty("--initial", pct(ratio(baseline[i], this.baselineCount) / peak));
+            bin.style.setProperty("--bar", key === "hue" ? tone((i + 0.5) / TRAIT_BINS) : "#59e7cf");
             bin.append(el("span", "hist-current"), el("span", "hist-initial"));
             chart.append(bin);
         }
@@ -463,7 +473,13 @@ function connect(app) {
     ui.camera.addEventListener("click", () => app.view.resetCamera?.());
     ui.speed.addEventListener("change", event => { app.speed = Number(event.target.value); });
     ui["fish-picker"].addEventListener("change", event => app.setChoice(Number(event.target.value) || null));
-    ui["trait-chart"].addEventListener("change", () => app.renderDistribution());
+    const setTrait = key => {
+        ui["trait-chart"].value = app.timelineSelect.value = key;
+        app.renderDistribution();
+        app.timeline.render(app.sim.history, key);
+    };
+    ui["trait-chart"].addEventListener("change", event => setTrait(event.target.value));
+    app.timelineSelect.addEventListener("change", event => setTrait(event.target.value));
     for (const button of document.querySelectorAll("[data-preset]")) {
         button.addEventListener("click", () => app.setScenario(button.dataset.preset));
     }
@@ -489,6 +505,8 @@ function connect(app) {
     });
     resize.observe(ui.viewport);
     resize.observe(ui["population-chart"]);
+    const timelineResize = new ResizeObserver(() => app.timeline.redraw());
+    timelineResize.observe(app.timeline.canvas);
     requestAnimationFrame(t => app.frame(t));
 }
 connect(new AquariumApp());

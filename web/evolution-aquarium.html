@@ -58,8 +58,24 @@
       <div class="research-grid">
         <article class="research-panel inspector"><div class="panel-heading"><h3>個体を観察</h3><span class="panel-index">02 / INDIVIDUAL</span></div><label for="fish-picker" class="sr-only">観察する魚を選ぶ</label><select id="fish-picker"><option value="">魚を選択してください</option></select><div id="fish-detail" class="fish-detail">水槽の魚をクリックするか、一覧から選ぶと、遺伝形質と親の情報を観察できます。</div></article>
         <article class="research-panel"><div class="panel-heading"><h3>個体数の変化</h3><span class="panel-index">03 / POPULATION</span></div><canvas id="population-chart" width="640" height="200" aria-label="時間に伴う個体数の推移"></canvas><div class="zone-counts"><div><i class="zone-dot shallow"></i>浅瀬 <strong id="shallows-count">—</strong></div><div><i class="zone-dot mid"></i>中層 <strong id="midwater-count">—</strong></div><div><i class="zone-dot deep"></i>深場 <strong id="deep-count">—</strong></div></div></article>
-        <article class="research-panel"><div class="panel-heading"><h3>形質の分布</h3><span class="panel-index">04 / VARIATION</span></div><label for="trait-chart" class="sr-only">分布を見る形質</label><select id="trait-chart"><option value="size">体の大きさ</option><option value="speed">泳ぐ速さ</option><option value="vision">視野</option><option value="metabolism">代謝</option><option value="temp">適温</option><option value="depth">深さの好み</option><option value="hue">体色</option><option value="pattern">模様</option></select><div id="distribution" class="distribution" aria-label="選んだ形質の分布"></div></article>
+        <article class="research-panel"><div class="panel-heading"><h3>形質の分布</h3><span class="panel-index">04 / VARIATION</span></div><label for="trait-chart" class="sr-only">分布を見る形質</label><select id="trait-chart"><option value="size">体の大きさ</option><option value="speed">泳ぐ速さ</option><option value="vision">視野</option><option value="metabolism">代謝</option><option value="temp">適温</option><option value="depth">深さの好み</option><option value="hue">体色</option><option value="pattern">模様</option></select><div id="distribution" class="distribution" aria-label="選んだ形質の分布"></div><a class="history-jump" href="#trait-history-title">時間の推移を見る ↓</a></article>
         <article class="research-panel"><div class="panel-heading"><h3>系統のゆくえ</h3><span class="panel-index">05 / LINEAGES</span></div><p class="small-note">片親から引き継いだ観測用ラベルごとの生存個体。</p><div id="lineages" class="lineages"></div></article>
+        <article class="research-panel trait-history" aria-labelledby="trait-history-title">
+          <div class="panel-heading"><h3 id="trait-history-title">形質分布の時間推移</h3><span class="panel-index">06 / TRAIT HISTORY</span></div>
+          <div class="history-head">
+            <p class="small-note">横はシミュレーション時間、縦は形質の値。明るい帯をたどると、どの範囲の個体が多くなったか、分布が広がったかがわかります。</p>
+            <label for="timeline-trait">表示する形質 <select id="timeline-trait"></select></label>
+          </div>
+          <p id="timeline-axis" class="history-axis"></p>
+          <canvas id="trait-timeline" width="990" height="220" role="img" aria-describedby="timeline-axis timeline-legend"></canvas>
+          <div id="timeline-legend" class="history-legend"><span>その時点の個体に占める割合</span><div class="history-scale" aria-label="0、25、50、75、100パーセント">
+            <span><i style="--swatch:#102a37"></i>0%</span><span><i style="--swatch:#1d656a"></i>25%</span><span><i style="--swatch:#27a19a"></i>50%</span><span><i style="--swatch:#5cd6b0"></i>75%</span><span><i style="--swatch:#d5ffb7"></i>100%</span>
+          </div><span class="history-extinct"><i></i>個体なし</span></div>
+          <div class="history-scrub"><label for="timeline-time">時点を選ぶ</label><input type="range" id="timeline-time" min="0" max="0" value="0" disabled><button type="button" id="timeline-latest" disabled>最新へ</button></div>
+          <p id="timeline-sample" class="history-sample"></p>
+          <details class="history-details"><summary>この時点の分布を数値で見る</summary><ul id="timeline-values"></ul></details>
+          <p class="small-note" id="timeline-window">実験時間2秒ごとに記録し、最新約5分間を表示します。</p>
+        </article>
       </div>
     </section>
     <details class="model-notes"><summary><span>この実験の見方と、科学的な簡略化</span><span class="plus">＋</span></summary><div class="notes-grid"><div><h3>個体ではなく、集団が変わる</h3><p>魚は遺伝する複数の連続的な形質を持ちます。子の形質は両親の値の中間を基に決まり、ときどき形質ごとに突然変異します。繁殖時の遺伝と突然変異で違いが生まれ、餌、代謝、水温、捕食によって生存と繁殖のしやすさが変わります。生きている魚が、必要に応じて遺伝形質を変えるモデルではありません。</p></div><div><h3>速さにも、大きさにも代償がある</h3><p>形質にはトレードオフがあります。環境を一度にひとつずつ変えると、個体数だけでなく形質の分布がどう変わるかを比較しやすくなります。浅瀬と深場の生息分布も観察してみましょう。</p></div><div><h3>生態学の実測予測ではありません</h3><p>世代が重なる簡略化した個体ベースの教育用モデルです。時間・身体・生理・遺伝・捕食を大きく圧縮しており、実在する魚種の進化や気候変動の影響を予測するものではありません。「最大世代」は実験中に生まれた個体の最大世代です。</p></div><div><h3>再現できる、小さな実験</h3><p>同じ乱数シードと条件・操作時刻で再実験できます。シードを変えると初期個体と乱数系列が変わります。系統は親子関係の観察用ラベルで、生物学的な種の分化を意味しません。絶滅したら環境を見直し、実験をやり直してください。</p></div></div></details>

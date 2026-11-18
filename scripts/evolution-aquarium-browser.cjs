@@ -1,4 +1,4 @@
-/* Browser smoke test; optional environment: AQUARIUM_SHOTS (screenshot directory). */
+/* Browser smoke test; optional environment: AQUARIUM_SHOTS (screenshots), AQUARIUM_STATIC_ROOT (Sites dist directory). */
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const http = require("node:http");
@@ -7,16 +7,18 @@ const { chromium } = require("playwright");
 
 async function main() {
     const types = { ".html": "text/html", ".mjs": "text/javascript", ".js": "text/javascript", ".css": "text/css", ".jpg": "image/jpeg" };
-    const root = path.resolve(__dirname, process.argv.includes("--built") ? "../.pages-dist" : "../web");
+    const staticRoot = process.env.AQUARIUM_STATIC_ROOT;
+    const root = path.resolve(staticRoot || path.resolve(__dirname, process.argv.includes("--built") ? "../.pages-dist" : "../web"));
     const server = http.createServer((req, res) => {
-        const file = path.resolve(root, "." + new URL(req.url, "http://localhost").pathname);
+        const pathname = new URL(req.url, "http://localhost").pathname;
+        const file = path.resolve(root, "." + (pathname === "/" ? "/index.html" : pathname));
         if (!file.startsWith(root + path.sep)) return res.writeHead(403).end();
         fs.readFile(file, (error, data) => error ? res.writeHead(404).end() :
             res.writeHead(200, { "Content-Type": types[path.extname(file)] || "application/octet-stream" }).end(data));
     });
     await new Promise(resolve => server.listen(0, "127.0.0.1", resolve));
     const origin = `http://127.0.0.1:${server.address().port}`;
-    const url = origin + "/evolution-aquarium.html";
+    const url = origin + (staticRoot ? "/" : "/evolution-aquarium.html");
     const output = process.env.AQUARIUM_SHOTS;
     if (output) fs.mkdirSync(output, { recursive: true });
     let browser;
@@ -82,6 +84,19 @@ async function main() {
         await desktop.locator("#pause").click();
         assert.notEqual(await desktop.locator("#generation").textContent(), "G01");
         await desktop.locator("#trait-chart").selectOption("hue");
+        assert.equal(await desktop.locator("#timeline-trait").inputValue(), "hue");
+        assert.match(await desktop.locator("#timeline-axis").textContent(), /0°と360°/);
+        await desktop.locator("#timeline-trait").selectOption("temp");
+        assert.equal(await desktop.locator("#trait-chart").inputValue(), "temp");
+        assert.match(await desktop.locator("#timeline-axis").textContent(), /適温/);
+        assert.ok(Number(await desktop.locator("#timeline-time").getAttribute("max")) > 1);
+        await desktop.locator("#timeline-time").press("Home");
+        assert.match(await desktop.locator("#timeline-sample").textContent(), /^0 秒 · 48 匹/);
+        await desktop.locator(".history-details summary").click();
+        assert.equal(await desktop.locator("#timeline-values li:visible").count(), 10);
+        await desktop.locator("#timeline-latest").click();
+        assert.doesNotMatch(await desktop.locator("#timeline-sample").textContent(), /^0 秒 ·/);
+        if (output) await snapshot(desktop.locator(".trait-history"), "trait-time-desktop.png");
         assert.equal(await desktop.locator("#distribution .hist-bin").count(), 10);
         assert.equal(await desktop.locator("#lineages .lineage-row").count(), 8);
         const seed = await desktop.locator("#seed").textContent();
@@ -89,6 +104,8 @@ async function main() {
         assert.equal(await desktop.locator("#seed").textContent(), seed);
         assert.equal(await desktop.locator("#population").textContent(), "48");
         assert.equal(await desktop.locator("#elapsed").textContent(), "0:00");
+        assert.equal(await desktop.locator("#timeline-time").getAttribute("max"), "0");
+        assert.match(await desktop.locator("#timeline-sample").textContent(), /^0 秒 · 48 匹/);
         await desktop.locator("#reroll").click();
         assert.notEqual(await desktop.locator("#seed").textContent(), seed);
         if (output) await snapshot(tank, "tank-predators.png");
@@ -97,6 +114,18 @@ async function main() {
         assert.equal(await desktop.locator("#camera").isDisabled(), true);
         await desktop.locator("#step").click();
         assert.equal(await desktop.locator("#elapsed").textContent(), "0:01");
+        await desktop.locator("#food-rate").fill("0");
+        await desktop.locator("#temperature").fill("32");
+        await desktop.locator("#predator-count").fill("4");
+        await desktop.locator("#reset").click();
+        await desktop.locator("#pause").click();
+        await desktop.waitForFunction(() => document.querySelector("#lab-status").dataset.state === "extinct", null, { timeout: 25000 });
+        assert.match(await desktop.locator("#timeline-sample").textContent(), /0 匹.*割合はありません/);
+        const final = await desktop.locator("#timeline-sample").textContent();
+        await desktop.locator("#step").click();
+        assert.equal(await desktop.locator("#timeline-sample").textContent(), final);
+        await desktop.locator("#reset").click();
+        assert.match(await desktop.locator("#timeline-sample").textContent(), /^0 秒 · 48 匹/);
 
         const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1, reducedMotion: "reduce" });
         record(mobile);
@@ -110,10 +139,14 @@ async function main() {
             await mobile.locator("#step").tap();
         }
         assert.equal(await mobile.locator("#elapsed").textContent(), "0:02");
+        await mobile.locator("#timeline-trait").selectOption("depth");
+        assert.match(await mobile.locator("#timeline-axis").textContent(), /浅瀬寄り.*深場寄り/);
+        assert.equal(await mobile.locator("#timeline-time").getAttribute("aria-valuetext"), "2 秒");
+        if (output) await snapshot(mobile.locator(".trait-history"), "trait-time-mobile.png");
         await mobile.locator("#fish-picker").selectOption("1");
         assert.match(await mobile.locator("#fish-detail").textContent(), /個体 #001/);
 
-        if (process.argv.includes("--built")) {
+        if (!staticRoot && process.argv.includes("--built")) {
             await desktop.goto(origin + "/index.html");
             const catalogCard = desktop.locator('a[href="evolution-aquarium.html"]');
             assert.equal(await catalogCard.count(), 1);
@@ -122,7 +155,7 @@ async function main() {
             await desktop.waitForURL(url);
         }
         assert.deepEqual(errors, []);
-        console.log("Aquarium smoke passed: desktop WebGL, camera, fish picking, presets, time controls, charts, seed resets, context loss and mobile 390/320px.");
+        console.log("Aquarium smoke passed: desktop WebGL, camera, fish picking, presets, time controls, charts and trait history (selection, extinction, resets), seed resets, context loss and mobile 390/320px.");
     } finally {
         await browser?.close();
         await new Promise(resolve => server.close(resolve));
