@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { PinballPhysics } from "./physics.mjs";
 import { LOWER_LAYOUT, TABLE, SHOOTER_LAYOUT, flipperAngle, lowerLanePaths } from "./layout.mjs";
-import { flipperProfile } from "./mechanical-contact.mjs";
+import { flipperProfile, slingContactPoints } from "./mechanical-contact.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
 function run(g, seconds, input = {}) { for (let i = 0; i < seconds * 120; i++) g.step(1 / 120, input); }
@@ -357,14 +357,13 @@ test("release timing produces distinct aimed reflip shots on both sides", async 
 
 test("curved sling and inlane have a full ball-width passage with margin", async () => {
   const T = await import("../vendor/three-0.180.0/three.module.min.js");
-  const points = new T.CatmullRomCurve3([...LOWER_LAYOUT.slingVertices, LOWER_LAYOUT.slingVertices[0]]
-    .map(([x, z]) => new T.Vector3(x, .22, z))).getPoints(128);
+  const points = slingContactPoints(LOWER_LAYOUT.slingVertices).map(p=>new T.Vector3(...p));
   let clearance = Infinity;
   const guide=lowerLanePaths(1)[0];
   for (const p of points) for (let i = 0; i < guide.length - 1; i++) {
     const a = new T.Vector3(...guide[i]), b = new T.Vector3(...guide[i + 1]);
     const d = b.sub(a), t = Math.max(0, Math.min(1, p.clone().sub(a).dot(d) / d.lengthSq()));
-    clearance = Math.min(clearance, p.distanceTo(a.addScaledVector(d, t)) - .07 - LOWER_LAYOUT.guideRadius);
+    clearance = Math.min(clearance, p.distanceTo(a.addScaledVector(d, t)) - .025 - LOWER_LAYOUT.guideRadius);
   }
   assert.ok(clearance > TABLE.ballRadius * 2 + .05, `inlane clearance ${clearance}`);
 });

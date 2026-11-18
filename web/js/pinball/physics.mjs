@@ -101,7 +101,7 @@ export class PinballPhysics {
     }
     for (const [i, p] of BUMPERS.entries()) {
       const c = this.world.createCollider(R.ColliderDesc.cylinder(0.32, 0.40).setTranslation(p.x, 0.34, p.z).setRestitution(0.9));
-      this.hitObjects.set(c.handle, { type: "bumper", x: p.x, z: p.z, points: 100, label: "ENERGY", key: "b" + i });
+      this.hitObjects.set(c.handle, { type: "bumper", x: p.x, z: p.z, returnRelief: p.returnRelief, points: 100, label: "ENERGY", key: "b" + i });
     }
     for (const [i,p] of MINI_BUMPERS.entries()) {
       const c=this.world.createCollider(R.ColliderDesc.cylinder(.14,.16).setTranslation(p.x,.18,p.z).setRestitution(.75));
@@ -269,7 +269,14 @@ export class PinballPhysics {
       this.skillShotPending = false;
       skillShot = h.lane === 2 && this.skillShotArmed && this.time <= this.skillShotDeadline;
     }
-    this.cooldowns.set(contactKey, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, targetId:h.targetId, forward:this.ball.linvel().z<0, id: "contact-" + this.eventSequence++ });
+    this.cooldowns.set(contactKey, this.time + .16);
+    const isPop=h.type==="bumper";
+    const accepted = this.state.onEvent({
+      type:h.type,lane:h.lane,targetId:h.targetId,part:h.key,
+      front:isPop && this.ball.translation().z>h.z+.18,
+      forward:(isPop ? this.preContactVz : this.ball.linvel().z)<0,
+      id:"contact-"+this.eventSequence++,
+    });
     if (accepted && skillShot) this.state.onEvent({type:"skill-shot",id:"skill-"+this.eventSequence++});
     if (["bumper", "sling", "bank", "target"].includes(h.type) && accepted) {
       const bank=TARGET_BANKS.find(bank=>bank.key===h.key);
@@ -293,7 +300,12 @@ export class PinballPhysics {
       else {
         const outward = (v.x * dx + v.z * dz) / len;
         const impulse = Math.max(0, (h.strength??6) - outward) * this.ball.mass();
-        this.ball.applyImpulse({ x: dx / len * impulse, y: 0, z: dz / len * impulse }, true);
+        // The fixed-offcenter return spring of the center pop breaks
+        // the symmetric backwall ping-pong. Only the rear near-axis
+        // strike sector supplies this small, tapered tangential impulse;
+        // it cannot aim at a lane and is zero for ordinary side strikes.
+        const release=dz<0 ? (h.returnRelief??0)*Math.max(0,1-Math.abs(dx)/.12)*this.ball.mass() : 0;
+        this.ball.applyImpulse({x:(dx*impulse+dz*release)/len,y:0,z:(dz*impulse-dx*release)/len},true);
       }
     }
   }
@@ -342,6 +354,7 @@ export class PinballPhysics {
         this.ball.setGravityScale(1, true);
         this.ball.setLinvel({x:-1.2,y:0,z:6},true);
       }
+      this.preContactVz=this.ball.linvel().z;
       this.world.step(this.queue);
       this.queue.drainCollisionEvents((a, b, started) => {
         if (started && this.state.phase === "playing") {

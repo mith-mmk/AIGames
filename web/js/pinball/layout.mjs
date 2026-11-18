@@ -6,10 +6,11 @@ export const TABLE = Object.freeze({
   ballRadius: 0.135,
   tilt: (6.5 * Math.PI) / 180,
 });
-// Twin side pops leave a real center drive lane to B. A third central pop
-// formerly sent every straight shot sideways before angle/power could matter.
+// Reference triangle: the two rear pops and one forward center pop. The
+// latter releases near-axis returns sideways rather than cycling on center.
 export const BUMPERS = Object.freeze([
-  { x: -.90, z: -3.25 }, { x: .90, z: -3.25 },
+  { x: -.78, z: -3.15 }, { x: .78, z: -3.15 },
+  { x: 0, z: -2.15, returnRelief: 3 },
 ]);
 // The reference has asymmetric target banks, not four central barriers.
 // Endpoints are shared by the visible rubber and physical collision face.
@@ -82,7 +83,7 @@ export const LOWER_LAYOUT = Object.freeze({
   guideRadius: .020,
   // The splitter rises out of the deck on a diagonal. A level, blunt end
   // stopped slow straight returns like a post; the tapered nose sheds them.
-  guideEntry: { left: [1.96, .02, 2.79], right: [1.96, .02, 2.79] },
+  guideEntry: { left: [1.96, .02, 2.80], right: [1.96, .02, 2.80] },
   // Two distinct passages: IN between sling/inner return and divider;
   // OUT between divider and outer wall, ending at the apron drain.
   inlaneInner: [[1.35,.22,2.75],[1.35,.22,3.35]],
@@ -91,10 +92,9 @@ export const LOWER_LAYOUT = Object.freeze({
   // Floor ink follows the open IN approach and the actual curved return; [x,z,width].
   inlaneInkPath: [[1.70,3.13,.12],[1.69,3.42,.12],[1.53,3.70,.12],[1.31,3.83,.10]],
   laneInserts: {in: [1.575,3.25,-.25,.27,1.10], out: [2.04,3.70,-.15,.24,1.70]},
-  slingVertices: [[1.83, 1.10], [1.73, 2.30], [1.27, 2.54]],
-  leftSlingVertices: [[1.83, 1.10], [1.73, 2.30], [1.27, 2.54]],
+  slingVertices: [[1.83, 1.10], [1.88, 2.45], [1.10, 2.65]],
   slingCoverHeight: .33,
-  slingCenter: [1.47, 2.10],
+  slingCenter: [1.60, 2.07],
   flipperPivot: [1.25, .27, 4.45],
   flipperCenter: .54, flipperHalfLength: .60, flipperHalfWidth: .14,
   centerSaveZ: [4.90, 5.03],
@@ -102,9 +102,9 @@ export const LOWER_LAYOUT = Object.freeze({
   outKick: {x:2.10, z:3.58, halfWidth:.14, speed:12},
 });
 
-// Compact slings leave a broad center shot corridor; both tips clear IN entry.
+// Reference-sized broad triangles keep the original v26 three-post stations.
 export function lowerSlingVertices(side) {
-  return (side<0 ? LOWER_LAYOUT.leftSlingVertices : LOWER_LAYOUT.slingVertices).map(([x,z])=>[side*x,z]);
+  return LOWER_LAYOUT.slingVertices.map(([x,z])=>[side*x,z]);
 }
 
 // One source for installed rails and contact capsules; returns fresh arrays.

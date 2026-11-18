@@ -59,8 +59,7 @@ export class PlayfieldParts {
       a.ring(g,.23,.018,x,.065,-4.4,"brass");
       a.laneLamps.push(a.cylinder(g,.14,.018,x,.055,-4.4,"jade"));
     }
-    a.text(g,"DRIVE",0,.052,-.72,.72,.24,"#8ce4e8");
-    a.text(g,"B +350",0,.052,-3.78,.52,.18,"#8ce4e8");
+    a.text(g,"+350",0,.052,-.91,.52,.18,"#efc75e");
     a.text(g,"600",1.47,.052,1.18,.40,.17,"#e8bf61");
     // Flush kickback inserts: lamp state reflects the live, swept switches.
     a.outSaveLamps=[-1,1].map(side=>this.kickbackPlate(LOWER_LAYOUT.outKick,side,"OUT SAVE",.145,.40));
