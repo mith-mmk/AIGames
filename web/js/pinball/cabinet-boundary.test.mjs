@@ -23,8 +23,9 @@ test('play-facing solid cabinet backing and cap match actual collider bounds',as
    const backing=new T.Box3().setFromObject(group.getObjectByName(`cabinet-boundary-${name}-backing`));
    const cap=new T.Box3().setFromObject(group.getObjectByName(`cabinet-boundary-${name}-cap`));
    close(backing.max.y,cap.min.y);close(cap.max.y-cap.min.y,.022);
-   if(name.startsWith('left'))close(b.max.x,-2.73);
-   else if(name.startsWith('right'))close(b.min.x,2.73);
+   const inner=TABLE.width/2+CABINET_BOUNDARY.sideOffset-CABINET_BOUNDARY.thickness/2;
+   if(name.startsWith('left'))close(b.max.x,-inner);
+   else if(name.startsWith('right'))close(b.min.x,inner);
    else close(b.max.z,-5.73);
   }
   assert.equal(c.root.getObjectByName('folded-glass-channel--1'),undefined);
@@ -81,7 +82,8 @@ test('raised visible guard returns airborne lower-lane balls on both sides witho
   const g=await PinballPhysics.create();
   try {
    g.launch(.925);
-   g.ball.setTranslation({x:side*2.50,y:height,z:3.2},true);
+   const inner=TABLE.width/2+CABINET_BOUNDARY.sideOffset-CABINET_BOUNDARY.thickness/2;
+   g.ball.setTranslation({x:side*(inner-.23),y:height,z:3.2},true);
    g.ball.setLinvel({x:side*8,y:1,z:-3},true);
    const score=g.state.score;let returned=false,maxX=0;
    for(let tick=0;tick<20;tick++) {
@@ -90,7 +92,7 @@ test('raised visible guard returns airborne lower-lane balls on both sides witho
     if(g.ball.linvel().x*side<0)returned=true;
    }
    assert.ok(returned,'physical face must reverse outward velocity');
-   assert.ok(maxX<2.73,`ball crossed inner guard face: ${maxX}`);
+   assert.ok(maxX<inner,`ball crossed inner guard face: ${maxX}`);
    assert.equal(g.state.ballNumber,1);assert.equal(g.state.phase,'playing');
    assert.equal(g.state.score,score,'containment does not award points');
    assert.equal(g.state.kickbackUses,0);assert.equal(g.state.sideSaveUses,0);

@@ -133,10 +133,11 @@ export class PinballTablePreview {
     // Fit the actual cabinet corners rather than adding two conservative margins.
     const tangent=Math.tan(this.camera.fov*.5*Math.PI/180); let distance=0;
     const framePoints=[];
-    for(const x of [-3.05,3.05]) for(const y of [-.6,.8]) for(const z of [-6,6]) framePoints.push([x,y,z]);
+    const cabinetEdge=TABLE.width/2+.30,backglassEdge=TABLE.width/2+.23;
+    for(const x of [-cabinetEdge,cabinetEdge]) for(const y of [-.6,.8]) for(const z of [-6,6]) framePoints.push([x,y,z]);
     // Tall backglass is only at the rear; a full-height bounding cuboid would
     // unnecessarily shrink the live playfield on portrait screens.
-    for(const x of [-2.98,2.98]) for(const y of [.4,3.30]) framePoints.push([x,y,-6.50]);
+    for(const x of [-backglassEdge,backglassEdge]) for(const y of [.4,3.30]) framePoints.push([x,y,-6.50]);
     for(const x of [2.50,3.45]) for(const y of [.59,2.20]) for(const z of [-5.80,-4.90]) framePoints.push([x,y,z]);
     for(const x of [-3.92,-2.65]) for(const y of [.55,2.25]) framePoints.push([x,y,-5.15]);
     for(const [x,y,z] of framePoints) {

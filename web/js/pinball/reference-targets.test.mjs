@@ -5,9 +5,9 @@ import assert from 'node:assert/strict';
 import {TARGET_BANKS,MINI_BUMPERS,TABLE} from './layout.mjs';
 import {MechanicalTarget} from './components/sling-target.mjs';
 import {PinballPhysics} from './physics.mjs';
-test('reference banks have three upper wrenches, two middle wrenches and three robots',()=>{
+test('requested banks have no upper bank, three individually mounted lower wrenches and three robots',()=>{
  assert.deepEqual(MINI_BUMPERS,[]);
- assert.deepEqual(TARGET_BANKS.map(b=>[b.key,b.count,b.glyph]),[['left-upper',3,'wrench'],['left-middle',2,'wrench'],['right-side',3,'robot']]);
+ assert.deepEqual(TARGET_BANKS.map(b=>[b.key,b.count,b.glyph]),[['left-middle',3,'wrench'],['right-side',3,'robot']]);
  for(const glyph of ['wrench','robot']){
  const p=new MechanicalTarget({glyph,width:.31,height:.30});
  for(const name of ['through-hinge-pin','rear-return-coil','replaceable-strike-plate',`strike-face-${glyph}`])assert.ok(p.root.getObjectByName(name));
@@ -46,7 +46,7 @@ test('derived contact bounds match the actual three extruded strike meshes',()=>
 
 
 test('carrier has formed rim, separate rear plate, fixed studs and a continuous rounded mount',()=>{
- for(const bank of TARGET_BANKS){const parts=targetCarrierParts(bank);if(bank.count!==3){assert.deepEqual(parts,[]);continue;}
+ for(const bank of TARGET_BANKS){const parts=targetCarrierParts(bank);if(bank.count!==3||bank.carrier===false){assert.deepEqual(parts,[]);continue;}
  for(const name of ['formed-silver-aperture-carrier','black-inset-aperture-bezel','sealed-rear-service-plate','continuous-rounded-rear-mount-rail'])assert.ok(parts.some(p=>p.name===name));
  assert.equal(parts.filter(p=>p.name==='carrier-stud').length,3);
  for(const p of parts){assert.ok([...p.geometry.attributes.position.array].every(Number.isFinite));p.geometry.dispose();}
@@ -110,7 +110,7 @@ test('captured right target lower-edge wedge releases with the smooth carrier ra
 test('smooth carrier contacts use the same capsule dimensions and placement as rendering',async()=>{
  const g=await PinballPhysics.create();
  try{
-  for(const bank of TARGET_BANKS.filter(b=>b.count===3)){
+  for(const bank of TARGET_BANKS.filter(b=>b.count===3&&b.carrier!==false)){
    const parts=targetCarrierParts(bank),part=parts.find(p=>p.name==='continuous-rounded-rear-mount-rail');
    const rail=targetCarrierRail(bank),c=part.contact;
    assert.equal(c.type,'capsule');assert.equal(c.radius,rail.radius);assert.equal(c.halfHeight,rail.axisLength/2);
@@ -132,6 +132,18 @@ test('smooth carrier contacts use the same capsule dimensions and placement as r
    });
    assert.equal(matches,1,`${bank.key} has one exact smooth rail contact`);
    for(const p of parts)p.geometry.dispose();
+  }
+ }finally{g.dispose();}
+});
+
+test('three lower wrenches leave the captured loop-side slow ball a real downhill escape',async()=>{
+ const g=await PinballPhysics.create();try{
+  for(const x of[-1.668,-1.643,-1.618])for(const speed of[0,.2,1]){
+   g.restart();g.launch();g.state.kickbackCharges=0;g.state.sideSaveCharges=0;
+   g.ball.setTranslation({x,y:.171,z:-.784},true);g.ball.setLinvel({x:0,y:0,z:speed},true);
+   let passed=false;
+   for(let i=0;i<1200&&g.state.phase==='playing';i++){g.step(1/120);if(g.ballPosition.z>.65){passed=true;break;}}
+   assert.ok(passed,JSON.stringify({x,speed,p:g.ballPosition}));
   }
  }finally{g.dispose();}
 });

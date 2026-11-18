@@ -73,7 +73,7 @@ test("three upper pops follow the reference triangle and retain asymmetric targe
   assert.equal(BUMPERS[2].x,0);
   assert.ok(BUMPERS[2].z>BUMPERS[0].z);
   assert.ok(BUMPERS.slice(0,2).every(p=>Math.abs(p.x)-.4>TABLE.ballRadius+.10));
-  assert.deepEqual(TARGET_BANKS.map(b=>b.count),[3,2,3]);
+  assert.deepEqual(TARGET_BANKS.map(b=>b.count),[3,3]);
   for(const b of TARGET_BANKS)for(const p of [b.a,b.b])assert.ok(Math.abs(p[0])+.07<TABLE.width/2);
   assert.ok(LOWER_LAYOUT.guide.at(-1)[2]>3.3);
 });

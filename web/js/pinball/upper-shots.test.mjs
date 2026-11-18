@@ -63,8 +63,8 @@ test('real flipper releases reach the separate B and UPGRADE routes around the t
   try{
    g.launch();g.state.kickbackCharges=0;g.state.easyOutSaveAvailable=false;g.state.ballSaveAvailable=false;
    for(let i=0;i<30;i++)g.step(1/120,held);
-   g.ball.setTranslation({x:1.6,y:.18,z:2.8},true);g.ball.setLinvel({x:0,y:0,z:2},true);
-   for(let i=0;i<360;i++)g.step(1/120,held);
+   g.ball.setTranslation({x:1.81,y:.18,z:3.05},true);g.ball.setLinvel({x:0,y:0,z:2},true);
+   for(let i=0;i<600;i++)g.step(1/120,held);
    assert.ok(Math.hypot(g.ball.linvel().x,g.ball.linvel().z)<.025);
    for(let i=0;i<release;i++)g.step(1/120);
    for(let i=0;i<700&&g.state.phase==='playing'&&!g.state.upperShots.completions;i++)g.step(1/120,held);

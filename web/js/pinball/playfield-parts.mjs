@@ -1,4 +1,5 @@
 import {railCapsules,capsuleStockGeometry} from './wire-stock.mjs';
+import {UPPER_LANES} from './upper-lanes.mjs';
 import {targetCarrierParts,targetDimensions,targetFaceAngle} from "./mechanical-contact.mjs";
 import { MechanicalSling, MechanicalTarget } from "./components/sling-target.mjs";
 import { LOWER_LAYOUT, TARGET_BANKS, lowerLanePaths, lowerLaneMounts, lowerSlingVertices } from "./layout.mjs";
@@ -48,13 +49,13 @@ export class PlayfieldParts {
     a.roundedBox(spinner, 0.34, 0.3, 0.07, 0, 0, 0, "brass", 0.02);
     a.box(spinner, 0.23, 0.17, 0.025, 0, 0, .045, "dark");
     a.ring(spinner, 0.055, 0.012, 0, 0, .065, "cream").rotation.x = 0;
-    for (const x of [-1.875,-.625,.625,1.875]) {
-      const bar=a.mesh(capsuleStockGeometry(railCapsules([new T.Vector3(x,.23,-5.0),new T.Vector3(x,.23,-4.1)],.035)),"chrome",g);
+    for (const x of UPPER_LANES.rails) {
+      const bar=a.mesh(capsuleStockGeometry(railCapsules([new T.Vector3(x,.23,UPPER_LANES.rearZ),new T.Vector3(x,.23,UPPER_LANES.frontZ)],UPPER_LANES.radius)),"chrome",g);
       bar.name="upper-rollover-bar-"+x;
       for(const z of [-5.0,-4.1]) a.cylinder(g,.055,.23,x,.12,z,"brass");
     }
     a.laneLamps=[];
-    for (const [i,x] of [-1.25,0,1.25].entries()) {
+    for (const [i,x] of UPPER_LANES.centers.entries()) {
       a.text(g,["A","B","C"][i],x,.08,-4.95,.48,.32);
       a.ring(g,.23,.018,x,.065,-4.4,"brass");
       a.laneLamps.push(a.cylinder(g,.14,.018,x,.055,-4.4,"jade"));

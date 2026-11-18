@@ -50,7 +50,7 @@ for (const vx of [-3, -1, 1, 3]) test(`returned shooter contains lateral speed $
     for(let i=0;i<600;i++) g.step(1/120);
     assert.equal(g.state.phase,'ready'); assert.equal(g.state.returnedShooter,true);
     assert.equal(g.state.ballNumber,1); assert.ok(g.ballPosition.y>0);
-    assert.ok(g.ballPosition.x>2.45 && g.ballPosition.x<2.7);
+    assert.ok(g.ballPosition.x>SHOOTER_LAYOUT.returnMinX && g.ballPosition.x<SHOOTER_LAYOUT.returnMaxX);
     assert.ok(Math.abs(g.ballPosition.z-SHOOTER_LAYOUT.ballZ)<.015);
     assert.equal(g.launch(),true);
   } finally {g.dispose();}

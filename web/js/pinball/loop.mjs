@@ -1,21 +1,21 @@
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import { TABLE } from './layout.mjs';
+import { UPPER_LANES } from './upper-lanes.mjs';
 import {cabinetBoundaryBoxes,CABINET_BOUNDARY} from './cabinet-boundary.mjs';
 
 // Ground-level U loop. The upper half-circle returns to existing top lane A.
 // Every visible wall face is also used for contact: no magnetic guide or boost.
-export const LOOP = Object.freeze({width:.36,wall:.018,floor:.04,height:.24,entryZ:1.40,turnZ:-4.90,turnX:-1.675,radius:.425,timeout:8});
-// Existing top lane A rails are at -1.875 and -.625, each radius .035.
-export const LOOP_THROAT = Object.freeze({x:-2.10,z:-.70,halfWidth:LOOP.width/2-TABLE.ballRadius+.012});
-export const LOOP_EXIT = Object.freeze({x:(-1.875-.625)/2,z:-4.45,halfWidth:(1.875-.625)/2-.035-TABLE.ballRadius-.01});
+export const LOOP = Object.freeze({width:.42,wall:.018,floor:.04,height:.24,entryZ:.25,entryX:-1.80,turnZ:-4.82,turnX:-1.55,radius:.55,timeout:8});
+export const LOOP_THROAT = Object.freeze({x:-2.10,z:-1.30,halfWidth:LOOP.width/2-TABLE.ballRadius+.012});
+export const LOOP_EXIT = Object.freeze({x:UPPER_LANES.centers[0],z:-4.45,halfWidth:(UPPER_LANES.rails[1]-UPPER_LANES.rails[0])/2-UPPER_LANES.radius-TABLE.ballRadius-.01});
 export function loopPath() {
   const points=[];
   for(let i=0;i<20;i++){
     const t=i/20,u=1-t;
-    points.push(new T.Vector3(u*u*u*(-1.235)+3*u*u*t*(-1.72)+3*u*t*t*(-2.10)+t*t*t*(-2.10),LOOP.floor,u*u*u*1.4+3*u*u*t*.66+3*u*t*t*(-.1)+t*t*t*(-.7)));
+    points.push(new T.Vector3(u*u*u*LOOP.entryX+3*u*u*t*(-1.98)+3*u*t*t*LOOP_THROAT.x+t*t*t*LOOP_THROAT.x,LOOP.floor,u*u*u*LOOP.entryZ+3*u*u*t*(-.25)+3*u*t*t*(-.8)+t*t*t*LOOP_THROAT.z));
   }
   for(let i=0;i<=40;i++) {
-    const z=-.7+(-4.9+.7)*i/40;
+    const z=LOOP_THROAT.z+(LOOP.turnZ-LOOP_THROAT.z)*i/40;
     const x=-2.10;
     points.push(new T.Vector3(x,LOOP.floor,z));
   }
@@ -48,7 +48,7 @@ function wallPath(side) {
   const path=loopPath();
   // A shallow outer flare accepts the left OUT kickback without a head-on cap.
   if(side<0)for(let i=0;i<20;i++){
-    const t=i/20;path[i].set(-2.115+.015*t*t*(3-2*t),LOOP.floor,1.4-2.1*t);
+    const t=i/20;path[i].set(-2.115+.015*t*t*(3-2*t),LOOP.floor,LOOP.entryZ+(LOOP_THROAT.z-LOOP.entryZ)*t);
   }
   return path;
 }
@@ -63,33 +63,9 @@ export function loopCorridor() {
   });
 }
 
-function backingGeometry(points) {
-  const shape=new T.Shape();points.forEach(([x,z],i)=>i?shape.lineTo(x,-z):shape.moveTo(x,-z));shape.closePath();
-  const g=new T.ExtrudeGeometry(shape,{depth:LOOP.height,bevelEnabled:false,curveSegments:1,steps:1});g.rotateX(-Math.PI/2);g.translate(0,LOOP.floor,0);return g;
-}
-function upperBackingGeometry() {
-  // A thin continuous rear case hides the rail/guide re-entrant corner. Its
-  // right edge ends at the measured rail end, clear of the central bumper.
-  const geometry=backingGeometry([[-1.90,-2.45],[-.72,-2.31],[-.72,-2.22],[-1.90,-2.04]]);
-  const positions=geometry.attributes.position;
-  for(let i=0;i<positions.count;i++)if(positions.getY(i)>.05){
-    const t=Math.max(0,Math.min(1,(positions.getX(i)+1.90)/1.18));
-    positions.setY(i,.28-.11*t);
-  }
-  geometry.computeVertexNormals();return geometry;
-}
-export function loopPocketBackings() {
-  const path=loopPath(),scoop=[];
-  for(let i=5;i<=13;i++){
-    const t=path[i+1].clone().sub(path[i-1]).normalize(),normal=new T.Vector3(-t.z,0,t.x);
-    const p=path[i].clone().addScaledVector(normal,LOOP.width/2+.01+Math.max(0,1-i/20)*.14);scoop.push([p.x,p.z]);
-  }
-  scoop.push([-.52,.065],[-1.28,.065],[-1.28,.805]);
-  return [
-    {name:'scoop-common-support',geometry:backingGeometry(scoop)},
-    {name:'upper-bank-common-support',geometry:upperBackingGeometry()},
-  ];
-}
+// Removed upper bank and moved scoop must leave no legacy blocking solids.
+// The scoop owns its closed housing; the independent loop owns only its rails.
+export function loopPocketBackings() { return []; }
 export function loopHousingProfile() {
   const rear=cabinetBoundaryBoxes().find(b=>b.name==='rear');
   const inner=LOOP.radius+LOOP.width/2+LOOP.wall,hem=.009;
@@ -186,7 +162,7 @@ export class LoopTraversal {
     return b>a?1:-1;
   }
   update(before,p,time) {
-    if(this.stage&&(!this.contains(p)||time-this.started>LOOP.timeout||p.y<.10||p.y>.34||p.x< -2.56||p.x>-.80||p.z< -5.56||p.z>1.75))this.reset();
+    if(this.stage&&(!this.contains(p)||time-this.started>LOOP.timeout||p.y<.10||p.y>.34||p.x< -2.56||p.x>LOOP_EXIT.x+LOOP_EXIT.halfWidth+.05||p.z<LOOP.turnZ-LOOP.radius-LOOP.width/2-.05||p.z>LOOP.entryZ+.35))this.reset();
     if(p.y<.10||p.y>.34)return false;
     // Every real funnel entry, including a left OUT save, earns the same
     // traversal only after reaching the shared narrow throat.
@@ -209,7 +185,7 @@ export class MechanicalLoop {
     for(const part of loopPocketBackings())assets.mesh(part.geometry,'steel',this.root).name=part.name;
     // Flush inserts communicate downhill return without tiny text or a
     // raised guide. Wide chevrons remain readable through the elevated wire.
-    const route=[[-1.33,-4.42],[-1.50,-4.13],[-1.64,-3.86],[-1.50,-3.20]];
+    const route=[[-1.08,-4.42],[-1.30,-4.13],[-1.55,-3.86],[-1.50,-3.20]];
     for(let i=0;i<route.length-1;i++){
       const [x,z]=route[i],[nextX,nextZ]=route[i+1];
       const shape=new T.Shape();[[-.27,-.12],[0,.06],[.27,-.12],[.27,-.01],[0,.17],[-.27,-.01]].forEach(([x,y],i)=>i?shape.lineTo(x,y):shape.moveTo(x,y));shape.closePath();
@@ -228,7 +204,7 @@ export class MechanicalLoop {
     const sides=[[],[]];for(let i=0;i<=8;i++){const t=i/8,p=curve.getPoint(t),v=curve.getTangent(t),n=new T.Vector3(-v.z,0,v.x);for(let side=0;side<2;side++)sides[side].push(p.clone().addScaledVector(n,(side?1:-1)*.035));}
     const lead=new T.Shape();[...sides[0],...sides[1].reverse()].forEach((p,i)=>i?lead.lineTo(p.x,-p.z):lead.moveTo(p.x,-p.z));lead.closePath();
     const leadGeometry=new T.ShapeGeometry(lead);leadGeometry.rotateX(-Math.PI/2);assets.mesh(leadGeometry,'brass',this.root,0,.049,0).name='loop-A-return-leader';
-    assets.text(this.root,'LOOP',-1.10,.052,1.75,.34,.11,'#e8bf61');
+    assets.text(this.root,'LOOP',LOOP.entryX,.052,LOOP.entryZ+.40,.42,.14,'#e8bf61');
     assets.batchStaticAssembly(this.root);
   }
 }

@@ -4,18 +4,19 @@ import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
 import {MechanicalCabinet} from './components/cabinet.mjs';
 import {PinballPhysics} from './physics.mjs';
+import {PLAYFIELD_SIDE_EXTENSION} from './layout.mjs';
 import {appendBoardEdgeFasteners,boardEdgeFasteners} from './cabinet-fasteners.mjs';
 const close=(a,b)=>assert.ok(Math.abs(a-b)<2e-6,`${a} != ${b}`);
 function contactsFor(g){assert.equal(g.boardFastenerContacts.length,20);return g.boardFastenerContacts;}
 
-test('installed board fasteners retain exact original mesh topology, positions and open washer contacts',async()=>{
+test('installed board fasteners retain original mesh topology, widened-edge positions and open washer contacts',async()=>{
  await R.init();const world=new R.World({x:0,y:0,z:0}),cabinet=new MechanicalCabinet();
  try{
   cabinet.root.position.z=.20;cabinet.root.updateMatrixWorld(true);
   const contacts=appendBoardEdgeFasteners(world,R);assert.equal(contacts.length,20);
   const positions=boardEdgeFasteners();assert.equal(positions.length,10);
   for(const side of[-1,1])for(const localZ of[-5.55,-2.975,0,2.975,5.55]){
-   const name=`board-edge-${side}-${localZ}`,x=side*2.66,z=localZ+.20;
+   const name=`board-edge-${side}-${localZ}`,x=side*(2.66+PLAYFIELD_SIDE_EXTENSION),z=localZ+.20;
    const washer=cabinet.root.getObjectByName(name+'-washer'),head=cabinet.root.getObjectByName(name+'-hex-head'),shaft=cabinet.root.getObjectByName(name+'-shank');
    const originalWasher=new T.TorusGeometry(.040,.008,6,16),originalHead=new T.CylinderGeometry(.026,.026,.022,6),originalShaft=new T.CylinderGeometry(.014,.014,.26,12);
    for(const [mesh,original]of[[washer,originalWasher],[head,originalHead],[shaft,originalShaft]]){
@@ -41,7 +42,7 @@ test('four accessible left board mounts physically contact clear incoming balls 
   const g=await PinballPhysics.create();
   try{
    const contacts=contactsFor(g),names=new Map(contacts.map(c=>[c.collider.handle,c.name]));
-   g.launch();const start={x:side*2.58,y:.18,z:z-direction*approach};
+   g.launch();const start={x:side*(2.58+PLAYFIELD_SIDE_EXTENSION),y:.18,z:z-direction*approach};
    let initial=Infinity;g.world.forEachCollider(c=>{if(c.handle===g.ballCollider.handle||c.isSensor())return;const q=c.projectPoint(start,true);initial=Math.min(initial,Math.hypot(start.x-q.point.x,start.y-q.point.y,start.z-q.point.z)-.135);});
    assert.ok(initial>.0049,JSON.stringify({start,initial}));
    g.ball.setTranslation(start,true);g.ball.setLinvel({x:0,y:0,z:direction*3},true);
@@ -55,15 +56,15 @@ test('four accessible left board mounts physically contact clear incoming balls 
  }
 });
 
-// These starts exposed three missing right fasteners before the outer rail was
+// These starts, translated by the cabinet extension, exposed missing fasteners before the outer rail was
 // physical. They are now inside that real rail's ball exclusion volume, and
 // cannot be reused as evidence of valid incoming contact in the combined table.
-test('physical shooter rail excludes the three historical right fastener starts',async()=>{
+test('physical shooter rail excludes right fastener starts translated with the cabinet',async()=>{
  const g=await PinballPhysics.create();
  try{
   assert.ok(g.shooterOuterRailContact);assert.equal(contactsFor(g).length,20);
   for(const z of[-2.775,.20,3.175]){
-   const start={x:2.58,y:.18,z:z-.45},q=g.shooterOuterRailContact.projectPoint(start,true);
+   const start={x:2.58+PLAYFIELD_SIDE_EXTENSION,y:.18,z:z-.45},q=g.shooterOuterRailContact.projectPoint(start,true);
    const margin=Math.hypot(start.x-q.point.x,start.y-q.point.y,start.z-q.point.z)-.135;
    assert.ok(margin<-.04,JSON.stringify({start,margin}));
   }

@@ -6,6 +6,7 @@ import {rampAcrylicParts,rampAcrylicContactParts} from './ramp-acrylic.mjs';
 import {rampHardwareParts,rampHardwareMesh} from './ramp-hardware.mjs';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
 import R from '../vendor/rapier3d-0.17.3/rapier.mjs';
+import {PLAYFIELD_SIDE_EXTENSION,SHOOTER_LAYOUT} from './layout.mjs';
 
 // Shared physical route; traversal and same-ball recapture are regression tested.
 export const RAMP_WIDTH = 0.68;
@@ -167,7 +168,7 @@ export function rampSupportStations(rows=sampleRamp()) {
   if(spanStart>=0){for(let i=stations.length-1;i>=0;i--)if(stations[i]>=spanStart)stations.splice(i,1);stations.push(spanStart,end);}
   return stations.filter(i=>rows[i].p.y>=.46||rows[i].p.x<0).map(i=>{
     const r=rows[i],divider=r.p.x>=-.45&&r.p.z>=-3.7;
-    const x=r.p.x<-.45?-2.65:r.p.z<-3.7?r.p.x:2.35;
+    const x=r.p.x<-.45?-2.65-PLAYFIELD_SIDE_EXTENSION:r.p.z<-3.7?r.p.x:SHOOTER_LAYOUT.innerX;
     const z=r.p.x>=-.45&&r.p.z<-3.7?-5.70:r.p.z;
     const drop=Math.min(.065,Math.max(.025,r.p.y-.38));
     return {i,x,z,drop,y:r.p.y-drop,divider};
@@ -199,8 +200,17 @@ export function rampUndersideParts(rows=sampleRamp()) {
 // Compact formed nose, shared by its visible shell and convex contact.
 export function rampNoseVertices() {
   const vertices=[];
-  for(const [x,z] of [[1.55,-1.25],[2.35,-1.25],[2.35,-1.65]])for(const y of [.035,.32])vertices.push(x,y,z);
+  for(const [x,z] of [[1.55,-1.25],[SHOOTER_LAYOUT.innerX,-1.25],[SHOOTER_LAYOUT.innerX,-1.65]])for(const y of [.035,.32])vertices.push(x,y,z);
   return new Float32Array(vertices);
+}
+// The former square rear cap of the low ramp has room for a ball after
+// widening the cabinet. Fair the new exposed corner into the shooter divider
+// so a descending ball rolls off toward the open table, not into a blind slot.
+function widenedBaseFairing(rows) {
+  const rear=lowRampSegments(rows).at(-1).b;
+  const outline=[[rear.right.x,rear.right.z],[SHOOTER_LAYOUT.innerX,rear.p.z],
+    [SHOOTER_LAYOUT.innerX,rear.p.z-.71]];
+  return new Float32Array(outline.flatMap(([x,z])=>[.035,rear.p.y].flatMap(y=>[x,y,z])));
 }
 export function buildPhysicalRamp(game) {
   const rows=sampleRamp(), colliders=[];
@@ -232,6 +242,7 @@ export function buildPhysicalRamp(game) {
   // A chamfered nose closes the base upstream without a perpendicular
   // dead-end against the shooter divider. Its low prism remains below the ramp.
   colliders.push(game.world.createCollider(R.ColliderDesc.convexHull(rampNoseVertices()).setFriction(.02).setRestitution(.1)));
+  colliders.push(game.world.createCollider(R.ColliderDesc.convexHull(widenedBaseFairing(rows)).setFriction(.02).setRestitution(.13)));
   const baseColliders=colliders.slice(baseColliderStart);
   // Columns sit on the perimeter strip or shooter divider. Rear posts meet
   // the back wall instead of leaving a ball-sized inaccessible pocket.
@@ -284,6 +295,8 @@ export function buildRampBaseVisual(rows=sampleRamp(),material) {
   const add=(name,g)=>{const m=new T.Mesh(g,material);m.name=name;m.castShadow=true;m.receiveShadow=true;root.add(m);return m;};
   const noseTop={positions:rampNoseVertices(),indices:new Uint32Array([1,3,5,0,4,2,0,2,1,2,3,1,2,4,3,4,5,3,4,0,5,0,1,5])};
   add('chamfered-anti-trap-nose',geometry(noseTop));
+  // This outline uses the same clockwise edge order as the nose.
+  add('widened-divider-anti-trap-fairing',geometry({positions:widenedBaseFairing(rows),indices:noseTop.indices}));
   for(const part of baseShellVisualParts(lowRampSegments(rows)))add(part.name,part.geometry);
   return root;
 }

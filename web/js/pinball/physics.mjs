@@ -1,5 +1,6 @@
 import { appendLoopContacts, LoopTraversal } from "./loop.mjs";
-import { SCOOP, scoopContactBoxes } from "./scoop.mjs";
+import { UPPER_LANES } from "./upper-lanes.mjs";
+import { SCOOP, scoopContactBoxes, scoopRearGeometry } from "./scoop.mjs";
 import {appendBoardEdgeFasteners} from './cabinet-fasteners.mjs';
 import {shooterOuterRailGeometry,shooterOuterRailContactVertices} from './shooter-outer-rail.mjs';
 import {cabinetBoundaryBoxes, cabinetBoundaryExtensions} from './cabinet-boundary.mjs';
@@ -8,7 +9,7 @@ import {NudgeMeter} from "./nudge.mjs";
 import { buildPhysicalRamp, rampSensorGates } from "./ramp-geometry.mjs";
 import R from "../vendor/rapier3d-0.17.3/rapier.mjs";
 import * as T from "../vendor/three-0.180.0/three.module.min.js";
-import { TABLE, SHOOTER_LAYOUT, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS, SHOOTER_BACKING, lowerLanePaths, lowerSlingVertices, flipperAngle } from "./layout.mjs";
+import { TABLE, SHOOTER_LAYOUT, BUMPERS, MINI_BUMPERS, LOWER_LAYOUT, TARGET_BANKS, SHOOTER_BACKING, SHOOTER_ROOF, lowerLanePaths, lowerSlingVertices, flipperAngle } from "./layout.mjs";
 import { PinballGameState } from "./game-state.mjs";
 
 export class PinballPhysics {
@@ -41,6 +42,9 @@ export class PinballPhysics {
       ...part,collider:this.box(...part.center,...part.size.map(v=>v/2))
     })));
     this.scoopContacts=scoopContactBoxes().map(part=>this.box(...part.center,...part.size.map(v=>v/2),.25));
+    const scoopRear=scoopRearGeometry();
+    this.scoopContacts.push(this.world.createCollider(R.ColliderDesc.convexHull(scoopRear.getAttribute('position').array).setRestitution(.25).setFriction(.05)));
+    scoopRear.dispose();
     this.loopContacts=appendLoopContacts(this.world,R);
     this.loopTraversal=new LoopTraversal();
     for (const side of [-1,1]) {
@@ -89,9 +93,9 @@ export class PinballPhysics {
     this.plungerStop = this.world.createCollider(R.ColliderDesc.convexHull(plungerContactVertices())
       .setRestitution(.02).setFriction(.08),this.plungerBody);
     // Shooter divider stops above the bumper area; curved roof feeds the ball left.
-    this.segment([2.35, .23, SHOOTER_LAYOUT.frontZ], [2.35, 0.23, -3.9], 0.045);
-    const roof = [[2.72, .23, -4.15], [2.4, .23, -5.2], [1.25, .23, -5.55], [.95, .23, -5.3]];
-    for (let i = 0; i < roof.length - 1; i++) this.segment(roof[i], roof[i + 1], 0.06);
+    const {innerX,frontZ}=SHOOTER_LAYOUT;
+    this.segment([innerX,.23,frontZ],[innerX,.23,-3.9],.045);
+    for (let i = 0; i < SHOOTER_ROOF.length - 1; i++) this.segment(SHOOTER_ROOF[i],SHOOTER_ROOF[i+1],.06);
     // Triangulate the concave backing; one convex hull would intrude into
     // the curved shooter path and the adjacent elevated return route.
     for (let i=0; i<SHOOTER_BACKING.length-2; i++) {
@@ -159,10 +163,10 @@ export class PinballPhysics {
         }
       }
     }
-    for (const x of [-1.875, -.625, .625, 1.875]) this.segment([x, .23, -5.0], [x, .23, -4.1], .035);
+    for (const x of UPPER_LANES.rails) this.segment([x, .23, UPPER_LANES.rearZ], [x, .23, UPPER_LANES.frontZ], UPPER_LANES.radius);
     for (let lane = 0; lane < 3; lane++) {
       const c = this.world.createCollider(R.ColliderDesc.cuboid(.35, .16, .08)
-        .setTranslation((lane - 1) * 1.25, .20, -4.55).setSensor(true));
+        .setTranslation(UPPER_LANES.centers[lane], .20, UPPER_LANES.switchZ).setSensor(true));
       this.hitObjects.set(c.handle, { type: "rollover", lane, key: "lane" + lane });
     }
     for(const side of [-1,1]) {
@@ -347,12 +351,12 @@ export class PinballPhysics {
         this.plungerBody.setNextKinematicTranslation({x:SHOOTER_LAYOUT.x,y:.175,z:PLUNGER_CONTACT.restZ+PLUNGER_CONTACT.pullTravel*this.plungerPull});
       }
       const beforeStep = this.ball.translation();
-      if (this.skillShotPending && beforeStep.x > 2.35 && beforeStep.z < -3.5) this.skillShotArmed = true;
+      if (this.skillShotPending && beforeStep.x > SHOOTER_LAYOUT.innerX && beforeStep.z < -3.5) this.skillShotArmed = true;
       if (this.scoopHeld && this.time >= this.scoopReleaseAt) {
         this.scoopHeld = false; this.scoopCooldown = this.time + 1;
         this.ball.setBodyType(R.RigidBodyType.Dynamic, true);
         this.ball.setGravityScale(1, true);
-        this.ball.setLinvel({x:-1.2,y:0,z:6},true);
+        this.ball.setLinvel({x:0,y:0,z:6},true);
       }
       this.preContactVz=this.ball.linvel().z;
       this.world.step(this.queue);
@@ -370,7 +374,7 @@ export class PinballPhysics {
         if (!this.state.returnedShooter && !this.readyPullActive) { this.resetBall(); continue; }
         const resting = this.ball.translation();
         // Returned balls still simulate: never leave a lost ball stranded in ready.
-        if (resting.y < -1 || Math.abs(resting.x) > 3.2 || resting.z > TABLE.frontZ+.10 || resting.z < -6.5) {
+        if (resting.y < -1 || Math.abs(resting.x) > TABLE.width/2+.45 || resting.z > TABLE.frontZ+.10 || resting.z < -6.5) {
           this.state.launch(); this.state.drain({reason:"out-of-bounds"}); this.resetBall();
         }
         continue;
@@ -380,11 +384,11 @@ export class PinballPhysics {
         this.state.onEvent({type:"loop",id:"loop-"+this.eventSequence++});
       // Only an actual upfield mouth traversal captures. Rear/side hits and
       // elevated flyovers cannot trigger the below-hood switch.
-      const throat = SCOOP.z + .13;
+      const throat=SCOOP.captureZ;
       if (!this.scoopHeld && !this.state.tilted && this.time >= this.scoopCooldown &&
           beforeStep.z > throat && p.z <= throat && v.z < -.25 &&
-          Math.abs(p.x-SCOOP.x) < .32-TABLE.ballRadius && p.y > .10 && p.y < .32) {
-        this.scoopHeld = true; this.scoopReleaseAt = this.time + .8;
+          Math.abs(p.x-SCOOP.x)<SCOOP.width/2-TABLE.ballRadius && p.y>.10 && p.y<.32) {
+        this.scoopHeld=true; this.scoopReleaseAt=this.time+SCOOP.holdSeconds;
         this.skillShotPending = false; this.rampStage = 0;
         this.ball.setLinvel({x:0,y:0,z:0},true); this.ball.setAngvel({x:0,y:0,z:0},true);
         this.ball.setBodyType(R.RigidBodyType.Fixed,true);
@@ -426,14 +430,14 @@ export class PinballPhysics {
       // A returning ball inside the physical shooter channel is not an outlane
       // drain. Keep its position, velocity and ball number; gravity rolls it to
       // the plunger end, and launch() fires from wherever it actually rests.
-      const inShooter = p.x > 2.45 && p.x < 2.70 && p.y > -.1 && p.y < .5;
+      const inShooter=p.x>SHOOTER_LAYOUT.returnMinX&&p.x<SHOOTER_LAYOUT.returnMaxX&&p.y>-.1&&p.y<.5;
       if (!this.state.tilted && inShooter && p.z > SHOOTER_LAYOUT.returnMinZ && p.z < SHOOTER_LAYOUT.returnMaxZ && v.z >= 0) {
         this.state.returnToShooter(); continue;
       }
-      if ((!inShooter && p.z > LOWER_LAYOUT.drainZ) || p.y < -1.0 || Math.abs(p.x) > 3.2 || p.z < -6.5) {
+      if ((!inShooter && p.z > LOWER_LAYOUT.drainZ) || p.y < -1.0 || Math.abs(p.x) > TABLE.width/2+.45 || p.z < -6.5) {
         // Preserve the original loss boundary, but only an ordinary bottom
         // drain can earn a relaxed-mode replay. Escapes must not be hidden.
-        const escaped = p.y < -1 || Math.abs(p.x) > 3.2 || p.z < -6.5 || p.z > TABLE.frontZ + .10;
+        const escaped=p.y< -1||Math.abs(p.x)>TABLE.width/2+.45||p.z< -6.5||p.z>TABLE.frontZ+.10;
         this.state.drain({reason: escaped ? "out-of-bounds" : "normal"}); this.resetBall(); continue;
       }
       const currentVelocity = this.ball.linvel();

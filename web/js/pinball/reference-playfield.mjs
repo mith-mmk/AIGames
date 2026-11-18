@@ -1,5 +1,7 @@
+import {PLAYFIELD_SIDE_EXTENSION,SHOOTER_LAYOUT,TABLE} from './layout.mjs';
+
 /** Reference-inspired printed playfield. These are inks, never collision geometry.
- * Canvas is registered to table-local x [-2.75,2.75], z [-5.75,5.75].
+ * Canvas is registered to table-local x [-TABLE.width/2,TABLE.width/2], z [-5.75,5.75].
  * Mechanical parts remain separate meshes above this surface.
  */
 export const REFERENCE_ART_LANDMARKS = Object.freeze({
@@ -142,25 +144,26 @@ class PlayfieldInk {
 export function drawReferencePlayfield(ctx,{width=1024,height=2048}={}) {
   if(!ctx)throw new TypeError('A canvas 2D context is required');
   if(!(width>0&&height>0))throw new RangeError('Canvas dimensions must be positive');
-  ctx.save();ctx.scale(width/5.5,height/11.5);ctx.translate(2.75,5.75);
+  const halfWidth=TABLE.width/2;
+  ctx.save();ctx.scale(width/TABLE.width,height/11.5);ctx.translate(halfWidth,5.75);
   const ink=new PlayfieldInk(ctx);
-  const base=ctx.createLinearGradient(-2.75,-5.75,2.75,5.75);
+  const base=ctx.createLinearGradient(-halfWidth,-5.75,halfWidth,5.75);
   base.addColorStop(0,'#102334');base.addColorStop(.42,'#1f3f5c');base.addColorStop(.7,'#28445f');base.addColorStop(1,'#263648');
-  ctx.fillStyle=base;ctx.fillRect(-2.75,-5.75,5.5,11.5);
+  ctx.fillStyle=base;ctx.fillRect(-halfWidth,-5.75,TABLE.width,11.5);
   // Broad restrained lighting and panel seams preserve a clean silver ball silhouette.
   const halo=ctx.createRadialGradient(0,.8,.2,0,.8,2.3);
   halo.addColorStop(0,'rgba(28,146,188,.22)');halo.addColorStop(1,'rgba(20,40,62,0)');ctx.fillStyle=halo;ctx.fillRect(-2.4,-1.7,4.8,5.1);
   ink.city();
   for(const s of [-1,1]) {
-    ink.path([[s*2.45,-4.9],[s*2.45,4.8]],null,'#48617a',.018);
-    ink.path([[s*.62,1.48],[s*1.95,2.65],[s*1.96,4.45]],null,'#42627d',.012);
+    ink.path([[s*(2.45+PLAYFIELD_SIDE_EXTENSION),-4.9],[s*(2.45+PLAYFIELD_SIDE_EXTENSION),4.8]],null,'#48617a',.018);
   }
   for(const [x,z,label] of REFERENCE_ART_LANDMARKS.shotLabels) {
     const color=label==='UPGRADE'?'#ffd129':'#57e8fa';ink.arrow(x,z-.32,color);ink.badge(label,x,z,.64,color,label==='UPGRADE'?.12:.15);
   }
   ink.robot();ink.mission();
   // Reserved shooter print; actual in/out lanes are drawn from shared geometry elsewhere.
-  for(const z of [-.5,.25,1,1.75,2.5,3.25])ink.path([[2.50,z-.15],[2.41,z+.04],[2.50,z-.015],[2.59,z+.04]],'#d9ac32');
+  const shotX=SHOOTER_LAYOUT.x;
+  for(const z of [-.5,.25,1,1.75,2.5,3.25])ink.path([[shotX,z-.15],[shotX-.09,z+.04],[shotX,z-.015],[shotX+.09,z+.04]],'#d9ac32');
   for(const z of [3.85,4.10,4.35])ink.path([[-.10,z-.05],[0,z+.045],[.10,z-.05],[0,z+.13]],'#e7bd2d');
   ctx.restore();
   return REFERENCE_ART_LANDMARKS;

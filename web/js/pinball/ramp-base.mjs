@@ -1,14 +1,15 @@
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
+import {SHOOTER_LAYOUT} from './layout.mjs';
 
 // The deck closes the channel-facing top. Only the outside divider strip has
 // an opaque top here. Convexifying both regions together lifts the running
 // surface above the acrylic at the S bend, so retain their actual triangles.
+const outer=row=>new T.Vector3(SHOOTER_LAYOUT.innerX,row.p.y,row.p.z);
 export function baseShell(segments, includeDeck = false) {
   const rows = segments.length ? [segments[0].a, ...segments.map(s => s.b)] : [];
   const positions = [], indices = [], tags = [], strips = [], endpoints = [];
   let activeStrip = 0, activeEndpoint = null;
   const down = v => v.clone().setY(.035);
-  const outer = r => new T.Vector3(2.35, r.p.y, r.p.z);
   function triangle(a, b, c, tag, outward) {
     if (b.clone().sub(a).cross(c.clone().sub(a)).dot(outward) < 0) [b, c] = [c, b];
     const k = positions.length / 3;
@@ -95,7 +96,7 @@ export function baseShellVisualParts(segments) {
     // Preserve the public six-vertex endcap section. It is the same two
     // boundary panels as the shell, with shared vertices for inspection.
     const positions = [];
-    for (const p of [last.left, last.right, new T.Vector3(2.35, last.p.y, last.p.z)]) {
+    for (const p of [last.left,last.right,outer(last)]) {
       positions.push(p.x, .035, p.z, p.x, p.y, p.z);
     }
     const geometry = new T.BufferGeometry();

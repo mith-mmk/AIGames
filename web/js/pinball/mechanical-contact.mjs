@@ -121,7 +121,7 @@ export function targetCarrierRail(bank) {
  return {radius,span,axisLength:span-2*radius,y:.17,rearOffset:.16};
 }
 export function targetCarrierParts(bank) {
- if(bank.count!==3)return [];
+ if(bank.count!==3 || bank.carrier===false)return [];
  const d=targetDimensions(bank),length=Math.hypot(bank.b[0]-bank.a[0],bank.b[2]-bank.a[2]);
  const mount=targetCarrierRail(bank),span=mount.span,top=.17+d.height+.045;
  function rect(w,h,r,x=0,y=0){const p=new T.Shape(),l=x-w/2;p.moveTo(l+r,y);p.lineTo(l+w-r,y);p.quadraticCurveTo(l+w,y,l+w,y+r);p.lineTo(l+w,y+h-r);p.quadraticCurveTo(l+w,y+h,l+w-r,y+h);p.lineTo(l+r,y+h);p.quadraticCurveTo(l,y+h,l,y+h-r);p.lineTo(l,y+r);p.quadraticCurveTo(l,y,l+r,y);return p;}

@@ -14,13 +14,14 @@ function assembly(){
 }
 function dispose(a){a.root.traverse(o=>o.geometry?.dispose());for(const m of Object.values(a.materials))m.dispose();}
 
-test('lower rails merge six paths with all existing support geometry retained',()=>{
+test('lower rails merge all six new paths and retain each shared mount',()=>{
  const a=assembly();try{
  const rails=a.root.children.filter(o=>o.name==='shared-lower-lane-contact-rail');
  assert.equal(rails.length,6);
  assert.deepEqual(rails.map(o=>o.geometry.userData.primitiveRanges.length),[-1,1].flatMap(side=>lowerLanePaths(side).map(p=>p.length-1)));
- assert.equal(rails.reduce((n,o)=>n+o.geometry.userData.primitiveRanges.length,0),104);
- assert.equal(rails.reduce((n,o)=>n+o.geometry.index.count/3,0),19968);
+ const segments=[-1,1].flatMap(lowerLanePaths).reduce((n,path)=>n+path.length-1,0);
+ assert.equal(rails.reduce((n,o)=>n+o.geometry.userData.primitiveRanges.length,0),segments);
+ assert.equal(rails.reduce((n,o)=>n+o.geometry.index.count/3,0),segments*192);
  // Each original mount remains a separate base, stem and collar.
  const mounts=[-1,1].flatMap(lowerLaneMounts);
  for(const [x,y,z] of mounts)for(const cy of [.062,(y+.07)/2,y])assert.ok(a.root.children.some(o=>Math.abs(o.position.x-x)<1e-9&&Math.abs(o.position.y-cy)<1e-9&&Math.abs(o.position.z-z)<1e-9));
@@ -53,6 +54,6 @@ test('each lower stock primitive is closed and matches its actual installed coll
  assert.equal(ids.size-edges.size+r.indexCount/3,2);for(const values of edges.values()){assert.equal(values.length,2);assert.equal(values[0]+values[1],0);}checked++;
  }
  }
- assert.equal(checked,104);
+ assert.equal(checked,paths.reduce((n,path)=>n+path.length-1,0));
  }finally{dispose(a);g.dispose();}
 });

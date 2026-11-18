@@ -10,9 +10,10 @@ function place(g,p,v){assert.ok(clearance(g,p)>=-.001,'initial fixture must be o
 function watch(g){const result={resets:0,drains:[],maxStill:0};const reset=g.ball.setTranslation.bind(g.ball),drain=g.state.drain.bind(g.state);g.ball.setTranslation=(...a)=>{if(g.state.phase==='playing')result.resets++;return reset(...a);};g.state.drain=o=>{result.drains.push({reason:o.reason,p:{...g.ballPosition}});return drain(o);};return result;}
 function finish(g,result){let still=0;for(let i=0;i<3600&&g.state.phase==='playing';i++){g.step(1/120);still=!g.scoopHeld&&Math.hypot(...Object.values(g.ball.linvel()))<.08?still+1:0;result.maxStill=Math.max(result.maxStill,still);}assert.equal(result.resets,0,'no live ball reposition');assert.ok(result.maxStill<360,'no 3-second stationary trap '+JSON.stringify(g.ballPosition));assert.equal(g.state.phase,'ready');assert.equal(result.drains.length,1);assert.equal(result.drains[0].reason,'normal');}
 
-test('old left-sling pocket is now occupied by solid stock, not a valid ball fixture',async()=>{
+test('the interiors of the moved slings are solid stock, not ball-sized pockets',async()=>{
  const g=await PinballPhysics.create();try{
-  for(const z of [1.7,2.3])assert.ok(clearance(g,{x:-1.7,y:.175,z})<-.01,'old pocket must lie inside installed part');
+  const [x,z]=LOWER_LAYOUT.slingCenter;
+  for(const side of [-1,1])assert.ok(clearance(g,{x:side*x,y:.175,z})<-.01,'the three-post foot seals its interior');
  }finally{g.dispose();}
 });
 test('clear mirrored outer and central sling approaches leave through normal drain',async()=>{
@@ -25,22 +26,23 @@ test('archived elevated outside drop stays inside visible cabinet and eventually
 });
 test('easy OUT switch kicks either lane at slow, medium and fast physical crossing without teleport',async()=>{
  for(const side of [-1,1])for(const speed of [1,8,24]){const g=await PinballPhysics.create({difficulty:'relaxed'});try{
-  g.launch();g.state.kickbackCharges=0;place(g,{x:side*2.1,y:.18,z:3.3},{x:0,y:0,z:speed});const observed=watch(g);
+  g.launch();g.state.kickbackCharges=0;place(g,{x:side*LOWER_LAYOUT.outKick.x,y:.18,z:LOWER_LAYOUT.outKick.z-.30},{x:0,y:0,z:speed});const observed=watch(g);
   for(let tick=0;tick<180&&!g.state.easyOutSaveUses;tick++)g.step(1/120);
   assert.equal(g.state.easyOutSaveUses,1);assert.equal(g.state.easyOutSaveAvailable,false);assert.ok(g.ball.linvel().z<-11.9);assert.ok(Math.abs(g.ball.linvel().x)<.01);assert.equal(g.state.ballNumber,1);assert.equal(g.state.phase,'playing');assert.equal(observed.resets,0);assert.equal(observed.drains.length,0);
  }finally{g.dispose();}}
 });
 test('easy OUT allowance is shared across both lanes and not restored by same-ball shooter return',async()=>{
  for(const firstSide of [-1,1]){const g=await PinballPhysics.create({difficulty:'relaxed'});try{g.launch();g.state.kickbackCharges=0;g.state.ballSaveAvailable=false;
-  place(g,{x:firstSide*2.1,y:.18,z:3.3},{x:0,y:0,z:8});for(let i=0;i<120&&!g.state.easyOutSaveUses;i++)g.step(1/120);assert.equal(g.state.easyOutSaveUses,1);
+  const {x,z}=LOWER_LAYOUT.outKick;
+  place(g,{x:firstSide*x,y:.18,z:z-.30},{x:0,y:0,z:8});for(let i=0;i<120&&!g.state.easyOutSaveUses;i++)g.step(1/120);assert.equal(g.state.easyOutSaveUses,1);
   g.state.returnToShooter();g.launch();assert.equal(g.state.easyOutSaveAvailable,false);
   // Separate opposed-lane fixture, never counted as an automatic live rescue.
-  place(g,{x:-firstSide*2.1,y:.18,z:3.3},{x:0,y:0,z:8});const observed=watch(g);finish(g,observed);assert.equal(g.state.easyOutSaveUses,1);assert.equal(g.state.ballNumber,2);assert.equal(g.state.easyOutSaveAvailable,true,'only next numbered ball reloads');
+  place(g,{x:-firstSide*x,y:.18,z:z-.30},{x:0,y:0,z:8});const observed=watch(g);finish(g,observed);assert.equal(g.state.easyOutSaveUses,1);assert.equal(g.state.ballNumber,2);assert.equal(g.state.easyOutSaveAvailable,true,'only next numbered ball reloads');
  }finally{g.dispose();}}
 });
 test('standard and tilted easy OUT descents are not rescued',async()=>{
  for(const difficulty of ['standard','relaxed'])for(const side of [-1,1]){const g=await PinballPhysics.create({difficulty});try{g.launch();g.state.kickbackCharges=0;g.state.ballSaveAvailable=false;if(difficulty==='relaxed'){g.state.tilted=true;g.tiltUntil=g.time+10;}
-  place(g,{x:side*2.1,y:.18,z:3.3},{x:0,y:0,z:8});const observed=watch(g);finish(g,observed);assert.equal(g.state.easyOutSaveUses,0);assert.equal(g.state.ballNumber,2);
+  place(g,{x:side*LOWER_LAYOUT.outKick.x,y:.18,z:LOWER_LAYOUT.outKick.z-.30},{x:0,y:0,z:8});const observed=watch(g);finish(g,observed);assert.equal(g.state.easyOutSaveUses,0);assert.equal(g.state.ballNumber,2);
  }finally{g.dispose();}}
 });
 test('uncharged center remains an open physical drain in both difficulties',async()=>{

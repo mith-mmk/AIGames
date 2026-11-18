@@ -1,3 +1,5 @@
+import {PLAYFIELD_SIDE_EXTENSION} from './layout.mjs';
+import {UPPER_LANES} from './upper-lanes.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
@@ -33,7 +35,7 @@ test('installed shooter roof uses three closed capsule stocks on the existing ph
     const g=roof.geometry,p=g.attributes.position,ranges=g.userData.primitiveRanges;
     assert.equal(ranges.length,3);
     assert.equal(g.index.count/3,576); // Old open tubes: 48; closed stocks add 528.
-    const ends=[[2.72,.23,-4.15],[2.4,.23,-5.2],[1.25,.23,-5.55],[.95,.23,-5.3]];
+    const ends=[[2.72+PLAYFIELD_SIDE_EXTENSION,.23,-4.15],[2.58,.23,-5.2],[1.25,.23,-5.55],[.95,.23,-5.3]];
     for(const [part,range] of ranges.entries()){
       const line=new T.Line3(new T.Vector3(...ends[part]),new T.Vector3(...ends[part+1]));
       const vertices=new Map(),edges=new Map();
@@ -69,7 +71,7 @@ test('installed rollover bars are closed stocks on actual capsule axes and retai
     // Avoid coupling rollover mount fidelity to unrelated lower guard counts.
     const {BUMPERS}=await import('./layout.mjs');
     assert.equal([...game.hitObjects.values()].filter(hit=>hit.type==='bumper').length,BUMPERS.length);
-    for(const x of[-1.875,-.625,.625,1.875]){
+    for(const x of UPPER_LANES.rails){
       const bar=root.getObjectByName('upper-rollover-bar-'+x);
       assert.ok(bar?.isMesh);assert.equal(bar.material,assets.materials.chrome);
       const matches=colliders.filter(c=>c.shape.type===2&&Math.abs(c.translation().x-x)<1e-6&&Math.abs(c.translation().z+4.55)<1e-6&&Math.abs(c.shape.radius-.035)<1e-9);

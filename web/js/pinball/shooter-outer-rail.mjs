@@ -1,7 +1,7 @@
 import * as T from '../vendor/three-0.180.0/three.module.min.js';
-import {LOWER_LAYOUT} from './layout.mjs';
+import {LOWER_LAYOUT,SHOOTER_LAYOUT} from './layout.mjs';
 
-export const SHOOTER_OUTER_RAIL=Object.freeze({x:2.72,y:.23,radius:.06,frontZ:4.55+LOWER_LAYOUT.downstreamOffset,rearZ:-4.15,sides:8});
+export const SHOOTER_OUTER_RAIL=Object.freeze({x:SHOOTER_LAYOUT.outerX,y:.23,radius:.06,frontZ:4.55+LOWER_LAYOUT.downstreamOffset,rearZ:-4.15,sides:8});
 export function shooterOuterRailGeometry() {
  const d=SHOOTER_OUTER_RAIL;
  const curve=new T.CatmullRomCurve3([new T.Vector3(d.x,d.y,d.frontZ),new T.Vector3(d.x,d.y,d.rearZ)]);

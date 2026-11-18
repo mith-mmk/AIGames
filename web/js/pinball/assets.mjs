@@ -11,7 +11,7 @@ import * as T from "../vendor/three-0.180.0/three.module.min.js";
 import { drawReferencePlayfield, REFERENCE_ART_LANDMARKS } from "./reference-playfield.mjs";
 import { PlayfieldParts } from "./playfield-parts.mjs";
 import { WorkshopMechanisms } from "./mechanisms.mjs";
-import { TABLE, SHOOTER_LAYOUT, BUMPERS, MINI_BUMPERS, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING } from "./layout.mjs";
+import { TABLE, SHOOTER_LAYOUT, BUMPERS, MINI_BUMPERS, flipperAngle, LOWER_LAYOUT, SHOOTER_BACKING, SHOOTER_ROOF } from "./layout.mjs";
 export class WorkshopAssets {
   constructor() {
     this.root = new T.Group();
@@ -173,7 +173,7 @@ export class WorkshopAssets {
     const geometry=new T.ShapeGeometry(outline),pos=geometry.attributes.position,uv=geometry.attributes.uv;
     // Preserve original art registration; the added apron-edge strip clamps
     // to the existing border ink instead of stretching every gameplay landmark.
-    for(let i=0;i<pos.count;i++)uv.setXY(i,(pos.getX(i)+2.75)/5.5,(pos.getY(i)+5.75)/11.5);
+    for(let i=0;i<pos.count;i++)uv.setXY(i,pos.getX(i)/TABLE.width+.5,(pos.getY(i)+5.75)/11.5);
     const surface=this.mesh(geometry,new T.MeshStandardMaterial({map:texture,roughness:.30,metalness:.1}),this.root,0,.045,0);
     surface.name="registered-playfield-print-with-open-drain";
     surface.rotation.x=-Math.PI/2;
@@ -208,10 +208,9 @@ export class WorkshopAssets {
     this.robot();
     new WorkshopMechanisms(this).build(g);
     // Shooter walls match the physical straight-segment guide layout.
-    this.tube(g,[[2.35,.23,SHOOTER_LAYOUT.frontZ],[2.35,.23,-3.9]],.045,"chrome");
+    this.tube(g,[[SHOOTER_LAYOUT.innerX,.23,SHOOTER_LAYOUT.frontZ],[SHOOTER_LAYOUT.innerX,.23,-3.9]],.045,"chrome");
     const outerRail=this.mesh(shooterOuterRailGeometry(),"chrome",g);outerRail.name='shooter-outer-rail';
-    const roof=[[2.72,.23,-4.15],[2.4,.23,-5.2],[1.25,.23,-5.55],[.95,.23,-5.3]];
-    const roofStock=this.mesh(capsuleStockGeometry(railCapsules(roof.map(p=>new T.Vector3(...p)),.06)),"chrome",g);roofStock.name="shooter-roof-capsule-stock";
+    const roofStock=this.mesh(capsuleStockGeometry(railCapsules(SHOOTER_ROOF.map(p=>new T.Vector3(...p)),.06)),"chrome",g);roofStock.name="shooter-roof-capsule-stock";
     const backingShape=new T.Shape();
     SHOOTER_BACKING.forEach(([x,z],i)=>i?backingShape.lineTo(x,-z):backingShape.moveTo(x,-z));
     backingShape.closePath();

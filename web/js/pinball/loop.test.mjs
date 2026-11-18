@@ -52,33 +52,20 @@ test('rear housing has an elliptical outside silhouette and stays below the shar
  }finally{g.dispose();}
 });
 
-test('upper backing remains outside the live channel and sheds its top toward the open carrier end',()=>{
- const parts=loopPocketBackings();try{
-  const upper=parts.find(p=>p.name==='upper-bank-common-support').geometry;
-  upper.computeBoundingBox();
-  assert.ok(upper.boundingBox.min.x>=-1.90001,'backing does not coincide with the -1.92 inner contact face');
-  const positions=upper.attributes.position;let lowRear=0,highFront=0;
-  for(let i=0;i<positions.count;i++){
-   const x=positions.getX(i),y=positions.getY(i),z=positions.getZ(i);
-   if(x> -.73&&y>.16&&y<.18)lowRear++;
-   if(x< -1.89&&z> -2.05&&y>.27)highFront++;
-  }
-  assert.ok(lowRear>0&&highFront>0,'the top descends laterally rather than making an uphill floor valley');
- }finally{for(const p of parts)p.geometry.dispose();}
-});
+test('removed bank and independent scoop leave no legacy loop backings',()=>{assert.deepEqual(loopPocketBackings(),[]);});
 
 test('ordered loop switches reject reverse, airborne, shortcut and repeated exit',()=>{
  const p=(x,z,y=.175)=>({x,z,y});
  const enter=t=>t.update(p(LOOP_THROAT.x,LOOP_THROAT.z+.06),p(LOOP_THROAT.x,LOOP_THROAT.z-.06),0);
  const turn=t=>t.update(p(LOOP.turnX-.02,LOOP.turnZ-LOOP.radius),p(LOOP.turnX+.02,LOOP.turnZ-LOOP.radius),1);
- const exit=t=>t.update(p(-1.25,-4.5),p(-1.25,-4.4),2);
- const t=new LoopTraversal();t.update(p(-1.20,1.46),p(-1.27,1.34),0);assert.equal(t.stage,0,'wide mouth alone is not the traversal gate');assert.ok(t.contains(p(-2.1,.7)),'shared outer funnel is a real route');assert.equal(t.contains(p(-2.4,.7)),false);assert.equal(t.contains(p(-1,.5)),false);assert.equal(exit(t),false);enter(t);turn(t);assert.equal(exit(t),true);assert.equal(exit(t),false);
+ const exit=t=>t.update(p(LOOP_EXIT.x,-4.5),p(LOOP_EXIT.x,-4.4),2);
+ const t=new LoopTraversal();t.update(p(-1.20,1.46),p(-1.27,1.34),0);assert.equal(t.stage,0,'wide mouth alone is not the traversal gate');assert.ok(t.contains(p(-2.1,0)),'shared outer funnel is a real route');assert.equal(t.contains(p(-2.6,0)),false);assert.equal(t.contains(p(-1,.5)),false);assert.equal(exit(t),false);enter(t);turn(t);assert.equal(exit(t),true);assert.equal(exit(t),false);
  enter(t);t.update(p(-2.2,-2),p(-2.2,-2,.5),.5);turn(t);assert.equal(exit(t),false);
  enter(t);t.update(p(-2.2,-2),p(-1.4,-2),.5);turn(t);assert.equal(exit(t),false);
  enter(t);t.update(p(LOOP_THROAT.x,LOOP_THROAT.z-.06),p(LOOP_THROAT.x,LOOP_THROAT.z+.06),.1);turn(t);assert.equal(exit(t),false);
  enter(t);turn(t);t.update(p(LOOP.turnX+.02,LOOP.turnZ-LOOP.radius),p(LOOP.turnX-.02,LOOP.turnZ-LOOP.radius),1.1);assert.equal(exit(t),false);
  enter(t);turn(t);assert.equal(t.update(p(0,-4.5),p(0,-4.4),2),false);
- enter(t);turn(t);assert.equal(t.update(p(-1.25,-4.5),p(-1.25,-4.4),LOOP.timeout+1),false);
+ enter(t);turn(t);assert.equal(t.update(p(LOOP_EXIT.x,-4.5),p(LOOP_EXIT.x,-4.4),LOOP.timeout+1),false);
 });
 
 test('bat-side and OUT-save-side recognizer paths share the same throat-to-U-to-A 300-point contract',()=>{
@@ -88,27 +75,27 @@ test('bat-side and OUT-save-side recognizer paths share the same throat-to-U-to-
   const t=new LoopTraversal(),state=new PinballGameState();state.launch();
   const p=([x,z])=>({x,y:.175,z});
   assert.equal(t.update(p(approach[0]),p(approach[1]),0),false);assert.equal(t.stage,0);
-  assert.equal(t.update(p([-2.10,-.64]),p([-2.10,-.76]),.5),false);
+  assert.equal(t.update(p([LOOP_THROAT.x,LOOP_THROAT.z+.06]),p([LOOP_THROAT.x,LOOP_THROAT.z-.06]),.5),false);
   assert.equal(t.stage,1);assert.equal(state.score,0);
   assert.equal(t.update(p([LOOP.turnX-.02,LOOP.turnZ-LOOP.radius]),p([LOOP.turnX+.02,LOOP.turnZ-LOOP.radius]),1.5),false);
-  assert.equal(t.update(p([-1.25,-4.50]),p([-1.25,-4.40]),2),true);
+  assert.equal(t.update(p([LOOP_EXIT.x,-4.50]),p([LOOP_EXIT.x,-4.40]),2),true);
   assert.equal(state.onEvent({type:'loop',id:'real-ordered-passage'}),true);assert.equal(state.score,300);
  }
 });
 
 test('positioned mouth shots either complete or return to a normal drain without assistance',async()=>{
- for(const speed of[18,22,26])for(const offset of[-.025,0,.025]){
+ for(const speed of[12,18,24])for(const offset of[-.025,0,.025]){
   const g=await PinballPhysics.create();try{
    g.launch();g.state.kickbackCharges=0;
-   const norm=Math.hypot(.485,.74),tx=-.485/norm,tz=-.74/norm;
-   g.ball.setTranslation({x:-1.235-tx*.1-tz*offset,y:.175,z:1.4-tz*.1+tx*offset},true);
+   const tangent=loopPath()[1].clone().sub(loopPath()[0]).normalize(),tx=tangent.x,tz=tangent.z;
+   g.ball.setTranslation({x:LOOP.entryX-tx*.1-tz*offset,y:.175,z:LOOP.entryZ-tz*.1+tx*offset},true);
    g.ball.setLinvel({x:tx*speed,y:0,z:tz*speed},true);
    let completed=0,resets=0;const drains=[],original=g.state.onEvent.bind(g.state),drain=g.state.drain.bind(g.state),set=g.ball.setTranslation.bind(g.ball);
    g.state.onEvent=e=>{if(e.type==='loop')completed++;return original(e);};
    g.state.drain=info=>{drains.push({info,p:{...g.ballPosition}});return drain(info);};
    g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')resets++;return set(...args);};
    for(let i=0;i<7200&&g.state.phase==='playing'&&!completed;i++)g.step(1/120);
-   const expected=speed===26||(speed===22&&offset!==.025)?1:0;
+   const expected=speed>=18?1:0;
    assert.equal(completed,expected,JSON.stringify({speed,offset,p:g.ballPosition}));
    assert.equal(resets,0);
    if(!expected){
@@ -124,11 +111,11 @@ test('five adjacent real right-flipper timings complete after a positioned cradl
   const g=await PinballPhysics.create();try{
    g.launch();g.state.kickbackCharges=0;
    for(let i=0;i<30;i++)g.step(1/120,{right:true});
-   g.ball.setTranslation({x:1.6,y:.18,z:2.8},true);g.ball.setLinvel({x:0,y:0,z:2},true);
+   g.ball.setTranslation({x:1.81,y:.18,z:3.05},true);g.ball.setLinvel({x:0,y:0,z:2},true);
    let completed=0,resets=0;const original=g.state.onEvent.bind(g.state),set=g.ball.setTranslation.bind(g.ball);
    g.state.onEvent=e=>{if(e.type==='loop')completed++;return original(e);};
    g.ball.setTranslation=(...args)=>{if(g.state.phase==='playing')resets++;return set(...args);};
-   for(let i=0;i<360;i++)g.step(1/120,{right:true});
+   for(let i=0;i<600;i++)g.step(1/120,{right:true});
    for(let i=0;i<release;i++)g.step(1/120);
    for(let i=0;i<1200&&g.state.phase==='playing'&&!completed;i++)g.step(1/120,{right:true});
    assert.equal(completed,1,'release '+release);assert.equal(resets,0);assert.equal(g.state.ballNumber,1);
