@@ -139,3 +139,24 @@ export function targetCarrierParts(bank) {
  const rail=new T.CapsuleGeometry(mount.radius,mount.axisLength,6,16);rail.rotateZ(Math.PI/2);rail.translate(0,mount.y,-mount.rearOffset);parts.push({name:'continuous-rounded-rear-mount-rail',material:'steel',geometry:rail,contact:{type:'capsule',radius:mount.radius,halfHeight:mount.axisLength/2,y:mount.y,z:-mount.rearOffset}});
  return parts;
 }
+
+
+// Only the central strike face carries a solenoid. Side/back rubbers are
+// passive guides, never a radial outward kick into an IN or OUT lane.
+// The central kicker acts along the long rubber run; rounded post ends are passive.
+export function slingStrikeFace(points) {
+  const [a,,b]=points;
+  const dx=b[0]-a[0],dz=b[1]-a[1],length=Math.hypot(dx,dz);
+  const side=Math.sign(a[0]+b[0]);
+  let nx=-dz/length,nz=dx/length;
+  if(nx*side>0){nx=-nx;nz=-nz;}
+  return {a,b,nx,nz,length};
+}
+export function slingStrikeSegment(points, start, end) {
+  const face=slingStrikeFace(points);
+  const x=(start[0]+end[0])/2,z=(start[2]+end[2])/2;
+  const dx=face.b[0]-face.a[0],dz=face.b[1]-face.a[1];
+  const t=((x-face.a[0])*dx+(z-face.a[1])*dz)/(face.length**2);
+  const distance=(x-face.a[0])*face.nx+(z-face.a[1])*face.nz;
+  return t>=.15 && t<=.88 && distance>.025 ? face : null;
+}

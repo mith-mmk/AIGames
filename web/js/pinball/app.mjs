@@ -1,3 +1,4 @@
+import { EASY_REPLAY_SECONDS } from "./game-state.mjs";
 import { FlipperInputTimeline } from "./flipper-input.mjs";
 import { pinballFrameDelta } from "./frame-time.mjs";
 import { PinballSound } from "./sound.mjs";
@@ -231,7 +232,7 @@ export class PinballTablePreview {
     document.querySelector("#gameover").hidden = state.phase !== "gameover";
     document.querySelector("#final-score").textContent = state.score.toLocaleString("ja-JP");
     document.querySelector("#rollovers").textContent = ["A","B","C"].map((label,i)=>`${label} ${state.rollovers?.[i] ? "●" : "○"}`).join("　");
-    document.querySelector("#ball-save").textContent = state.difficulty === "relaxed" ? (state.tilted || state.phase === "gameover" ? "BALL SAVE 終了" : state.ballSaved ? "BALL SAVE · 再発射" : state.ballSaveAvailable && state.ballSaveRemaining > 0 ? `BALL SAVE ${Math.ceil(state.ballSaveRemaining)}秒 · 1回` : state.ballSaveAvailable && !state.ballLaunched && state.phase === "ready" ? "BALL SAVE 発射後10秒" : "BALL SAVE 使用済み / 終了") : "STANDARD · 猶予なし";
+    document.querySelector("#ball-save").textContent = state.difficulty === "relaxed" ? (state.tilted || state.phase === "gameover" ? "BALL SAVE 終了" : state.ballSaved ? "BALL SAVE · 再発射" : state.ballSaveAvailable && state.ballSaveRemaining > 0 ? `BALL SAVE ${Math.ceil(state.ballSaveRemaining)}秒 · 1回` : state.ballSaveAvailable && !state.ballLaunched && state.phase === "ready" ? `BALL SAVE 発射後${EASY_REPLAY_SECONDS}秒` : "BALL SAVE 使用済み / 終了") : "STANDARD · 猶予なし";
     document.querySelector("#kickback").textContent = `CENTER SAVE ${state.kickbackCharges ?? 0} / 1`;
     if(state.lastAward && state.lastAward.score!==this.shownAwardScore) {
       this.shownAwardScore=state.lastAward.score;this.awardShownAt=performance.now();this.shownAward=state.lastAward;
@@ -274,7 +275,8 @@ export class PinballTablePreview {
       const lit=mission && (mission.allComplete || i<Math.floor(this.assets.missionLamps.length*mission.progress/Math.max(1,mission.target)));
       lamp.material=this.assets.materials[lit?"light":"amber"];
     }
-    const material=on=>this.assets.materials[on?"light":"dark"];
+    const savesActive=!state.tilted&&state.phase!=="gameover";
+    const material=on=>this.assets.materials[on&&savesActive?"light":"dark"];
     if(this.assets.centerSaveLamp) this.assets.centerSaveLamp.material=material(state.kickbackCharges);
     for(const [i,lamp] of (this.assets.outSaveLamps??[]).entries())
       lamp.material=material(state.easyOutSaveAvailable || (i===0 && state.sideSaveCharges));

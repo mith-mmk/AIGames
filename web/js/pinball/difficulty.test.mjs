@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {PinballGameState} from './game-state.mjs';
+import {PinballGameState,EASY_REPLAY_SECONDS} from './game-state.mjs';
 import {PinballPhysics} from './physics.mjs';
 
 const relaxed = () => new PinballGameState({difficulty:'relaxed'});
@@ -16,7 +16,7 @@ test('relaxed replay is once per numbered ball with a finite three-save limit',(
  for(let ball=1;ball<=3;ball++){
   assert.equal(s.ballNumber,ball);assert.equal(s.kickbackCharges,1);
   assert.equal(s.ballSaveRemaining,0);assert.equal(s.ballSaveActive,false);
-  s.advanceTime(50);s.launch();assert.equal(s.ballSaveRemaining,10);
+  s.advanceTime(50);s.launch();assert.equal(s.ballSaveRemaining,EASY_REPLAY_SECONDS);
   s.kickbackCharges=0;s.advanceTime(2);s.award(100,'test');
   s.drain();drains++;assert.equal(s.ballNumber,ball);assert.equal(s.phase,'ready');assert.equal(s.ballSaved,true);
   assert.equal(s.ballSaveAvailable,false);assert.equal(s.kickbackCharges,0);
@@ -27,12 +27,12 @@ test('relaxed replay is once per numbered ball with a finite three-save limit',(
 });
 test('save deadline is playing time only, excludes exact expiry and never renews on shooter return',()=>{
  const s=relaxed();s.launch();s.advanceTime(4);s.kickbackCharges=0;
- s.setPaused(true);s.advanceTime(100);assert.equal(s.ballSaveRemaining,6);
- s.setPaused(false);s.returnToShooter();s.advanceTime(100);assert.equal(s.ballSaveRemaining,6);
- s.launch();assert.equal(s.ballSaveRemaining,6);assert.equal(s.kickbackCharges,0);
- s.advanceTime(6);assert.equal(s.ballSaveActive,false);s.drain();assert.equal(s.ballNumber,2);assert.equal(s.ballSaveUses,0);
- const before=relaxed();before.launch();before.advanceTime(9.999);before.drain();assert.equal(before.ballNumber,1);
- const ticks=relaxed();ticks.launch();for(let i=0;i<1200;i++)ticks.advanceTime(1/120);
+ s.setPaused(true);s.advanceTime(100);assert.equal(s.ballSaveRemaining,EASY_REPLAY_SECONDS-4);
+ s.setPaused(false);s.returnToShooter();s.advanceTime(100);assert.equal(s.ballSaveRemaining,EASY_REPLAY_SECONDS-4);
+ s.launch();assert.equal(s.ballSaveRemaining,EASY_REPLAY_SECONDS-4);assert.equal(s.kickbackCharges,0);
+ s.advanceTime(EASY_REPLAY_SECONDS-4);assert.equal(s.ballSaveActive,false);s.drain();assert.equal(s.ballNumber,2);assert.equal(s.ballSaveUses,0);
+ const before=relaxed();before.launch();before.advanceTime(EASY_REPLAY_SECONDS-.001);before.drain();assert.equal(before.ballNumber,1);
+ const ticks=relaxed();ticks.launch();for(let i=0;i<120*EASY_REPLAY_SECONDS;i++)ticks.advanceTime(1/120);
  assert.equal(ticks.ballSaveRemaining,0);assert.equal(ticks.ballSaveActive,false);
 });
 test('TILT and escaped balls bypass replay; saved drains reset multiplier but retain mission progress',()=>{
@@ -59,7 +59,7 @@ test('physical countdown stops during pause and ready; restart preserves selecte
  const g=await PinballPhysics.create({difficulty:'relaxed'});
  try{
   g.step(.1);assert.equal(g.state.ballSaveRemaining,0);g.launch();g.step(.1);
-  const remaining=g.state.ballSaveRemaining;assert.ok(remaining<10&&remaining>=9.9-1e-9);
+  const remaining=g.state.ballSaveRemaining;assert.ok(remaining<EASY_REPLAY_SECONDS&&remaining>=EASY_REPLAY_SECONDS-.1-1e-9);
   g.setPaused(true);g.step(.1);assert.equal(g.state.ballSaveRemaining,remaining);g.setPaused(false);
   g.state.returnToShooter();g.step(.1);assert.equal(g.state.ballSaveRemaining,remaining);
   g.restart();assert.equal(g.state.difficulty,'relaxed');assert.equal(g.state.ballSaveRemaining,0);
@@ -100,4 +100,16 @@ test('standard preserves default trajectory and Easy changes only the designed h
   g.state.difficulty='standard';g.restart();
   assert.deepEqual({...g.world.gravity},standardGravity);
  } finally {g.dispose();}
+});
+
+test('Easy narrows the resting catch gap but leaves a full ball-width drain',async()=>{
+ const {LOWER_LAYOUT,TABLE,flipperAngle}=await import('./layout.mjs');
+ const {flipperProfile}=await import('./mechanical-contact.mjs');
+ const gap=angle=>2*(LOWER_LAYOUT.flipperPivot[0]-
+  Math.max(...flipperProfile().map(([x,z])=>x*Math.cos(angle)+z*Math.sin(angle))));
+ const normal=gap(flipperAngle(false,false,'standard'));
+ const easy=gap(flipperAngle(false,false,'relaxed'));
+ assert.ok(easy<normal-.14,'the mode alters catch geometry');
+ assert.ok(easy>2*TABLE.ballRadius+.12,'the ball can still fall between the resting bats');
+ assert.ok(gap(flipperAngle(false,true,'relaxed'))>2*TABLE.ballRadius+.15);
 });

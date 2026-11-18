@@ -3,7 +3,7 @@ import { SCOOP, scoopContactBoxes } from "./scoop.mjs";
 import {appendBoardEdgeFasteners} from './cabinet-fasteners.mjs';
 import {shooterOuterRailGeometry,shooterOuterRailContactVertices} from './shooter-outer-rail.mjs';
 import {cabinetBoundaryBoxes, cabinetBoundaryExtensions} from './cabinet-boundary.mjs';
-import { targetCarrierParts, targetFaceAngle, targetDimensions, targetContactBoxes, flipperContactVertices, PLUNGER_CONTACT, targetContactId, slingContactPoints, slingBedGeometry, plungerContactVertices } from "./mechanical-contact.mjs";
+import { targetCarrierParts, targetFaceAngle, targetDimensions, targetContactBoxes, flipperContactVertices, PLUNGER_CONTACT, targetContactId, slingContactPoints, slingStrikeSegment, slingBedGeometry, plungerContactVertices } from "./mechanical-contact.mjs";
 import {NudgeMeter} from "./nudge.mjs";
 import { buildPhysicalRamp, rampSensorGates } from "./ramp-geometry.mjs";
 import R from "../vendor/rapier3d-0.17.3/rapier.mjs";
@@ -112,8 +112,14 @@ export class PinballPhysics {
       for (const path of lowerLanePaths(side)) {
         for (let k=0;k<path.length-1;k++) this.segment(path[k],path[k+1],LOWER_LAYOUT.guideRadius);
       }
-      const sling = slingContactPoints(lowerSlingVertices(side));
-      for (let i = 0; i < sling.length - 1; i++) this.segment(sling[i], sling[i + 1], .025, { type: "sling", x: side * LOWER_LAYOUT.slingCenter[0], z: LOWER_LAYOUT.slingCenter[1], points: 25, label: "SLING", key: "s" + side });
+      const vertices=lowerSlingVertices(side),sling=slingContactPoints(vertices);
+      for (let i = 0; i < sling.length - 1; i++) {
+        const face=slingStrikeSegment(vertices,sling[i],sling[i+1]);
+        this.segment(sling[i],sling[i+1],.025,face ? {
+          type:"sling",x:side*LOWER_LAYOUT.slingCenter[0],z:LOWER_LAYOUT.slingCenter[1],
+          normal:{x:face.nx,z:face.nz},points:25,label:"SLING",key:"s"+side
+        } : null);
+      }
     }
     for(const bank of TARGET_BANKS) {
       const dx=bank.b[0]-bank.a[0], dz=bank.b[2]-bank.a[2];
@@ -263,7 +269,7 @@ export class PinballPhysics {
       this.skillShotPending = false;
       skillShot = h.lane === 2 && this.skillShotArmed && this.time <= this.skillShotDeadline;
     }
-    this.cooldowns.set(contactKey, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, targetId:h.targetId, id: "contact-" + this.eventSequence++ });
+    this.cooldowns.set(contactKey, this.time + .16); const accepted = this.state.onEvent({ type: h.type, lane: h.lane, targetId:h.targetId, forward:this.ball.linvel().z<0, id: "contact-" + this.eventSequence++ });
     if (accepted && skillShot) this.state.onEvent({type:"skill-shot",id:"skill-"+this.eventSequence++});
     if (["bumper", "sling", "bank", "target"].includes(h.type) && accepted) {
       const bank=TARGET_BANKS.find(bank=>bank.key===h.key);
@@ -277,8 +283,12 @@ export class PinballPhysics {
       const p = this.ball.translation(), dx = p.x - h.x, dz = p.z - h.z, len = Math.hypot(dx, dz) || 1;
       const v = this.ball.linvel();
       if (h.type === "sling") {
-        const strength=this.state.difficulty==="relaxed"?.12:.18;
-        this.ball.applyImpulse({ x: dx / len * strength, y: 0, z: dz / len * strength }, true);
+        const normal=h.normal??{x:dx/len,z:dz/len};
+        const outward=v.x*normal.x+v.z*normal.z;
+        // Minimum outward speed, not an unbounded additive velocity. A strong
+        // shot keeps its tangent component and is never steered to a target.
+        const impulse=Math.max(0,6-outward)*this.ball.mass();
+        this.ball.applyImpulse({x:normal.x*impulse,y:0,z:normal.z*impulse},true);
       }
       else {
         const outward = (v.x * dx + v.z * dz) / len;
@@ -396,7 +406,9 @@ export class PinballPhysics {
       if (crosses(LOWER_LAYOUT.centerKick) && !this.state.tilted && this.state.kickbackCharges &&
           this.state.onEvent({ type: "kickback", id: "save-" + this.eventSequence++ })) {
         this.returnPending = false;
-        this.ball.applyImpulse({x:-p.x*.20,y:.52,z:(-LOWER_LAYOUT.centerKick.speed-v.z)*this.ball.mass()},true);
+        // The visible kicker lifts over either bat, including a falling bat.
+        // A lower arc knocks into the blades and can send the ball back down.
+        this.ball.applyImpulse({x:-p.x*.30,y:.88,z:(-LOWER_LAYOUT.centerKick.speed-v.z)*this.ball.mass()},true);
       }
       // A returning ball inside the physical shooter channel is not an outlane
       // drain. Keep its position, velocity and ball number; gravity rolls it to

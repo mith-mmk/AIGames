@@ -125,7 +125,43 @@ test('side wire exit drops into the real IN guide and held flipper without rescu
  }
 });
 
-test('five adjacent redesigned bat shots traverse S, capture and refire the same ball',async()=>{for(const release of [80,81,82,83,84]){const g=await PinballPhysics.create();g.launch();g.state.kickbackCharges=0;let rescueEvents=0;const onEvent=g.state.onEvent.bind(g.state);g.state.onEvent=e=>{const accepted=onEvent(e);if(accepted&&['kickback','side-save'].includes(e.type))rescueEvents++;return accepted;};g.ball.setTranslation({x:-1.6,y:.18,z:2.8},true);g.ball.setLinvel({x:0,y:0,z:2},true);let resets=0;const set=g.ball.setTranslation.bind(g.ball);g.ball.setTranslation=(...a)=>{if(g.state.phase==='playing')resets++;return set(...a);};for(let i=0;i<500;i++)g.step(1/120,{left:true});for(let i=0;i<release;i++)g.step(1/120);for(let i=0;i<1200&&g.state.phase==='playing';i++)g.step(1/120,{left:true});assert.equal(g.rampTraversals,1);assert.equal(g.state.phase,'playing');assert.ok(Math.hypot(g.ball.linvel().x,g.ball.linvel().z)<.05);const count=g.metrics.coilImpulses[0];for(let i=0;i<45;i++)g.step(1/120);let z=9;for(let i=0;i<300&&g.state.phase==='playing';i++){g.step(1/120,{left:true});z=Math.min(z,g.ballPosition.z);}assert.ok(g.metrics.coilImpulses[0]>count);assert.ok(z<-1);assert.equal(resets,0);assert.equal(rescueEvents,0,'same-ball return must not depend on rescue');assert.equal(g.state.ballNumber,1);assert.equal(g.state.phase,'playing');g.dispose();}
+test('multiple standard IN returns traverse S, capture and refire the same ball',async()=>{
+ // Contacts can change the exact successful tick after the new sling face.
+ // A bounded scan independently tests the physical lower return (no warm-up).
+ const successful=[];
+ for(const release of [76,77,78,80,81,82,85,86]){
+  const g=await PinballPhysics.create();
+  try {
+   g.launch();g.state.kickbackCharges=0;let rescueEvents=0,resets=0;
+   const onEvent=g.state.onEvent.bind(g.state);
+   g.state.onEvent=e=>{const ok=onEvent(e);if(ok&&['kickback','side-save'].includes(e.type))rescueEvents++;return ok;};
+   g.ball.setTranslation({x:-1.6,y:.18,z:2.8},true);
+   g.ball.setLinvel({x:0,y:0,z:2},true);
+   const set=g.ball.setTranslation.bind(g.ball);
+   g.ball.setTranslation=(...a)=>{if(g.state.phase==='playing')resets++;return set(...a);};
+   for(let i=0;i<500;i++)g.step(1/120,{left:true});
+   for(let i=0;i<release;i++)g.step(1/120);
+   let still=0;
+   for(let i=0;i<1680&&g.state.phase==='playing';i++){
+    g.step(1/120,{left:true});
+    const p=g.ballPosition,v=g.ball.linvel();
+    still=g.rampTraversals===1&&Math.abs(p.x+1.055)<.035&&Math.abs(p.z-4.058)<.035&&
+     Math.hypot(v.x,v.y,v.z)<.03?still+1:0;
+    if(still>12)break;
+   }
+   assert.equal(resets,0);assert.equal(rescueEvents,0,'same-ball return must not depend on rescue');
+   if(still<=12)continue;
+   const count=g.metrics.coilImpulses[0];
+   for(let i=0;i<45;i++)g.step(1/120);
+   let z=9;
+   for(let i=0;i<300&&g.state.phase==='playing';i++){g.step(1/120,{left:true});z=Math.min(z,g.ballPosition.z);}
+   assert.ok(g.metrics.coilImpulses[0]>count);assert.ok(z<-1);
+   assert.equal(resets,0);assert.equal(rescueEvents,0);
+   assert.equal(g.state.ballNumber,1);assert.equal(g.state.phase,'playing');
+   successful.push(release);
+  }finally{g.dispose();}
+ }
+ assert.ok(successful.length>=3,`Expected several genuine returns, got ${successful.join(', ')}`);
 });
 
 test('old IN approach strikes the outward sling then drains or permits a releasable cradle',async()=>{

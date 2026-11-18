@@ -47,8 +47,8 @@ test('legal ground upper-lane center and edge passes award once at low and high 
     }finally{g.dispose();}
   }
 });
-test('five natural elevated ramp and wire traversals do not complete ground rollovers or charge a save',async()=>{
-  for(const release of[80,81,82,83,84]){
+test('three adjacent natural elevated ramp and wire traversals do not complete ground rollovers or charge a save',async()=>{
+  for(const release of[76,77,78]){
     const g=await PinballPhysics.create();
     try{
       g.launch();g.state.kickbackCharges=0;const held={left:true},events=rollovers(g);

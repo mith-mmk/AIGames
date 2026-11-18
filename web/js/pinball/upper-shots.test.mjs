@@ -9,6 +9,8 @@ test('center drive needs ordered spinner then B, not rebounds or repeated rollov
  for(const event of [{type:'bumper'},{type:'bank'},{type:'loop'},{type:'ramp'}]){s.onEvent({type:'spinner'});s.advanceTime(.3);s.onEvent(event);assert.equal(s.onEvent({type:'rollover',lane:1}),false);}
  s.onEvent({type:'spinner'});s.advanceTime(3);assert.equal(s.onEvent({type:'rollover',lane:1}),false);
  s.onEvent({type:'spinner'});s.advanceTime(.3);assert.equal(s.onEvent({type:'rollover',lane:0}),false);
+ s.onEvent({type:'spinner',forward:false});s.advanceTime(.3);assert.equal(s.onEvent({type:'rollover',lane:1}),false);
+ s.onEvent({type:'spinner'});s.advanceTime(.3);assert.equal(s.onEvent({type:'rollover',lane:1,forward:false}),false);
  assert.equal(s.completions,1);
 });
 test('upper routes have distinct awarded outcomes and drive resets after drain',()=>{
@@ -64,5 +66,21 @@ test('relaxed left-bat adjacent release timings complete the elevated ramp and r
   assert.equal(g.state.phase,'playing');assert.equal(g.state.ballNumber,1);
   assert.ok(Math.hypot(g.ball.linvel().x,g.ball.linvel().z)<.01);
   assert.ok(Math.abs(g.ballPosition.x+1.055)<.02);
+ }}finally{g.dispose();}
+});
+
+test('returning center balls no longer cycle above the former central pop',async()=>{
+ const {PinballPhysics}=await import('./physics.mjs');
+ const g=await PinballPhysics.create();
+ try {for(const x of [-.1,0,.1])for(const zSpeed of [0,2,8]){
+   g.restart();g.launch();g.state.kickbackCharges=0;
+   // Same three centered starts cycled above the old pop for the full 30s.
+   // Here only the initial conditions are placed; no control or rescue follows.
+   g.ball.setTranslation({x,y:.175,z:-2.9},true);
+   g.ball.setLinvel({x:0,y:0,z:zSpeed},true);
+   const start=g.time;
+   for(let i=0;i<144&&g.state.phase==='playing'&&g.ballPosition.z<=-.8;i++)g.step(1/120);
+   assert.equal(g.state.phase,'playing');
+   assert.ok(g.ballPosition.z>-.8,`x ${x}, speed ${zSpeed} stalled for ${g.time-start}s`);
  }}finally{g.dispose();}
 });

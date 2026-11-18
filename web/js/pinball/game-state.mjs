@@ -1,6 +1,8 @@
 import { UpperShotChallenge } from "./upper-shots.mjs";
 import { PinballMissions, PinballMultiplierMission, PinballScoopChallenge } from "./missions.mjs";
 
+export const EASY_REPLAY_SECONDS = 14;
+
 /** Rules are independent of renderer and physics engine. */
 export class PinballGameState {
   constructor({ difficulty = "standard" } = {}) {
@@ -54,7 +56,7 @@ export class PinballGameState {
   get tilted() { return this._tilted; }
   set tilted(value) {
     this._tilted = Boolean(value);
-    if (this._tilted) this.multiplierChallenge.restart();
+    if (this._tilted) { this.multiplierChallenge.restart(); this.upperShots.resetRun(); }
   }
   awardContact(points, label) {
     if (this.phase !== "playing" || this.tilted) return;
@@ -78,13 +80,14 @@ export class PinballGameState {
     this.ballSaved = false;
     if (!this.ballLaunched) {
       this.ballLaunched = true;
-      this.ballSaveRemaining = this.difficulty === "relaxed" ? 10 : 0;
+      this.ballSaveRemaining = this.difficulty === "relaxed" ? EASY_REPLAY_SECONDS : 0;
     }
     this.returnedShooter = false; this.phase = "playing"; this.lastEvent = "BALL " + this.ballNumber; return true;
   }
   returnToShooter() {
     if (this.phase !== "playing") return false;
     this.skillShotAvailable = false;
+    this.upperShots.resetRun();
     this.returnedShooter = true; this.phase = "ready";
     this.lastEvent = "発射レーンへ戻りました · 同じ球を再発射"; return true;
   }
