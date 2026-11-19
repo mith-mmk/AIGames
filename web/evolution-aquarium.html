@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071a24">
+  <meta name="description" content="3Dの水槽を舞台に、遺伝・変異・自然選択を観察する生物進化シミュレーション。">
+  <title>AI Games</title>
+  <link rel="stylesheet" href="./css/evolution-aquarium.css">
+  <script type="importmap">{"imports":{"three":"./js/vendor/three-0.180.0/three.module.min.js"}}</script>
+  <script type="module" src="./js/evolution-aquarium/app.mjs"></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="back-link" href="./index.html" aria-label="AI Gamesの一覧に戻る">← AI GAMES</a>
+    <span class="station-name"><span class="status-dot"></span> AQUATIC FIELD STATION</span>
+    <span class="edition">EXPERIMENT / 2026</span>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="title">
+      <div><p class="eyebrow">EVOLUTION, UNDER OBSERVATION</p><h1 id="title">小さな海の、<span>進化を見よう。</span></h1><p class="intro-copy">環境が変わる。生き残る特徴が変わる。水槽の中で、世代をつなぐ実験。</p></div>
+      <div class="experiment-label"><span>01</span><div>EVOLUTION AQUARIUM<br><small>生物進化シミュレーション · by Codex</small></div></div>
+    </section>
+    <section class="observatory" aria-label="水槽と実験操作">
+      <div class="tank-column">
+        <div id="viewport" class="viewport">
+          <canvas id="tank" aria-label="魚の進化を観察する3D水槽。ドラッグで回転、ホイールまたはピンチで拡大。魚をクリックして個体情報を表示。" tabindex="0"></canvas>
+          <canvas id="fallback" aria-label="水槽の簡易2D表示" hidden></canvas>
+          <div class="tank-top"><span class="live-tag"><span class="status-dot"></span> LIVE ECOSYSTEM</span><span class="watermark">AQUARIUM / 001</span></div>
+          <div id="view-status" class="view-status" role="status" hidden></div>
+          <div class="tank-depth"><span>SURFACE</span><i></i><span>DEEP</span></div>
+          <div class="tank-bottom"><span>浅瀬から深場へ、多様性を観察</span><button type="button" id="camera" class="glass-button">視点を戻す ↗</button></div>
+        </div>
+        <div class="playback"><div class="playback-primary"><button type="button" id="pause" class="primary">一時停止</button><button type="button" id="step">1ステップ</button><label class="speed-label" for="speed">速度 <select id="speed"><option value="1">1×</option><option value="2">2×</option><option value="4">4×</option><option value="8">8×</option></select></label></div><p class="gesture-hint">ドラッグで回転 · スクロール・ピンチで拡大 · 魚を選択</p></div>
+        <div class="metrics" aria-label="生態系の統計">
+          <div><span>個体数</span><strong id="population">—</strong><small>POPULATION</small></div>
+          <div><span>最大世代</span><strong id="generation">—</strong><small>GENERATION</small></div>
+          <div><span>経過時間</span><strong id="elapsed">—</strong><small>SIMULATION TIME</small></div>
+          <div><span>誕生 / 死亡</span><strong class="birth-death"><b id="births">—</b><i>/</i><b id="deaths">—</b></strong><small>LIFE CYCLE</small></div>
+        </div>
+        <p id="lab-status" class="lab-status" role="status" aria-live="polite">水槽を準備しています。</p>
+      </div>
+      <aside class="control-panel" aria-labelledby="environment-title">
+        <div class="panel-heading"><p class="eyebrow">ENVIRONMENT</p><span class="panel-index">01 / CONTROL</span></div>
+        <h2 id="environment-title">環境を変える</h2><p class="panel-description">正解はひとつではない。<br>異なる条件で、生き残り方を比べよう。</p>
+        <div class="presets" aria-label="環境プリセット"><button type="button" data-preset="balanced" aria-pressed="true">穏やかな海</button><button type="button" data-preset="cold">寒冷化</button><button type="button" data-preset="predators">捕食者の海</button></div>
+        <p id="scenario-note" class="scenario-note">穏やかな水温と十分な餌から、観察を始めましょう。</p>
+        <div class="slider-control"><label for="temperature">水温 <output id="temperature-value" for="temperature">21 °C</output></label><input id="temperature" type="range" min="8" max="32" step="1" value="21"><div class="range-ends"><span>8 °C / 寒冷</span><span>32 °C / 温暖</span></div></div>
+        <div class="slider-control"><label for="food-rate">餌の供給 <output id="food-rate-value" for="food-rate">8</output></label><input id="food-rate" type="range" min="0" max="16" step="0.5" value="8"><div class="range-ends"><span>乏しい</span><span>豊富</span></div></div>
+        <div class="slider-control"><label for="predator-count">捕食者 <output id="predator-count-value" for="predator-count">0</output></label><input id="predator-count" type="range" min="0" max="4" step="1" value="0"><div class="range-ends"><span>いない</span><span>4 匹</span></div></div>
+        <div class="slider-control"><label for="mutation">突然変異率 <output id="mutation-value" for="mutation">10 %</output></label><input id="mutation" type="range" min="0" max="30" step="1" value="10"><div class="range-ends"><span>0 %</span><span>30 %</span></div></div>
+        <div class="reset-controls"><button type="button" id="reset">同じシードでやり直す</button><button type="button" id="reroll">シードを変える ↻</button></div>
+        <p class="seed-label">RANDOM SEED <span id="seed">—</span></p>
+      </aside>
+    </section>
+    <section class="research" aria-label="個体と集団の観察">
+      <div class="research-heading"><div><p class="eyebrow">READ THE CHANGES</p><h2>いま、この海で起きていること。</h2></div><span>OBSERVATION LOG</span></div>
+      <div class="research-grid">
+        <article class="research-panel inspector"><div class="panel-heading"><h3>個体を観察</h3><span class="panel-index">02 / INDIVIDUAL</span></div><label for="fish-picker" class="sr-only">観察する魚を選ぶ</label><select id="fish-picker"><option value="">魚を選択してください</option></select><div id="fish-detail" class="fish-detail">水槽の魚をクリックするか、一覧から選ぶと、遺伝形質と親の情報を観察できます。</div></article>
+        <article class="research-panel"><div class="panel-heading"><h3>個体数の変化</h3><span class="panel-index">03 / POPULATION</span></div><canvas id="population-chart" width="640" height="200" aria-label="時間に伴う個体数の推移"></canvas><div class="zone-counts"><div><i class="zone-dot shallow"></i>浅瀬 <strong id="shallows-count">—</strong></div><div><i class="zone-dot mid"></i>中層 <strong id="midwater-count">—</strong></div><div><i class="zone-dot deep"></i>深場 <strong id="deep-count">—</strong></div></div></article>
+        <article class="research-panel"><div class="panel-heading"><h3>形質の分布</h3><span class="panel-index">04 / VARIATION</span></div><label for="trait-chart" class="sr-only">分布を見る形質</label><select id="trait-chart"><option value="size">体の大きさ</option><option value="speed">泳ぐ速さ</option><option value="vision">視野</option><option value="metabolism">代謝</option><option value="temp">適温</option><option value="depth">深さの好み</option><option value="hue">体色</option><option value="pattern">模様</option></select><div id="distribution" class="distribution" aria-label="選んだ形質の分布"></div><a class="history-jump" href="#trait-history-title">時間の推移を見る ↓</a></article>
+        <article class="research-panel"><div class="panel-heading"><h3>系統のゆくえ</h3><span class="panel-index">05 / LINEAGES</span></div><p class="small-note">片親から引き継いだ観測用ラベルごとの生存個体。</p><div id="lineages" class="lineages"></div></article>
+        <article class="research-panel trait-history" aria-labelledby="trait-history-title">
+          <div class="panel-heading"><h3 id="trait-history-title">形質分布の時間推移</h3><span class="panel-index">06 / TRAIT HISTORY</span></div>
+          <div class="history-head">
+            <p class="small-note">横はシミュレーション時間、縦は形質の値。明るい帯をたどると、どの範囲の個体が多くなったか、分布が広がったかがわかります。</p>
+            <label for="timeline-trait">表示する形質 <select id="timeline-trait"></select></label>
+          </div>
+          <p id="timeline-axis" class="history-axis"></p>
+          <canvas id="trait-timeline" width="990" height="220" role="img" aria-describedby="timeline-axis timeline-legend"></canvas>
+          <div id="timeline-legend" class="history-legend"><span>その時点の個体に占める割合</span><div class="history-scale" aria-label="0、25、50、75、100パーセント">
+            <span><i style="--swatch:#102a37"></i>0%</span><span><i style="--swatch:#1d656a"></i>25%</span><span><i style="--swatch:#27a19a"></i>50%</span><span><i style="--swatch:#5cd6b0"></i>75%</span><span><i style="--swatch:#d5ffb7"></i>100%</span>
+          </div><span class="history-extinct"><i></i>個体なし</span></div>
+          <div class="history-scrub"><label for="timeline-time">時点を選ぶ</label><input type="range" id="timeline-time" min="0" max="0" value="0" disabled><button type="button" id="timeline-latest" disabled>最新へ</button></div>
+          <p id="timeline-sample" class="history-sample"></p>
+          <details class="history-details"><summary>この時点の分布を数値で見る</summary><ul id="timeline-values"></ul></details>
+          <p class="small-note" id="timeline-window">実験時間2秒ごとに記録し、最新約5分間を表示します。</p>
+        </article>
+      </div>
+    </section>
+    <details class="model-notes"><summary><span>この実験の見方と、科学的な簡略化</span><span class="plus">＋</span></summary><div class="notes-grid"><div><h3>個体ではなく、集団が変わる</h3><p>魚は遺伝する複数の連続的な形質を持ちます。子の形質は両親の値の中間を基に決まり、ときどき形質ごとに突然変異します。繁殖時の遺伝と突然変異で違いが生まれ、餌、代謝、水温、捕食によって生存と繁殖のしやすさが変わります。生きている魚が、必要に応じて遺伝形質を変えるモデルではありません。</p></div><div><h3>速さにも、大きさにも代償がある</h3><p>形質にはトレードオフがあります。環境を一度にひとつずつ変えると、個体数だけでなく形質の分布がどう変わるかを比較しやすくなります。浅瀬と深場の生息分布も観察してみましょう。</p></div><div><h3>生態学の実測予測ではありません</h3><p>世代が重なる簡略化した個体ベースの教育用モデルです。時間・身体・生理・遺伝・捕食を大きく圧縮しており、実在する魚種の進化や気候変動の影響を予測するものではありません。「最大世代」は実験中に生まれた個体の最大世代です。</p></div><div><h3>再現できる、小さな実験</h3><p>同じ乱数シードと条件・操作時刻で再実験できます。シードを変えると初期個体と乱数系列が変わります。系統は親子関係の観察用ラベルで、生物学的な種の分化を意味しません。絶滅したら環境を見直し、実験をやり直してください。</p></div></div></details>
+  </main>
+  <footer><span>EVOLUTION AQUARIUM · 2026</span><span>ひとつの水槽。たくさんの生き残り方。</span><a href="./index.html">AI Games ↗</a></footer>
+</body>
+</html>
