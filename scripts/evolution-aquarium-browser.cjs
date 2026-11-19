@@ -127,6 +127,32 @@ async function main() {
         await desktop.locator("#reset").click();
         assert.match(await desktop.locator("#timeline-sample").textContent(), /^0 秒 · 48 匹/);
 
+        // Observe actual moving schools in WebGL, not only the random founder positions.
+        if (output) {
+            const schoolPage = await browser.newPage({ viewport: { width: 1440, height: 1050 }, reducedMotion: "reduce" });
+            record(schoolPage);
+            await schoolPage.goto(url);
+            await schoolPage.waitForFunction(() => document.querySelector("#population").textContent === "48");
+            await schoolPage.locator("#speed").selectOption("8");
+            await schoolPage.locator("#pause").click();
+            await schoolPage.waitForFunction(() => Number(document.querySelector("#elapsed").textContent.split(":")[1]) >= 12, null, { timeout: 22000 });
+            await schoolPage.locator("#pause").click();
+            const water = schoolPage.locator("#tank");
+            assert.equal(await water.isVisible(), true);
+            const overview = await snapshot(water, "schools-overview.png");
+            const tankRect = await water.boundingBox();
+            const cx = tankRect.x + tankRect.width * 0.51, cy = tankRect.y + tankRect.height * 0.52;
+            await schoolPage.mouse.move(cx, cy);
+            await schoolPage.mouse.down();
+            await schoolPage.mouse.move(cx - 32, cy + 94, { steps: 10 });
+            await schoolPage.mouse.up();
+            await schoolPage.mouse.wheel(0, -260);
+            await schoolPage.waitForTimeout(450);
+            const oblique = await snapshot(water, "schools-oblique.png");
+            assert.notDeepEqual(oblique, overview, "Orbit and zoom expose different clusters");
+            await schoolPage.close();
+        }
+
         const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1, reducedMotion: "reduce" });
         record(mobile);
         await mobile.goto(url);

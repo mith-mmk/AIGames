@@ -1,6 +1,6 @@
 import * as THREE from '../vendor/three-0.180.0/three.module.min.js';
 import { OrbitControls } from '../vendor/three-0.180.0/controls/OrbitControls.js';
-import { floorY } from './core.mjs';
+import { BOUNDS, floorY } from './core.mjs';
 
 /** Three.js is an adapter only: all ecology and movement come from AquariumSimulation. */
 export class AquariumRenderer {
@@ -13,13 +13,13 @@ export class AquariumRenderer {
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.3;
     this.scene = new THREE.Scene();
-    this.scene.fog = new THREE.FogExp2(0x083c50, 0.0185);
+    this.scene.fog = new THREE.FogExp2(0x083c50, 0.012);
     this.camera = new THREE.PerspectiveCamera(42, 1, 0.1, 180);
     this.controls = new OrbitControls(this.camera, canvas);
     this.controls.enableDamping = true;
     this.controls.dampingFactor = 0.07;
     this.controls.minDistance = 16;
-    this.controls.maxDistance = 66;
+    this.controls.maxDistance = 160;
     this.controls.minPolarAngle = 0.35;
     this.controls.maxPolarAngle = Math.PI * 0.52;
     this.controls.enablePan = false;
@@ -67,7 +67,7 @@ export class AquariumRenderer {
   }
 
   buildHabitat() {
-    const sand = new THREE.PlaneGeometry(38, 18, 70, 16);
+    const sand = new THREE.PlaneGeometry(BOUNDS.x * 2 + 4, BOUNDS.z * 2 + 4, 96, 24);
     sand.rotateX(-Math.PI / 2);
     const positions = sand.attributes.position;
     const colors = [];
@@ -84,7 +84,7 @@ export class AquariumRenderer {
     const rockGeometry = new THREE.IcosahedronGeometry(1, 1);
     const rockMaterial = new THREE.MeshStandardMaterial({ color: 0x34575a, roughness: 1, flatShading: true });
     for (let i = 0; i < 22; i++) {
-      const x = Math.sin(i * 12.54) * 14, z = -5 + Math.cos(i * 6.1) * 2.2;
+      const x = Math.sin(i * 12.54) * (BOUNDS.x - 2), z = -BOUNDS.z * 0.72 + Math.cos(i * 6.1) * 2.2;
       const rock = new THREE.Mesh(rockGeometry, rockMaterial);
       const size = 0.6 + ((i * 17) % 11) * 0.17;
       rock.position.set(x, floorY(x) - size * 0.18, z);
@@ -95,7 +95,7 @@ export class AquariumRenderer {
     this.grasses = [];
     const grassMaterial = new THREE.MeshStandardMaterial({ color: 0x267a68, roughness: 0.75, side: THREE.DoubleSide });
     for (let i = 0; i < 80; i++) {
-      const x = Math.sin(i * 15.21) * 15, z = Math.cos(i * 12.62) * 6;
+      const x = Math.sin(i * 15.21) * (BOUNDS.x - 1), z = Math.cos(i * 12.62) * (BOUNDS.z - 1);
       const h = 0.7 + (i % 9) * 0.2;
       const g = new THREE.PlaneGeometry(0.16 + i % 3 * 0.06, h, 1, 6);
       g.translate(0, h / 2, 0);
@@ -112,22 +112,22 @@ export class AquariumRenderer {
     const beamMaterial = new THREE.MeshBasicMaterial({ color: 0x79e1de, transparent: true, opacity: 0.035, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending });
     for (let i = 0; i < 5; i++) {
       const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 1.4, 16, 16, 1, true), beamMaterial);
-      beam.position.set(-13 + i * 6, 7, -6);
+      beam.position.set(-BOUNDS.x * 0.8 + i * BOUNDS.x * 0.4, 7, -BOUNDS.z * 0.8);
       beam.rotation.z = -0.23;
       this.scene.add(beam);
     }
     const dustPositions = [];
-    for (let i = 0; i < 180; i++) dustPositions.push(Math.sin(i * 42.3) * 18, (i * 0.347) % 12, Math.cos(i * 27.1) * 9);
+    for (let i = 0; i < 180; i++) dustPositions.push(Math.sin(i * 42.3) * (BOUNDS.x + 1), (i * 0.347) % (BOUNDS.height + 1), Math.cos(i * 27.1) * (BOUNDS.z + 1));
     const dustGeometry = new THREE.BufferGeometry();
     dustGeometry.setAttribute('position', new THREE.Float32BufferAttribute(dustPositions, 3));
     this.dust = new THREE.Points(dustGeometry, new THREE.PointsMaterial({ color: 0x83d9cf, size: 0.04, transparent: true, opacity: 0.38, depthWrite: false }));
     this.scene.add(this.dust);
-    const water = new THREE.Mesh(new THREE.PlaneGeometry(36, 17), new THREE.MeshBasicMaterial({ color: 0x4ce5db, transparent: true, opacity: 0.07, side: THREE.DoubleSide, depthWrite: false }));
+    const water = new THREE.Mesh(new THREE.PlaneGeometry(BOUNDS.x * 2 + 2, BOUNDS.z * 2 + 2), new THREE.MeshBasicMaterial({ color: 0x4ce5db, transparent: true, opacity: 0.07, side: THREE.DoubleSide, depthWrite: false }));
     water.rotation.x = -Math.PI / 2;
-    water.position.y = 11.2;
+    water.position.y = BOUNDS.height + 1.2;
     this.scene.add(water);
-    const tank = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(35, 12, 16)), new THREE.LineBasicMaterial({ color: 0x60b0b6, transparent: true, opacity: 0.14 }));
-    tank.position.y = 5.2;
+    const tank = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(BOUNDS.x * 2 + 2, BOUNDS.height + 2, BOUNDS.z * 2 + 2)), new THREE.LineBasicMaterial({ color: 0x60b0b6, transparent: true, opacity: 0.14 }));
+    tank.position.y = BOUNDS.height / 2 + 0.2;
     this.scene.add(tank);
   }
 
@@ -244,10 +244,34 @@ export class AquariumRenderer {
     return hits.length ? hits[0].object.userData.fishId ?? null : null;
   }
 
+  // Fit the actual habitat prism rather than hard-coded distances. Fish geometry
+  // keeps its world size; a wider volume does not make the animals larger.
+  framedDistance() {
+    const direction = new THREE.Vector3(0.07, 0.29, 1).normalize();
+    const right = new THREE.Vector3().crossVectors(new THREE.Vector3(0, 1, 0), direction).normalize();
+    const up = new THREE.Vector3().crossVectors(direction, right);
+    const tanY = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+    const tanX = tanY * this.camera.aspect;
+    let distance = 20;
+    for (const x of [-BOUNDS.x - 1, BOUNDS.x + 1]) {
+      for (const y of [-1, BOUNDS.height + 1]) {
+        for (const z of [-BOUNDS.z - 1, BOUNDS.z + 1]) {
+          const corner = new THREE.Vector3(x, y - BOUNDS.height * 0.47, z);
+          distance = Math.max(distance, corner.dot(direction) + Math.max(Math.abs(corner.dot(right)) / tanX, Math.abs(corner.dot(up)) / tanY) * 1.04);
+        }
+      }
+    }
+    return distance;
+  }
+
   resetCamera() {
-    const portrait = this.canvas.getBoundingClientRect().width < 650;
-    this.camera.position.set(3, 15, portrait ? 40 : 34);
-    this.controls.target.set(0, 4.7, 0);
+    const rect = this.canvas.getBoundingClientRect();
+    this.camera.aspect = Math.max(1, rect.width) / Math.max(1, rect.height);
+    this.camera.fov = rect.width < 650 ? 58 : 42;
+    this.camera.updateProjectionMatrix();
+    this.controls.target.set(0, BOUNDS.height * 0.47, 0);
+    this.fitDistance = this.framedDistance();
+    this.camera.position.set(0.07, 0.29, 1).normalize().multiplyScalar(this.fitDistance).add(this.controls.target);
     this.controls.update();
   }
 
@@ -258,6 +282,12 @@ export class AquariumRenderer {
     this.camera.aspect = width / height;
     this.camera.fov = width < 650 ? 58 : 42;
     this.camera.updateProjectionMatrix();
+    const nextFit = this.framedDistance();
+    if (this.fitDistance) {
+      this.camera.position.sub(this.controls.target).multiplyScalar(nextFit / this.fitDistance).add(this.controls.target);
+    }
+    this.fitDistance = nextFit;
+    this.controls.update();
   }
 
   dispose() {

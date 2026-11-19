@@ -118,7 +118,7 @@ class CrossSectionRenderer {
             return { id: entity.id, x: px, y: py, scale };
         };
         this.targets = [...sim.fish].sort((a, b) => a.z - b.z).map(fish =>
-            drawFish(fish, (5.8 + fish.traits.size * 8) * (0.75 + (fish.z + BOUNDS.z) / 40), tone(fish.traits.hue), fish.id === selectedId));
+            drawFish(fish, (4.8 + fish.traits.size * 7) * (0.72 + (fish.z + BOUNDS.z) / (BOUNDS.z * 5)), tone(fish.traits.hue), fish.id === selectedId));
         for (const predator of sim.predators) drawFish(predator, Math.min(25, w / 24), "#a2bcca", false);
     }
 

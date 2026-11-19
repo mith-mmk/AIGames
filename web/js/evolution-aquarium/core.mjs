@@ -1,5 +1,6 @@
 /* Deterministic aquarium model. Coordinates and traits are dimensionless unless stated. */
-export const BOUNDS = Object.freeze({ x: 16, height: 10, z: 7 });
+export const BOUNDS = Object.freeze({ x: 24, height: 10, z: 12 });
+export const SHALLOW_EDGE = -BOUNDS.x * 0.3125;
 export const STEP = 0.1;
 export const MAX_FISH = 200;
 export const HISTORY_INTERVAL = 2;
@@ -27,16 +28,16 @@ const lerp = (a, b, t) => a + (b - a) * t;
 const hueWrap = n => ((n % 1) + 1) % 1;
 const hueDistance = (a, b) => Math.abs(hueWrap(a - b + 0.5) - 0.5);
 export const preferredTemperature = trait => lerp(9, 31, trait);
-export const zone = (x, y) => x < -5 ? 0 : y < 3.0 ? 2 : 1;
+export const zone = (x, y) => x < SHALLOW_EDGE ? 0 : y < 3.0 ? 2 : 1;
 
 /* The sandy shelf in the west grades into a deep rocky bed in the east. */
 export function floorY(x) {
-    const t = clamp((x + 10) / 13);
+    const t = clamp((x / BOUNDS.x + 0.625) / 0.8125);
     return lerp(3.45, -0.75, t * t * (3 - 2 * t)) + 0.15 * Math.sin(x * 0.7);
 }
 
 export function localTemperature(surface, x, y) {
-    return surface - (BOUNDS.height - y) * (x < -5 ? 0.18 : 0.47);
+    return surface - (BOUNDS.height - y) * (x < SHALLOW_EDGE ? 0.18 : 0.47);
 }
 
 export function createRandom(seed) {
@@ -95,6 +96,62 @@ export function concealment(fish) {
 
 const squaredDistance = (a, b) => (a.x - b.x) ** 2 + (a.y - b.y) ** 2 + (a.z - b.z) ** 2;
 
+function unit(x, y, z) {
+    const d = Math.max(0.01, Math.hypot(x, y, z));
+    return { x: x / d, y: y / d, z: z / d };
+}
+
+/* Local, transient schools: align with nearby fish, draw toward their center and
+ * give each other space. All fish read the same beginning-of-step positions. */
+function schoolingDirection(fish, school, goal, food, hungry) {
+    const radius = 5.9 + fish.traits.vision * 1.8;
+    let weight = 0, neighbors = 0;
+    let centerX = 0, centerY = 0, centerZ = 0, alignX = 0, alignY = 0, alignZ = 0;
+    let spaceX = 0, spaceY = 0, spaceZ = 0;
+    for (const other of school) {
+        if (other.id === fish.id) continue;
+        const dx = other.x - fish.x, dy = other.y - fish.y, dz = other.z - fish.z;
+        const distance = dx * dx + dy * dy + dz * dz;
+        if (distance > radius * radius || distance < 1e-6) continue;
+        const d = Math.sqrt(distance);
+        const near = 1 - d / radius;
+        const influence = near * near;
+        centerX += dx * influence; centerY += dy * influence; centerZ += dz * influence;
+        alignX += other.vx * influence; alignY += other.vy * influence; alignZ += other.vz * influence;
+        weight += influence;
+        neighbors += 1;
+        const gap = 1.07 + (fish.traits.size + other.size) * 0.63;
+        if (d < gap) {
+            const push = (gap - d) / (gap * d);
+            spaceX -= dx * push; spaceY -= dy * push; spaceZ -= dz * push;
+        }
+    }
+    const p = unit(goal.x - fish.x, goal.y - fish.y, goal.z - fish.z);
+    const flow = unit(alignX, alignY, alignZ);
+    const center = unit(centerX, centerY, centerZ);
+    const cohesion = weight ? 0.74 * clamp(Math.hypot(centerX, centerY, centerZ) / (weight * 2.5)) : 0;
+    const alignment = 1.33 * Math.min(1, neighbors / 3) * Math.min(1, weight * 1.8);
+    const foodVector = food ? unit(food.x - fish.x, food.y - fish.y, food.z - fish.z) : { x: 0, y: 0, z: 0 };
+    const forage = food ? lerp(0.52, 2.45, hungry) + (squaredDistance(fish, food) < 2.8 ? 1.12 : 0) : 0;
+    return {
+        x: p.x * 0.88 + flow.x * alignment + center.x * cohesion + spaceX * 2.8 + foodVector.x * forage,
+        y: p.y * 0.88 + flow.y * alignment + center.y * cohesion + spaceY * 2.8 + foodVector.y * forage,
+        z: p.z * 0.88 + flow.z * alignment + center.z * cohesion + spaceZ * 2.8 + foodVector.z * forage,
+    };
+}
+
+function schoolTarget(fish, direction) {
+    const margin = 3.5;
+    const wall = (value, limit) => Math.sign(value) * clamp((Math.abs(value) - limit + margin) / margin) ** 2;
+    const floor = Math.max(floorY(fish.x), floorY(fish.x + fish.vx * 0.55));
+    const vertical = clamp((floor + 1.45 - fish.y) / 1.1) - clamp((fish.y - BOUNDS.height + 1.0) / 0.75);
+    return {
+        x: fish.x + 4 * (direction.x - 3.15 * wall(fish.x, BOUNDS.x)),
+        y: fish.y + 4 * (direction.y + vertical * 2.55),
+        z: fish.z + 4 * (direction.z - 3.15 * wall(fish.z, BOUNDS.z)),
+    };
+}
+
 function swim(entity, target, speed, dt) {
     const dx = target.x - entity.x;
     const dy = target.y - entity.y;
@@ -107,6 +164,8 @@ function swim(entity, target, speed, dt) {
     entity.x = clamp(entity.x + entity.vx * dt, -BOUNDS.x + 0.4, BOUNDS.x - 0.4);
     entity.y = clamp(entity.y + entity.vy * dt, floorY(entity.x) + 0.45, BOUNDS.height - 0.35);
     entity.z = clamp(entity.z + entity.vz * dt, -BOUNDS.z + 0.4, BOUNDS.z - 0.4);
+    if (Math.abs(entity.x) >= BOUNDS.x - 0.4 && entity.vx * entity.x > 0) entity.vx *= -0.35;
+    if (Math.abs(entity.z) >= BOUNDS.z - 0.4 && entity.vz * entity.z > 0) entity.vz *= -0.35;
 }
 
 export class AquariumSimulation {
@@ -158,16 +217,17 @@ export class AquariumSimulation {
         }
     }
 
-    point(x = lerp(-15, 15, this.random())) {
+    point(x = lerp(-BOUNDS.x + 1, BOUNDS.x - 1, this.random())) {
         return {
             x,
             y: lerp(floorY(x) + 0.65, BOUNDS.height - 0.5, this.random()),
-            z: lerp(-6.3, 6.3, this.random()),
+            z: lerp(-BOUNDS.z + 0.8, BOUNDS.z - 0.8, this.random()),
         };
     }
 
     spawnFood() {
-        const x = this.random() < 0.59 ? lerp(-14.9, -3.5, this.random()) : lerp(-4, 15, this.random());
+        const x = this.random() < 0.59 ? lerp(-BOUNDS.x + 1, SHALLOW_EDGE + 1.5, this.random()) :
+            lerp(SHALLOW_EDGE + 1.5, BOUNDS.x - 1, this.random());
         this.food.push({ ...this.point(x), ttl: 28 + this.random() * 22, nutrition: 16 + 8 * this.random() });
     }
 
@@ -182,7 +242,7 @@ export class AquariumSimulation {
 
     findFood(fish) {
         let index = -1;
-        let best = (2.35 + fish.traits.vision * 5.8) ** 2;
+        let best = (3.45 + fish.traits.vision * 7) ** 2;
         for (let i = 0; i < this.food.length; i += 1) {
             const food = this.food[i];
             const distance = squaredDistance(fish, food);
@@ -194,7 +254,7 @@ export class AquariumSimulation {
         return { item: this.food[index], index, distance: best };
     }
 
-    updateFish(fish) {
+    updateFish(fish, school) {
         const rng = this.random;
         fish.age += STEP;
         fish.cooldown = Math.max(0, fish.cooldown - STEP);
@@ -214,16 +274,18 @@ export class AquariumSimulation {
             const d = squaredDistance(fish, p);
             if (d < threatD) { threatD = d; threat = p; }
         }
-        if (this.ticks % 25 === fish.id % 25 || squaredDistance(fish, fish.goal) < 1) {
-            const x = clamp(lerp(fish.x, lerp(-13, 12, depth), 0.45) + lerp(-7, 7, rng()), -15.2, 15.2);
+        if (this.ticks % 54 === fish.id % 54 || squaredDistance(fish, fish.goal) < 2) {
+            const x = clamp(lerp(fish.x, lerp(-BOUNDS.x * 0.82, BOUNDS.x * 0.75, depth), 0.33) +
+                lerp(-10.5, 10.5, rng()), -BOUNDS.x + 1.6, BOUNDS.x - 1.6);
             fish.goal = {
-                x, y: clamp(lerp(8.6, 1.0, depth) + lerp(-2.4, 2.4, rng()), floorY(x) + 0.5, 9.4),
-                z: lerp(-6.2, 6.2, rng()),
+                x, y: clamp(lerp(8.6, 1.0, depth) + lerp(-2.4, 2.4, rng()), floorY(x) + 0.65, BOUNDS.height - 0.8),
+                z: lerp(-BOUNDS.z + 1.7, BOUNDS.z - 1.7, rng()),
             };
         }
-        const target = threat
-            ? { x: 2 * fish.x - threat.x, y: 2 * fish.y - threat.y + 0.5, z: 2 * fish.z - threat.z }
-            : item && fish.energy < 104 ? item : fish.goal;
+        const direction = threat
+            ? unit(fish.x - threat.x, fish.y - threat.y + 0.4, fish.z - threat.z)
+            : schoolingDirection(fish, school, fish.goal, fish.energy < 104 ? item : null, clamp((95 - fish.energy) / 47));
+        const target = schoolTarget(fish, direction);
         swim(fish, target, (1.20 + speed * 2.3 - size * 0.16) * (threat ? 1.45 : 1), STEP);
         return null;
     }
@@ -239,9 +301,9 @@ export class AquariumSimulation {
             if (score < best) { best = score; target = fish; }
         }
         const patrol = {
-            x: Math.sin(this.time * 0.16 + p.id * 2.3) * 12,
+            x: Math.sin(this.time * 0.16 + p.id * 2.3) * BOUNDS.x * 0.79,
             y: 2.8 + Math.sin(this.time * 0.29 + p.id) * 1.7,
-            z: Math.cos(this.time * 0.31 + p.id * 0.7) * 5.5,
+            z: Math.cos(this.time * 0.31 + p.id * 0.7) * BOUNDS.z * 0.8,
         };
         const hunting = target && p.cooldown < 1.5;
         swim(p, hunting ? target : patrol, hunting ? 4.7 : 2.6, STEP);
@@ -308,8 +370,9 @@ export class AquariumSimulation {
             this.foodDebt -= 1;
         }
         const dead = new Map();
+        const school = this.fish.map(({ id, x, y, z, vx, vy, vz, traits }) => ({ id, x, y, z, vx, vy, vz, size: traits.size }));
         for (const fish of this.fish) {
-            const cause = this.updateFish(fish);
+            const cause = this.updateFish(fish, school);
             if (cause) dead.set(fish.id, cause);
         }
         for (const p of this.predators) this.updatePredator(p, dead);
