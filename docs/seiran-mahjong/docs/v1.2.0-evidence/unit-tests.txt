@@ -1,0 +1,1412 @@
+
+> jade-mahjong@1.2.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: フレームと手牌を内側に収める 320×568
+ok 1 - フレームと手牌を内側に収める 320×568
+  ---
+  duration_ms: 2.828301
+  type: 'test'
+  ...
+# Subtest: フレームと手牌を内側に収める 390×844
+ok 2 - フレームと手牌を内側に収める 390×844
+  ---
+  duration_ms: 0.290328
+  type: 'test'
+  ...
+# Subtest: フレームと手牌を内側に収める 568×320
+ok 3 - フレームと手牌を内側に収める 568×320
+  ---
+  duration_ms: 0.164332
+  type: 'test'
+  ...
+# Subtest: フレームと手牌を内側に収める 667×375
+ok 4 - フレームと手牌を内側に収める 667×375
+  ---
+  duration_ms: 0.199124
+  type: 'test'
+  ...
+# Subtest: フレームと手牌を内側に収める 844×390
+ok 5 - フレームと手牌を内側に収める 844×390
+  ---
+  duration_ms: 0.144243
+  type: 'test'
+  ...
+# Subtest: フレームと手牌を内側に収める 960×540
+ok 6 - フレームと手牌を内側に収める 960×540
+  ---
+  duration_ms: 0.130482
+  type: 'test'
+  ...
+# Subtest: フレームと手牌を内側に収める 1024×768
+ok 7 - フレームと手牌を内側に収める 1024×768
+  ---
+  duration_ms: 0.21
+  type: 'test'
+  ...
+# Subtest: フレームと手牌を内側に収める 1280×800
+ok 8 - フレームと手牌を内側に収める 1280×800
+  ---
+  duration_ms: 0.160166
+  type: 'test'
+  ...
+# Subtest: フレームと手牌を内側に収める 1920×1080
+ok 9 - フレームと手牌を内側に収める 1920×1080
+  ---
+  duration_ms: 0.533176
+  type: 'test'
+  ...
+# Subtest: フレームと手牌を内側に収める 2560×1440
+ok 10 - フレームと手牌を内側に収める 2560×1440
+  ---
+  duration_ms: 0.954578
+  type: 'test'
+  ...
+# Subtest: フレームと手牌を内側に収める 800×300
+ok 11 - フレームと手牌を内側に収める 800×300
+  ---
+  duration_ms: 0.202098
+  type: 'test'
+  ...
+# Subtest: ノッチ・セーフエリアを避ける
+ok 12 - ノッチ・セーフエリアを避ける
+  ---
+  duration_ms: 0.098916
+  type: 'test'
+  ...
+# Subtest: ページ分割は表示高と残り項目を考慮
+ok 13 - ページ分割は表示高と残り項目を考慮
+  ---
+  duration_ms: 1.119832
+  type: 'test'
+  ...
+# Subtest: フレーム縮小・拡大時はページ番号を補正
+ok 14 - フレーム縮小・拡大時はページ番号を補正
+  ---
+  duration_ms: 0.118515
+  type: 'test'
+  ...
+# Subtest: すべての設定グループに分類を用意
+ok 15 - すべての設定グループに分類を用意
+  ---
+  duration_ms: 0.196079
+  type: 'test'
+  ...
+# Subtest: HTMLに手牌・ボタン・フォーム・ダイアログを残さない
+ok 16 - HTMLに手牌・ボタン・フォーム・ダイアログを残さない
+  ---
+  duration_ms: 26.745048
+  type: 'test'
+  ...
+# Subtest: UIの色は照明やトーンマッピングを受けない
+ok 17 - UIの色は照明やトーンマッピングを受けない
+  ---
+  duration_ms: 1.291245
+  type: 'test'
+  ...
+# Subtest: フレーム内の操作がカメラに伝播しない
+ok 18 - フレーム内の操作がカメラに伝播しない
+  ---
+  duration_ms: 1.308344
+  type: 'test'
+  ...
+# Subtest: 小型横長フレームでも手牌を1行に維持
+ok 19 - 小型横長フレームでも手牌を1行に維持
+  ---
+  duration_ms: 0.430806
+  type: 'test'
+  ...
+# Subtest: 縦長フレームでは手牌を2行に収める
+ok 20 - 縦長フレームでは手牌を2行に収める
+  ---
+  duration_ms: 0.134989
+  type: 'test'
+  ...
+# Subtest: サイズ変更ではUIのGPUテクスチャを再確保し古い描画を破棄
+ok 21 - サイズ変更ではUIのGPUテクスチャを再確保し古い描画を破棄
+  ---
+  duration_ms: 1.831591
+  type: 'test'
+  ...
+# Subtest: four and three player deals conserve every physical tile and points
+ok 22 - four and three player deals conserve every physical tile and points
+  ---
+  duration_ms: 26.600444
+  type: 'test'
+  ...
+# Subtest: illegal and out-of-turn actions do not mutate a game
+ok 23 - illegal and out-of-turn actions do not mutate a game
+  ---
+  duration_ms: 6.078554
+  type: 'test'
+  ...
+# Subtest: discard, draw, save and restore preserve deterministic continuation
+ok 24 - discard, draw, save and restore preserve deterministic continuation
+  ---
+  duration_ms: 455.888716
+  type: 'test'
+  ...
+# Subtest: pon outranks chi, waits for competing claims, and enforces kuikae
+ok 25 - pon outranks chi, waits for competing claims, and enforces kuikae
+  ---
+  duration_ms: 11.25013
+  type: 'test'
+  ...
+# Subtest: simultaneous ron supports multiple winners and head-bump
+ok 26 - simultaneous ron supports multiple winners and head-bump
+  ---
+  duration_ms: 18.748466
+  type: 'test'
+  ...
+# Subtest: triple ron either aborts or pays all three winners
+ok 27 - triple ron either aborts or pays all three winners
+  ---
+  duration_ms: 23.364663
+  type: 'test'
+  ...
+# Subtest: discard furiten blocks ron even if the winning discard was called away
+ok 28 - discard furiten blocks ron even if the winning discard was called away
+  ---
+  duration_ms: 4.477142
+  type: 'test'
+  ...
+# Subtest: passing ron causes same-turn furiten; riichi furiten survives the next draw
+ok 29 - passing ron causes same-turn furiten; riichi furiten survives the next draw
+  ---
+  duration_ms: 21.091091
+  type: 'test'
+  ...
+# Subtest: a no-yaku completion still creates furiten when chi was available
+ok 30 - a no-yaku completion still creates furiten when chi was available
+  ---
+  duration_ms: 4.864354
+  type: 'test'
+  ...
+# Subtest: a normal hand cannot rob ankan and does not become furiten by it
+ok 31 - a normal hand cannot rob ankan and does not become furiten by it
+  ---
+  duration_ms: 8.423511
+  type: 'test'
+  ...
+# Subtest: riichi deposit is not taken when the declaration discard is won on
+ok 32 - riichi deposit is not taken when the declaration discard is won on
+  ---
+  duration_ms: 4.761651
+  type: 'test'
+  ...
+# Subtest: double and open riichi commit the chosen deposit and reveal only the open hand
+ok 33 - double and open riichi commit the chosen deposit and reveal only the open hand
+  ---
+  duration_ms: 3.358403
+  type: 'test'
+  ...
+# Subtest: concealed kan draws from rinshan, replenishes dead wall and exposes dora
+ok 34 - concealed kan draws from rinshan, replenishes dead wall and exposes dora
+  ---
+  duration_ms: 2.99048
+  type: 'test'
+  ...
+# Subtest: delayed open-kan indicator appears after the replacement discard
+ok 35 - delayed open-kan indicator appears after the replacement discard
+  ---
+  duration_ms: 2.876382
+  type: 'test'
+  ...
+# Subtest: chankan cancels added kan and keeps the original pon intact
+ok 36 - chankan cancels added kan and keeps the original pon intact
+  ---
+  duration_ms: 3.16017
+  type: 'test'
+  ...
+# Subtest: kokushi can rob a concealed kan only with its rule enabled
+ok 37 - kokushi can rob a concealed kan only with its rule enabled
+  ---
+  duration_ms: 9.741113
+  type: 'test'
+  ...
+# Subtest: riichi concealed kan is restricted to unchanged waits
+ok 38 - riichi concealed kan is restricted to unchanged waits
+  ---
+  duration_ms: 5.969373
+  type: 'test'
+  ...
+# Subtest: three-player nuki preserves all tiles and never offers chi
+ok 39 - three-player nuki preserves all tiles and never offers chi
+  ---
+  duration_ms: 8.235544
+  type: 'test'
+  ...
+# Subtest: nine-terminal abort, dealer continuation, and hand transition
+ok 40 - nine-terminal abort, dealer continuation, and hand transition
+  ---
+  duration_ms: 3.934251
+  type: 'test'
+  ...
+# Subtest: four identical first winds are an optional abortive draw
+ok 41 - four identical first winds are an optional abortive draw
+  ---
+  duration_ms: 6.366498
+  type: 'test'
+  ...
+# Subtest: three-player all-riichi abort waits for a successful declaration
+ok 42 - three-player all-riichi abort waits for a successful declaration
+  ---
+  duration_ms: 3.633939
+  type: 'test'
+  ...
+# Subtest: the fourth kan by multiple players allows rinshan then aborts after discard
+ok 43 - the fourth kan by multiple players allows rinshan then aborts after discard
+  ---
+  duration_ms: 9.29775
+  type: 'test'
+  ...
+# Subtest: custom noten totals distribute complete 100-point sticks, preserving every point
+ok 44 - custom noten totals distribute complete 100-point sticks, preserving every point
+  ---
+  duration_ms: 1.625717
+  type: 'test'
+  ...
+# Subtest: dealer draw continuation obeys tenpai and win-only settings
+ok 45 - dealer draw continuation obeys tenpai and win-only settings
+  ---
+  duration_ms: 6.789792
+  type: 'test'
+  ...
+# Subtest: east final ends normally or advances into the configured extension
+ok 46 - east final ends normally or advances into the configured extension
+  ---
+  duration_ms: 3.426743
+  type: 'test'
+  ...
+# Subtest: nagashi mangan pays an eligible open hand only with the corresponding option
+ok 47 - nagashi mangan pays an eligible open hand only with the corresponding option
+  ---
+  duration_ms: 1.38407
+  type: 'test'
+  ...
+# Subtest: nagashi mangan applies per-yaku open han, zero disabling, and yakuman overrides
+ok 48 - nagashi mangan applies per-yaku open han, zero disabling, and yakuman overrides
+  ---
+  duration_ms: 5.226071
+  type: 'test'
+  ...
+# Subtest: nuki can preserve or cancel other players ippatsu
+ok 49 - nuki can preserve or cancel other players ippatsu
+  ---
+  duration_ms: 6.510681
+  type: 'test'
+  ...
+# Subtest: two-han binding excludes a one-yaku open tsumo even with dora
+ok 50 - two-han binding excludes a one-yaku open tsumo even with dora
+  ---
+  duration_ms: 2.022112
+  type: 'test'
+  ...
+# Subtest: first-call evidence preserves an already concealed yakuhai for sakizuke
+ok 51 - first-call evidence preserves an already concealed yakuhai for sakizuke
+  ---
+  duration_ms: 6.330805
+  type: 'test'
+  ...
+# Subtest: pao assigns the liable yakuman component and conserves total points
+ok 52 - pao assigns the liable yakuman component and conserves total points
+  ---
+  duration_ms: 0.776515
+  type: 'test'
+  ...
+# Subtest: corrupt saved physical tiles and point totals are rejected
+ok 53 - corrupt saved physical tiles and point totals are rejected
+  ---
+  duration_ms: 2.518403
+  type: 'test'
+  ...
+# Subtest: twelve numerical personas and no private opponent information in decisions
+ok 54 - twelve numerical personas and no private opponent information in decisions
+  ---
+  duration_ms: 13.863013
+  type: 'test'
+  ...
+# Subtest: seeded complete east matches finish with valid state and reproducible saves
+ok 55 - seeded complete east matches finish with valid state and reproducible saves
+  ---
+  duration_ms: 4088.873795
+  type: 'test'
+  ...
+# Subtest: IndexedDB: 成績の保存・同一対局の重複抑止
+ok 56 - IndexedDB: 成績の保存・同一対局の重複抑止
+  ---
+  duration_ms: 20.662669
+  type: 'test'
+  ...
+# Subtest: IndexedDB: 同じIDに異なる終了結果を書き込まない
+ok 57 - IndexedDB: 同じIDに異なる終了結果を書き込まない
+  ---
+  duration_ms: 14.338433
+  type: 'test'
+  ...
+# Subtest: IndexedDB: 統合は新規のみ追加し、重複は数えない
+ok 58 - IndexedDB: 統合は新規のみ追加し、重複は数えない
+  ---
+  duration_ms: 22.560868
+  type: 'test'
+  ...
+# Subtest: IndexedDB: 統合中のID衝突はすべて取り消す
+ok 59 - IndexedDB: 統合中のID衝突はすべて取り消す
+  ---
+  duration_ms: 26.277283
+  type: 'test'
+  ...
+# Subtest: IndexedDB: 置換は対象のみ変更、未選択の保存を保持
+ok 60 - IndexedDB: 置換は対象のみ変更、未選択の保存を保持
+  ---
+  duration_ms: 29.017399
+  type: 'test'
+  ...
+# Subtest: IndexedDB: 容量エラー時にclearも書込もロールバック
+ok 61 - IndexedDB: 容量エラー時にclearも書込もロールバック
+  ---
+  duration_ms: 12.276983
+  type: 'test'
+  ...
+# Subtest: IndexedDB: 異なるストアを整合したスナップショットにする
+ok 62 - IndexedDB: 異なるストアを整合したスナップショットにする
+  ---
+  duration_ms: 25.990405
+  type: 'test'
+  ...
+# Subtest: IndexedDB: 新しい接続でも同じデータ、削除結果も共有
+ok 63 - IndexedDB: 新しい接続でも同じデータ、削除結果も共有
+  ---
+  duration_ms: 16.821995
+  type: 'test'
+  ...
+# Subtest: IndexedDB: 削除した成績は保存局面の再読込でも復活しない
+ok 64 - IndexedDB: 削除した成績は保存局面の再読込でも復活しない
+  ---
+  duration_ms: 19.430047
+  type: 'test'
+  ...
+# Subtest: IndexedDB: 明示的インポートでは削除済みの対局も復元できる
+ok 65 - IndexedDB: 明示的インポートでは削除済みの対局も復元できる
+  ---
+  duration_ms: 21.273509
+  type: 'test'
+  ...
+# Subtest: 全COMの初期設定はランダム
+ok 66 - 全COMの初期設定はランダム
+  ---
+  duration_ms: 1.802729
+  type: 'test'
+  ...
+# Subtest: 未指定・不正・短いCOM設定を安全に補完
+ok 67 - 未指定・不正・短いCOM設定を安全に補完
+  ---
+  duration_ms: 0.343677
+  type: 'test'
+  ...
+# Subtest: 四麻のランダム3席は実在する打ち筋に解決
+ok 68 - 四麻のランダム3席は実在する打ち筋に解決
+  ---
+  duration_ms: 2.579303
+  type: 'test'
+  ...
+# Subtest: 三麻はCOM2人だけを抽選
+ok 69 - 三麻はCOM2人だけを抽選
+  ---
+  duration_ms: 2.210349
+  type: 'test'
+  ...
+# Subtest: 固定指定とランダムを席ごとに併用
+ok 70 - 固定指定とランダムを席ごとに併用
+  ---
+  duration_ms: 1.100993
+  type: 'test'
+  ...
+# Subtest: 同一seedと同一設定の抽選は再現可能
+ok 71 - 同一seedと同一設定の抽選は再現可能
+  ---
+  duration_ms: 1.095896
+  type: 'test'
+  ...
+# Subtest: seedの異なる新規対局で抽選結果が変わる
+ok 72 - seedの異なる新規対局で抽選結果が変わる
+  ---
+  duration_ms: 0.666162
+  type: 'test'
+  ...
+# Subtest: ランダムは12種類すべてを選び極端な偏りがない
+ok 73 - ランダムは12種類すべてを選び極端な偏りがない
+  ---
+  duration_ms: 5.333755
+  type: 'test'
+  ...
+# Subtest: 選ばれたCOMは連荘・次局で再抽選されない
+ok 74 - 選ばれたCOMは連荘・次局で再抽選されない
+  ---
+  duration_ms: 1.559529
+  type: 'test'
+  ...
+# Subtest: 途中保存と再開で打ち筋・名前・乱数位置を維持
+ok 75 - 途中保存と再開で打ち筋・名前・乱数位置を維持
+  ---
+  duration_ms: 5.091067
+  type: 'test'
+  ...
+# Subtest: 従来の固定COMの設定と保存を維持
+ok 76 - 従来の固定COMの設定と保存を維持
+  ---
+  duration_ms: 1.553841
+  type: 'test'
+  ...
+# Subtest: 抽選は牌山・配牌の乱数列を消費しない
+ok 77 - 抽選は牌山・配牌の乱数列を消費しない
+  ---
+  duration_ms: 9.453279
+  type: 'test'
+  ...
+# Subtest: 人数切替で3人目の固定設定を失わない
+ok 78 - 人数切替で3人目の固定設定を失わない
+  ---
+  duration_ms: 0.268886
+  type: 'test'
+  ...
+# Subtest: 設定配列は共有・デフォルト変更されない
+ok 79 - 設定配列は共有・デフォルト変更されない
+  ---
+  duration_ms: 0.143762
+  type: 'test'
+  ...
+# Subtest: four-player wall: 136 physical tiles; every face four copies, red distribution configurable
+ok 80 - four-player wall: 136 physical tiles; every face four copies, red distribution configurable
+  ---
+  duration_ms: 4.605221
+  type: 'test'
+  ...
+# Subtest: three-player wall: 108 tiles; removed 2–8 man, no nonexistent red man tile
+ok 81 - three-player wall: 108 tiles; removed 2–8 man, no nonexistent red man tile
+  ---
+  duration_ms: 0.483013
+  type: 'test'
+  ...
+# Subtest: dora cycles: suits, winds, dragons, sanma 1m↔9m
+ok 82 - dora cycles: suits, winds, dragons, sanma 1m↔9m
+  ---
+  duration_ms: 0.234305
+  type: 'test'
+  ...
+# Subtest: normalization preserves independent nested settings and synchronizes open riichi
+ok 83 - normalization preserves independent nested settings and synchronizes open riichi
+  ---
+  duration_ms: 0.76619
+  type: 'test'
+  ...
+# Subtest: invalid cardinality, fifth copies, malformed calls and removed sanma tiles are rejected
+ok 84 - invalid cardinality, fifth copies, malformed calls and removed sanma tiles are rejected
+  ---
+  duration_ms: 2.592393
+  type: 'test'
+  ...
+# Subtest: standard yaku: menzenTsumo
+ok 85 - standard yaku: menzenTsumo
+  ---
+  duration_ms: 2.135318
+  type: 'test'
+  ...
+# Subtest: standard yaku: riichi
+ok 86 - standard yaku: riichi
+  ---
+  duration_ms: 1.094654
+  type: 'test'
+  ...
+# Subtest: standard yaku: doubleRiichi
+ok 87 - standard yaku: doubleRiichi
+  ---
+  duration_ms: 0.770997
+  type: 'test'
+  ...
+# Subtest: standard yaku: ippatsu
+ok 88 - standard yaku: ippatsu
+  ---
+  duration_ms: 0.953235
+  type: 'test'
+  ...
+# Subtest: standard yaku: pinfu
+ok 89 - standard yaku: pinfu
+  ---
+  duration_ms: 1.7423
+  type: 'test'
+  ...
+# Subtest: standard yaku: tanyao
+ok 90 - standard yaku: tanyao
+  ---
+  duration_ms: 0.595278
+  type: 'test'
+  ...
+# Subtest: standard yaku: iipeikou
+ok 91 - standard yaku: iipeikou
+  ---
+  duration_ms: 0.679602
+  type: 'test'
+  ...
+# Subtest: standard yaku: white
+ok 92 - standard yaku: white
+  ---
+  duration_ms: 0.620195
+  type: 'test'
+  ...
+# Subtest: standard yaku: green
+ok 93 - standard yaku: green
+  ---
+  duration_ms: 0.550902
+  type: 'test'
+  ...
+# Subtest: standard yaku: red
+ok 94 - standard yaku: red
+  ---
+  duration_ms: 0.516842
+  type: 'test'
+  ...
+# Subtest: standard yaku: seatWind
+ok 95 - standard yaku: seatWind
+  ---
+  duration_ms: 0.550933
+  type: 'test'
+  ...
+# Subtest: standard yaku: roundWind
+ok 96 - standard yaku: roundWind
+  ---
+  duration_ms: 0.532846
+  type: 'test'
+  ...
+# Subtest: standard yaku: rinshan
+ok 97 - standard yaku: rinshan
+  ---
+  duration_ms: 0.674725
+  type: 'test'
+  ...
+# Subtest: standard yaku: chankan
+ok 98 - standard yaku: chankan
+  ---
+  duration_ms: 0.595858
+  type: 'test'
+  ...
+# Subtest: standard yaku: haitei
+ok 99 - standard yaku: haitei
+  ---
+  duration_ms: 0.549921
+  type: 'test'
+  ...
+# Subtest: standard yaku: houtei
+ok 100 - standard yaku: houtei
+  ---
+  duration_ms: 0.525115
+  type: 'test'
+  ...
+# Subtest: standard yaku: sanshokuDoujun
+ok 101 - standard yaku: sanshokuDoujun
+  ---
+  duration_ms: 0.484634
+  type: 'test'
+  ...
+# Subtest: standard yaku: ittsu
+ok 102 - standard yaku: ittsu
+  ---
+  duration_ms: 1.116146
+  type: 'test'
+  ...
+# Subtest: standard yaku: chiitoitsu
+ok 103 - standard yaku: chiitoitsu
+  ---
+  duration_ms: 0.557912
+  type: 'test'
+  ...
+# Subtest: standard yaku: toitoi
+ok 104 - standard yaku: toitoi
+  ---
+  duration_ms: 0.62384
+  type: 'test'
+  ...
+# Subtest: standard yaku: sanankou
+ok 105 - standard yaku: sanankou
+  ---
+  duration_ms: 0.489011
+  type: 'test'
+  ...
+# Subtest: standard yaku: sanshokuDoukou
+ok 106 - standard yaku: sanshokuDoukou
+  ---
+  duration_ms: 0.448662
+  type: 'test'
+  ...
+# Subtest: standard yaku: chanta
+ok 107 - standard yaku: chanta
+  ---
+  duration_ms: 0.481179
+  type: 'test'
+  ...
+# Subtest: standard yaku: sankantsu
+ok 108 - standard yaku: sankantsu
+  ---
+  duration_ms: 0.469042
+  type: 'test'
+  ...
+# Subtest: standard yaku: shousangen
+ok 109 - standard yaku: shousangen
+  ---
+  duration_ms: 0.558424
+  type: 'test'
+  ...
+# Subtest: standard yaku: honroutou
+ok 110 - standard yaku: honroutou
+  ---
+  duration_ms: 0.401122
+  type: 'test'
+  ...
+# Subtest: standard yaku: honitsu
+ok 111 - standard yaku: honitsu
+  ---
+  duration_ms: 0.50197
+  type: 'test'
+  ...
+# Subtest: standard yaku: junchan
+ok 112 - standard yaku: junchan
+  ---
+  duration_ms: 0.469152
+  type: 'test'
+  ...
+# Subtest: standard yaku: ryanpeikou
+ok 113 - standard yaku: ryanpeikou
+  ---
+  duration_ms: 0.560466
+  type: 'test'
+  ...
+# Subtest: standard yaku: chinitsu
+ok 114 - standard yaku: chinitsu
+  ---
+  duration_ms: 0.490764
+  type: 'test'
+  ...
+# Subtest: standard yaku: kokushi
+ok 115 - standard yaku: kokushi
+  ---
+  duration_ms: 0.506026
+  type: 'test'
+  ...
+# Subtest: standard yaku: kokushi13
+ok 116 - standard yaku: kokushi13
+  ---
+  duration_ms: 0.38686
+  type: 'test'
+  ...
+# Subtest: standard yaku: suuankou
+ok 117 - standard yaku: suuankou
+  ---
+  duration_ms: 0.954027
+  type: 'test'
+  ...
+# Subtest: standard yaku: suuankouTanki
+ok 118 - standard yaku: suuankouTanki
+  ---
+  duration_ms: 0.484835
+  type: 'test'
+  ...
+# Subtest: standard yaku: daisangen
+ok 119 - standard yaku: daisangen
+  ---
+  duration_ms: 0.458927
+  type: 'test'
+  ...
+# Subtest: standard yaku: shousuushii
+ok 120 - standard yaku: shousuushii
+  ---
+  duration_ms: 0.468561
+  type: 'test'
+  ...
+# Subtest: standard yaku: daisuushii
+ok 121 - standard yaku: daisuushii
+  ---
+  duration_ms: 0.411858
+  type: 'test'
+  ...
+# Subtest: standard yaku: tsuuiisou
+ok 122 - standard yaku: tsuuiisou
+  ---
+  duration_ms: 0.455311
+  type: 'test'
+  ...
+# Subtest: standard yaku: ryuuiisou
+ok 123 - standard yaku: ryuuiisou
+  ---
+  duration_ms: 0.668065
+  type: 'test'
+  ...
+# Subtest: standard yaku: chinroutou
+ok 124 - standard yaku: chinroutou
+  ---
+  duration_ms: 0.438626
+  type: 'test'
+  ...
+# Subtest: standard yaku: chuuren
+ok 125 - standard yaku: chuuren
+  ---
+  duration_ms: 0.494129
+  type: 'test'
+  ...
+# Subtest: standard yaku: junseiChuuren
+ok 126 - standard yaku: junseiChuuren
+  ---
+  duration_ms: 0.631662
+  type: 'test'
+  ...
+# Subtest: standard yaku: suukantsu
+ok 127 - standard yaku: suukantsu
+  ---
+  duration_ms: 0.375253
+  type: 'test'
+  ...
+# Subtest: standard yaku: tenhou
+ok 128 - standard yaku: tenhou
+  ---
+  duration_ms: 0.375053
+  type: 'test'
+  ...
+# Subtest: standard yaku: chiihou
+ok 129 - standard yaku: chiihou
+  ---
+  duration_ms: 0.322074
+  type: 'test'
+  ...
+# Subtest: closed ron shanpon opens only the winning triplet for fu and three concealed triplets
+ok 130 - closed ron shanpon opens only the winning triplet for fu and three concealed triplets
+  ---
+  duration_ms: 0.41347
+  type: 'test'
+  ...
+# Subtest: pinfu ron 30fu / tsumo20fu, edge/closed/pair waits carry2fu
+ok 131 - pinfu ron 30fu / tsumo20fu, edge/closed/pair waits carry2fu
+  ---
+  duration_ms: 1.706596
+  type: 'test'
+  ...
+# Subtest: open pinfu form receives minimum30fu and no pinfu yaku
+ok 132 - open pinfu form receives minimum30fu and no pinfu yaku
+  ---
+  duration_ms: 0.696457
+  type: 'test'
+  ...
+# Subtest: value-pair fu uses seat and prevailing winds independently
+ok 133 - value-pair fu uses seat and prevailing winds independently
+  ---
+  duration_ms: 0.652001
+  type: 'test'
+  ...
+# Subtest: seven pairs chooses25fu and never adds iipeikou to same decomposition
+ok 134 - seven pairs chooses25fu and never adds iipeikou to same decomposition
+  ---
+  duration_ms: 0.601718
+  type: 'test'
+  ...
+# Subtest: four identical tiles count as two pairs only with chiitoiFourCopies
+ok 135 - four identical tiles count as two pairs only with chiitoiFourCopies
+  ---
+  duration_ms: 2.806859
+  type: 'test'
+  ...
+# Subtest: dora alone cannot qualify a hand or satisfy two-han restriction
+ok 136 - dora alone cannot qualify a hand or satisfy two-han restriction
+  ---
+  duration_ms: 0.995368
+  type: 'test'
+  ...
+# Subtest: red, ura, kan-dora, kan-ura and indicator-as-dora switches affect real scores
+ok 137 - red, ura, kan-dora, kan-ura and indicator-as-dora switches affect real scores
+  ---
+  duration_ms: 1.351993
+  type: 'test'
+  ...
+# Subtest: kan-dora rinshan and chankan timing handles pending or already active indicators
+ok 138 - kan-dora rinshan and chankan timing handles pending or already active indicators
+  ---
+  duration_ms: 1.647409
+  type: 'test'
+  ...
+# Subtest: per-yaku han overrides change closed/open values without sharing mutable state
+ok 139 - per-yaku han overrides change closed/open values without sharing mutable state
+  ---
+  duration_ms: 1.628581
+  type: 'test'
+  ...
+# Subtest: double riichi disabled downgrades to single, open riichi replaces single
+ok 140 - double riichi disabled downgrades to single, open riichi replaces single
+  ---
+  duration_ms: 1.240989
+  type: 'test'
+  ...
+# Subtest: green dragon requirement affects green-only hand and not valid hand with 發
+ok 141 - green dragon requirement affects green-only hand and not valid hand with 發
+  ---
+  duration_ms: 1.792874
+  type: 'test'
+  ...
+# Subtest: yakuman multipliers, accumulation and upper limits are configurable
+ok 142 - yakuman multipliers, accumulation and upper limits are configurable
+  ---
+  duration_ms: 3.578207
+  type: 'test'
+  ...
+# Subtest: point table 1han 30fu
+ok 143 - point table 1han 30fu
+  ---
+  duration_ms: 0.129371
+  type: 'test'
+  ...
+# Subtest: point table 1han 40fu
+ok 144 - point table 1han 40fu
+  ---
+  duration_ms: 0.071165
+  type: 'test'
+  ...
+# Subtest: point table 2han 25fu
+ok 145 - point table 2han 25fu
+  ---
+  duration_ms: 0.066218
+  type: 'test'
+  ...
+# Subtest: point table 3han 25fu
+ok 146 - point table 3han 25fu
+  ---
+  duration_ms: 0.056904
+  type: 'test'
+  ...
+# Subtest: point table 4han 30fu
+ok 147 - point table 4han 30fu
+  ---
+  duration_ms: 0.059558
+  type: 'test'
+  ...
+# Subtest: point table 3han 60fu
+ok 148 - point table 3han 60fu
+  ---
+  duration_ms: 0.06122
+  type: 'test'
+  ...
+# Subtest: point table 4han 40fu
+ok 149 - point table 4han 40fu
+  ---
+  duration_ms: 0.05407
+  type: 'test'
+  ...
+# Subtest: point table 1han 110fu
+ok 150 - point table 1han 110fu
+  ---
+  duration_ms: 0.053639
+  type: 'test'
+  ...
+# Subtest: point table 2han 20fu
+ok 151 - point table 2han 20fu
+  ---
+  duration_ms: 0.190691
+  type: 'test'
+  ...
+# Subtest: point table 3han 20fu
+ok 152 - point table 3han 20fu
+  ---
+  duration_ms: 0.123442
+  type: 'test'
+  ...
+# Subtest: point table 4han 20fu
+ok 153 - point table 4han 20fu
+  ---
+  duration_ms: 0.076393
+  type: 'test'
+  ...
+# Subtest: point table 5han 30fu
+ok 154 - point table 5han 30fu
+  ---
+  duration_ms: 0.065437
+  type: 'test'
+  ...
+# Subtest: point table 6han 30fu
+ok 155 - point table 6han 30fu
+  ---
+  duration_ms: 0.06082
+  type: 'test'
+  ...
+# Subtest: point table 8han 30fu
+ok 156 - point table 8han 30fu
+  ---
+  duration_ms: 0.05415
+  type: 'test'
+  ...
+# Subtest: point table 11han 30fu
+ok 157 - point table 11han 30fu
+  ---
+  duration_ms: 0.052758
+  type: 'test'
+  ...
+# Subtest: point table 13han 30fu
+ok 158 - point table 13han 30fu
+  ---
+  duration_ms: 0.053019
+  type: 'test'
+  ...
+# Subtest: kiriage, kazoe limit and sanma equalized rounding
+ok 159 - kiriage, kazoe limit and sanma equalized rounding
+  ---
+  duration_ms: 0.77972
+  type: 'test'
+  ...
+# Subtest: local yaku: openRiichi has a real predicate and toggle
+ok 160 - local yaku: openRiichi has a real predicate and toggle
+  ---
+  duration_ms: 0.908229
+  type: 'test'
+  ...
+# Subtest: local yaku: daisharin has a real predicate and toggle
+ok 161 - local yaku: daisharin has a real predicate and toggle
+  ---
+  duration_ms: 1.357842
+  type: 'test'
+  ...
+# Subtest: local yaku: shousharin has a real predicate and toggle
+ok 162 - local yaku: shousharin has a real predicate and toggle
+  ---
+  duration_ms: 1.787856
+  type: 'test'
+  ...
+# Subtest: local yaku: suurenkou has a real predicate and toggle
+ok 163 - local yaku: suurenkou has a real predicate and toggle
+  ---
+  duration_ms: 1.285075
+  type: 'test'
+  ...
+# Subtest: local yaku: sanrenkou has a real predicate and toggle
+ok 164 - local yaku: sanrenkou has a real predicate and toggle
+  ---
+  duration_ms: 0.802543
+  type: 'test'
+  ...
+# Subtest: local yaku: benikujaku has a real predicate and toggle
+ok 165 - local yaku: benikujaku has a real predicate and toggle
+  ---
+  duration_ms: 0.861781
+  type: 'test'
+  ...
+# Subtest: local yaku: kouitten has a real predicate and toggle
+ok 166 - local yaku: kouitten has a real predicate and toggle
+  ---
+  duration_ms: 0.918495
+  type: 'test'
+  ...
+# Subtest: local yaku: kokuissou has a real predicate and toggle
+ok 167 - local yaku: kokuissou has a real predicate and toggle
+  ---
+  duration_ms: 0.816884
+  type: 'test'
+  ...
+# Subtest: local yaku: hyakumangoku has a real predicate and toggle
+ok 168 - local yaku: hyakumangoku has a real predicate and toggle
+  ---
+  duration_ms: 2.218401
+  type: 'test'
+  ...
+# Subtest: local yaku: renhou has a real predicate and toggle
+ok 169 - local yaku: renhou has a real predicate and toggle
+  ---
+  duration_ms: 0.848351
+  type: 'test'
+  ...
+# Subtest: local yaku: shiisanpuuta has a real predicate and toggle
+ok 170 - local yaku: shiisanpuuta has a real predicate and toggle
+  ---
+  duration_ms: 0.843503
+  type: 'test'
+  ...
+# Subtest: local yaku: tohokuShinkansen has a real predicate and toggle
+ok 171 - local yaku: tohokuShinkansen has a real predicate and toggle
+  ---
+  duration_ms: 0.802634
+  type: 'test'
+  ...
+# Subtest: local yaku: tohokuExpressway has a real predicate and toggle
+ok 172 - local yaku: tohokuExpressway has a real predicate and toggle
+  ---
+  duration_ms: 0.814732
+  type: 'test'
+  ...
+# Subtest: local yaku: paarenchan has a real predicate and toggle
+ok 173 - local yaku: paarenchan has a real predicate and toggle
+  ---
+  duration_ms: 0.729626
+  type: 'test'
+  ...
+# Subtest: local yaku: sanshokuTsuukan has a real predicate and toggle
+ok 174 - local yaku: sanshokuTsuukan has a real predicate and toggle
+  ---
+  duration_ms: 0.703107
+  type: 'test'
+  ...
+# Subtest: local yaku: isshokuSanjun has a real predicate and toggle
+ok 175 - local yaku: isshokuSanjun has a real predicate and toggle
+  ---
+  duration_ms: 1.061536
+  type: 'test'
+  ...
+# Subtest: local yaku: isshokuYonjun has a real predicate and toggle
+ok 176 - local yaku: isshokuYonjun has a real predicate and toggle
+  ---
+  duration_ms: 1.753516
+  type: 'test'
+  ...
+# Subtest: local yaku: kinmonkyou has a real predicate and toggle
+ok 177 - local yaku: kinmonkyou has a real predicate and toggle
+  ---
+  duration_ms: 0.771487
+  type: 'test'
+  ...
+# Subtest: local yaku: nanbokuSensou has a real predicate and toggle
+ok 178 - local yaku: nanbokuSensou has a real predicate and toggle
+  ---
+  duration_ms: 0.736807
+  type: 'test'
+  ...
+# Subtest: local yaku: tsubameGaeshi has a real predicate and toggle
+ok 179 - local yaku: tsubameGaeshi has a real predicate and toggle
+  ---
+  duration_ms: 0.84089
+  type: 'test'
+  ...
+# Subtest: local yaku: kanburi has a real predicate and toggle
+ok 180 - local yaku: kanburi has a real predicate and toggle
+  ---
+  duration_ms: 0.73964
+  type: 'test'
+  ...
+# Subtest: local yaku: shiieruRaotai has a real predicate and toggle
+ok 181 - local yaku: shiieruRaotai has a real predicate and toggle
+  ---
+  duration_ms: 0.751678
+  type: 'test'
+  ...
+# Subtest: local yaku: uumensai has a real predicate and toggle
+ok 182 - local yaku: uumensai has a real predicate and toggle
+  ---
+  duration_ms: 0.999213
+  type: 'test'
+  ...
+# Subtest: local yaku: iipinMoyue has a real predicate and toggle
+ok 183 - local yaku: iipinMoyue has a real predicate and toggle
+  ---
+  duration_ms: 0.585083
+  type: 'test'
+  ...
+# Subtest: local yaku: kyuupinRaoyui has a real predicate and toggle
+ok 184 - local yaku: kyuupinRaoyui has a real predicate and toggle
+  ---
+  duration_ms: 0.891014
+  type: 'test'
+  ...
+# Subtest: local yaku: daichikurin has a real predicate and toggle
+ok 185 - local yaku: daichikurin has a real predicate and toggle
+  ---
+  duration_ms: 1.030039
+  type: 'test'
+  ...
+# Subtest: local yaku: daisuurin has a real predicate and toggle
+ok 186 - local yaku: daisuurin has a real predicate and toggle
+  ---
+  duration_ms: 1.07843
+  type: 'test'
+  ...
+# Subtest: local yaku: daichisei has a real predicate and toggle
+ok 187 - local yaku: daichisei has a real predicate and toggle
+  ---
+  duration_ms: 0.463013
+  type: 'test'
+  ...
+# Subtest: local yaku: kachouFuugetsu has a real predicate and toggle
+ok 188 - local yaku: kachouFuugetsu has a real predicate and toggle
+  ---
+  duration_ms: 0.519586
+  type: 'test'
+  ...
+# Subtest: local yaku: fuukaSetsugetsu has a real predicate and toggle
+ok 189 - local yaku: fuukaSetsugetsu has a real predicate and toggle
+  ---
+  duration_ms: 0.529731
+  type: 'test'
+  ...
+# Subtest: the only draw-only local is handled by game exhaustive-draw settlement
+ok 190 - the only draw-only local is handled by game exhaustive-draw settlement
+  ---
+  duration_ms: 0.249888
+  type: 'test'
+  ...
+# Subtest: local special shapes do not silently accept an arbitrary disordered hand
+ok 191 - local special shapes do not silently accept an arbitrary disordered hand
+  ---
+  duration_ms: 1.679586
+  type: 'test'
+  ...
+# Subtest: local contextual triggers require the correct event and replace overlapping baseline
+ok 192 - local contextual triggers require the correct event and replace overlapping baseline
+  ---
+  duration_ms: 1.796529
+  type: 'test'
+  ...
+# Subtest: atozuke first/middle consume chronological yaku evidence rather than decorative settings
+ok 193 - atozuke first/middle consume chronological yaku evidence rather than decorative settings
+  ---
+  duration_ms: 1.075636
+  type: 'test'
+  ...
+# Subtest: standalone no-atozuke accepts closed seven pairs and pinfu but rejects one-sided no-yaku wait
+ok 194 - standalone no-atozuke accepts closed seven pairs and pinfu but rejects one-sided no-yaku wait
+  ---
+  duration_ms: 3.270032
+  type: 'test'
+  ...
+# Subtest: first-call snapshots distinguish pre-existing concealed yakuhai from a later completed yaku
+ok 195 - first-call snapshots distinguish pre-existing concealed yakuhai from a later completed yaku
+  ---
+  duration_ms: 2.95007
+  type: 'test'
+  ...
+# Subtest: first unrelated sequence cannot establish a different later sanshoku pattern
+ok 196 - first unrelated sequence cannot establish a different later sanshoku pattern
+  ---
+  duration_ms: 2.520647
+  type: 'test'
+  ...
+# Subtest: nuki bonus and North dora account for removed physical North in sanma
+ok 197 - nuki bonus and North dora account for removed physical North in sanma
+  ---
+  duration_ms: 0.780881
+  type: 'test'
+  ...
+# Subtest: shanten agrees with exact standard/seven-pairs/orphans completion across fixed fixtures
+ok 198 - shanten agrees with exact standard/seven-pairs/orphans completion across fixed fixtures
+  ---
+  duration_ms: 121.031416
+  type: 'test'
+  ...
+# Subtest: seeded generated normal hands: every legal 14-tile shape is complete and every 13-tile removal waits for it
+ok 199 - seeded generated normal hands: every legal 14-tile shape is complete and every 13-tile removal waits for it
+  ---
+  duration_ms: 32.495327
+  type: 'test'
+  ...
+# Subtest: riichi kan strict mode rejects a removed sequence interpretation even with unchanged waits
+ok 200 - riichi kan strict mode rejects a removed sequence interpretation even with unchanged waits
+  ---
+  duration_ms: 1.341848
+  type: 'test'
+  ...
+# Subtest: riichi kan accepts an independent triplet and rejects changed or physically impossible waits
+ok 201 - riichi kan accepts an independent triplet and rejects changed or physically impossible waits
+  ---
+  duration_ms: 0.715215
+  type: 'test'
+  ...
+# Subtest: disabling a local with zero han or multiplier restores its overlapping baseline role
+ok 202 - disabling a local with zero han or multiplier restores its overlapping baseline role
+  ---
+  duration_ms: 2.55652
+  type: 'test'
+  ...
+# Subtest: a zero 人和 multiplier disables all valuation modes; five-han mode never inserts a zero-han role
+ok 203 - a zero 人和 multiplier disables all valuation modes; five-han mode never inserts a zero-han role
+  ---
+  duration_ms: 1.507994
+  type: 'test'
+  ...
+# Subtest: 牌面の印刷色は白地に対して十分暗い
+ok 204 - 牌面の印刷色は白地に対して十分暗い
+  ---
+  duration_ms: 1.237304
+  type: 'test'
+  ...
+# Subtest: 34種の牌面はそれぞれ識別可能な別の図柄
+ok 205 - 34種の牌面はそれぞれ識別可能な別の図柄
+  ---
+  duration_ms: 5.006132
+  type: 'test'
+  ...
+# Subtest: 萬子・筒子・索子・字牌の印刷色と赤牌を維持
+ok 206 - 萬子・筒子・索子・字牌の印刷色と赤牌を維持
+  ---
+  duration_ms: 0.514228
+  type: 'test'
+  ...
+# Subtest: 3Dの牌面だけは強光源の露出・トーンマッピングの対象にしない
+ok 207 - 3Dの牌面だけは強光源の露出・トーンマッピングの対象にしない
+  ---
+  duration_ms: 6.935647
+  type: 'test'
+  ...
+# Subtest: 操作不可の間もCanvas手牌の色を薄めない
+ok 208 - 操作不可の間もCanvas手牌の色を薄めない
+  ---
+  duration_ms: 1.20015
+  type: 'test'
+  ...
+# Subtest: v1.2: 初期設定は席・起家・COMともにランダム
+ok 209 - v1.2: 初期設定は席・起家・COMともにランダム
+  ---
+  duration_ms: 2.610348
+  type: 'test'
+  ...
+# Subtest: v1.2: 3人の起家抽選で全席が出現し、自分に固定しない
+ok 210 - v1.2: 3人の起家抽選で全席が出現し、自分に固定しない
+  ---
+  duration_ms: 120.251861
+  type: 'test'
+  ...
+# Subtest: v1.2: 3人の席決めは配牌前で停止・保存・再開
+ok 211 - v1.2: 3人の席決めは配牌前で停止・保存・再開
+  ---
+  duration_ms: 12.645497
+  type: 'test'
+  ...
+# Subtest: v1.2: 3人の固定起家と固定COMは参加者IDに紐付く
+ok 212 - v1.2: 3人の固定起家と固定COMは参加者IDに紐付く
+  ---
+  duration_ms: 0.546646
+  type: 'test'
+  ...
+# Subtest: v1.2: 3人の親は輪荘で1席ずつ交代、連荘で変わらない
+ok 213 - v1.2: 3人の親は輪荘で1席ずつ交代、連荘で変わらない
+  ---
+  duration_ms: 6.756002
+  type: 'test'
+  ...
+# Subtest: v1.2: 4人の起家抽選で全席が出現し、自分に固定しない
+ok 214 - v1.2: 4人の起家抽選で全席が出現し、自分に固定しない
+  ---
+  duration_ms: 64.855985
+  type: 'test'
+  ...
+# Subtest: v1.2: 4人の席決めは配牌前で停止・保存・再開
+ok 215 - v1.2: 4人の席決めは配牌前で停止・保存・再開
+  ---
+  duration_ms: 1.277433
+  type: 'test'
+  ...
+# Subtest: v1.2: 4人の固定起家と固定COMは参加者IDに紐付く
+ok 216 - v1.2: 4人の固定起家と固定COMは参加者IDに紐付く
+  ---
+  duration_ms: 0.408512
+  type: 'test'
+  ...
+# Subtest: v1.2: 4人の親は輪荘で1席ずつ交代、連荘で変わらない
+ok 217 - v1.2: 4人の親は輪荘で1席ずつ交代、連荘で変わらない
+  ---
+  duration_ms: 2.349624
+  type: 'test'
+  ...
+# Subtest: v1.2: 新旧セーブ互換・未対応の未来版拒否
+ok 218 - v1.2: 新旧セーブ互換・未対応の未来版拒否
+  ---
+  duration_ms: 5.381375
+  type: 'test'
+  ...
+# Subtest: v1.2: 四麻を終局まで実行し、履歴・精算・点棒を検証
+ok 219 - v1.2: 四麻を終局まで実行し、履歴・精算・点棒を検証
+  ---
+  duration_ms: 843.680081
+  type: 'test'
+  ...
+# Subtest: v1.2: 三麻を終局まで実行し、履歴・精算・点棒を検証
+ok 220 - v1.2: 三麻を終局まで実行し、履歴・精算・点棒を検証
+  ---
+  duration_ms: 713.435029
+  type: 'test'
+  ...
+# Subtest: v1.2: 記録された乱数状態から四麻全局を正確に再現
+ok 221 - v1.2: 記録された乱数状態から四麻全局を正確に再現
+  ---
+  duration_ms: 158.35407
+  type: 'test'
+  ...
+# Subtest: v1.2: 記録された乱数状態から三麻全局を正確に再現
+ok 222 - v1.2: 記録された乱数状態から三麻全局を正確に再現
+  ---
+  duration_ms: 190.695988
+  type: 'test'
+  ...
+# Subtest: v1.2: 和了時点の牌・役・符・供託・支払いを保存
+ok 223 - v1.2: 和了時点の牌・役・符・供託・支払いを保存
+  ---
+  duration_ms: 0.267185
+  type: 'test'
+  ...
+# Subtest: v1.2: 集計は三麻と四麻を分離し、入力された集計値を使わない
+ok 224 - v1.2: 集計は三麻と四麻を分離し、入力された集計値を使わない
+  ---
+  duration_ms: 11.377492
+  type: 'test'
+  ...
+# Subtest: v1.2: 同時ロンは放銃1局、途中流局は局率分母から除外
+ok 225 - v1.2: 同時ロンは放銃1局、途中流局は局率分母から除外
+  ---
+  duration_ms: 0.297809
+  type: 'test'
+  ...
+# Subtest: v1.2: 点数推移の改竄・親の不一致・精算改竄を拒否
+ok 226 - v1.2: 点数推移の改竄・親の不一致・精算改竄を拒否
+  ---
+  duration_ms: 27.666833
+  type: 'test'
+  ...
+# Subtest: v1.2: 非ゼロウマは設定通りであり精算値を勝手にゼロサム補正しない
+ok 227 - v1.2: 非ゼロウマは設定通りであり精算値を勝手にゼロサム補正しない
+  ---
+  duration_ms: 0.443154
+  type: 'test'
+  ...
+# Subtest: v1.2: CRC32の既知ベクトル
+ok 228 - v1.2: CRC32の既知ベクトル
+  ---
+  duration_ms: 0.342415
+  type: 'test'
+  ...
+# Subtest: v1.2: ZIPは日本語JSONを無損失で往復
+ok 229 - v1.2: ZIPは日本語JSONを無損失で往復
+  ---
+  duration_ms: 0.653714
+  type: 'test'
+  ...
+# Subtest: v1.2: ZIPの切断・CRC破損・パストラバーサルを拒否
+ok 230 - v1.2: ZIPの切断・CRC破損・パストラバーサルを拒否
+  ---
+  duration_ms: 0.687805
+  type: 'test'
+  ...
+# Subtest: v1.2: 一括ZIPのハッシュ付き書き出し・読み込み・再集計
+ok 231 - v1.2: 一括ZIPのハッシュ付き書き出し・読み込み・再集計
+  ---
+  duration_ms: 106.413816
+  type: 'test'
+  ...
+# Subtest: v1.2: JSONの新版・ID重複・安全でないキー・不明な保存スロットを拒否
+ok 232 - v1.2: JSONの新版・ID重複・安全でないキー・不明な保存スロットを拒否
+  ---
+  duration_ms: 16.694058
+  type: 'test'
+  ...
+# Subtest: v1.2: 途中対局は成績登録できず、部分履歴は完全再生できない
+ok 233 - v1.2: 途中対局は成績登録できず、部分履歴は完全再生できない
+  ---
+  duration_ms: 21.265767
+  type: 'test'
+  ...
+1..233
+# tests 233
+# suites 0
+# pass 233
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4882.332999

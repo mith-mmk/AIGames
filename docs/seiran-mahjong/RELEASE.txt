@@ -1,0 +1,13 @@
+翠嵐麻雀 v1.2.0
+更新日: 2026-10-17
+
+席決め・起家抽選、和了結果の自動表示、終局精算、点数推移、対戦成績、データのZIP/JSON入出力を実装。
+全UIはCanvas内。COMランダム初期設定と濃い牌面を維持。
+
+起動: node server.mjs
+表示: http://localhost:8080
+通常テスト: npm test
+連続対局と再現: npm run test:stress
+
+このZIPがv1.2.0です。今回の既存Sitesへの再公開は未実施です。
+詳しい検証結果と制限は docs/VERIFICATION.md を参照。

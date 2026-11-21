@@ -1,0 +1,56 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "bytes": 571,
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "path": "/style.css",
+    "status": 200,
+    "bytes": 552,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "path": "/js/boot.js",
+    "status": 200,
+    "bytes": 2045,
+    "type": "text/javascript; charset=utf-8"
+  },
+  {
+    "path": "/js/app.js",
+    "status": 200,
+    "bytes": 24530,
+    "type": "text/javascript; charset=utf-8"
+  },
+  {
+    "path": "/js/core/game.js",
+    "status": 200,
+    "bytes": 44371,
+    "type": "text/javascript; charset=utf-8"
+  },
+  {
+    "path": "/js/ui/match-screens.js",
+    "status": 200,
+    "bytes": 26906,
+    "type": "text/javascript; charset=utf-8"
+  },
+  {
+    "path": "/js/data/library.js",
+    "status": 200,
+    "bytes": 5614,
+    "type": "text/javascript; charset=utf-8"
+  },
+  {
+    "path": "/js/data/backup.js",
+    "status": 200,
+    "bytes": 10147,
+    "type": "text/javascript; charset=utf-8"
+  },
+  {
+    "path": "/vendor/three/build/three.module.js",
+    "status": 200,
+    "bytes": 662772,
+    "type": "text/javascript; charset=utf-8"
+  }
+]

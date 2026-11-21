@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "name": "親画面と異なるサイズのiframe内配置・実座標クリック 900×500",
+      "result": true
+    },
+    {
+      "name": "親画面と異なるサイズのiframe内配置・実座標クリック 720×405",
+      "result": true
+    },
+    {
+      "name": "親画面と異なるサイズのiframe内配置・実座標クリック 568×320",
+      "result": true
+    },
+    {
+      "name": "タッチ端末エミュレーションでランダムCOMを設定（DPR 2）",
+      "result": true
+    },
+    {
+      "name": "タッチで描画内の数字パネルを操作し35,000点を設定",
+      "result": true
+    },
+    {
+      "name": "タッチで牌選択・打牌確定",
+      "result": true
+    },
+    {
+      "name": "保存JSONを読み込み、和了結果・成立役を描画内で確認",
+      "result": true
+    },
+    {
+      "name": "実牌を保全したチー候補をタッチで選択",
+      "result": true
+    },
+    {
+      "name": "不正JSONの読み込みでは進行中の局面を変更しない",
+      "result": true
+    },
+    {
+      "name": "常時表示の手牌分析を復元",
+      "result": true
+    },
+    {
+      "name": "埋め込み・タッチ検証の未捕捉例外なし",
+      "result": true
+    }
+  ],
+  "errors": []
+}

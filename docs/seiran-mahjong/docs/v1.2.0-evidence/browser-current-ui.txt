@@ -1,0 +1,18 @@
+PASS 席決め前の初期画面・COMランダム・Canvas1枚
+SIZE 844 390
+SCREEN result
+CAPTURE result
+SCREEN settlement
+CAPTURE settlement
+SCREEN graph
+CAPTURE graph
+SCREEN history
+CAPTURE history
+SCREEN statistics
+CAPTURE statistics
+SCREEN data
+CAPTURE data
+SCREEN confirm
+CAPTURE confirm
+PASS 844×390の画面が枠内: result,settlement,graph,history,statistics,data,confirm
+PASS ブラウザの未処理例外なし

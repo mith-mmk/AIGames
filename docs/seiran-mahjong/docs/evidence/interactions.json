@@ -1,0 +1,93 @@
+{
+  "checks": [
+    {
+      "name": "起動・ランダム初期値・可視DOMはCanvasのみ",
+      "result": true
+    },
+    {
+      "name": "COMのランダム／固定併用をUI操作で設定し新規対局へ反映",
+      "result": true
+    },
+    {
+      "name": "手牌選択・取消・打牌、UI操作中の視点固定",
+      "result": true
+    },
+    {
+      "name": "牌譜の開始・前後送り・対局へ復帰",
+      "result": true
+    },
+    {
+      "name": "手動保存・再開（ローカル保存のメモリ代替）で打ち筋と局面維持",
+      "result": true
+    },
+    {
+      "name": "描画内の数値パネルとキーボード入力",
+      "result": true
+    },
+    {
+      "name": "モーダル上のドラッグは3D卓へ伝播しない",
+      "result": true
+    },
+    {
+      "name": "8分類の全設定ページと76役への入口を確認",
+      "result": 222
+    },
+    {
+      "name": "画面内への収まり・リサイズ後のUI画素一致 1920×1080",
+      "result": {
+        "opaque_pixel_match": 1.0
+      }
+    },
+    {
+      "name": "画面内への収まり・リサイズ後のUI画素一致 1024×768",
+      "result": {
+        "opaque_pixel_match": 1.0
+      }
+    },
+    {
+      "name": "画面内への収まり・リサイズ後のUI画素一致 844×390",
+      "result": {
+        "opaque_pixel_match": 1.0
+      }
+    },
+    {
+      "name": "画面内への収まり・リサイズ後のUI画素一致 667×375",
+      "result": {
+        "opaque_pixel_match": 1.0
+      }
+    },
+    {
+      "name": "画面内への収まり・リサイズ後のUI画素一致 568×320",
+      "result": {
+        "opaque_pixel_match": 1.0
+      }
+    },
+    {
+      "name": "画面内への収まり・リサイズ後のUI画素一致 390×844",
+      "result": {
+        "opaque_pixel_match": 1.0
+      }
+    },
+    {
+      "name": "画面内への収まり・リサイズ後のUI画素一致 320×568",
+      "result": {
+        "opaque_pixel_match": 1.0
+      }
+    },
+    {
+      "name": "画面内への収まり・リサイズ後のUI画素一致 800×300",
+      "result": {
+        "opaque_pixel_match": 1.0
+      }
+    },
+    {
+      "name": "TabキーでCanvas内の操作にフォーカス",
+      "result": true
+    },
+    {
+      "name": "ブラウザ実行時の例外なし",
+      "result": true
+    }
+  ],
+  "errors": []
+}

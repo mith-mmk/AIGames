@@ -1,0 +1,180 @@
+{
+  "matches": 24,
+  "hands": 318,
+  "moves": 17784,
+  "records": [
+    {
+      "players": 3,
+      "length": "east",
+      "seed": 3300,
+      "hands": 3,
+      "moves": 159
+    },
+    {
+      "players": 3,
+      "length": "south",
+      "seed": 3301,
+      "hands": 11,
+      "moves": 480
+    },
+    {
+      "players": 3,
+      "length": "full",
+      "seed": 3302,
+      "hands": 22,
+      "moves": 1015
+    },
+    {
+      "players": 3,
+      "length": "east",
+      "seed": 3303,
+      "hands": 4,
+      "moves": 186
+    },
+    {
+      "players": 3,
+      "length": "south",
+      "seed": 3304,
+      "hands": 10,
+      "moves": 461
+    },
+    {
+      "players": 3,
+      "length": "full",
+      "seed": 3305,
+      "hands": 21,
+      "moves": 905
+    },
+    {
+      "players": 3,
+      "length": "east",
+      "seed": 3306,
+      "hands": 3,
+      "moves": 111
+    },
+    {
+      "players": 3,
+      "length": "south",
+      "seed": 3307,
+      "hands": 19,
+      "moves": 788
+    },
+    {
+      "players": 3,
+      "length": "full",
+      "seed": 3308,
+      "hands": 23,
+      "moves": 806
+    },
+    {
+      "players": 3,
+      "length": "east",
+      "seed": 3309,
+      "hands": 5,
+      "moves": 239
+    },
+    {
+      "players": 3,
+      "length": "south",
+      "seed": 3310,
+      "hands": 12,
+      "moves": 491
+    },
+    {
+      "players": 3,
+      "length": "full",
+      "seed": 3311,
+      "hands": 17,
+      "moves": 721
+    },
+    {
+      "players": 4,
+      "length": "east",
+      "seed": 3400,
+      "hands": 5,
+      "moves": 334
+    },
+    {
+      "players": 4,
+      "length": "south",
+      "seed": 3401,
+      "hands": 11,
+      "moves": 764
+    },
+    {
+      "players": 4,
+      "length": "full",
+      "seed": 3402,
+      "hands": 23,
+      "moves": 1444
+    },
+    {
+      "players": 4,
+      "length": "east",
+      "seed": 3403,
+      "hands": 5,
+      "moves": 424
+    },
+    {
+      "players": 4,
+      "length": "south",
+      "seed": 3404,
+      "hands": 17,
+      "moves": 961
+    },
+    {
+      "players": 4,
+      "length": "full",
+      "seed": 3405,
+      "hands": 22,
+      "moves": 1570
+    },
+    {
+      "players": 4,
+      "length": "east",
+      "seed": 3406,
+      "hands": 7,
+      "moves": 439
+    },
+    {
+      "players": 4,
+      "seed": 3407,
+      "length": "south",
+      "hands": 16,
+      "moves": 999,
+      "endReason": "規定の対局終了"
+    },
+    {
+      "players": 4,
+      "seed": 3408,
+      "length": "full",
+      "hands": 24,
+      "moves": 1804,
+      "endReason": "規定の対局終了"
+    },
+    {
+      "players": 4,
+      "seed": 3409,
+      "length": "east",
+      "hands": 5,
+      "moves": 382,
+      "endReason": "規定の対局終了"
+    },
+    {
+      "players": 4,
+      "seed": 3410,
+      "length": "south",
+      "hands": 11,
+      "moves": 834,
+      "endReason": "規定の対局終了"
+    },
+    {
+      "players": 4,
+      "seed": 3411,
+      "length": "full",
+      "hands": 22,
+      "moves": 1467,
+      "endReason": "規定の対局終了"
+    }
+  ]
+}

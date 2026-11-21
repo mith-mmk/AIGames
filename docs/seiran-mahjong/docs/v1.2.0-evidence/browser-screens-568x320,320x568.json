@@ -1,0 +1,23 @@
+{
+  "storage": "test-idb subset double, not native IndexedDB",
+  "renderer": "Chromium 144 / Xvfb / SwiftShader",
+  "checks": [
+    {
+      "name": "席決め前の初期画面・COMランダム・Canvas1枚",
+      "result": true
+    },
+    {
+      "name": "568×320で結果・精算・グラフ・履歴・成績・データ・確認が枠内",
+      "result": 7
+    },
+    {
+      "name": "320×568で結果・精算・グラフ・履歴・成績・データ・確認が枠内",
+      "result": 7
+    },
+    {
+      "name": "ブラウザの未処理例外なし",
+      "result": true
+    }
+  ],
+  "pageErrors": []
+}
