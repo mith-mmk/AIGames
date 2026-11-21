@@ -1,0 +1,41 @@
+{
+  "checks": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "inFrame": true,
+      "distance": 18
+    },
+    {
+      "width": 900,
+      "overflow": false,
+      "inFrame": true,
+      "distance": 33.36206896551724
+    },
+    {
+      "width": 800,
+      "overflow": false,
+      "inFrame": true,
+      "distance": 18
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "inFrame": true,
+      "distance": 26.78004807692308
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "inFrame": true,
+      "distance": 32.63818359375
+    }
+  ],
+  "zoomButtons": "passed",
+  "cameraTargets": [
+    "handle",
+    "bell",
+    "lift",
+    "rail"
+  ]
+}

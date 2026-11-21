@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101e24">
+  <title>AI Games</title>
+  <link rel="stylesheet" href="./css/mirror-light.css">
+</head>
+<body>
+  <main class="garden">
+    <header class="masthead">
+      <a class="back" href="./index.html">← AI Games</a>
+      <span class="edition">MIRROR GARDEN · 3D</span>
+    </header>
+    <div class="heading"><div><p class="eyebrow">静かな、ひとすじの旅</p><h1>光の庭</h1></div><p class="intro">鏡を回して、光をつなぐ。</p></div>
+    <section class="stage-bar" aria-label="進行状況">
+      <div><span id="chapter" class="chapter">反射を知る</span><h2 id="stage-title">01 ひとすじの光</h2></div>
+      <div class="stage-meta"><span id="moves">0 手</span><span id="progress">0 / 10 クリア</span><button id="open-stages" aria-expanded="false" aria-controls="stage-panel">面を選ぶ</button></div>
+    </section>
+    <section id="stage-panel" class="stage-panel" aria-label="全10面" hidden><div id="stage-list" class="stage-list"></div><p>どの面からでも遊べます。記録はこのブラウザに保存します。</p></section>
+    <p id="lesson" class="lesson">鏡を押すと向きが変わります。</p>
+    <section id="playfield" class="playfield" aria-label="光の庭の3D盤面">
+      <div id="viewport" class="viewport"></div>
+      <div id="mirror-targets" class="mirror-targets" aria-label="回転する鏡"></div>
+      <div class="board-key" aria-hidden="true"><span class="key-source">◆ 光源</span><span class="key-goal">◎ ゴール</span><span class="key-checkpoint">○ 通過点</span><span class="key-fixed">／ 固定鏡</span></div>
+      <p id="render-message" class="render-message" role="status" hidden></p>
+      <div id="success" class="success" hidden><strong id="success-title">光が届きました</strong><span id="success-detail"></span><button id="next">次の庭へ →</button></div>
+    </section>
+    <div class="feedback"><p id="status" role="status" aria-live="polite">鏡を押して、光の行き先を変えましょう。</p><span id="checkpoint-count"></span></div>
+    <nav class="tools" aria-label="パズルの操作"><button id="undo" disabled>↶ 一手戻す</button><button id="reset">↺ リセット</button><button id="hint">ヒント</button></nav>
+    <p id="hint-text" class="hint-text" role="status" hidden></p>
+    <details class="help"><summary>遊び方・押しやすい操作</summary><p>銀の鏡をタップ・クリックすると、/ と \\ が切り替わります。金の鏡は固定です。光は石で止まり、交差ではそのまま進みます。青い通過点がある面は、すべてを通ってから白いゴールへ。時間制限はありません。</p><p>キーボードは Tab で鏡を選び、Enter / Space で回転。下の操作でも同じ鏡を回せます。カメラは固定です。</p><div class="accessible-controls"><label for="mirror-select">鏡</label><select id="mirror-select"></select><button id="rotate-selected">選んだ鏡を回す</button></div><p id="mirror-description"></p></details>
+    <footer><span>10 の庭 · 時間を気にせず、ひとつずつ。</span><span>by Codex</span></footer>
+  </main>
+  <noscript>このゲームを遊ぶには JavaScript を有効にしてください。</noscript>
+  <script type="module" src="./js/mirror-light/app.mjs"></script>
+</body>
+</html>

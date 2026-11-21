@@ -1,0 +1,23 @@
+{
+  "originalEntriesRetained": 23,
+  "total": 23,
+  "widths": [
+    1440,
+    768,
+    390,
+    320
+  ],
+  "tests": [
+    "dates and stable ties",
+    "name sort",
+    "NFKC title search",
+    "AND genre filter",
+    "zero results/count",
+    "keyboard reset and tab order",
+    "all images loaded",
+    "no horizontal overflow",
+    "no JavaScript fallback",
+    "AIGames subpath"
+  ],
+  "errors": []
+}

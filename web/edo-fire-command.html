@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>江戸火消し指図 | AI Games</title>
+    <link rel="stylesheet" href="./css/edo-fire-command.css">
+</head>
+<body class="edo-page">
+<main class="edo-shell">
+    <header class="edo-header">
+        <div>
+            <p class="eyebrow">AI GAMES / 火の見櫓</p>
+            <h1>江戸火消し指図</h1>
+            <p>風を読み、人を救い、町を断って火を鎮める。</p>
+        </div>
+        <div class="seal" aria-hidden="true">火<br>消</div>
+    </header>
+
+    <section class="command-layout" aria-label="江戸火消し指図 ゲーム画面">
+        <section class="map-panel">
+            <div class="map-frame">
+                <canvas id="edo-fire-canvas" width="960" height="720" aria-label="火災現場の12列9行の地図"></canvas>
+
+                <section id="edo-start-overlay" class="edo-overlay start-overlay">
+                    <div class="overlay-card">
+                        <p class="eyebrow">今宵の持ち場</p>
+                        <h2>桶町の小火</h2>
+                        <p data-scenario-description>水組を火元へ走らせ、町家を守れ。</p>
+                        <label class="scenario-picker">
+                            シナリオ
+                            <select id="edo-scenario-select" aria-label="開始する夜"></select>
+                        </label>
+                        <button id="edo-start-button" class="edo-button primary" type="button">指図を始める</button>
+                        <label class="setting-check"><input id="edo-reduced-motion" type="checkbox"> 動きを控えめにする</label>
+                    </div>
+                </section>
+
+                <section id="edo-result-overlay" class="edo-overlay" hidden>
+                    <div class="overlay-card result-card">
+                        <p id="edo-result-kicker" class="eyebrow">鎮火完了</p>
+                        <h2 id="edo-result-title">金評価</h2>
+                        <p id="edo-result-text">夜明け前に町を守り切った。</p>
+                        <strong id="edo-result-score" class="result-score">100 点</strong>
+                        <div class="result-actions">
+                            <button id="edo-retry-button" class="edo-button primary" type="button">同じ夜を再指図</button>
+                            <button id="edo-menu-button" class="edo-button" type="button">夜を選ぶ</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="map-caption" aria-live="polite">
+                <span id="edo-message">夜を選んでください。</span>
+                <span class="key-help"><kbd>矢印</kbd>照準 <kbd>Enter</kbd>決定 <kbd>Esc</kbd>取消</span>
+            </div>
+        </section>
+
+        <aside class="command-panel" aria-label="火消し指図盤">
+            <section class="stage-card">
+                <p class="panel-label">今宵の火場</p>
+                <h2 id="edo-stage-name">第1夜 桶町の小火</h2>
+                <p id="edo-stage-brief">水組を火元へ走らせ、町家を守れ。</p>
+            </section>
+
+            <section class="metric-grid" aria-label="現場状況">
+                <article><span>刻限</span><strong id="edo-turn">0 / 8</strong></article>
+                <article><span>風</span><strong id="edo-wind">西風 →</strong></article>
+                <article><span>火勢</span><strong id="edo-fire-count">0</strong></article>
+                <article><span>残る住民</span><strong id="edo-civilians">0</strong></article>
+                <article><span>犠牲</span><strong id="edo-casualties">0 / 0</strong></article>
+                <article><span>破壊札</span><strong id="edo-demolitions">0 枚</strong></article>
+                <article class="score"><span>評価点</span><strong id="edo-score">100</strong></article>
+            </section>
+
+            <section class="forecast-card">
+                <div class="panel-heading"><span>二手先の火見</span><small>命令なしの場合</small></div>
+                <div class="forecast-row">
+                    <article id="edo-forecast-one"><b>第1刻</b><span>西風 →</span><small>危険 2区画</small></article>
+                    <article id="edo-forecast-two"><b>第2刻</b><span>西風 →</span><small>危険 3区画</small></article>
+                </div>
+            </section>
+
+            <section class="squad-card">
+                <div class="panel-heading"><span>出場組</span><small>組を選択</small></div>
+                <div id="edo-squad-list" class="squad-list"></div>
+            </section>
+
+            <section class="order-card">
+                <div class="selected-copy">
+                    <span>選択中</span>
+                    <strong id="edo-selected-name">組を選択</strong>
+                    <p id="edo-selected-detail">盤上の組を選んでください。</p>
+                </div>
+                <div class="action-grid" aria-label="命令を選択">
+                    <button type="button" data-edo-action="move"><b>一</b>移動</button>
+                    <button type="button" data-edo-action="extinguish"><b>消</b>消火</button>
+                    <button type="button" data-edo-action="refill"><b>汲</b>補給</button>
+                    <button type="button" data-edo-action="rescue"><b>救</b>救助</button>
+                    <button type="button" data-edo-action="demolish"><b>壊</b>破壊</button>
+                </div>
+                <button id="edo-clear-order" class="text-button" type="button">この組の命令を取り消す</button>
+            </section>
+
+            <section class="hint-card">
+                <span>火消し心得</span>
+                <p id="edo-hint">水組を選び、移動先を指定してから消火対象を選びます。</p>
+            </section>
+
+            <button id="edo-end-turn" class="edo-button end-turn" type="button">この指図で一刻進める</button>
+            <div class="panel-links">
+                <button id="edo-help-button" class="text-button" type="button">遊び方</button>
+                <a href="./">ゲーム一覧へ</a>
+            </div>
+        </aside>
+    </section>
+</main>
+
+<dialog id="edo-help-dialog" class="help-dialog">
+    <form method="dialog">
+        <p class="eyebrow">火消し心得</p>
+        <h2>指図の出し方</h2>
+        <ol>
+            <li>出場組を選び、盤上の明るい道を選んで移動を予約します。</li>
+            <li>組の固有命令を選び、移動予定地に隣接する対象を選びます。</li>
+            <li>全組の命令を定めたら「一刻進める」でまとめて解決します。</li>
+        </ol>
+        <dl>
+            <div><dt>水組</dt><dd>消火には水を1消費。井戸・水路で満杯まで補給。</dd></div>
+            <div><dt>梯子組</dt><dd>人印の町家から住民を救助。</dd></div>
+            <div><dt>鳶組</dt><dd>無人の町家を瓦礫にし、確実な防火帯を作る。</dd></div>
+        </dl>
+        <p>赤い点線は二手予報です。矢印は風が吹いて火が流れる方向を示します。</p>
+        <button id="edo-help-close" class="edo-button primary" type="submit">心得を閉じる</button>
+    </form>
+</dialog>
+
+<script src="./js/edo-fire-command-data.js"></script>
+<script src="./js/edo-fire-command-core.js"></script>
+<script src="./js/edo-fire-command-renderer.js"></script>
+<script src="./js/edo-fire-command-app.js"></script>
+</body>
+</html>

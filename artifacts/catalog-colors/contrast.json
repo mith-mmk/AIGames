@@ -1,0 +1,52 @@
+{
+  "pairs": {
+    "body": [
+      "#333333",
+      "#f9f9f9"
+    ],
+    "header": [
+      "#ecf0f1",
+      "#2c3e50"
+    ],
+    "title_link": [
+      "#226b9b",
+      "#ffffff"
+    ],
+    "title_hover": [
+      "#226b9b",
+      "#f4f8fb"
+    ],
+    "genre": [
+      "#226b9b",
+      "#ecf0f1"
+    ],
+    "secondary": [
+      "#566573",
+      "#ffffff"
+    ],
+    "metadata": [
+      "#59666e",
+      "#ffffff"
+    ],
+    "footer": [
+      "#566573",
+      "#f9f9f9"
+    ],
+    "footer_link": [
+      "#226b9b",
+      "#f9f9f9"
+    ]
+  },
+  "ratios": {
+    "body": 12.0,
+    "header": 9.57,
+    "title_link": 5.76,
+    "title_hover": 5.4,
+    "genre": 5.02,
+    "secondary": 5.99,
+    "metadata": 5.91,
+    "footer": 5.69,
+    "footer_link": 5.47
+  },
+  "minimumRequired": 4.5
+}

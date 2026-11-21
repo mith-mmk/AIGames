@@ -1,0 +1,283 @@
+{
+  "source": "web",
+  "browser": "151.0.7922.173",
+  "checks": [
+    {
+      "mode": "desktop",
+      "stage": 1,
+      "minimum": 1,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "desktop",
+      "stage": 2,
+      "minimum": 2,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "desktop",
+      "stage": 3,
+      "minimum": 2,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "desktop",
+      "stage": 4,
+      "minimum": 3,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "desktop",
+      "stage": 5,
+      "minimum": 3,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "desktop",
+      "stage": 6,
+      "minimum": 3,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "desktop",
+      "stage": 7,
+      "minimum": 4,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "desktop",
+      "stage": 8,
+      "minimum": 4,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "desktop",
+      "stage": 9,
+      "minimum": 5,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "desktop",
+      "stage": 10,
+      "minimum": 6,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 390,
+      "stage": 1,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 390,
+      "stage": 2,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 390,
+      "stage": 3,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 390,
+      "stage": 4,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 390,
+      "stage": 5,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 390,
+      "stage": 6,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 390,
+      "stage": 7,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 390,
+      "stage": 8,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 390,
+      "stage": 9,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 390,
+      "stage": 10,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 320,
+      "stage": 1,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 320,
+      "stage": 2,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 320,
+      "stage": 3,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 320,
+      "stage": 4,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 320,
+      "stage": 5,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 320,
+      "stage": 6,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 320,
+      "stage": 7,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 320,
+      "stage": 8,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 320,
+      "stage": 9,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    },
+    {
+      "mode": "touch",
+      "width": 320,
+      "stage": 10,
+      "overflow": false,
+      "inFrame": true,
+      "individuallyTargetable": true,
+      "overlaps": false,
+      "solveUndoReset": "passed"
+    }
+  ],
+  "keyboard": "passed",
+  "physicalMirrorPicking": "passed",
+  "hints": "3 tiers passed",
+  "nextStage": "passed",
+  "idleFrameHashes": [
+    "89f7c754e8fc56fd3c7bc427caad52d3faab830772a277c3b2c13bfb8f0518f4",
+    "89f7c754e8fc56fd3c7bc427caad52d3faab830772a277c3b2c13bfb8f0518f4",
+    "89f7c754e8fc56fd3c7bc427caad52d3faab830772a277c3b2c13bfb8f0518f4",
+    "89f7c754e8fc56fd3c7bc427caad52d3faab830772a277c3b2c13bfb8f0518f4"
+  ],
+  "webglContextRecovery": "passed",
+  "savedProgressReload": "passed",
+  "deniedStorageAndWebglFallback": "passed",
+  "accessible44pxControls": "passed",
+  "navigation": "passed",
+  "pageErrors": [],
+  "badRequests": []
+}

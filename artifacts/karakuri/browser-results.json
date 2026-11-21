@@ -1,0 +1,21 @@
+{
+  "browser": "154.0.8037.97",
+  "host": "NERO / Windows",
+  "completed": "2026-10-03T05:57:45.803Z",
+  "externalNetworkBlocked": true,
+  "javascriptErrors": [],
+  "checks": [
+    "initial failure",
+    "keyboard movement with button focus",
+    "3D drag and snap",
+    "assembly with visible controls",
+    "running edit lock",
+    "slow",
+    "success",
+    "replay after success",
+    "reversed rail failure",
+    "reset after failure",
+    "camera orbit and zoom",
+    "390px resize without horizontal overflow"
+  ]
+}

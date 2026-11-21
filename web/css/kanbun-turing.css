@@ -1,0 +1,39 @@
+:root { color-scheme: light; font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; color: #2b2926; background: #f2eee5; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 10% 0%, #fffaf0, #eee7d9); }
+.site-header { padding: 2.5rem 1.25rem 1.5rem; text-align: center; border-bottom: 1px solid #d8cdbb; }
+.site-header h1 { margin: .35rem 0; font-size: clamp(1.55rem, 4vw, 2.4rem); letter-spacing: .08em; }
+.site-header p { margin: .3rem; }
+.eyebrow { color: #9a5b37; font: 700 .7rem/1.4 sans-serif; letter-spacing: .18em; }
+.app-shell { width: min(1100px, calc(100% - 2rem)); margin: 1.5rem auto 3rem; display: grid; gap: 1.25rem; }
+.panel { background: rgba(255, 252, 245, .9); border: 1px solid #d8cdbb; border-radius: 12px; padding: 1.2rem; box-shadow: 0 8px 22px rgba(70, 51, 29, .08); }
+.section-heading { display: flex; align-items: baseline; gap: .7rem; border-bottom: 1px solid #e1d8c9; margin-bottom: 1rem; }
+.section-heading span { color: #a75d35; font: 700 .8rem sans-serif; letter-spacing: .1em; }
+h2 { margin: 0 0 .6rem; font-size: 1.15rem; }
+#kanbun-input { display: block; width: 100%; max-width: 100%; min-height: 280px; writing-mode: vertical-rl; text-orientation: upright; font: 1.35rem/2 "Yu Mincho", serif; letter-spacing: .1em; padding: 1rem; color: #211f1b; background: #fffdf8; border: 1px solid #c8baa4; border-radius: 7px; }
+.hint { color: #756d62; font: .8rem/1.6 sans-serif; }
+.repeated-check { margin: .75rem 0; padding: .6rem .75rem; color: #633f2d; background: #f5ead8; border-left: 3px solid #a75d35; font-size: .86rem; }
+.school-notation { margin: .75rem 0; padding: .75rem; white-space: pre-wrap; color: #2f3f56; background: #eef3f7; border-left: 3px solid #506b84; font-family: "Yu Mincho", serif; }
+.kunten-preview { min-height: 15rem; margin-top: 1rem; padding: 1.25rem 1.5rem 1.5rem; overflow-x: auto; background: #fffdf8; border: 1px solid #c8baa4; border-radius: 7px; }
+.kunten-sheet { --base-size: 2rem; --base-track: 2.1rem; --mark-track: .82rem; --okuri-track: .9rem; --annotation-size: .72rem; --okuri-top: .88rem; --mark-top: 1.28rem; display: flex; flex-flow: row-reverse wrap; align-content: flex-start; align-items: flex-start; justify-content: flex-start; gap: 1.5rem; width: 100%; }
+.kunten-column { display: flex; flex-flow: column wrap; direction: rtl; align-content: flex-start; align-items: center; gap: .35rem; max-height: 31rem; }
+.kunten-token { display: grid; direction: ltr; grid-template-columns: var(--mark-track) var(--base-track) var(--okuri-track); grid-template-areas: "mark base okuri"; column-gap: .08rem; align-items: start; min-height: 2.35rem; }
+.kunten-base { grid-area: base; width: var(--base-track); font-size: var(--base-size); line-height: 1.15; text-align: center; }
+.kunten-mark { grid-area: mark; justify-self: end; margin-top: var(--mark-top); font-size: .76rem; line-height: 1; white-space: nowrap; }
+.kunten-token.is-okiji .kunten-mark { color: #9a5b37; font-weight: 700; }
+.kunten-okuri { grid-area: okuri; display: flex; flex-direction: column; align-items: center; padding-top: var(--okuri-top); font-size: var(--annotation-size); line-height: .82rem; white-space: nowrap; writing-mode: horizontal-tb; }
+.kunten-okuri > span { display: block; height: .82rem; }
+.kunten-token.is-punctuation { grid-template-columns: var(--mark-track) var(--base-track) var(--okuri-track); }
+button { border: 1px solid #c8baa4; background: #fffdf8; border-radius: 6px; padding: .65rem 1rem; cursor: pointer; font: inherit; }
+button:hover { background: #f0e5d5; }
+button.primary { color: #fffaf1; background: #9a5b37; border-color: #9a5b37; }
+.tape { min-height: 88px; padding: .75rem; display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; background: #282d34; border-radius: 8px; overflow-x: auto; }
+.tape-cell { min-width: 2.2rem; padding: .45rem .3rem; text-align: center; color: #f7ead7; background: #454c55; border: 2px solid transparent; border-radius: 4px; font-size: 1.25rem; }
+.tape-cell.is-read { opacity: .5; }.tape-cell.is-head { border-color: #e6ad59; color: #211f1b; background: #f2c879; }
+.machine-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; margin: .8rem 0 .35rem; font: .78rem sans-serif; color: #706759; }
+.machine-meta strong { color: #9a5b37; }.machine-meta span:last-child { color: #9a5b37; font-weight: 700; }
+progress { width: 100%; height: .65rem; }.controls { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
+.kundoku-output { display: block; min-height: 280px; width: 100%; padding: 1rem; writing-mode: vertical-rl; text-orientation: upright; white-space: pre-wrap; overflow: auto; font-size: 1.35rem; line-height: 2; letter-spacing: .1em; color: #332b22; background: #fffdf8; border: 1px solid #c8baa4; border-radius: 7px; }
+footer { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; padding: 1.5rem; background: #332d27; color: #f7ead7; font: .8rem sans-serif; } footer a { color: inherit; }
+button:focus-visible, select:focus-visible, textarea:focus-visible, input:focus-visible, a:focus-visible { border-color: #a75d35; box-shadow: 0 0 0 3px #a75d35; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto; transition-duration: .01ms; animation-duration: .01ms; } }

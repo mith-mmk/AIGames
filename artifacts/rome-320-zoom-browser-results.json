@@ -1,0 +1,39 @@
+{
+  "browser": "153.0.8010.12",
+  "errors": [],
+  "wheelDistance": 5926.260993244472,
+  "results": [
+    {
+      "name": "max-out",
+      "blackPixels": 0,
+      "pixelCount": 576000,
+      "actualDistance": 10000,
+      "quality": "full",
+      "screenshot": "artifacts/rome-320-zoom-max-out-after.png"
+    },
+    {
+      "name": "min-in",
+      "blackPixels": 0,
+      "pixelCount": 576000,
+      "actualDistance": 80,
+      "quality": "full",
+      "screenshot": "artifacts/rome-320-zoom-min-in-after.png"
+    },
+    {
+      "name": "panned-horizon",
+      "blackPixels": 0,
+      "pixelCount": 576000,
+      "actualDistance": 10000,
+      "quality": "full",
+      "screenshot": "artifacts/rome-320-zoom-panned-horizon-after.png"
+    },
+    {
+      "name": "mobile-overhead",
+      "blackPixels": 0,
+      "pixelCount": 329160,
+      "actualDistance": 9999.999999999996,
+      "quality": "light",
+      "screenshot": "artifacts/rome-320-zoom-mobile-overhead-after.png"
+    }
+  ]
+}

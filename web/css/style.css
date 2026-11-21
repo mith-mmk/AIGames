@@ -108,7 +108,7 @@ footer.gotop {
     margin: 0;
     border: 0;
     text-decoration: none;
-    background-image: url('/icon/gotop.svg');
+    background-image: url('../assets/ui/gotop.svg');
     color: white;
     background-color:#34495e;
     width: 2em;

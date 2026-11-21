@@ -1,0 +1,138 @@
+{
+  "browser": "154.0.8037.97",
+  "date": "2026-10-03T06:06:46.331Z",
+  "dragResults": [
+    {
+      "profile": 0,
+      "slightlyOffset": [
+        0.3,
+        0.2
+      ],
+      "previewMatchesDrop": true,
+      "autoRotated": true
+    },
+    {
+      "profile": 1,
+      "slightlyOffset": [
+        0.3,
+        0.2
+      ],
+      "previewMatchesDrop": true,
+      "autoRotated": true
+    },
+    {
+      "profile": 2,
+      "slightlyOffset": [
+        0.3,
+        0.2
+      ],
+      "previewMatchesDrop": true,
+      "autoRotated": true
+    }
+  ],
+  "all10TwoAxisSolutions": true,
+  "wrongPairFailure": true,
+  "invalidOverlapRejected": true,
+  "cancelResetStageSwitch": true,
+  "rotateCrossRetry": true,
+  "mobile": true,
+  "javascriptErrors": [],
+  "contactAudit": {
+    "byStage": {
+      "1": {
+        "frames": 942,
+        "minimumGap": 0.0009517948986607072,
+        "states": [
+          "edit",
+          "running",
+          "failed",
+          "success"
+        ]
+      },
+      "2": {
+        "frames": 270,
+        "minimumGap": 0.0009517948986607072,
+        "states": [
+          "edit",
+          "running",
+          "success"
+        ]
+      },
+      "3": {
+        "frames": 404,
+        "minimumGap": 0.0009517948986607072,
+        "states": [
+          "edit",
+          "running",
+          "failed",
+          "success"
+        ]
+      },
+      "4": {
+        "frames": 263,
+        "minimumGap": 0.0009517948986602631,
+        "states": [
+          "edit",
+          "running",
+          "success"
+        ]
+      },
+      "5": {
+        "frames": 208,
+        "minimumGap": 0.0009517948986607072,
+        "states": [
+          "edit",
+          "running",
+          "success"
+        ]
+      },
+      "6": {
+        "frames": 296,
+        "minimumGap": 0.0009517948986607072,
+        "states": [
+          "edit",
+          "running",
+          "success"
+        ]
+      },
+      "7": {
+        "frames": 295,
+        "minimumGap": 0.0009517948986607072,
+        "states": [
+          "edit",
+          "running",
+          "success"
+        ]
+      },
+      "8": {
+        "frames": 214,
+        "minimumGap": 0.0009517948986607072,
+        "states": [
+          "edit",
+          "running",
+          "success"
+        ]
+      },
+      "9": {
+        "frames": 304,
+        "minimumGap": 0.0009517948986607072,
+        "states": [
+          "edit",
+          "running",
+          "success"
+        ]
+      },
+      "10": {
+        "frames": 392,
+        "minimumGap": 0.0009517948986607072,
+        "states": [
+          "edit",
+          "running",
+          "success"
+        ]
+      }
+    },
+    "collisions": [],
+    "maxRoots": 1
+  }
+}
